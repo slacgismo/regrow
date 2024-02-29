@@ -12,3 +12,5 @@ The .raw format power flow data and .dyr dynamic data of this system were prepar
 The OSL committee made some changes on the system in [1] to generate the test system and test cases suitable for this contest. The change included in the download here is: 10 IEEEST PSS models added. Changes NOT included in the download are: (i) the contest cases used a different power flow dispatch and topology; (ii) Some control settings may be modified to produce the desired oscillatory phenomena; and (iii) HVDC dynamic model added for two DC lines, i.e. PDCI and IPP (see details in the case description part at http://web.eecs.utk.edu/~kaisun/Oscillation/Contest.html).
 
 [1] H. Yuan, R. Sen biswas, J. Tan, Y. Zhang, "Developing a Reduced 240-Bus WECC Dynamic Model for Frequency Response Study of High Renewable Integration," 2020 T&D
+
+Source: https://www.nrel.gov/grid/test-case-repository.html

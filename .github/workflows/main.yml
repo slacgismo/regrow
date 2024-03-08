@@ -1,0 +1,26 @@
+name: Simulation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: lfenergy/arras:develop
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Run simulation
+      run: |
+        cd model
+        gridlabd wecc240.glm
+      
+    - name: Save results
+      uses: actions/upload-artifact@v3
+      with:
+        name: Results
+        path: model/

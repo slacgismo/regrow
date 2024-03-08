@@ -1,0 +1,33 @@
+// PyPower/GridLAB-D IEEE-14 bus example with controllers
+
+clock
+{
+    timezone "PST+8PDT";
+    starttime "2020-01-01 00:00:00 PST";
+    stoptime "2020-02-01 00:00:00 PST";
+}
+
+module pypower
+{
+    controllers "controllers"; // defines all controller functions
+}
+
+object pypower.load
+{
+    parent pp_bus_2;
+    Vn 12.5 kV;
+    P 10.0;
+    status ONLINE;
+    controller "load_control"; // defined in controllers.py
+}
+
+object pypower.powerplant
+{
+    parent pp_bus_2;
+    S 10.0;
+    status ONLINE;
+    controller "powerplant_control";  // defined in controllers.py
+}
+
+#input "case14.py" -t pypower // creates case14.glm from case14.py pypower model and loads it
+

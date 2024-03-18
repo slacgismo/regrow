@@ -1,17 +1,33 @@
-#version -ge 4.3.8
-module pypower
-{
-    maximum_iterations 50;
-    maximum_timestep 3600;
-    stop_on_failure TRUE;
-    controllers "controllers";
-}
+// Main WECC 240 bus model
+//
+// Most specifications in this file should be provided by the config.glm file
+// unless they are considered invariant across the scenarios being considered.
+//
+
+#include "config.glm"
+
+#version "${VERSION}"
 
 clock {
-    timezone PST+8PDT;
-    starttime '2024-01-01 00:00:00 PST';
-    stoptime '2025-01-01 00:00:00 PST';
+    timezone ${TIMEZONE};
+    starttime ${STARTTIME};
+    stoptime ${STOPTIME};
 }
 
-#input "wecc240_psse.raw"
-#set savefile=wecc240.json
+module pypower
+{
+    maximum_iterations ${MAXIMUM_ITERATIONS};
+    maximum_timestep ${MAXIMUM_TIMESTEP};
+    stop_on_failure ${STOP_ON_FAILURE};
+    controllers ${CONTROLLERS_FILE};
+}
+
+//
+// Load the PSS/E model
+//
+#input "${RAWFILE}"
+
+//
+// Save the final result to JSON
+//
+#set savefile="${SAVEFILE}"

@@ -1,5 +1,6 @@
 # Input Files
 
+* `config.glm`: The main configuration file which sets up the scenario to simulation.
 * `wecc240.glm`: The main model file which should be run with command `gridlabd wecc240.glm`.
 * `wecc240_psse.raw`: The original PSS/E model, which is an input to the `wecc240.glm` model.
 * `controllers.py`: The control system model in Python.

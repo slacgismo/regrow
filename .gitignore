@@ -160,7 +160,6 @@ cython_debug/
 #.idea/
 .DS_Store
 
-
 # Created by https://www.toptal.com/developers/gitignore/api/macos,sublimetext,pycharm,visualstudio
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,sublimetext,pycharm,visualstudio
 
@@ -1060,4 +1059,3 @@ TSWLatexianTemp*
 *.glstex
 
 # End of https://www.toptal.com/developers/gitignore/api/latex
-

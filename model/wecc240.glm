@@ -1,1 +1,17 @@
-#warning "WECC 240 bus model not implemented yet"
+#version -ge 4.3.8
+module pypower
+{
+    maximum_iterations 50;
+    maximum_timestep 3600;
+    stop_on_failure TRUE;
+    controllers "controllers";
+}
+
+clock {
+    timezone PST+8PDT;
+    starttime '2024-01-01 00:00:00 PST';
+    stoptime '2025-01-01 00:00:00 PST';
+}
+
+#input "wecc240_psse.raw"
+#set savefile=wecc240.json

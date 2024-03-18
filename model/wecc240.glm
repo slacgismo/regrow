@@ -28,6 +28,11 @@ module pypower
 #input "${RAWFILE}"
 
 //
+// Load the GIS data
+//
+#include "${GISDATA}"
+
+//
 // Save the final result to JSON
 //
 #set savefile="${SAVEFILE}"

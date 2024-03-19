@@ -193,11 +193,6 @@ with open(glmname,'w') as glm:
                             print(f"""    {name} {value} {units[name]};""",file=glm)
                         elif name in ["latitude","longitude"]:
                             print(f"""    {name} {value:.4f};""",file=glm)
-                        elif name in ["plant_code"]:
-                            try:
-                                print(f"""    {name} {int(value)};""",file=glm)
-                            except:
-                                print(f"""    // {name} {value};""",file=glm)
                         elif name in ["naics_description","city","substation_1","substation_2"]:
                             print(f"""    {name} "{value.title()}";""",file=glm)    
                         else:

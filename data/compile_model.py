@@ -10,7 +10,6 @@ def __(pd):
     # Load bus gis data
     #
     gis = pd.read_csv("wecc240_gis.csv")
-    gis
     return gis,
 
 

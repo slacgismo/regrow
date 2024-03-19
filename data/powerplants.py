@@ -11,6 +11,7 @@ gridlabd_version = "-ge 4.3.7" # gridlabd version requirement
 import sys, os
 import pandas as pd
 import datetime as dt
+import re
 
 if len(sys.argv) == 1:
     print("Syntax: python3 powerplants.py CSVFILE GLMFILE",file=sys.stderr)
@@ -27,6 +28,7 @@ mapper = {
     "city" : "CITY",
     "state" : "STATE",
     "country" : "COUNTRY",
+    "zipcode" : "ZIP",
     "naics_code" : "NAICS_CODE",
     "naics_description" : "NAICS_DESC",
     "plant_type" : "TYPE",
@@ -153,10 +155,11 @@ with open(glmname,'w') as glm:
                     break # plants are ordered by size in each state
                 if _plant['STATUS'] != "OP":
                     if _plant['STATUS'] == "NOT AVAILABLE":
-                        print(f"WARNING [powerplant.py]: powerplant '{_plant['NAME']}' is not operational (status is '{_plant['STATUS']}')",file=sys.stderr)
-                    continue
-                # if _plant['ZIP'] < _ziprange[0] or _plant['ZIP'] > _ziprange[1]:
-                #     print(f"WARNING [powerplant.py]: powerplant '{_plant['NAME']}' zipcode '{_plant['ZIP']}' is not valid for state '{_plant['STATE']}'",file=sys.stderr)
+                        print(f"WARNING [powerplant.py]: powerplant '{_plant['NAME']}' status is unknown and assumed OFFLINE",file=sys.stderr)
+                    else:
+                        continue
+                if len(_ziprange) > 1 and _plant['ZIP'] != "NOT AVAILABLE" and ( _plant['ZIP'] < _ziprange[0] or _plant['ZIP'] > _ziprange[1] ):
+                    print(f"WARNING [powerplant.py]: powerplant '{_plant['NAME']}' zipcode '{_plant['ZIP']}' is not valid for state '{_plant['STATE']}'",file=sys.stderr)
 
                 print("object powerplant {",file=glm)
                 fuel = []
@@ -169,7 +172,15 @@ with open(glmname,'w') as glm:
                         if value in names:
                             value += " 2"
                         names.append(value)
-                    if value != "NOT AVAILABLE":
+                        # value = re.sub("[^A-Za-z0-9]+",value,"_")
+                        # value = re.sub("_+",value,"_").strip("_")
+                        # value = re.sub("^[0-9]",value,"_")
+                        value = value.replace(" ","_").replace("(","").replace(")","").replace(",","").replace("/","_").replace("&","").replace("__","_").replace(".","").replace("'","").replace("#","")
+                        if '0' <= value[0] <= '9':
+                            value = "_" + value
+                        if len(value) > 63:
+                            print(f"WARNING [powerplant.py]: plant name '{value}' is too long",file=sys.stderr)
+                    if value != "NOT AVAILABLE" or name in ['status']:
                         if name == "plant_type":
                             for item in value.split("; "):
                                 fuel.append(plant_types[item][0])
@@ -177,11 +188,13 @@ with open(glmname,'w') as glm:
                             print(f"""    generator {"|".join(set(generator))};""",file=glm)
                             print(f"""    fuel {"|".join(set(fuel))};""",file=glm)
                         elif name == "status":
-                            print(f"""    status "ONLINE";""",file=glm)
+                            print(f"""    status "{"ONLINE" if _plant['STATUS'] == "OP" else "OFFLINE"}";""",file=glm)
                         elif name in units:
                             print(f"""    {name} {value} {units[name]};""",file=glm)
                         elif name in ["latitude","longitude"]:
                             print(f"""    {name} {value:.4f};""",file=glm)
+                        elif name in ["naics_description","city","substation_1","substation_2"]:
+                            print(f"""    {name} "{value.title()}";""",file=glm)    
                         else:
                             print(f"""    {name} "{value}";""",file=glm)
                 print("}", file=glm)

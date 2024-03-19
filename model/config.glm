@@ -47,3 +47,8 @@
 // Controllers module name
 //
 #define CONTROLLERS_FILE "controllers"
+
+//
+// GIS data
+//
+#define GISDATA "../data/wecc240_gis.glm"

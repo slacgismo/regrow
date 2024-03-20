@@ -1,7 +1,7 @@
 //
 // Requires Arras Energy version 4.3.8 or later
 //
-#define VERSION "-ge 4.3.8"
+//#define VERSION "-ge 4.3.8"
 
 //
 // Work in Pacific timezone (even though some parts of the system are in MT and CT)

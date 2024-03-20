@@ -2,7 +2,7 @@
 
 Convert powerplants.csv data to GLM file to pypower model. Only operating
 plants with capacity above 10 MW are included. Plants with "UNKNOWN" name
-are model as anonymous (no name). Any column "NOT AVAILABLE" is omitted.
+are modeled as anonymous (no name). Any column "NOT AVAILABLE" is omitted.
 """
 
 minimum_capacity = 10.0 # minimum plant size to include

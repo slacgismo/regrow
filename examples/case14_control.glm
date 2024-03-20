@@ -12,11 +12,19 @@ module pypower
     controllers "controllers"; // defines all controller functions
 }
 
+module tape
+{
+    csv_header_type NAME;
+}
+
 object pypower.load
 {
     parent pp_bus_2;
     Vn 12.5 kV;
-    P 10.0;
+    object player 
+    {
+        file "pp_bus_2.csv";
+    };
     status ONLINE;
     controller "load_control"; // defined in controllers.py
 }
@@ -31,3 +39,10 @@ object pypower.powerplant
 
 #input "case14.py" -t pypower // creates case14.glm from case14.py pypower model and loads it
 
+object recorder
+{
+    parent pp_bus_2;
+    file "pp_bus_2_recorder.csv";
+    property S,Pd,Qd,Gs,Bs,Vm,Va;
+    interval -1;
+}

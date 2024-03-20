@@ -36,7 +36,7 @@ def __(mo, pd):
 
     mo.vstack([
         mo.md("# Original SCADA data"),
-        load.plot(figsize=(15,5),grid=True)
+        load.plot(figsize=(15,5),grid=True,xlabel='Date/Time',ylabel='Power [MW]')
     ])
 
     return load,
@@ -82,18 +82,29 @@ def __(data, mo):
     #
     # Plot raw data
     #
-    _fig1 = data.plot(kind='scatter',x='heat_index',y='MW',figsize=(15,5),grid=True,title="Weather dependence")
-    mo.md()
+    _fig1 = data.plot(kind='scatter',x='heat_index',y='MW',figsize=(15,5),grid=True,xlabel='Heat index [$^o$F]',ylabel='Power [MW]')
+    mo.vstack([
+        mo.md("# Training data"),
+        _fig1,
+    ])
     return
 
 
 @app.cell
-def __(data, np):
+def __(mo):
+    order_ui = mo.ui.slider(start=1,stop=50,value=2,label="Model order")
+    holdout_ui = mo.ui.slider(start=1,stop=25,value=5,label="Validation holdout")
+    mo.hstack([order_ui,holdout_ui],justify='start')
+    return holdout_ui, order_ui
+
+
+@app.cell
+def __(data, holdout_ui, mo, np, order_ui):
     #
     # Create dynamic load model
     #
-    holdout = int(len(data)*0.95) # cut-off for holdout data
-    K = 2 # model order (>0)
+    holdout = int(len(data)*(100-holdout_ui.value)/100.0) # cut-off for holdout data
+    K = order_ui.value # model order (>0)
     _train = data.iloc[0:holdout-1]
     _X = np.matrix(_train['heat_index']).transpose()
     _Y = np.matrix(_train['MW']).transpose()
@@ -103,6 +114,13 @@ def __(data, np):
                   ])
     _Mt = _M.transpose()
     model = np.linalg.solve(_Mt*_M,_Mt*_Y[K+1:])
+    _a = model.transpose().round(4).tolist()[0][0:K]
+    _b = model.transpose().round(4).tolist()[0][K:]
+    _A = "".join([f"{x:+.4g}z^{{-{n+1}}}" for n,x in enumerate(_a)])
+    _B = f"{_b[0]:+.4g}" + "".join([f"{x:+.4g}z^{{-{n+1}}}" for n,x in enumerate(_b[1:])])
+    mo.vstack([
+        mo.md(f"Transfer function of order {K} in $z$-domain: $\\frac{{P(z)}}{{T(z)}} = \\frac{{{_B}}}{{1{_A}}}$")
+    ])
     return K, holdout, model
 
 
@@ -121,7 +139,9 @@ def __(K, data, holdout, mo, model, np, plt):
     plt.figure(figsize=(15,5))
     plt.plot(_test.index[K+1:],_Y[K+1:],label='Measured power')
     plt.plot(_test.index[K+1:],_M@model,label='Modeled power')
+    plt.plot(_test.index[K+1:],_M@model-_Y[K+1:],label='Model error')
     plt.grid()
+    plt.xlabel('Date/Time')
     plt.ylabel('Power [MW]')
     plt.legend()
     _fig1 = plt.gca()
@@ -130,11 +150,21 @@ def __(K, data, holdout, mo, model, np, plt):
     plt.plot(_X[K+1:],_Y[K+1:],label='Measured power')
     plt.plot(_X[K+1:],_M@model,label='Modeled power')
     plt.grid()
+    plt.xlabel('Heat index [$^o$F]')
     plt.ylabel('Power [MW]')
     plt.legend()
     _fig2 = plt.gca()
 
-    mo.vstack([mo.md("# Validation on hold-out data"),_fig1,_fig2])
+    _err = _M@model - _Y[K+1:]
+    _rmse = np.sqrt((_err.transpose()@_err/len(_err))[0,0])
+
+    mo.vstack([
+        mo.md(f"""# Validation on {(1-holdout/len(data))*100:.0f}% hold-out data
+            RMSE = {_rmse:.2f} MW ({_rmse/_Y.mean()*100:.1f}%)
+        """),
+        _fig1,
+        _fig2,
+    ])
     return
 
 
@@ -150,6 +180,11 @@ def __():
 
     pd.options.display.max_rows = 10
     return mo, np, pd, plt
+
+
+@app.cell
+def __():
+    return
 
 
 if __name__ == "__main__":

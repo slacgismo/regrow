@@ -1,6 +1,6 @@
 The reduced WECC 240-bus system model can be found in the same folder. This model was developed by National Renewable Energy Laboratory [1] and modified by IEEE-NASPI Oscillation Source Location (OSL) Committee. See more details about system information and the modifications below. 
 
-![WECC 240 bus model](https://github.com/slacgismo/regrow/blob/compile-system-model/data/wecc240/CA%20BUS%20Schematic%20ALT-01.jpg?raw=true)
+![WECC 240 bus model](https://github.com/slacgismo/regrow/blob/main/data/wecc240/CA%20BUS%20Schematic%20ALT-01.jpg?raw=true)
 The .raw format power flow data and .dyr dynamic data of this system were prepared in PSSE v34 format. The system has:
  - 243 buses
  - 146 generating units at 56 power plants (including 109 synchronous machines and 37 renewable generators )

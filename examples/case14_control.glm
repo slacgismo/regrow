@@ -24,6 +24,7 @@ object pypower.load
     object player 
     {
         file "pp_bus_2.csv";
+        // the target property is the column name, leading sampling
     };
     status ONLINE;
     controller "load_control"; // defined in controllers.py
@@ -44,5 +45,5 @@ object recorder
     parent pp_bus_2;
     file "pp_bus_2_recorder.csv";
     property S,Pd,Qd,Gs,Bs,Vm,Va;
-    interval -1;
+    interval -1; // on-change lagging sampling
 }

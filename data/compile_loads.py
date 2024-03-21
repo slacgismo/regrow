@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.3.3"
+__generated_with = "0.1.82"
 app = marimo.App(width="full")
 
 
@@ -18,20 +18,29 @@ def __(os, pd):
     #
     # Process buildings in county files
     #
-    for file in [x for x in os.listdir("buildings") if x.endswith(".csv.zip")]:
-        print(f"Processing {file}", flush=True, end="... ")
-        data = pd.read_csv(
-            os.path.join("buildings", file),
-            usecols=["FloorArea", "BuildingType", "latitude", "longitude"],
-        )
-        print(len(data), "buildings found")
-        # print(data.iloc[0:5])
-        print(data.groupby("BuildingType").sum()["FloorArea"]/1e6)
-        break
-    return data, file
+    if os.path.exists("building_data.csv"):
+        data = pd.read_csv("building_data.csv",index_cols=["County","BuildingType"])
+    else:
+        data = []
+        for _file in [x for x in os.listdir("buildings") if x.endswith(".csv.zip")]:
+            _county = _file.split(".")[0]
+            _data = pd.read_csv(
+                os.path.join("buildings", _file),
+                usecols=["FloorArea", "BuildingType", "latitude", "longitude"],
+            )
+            _building_type = _data.groupby("BuildingType")
+            _result = pd.DataFrame(_building_type.sum()["FloorArea"]/1e6).round(2)
+            _result["BuildingCount"] = _building_type.count()["FloorArea"]
+            _result["County"] = _county
+            data.append(_result.reset_index())
+        data = pd.concat(data)
+        data.set_index(["County","BuildingType"],inplace=True)
+        data.to_csv("building_data.csv",index=True,header=True)
+    data
+    return data,
 
 
-@app.cell
+@app.cell(disabled=True, hide_code=True)
 def __(array, gen, gis):
     #
     # Match buildings to busses based on gis data
@@ -48,7 +57,6 @@ def __(array, gen, gis):
             _d = zip(_dx*_dx + _dy*_dy,names)
             _dn = sorted(_d,key=lambda x:x[0])
             print("modify",f"{_name}.parent",f"wecc240_psse_N_{_dn[0][1]};",file=_fh)
-
     return names,
 
 

@@ -20,7 +20,7 @@ def on_sync(data):
     See also: `gridlabd --modhelp pypower` for properties in pypower objects
               (i.e., bus, branch, gen, gencost)
     """
-    print(f"controllers sync called, data={data}",file=sys.stderr)
+    # print(f"controllers sync called, data={data}",file=sys.stderr)
     
     return (int(data['t']/3600)+1)*3600 # advance to top of next hour 
 
@@ -34,9 +34,9 @@ def load_control(obj,**kwargs):
 
     See also: `gridlabd --modhelp pypower:load`
     """
-    print(obj,": load control update",kwargs,file=sys.stderr)
+    # print(obj,": load control update",kwargs,file=sys.stderr)
     
-    return dict(t=kwargs['t']+3600, S=(15+2j)) # on_sync() return value to meaning of `t`
+    return dict(t=kwargs['t']+3600) # on_sync() return value to meaning of `t`
 
 def powerplant_control(obj,**kwargs):
     """powerplant_control(obj,**kwargs) is called before on_sync()
@@ -48,6 +48,6 @@ def powerplant_control(obj,**kwargs):
 
     See also: `gridlabd --modhelp pypower:powerplant`
     """
-    print(obj,": powerplant control update",kwargs,file=sys.stderr)
+    # print(obj,": powerplant control update",kwargs,file=sys.stderr)
 
-    return dict(t=kwargs['t']+3600, S="15+2j kW")
+    return dict(t=kwargs['t']+3600)

@@ -10,6 +10,7 @@ clock
 module pypower
 {
     controllers "controllers"; // defines all controller functions
+    // save_case TRUE;
 }
 
 module tape
@@ -21,21 +22,22 @@ object pypower.load
 {
     parent pp_bus_2;
     Vn 12.5 kV;
+    P 8.51 MW; // initial value
     object player 
     {
         file "pp_bus_2.csv";
-        // the target property is the column name
+        // the target property is the column name 'P'
     };
     status ONLINE;
-    controller "load_control"; // defined in controllers.py
+    controller "load_control"; // defined in controllers.py, overrides player
 }
 
 object pypower.powerplant
 {
     parent pp_bus_2;
-    S 10.0;
+    S 10.0+0.1j; // initial value
     status ONLINE;
-    controller "powerplant_control";  // defined in controllers.py
+    controller "powerplant_control";  // defined in controllers.py, override player
 }
 
 #input "case14.py" -t pypower // creates case14.glm from case14.py pypower model and loads it
@@ -47,3 +49,7 @@ object recorder
     property S,Pd,Qd,Gs,Bs,Vm,Va;
     interval -1; // on-change only
 }
+
+modify pp_bus_2.S 11+0.2j; // change baseload (invariant value) in original IEEE-14 bus model
+
+#set savefile=${modelname/.glm/.json}

@@ -41,3 +41,27 @@ module pypower
 // Save the final result to JSON
 //
 #set savefile="${SAVEFILE}"
+
+module tape
+{
+    csv_header_type NAME;
+}
+
+#define map_zoom=5
+#define map_data={"type":true,"Vm":true,"Va":true,"Pd":true,"Qd":true,"Gs":true}
+
+object recorder
+{
+    parent "wecc240_psse_N_1001";
+    file "wecc240_psse_N_1001.csv";
+    property "Pd,Qd,Vm,Va";
+    interval 3600;
+}
+
+object recorder
+{
+    parent "wecc240_psse_N_1002";
+    file "wecc240_psse_N_1002.csv";
+    property "Pd,Qd,Vm,Va";
+    interval 3600;
+}

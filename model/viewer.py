@@ -350,7 +350,7 @@ def __(glm, mo):
 @app.cell
 def __(glm, mo, pd, tape_plot, tape_selection):
     tape_data = pd.read_csv(glm["objects"][tape_selection.value]["file"],index_col=["timestamp"]) 
-    tape_view = tape_data.plot(grid=True) if tape_plot.value else mo.ui.table(tape_data)
+    tape_view = tape_data.plot(figsize=(15,5),grid=True) if tape_plot.value else mo.ui.table(tape_data)
     return tape_data, tape_view
 
 

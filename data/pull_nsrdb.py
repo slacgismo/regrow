@@ -105,7 +105,11 @@ if __name__ == "__main__":
                                                                 'dni',
                                                                 'ghi',
                                                                 'wind_direction',
-                                                                'wind_speed'],
+                                                                'wind_speed',
+                                                                'air_temperature',
+                                                                'dew_point',
+                                                                'relative_humidity',
+                                                                'total_precipitable_water'],
                                                      map_variables=True,
                                                      interval=5,
                                                      leap_day=True,
@@ -113,33 +117,34 @@ if __name__ == "__main__":
                     psm3s.append(psm3)
                 if len(psm3s) > 0:
                     psm3_5min = pd.concat(psm3s)
-                # Pull hourly data fields next
-                psm3s = list()
-                for year in years:
-                    # Pull from API and save locally
-                    psm3, _ = pvlib.iotools.get_psm3(latitude, longitude,
-                                                    nsrdb_api_key,
-                                                    nsrdb_user_email, year,
-                                                    attributes=['air_temperature',
-                                                                'dew_point',
-                                                                'relative_humidity',
-                                                                'total_precipitable_water'],
-                                                     map_variables=True,
-                                                     interval=30,
-                                                     leap_day=True,
-                                                     timeout=60)
-                    psm3s.append(psm3)
-                if len(psm3s) > 0:
-                    psm3_hourly = pd.concat(psm3s)
+                # # Pull hourly data fields next
+                # psm3s = list()
+                # for year in years:
+                #     # Pull from API and save locally
+                #     psm3, _ = pvlib.iotools.get_psm3(latitude, longitude,
+                #                                     nsrdb_api_key,
+                #                                     nsrdb_user_email, year,
+                #                                     attributes=['air_temperature',
+                #                                                 'dew_point',
+                #                                                 'relative_humidity',
+                #                                                 'total_precipitable_water'],
+                #                                      map_variables=True,
+                #                                      interval=30,
+                #                                      leap_day=True,
+                #                                      timeout=60)
+                #     psm3s.append(psm3)
+                # if len(psm3s) > 0:
+                #     psm3_hourly = pd.concat(psm3s)
                 # Now we're going to remove the date-related columns and concat the
                 # two dataframes together
                 cols_to_remove = ['Year', 'Month', 'Day', 'Hour', 'Minute']
                 psm3_5min = psm3_5min.drop(columns=cols_to_remove)
-                psm3_hourly = psm3_hourly.drop(columns=cols_to_remove)
+                # psm3_hourly = psm3_hourly.drop(columns=cols_to_remove)
                 psm3_5min.index = pd.to_datetime(psm3_5min.index)
-                psm3_hourly.index = pd.to_datetime(psm3_hourly.index)
-                psm3_master = pd.merge(psm3_5min, psm3_hourly, left_on=psm3_5min.index,
-                                       right_on=psm3_hourly.index, how='left')
+                # psm3_hourly.index = pd.to_datetime(psm3_hourly.index)
+                # psm3_master = pd.merge(psm3_5min, psm3_hourly, left_on=psm3_5min.index,
+                #                       right_on=psm3_hourly.index, how='left')
+                psm3_master = psm3_5min
                 psm3_master = psm3_master.rename(columns={"key_0": "datetime"})
                 psm3_master = psm3_master.round(3)
                 psm3_master.to_csv(os.path.join("./nsrdb", geohash_val + ".csv"),

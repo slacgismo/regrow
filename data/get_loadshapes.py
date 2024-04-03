@@ -77,10 +77,26 @@ def __(result):
 
 
 @app.cell
+def __(plt, pumas, restype, result):
+    _data = result.set_index(["county","building_type","datetime"]).sort_index()
+    for _county in pumas.keys():
+        for _name,_type in restype.items():
+            _data.loc[_county,_type].plot(figsize=(20,8))
+            plt.title(f"{_county} County CA - {_name}")
+            plt.grid()
+            plt.ylabel('Energy')
+            plt.xlabel('Date')
+            plt.savefig(f"loadshapes/{_county} {_type}.png")
+            plt.close()
+    return
+
+
+@app.cell
 def __():
     import marimo as mo
     import pandas as pd
-    return mo, pd
+    import matplotlib.pyplot as plt
+    return mo, pd, plt
 
 
 if __name__ == "__main__":

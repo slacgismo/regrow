@@ -26,4 +26,4 @@ for file in os.listdir("."):
     }
     result.append(pd.DataFrame(_data))
 result = pd.concat(result)
-result.to_csv("buildings.csv",index=True,header=True)
+result.to_csv("../buildings.csv",index=True,header=True)

@@ -1,5 +1,6 @@
 import os, sys
 import pandas as pd
+import nsrdb_weather as ns
 
 result = []
 for file in os.listdir("."):
@@ -24,6 +25,8 @@ for file in os.listdir("."):
         "Height[ft]" : Height.round(1),
         "GroundArea[ksf]" : (GroundArea/1e3).round(3),
     }
+    _data["geocode"] = [ns.geohash(x,y,6) for x,y in zip(_data["latitude"],_data["longitude"])]
+
     result.append(pd.DataFrame(_data))
 result = pd.concat(result)
 result.to_csv("../buildings.csv",index=True,header=True)

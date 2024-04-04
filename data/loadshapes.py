@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.3.9"
+__generated_with = "0.1.82"
 app = marimo.App(width="full")
 
 
@@ -31,38 +31,44 @@ def __():
 
 
 @app.cell
-def __(pd, pumas, resstock, restype):
+def __(os, pd, pumas, resstock, restype):
     #
     # Download loadshapes
     #
-    result = []
-    for county,puma in pumas.items():
-        for building_type in restype.keys():
-            print("Downloading",county,building_type,"...") 
-            _data = pd.read_csv(f"{resstock}/{puma}-{building_type.replace(' ','_')}.csv",
-                                usecols = ["in.county","in.geometry_building_type_recs","timestamp",
-                                           "out.electricity.heating.energy_consumption",
-                                           "out.electricity.heating_supplement.energy_consumption",
-                                           "out.electricity.cooling.energy_consumption",
-                                           "out.electricity.pv.energy_consumption",
-                                           "out.electricity.total.energy_consumption",
-                                           "out.natural_gas.heating.energy_consumption",
-                                           "out.natural_gas.total.energy_consumption",
-                                           "out.propane.heating.energy_consumption",
-                                           "out.fuel_oil.heating.energy_consumption",
-                                           "out.site_energy.total.energy_consumption",
-                                          ]
-                               )
-            _data['in.county'] = county
-            _data['in.geometry_building_type_recs'] = restype[building_type]
-            _data.columns = ["county","building_type","datetime",
-                             "electric-heating[kWh]","electric-supplemental-heating[kWh]",
-                             "electric-cooling[kWh]","electric-pv[kWh]","electric-total[kWh]",
-                             "gas-heating[kWh]","gas-total[kWh]",
-                             "propane-heating[kWh]","fueloil-heating[kWh]","energy-total[kWh]",
-                            ]
-            result.append(_data)
-    result = pd.concat(result)
+    if not os.path.exists("resstock.csv.zip"):
+        result = []
+        for county,puma in pumas.items():
+            for building_type in restype.keys():
+                print("Downloading",county,building_type,"...") 
+                _data = pd.read_csv(f"{resstock}/{puma}-{building_type.replace(' ','_')}.csv",
+                                    usecols = ["in.county","in.geometry_building_type_recs","timestamp",
+                                               "out.electricity.heating.energy_consumption",
+                                               "out.electricity.heating_supplement.energy_consumption",
+                                               "out.electricity.cooling.energy_consumption",
+                                               "out.electricity.pv.energy_consumption",
+                                               "out.electricity.total.energy_consumption",
+                                               "out.natural_gas.heating.energy_consumption",
+                                               "out.natural_gas.total.energy_consumption",
+                                               "out.propane.heating.energy_consumption",
+                                               "out.fuel_oil.heating.energy_consumption",
+                                               "out.site_energy.total.energy_consumption",
+                                              ]
+                                   )
+                _data['in.county'] = county
+                _data['in.geometry_building_type_recs'] = restype[building_type]
+                _data.columns = ["county","building_type","datetime",
+                                 "electric-heating[kWh]","electric-supplemental-heating[kWh]",
+                                 "electric-cooling[kWh]","electric-pv[kWh]","electric-total[kWh]",
+                                 "gas-heating[kWh]","gas-total[kWh]",
+                                 "propane-heating[kWh]","fueloil-heating[kWh]","energy-total[kWh]",
+                                ]
+                result.append(_data)
+        result = pd.concat(result)
+        print("Saving resstock data...")
+        result.to_csv("restock.csv.zip",index=False,header=True,compression="zip")
+    else:
+        print("Loading resstock data...")
+        result = pd.read_csv("resstock.csv.zip")
     return building_type, county, puma, result
 
 
@@ -101,25 +107,28 @@ def __(data):
     # Save loadshape data
     #
     print("Saving loadshape data...")
-    data.to_csv("loadshapes.csv.zip",index=False,header=True,compression='zip')
+    data.to_csv("loadshapes.csv.zip",index=True,header=True,compression='zip')
     return
 
 
 @app.cell
-def __(data, plt, pumas, restype):
+def __(data, os, plt, pumas, restype):
     #
     # Generate plots
     #
     for _county in pumas.keys():
-        print("Plotting",_county,"County...")
+        print("Checking for updates to",_county," County...")
         for _name,_type in restype.items():
-            data.loc[(_county,_type)].plot(figsize=(20,8))
-            plt.title(f"{_county} County CA - {_name}")
-            plt.grid()
-            plt.ylabel('Power intensity')
-            plt.xlabel('Date')
-            plt.savefig(f"loadshapes/{_county} {_type}.png")
-            plt.close()
+            _file = f"loadshapes/{_county} {_type}.png"
+            if not os.path.exists(_file):
+                print("Generating",_file,"...")
+                data.loc[(_county,_type)].plot(figsize=(20,8))
+                plt.title(f"{_county} County CA - {_name}")
+                plt.grid()
+                plt.ylabel('Power intensity')
+                plt.xlabel('Date')
+                plt.savefig(_file)
+                plt.close()
     return
 
 
@@ -128,10 +137,11 @@ def __():
     #
     # Requirements
     #
+    import os, sys
     import marimo as mo
     import pandas as pd
     import matplotlib.pyplot as plt
-    return mo, pd, plt
+    return mo, os, pd, plt, sys
 
 
 if __name__ == "__main__":

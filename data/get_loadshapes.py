@@ -1,11 +1,14 @@
 import marimo
 
-__generated_with = "0.3.4"
+__generated_with = "0.3.9"
 app = marimo.App(width="full")
 
 
 @app.cell
 def __():
+    #
+    # Configure processing of loadshape data
+    #
     pumas = {
         "Alameda" : "g0600010",
         "Contra Costa" : "g0600130",
@@ -29,6 +32,9 @@ def __():
 
 @app.cell
 def __(pd, pumas, resstock, restype):
+    #
+    # Download loadshapes
+    #
     result = []
     for county,puma in pumas.items():
         for building_type in restype.keys():
@@ -62,6 +68,9 @@ def __(pd, pumas, resstock, restype):
 
 @app.cell
 def __(result):
+    #
+    # Save loadshapes
+    #
     result.round({"electric-heating":2,
                   "electric-supplemental-heating":2,
                   "electric-cooling":2,
@@ -72,12 +81,15 @@ def __(result):
                   "propane-heating":2,
                   "fueloil-heating":2,
                   "energy-total":2,
-                 }).to_csv("loadshapes.csv.zip",index=False,header=True,compression='gzip')
+                 }).to_csv("loadshapes.csv.zip",index=False,header=True,compression='zip')
     return
 
 
 @app.cell
 def __(plt, pumas, restype, result):
+    #
+    # Generate plots
+    #
     _data = result.set_index(["county","building_type","datetime"]).sort_index()
     for _county in pumas.keys():
         for _name,_type in restype.items():
@@ -93,6 +105,9 @@ def __(plt, pumas, restype, result):
 
 @app.cell
 def __():
+    #
+    # Requirements
+    #
     import marimo as mo
     import pandas as pd
     import matplotlib.pyplot as plt

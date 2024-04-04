@@ -13,13 +13,13 @@ def __(os, pd, valid):
         if not os.path.exists("metadata.csv.zip"):
             meta = pd.read_parquet("https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/resstock_amy2018_release_1/metadata/metadata.parquet")
             meta.to_csv("metadata.csv.zip",index=False,header=True,compression="zip")
-        
+
         meta = pd.read_csv("metadata.csv.zip",
                            usecols=["in.county","in.geometry_building_type_recs","in.sqft"],
                            index_col=["in.county"],
                           )
         meta.drop(meta[~meta.index.isin(valid)].index,inplace=True)
-        
+
         restype = {"Multi-Family with 2 - 4 Units" : "MFS",
                    "Multi-Family with 5+ Units" : "MFL",
                    "Single-Family Attached" : "SFA",
@@ -28,7 +28,7 @@ def __(os, pd, valid):
                   }
         meta["building_type"] = [restype[x] for x in meta["in.geometry_building_type_recs"]]
         meta.drop("in.geometry_building_type_recs",axis=1,inplace=True)
-        
+
         meta.reset_index(inplace=True)
         meta.set_index(["in.county","building_type"],inplace=True)
     else:
@@ -59,21 +59,6 @@ def __(pd):
     load.sort_index(inplace=True)
     valid = load.index.get_level_values(0).unique()
     return load, pumas, valid
-
-
-@app.cell
-def __(load, meta):
-    #
-    # Normalize loadshapes by floorarea
-    #
-    area = meta.groupby(["in.county","building_type"]).sum()/1000
-    area.columns = ["floor_area"]
-    data = load.join(area)
-    for column in ["electric-heating","electric-supplemental-heating","electric-cooling","electric-pv","electric-total",
-                   "gas-heating","gas-total","propane-heating","fueloil-heating","energy-total"]:
-        data[column] = data[column]/data["floor_area"]
-    data
-    return area, column, data
 
 
 @app.cell

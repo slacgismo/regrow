@@ -38,7 +38,7 @@ def __(pd, pumas, resstock, restype):
     result = []
     for county,puma in pumas.items():
         for building_type in restype.keys():
-            print("Processing",county,building_type,"...") 
+            print("Downloading",county,building_type,"...") 
             _data = pd.read_csv(f"{resstock}/{puma}-{building_type.replace(' ','_')}.csv",
                                 usecols = ["in.county","in.geometry_building_type_recs","timestamp",
                                            "out.electricity.heating.energy_consumption",
@@ -56,10 +56,10 @@ def __(pd, pumas, resstock, restype):
             _data['in.county'] = county
             _data['in.geometry_building_type_recs'] = restype[building_type]
             _data.columns = ["county","building_type","datetime",
-                             "electric-heating","electric-supplemental-heating",
-                             "electric-cooling","electric-pv","electric-total",
-                             "gas-heating","gas-total",
-                             "propane-heating","fueloil-heating","energy-total",
+                             "electric-heating[kWh]","electric-supplemental-heating[kWh]",
+                             "electric-cooling[kWh]","electric-pv[kWh]","electric-total[kWh]",
+                             "gas-heating[kWh]","gas-total[kWh]",
+                             "propane-heating[kWh]","fueloil-heating[kWh]","energy-total[kWh]",
                             ]
             result.append(_data)
     result = pd.concat(result)
@@ -67,36 +67,56 @@ def __(pd, pumas, resstock, restype):
 
 
 @app.cell
-def __(result):
+def __(pd, pumas, result):
+    # 
+    # Normalize to floor area
     #
-    # Save loadshapes
+    print("Normalizing to power intensity...")
+    dt = 0.25; # timestep in hours
+    _building_data = pd.read_csv("floorarea.csv",index_col=["in.county","building_type"])
+    _area = _building_data.groupby(["in.county","building_type"]).sum()
+    _area.columns = ["floor_area[sf]"]
+    _area.reset_index(inplace=True)
+    _pumas = dict([y.upper(),x] for x,y in pumas.items())
+    _area["county"] = [_pumas[x] for x in _area["in.county"]]
+    _area.drop("in.county",inplace=True,axis=1)
+    _area.set_index(["county","building_type"],inplace=True)
+    data = result.set_index(["county","building_type"]).join(_area)
+    columns = []
+    for column in data.columns:
+        if column.endswith("[kWh]"):
+            data[column] = data[column] / data["floor_area[sf]"] / dt
+        columns.append(column.replace("[kWh]","[kW/sf]"))
+    data.columns = columns
+    data.drop("floor_area[sf]",axis=1,inplace=True)
+    data.reset_index(inplace=True)
+    data.set_index(["county","building_type","datetime"],inplace=True)
+    data.sort_index(inplace=True)
+    return column, columns, data, dt
+
+
+@app.cell
+def __(data):
     #
-    result.round({"electric-heating":2,
-                  "electric-supplemental-heating":2,
-                  "electric-cooling":2,
-                  "electric-pv":2,
-                  "electric-total":2,
-                  "gas-heating":2,
-                  "gas-total":2,
-                  "propane-heating":2,
-                  "fueloil-heating":2,
-                  "energy-total":2,
-                 }).to_csv("loadshapes.csv.zip",index=False,header=True,compression='zip')
+    # Save loadshape data
+    #
+    print("Saving loadshape data...")
+    data.to_csv("loadshapes.csv.zip",index=False,header=True,compression='zip')
     return
 
 
 @app.cell
-def __(plt, pumas, restype, result):
+def __(data, plt, pumas, restype):
     #
     # Generate plots
     #
-    _data = result.set_index(["county","building_type","datetime"]).sort_index()
     for _county in pumas.keys():
+        print("Plotting",_county,"County...")
         for _name,_type in restype.items():
-            _data.loc[_county,_type].plot(figsize=(20,8))
+            data.loc[(_county,_type)].plot(figsize=(20,8))
             plt.title(f"{_county} County CA - {_name}")
             plt.grid()
-            plt.ylabel('Energy')
+            plt.ylabel('Power intensity')
             plt.xlabel('Date')
             plt.savefig(f"loadshapes/{_county} {_type}.png")
             plt.close()

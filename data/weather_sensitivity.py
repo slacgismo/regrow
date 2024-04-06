@@ -41,3 +41,6 @@ for county,puma in pumas.items():
     cooling = (data["TD[degC]"]>Tcool).index
     solar = (data["DN[W/m^2]"]>0).index
 
+    loads = loadshapes.loc[county]
+    for building_type in loads.index.get_level_values(0).unique():
+        print("Processing",county,"County",building_type,"...",flush=True)

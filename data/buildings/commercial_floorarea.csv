@@ -1,4 +1,4 @@
-statecode,countyname,doe_prototype,area_sum
+state,county,building_type,floorarea[sf]
 AZ,Apache,apartment,142100
 AZ,Apache,full_service_restaurant,20600
 AZ,Apache,hotel,319500

@@ -12,4 +12,7 @@ for region in ["west"]:
     data.set_index(["statecode","countyname","doe_prototype"],inplace=True)
     result.append(pd.DataFrame(data.groupby(["statecode","countyname","doe_prototype"])["area_sum"].sum()))
 
-pd.concat(result).to_csv("commercial_floorarea.csv",index=True,header=True)
+areas = pd.concat(result)
+areas.index.names = ["state","county","building_type"]
+areas.columns = ["floorarea[sf]"]
+areas.to_csv("commercial_floorarea.csv",index=True,header=True)

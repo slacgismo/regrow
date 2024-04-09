@@ -1,3 +1,5 @@
+"""Contruct detailed building dataset from AutoBEM4 data"""
+
 import os, sys
 import pandas as pd
 import nsrdb_weather as ns

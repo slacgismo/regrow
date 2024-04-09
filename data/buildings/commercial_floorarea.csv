@@ -1,0 +1,4368 @@
+statecode,countyname,doe_prototype,area_sum
+AZ,Apache,apartment,142100
+AZ,Apache,full_service_restaurant,20600
+AZ,Apache,hotel,319500
+AZ,Apache,no_match,300800
+AZ,Apache,office,157900
+AZ,Apache,outpatient,5400
+AZ,Apache,quick_service_restaurant,11200
+AZ,Apache,retail,431800
+AZ,Apache,school,5400
+AZ,Apache,strip_mall,13900
+AZ,Apache,supermarket,85400
+AZ,Apache,warehouse,85900
+AZ,Cochise,apartment,4679900
+AZ,Cochise,full_service_restaurant,310800
+AZ,Cochise,hospital,92500
+AZ,Cochise,hotel,1581700
+AZ,Cochise,no_match,1321900
+AZ,Cochise,office,1267200
+AZ,Cochise,outpatient,336100
+AZ,Cochise,quick_service_restaurant,80500
+AZ,Cochise,retail,5430300
+AZ,Cochise,school,184600
+AZ,Cochise,strip_mall,233000
+AZ,Cochise,supermarket,245200
+AZ,Cochise,warehouse,1486500
+AZ,Coconino,apartment,10393700
+AZ,Coconino,full_service_restaurant,288100
+AZ,Coconino,hospital,790800
+AZ,Coconino,hotel,3448700
+AZ,Coconino,no_match,2461300
+AZ,Coconino,office,1891000
+AZ,Coconino,outpatient,395200
+AZ,Coconino,quick_service_restaurant,60400
+AZ,Coconino,retail,5956300
+AZ,Coconino,school,320800
+AZ,Coconino,strip_mall,680300
+AZ,Coconino,supermarket,253400
+AZ,Coconino,warehouse,2988600
+AZ,Gila,apartment,1088900
+AZ,Gila,full_service_restaurant,131600
+AZ,Gila,hospital,94800
+AZ,Gila,hotel,393800
+AZ,Gila,no_match,986000
+AZ,Gila,office,317500
+AZ,Gila,outpatient,121100
+AZ,Gila,quick_service_restaurant,39400
+AZ,Gila,retail,1739600
+AZ,Gila,school,32400
+AZ,Gila,strip_mall,124900
+AZ,Gila,supermarket,159200
+AZ,Gila,warehouse,309600
+AZ,Graham,apartment,650900
+AZ,Graham,full_service_restaurant,45900
+AZ,Graham,hotel,211300
+AZ,Graham,no_match,107000
+AZ,Graham,office,129600
+AZ,Graham,outpatient,24000
+AZ,Graham,quick_service_restaurant,17200
+AZ,Graham,retail,1065300
+AZ,Graham,strip_mall,31800
+AZ,Graham,warehouse,72400
+AZ,Greenlee,apartment,92300
+AZ,Greenlee,full_service_restaurant,5900
+AZ,Greenlee,hotel,6800
+AZ,Greenlee,no_match,118600
+AZ,Greenlee,office,2900
+AZ,Greenlee,retail,113600
+AZ,Greenlee,warehouse,4900
+AZ,La Paz,apartment,218000
+AZ,La Paz,full_service_restaurant,86600
+AZ,La Paz,hotel,106800
+AZ,La Paz,no_match,940800
+AZ,La Paz,office,76400
+AZ,La Paz,outpatient,2500
+AZ,La Paz,quick_service_restaurant,7800
+AZ,La Paz,retail,729200
+AZ,La Paz,school,6800
+AZ,La Paz,strip_mall,6200
+AZ,La Paz,warehouse,220500
+AZ,Maricopa,apartment,483314100
+AZ,Maricopa,full_service_restaurant,9018500
+AZ,Maricopa,hospital,18570900
+AZ,Maricopa,hotel,49585900
+AZ,Maricopa,no_match,161277600
+AZ,Maricopa,office,192512900
+AZ,Maricopa,outpatient,32488500
+AZ,Maricopa,quick_service_restaurant,3339000
+AZ,Maricopa,retail,194262500
+AZ,Maricopa,school,12630500
+AZ,Maricopa,strip_mall,13309300
+AZ,Maricopa,supermarket,14721700
+AZ,Maricopa,warehouse,297739100
+AZ,Mohave,apartment,4266300
+AZ,Mohave,full_service_restaurant,377000
+AZ,Mohave,hospital,660800
+AZ,Mohave,hotel,1225600
+AZ,Mohave,no_match,3254300
+AZ,Mohave,office,2282800
+AZ,Mohave,outpatient,537000
+AZ,Mohave,quick_service_restaurant,122700
+AZ,Mohave,retail,8581800
+AZ,Mohave,school,66300
+AZ,Mohave,strip_mall,545800
+AZ,Mohave,supermarket,523800
+AZ,Mohave,warehouse,7197600
+AZ,Navajo,apartment,1339000
+AZ,Navajo,full_service_restaurant,303500
+AZ,Navajo,hotel,1092600
+AZ,Navajo,no_match,568500
+AZ,Navajo,office,517800
+AZ,Navajo,outpatient,529200
+AZ,Navajo,quick_service_restaurant,40200
+AZ,Navajo,retail,2991400
+AZ,Navajo,school,162200
+AZ,Navajo,strip_mall,140700
+AZ,Navajo,supermarket,79600
+AZ,Navajo,warehouse,870100
+AZ,Pima,apartment,91720200
+AZ,Pima,full_service_restaurant,2619400
+AZ,Pima,hospital,4290300
+AZ,Pima,hotel,11308900
+AZ,Pima,no_match,29640600
+AZ,Pima,office,23629100
+AZ,Pima,outpatient,8475700
+AZ,Pima,quick_service_restaurant,945600
+AZ,Pima,retail,47184400
+AZ,Pima,school,2192100
+AZ,Pima,strip_mall,3903900
+AZ,Pima,supermarket,2459900
+AZ,Pima,warehouse,32053700
+AZ,Pinal,apartment,7228300
+AZ,Pinal,full_service_restaurant,411500
+AZ,Pinal,hospital,618400
+AZ,Pinal,hotel,1135300
+AZ,Pinal,no_match,15328400
+AZ,Pinal,office,1713200
+AZ,Pinal,outpatient,1088100
+AZ,Pinal,quick_service_restaurant,267400
+AZ,Pinal,retail,9345300
+AZ,Pinal,school,936500
+AZ,Pinal,strip_mall,657900
+AZ,Pinal,supermarket,905700
+AZ,Pinal,warehouse,6911600
+AZ,Santa Cruz,apartment,1154800
+AZ,Santa Cruz,full_service_restaurant,91300
+AZ,Santa Cruz,hospital,94700
+AZ,Santa Cruz,hotel,376800
+AZ,Santa Cruz,no_match,1502700
+AZ,Santa Cruz,office,425400
+AZ,Santa Cruz,outpatient,18000
+AZ,Santa Cruz,quick_service_restaurant,23200
+AZ,Santa Cruz,retail,1873600
+AZ,Santa Cruz,strip_mall,132000
+AZ,Santa Cruz,warehouse,2273900
+AZ,Yavapai,apartment,6216300
+AZ,Yavapai,full_service_restaurant,484800
+AZ,Yavapai,hotel,2659400
+AZ,Yavapai,no_match,3720200
+AZ,Yavapai,office,2773400
+AZ,Yavapai,outpatient,930500
+AZ,Yavapai,quick_service_restaurant,139300
+AZ,Yavapai,retail,8020100
+AZ,Yavapai,school,133300
+AZ,Yavapai,strip_mall,678500
+AZ,Yavapai,supermarket,972000
+AZ,Yavapai,warehouse,3531300
+AZ,Yuma,apartment,5031100
+AZ,Yuma,full_service_restaurant,197600
+AZ,Yuma,hospital,75800
+AZ,Yuma,hotel,1431800
+AZ,Yuma,no_match,5344900
+AZ,Yuma,office,1466000
+AZ,Yuma,outpatient,387100
+AZ,Yuma,quick_service_restaurant,114700
+AZ,Yuma,retail,6274600
+AZ,Yuma,school,2400
+AZ,Yuma,strip_mall,277000
+AZ,Yuma,supermarket,330300
+AZ,Yuma,warehouse,3527300
+CA,Alameda,apartment,244969200
+CA,Alameda,full_service_restaurant,3208300
+CA,Alameda,hospital,5894800
+CA,Alameda,hotel,13351200
+CA,Alameda,no_match,90258900
+CA,Alameda,office,84127300
+CA,Alameda,outpatient,9797500
+CA,Alameda,quick_service_restaurant,706000
+CA,Alameda,retail,51329200
+CA,Alameda,school,5879200
+CA,Alameda,strip_mall,6843000
+CA,Alameda,supermarket,1994200
+CA,Alameda,warehouse,158914200
+CA,Alpine,hotel,128700
+CA,Alpine,no_match,88600
+CA,Alpine,retail,6300
+CA,Alpine,strip_mall,3800
+CA,Amador,apartment,614300
+CA,Amador,full_service_restaurant,49400
+CA,Amador,hotel,205100
+CA,Amador,no_match,851300
+CA,Amador,office,307200
+CA,Amador,outpatient,64000
+CA,Amador,quick_service_restaurant,17700
+CA,Amador,retail,1298100
+CA,Amador,strip_mall,110700
+CA,Amador,supermarket,187300
+CA,Amador,warehouse,524300
+CA,Butte,apartment,15743100
+CA,Butte,full_service_restaurant,364000
+CA,Butte,hospital,278900
+CA,Butte,hotel,795800
+CA,Butte,no_match,5482800
+CA,Butte,office,5258200
+CA,Butte,outpatient,931100
+CA,Butte,quick_service_restaurant,131400
+CA,Butte,retail,9747200
+CA,Butte,school,340200
+CA,Butte,strip_mall,828300
+CA,Butte,supermarket,368400
+CA,Butte,warehouse,6324300
+CA,Calaveras,apartment,474300
+CA,Calaveras,full_service_restaurant,49400
+CA,Calaveras,hotel,180800
+CA,Calaveras,no_match,230400
+CA,Calaveras,office,309300
+CA,Calaveras,outpatient,28500
+CA,Calaveras,quick_service_restaurant,9600
+CA,Calaveras,retail,960700
+CA,Calaveras,strip_mall,133500
+CA,Calaveras,supermarket,26200
+CA,Calaveras,warehouse,570000
+CA,Colusa,apartment,640200
+CA,Colusa,full_service_restaurant,32800
+CA,Colusa,hotel,271600
+CA,Colusa,no_match,280200
+CA,Colusa,office,86300
+CA,Colusa,outpatient,22200
+CA,Colusa,quick_service_restaurant,19200
+CA,Colusa,retail,426900
+CA,Colusa,school,4100
+CA,Colusa,strip_mall,17800
+CA,Colusa,supermarket,22800
+CA,Colusa,warehouse,334000
+CA,Contra Costa,apartment,80438300
+CA,Contra Costa,full_service_restaurant,1496400
+CA,Contra Costa,hospital,3209500
+CA,Contra Costa,hotel,4550700
+CA,Contra Costa,no_match,25816000
+CA,Contra Costa,office,37969800
+CA,Contra Costa,outpatient,5447000
+CA,Contra Costa,quick_service_restaurant,529400
+CA,Contra Costa,retail,39738000
+CA,Contra Costa,school,1638200
+CA,Contra Costa,strip_mall,2242100
+CA,Contra Costa,supermarket,1540300
+CA,Contra Costa,warehouse,38876600
+CA,Del Norte,apartment,938900
+CA,Del Norte,full_service_restaurant,40500
+CA,Del Norte,hotel,258100
+CA,Del Norte,no_match,1102200
+CA,Del Norte,office,196800
+CA,Del Norte,outpatient,21900
+CA,Del Norte,quick_service_restaurant,12400
+CA,Del Norte,retail,858800
+CA,Del Norte,strip_mall,48300
+CA,Del Norte,supermarket,20000
+CA,Del Norte,warehouse,197900
+CA,El Dorado,apartment,6210400
+CA,El Dorado,full_service_restaurant,296500
+CA,El Dorado,hotel,1987300
+CA,El Dorado,no_match,3330800
+CA,El Dorado,office,4416400
+CA,El Dorado,outpatient,333200
+CA,El Dorado,quick_service_restaurant,59700
+CA,El Dorado,retail,5866600
+CA,El Dorado,school,59100
+CA,El Dorado,strip_mall,370300
+CA,El Dorado,supermarket,374100
+CA,El Dorado,warehouse,3916000
+CA,Fresno,apartment,80144100
+CA,Fresno,full_service_restaurant,1699800
+CA,Fresno,hospital,3967000
+CA,Fresno,hotel,5652600
+CA,Fresno,no_match,23161600
+CA,Fresno,office,25855200
+CA,Fresno,outpatient,5535600
+CA,Fresno,quick_service_restaurant,784700
+CA,Fresno,retail,44999100
+CA,Fresno,school,1025400
+CA,Fresno,strip_mall,3643700
+CA,Fresno,supermarket,2303600
+CA,Fresno,warehouse,72165300
+CA,Glenn,apartment,1003400
+CA,Glenn,full_service_restaurant,34800
+CA,Glenn,hotel,158500
+CA,Glenn,no_match,385900
+CA,Glenn,office,187600
+CA,Glenn,outpatient,12700
+CA,Glenn,quick_service_restaurant,14500
+CA,Glenn,retail,789900
+CA,Glenn,strip_mall,66200
+CA,Glenn,supermarket,40000
+CA,Glenn,warehouse,648100
+CA,Humboldt,apartment,5688300
+CA,Humboldt,full_service_restaurant,217700
+CA,Humboldt,hospital,20300
+CA,Humboldt,hotel,1474700
+CA,Humboldt,no_match,1934100
+CA,Humboldt,office,2881300
+CA,Humboldt,outpatient,399800
+CA,Humboldt,quick_service_restaurant,53700
+CA,Humboldt,retail,3690200
+CA,Humboldt,school,91600
+CA,Humboldt,strip_mall,365200
+CA,Humboldt,supermarket,285200
+CA,Humboldt,warehouse,2896400
+CA,Imperial,apartment,6619400
+CA,Imperial,full_service_restaurant,320100
+CA,Imperial,hotel,1480000
+CA,Imperial,no_match,3504600
+CA,Imperial,office,1357200
+CA,Imperial,outpatient,421500
+CA,Imperial,quick_service_restaurant,148700
+CA,Imperial,retail,6997200
+CA,Imperial,school,70000
+CA,Imperial,strip_mall,1303100
+CA,Imperial,supermarket,347800
+CA,Imperial,warehouse,3854000
+CA,Inyo,apartment,91300
+CA,Inyo,full_service_restaurant,31400
+CA,Inyo,hotel,181100
+CA,Inyo,no_match,75800
+CA,Inyo,office,116900
+CA,Inyo,outpatient,8000
+CA,Inyo,quick_service_restaurant,15500
+CA,Inyo,retail,834200
+CA,Inyo,strip_mall,31900
+CA,Inyo,supermarket,6600
+CA,Inyo,warehouse,18800
+CA,Kern,apartment,36093600
+CA,Kern,full_service_restaurant,1256000
+CA,Kern,hospital,977900
+CA,Kern,hotel,5705800
+CA,Kern,no_match,21817100
+CA,Kern,office,13631700
+CA,Kern,outpatient,4193300
+CA,Kern,quick_service_restaurant,667300
+CA,Kern,retail,31098900
+CA,Kern,school,682300
+CA,Kern,strip_mall,3323600
+CA,Kern,supermarket,1247700
+CA,Kern,warehouse,48439700
+CA,Kings,apartment,9874600
+CA,Kings,full_service_restaurant,228400
+CA,Kings,hospital,275700
+CA,Kings,hotel,478400
+CA,Kings,no_match,4407000
+CA,Kings,office,1407300
+CA,Kings,outpatient,640200
+CA,Kings,quick_service_restaurant,148300
+CA,Kings,retail,5258300
+CA,Kings,school,103500
+CA,Kings,strip_mall,578100
+CA,Kings,supermarket,273500
+CA,Kings,warehouse,7317000
+CA,Lake,apartment,1205700
+CA,Lake,full_service_restaurant,113600
+CA,Lake,hotel,807500
+CA,Lake,no_match,2444400
+CA,Lake,office,526100
+CA,Lake,outpatient,124600
+CA,Lake,quick_service_restaurant,18400
+CA,Lake,retail,1276700
+CA,Lake,strip_mall,148700
+CA,Lake,supermarket,92900
+CA,Lake,warehouse,679500
+CA,Lassen,apartment,482800
+CA,Lassen,full_service_restaurant,18800
+CA,Lassen,hotel,132100
+CA,Lassen,no_match,335500
+CA,Lassen,office,186700
+CA,Lassen,outpatient,9200
+CA,Lassen,quick_service_restaurant,15200
+CA,Lassen,retail,609800
+CA,Lassen,strip_mall,94600
+CA,Lassen,supermarket,25700
+CA,Lassen,warehouse,148000
+CA,Los Angeles,apartment,1359531500
+CA,Los Angeles,full_service_restaurant,18179900
+CA,Los Angeles,hospital,26248500
+CA,Los Angeles,hotel,92833100
+CA,Los Angeles,no_match,365680100
+CA,Los Angeles,office,435351200
+CA,Los Angeles,outpatient,51557300
+CA,Los Angeles,quick_service_restaurant,5704300
+CA,Los Angeles,retail,294061400
+CA,Los Angeles,school,18463800
+CA,Los Angeles,strip_mall,75344700
+CA,Los Angeles,supermarket,13783100
+CA,Los Angeles,warehouse,693854500
+CA,Madera,apartment,4959200
+CA,Madera,full_service_restaurant,223400
+CA,Madera,hospital,986100
+CA,Madera,hotel,908500
+CA,Madera,no_match,4559100
+CA,Madera,office,1262700
+CA,Madera,outpatient,628400
+CA,Madera,quick_service_restaurant,107700
+CA,Madera,retail,5677700
+CA,Madera,school,30800
+CA,Madera,strip_mall,227500
+CA,Madera,supermarket,316400
+CA,Madera,warehouse,6665100
+CA,Marin,apartment,22080200
+CA,Marin,full_service_restaurant,405100
+CA,Marin,hospital,983400
+CA,Marin,hotel,1723500
+CA,Marin,no_match,2349700
+CA,Marin,office,14073300
+CA,Marin,outpatient,1444300
+CA,Marin,quick_service_restaurant,71600
+CA,Marin,retail,10369300
+CA,Marin,school,438600
+CA,Marin,strip_mall,1378400
+CA,Marin,supermarket,434400
+CA,Marin,warehouse,4812800
+CA,Mariposa,apartment,142300
+CA,Mariposa,full_service_restaurant,1100
+CA,Mariposa,hotel,690000
+CA,Mariposa,no_match,98200
+CA,Mariposa,office,19300
+CA,Mariposa,quick_service_restaurant,2300
+CA,Mariposa,retail,118800
+CA,Mariposa,strip_mall,15100
+CA,Mariposa,warehouse,62200
+CA,Mendocino,apartment,2619100
+CA,Mendocino,full_service_restaurant,136300
+CA,Mendocino,hospital,46200
+CA,Mendocino,hotel,1197700
+CA,Mendocino,no_match,1519300
+CA,Mendocino,office,795800
+CA,Mendocino,outpatient,129600
+CA,Mendocino,quick_service_restaurant,27400
+CA,Mendocino,retail,2374700
+CA,Mendocino,school,84500
+CA,Mendocino,strip_mall,314200
+CA,Mendocino,supermarket,82100
+CA,Mendocino,warehouse,875300
+CA,Merced,apartment,13134800
+CA,Merced,full_service_restaurant,424500
+CA,Merced,hospital,793400
+CA,Merced,hotel,1327100
+CA,Merced,no_match,4463700
+CA,Merced,office,3228300
+CA,Merced,outpatient,1313000
+CA,Merced,quick_service_restaurant,194900
+CA,Merced,retail,9163100
+CA,Merced,school,633800
+CA,Merced,strip_mall,1039300
+CA,Merced,supermarket,589000
+CA,Merced,warehouse,9025900
+CA,Modoc,apartment,135400
+CA,Modoc,full_service_restaurant,11200
+CA,Modoc,hotel,83700
+CA,Modoc,no_match,53300
+CA,Modoc,office,69600
+CA,Modoc,quick_service_restaurant,5200
+CA,Modoc,retail,112900
+CA,Modoc,strip_mall,28100
+CA,Modoc,warehouse,68500
+CA,Mono,apartment,275900
+CA,Mono,full_service_restaurant,49000
+CA,Mono,hotel,696900
+CA,Mono,no_match,74200
+CA,Mono,office,130600
+CA,Mono,quick_service_restaurant,500
+CA,Mono,retail,374900
+CA,Mono,strip_mall,3800
+CA,Mono,supermarket,66400
+CA,Mono,warehouse,90500
+CA,Monterey,apartment,27011100
+CA,Monterey,full_service_restaurant,676500
+CA,Monterey,hospital,595000
+CA,Monterey,hotel,5720100
+CA,Monterey,no_match,10604600
+CA,Monterey,office,9180600
+CA,Monterey,outpatient,1786600
+CA,Monterey,quick_service_restaurant,197500
+CA,Monterey,retail,12842800
+CA,Monterey,school,138700
+CA,Monterey,strip_mall,2047400
+CA,Monterey,supermarket,622100
+CA,Monterey,warehouse,16787500
+CA,Napa,apartment,10813000
+CA,Napa,full_service_restaurant,324500
+CA,Napa,hospital,616700
+CA,Napa,hotel,3801200
+CA,Napa,no_match,15006700
+CA,Napa,office,3710400
+CA,Napa,outpatient,730000
+CA,Napa,quick_service_restaurant,58100
+CA,Napa,retail,4762100
+CA,Napa,school,207800
+CA,Napa,strip_mall,431400
+CA,Napa,supermarket,212200
+CA,Napa,warehouse,19538000
+CA,Nevada,apartment,2634100
+CA,Nevada,full_service_restaurant,161200
+CA,Nevada,hospital,312100
+CA,Nevada,hotel,443500
+CA,Nevada,no_match,1334500
+CA,Nevada,office,2528600
+CA,Nevada,outpatient,196000
+CA,Nevada,quick_service_restaurant,14300
+CA,Nevada,retail,2605100
+CA,Nevada,school,33000
+CA,Nevada,strip_mall,169200
+CA,Nevada,supermarket,287900
+CA,Nevada,warehouse,2079700
+CA,Orange,apartment,368128600
+CA,Orange,full_service_restaurant,8225700
+CA,Orange,hospital,9082300
+CA,Orange,hotel,42773500
+CA,Orange,no_match,110534900
+CA,Orange,office,161578300
+CA,Orange,outpatient,21388400
+CA,Orange,quick_service_restaurant,2634900
+CA,Orange,retail,112444400
+CA,Orange,school,3553100
+CA,Orange,strip_mall,13837700
+CA,Orange,supermarket,3192300
+CA,Orange,warehouse,209810900
+CA,Placer,apartment,23788900
+CA,Placer,full_service_restaurant,813300
+CA,Placer,hospital,1151400
+CA,Placer,hotel,4113700
+CA,Placer,no_match,9942900
+CA,Placer,office,17389900
+CA,Placer,outpatient,3193000
+CA,Placer,quick_service_restaurant,254800
+CA,Placer,retail,19119400
+CA,Placer,school,494900
+CA,Placer,strip_mall,1149700
+CA,Placer,supermarket,680100
+CA,Placer,warehouse,21794700
+CA,Plumas,apartment,229300
+CA,Plumas,full_service_restaurant,41800
+CA,Plumas,hospital,11000
+CA,Plumas,hotel,225400
+CA,Plumas,no_match,302000
+CA,Plumas,office,130200
+CA,Plumas,outpatient,7200
+CA,Plumas,quick_service_restaurant,3400
+CA,Plumas,retail,565300
+CA,Plumas,school,5700
+CA,Plumas,strip_mall,46800
+CA,Plumas,supermarket,25300
+CA,Plumas,warehouse,329100
+CA,Riverside,apartment,123574600
+CA,Riverside,full_service_restaurant,3963500
+CA,Riverside,hospital,5081600
+CA,Riverside,hotel,25040400
+CA,Riverside,no_match,87724800
+CA,Riverside,office,35710200
+CA,Riverside,outpatient,11539200
+CA,Riverside,quick_service_restaurant,2111200
+CA,Riverside,retail,90286800
+CA,Riverside,school,3477700
+CA,Riverside,strip_mall,8166200
+CA,Riverside,supermarket,5060500
+CA,Riverside,warehouse,248922100
+CA,Sacramento,apartment,138144800
+CA,Sacramento,full_service_restaurant,2410100
+CA,Sacramento,hospital,7901200
+CA,Sacramento,hotel,11209900
+CA,Sacramento,no_match,43671900
+CA,Sacramento,office,90335400
+CA,Sacramento,outpatient,7263500
+CA,Sacramento,quick_service_restaurant,980600
+CA,Sacramento,retail,63393900
+CA,Sacramento,school,2107000
+CA,Sacramento,strip_mall,4055700
+CA,Sacramento,supermarket,2379000
+CA,Sacramento,warehouse,103503800
+CA,San Benito,apartment,1385700
+CA,San Benito,full_service_restaurant,51100
+CA,San Benito,hospital,36900
+CA,San Benito,hotel,211200
+CA,San Benito,no_match,2561000
+CA,San Benito,office,832500
+CA,San Benito,outpatient,157200
+CA,San Benito,quick_service_restaurant,37100
+CA,San Benito,retail,1549100
+CA,San Benito,school,52000
+CA,San Benito,strip_mall,289000
+CA,San Benito,supermarket,166300
+CA,San Benito,warehouse,2947800
+CA,San Bernardino,apartment,132185400
+CA,San Bernardino,full_service_restaurant,3923300
+CA,San Bernardino,hospital,3610300
+CA,San Bernardino,hotel,12837400
+CA,San Bernardino,no_match,75916600
+CA,San Bernardino,office,39740800
+CA,San Bernardino,outpatient,10193300
+CA,San Bernardino,quick_service_restaurant,2363900
+CA,San Bernardino,retail,82014300
+CA,San Bernardino,school,1154800
+CA,San Bernardino,strip_mall,6088500
+CA,San Bernardino,supermarket,4876300
+CA,San Bernardino,warehouse,413202600
+CA,San Diego,apartment,446530500
+CA,San Diego,full_service_restaurant,6932400
+CA,San Diego,hospital,10896700
+CA,San Diego,hotel,45884500
+CA,San Diego,no_match,151576100
+CA,San Diego,office,130353900
+CA,San Diego,outpatient,19566800
+CA,San Diego,quick_service_restaurant,2044400
+CA,San Diego,retail,110652200
+CA,San Diego,school,4256200
+CA,San Diego,strip_mall,12961000
+CA,San Diego,supermarket,4384500
+CA,San Diego,warehouse,122516100
+CA,San Francisco,apartment,242541100
+CA,San Francisco,full_service_restaurant,1322400
+CA,San Francisco,hospital,7632500
+CA,San Francisco,hotel,32159100
+CA,San Francisco,no_match,29468600
+CA,San Francisco,office,144720200
+CA,San Francisco,outpatient,4360000
+CA,San Francisco,quick_service_restaurant,98200
+CA,San Francisco,retail,14602700
+CA,San Francisco,school,3721400
+CA,San Francisco,strip_mall,6854800
+CA,San Francisco,supermarket,948300
+CA,San Francisco,warehouse,27220200
+CA,San Joaquin,apartment,36691700
+CA,San Joaquin,full_service_restaurant,904200
+CA,San Joaquin,hospital,1114900
+CA,San Joaquin,hotel,2994900
+CA,San Joaquin,no_match,29742800
+CA,San Joaquin,office,13040000
+CA,San Joaquin,outpatient,2186000
+CA,San Joaquin,quick_service_restaurant,589600
+CA,San Joaquin,retail,26699000
+CA,San Joaquin,school,634100
+CA,San Joaquin,strip_mall,1631000
+CA,San Joaquin,supermarket,1621900
+CA,San Joaquin,warehouse,122174000
+CA,San Luis Obispo,apartment,13887500
+CA,San Luis Obispo,full_service_restaurant,1199500
+CA,San Luis Obispo,hospital,564600
+CA,San Luis Obispo,hotel,7853700
+CA,San Luis Obispo,no_match,10101200
+CA,San Luis Obispo,office,7893400
+CA,San Luis Obispo,outpatient,1280800
+CA,San Luis Obispo,quick_service_restaurant,160600
+CA,San Luis Obispo,retail,9955100
+CA,San Luis Obispo,school,71400
+CA,San Luis Obispo,strip_mall,1841700
+CA,San Luis Obispo,supermarket,721100
+CA,San Luis Obispo,warehouse,6962700
+CA,San Mateo,apartment,96942700
+CA,San Mateo,full_service_restaurant,1154700
+CA,San Mateo,hospital,2751300
+CA,San Mateo,hotel,13352900
+CA,San Mateo,no_match,32865100
+CA,San Mateo,office,69214700
+CA,San Mateo,outpatient,3208800
+CA,San Mateo,quick_service_restaurant,275700
+CA,San Mateo,retail,24333600
+CA,San Mateo,school,440300
+CA,San Mateo,strip_mall,3882900
+CA,San Mateo,supermarket,1179700
+CA,San Mateo,warehouse,33870400
+CA,Santa Barbara,apartment,29658500
+CA,Santa Barbara,full_service_restaurant,1107700
+CA,Santa Barbara,hospital,652000
+CA,Santa Barbara,hotel,7304200
+CA,Santa Barbara,no_match,7667600
+CA,Santa Barbara,office,13944200
+CA,Santa Barbara,outpatient,2074400
+CA,Santa Barbara,quick_service_restaurant,240100
+CA,Santa Barbara,retail,17350500
+CA,Santa Barbara,school,586600
+CA,Santa Barbara,strip_mall,2699600
+CA,Santa Barbara,supermarket,741800
+CA,Santa Barbara,warehouse,14210900
+CA,Santa Clara,apartment,256297800
+CA,Santa Clara,full_service_restaurant,2759800
+CA,Santa Clara,hospital,8362500
+CA,Santa Clara,hotel,21511300
+CA,Santa Clara,no_match,128766800
+CA,Santa Clara,office,185609900
+CA,Santa Clara,outpatient,9570000
+CA,Santa Clara,quick_service_restaurant,881000
+CA,Santa Clara,retail,69687200
+CA,Santa Clara,school,4131100
+CA,Santa Clara,strip_mall,8665300
+CA,Santa Clara,supermarket,2555700
+CA,Santa Clara,warehouse,85827000
+CA,Santa Cruz,apartment,13197600
+CA,Santa Cruz,full_service_restaurant,551600
+CA,Santa Cruz,hospital,387400
+CA,Santa Cruz,hotel,3150000
+CA,Santa Cruz,no_match,6763300
+CA,Santa Cruz,office,7398300
+CA,Santa Cruz,outpatient,1235300
+CA,Santa Cruz,quick_service_restaurant,140700
+CA,Santa Cruz,retail,9798500
+CA,Santa Cruz,school,408000
+CA,Santa Cruz,strip_mall,1051500
+CA,Santa Cruz,supermarket,376400
+CA,Santa Cruz,warehouse,7253800
+CA,Shasta,apartment,6700100
+CA,Shasta,full_service_restaurant,298100
+CA,Shasta,hospital,303600
+CA,Shasta,hotel,1571300
+CA,Shasta,no_match,3388300
+CA,Shasta,office,3035000
+CA,Shasta,outpatient,1373100
+CA,Shasta,quick_service_restaurant,94600
+CA,Shasta,retail,9238600
+CA,Shasta,school,93300
+CA,Shasta,strip_mall,611200
+CA,Shasta,supermarket,210800
+CA,Shasta,warehouse,4508300
+CA,Sierra,apartment,52200
+CA,Sierra,full_service_restaurant,12400
+CA,Sierra,hotel,63500
+CA,Sierra,no_match,29800
+CA,Sierra,office,16300
+CA,Sierra,retail,58100
+CA,Sierra,school,23000
+CA,Siskiyou,apartment,1013900
+CA,Siskiyou,full_service_restaurant,103000
+CA,Siskiyou,hotel,613900
+CA,Siskiyou,no_match,610000
+CA,Siskiyou,office,396100
+CA,Siskiyou,outpatient,27000
+CA,Siskiyou,quick_service_restaurant,11600
+CA,Siskiyou,retail,760400
+CA,Siskiyou,school,2800
+CA,Siskiyou,strip_mall,178300
+CA,Siskiyou,supermarket,155100
+CA,Siskiyou,warehouse,675900
+CA,Solano,apartment,29696700
+CA,Solano,full_service_restaurant,841300
+CA,Solano,hospital,2245300
+CA,Solano,hotel,2367000
+CA,Solano,no_match,18191700
+CA,Solano,office,11506200
+CA,Solano,outpatient,1716700
+CA,Solano,quick_service_restaurant,324000
+CA,Solano,retail,18896400
+CA,Solano,school,219000
+CA,Solano,strip_mall,940300
+CA,Solano,supermarket,343800
+CA,Solano,warehouse,39138800
+CA,Sonoma,apartment,41471000
+CA,Sonoma,full_service_restaurant,998400
+CA,Sonoma,hospital,1374700
+CA,Sonoma,hotel,4683300
+CA,Sonoma,no_match,23745500
+CA,Sonoma,office,19726200
+CA,Sonoma,outpatient,2450700
+CA,Sonoma,quick_service_restaurant,224900
+CA,Sonoma,retail,18298100
+CA,Sonoma,school,426600
+CA,Sonoma,strip_mall,1902700
+CA,Sonoma,supermarket,980500
+CA,Sonoma,warehouse,26145100
+CA,Stanislaus,apartment,21430300
+CA,Stanislaus,full_service_restaurant,1485800
+CA,Stanislaus,hospital,1323300
+CA,Stanislaus,hotel,2192000
+CA,Stanislaus,no_match,26801300
+CA,Stanislaus,office,8324000
+CA,Stanislaus,outpatient,2634000
+CA,Stanislaus,quick_service_restaurant,420300
+CA,Stanislaus,retail,21619900
+CA,Stanislaus,school,324300
+CA,Stanislaus,strip_mall,2220300
+CA,Stanislaus,supermarket,924900
+CA,Stanislaus,warehouse,50869400
+CA,Sutter,apartment,4111500
+CA,Sutter,full_service_restaurant,112300
+CA,Sutter,hospital,108300
+CA,Sutter,hotel,311400
+CA,Sutter,no_match,970300
+CA,Sutter,office,1360600
+CA,Sutter,outpatient,349600
+CA,Sutter,quick_service_restaurant,29800
+CA,Sutter,retail,4200500
+CA,Sutter,school,51900
+CA,Sutter,strip_mall,140900
+CA,Sutter,supermarket,64200
+CA,Sutter,warehouse,5316300
+CA,Tehama,apartment,1682100
+CA,Tehama,full_service_restaurant,53000
+CA,Tehama,hotel,388200
+CA,Tehama,no_match,1269000
+CA,Tehama,office,347200
+CA,Tehama,outpatient,43500
+CA,Tehama,quick_service_restaurant,29500
+CA,Tehama,retail,1717000
+CA,Tehama,strip_mall,50300
+CA,Tehama,supermarket,100600
+CA,Tehama,warehouse,1765500
+CA,Trinity,apartment,86900
+CA,Trinity,full_service_restaurant,27400
+CA,Trinity,hotel,56900
+CA,Trinity,no_match,126100
+CA,Trinity,office,33100
+CA,Trinity,outpatient,2400
+CA,Trinity,retail,243900
+CA,Trinity,warehouse,24800
+CA,Tulare,apartment,13621100
+CA,Tulare,full_service_restaurant,721400
+CA,Tulare,hospital,967000
+CA,Tulare,hotel,1886700
+CA,Tulare,no_match,14434500
+CA,Tulare,office,6411200
+CA,Tulare,outpatient,1758700
+CA,Tulare,quick_service_restaurant,361600
+CA,Tulare,retail,18239500
+CA,Tulare,school,389500
+CA,Tulare,strip_mall,1638700
+CA,Tulare,supermarket,815600
+CA,Tulare,warehouse,34470200
+CA,Tuolumne,apartment,1175100
+CA,Tuolumne,full_service_restaurant,73100
+CA,Tuolumne,hospital,138200
+CA,Tuolumne,hotel,343100
+CA,Tuolumne,no_match,616100
+CA,Tuolumne,office,557900
+CA,Tuolumne,outpatient,79400
+CA,Tuolumne,quick_service_restaurant,15200
+CA,Tuolumne,retail,2044800
+CA,Tuolumne,strip_mall,34400
+CA,Tuolumne,supermarket,50000
+CA,Tuolumne,warehouse,901900
+CA,Ventura,apartment,54029300
+CA,Ventura,full_service_restaurant,2034400
+CA,Ventura,hospital,2300700
+CA,Ventura,hotel,5193200
+CA,Ventura,no_match,38152900
+CA,Ventura,office,22981200
+CA,Ventura,outpatient,4576200
+CA,Ventura,quick_service_restaurant,486400
+CA,Ventura,retail,32003200
+CA,Ventura,school,593600
+CA,Ventura,strip_mall,4033000
+CA,Ventura,supermarket,960500
+CA,Ventura,warehouse,44810500
+CA,Yolo,apartment,23987300
+CA,Yolo,full_service_restaurant,240200
+CA,Yolo,hospital,109200
+CA,Yolo,hotel,1627900
+CA,Yolo,no_match,8428300
+CA,Yolo,office,7263000
+CA,Yolo,outpatient,393600
+CA,Yolo,quick_service_restaurant,124100
+CA,Yolo,retail,7552100
+CA,Yolo,school,157000
+CA,Yolo,strip_mall,710300
+CA,Yolo,supermarket,319900
+CA,Yolo,warehouse,34926400
+CA,Yuba,apartment,4132100
+CA,Yuba,full_service_restaurant,52800
+CA,Yuba,hotel,211800
+CA,Yuba,no_match,1387100
+CA,Yuba,office,1009400
+CA,Yuba,outpatient,60400
+CA,Yuba,quick_service_restaurant,28300
+CA,Yuba,retail,2908900
+CA,Yuba,school,27300
+CA,Yuba,strip_mall,263700
+CA,Yuba,supermarket,31100
+CA,Yuba,warehouse,2195300
+CO,Adams,apartment,40442100
+CO,Adams,full_service_restaurant,868200
+CO,Adams,hospital,2986600
+CO,Adams,hotel,6537900
+CO,Adams,no_match,21603200
+CO,Adams,office,11777600
+CO,Adams,outpatient,3329700
+CO,Adams,quick_service_restaurant,398700
+CO,Adams,retail,17847300
+CO,Adams,school,1147300
+CO,Adams,strip_mall,3031100
+CO,Adams,supermarket,914200
+CO,Adams,warehouse,77270000
+CO,Alamosa,apartment,311800
+CO,Alamosa,full_service_restaurant,36700
+CO,Alamosa,hotel,84100
+CO,Alamosa,no_match,133400
+CO,Alamosa,office,162000
+CO,Alamosa,outpatient,25000
+CO,Alamosa,quick_service_restaurant,17400
+CO,Alamosa,retail,824100
+CO,Alamosa,school,22100
+CO,Alamosa,strip_mall,158600
+CO,Alamosa,supermarket,48900
+CO,Alamosa,warehouse,282500
+CO,Arapahoe,apartment,69085800
+CO,Arapahoe,full_service_restaurant,1465900
+CO,Arapahoe,hospital,1558600
+CO,Arapahoe,hotel,6808500
+CO,Arapahoe,no_match,15784800
+CO,Arapahoe,office,50042200
+CO,Arapahoe,outpatient,4700100
+CO,Arapahoe,quick_service_restaurant,344100
+CO,Arapahoe,retail,28005400
+CO,Arapahoe,school,789100
+CO,Arapahoe,strip_mall,4762700
+CO,Arapahoe,supermarket,1549200
+CO,Arapahoe,warehouse,23391500
+CO,Archuleta,apartment,124300
+CO,Archuleta,full_service_restaurant,30900
+CO,Archuleta,hotel,213800
+CO,Archuleta,no_match,76100
+CO,Archuleta,office,147200
+CO,Archuleta,outpatient,8000
+CO,Archuleta,quick_service_restaurant,4500
+CO,Archuleta,retail,289200
+CO,Archuleta,strip_mall,89800
+CO,Archuleta,warehouse,103900
+CO,Baca,full_service_restaurant,9000
+CO,Baca,hotel,15500
+CO,Baca,no_match,8900
+CO,Baca,office,10600
+CO,Baca,retail,83400
+CO,Baca,strip_mall,2800
+CO,Bent,apartment,37700
+CO,Bent,full_service_restaurant,2400
+CO,Bent,hotel,20000
+CO,Bent,no_match,1047600
+CO,Bent,office,17600
+CO,Bent,retail,63700
+CO,Bent,warehouse,19800
+CO,Boulder,apartment,33474900
+CO,Boulder,full_service_restaurant,799900
+CO,Boulder,hospital,1748200
+CO,Boulder,hotel,3316000
+CO,Boulder,no_match,13555400
+CO,Boulder,office,25312200
+CO,Boulder,outpatient,3068500
+CO,Boulder,quick_service_restaurant,169400
+CO,Boulder,retail,12347200
+CO,Boulder,school,721200
+CO,Boulder,strip_mall,2348100
+CO,Boulder,supermarket,448700
+CO,Boulder,warehouse,13623900
+CO,Broomfield,apartment,10553500
+CO,Broomfield,full_service_restaurant,112900
+CO,Broomfield,hospital,303000
+CO,Broomfield,hotel,1141900
+CO,Broomfield,no_match,2198300
+CO,Broomfield,office,9107300
+CO,Broomfield,outpatient,358300
+CO,Broomfield,quick_service_restaurant,76300
+CO,Broomfield,retail,4628300
+CO,Broomfield,school,184900
+CO,Broomfield,strip_mall,440700
+CO,Broomfield,supermarket,231700
+CO,Broomfield,warehouse,3855700
+CO,Chaffee,apartment,206600
+CO,Chaffee,full_service_restaurant,74500
+CO,Chaffee,hotel,492100
+CO,Chaffee,no_match,184200
+CO,Chaffee,office,264600
+CO,Chaffee,outpatient,26100
+CO,Chaffee,quick_service_restaurant,8000
+CO,Chaffee,retail,627800
+CO,Chaffee,strip_mall,116800
+CO,Chaffee,supermarket,55300
+CO,Chaffee,warehouse,317000
+CO,Cheyenne,full_service_restaurant,4300
+CO,Cheyenne,hotel,11900
+CO,Cheyenne,no_match,2700
+CO,Cheyenne,retail,21600
+CO,Cheyenne,warehouse,3000
+CO,Clear Creek,apartment,161000
+CO,Clear Creek,full_service_restaurant,67000
+CO,Clear Creek,hotel,171400
+CO,Clear Creek,no_match,131300
+CO,Clear Creek,office,129200
+CO,Clear Creek,outpatient,2900
+CO,Clear Creek,quick_service_restaurant,9300
+CO,Clear Creek,retail,242900
+CO,Clear Creek,school,91000
+CO,Clear Creek,strip_mall,29000
+CO,Clear Creek,supermarket,32200
+CO,Clear Creek,warehouse,100400
+CO,Conejos,apartment,50100
+CO,Conejos,hotel,50100
+CO,Conejos,no_match,31700
+CO,Conejos,office,58000
+CO,Conejos,retail,60700
+CO,Conejos,strip_mall,10700
+CO,Costilla,full_service_restaurant,2100
+CO,Costilla,hotel,38000
+CO,Costilla,no_match,4000
+CO,Costilla,office,900
+CO,Costilla,retail,18400
+CO,Costilla,warehouse,40000
+CO,Crowley,apartment,5300
+CO,Crowley,no_match,278400
+CO,Crowley,retail,30800
+CO,Crowley,strip_mall,1500
+CO,Custer,apartment,51500
+CO,Custer,full_service_restaurant,21600
+CO,Custer,hotel,78100
+CO,Custer,no_match,34500
+CO,Custer,office,42800
+CO,Custer,quick_service_restaurant,600
+CO,Custer,retail,69200
+CO,Custer,strip_mall,17800
+CO,Custer,warehouse,11500
+CO,Delta,apartment,287200
+CO,Delta,full_service_restaurant,64300
+CO,Delta,hotel,121200
+CO,Delta,no_match,467800
+CO,Delta,office,233200
+CO,Delta,outpatient,73200
+CO,Delta,quick_service_restaurant,12800
+CO,Delta,retail,856300
+CO,Delta,school,3800
+CO,Delta,strip_mall,19200
+CO,Delta,supermarket,92600
+CO,Delta,warehouse,694300
+CO,Denver,apartment,169402900
+CO,Denver,full_service_restaurant,2254900
+CO,Denver,hospital,6044600
+CO,Denver,hotel,23504300
+CO,Denver,no_match,48716400
+CO,Denver,office,82229800
+CO,Denver,outpatient,5572300
+CO,Denver,quick_service_restaurant,416100
+CO,Denver,retail,21526300
+CO,Denver,school,4052500
+CO,Denver,strip_mall,5475600
+CO,Denver,supermarket,1211600
+CO,Denver,warehouse,73237300
+CO,Dolores,apartment,9200
+CO,Dolores,full_service_restaurant,12600
+CO,Dolores,hotel,4100
+CO,Dolores,no_match,7300
+CO,Dolores,office,3600
+CO,Dolores,outpatient,1800
+CO,Dolores,retail,18900
+CO,Douglas,apartment,24746100
+CO,Douglas,full_service_restaurant,692000
+CO,Douglas,hospital,1354200
+CO,Douglas,hotel,2219700
+CO,Douglas,no_match,5157300
+CO,Douglas,office,15517900
+CO,Douglas,outpatient,2658000
+CO,Douglas,quick_service_restaurant,197500
+CO,Douglas,retail,13392500
+CO,Douglas,school,1346500
+CO,Douglas,strip_mall,1633600
+CO,Douglas,supermarket,837700
+CO,Douglas,warehouse,7361400
+CO,Eagle,apartment,3395200
+CO,Eagle,full_service_restaurant,92800
+CO,Eagle,hotel,3258700
+CO,Eagle,no_match,893500
+CO,Eagle,office,1569600
+CO,Eagle,outpatient,137300
+CO,Eagle,quick_service_restaurant,19200
+CO,Eagle,retail,1628200
+CO,Eagle,strip_mall,471100
+CO,Eagle,supermarket,184400
+CO,Eagle,warehouse,922200
+CO,El Paso,apartment,72262000
+CO,El Paso,full_service_restaurant,1479300
+CO,El Paso,hospital,2657500
+CO,El Paso,hotel,11160200
+CO,El Paso,no_match,24815900
+CO,El Paso,office,28036800
+CO,El Paso,outpatient,5907300
+CO,El Paso,quick_service_restaurant,567000
+CO,El Paso,retail,32869500
+CO,El Paso,school,2562400
+CO,El Paso,strip_mall,3639800
+CO,El Paso,supermarket,1687200
+CO,El Paso,warehouse,27047600
+CO,Elbert,apartment,17200
+CO,Elbert,full_service_restaurant,25000
+CO,Elbert,hotel,4000
+CO,Elbert,no_match,131700
+CO,Elbert,office,93100
+CO,Elbert,quick_service_restaurant,4500
+CO,Elbert,retail,432100
+CO,Elbert,school,27600
+CO,Elbert,strip_mall,52200
+CO,Elbert,warehouse,185100
+CO,Fremont,apartment,830500
+CO,Fremont,full_service_restaurant,87200
+CO,Fremont,hotel,234900
+CO,Fremont,no_match,2379200
+CO,Fremont,office,532800
+CO,Fremont,outpatient,120500
+CO,Fremont,quick_service_restaurant,18500
+CO,Fremont,retail,1161100
+CO,Fremont,school,122400
+CO,Fremont,strip_mall,445000
+CO,Fremont,supermarket,42700
+CO,Fremont,warehouse,657300
+CO,Garfield,apartment,1566000
+CO,Garfield,full_service_restaurant,57200
+CO,Garfield,hotel,576200
+CO,Garfield,no_match,898400
+CO,Garfield,office,1135700
+CO,Garfield,outpatient,32400
+CO,Garfield,quick_service_restaurant,37500
+CO,Garfield,retail,1747500
+CO,Garfield,strip_mall,493900
+CO,Garfield,supermarket,122300
+CO,Garfield,warehouse,825800
+CO,Gilpin,apartment,147100
+CO,Gilpin,full_service_restaurant,7600
+CO,Gilpin,hotel,1612700
+CO,Gilpin,no_match,1093400
+CO,Gilpin,office,39700
+CO,Gilpin,retail,83600
+CO,Gilpin,strip_mall,15700
+CO,Gilpin,warehouse,17300
+CO,Grand,apartment,328400
+CO,Grand,full_service_restaurant,87600
+CO,Grand,hospital,9100
+CO,Grand,hotel,640900
+CO,Grand,no_match,255700
+CO,Grand,office,280900
+CO,Grand,outpatient,6100
+CO,Grand,quick_service_restaurant,1600
+CO,Grand,retail,565800
+CO,Grand,school,20900
+CO,Grand,strip_mall,49300
+CO,Grand,supermarket,110900
+CO,Grand,warehouse,141300
+CO,Gunnison,apartment,694900
+CO,Gunnison,full_service_restaurant,294600
+CO,Gunnison,hospital,300
+CO,Gunnison,hotel,716300
+CO,Gunnison,no_match,144500
+CO,Gunnison,office,115000
+CO,Gunnison,outpatient,6800
+CO,Gunnison,quick_service_restaurant,15900
+CO,Gunnison,retail,240500
+CO,Gunnison,school,151000
+CO,Gunnison,strip_mall,136400
+CO,Gunnison,supermarket,22400
+CO,Gunnison,warehouse,94300
+CO,Hinsdale,apartment,9200
+CO,Hinsdale,full_service_restaurant,4200
+CO,Hinsdale,hotel,52100
+CO,Hinsdale,no_match,5200
+CO,Hinsdale,office,5400
+CO,Hinsdale,retail,22500
+CO,Huerfano,apartment,56000
+CO,Huerfano,full_service_restaurant,42700
+CO,Huerfano,hotel,45200
+CO,Huerfano,no_match,203500
+CO,Huerfano,office,77100
+CO,Huerfano,outpatient,8400
+CO,Huerfano,quick_service_restaurant,8200
+CO,Huerfano,retail,185800
+CO,Huerfano,school,50000
+CO,Huerfano,strip_mall,12300
+CO,Huerfano,supermarket,22800
+CO,Huerfano,warehouse,152300
+CO,Jackson,full_service_restaurant,2100
+CO,Jackson,hotel,24500
+CO,Jackson,no_match,7300
+CO,Jackson,office,6400
+CO,Jackson,retail,44600
+CO,Jefferson,apartment,51461600
+CO,Jefferson,full_service_restaurant,1175600
+CO,Jefferson,hospital,1398800
+CO,Jefferson,hotel,4744300
+CO,Jefferson,no_match,17493900
+CO,Jefferson,office,34448200
+CO,Jefferson,outpatient,2991600
+CO,Jefferson,quick_service_restaurant,388100
+CO,Jefferson,retail,26493100
+CO,Jefferson,school,1116300
+CO,Jefferson,strip_mall,3731600
+CO,Jefferson,supermarket,737500
+CO,Jefferson,warehouse,16644700
+CO,Kiowa,hotel,12600
+CO,Kiowa,no_match,17200
+CO,Kiowa,office,3300
+CO,Kiowa,retail,10500
+CO,Kit Carson,apartment,173100
+CO,Kit Carson,full_service_restaurant,19900
+CO,Kit Carson,hotel,128000
+CO,Kit Carson,no_match,255500
+CO,Kit Carson,office,25500
+CO,Kit Carson,quick_service_restaurant,12500
+CO,Kit Carson,retail,226000
+CO,Kit Carson,strip_mall,47200
+CO,Kit Carson,warehouse,19500
+CO,La Plata,apartment,1710100
+CO,La Plata,full_service_restaurant,149100
+CO,La Plata,hospital,30500
+CO,La Plata,hotel,850700
+CO,La Plata,no_match,706800
+CO,La Plata,office,1860600
+CO,La Plata,outpatient,229400
+CO,La Plata,quick_service_restaurant,25400
+CO,La Plata,retail,1375900
+CO,La Plata,school,31400
+CO,La Plata,strip_mall,186300
+CO,La Plata,supermarket,99900
+CO,La Plata,warehouse,361400
+CO,Lake,apartment,260900
+CO,Lake,full_service_restaurant,18800
+CO,Lake,hotel,100200
+CO,Lake,no_match,364200
+CO,Lake,office,67600
+CO,Lake,outpatient,10100
+CO,Lake,quick_service_restaurant,1400
+CO,Lake,retail,150500
+CO,Lake,strip_mall,12000
+CO,Lake,warehouse,65300
+CO,Larimer,apartment,32756800
+CO,Larimer,full_service_restaurant,964400
+CO,Larimer,hospital,2501300
+CO,Larimer,hotel,4304000
+CO,Larimer,no_match,9458100
+CO,Larimer,office,15659600
+CO,Larimer,outpatient,2157800
+CO,Larimer,quick_service_restaurant,201900
+CO,Larimer,retail,15191500
+CO,Larimer,school,864500
+CO,Larimer,strip_mall,2319000
+CO,Larimer,supermarket,845500
+CO,Larimer,warehouse,16818700
+CO,Las Animas,apartment,289600
+CO,Las Animas,full_service_restaurant,29800
+CO,Las Animas,hotel,268600
+CO,Las Animas,no_match,245100
+CO,Las Animas,office,168500
+CO,Las Animas,outpatient,25900
+CO,Las Animas,quick_service_restaurant,15500
+CO,Las Animas,retail,731400
+CO,Las Animas,school,25000
+CO,Las Animas,strip_mall,26600
+CO,Las Animas,warehouse,126500
+CO,Lincoln,apartment,83100
+CO,Lincoln,full_service_restaurant,20400
+CO,Lincoln,hotel,270700
+CO,Lincoln,no_match,14300
+CO,Lincoln,office,14300
+CO,Lincoln,quick_service_restaurant,18200
+CO,Lincoln,retail,194000
+CO,Lincoln,strip_mall,19500
+CO,Lincoln,warehouse,32400
+CO,Logan,apartment,569800
+CO,Logan,full_service_restaurant,47800
+CO,Logan,hotel,173700
+CO,Logan,no_match,226200
+CO,Logan,office,179400
+CO,Logan,outpatient,56700
+CO,Logan,quick_service_restaurant,21000
+CO,Logan,retail,707200
+CO,Logan,strip_mall,267900
+CO,Logan,warehouse,344600
+CO,Mesa,apartment,3800900
+CO,Mesa,full_service_restaurant,305900
+CO,Mesa,hotel,1526700
+CO,Mesa,no_match,2255100
+CO,Mesa,office,3759700
+CO,Mesa,outpatient,846400
+CO,Mesa,quick_service_restaurant,108600
+CO,Mesa,retail,5900400
+CO,Mesa,school,246900
+CO,Mesa,strip_mall,681200
+CO,Mesa,supermarket,424700
+CO,Mesa,warehouse,5600500
+CO,Mineral,apartment,6200
+CO,Mineral,full_service_restaurant,6000
+CO,Mineral,hotel,17600
+CO,Mineral,no_match,1700
+CO,Mineral,retail,21100
+CO,Mineral,strip_mall,4000
+CO,Moffat,apartment,398700
+CO,Moffat,full_service_restaurant,31700
+CO,Moffat,hotel,245100
+CO,Moffat,no_match,70500
+CO,Moffat,office,82300
+CO,Moffat,quick_service_restaurant,5900
+CO,Moffat,retail,544600
+CO,Moffat,strip_mall,60300
+CO,Moffat,supermarket,49500
+CO,Moffat,warehouse,63400
+CO,Montezuma,apartment,317400
+CO,Montezuma,full_service_restaurant,29600
+CO,Montezuma,hotel,314400
+CO,Montezuma,no_match,774200
+CO,Montezuma,office,227600
+CO,Montezuma,outpatient,27200
+CO,Montezuma,quick_service_restaurant,9000
+CO,Montezuma,retail,685500
+CO,Montezuma,school,4200
+CO,Montezuma,strip_mall,259800
+CO,Montezuma,supermarket,55100
+CO,Montezuma,warehouse,463800
+CO,Montrose,apartment,631100
+CO,Montrose,full_service_restaurant,99200
+CO,Montrose,hotel,593900
+CO,Montrose,no_match,1236100
+CO,Montrose,office,758600
+CO,Montrose,outpatient,129400
+CO,Montrose,quick_service_restaurant,26000
+CO,Montrose,retail,1711400
+CO,Montrose,strip_mall,145000
+CO,Montrose,supermarket,169900
+CO,Montrose,warehouse,664600
+CO,Morgan,apartment,378900
+CO,Morgan,full_service_restaurant,43000
+CO,Morgan,hospital,150200
+CO,Morgan,hotel,269400
+CO,Morgan,no_match,229900
+CO,Morgan,office,245200
+CO,Morgan,outpatient,17500
+CO,Morgan,quick_service_restaurant,21100
+CO,Morgan,retail,838700
+CO,Morgan,school,185000
+CO,Morgan,strip_mall,124200
+CO,Morgan,supermarket,26700
+CO,Morgan,warehouse,431500
+CO,Otero,apartment,399600
+CO,Otero,full_service_restaurant,20500
+CO,Otero,hotel,145300
+CO,Otero,no_match,566900
+CO,Otero,office,230000
+CO,Otero,outpatient,10000
+CO,Otero,quick_service_restaurant,11800
+CO,Otero,retail,650800
+CO,Otero,school,31000
+CO,Otero,strip_mall,62500
+CO,Otero,supermarket,32800
+CO,Otero,warehouse,340800
+CO,Ouray,apartment,31900
+CO,Ouray,full_service_restaurant,33800
+CO,Ouray,hotel,159100
+CO,Ouray,no_match,80500
+CO,Ouray,office,57600
+CO,Ouray,retail,97700
+CO,Ouray,strip_mall,16600
+CO,Ouray,warehouse,7700
+CO,Park,apartment,29500
+CO,Park,full_service_restaurant,67600
+CO,Park,hotel,103400
+CO,Park,no_match,52900
+CO,Park,office,72300
+CO,Park,retail,177800
+CO,Park,school,122300
+CO,Park,strip_mall,20000
+CO,Park,warehouse,92200
+CO,Phillips,hotel,16500
+CO,Phillips,no_match,5400
+CO,Phillips,office,2400
+CO,Phillips,outpatient,8500
+CO,Phillips,retail,45800
+CO,Phillips,strip_mall,16900
+CO,Phillips,warehouse,8000
+CO,Pitkin,apartment,749300
+CO,Pitkin,full_service_restaurant,80900
+CO,Pitkin,hotel,1236100
+CO,Pitkin,no_match,330500
+CO,Pitkin,office,767700
+CO,Pitkin,outpatient,6600
+CO,Pitkin,quick_service_restaurant,18300
+CO,Pitkin,retail,628600
+CO,Pitkin,school,111500
+CO,Pitkin,strip_mall,254900
+CO,Pitkin,supermarket,26800
+CO,Pitkin,warehouse,84100
+CO,Prowers,apartment,314600
+CO,Prowers,full_service_restaurant,10600
+CO,Prowers,hotel,174200
+CO,Prowers,no_match,23000
+CO,Prowers,office,70300
+CO,Prowers,quick_service_restaurant,9500
+CO,Prowers,retail,447800
+CO,Prowers,school,9700
+CO,Prowers,strip_mall,28500
+CO,Prowers,supermarket,42600
+CO,Prowers,warehouse,58800
+CO,Pueblo,apartment,7654400
+CO,Pueblo,full_service_restaurant,698800
+CO,Pueblo,hospital,1006500
+CO,Pueblo,hotel,1172000
+CO,Pueblo,no_match,9455400
+CO,Pueblo,office,4010200
+CO,Pueblo,outpatient,1033700
+CO,Pueblo,quick_service_restaurant,157000
+CO,Pueblo,retail,7823000
+CO,Pueblo,school,87300
+CO,Pueblo,strip_mall,1172600
+CO,Pueblo,supermarket,439200
+CO,Pueblo,warehouse,7572700
+CO,Rio Blanco,apartment,110800
+CO,Rio Blanco,full_service_restaurant,20600
+CO,Rio Blanco,hotel,100800
+CO,Rio Blanco,no_match,10500
+CO,Rio Blanco,office,85500
+CO,Rio Blanco,quick_service_restaurant,3500
+CO,Rio Blanco,retail,119600
+CO,Rio Blanco,warehouse,107300
+CO,Rio Grande,apartment,236700
+CO,Rio Grande,full_service_restaurant,41800
+CO,Rio Grande,hotel,289200
+CO,Rio Grande,no_match,165400
+CO,Rio Grande,office,78800
+CO,Rio Grande,outpatient,20200
+CO,Rio Grande,quick_service_restaurant,6700
+CO,Rio Grande,retail,253100
+CO,Rio Grande,school,62300
+CO,Rio Grande,strip_mall,50200
+CO,Rio Grande,warehouse,169500
+CO,Routt,apartment,502100
+CO,Routt,full_service_restaurant,73900
+CO,Routt,hotel,1129600
+CO,Routt,no_match,294700
+CO,Routt,office,538000
+CO,Routt,outpatient,58800
+CO,Routt,quick_service_restaurant,3100
+CO,Routt,retail,711200
+CO,Routt,strip_mall,78200
+CO,Routt,supermarket,48500
+CO,Routt,warehouse,495400
+CO,Saguache,apartment,68600
+CO,Saguache,full_service_restaurant,5400
+CO,Saguache,hotel,97000
+CO,Saguache,no_match,18400
+CO,Saguache,office,6800
+CO,Saguache,retail,34400
+CO,Saguache,strip_mall,2300
+CO,Saguache,supermarket,4500
+CO,Saguache,warehouse,9200
+CO,San Juan,apartment,34100
+CO,San Juan,full_service_restaurant,5700
+CO,San Juan,hotel,71500
+CO,San Juan,no_match,6000
+CO,San Juan,retail,50900
+CO,San Juan,strip_mall,2200
+CO,San Miguel,apartment,64700
+CO,San Miguel,full_service_restaurant,16900
+CO,San Miguel,hotel,656900
+CO,San Miguel,no_match,16800
+CO,San Miguel,office,85000
+CO,San Miguel,retail,80700
+CO,San Miguel,warehouse,22800
+CO,Sedgwick,apartment,66200
+CO,Sedgwick,full_service_restaurant,3400
+CO,Sedgwick,hotel,43000
+CO,Sedgwick,no_match,12100
+CO,Sedgwick,office,3600
+CO,Sedgwick,quick_service_restaurant,1500
+CO,Sedgwick,retail,49900
+CO,Summit,apartment,1105000
+CO,Summit,full_service_restaurant,191900
+CO,Summit,hotel,1219600
+CO,Summit,no_match,867600
+CO,Summit,office,851900
+CO,Summit,outpatient,86100
+CO,Summit,quick_service_restaurant,9900
+CO,Summit,retail,2447900
+CO,Summit,strip_mall,201100
+CO,Summit,warehouse,338100
+CO,Teller,apartment,401100
+CO,Teller,full_service_restaurant,65400
+CO,Teller,hotel,449900
+CO,Teller,no_match,386500
+CO,Teller,office,327300
+CO,Teller,outpatient,192100
+CO,Teller,quick_service_restaurant,15500
+CO,Teller,retail,797500
+CO,Teller,school,27600
+CO,Teller,strip_mall,225800
+CO,Teller,supermarket,89000
+CO,Teller,warehouse,290500
+CO,Washington,apartment,52100
+CO,Washington,full_service_restaurant,4100
+CO,Washington,no_match,21300
+CO,Washington,office,2100
+CO,Washington,quick_service_restaurant,3300
+CO,Washington,retail,23600
+CO,Washington,strip_mall,7500
+CO,Weld,apartment,13483900
+CO,Weld,full_service_restaurant,562000
+CO,Weld,hospital,1551000
+CO,Weld,hotel,1454200
+CO,Weld,no_match,16142300
+CO,Weld,office,7211100
+CO,Weld,outpatient,1036400
+CO,Weld,quick_service_restaurant,189900
+CO,Weld,retail,9409300
+CO,Weld,school,479000
+CO,Weld,strip_mall,1117900
+CO,Weld,supermarket,689700
+CO,Weld,warehouse,16280000
+CO,Yuma,apartment,23100
+CO,Yuma,full_service_restaurant,2200
+CO,Yuma,hotel,19700
+CO,Yuma,no_match,64700
+CO,Yuma,office,22000
+CO,Yuma,quick_service_restaurant,3800
+CO,Yuma,retail,203100
+CO,Yuma,strip_mall,107900
+CO,Yuma,warehouse,64800
+ID,Ada,apartment,38307800
+ID,Ada,full_service_restaurant,1215400
+ID,Ada,hospital,2469900
+ID,Ada,hotel,4687400
+ID,Ada,no_match,13760900
+ID,Ada,office,28182200
+ID,Ada,outpatient,4598000
+ID,Ada,quick_service_restaurant,380600
+ID,Ada,retail,22045700
+ID,Ada,school,1562200
+ID,Ada,strip_mall,2585200
+ID,Ada,supermarket,1221300
+ID,Ada,warehouse,26988700
+ID,Adams,apartment,41400
+ID,Adams,full_service_restaurant,14800
+ID,Adams,hotel,52500
+ID,Adams,no_match,69600
+ID,Adams,office,17800
+ID,Adams,outpatient,2200
+ID,Adams,quick_service_restaurant,2000
+ID,Adams,retail,50600
+ID,Adams,strip_mall,7400
+ID,Adams,warehouse,74000
+ID,Bannock,apartment,2688600
+ID,Bannock,full_service_restaurant,769600
+ID,Bannock,hospital,216500
+ID,Bannock,hotel,527800
+ID,Bannock,no_match,2705100
+ID,Bannock,office,2152600
+ID,Bannock,outpatient,589000
+ID,Bannock,quick_service_restaurant,66200
+ID,Bannock,retail,3313600
+ID,Bannock,strip_mall,261000
+ID,Bannock,supermarket,222500
+ID,Bannock,warehouse,1392300
+ID,Bear Lake,apartment,48300
+ID,Bear Lake,full_service_restaurant,4200
+ID,Bear Lake,hotel,13300
+ID,Bear Lake,no_match,88700
+ID,Bear Lake,office,27300
+ID,Bear Lake,retail,109000
+ID,Bear Lake,strip_mall,47300
+ID,Bear Lake,warehouse,52000
+ID,Benewah,apartment,52100
+ID,Benewah,full_service_restaurant,18800
+ID,Benewah,hotel,18500
+ID,Benewah,no_match,294300
+ID,Benewah,office,66900
+ID,Benewah,retail,93400
+ID,Benewah,strip_mall,78700
+ID,Benewah,warehouse,59200
+ID,Bingham,apartment,582200
+ID,Bingham,full_service_restaurant,47800
+ID,Bingham,hotel,47000
+ID,Bingham,no_match,210300
+ID,Bingham,office,280900
+ID,Bingham,outpatient,89400
+ID,Bingham,quick_service_restaurant,21800
+ID,Bingham,retail,573200
+ID,Bingham,strip_mall,178000
+ID,Bingham,supermarket,41000
+ID,Bingham,warehouse,319600
+ID,Blaine,apartment,725200
+ID,Blaine,full_service_restaurant,56300
+ID,Blaine,hotel,420900
+ID,Blaine,no_match,186000
+ID,Blaine,office,723000
+ID,Blaine,outpatient,15400
+ID,Blaine,quick_service_restaurant,4300
+ID,Blaine,retail,416500
+ID,Blaine,school,4200
+ID,Blaine,strip_mall,105300
+ID,Blaine,supermarket,51700
+ID,Blaine,warehouse,231500
+ID,Boise,apartment,25500
+ID,Boise,full_service_restaurant,46300
+ID,Boise,hotel,43200
+ID,Boise,no_match,200500
+ID,Boise,office,30800
+ID,Boise,outpatient,7400
+ID,Boise,quick_service_restaurant,2400
+ID,Boise,retail,134100
+ID,Boise,strip_mall,20000
+ID,Boise,supermarket,6900
+ID,Boise,warehouse,151300
+ID,Bonner,apartment,781700
+ID,Bonner,full_service_restaurant,203100
+ID,Bonner,hospital,123100
+ID,Bonner,hotel,357000
+ID,Bonner,no_match,641000
+ID,Bonner,office,1446900
+ID,Bonner,outpatient,324800
+ID,Bonner,quick_service_restaurant,27300
+ID,Bonner,retail,2107000
+ID,Bonner,school,36800
+ID,Bonner,strip_mall,177800
+ID,Bonner,supermarket,65900
+ID,Bonner,warehouse,1381700
+ID,Bonneville,apartment,4306700
+ID,Bonneville,full_service_restaurant,277000
+ID,Bonneville,hospital,527400
+ID,Bonneville,hotel,1044700
+ID,Bonneville,no_match,1511900
+ID,Bonneville,office,3700700
+ID,Bonneville,outpatient,537100
+ID,Bonneville,quick_service_restaurant,296300
+ID,Bonneville,retail,6276400
+ID,Bonneville,school,167500
+ID,Bonneville,strip_mall,438600
+ID,Bonneville,supermarket,124600
+ID,Bonneville,warehouse,4006100
+ID,Boundary,apartment,126200
+ID,Boundary,full_service_restaurant,34500
+ID,Boundary,hotel,213900
+ID,Boundary,no_match,162300
+ID,Boundary,office,93500
+ID,Boundary,outpatient,2400
+ID,Boundary,retail,297900
+ID,Boundary,school,11300
+ID,Boundary,strip_mall,23300
+ID,Boundary,supermarket,34800
+ID,Boundary,warehouse,54100
+ID,Butte,apartment,15400
+ID,Butte,full_service_restaurant,5800
+ID,Butte,hotel,10000
+ID,Butte,no_match,8000
+ID,Butte,office,15900
+ID,Butte,outpatient,1200
+ID,Butte,retail,24200
+ID,Butte,warehouse,3200
+ID,Camas,full_service_restaurant,5700
+ID,Camas,hotel,4500
+ID,Camas,no_match,3200
+ID,Camas,office,2100
+ID,Camas,retail,7400
+ID,Camas,strip_mall,3200
+ID,Camas,warehouse,15700
+ID,Canyon,apartment,8239800
+ID,Canyon,full_service_restaurant,449500
+ID,Canyon,hospital,1011800
+ID,Canyon,hotel,676500
+ID,Canyon,no_match,10124600
+ID,Canyon,office,3643800
+ID,Canyon,outpatient,1232900
+ID,Canyon,quick_service_restaurant,167200
+ID,Canyon,retail,8334000
+ID,Canyon,school,301800
+ID,Canyon,strip_mall,861300
+ID,Canyon,supermarket,284400
+ID,Canyon,warehouse,12490600
+ID,Caribou,apartment,46800
+ID,Caribou,full_service_restaurant,2400
+ID,Caribou,hotel,3800
+ID,Caribou,no_match,247600
+ID,Caribou,office,14600
+ID,Caribou,quick_service_restaurant,1600
+ID,Caribou,retail,71600
+ID,Caribou,strip_mall,42800
+ID,Caribou,warehouse,185900
+ID,Cassia,apartment,612900
+ID,Cassia,full_service_restaurant,77800
+ID,Cassia,hospital,52400
+ID,Cassia,hotel,115200
+ID,Cassia,no_match,786000
+ID,Cassia,office,281200
+ID,Cassia,outpatient,141500
+ID,Cassia,quick_service_restaurant,11800
+ID,Cassia,retail,1145200
+ID,Cassia,school,16100
+ID,Cassia,strip_mall,206900
+ID,Cassia,supermarket,33800
+ID,Cassia,warehouse,1804600
+ID,Clark,apartment,28400
+ID,Clark,hotel,6000
+ID,Clark,no_match,101500
+ID,Clark,retail,7000
+ID,Clark,warehouse,27200
+ID,Clearwater,apartment,27900
+ID,Clearwater,full_service_restaurant,14400
+ID,Clearwater,hotel,53800
+ID,Clearwater,no_match,13800
+ID,Clearwater,office,32100
+ID,Clearwater,retail,119400
+ID,Clearwater,strip_mall,22300
+ID,Clearwater,supermarket,19400
+ID,Clearwater,warehouse,7100
+ID,Custer,full_service_restaurant,20100
+ID,Custer,hotel,54300
+ID,Custer,no_match,9400
+ID,Custer,office,11500
+ID,Custer,retail,50200
+ID,Custer,strip_mall,1600
+ID,Custer,supermarket,7500
+ID,Custer,warehouse,1900
+ID,Elmore,apartment,1920700
+ID,Elmore,full_service_restaurant,72000
+ID,Elmore,hospital,206700
+ID,Elmore,hotel,225800
+ID,Elmore,no_match,350300
+ID,Elmore,office,229800
+ID,Elmore,outpatient,50000
+ID,Elmore,quick_service_restaurant,27500
+ID,Elmore,retail,899200
+ID,Elmore,school,53300
+ID,Elmore,strip_mall,239200
+ID,Elmore,supermarket,65000
+ID,Elmore,warehouse,1024200
+ID,Franklin,apartment,58700
+ID,Franklin,hotel,15800
+ID,Franklin,no_match,57000
+ID,Franklin,office,30600
+ID,Franklin,quick_service_restaurant,6400
+ID,Franklin,retail,181800
+ID,Franklin,strip_mall,5000
+ID,Franklin,warehouse,62200
+ID,Fremont,apartment,46400
+ID,Fremont,full_service_restaurant,29000
+ID,Fremont,hotel,50100
+ID,Fremont,no_match,67200
+ID,Fremont,office,35400
+ID,Fremont,quick_service_restaurant,2900
+ID,Fremont,retail,147700
+ID,Fremont,strip_mall,8200
+ID,Fremont,supermarket,4600
+ID,Fremont,warehouse,123200
+ID,Gem,apartment,339300
+ID,Gem,full_service_restaurant,45300
+ID,Gem,hospital,30800
+ID,Gem,hotel,6900
+ID,Gem,no_match,864100
+ID,Gem,office,209700
+ID,Gem,outpatient,101400
+ID,Gem,quick_service_restaurant,10800
+ID,Gem,retail,614900
+ID,Gem,school,4500
+ID,Gem,strip_mall,108900
+ID,Gem,supermarket,41900
+ID,Gem,warehouse,261800
+ID,Gooding,apartment,270700
+ID,Gooding,full_service_restaurant,33000
+ID,Gooding,hospital,40000
+ID,Gooding,hotel,75900
+ID,Gooding,no_match,78800
+ID,Gooding,office,101700
+ID,Gooding,outpatient,17700
+ID,Gooding,quick_service_restaurant,3200
+ID,Gooding,retail,328900
+ID,Gooding,school,3800
+ID,Gooding,strip_mall,225800
+ID,Gooding,supermarket,53000
+ID,Gooding,warehouse,474400
+ID,Idaho,apartment,63900
+ID,Idaho,full_service_restaurant,46900
+ID,Idaho,hotel,113900
+ID,Idaho,no_match,86100
+ID,Idaho,office,125600
+ID,Idaho,outpatient,3600
+ID,Idaho,quick_service_restaurant,2000
+ID,Idaho,retail,183400
+ID,Idaho,school,26000
+ID,Idaho,strip_mall,22100
+ID,Idaho,supermarket,6100
+ID,Idaho,warehouse,18300
+ID,Jefferson,apartment,56600
+ID,Jefferson,full_service_restaurant,34300
+ID,Jefferson,hotel,6800
+ID,Jefferson,no_match,94600
+ID,Jefferson,office,178400
+ID,Jefferson,outpatient,5800
+ID,Jefferson,quick_service_restaurant,3100
+ID,Jefferson,retail,176400
+ID,Jefferson,strip_mall,113600
+ID,Jefferson,warehouse,110700
+ID,Jerome,apartment,392900
+ID,Jerome,full_service_restaurant,34900
+ID,Jerome,hospital,55600
+ID,Jerome,hotel,154100
+ID,Jerome,no_match,1057200
+ID,Jerome,office,216700
+ID,Jerome,outpatient,26600
+ID,Jerome,quick_service_restaurant,26600
+ID,Jerome,retail,715700
+ID,Jerome,school,7400
+ID,Jerome,strip_mall,155900
+ID,Jerome,supermarket,8300
+ID,Jerome,warehouse,1921800
+ID,Kootenai,apartment,9232500
+ID,Kootenai,full_service_restaurant,583100
+ID,Kootenai,hospital,240000
+ID,Kootenai,hotel,1740200
+ID,Kootenai,no_match,4453200
+ID,Kootenai,office,6402400
+ID,Kootenai,outpatient,1159500
+ID,Kootenai,quick_service_restaurant,132200
+ID,Kootenai,retail,9480300
+ID,Kootenai,school,115600
+ID,Kootenai,strip_mall,688000
+ID,Kootenai,supermarket,400000
+ID,Kootenai,warehouse,6189100
+ID,Latah,apartment,1392300
+ID,Latah,full_service_restaurant,49600
+ID,Latah,hotel,360200
+ID,Latah,no_match,190300
+ID,Latah,office,440300
+ID,Latah,outpatient,41900
+ID,Latah,quick_service_restaurant,20200
+ID,Latah,retail,1331100
+ID,Latah,strip_mall,140000
+ID,Latah,supermarket,11600
+ID,Latah,warehouse,167700
+ID,Lemhi,apartment,136300
+ID,Lemhi,full_service_restaurant,46400
+ID,Lemhi,hotel,84900
+ID,Lemhi,no_match,37300
+ID,Lemhi,office,76400
+ID,Lemhi,quick_service_restaurant,4700
+ID,Lemhi,retail,132500
+ID,Lemhi,strip_mall,64900
+ID,Lemhi,warehouse,33600
+ID,Lewis,apartment,9400
+ID,Lewis,full_service_restaurant,3300
+ID,Lewis,hotel,37800
+ID,Lewis,no_match,52300
+ID,Lewis,office,4200
+ID,Lewis,retail,51700
+ID,Lewis,warehouse,23000
+ID,Lincoln,apartment,86700
+ID,Lincoln,full_service_restaurant,4400
+ID,Lincoln,hotel,34900
+ID,Lincoln,no_match,44200
+ID,Lincoln,office,41100
+ID,Lincoln,outpatient,5900
+ID,Lincoln,retail,124800
+ID,Lincoln,strip_mall,42800
+ID,Lincoln,supermarket,14100
+ID,Lincoln,warehouse,115300
+ID,Madison,apartment,5980400
+ID,Madison,full_service_restaurant,33700
+ID,Madison,hotel,160700
+ID,Madison,no_match,125100
+ID,Madison,office,487400
+ID,Madison,outpatient,25500
+ID,Madison,quick_service_restaurant,22400
+ID,Madison,retail,1857400
+ID,Madison,school,469000
+ID,Madison,strip_mall,155700
+ID,Madison,supermarket,42000
+ID,Madison,warehouse,242300
+ID,Minidoka,apartment,300100
+ID,Minidoka,full_service_restaurant,74200
+ID,Minidoka,hospital,66700
+ID,Minidoka,hotel,251600
+ID,Minidoka,no_match,965500
+ID,Minidoka,office,175500
+ID,Minidoka,outpatient,30200
+ID,Minidoka,quick_service_restaurant,28600
+ID,Minidoka,retail,904300
+ID,Minidoka,school,3500
+ID,Minidoka,strip_mall,153900
+ID,Minidoka,supermarket,89400
+ID,Minidoka,warehouse,1746300
+ID,Nez Perce,apartment,914100
+ID,Nez Perce,full_service_restaurant,46700
+ID,Nez Perce,hospital,453100
+ID,Nez Perce,hotel,303200
+ID,Nez Perce,no_match,2659800
+ID,Nez Perce,office,508300
+ID,Nez Perce,outpatient,46000
+ID,Nez Perce,quick_service_restaurant,27300
+ID,Nez Perce,retail,2104000
+ID,Nez Perce,school,8900
+ID,Nez Perce,strip_mall,279900
+ID,Nez Perce,supermarket,59300
+ID,Nez Perce,warehouse,237800
+ID,Oneida,apartment,10600
+ID,Oneida,full_service_restaurant,1800
+ID,Oneida,no_match,3000
+ID,Oneida,office,5200
+ID,Oneida,quick_service_restaurant,2900
+ID,Oneida,retail,99900
+ID,Oneida,strip_mall,1000
+ID,Oneida,warehouse,8300
+ID,Owyhee,apartment,77200
+ID,Owyhee,full_service_restaurant,24900
+ID,Owyhee,hotel,12500
+ID,Owyhee,no_match,213400
+ID,Owyhee,office,66800
+ID,Owyhee,outpatient,17700
+ID,Owyhee,quick_service_restaurant,8000
+ID,Owyhee,retail,199400
+ID,Owyhee,strip_mall,56200
+ID,Owyhee,supermarket,20500
+ID,Owyhee,warehouse,137900
+ID,Payette,apartment,716100
+ID,Payette,full_service_restaurant,83100
+ID,Payette,hospital,11300
+ID,Payette,hotel,11500
+ID,Payette,no_match,1620300
+ID,Payette,office,448100
+ID,Payette,outpatient,91100
+ID,Payette,quick_service_restaurant,17800
+ID,Payette,retail,561200
+ID,Payette,school,3200
+ID,Payette,strip_mall,105400
+ID,Payette,supermarket,68400
+ID,Payette,warehouse,1211600
+ID,Power,apartment,189200
+ID,Power,full_service_restaurant,8600
+ID,Power,hotel,3300
+ID,Power,no_match,403500
+ID,Power,office,13200
+ID,Power,quick_service_restaurant,7200
+ID,Power,retail,84600
+ID,Power,school,4000
+ID,Power,strip_mall,15800
+ID,Power,warehouse,567500
+ID,Shoshone,apartment,290100
+ID,Shoshone,full_service_restaurant,94600
+ID,Shoshone,hotel,268900
+ID,Shoshone,no_match,352400
+ID,Shoshone,office,323400
+ID,Shoshone,outpatient,53900
+ID,Shoshone,quick_service_restaurant,5000
+ID,Shoshone,retail,450900
+ID,Shoshone,school,14800
+ID,Shoshone,strip_mall,74400
+ID,Shoshone,supermarket,25500
+ID,Shoshone,warehouse,80700
+ID,Teton,apartment,103200
+ID,Teton,full_service_restaurant,13000
+ID,Teton,hotel,99600
+ID,Teton,no_match,68500
+ID,Teton,office,183200
+ID,Teton,outpatient,10700
+ID,Teton,retail,111300
+ID,Teton,school,6000
+ID,Teton,strip_mall,1200
+ID,Teton,supermarket,42200
+ID,Teton,warehouse,85500
+ID,Twin Falls,apartment,3388900
+ID,Twin Falls,full_service_restaurant,296900
+ID,Twin Falls,hospital,1774400
+ID,Twin Falls,hotel,956200
+ID,Twin Falls,no_match,3874300
+ID,Twin Falls,office,2093100
+ID,Twin Falls,outpatient,680000
+ID,Twin Falls,quick_service_restaurant,86200
+ID,Twin Falls,retail,5237900
+ID,Twin Falls,school,17500
+ID,Twin Falls,strip_mall,983800
+ID,Twin Falls,supermarket,196100
+ID,Twin Falls,warehouse,5807900
+ID,Valley,apartment,178600
+ID,Valley,full_service_restaurant,69300
+ID,Valley,hotel,607500
+ID,Valley,no_match,260900
+ID,Valley,office,276100
+ID,Valley,outpatient,23800
+ID,Valley,quick_service_restaurant,1700
+ID,Valley,retail,322900
+ID,Valley,strip_mall,129200
+ID,Valley,supermarket,32700
+ID,Valley,warehouse,474100
+ID,Washington,apartment,329700
+ID,Washington,full_service_restaurant,54000
+ID,Washington,hospital,15200
+ID,Washington,hotel,55500
+ID,Washington,no_match,254500
+ID,Washington,office,150200
+ID,Washington,outpatient,59900
+ID,Washington,quick_service_restaurant,4100
+ID,Washington,retail,187100
+ID,Washington,strip_mall,88500
+ID,Washington,supermarket,64700
+ID,Washington,warehouse,564400
+MT,Beaverhead,apartment,123900
+MT,Beaverhead,full_service_restaurant,52600
+MT,Beaverhead,hotel,167600
+MT,Beaverhead,no_match,49500
+MT,Beaverhead,office,124500
+MT,Beaverhead,outpatient,66300
+MT,Beaverhead,quick_service_restaurant,10200
+MT,Beaverhead,retail,275800
+MT,Beaverhead,strip_mall,22900
+MT,Beaverhead,supermarket,44200
+MT,Beaverhead,warehouse,354500
+MT,Big Horn,apartment,89700
+MT,Big Horn,full_service_restaurant,16400
+MT,Big Horn,hotel,121300
+MT,Big Horn,no_match,203100
+MT,Big Horn,office,50400
+MT,Big Horn,quick_service_restaurant,6100
+MT,Big Horn,retail,132900
+MT,Big Horn,strip_mall,39600
+MT,Big Horn,supermarket,50800
+MT,Big Horn,warehouse,28200
+MT,Blaine,apartment,41000
+MT,Blaine,full_service_restaurant,9300
+MT,Blaine,hotel,24600
+MT,Blaine,no_match,7100
+MT,Blaine,office,27700
+MT,Blaine,retail,29400
+MT,Blaine,supermarket,40000
+MT,Broadwater,apartment,8500
+MT,Broadwater,full_service_restaurant,30400
+MT,Broadwater,hotel,50800
+MT,Broadwater,no_match,99700
+MT,Broadwater,office,13500
+MT,Broadwater,retail,98100
+MT,Broadwater,strip_mall,14100
+MT,Broadwater,warehouse,26000
+MT,Carbon,apartment,87300
+MT,Carbon,full_service_restaurant,60600
+MT,Carbon,hospital,70800
+MT,Carbon,hotel,176700
+MT,Carbon,no_match,64500
+MT,Carbon,office,40500
+MT,Carbon,outpatient,1200
+MT,Carbon,quick_service_restaurant,2500
+MT,Carbon,retail,196500
+MT,Carbon,strip_mall,19800
+MT,Carbon,supermarket,19800
+MT,Carbon,warehouse,93700
+MT,Carter,no_match,3600
+MT,Carter,retail,12600
+MT,Cascade,apartment,2989200
+MT,Cascade,full_service_restaurant,217400
+MT,Cascade,hospital,127200
+MT,Cascade,hotel,831100
+MT,Cascade,no_match,918700
+MT,Cascade,office,2558300
+MT,Cascade,outpatient,402800
+MT,Cascade,quick_service_restaurant,95400
+MT,Cascade,retail,3367200
+MT,Cascade,school,47500
+MT,Cascade,strip_mall,466300
+MT,Cascade,supermarket,129000
+MT,Cascade,warehouse,5504100
+MT,Chouteau,apartment,22100
+MT,Chouteau,full_service_restaurant,20500
+MT,Chouteau,hotel,18600
+MT,Chouteau,no_match,15400
+MT,Chouteau,office,18700
+MT,Chouteau,retail,85800
+MT,Chouteau,warehouse,34100
+MT,Custer,apartment,29600
+MT,Custer,hotel,95100
+MT,Custer,no_match,284800
+MT,Custer,office,85800
+MT,Custer,outpatient,2400
+MT,Custer,quick_service_restaurant,13100
+MT,Custer,retail,473500
+MT,Custer,strip_mall,20400
+MT,Custer,supermarket,29400
+MT,Custer,warehouse,81500
+MT,Daniels,apartment,10100
+MT,Daniels,hotel,12900
+MT,Daniels,no_match,12000
+MT,Daniels,retail,6400
+MT,Daniels,strip_mall,15100
+MT,Dawson,apartment,181800
+MT,Dawson,full_service_restaurant,13400
+MT,Dawson,hotel,201800
+MT,Dawson,no_match,785700
+MT,Dawson,office,59400
+MT,Dawson,quick_service_restaurant,7300
+MT,Dawson,retail,255800
+MT,Dawson,strip_mall,55000
+MT,Dawson,warehouse,33200
+MT,Deer Lodge,apartment,99900
+MT,Deer Lodge,full_service_restaurant,42800
+MT,Deer Lodge,hotel,41900
+MT,Deer Lodge,no_match,29500
+MT,Deer Lodge,office,79700
+MT,Deer Lodge,outpatient,6800
+MT,Deer Lodge,quick_service_restaurant,7600
+MT,Deer Lodge,retail,170800
+MT,Deer Lodge,school,3500
+MT,Deer Lodge,strip_mall,28400
+MT,Deer Lodge,supermarket,22300
+MT,Deer Lodge,warehouse,70800
+MT,Fallon,apartment,21400
+MT,Fallon,hotel,31300
+MT,Fallon,no_match,43100
+MT,Fallon,office,2100
+MT,Fallon,retail,98800
+MT,Fallon,warehouse,27900
+MT,Fergus,apartment,168900
+MT,Fergus,full_service_restaurant,8900
+MT,Fergus,hotel,34500
+MT,Fergus,no_match,11200
+MT,Fergus,office,205200
+MT,Fergus,quick_service_restaurant,15300
+MT,Fergus,retail,108300
+MT,Fergus,strip_mall,28200
+MT,Fergus,supermarket,65600
+MT,Fergus,warehouse,29700
+MT,Flathead,apartment,1683400
+MT,Flathead,full_service_restaurant,198400
+MT,Flathead,hospital,209400
+MT,Flathead,hotel,1240600
+MT,Flathead,no_match,954300
+MT,Flathead,office,2401100
+MT,Flathead,outpatient,174100
+MT,Flathead,quick_service_restaurant,63100
+MT,Flathead,retail,5012000
+MT,Flathead,school,28200
+MT,Flathead,strip_mall,412100
+MT,Flathead,supermarket,200000
+MT,Flathead,warehouse,1802800
+MT,Gallatin,apartment,3630700
+MT,Gallatin,full_service_restaurant,196900
+MT,Gallatin,hospital,460500
+MT,Gallatin,hotel,1161600
+MT,Gallatin,no_match,1336500
+MT,Gallatin,office,3480600
+MT,Gallatin,outpatient,246600
+MT,Gallatin,quick_service_restaurant,227000
+MT,Gallatin,retail,4185100
+MT,Gallatin,school,102900
+MT,Gallatin,strip_mall,435400
+MT,Gallatin,supermarket,201500
+MT,Gallatin,warehouse,1908000
+MT,Garfield,apartment,6600
+MT,Garfield,full_service_restaurant,4000
+MT,Glacier,apartment,103400
+MT,Glacier,full_service_restaurant,11200
+MT,Glacier,hospital,141900
+MT,Glacier,hotel,127000
+MT,Glacier,no_match,15300
+MT,Glacier,office,24400
+MT,Glacier,outpatient,1700
+MT,Glacier,quick_service_restaurant,10000
+MT,Glacier,retail,119400
+MT,Glacier,school,13000
+MT,Glacier,strip_mall,17900
+MT,Glacier,supermarket,40000
+MT,Golden Valley,full_service_restaurant,2500
+MT,Golden Valley,no_match,3400
+MT,Golden Valley,retail,3600
+MT,Granite,full_service_restaurant,29200
+MT,Granite,hotel,21000
+MT,Granite,no_match,401700
+MT,Granite,office,4700
+MT,Granite,retail,46500
+MT,Granite,strip_mall,15800
+MT,Granite,supermarket,5900
+MT,Granite,warehouse,14000
+MT,Hill,apartment,178700
+MT,Hill,full_service_restaurant,33400
+MT,Hill,hotel,200400
+MT,Hill,no_match,80200
+MT,Hill,office,127000
+MT,Hill,quick_service_restaurant,11100
+MT,Hill,retail,474500
+MT,Hill,strip_mall,102200
+MT,Hill,supermarket,170700
+MT,Hill,warehouse,59000
+MT,Jefferson,apartment,41700
+MT,Jefferson,full_service_restaurant,23500
+MT,Jefferson,hotel,18500
+MT,Jefferson,no_match,21600
+MT,Jefferson,office,26000
+MT,Jefferson,retail,50100
+MT,Jefferson,school,1500
+MT,Jefferson,strip_mall,12500
+MT,Jefferson,supermarket,17300
+MT,Jefferson,warehouse,32600
+MT,Judith Basin,full_service_restaurant,19800
+MT,Judith Basin,hotel,2900
+MT,Judith Basin,retail,15200
+MT,Lake,apartment,192900
+MT,Lake,full_service_restaurant,135600
+MT,Lake,hospital,101000
+MT,Lake,hotel,113500
+MT,Lake,no_match,183300
+MT,Lake,office,165600
+MT,Lake,quick_service_restaurant,17400
+MT,Lake,retail,809800
+MT,Lake,school,2300
+MT,Lake,strip_mall,62700
+MT,Lake,supermarket,102800
+MT,Lake,warehouse,289100
+MT,Lewis and Clark,apartment,1858900
+MT,Lewis and Clark,full_service_restaurant,140900
+MT,Lewis and Clark,hotel,485300
+MT,Lewis and Clark,no_match,641200
+MT,Lewis and Clark,office,2658800
+MT,Lewis and Clark,outpatient,115800
+MT,Lewis and Clark,quick_service_restaurant,48500
+MT,Lewis and Clark,retail,3165800
+MT,Lewis and Clark,strip_mall,175200
+MT,Lewis and Clark,supermarket,94600
+MT,Lewis and Clark,warehouse,758300
+MT,Liberty,apartment,8500
+MT,Liberty,full_service_restaurant,4200
+MT,Liberty,hotel,15300
+MT,Liberty,no_match,2700
+MT,Liberty,office,2900
+MT,Liberty,retail,6000
+MT,Liberty,strip_mall,6300
+MT,Lincoln,apartment,113600
+MT,Lincoln,full_service_restaurant,101200
+MT,Lincoln,hotel,111300
+MT,Lincoln,no_match,307100
+MT,Lincoln,office,110000
+MT,Lincoln,outpatient,6800
+MT,Lincoln,quick_service_restaurant,4300
+MT,Lincoln,retail,274700
+MT,Lincoln,school,29200
+MT,Lincoln,strip_mall,32300
+MT,Lincoln,supermarket,45900
+MT,Lincoln,warehouse,185200
+MT,Madison,apartment,41200
+MT,Madison,full_service_restaurant,51500
+MT,Madison,hotel,165100
+MT,Madison,no_match,294900
+MT,Madison,office,69600
+MT,Madison,retail,140700
+MT,Madison,strip_mall,33200
+MT,Madison,warehouse,49200
+MT,McCone,apartment,4000
+MT,McCone,full_service_restaurant,5000
+MT,McCone,no_match,36000
+MT,McCone,office,10300
+MT,McCone,retail,7000
+MT,McCone,supermarket,17600
+MT,Meagher,apartment,6000
+MT,Meagher,full_service_restaurant,10100
+MT,Meagher,hotel,28000
+MT,Meagher,retail,22200
+MT,Meagher,strip_mall,4000
+MT,Mineral,apartment,6500
+MT,Mineral,full_service_restaurant,34600
+MT,Mineral,hotel,37100
+MT,Mineral,no_match,706000
+MT,Mineral,office,11800
+MT,Mineral,quick_service_restaurant,3600
+MT,Mineral,retail,72500
+MT,Mineral,strip_mall,12000
+MT,Mineral,warehouse,27000
+MT,Missoula,apartment,5227100
+MT,Missoula,full_service_restaurant,208000
+MT,Missoula,hospital,933100
+MT,Missoula,hotel,874900
+MT,Missoula,no_match,990800
+MT,Missoula,office,3779000
+MT,Missoula,outpatient,472800
+MT,Missoula,quick_service_restaurant,55800
+MT,Missoula,retail,4977600
+MT,Missoula,school,61400
+MT,Missoula,strip_mall,530000
+MT,Missoula,supermarket,166300
+MT,Missoula,warehouse,2152000
+MT,Musselshell,apartment,42000
+MT,Musselshell,full_service_restaurant,12200
+MT,Musselshell,no_match,6200
+MT,Musselshell,office,44000
+MT,Musselshell,outpatient,1500
+MT,Musselshell,quick_service_restaurant,1800
+MT,Musselshell,retail,26200
+MT,Musselshell,strip_mall,22300
+MT,Musselshell,supermarket,15900
+MT,Musselshell,warehouse,4000
+MT,Park,apartment,193100
+MT,Park,full_service_restaurant,79600
+MT,Park,hotel,446900
+MT,Park,no_match,356600
+MT,Park,office,218300
+MT,Park,outpatient,8000
+MT,Park,quick_service_restaurant,9400
+MT,Park,retail,357200
+MT,Park,school,10000
+MT,Park,strip_mall,62200
+MT,Park,supermarket,44100
+MT,Park,warehouse,105200
+MT,Petroleum,full_service_restaurant,1700
+MT,Petroleum,hotel,1400
+MT,Petroleum,strip_mall,3100
+MT,Phillips,apartment,64600
+MT,Phillips,hotel,12100
+MT,Phillips,no_match,18800
+MT,Phillips,office,6600
+MT,Phillips,retail,64700
+MT,Phillips,strip_mall,10500
+MT,Phillips,supermarket,7600
+MT,Phillips,warehouse,55500
+MT,Pondera,apartment,43700
+MT,Pondera,full_service_restaurant,7400
+MT,Pondera,hotel,4500
+MT,Pondera,no_match,67100
+MT,Pondera,office,57000
+MT,Pondera,retail,91100
+MT,Pondera,strip_mall,51300
+MT,Pondera,warehouse,4800
+MT,Powder River,apartment,6700
+MT,Powder River,hotel,2800
+MT,Powder River,no_match,1900
+MT,Powder River,office,6200
+MT,Powder River,retail,8000
+MT,Powder River,supermarket,7900
+MT,Powell,apartment,89200
+MT,Powell,full_service_restaurant,16700
+MT,Powell,hotel,51400
+MT,Powell,no_match,22400
+MT,Powell,office,42300
+MT,Powell,quick_service_restaurant,6600
+MT,Powell,retail,84400
+MT,Powell,strip_mall,24500
+MT,Powell,warehouse,12500
+MT,Prairie,apartment,10800
+MT,Prairie,no_match,1900
+MT,Prairie,retail,1300
+MT,Ravalli,apartment,536300
+MT,Ravalli,full_service_restaurant,104600
+MT,Ravalli,hotel,116400
+MT,Ravalli,no_match,366500
+MT,Ravalli,office,667800
+MT,Ravalli,outpatient,18900
+MT,Ravalli,quick_service_restaurant,20500
+MT,Ravalli,retail,910700
+MT,Ravalli,strip_mall,183400
+MT,Ravalli,supermarket,63800
+MT,Ravalli,warehouse,438700
+MT,Richland,apartment,256200
+MT,Richland,full_service_restaurant,7100
+MT,Richland,hotel,207600
+MT,Richland,no_match,290400
+MT,Richland,office,70200
+MT,Richland,quick_service_restaurant,12000
+MT,Richland,retail,211700
+MT,Richland,strip_mall,24700
+MT,Richland,supermarket,37300
+MT,Richland,warehouse,449700
+MT,Roosevelt,apartment,32700
+MT,Roosevelt,full_service_restaurant,3800
+MT,Roosevelt,hotel,10000
+MT,Roosevelt,no_match,40000
+MT,Roosevelt,office,16100
+MT,Roosevelt,quick_service_restaurant,4200
+MT,Roosevelt,retail,107000
+MT,Roosevelt,strip_mall,7500
+MT,Roosevelt,supermarket,16000
+MT,Rosebud,apartment,58100
+MT,Rosebud,full_service_restaurant,9800
+MT,Rosebud,hotel,51800
+MT,Rosebud,no_match,21300
+MT,Rosebud,office,23300
+MT,Rosebud,quick_service_restaurant,1400
+MT,Rosebud,retail,95900
+MT,Rosebud,school,37700
+MT,Rosebud,strip_mall,14500
+MT,Rosebud,supermarket,15700
+MT,Rosebud,warehouse,17200
+MT,Sanders,apartment,95800
+MT,Sanders,full_service_restaurant,26400
+MT,Sanders,hotel,185000
+MT,Sanders,no_match,202700
+MT,Sanders,office,92200
+MT,Sanders,outpatient,100
+MT,Sanders,quick_service_restaurant,2600
+MT,Sanders,retail,192000
+MT,Sanders,warehouse,144000
+MT,Sheridan,apartment,6500
+MT,Sheridan,full_service_restaurant,8600
+MT,Sheridan,no_match,12000
+MT,Sheridan,office,30600
+MT,Sheridan,retail,36200
+MT,Sheridan,school,28000
+MT,Sheridan,strip_mall,13000
+MT,Sheridan,warehouse,56900
+MT,Silver Bow,apartment,1046800
+MT,Silver Bow,full_service_restaurant,85700
+MT,Silver Bow,hotel,416000
+MT,Silver Bow,no_match,392200
+MT,Silver Bow,office,983300
+MT,Silver Bow,outpatient,46400
+MT,Silver Bow,quick_service_restaurant,39000
+MT,Silver Bow,retail,1397100
+MT,Silver Bow,school,28900
+MT,Silver Bow,strip_mall,288000
+MT,Silver Bow,supermarket,110500
+MT,Silver Bow,warehouse,485300
+MT,Stillwater,apartment,74600
+MT,Stillwater,full_service_restaurant,59700
+MT,Stillwater,hotel,6200
+MT,Stillwater,no_match,79000
+MT,Stillwater,office,37900
+MT,Stillwater,quick_service_restaurant,3000
+MT,Stillwater,retail,33400
+MT,Stillwater,strip_mall,34700
+MT,Stillwater,supermarket,8500
+MT,Stillwater,warehouse,79700
+MT,Sweet Grass,apartment,17300
+MT,Sweet Grass,full_service_restaurant,18600
+MT,Sweet Grass,hotel,8300
+MT,Sweet Grass,no_match,26000
+MT,Sweet Grass,office,23900
+MT,Sweet Grass,retail,70500
+MT,Sweet Grass,strip_mall,6000
+MT,Sweet Grass,supermarket,10000
+MT,Sweet Grass,warehouse,24000
+MT,Teton,apartment,7000
+MT,Teton,full_service_restaurant,8800
+MT,Teton,hotel,5900
+MT,Teton,no_match,20300
+MT,Teton,office,39300
+MT,Teton,retail,80500
+MT,Teton,warehouse,12700
+MT,Toole,apartment,20200
+MT,Toole,full_service_restaurant,17600
+MT,Toole,hotel,91500
+MT,Toole,no_match,129400
+MT,Toole,office,87500
+MT,Toole,outpatient,4500
+MT,Toole,quick_service_restaurant,3000
+MT,Toole,retail,84000
+MT,Toole,strip_mall,32300
+MT,Toole,supermarket,16400
+MT,Toole,warehouse,55800
+MT,Treasure,full_service_restaurant,5600
+MT,Treasure,retail,10000
+MT,Valley,apartment,37600
+MT,Valley,hotel,29100
+MT,Valley,no_match,73300
+MT,Valley,office,61500
+MT,Valley,quick_service_restaurant,7500
+MT,Valley,retail,170000
+MT,Valley,supermarket,15600
+MT,Wheatland,apartment,35400
+MT,Wheatland,full_service_restaurant,8200
+MT,Wheatland,hotel,22200
+MT,Wheatland,no_match,2900
+MT,Wheatland,retail,38000
+MT,Wibaux,apartment,14200
+MT,Wibaux,hotel,14000
+MT,Wibaux,no_match,2700
+MT,Wibaux,office,5200
+MT,Wibaux,retail,178300
+MT,Yellowstone,apartment,7314400
+MT,Yellowstone,full_service_restaurant,321700
+MT,Yellowstone,hospital,1049000
+MT,Yellowstone,hotel,1910800
+MT,Yellowstone,no_match,2617700
+MT,Yellowstone,office,6241300
+MT,Yellowstone,outpatient,281200
+MT,Yellowstone,quick_service_restaurant,110200
+MT,Yellowstone,retail,7838500
+MT,Yellowstone,school,67800
+MT,Yellowstone,strip_mall,878300
+MT,Yellowstone,supermarket,262300
+MT,Yellowstone,warehouse,6789900
+NM,Bernalillo,apartment,66199000
+NM,Bernalillo,full_service_restaurant,2268400
+NM,Bernalillo,hospital,4567100
+NM,Bernalillo,hotel,14131900
+NM,Bernalillo,no_match,24027900
+NM,Bernalillo,office,34040600
+NM,Bernalillo,outpatient,5767000
+NM,Bernalillo,quick_service_restaurant,742100
+NM,Bernalillo,retail,38925200
+NM,Bernalillo,school,2724600
+NM,Bernalillo,strip_mall,2964200
+NM,Bernalillo,supermarket,2018300
+NM,Bernalillo,warehouse,35366200
+NM,Catron,no_match,9300
+NM,Catron,retail,23800
+NM,Chaves,apartment,1646800
+NM,Chaves,full_service_restaurant,95000
+NM,Chaves,hospital,77500
+NM,Chaves,hotel,474600
+NM,Chaves,no_match,990900
+NM,Chaves,office,1157300
+NM,Chaves,outpatient,157500
+NM,Chaves,quick_service_restaurant,47400
+NM,Chaves,retail,2587100
+NM,Chaves,school,22500
+NM,Chaves,strip_mall,63100
+NM,Chaves,supermarket,55900
+NM,Chaves,warehouse,485000
+NM,Cibola,apartment,391600
+NM,Cibola,full_service_restaurant,50700
+NM,Cibola,hotel,818900
+NM,Cibola,no_match,97600
+NM,Cibola,office,156500
+NM,Cibola,outpatient,29800
+NM,Cibola,quick_service_restaurant,12800
+NM,Cibola,retail,685000
+NM,Cibola,strip_mall,46500
+NM,Cibola,supermarket,10000
+NM,Cibola,warehouse,60400
+NM,Colfax,apartment,158100
+NM,Colfax,full_service_restaurant,45500
+NM,Colfax,hotel,387300
+NM,Colfax,no_match,95000
+NM,Colfax,office,132700
+NM,Colfax,outpatient,7600
+NM,Colfax,quick_service_restaurant,30600
+NM,Colfax,retail,449200
+NM,Colfax,strip_mall,39800
+NM,Colfax,supermarket,7500
+NM,Colfax,warehouse,85100
+NM,Curry,apartment,1762200
+NM,Curry,full_service_restaurant,46500
+NM,Curry,hotel,321300
+NM,Curry,no_match,311000
+NM,Curry,office,311700
+NM,Curry,outpatient,170600
+NM,Curry,quick_service_restaurant,33800
+NM,Curry,retail,2004500
+NM,Curry,school,56000
+NM,Curry,strip_mall,234100
+NM,Curry,supermarket,73500
+NM,Curry,warehouse,344400
+NM,De Baca,office,900
+NM,De Baca,retail,16400
+NM,Do├▒a Ana,apartment,10874400
+NM,Do├▒a Ana,full_service_restaurant,295800
+NM,Do├▒a Ana,hospital,1799100
+NM,Do├▒a Ana,hotel,1398700
+NM,Do├▒a Ana,no_match,3831300
+NM,Do├▒a Ana,office,3860200
+NM,Do├▒a Ana,outpatient,942400
+NM,Do├▒a Ana,quick_service_restaurant,100100
+NM,Do├▒a Ana,retail,6667200
+NM,Do├▒a Ana,school,208500
+NM,Do├▒a Ana,strip_mall,468600
+NM,Do├▒a Ana,supermarket,166500
+NM,Do├▒a Ana,warehouse,6257400
+NM,Eddy,apartment,2121600
+NM,Eddy,full_service_restaurant,105600
+NM,Eddy,hospital,99900
+NM,Eddy,hotel,462300
+NM,Eddy,no_match,371600
+NM,Eddy,office,567100
+NM,Eddy,outpatient,212300
+NM,Eddy,quick_service_restaurant,34300
+NM,Eddy,retail,1963200
+NM,Eddy,strip_mall,79800
+NM,Eddy,supermarket,40000
+NM,Eddy,warehouse,663200
+NM,Grant,apartment,391000
+NM,Grant,full_service_restaurant,108100
+NM,Grant,hotel,170200
+NM,Grant,no_match,259500
+NM,Grant,office,266500
+NM,Grant,outpatient,25600
+NM,Grant,quick_service_restaurant,12500
+NM,Grant,retail,1121400
+NM,Grant,school,16200
+NM,Grant,strip_mall,50500
+NM,Grant,supermarket,39400
+NM,Grant,warehouse,131600
+NM,Guadalupe,apartment,131600
+NM,Guadalupe,full_service_restaurant,13000
+NM,Guadalupe,hotel,147900
+NM,Guadalupe,no_match,6200
+NM,Guadalupe,office,21600
+NM,Guadalupe,quick_service_restaurant,16000
+NM,Guadalupe,retail,67300
+NM,Harding,no_match,9300
+NM,Harding,retail,1500
+NM,Hidalgo,apartment,100
+NM,Hidalgo,full_service_restaurant,5200
+NM,Hidalgo,hotel,230900
+NM,Hidalgo,no_match,19100
+NM,Hidalgo,office,8700
+NM,Hidalgo,quick_service_restaurant,5400
+NM,Hidalgo,retail,72100
+NM,Hidalgo,strip_mall,28500
+NM,Hidalgo,warehouse,57000
+NM,Lea,apartment,3112400
+NM,Lea,full_service_restaurant,80500
+NM,Lea,hotel,587200
+NM,Lea,no_match,527000
+NM,Lea,office,608900
+NM,Lea,outpatient,42900
+NM,Lea,quick_service_restaurant,25300
+NM,Lea,retail,2905400
+NM,Lea,school,2400
+NM,Lea,strip_mall,67700
+NM,Lea,warehouse,700300
+NM,Lincoln,apartment,370000
+NM,Lincoln,full_service_restaurant,90100
+NM,Lincoln,hotel,719300
+NM,Lincoln,no_match,218200
+NM,Lincoln,office,322800
+NM,Lincoln,outpatient,16300
+NM,Lincoln,quick_service_restaurant,13100
+NM,Lincoln,retail,1239400
+NM,Lincoln,school,2700
+NM,Lincoln,strip_mall,58300
+NM,Lincoln,supermarket,43100
+NM,Lincoln,warehouse,147100
+NM,Los Alamos,apartment,702300
+NM,Los Alamos,full_service_restaurant,8900
+NM,Los Alamos,hospital,100700
+NM,Los Alamos,hotel,233400
+NM,Los Alamos,no_match,58100
+NM,Los Alamos,office,590600
+NM,Los Alamos,outpatient,52000
+NM,Los Alamos,quick_service_restaurant,4000
+NM,Los Alamos,retail,655600
+NM,Los Alamos,strip_mall,29000
+NM,Los Alamos,supermarket,96800
+NM,Los Alamos,warehouse,69700
+NM,Luna,apartment,701400
+NM,Luna,full_service_restaurant,40800
+NM,Luna,hotel,294300
+NM,Luna,no_match,684600
+NM,Luna,office,210400
+NM,Luna,outpatient,20500
+NM,Luna,quick_service_restaurant,19700
+NM,Luna,retail,741400
+NM,Luna,strip_mall,96500
+NM,Luna,warehouse,562600
+NM,McKinley,apartment,962100
+NM,McKinley,full_service_restaurant,148500
+NM,McKinley,hotel,593200
+NM,McKinley,no_match,49100
+NM,McKinley,office,273600
+NM,McKinley,outpatient,6900
+NM,McKinley,quick_service_restaurant,38600
+NM,McKinley,retail,2134600
+NM,McKinley,school,110100
+NM,McKinley,strip_mall,35700
+NM,McKinley,warehouse,151200
+NM,Mora,hotel,5600
+NM,Mora,no_match,1100
+NM,Mora,retail,13700
+NM,Otero,apartment,1273800
+NM,Otero,full_service_restaurant,177800
+NM,Otero,hotel,531100
+NM,Otero,no_match,551500
+NM,Otero,office,592100
+NM,Otero,outpatient,61900
+NM,Otero,quick_service_restaurant,31900
+NM,Otero,retail,2616500
+NM,Otero,school,16700
+NM,Otero,strip_mall,132200
+NM,Otero,supermarket,4500
+NM,Otero,warehouse,588900
+NM,Quay,apartment,130300
+NM,Quay,full_service_restaurant,38900
+NM,Quay,hotel,409300
+NM,Quay,no_match,41800
+NM,Quay,office,61400
+NM,Quay,outpatient,6600
+NM,Quay,quick_service_restaurant,8800
+NM,Quay,retail,220500
+NM,Quay,strip_mall,26200
+NM,Quay,warehouse,800
+NM,Rio Arriba,apartment,57900
+NM,Rio Arriba,full_service_restaurant,49500
+NM,Rio Arriba,hospital,6000
+NM,Rio Arriba,hotel,142300
+NM,Rio Arriba,no_match,103200
+NM,Rio Arriba,office,199200
+NM,Rio Arriba,outpatient,57400
+NM,Rio Arriba,quick_service_restaurant,24500
+NM,Rio Arriba,retail,1139400
+NM,Rio Arriba,school,4500
+NM,Rio Arriba,strip_mall,57900
+NM,Rio Arriba,supermarket,30700
+NM,Rio Arriba,warehouse,19000
+NM,Roosevelt,apartment,659800
+NM,Roosevelt,full_service_restaurant,10100
+NM,Roosevelt,hotel,70200
+NM,Roosevelt,no_match,68100
+NM,Roosevelt,office,70500
+NM,Roosevelt,outpatient,4500
+NM,Roosevelt,quick_service_restaurant,9200
+NM,Roosevelt,retail,373400
+NM,Roosevelt,school,1900
+NM,Roosevelt,strip_mall,120100
+NM,Roosevelt,warehouse,306400
+NM,San Juan,apartment,2210400
+NM,San Juan,full_service_restaurant,115500
+NM,San Juan,hotel,948400
+NM,San Juan,no_match,607000
+NM,San Juan,office,1338000
+NM,San Juan,outpatient,111300
+NM,San Juan,quick_service_restaurant,73300
+NM,San Juan,retail,4503900
+NM,San Juan,school,2800
+NM,San Juan,strip_mall,180100
+NM,San Juan,supermarket,244900
+NM,San Juan,warehouse,1238600
+NM,San Miguel,apartment,545500
+NM,San Miguel,full_service_restaurant,36300
+NM,San Miguel,hotel,222200
+NM,San Miguel,no_match,480200
+NM,San Miguel,office,158500
+NM,San Miguel,outpatient,128000
+NM,San Miguel,quick_service_restaurant,18700
+NM,San Miguel,retail,679400
+NM,San Miguel,strip_mall,45300
+NM,San Miguel,supermarket,47600
+NM,San Miguel,warehouse,43000
+NM,Sandoval,apartment,3236800
+NM,Sandoval,full_service_restaurant,210200
+NM,Sandoval,hospital,728300
+NM,Sandoval,hotel,1281100
+NM,Sandoval,no_match,5604900
+NM,Sandoval,office,2767900
+NM,Sandoval,outpatient,597500
+NM,Sandoval,quick_service_restaurant,119800
+NM,Sandoval,retail,3719300
+NM,Sandoval,school,134600
+NM,Sandoval,strip_mall,88500
+NM,Sandoval,supermarket,302100
+NM,Sandoval,warehouse,2829300
+NM,Santa Fe,apartment,8851500
+NM,Santa Fe,full_service_restaurant,367900
+NM,Santa Fe,hospital,110600
+NM,Santa Fe,hotel,2273400
+NM,Santa Fe,no_match,3623300
+NM,Santa Fe,office,6730500
+NM,Santa Fe,outpatient,890900
+NM,Santa Fe,quick_service_restaurant,77700
+NM,Santa Fe,retail,8038300
+NM,Santa Fe,school,1437100
+NM,Santa Fe,strip_mall,384000
+NM,Santa Fe,supermarket,181300
+NM,Santa Fe,warehouse,3680000
+NM,Sierra,apartment,80500
+NM,Sierra,full_service_restaurant,26700
+NM,Sierra,hotel,411600
+NM,Sierra,no_match,183400
+NM,Sierra,office,119200
+NM,Sierra,outpatient,2500
+NM,Sierra,quick_service_restaurant,9200
+NM,Sierra,retail,471300
+NM,Sierra,strip_mall,15000
+NM,Sierra,warehouse,196200
+NM,Socorro,apartment,126900
+NM,Socorro,full_service_restaurant,58600
+NM,Socorro,hotel,223500
+NM,Socorro,no_match,40600
+NM,Socorro,office,70600
+NM,Socorro,outpatient,7600
+NM,Socorro,quick_service_restaurant,10000
+NM,Socorro,retail,400700
+NM,Socorro,strip_mall,24300
+NM,Socorro,supermarket,8900
+NM,Socorro,warehouse,19100
+NM,Taos,apartment,395000
+NM,Taos,full_service_restaurant,121400
+NM,Taos,hospital,7800
+NM,Taos,hotel,1033600
+NM,Taos,no_match,255400
+NM,Taos,office,238000
+NM,Taos,outpatient,34500
+NM,Taos,quick_service_restaurant,11100
+NM,Taos,retail,609800
+NM,Taos,school,38700
+NM,Taos,strip_mall,45700
+NM,Taos,supermarket,125000
+NM,Taos,warehouse,142600
+NM,Torrance,apartment,55200
+NM,Torrance,full_service_restaurant,38200
+NM,Torrance,hotel,247200
+NM,Torrance,no_match,29400
+NM,Torrance,office,99200
+NM,Torrance,outpatient,4000
+NM,Torrance,quick_service_restaurant,18000
+NM,Torrance,retail,499900
+NM,Torrance,strip_mall,28900
+NM,Torrance,warehouse,437700
+NM,Union,apartment,16800
+NM,Union,full_service_restaurant,6300
+NM,Union,hotel,50400
+NM,Union,no_match,18600
+NM,Union,office,6700
+NM,Union,outpatient,5500
+NM,Union,quick_service_restaurant,7300
+NM,Union,retail,42500
+NM,Union,strip_mall,4900
+NM,Union,warehouse,55700
+NM,Valencia,apartment,801100
+NM,Valencia,full_service_restaurant,185000
+NM,Valencia,hotel,422100
+NM,Valencia,no_match,4419700
+NM,Valencia,office,987100
+NM,Valencia,outpatient,219600
+NM,Valencia,quick_service_restaurant,112800
+NM,Valencia,retail,3262800
+NM,Valencia,school,36000
+NM,Valencia,strip_mall,115300
+NM,Valencia,supermarket,53900
+NM,Valencia,warehouse,1908100
+NV,Carson City,apartment,4513500
+NV,Carson City,full_service_restaurant,105200
+NV,Carson City,hospital,535800
+NV,Carson City,hotel,577800
+NV,Carson City,no_match,1926300
+NV,Carson City,office,2693600
+NV,Carson City,outpatient,372900
+NV,Carson City,quick_service_restaurant,55000
+NV,Carson City,retail,3517100
+NV,Carson City,school,13000
+NV,Carson City,strip_mall,344400
+NV,Carson City,supermarket,228100
+NV,Carson City,warehouse,3018200
+NV,Churchill,apartment,642400
+NV,Churchill,full_service_restaurant,12100
+NV,Churchill,hotel,197600
+NV,Churchill,no_match,356600
+NV,Churchill,office,231000
+NV,Churchill,outpatient,48100
+NV,Churchill,quick_service_restaurant,28000
+NV,Churchill,retail,962600
+NV,Churchill,strip_mall,81000
+NV,Churchill,warehouse,449400
+NV,Clark,apartment,262043400
+NV,Clark,full_service_restaurant,4910800
+NV,Clark,hospital,6432000
+NV,Clark,hotel,154052300
+NV,Clark,no_match,69053400
+NV,Clark,office,56178500
+NV,Clark,outpatient,17778600
+NV,Clark,quick_service_restaurant,1708400
+NV,Clark,retail,90721000
+NV,Clark,school,12869200
+NV,Clark,strip_mall,16907200
+NV,Clark,supermarket,4970500
+NV,Clark,warehouse,135379600
+NV,Douglas,apartment,864600
+NV,Douglas,full_service_restaurant,135300
+NV,Douglas,hotel,1884900
+NV,Douglas,no_match,1952100
+NV,Douglas,office,935700
+NV,Douglas,outpatient,160400
+NV,Douglas,quick_service_restaurant,19800
+NV,Douglas,retail,2219900
+NV,Douglas,school,44200
+NV,Douglas,strip_mall,152100
+NV,Douglas,supermarket,54000
+NV,Douglas,warehouse,2473900
+NV,Elko,apartment,2027200
+NV,Elko,full_service_restaurant,24400
+NV,Elko,hospital,176900
+NV,Elko,hotel,1312200
+NV,Elko,no_match,1364600
+NV,Elko,office,595600
+NV,Elko,outpatient,107200
+NV,Elko,quick_service_restaurant,32100
+NV,Elko,retail,1584600
+NV,Elko,school,2600
+NV,Elko,strip_mall,45700
+NV,Elko,supermarket,65300
+NV,Elko,warehouse,931600
+NV,Esmeralda,apartment,81900
+NV,Esmeralda,full_service_restaurant,4600
+NV,Esmeralda,no_match,91400
+NV,Esmeralda,retail,18900
+NV,Eureka,apartment,66100
+NV,Eureka,full_service_restaurant,11200
+NV,Eureka,hotel,35200
+NV,Eureka,no_match,14500
+NV,Eureka,office,4300
+NV,Eureka,retail,20200
+NV,Eureka,warehouse,7500
+NV,Humboldt,apartment,360000
+NV,Humboldt,full_service_restaurant,37600
+NV,Humboldt,hotel,297400
+NV,Humboldt,no_match,76300
+NV,Humboldt,office,125900
+NV,Humboldt,outpatient,9300
+NV,Humboldt,quick_service_restaurant,13600
+NV,Humboldt,retail,690300
+NV,Humboldt,strip_mall,22600
+NV,Humboldt,warehouse,73000
+NV,Lander,apartment,134400
+NV,Lander,full_service_restaurant,2300
+NV,Lander,hotel,89600
+NV,Lander,no_match,59100
+NV,Lander,office,33000
+NV,Lander,quick_service_restaurant,3000
+NV,Lander,retail,112000
+NV,Lander,school,12700
+NV,Lander,strip_mall,6100
+NV,Lander,warehouse,60300
+NV,Lincoln,apartment,30400
+NV,Lincoln,hospital,6100
+NV,Lincoln,hotel,13400
+NV,Lincoln,no_match,31800
+NV,Lincoln,office,6100
+NV,Lincoln,retail,61600
+NV,Lincoln,supermarket,4900
+NV,Lyon,apartment,649000
+NV,Lyon,full_service_restaurant,57100
+NV,Lyon,hotel,156400
+NV,Lyon,no_match,3822500
+NV,Lyon,office,227700
+NV,Lyon,outpatient,47700
+NV,Lyon,quick_service_restaurant,30600
+NV,Lyon,retail,1363600
+NV,Lyon,school,15300
+NV,Lyon,strip_mall,206200
+NV,Lyon,warehouse,5579200
+NV,Mineral,apartment,41700
+NV,Mineral,full_service_restaurant,14200
+NV,Mineral,hotel,84700
+NV,Mineral,no_match,10700
+NV,Mineral,office,16100
+NV,Mineral,quick_service_restaurant,3400
+NV,Mineral,retail,85500
+NV,Mineral,school,60000
+NV,Mineral,warehouse,2004500
+NV,Nye,apartment,612100
+NV,Nye,full_service_restaurant,86200
+NV,Nye,hospital,72700
+NV,Nye,hotel,328700
+NV,Nye,no_match,276100
+NV,Nye,office,317600
+NV,Nye,outpatient,216500
+NV,Nye,quick_service_restaurant,15300
+NV,Nye,retail,1340600
+NV,Nye,school,11300
+NV,Nye,strip_mall,91100
+NV,Nye,supermarket,62400
+NV,Nye,warehouse,363000
+NV,Pershing,apartment,138900
+NV,Pershing,full_service_restaurant,7000
+NV,Pershing,hotel,64500
+NV,Pershing,no_match,108500
+NV,Pershing,office,27900
+NV,Pershing,retail,93200
+NV,Pershing,school,3000
+NV,Pershing,strip_mall,16900
+NV,Pershing,supermarket,15300
+NV,Pershing,warehouse,44600
+NV,Storey,apartment,31100
+NV,Storey,full_service_restaurant,9200
+NV,Storey,hotel,189600
+NV,Storey,no_match,11981500
+NV,Storey,office,327800
+NV,Storey,retail,78400
+NV,Storey,strip_mall,8100
+NV,Storey,warehouse,15530300
+NV,Washoe,apartment,55745900
+NV,Washoe,full_service_restaurant,854900
+NV,Washoe,hospital,2928200
+NV,Washoe,hotel,17380700
+NV,Washoe,no_match,17229900
+NV,Washoe,office,20074600
+NV,Washoe,outpatient,3057000
+NV,Washoe,quick_service_restaurant,333900
+NV,Washoe,retail,22706300
+NV,Washoe,school,404200
+NV,Washoe,strip_mall,3959800
+NV,Washoe,supermarket,363500
+NV,Washoe,warehouse,71494700
+NV,White Pine,apartment,149900
+NV,White Pine,full_service_restaurant,3700
+NV,White Pine,hotel,266400
+NV,White Pine,no_match,57700
+NV,White Pine,office,103600
+NV,White Pine,quick_service_restaurant,3000
+NV,White Pine,retail,243000
+NV,White Pine,strip_mall,58500
+NV,White Pine,warehouse,30800
+OR,Baker,apartment,273700
+OR,Baker,full_service_restaurant,50300
+OR,Baker,hotel,234300
+OR,Baker,no_match,57300
+OR,Baker,office,146700
+OR,Baker,outpatient,4700
+OR,Baker,quick_service_restaurant,5400
+OR,Baker,retail,578600
+OR,Baker,school,52000
+OR,Baker,strip_mall,58100
+OR,Baker,supermarket,35900
+OR,Baker,warehouse,272500
+OR,Benton,apartment,11843200
+OR,Benton,full_service_restaurant,218800
+OR,Benton,hospital,275800
+OR,Benton,hotel,502200
+OR,Benton,no_match,2122800
+OR,Benton,office,2465500
+OR,Benton,outpatient,583900
+OR,Benton,quick_service_restaurant,44800
+OR,Benton,retail,2812700
+OR,Benton,school,857100
+OR,Benton,strip_mall,613100
+OR,Benton,supermarket,114500
+OR,Benton,warehouse,1194000
+OR,Clackamas,apartment,33253100
+OR,Clackamas,full_service_restaurant,738800
+OR,Clackamas,hospital,255600
+OR,Clackamas,hotel,1610600
+OR,Clackamas,no_match,11548000
+OR,Clackamas,office,11226100
+OR,Clackamas,outpatient,1535300
+OR,Clackamas,quick_service_restaurant,205200
+OR,Clackamas,retail,15075800
+OR,Clackamas,school,599700
+OR,Clackamas,strip_mall,903100
+OR,Clackamas,supermarket,908500
+OR,Clackamas,warehouse,26147400
+OR,Clatsop,apartment,1562400
+OR,Clatsop,full_service_restaurant,135300
+OR,Clatsop,hospital,166000
+OR,Clatsop,hotel,1093200
+OR,Clatsop,no_match,533400
+OR,Clatsop,office,619500
+OR,Clatsop,outpatient,42200
+OR,Clatsop,quick_service_restaurant,22400
+OR,Clatsop,retail,2112600
+OR,Clatsop,school,111100
+OR,Clatsop,strip_mall,208700
+OR,Clatsop,supermarket,110100
+OR,Clatsop,warehouse,619100
+OR,Columbia,apartment,1241100
+OR,Columbia,full_service_restaurant,62300
+OR,Columbia,hotel,139600
+OR,Columbia,no_match,1312500
+OR,Columbia,office,447100
+OR,Columbia,outpatient,32500
+OR,Columbia,quick_service_restaurant,15500
+OR,Columbia,retail,1094700
+OR,Columbia,school,54400
+OR,Columbia,strip_mall,162900
+OR,Columbia,supermarket,15000
+OR,Columbia,warehouse,1282100
+OR,Coos,apartment,1337400
+OR,Coos,full_service_restaurant,150800
+OR,Coos,hotel,485000
+OR,Coos,no_match,1096800
+OR,Coos,office,811000
+OR,Coos,outpatient,312500
+OR,Coos,quick_service_restaurant,25500
+OR,Coos,retail,1918800
+OR,Coos,school,55000
+OR,Coos,strip_mall,190200
+OR,Coos,supermarket,229200
+OR,Coos,warehouse,429100
+OR,Crook,apartment,455400
+OR,Crook,full_service_restaurant,42600
+OR,Crook,hospital,62000
+OR,Crook,hotel,149000
+OR,Crook,no_match,1199200
+OR,Crook,office,231800
+OR,Crook,outpatient,127300
+OR,Crook,quick_service_restaurant,12800
+OR,Crook,retail,417500
+OR,Crook,school,54100
+OR,Crook,strip_mall,37700
+OR,Crook,supermarket,16800
+OR,Crook,warehouse,1142200
+OR,Curry,apartment,431600
+OR,Curry,full_service_restaurant,66100
+OR,Curry,hotel,1132300
+OR,Curry,no_match,397700
+OR,Curry,office,146700
+OR,Curry,outpatient,39800
+OR,Curry,quick_service_restaurant,14300
+OR,Curry,retail,556200
+OR,Curry,strip_mall,48100
+OR,Curry,supermarket,162700
+OR,Curry,warehouse,162400
+OR,Deschutes,apartment,8153100
+OR,Deschutes,full_service_restaurant,495900
+OR,Deschutes,hospital,38800
+OR,Deschutes,hotel,1753200
+OR,Deschutes,no_match,3024000
+OR,Deschutes,office,5706300
+OR,Deschutes,outpatient,1183600
+OR,Deschutes,quick_service_restaurant,96300
+OR,Deschutes,retail,6913700
+OR,Deschutes,school,173900
+OR,Deschutes,strip_mall,884600
+OR,Deschutes,supermarket,467200
+OR,Deschutes,warehouse,7310800
+OR,Douglas,apartment,3959100
+OR,Douglas,full_service_restaurant,370700
+OR,Douglas,hotel,1040000
+OR,Douglas,no_match,4553300
+OR,Douglas,office,1897500
+OR,Douglas,outpatient,798700
+OR,Douglas,quick_service_restaurant,130100
+OR,Douglas,retail,4644600
+OR,Douglas,school,70900
+OR,Douglas,strip_mall,612400
+OR,Douglas,supermarket,228500
+OR,Douglas,warehouse,2673300
+OR,Gilliam,apartment,34000
+OR,Gilliam,hotel,35100
+OR,Gilliam,no_match,65700
+OR,Gilliam,retail,7100
+OR,Gilliam,strip_mall,17300
+OR,Gilliam,supermarket,7400
+OR,Gilliam,warehouse,9800
+OR,Grant,apartment,103100
+OR,Grant,full_service_restaurant,13900
+OR,Grant,hotel,56600
+OR,Grant,no_match,127200
+OR,Grant,office,102000
+OR,Grant,quick_service_restaurant,2400
+OR,Grant,retail,120600
+OR,Grant,school,17600
+OR,Grant,strip_mall,26400
+OR,Grant,warehouse,11200
+OR,Harney,apartment,71700
+OR,Harney,full_service_restaurant,11300
+OR,Harney,hotel,101200
+OR,Harney,no_match,214500
+OR,Harney,office,54200
+OR,Harney,outpatient,4700
+OR,Harney,quick_service_restaurant,1400
+OR,Harney,retail,240800
+OR,Harney,strip_mall,26300
+OR,Harney,supermarket,32400
+OR,Harney,warehouse,370500
+OR,Hood River,apartment,516700
+OR,Hood River,full_service_restaurant,35500
+OR,Hood River,hotel,385100
+OR,Hood River,no_match,541800
+OR,Hood River,office,479900
+OR,Hood River,outpatient,15700
+OR,Hood River,quick_service_restaurant,10600
+OR,Hood River,retail,585000
+OR,Hood River,strip_mall,64700
+OR,Hood River,supermarket,4000
+OR,Hood River,warehouse,246100
+OR,Jackson,apartment,7897000
+OR,Jackson,full_service_restaurant,438500
+OR,Jackson,hotel,1918600
+OR,Jackson,no_match,4025000
+OR,Jackson,office,4368500
+OR,Jackson,outpatient,919100
+OR,Jackson,quick_service_restaurant,91100
+OR,Jackson,retail,8056800
+OR,Jackson,school,92800
+OR,Jackson,strip_mall,955900
+OR,Jackson,supermarket,362100
+OR,Jackson,warehouse,6435600
+OR,Jefferson,apartment,647800
+OR,Jefferson,full_service_restaurant,35800
+OR,Jefferson,hotel,124200
+OR,Jefferson,no_match,370900
+OR,Jefferson,office,142700
+OR,Jefferson,outpatient,22600
+OR,Jefferson,quick_service_restaurant,18500
+OR,Jefferson,retail,395100
+OR,Jefferson,strip_mall,59400
+OR,Jefferson,supermarket,65200
+OR,Jefferson,warehouse,202900
+OR,Josephine,apartment,1493700
+OR,Josephine,full_service_restaurant,172600
+OR,Josephine,hotel,193300
+OR,Josephine,no_match,445200
+OR,Josephine,office,644100
+OR,Josephine,outpatient,273500
+OR,Josephine,quick_service_restaurant,37900
+OR,Josephine,retail,2101500
+OR,Josephine,strip_mall,157400
+OR,Josephine,supermarket,330400
+OR,Josephine,warehouse,1046100
+OR,Klamath,apartment,1517300
+OR,Klamath,full_service_restaurant,152800
+OR,Klamath,hotel,410100
+OR,Klamath,no_match,1203600
+OR,Klamath,office,673400
+OR,Klamath,outpatient,283400
+OR,Klamath,quick_service_restaurant,20000
+OR,Klamath,retail,2139500
+OR,Klamath,school,36600
+OR,Klamath,strip_mall,390200
+OR,Klamath,supermarket,130500
+OR,Klamath,warehouse,1460700
+OR,Lake,full_service_restaurant,8900
+OR,Lake,hotel,81400
+OR,Lake,no_match,102500
+OR,Lake,office,73700
+OR,Lake,quick_service_restaurant,2100
+OR,Lake,retail,95600
+OR,Lake,strip_mall,9800
+OR,Lake,supermarket,20100
+OR,Lake,warehouse,156000
+OR,Lane,apartment,35802200
+OR,Lane,full_service_restaurant,1113100
+OR,Lane,hospital,3380500
+OR,Lane,hotel,3349400
+OR,Lane,no_match,19039000
+OR,Lane,office,14025300
+OR,Lane,outpatient,2803800
+OR,Lane,quick_service_restaurant,285000
+OR,Lane,retail,16658000
+OR,Lane,school,458000
+OR,Lane,strip_mall,2308600
+OR,Lane,supermarket,1153400
+OR,Lane,warehouse,18017000
+OR,Lincoln,apartment,2034300
+OR,Lincoln,full_service_restaurant,131000
+OR,Lincoln,hotel,1794400
+OR,Lincoln,no_match,293100
+OR,Lincoln,office,495500
+OR,Lincoln,outpatient,50900
+OR,Lincoln,quick_service_restaurant,12500
+OR,Lincoln,retail,1634800
+OR,Lincoln,school,4400
+OR,Lincoln,strip_mall,282500
+OR,Lincoln,supermarket,24900
+OR,Lincoln,warehouse,361300
+OR,Linn,apartment,7342800
+OR,Linn,full_service_restaurant,343900
+OR,Linn,hospital,155700
+OR,Linn,hotel,538200
+OR,Linn,no_match,5898400
+OR,Linn,office,2346000
+OR,Linn,outpatient,403700
+OR,Linn,quick_service_restaurant,75700
+OR,Linn,retail,5058100
+OR,Linn,school,88300
+OR,Linn,strip_mall,670500
+OR,Linn,supermarket,399100
+OR,Linn,warehouse,8210400
+OR,Malheur,apartment,1130500
+OR,Malheur,full_service_restaurant,111200
+OR,Malheur,hospital,137200
+OR,Malheur,hotel,334800
+OR,Malheur,no_match,1391300
+OR,Malheur,office,430500
+OR,Malheur,outpatient,135400
+OR,Malheur,quick_service_restaurant,83600
+OR,Malheur,retail,1789100
+OR,Malheur,school,11900
+OR,Malheur,strip_mall,305800
+OR,Malheur,supermarket,78400
+OR,Malheur,warehouse,2060200
+OR,Marion,apartment,27989000
+OR,Marion,full_service_restaurant,753700
+OR,Marion,hospital,1694000
+OR,Marion,hotel,1510900
+OR,Marion,no_match,13277500
+OR,Marion,office,10537600
+OR,Marion,outpatient,1872700
+OR,Marion,quick_service_restaurant,226100
+OR,Marion,retail,14602400
+OR,Marion,school,591400
+OR,Marion,strip_mall,1170600
+OR,Marion,supermarket,787400
+OR,Marion,warehouse,21102100
+OR,Morrow,apartment,301700
+OR,Morrow,full_service_restaurant,24100
+OR,Morrow,hotel,61500
+OR,Morrow,no_match,403300
+OR,Morrow,office,20100
+OR,Morrow,retail,50300
+OR,Morrow,strip_mall,25500
+OR,Morrow,warehouse,483000
+OR,Multnomah,apartment,149807500
+OR,Multnomah,full_service_restaurant,2486900
+OR,Multnomah,hospital,7253000
+OR,Multnomah,hotel,14252900
+OR,Multnomah,no_match,45502400
+OR,Multnomah,office,59319100
+OR,Multnomah,outpatient,5635400
+OR,Multnomah,quick_service_restaurant,392900
+OR,Multnomah,retail,30426000
+OR,Multnomah,school,3660800
+OR,Multnomah,strip_mall,5385200
+OR,Multnomah,supermarket,1627900
+OR,Multnomah,warehouse,90422400
+OR,Polk,apartment,5330800
+OR,Polk,full_service_restaurant,68600
+OR,Polk,hotel,34600
+OR,Polk,no_match,1453400
+OR,Polk,office,641800
+OR,Polk,outpatient,129900
+OR,Polk,quick_service_restaurant,28300
+OR,Polk,retail,1461700
+OR,Polk,school,11300
+OR,Polk,strip_mall,202300
+OR,Polk,supermarket,27100
+OR,Polk,warehouse,1119700
+OR,Sherman,hotel,36400
+OR,Sherman,no_match,320100
+OR,Sherman,office,5500
+OR,Sherman,retail,25500
+OR,Sherman,strip_mall,8600
+OR,Sherman,supermarket,2000
+OR,Tillamook,apartment,656800
+OR,Tillamook,full_service_restaurant,101900
+OR,Tillamook,hotel,235400
+OR,Tillamook,no_match,915300
+OR,Tillamook,office,200600
+OR,Tillamook,outpatient,54100
+OR,Tillamook,quick_service_restaurant,8200
+OR,Tillamook,retail,615500
+OR,Tillamook,school,31300
+OR,Tillamook,strip_mall,90100
+OR,Tillamook,supermarket,58000
+OR,Tillamook,warehouse,244300
+OR,Umatilla,apartment,2121700
+OR,Umatilla,full_service_restaurant,126600
+OR,Umatilla,hotel,664500
+OR,Umatilla,no_match,1770400
+OR,Umatilla,office,497500
+OR,Umatilla,outpatient,277000
+OR,Umatilla,quick_service_restaurant,30400
+OR,Umatilla,retail,2034200
+OR,Umatilla,school,97000
+OR,Umatilla,strip_mall,156900
+OR,Umatilla,supermarket,155500
+OR,Umatilla,warehouse,1157800
+OR,Union,apartment,758000
+OR,Union,full_service_restaurant,62500
+OR,Union,hotel,216200
+OR,Union,no_match,785300
+OR,Union,office,223700
+OR,Union,outpatient,17400
+OR,Union,quick_service_restaurant,17500
+OR,Union,retail,736600
+OR,Union,strip_mall,89800
+OR,Union,supermarket,83900
+OR,Union,warehouse,189200
+OR,Wallowa,apartment,183800
+OR,Wallowa,full_service_restaurant,28300
+OR,Wallowa,hotel,131600
+OR,Wallowa,no_match,52800
+OR,Wallowa,office,38800
+OR,Wallowa,quick_service_restaurant,3300
+OR,Wallowa,retail,171100
+OR,Wallowa,strip_mall,13500
+OR,Wallowa,supermarket,40600
+OR,Wallowa,warehouse,27200
+OR,Wasco,apartment,549500
+OR,Wasco,full_service_restaurant,53700
+OR,Wasco,hotel,199000
+OR,Wasco,no_match,1178000
+OR,Wasco,office,331900
+OR,Wasco,outpatient,136000
+OR,Wasco,quick_service_restaurant,17100
+OR,Wasco,retail,1273600
+OR,Wasco,school,96500
+OR,Wasco,strip_mall,130800
+OR,Wasco,supermarket,31200
+OR,Wasco,warehouse,405800
+OR,Washington,apartment,69495800
+OR,Washington,full_service_restaurant,1080100
+OR,Washington,hospital,1205300
+OR,Washington,hotel,3469800
+OR,Washington,no_match,25341700
+OR,Washington,office,33873500
+OR,Washington,outpatient,3359100
+OR,Washington,quick_service_restaurant,306500
+OR,Washington,retail,25551800
+OR,Washington,school,1514400
+OR,Washington,strip_mall,961700
+OR,Washington,supermarket,661100
+OR,Washington,warehouse,39240100
+OR,Wheeler,full_service_restaurant,3300
+OR,Wheeler,hotel,6100
+OR,Wheeler,no_match,9800
+OR,Wheeler,retail,8700
+OR,Yamhill,apartment,5172400
+OR,Yamhill,full_service_restaurant,143500
+OR,Yamhill,hospital,538000
+OR,Yamhill,hotel,569300
+OR,Yamhill,no_match,4556200
+OR,Yamhill,office,1250800
+OR,Yamhill,outpatient,254500
+OR,Yamhill,quick_service_restaurant,42600
+OR,Yamhill,retail,3411700
+OR,Yamhill,school,306000
+OR,Yamhill,strip_mall,340100
+OR,Yamhill,supermarket,81300
+OR,Yamhill,warehouse,2436600
+UT,Beaver,apartment,23200
+UT,Beaver,full_service_restaurant,18600
+UT,Beaver,hotel,167600
+UT,Beaver,no_match,65300
+UT,Beaver,office,8100
+UT,Beaver,quick_service_restaurant,4400
+UT,Beaver,retail,84600
+UT,Beaver,school,20300
+UT,Beaver,strip_mall,5200
+UT,Beaver,warehouse,28800
+UT,Box Elder,apartment,875200
+UT,Box Elder,full_service_restaurant,44400
+UT,Box Elder,hotel,113400
+UT,Box Elder,no_match,4115200
+UT,Box Elder,office,319300
+UT,Box Elder,outpatient,51100
+UT,Box Elder,quick_service_restaurant,32100
+UT,Box Elder,retail,1296300
+UT,Box Elder,school,52600
+UT,Box Elder,strip_mall,42000
+UT,Box Elder,supermarket,25300
+UT,Box Elder,warehouse,1687200
+UT,Cache,apartment,4913700
+UT,Cache,full_service_restaurant,161600
+UT,Cache,hospital,3000
+UT,Cache,hotel,425000
+UT,Cache,no_match,1788000
+UT,Cache,office,1821800
+UT,Cache,outpatient,255200
+UT,Cache,quick_service_restaurant,59800
+UT,Cache,retail,4057700
+UT,Cache,school,2800
+UT,Cache,strip_mall,504400
+UT,Cache,warehouse,4098700
+UT,Carbon,apartment,288000
+UT,Carbon,full_service_restaurant,41100
+UT,Carbon,hospital,100100
+UT,Carbon,hotel,126800
+UT,Carbon,no_match,352800
+UT,Carbon,office,168400
+UT,Carbon,outpatient,10900
+UT,Carbon,quick_service_restaurant,20800
+UT,Carbon,retail,898300
+UT,Carbon,strip_mall,56000
+UT,Carbon,warehouse,192600
+UT,Daggett,hotel,20600
+UT,Daggett,no_match,6600
+UT,Daggett,retail,9400
+UT,Daggett,warehouse,6000
+UT,Davis,apartment,12502400
+UT,Davis,full_service_restaurant,487500
+UT,Davis,hospital,1147000
+UT,Davis,hotel,668000
+UT,Davis,no_match,6603800
+UT,Davis,office,6071100
+UT,Davis,outpatient,1376200
+UT,Davis,quick_service_restaurant,263100
+UT,Davis,retail,11934000
+UT,Davis,school,552500
+UT,Davis,strip_mall,1683400
+UT,Davis,supermarket,1230500
+UT,Davis,warehouse,24725600
+UT,Duchesne,apartment,109700
+UT,Duchesne,full_service_restaurant,18100
+UT,Duchesne,hospital,237900
+UT,Duchesne,hotel,37100
+UT,Duchesne,no_match,176100
+UT,Duchesne,office,53800
+UT,Duchesne,outpatient,4000
+UT,Duchesne,quick_service_restaurant,7300
+UT,Duchesne,retail,350300
+UT,Duchesne,school,6400
+UT,Duchesne,strip_mall,8600
+UT,Duchesne,warehouse,64600
+UT,Emery,apartment,39400
+UT,Emery,full_service_restaurant,3500
+UT,Emery,hotel,127500
+UT,Emery,no_match,589800
+UT,Emery,office,50900
+UT,Emery,quick_service_restaurant,500
+UT,Emery,retail,118600
+UT,Emery,strip_mall,3800
+UT,Emery,supermarket,12900
+UT,Emery,warehouse,19200
+UT,Garfield,apartment,22400
+UT,Garfield,full_service_restaurant,34000
+UT,Garfield,hotel,311000
+UT,Garfield,no_match,98500
+UT,Garfield,office,40800
+UT,Garfield,retail,76100
+UT,Garfield,strip_mall,12900
+UT,Garfield,warehouse,2400
+UT,Grand,apartment,382800
+UT,Grand,full_service_restaurant,93700
+UT,Grand,hotel,426200
+UT,Grand,no_match,612300
+UT,Grand,office,151900
+UT,Grand,outpatient,6600
+UT,Grand,quick_service_restaurant,9400
+UT,Grand,retail,240000
+UT,Grand,strip_mall,32500
+UT,Grand,warehouse,39700
+UT,Iron,apartment,1285800
+UT,Iron,full_service_restaurant,61200
+UT,Iron,hospital,73000
+UT,Iron,hotel,759700
+UT,Iron,no_match,1866300
+UT,Iron,office,640600
+UT,Iron,outpatient,66700
+UT,Iron,quick_service_restaurant,30200
+UT,Iron,retail,1660000
+UT,Iron,school,9300
+UT,Iron,strip_mall,276500
+UT,Iron,supermarket,26000
+UT,Iron,warehouse,928800
+UT,Juab,apartment,27700
+UT,Juab,full_service_restaurant,23200
+UT,Juab,hotel,92800
+UT,Juab,no_match,328900
+UT,Juab,office,73200
+UT,Juab,quick_service_restaurant,3600
+UT,Juab,retail,155700
+UT,Juab,strip_mall,47300
+UT,Juab,warehouse,120300
+UT,Kane,apartment,33600
+UT,Kane,full_service_restaurant,18800
+UT,Kane,hotel,294500
+UT,Kane,no_match,67200
+UT,Kane,office,57600
+UT,Kane,quick_service_restaurant,5200
+UT,Kane,retail,75700
+UT,Kane,school,19800
+UT,Kane,warehouse,95700
+UT,Millard,apartment,5000
+UT,Millard,full_service_restaurant,2400
+UT,Millard,hospital,23000
+UT,Millard,hotel,118900
+UT,Millard,no_match,48000
+UT,Millard,office,57900
+UT,Millard,quick_service_restaurant,4200
+UT,Millard,retail,269300
+UT,Millard,strip_mall,54600
+UT,Millard,warehouse,129200
+UT,Morgan,apartment,8200
+UT,Morgan,full_service_restaurant,8000
+UT,Morgan,no_match,197400
+UT,Morgan,office,77000
+UT,Morgan,outpatient,4000
+UT,Morgan,retail,116000
+UT,Morgan,strip_mall,14700
+UT,Morgan,supermarket,22500
+UT,Morgan,warehouse,233600
+UT,Piute,hotel,39600
+UT,Piute,no_match,16500
+UT,Piute,office,20100
+UT,Piute,retail,7000
+UT,Rich,apartment,1900
+UT,Rich,full_service_restaurant,2400
+UT,Rich,hotel,8100
+UT,Rich,no_match,15200
+UT,Rich,office,19300
+UT,Rich,quick_service_restaurant,1900
+UT,Rich,retail,16500
+UT,Rich,warehouse,18000
+UT,Salt Lake,apartment,110440300
+UT,Salt Lake,full_service_restaurant,2760600
+UT,Salt Lake,hospital,4281400
+UT,Salt Lake,hotel,13329700
+UT,Salt Lake,no_match,58279600
+UT,Salt Lake,office,76505400
+UT,Salt Lake,outpatient,8362800
+UT,Salt Lake,quick_service_restaurant,1053900
+UT,Salt Lake,retail,56855900
+UT,Salt Lake,school,4433900
+UT,Salt Lake,strip_mall,7220800
+UT,Salt Lake,supermarket,2426100
+UT,Salt Lake,warehouse,114646600
+UT,San Juan,apartment,117500
+UT,San Juan,hotel,134800
+UT,San Juan,no_match,408300
+UT,San Juan,office,62200
+UT,San Juan,retail,114600
+UT,San Juan,strip_mall,7200
+UT,San Juan,warehouse,24700
+UT,Sanpete,apartment,327100
+UT,Sanpete,full_service_restaurant,14400
+UT,Sanpete,hotel,69700
+UT,Sanpete,no_match,203400
+UT,Sanpete,office,63500
+UT,Sanpete,outpatient,33900
+UT,Sanpete,quick_service_restaurant,8700
+UT,Sanpete,retail,370400
+UT,Sanpete,school,30300
+UT,Sanpete,strip_mall,38100
+UT,Sanpete,warehouse,109800
+UT,Sevier,apartment,70400
+UT,Sevier,full_service_restaurant,23400
+UT,Sevier,hotel,119200
+UT,Sevier,no_match,267200
+UT,Sevier,office,96100
+UT,Sevier,outpatient,30000
+UT,Sevier,quick_service_restaurant,14800
+UT,Sevier,retail,877600
+UT,Sevier,strip_mall,60500
+UT,Sevier,supermarket,40000
+UT,Sevier,warehouse,91600
+UT,Summit,apartment,3043100
+UT,Summit,full_service_restaurant,173800
+UT,Summit,hospital,268800
+UT,Summit,hotel,4974800
+UT,Summit,no_match,1025200
+UT,Summit,office,1939100
+UT,Summit,outpatient,60300
+UT,Summit,quick_service_restaurant,14800
+UT,Summit,retail,2132100
+UT,Summit,school,328300
+UT,Summit,strip_mall,459000
+UT,Summit,supermarket,207100
+UT,Summit,warehouse,1459800
+UT,Tooele,apartment,1306900
+UT,Tooele,full_service_restaurant,50400
+UT,Tooele,hospital,97600
+UT,Tooele,hotel,277000
+UT,Tooele,no_match,1517000
+UT,Tooele,office,250900
+UT,Tooele,outpatient,89600
+UT,Tooele,quick_service_restaurant,27400
+UT,Tooele,retail,1724200
+UT,Tooele,school,109500
+UT,Tooele,strip_mall,126900
+UT,Tooele,supermarket,40000
+UT,Tooele,warehouse,4120600
+UT,Uintah,apartment,876200
+UT,Uintah,full_service_restaurant,69600
+UT,Uintah,hospital,96600
+UT,Uintah,hotel,444300
+UT,Uintah,no_match,447300
+UT,Uintah,office,272100
+UT,Uintah,outpatient,2900
+UT,Uintah,quick_service_restaurant,15000
+UT,Uintah,retail,1264100
+UT,Uintah,strip_mall,38500
+UT,Uintah,warehouse,490900
+UT,Utah,apartment,25134700
+UT,Utah,full_service_restaurant,734200
+UT,Utah,hospital,1389000
+UT,Utah,hotel,2179300
+UT,Utah,no_match,17768700
+UT,Utah,office,24823400
+UT,Utah,outpatient,3050100
+UT,Utah,quick_service_restaurant,443700
+UT,Utah,retail,22465200
+UT,Utah,school,945700
+UT,Utah,strip_mall,2160000
+UT,Utah,supermarket,883200
+UT,Utah,warehouse,23687500
+UT,Wasatch,apartment,1283900
+UT,Wasatch,full_service_restaurant,35800
+UT,Wasatch,hotel,550300
+UT,Wasatch,no_match,248800
+UT,Wasatch,office,366500
+UT,Wasatch,outpatient,101500
+UT,Wasatch,quick_service_restaurant,20900
+UT,Wasatch,retail,781200
+UT,Wasatch,strip_mall,79400
+UT,Wasatch,supermarket,21400
+UT,Wasatch,warehouse,944900
+UT,Washington,apartment,4434400
+UT,Washington,full_service_restaurant,257600
+UT,Washington,hotel,1420200
+UT,Washington,no_match,2649700
+UT,Washington,office,2920700
+UT,Washington,outpatient,1148600
+UT,Washington,quick_service_restaurant,91300
+UT,Washington,retail,6991900
+UT,Washington,school,418600
+UT,Washington,strip_mall,1221200
+UT,Washington,supermarket,397000
+UT,Washington,warehouse,5503200
+UT,Wayne,hotel,123800
+UT,Wayne,no_match,35500
+UT,Wayne,office,4000
+UT,Wayne,quick_service_restaurant,1200
+UT,Wayne,retail,68200
+UT,Wayne,strip_mall,4000
+UT,Weber,apartment,11299100
+UT,Weber,full_service_restaurant,636000
+UT,Weber,hospital,82000
+UT,Weber,hotel,1077300
+UT,Weber,no_match,11666600
+UT,Weber,office,7565000
+UT,Weber,outpatient,1384800
+UT,Weber,quick_service_restaurant,243100
+UT,Weber,retail,12036900
+UT,Weber,school,767700
+UT,Weber,strip_mall,1680100
+UT,Weber,supermarket,498100
+UT,Weber,warehouse,21599700
+WA,Adams,apartment,241800
+WA,Adams,full_service_restaurant,12900
+WA,Adams,hotel,83800
+WA,Adams,no_match,515600
+WA,Adams,office,106100
+WA,Adams,outpatient,5200
+WA,Adams,quick_service_restaurant,12900
+WA,Adams,retail,264600
+WA,Adams,strip_mall,38500
+WA,Adams,warehouse,310900
+WA,Asotin,apartment,266400
+WA,Asotin,full_service_restaurant,22200
+WA,Asotin,hotel,175100
+WA,Asotin,no_match,142800
+WA,Asotin,office,149800
+WA,Asotin,outpatient,20300
+WA,Asotin,quick_service_restaurant,4600
+WA,Asotin,retail,667200
+WA,Asotin,strip_mall,3000
+WA,Asotin,warehouse,190200
+WA,Benton,apartment,13820000
+WA,Benton,full_service_restaurant,342500
+WA,Benton,hotel,1474000
+WA,Benton,no_match,2606500
+WA,Benton,office,6850500
+WA,Benton,outpatient,921300
+WA,Benton,quick_service_restaurant,89200
+WA,Benton,retail,8192500
+WA,Benton,school,56600
+WA,Benton,strip_mall,495500
+WA,Benton,supermarket,212000
+WA,Benton,warehouse,3860600
+WA,Chelan,apartment,2298400
+WA,Chelan,full_service_restaurant,132500
+WA,Chelan,hotel,739200
+WA,Chelan,no_match,588700
+WA,Chelan,office,1119200
+WA,Chelan,outpatient,48900
+WA,Chelan,quick_service_restaurant,32400
+WA,Chelan,retail,2118500
+WA,Chelan,strip_mall,341300
+WA,Chelan,supermarket,192100
+WA,Chelan,warehouse,1430300
+WA,Clallam,apartment,1324600
+WA,Clallam,full_service_restaurant,78700
+WA,Clallam,hotel,459700
+WA,Clallam,no_match,354400
+WA,Clallam,office,404500
+WA,Clallam,outpatient,132300
+WA,Clallam,quick_service_restaurant,20700
+WA,Clallam,retail,2305900
+WA,Clallam,school,9700
+WA,Clallam,strip_mall,157900
+WA,Clallam,supermarket,146100
+WA,Clallam,warehouse,548700
+WA,Clark,apartment,44380000
+WA,Clark,full_service_restaurant,598500
+WA,Clark,hospital,2037200
+WA,Clark,hotel,2259100
+WA,Clark,no_match,9571000
+WA,Clark,office,13771000
+WA,Clark,outpatient,2216900
+WA,Clark,quick_service_restaurant,262700
+WA,Clark,retail,16835300
+WA,Clark,school,390200
+WA,Clark,strip_mall,998600
+WA,Clark,supermarket,744000
+WA,Clark,warehouse,21363100
+WA,Columbia,apartment,169800
+WA,Columbia,full_service_restaurant,14900
+WA,Columbia,hotel,51900
+WA,Columbia,no_match,271200
+WA,Columbia,office,15600
+WA,Columbia,retail,48100
+WA,Columbia,strip_mall,41900
+WA,Columbia,warehouse,18200
+WA,Cowlitz,apartment,3240100
+WA,Cowlitz,full_service_restaurant,257900
+WA,Cowlitz,hospital,456000
+WA,Cowlitz,hotel,446600
+WA,Cowlitz,no_match,2693800
+WA,Cowlitz,office,1806100
+WA,Cowlitz,outpatient,394200
+WA,Cowlitz,quick_service_restaurant,52000
+WA,Cowlitz,retail,3736600
+WA,Cowlitz,school,10400
+WA,Cowlitz,strip_mall,317600
+WA,Cowlitz,supermarket,455000
+WA,Cowlitz,warehouse,5543300
+WA,Douglas,apartment,869400
+WA,Douglas,full_service_restaurant,40300
+WA,Douglas,hotel,34600
+WA,Douglas,no_match,644700
+WA,Douglas,office,350200
+WA,Douglas,outpatient,16400
+WA,Douglas,quick_service_restaurant,16200
+WA,Douglas,retail,1032100
+WA,Douglas,strip_mall,23800
+WA,Douglas,supermarket,63500
+WA,Douglas,warehouse,266700
+WA,Ferry,apartment,71800
+WA,Ferry,full_service_restaurant,26200
+WA,Ferry,hotel,56900
+WA,Ferry,no_match,109400
+WA,Ferry,office,18800
+WA,Ferry,retail,171700
+WA,Ferry,strip_mall,7500
+WA,Ferry,supermarket,26000
+WA,Ferry,warehouse,41100
+WA,Franklin,apartment,2632500
+WA,Franklin,full_service_restaurant,68500
+WA,Franklin,hospital,125500
+WA,Franklin,hotel,786500
+WA,Franklin,no_match,1521600
+WA,Franklin,office,749000
+WA,Franklin,outpatient,192100
+WA,Franklin,quick_service_restaurant,36100
+WA,Franklin,retail,2076100
+WA,Franklin,school,78900
+WA,Franklin,strip_mall,131200
+WA,Franklin,supermarket,66800
+WA,Franklin,warehouse,2373100
+WA,Garfield,apartment,12000
+WA,Garfield,full_service_restaurant,3000
+WA,Garfield,no_match,4400
+WA,Garfield,office,15900
+WA,Garfield,retail,59300
+WA,Garfield,strip_mall,2000
+WA,Garfield,warehouse,24100
+WA,Grant,apartment,2862300
+WA,Grant,full_service_restaurant,92600
+WA,Grant,hotel,681600
+WA,Grant,no_match,4075500
+WA,Grant,office,945300
+WA,Grant,outpatient,78500
+WA,Grant,quick_service_restaurant,39300
+WA,Grant,retail,2305200
+WA,Grant,school,31800
+WA,Grant,strip_mall,254500
+WA,Grant,supermarket,209600
+WA,Grant,warehouse,2482600
+WA,Grays Harbor,apartment,1378400
+WA,Grays Harbor,full_service_restaurant,189500
+WA,Grays Harbor,hotel,1021500
+WA,Grays Harbor,no_match,2237100
+WA,Grays Harbor,office,854700
+WA,Grays Harbor,outpatient,117100
+WA,Grays Harbor,quick_service_restaurant,27200
+WA,Grays Harbor,retail,1751300
+WA,Grays Harbor,school,3800
+WA,Grays Harbor,strip_mall,160900
+WA,Grays Harbor,supermarket,83200
+WA,Grays Harbor,warehouse,748400
+WA,Island,apartment,3110400
+WA,Island,full_service_restaurant,102700
+WA,Island,hospital,6000
+WA,Island,hotel,204800
+WA,Island,no_match,540900
+WA,Island,office,404200
+WA,Island,outpatient,59400
+WA,Island,quick_service_restaurant,13700
+WA,Island,retail,1349800
+WA,Island,strip_mall,89900
+WA,Island,supermarket,52600
+WA,Island,warehouse,284700
+WA,Jefferson,apartment,509000
+WA,Jefferson,full_service_restaurant,17100
+WA,Jefferson,hotel,196100
+WA,Jefferson,no_match,241800
+WA,Jefferson,office,225100
+WA,Jefferson,outpatient,7800
+WA,Jefferson,retail,313600
+WA,Jefferson,strip_mall,40000
+WA,Jefferson,supermarket,27000
+WA,Jefferson,warehouse,489500
+WA,King,apartment,387854400
+WA,King,full_service_restaurant,3515800
+WA,King,hospital,10181700
+WA,King,hotel,32400700
+WA,King,no_match,97397300
+WA,King,office,193981900
+WA,King,outpatient,19979000
+WA,King,quick_service_restaurant,880800
+WA,King,retail,68186300
+WA,King,school,7504700
+WA,King,strip_mall,10134700
+WA,King,supermarket,5065400
+WA,King,warehouse,148212000
+WA,Kitsap,apartment,15125100
+WA,Kitsap,full_service_restaurant,438200
+WA,Kitsap,hospital,1076500
+WA,Kitsap,hotel,953900
+WA,Kitsap,no_match,2749800
+WA,Kitsap,office,5837800
+WA,Kitsap,outpatient,1341100
+WA,Kitsap,quick_service_restaurant,141200
+WA,Kitsap,retail,10065100
+WA,Kitsap,school,70600
+WA,Kitsap,strip_mall,636300
+WA,Kitsap,supermarket,459100
+WA,Kitsap,warehouse,4191100
+WA,Kittitas,apartment,2359700
+WA,Kittitas,full_service_restaurant,97100
+WA,Kittitas,hospital,14500
+WA,Kittitas,hotel,501800
+WA,Kittitas,no_match,309900
+WA,Kittitas,office,322600
+WA,Kittitas,outpatient,146800
+WA,Kittitas,quick_service_restaurant,10800
+WA,Kittitas,retail,996600
+WA,Kittitas,school,70200
+WA,Kittitas,strip_mall,32200
+WA,Kittitas,supermarket,25800
+WA,Kittitas,warehouse,257300
+WA,Klickitat,apartment,181800
+WA,Klickitat,full_service_restaurant,22800
+WA,Klickitat,hotel,59900
+WA,Klickitat,no_match,381300
+WA,Klickitat,office,148200
+WA,Klickitat,quick_service_restaurant,5300
+WA,Klickitat,retail,184100
+WA,Klickitat,strip_mall,19000
+WA,Klickitat,warehouse,25800
+WA,Lewis,apartment,1956300
+WA,Lewis,full_service_restaurant,124200
+WA,Lewis,hotel,265800
+WA,Lewis,no_match,1216400
+WA,Lewis,office,884100
+WA,Lewis,outpatient,179400
+WA,Lewis,quick_service_restaurant,38300
+WA,Lewis,retail,3237000
+WA,Lewis,school,18200
+WA,Lewis,strip_mall,275400
+WA,Lewis,supermarket,122800
+WA,Lewis,warehouse,12505200
+WA,Lincoln,apartment,37500
+WA,Lincoln,full_service_restaurant,23700
+WA,Lincoln,hotel,18300
+WA,Lincoln,no_match,43700
+WA,Lincoln,office,57500
+WA,Lincoln,retail,90400
+WA,Lincoln,strip_mall,27000
+WA,Lincoln,supermarket,13300
+WA,Lincoln,warehouse,800
+WA,Mason,apartment,580300
+WA,Mason,full_service_restaurant,71300
+WA,Mason,hotel,76300
+WA,Mason,no_match,736000
+WA,Mason,office,252100
+WA,Mason,outpatient,70900
+WA,Mason,quick_service_restaurant,21400
+WA,Mason,retail,1389900
+WA,Mason,school,18100
+WA,Mason,strip_mall,54800
+WA,Mason,supermarket,92000
+WA,Mason,warehouse,584500
+WA,Okanogan,apartment,649600
+WA,Okanogan,full_service_restaurant,108700
+WA,Okanogan,hotel,449400
+WA,Okanogan,no_match,700000
+WA,Okanogan,office,192200
+WA,Okanogan,outpatient,52900
+WA,Okanogan,quick_service_restaurant,12900
+WA,Okanogan,retail,906400
+WA,Okanogan,school,15000
+WA,Okanogan,strip_mall,45900
+WA,Okanogan,supermarket,19500
+WA,Okanogan,warehouse,133300
+WA,Pacific,apartment,1231600
+WA,Pacific,full_service_restaurant,37900
+WA,Pacific,hotel,212000
+WA,Pacific,no_match,603200
+WA,Pacific,office,124800
+WA,Pacific,outpatient,55600
+WA,Pacific,quick_service_restaurant,4800
+WA,Pacific,retail,204100
+WA,Pacific,school,3100
+WA,Pacific,strip_mall,79000
+WA,Pacific,supermarket,6100
+WA,Pacific,warehouse,10500
+WA,Pend Oreille,apartment,162800
+WA,Pend Oreille,full_service_restaurant,42300
+WA,Pend Oreille,hotel,61000
+WA,Pend Oreille,no_match,844000
+WA,Pend Oreille,office,111200
+WA,Pend Oreille,outpatient,2500
+WA,Pend Oreille,quick_service_restaurant,2400
+WA,Pend Oreille,retail,177500
+WA,Pend Oreille,strip_mall,49000
+WA,Pend Oreille,supermarket,41200
+WA,Pend Oreille,warehouse,30200
+WA,Pierce,apartment,79610800
+WA,Pierce,full_service_restaurant,1361700
+WA,Pierce,hospital,4746100
+WA,Pierce,hotel,4821700
+WA,Pierce,no_match,31917900
+WA,Pierce,office,20432900
+WA,Pierce,outpatient,5396000
+WA,Pierce,quick_service_restaurant,621400
+WA,Pierce,retail,32676000
+WA,Pierce,school,1756400
+WA,Pierce,strip_mall,2143100
+WA,Pierce,supermarket,2020900
+WA,Pierce,warehouse,72759800
+WA,San Juan,apartment,257900
+WA,San Juan,full_service_restaurant,12600
+WA,San Juan,hotel,414400
+WA,San Juan,no_match,38500
+WA,San Juan,office,112500
+WA,San Juan,retail,196700
+WA,San Juan,strip_mall,80400
+WA,San Juan,warehouse,36600
+WA,Skagit,apartment,3705500
+WA,Skagit,full_service_restaurant,183500
+WA,Skagit,hotel,593100
+WA,Skagit,no_match,2257500
+WA,Skagit,office,1805400
+WA,Skagit,outpatient,177200
+WA,Skagit,quick_service_restaurant,40400
+WA,Skagit,retail,5498200
+WA,Skagit,school,107800
+WA,Skagit,strip_mall,675300
+WA,Skagit,supermarket,137700
+WA,Skagit,warehouse,3524100
+WA,Skamania,apartment,136200
+WA,Skamania,full_service_restaurant,10100
+WA,Skamania,hotel,365400
+WA,Skamania,no_match,44500
+WA,Skamania,office,36400
+WA,Skamania,retail,88900
+WA,Skamania,strip_mall,3400
+WA,Skamania,warehouse,100100
+WA,Snohomish,apartment,69038600
+WA,Snohomish,full_service_restaurant,1079600
+WA,Snohomish,hospital,1358200
+WA,Snohomish,hotel,4125700
+WA,Snohomish,no_match,25071400
+WA,Snohomish,office,19953200
+WA,Snohomish,outpatient,3568000
+WA,Snohomish,quick_service_restaurant,396600
+WA,Snohomish,retail,26873100
+WA,Snohomish,school,543400
+WA,Snohomish,strip_mall,2611000
+WA,Snohomish,supermarket,2033000
+WA,Snohomish,warehouse,31559100
+WA,Spokane,apartment,55066300
+WA,Spokane,full_service_restaurant,1489500
+WA,Spokane,hospital,4498000
+WA,Spokane,hotel,5663400
+WA,Spokane,no_match,28154300
+WA,Spokane,office,25201400
+WA,Spokane,outpatient,3692100
+WA,Spokane,quick_service_restaurant,482100
+WA,Spokane,retail,34041900
+WA,Spokane,school,1154200
+WA,Spokane,strip_mall,1425000
+WA,Spokane,supermarket,2028000
+WA,Spokane,warehouse,26172600
+WA,Stevens,apartment,306700
+WA,Stevens,full_service_restaurant,49900
+WA,Stevens,hospital,136200
+WA,Stevens,hotel,110800
+WA,Stevens,no_match,456500
+WA,Stevens,office,245200
+WA,Stevens,quick_service_restaurant,18100
+WA,Stevens,retail,657700
+WA,Stevens,strip_mall,79500
+WA,Stevens,supermarket,116000
+WA,Stevens,warehouse,294200
+WA,Thurston,apartment,19431200
+WA,Thurston,full_service_restaurant,488700
+WA,Thurston,hospital,1032300
+WA,Thurston,hotel,1893500
+WA,Thurston,no_match,9266100
+WA,Thurston,office,10389100
+WA,Thurston,outpatient,1611600
+WA,Thurston,quick_service_restaurant,174100
+WA,Thurston,retail,10161600
+WA,Thurston,school,434300
+WA,Thurston,strip_mall,697600
+WA,Thurston,supermarket,707100
+WA,Thurston,warehouse,16091400
+WA,Wahkiakum,apartment,4300
+WA,Wahkiakum,full_service_restaurant,13600
+WA,Wahkiakum,hotel,16900
+WA,Wahkiakum,no_match,3300
+WA,Wahkiakum,office,12000
+WA,Wahkiakum,outpatient,18000
+WA,Wahkiakum,retail,10700
+WA,Wahkiakum,strip_mall,23000
+WA,Wahkiakum,warehouse,24900
+WA,Walla Walla,apartment,1569300
+WA,Walla Walla,full_service_restaurant,90700
+WA,Walla Walla,hospital,16600
+WA,Walla Walla,hotel,411500
+WA,Walla Walla,no_match,1140300
+WA,Walla Walla,office,788000
+WA,Walla Walla,outpatient,139600
+WA,Walla Walla,quick_service_restaurant,21400
+WA,Walla Walla,retail,1797800
+WA,Walla Walla,strip_mall,204900
+WA,Walla Walla,supermarket,112000
+WA,Walla Walla,warehouse,1099500
+WA,Whatcom,apartment,15431000
+WA,Whatcom,full_service_restaurant,287900
+WA,Whatcom,hospital,516400
+WA,Whatcom,hotel,1385500
+WA,Whatcom,no_match,5342800
+WA,Whatcom,office,4069100
+WA,Whatcom,outpatient,509900
+WA,Whatcom,quick_service_restaurant,66100
+WA,Whatcom,retail,7389400
+WA,Whatcom,school,450800
+WA,Whatcom,strip_mall,612400
+WA,Whatcom,supermarket,204400
+WA,Whatcom,warehouse,6950300
+WA,Whitman,apartment,4902400
+WA,Whitman,full_service_restaurant,42000
+WA,Whitman,hotel,110400
+WA,Whitman,no_match,406400
+WA,Whitman,office,392300
+WA,Whitman,outpatient,29900
+WA,Whitman,quick_service_restaurant,24800
+WA,Whitman,retail,2169800
+WA,Whitman,school,235000
+WA,Whitman,strip_mall,71900
+WA,Whitman,supermarket,134000
+WA,Whitman,warehouse,286900
+WA,Yakima,apartment,9660900
+WA,Yakima,full_service_restaurant,639700
+WA,Yakima,hospital,438500
+WA,Yakima,hotel,2433500
+WA,Yakima,no_match,13595600
+WA,Yakima,office,5013300
+WA,Yakima,outpatient,1195900
+WA,Yakima,quick_service_restaurant,171900
+WA,Yakima,retail,10549300
+WA,Yakima,school,182900
+WA,Yakima,strip_mall,485100
+WA,Yakima,supermarket,749800
+WA,Yakima,warehouse,12333000
+WY,Albany,apartment,1980900
+WY,Albany,full_service_restaurant,66800
+WY,Albany,hotel,447400
+WY,Albany,no_match,477900
+WY,Albany,office,583800
+WY,Albany,outpatient,299300
+WY,Albany,quick_service_restaurant,23400
+WY,Albany,retail,885500
+WY,Albany,school,80900
+WY,Albany,strip_mall,191700
+WY,Albany,supermarket,40000
+WY,Albany,warehouse,629700
+WY,Big Horn,apartment,82000
+WY,Big Horn,full_service_restaurant,22700
+WY,Big Horn,hotel,37200
+WY,Big Horn,no_match,313500
+WY,Big Horn,office,172100
+WY,Big Horn,retail,120000
+WY,Big Horn,school,37000
+WY,Big Horn,strip_mall,8200
+WY,Big Horn,warehouse,11700
+WY,Campbell,apartment,2450900
+WY,Campbell,full_service_restaurant,60300
+WY,Campbell,hotel,637800
+WY,Campbell,no_match,602700
+WY,Campbell,office,689200
+WY,Campbell,outpatient,21300
+WY,Campbell,quick_service_restaurant,46100
+WY,Campbell,retail,1221200
+WY,Campbell,strip_mall,55600
+WY,Campbell,warehouse,1071600
+WY,Carbon,apartment,366800
+WY,Carbon,full_service_restaurant,44800
+WY,Carbon,hotel,516900
+WY,Carbon,no_match,249000
+WY,Carbon,office,138500
+WY,Carbon,outpatient,28800
+WY,Carbon,quick_service_restaurant,17100
+WY,Carbon,retail,397800
+WY,Carbon,strip_mall,201100
+WY,Carbon,supermarket,32100
+WY,Carbon,warehouse,72700
+WY,Converse,apartment,542500
+WY,Converse,full_service_restaurant,19500
+WY,Converse,hotel,229700
+WY,Converse,no_match,57300
+WY,Converse,office,118100
+WY,Converse,quick_service_restaurant,11100
+WY,Converse,retail,141600
+WY,Converse,strip_mall,37600
+WY,Converse,supermarket,42700
+WY,Converse,warehouse,167500
+WY,Crook,apartment,8700
+WY,Crook,full_service_restaurant,18900
+WY,Crook,hotel,114100
+WY,Crook,no_match,40600
+WY,Crook,office,29800
+WY,Crook,quick_service_restaurant,4900
+WY,Crook,retail,32000
+WY,Crook,warehouse,8400
+WY,Fremont,apartment,604000
+WY,Fremont,full_service_restaurant,79400
+WY,Fremont,hospital,142300
+WY,Fremont,hotel,307200
+WY,Fremont,no_match,126600
+WY,Fremont,office,310900
+WY,Fremont,outpatient,72700
+WY,Fremont,quick_service_restaurant,31000
+WY,Fremont,retail,1057000
+WY,Fremont,strip_mall,131600
+WY,Fremont,supermarket,121800
+WY,Fremont,warehouse,323000
+WY,Goshen,apartment,223600
+WY,Goshen,full_service_restaurant,20900
+WY,Goshen,hotel,51500
+WY,Goshen,no_match,72600
+WY,Goshen,office,63500
+WY,Goshen,outpatient,13500
+WY,Goshen,quick_service_restaurant,4100
+WY,Goshen,retail,202300
+WY,Goshen,strip_mall,14200
+WY,Goshen,warehouse,211800
+WY,Hot Springs,apartment,118100
+WY,Hot Springs,full_service_restaurant,38700
+WY,Hot Springs,hospital,59200
+WY,Hot Springs,hotel,115600
+WY,Hot Springs,no_match,68600
+WY,Hot Springs,office,26300
+WY,Hot Springs,quick_service_restaurant,4800
+WY,Hot Springs,retail,141400
+WY,Hot Springs,strip_mall,32000
+WY,Hot Springs,warehouse,102700
+WY,Johnson,apartment,82600
+WY,Johnson,full_service_restaurant,8800
+WY,Johnson,hotel,148000
+WY,Johnson,no_match,85100
+WY,Johnson,office,68300
+WY,Johnson,quick_service_restaurant,3300
+WY,Johnson,retail,244200
+WY,Johnson,strip_mall,19700
+WY,Johnson,warehouse,111000
+WY,Laramie,apartment,4140700
+WY,Laramie,full_service_restaurant,174300
+WY,Laramie,hospital,406400
+WY,Laramie,hotel,1040400
+WY,Laramie,no_match,1631500
+WY,Laramie,office,2732700
+WY,Laramie,outpatient,144300
+WY,Laramie,quick_service_restaurant,88500
+WY,Laramie,retail,3232100
+WY,Laramie,school,44000
+WY,Laramie,strip_mall,1089400
+WY,Laramie,supermarket,107700
+WY,Laramie,warehouse,5150900
+WY,Lincoln,apartment,354200
+WY,Lincoln,full_service_restaurant,19800
+WY,Lincoln,hotel,139000
+WY,Lincoln,no_match,179300
+WY,Lincoln,office,63000
+WY,Lincoln,quick_service_restaurant,18000
+WY,Lincoln,retail,239100
+WY,Lincoln,strip_mall,59100
+WY,Lincoln,supermarket,52000
+WY,Lincoln,warehouse,65400
+WY,Natrona,apartment,3667100
+WY,Natrona,full_service_restaurant,172400
+WY,Natrona,hospital,28500
+WY,Natrona,hotel,1069500
+WY,Natrona,no_match,1776000
+WY,Natrona,office,1944000
+WY,Natrona,outpatient,328500
+WY,Natrona,quick_service_restaurant,59100
+WY,Natrona,retail,3731700
+WY,Natrona,strip_mall,363700
+WY,Natrona,supermarket,355400
+WY,Natrona,warehouse,3056000
+WY,Niobrara,apartment,40000
+WY,Niobrara,full_service_restaurant,2300
+WY,Niobrara,hotel,51200
+WY,Niobrara,no_match,4000
+WY,Niobrara,office,11200
+WY,Niobrara,quick_service_restaurant,1400
+WY,Niobrara,retail,18900
+WY,Niobrara,school,700
+WY,Niobrara,strip_mall,7200
+WY,Niobrara,warehouse,9800
+WY,Park,apartment,525900
+WY,Park,full_service_restaurant,44600
+WY,Park,hotel,563400
+WY,Park,no_match,155900
+WY,Park,office,391800
+WY,Park,outpatient,1900
+WY,Park,quick_service_restaurant,22100
+WY,Park,retail,918200
+WY,Park,school,42200
+WY,Park,strip_mall,122200
+WY,Park,warehouse,265400
+WY,Platte,apartment,65900
+WY,Platte,full_service_restaurant,36700
+WY,Platte,hotel,253100
+WY,Platte,no_match,298500
+WY,Platte,office,59400
+WY,Platte,quick_service_restaurant,7100
+WY,Platte,retail,257900
+WY,Platte,strip_mall,32400
+WY,Platte,supermarket,34000
+WY,Platte,warehouse,121200
+WY,Sheridan,apartment,856300
+WY,Sheridan,full_service_restaurant,43000
+WY,Sheridan,hotel,611100
+WY,Sheridan,no_match,136700
+WY,Sheridan,office,288900
+WY,Sheridan,outpatient,1600
+WY,Sheridan,quick_service_restaurant,8300
+WY,Sheridan,retail,1326200
+WY,Sheridan,school,36000
+WY,Sheridan,strip_mall,58500
+WY,Sheridan,supermarket,76500
+WY,Sheridan,warehouse,449400
+WY,Sublette,apartment,58400
+WY,Sublette,full_service_restaurant,25100
+WY,Sublette,hotel,215300
+WY,Sublette,no_match,106200
+WY,Sublette,office,59300
+WY,Sublette,retail,92600
+WY,Sublette,strip_mall,23600
+WY,Sublette,supermarket,32200
+WY,Sublette,warehouse,39200
+WY,Sweetwater,apartment,1684700
+WY,Sweetwater,full_service_restaurant,69100
+WY,Sweetwater,hotel,438600
+WY,Sweetwater,no_match,896100
+WY,Sweetwater,office,323900
+WY,Sweetwater,outpatient,161500
+WY,Sweetwater,quick_service_restaurant,31600
+WY,Sweetwater,retail,2066400
+WY,Sweetwater,school,6400
+WY,Sweetwater,strip_mall,105400
+WY,Sweetwater,warehouse,1055500
+WY,Teton,apartment,345300
+WY,Teton,full_service_restaurant,43100
+WY,Teton,hotel,1284900
+WY,Teton,no_match,402000
+WY,Teton,office,408300
+WY,Teton,outpatient,21100
+WY,Teton,quick_service_restaurant,4000
+WY,Teton,retail,523400
+WY,Teton,school,82500
+WY,Teton,strip_mall,144900
+WY,Teton,supermarket,47200
+WY,Teton,warehouse,180700
+WY,Uinta,apartment,493900
+WY,Uinta,full_service_restaurant,29100
+WY,Uinta,hospital,71200
+WY,Uinta,hotel,294600
+WY,Uinta,no_match,316200
+WY,Uinta,office,178500
+WY,Uinta,outpatient,9200
+WY,Uinta,quick_service_restaurant,13300
+WY,Uinta,retail,655400
+WY,Uinta,strip_mall,38100
+WY,Uinta,supermarket,47100
+WY,Uinta,warehouse,320400
+WY,Washakie,apartment,157700
+WY,Washakie,full_service_restaurant,23200
+WY,Washakie,hotel,9400
+WY,Washakie,no_match,212000
+WY,Washakie,office,40300
+WY,Washakie,quick_service_restaurant,8200
+WY,Washakie,retail,169500
+WY,Washakie,strip_mall,75300
+WY,Washakie,warehouse,63900
+WY,Weston,apartment,53100
+WY,Weston,full_service_restaurant,16400
+WY,Weston,hotel,115100
+WY,Weston,no_match,28500
+WY,Weston,office,29900
+WY,Weston,retail,131500
+WY,Weston,strip_mall,2400
+WY,Weston,warehouse,11900

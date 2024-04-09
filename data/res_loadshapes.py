@@ -107,7 +107,7 @@ def __(data):
     # Save loadshape data
     #
     print("Saving loadshape data...")
-    data.to_csv("loadshapes.csv.zip",index=True,header=True,compression='zip')
+    data.to_csv("res_loadshapes.csv.zip",index=True,header=True,compression='zip')
     return
 
 

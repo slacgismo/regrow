@@ -1,6 +1,6 @@
-"""Process building model metadata
+"""Process residential building model metadata
 
-Syntax: python3 metadata.py [OPTIONS ...]
+Syntax: python3 res_metadata.py [OPTIONS ...]
 
 Options:
     -D DIRECTORY    Set local folder in which files are stored
@@ -18,7 +18,7 @@ import states
 VERBOSE = False
 FRESHEN = False
 METAFILE = "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/resstock_amy2018_release_1/metadata/metadata.parquet"
-METADIR = "metadata"
+METADIR = "res_metadata"
 INDEXCOL = ["in.county"]
 USECOLS = None
 NOEXIT = False

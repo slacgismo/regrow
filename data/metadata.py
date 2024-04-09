@@ -12,6 +12,8 @@ Options:
 
 import os, sys
 import pandas as pd
+import config as cfg
+import states
 
 VERBOSE = False
 FRESHEN = False
@@ -22,6 +24,7 @@ USECOLS = None
 NOEXIT = False
 DEBUG = False
 QUIET = False
+OUTPUT = "/dev/stdout"
 
 def verbose(*args,**kwargs):
     if not "file" in kwargs:
@@ -67,10 +70,12 @@ def split(metafile,
         meta = pd.read_csv(metafile,index_col=INDEXCOL)
     else:
         error("no metadata source given",exitcode=E_MISSING)
-    verbose("done")
 
     n = 0
+    county_list = [f"G{states.fips(x)}" for x in cfg.state_list]
     for county in meta.index.get_level_values(0).unique():
+        if not county[0:3] in county_list:
+            continue
         file = os.path.join(metadir,f"{county}.csv.zip")
         if not os.path.exists(file) or os.path.getctime(metafile) > os.path.getctime(file) or freshen:
             verbose(f"Saving {file}",end="...")
@@ -100,6 +105,7 @@ def merge(startswith="G",
 
 def main(*args):
     n = 0
+    global OUTPUT
     while n < len(args):
         arg = args[n]
         if arg in ["-D","--directory"]:
@@ -115,7 +121,11 @@ def main(*args):
         elif arg in ["-h","--help","help"]:
             print(__doc__)
         elif arg in ["-m","--merge"]:
-            merge(args[n+1],index_col=INDEXCOL,usecols=USECOLS,low_memory=False).to_csv(index=True,header=True)
+            with open(OUTPUT,"wt") as fh:
+                merge(args[n+1],index_col=INDEXCOL,usecols=USECOLS,low_memory=False).to_csv(OUTPUT,index=True,header=True)
+                n += 1
+        elif arg in ["-o","--output"]:
+            OUTPUT=arg[n+1]
             n += 1
         elif arg in ["-s","--split"]:
             split(args[n+1] if n < len(args)-1 else METAFILE)

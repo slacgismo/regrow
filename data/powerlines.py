@@ -30,6 +30,12 @@ with open(glmfile,"w") as fh:
     print(f"""// generated from '{" ".join(sys.argv)}' on {dt.datetime.now()}
 
 module pypower;
+class bus
+{{
+    char32 hifld_name;
+    int32 n_links;
+    char1024 links;
+}}
 
 """,file=fh)
 
@@ -38,7 +44,7 @@ module pypower;
         xfmr = False
         for sub in [data.SUB_1,data.SUB_2]:
             nname = f"N_{n_subs}"
-            if not sub in sublist:
+            if not sub in sublist or sub == "NOT_AVAILABLE":
                 sublist[sub] = {
                     "name" : nname,
                     "voltage" : data.VOLTAGE,
@@ -80,7 +86,9 @@ module pypower;
     for ID,data in sublist.items():
         print(f"""object pypower.bus
 {{
-    name "{ID}";
+    name "{data["name"]}";
     baseKV {data["voltage"]} kV;
-    // links {",".join(data['links'])}
+    hifld_name "{ID}";
+    n_links {len(data['links'])};
+    links "{",".join(data['links'])}";
 }}""",file=fh)

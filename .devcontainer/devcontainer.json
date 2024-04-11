@@ -1,0 +1,5 @@
+{
+	"name": "gridlabd",
+	"image": "lfenergy/arras:develop",
+	"onCreateCommand": "bash .devcontainer/startup.sh"
+}

@@ -88,7 +88,7 @@ class bus
 {{
     name "{data["name"]}";
     baseKV {data["voltage"]} kV;
-    hifld_name "{ID}";
+    hifld_name "{ID[:32]}";
     n_links {len(data['links'])};
-    links "{",".join(data['links'])}";
+    links "{",".join(data['links'])[:1024]}";
 }}""",file=fh)

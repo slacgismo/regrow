@@ -1,0 +1,4229 @@
+{	"application": "gridlabd",
+	"version" : "4.3.9",
+	"modules" : {
+		"pypower" : {
+			"major" : "4",
+			"minor" : "3"
+		},
+		"tape" : {
+			"major" : "4",
+			"minor" : "3"
+		}
+	},
+	"types" : {
+		"double" : {
+			"xsdtype" : "decimal",
+			"default" : "0.0",
+			"memsize" : "8",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"complex" : {
+			"xsdtype" : "string",
+			"default" : "0+0i",
+			"memsize" : "24",
+			"strsize" : "48",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"enumeration" : {
+			"xsdtype" : "string",
+			"default" : "0",
+			"memsize" : "4",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"set" : {
+			"xsdtype" : "string",
+			"default" : "0",
+			"memsize" : "8",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"int16" : {
+			"xsdtype" : "integer",
+			"default" : "0",
+			"memsize" : "2",
+			"strsize" : "6",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"int32" : {
+			"xsdtype" : "integer",
+			"default" : "0",
+			"memsize" : "4",
+			"strsize" : "12",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"int64" : {
+			"xsdtype" : "integer",
+			"default" : "0",
+			"memsize" : "8",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char8" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "9",
+			"strsize" : "8",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char32" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "33",
+			"strsize" : "32",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char256" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "257",
+			"strsize" : "256",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char1024" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "1025",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"object" : {
+			"xsdtype" : "string",
+			"memsize" : "8",
+			"strsize" : "64",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"!=" : {"nargs": "2"}
+			}
+		},
+		"delegated" : {
+			"xsdtype" : "string",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"bool" : {
+			"xsdtype" : "string",
+			"default" : "FALSE",
+			"memsize" : "1",
+			"strsize" : "6",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"!=" : {"nargs": "2"}
+			}
+		},
+		"timestamp" : {
+			"xsdtype" : "string",
+			"default" : "0",
+			"memsize" : "8",
+			"strsize" : "32",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"double_array" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "56",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"complex_array" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "40",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"real" : {
+			"xsdtype" : "decimal",
+			"default" : "0.0",
+			"memsize" : "8",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"float" : {
+			"xsdtype" : "decimal",
+			"default" : "0.0",
+			"memsize" : "4",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"loadshape" : {
+			"xsdtype" : "string",
+			"memsize" : "208",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"enduse" : {
+			"xsdtype" : "string",
+			"memsize" : "728",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"randomvar" : {
+			"xsdtype" : "string",
+			"memsize" : "72",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"method" : {
+			"xsdtype" : "string",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"string" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "8",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"python" : {
+			"xsdtype" : "string",
+			"default" : "None",
+			"memsize" : "8",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		}
+	},
+	"header" : {
+		"id" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"class" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"groupid" : {
+			"type" : "char32",
+			"access" : "PROTECTED"
+		},
+		"name" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"next" : {
+			"type" : "object",
+			"access" : "PROTECTED"
+		},
+		"parent" : {
+			"type" : "object",
+			"access" : "PROTECTED"
+		},
+		"child_count" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"rank" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"clock" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"valid_to" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"schedule_skew" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		},
+		"latitude" : {
+			"type" : "double",
+			"access" : "PROTECTED"
+		},
+		"longitude" : {
+			"type" : "double",
+			"access" : "PROTECTED"
+		},
+		"in_svc" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"out_svc" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"rng_state" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"heartbeat" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		},
+		"guid" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		},
+		"profiler.presync" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.sync" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.postsync" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.init" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.heartbeat" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.precommit" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.commit" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.finalize" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"event.init" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.precommit" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.presync" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.sync" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.postsync" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.commit" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.finalize" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"flags" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		}
+	},
+	"classes" : {
+		"bus" : {
+			"object_size" : "152",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "14",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"bus_i" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "bus number (1 to 29997)"
+			},
+			"S" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "base load demand not counting child objects, copied from Pd,Qd by default (MVA)"
+			},
+			"type" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"PQREF" : "0x1",
+					"NONE" : "0x4",
+					"REF" : "0x3",
+					"PV" : "0x2",
+					"PQ" : "0x1",
+					"UNKNOWN" : "0x0"
+				},
+				"description" : "bus type (1 = PQ, 2 = PV, 3 = ref, 4 = isolated)"
+			},
+			"Pd" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "real power demand (MW)"
+			},
+			"Qd" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "reactive power demand (MVAr)"
+			},
+			"Gs" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "shunt conductance (MW at V = 1.0 p.u.)"
+			},
+			"Bs" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "shunt susceptance (MVAr at V = 1.0 p.u.)"
+			},
+			"area" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "area number, 1-100"
+			},
+			"baseKV" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "kV",
+				"description" : "voltage magnitude (p.u.)"
+			},
+			"Vm" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"description" : "voltage angle (degrees)"
+			},
+			"Va" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "base voltage (kV)"
+			},
+			"zone" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "loss zone (1-999)"
+			},
+			"Vmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"default" : "1.2 pu*V",
+				"description" : "maximum voltage magnitude (p.u.)"
+			},
+			"Vmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"default" : "0.8 pu*V",
+				"description" : "minimum voltage magnitude (p.u.)"
+			},
+			"lam_P" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Lagrange multiplier on real power mismatch (u/MW)"
+			},
+			"lam_Q" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Lagrange multiplier on reactive power mismatch (u/MVAr)"
+			},
+			"mu_Vmax" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Kuhn-Tucker multiplier on upper voltage limit (u/p.u.)"
+			},
+			"mu_Vmin" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Kuhn-Tucker multiplier on lower voltage limit (u/p.u.)"
+			}
+		},
+		"branch" : {
+			"object_size" : "120",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "20",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"from" : {
+				"type" : "object",
+				"access" : "PUBLIC",
+				"description" : "from bus name"
+			},
+			"to" : {
+				"type" : "object",
+				"access" : "PUBLIC",
+				"description" : "to bus name"
+			},
+			"fbus" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "from bus number"
+			},
+			"tbus" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "to bus number"
+			},
+			"r" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*Ohm",
+				"description" : "resistance (p.u.)"
+			},
+			"x" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*Ohm",
+				"description" : "reactance (p.u.)"
+			},
+			"b" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/Ohm",
+				"description" : "total line charging susceptance (p.u.)"
+			},
+			"rateA" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "MVA rating A (long term rating)"
+			},
+			"rateB" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "MVA rating B (short term rating)"
+			},
+			"rateC" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "MVA rating C (emergency term rating)"
+			},
+			"ratio" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "transformer off nominal turns ratio"
+			},
+			"angle" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "transformer phase shift angle (degrees)"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"IN" : "0x1",
+					"OUT" : "0x0"
+				},
+				"description" : "initial branch status, 1 - in service, 0 - out of service"
+			},
+			"angmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "minimum angle difference, angle(Vf) - angle(Vt) (degrees)"
+			},
+			"angmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "maximum angle difference, angle(Vf) - angle(Vt) (degrees)"
+			}
+		},
+		"gen" : {
+			"object_size" : "200",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "5",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"bus" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "bus number"
+			},
+			"Pg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "real power output (MW)"
+			},
+			"Qg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "reactive power output (MVAr)"
+			},
+			"Qmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "maximum reactive power output (MVAr)"
+			},
+			"Qmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "minimum reactive power output (MVAr)"
+			},
+			"Vg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"description" : "voltage magnitude setpoint (p.u.)"
+			},
+			"mBase" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "total MVA base of machine, defaults to baseMVA"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OUT_OF_SERVICE" : "0x0",
+					"IN_SERVICE" : "0x1"
+				},
+				"description" : "1 - in service, 0 - out of service"
+			},
+			"Pmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "maximum real power output (MW)"
+			},
+			"Pmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "minimum real power output (MW)"
+			},
+			"Pc1" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "lower real power output of PQ capability curve (MW)"
+			},
+			"Pc2" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "upper real power output of PQ capability curve (MW)"
+			},
+			"Qc1min" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "minimum reactive power output at Pc1 (MVAr)"
+			},
+			"Qc1max" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "maximum reactive power output at Pc1 (MVAr)"
+			},
+			"Qc2min" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "minimum reactive power output at Pc2 (MVAr)"
+			},
+			"Qc2max" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "maximum reactive power output at Pc2 (MVAr)"
+			},
+			"ramp_agc" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW/min",
+				"description" : "ramp rate for load following/AGC (MW/min)"
+			},
+			"ramp_10" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "ramp rate for 10 minute reserves (MW)"
+			},
+			"ramp_30" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "ramp rate for 30 minute reserves (MW)"
+			},
+			"ramp_q" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr/min",
+				"description" : "ramp rate for reactive power (2 sec timescale) (MVAr/min)"
+			},
+			"apf" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "area participation factor"
+			},
+			"mu_Pmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MW",
+				"description" : "Kuhn-Tucker multiplier on upper Pg limit (p.u./MW)"
+			},
+			"mu_Pmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MW",
+				"description" : "Kuhn-Tucker multiplier on lower Pg limit (p.u./MW)"
+			},
+			"mu_Qmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MVAr",
+				"description" : "Kuhn-Tucker multiplier on upper Qg limit (p.u./MVAr)"
+			},
+			"mu_Qmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MVAr",
+				"description" : "Kuhn-Tucker multiplier on lower Qg limit (p.u./MVAr)"
+			}
+		},
+		"gencost" : {
+			"object_size" : "1056",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "5",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"model" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"POLYNOMIAL" : "0x2",
+					"PIECEWISE" : "0x1",
+					"UNKNOWN" : "0x0"
+				},
+				"description" : "cost model (1=piecewise linear, 2=polynomial)"
+			},
+			"startup" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$",
+				"description" : "startup cost ($)"
+			},
+			"shutdown" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$",
+				"description" : "shutdown cost($)"
+			},
+			"costs" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "cost model (comma-separate values)"
+			}
+		},
+		"load" : {
+			"object_size" : "432",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "1",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"S" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "power demand (MVA)"
+			},
+			"Z" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "Ohm",
+				"description" : "constant impedance load (Ohm)"
+			},
+			"I" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "A",
+				"description" : "constant current load (A)"
+			},
+			"P" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "constant power load (MVA)"
+			},
+			"V" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"description" : "bus voltage (V)"
+			},
+			"Vn" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "kV",
+				"description" : "nominal voltage (kV)"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"CURTAILED" : "0x2",
+					"ONLINE" : "0x1",
+					"OFFLINE" : "0x0"
+				},
+				"description" : "load status"
+			},
+			"response" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "curtailment response as fractional load reduction"
+			},
+			"controller" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "controller python function name"
+			}
+		},
+		"powerplant" : {
+			"object_size" : "1352",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "1",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"city" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "City in which powerplant is located"
+			},
+			"state" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "State in which powerplant is located"
+			},
+			"zipcode" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Zipcode in which powerplant is located"
+			},
+			"country" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Country in which powerplant is located"
+			},
+			"naics_code" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Powerplant NAICS code"
+			},
+			"naics_description" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "Powerplant NAICS description"
+			},
+			"plant_code" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Generator plant code number"
+			},
+			"generator" : {
+				"type" : "set",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"CC" : "0x400",
+					"PV" : "0x200",
+					"CT" : "0x100",
+					"ES" : "0x80",
+					"WT" : "0x40",
+					"FW" : "0x20",
+					"IC" : "0x10",
+					"AT" : "0x8",
+					"ST" : "0x4",
+					"HT" : "0x2",
+					"UNKNOWN" : "0x1"
+				},
+				"description" : "Generator type"
+			},
+			"fuel" : {
+				"type" : "set",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"NG" : "0x8000",
+					"COAL" : "0x4000",
+					"WATER" : "0x2000",
+					"NUC" : "0x1000",
+					"GAS" : "0x800",
+					"OTHER" : "0x400",
+					"WOOD" : "0x200",
+					"UNKNOWN" : "0x100",
+					"OIL" : "0x80",
+					"BIO" : "0x40",
+					"WASTE" : "0x20",
+					"COKE" : "0x10",
+					"GEO" : "0x8",
+					"SUN" : "0x4",
+					"WIND" : "0x2",
+					"ELEC" : "0x1"
+				},
+				"description" : "Generator fuel type"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"ONLINE" : "0x1",
+					"OFFLINE" : "0x0"
+				},
+				"description" : "Generator status"
+			},
+			"operating_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "Generator normal operating capacity (MW)"
+			},
+			"summer_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "Generator summer operating capacity (MW)"
+			},
+			"winter_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "Generator winter operating capacity (MW)"
+			},
+			"capacity_factor" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "Generator capacity factor (pu)"
+			},
+			"substation_1" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "Substation 1 id"
+			},
+			"substation_2" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "Substation 2 id"
+			},
+			"S" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "power generation (MVA)"
+			},
+			"controller" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "controller python function name"
+			}
+		},
+		"powerline" : {
+			"object_size" : "144",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"length" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "mile",
+				"description" : "length (miles)"
+			},
+			"impedance" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "Ohm/mile",
+				"description" : "line impedance (Ohm/mile)"
+			},
+			"susceptance" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "S/mile",
+				"description" : "line susceptance (S/mile)"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OUT" : "0x0",
+					"IN" : "0x1"
+				},
+				"default" : "IN",
+				"description" : "line status (IN or OUT)"
+			},
+			"composition" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"PARALLEL" : "0x2",
+					"SERIES" : "0x1",
+					"NONE" : "0x0"
+				},
+				"description" : "parent line composition (SERIES or PARALLEL)"
+			}
+		},
+		"relay" : {
+			"object_size" : "288",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OPEN" : "0x1",
+					"CLOSED" : "0x0"
+				},
+				"default" : "CLOSED",
+				"description" : "relay status (OPEN or CLOSED)"
+			},
+			"controller" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "controller python function name"
+			}
+		},
+		"scada" : {
+			"object_size" : "72",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"point" : {
+				"type" : "method",
+				"access" : "PUBLIC",
+				"description" : "Enable access to point specified as object <name>:<property>"
+			},
+			"write" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "Enable write to point"
+			},
+			"record" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "Enable recording of point to historian"
+			}
+		},
+		"transformer" : {
+			"object_size" : "64",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"impedance" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "Ohm",
+				"description" : "transformer impedance (Ohm)"
+			},
+			"susceptance" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "S",
+				"default" : "0 S"
+			},
+			"rated_power" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "MVA",
+				"description" : "transformer power rating (MVA)"
+			},
+			"tap_ratio" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"default" : "1 pu",
+				"description" : "off-nominal turns ratio"
+			},
+			"phase_shift" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "transformer phase shift (deg) - use 30 for DY or YD transformers"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OUT" : "0x0",
+					"IN" : "0x1"
+				},
+				"default" : "IN",
+				"description" : "transformer status (IN or OUT)"
+			}
+		},
+		"player" : {
+			"object_size" : "13672",
+			"trl" : "9",
+			"module" : "tape",
+			"profiler.numobjs" : "1",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"property" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"description" : "property to play values into"
+			},
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"description" : "file from which to read values"
+			},
+			"filetype" : {
+				"type" : "char8",
+				"access" : "PUBLIC"
+			},
+			"mode" : {
+				"type" : "char32",
+				"access" : "PUBLIC"
+			},
+			"loop" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"default" : "0",
+				"description" : "number of time to loop the player"
+			}
+		},
+		"shaper" : {
+			"object_size" : "66200",
+			"trl" : "8",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC"
+			},
+			"filetype" : {
+				"type" : "char8",
+				"access" : "PUBLIC"
+			},
+			"mode" : {
+				"type" : "char32",
+				"access" : "PUBLIC"
+			},
+			"group" : {
+				"type" : "char256",
+				"access" : "PUBLIC"
+			},
+			"property" : {
+				"type" : "char256",
+				"access" : "PUBLIC"
+			},
+			"magnitude" : {
+				"type" : "double",
+				"access" : "PUBLIC"
+			},
+			"events" : {
+				"type" : "double",
+				"access" : "PUBLIC"
+			}
+		},
+		"recorder" : {
+			"object_size" : "15816",
+			"trl" : "9",
+			"module" : "tape",
+			"profiler.numobjs" : "1",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"trigger" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"default" : "",
+				"description" : "condition to trigger recorder"
+			},
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"description" : "file in which to record data"
+			},
+			"filetype" : {
+				"type" : "char8",
+				"access" : "PUBLIC",
+				"description" : "file type to use when storing data"
+			},
+			"mode" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"default" : "file",
+				"description" : "recorder operating mode"
+			},
+			"multifile" : {
+				"type" : "char1024",
+				"access" : "PUBLIC"
+			},
+			"limit" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"default" : "0",
+				"description" : "limit on number of rows to record (0=none)"
+			},
+			"plotcommands" : {
+				"type" : "char1024",
+				"access" : "PUBLIC"
+			},
+			"xdata" : {
+				"type" : "char32",
+				"access" : "PUBLIC"
+			},
+			"columns" : {
+				"type" : "char32",
+				"access" : "PUBLIC"
+			},
+			"flush" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"default" : "-1",
+				"description" : "row flush mode (-1=when full, 0=every row, >0=interval in seconds)"
+			},
+			"format" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"default" : "0"
+			},
+			"interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"default" : "-1 s",
+				"description" : "sampling interval"
+			},
+			"strftime_format" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "date/time format"
+			},
+			"property" : {
+				"type" : "method",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"description" : "list of properties to sample"
+			},
+			"output" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"SVG" : "0x6",
+					"PNG" : "0x5",
+					"PDF" : "0x4",
+					"JPG" : "0x3",
+					"GIF" : "0x2",
+					"EPS" : "0x1",
+					"SCREEN" : "0x0"
+				}
+			},
+			"header_units" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"NONE" : "0x2",
+					"ALL" : "0x1",
+					"DEFAULT" : "0x0"
+				},
+				"default" : "DEFAULT",
+				"description" : "header option for output of units"
+			},
+			"line_units" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"NONE" : "0x2",
+					"ALL" : "0x1",
+					"DEFAULT" : "0x0"
+				},
+				"default" : "DEFAULT",
+				"description" : "inline option for output of units"
+			}
+		},
+		"multi_recorder" : {
+			"object_size" : "15816",
+			"trl" : "8",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"default" : "-1 s",
+				"description" : "sampling interval"
+			},
+			"property" : {
+				"type" : "method",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"description" : "list of properties to sample"
+			},
+			"trigger" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"default" : "",
+				"description" : "condition to trigger recorder"
+			},
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"description" : "file in which to record data"
+			},
+			"filetype" : {
+				"type" : "char8",
+				"access" : "PUBLIC",
+				"description" : "file type to use when storing data"
+			},
+			"mode" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"default" : "file",
+				"description" : "recorder operating mode"
+			},
+			"multifile" : {
+				"type" : "char1024",
+				"access" : "PUBLIC"
+			},
+			"limit" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"default" : "0",
+				"description" : "limit on number of rows to record (0=none)"
+			},
+			"plotcommands" : {
+				"type" : "char1024",
+				"access" : "PUBLIC"
+			},
+			"xdata" : {
+				"type" : "char32",
+				"access" : "PUBLIC"
+			},
+			"columns" : {
+				"type" : "char32",
+				"access" : "PUBLIC"
+			},
+			"format" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"default" : "0"
+			},
+			"output" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"SVG" : "0x6",
+					"PNG" : "0x5",
+					"PDF" : "0x4",
+					"JPG" : "0x3",
+					"GIF" : "0x2",
+					"EPS" : "0x1",
+					"SCREEN" : "0x0"
+				}
+			},
+			"header_units" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"NONE" : "0x2",
+					"ALL" : "0x1",
+					"DEFAULT" : "0x0"
+				}
+			},
+			"line_units" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"NONE" : "0x2",
+					"ALL" : "0x1",
+					"DEFAULT" : "0x0"
+				}
+			}
+		},
+		"collector" : {
+			"object_size" : "7568",
+			"trl" : "9",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"trigger" : {
+				"type" : "char32",
+				"access" : "PUBLIC"
+			},
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC"
+			},
+			"limit" : {
+				"type" : "int32",
+				"access" : "PUBLIC"
+			},
+			"group" : {
+				"type" : "char256",
+				"access" : "PUBLIC"
+			},
+			"flush" : {
+				"type" : "int32",
+				"access" : "PUBLIC"
+			},
+			"interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s"
+			},
+			"property" : {
+				"type" : "method",
+				"access" : "PUBLIC"
+			}
+		},
+		"histogram" : {
+			"object_size" : "4568",
+			"trl" : "7",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"filename" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "the name of the file to write"
+			},
+			"filetype" : {
+				"type" : "char8",
+				"access" : "PUBLIC",
+				"description" : "the format to output a histogram in"
+			},
+			"mode" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "the mode of file output"
+			},
+			"group" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "the GridLAB-D group expression to use for this histogram"
+			},
+			"bins" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "the specific bin values to use"
+			},
+			"property" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "the property to sample"
+			},
+			"min" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "the minimum value of the auto-sized bins to use"
+			},
+			"max" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "the maximum value of the auto-sized bins to use"
+			},
+			"samplerate" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "the rate at which samples are read"
+			},
+			"countrate" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "the reate at which bins are counted and written"
+			},
+			"bin_count" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "the number of auto-sized bins to use"
+			},
+			"limit" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "the number of samples to write"
+			}
+		},
+		"group_recorder" : {
+			"object_size" : "2464",
+			"trl" : "0",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "output file name"
+			},
+			"group" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "group definition string"
+			},
+			"interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "recordering interval (0 'every iteration', -1 'on change')"
+			},
+			"flush_interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "file flush interval (0 never, negative on samples)"
+			},
+			"strict" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "causes the group_recorder to stop the simulation should there be a problem opening or writing with the group_recorder"
+			},
+			"print_units" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "flag to append units to each written value, if applicable"
+			},
+			"property" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "property to record"
+			},
+			"limit" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "the maximum number of lines to write to the file"
+			},
+			"format" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "determines whether output timestamp is formatted to be formatted as human-readable (default) or epoch"
+			},
+			"complex_part" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"ANG_RAD" : "0x5",
+					"ANG_DEG" : "0x4",
+					"MAG" : "0x3",
+					"IMAG" : "0x2",
+					"REAL" : "0x1",
+					"NONE" : "0x0"
+				},
+				"description" : "the complex part to record if complex properties are gathered"
+			}
+		},
+		"violation_recorder" : {
+			"object_size" : "1576",
+			"trl" : "0",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"file" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "output file name"
+			},
+			"summary" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "summary output file name"
+			},
+			"virtual_substation" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "name of the substation node to monitor for reverse flow violation"
+			},
+			"interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "recording interval (0 'every iteration', -1 'on change')"
+			},
+			"flush_interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "file flush interval (0 never, negative on samples)"
+			},
+			"strict" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "causes the violation_recorder to stop the simulation should there be a problem opening or writing with the violation_recorder"
+			},
+			"echo" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "causes the violation_recorder to echo messages to the screen"
+			},
+			"limit" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "the maximum number of lines to write to the file"
+			},
+			"violation_delay" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "the number of seconds to skip before recording violations"
+			},
+			"xfrmr_thermal_limit_upper" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "xfrmr_thermal_limit_upper"
+			},
+			"xfrmr_thermal_limit_lower" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "xfrmr_thermal_limit_lower"
+			},
+			"line_thermal_limit_upper" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "line_thermal_limit_upper"
+			},
+			"line_thermal_limit_lower" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "line_thermal_limit_lower"
+			},
+			"node_instantaneous_voltage_limit_upper" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "node_instantaneous_voltage_limit_upper"
+			},
+			"node_instantaneous_voltage_limit_lower" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "node_instantaneous_voltage_limit_lower"
+			},
+			"node_continuous_voltage_limit_upper" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "node_continuous_voltage_limit_upper"
+			},
+			"node_continuous_voltage_limit_lower" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "node_continuous_voltage_limit_lower"
+			},
+			"node_continuous_voltage_interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "node_continuous_voltage_interval"
+			},
+			"secondary_dist_voltage_rise_upper_limit" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "secondary_dist_voltage_rise_upper_limit"
+			},
+			"secondary_dist_voltage_rise_lower_limit" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "secondary_dist_voltage_rise_lower_limit"
+			},
+			"substation_breaker_A_limit" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "breaker_phase_A_limit"
+			},
+			"substation_breaker_B_limit" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "breaker_phase_B_limit"
+			},
+			"substation_breaker_C_limit" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "breaker_phase_C_limit"
+			},
+			"substation_pf_lower_limit" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "substation_pf_lower_limit"
+			},
+			"inverter_v_chng_per_interval_upper_bound" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "inverter_v_chng_per_interval_upper_bound"
+			},
+			"inverter_v_chng_per_interval_lower_bound" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "inverter_v_chng_per_interval_lower_bound"
+			},
+			"inverter_v_chng_interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "inverter_v_chng_interval"
+			},
+			"violation_flag" : {
+				"type" : "set",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"ALLVIOLATIONS" : "0xff",
+					"VIOLATION8" : "0x80",
+					"VIOLATION7" : "0x40",
+					"VIOLATION6" : "0x20",
+					"VIOLATION5" : "0x10",
+					"VIOLATION4" : "0x8",
+					"VIOLATION3" : "0x4",
+					"VIOLATION2" : "0x2",
+					"VIOLATION1" : "0x1",
+					"VIOLATION0" : "0x0"
+				},
+				"description" : "bit set for determining which violations to check"
+			}
+		},
+		"metrics_collector" : {
+			"object_size" : "720",
+			"trl" : "0",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "Interval at which the metrics_collector output is stored in JSON format"
+			}
+		},
+		"metrics_collector_writer" : {
+			"object_size" : "7728",
+			"trl" : "0",
+			"module" : "tape",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"filename" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "the JSON formatted output file name"
+			},
+			"interval" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"description" : "Interval at which the metrics_collector_writer output is stored in JSON format"
+			}
+		}
+	},
+	"globals" : {
+		"version.major" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "4"
+		},
+		"version.minor" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "3"
+		},
+		"version.patch" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "9"
+		},
+		"version.build" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "240410"
+		},
+		"version.branch" : {
+			"type" : "char256",
+			"access" : "REFERENCE",
+			"value" : "develop"
+		},
+		"version" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "4.3.9-240410-develop"
+		},
+		"command_line" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/bin/gridlabd.bin case14_control.glm"
+		},
+		"environment" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "batch"
+		},
+		"quiet" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"warn" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"debugger" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"gdb" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"debug" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"test" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"verbose" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"iteration_limit" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "100"
+		},
+		"workdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/workspaces/regrow/examples"
+		},
+		"dumpfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "gridlabd.json"
+		},
+		"savefile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "case14_control.json"
+		},
+		"dumpall" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"runchecks" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"threadcount" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "1"
+		},
+		"profiler" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pauseatexit" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"testoutputfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "test.txt"
+		},
+		"xml_encoding" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "8"
+		},
+		"clock" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "2020-02-01 00:00:00 PST"
+		},
+		"starttime" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "2020-01-01 00:00:00 PST"
+		},
+		"stoptime" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "2020-02-01 00:00:00 PST"
+		},
+		"double_format" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "%+lg"
+		},
+		"complex_format" : {
+			"type" : "char256",
+			"access" : "PUBLIC",
+			"value" : "%+lg%+lg%c"
+		},
+		"complex_output_format" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"DEFAULT" : "0x0",
+				"RECT" : "0x1",
+				"POLAR_DEG" : "0x2",
+				"POLAR_RAD" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "DEFAULT"
+		},
+		"object_format" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "%s:%d"
+		},
+		"object_scan" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "%[^:]:%d"
+		},
+		"object_tree_balance" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"kmlfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"kmlhost" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "https://code.gridlabd.us/develop/runtime"
+		},
+		"modelname" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "case14_control.glm"
+		},
+		"execdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/bin"
+		},
+		"strictnames" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"website" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "http://www.gridlabd.org/"
+		},
+		"urlbase" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "http://www.gridlabd.org/"
+		},
+		"randomstate" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "-357507071"
+		},
+		"randomseed" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "-357507071"
+		},
+		"include" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : ""
+		},
+		"trace" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"gdb_window" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"tmp" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "/root/.gridlabd/tmp"
+		},
+		"force_compile" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"nolocks" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"skipsafe" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"dateformat" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"ISO" : "0x0",
+				"US" : "0x1",
+				"EURO" : "0x2",
+				"ISO8601" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "ISO"
+		},
+		"init_sequence" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"CREATION" : "0x0",
+				"DEFERRED" : "0x1",
+				"BOTTOMUP" : "0x2",
+				"TOPDOWN" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "DEFERRED"
+		},
+		"minimum_timestep" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "1"
+		},
+		"platform" : {
+			"type" : "char8",
+			"access" : "REFERENCE",
+			"value" : "LINUX"
+		},
+		"suppress_repeat_messages" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"maximum_synctime" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "60"
+		},
+		"run_realtime" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"enter_realtime" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "NEVER"
+		},
+		"realtime_metric" : {
+			"type" : "double",
+			"access" : "REFERENCE",
+			"value" : "+0"
+		},
+		"no_deprecate" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"streaming_io" : {
+			"type" : "bool",
+			"access" : "PROTECTED",
+			"value" : "FALSE"
+		},
+		"compileonly" : {
+			"type" : "bool",
+			"access" : "PROTECTED",
+			"value" : "FALSE"
+		},
+		"relax_naming_rules" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"browser" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "/vscode/bin/linux-x64/e170252f762678dec6ca2cc69aba1570769a5d39/bin/helpers/browser.sh"
+		},
+		"server_portnum" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"server_quit_on_close" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"client_allowed" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"autoclean" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"technology_readiness_level" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"PRINCIPLE" : "0x1",
+				"CONCEPT" : "0x2",
+				"PROOF" : "0x3",
+				"STANDALONE" : "0x4",
+				"INTEGRATED" : "0x5",
+				"DEMONSTRATED" : "0x6",
+				"PROTOTYPE" : "0x7",
+				"QUALIFIED" : "0x8",
+				"PROVEN" : "0x9",
+				"UNKNOWN" : "0x0"
+			},
+			"access" : "PUBLIC",
+			"value" : "UNKNOWN"
+		},
+		"show_progress" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"checkpoint_type" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"NONE" : "0x0",
+				"WALL" : "0x1",
+				"SIM" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "NONE"
+		},
+		"checkpoint_file" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"checkpoint_seqnum" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"checkpoint_interval" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"checkpoint_keepall" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"check_version" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"random_number_generator" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"RNG2" : "0x2",
+				"RNG3" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "RNG3"
+		},
+		"mainloop_state" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"INIT" : "0x0",
+				"RUNNING" : "0x1",
+				"PAUSED" : "0x2",
+				"DONE" : "0x3",
+				"LOCKED" : "0x4"
+			},
+			"access" : "PUBLIC",
+			"value" : "DONE"
+		},
+		"pauseat" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "NEVER"
+		},
+		"infourl" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "http://docs.gridlabd.us/index.html?owner=arras-energy&project=gridlabd&search="
+		},
+		"hostname" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "localhost"
+		},
+		"hostaddr" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "127.0.0.1"
+		},
+		"autostart_gui" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"master" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"master_port" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"multirun_mode" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"STANDALONE" : "0x0",
+				"MASTER" : "0x1",
+				"SLAVE" : "0x2",
+				"LIBRARY" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "STANDALONE"
+		},
+		"multirun_conn" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"NONE" : "0x0",
+				"MEMORY" : "0x1",
+				"SOCKET" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "NONE"
+		},
+		"signal_timeout" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "5000"
+		},
+		"slave_port" : {
+			"type" : "int16",
+			"access" : "PUBLIC",
+			"value" : "6267"
+		},
+		"slave_id" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"return_code" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "0"
+		},
+		"exit_code" : {
+			"type" : "int16",
+			"access" : "REFERENCE",
+			"value" : "0"
+		},
+		"module_compiler_flags" : {
+			"type" : "set",
+			"keywords" : {
+				"NONE" : "0x0",
+				"CLEAN" : "0x1",
+				"KEEPWORK" : "0x2",
+				"DEBUG" : "0x4",
+				"VERBOSE" : "0x8"
+			},
+			"access" : "PUBLIC",
+			"value" : "NONE"
+		},
+		"init_max_defer" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "64"
+		},
+		"mt_analysis" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"inline_block_size" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "1048576"
+		},
+		"validate" : {
+			"type" : "set",
+			"keywords" : {
+				"NONE" : "0x0",
+				"TSTD" : "0x7",
+				"TALL" : "0xf",
+				"TRUN" : "0x1",
+				"TERR" : "0x2",
+				"TEXC" : "0x4",
+				"TOPT" : "0x8",
+				"RALL" : "0x300",
+				"RDIR" : "0x100",
+				"RGLM" : "0x200"
+			},
+			"access" : "PUBLIC",
+			"value" : "TSTD|RALL"
+		},
+		"sanitize" : {
+			"type" : "set",
+			"keywords" : {
+				"NAMES" : "0x10",
+				"POSITIONS" : "0x60"
+			},
+			"access" : "PUBLIC",
+			"value" : "NAMES|POSITIONS"
+		},
+		"sanitize_prefix" : {
+			"type" : "char8",
+			"access" : "PUBLIC",
+			"value" : "GLD_"
+		},
+		"sanitize_index" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ".txt"
+		},
+		"sanitize_offset" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"simulation_mode" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"INIT" : "0x0",
+				"EVENT" : "0x1",
+				"DELTA" : "0x2",
+				"DELTA_ITER" : "0x3",
+				"ERROR" : "0xff"
+			},
+			"access" : "PUBLIC",
+			"value" : "EVENT"
+		},
+		"deltamode_allowed" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"deltamode_timestep" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "10000000"
+		},
+		"deltamode_maximumtime" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "3600000000000"
+		},
+		"deltaclock" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"delta_current_clock" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0"
+		},
+		"deltamode_updateorder" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "tape"
+		},
+		"deltamode_iteration_limit" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "10"
+		},
+		"deltamode_forced_extra_timesteps" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"deltamode_forced_always" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"run_powerworld" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"bigranks" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"exename" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/bin/gridlabd.bin"
+		},
+		"wget_options" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "maxsize:100MB;update:newer"
+		},
+		"curl_options" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "maxsize:100MB;update:newer"
+		},
+		"svnroot" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "http://gridlab-d.svn.sourceforge.net/svnroot/gridlab-d"
+		},
+		"github" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "https://github.com/gridlab-d"
+		},
+		"gitraw" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "https://raw.githubusercontent.com/gridlab-d"
+		},
+		"allow_reinclude" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"output_message_context" : {
+			"type" : "set",
+			"keywords" : {
+				"NONE" : "0x0",
+				"ALL" : "0xffffffff",
+				"LOAD" : "0x4",
+				"CREATE" : "0x8",
+				"EXEC" : "0x10",
+				"TIME" : "0x20",
+				"FIND" : "0x40",
+				"CLASS" : "0x80",
+				"OBJECT" : "0x100",
+				"MODULE" : "0x200",
+				"INDEX" : "0x400",
+				"GLOBALS" : "0x800",
+				"EXCEPTION" : "0x1000",
+				"AGGREGATE" : "0x2000",
+				"COMPARE" : "0x4000",
+				"CONVERT" : "0x8000",
+				"DELTAMODE" : "0x10000",
+				"ENDUSE" : "0x20000",
+				"ENVIRONMENT" : "0x40000",
+				"GUI" : "0x80000",
+				"HTTPCLIENT" : "0x100000",
+				"INSTANCE" : "0x200000",
+				"INTERPOLATE" : "0x400000",
+				"JOB" : "0x800000",
+				"KML" : "0x1000000",
+				"LEGAL" : "0x2000000",
+				"LINK" : "0x4000000",
+				"LIST" : "0x8000000",
+				"XML" : "0x10000000",
+				"LOADSHAPE" : "0x20000000",
+				"LOCALE" : "0x40000000",
+				"LOCK" : "0x80000000",
+				"MATCH" : "0x0",
+				"MATLAB" : "0x0",
+				"PROPERTY" : "0x0",
+				"RANDOM" : "0x0",
+				"REALTIME" : "0x0",
+				"SANITIZE" : "0x0",
+				"SAVE" : "0x0",
+				"SCHEDULE" : "0x0",
+				"SERVER" : "0x0",
+				"SETUP" : "0x0",
+				"STREAM" : "0x0",
+				"TEST" : "0x0",
+				"THREADPOOL" : "0x0",
+				"TRANSFORM" : "0x0",
+				"HTTP" : "0x0",
+				"UNIT" : "0x0",
+				"VALIDATE" : "0x0",
+				"VERSION" : "0x0",
+				"XCORE" : "0x0",
+				"MAIN" : "0x1",
+				"PYTHON" : "0x0",
+				"CMDARG" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "ALL"
+		},
+		"permissive_access" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"relax_undefined_if" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"literal_if" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"validto_context" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"SYNC" : "0x0",
+				"PRECOMMIT" : "0x1",
+				"COMMIT" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "SYNC"
+		},
+		"daemon_configfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "gridlabd.cnf"
+		},
+		"timezone_locale" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "PST8PDT"
+		},
+		"glm_save_options" : {
+			"type" : "set",
+			"keywords" : {
+				"LEGACY" : "0x0",
+				"MINIMAL" : "0xf",
+				"NOGLOBALS" : "0x4",
+				"NODEFAULTS" : "0x8",
+				"NOMACROS" : "0x2",
+				"NOINTERNALS" : "0x1",
+				"ORIGINAL" : "0x10"
+			},
+			"access" : "PUBLIC",
+			"value" : "MINIMAL"
+		},
+		"filesave_options" : {
+			"type" : "set",
+			"keywords" : {
+				"ALLINITIAL" : "0xc1ff",
+				"ALLMINIMAL" : "0x81ff",
+				"ALL" : "0x1ff",
+				"MODULES" : "0x1",
+				"PROPERTIES" : "0x2",
+				"CLASSES" : "0x4",
+				"GLOBALS" : "0x8",
+				"OBJECTS" : "0x10",
+				"SCHEDULES" : "0x20",
+				"FILTERS" : "0x40",
+				"SCRIPTS" : "0x80",
+				"CLOCK" : "0x100",
+				"INITIAL" : "0x4000",
+				"MINIMAL" : "0x8000"
+			},
+			"access" : "PUBLIC",
+			"value" : "ALL"
+		},
+		"ignore_errors" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"keep_progress" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"allow_variant_aggregates" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"progress" : {
+			"type" : "double",
+			"access" : "REFERENCE",
+			"value" : "+0.998656"
+		},
+		"server_keepalive" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pythonpath" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ".:/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/share/gridlabd:/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/lib/gridlabd/python3.10/site-packages"
+		},
+		"pythonexec" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/bin/python3"
+		},
+		"datadir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/share/gridlabd"
+		},
+		"bindir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/bin"
+		},
+		"vardir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/var/gridlabd"
+		},
+		"libdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/lib/gridlabd"
+		},
+		"incdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/include"
+		},
+		"logfile" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/tmp/gridlabd-log"
+		},
+		"pidfile_dir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/tmp/gridlabd-pid"
+		},
+		"configpath" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.9-240410-develop-ubuntu_22-x86_64/share/gridlabd/solver_py.conf"
+		},
+		"json_complex_format" : {
+			"type" : "set",
+			"keywords" : {
+				"STRING" : "0x0",
+				"LIST" : "0x1",
+				"DICT" : "0x2",
+				"DEGREES" : "0x10",
+				"RADIANS" : "0x20"
+			},
+			"access" : "PUBLIC",
+			"value" : "STRING"
+		},
+		"rusage_file" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "gridlabd-rusage.csv"
+		},
+		"rusage_rate" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"rusage" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "{\"utime\" : 6.570931, \"stime\" : 1.023585, \"maxrss\" : 57384, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 7972, \"majflt\" : 0, \"nswap\" : 0, \"inblock\" : 8, \"oublock\" : 35728, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 7, \"nivcsw\" : 35512}"
+		},
+		"echo" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"filename" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "case14_control.glm"
+		},
+		"country" : {
+			"type" : "char8",
+			"access" : "PUBLIC",
+			"value" : "US"
+		},
+		"region" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "CA"
+		},
+		"organization" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "SLAC"
+		},
+		"profile_output_format" : {
+			"type" : "set",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"maximum_runtime" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"flush_output" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"pypower::message_flags" : {
+			"type" : "set",
+			"keywords" : {
+				"QUIET" : "0x10000",
+				"WARNING" : "0x20000",
+				"DEBUG" : "0x40000",
+				"VERBOSE" : "0x80000"
+			},
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"pypower::version" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "2"
+		},
+		"pypower::solver_method" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"NR" : "0x1",
+				"FD_XB" : "0x2",
+				"FD_BX" : "0x3",
+				"GS" : "0x4"
+			},
+			"access" : "PUBLIC",
+			"value" : "NR"
+		},
+		"pypower::maximum_timestep" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"pypower::baseMVA" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+100 MVA"
+		},
+		"pypower::enable_opf" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::stop_on_failure" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::save_case" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"pypower::controllers_path" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"pypower::controllers" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "controllers"
+		},
+		"pypower::solver_update_resolution" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+1e-08"
+		},
+		"pypower::maximum_iterations" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"pypower::solution_tolerance" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0"
+		},
+		"pypower::solver_status" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"FAILED" : "0x2",
+				"SUCCESS" : "0x1",
+				"INIT" : "0x0"
+			},
+			"access" : "PUBLIC",
+			"value" : "SUCCESS"
+		},
+		"pypower::enforce_q_limits" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::use_dc_powerflow" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::save_format" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"PY" : "0x2",
+				"JSON" : "0x1",
+				"CSV" : "0x0"
+			},
+			"access" : "PUBLIC",
+			"value" : "CSV"
+		},
+		"tape::gnuplot_path" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "/usr/bin/gnuplot"
+		},
+		"tape::flush_interval" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"tape::csv_data_only" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "2"
+		},
+		"tape::csv_header_type" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"NAME" : "0x2",
+				"NONE" : "0x1",
+				"FULL" : "0x0"
+			},
+			"access" : "PUBLIC",
+			"value" : "NAME"
+		},
+		"tape::csv_keep_clean" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"tape::delta_mode_needed" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "NEVER"
+		},
+		"py_load_options" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "-t pypower"
+		}
+	},
+	"schedules" : {
+	},
+	"objects" : {
+		"load:0" : {
+			"id" : "0",
+			"class" : "load",
+			"parent" : "pp_bus_2",
+			"rank" : "1",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1804289383",
+			"guid" : "A73D5BB33BC3DD33AF55982003D8176",
+			"flags" : "0x100",
+			"S": "7.974+0j MVA",
+			"Z": "0+0j Ohm",
+			"I": "0+0j A",
+			"P": "7.373+0j MVA",
+			"V": "2.67565+12.7855j pu*V",
+			"Vn": "12.5 kV",
+			"status": "ONLINE",
+			"response": "0 pu",
+			"controller": "load_control"
+		},
+		"player:1" : {
+			"id" : "1",
+			"class" : "player",
+			"parent" : "load:0",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"valid_to" : "1580547600",
+			"rng_state" : "846930886",
+			"guid" : "1DF6F0953E09C273A49D8967E74A614",
+			"flags" : "0x100",
+			"property": "P",
+			"file": "pp_bus_2.csv",
+			"filetype": "txt",
+			"mode": "file",
+			"loop": "0"
+		},
+		"powerplant:2" : {
+			"id" : "2",
+			"class" : "powerplant",
+			"parent" : "pp_bus_1",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"valid_to" : "1580547600",
+			"rng_state" : "1681692777",
+			"guid" : "4B06AD5FF008F387329CB7D4E25812F6",
+			"flags" : "0x100",
+			"city": "",
+			"state": "",
+			"zipcode": "",
+			"country": "",
+			"naics_code": "",
+			"naics_description": "",
+			"plant_code": "",
+			"generator": "",
+			"fuel": "",
+			"status": "ONLINE",
+			"operating_capacity": "0 MW",
+			"summer_capacity": "0 MW",
+			"winter_capacity": "0 MW",
+			"capacity_factor": "0 pu",
+			"substation_1": "",
+			"substation_2": "",
+			"S": "0+0j MVA",
+			"controller": "powerplant_control"
+		},
+		"pp_bus_1" : {
+			"id" : "3",
+			"class" : "bus",
+			"rank" : "1",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1714636915",
+			"guid" : "2D9C1FD23FD811B723975A647E045FE3",
+			"flags" : "0x100",
+			"bus_i": "1",
+			"S": "0+0j MVA",
+			"type": "REF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "5.18769e-322 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.06 pu*V",
+			"Va": "0 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_2" : {
+			"id" : "4",
+			"class" : "bus",
+			"rank" : "2",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1957747793",
+			"guid" : "26E6A2AE6A55A9592E72CA231597FFF6",
+			"flags" : "0x100",
+			"bus_i": "2",
+			"S": "18.974+0.2j MVA",
+			"type": "PV",
+			"Pd": "18.974 MW",
+			"Qd": "0.2 MVAr",
+			"Gs": "5.2371e-322 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.045 pu*V",
+			"Va": "-4.91868 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_3" : {
+			"id" : "5",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "424238335",
+			"guid" : "46EB09C115AC5E34100CAA5399CD7B9B",
+			"flags" : "0x100",
+			"bus_i": "3",
+			"S": "94.2+19j MVA",
+			"type": "PV",
+			"Pd": "94.2 MW",
+			"Qd": "19 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.01 pu*V",
+			"Va": "-12.668 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_4" : {
+			"id" : "6",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "719885386",
+			"guid" : "2E0C83D3B103360C9A6541E00CD7CD3",
+			"flags" : "0x100",
+			"bus_i": "4",
+			"S": "47.8-3.9j MVA",
+			"type": "PQREF",
+			"Pd": "47.8 MW",
+			"Qd": "-3.9 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.01767 pu*V",
+			"Va": "-10.2623 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_5" : {
+			"id" : "7",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1649760492",
+			"guid" : "1D2D15165010C12B6E9C70DA4A620585",
+			"flags" : "0x100",
+			"bus_i": "5",
+			"S": "7.6+1.6j MVA",
+			"type": "PQREF",
+			"Pd": "7.6 MW",
+			"Qd": "1.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.01952 pu*V",
+			"Va": "-8.72775 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_6" : {
+			"id" : "8",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "596516649",
+			"guid" : "587E34D356FBEA96E8A4FA2A14F145B",
+			"flags" : "0x100",
+			"bus_i": "6",
+			"S": "11.2+7.5j MVA",
+			"type": "PV",
+			"Pd": "11.2 MW",
+			"Qd": "7.5 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.07 pu*V",
+			"Va": "-14.1734 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_7" : {
+			"id" : "9",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1189641421",
+			"guid" : "65AF6B223D0DD1EE3C318E14CF281B17",
+			"flags" : "0x100",
+			"bus_i": "7",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.06152 pu*V",
+			"Va": "-13.3098 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_8" : {
+			"id" : "10",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1025202362",
+			"guid" : "4B7F4D77828F558C2280F612DC7A16F5",
+			"flags" : "0x100",
+			"bus_i": "8",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.09 pu*V",
+			"Va": "-13.3098 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_9" : {
+			"id" : "11",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1350490027",
+			"guid" : "D776AA3A8D7B70162212C0CBA0BE565",
+			"flags" : "0x100",
+			"bus_i": "9",
+			"S": "29.5+16.6j MVA",
+			"type": "PQREF",
+			"Pd": "29.5 MW",
+			"Qd": "16.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "19 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.05594 pu*V",
+			"Va": "-14.8891 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_10" : {
+			"id" : "12",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "783368690",
+			"guid" : "6BC0192C901674C752EB73C035A1F749",
+			"flags" : "0x100",
+			"bus_i": "10",
+			"S": "9+5.8j MVA",
+			"type": "PQREF",
+			"Pd": "9 MW",
+			"Qd": "5.8 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.05099 pu*V",
+			"Va": "-15.0482 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_11" : {
+			"id" : "13",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1102520059",
+			"guid" : "33EC2CA9129939957D98EB2A3F23AB5F",
+			"flags" : "0x100",
+			"bus_i": "11",
+			"S": "3.5+1.8j MVA",
+			"type": "PQREF",
+			"Pd": "3.5 MW",
+			"Qd": "1.8 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.05691 pu*V",
+			"Va": "-14.7423 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_12" : {
+			"id" : "14",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "2044897763",
+			"guid" : "6C8ED8E108BE1BC5331EA547A7BA7127",
+			"flags" : "0x100",
+			"bus_i": "12",
+			"S": "6.1+1.6j MVA",
+			"type": "PQREF",
+			"Pd": "6.1 MW",
+			"Qd": "1.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.05519 pu*V",
+			"Va": "-15.0279 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_13" : {
+			"id" : "15",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1967513926",
+			"guid" : "1A8CFB77153840CA500C889308A771DB",
+			"flags" : "0x100",
+			"bus_i": "13",
+			"S": "13.5+5.8j MVA",
+			"type": "PQREF",
+			"Pd": "13.5 MW",
+			"Qd": "5.8 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.05038 pu*V",
+			"Va": "-15.1084 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_bus_14" : {
+			"id" : "16",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1365180540",
+			"guid" : "C0326E2AD4A016A7B4E3EE463110E8A",
+			"flags" : "0x100",
+			"bus_i": "14",
+			"S": "14.9+5j MVA",
+			"type": "PQREF",
+			"Pd": "14.9 MW",
+			"Qd": "5 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "0 kV",
+			"Vm": "1.03553 pu*V",
+			"Va": "-15.9849 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V"
+		},
+		"pp_gen_1" : {
+			"id" : "17",
+			"class" : "gen",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1540383426",
+			"guid" : "399B9B62C40B736248AE5E7E4E7D5CA3",
+			"flags" : "0x100",
+			"bus": "1",
+			"Pg": "230.083 MW",
+			"Qg": "-16.0684 MVAr",
+			"Qmax": "10 MVAr",
+			"Qmin": "0 MVAr",
+			"Vg": "1.06 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "332.4 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_2" : {
+			"id" : "18",
+			"class" : "gen",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "304089172",
+			"guid" : "2C365CC754CC2A2D5882BDEB2F2850DD",
+			"flags" : "0x100",
+			"bus": "2",
+			"Pg": "40 MW",
+			"Qg": "30.193 MVAr",
+			"Qmax": "50 MVAr",
+			"Qmin": "-40 MVAr",
+			"Vg": "1.045 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "140 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_3" : {
+			"id" : "19",
+			"class" : "gen",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1303455736",
+			"guid" : "29CE45B2BB94242616D61EA7F227C06D",
+			"flags" : "0x100",
+			"bus": "3",
+			"Pg": "0 MW",
+			"Qg": "25.0712 MVAr",
+			"Qmax": "40 MVAr",
+			"Qmin": "0 MVAr",
+			"Vg": "1.01 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "100 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_4" : {
+			"id" : "20",
+			"class" : "gen",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "35005211",
+			"guid" : "796BDB3E5F7BE6C45D818410305D8E2B",
+			"flags" : "0x100",
+			"bus": "6",
+			"Pg": "0 MW",
+			"Qg": "12.729 MVAr",
+			"Qmax": "24 MVAr",
+			"Qmin": "-6 MVAr",
+			"Vg": "1.07 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "100 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_5" : {
+			"id" : "21",
+			"class" : "gen",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "521595368",
+			"guid" : "13043581A655FB5D3575269A5E502981",
+			"flags" : "0x100",
+			"bus": "8",
+			"Pg": "0 MW",
+			"Qg": "17.6219 MVAr",
+			"Qmax": "24 MVAr",
+			"Qmin": "-6 MVAr",
+			"Vg": "1.09 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "100 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_branch_1" : {
+			"id" : "22",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "294702567",
+			"guid" : "4D4314017D48FB494C17CD4D1B284F2",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "1",
+			"tbus": "2",
+			"r": "0.01938 pu*Ohm",
+			"x": "0.05917 pu*Ohm",
+			"b": "0.0528 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_2" : {
+			"id" : "23",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1726956429",
+			"guid" : "4FEEA696F581C2215F86CE24EAB9BD35",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "1",
+			"tbus": "5",
+			"r": "0.05403 pu*Ohm",
+			"x": "0.22304 pu*Ohm",
+			"b": "0.0492 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_3" : {
+			"id" : "24",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "336465782",
+			"guid" : "7EEE35A588D03ACA335DACE59286E6C8",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "2",
+			"tbus": "3",
+			"r": "0.04699 pu*Ohm",
+			"x": "0.19797 pu*Ohm",
+			"b": "0.0438 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_4" : {
+			"id" : "25",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "861021530",
+			"guid" : "76C326508DB591C95D7C0FAA83E60249",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "2",
+			"tbus": "4",
+			"r": "0.05811 pu*Ohm",
+			"x": "0.17632 pu*Ohm",
+			"b": "0.034 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_5" : {
+			"id" : "26",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "278722862",
+			"guid" : "5055598435F47DA62CFE0B777866EBBA",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "2",
+			"tbus": "5",
+			"r": "0.05695 pu*Ohm",
+			"x": "0.17388 pu*Ohm",
+			"b": "0.0346 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_6" : {
+			"id" : "27",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "233665123",
+			"guid" : "76EE167C27CE47F31BB3EA8A56D0ECD8",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "3",
+			"tbus": "4",
+			"r": "0.06701 pu*Ohm",
+			"x": "0.17103 pu*Ohm",
+			"b": "0.0128 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_7" : {
+			"id" : "28",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "2145174067",
+			"guid" : "2851139D54B41D0368D005A8E4C0B7A2",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "4",
+			"tbus": "5",
+			"r": "0.01335 pu*Ohm",
+			"x": "0.04211 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_8" : {
+			"id" : "29",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "468703135",
+			"guid" : "7BC0423F259AC2EF79E2DF7A40C63F3C",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "4",
+			"tbus": "7",
+			"r": "0 pu*Ohm",
+			"x": "0.20912 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0.978 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_9" : {
+			"id" : "30",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1101513929",
+			"guid" : "49D8446867DA3DA2376D0BE38EA65AD0",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "4",
+			"tbus": "9",
+			"r": "0 pu*Ohm",
+			"x": "0.55618 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0.969 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_10" : {
+			"id" : "31",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1801979802",
+			"guid" : "441F64E99A9767DE4386E6EEC3151CD8",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "5",
+			"tbus": "6",
+			"r": "0 pu*Ohm",
+			"x": "0.25202 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0.932 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_11" : {
+			"id" : "32",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1315634022",
+			"guid" : "382A0CCD4FC8595C29D3893B60924FCF",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "6",
+			"tbus": "11",
+			"r": "0.09498 pu*Ohm",
+			"x": "0.1989 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_12" : {
+			"id" : "33",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "635723058",
+			"guid" : "1F3582DF48BA8589415641743ACAA638",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "6",
+			"tbus": "12",
+			"r": "0.12291 pu*Ohm",
+			"x": "0.25581 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_13" : {
+			"id" : "34",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1369133069",
+			"guid" : "7809C3E8C939E5BA2950A4CDFA178958",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "6",
+			"tbus": "13",
+			"r": "0.06615 pu*Ohm",
+			"x": "0.13027 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_14" : {
+			"id" : "35",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1125898167",
+			"guid" : "3E22F479512D60B353B4820F1C7668E2",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "7",
+			"tbus": "8",
+			"r": "0 pu*Ohm",
+			"x": "0.17615 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_15" : {
+			"id" : "36",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1059961393",
+			"guid" : "5DDFCEFF7FF547CA30742D2095B0DDA9",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "7",
+			"tbus": "9",
+			"r": "0 pu*Ohm",
+			"x": "0.11001 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_16" : {
+			"id" : "37",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "2089018456",
+			"guid" : "AAB02DD590CA9D061932A2F3F5C04D",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "9",
+			"tbus": "10",
+			"r": "0.03181 pu*Ohm",
+			"x": "0.0845 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_17" : {
+			"id" : "38",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "628175011",
+			"guid" : "18F63B547599444514FD0D86128EEC7E",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "9",
+			"tbus": "14",
+			"r": "0.12711 pu*Ohm",
+			"x": "0.27038 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_18" : {
+			"id" : "39",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1656478042",
+			"guid" : "32E9F6E8E22AA184B867247E825F657",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "10",
+			"tbus": "11",
+			"r": "0.08205 pu*Ohm",
+			"x": "0.19207 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_19" : {
+			"id" : "40",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1131176229",
+			"guid" : "2BA5FA177C5DB70A52CCAD7CE224225C",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "12",
+			"tbus": "13",
+			"r": "0.22092 pu*Ohm",
+			"x": "0.19988 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_branch_20" : {
+			"id" : "41",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1653377373",
+			"guid" : "19FC7A0997C9BAED13F9EDB0829F9E3A",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "13",
+			"tbus": "14",
+			"r": "0.17093 pu*Ohm",
+			"x": "0.34802 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "9900 MVA",
+			"rateB": "0 MVA",
+			"rateC": "0 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg"
+		},
+		"pp_gencost_0" : {
+			"id" : "42",
+			"class" : "gencost",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "859484421",
+			"guid" : "7E9E2885C3A4DF47D59A049A29F464",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.0430293,20.0,0.0"
+		},
+		"pp_gencost_1" : {
+			"id" : "43",
+			"class" : "gencost",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1914544919",
+			"guid" : "5DB6291D4F6589926AD4918F7B897F7E",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.25,20.0,0.0"
+		},
+		"pp_gencost_2" : {
+			"id" : "44",
+			"class" : "gencost",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "608413784",
+			"guid" : "4C817C1C856860C35109D910EA2BF79C",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,40.0,0.0"
+		},
+		"pp_gencost_3" : {
+			"id" : "45",
+			"class" : "gencost",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "756898537",
+			"guid" : "215139527D66D36B4E5656E9494EAF5F",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,40.0,0.0"
+		},
+		"pp_gencost_4" : {
+			"id" : "46",
+			"class" : "gencost",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1734575198",
+			"guid" : "6E4C0BFAA7B9937D384C46D9B553EDBE",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,40.0,0.0"
+		},
+		"recorder:47" : {
+			"id" : "47",
+			"class" : "recorder",
+			"parent" : "pp_bus_1",
+			"rank" : "0",
+			"clock" : "2020-02-01 00:00:00 PST",
+			"rng_state" : "1973594324",
+			"guid" : "4D1A0F0FDDEFAB677005898334558057",
+			"flags" : "0x100",
+			"trigger": "",
+			"file": "pp_bus_1_recorder.csv",
+			"filetype": "txt",
+			"mode": "file",
+			"multifile": "",
+			"limit": "0",
+			"plotcommands": "",
+			"xdata": "",
+			"columns": "",
+			"flush": "-1",
+			"format": "FALSE",
+			"interval": "-1 s",
+			"strftime_format": "",
+			"property": "S,Pd,Qd,Gs,Bs,Vm,Va",
+			"output": "SCREEN",
+			"header_units": "DEFAULT",
+			"line_units": "DEFAULT"
+		}
+	}
+}

@@ -10,7 +10,7 @@ clock
 module pypower
 {
     controllers "controllers"; // defines all controller functions
-    save_case TRUE;
+    // save_case TRUE;
 }
 
 module tape

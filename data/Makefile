@@ -15,6 +15,7 @@ FILES =
 FILES += wecc240_psse.glm
 FILES += wecc240_gis.glm
 FILES += powerplants.glm
+FILES += powerlines.glm
 
 #
 # Targets
@@ -30,3 +31,5 @@ wecc240_gis.glm: wecc240_gis.py wecc240_gis.csv
 powerplants.glm: powerplants.py powerplants.csv.zip
 	gridlabd python $^ $@
 
+powerlines.glm: powerlines.py powerlines.csv.zip
+	gridlabd python $^ $@

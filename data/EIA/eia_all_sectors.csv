@@ -1,1861 +1,1861 @@
-period,stateid,stateDescription,sectorid,sectorName,sales,sales-units
-2023,WV,West Virginia,IND,industrial,14662.724,million kilowatthours
-2023,DE,Delaware,TRA,transportation,0,million kilowatthours
-2023,DE,Delaware,RES,residential,4922.40124,million kilowatthours
-2023,KS,Kansas,TRA,transportation,0,million kilowatthours
-2023,KS,Kansas,RES,residential,13977.45813,million kilowatthours
-2023,KS,Kansas,OTH,other,,million kilowatthours
-2023,KS,Kansas,IND,industrial,11387.02482,million kilowatthours
-2023,KS,Kansas,COM,commercial,16054.46651,million kilowatthours
-2023,IA,Iowa,TRA,transportation,0,million kilowatthours
-2023,IA,Iowa,RES,residential,14938.29093,million kilowatthours
-2023,IA,Iowa,OTH,other,,million kilowatthours
-2023,IA,Iowa,IND,industrial,27491.31057,million kilowatthours
-2023,IA,Iowa,COM,commercial,12366.53684,million kilowatthours
-2023,IN,Indiana,TRA,transportation,12.07465,million kilowatthours
-2023,IN,Indiana,RES,residential,31907.56734,million kilowatthours
-2023,IN,Indiana,OTH,other,,million kilowatthours
-2023,IN,Indiana,IND,industrial,40854.99008,million kilowatthours
-2023,IN,Indiana,COM,commercial,22852.83608,million kilowatthours
-2023,IL,Illinois,TRA,transportation,414.75508,million kilowatthours
-2023,IL,Illinois,RES,residential,43582.44485,million kilowatthours
-2023,IL,Illinois,OTH,other,,million kilowatthours
-2023,IL,Illinois,IND,industrial,41087.96805,million kilowatthours
-2023,IL,Illinois,COM,commercial,45695.10934,million kilowatthours
-2023,ID,Idaho,TRA,transportation,0,million kilowatthours
-2023,ID,Idaho,RES,residential,9695.26949,million kilowatthours
-2023,ID,Idaho,OTH,other,,million kilowatthours
-2023,ID,Idaho,IND,industrial,9029.87653,million kilowatthours
-2023,ID,Idaho,COM,commercial,6784.05247,million kilowatthours
-2023,HI,Hawaii,TRA,transportation,0,million kilowatthours
-2023,HI,Hawaii,RES,residential,2695.19252,million kilowatthours
-2023,HI,Hawaii,OTH,other,,million kilowatthours
-2023,HI,Hawaii,IND,industrial,3428.01579,million kilowatthours
-2023,HI,Hawaii,COM,commercial,2764.44967,million kilowatthours
-2023,GA,Georgia,TRA,transportation,144.12382,million kilowatthours
-2023,GA,Georgia,RES,residential,59926.45353,million kilowatthours
-2023,GA,Georgia,OTH,other,,million kilowatthours
-2023,GA,Georgia,IND,industrial,32963.65277,million kilowatthours
-2023,GA,Georgia,COM,commercial,47975.86552,million kilowatthours
-2023,FL,Florida,TRA,transportation,71.1046,million kilowatthours
-2023,FL,Florida,RES,residential,134713.78776,million kilowatthours
-2023,FL,Florida,OTH,other,,million kilowatthours
-2023,FL,Florida,IND,industrial,17163.56977,million kilowatthours
-2023,FL,Florida,COM,commercial,98791.98155,million kilowatthours
-2023,DC,District of Columbia,TRA,transportation,301.38399,million kilowatthours
-2023,DC,District of Columbia,RES,residential,2371.64111,million kilowatthours
-2023,DC,District of Columbia,OTH,other,,million kilowatthours
-2023,DC,District of Columbia,IND,industrial,176.56624,million kilowatthours
-2023,DC,District of Columbia,COM,commercial,7009.97216,million kilowatthours
-2023,WV,West Virginia,COM,commercial,7176.37393,million kilowatthours
-2023,WA,Washington,TRA,transportation,103.39123,million kilowatthours
-2023,WA,Washington,RES,residential,38787.00776,million kilowatthours
-2023,WA,Washington,OTH,other,,million kilowatthours
-2023,WA,Washington,IND,industrial,20647.90774,million kilowatthours
-2023,WA,Washington,COM,commercial,29163.51839,million kilowatthours
-2023,VA,Virginia,TRA,transportation,239.60999,million kilowatthours
-2023,VA,Virginia,RES,residential,43724.77037,million kilowatthours
-2023,VA,Virginia,OTH,other,,million kilowatthours
-2023,VA,Virginia,IND,industrial,16947.72076,million kilowatthours
-2023,VA,Virginia,COM,commercial,67595.91728,million kilowatthours
-2023,VT,Vermont,TRA,transportation,0,million kilowatthours
-2023,VT,Vermont,RES,residential,2166.74403,million kilowatthours
-2023,VT,Vermont,OTH,other,,million kilowatthours
-2023,VT,Vermont,IND,industrial,1284.27349,million kilowatthours
-2023,VT,Vermont,COM,commercial,1898.523,million kilowatthours
-2023,UT,Utah,TRA,transportation,54.35665,million kilowatthours
-2023,UT,Utah,RES,residential,11142.90097,million kilowatthours
-2023,UT,Utah,OTH,other,,million kilowatthours
-2023,UT,Utah,IND,industrial,8640.72137,million kilowatthours
-2023,UT,Utah,COM,commercial,13213.50529,million kilowatthours
-2023,TX,Texas,TRA,transportation,187.62617,million kilowatthours
-2023,TX,Texas,RES,residential,165917.18783,million kilowatthours
-2023,TX,Texas,OTH,other,,million kilowatthours
-2023,TX,Texas,IND,industrial,165954.54307,million kilowatthours
-2023,TX,Texas,COM,commercial,154727.42847,million kilowatthours
-2023,DE,Delaware,OTH,other,,million kilowatthours
-2023,DE,Delaware,IND,industrial,1943.99348,million kilowatthours
-2023,DE,Delaware,COM,commercial,4139.12144,million kilowatthours
-2023,CT,Connecticut,TRA,transportation,178.89912,million kilowatthours
-2023,CT,Connecticut,RES,residential,12534.91839,million kilowatthours
-2023,CT,Connecticut,OTH,other,,million kilowatthours
-2023,CT,Connecticut,IND,industrial,2592.10473,million kilowatthours
-2023,CT,Connecticut,COM,commercial,11252.24399,million kilowatthours
-2023,CO,Colorado,TRA,transportation,89.61351,million kilowatthours
-2023,CO,Colorado,RES,residential,20258.51648,million kilowatthours
-2023,CO,Colorado,OTH,other,,million kilowatthours
-2023,CO,Colorado,IND,industrial,15450.24953,million kilowatthours
-2023,CO,Colorado,COM,commercial,20564.18442,million kilowatthours
-2023,CA,California,TRA,transportation,725.43237,million kilowatthours
-2023,CA,California,RES,residential,82998.27748,million kilowatthours
-2023,CA,California,OTH,other,,million kilowatthours
-2023,CA,California,IND,industrial,41993.79014,million kilowatthours
-2023,CA,California,COM,commercial,112522.41483,million kilowatthours
-2023,AR,Arkansas,TRA,transportation,.26824,million kilowatthours
-2023,AR,Arkansas,RES,residential,18633.30174,million kilowatthours
-2023,AR,Arkansas,OTH,other,,million kilowatthours
-2023,AR,Arkansas,IND,industrial,18728.25769,million kilowatthours
-2023,AR,Arkansas,COM,commercial,11895.49157,million kilowatthours
-2023,AZ,Arizona,TRA,transportation,10.06646,million kilowatthours
-2023,AZ,Arizona,RES,residential,38832.86812,million kilowatthours
-2023,AZ,Arizona,OTH,other,,million kilowatthours
-2023,AZ,Arizona,IND,industrial,14217.845,million kilowatthours
-2023,AZ,Arizona,COM,commercial,32268.39231,million kilowatthours
-2023,AK,Alaska,TRA,transportation,0,million kilowatthours
-2023,AK,Alaska,RES,residential,2046.18113,million kilowatthours
-2023,AK,Alaska,OTH,other,,million kilowatthours
-2023,AK,Alaska,IND,industrial,1382.99739,million kilowatthours
-2023,AK,Alaska,COM,commercial,2574.46114,million kilowatthours
-2023,AL,Alabama,TRA,transportation,0,million kilowatthours
-2023,AL,Alabama,RES,residential,31921.13125,million kilowatthours
-2023,AL,Alabama,OTH,other,,million kilowatthours
-2023,AL,Alabama,IND,industrial,31236.01034,million kilowatthours
-2023,AL,Alabama,COM,commercial,22670.85422,million kilowatthours
-2023,RI,Rhode Island,COM,commercial,3605.99786,million kilowatthours
-2023,MS,Mississippi,OTH,other,,million kilowatthours
-2023,TN,Tennessee,TRA,transportation,0,million kilowatthours
-2023,TN,Tennessee,RES,residential,41786.14676,million kilowatthours
-2023,TN,Tennessee,OTH,other,,million kilowatthours
-2023,TN,Tennessee,IND,industrial,22122.72432,million kilowatthours
-2023,TN,Tennessee,COM,commercial,34956.33685,million kilowatthours
-2023,SD,South Dakota,TRA,transportation,0,million kilowatthours
-2023,SD,South Dakota,RES,residential,5285.39813,million kilowatthours
-2023,SD,South Dakota,OTH,other,,million kilowatthours
-2023,SD,South Dakota,IND,industrial,3238.49054,million kilowatthours
-2023,SD,South Dakota,COM,commercial,4947.76053,million kilowatthours
-2023,SC,South Carolina,TRA,transportation,0,million kilowatthours
-2023,SC,South Carolina,RES,residential,31474.68162,million kilowatthours
-2023,SC,South Carolina,OTH,other,,million kilowatthours
-2023,SC,South Carolina,IND,industrial,25495.99295,million kilowatthours
-2023,SC,South Carolina,COM,commercial,25305.13231,million kilowatthours
-2023,RI,Rhode Island,TRA,transportation,26.21359,million kilowatthours
-2023,RI,Rhode Island,RES,residential,2994.99297,million kilowatthours
-2023,RI,Rhode Island,OTH,other,,million kilowatthours
-2023,RI,Rhode Island,IND,industrial,628.88286,million kilowatthours
-2023,PA,Pennsylvania,TRA,transportation,441.33706,million kilowatthours
-2023,PA,Pennsylvania,RES,residential,52436.85388,million kilowatthours
-2023,PA,Pennsylvania,OTH,other,,million kilowatthours
-2023,PA,Pennsylvania,IND,industrial,50135.15687,million kilowatthours
-2023,PA,Pennsylvania,COM,commercial,35561.52747,million kilowatthours
-2023,OR,Oregon,TRA,transportation,22.6295,million kilowatthours
-2023,OR,Oregon,RES,residential,20417.23751,million kilowatthours
-2023,OR,Oregon,OTH,other,,million kilowatthours
-2023,OR,Oregon,IND,industrial,16399.62531,million kilowatthours
-2023,NV,Nevada,OTH,other,,million kilowatthours
-2023,NV,Nevada,IND,industrial,12416.70949,million kilowatthours
-2023,OR,Oregon,COM,commercial,17142.57958,million kilowatthours
-2023,OK,Oklahoma,TRA,transportation,0,million kilowatthours
-2023,OK,Oklahoma,RES,residential,23934.57653,million kilowatthours
-2023,OK,Oklahoma,OTH,other,,million kilowatthours
-2023,OK,Oklahoma,IND,industrial,22467.6616,million kilowatthours
-2023,OK,Oklahoma,COM,commercial,22403.14591,million kilowatthours
-2023,OH,Ohio,TRA,transportation,30.26399,million kilowatthours
-2023,OH,Ohio,RES,residential,49910.8274,million kilowatthours
-2023,OH,Ohio,OTH,other,,million kilowatthours
-2023,OH,Ohio,IND,industrial,50630.79715,million kilowatthours
-2023,OH,Ohio,COM,commercial,46167.48939,million kilowatthours
-2023,ND,North Dakota,TRA,transportation,0,million kilowatthours
-2023,ND,North Dakota,RES,residential,5098.39396,million kilowatthours
-2023,ND,North Dakota,OTH,other,,million kilowatthours
-2023,ND,North Dakota,IND,industrial,13928.31478,million kilowatthours
-2023,ND,North Dakota,COM,commercial,9620.18184,million kilowatthours
-2023,NC,North Carolina,TRA,transportation,12.62001,million kilowatthours
-2023,NC,North Carolina,RES,residential,59515.43641,million kilowatthours
-2023,NC,North Carolina,OTH,other,,million kilowatthours
-2023,NC,North Carolina,IND,industrial,26354.79958,million kilowatthours
-2023,NC,North Carolina,COM,commercial,49099.55347,million kilowatthours
-2023,NY,New York,TRA,transportation,2712.96028,million kilowatthours
-2023,NY,New York,RES,residential,50301.91109,million kilowatthours
-2023,NY,New York,OTH,other,,million kilowatthours
-2023,NY,New York,IND,industrial,15037.55016,million kilowatthours
-2023,NY,New York,COM,commercial,71008.07926,million kilowatthours
-2023,NM,New Mexico,TRA,transportation,0,million kilowatthours
-2023,NM,New Mexico,RES,residential,7353.97608,million kilowatthours
-2023,NM,New Mexico,OTH,other,,million kilowatthours
-2023,NM,New Mexico,IND,industrial,12054.67388,million kilowatthours
-2023,NM,New Mexico,COM,commercial,9287.64595,million kilowatthours
-2023,NJ,New Jersey,TRA,transportation,273.47793,million kilowatthours
-2023,NJ,New Jersey,RES,residential,28428.649,million kilowatthours
-2023,NJ,New Jersey,OTH,other,,million kilowatthours
-2023,NJ,New Jersey,IND,industrial,6078.17411,million kilowatthours
-2023,NJ,New Jersey,COM,commercial,35673.1777,million kilowatthours
-2023,NH,New Hampshire,TRA,transportation,0,million kilowatthours
-2023,NH,New Hampshire,RES,residential,4618.81454,million kilowatthours
-2023,NH,New Hampshire,OTH,other,,million kilowatthours
-2023,NH,New Hampshire,IND,industrial,1923.56494,million kilowatthours
-2023,NH,New Hampshire,COM,commercial,4048.25313,million kilowatthours
-2023,NV,Nevada,TRA,transportation,7.18096,million kilowatthours
-2023,NV,Nevada,RES,residential,13516.36946,million kilowatthours
-2023,NV,Nevada,COM,commercial,12409.01015,million kilowatthours
-2023,NE,Nebraska,TRA,transportation,0,million kilowatthours
-2023,NE,Nebraska,RES,residential,10674.45802,million kilowatthours
-2023,NE,Nebraska,OTH,other,,million kilowatthours
-2023,NE,Nebraska,IND,industrial,13208.6414,million kilowatthours
-2023,NE,Nebraska,COM,commercial,9564.12696,million kilowatthours
-2023,MT,Montana,TRA,transportation,0,million kilowatthours
-2023,MT,Montana,RES,residential,5759.2552,million kilowatthours
-2023,MT,Montana,OTH,other,,million kilowatthours
-2023,MT,Montana,IND,industrial,4685.11909,million kilowatthours
-2023,MT,Montana,COM,commercial,5022.43056,million kilowatthours
-2023,MO,Missouri,TRA,transportation,22.44622,million kilowatthours
-2023,MO,Missouri,RES,residential,35088.25824,million kilowatthours
-2023,MO,Missouri,OTH,other,,million kilowatthours
-2023,MO,Missouri,IND,industrial,12772.84882,million kilowatthours
-2023,MO,Missouri,COM,commercial,29048.28481,million kilowatthours
-2023,MS,Mississippi,TRA,transportation,0,million kilowatthours
-2023,MS,Mississippi,RES,residential,19069.78971,million kilowatthours
-2023,WV,West Virginia,OTH,other,,million kilowatthours
-2023,WV,West Virginia,RES,residential,10236.68035,million kilowatthours
-2023,WV,West Virginia,TRA,transportation,0,million kilowatthours
-2023,WI,Wisconsin,COM,commercial,23193.16389,million kilowatthours
-2023,WI,Wisconsin,IND,industrial,23419.77916,million kilowatthours
-2023,WI,Wisconsin,OTH,other,,million kilowatthours
-2023,WI,Wisconsin,RES,residential,22396.40384,million kilowatthours
-2023,WI,Wisconsin,TRA,transportation,1.13888,million kilowatthours
-2023,WY,Wyoming,COM,commercial,3646.65974,million kilowatthours
-2023,WY,Wyoming,IND,industrial,10213.62655,million kilowatthours
-2023,WY,Wyoming,OTH,other,,million kilowatthours
-2023,WY,Wyoming,RES,residential,2972.54712,million kilowatthours
-2023,WY,Wyoming,TRA,transportation,0,million kilowatthours
-2023,NEW,New England,COM,commercial,48699.08349,million kilowatthours
-2023,NEW,New England,IND,industrial,14855.65772,million kilowatthours
-2023,NEW,New England,OTH,other,,million kilowatthours
-2023,NEW,New England,RES,residential,46546.60093,million kilowatthours
-2023,NEW,New England,TRA,transportation,484.46048,million kilowatthours
-2023,MAT,Middle Atlantic,COM,commercial,142242.78443,million kilowatthours
-2023,MAT,Middle Atlantic,IND,industrial,71250.88114,million kilowatthours
-2023,MAT,Middle Atlantic,OTH,other,,million kilowatthours
-2023,MAT,Middle Atlantic,RES,residential,131167.41397,million kilowatthours
-2023,MAT,Middle Atlantic,TRA,transportation,3427.77527,million kilowatthours
-2023,ENC,East North Central,COM,commercial,174467.09385,million kilowatthours
-2023,ENC,East North Central,IND,industrial,184256.06417,million kilowatthours
-2023,ENC,East North Central,OTH,other,,million kilowatthours
-2023,ENC,East North Central,RES,residential,180496.54855,million kilowatthours
-2023,ENC,East North Central,TRA,transportation,463.68475,million kilowatthours
-2023,WNC,West North Central,COM,commercial,104033.08219,million kilowatthours
-2023,WNC,West North Central,IND,industrial,102568.93002,million kilowatthours
-2023,WNC,West North Central,OTH,other,,million kilowatthours
-2023,WNC,West North Central,RES,residential,108552.17598,million kilowatthours
-2023,WNC,West North Central,TRA,transportation,40.47505,million kilowatthours
-2023,SAT,South Atlantic,COM,commercial,333907.51753,million kilowatthours
-2023,SAT,South Atlantic,IND,industrial,139141.59578,million kilowatthours
-2023,SAT,South Atlantic,OTH,other,,million kilowatthours
-2023,SAT,South Atlantic,RES,residential,373039.80613,million kilowatthours
-2023,SAT,South Atlantic,TRA,transportation,1176.90762,million kilowatthours
-2023,ESC,East South Central,COM,commercial,91128.05004,million kilowatthours
-2023,ESC,East South Central,IND,industrial,95156.62782,million kilowatthours
-2023,ESC,East South Central,OTH,other,,million kilowatthours
-2023,ESC,East South Central,RES,residential,117977.18007,million kilowatthours
-2023,ESC,East South Central,TRA,transportation,0,million kilowatthours
-2023,WSC,West South Central,COM,commercial,213081.13644,million kilowatthours
-2023,WSC,West South Central,IND,industrial,247158.34805,million kilowatthours
-2023,WSC,West South Central,OTH,other,,million kilowatthours
-2023,WSC,West South Central,RES,residential,240411.3106,million kilowatthours
-2023,WSC,West South Central,TRA,transportation,198.34943,million kilowatthours
-2023,MTN,Mountain,COM,commercial,103195.88089,million kilowatthours
-2023,MTN,Mountain,IND,industrial,86708.82143,million kilowatthours
-2023,MTN,Mountain,OTH,other,,million kilowatthours
-2023,MTN,Mountain,RES,residential,109531.70291,million kilowatthours
-2023,MTN,Mountain,TRA,transportation,161.21758,million kilowatthours
-2023,PACC,Pacific Contiguous,COM,commercial,158828.51279,million kilowatthours
-2023,PACC,Pacific Contiguous,IND,industrial,79041.32319,million kilowatthours
-2023,PACC,Pacific Contiguous,OTH,other,,million kilowatthours
-2023,PACC,Pacific Contiguous,RES,residential,142202.52275,million kilowatthours
-2023,PACC,Pacific Contiguous,TRA,transportation,851.45309,million kilowatthours
-2023,PACN,Pacific Noncontiguous,COM,commercial,5338.91081,million kilowatthours
-2023,PACN,Pacific Noncontiguous,IND,industrial,4811.01318,million kilowatthours
-2023,PACN,Pacific Noncontiguous,OTH,other,,million kilowatthours
-2023,PACN,Pacific Noncontiguous,RES,residential,4741.37365,million kilowatthours
-2023,PACN,Pacific Noncontiguous,TRA,transportation,0,million kilowatthours
-2023,US,U.S. Total,COM,commercial,1374922.05246,million kilowatthours
-2023,US,U.S. Total,IND,industrial,1024949.26249,million kilowatthours
-2023,US,U.S. Total,OTH,other,,million kilowatthours
-2023,US,U.S. Total,RES,residential,1454666.63552,million kilowatthours
-2023,US,U.S. Total,TRA,transportation,6804.32326,million kilowatthours
-2023,KY,Kentucky,COM,commercial,18731.77722,million kilowatthours
-2023,KY,Kentucky,IND,industrial,26010.88287,million kilowatthours
-2023,KY,Kentucky,OTH,other,,million kilowatthours
-2023,KY,Kentucky,RES,residential,25200.11235,million kilowatthours
-2023,KY,Kentucky,TRA,transportation,0,million kilowatthours
-2023,LA,Louisiana,COM,commercial,24055.07049,million kilowatthours
-2023,LA,Louisiana,IND,industrial,40007.88569,million kilowatthours
-2023,LA,Louisiana,OTH,other,,million kilowatthours
-2023,LA,Louisiana,RES,residential,31926.24451,million kilowatthours
-2023,LA,Louisiana,TRA,transportation,10.45502,million kilowatthours
-2023,ME,Maine,COM,commercial,3999.08289,million kilowatthours
-2023,ME,Maine,IND,industrial,2325.17558,million kilowatthours
-2023,ME,Maine,OTH,other,,million kilowatthours
-2023,ME,Maine,RES,residential,4906.80565,million kilowatthours
-2023,ME,Maine,TRA,transportation,0,million kilowatthours
-2023,MD,Maryland,COM,commercial,26813.59988,million kilowatthours
-2023,MD,Maryland,IND,industrial,3432.57623,million kilowatthours
-2023,MD,Maryland,OTH,other,,million kilowatthours
-2023,MD,Maryland,RES,residential,26153.95375,million kilowatthours
-2023,MD,Maryland,TRA,transportation,408.06521,million kilowatthours
-2023,MA,Massachusetts,COM,commercial,23894.98262,million kilowatthours
-2023,MA,Massachusetts,IND,industrial,6101.65613,million kilowatthours
-2023,MA,Massachusetts,OTH,other,,million kilowatthours
-2023,MA,Massachusetts,RES,residential,19324.32535,million kilowatthours
-2023,MA,Massachusetts,TRA,transportation,279.34777,million kilowatthours
-2023,MI,Michigan,COM,commercial,36558.49515,million kilowatthours
-2023,MI,Michigan,IND,industrial,28262.52973,million kilowatthours
-2023,MI,Michigan,OTH,other,,million kilowatthours
-2023,MI,Michigan,RES,residential,32699.30512,million kilowatthours
-2023,MI,Michigan,TRA,transportation,5.45215,million kilowatthours
-2023,MN,Minnesota,COM,commercial,22431.7247,million kilowatthours
-2023,MN,Minnesota,IND,industrial,20542.29909,million kilowatthours
-2023,MN,Minnesota,OTH,other,,million kilowatthours
-2023,MN,Minnesota,RES,residential,23489.91857,million kilowatthours
-2023,MN,Minnesota,TRA,transportation,18.02884,million kilowatthours
-2023,MS,Mississippi,COM,commercial,14769.08175,million kilowatthours
-2023,MS,Mississippi,IND,industrial,15787.01029,million kilowatthours
-2022,AZ,Arizona,COM,commercial,31507.06999,million kilowatthours
-2022,HI,Hawaii,OTH,other,,million kilowatthours
-2022,HI,Hawaii,IND,industrial,3452.786,million kilowatthours
-2022,HI,Hawaii,COM,commercial,2837.85,million kilowatthours
-2022,GA,Georgia,TRA,transportation,143.691,million kilowatthours
-2022,GA,Georgia,RES,residential,61140.241,million kilowatthours
-2022,GA,Georgia,OTH,other,,million kilowatthours
-2022,GA,Georgia,IND,industrial,34210.49798,million kilowatthours
-2022,GA,Georgia,COM,commercial,49540.77399,million kilowatthours
-2022,FL,Florida,TRA,transportation,75.099,million kilowatthours
-2022,FL,Florida,RES,residential,134245.97501,million kilowatthours
-2022,FL,Florida,OTH,other,,million kilowatthours
-2022,FL,Florida,IND,industrial,17635.655,million kilowatthours
-2022,WNC,West North Central,COM,commercial,103537.83697,million kilowatthours
-2022,ENC,East North Central,TRA,transportation,506.703,million kilowatthours
-2022,ENC,East North Central,RES,residential,191772.80804,million kilowatthours
-2022,ENC,East North Central,OTH,other,,million kilowatthours
-2022,ENC,East North Central,IND,industrial,186405.913,million kilowatthours
-2022,ENC,East North Central,COM,commercial,177245.43696,million kilowatthours
-2022,MAT,Middle Atlantic,TRA,transportation,3381.956,million kilowatthours
-2022,MAT,Middle Atlantic,RES,residential,138702.82314,million kilowatthours
-2022,MAT,Middle Atlantic,OTH,other,,million kilowatthours
-2022,MAT,Middle Atlantic,IND,industrial,73814.39199,million kilowatthours
-2022,MAT,Middle Atlantic,COM,commercial,146798.67299,million kilowatthours
-2022,NEW,New England,TRA,transportation,492.557,million kilowatthours
-2022,NEW,New England,RES,residential,48451.78002,million kilowatthours
-2022,NEW,New England,OTH,other,,million kilowatthours
-2022,NEW,New England,IND,industrial,15601.328,million kilowatthours
-2022,NEW,New England,COM,commercial,49945.514,million kilowatthours
-2022,WY,Wyoming,TRA,transportation,0,million kilowatthours
-2022,WY,Wyoming,RES,residential,3008.68001,million kilowatthours
-2022,WY,Wyoming,OTH,other,,million kilowatthours
-2022,WY,Wyoming,IND,industrial,9879.95899,million kilowatthours
-2022,WY,Wyoming,COM,commercial,3610.78998,million kilowatthours
-2022,WI,Wisconsin,TRA,transportation,1.101,million kilowatthours
-2022,WI,Wisconsin,RES,residential,22887.92805,million kilowatthours
-2022,WI,Wisconsin,OTH,other,,million kilowatthours
-2022,WI,Wisconsin,IND,industrial,23560.17399,million kilowatthours
-2022,WI,Wisconsin,COM,commercial,23426.66799,million kilowatthours
-2022,WV,West Virginia,TRA,transportation,0,million kilowatthours
-2022,WV,West Virginia,RES,residential,11136.97,million kilowatthours
-2022,WV,West Virginia,OTH,other,,million kilowatthours
-2022,WV,West Virginia,IND,industrial,14574.283,million kilowatthours
-2022,WV,West Virginia,COM,commercial,7275.035,million kilowatthours
-2022,WA,Washington,TRA,transportation,113.933,million kilowatthours
-2022,TX,Texas,TRA,transportation,179.652,million kilowatthours
-2022,TX,Texas,RES,residential,170596.46002,million kilowatthours
-2022,TX,Texas,OTH,other,,million kilowatthours
-2022,TX,Texas,IND,industrial,143905.882,million kilowatthours
-2022,TX,Texas,COM,commercial,160719.19804,million kilowatthours
-2022,TN,Tennessee,TRA,transportation,0,million kilowatthours
-2022,TN,Tennessee,RES,residential,43603.987,million kilowatthours
-2022,TN,Tennessee,OTH,other,,million kilowatthours
-2022,TN,Tennessee,IND,industrial,22788.612,million kilowatthours
-2022,TN,Tennessee,COM,commercial,35719.45201,million kilowatthours
-2022,SD,South Dakota,TRA,transportation,0,million kilowatthours
-2022,SD,South Dakota,RES,residential,5322.906,million kilowatthours
-2022,SD,South Dakota,OTH,other,,million kilowatthours
-2022,SD,South Dakota,IND,industrial,3208.06501,million kilowatthours
-2022,SD,South Dakota,COM,commercial,4936.093,million kilowatthours
-2022,SC,South Carolina,TRA,transportation,0,million kilowatthours
-2022,SC,South Carolina,RES,residential,32287.075,million kilowatthours
-2022,SC,South Carolina,OTH,other,,million kilowatthours
-2022,SC,South Carolina,IND,industrial,26340.73201,million kilowatthours
-2022,SC,South Carolina,COM,commercial,24130.625,million kilowatthours
-2022,RI,Rhode Island,TRA,transportation,22.969,million kilowatthours
-2022,RI,Rhode Island,RES,residential,3168.339,million kilowatthours
-2022,RI,Rhode Island,OTH,other,,million kilowatthours
-2022,RI,Rhode Island,IND,industrial,639.343,million kilowatthours
-2022,RI,Rhode Island,COM,commercial,3745.633,million kilowatthours
-2022,PA,Pennsylvania,TRA,transportation,529.548,million kilowatthours
-2022,PA,Pennsylvania,RES,residential,56413.21816,million kilowatthours
-2022,PA,Pennsylvania,OTH,other,,million kilowatthours
-2022,PA,Pennsylvania,IND,industrial,50882.77901,million kilowatthours
-2022,PA,Pennsylvania,COM,commercial,37219.04699,million kilowatthours
-2022,OR,Oregon,TRA,transportation,22.699,million kilowatthours
-2022,OR,Oregon,RES,residential,20725.899,million kilowatthours
-2022,OR,Oregon,OTH,other,,million kilowatthours
-2022,OR,Oregon,IND,industrial,18923.72201,million kilowatthours
-2022,OR,Oregon,COM,commercial,16654.57599,million kilowatthours
-2022,OK,Oklahoma,TRA,transportation,0,million kilowatthours
-2022,OK,Oklahoma,RES,residential,25479.14402,million kilowatthours
-2022,OK,Oklahoma,OTH,other,,million kilowatthours
-2022,OK,Oklahoma,IND,industrial,21796.272,million kilowatthours
-2022,OK,Oklahoma,COM,commercial,22211.52599,million kilowatthours
-2022,OH,Ohio,TRA,transportation,34.034,million kilowatthours
-2022,OH,Ohio,RES,residential,53312.216,million kilowatthours
-2022,OH,Ohio,OTH,other,,million kilowatthours
-2022,OH,Ohio,IND,industrial,50062.73,million kilowatthours
-2022,OH,Ohio,COM,commercial,46090.80299,million kilowatthours
-2022,ND,North Dakota,TRA,transportation,0,million kilowatthours
-2022,ND,North Dakota,RES,residential,5271.904,million kilowatthours
-2022,ND,North Dakota,OTH,other,,million kilowatthours
-2022,ND,North Dakota,IND,industrial,11728.548,million kilowatthours
-2022,ND,North Dakota,COM,commercial,8392.425,million kilowatthours
-2022,NC,North Carolina,TRA,transportation,14.681,million kilowatthours
-2022,NC,North Carolina,RES,residential,62443.95303,million kilowatthours
-2022,NC,North Carolina,OTH,other,,million kilowatthours
-2022,NC,North Carolina,IND,industrial,27519.33001,million kilowatthours
-2022,NC,North Carolina,COM,commercial,49228.797,million kilowatthours
-2022,NY,New York,TRA,transportation,2599.746,million kilowatthours
-2022,NY,New York,RES,residential,52227.41299,million kilowatthours
-2022,NY,New York,OTH,other,,million kilowatthours
-2022,NY,New York,IND,industrial,16177.769,million kilowatthours
-2022,NY,New York,COM,commercial,72205.589,million kilowatthours
-2022,NM,New Mexico,TRA,transportation,0,million kilowatthours
-2022,NM,New Mexico,RES,residential,7282.636,million kilowatthours
-2022,NM,New Mexico,OTH,other,,million kilowatthours
-2022,NM,New Mexico,IND,industrial,10789.51999,million kilowatthours
-2022,NM,New Mexico,COM,commercial,9084.02199,million kilowatthours
-2022,NJ,New Jersey,TRA,transportation,252.662,million kilowatthours
-2022,NJ,New Jersey,RES,residential,30062.192,million kilowatthours
-2022,NJ,New Jersey,OTH,other,,million kilowatthours
-2022,NJ,New Jersey,IND,industrial,6753.84399,million kilowatthours
-2022,NJ,New Jersey,COM,commercial,37374.037,million kilowatthours
-2022,NH,New Hampshire,TRA,transportation,0,million kilowatthours
-2022,NH,New Hampshire,RES,residential,4808.32201,million kilowatthours
-2022,NH,New Hampshire,OTH,other,,million kilowatthours
-2022,NH,New Hampshire,IND,industrial,1925.183,million kilowatthours
-2022,NH,New Hampshire,COM,commercial,4084.62499,million kilowatthours
-2022,NV,Nevada,TRA,transportation,7.176,million kilowatthours
-2022,NV,Nevada,RES,residential,14306.529,million kilowatthours
-2022,NV,Nevada,OTH,other,,million kilowatthours
-2022,NV,Nevada,IND,industrial,12578.639,million kilowatthours
-2022,NV,Nevada,COM,commercial,12427.663,million kilowatthours
-2022,NE,Nebraska,TRA,transportation,0,million kilowatthours
-2022,NE,Nebraska,RES,residential,10983.64901,million kilowatthours
-2022,NE,Nebraska,OTH,other,,million kilowatthours
-2022,NE,Nebraska,IND,industrial,13241.701,million kilowatthours
-2022,NE,Nebraska,COM,commercial,9618.75501,million kilowatthours
-2022,MT,Montana,TRA,transportation,0,million kilowatthours
-2022,MT,Montana,RES,residential,5894.49901,million kilowatthours
-2022,MT,Montana,OTH,other,,million kilowatthours
-2022,MT,Montana,IND,industrial,4669.62501,million kilowatthours
-2022,MT,Montana,COM,commercial,5019.65899,million kilowatthours
-2022,DC,District of Columbia,COM,commercial,7290.077,million kilowatthours
-2022,DE,Delaware,TRA,transportation,0,million kilowatthours
-2022,DE,Delaware,RES,residential,5210.069,million kilowatthours
-2022,DE,Delaware,OTH,other,,million kilowatthours
-2022,DE,Delaware,IND,industrial,2030.396,million kilowatthours
-2022,DE,Delaware,COM,commercial,4298.80599,million kilowatthours
-2022,MO,Missouri,TRA,transportation,25.108,million kilowatthours
-2022,MO,Missouri,RES,residential,37244.97003,million kilowatthours
-2022,MO,Missouri,OTH,other,,million kilowatthours
-2022,MO,Missouri,IND,industrial,13245.66201,million kilowatthours
-2022,MO,Missouri,COM,commercial,29790.51998,million kilowatthours
-2022,MS,Mississippi,TRA,transportation,0,million kilowatthours
-2022,MS,Mississippi,RES,residential,18917.877,million kilowatthours
-2022,MS,Mississippi,OTH,other,,million kilowatthours
-2022,MS,Mississippi,IND,industrial,15972.02401,million kilowatthours
-2022,MS,Mississippi,COM,commercial,14089.632,million kilowatthours
-2022,MN,Minnesota,TRA,transportation,19.941,million kilowatthours
-2022,MN,Minnesota,RES,residential,23418.31302,million kilowatthours
-2022,MN,Minnesota,OTH,other,,million kilowatthours
-2022,MN,Minnesota,IND,industrial,20648.58801,million kilowatthours
-2022,MN,Minnesota,COM,commercial,22548.588,million kilowatthours
-2022,MI,Michigan,TRA,transportation,4.32,million kilowatthours
-2022,MI,Michigan,RES,residential,35034.97101,million kilowatthours
-2022,MI,Michigan,OTH,other,,million kilowatthours
-2022,MI,Michigan,IND,industrial,28485.57001,million kilowatthours
-2022,MI,Michigan,COM,commercial,37114.401,million kilowatthours
-2022,MA,Massachusetts,TRA,transportation,299.058,million kilowatthours
-2022,MA,Massachusetts,RES,residential,20006.891,million kilowatthours
-2022,MA,Massachusetts,OTH,other,,million kilowatthours
-2022,MA,Massachusetts,IND,industrial,6233.832,million kilowatthours
-2022,MA,Massachusetts,COM,commercial,24443.65901,million kilowatthours
-2022,MD,Maryland,TRA,transportation,392.359,million kilowatthours
-2022,MD,Maryland,RES,residential,28065.37901,million kilowatthours
-2022,MD,Maryland,OTH,other,,million kilowatthours
-2022,MD,Maryland,IND,industrial,3601.623,million kilowatthours
-2022,MD,Maryland,COM,commercial,27623.35801,million kilowatthours
-2022,ME,Maine,TRA,transportation,0,million kilowatthours
-2022,ME,Maine,RES,residential,5090.87401,million kilowatthours
-2022,ME,Maine,OTH,other,,million kilowatthours
-2022,ME,Maine,IND,industrial,2655.435,million kilowatthours
-2022,ME,Maine,COM,commercial,4129.399,million kilowatthours
-2022,LA,Louisiana,TRA,transportation,10.181,million kilowatthours
-2022,LA,Louisiana,RES,residential,31444.70799,million kilowatthours
-2022,LA,Louisiana,OTH,other,,million kilowatthours
-2022,LA,Louisiana,IND,industrial,40143.868,million kilowatthours
-2022,LA,Louisiana,COM,commercial,23540.241,million kilowatthours
-2022,KY,Kentucky,TRA,transportation,0,million kilowatthours
-2022,KY,Kentucky,RES,residential,26840.18599,million kilowatthours
-2022,KY,Kentucky,OTH,other,,million kilowatthours
-2022,KY,Kentucky,IND,industrial,28824.55,million kilowatthours
-2022,KY,Kentucky,COM,commercial,19674.006,million kilowatthours
-2022,KS,Kansas,TRA,transportation,0,million kilowatthours
-2022,KS,Kansas,RES,residential,14443.52202,million kilowatthours
-2022,KS,Kansas,OTH,other,,million kilowatthours
-2022,KS,Kansas,IND,industrial,11736.15902,million kilowatthours
-2022,KS,Kansas,COM,commercial,15781.38399,million kilowatthours
-2022,IA,Iowa,TRA,transportation,0,million kilowatthours
-2022,IA,Iowa,RES,residential,15192.859,million kilowatthours
-2022,IA,Iowa,OTH,other,,million kilowatthours
-2022,IA,Iowa,IND,industrial,26541.02399,million kilowatthours
-2022,IA,Iowa,COM,commercial,12470.07199,million kilowatthours
-2022,IN,Indiana,TRA,transportation,12.518,million kilowatthours
-2022,IN,Indiana,RES,residential,34058.49798,million kilowatthours
-2022,IN,Indiana,OTH,other,,million kilowatthours
-2022,IN,Indiana,IND,industrial,42479.59,million kilowatthours
-2022,IN,Indiana,COM,commercial,23493.75897,million kilowatthours
-2022,IL,Illinois,TRA,transportation,454.73,million kilowatthours
-2022,IL,Illinois,RES,residential,46479.195,million kilowatthours
-2022,IL,Illinois,OTH,other,,million kilowatthours
-2022,IL,Illinois,IND,industrial,41817.849,million kilowatthours
-2022,IL,Illinois,COM,commercial,47119.806,million kilowatthours
-2022,ID,Idaho,TRA,transportation,0,million kilowatthours
-2022,ID,Idaho,RES,residential,9963.65301,million kilowatthours
-2022,ID,Idaho,OTH,other,,million kilowatthours
-2022,ID,Idaho,IND,industrial,9400.753,million kilowatthours
-2022,ID,Idaho,COM,commercial,6836.725,million kilowatthours
-2022,HI,Hawaii,TRA,transportation,0,million kilowatthours
-2022,HI,Hawaii,RES,residential,2748.47901,million kilowatthours
-2022,WA,Washington,RES,residential,39775.84899,million kilowatthours
-2022,WA,Washington,OTH,other,,million kilowatthours
-2022,WA,Washington,IND,industrial,21227.09,million kilowatthours
-2022,WA,Washington,COM,commercial,29780.44799,million kilowatthours
-2022,VA,Virginia,TRA,transportation,129.802,million kilowatthours
-2022,VA,Virginia,RES,residential,46717.547,million kilowatthours
-2022,VA,Virginia,OTH,other,,million kilowatthours
-2022,VA,Virginia,IND,industrial,16861.18602,million kilowatthours
-2022,VA,Virginia,COM,commercial,68556.08201,million kilowatthours
-2022,VT,Vermont,TRA,transportation,0,million kilowatthours
-2022,VT,Vermont,RES,residential,2186.66701,million kilowatthours
-2022,VT,Vermont,OTH,other,,million kilowatthours
-2022,VT,Vermont,IND,industrial,1367.42901,million kilowatthours
-2022,VT,Vermont,COM,commercial,1916.375,million kilowatthours
-2022,UT,Utah,TRA,transportation,46.004,million kilowatthours
-2022,UT,Utah,RES,residential,11344.26499,million kilowatthours
-2022,UT,Utah,OTH,other,,million kilowatthours
-2022,UT,Utah,IND,industrial,9104.68001,million kilowatthours
-2022,UT,Utah,COM,commercial,12870.55201,million kilowatthours
-2022,PACC,Pacific Contiguous,TRA,transportation,821.75301,million kilowatthours
-2022,PACC,Pacific Contiguous,RES,residential,150043.95597,million kilowatthours
-2022,PACC,Pacific Contiguous,OTH,other,,million kilowatthours
-2022,PACC,Pacific Contiguous,IND,industrial,87651.23502,million kilowatthours
-2022,PACC,Pacific Contiguous,COM,commercial,160576.40798,million kilowatthours
-2022,MTN,Mountain,TRA,transportation,154.744,million kilowatthours
-2022,MTN,Mountain,RES,residential,110761.83702,million kilowatthours
-2022,MTN,Mountain,OTH,other,,million kilowatthours
-2022,MTN,Mountain,IND,industrial,85753.10601,million kilowatthours
-2022,MTN,Mountain,COM,commercial,102415.89995,million kilowatthours
-2022,WSC,West South Central,TRA,transportation,190.052,million kilowatthours
-2022,WSC,West South Central,RES,residential,246770.97304,million kilowatthours
-2022,WSC,West South Central,OTH,other,,million kilowatthours
-2022,WSC,West South Central,IND,industrial,223806.28,million kilowatthours
-2022,WSC,West South Central,COM,commercial,218257.49003,million kilowatthours
-2022,ESC,East South Central,TRA,transportation,0,million kilowatthours
-2022,ESC,East South Central,RES,residential,122285.62299,million kilowatthours
-2022,ESC,East South Central,OTH,other,,million kilowatthours
-2022,ESC,East South Central,IND,industrial,99298.09002,million kilowatthours
-2022,ESC,East South Central,COM,commercial,91874.15799,million kilowatthours
-2022,SAT,South Atlantic,TRA,transportation,1006.294,million kilowatthours
-2022,SAT,South Atlantic,RES,residential,383766.28804,million kilowatthours
-2022,SAT,South Atlantic,OTH,other,,million kilowatthours
-2022,SAT,South Atlantic,IND,industrial,142955.41901,million kilowatthours
-2022,SAT,South Atlantic,COM,commercial,334807.62802,million kilowatthours
-2022,WNC,West North Central,TRA,transportation,45.049,million kilowatthours
-2022,WNC,West North Central,RES,residential,111878.12309,million kilowatthours
-2022,WNC,West North Central,OTH,other,,million kilowatthours
-2022,WNC,West North Central,IND,industrial,100349.74705,million kilowatthours
-2022,US,U.S. Total,TRA,transportation,6599.108,million kilowatthours
-2022,US,U.S. Total,RES,residential,1509233.16236,million kilowatthours
-2022,US,U.S. Total,OTH,other,,million kilowatthours
-2022,US,U.S. Total,IND,industrial,1020463.98609,million kilowatthours
-2022,US,U.S. Total,COM,commercial,1390872.81287,million kilowatthours
-2022,PACN,Pacific Noncontiguous,TRA,transportation,0,million kilowatthours
-2022,PACN,Pacific Noncontiguous,RES,residential,4798.95101,million kilowatthours
-2022,PACN,Pacific Noncontiguous,OTH,other,,million kilowatthours
-2022,PACN,Pacific Noncontiguous,IND,industrial,4828.476,million kilowatthours
-2022,PACN,Pacific Noncontiguous,COM,commercial,5413.768,million kilowatthours
-2022,AZ,Arizona,IND,industrial,14311.61002,million kilowatthours
-2022,AZ,Arizona,OTH,other,,million kilowatthours
-2022,AZ,Arizona,RES,residential,38367.633,million kilowatthours
-2022,AZ,Arizona,TRA,transportation,10.204,million kilowatthours
-2022,AR,Arkansas,COM,commercial,11786.52499,million kilowatthours
-2022,AR,Arkansas,IND,industrial,17960.25799,million kilowatthours
-2022,AR,Arkansas,OTH,other,,million kilowatthours
-2022,AR,Arkansas,RES,residential,19250.66101,million kilowatthours
-2022,AR,Arkansas,TRA,transportation,.219,million kilowatthours
-2022,CA,California,COM,commercial,114141.384,million kilowatthours
-2022,CA,California,IND,industrial,47500.42301,million kilowatthours
-2022,CA,California,OTH,other,,million kilowatthours
-2022,CA,California,RES,residential,89542.20798,million kilowatthours
-2022,CA,California,TRA,transportation,685.121,million kilowatthours
-2022,CO,Colorado,COM,commercial,21059.41898,million kilowatthours
-2022,CO,Colorado,IND,industrial,15018.32,million kilowatthours
-2022,CO,Colorado,OTH,other,,million kilowatthours
-2022,CO,Colorado,RES,residential,20593.94201,million kilowatthours
-2022,CO,Colorado,TRA,transportation,91.36,million kilowatthours
-2022,CT,Connecticut,COM,commercial,11625.823,million kilowatthours
-2022,CT,Connecticut,IND,industrial,2780.106,million kilowatthours
-2022,CT,Connecticut,OTH,other,,million kilowatthours
-2022,CT,Connecticut,RES,residential,13190.687,million kilowatthours
-2022,CT,Connecticut,TRA,transportation,170.53,million kilowatthours
-2022,DC,District of Columbia,IND,industrial,181.716,million kilowatthours
-2022,DC,District of Columbia,OTH,other,,million kilowatthours
-2022,DC,District of Columbia,RES,residential,2519.079,million kilowatthours
-2022,DC,District of Columbia,TRA,transportation,250.662,million kilowatthours
-2022,FL,Florida,COM,commercial,96864.074,million kilowatthours
-2022,AL,Alabama,COM,commercial,22391.06799,million kilowatthours
-2022,AL,Alabama,IND,industrial,31712.90401,million kilowatthours
-2022,AL,Alabama,OTH,other,,million kilowatthours
-2022,AL,Alabama,RES,residential,32923.57299,million kilowatthours
-2022,AL,Alabama,TRA,transportation,0,million kilowatthours
-2022,AK,Alaska,COM,commercial,2575.918,million kilowatthours
-2022,AK,Alaska,IND,industrial,1375.69,million kilowatthours
-2022,AK,Alaska,OTH,other,,million kilowatthours
-2022,AK,Alaska,RES,residential,2050.472,million kilowatthours
-2022,AK,Alaska,TRA,transportation,0,million kilowatthours
-2021,KS,Kansas,RES,residential,13769.41001,million kilowatthours
-2021,SAT,South Atlantic,TRA,transportation,1097.864,million kilowatthours
-2021,SAT,South Atlantic,RES,residential,374745.996,million kilowatthours
-2021,SAT,South Atlantic,OTH,other,,million kilowatthours
-2021,SAT,South Atlantic,IND,industrial,144329.01704,million kilowatthours
-2021,SAT,South Atlantic,COM,commercial,313128.555,million kilowatthours
-2021,PACC,Pacific Contiguous,IND,industrial,86338.31701,million kilowatthours
-2021,PACC,Pacific Contiguous,COM,commercial,153907.73001,million kilowatthours
-2021,MTN,Mountain,TRA,transportation,153.383,million kilowatthours
-2021,MTN,Mountain,RES,residential,107925.26104,million kilowatthours
-2021,MTN,Mountain,OTH,other,,million kilowatthours
-2021,MTN,Mountain,IND,industrial,83947.446,million kilowatthours
-2021,MTN,Mountain,COM,commercial,98680.40997,million kilowatthours
-2021,WSC,West South Central,TRA,transportation,189.639,million kilowatthours
-2021,WSC,West South Central,RES,residential,228147.242,million kilowatthours
-2021,WSC,West South Central,OTH,other,,million kilowatthours
-2021,WSC,West South Central,IND,industrial,209479.52299,million kilowatthours
-2021,WSC,West South Central,COM,commercial,201819.09899,million kilowatthours
-2021,ESC,East South Central,TRA,transportation,0,million kilowatthours
-2021,ESC,East South Central,RES,residential,119429.90199,million kilowatthours
-2021,WNC,West North Central,TRA,transportation,43.36,million kilowatthours
-2021,WNC,West North Central,RES,residential,107760.36303,million kilowatthours
-2021,WNC,West North Central,OTH,other,,million kilowatthours
-2021,WNC,West North Central,IND,industrial,98746.63399,million kilowatthours
-2021,ESC,East South Central,OTH,other,,million kilowatthours
-2021,ESC,East South Central,IND,industrial,99238.972,million kilowatthours
-2021,ESC,East South Central,COM,commercial,89069.77901,million kilowatthours
-2021,WNC,West North Central,COM,commercial,99432.57504,million kilowatthours
-2021,ENC,East North Central,TRA,transportation,513.271,million kilowatthours
-2021,ENC,East North Central,RES,residential,192188.37798,million kilowatthours
-2021,ENC,East North Central,OTH,other,,million kilowatthours
-2021,ENC,East North Central,IND,industrial,184733.51897,million kilowatthours
-2021,ENC,East North Central,COM,commercial,174951.47199,million kilowatthours
-2021,MAT,Middle Atlantic,TRA,transportation,3111.787,million kilowatthours
-2021,MAT,Middle Atlantic,RES,residential,138192.42897,million kilowatthours
-2021,MAT,Middle Atlantic,OTH,other,,million kilowatthours
-2021,MAT,Middle Atlantic,IND,industrial,73484.34099,million kilowatthours
-2021,MAT,Middle Atlantic,COM,commercial,143045.84118,million kilowatthours
-2021,NEW,New England,TRA,transportation,478.11,million kilowatthours
-2021,US,U.S. Total,IND,industrial,1000613.49,million kilowatthours
-2021,NEW,New England,RES,residential,48597.59602,million kilowatthours
-2021,NEW,New England,OTH,other,,million kilowatthours
-2021,NEW,New England,IND,industrial,15662.08001,million kilowatthours
-2021,NEW,New England,COM,commercial,49060.84997,million kilowatthours
-2021,WY,Wyoming,TRA,transportation,0,million kilowatthours
-2021,WY,Wyoming,RES,residential,2897.498,million kilowatthours
-2021,US,U.S. Total,COM,commercial,1328439.49815,million kilowatthours
-2021,PACN,Pacific Noncontiguous,TRA,transportation,0,million kilowatthours
-2021,PACN,Pacific Noncontiguous,RES,residential,4908.99301,million kilowatthours
-2021,PACN,Pacific Noncontiguous,OTH,other,,million kilowatthours
-2021,PACN,Pacific Noncontiguous,IND,industrial,4653.641,million kilowatthours
-2021,PACN,Pacific Noncontiguous,COM,commercial,5343.18699,million kilowatthours
-2021,PACC,Pacific Contiguous,TRA,transportation,746.969,million kilowatthours
-2021,PACC,Pacific Contiguous,RES,residential,148590.722,million kilowatthours
-2021,PACC,Pacific Contiguous,OTH,other,,million kilowatthours
-2021,FL,Florida,OTH,other,,million kilowatthours
-2021,FL,Florida,IND,industrial,17112.564,million kilowatthours
-2021,FL,Florida,COM,commercial,93965.07,million kilowatthours
-2021,DC,District of Columbia,TRA,transportation,272.113,million kilowatthours
-2021,DC,District of Columbia,RES,residential,2528.049,million kilowatthours
-2021,DC,District of Columbia,OTH,other,,million kilowatthours
-2021,DC,District of Columbia,IND,industrial,239.501,million kilowatthours
-2021,CO,Colorado,IND,industrial,15053.158,million kilowatthours
-2021,CO,Colorado,COM,commercial,20584.46999,million kilowatthours
-2021,CA,California,RES,residential,90284.143,million kilowatthours
-2021,CA,California,OTH,other,,million kilowatthours
-2021,CA,California,IND,industrial,47583.32899,million kilowatthours
-2021,CA,California,COM,commercial,108761.59401,million kilowatthours
-2021,AR,Arkansas,TRA,transportation,.205,million kilowatthours
-2021,AR,Arkansas,RES,residential,18918.015,million kilowatthours
-2021,AR,Arkansas,OTH,other,,million kilowatthours
-2021,AR,Arkansas,IND,industrial,18228.01401,million kilowatthours
-2021,AR,Arkansas,COM,commercial,11516.908,million kilowatthours
-2021,CA,California,TRA,transportation,620.799,million kilowatthours
-2021,CT,Connecticut,OTH,other,,million kilowatthours
-2021,CT,Connecticut,IND,industrial,2799.194,million kilowatthours
-2021,CT,Connecticut,COM,commercial,11701.168,million kilowatthours
-2021,CO,Colorado,TRA,transportation,88.576,million kilowatthours
-2021,CO,Colorado,RES,residential,20625.00501,million kilowatthours
-2021,CO,Colorado,OTH,other,,million kilowatthours
-2021,DC,District of Columbia,COM,commercial,7043.709,million kilowatthours
-2021,DE,Delaware,TRA,transportation,0,million kilowatthours
-2021,DE,Delaware,RES,residential,5170.38,million kilowatthours
-2021,DE,Delaware,OTH,other,,million kilowatthours
-2021,DE,Delaware,IND,industrial,2113.012,million kilowatthours
-2021,DE,Delaware,COM,commercial,4196.263,million kilowatthours
-2021,CT,Connecticut,TRA,transportation,145.116,million kilowatthours
-2021,CT,Connecticut,RES,residential,13092.128,million kilowatthours
-2021,US,U.S. Total,TRA,transportation,6334.38299,million kilowatthours
-2021,US,U.S. Total,RES,residential,1470486.88203,million kilowatthours
-2021,US,U.S. Total,OTH,other,,million kilowatthours
-2021,SD,South Dakota,OTH,other,,million kilowatthours
-2021,SD,South Dakota,IND,industrial,3205.73801,million kilowatthours
-2021,SD,South Dakota,COM,commercial,4791.689,million kilowatthours
-2021,SC,South Carolina,TRA,transportation,0,million kilowatthours
-2021,SC,South Carolina,RES,residential,31385.79599,million kilowatthours
-2021,SC,South Carolina,OTH,other,,million kilowatthours
-2021,SC,South Carolina,IND,industrial,27292.017,million kilowatthours
-2021,SC,South Carolina,COM,commercial,21114.32301,million kilowatthours
-2021,RI,Rhode Island,TRA,transportation,18.174,million kilowatthours
-2021,WA,Washington,IND,industrial,21436.48001,million kilowatthours
-2021,WA,Washington,COM,commercial,28637.381,million kilowatthours
-2021,VA,Virginia,TRA,transportation,174.608,million kilowatthours
-2021,VA,Virginia,RES,residential,46634.411,million kilowatthours
-2021,VA,Virginia,OTH,other,,million kilowatthours
-2021,VA,Virginia,IND,industrial,19712.19899,million kilowatthours
-2021,VA,Virginia,COM,commercial,58723.97799,million kilowatthours
-2021,VT,Vermont,TRA,transportation,0,million kilowatthours
-2021,VT,Vermont,RES,residential,2174.48902,million kilowatthours
-2021,VT,Vermont,OTH,other,,million kilowatthours
-2021,VT,Vermont,IND,industrial,1371.096,million kilowatthours
-2021,VT,Vermont,COM,commercial,1867.111,million kilowatthours
-2021,WI,Wisconsin,TRA,transportation,1.039,million kilowatthours
-2021,WI,Wisconsin,RES,residential,22864.04701,million kilowatthours
-2021,WI,Wisconsin,OTH,other,,million kilowatthours
-2021,WI,Wisconsin,IND,industrial,23295.516,million kilowatthours
-2021,WI,Wisconsin,COM,commercial,23266.01301,million kilowatthours
-2021,WV,West Virginia,TRA,transportation,0,million kilowatthours
-2021,WV,West Virginia,RES,residential,11050.705,million kilowatthours
-2021,WV,West Virginia,OTH,other,,million kilowatthours
-2021,WV,West Virginia,IND,industrial,14570.97901,million kilowatthours
-2021,WV,West Virginia,COM,commercial,7156.30401,million kilowatthours
-2021,WA,Washington,TRA,transportation,103.574,million kilowatthours
-2021,WA,Washington,RES,residential,38021.233,million kilowatthours
-2021,WA,Washington,OTH,other,,million kilowatthours
-2021,UT,Utah,TRA,transportation,48.965,million kilowatthours
-2021,UT,Utah,RES,residential,10950.41501,million kilowatthours
-2021,UT,Utah,OTH,other,,million kilowatthours
-2021,UT,Utah,IND,industrial,9471.73699,million kilowatthours
-2021,UT,Utah,COM,commercial,12206.51,million kilowatthours
-2021,TX,Texas,TRA,transportation,179.95,million kilowatthours
-2021,TX,Texas,RES,residential,155075.13599,million kilowatthours
-2021,TX,Texas,OTH,other,,million kilowatthours
-2021,TX,Texas,IND,industrial,132529.561,million kilowatthours
-2021,TX,Texas,COM,commercial,147843.23098,million kilowatthours
-2021,TN,Tennessee,TRA,transportation,0,million kilowatthours
-2021,TN,Tennessee,RES,residential,42840.44199,million kilowatthours
-2021,TN,Tennessee,OTH,other,,million kilowatthours
-2021,TN,Tennessee,IND,industrial,21917.29799,million kilowatthours
-2021,TN,Tennessee,COM,commercial,34863.39701,million kilowatthours
-2021,SD,South Dakota,TRA,transportation,0,million kilowatthours
-2021,SD,South Dakota,RES,residential,5043.96402,million kilowatthours
-2021,WY,Wyoming,OTH,other,,million kilowatthours
-2021,WY,Wyoming,IND,industrial,9443.917,million kilowatthours
-2021,WY,Wyoming,COM,commercial,3443.297,million kilowatthours
-2021,RI,Rhode Island,RES,residential,3131.533,million kilowatthours
-2021,RI,Rhode Island,OTH,other,,million kilowatthours
-2021,RI,Rhode Island,IND,industrial,643.779,million kilowatthours
-2021,RI,Rhode Island,COM,commercial,3604.518,million kilowatthours
-2021,PA,Pennsylvania,TRA,transportation,407.101,million kilowatthours
-2021,MO,Missouri,COM,commercial,28987.41202,million kilowatthours
-2021,MS,Mississippi,TRA,transportation,0,million kilowatthours
-2021,MS,Mississippi,RES,residential,18569.936,million kilowatthours
-2021,AZ,Arizona,TRA,transportation,10.515,million kilowatthours
-2021,AZ,Arizona,RES,residential,37130.339,million kilowatthours
-2021,AZ,Arizona,OTH,other,,million kilowatthours
-2021,AZ,Arizona,IND,industrial,14089.07201,million kilowatthours
-2021,AZ,Arizona,COM,commercial,29990.064,million kilowatthours
-2021,AK,Alaska,TRA,transportation,0,million kilowatthours
-2021,AK,Alaska,RES,residential,2083.91101,million kilowatthours
-2021,AK,Alaska,OTH,other,,million kilowatthours
-2021,AK,Alaska,IND,industrial,1326.779,million kilowatthours
-2021,AK,Alaska,COM,commercial,2558.649,million kilowatthours
-2021,AL,Alabama,TRA,transportation,0,million kilowatthours
-2021,AL,Alabama,RES,residential,31585.153,million kilowatthours
-2021,AL,Alabama,OTH,other,,million kilowatthours
-2021,OR,Oregon,TRA,transportation,22.596,million kilowatthours
-2021,OR,Oregon,RES,residential,20285.346,million kilowatthours
-2021,OR,Oregon,OTH,other,,million kilowatthours
-2021,OR,Oregon,IND,industrial,17318.50801,million kilowatthours
-2021,OR,Oregon,COM,commercial,16508.755,million kilowatthours
-2021,OK,Oklahoma,TRA,transportation,0,million kilowatthours
-2021,OK,Oklahoma,RES,residential,23745.86701,million kilowatthours
-2021,OK,Oklahoma,OTH,other,,million kilowatthours
-2021,OK,Oklahoma,IND,industrial,20779.95798,million kilowatthours
-2021,OK,Oklahoma,COM,commercial,19999.31201,million kilowatthours
-2021,PA,Pennsylvania,RES,residential,55945.17598,million kilowatthours
-2021,PA,Pennsylvania,OTH,other,,million kilowatthours
-2021,PA,Pennsylvania,IND,industrial,49999.765,million kilowatthours
-2021,PA,Pennsylvania,COM,commercial,36988.11201,million kilowatthours
-2021,NM,New Mexico,COM,commercial,8655.82599,million kilowatthours
-2021,NJ,New Jersey,TRA,transportation,249.43,million kilowatthours
-2021,NJ,New Jersey,RES,residential,30090.371,million kilowatthours
-2021,NJ,New Jersey,OTH,other,,million kilowatthours
-2021,NJ,New Jersey,IND,industrial,6593.424,million kilowatthours
-2021,NJ,New Jersey,COM,commercial,36137.241,million kilowatthours
-2021,NH,New Hampshire,TRA,transportation,0,million kilowatthours
-2021,NH,New Hampshire,RES,residential,4831.911,million kilowatthours
-2021,NH,New Hampshire,OTH,other,,million kilowatthours
-2021,NH,New Hampshire,IND,industrial,1928.665,million kilowatthours
-2021,NY,New York,COM,commercial,69920.48818,million kilowatthours
-2021,NM,New Mexico,TRA,transportation,0,million kilowatthours
-2021,NM,New Mexico,RES,residential,7088.358,million kilowatthours
-2021,NM,New Mexico,OTH,other,,million kilowatthours
-2021,NM,New Mexico,IND,industrial,9649.559,million kilowatthours
-2021,OH,Ohio,TRA,transportation,36.814,million kilowatthours
-2021,OH,Ohio,RES,residential,53171.19298,million kilowatthours
-2021,OH,Ohio,OTH,other,,million kilowatthours
-2021,OH,Ohio,IND,industrial,49529.406,million kilowatthours
-2021,OH,Ohio,COM,commercial,44980.45198,million kilowatthours
-2021,ND,North Dakota,TRA,transportation,0,million kilowatthours
-2021,ND,North Dakota,RES,residential,4888.401,million kilowatthours
-2021,ND,North Dakota,OTH,other,,million kilowatthours
-2021,ND,North Dakota,IND,industrial,11166.39,million kilowatthours
-2021,MS,Mississippi,OTH,other,,million kilowatthours
-2021,MS,Mississippi,IND,industrial,15769.265,million kilowatthours
-2021,MS,Mississippi,COM,commercial,13676.163,million kilowatthours
-2021,MN,Minnesota,TRA,transportation,22.728,million kilowatthours
-2021,MN,Minnesota,RES,residential,23246.05498,million kilowatthours
-2021,ND,North Dakota,COM,commercial,6808.31599,million kilowatthours
-2021,NC,North Carolina,TRA,transportation,14.194,million kilowatthours
-2021,NC,North Carolina,RES,residential,60914.68399,million kilowatthours
-2021,NC,North Carolina,OTH,other,,million kilowatthours
-2021,NC,North Carolina,IND,industrial,27049.36702,million kilowatthours
-2021,NC,North Carolina,COM,commercial,47714.832,million kilowatthours
-2021,NY,New York,TRA,transportation,2455.256,million kilowatthours
-2021,NY,New York,RES,residential,52156.88199,million kilowatthours
-2021,NY,New York,OTH,other,,million kilowatthours
-2021,NY,New York,IND,industrial,16891.15199,million kilowatthours
-2021,AL,Alabama,IND,industrial,32155.73,million kilowatthours
-2021,AL,Alabama,COM,commercial,21844.283,million kilowatthours
-2021,NE,Nebraska,IND,industrial,12588.38001,million kilowatthours
-2021,NE,Nebraska,COM,commercial,9260.421,million kilowatthours
-2021,MT,Montana,TRA,transportation,0,million kilowatthours
-2021,MT,Montana,RES,residential,5559.44601,million kilowatthours
-2021,MT,Montana,OTH,other,,million kilowatthours
-2021,MT,Montana,IND,industrial,4495.98299,million kilowatthours
-2021,MT,Montana,COM,commercial,4906.13199,million kilowatthours
-2021,MO,Missouri,TRA,transportation,20.632,million kilowatthours
-2021,MO,Missouri,RES,residential,35668.40901,million kilowatthours
-2021,MO,Missouri,OTH,other,,million kilowatthours
-2021,NH,New Hampshire,COM,commercial,4106.69199,million kilowatthours
-2021,NV,Nevada,TRA,transportation,5.327,million kilowatthours
-2021,NV,Nevada,RES,residential,14373.357,million kilowatthours
-2021,NV,Nevada,OTH,other,,million kilowatthours
-2021,NV,Nevada,IND,industrial,12359.54301,million kilowatthours
-2021,NV,Nevada,COM,commercial,12293.815,million kilowatthours
-2021,NE,Nebraska,TRA,transportation,0,million kilowatthours
-2021,NE,Nebraska,RES,residential,10492.369,million kilowatthours
-2021,NE,Nebraska,OTH,other,,million kilowatthours
-2021,ID,Idaho,TRA,transportation,0,million kilowatthours
-2021,ID,Idaho,RES,residential,9300.843,million kilowatthours
-2021,ID,Idaho,OTH,other,,million kilowatthours
-2021,ID,Idaho,IND,industrial,9384.477,million kilowatthours
-2021,ID,Idaho,COM,commercial,6600.296,million kilowatthours
-2021,HI,Hawaii,TRA,transportation,0,million kilowatthours
-2021,HI,Hawaii,RES,residential,2825.08201,million kilowatthours
-2021,HI,Hawaii,OTH,other,,million kilowatthours
-2021,HI,Hawaii,IND,industrial,3326.862,million kilowatthours
-2021,HI,Hawaii,COM,commercial,2784.538,million kilowatthours
-2021,MO,Missouri,IND,industrial,13086.58798,million kilowatthours
-2021,GA,Georgia,TRA,transportation,142.978,million kilowatthours
-2021,GA,Georgia,RES,residential,58684.96201,million kilowatthours
-2021,GA,Georgia,OTH,other,,million kilowatthours
-2021,GA,Georgia,IND,industrial,32758.98602,million kilowatthours
-2021,GA,Georgia,COM,commercial,45777.026,million kilowatthours
-2021,FL,Florida,TRA,transportation,71.984,million kilowatthours
-2021,FL,Florida,RES,residential,130412.464,million kilowatthours
-2021,IL,Illinois,TRA,transportation,454.531,million kilowatthours
-2021,IL,Illinois,RES,residential,46813.06799,million kilowatthours
-2021,IL,Illinois,OTH,other,,million kilowatthours
-2021,IL,Illinois,IND,industrial,41498.024,million kilowatthours
-2021,IL,Illinois,COM,commercial,46923.21,million kilowatthours
-2021,MN,Minnesota,OTH,other,,million kilowatthours
-2021,MN,Minnesota,IND,industrial,21227.19599,million kilowatthours
-2021,MN,Minnesota,COM,commercial,22093.18901,million kilowatthours
-2021,MI,Michigan,TRA,transportation,3.231,million kilowatthours
-2021,MI,Michigan,RES,residential,35868.09999,million kilowatthours
-2021,MI,Michigan,OTH,other,,million kilowatthours
-2021,MI,Michigan,IND,industrial,27081.08199,million kilowatthours
-2021,MI,Michigan,COM,commercial,36860.868,million kilowatthours
-2021,MA,Massachusetts,TRA,transportation,314.82,million kilowatthours
-2021,MA,Massachusetts,RES,residential,20305.269,million kilowatthours
-2021,MA,Massachusetts,OTH,other,,million kilowatthours
-2021,MA,Massachusetts,IND,industrial,6345.83401,million kilowatthours
-2021,MA,Massachusetts,COM,commercial,23832.46498,million kilowatthours
-2021,MD,Maryland,TRA,transportation,421.987,million kilowatthours
-2021,MD,Maryland,RES,residential,27964.54501,million kilowatthours
-2021,MD,Maryland,OTH,other,,million kilowatthours
-2021,MD,Maryland,IND,industrial,3480.39201,million kilowatthours
-2021,MD,Maryland,COM,commercial,27437.04999,million kilowatthours
-2021,ME,Maine,TRA,transportation,0,million kilowatthours
-2021,ME,Maine,RES,residential,5062.266,million kilowatthours
-2021,ME,Maine,OTH,other,,million kilowatthours
-2021,ME,Maine,IND,industrial,2573.512,million kilowatthours
-2021,ME,Maine,COM,commercial,3948.896,million kilowatthours
-2021,LA,Louisiana,TRA,transportation,9.484,million kilowatthours
-2021,LA,Louisiana,RES,residential,30408.22401,million kilowatthours
-2021,KS,Kansas,OTH,other,,million kilowatthours
-2021,KS,Kansas,IND,industrial,11365.92501,million kilowatthours
-2021,KS,Kansas,COM,commercial,15356.45102,million kilowatthours
-2021,IA,Iowa,TRA,transportation,0,million kilowatthours
-2021,IA,Iowa,RES,residential,14651.755,million kilowatthours
-2021,IA,Iowa,OTH,other,,million kilowatthours
-2021,IA,Iowa,IND,industrial,26106.41701,million kilowatthours
-2021,IA,Iowa,COM,commercial,12135.097,million kilowatthours
-2021,IN,Indiana,TRA,transportation,17.656,million kilowatthours
-2021,IN,Indiana,RES,residential,33471.97,million kilowatthours
-2021,IN,Indiana,OTH,other,,million kilowatthours
-2021,IN,Indiana,IND,industrial,43329.49098,million kilowatthours
-2021,IN,Indiana,COM,commercial,22920.92901,million kilowatthours
-2021,LA,Louisiana,OTH,other,,million kilowatthours
-2021,LA,Louisiana,IND,industrial,37941.99,million kilowatthours
-2021,LA,Louisiana,COM,commercial,22459.648,million kilowatthours
-2021,KY,Kentucky,TRA,transportation,0,million kilowatthours
-2021,KY,Kentucky,RES,residential,26434.371,million kilowatthours
-2021,KY,Kentucky,OTH,other,,million kilowatthours
-2021,KY,Kentucky,IND,industrial,29396.67902,million kilowatthours
-2021,KY,Kentucky,COM,commercial,18685.936,million kilowatthours
-2021,KS,Kansas,TRA,transportation,0,million kilowatthours
-2020,ESC,East South Central,OTH,other,,million kilowatthours
-2020,US,U.S. Total,RES,residential,1464605.04578,million kilowatthours
-2020,US,U.S. Total,OTH,other,,million kilowatthours
-2020,US,U.S. Total,IND,industrial,959082.028,million kilowatthours
-2020,US,U.S. Total,COM,commercial,1287439.5831,million kilowatthours
-2020,PACN,Pacific Noncontiguous,TRA,transportation,0,million kilowatthours
-2020,PACN,Pacific Noncontiguous,RES,residential,4938.16001,million kilowatthours
-2020,PACN,Pacific Noncontiguous,OTH,other,,million kilowatthours
-2020,PACN,Pacific Noncontiguous,IND,industrial,4567.76099,million kilowatthours
-2020,PACN,Pacific Noncontiguous,COM,commercial,5208.41699,million kilowatthours
-2020,PACC,Pacific Contiguous,TRA,transportation,726.234,million kilowatthours
-2020,PACC,Pacific Contiguous,RES,residential,151421.37201,million kilowatthours
-2020,PACC,Pacific Contiguous,OTH,other,,million kilowatthours
-2020,WNC,West North Central,IND,industrial,92537.40302,million kilowatthours
-2020,WNC,West North Central,COM,commercial,96335.19504,million kilowatthours
-2020,ENC,East North Central,TRA,transportation,507.937,million kilowatthours
-2020,ENC,East North Central,RES,residential,190311.30879,million kilowatthours
-2020,ENC,East North Central,OTH,other,,million kilowatthours
-2020,ENC,East North Central,IND,industrial,177266.94902,million kilowatthours
-2020,ENC,East North Central,COM,commercial,168614.29208,million kilowatthours
-2020,MAT,Middle Atlantic,TRA,transportation,3246.019,million kilowatthours
-2020,MAT,Middle Atlantic,RES,residential,137241.09398,million kilowatthours
-2020,MAT,Middle Atlantic,OTH,other,,million kilowatthours
-2020,MAT,Middle Atlantic,IND,industrial,71953.13698,million kilowatthours
-2020,MAT,Middle Atlantic,COM,commercial,139685.44001,million kilowatthours
-2020,NEW,New England,TRA,transportation,466.5,million kilowatthours
-2020,NEW,New England,RES,residential,48327.676,million kilowatthours
-2020,NEW,New England,OTH,other,,million kilowatthours
-2020,NEW,New England,IND,industrial,15583.34802,million kilowatthours
-2020,NEW,New England,COM,commercial,47468.75803,million kilowatthours
-2020,WY,Wyoming,TRA,transportation,0,million kilowatthours
-2020,WY,Wyoming,RES,residential,2879.528,million kilowatthours
-2020,WY,Wyoming,OTH,other,,million kilowatthours
-2020,WY,Wyoming,IND,industrial,9131.466,million kilowatthours
-2020,WY,Wyoming,COM,commercial,3320.02399,million kilowatthours
-2020,WI,Wisconsin,TRA,transportation,.963,million kilowatthours
-2020,WI,Wisconsin,RES,residential,22846.73402,million kilowatthours
-2020,WI,Wisconsin,OTH,other,,million kilowatthours
-2020,WI,Wisconsin,IND,industrial,22164.38901,million kilowatthours
-2020,WI,Wisconsin,COM,commercial,22436.27501,million kilowatthours
-2020,WV,West Virginia,TRA,transportation,0,million kilowatthours
-2020,WV,West Virginia,RES,residential,10877.499,million kilowatthours
-2020,WV,West Virginia,OTH,other,,million kilowatthours
-2020,WV,West Virginia,IND,industrial,14243.24,million kilowatthours
-2020,WV,West Virginia,COM,commercial,6955.844,million kilowatthours
-2020,WA,Washington,TRA,transportation,97.748,million kilowatthours
-2020,OH,Ohio,TRA,transportation,34.899,million kilowatthours
-2020,OH,Ohio,RES,residential,52552.76998,million kilowatthours
-2020,OH,Ohio,OTH,other,,million kilowatthours
-2020,OH,Ohio,IND,industrial,46823.365,million kilowatthours
-2020,OH,Ohio,COM,commercial,43204.16504,million kilowatthours
-2020,ND,North Dakota,TRA,transportation,0,million kilowatthours
-2020,ND,North Dakota,RES,residential,5046.55099,million kilowatthours
-2020,ND,North Dakota,OTH,other,,million kilowatthours
-2020,ND,North Dakota,IND,industrial,10131.201,million kilowatthours
-2020,ND,North Dakota,COM,commercial,6641.70001,million kilowatthours
-2020,NC,North Carolina,TRA,transportation,16.124,million kilowatthours
-2020,NC,North Carolina,RES,residential,58641.572,million kilowatthours
-2020,NC,North Carolina,OTH,other,,million kilowatthours
-2020,NC,North Carolina,IND,industrial,25828.23299,million kilowatthours
-2020,NC,North Carolina,COM,commercial,45905.051,million kilowatthours
-2020,NY,New York,TRA,transportation,2550.214,million kilowatthours
-2020,NY,New York,RES,residential,52257.14399,million kilowatthours
-2020,NY,New York,OTH,other,,million kilowatthours
-2020,NY,New York,IND,industrial,16610.45699,million kilowatthours
-2020,NY,New York,COM,commercial,68988.81701,million kilowatthours
-2020,NM,New Mexico,TRA,transportation,0,million kilowatthours
-2020,NM,New Mexico,RES,residential,7282.07899,million kilowatthours
-2020,NM,New Mexico,OTH,other,,million kilowatthours
-2020,NM,New Mexico,IND,industrial,9088.192,million kilowatthours
-2020,NM,New Mexico,COM,commercial,8406.88401,million kilowatthours
-2020,NJ,New Jersey,TRA,transportation,270.37,million kilowatthours
-2020,NJ,New Jersey,RES,residential,29676.857,million kilowatthours
-2020,NJ,New Jersey,OTH,other,,million kilowatthours
-2020,NJ,New Jersey,IND,industrial,6735.377,million kilowatthours
-2020,NJ,New Jersey,COM,commercial,35315.617,million kilowatthours
-2020,NH,New Hampshire,TRA,transportation,0,million kilowatthours
-2020,IA,Iowa,RES,residential,14567.48298,million kilowatthours
-2020,IA,Iowa,OTH,other,,million kilowatthours
-2020,IA,Iowa,IND,industrial,24466.64101,million kilowatthours
-2020,IA,Iowa,COM,commercial,11605.73805,million kilowatthours
-2020,IN,Indiana,TRA,transportation,18.001,million kilowatthours
-2020,IN,Indiana,RES,residential,32878.35501,million kilowatthours
-2020,IN,Indiana,OTH,other,,million kilowatthours
-2020,IN,Indiana,IND,industrial,42262.90999,million kilowatthours
-2020,IN,Indiana,COM,commercial,21996.47801,million kilowatthours
-2020,ESC,East South Central,IND,industrial,94301.58699,million kilowatthours
-2020,ESC,East South Central,COM,commercial,86034.46401,million kilowatthours
-2020,SAT,South Atlantic,TRA,transportation,1216.993,million kilowatthours
-2020,SAT,South Atlantic,RES,residential,372703.18099,million kilowatthours
-2020,SAT,South Atlantic,OTH,other,,million kilowatthours
-2020,SAT,South Atlantic,IND,industrial,135626.83297,million kilowatthours
-2020,SAT,South Atlantic,COM,commercial,301366.299,million kilowatthours
-2020,WNC,West North Central,TRA,transportation,40.873,million kilowatthours
-2020,WNC,West North Central,RES,residential,106677.48798,million kilowatthours
-2020,WNC,West North Central,OTH,other,,million kilowatthours
-2020,US,U.S. Total,TRA,transportation,6547.824,million kilowatthours
-2020,IL,Illinois,TRA,transportation,449.958,million kilowatthours
-2020,IL,Illinois,RES,residential,46170.538,million kilowatthours
-2020,IL,Illinois,OTH,other,,million kilowatthours
-2020,IL,Illinois,IND,industrial,40362.20399,million kilowatthours
-2020,IL,Illinois,COM,commercial,45486.57701,million kilowatthours
-2020,ID,Idaho,TRA,transportation,0,million kilowatthours
-2020,PA,Pennsylvania,TRA,transportation,425.435,million kilowatthours
-2020,PA,Pennsylvania,RES,residential,55307.093,million kilowatthours
-2020,PA,Pennsylvania,OTH,other,,million kilowatthours
-2020,PA,Pennsylvania,IND,industrial,48607.303,million kilowatthours
-2020,PA,Pennsylvania,COM,commercial,35381.00599,million kilowatthours
-2020,OR,Oregon,TRA,transportation,25.606,million kilowatthours
-2020,OR,Oregon,RES,residential,19628.011,million kilowatthours
-2020,OR,Oregon,OTH,other,,million kilowatthours
-2020,OR,Oregon,IND,industrial,15616.78201,million kilowatthours
-2020,OR,Oregon,COM,commercial,15748.914,million kilowatthours
-2020,OK,Oklahoma,TRA,transportation,0,million kilowatthours
-2020,OK,Oklahoma,RES,residential,23232.47299,million kilowatthours
-2020,OK,Oklahoma,OTH,other,,million kilowatthours
-2020,OK,Oklahoma,IND,industrial,20367.84399,million kilowatthours
-2020,OK,Oklahoma,COM,commercial,18698.988,million kilowatthours
-2020,ID,Idaho,RES,residential,8970.75099,million kilowatthours
-2020,ID,Idaho,OTH,other,,million kilowatthours
-2020,ID,Idaho,IND,industrial,9180.674,million kilowatthours
-2020,ID,Idaho,COM,commercial,6309.927,million kilowatthours
-2020,HI,Hawaii,TRA,transportation,0,million kilowatthours
-2020,HI,Hawaii,RES,residential,2849.114,million kilowatthours
-2020,MD,Maryland,IND,industrial,3381.895,million kilowatthours
-2020,MD,Maryland,COM,commercial,26451.86401,million kilowatthours
-2020,ME,Maine,TRA,transportation,0,million kilowatthours
-2020,ME,Maine,RES,residential,4905.263,million kilowatthours
-2020,ME,Maine,OTH,other,,million kilowatthours
-2020,ME,Maine,IND,industrial,2625.824,million kilowatthours
-2020,ME,Maine,COM,commercial,3815.653,million kilowatthours
-2020,LA,Louisiana,TRA,transportation,10.814,million kilowatthours
-2020,LA,Louisiana,RES,residential,30440.74601,million kilowatthours
-2020,LA,Louisiana,OTH,other,,million kilowatthours
-2020,LA,Louisiana,IND,industrial,36276.417,million kilowatthours
-2020,LA,Louisiana,COM,commercial,22398.708,million kilowatthours
-2020,KY,Kentucky,TRA,transportation,0,million kilowatthours
-2020,KY,Kentucky,RES,residential,25935.09601,million kilowatthours
-2020,KY,Kentucky,OTH,other,,million kilowatthours
-2020,KY,Kentucky,IND,industrial,27803.946,million kilowatthours
-2020,KY,Kentucky,COM,commercial,18061.357,million kilowatthours
-2020,KS,Kansas,TRA,transportation,0,million kilowatthours
-2020,KS,Kansas,RES,residential,13592.444,million kilowatthours
-2020,KS,Kansas,OTH,other,,million kilowatthours
-2020,KS,Kansas,IND,industrial,11048.183,million kilowatthours
-2020,KS,Kansas,COM,commercial,14843.31899,million kilowatthours
-2020,IA,Iowa,TRA,transportation,0,million kilowatthours
-2020,RI,Rhode Island,TRA,transportation,17.566,million kilowatthours
-2020,RI,Rhode Island,RES,residential,3148.021,million kilowatthours
-2020,RI,Rhode Island,OTH,other,,million kilowatthours
-2020,RI,Rhode Island,IND,industrial,634.692,million kilowatthours
-2020,RI,Rhode Island,COM,commercial,3551.262,million kilowatthours
-2020,WA,Washington,RES,residential,36858.798,million kilowatthours
-2020,WA,Washington,OTH,other,,million kilowatthours
-2020,WA,Washington,IND,industrial,22442.18601,million kilowatthours
-2020,WA,Washington,COM,commercial,27307.412,million kilowatthours
-2020,VA,Virginia,TRA,transportation,164.46,million kilowatthours
-2020,VA,Virginia,RES,residential,46088.846,million kilowatthours
-2020,VA,Virginia,OTH,other,,million kilowatthours
-2020,VA,Virginia,IND,industrial,17474.236,million kilowatthours
-2020,VA,Virginia,COM,commercial,53526.846,million kilowatthours
-2020,VT,Vermont,TRA,transportation,0,million kilowatthours
-2020,VT,Vermont,RES,residential,2157.001,million kilowatthours
-2020,VT,Vermont,OTH,other,,million kilowatthours
-2020,VT,Vermont,IND,industrial,1368.719,million kilowatthours
-2020,VT,Vermont,COM,commercial,1805.738,million kilowatthours
-2020,UT,Utah,TRA,transportation,49.213,million kilowatthours
-2020,UT,Utah,RES,residential,10546.793,million kilowatthours
-2020,UT,Utah,OTH,other,,million kilowatthours
-2020,UT,Utah,IND,industrial,9672.119,million kilowatthours
-2020,UT,Utah,COM,commercial,11395.032,million kilowatthours
-2020,TX,Texas,TRA,transportation,173.662,million kilowatthours
-2020,TX,Texas,RES,residential,156414.81901,million kilowatthours
-2020,TX,Texas,OTH,other,,million kilowatthours
-2020,TX,Texas,IND,industrial,125107.20898,million kilowatthours
-2020,TX,Texas,COM,commercial,145167.57699,million kilowatthours
-2020,TN,Tennessee,TRA,transportation,0,million kilowatthours
-2020,TN,Tennessee,RES,residential,41084.91099,million kilowatthours
-2020,TN,Tennessee,OTH,other,,million kilowatthours
-2020,TN,Tennessee,IND,industrial,20438.788,million kilowatthours
-2020,TN,Tennessee,COM,commercial,33480.189,million kilowatthours
-2020,SD,South Dakota,TRA,transportation,0,million kilowatthours
-2020,SD,South Dakota,RES,residential,5070.024,million kilowatthours
-2020,SD,South Dakota,OTH,other,,million kilowatthours
-2020,SD,South Dakota,IND,industrial,2929.34599,million kilowatthours
-2020,SD,South Dakota,COM,commercial,4696.47501,million kilowatthours
-2020,SC,South Carolina,TRA,transportation,0,million kilowatthours
-2020,SC,South Carolina,RES,residential,30826.01699,million kilowatthours
-2020,SC,South Carolina,OTH,other,,million kilowatthours
-2020,SC,South Carolina,IND,industrial,25076.787,million kilowatthours
-2020,SC,South Carolina,COM,commercial,20834.372,million kilowatthours
-2020,AR,Arkansas,TRA,transportation,.199,million kilowatthours
-2020,AR,Arkansas,RES,residential,17980.20601,million kilowatthours
-2020,AR,Arkansas,OTH,other,,million kilowatthours
-2020,AR,Arkansas,IND,industrial,16760.18201,million kilowatthours
-2020,AR,Arkansas,COM,commercial,11110.41599,million kilowatthours
-2020,AZ,Arizona,TRA,transportation,11.341,million kilowatthours
-2020,AZ,Arizona,RES,residential,38707.41601,million kilowatthours
-2020,AZ,Arizona,OTH,other,,million kilowatthours
-2020,AZ,Arizona,IND,industrial,14113.139,million kilowatthours
-2020,AZ,Arizona,COM,commercial,29128.178,million kilowatthours
-2020,AK,Alaska,TRA,transportation,0,million kilowatthours
-2020,AK,Alaska,RES,residential,2089.04601,million kilowatthours
-2020,AK,Alaska,OTH,other,,million kilowatthours
-2020,AK,Alaska,IND,industrial,1304.41499,million kilowatthours
-2020,AK,Alaska,COM,commercial,2524.11599,million kilowatthours
-2020,AL,Alabama,TRA,transportation,0,million kilowatthours
-2020,AL,Alabama,RES,residential,31331.04101,million kilowatthours
-2020,AL,Alabama,OTH,other,,million kilowatthours
-2020,AL,Alabama,IND,industrial,30756.789,million kilowatthours
-2020,AL,Alabama,COM,commercial,21307.77501,million kilowatthours
-2020,NH,New Hampshire,RES,residential,4790.374,million kilowatthours
-2020,NH,New Hampshire,OTH,other,,million kilowatthours
-2020,NH,New Hampshire,IND,industrial,1873.446,million kilowatthours
-2020,NH,New Hampshire,COM,commercial,4029.709,million kilowatthours
-2020,NV,Nevada,TRA,transportation,3.96,million kilowatthours
-2020,NV,Nevada,RES,residential,14321.60701,million kilowatthours
-2020,NV,Nevada,OTH,other,,million kilowatthours
-2020,NV,Nevada,IND,industrial,11924.592,million kilowatthours
-2020,NV,Nevada,COM,commercial,11983.74,million kilowatthours
-2020,NE,Nebraska,TRA,transportation,0,million kilowatthours
-2020,NE,Nebraska,RES,residential,10514.944,million kilowatthours
-2020,NE,Nebraska,OTH,other,,million kilowatthours
-2020,NE,Nebraska,IND,industrial,11566.35302,million kilowatthours
-2020,NE,Nebraska,COM,commercial,9090.23901,million kilowatthours
-2020,MT,Montana,TRA,transportation,0,million kilowatthours
-2020,MT,Montana,RES,residential,5379.96501,million kilowatthours
-2020,MT,Montana,OTH,other,,million kilowatthours
-2020,MT,Montana,IND,industrial,4501.861,million kilowatthours
-2020,MT,Montana,COM,commercial,4702.35299,million kilowatthours
-2020,MO,Missouri,TRA,transportation,20.463,million kilowatthours
-2020,MO,Missouri,RES,residential,34950.36999,million kilowatthours
-2020,MO,Missouri,OTH,other,,million kilowatthours
-2020,MO,Missouri,IND,industrial,12823.832,million kilowatthours
-2020,MO,Missouri,COM,commercial,27931.04698,million kilowatthours
-2020,MS,Mississippi,TRA,transportation,0,million kilowatthours
-2020,MS,Mississippi,RES,residential,17994.83299,million kilowatthours
-2020,MS,Mississippi,OTH,other,,million kilowatthours
-2020,MS,Mississippi,IND,industrial,15302.064,million kilowatthours
-2020,MS,Mississippi,COM,commercial,13185.14299,million kilowatthours
-2020,MN,Minnesota,TRA,transportation,20.41,million kilowatthours
-2020,MN,Minnesota,RES,residential,22935.67203,million kilowatthours
-2020,MN,Minnesota,OTH,other,,million kilowatthours
-2020,DE,Delaware,TRA,transportation,0,million kilowatthours
-2020,DE,Delaware,RES,residential,4991.134,million kilowatthours
-2020,DE,Delaware,OTH,other,,million kilowatthours
-2020,DE,Delaware,IND,industrial,2055.42,million kilowatthours
-2020,DE,Delaware,COM,commercial,4082.497,million kilowatthours
-2020,CT,Connecticut,TRA,transportation,125.647,million kilowatthours
-2020,CT,Connecticut,RES,residential,12981.839,million kilowatthours
-2020,CT,Connecticut,OTH,other,,million kilowatthours
-2020,CT,Connecticut,IND,industrial,2860.291,million kilowatthours
-2020,CT,Connecticut,COM,commercial,11145.89599,million kilowatthours
-2020,CO,Colorado,TRA,transportation,94.079,million kilowatthours
-2020,CO,Colorado,RES,residential,20482.50199,million kilowatthours
-2020,MN,Minnesota,IND,industrial,19571.84701,million kilowatthours
-2020,MN,Minnesota,COM,commercial,21526.67699,million kilowatthours
-2020,MI,Michigan,TRA,transportation,4.116,million kilowatthours
-2020,MI,Michigan,RES,residential,35862.91179,million kilowatthours
-2020,CO,Colorado,OTH,other,,million kilowatthours
-2020,CO,Colorado,IND,industrial,15431.465,million kilowatthours
-2020,CO,Colorado,COM,commercial,20042.21799,million kilowatthours
-2020,CA,California,TRA,transportation,602.88,million kilowatthours
-2020,MI,Michigan,OTH,other,,million kilowatthours
-2020,MI,Michigan,IND,industrial,25654.08102,million kilowatthours
-2020,MI,Michigan,COM,commercial,35490.797,million kilowatthours
-2020,MA,Massachusetts,TRA,transportation,323.287,million kilowatthours
-2020,MA,Massachusetts,RES,residential,20345.178,million kilowatthours
-2020,MA,Massachusetts,OTH,other,,million kilowatthours
-2020,MA,Massachusetts,IND,industrial,6220.37602,million kilowatthours
-2020,MA,Massachusetts,COM,commercial,23120.50002,million kilowatthours
-2020,MD,Maryland,TRA,transportation,488.906,million kilowatthours
-2020,MD,Maryland,RES,residential,27306.375,million kilowatthours
-2020,MD,Maryland,OTH,other,,million kilowatthours
-2020,HI,Hawaii,OTH,other,,million kilowatthours
-2020,HI,Hawaii,IND,industrial,3263.346,million kilowatthours
-2020,HI,Hawaii,COM,commercial,2684.301,million kilowatthours
-2020,GA,Georgia,TRA,transportation,140.609,million kilowatthours
-2020,GA,Georgia,RES,residential,58220.28,million kilowatthours
-2020,GA,Georgia,OTH,other,,million kilowatthours
-2020,GA,Georgia,IND,industrial,30807.72398,million kilowatthours
-2020,GA,Georgia,COM,commercial,44301.529,million kilowatthours
-2020,FL,Florida,TRA,transportation,74.612,million kilowatthours
-2020,FL,Florida,RES,residential,133298.86899,million kilowatthours
-2020,FL,Florida,OTH,other,,million kilowatthours
-2020,FL,Florida,IND,industrial,16572.954,million kilowatthours
-2020,FL,Florida,COM,commercial,92493.736,million kilowatthours
-2020,DC,District of Columbia,TRA,transportation,332.282,million kilowatthours
-2020,DC,District of Columbia,RES,residential,2452.589,million kilowatthours
-2020,DC,District of Columbia,OTH,other,,million kilowatthours
-2020,DC,District of Columbia,IND,industrial,186.344,million kilowatthours
-2020,DC,District of Columbia,COM,commercial,6814.56,million kilowatthours
-2020,CA,California,RES,residential,94934.56301,million kilowatthours
-2020,CA,California,OTH,other,,million kilowatthours
-2020,CA,California,IND,industrial,47630.88201,million kilowatthours
-2020,CA,California,COM,commercial,107006.347,million kilowatthours
-2020,PACC,Pacific Contiguous,IND,industrial,85689.85003,million kilowatthours
-2020,PACC,Pacific Contiguous,COM,commercial,150062.673,million kilowatthours
-2020,MTN,Mountain,TRA,transportation,158.59301,million kilowatthours
-2020,MTN,Mountain,RES,residential,108570.641,million kilowatthours
-2020,MTN,Mountain,OTH,other,,million kilowatthours
-2020,MTN,Mountain,IND,industrial,83043.508,million kilowatthours
-2020,MTN,Mountain,COM,commercial,95288.35599,million kilowatthours
-2020,WSC,West South Central,TRA,transportation,184.675,million kilowatthours
-2020,WSC,West South Central,RES,residential,228068.24402,million kilowatthours
-2020,WSC,West South Central,OTH,other,,million kilowatthours
-2020,WSC,West South Central,IND,industrial,198511.65197,million kilowatthours
-2020,WSC,West South Central,COM,commercial,197375.68898,million kilowatthours
-2020,ESC,East South Central,TRA,transportation,0,million kilowatthours
-2020,ESC,East South Central,RES,residential,116345.88099,million kilowatthours
-2019,AK,Alaska,COM,commercial,2638.84601,million kilowatthours
-2019,OR,Oregon,TRA,transportation,26.941,million kilowatthours
-2019,OR,Oregon,RES,residential,19286.182,million kilowatthours
-2019,OR,Oregon,OTH,other,,million kilowatthours
-2019,OR,Oregon,IND,industrial,14668.288,million kilowatthours
-2019,OR,Oregon,COM,commercial,16422.975,million kilowatthours
-2019,OK,Oklahoma,TRA,transportation,0,million kilowatthours
-2019,OK,Oklahoma,RES,residential,23805.972,million kilowatthours
-2019,OK,Oklahoma,OTH,other,,million kilowatthours
-2019,OK,Oklahoma,IND,industrial,20903.983,million kilowatthours
-2019,OK,Oklahoma,COM,commercial,20085.99101,million kilowatthours
-2019,OH,Ohio,TRA,transportation,37.708,million kilowatthours
-2019,OH,Ohio,RES,residential,52226.09701,million kilowatthours
-2019,OH,Ohio,OTH,other,,million kilowatthours
-2019,OH,Ohio,IND,industrial,50249.17802,million kilowatthours
-2019,OH,Ohio,COM,commercial,46008.93701,million kilowatthours
-2019,ND,North Dakota,TRA,transportation,0,million kilowatthours
-2019,ND,North Dakota,RES,residential,5125.431,million kilowatthours
-2019,ND,North Dakota,OTH,other,,million kilowatthours
-2019,ND,North Dakota,IND,industrial,9398.79301,million kilowatthours
-2019,ND,North Dakota,COM,commercial,7035.031,million kilowatthours
-2019,NC,North Carolina,TRA,transportation,18.691,million kilowatthours
-2019,NC,North Carolina,RES,residential,59852.793,million kilowatthours
-2019,NC,North Carolina,OTH,other,,million kilowatthours
-2019,NC,North Carolina,IND,industrial,27391.009,million kilowatthours
-2019,NC,North Carolina,COM,commercial,49173.03801,million kilowatthours
-2019,NY,New York,TRA,transportation,2820.065,million kilowatthours
-2019,NY,New York,RES,residential,50141.00301,million kilowatthours
-2019,NY,New York,OTH,other,,million kilowatthours
-2019,NY,New York,IND,industrial,17548.457,million kilowatthours
-2019,NY,New York,COM,commercial,75090.82,million kilowatthours
-2019,NM,New Mexico,TRA,transportation,0,million kilowatthours
-2019,NM,New Mexico,RES,residential,6871.561,million kilowatthours
-2019,NM,New Mexico,OTH,other,,million kilowatthours
-2019,NM,New Mexico,IND,industrial,8979.712,million kilowatthours
-2019,NM,New Mexico,COM,commercial,9028.861,million kilowatthours
-2019,NJ,New Jersey,TRA,transportation,301.402,million kilowatthours
-2019,NJ,New Jersey,RES,residential,28612.555,million kilowatthours
-2019,NJ,New Jersey,OTH,other,,million kilowatthours
-2019,NJ,New Jersey,IND,industrial,6990.06299,million kilowatthours
-2019,NJ,New Jersey,COM,commercial,38012.68398,million kilowatthours
-2019,NH,New Hampshire,TRA,transportation,0,million kilowatthours
-2019,NH,New Hampshire,RES,residential,4506.83,million kilowatthours
-2019,NH,New Hampshire,OTH,other,,million kilowatthours
-2019,NH,New Hampshire,IND,industrial,1923.973,million kilowatthours
-2019,NH,New Hampshire,COM,commercial,4280.85401,million kilowatthours
-2019,NV,Nevada,TRA,transportation,8.027,million kilowatthours
-2019,NV,Nevada,RES,residential,12867.637,million kilowatthours
-2019,NV,Nevada,OTH,other,,million kilowatthours
-2019,NV,Nevada,IND,industrial,12425.53601,million kilowatthours
-2019,NV,Nevada,COM,commercial,11681.186,million kilowatthours
-2019,NE,Nebraska,TRA,transportation,0,million kilowatthours
-2019,NE,Nebraska,RES,residential,10307.90498,million kilowatthours
-2019,NE,Nebraska,OTH,other,,million kilowatthours
-2019,NE,Nebraska,IND,industrial,10618.56002,million kilowatthours
-2019,NE,Nebraska,COM,commercial,9456.72501,million kilowatthours
-2019,MT,Montana,TRA,transportation,0,million kilowatthours
-2019,MT,Montana,RES,residential,5308.103,million kilowatthours
-2019,MT,Montana,OTH,other,,million kilowatthours
-2019,MT,Montana,IND,industrial,5057.08799,million kilowatthours
-2019,MT,Montana,COM,commercial,4956.07999,million kilowatthours
-2019,MO,Missouri,TRA,transportation,23.517,million kilowatthours
-2019,MO,Missouri,RES,residential,35691.42598,million kilowatthours
-2019,MO,Missouri,OTH,other,,million kilowatthours
-2019,MO,Missouri,IND,industrial,13009.718,million kilowatthours
-2019,MO,Missouri,COM,commercial,30133.114,million kilowatthours
-2019,MS,Mississippi,TRA,transportation,0,million kilowatthours
-2019,MS,Mississippi,RES,residential,18717.85801,million kilowatthours
-2019,MS,Mississippi,OTH,other,,million kilowatthours
-2019,MS,Mississippi,IND,industrial,15994.18599,million kilowatthours
-2019,MS,Mississippi,COM,commercial,14238.982,million kilowatthours
-2019,MN,Minnesota,TRA,transportation,25.109,million kilowatthours
-2019,MN,Minnesota,RES,residential,22288.152,million kilowatthours
-2019,MN,Minnesota,OTH,other,,million kilowatthours
-2019,MN,Minnesota,IND,industrial,21748.034,million kilowatthours
-2019,MN,Minnesota,COM,commercial,22904.299,million kilowatthours
-2019,MI,Michigan,TRA,transportation,6.353,million kilowatthours
-2019,MI,Michigan,RES,residential,33495.725,million kilowatthours
-2019,MI,Michigan,OTH,other,,million kilowatthours
-2019,MI,Michigan,IND,industrial,29886.43199,million kilowatthours
-2019,MI,Michigan,COM,commercial,37860.78299,million kilowatthours
-2019,MA,Massachusetts,TRA,transportation,343.494,million kilowatthours
-2019,MA,Massachusetts,RES,residential,19314.571,million kilowatthours
-2019,MA,Massachusetts,OTH,other,,million kilowatthours
-2019,MA,Massachusetts,IND,industrial,6341.699,million kilowatthours
-2019,MA,Massachusetts,COM,commercial,25336.834,million kilowatthours
-2019,MD,Maryland,TRA,transportation,575.218,million kilowatthours
-2019,MD,Maryland,RES,residential,27533.69299,million kilowatthours
-2019,MD,Maryland,OTH,other,,million kilowatthours
-2019,MD,Maryland,IND,industrial,3718.412,million kilowatthours
-2019,MD,Maryland,COM,commercial,28893.33501,million kilowatthours
-2019,ME,Maine,TRA,transportation,0,million kilowatthours
-2019,ME,Maine,RES,residential,4793.80901,million kilowatthours
-2019,ME,Maine,OTH,other,,million kilowatthours
-2019,ME,Maine,IND,industrial,2789.92599,million kilowatthours
-2019,ME,Maine,COM,commercial,4148.305,million kilowatthours
-2019,LA,Louisiana,TRA,transportation,11.886,million kilowatthours
-2019,LA,Louisiana,RES,residential,30986.02401,million kilowatthours
-2019,LA,Louisiana,OTH,other,,million kilowatthours
-2019,LA,Louisiana,IND,industrial,37846.317,million kilowatthours
-2019,LA,Louisiana,COM,commercial,24284.298,million kilowatthours
-2019,KY,Kentucky,TRA,transportation,0,million kilowatthours
-2019,KY,Kentucky,RES,residential,26573.076,million kilowatthours
-2019,KY,Kentucky,OTH,other,,million kilowatthours
-2019,KY,Kentucky,IND,industrial,29160.79599,million kilowatthours
-2019,KY,Kentucky,COM,commercial,19611.51,million kilowatthours
-2019,KS,Kansas,TRA,transportation,0,million kilowatthours
-2019,KS,Kansas,RES,residential,13630.66099,million kilowatthours
-2019,KS,Kansas,OTH,other,,million kilowatthours
-2019,KS,Kansas,IND,industrial,11612.64199,million kilowatthours
-2019,KS,Kansas,COM,commercial,15916.325,million kilowatthours
-2019,IA,Iowa,TRA,transportation,0,million kilowatthours
-2019,IA,Iowa,RES,residential,14494.82101,million kilowatthours
-2019,IA,Iowa,OTH,other,,million kilowatthours
-2019,IA,Iowa,IND,industrial,24238.717,million kilowatthours
-2019,IA,Iowa,COM,commercial,12309.61002,million kilowatthours
-2019,IN,Indiana,TRA,transportation,20.606,million kilowatthours
-2019,IN,Indiana,RES,residential,33249.23401,million kilowatthours
-2019,IN,Indiana,OTH,other,,million kilowatthours
-2019,IN,Indiana,IND,industrial,45316.68202,million kilowatthours
-2019,IN,Indiana,COM,commercial,23517.681,million kilowatthours
-2019,WA,Washington,TRA,transportation,98.861,million kilowatthours
-2019,WA,Washington,RES,residential,36512.424,million kilowatthours
-2019,WA,Washington,OTH,other,,million kilowatthours
-2019,WA,Washington,IND,industrial,25171.87299,million kilowatthours
-2019,WA,Washington,COM,commercial,29269.63799,million kilowatthours
-2019,VA,Virginia,TRA,transportation,189.794,million kilowatthours
-2019,VA,Virginia,RES,residential,46666.163,million kilowatthours
-2019,VA,Virginia,OTH,other,,million kilowatthours
-2019,VA,Virginia,IND,industrial,17598.24699,million kilowatthours
-2019,VA,Virginia,COM,commercial,53981.176,million kilowatthours
-2019,VT,Vermont,TRA,transportation,0,million kilowatthours
-2019,VT,Vermont,RES,residential,2081.545,million kilowatthours
-2019,VT,Vermont,OTH,other,,million kilowatthours
-2019,VT,Vermont,IND,industrial,1411.655,million kilowatthours
-2019,VT,Vermont,COM,commercial,1934.464,million kilowatthours
-2019,UT,Utah,TRA,transportation,51.748,million kilowatthours
-2019,UT,Utah,RES,residential,9739.52499,million kilowatthours
-2019,UT,Utah,OTH,other,,million kilowatthours
-2019,UT,Utah,IND,industrial,9490.84301,million kilowatthours
-2019,UT,Utah,COM,commercial,11860.44901,million kilowatthours
-2019,TX,Texas,TRA,transportation,186.616,million kilowatthours
-2019,TX,Texas,RES,residential,155481.34201,million kilowatthours
-2019,TX,Texas,OTH,other,,million kilowatthours
-2019,TX,Texas,IND,industrial,131673.922,million kilowatthours
-2019,TX,Texas,COM,commercial,142001.52401,million kilowatthours
-2019,TN,Tennessee,TRA,transportation,0,million kilowatthours
-2019,TN,Tennessee,RES,residential,42573.18301,million kilowatthours
-2019,TN,Tennessee,OTH,other,,million kilowatthours
-2019,TN,Tennessee,IND,industrial,21104.52299,million kilowatthours
-2019,TN,Tennessee,COM,commercial,36151.394,million kilowatthours
-2019,SD,South Dakota,TRA,transportation,0,million kilowatthours
-2019,SD,South Dakota,RES,residential,5057.032,million kilowatthours
-2019,SD,South Dakota,OTH,other,,million kilowatthours
-2019,SD,South Dakota,IND,industrial,2923.86498,million kilowatthours
-2019,SD,South Dakota,COM,commercial,4888.034,million kilowatthours
-2019,SC,South Carolina,TRA,transportation,0,million kilowatthours
-2019,SC,South Carolina,RES,residential,31159.957,million kilowatthours
-2019,SC,South Carolina,OTH,other,,million kilowatthours
-2019,SC,South Carolina,IND,industrial,26877.33501,million kilowatthours
-2019,SC,South Carolina,COM,commercial,22168.32799,million kilowatthours
-2019,RI,Rhode Island,TRA,transportation,27.005,million kilowatthours
-2019,RI,Rhode Island,RES,residential,2983.012,million kilowatthours
-2019,RI,Rhode Island,OTH,other,,million kilowatthours
-2019,RI,Rhode Island,IND,industrial,695.416,million kilowatthours
-2019,RI,Rhode Island,COM,commercial,3644.482,million kilowatthours
-2019,PA,Pennsylvania,TRA,transportation,618.767,million kilowatthours
-2019,PA,Pennsylvania,RES,residential,54396.18199,million kilowatthours
-2019,PA,Pennsylvania,OTH,other,,million kilowatthours
-2019,PA,Pennsylvania,IND,industrial,50422.72399,million kilowatthours
-2019,IL,Illinois,TRA,transportation,570.032,million kilowatthours
-2019,IL,Illinois,RES,residential,45220.25799,million kilowatthours
-2019,IL,Illinois,OTH,other,,million kilowatthours
-2019,IL,Illinois,IND,industrial,43250.44499,million kilowatthours
-2019,IL,Illinois,COM,commercial,49278.746,million kilowatthours
-2019,ID,Idaho,TRA,transportation,0,million kilowatthours
-2019,ID,Idaho,RES,residential,8696.843,million kilowatthours
-2019,ID,Idaho,OTH,other,,million kilowatthours
-2019,ID,Idaho,IND,industrial,8847.48901,million kilowatthours
-2019,ID,Idaho,COM,commercial,6440.943,million kilowatthours
-2019,HI,Hawaii,TRA,transportation,0,million kilowatthours
-2019,HI,Hawaii,RES,residential,2759.77401,million kilowatthours
-2019,HI,Hawaii,OTH,other,,million kilowatthours
-2019,HI,Hawaii,IND,industrial,3635.247,million kilowatthours
-2019,HI,Hawaii,COM,commercial,3057.86601,million kilowatthours
-2019,GA,Georgia,TRA,transportation,164.292,million kilowatthours
-2019,GA,Georgia,RES,residential,59331.49099,million kilowatthours
-2019,GA,Georgia,OTH,other,,million kilowatthours
-2019,GA,Georgia,IND,industrial,32393.384,million kilowatthours
-2019,GA,Georgia,COM,commercial,47411.823,million kilowatthours
-2019,FL,Florida,TRA,transportation,85.39,million kilowatthours
-2019,FL,Florida,RES,residential,127181.55101,million kilowatthours
-2019,FL,Florida,OTH,other,,million kilowatthours
-2019,FL,Florida,IND,industrial,16514.48201,million kilowatthours
-2019,FL,Florida,COM,commercial,96566.53203,million kilowatthours
-2019,DC,District of Columbia,TRA,transportation,349.546,million kilowatthours
-2019,DC,District of Columbia,RES,residential,2546.92,million kilowatthours
-2019,DC,District of Columbia,OTH,other,,million kilowatthours
-2019,DC,District of Columbia,IND,industrial,179.632,million kilowatthours
-2019,DC,District of Columbia,COM,commercial,7952.305,million kilowatthours
-2019,DE,Delaware,TRA,transportation,0,million kilowatthours
-2019,DE,Delaware,RES,residential,5004.131,million kilowatthours
-2019,DE,Delaware,OTH,other,,million kilowatthours
-2019,DE,Delaware,IND,industrial,2043.826,million kilowatthours
-2019,DE,Delaware,COM,commercial,4421.465,million kilowatthours
-2019,CT,Connecticut,TRA,transportation,176.866,million kilowatthours
-2019,CT,Connecticut,RES,residential,12493.55,million kilowatthours
-2019,CT,Connecticut,OTH,other,,million kilowatthours
-2019,CT,Connecticut,IND,industrial,3071.792,million kilowatthours
-2019,CT,Connecticut,COM,commercial,12157.78799,million kilowatthours
-2019,CO,Colorado,TRA,transportation,113.801,million kilowatthours
-2019,CO,Colorado,RES,residential,19404.743,million kilowatthours
-2019,CO,Colorado,OTH,other,,million kilowatthours
-2019,CO,Colorado,IND,industrial,15891.01999,million kilowatthours
-2019,CO,Colorado,COM,commercial,21111.259,million kilowatthours
-2019,PA,Pennsylvania,COM,commercial,40142.70999,million kilowatthours
-2019,US,U.S. Total,TRA,transportation,7632.15001,million kilowatthours
-2019,US,U.S. Total,RES,residential,1440288.909,million kilowatthours
-2019,US,U.S. Total,OTH,other,,million kilowatthours
-2019,US,U.S. Total,IND,industrial,1002352.84901,million kilowatthours
-2019,US,U.S. Total,COM,commercial,1360876.55503,million kilowatthours
-2019,PACN,Pacific Noncontiguous,TRA,transportation,0,million kilowatthours
-2019,PACN,Pacific Noncontiguous,RES,residential,4687.98202,million kilowatthours
-2019,PACN,Pacific Noncontiguous,OTH,other,,million kilowatthours
-2019,PACN,Pacific Noncontiguous,IND,industrial,4886.998,million kilowatthours
-2019,PACN,Pacific Noncontiguous,COM,commercial,5696.71202,million kilowatthours
-2019,PACC,Pacific Contiguous,TRA,transportation,893.423,million kilowatthours
-2019,PACC,Pacific Contiguous,RES,residential,143322.593,million kilowatthours
-2019,PACC,Pacific Contiguous,OTH,other,,million kilowatthours
-2019,PACC,Pacific Contiguous,IND,industrial,87647.89,million kilowatthours
-2019,PACC,Pacific Contiguous,COM,commercial,159971.98597,million kilowatthours
-2019,MTN,Mountain,TRA,transportation,184.72,million kilowatthours
-2019,MTN,Mountain,RES,residential,100457.84,million kilowatthours
-2019,MTN,Mountain,OTH,other,,million kilowatthours
-2019,MTN,Mountain,IND,industrial,84813.03302,million kilowatthours
-2019,MTN,Mountain,COM,commercial,98069.52701,million kilowatthours
-2019,WSC,West South Central,TRA,transportation,198.918,million kilowatthours
-2019,WSC,West South Central,RES,residential,229005.654,million kilowatthours
-2019,WSC,West South Central,OTH,other,,million kilowatthours
-2019,WSC,West South Central,IND,industrial,207835.83299,million kilowatthours
-2019,WSC,West South Central,COM,commercial,198320.50202,million kilowatthours
-2019,ESC,East South Central,TRA,transportation,0,million kilowatthours
-2019,ESC,East South Central,RES,residential,120279.76303,million kilowatthours
-2019,ESC,East South Central,OTH,other,,million kilowatthours
-2019,ESC,East South Central,IND,industrial,98862.50097,million kilowatthours
-2019,ESC,East South Central,COM,commercial,93078.356,million kilowatthours
-2019,SAT,South Atlantic,TRA,transportation,1382.931,million kilowatthours
-2019,SAT,South Atlantic,RES,residential,370429.91799,million kilowatthours
-2019,SAT,South Atlantic,OTH,other,,million kilowatthours
-2019,SAT,South Atlantic,IND,industrial,141242.99101,million kilowatthours
-2019,SAT,South Atlantic,COM,commercial,318135.13202,million kilowatthours
-2019,WNC,West North Central,TRA,transportation,48.626,million kilowatthours
-2019,WNC,West North Central,RES,residential,106595.42796,million kilowatthours
-2019,WNC,West North Central,OTH,other,,million kilowatthours
-2019,WNC,West North Central,IND,industrial,93550.329,million kilowatthours
-2019,WNC,West North Central,COM,commercial,102643.13802,million kilowatthours
-2019,ENC,East North Central,TRA,transportation,635.933,million kilowatthours
-2019,ENC,East North Central,RES,residential,186186.67401,million kilowatthours
-2019,ENC,East North Central,OTH,other,,million kilowatthours
-2019,ENC,East North Central,IND,industrial,192317.56904,million kilowatthours
-2019,ENC,East North Central,COM,commercial,180212.261,million kilowatthours
-2019,MAT,Middle Atlantic,TRA,transportation,3740.234,million kilowatthours
-2019,MAT,Middle Atlantic,RES,residential,133149.74,million kilowatthours
-2019,MAT,Middle Atlantic,OTH,other,,million kilowatthours
-2019,MAT,Middle Atlantic,IND,industrial,74961.24399,million kilowatthours
-2019,MAT,Middle Atlantic,COM,commercial,153246.21397,million kilowatthours
-2019,NEW,New England,TRA,transportation,547.365,million kilowatthours
-2019,NEW,New England,RES,residential,46173.317,million kilowatthours
-2019,NEW,New England,OTH,other,,million kilowatthours
-2019,NEW,New England,IND,industrial,16234.46099,million kilowatthours
-2019,NEW,New England,COM,commercial,51502.727,million kilowatthours
-2019,WY,Wyoming,TRA,transportation,0,million kilowatthours
-2019,WY,Wyoming,RES,residential,2849.37801,million kilowatthours
-2019,WY,Wyoming,OTH,other,,million kilowatthours
-2019,WY,Wyoming,IND,industrial,10338.641,million kilowatthours
-2019,WY,Wyoming,COM,commercial,3575.477,million kilowatthours
-2019,WI,Wisconsin,TRA,transportation,1.234,million kilowatthours
-2019,WI,Wisconsin,RES,residential,21995.36,million kilowatthours
-2019,WI,Wisconsin,OTH,other,,million kilowatthours
-2019,WI,Wisconsin,IND,industrial,23614.83201,million kilowatthours
-2019,WI,Wisconsin,COM,commercial,23546.11399,million kilowatthours
-2019,WV,West Virginia,TRA,transportation,0,million kilowatthours
-2019,WV,West Virginia,RES,residential,11153.219,million kilowatthours
-2019,WV,West Virginia,OTH,other,,million kilowatthours
-2019,WV,West Virginia,IND,industrial,14526.664,million kilowatthours
-2019,WV,West Virginia,COM,commercial,7567.13,million kilowatthours
-2019,CA,California,TRA,transportation,767.621,million kilowatthours
-2019,CA,California,RES,residential,87523.98701,million kilowatthours
-2019,CA,California,OTH,other,,million kilowatthours
-2019,CA,California,IND,industrial,47807.72901,million kilowatthours
-2019,CA,California,COM,commercial,114279.37299,million kilowatthours
-2019,AR,Arkansas,TRA,transportation,.416,million kilowatthours
-2019,AR,Arkansas,RES,residential,18732.31599,million kilowatthours
-2019,AR,Arkansas,OTH,other,,million kilowatthours
-2019,AR,Arkansas,IND,industrial,17411.611,million kilowatthours
-2019,AR,Arkansas,COM,commercial,11948.689,million kilowatthours
-2019,AZ,Arizona,TRA,transportation,11.144,million kilowatthours
-2019,AZ,Arizona,RES,residential,34720.05001,million kilowatthours
-2019,AZ,Arizona,OTH,other,,million kilowatthours
-2019,AZ,Arizona,IND,industrial,13782.70401,million kilowatthours
-2019,AZ,Arizona,COM,commercial,29415.272,million kilowatthours
-2019,AK,Alaska,IND,industrial,1251.751,million kilowatthours
-2019,AK,Alaska,OTH,other,,million kilowatthours
-2019,AK,Alaska,RES,residential,1928.20802,million kilowatthours
-2019,AK,Alaska,TRA,transportation,0,million kilowatthours
-2019,AL,Alabama,COM,commercial,23076.47,million kilowatthours
-2019,AL,Alabama,IND,industrial,32602.996,million kilowatthours
-2019,AL,Alabama,OTH,other,,million kilowatthours
-2019,AL,Alabama,RES,residential,32415.646,million kilowatthours
-2019,AL,Alabama,TRA,transportation,0,million kilowatthours
-2018,AK,Alaska,COM,commercial,2646.058,million kilowatthours
-2018,RI,Rhode Island,IND,industrial,734.618,million kilowatthours
-2018,RI,Rhode Island,OTH,other,,million kilowatthours
-2018,RI,Rhode Island,RES,residential,3124.168,million kilowatthours
-2018,RI,Rhode Island,TRA,transportation,26.966,million kilowatthours
-2018,SC,South Carolina,COM,commercial,22232.833,million kilowatthours
-2018,SC,South Carolina,IND,industrial,27555.88599,million kilowatthours
-2018,SC,South Carolina,OTH,other,,million kilowatthours
-2018,SC,South Carolina,RES,residential,31852.419,million kilowatthours
-2018,SC,South Carolina,TRA,transportation,0,million kilowatthours
-2018,SD,South Dakota,COM,commercial,4903.24299,million kilowatthours
-2018,SD,South Dakota,IND,industrial,2935.335,million kilowatthours
-2018,SD,South Dakota,OTH,other,,million kilowatthours
-2018,SD,South Dakota,RES,residential,5018.36,million kilowatthours
-2018,SD,South Dakota,TRA,transportation,0,million kilowatthours
-2018,TN,Tennessee,COM,commercial,36930.45099,million kilowatthours
-2018,TN,Tennessee,IND,industrial,21598.77499,million kilowatthours
-2018,TN,Tennessee,OTH,other,,million kilowatthours
-2018,TN,Tennessee,RES,residential,44381.95701,million kilowatthours
-2018,TN,Tennessee,TRA,transportation,0,million kilowatthours
-2018,TX,Texas,COM,commercial,143524.63099,million kilowatthours
-2018,TX,Texas,IND,industrial,123438.82901,million kilowatthours
-2018,TX,Texas,OTH,other,,million kilowatthours
-2018,TX,Texas,RES,residential,157267.91301,million kilowatthours
-2018,TX,Texas,TRA,transportation,187.255,million kilowatthours
-2018,UT,Utah,COM,commercial,12083.83298,million kilowatthours
-2018,UT,Utah,IND,industrial,9392.70901,million kilowatthours
-2018,UT,Utah,OTH,other,,million kilowatthours
-2018,UT,Utah,RES,residential,9714.50701,million kilowatthours
-2018,UT,Utah,TRA,transportation,51.359,million kilowatthours
-2018,VT,Vermont,COM,commercial,2003.515,million kilowatthours
-2018,VT,Vermont,IND,industrial,1411.38799,million kilowatthours
-2018,VT,Vermont,OTH,other,,million kilowatthours
-2018,VT,Vermont,RES,residential,2116.045,million kilowatthours
-2018,VT,Vermont,TRA,transportation,0,million kilowatthours
-2018,GA,Georgia,IND,industrial,32695.79101,million kilowatthours
-2018,GA,Georgia,OTH,other,,million kilowatthours
-2018,GA,Georgia,RES,residential,59689.10598,million kilowatthours
-2018,GA,Georgia,TRA,transportation,169.502,million kilowatthours
-2018,HI,Hawaii,COM,commercial,3033.009,million kilowatthours
-2018,HI,Hawaii,IND,industrial,3593.454,million kilowatthours
-2018,HI,Hawaii,OTH,other,,million kilowatthours
-2018,HI,Hawaii,RES,residential,2710.698,million kilowatthours
-2018,HI,Hawaii,TRA,transportation,0,million kilowatthours
-2018,ID,Idaho,COM,commercial,6436.89299,million kilowatthours
-2018,ID,Idaho,IND,industrial,8889.037,million kilowatthours
-2018,ID,Idaho,OTH,other,,million kilowatthours
-2018,ID,Idaho,RES,residential,8427.57799,million kilowatthours
-2018,ID,Idaho,TRA,transportation,0,million kilowatthours
-2018,IL,Illinois,COM,commercial,50762.829,million kilowatthours
-2018,IL,Illinois,IND,industrial,44114.71101,million kilowatthours
-2018,VA,Virginia,COM,commercial,52268.21101,million kilowatthours
-2018,VA,Virginia,IND,industrial,17736.93599,million kilowatthours
-2018,VA,Virginia,OTH,other,,million kilowatthours
-2018,VA,Virginia,RES,residential,47962.60602,million kilowatthours
-2018,VA,Virginia,TRA,transportation,198.595,million kilowatthours
-2018,WA,Washington,COM,commercial,29396.404,million kilowatthours
-2018,WA,Washington,IND,industrial,25263.27199,million kilowatthours
-2018,WA,Washington,OTH,other,,million kilowatthours
-2018,WA,Washington,RES,residential,35338.97799,million kilowatthours
-2018,WA,Washington,TRA,transportation,7.137,million kilowatthours
-2018,WV,West Virginia,COM,commercial,7774.429,million kilowatthours
-2018,WV,West Virginia,IND,industrial,14192.929,million kilowatthours
-2018,WV,West Virginia,OTH,other,,million kilowatthours
-2018,WV,West Virginia,RES,residential,11679.455,million kilowatthours
-2018,WV,West Virginia,TRA,transportation,0,million kilowatthours
-2018,WI,Wisconsin,COM,commercial,24093.42101,million kilowatthours
-2018,WI,Wisconsin,IND,industrial,24424.58499,million kilowatthours
-2018,WI,Wisconsin,OTH,other,,million kilowatthours
-2018,WI,Wisconsin,RES,residential,22441.335,million kilowatthours
-2018,WI,Wisconsin,TRA,transportation,.208,million kilowatthours
-2018,WY,Wyoming,COM,commercial,3757.21099,million kilowatthours
-2018,WY,Wyoming,IND,industrial,10359.111,million kilowatthours
-2018,WY,Wyoming,OTH,other,,million kilowatthours
-2018,WY,Wyoming,RES,residential,2748.356,million kilowatthours
-2018,WY,Wyoming,TRA,transportation,0,million kilowatthours
-2018,AK,Alaska,IND,industrial,1351.503,million kilowatthours
-2018,AK,Alaska,OTH,other,,million kilowatthours
-2018,AK,Alaska,RES,residential,1974.90599,million kilowatthours
-2018,AK,Alaska,TRA,transportation,0,million kilowatthours
-2018,AZ,Arizona,COM,commercial,29683.54998,million kilowatthours
-2018,AZ,Arizona,IND,industrial,13994.441,million kilowatthours
-2018,AZ,Arizona,OTH,other,,million kilowatthours
-2018,AZ,Arizona,RES,residential,34660.297,million kilowatthours
-2018,AZ,Arizona,TRA,transportation,8.014,million kilowatthours
-2018,AR,Arkansas,COM,commercial,12278.279,million kilowatthours
-2018,AR,Arkansas,IND,industrial,18064.78699,million kilowatthours
-2018,AR,Arkansas,OTH,other,,million kilowatthours
-2018,LA,Louisiana,TRA,transportation,12.915,million kilowatthours
-2018,ME,Maine,COM,commercial,4447.245,million kilowatthours
-2018,ME,Maine,IND,industrial,3035.573,million kilowatthours
-2018,ME,Maine,OTH,other,,million kilowatthours
-2018,ME,Maine,RES,residential,4872.001,million kilowatthours
-2018,ME,Maine,TRA,transportation,0,million kilowatthours
-2018,MD,Maryland,COM,commercial,29547.51799,million kilowatthours
-2018,MD,Maryland,IND,industrial,3870.188,million kilowatthours
-2018,MD,Maryland,OTH,other,,million kilowatthours
-2018,MD,Maryland,RES,residential,28138.474,million kilowatthours
-2018,MD,Maryland,TRA,transportation,530.275,million kilowatthours
-2018,MA,Massachusetts,COM,commercial,25952.48102,million kilowatthours
-2018,MA,Massachusetts,IND,industrial,6699.302,million kilowatthours
-2018,MA,Massachusetts,OTH,other,,million kilowatthours
-2018,MA,Massachusetts,RES,residential,20284.67401,million kilowatthours
-2018,MA,Massachusetts,TRA,transportation,348.572,million kilowatthours
-2018,MI,Michigan,COM,commercial,38925.26799,million kilowatthours
-2018,MI,Michigan,IND,industrial,30806.02302,million kilowatthours
-2018,MI,Michigan,OTH,other,,million kilowatthours
-2018,MI,Michigan,RES,residential,35131.42201,million kilowatthours
-2018,MI,Michigan,TRA,transportation,6.783,million kilowatthours
-2018,MN,Minnesota,COM,commercial,23398.557,million kilowatthours
-2018,KS,Kansas,TRA,transportation,0,million kilowatthours
-2018,KY,Kentucky,COM,commercial,19980.485,million kilowatthours
-2018,KY,Kentucky,IND,industrial,28917.42899,million kilowatthours
-2018,KY,Kentucky,OTH,other,,million kilowatthours
-2018,KY,Kentucky,RES,residential,27712.72198,million kilowatthours
-2018,KY,Kentucky,TRA,transportation,0,million kilowatthours
-2018,LA,Louisiana,COM,commercial,24690.90401,million kilowatthours
-2018,LA,Louisiana,IND,industrial,37416.715,million kilowatthours
-2018,LA,Louisiana,OTH,other,,million kilowatthours
-2018,LA,Louisiana,RES,residential,32065.538,million kilowatthours
-2018,DE,Delaware,COM,commercial,4342.34,million kilowatthours
-2018,DE,Delaware,IND,industrial,2360.585,million kilowatthours
-2018,DE,Delaware,OTH,other,,million kilowatthours
-2018,DE,Delaware,RES,residential,5070.175,million kilowatthours
-2018,DE,Delaware,TRA,transportation,0,million kilowatthours
-2018,DC,District of Columbia,COM,commercial,8236.22501,million kilowatthours
-2018,DC,District of Columbia,IND,industrial,192.662,million kilowatthours
-2018,DC,District of Columbia,OTH,other,,million kilowatthours
-2018,DC,District of Columbia,RES,residential,2592.242,million kilowatthours
-2018,DC,District of Columbia,TRA,transportation,336.781,million kilowatthours
-2018,FL,Florida,COM,commercial,96265.276,million kilowatthours
-2018,FL,Florida,IND,industrial,16689.12901,million kilowatthours
-2018,FL,Florida,OTH,other,,million kilowatthours
-2018,FL,Florida,RES,residential,125528.047,million kilowatthours
-2018,FL,Florida,TRA,transportation,82.939,million kilowatthours
-2018,GA,Georgia,COM,commercial,47311.67499,million kilowatthours
-2018,MN,Minnesota,IND,industrial,22446.85297,million kilowatthours
-2018,MN,Minnesota,OTH,other,,million kilowatthours
-2018,MN,Minnesota,RES,residential,22837.14002,million kilowatthours
-2018,MN,Minnesota,TRA,transportation,25.832,million kilowatthours
-2018,MS,Mississippi,COM,commercial,14530.226,million kilowatthours
-2018,MS,Mississippi,IND,industrial,16549.31499,million kilowatthours
-2018,MS,Mississippi,OTH,other,,million kilowatthours
-2018,MS,Mississippi,RES,residential,19310.52699,million kilowatthours
-2018,MS,Mississippi,TRA,transportation,0,million kilowatthours
-2018,MO,Missouri,COM,commercial,31179.28299,million kilowatthours
-2018,AL,Alabama,COM,commercial,23483.07199,million kilowatthours
-2018,AL,Alabama,IND,industrial,33717.004,million kilowatthours
-2018,AL,Alabama,OTH,other,,million kilowatthours
-2018,AL,Alabama,RES,residential,33080.38001,million kilowatthours
-2018,AL,Alabama,TRA,transportation,0,million kilowatthours
-2018,CO,Colorado,TRA,transportation,92.97,million kilowatthours
-2018,CT,Connecticut,COM,commercial,12381.063,million kilowatthours
-2018,CT,Connecticut,IND,industrial,3209.992,million kilowatthours
-2018,CT,Connecticut,OTH,other,,million kilowatthours
-2018,CT,Connecticut,RES,residential,13061.372,million kilowatthours
-2018,CT,Connecticut,TRA,transportation,181.498,million kilowatthours
-2018,NEW,New England,COM,commercial,52924.45102,million kilowatthours
-2018,NEW,New England,IND,industrial,17053.58398,million kilowatthours
-2018,NEW,New England,OTH,other,,million kilowatthours
-2018,NEW,New England,RES,residential,48099.27301,million kilowatthours
-2018,NEW,New England,TRA,transportation,557.036,million kilowatthours
-2018,MAT,Middle Atlantic,COM,commercial,158774.04802,million kilowatthours
-2018,MAT,Middle Atlantic,IND,industrial,74601.397,million kilowatthours
-2018,MAT,Middle Atlantic,OTH,other,,million kilowatthours
-2018,MAT,Middle Atlantic,RES,residential,137580.38799,million kilowatthours
-2018,MAT,Middle Atlantic,TRA,transportation,3967.511,million kilowatthours
-2018,ENC,East North Central,COM,commercial,185278.25701,million kilowatthours
-2018,ENC,East North Central,IND,industrial,195874.63602,million kilowatthours
-2018,ENC,East North Central,OTH,other,,million kilowatthours
-2018,ENC,East North Central,RES,residential,193825.04997,million kilowatthours
-2018,ENC,East North Central,TRA,transportation,615.453,million kilowatthours
-2018,WNC,West North Central,COM,commercial,104456.813,million kilowatthours
-2018,WNC,West North Central,IND,industrial,94079.95697,million kilowatthours
-2018,WNC,West North Central,OTH,other,,million kilowatthours
-2018,WNC,West North Central,RES,residential,109891.61005,million kilowatthours
-2018,WNC,West North Central,TRA,transportation,49.407,million kilowatthours
-2018,SAT,South Atlantic,COM,commercial,317276.90899,million kilowatthours
-2018,SAT,South Atlantic,IND,industrial,142647.66599,million kilowatthours
-2018,SAT,South Atlantic,OTH,other,,million kilowatthours
-2018,SAT,South Atlantic,RES,residential,374134.978,million kilowatthours
-2018,SAT,South Atlantic,TRA,transportation,1331.08,million kilowatthours
-2018,ESC,East South Central,COM,commercial,94924.23398,million kilowatthours
-2018,ESC,East South Central,IND,industrial,100782.52297,million kilowatthours
-2018,ESC,East South Central,OTH,other,,million kilowatthours
-2018,ESC,East South Central,RES,residential,124485.58598,million kilowatthours
-2018,ESC,East South Central,TRA,transportation,0,million kilowatthours
-2018,WSC,West South Central,COM,commercial,201722.957,million kilowatthours
-2018,WSC,West South Central,IND,industrial,198149.69599,million kilowatthours
-2018,WSC,West South Central,OTH,other,,million kilowatthours
-2018,WSC,West South Central,RES,residential,232709.46299,million kilowatthours
-2018,WSC,West South Central,TRA,transportation,200.608,million kilowatthours
-2018,MTN,Mountain,COM,commercial,99065.18596,million kilowatthours
-2018,MTN,Mountain,IND,industrial,83787.65401,million kilowatthours
-2018,MTN,Mountain,OTH,other,,million kilowatthours
-2018,MTN,Mountain,RES,residential,100311.561,million kilowatthours
-2018,MTN,Mountain,TRA,transportation,160.694,million kilowatthours
-2018,PACC,Pacific Contiguous,COM,commercial,161652.923,million kilowatthours
-2018,PACC,Pacific Contiguous,IND,industrial,88750.48299,million kilowatthours
-2018,PACC,Pacific Contiguous,OTH,other,,million kilowatthours
-2018,PACC,Pacific Contiguous,RES,residential,143369.54597,million kilowatthours
-2018,AR,Arkansas,RES,residential,19259.20399,million kilowatthours
-2018,AR,Arkansas,TRA,transportation,.438,million kilowatthours
-2018,CA,California,COM,commercial,115786.492,million kilowatthours
-2018,CA,California,IND,industrial,49587.91299,million kilowatthours
-2018,CA,California,OTH,other,,million kilowatthours
-2018,CA,California,RES,residential,89099.98498,million kilowatthours
-2018,CA,California,TRA,transportation,749.882,million kilowatthours
-2018,CO,Colorado,COM,commercial,21023.30001,million kilowatthours
-2018,CO,Colorado,IND,industrial,16047.258,million kilowatthours
-2018,CO,Colorado,OTH,other,,million kilowatthours
-2018,CO,Colorado,RES,residential,19286.95201,million kilowatthours
-2018,MO,Missouri,IND,industrial,13389.587,million kilowatthours
-2018,MO,Missouri,OTH,other,,million kilowatthours
-2018,MO,Missouri,RES,residential,37463.39001,million kilowatthours
-2018,MO,Missouri,TRA,transportation,23.575,million kilowatthours
-2018,MT,Montana,COM,commercial,4921.231,million kilowatthours
-2018,MT,Montana,IND,industrial,4719.928,million kilowatthours
-2018,MT,Montana,OTH,other,,million kilowatthours
-2018,MT,Montana,RES,residential,5197.68599,million kilowatthours
-2018,MT,Montana,TRA,transportation,0,million kilowatthours
-2018,NE,Nebraska,COM,commercial,9553.39601,million kilowatthours
-2018,NE,Nebraska,IND,industrial,10974.088,million kilowatthours
-2018,PACC,Pacific Contiguous,TRA,transportation,783.015,million kilowatthours
-2018,PACN,Pacific Noncontiguous,COM,commercial,5679.06699,million kilowatthours
-2018,PACN,Pacific Noncontiguous,IND,industrial,4944.957,million kilowatthours
-2018,PACN,Pacific Noncontiguous,OTH,other,,million kilowatthours
-2018,PACN,Pacific Noncontiguous,RES,residential,4685.60399,million kilowatthours
-2018,PACN,Pacific Noncontiguous,TRA,transportation,0,million kilowatthours
-2018,US,U.S. Total,COM,commercial,1381754.84497,million kilowatthours
-2018,US,U.S. Total,IND,industrial,1000672.55293,million kilowatthours
-2018,US,U.S. Total,OTH,other,,million kilowatthours
-2018,US,U.S. Total,RES,residential,1469093.05894,million kilowatthours
-2018,US,U.S. Total,TRA,transportation,7664.804,million kilowatthours
-2018,NE,Nebraska,OTH,other,,million kilowatthours
-2018,NE,Nebraska,RES,residential,10412.008,million kilowatthours
-2018,NE,Nebraska,TRA,transportation,0,million kilowatthours
-2018,NV,Nevada,COM,commercial,12123.896,million kilowatthours
-2018,NV,Nevada,IND,industrial,12198.273,million kilowatthours
-2018,NV,Nevada,OTH,other,,million kilowatthours
-2018,NV,Nevada,RES,residential,13449.743,million kilowatthours
-2018,NV,Nevada,TRA,transportation,8.351,million kilowatthours
-2018,NH,New Hampshire,COM,commercial,4442.56,million kilowatthours
-2018,NH,New Hampshire,IND,industrial,1962.711,million kilowatthours
-2018,NH,New Hampshire,OTH,other,,million kilowatthours
-2018,NH,New Hampshire,RES,residential,4641.01299,million kilowatthours
-2018,NH,New Hampshire,TRA,transportation,0,million kilowatthours
-2018,NJ,New Jersey,COM,commercial,38807.065,million kilowatthours
-2018,NJ,New Jersey,IND,industrial,7369.106,million kilowatthours
-2018,NJ,New Jersey,OTH,other,,million kilowatthours
-2018,NJ,New Jersey,RES,residential,29530.689,million kilowatthours
-2018,NJ,New Jersey,TRA,transportation,309.902,million kilowatthours
-2018,NM,New Mexico,COM,commercial,9035.272,million kilowatthours
-2018,NM,New Mexico,IND,industrial,8186.897,million kilowatthours
-2018,NM,New Mexico,OTH,other,,million kilowatthours
-2018,NM,New Mexico,RES,residential,6826.442,million kilowatthours
-2018,NM,New Mexico,TRA,transportation,0,million kilowatthours
-2018,NY,New York,COM,commercial,76745.46302,million kilowatthours
-2018,NY,New York,IND,industrial,18076.792,million kilowatthours
-2018,NY,New York,OTH,other,,million kilowatthours
-2018,NY,New York,RES,residential,52153.24599,million kilowatthours
-2018,NY,New York,TRA,transportation,2954.35,million kilowatthours
-2018,NC,North Carolina,COM,commercial,49298.40199,million kilowatthours
-2018,NC,North Carolina,IND,industrial,27353.56,million kilowatthours
-2018,NC,North Carolina,OTH,other,,million kilowatthours
-2018,NC,North Carolina,RES,residential,61622.45401,million kilowatthours
-2018,NC,North Carolina,TRA,transportation,12.988,million kilowatthours
-2018,ND,North Dakota,COM,commercial,6835.913,million kilowatthours
-2018,ND,North Dakota,IND,industrial,8700.422,million kilowatthours
-2018,ND,North Dakota,OTH,other,,million kilowatthours
-2018,ND,North Dakota,RES,residential,5133.171,million kilowatthours
-2018,ND,North Dakota,TRA,transportation,0,million kilowatthours
-2018,OH,Ohio,COM,commercial,47191.54,million kilowatthours
-2018,OH,Ohio,IND,industrial,51235.99499,million kilowatthours
-2018,OH,Ohio,OTH,other,,million kilowatthours
-2018,OH,Ohio,RES,residential,54451.71399,million kilowatthours
-2018,IL,Illinois,OTH,other,,million kilowatthours
-2018,OH,Ohio,TRA,transportation,35.918,million kilowatthours
-2018,OK,Oklahoma,COM,commercial,21229.14301,million kilowatthours
-2018,OK,Oklahoma,IND,industrial,19229.36499,million kilowatthours
-2018,OK,Oklahoma,OTH,other,,million kilowatthours
-2018,OK,Oklahoma,RES,residential,24116.80799,million kilowatthours
-2018,OK,Oklahoma,TRA,transportation,0,million kilowatthours
-2018,OR,Oregon,COM,commercial,16470.02701,million kilowatthours
-2018,OR,Oregon,IND,industrial,13899.298,million kilowatthours
-2018,OR,Oregon,OTH,other,,million kilowatthours
-2018,OR,Oregon,RES,residential,18930.583,million kilowatthours
-2018,OR,Oregon,TRA,transportation,25.996,million kilowatthours
-2018,PA,Pennsylvania,COM,commercial,43221.52,million kilowatthours
-2018,PA,Pennsylvania,IND,industrial,49155.49901,million kilowatthours
-2018,PA,Pennsylvania,OTH,other,,million kilowatthours
-2018,PA,Pennsylvania,RES,residential,55896.453,million kilowatthours
-2018,PA,Pennsylvania,TRA,transportation,703.259,million kilowatthours
-2018,RI,Rhode Island,COM,commercial,3697.587,million kilowatthours
-2018,IL,Illinois,RES,residential,47225.915,million kilowatthours
-2018,IL,Illinois,TRA,transportation,551.353,million kilowatthours
-2018,IN,Indiana,COM,commercial,24305.199,million kilowatthours
-2018,IN,Indiana,IND,industrial,45293.32201,million kilowatthours
-2018,IN,Indiana,OTH,other,,million kilowatthours
-2018,IN,Indiana,RES,residential,34574.66399,million kilowatthours
-2018,IN,Indiana,TRA,transportation,21.191,million kilowatthours
-2018,IA,Iowa,COM,commercial,12417.67099,million kilowatthours
-2018,IA,Iowa,IND,industrial,23952.63499,million kilowatthours
-2018,IA,Iowa,OTH,other,,million kilowatthours
-2018,IA,Iowa,RES,residential,14840.34901,million kilowatthours
-2018,IA,Iowa,TRA,transportation,0,million kilowatthours
-2018,KS,Kansas,COM,commercial,16168.75002,million kilowatthours
-2018,KS,Kansas,IND,industrial,11681.037,million kilowatthours
-2018,KS,Kansas,OTH,other,,million kilowatthours
-2018,KS,Kansas,RES,residential,14187.19201,million kilowatthours
+year,state,sector,energy
+2018,AK,COM,2646.058
+2018,AK,IND,1351.503
+2018,AK,OTH,0.0
+2018,AK,RES,1974.90599
+2018,AK,TRA,0
+2018,AL,COM,23483.07199
+2018,AL,IND,33717.004
+2018,AL,OTH,0.0
+2018,AL,RES,33080.38001
+2018,AL,TRA,0
+2018,AR,COM,12278.279
+2018,AR,IND,18064.78699
+2018,AR,OTH,0.0
+2018,AR,RES,19259.20399
+2018,AR,TRA,.438
+2018,AZ,COM,29683.54998
+2018,AZ,IND,13994.441
+2018,AZ,OTH,0.0
+2018,AZ,RES,34660.297
+2018,AZ,TRA,8.014
+2018,CA,COM,115786.492
+2018,CA,IND,49587.91299
+2018,CA,OTH,0.0
+2018,CA,RES,89099.98498
+2018,CA,TRA,749.882
+2018,CO,COM,21023.30001
+2018,CO,IND,16047.258
+2018,CO,OTH,0.0
+2018,CO,RES,19286.95201
+2018,CO,TRA,92.97
+2018,CT,COM,12381.063
+2018,CT,IND,3209.992
+2018,CT,OTH,0.0
+2018,CT,RES,13061.372
+2018,CT,TRA,181.498
+2018,DC,COM,8236.22501
+2018,DC,IND,192.662
+2018,DC,OTH,0.0
+2018,DC,RES,2592.242
+2018,DC,TRA,336.781
+2018,DE,COM,4342.34
+2018,DE,IND,2360.585
+2018,DE,OTH,0.0
+2018,DE,RES,5070.175
+2018,DE,TRA,0
+2018,ENC,COM,185278.25701
+2018,ENC,IND,195874.63602
+2018,ENC,OTH,0.0
+2018,ENC,RES,193825.04997
+2018,ENC,TRA,615.453
+2018,ESC,COM,94924.23398
+2018,ESC,IND,100782.52297
+2018,ESC,OTH,0.0
+2018,ESC,RES,124485.58598
+2018,ESC,TRA,0
+2018,FL,COM,96265.276
+2018,FL,IND,16689.12901
+2018,FL,OTH,0.0
+2018,FL,RES,125528.047
+2018,FL,TRA,82.939
+2018,GA,COM,47311.67499
+2018,GA,IND,32695.79101
+2018,GA,OTH,0.0
+2018,GA,RES,59689.10598
+2018,GA,TRA,169.502
+2018,HI,COM,3033.009
+2018,HI,IND,3593.454
+2018,HI,OTH,0.0
+2018,HI,RES,2710.698
+2018,HI,TRA,0
+2018,IA,COM,12417.67099
+2018,IA,IND,23952.63499
+2018,IA,OTH,0.0
+2018,IA,RES,14840.34901
+2018,IA,TRA,0
+2018,ID,COM,6436.89299
+2018,ID,IND,8889.037
+2018,ID,OTH,0.0
+2018,ID,RES,8427.57799
+2018,ID,TRA,0
+2018,IL,COM,50762.829
+2018,IL,IND,44114.71101
+2018,IL,OTH,0.0
+2018,IL,RES,47225.915
+2018,IL,TRA,551.353
+2018,IN,COM,24305.199
+2018,IN,IND,45293.32201
+2018,IN,OTH,0.0
+2018,IN,RES,34574.66399
+2018,IN,TRA,21.191
+2018,KS,COM,16168.75002
+2018,KS,IND,11681.037
+2018,KS,OTH,0.0
+2018,KS,RES,14187.19201
+2018,KS,TRA,0
+2018,KY,COM,19980.485
+2018,KY,IND,28917.42899
+2018,KY,OTH,0.0
+2018,KY,RES,27712.72198
+2018,KY,TRA,0
+2018,LA,COM,24690.90401
+2018,LA,IND,37416.715
+2018,LA,OTH,0.0
+2018,LA,RES,32065.538
+2018,LA,TRA,12.915
+2018,MA,COM,25952.48102
+2018,MA,IND,6699.302
+2018,MA,OTH,0.0
+2018,MA,RES,20284.67401
+2018,MA,TRA,348.572
+2018,MAT,COM,158774.04802
+2018,MAT,IND,74601.397
+2018,MAT,OTH,0.0
+2018,MAT,RES,137580.38799
+2018,MAT,TRA,3967.511
+2018,MD,COM,29547.51799
+2018,MD,IND,3870.188
+2018,MD,OTH,0.0
+2018,MD,RES,28138.474
+2018,MD,TRA,530.275
+2018,ME,COM,4447.245
+2018,ME,IND,3035.573
+2018,ME,OTH,0.0
+2018,ME,RES,4872.001
+2018,ME,TRA,0
+2018,MI,COM,38925.26799
+2018,MI,IND,30806.02302
+2018,MI,OTH,0.0
+2018,MI,RES,35131.42201
+2018,MI,TRA,6.783
+2018,MN,COM,23398.557
+2018,MN,IND,22446.85297
+2018,MN,OTH,0.0
+2018,MN,RES,22837.14002
+2018,MN,TRA,25.832
+2018,MO,COM,31179.28299
+2018,MO,IND,13389.587
+2018,MO,OTH,0.0
+2018,MO,RES,37463.39001
+2018,MO,TRA,23.575
+2018,MS,COM,14530.226
+2018,MS,IND,16549.31499
+2018,MS,OTH,0.0
+2018,MS,RES,19310.52699
+2018,MS,TRA,0
+2018,MT,COM,4921.231
+2018,MT,IND,4719.928
+2018,MT,OTH,0.0
+2018,MT,RES,5197.68599
+2018,MT,TRA,0
+2018,MTN,COM,99065.18596
+2018,MTN,IND,83787.65401
+2018,MTN,OTH,0.0
+2018,MTN,RES,100311.561
+2018,MTN,TRA,160.694
+2018,NC,COM,49298.40199
+2018,NC,IND,27353.56
+2018,NC,OTH,0.0
+2018,NC,RES,61622.45401
+2018,NC,TRA,12.988
+2018,ND,COM,6835.913
+2018,ND,IND,8700.422
+2018,ND,OTH,0.0
+2018,ND,RES,5133.171
+2018,ND,TRA,0
+2018,NE,COM,9553.39601
+2018,NE,IND,10974.088
+2018,NE,OTH,0.0
+2018,NE,RES,10412.008
+2018,NE,TRA,0
+2018,NEW,COM,52924.45102
+2018,NEW,IND,17053.58398
+2018,NEW,OTH,0.0
+2018,NEW,RES,48099.27301
+2018,NEW,TRA,557.036
+2018,NH,COM,4442.56
+2018,NH,IND,1962.711
+2018,NH,OTH,0.0
+2018,NH,RES,4641.01299
+2018,NH,TRA,0
+2018,NJ,COM,38807.065
+2018,NJ,IND,7369.106
+2018,NJ,OTH,0.0
+2018,NJ,RES,29530.689
+2018,NJ,TRA,309.902
+2018,NM,COM,9035.272
+2018,NM,IND,8186.897
+2018,NM,OTH,0.0
+2018,NM,RES,6826.442
+2018,NM,TRA,0
+2018,NV,COM,12123.896
+2018,NV,IND,12198.273
+2018,NV,OTH,0.0
+2018,NV,RES,13449.743
+2018,NV,TRA,8.351
+2018,NY,COM,76745.46302
+2018,NY,IND,18076.792
+2018,NY,OTH,0.0
+2018,NY,RES,52153.24599
+2018,NY,TRA,2954.35
+2018,OH,COM,47191.54
+2018,OH,IND,51235.99499
+2018,OH,OTH,0.0
+2018,OH,RES,54451.71399
+2018,OH,TRA,35.918
+2018,OK,COM,21229.14301
+2018,OK,IND,19229.36499
+2018,OK,OTH,0.0
+2018,OK,RES,24116.80799
+2018,OK,TRA,0
+2018,OR,COM,16470.02701
+2018,OR,IND,13899.298
+2018,OR,OTH,0.0
+2018,OR,RES,18930.583
+2018,OR,TRA,25.996
+2018,PA,COM,43221.52
+2018,PA,IND,49155.49901
+2018,PA,OTH,0.0
+2018,PA,RES,55896.453
+2018,PA,TRA,703.259
+2018,PACC,COM,161652.923
+2018,PACC,IND,88750.48299
+2018,PACC,OTH,0.0
+2018,PACC,RES,143369.54597
+2018,PACC,TRA,783.015
+2018,PACN,COM,5679.06699
+2018,PACN,IND,4944.957
+2018,PACN,OTH,0.0
+2018,PACN,RES,4685.60399
+2018,PACN,TRA,0
+2018,RI,COM,3697.587
+2018,RI,IND,734.618
+2018,RI,OTH,0.0
+2018,RI,RES,3124.168
+2018,RI,TRA,26.966
+2018,SAT,COM,317276.90899
+2018,SAT,IND,142647.66599
+2018,SAT,OTH,0.0
+2018,SAT,RES,374134.978
+2018,SAT,TRA,1331.08
+2018,SC,COM,22232.833
+2018,SC,IND,27555.88599
+2018,SC,OTH,0.0
+2018,SC,RES,31852.419
+2018,SC,TRA,0
+2018,SD,COM,4903.24299
+2018,SD,IND,2935.335
+2018,SD,OTH,0.0
+2018,SD,RES,5018.36
+2018,SD,TRA,0
+2018,TN,COM,36930.45099
+2018,TN,IND,21598.77499
+2018,TN,OTH,0.0
+2018,TN,RES,44381.95701
+2018,TN,TRA,0
+2018,TX,COM,143524.63099
+2018,TX,IND,123438.82901
+2018,TX,OTH,0.0
+2018,TX,RES,157267.91301
+2018,TX,TRA,187.255
+2018,US,COM,1381754.84497
+2018,US,IND,1000672.55293
+2018,US,OTH,0.0
+2018,US,RES,1469093.05894
+2018,US,TRA,7664.804
+2018,UT,COM,12083.83298
+2018,UT,IND,9392.70901
+2018,UT,OTH,0.0
+2018,UT,RES,9714.50701
+2018,UT,TRA,51.359
+2018,VA,COM,52268.21101
+2018,VA,IND,17736.93599
+2018,VA,OTH,0.0
+2018,VA,RES,47962.60602
+2018,VA,TRA,198.595
+2018,VT,COM,2003.515
+2018,VT,IND,1411.38799
+2018,VT,OTH,0.0
+2018,VT,RES,2116.045
+2018,VT,TRA,0
+2018,WA,COM,29396.404
+2018,WA,IND,25263.27199
+2018,WA,OTH,0.0
+2018,WA,RES,35338.97799
+2018,WA,TRA,7.137
+2018,WI,COM,24093.42101
+2018,WI,IND,24424.58499
+2018,WI,OTH,0.0
+2018,WI,RES,22441.335
+2018,WI,TRA,.208
+2018,WNC,COM,104456.813
+2018,WNC,IND,94079.95697
+2018,WNC,OTH,0.0
+2018,WNC,RES,109891.61005
+2018,WNC,TRA,49.407
+2018,WSC,COM,201722.957
+2018,WSC,IND,198149.69599
+2018,WSC,OTH,0.0
+2018,WSC,RES,232709.46299
+2018,WSC,TRA,200.608
+2018,WV,COM,7774.429
+2018,WV,IND,14192.929
+2018,WV,OTH,0.0
+2018,WV,RES,11679.455
+2018,WV,TRA,0
+2018,WY,COM,3757.21099
+2018,WY,IND,10359.111
+2018,WY,OTH,0.0
+2018,WY,RES,2748.356
+2018,WY,TRA,0
+2019,AK,COM,2638.84601
+2019,AK,IND,1251.751
+2019,AK,OTH,0.0
+2019,AK,RES,1928.20802
+2019,AK,TRA,0
+2019,AL,COM,23076.47
+2019,AL,IND,32602.996
+2019,AL,OTH,0.0
+2019,AL,RES,32415.646
+2019,AL,TRA,0
+2019,AR,COM,11948.689
+2019,AR,IND,17411.611
+2019,AR,OTH,0.0
+2019,AR,RES,18732.31599
+2019,AR,TRA,.416
+2019,AZ,COM,29415.272
+2019,AZ,IND,13782.70401
+2019,AZ,OTH,0.0
+2019,AZ,RES,34720.05001
+2019,AZ,TRA,11.144
+2019,CA,COM,114279.37299
+2019,CA,IND,47807.72901
+2019,CA,OTH,0.0
+2019,CA,RES,87523.98701
+2019,CA,TRA,767.621
+2019,CO,COM,21111.259
+2019,CO,IND,15891.01999
+2019,CO,OTH,0.0
+2019,CO,RES,19404.743
+2019,CO,TRA,113.801
+2019,CT,COM,12157.78799
+2019,CT,IND,3071.792
+2019,CT,OTH,0.0
+2019,CT,RES,12493.55
+2019,CT,TRA,176.866
+2019,DC,COM,7952.305
+2019,DC,IND,179.632
+2019,DC,OTH,0.0
+2019,DC,RES,2546.92
+2019,DC,TRA,349.546
+2019,DE,COM,4421.465
+2019,DE,IND,2043.826
+2019,DE,OTH,0.0
+2019,DE,RES,5004.131
+2019,DE,TRA,0
+2019,ENC,COM,180212.261
+2019,ENC,IND,192317.56904
+2019,ENC,OTH,0.0
+2019,ENC,RES,186186.67401
+2019,ENC,TRA,635.933
+2019,ESC,COM,93078.356
+2019,ESC,IND,98862.50097
+2019,ESC,OTH,0.0
+2019,ESC,RES,120279.76303
+2019,ESC,TRA,0
+2019,FL,COM,96566.53203
+2019,FL,IND,16514.48201
+2019,FL,OTH,0.0
+2019,FL,RES,127181.55101
+2019,FL,TRA,85.39
+2019,GA,COM,47411.823
+2019,GA,IND,32393.384
+2019,GA,OTH,0.0
+2019,GA,RES,59331.49099
+2019,GA,TRA,164.292
+2019,HI,COM,3057.86601
+2019,HI,IND,3635.247
+2019,HI,OTH,0.0
+2019,HI,RES,2759.77401
+2019,HI,TRA,0
+2019,IA,COM,12309.61002
+2019,IA,IND,24238.717
+2019,IA,OTH,0.0
+2019,IA,RES,14494.82101
+2019,IA,TRA,0
+2019,ID,COM,6440.943
+2019,ID,IND,8847.48901
+2019,ID,OTH,0.0
+2019,ID,RES,8696.843
+2019,ID,TRA,0
+2019,IL,COM,49278.746
+2019,IL,IND,43250.44499
+2019,IL,OTH,0.0
+2019,IL,RES,45220.25799
+2019,IL,TRA,570.032
+2019,IN,COM,23517.681
+2019,IN,IND,45316.68202
+2019,IN,OTH,0.0
+2019,IN,RES,33249.23401
+2019,IN,TRA,20.606
+2019,KS,COM,15916.325
+2019,KS,IND,11612.64199
+2019,KS,OTH,0.0
+2019,KS,RES,13630.66099
+2019,KS,TRA,0
+2019,KY,COM,19611.51
+2019,KY,IND,29160.79599
+2019,KY,OTH,0.0
+2019,KY,RES,26573.076
+2019,KY,TRA,0
+2019,LA,COM,24284.298
+2019,LA,IND,37846.317
+2019,LA,OTH,0.0
+2019,LA,RES,30986.02401
+2019,LA,TRA,11.886
+2019,MA,COM,25336.834
+2019,MA,IND,6341.699
+2019,MA,OTH,0.0
+2019,MA,RES,19314.571
+2019,MA,TRA,343.494
+2019,MAT,COM,153246.21397
+2019,MAT,IND,74961.24399
+2019,MAT,OTH,0.0
+2019,MAT,RES,133149.74
+2019,MAT,TRA,3740.234
+2019,MD,COM,28893.33501
+2019,MD,IND,3718.412
+2019,MD,OTH,0.0
+2019,MD,RES,27533.69299
+2019,MD,TRA,575.218
+2019,ME,COM,4148.305
+2019,ME,IND,2789.92599
+2019,ME,OTH,0.0
+2019,ME,RES,4793.80901
+2019,ME,TRA,0
+2019,MI,COM,37860.78299
+2019,MI,IND,29886.43199
+2019,MI,OTH,0.0
+2019,MI,RES,33495.725
+2019,MI,TRA,6.353
+2019,MN,COM,22904.299
+2019,MN,IND,21748.034
+2019,MN,OTH,0.0
+2019,MN,RES,22288.152
+2019,MN,TRA,25.109
+2019,MO,COM,30133.114
+2019,MO,IND,13009.718
+2019,MO,OTH,0.0
+2019,MO,RES,35691.42598
+2019,MO,TRA,23.517
+2019,MS,COM,14238.982
+2019,MS,IND,15994.18599
+2019,MS,OTH,0.0
+2019,MS,RES,18717.85801
+2019,MS,TRA,0
+2019,MT,COM,4956.07999
+2019,MT,IND,5057.08799
+2019,MT,OTH,0.0
+2019,MT,RES,5308.103
+2019,MT,TRA,0
+2019,MTN,COM,98069.52701
+2019,MTN,IND,84813.03302
+2019,MTN,OTH,0.0
+2019,MTN,RES,100457.84
+2019,MTN,TRA,184.72
+2019,NC,COM,49173.03801
+2019,NC,IND,27391.009
+2019,NC,OTH,0.0
+2019,NC,RES,59852.793
+2019,NC,TRA,18.691
+2019,ND,COM,7035.031
+2019,ND,IND,9398.79301
+2019,ND,OTH,0.0
+2019,ND,RES,5125.431
+2019,ND,TRA,0
+2019,NE,COM,9456.72501
+2019,NE,IND,10618.56002
+2019,NE,OTH,0.0
+2019,NE,RES,10307.90498
+2019,NE,TRA,0
+2019,NEW,COM,51502.727
+2019,NEW,IND,16234.46099
+2019,NEW,OTH,0.0
+2019,NEW,RES,46173.317
+2019,NEW,TRA,547.365
+2019,NH,COM,4280.85401
+2019,NH,IND,1923.973
+2019,NH,OTH,0.0
+2019,NH,RES,4506.83
+2019,NH,TRA,0
+2019,NJ,COM,38012.68398
+2019,NJ,IND,6990.06299
+2019,NJ,OTH,0.0
+2019,NJ,RES,28612.555
+2019,NJ,TRA,301.402
+2019,NM,COM,9028.861
+2019,NM,IND,8979.712
+2019,NM,OTH,0.0
+2019,NM,RES,6871.561
+2019,NM,TRA,0
+2019,NV,COM,11681.186
+2019,NV,IND,12425.53601
+2019,NV,OTH,0.0
+2019,NV,RES,12867.637
+2019,NV,TRA,8.027
+2019,NY,COM,75090.82
+2019,NY,IND,17548.457
+2019,NY,OTH,0.0
+2019,NY,RES,50141.00301
+2019,NY,TRA,2820.065
+2019,OH,COM,46008.93701
+2019,OH,IND,50249.17802
+2019,OH,OTH,0.0
+2019,OH,RES,52226.09701
+2019,OH,TRA,37.708
+2019,OK,COM,20085.99101
+2019,OK,IND,20903.983
+2019,OK,OTH,0.0
+2019,OK,RES,23805.972
+2019,OK,TRA,0
+2019,OR,COM,16422.975
+2019,OR,IND,14668.288
+2019,OR,OTH,0.0
+2019,OR,RES,19286.182
+2019,OR,TRA,26.941
+2019,PA,COM,40142.70999
+2019,PA,IND,50422.72399
+2019,PA,OTH,0.0
+2019,PA,RES,54396.18199
+2019,PA,TRA,618.767
+2019,PACC,COM,159971.98597
+2019,PACC,IND,87647.89
+2019,PACC,OTH,0.0
+2019,PACC,RES,143322.593
+2019,PACC,TRA,893.423
+2019,PACN,COM,5696.71202
+2019,PACN,IND,4886.998
+2019,PACN,OTH,0.0
+2019,PACN,RES,4687.98202
+2019,PACN,TRA,0
+2019,RI,COM,3644.482
+2019,RI,IND,695.416
+2019,RI,OTH,0.0
+2019,RI,RES,2983.012
+2019,RI,TRA,27.005
+2019,SAT,COM,318135.13202
+2019,SAT,IND,141242.99101
+2019,SAT,OTH,0.0
+2019,SAT,RES,370429.91799
+2019,SAT,TRA,1382.931
+2019,SC,COM,22168.32799
+2019,SC,IND,26877.33501
+2019,SC,OTH,0.0
+2019,SC,RES,31159.957
+2019,SC,TRA,0
+2019,SD,COM,4888.034
+2019,SD,IND,2923.86498
+2019,SD,OTH,0.0
+2019,SD,RES,5057.032
+2019,SD,TRA,0
+2019,TN,COM,36151.394
+2019,TN,IND,21104.52299
+2019,TN,OTH,0.0
+2019,TN,RES,42573.18301
+2019,TN,TRA,0
+2019,TX,COM,142001.52401
+2019,TX,IND,131673.922
+2019,TX,OTH,0.0
+2019,TX,RES,155481.34201
+2019,TX,TRA,186.616
+2019,US,COM,1360876.55503
+2019,US,IND,1002352.84901
+2019,US,OTH,0.0
+2019,US,RES,1440288.909
+2019,US,TRA,7632.15001
+2019,UT,COM,11860.44901
+2019,UT,IND,9490.84301
+2019,UT,OTH,0.0
+2019,UT,RES,9739.52499
+2019,UT,TRA,51.748
+2019,VA,COM,53981.176
+2019,VA,IND,17598.24699
+2019,VA,OTH,0.0
+2019,VA,RES,46666.163
+2019,VA,TRA,189.794
+2019,VT,COM,1934.464
+2019,VT,IND,1411.655
+2019,VT,OTH,0.0
+2019,VT,RES,2081.545
+2019,VT,TRA,0
+2019,WA,COM,29269.63799
+2019,WA,IND,25171.87299
+2019,WA,OTH,0.0
+2019,WA,RES,36512.424
+2019,WA,TRA,98.861
+2019,WI,COM,23546.11399
+2019,WI,IND,23614.83201
+2019,WI,OTH,0.0
+2019,WI,RES,21995.36
+2019,WI,TRA,1.234
+2019,WNC,COM,102643.13802
+2019,WNC,IND,93550.329
+2019,WNC,OTH,0.0
+2019,WNC,RES,106595.42796
+2019,WNC,TRA,48.626
+2019,WSC,COM,198320.50202
+2019,WSC,IND,207835.83299
+2019,WSC,OTH,0.0
+2019,WSC,RES,229005.654
+2019,WSC,TRA,198.918
+2019,WV,COM,7567.13
+2019,WV,IND,14526.664
+2019,WV,OTH,0.0
+2019,WV,RES,11153.219
+2019,WV,TRA,0
+2019,WY,COM,3575.477
+2019,WY,IND,10338.641
+2019,WY,OTH,0.0
+2019,WY,RES,2849.37801
+2019,WY,TRA,0
+2020,AK,COM,2524.11599
+2020,AK,IND,1304.41499
+2020,AK,OTH,0.0
+2020,AK,RES,2089.04601
+2020,AK,TRA,0
+2020,AL,COM,21307.77501
+2020,AL,IND,30756.789
+2020,AL,OTH,0.0
+2020,AL,RES,31331.04101
+2020,AL,TRA,0
+2020,AR,COM,11110.41599
+2020,AR,IND,16760.18201
+2020,AR,OTH,0.0
+2020,AR,RES,17980.20601
+2020,AR,TRA,.199
+2020,AZ,COM,29128.178
+2020,AZ,IND,14113.139
+2020,AZ,OTH,0.0
+2020,AZ,RES,38707.41601
+2020,AZ,TRA,11.341
+2020,CA,COM,107006.347
+2020,CA,IND,47630.88201
+2020,CA,OTH,0.0
+2020,CA,RES,94934.56301
+2020,CA,TRA,602.88
+2020,CO,COM,20042.21799
+2020,CO,IND,15431.465
+2020,CO,OTH,0.0
+2020,CO,RES,20482.50199
+2020,CO,TRA,94.079
+2020,CT,COM,11145.89599
+2020,CT,IND,2860.291
+2020,CT,OTH,0.0
+2020,CT,RES,12981.839
+2020,CT,TRA,125.647
+2020,DC,COM,6814.56
+2020,DC,IND,186.344
+2020,DC,OTH,0.0
+2020,DC,RES,2452.589
+2020,DC,TRA,332.282
+2020,DE,COM,4082.497
+2020,DE,IND,2055.42
+2020,DE,OTH,0.0
+2020,DE,RES,4991.134
+2020,DE,TRA,0
+2020,ENC,COM,168614.29208
+2020,ENC,IND,177266.94902
+2020,ENC,OTH,0.0
+2020,ENC,RES,190311.30879
+2020,ENC,TRA,507.937
+2020,ESC,COM,86034.46401
+2020,ESC,IND,94301.58699
+2020,ESC,OTH,0.0
+2020,ESC,RES,116345.88099
+2020,ESC,TRA,0
+2020,FL,COM,92493.736
+2020,FL,IND,16572.954
+2020,FL,OTH,0.0
+2020,FL,RES,133298.86899
+2020,FL,TRA,74.612
+2020,GA,COM,44301.529
+2020,GA,IND,30807.72398
+2020,GA,OTH,0.0
+2020,GA,RES,58220.28
+2020,GA,TRA,140.609
+2020,HI,COM,2684.301
+2020,HI,IND,3263.346
+2020,HI,OTH,0.0
+2020,HI,RES,2849.114
+2020,HI,TRA,0
+2020,IA,COM,11605.73805
+2020,IA,IND,24466.64101
+2020,IA,OTH,0.0
+2020,IA,RES,14567.48298
+2020,IA,TRA,0
+2020,ID,COM,6309.927
+2020,ID,IND,9180.674
+2020,ID,OTH,0.0
+2020,ID,RES,8970.75099
+2020,ID,TRA,0
+2020,IL,COM,45486.57701
+2020,IL,IND,40362.20399
+2020,IL,OTH,0.0
+2020,IL,RES,46170.538
+2020,IL,TRA,449.958
+2020,IN,COM,21996.47801
+2020,IN,IND,42262.90999
+2020,IN,OTH,0.0
+2020,IN,RES,32878.35501
+2020,IN,TRA,18.001
+2020,KS,COM,14843.31899
+2020,KS,IND,11048.183
+2020,KS,OTH,0.0
+2020,KS,RES,13592.444
+2020,KS,TRA,0
+2020,KY,COM,18061.357
+2020,KY,IND,27803.946
+2020,KY,OTH,0.0
+2020,KY,RES,25935.09601
+2020,KY,TRA,0
+2020,LA,COM,22398.708
+2020,LA,IND,36276.417
+2020,LA,OTH,0.0
+2020,LA,RES,30440.74601
+2020,LA,TRA,10.814
+2020,MA,COM,23120.50002
+2020,MA,IND,6220.37602
+2020,MA,OTH,0.0
+2020,MA,RES,20345.178
+2020,MA,TRA,323.287
+2020,MAT,COM,139685.44001
+2020,MAT,IND,71953.13698
+2020,MAT,OTH,0.0
+2020,MAT,RES,137241.09398
+2020,MAT,TRA,3246.019
+2020,MD,COM,26451.86401
+2020,MD,IND,3381.895
+2020,MD,OTH,0.0
+2020,MD,RES,27306.375
+2020,MD,TRA,488.906
+2020,ME,COM,3815.653
+2020,ME,IND,2625.824
+2020,ME,OTH,0.0
+2020,ME,RES,4905.263
+2020,ME,TRA,0
+2020,MI,COM,35490.797
+2020,MI,IND,25654.08102
+2020,MI,OTH,0.0
+2020,MI,RES,35862.91179
+2020,MI,TRA,4.116
+2020,MN,COM,21526.67699
+2020,MN,IND,19571.84701
+2020,MN,OTH,0.0
+2020,MN,RES,22935.67203
+2020,MN,TRA,20.41
+2020,MO,COM,27931.04698
+2020,MO,IND,12823.832
+2020,MO,OTH,0.0
+2020,MO,RES,34950.36999
+2020,MO,TRA,20.463
+2020,MS,COM,13185.14299
+2020,MS,IND,15302.064
+2020,MS,OTH,0.0
+2020,MS,RES,17994.83299
+2020,MS,TRA,0
+2020,MT,COM,4702.35299
+2020,MT,IND,4501.861
+2020,MT,OTH,0.0
+2020,MT,RES,5379.96501
+2020,MT,TRA,0
+2020,MTN,COM,95288.35599
+2020,MTN,IND,83043.508
+2020,MTN,OTH,0.0
+2020,MTN,RES,108570.641
+2020,MTN,TRA,158.59301
+2020,NC,COM,45905.051
+2020,NC,IND,25828.23299
+2020,NC,OTH,0.0
+2020,NC,RES,58641.572
+2020,NC,TRA,16.124
+2020,ND,COM,6641.70001
+2020,ND,IND,10131.201
+2020,ND,OTH,0.0
+2020,ND,RES,5046.55099
+2020,ND,TRA,0
+2020,NE,COM,9090.23901
+2020,NE,IND,11566.35302
+2020,NE,OTH,0.0
+2020,NE,RES,10514.944
+2020,NE,TRA,0
+2020,NEW,COM,47468.75803
+2020,NEW,IND,15583.34802
+2020,NEW,OTH,0.0
+2020,NEW,RES,48327.676
+2020,NEW,TRA,466.5
+2020,NH,COM,4029.709
+2020,NH,IND,1873.446
+2020,NH,OTH,0.0
+2020,NH,RES,4790.374
+2020,NH,TRA,0
+2020,NJ,COM,35315.617
+2020,NJ,IND,6735.377
+2020,NJ,OTH,0.0
+2020,NJ,RES,29676.857
+2020,NJ,TRA,270.37
+2020,NM,COM,8406.88401
+2020,NM,IND,9088.192
+2020,NM,OTH,0.0
+2020,NM,RES,7282.07899
+2020,NM,TRA,0
+2020,NV,COM,11983.74
+2020,NV,IND,11924.592
+2020,NV,OTH,0.0
+2020,NV,RES,14321.60701
+2020,NV,TRA,3.96
+2020,NY,COM,68988.81701
+2020,NY,IND,16610.45699
+2020,NY,OTH,0.0
+2020,NY,RES,52257.14399
+2020,NY,TRA,2550.214
+2020,OH,COM,43204.16504
+2020,OH,IND,46823.365
+2020,OH,OTH,0.0
+2020,OH,RES,52552.76998
+2020,OH,TRA,34.899
+2020,OK,COM,18698.988
+2020,OK,IND,20367.84399
+2020,OK,OTH,0.0
+2020,OK,RES,23232.47299
+2020,OK,TRA,0
+2020,OR,COM,15748.914
+2020,OR,IND,15616.78201
+2020,OR,OTH,0.0
+2020,OR,RES,19628.011
+2020,OR,TRA,25.606
+2020,PA,COM,35381.00599
+2020,PA,IND,48607.303
+2020,PA,OTH,0.0
+2020,PA,RES,55307.093
+2020,PA,TRA,425.435
+2020,PACC,COM,150062.673
+2020,PACC,IND,85689.85003
+2020,PACC,OTH,0.0
+2020,PACC,RES,151421.37201
+2020,PACC,TRA,726.234
+2020,PACN,COM,5208.41699
+2020,PACN,IND,4567.76099
+2020,PACN,OTH,0.0
+2020,PACN,RES,4938.16001
+2020,PACN,TRA,0
+2020,RI,COM,3551.262
+2020,RI,IND,634.692
+2020,RI,OTH,0.0
+2020,RI,RES,3148.021
+2020,RI,TRA,17.566
+2020,SAT,COM,301366.299
+2020,SAT,IND,135626.83297
+2020,SAT,OTH,0.0
+2020,SAT,RES,372703.18099
+2020,SAT,TRA,1216.993
+2020,SC,COM,20834.372
+2020,SC,IND,25076.787
+2020,SC,OTH,0.0
+2020,SC,RES,30826.01699
+2020,SC,TRA,0
+2020,SD,COM,4696.47501
+2020,SD,IND,2929.34599
+2020,SD,OTH,0.0
+2020,SD,RES,5070.024
+2020,SD,TRA,0
+2020,TN,COM,33480.189
+2020,TN,IND,20438.788
+2020,TN,OTH,0.0
+2020,TN,RES,41084.91099
+2020,TN,TRA,0
+2020,TX,COM,145167.57699
+2020,TX,IND,125107.20898
+2020,TX,OTH,0.0
+2020,TX,RES,156414.81901
+2020,TX,TRA,173.662
+2020,US,COM,1287439.5831
+2020,US,IND,959082.028
+2020,US,OTH,0.0
+2020,US,RES,1464605.04578
+2020,US,TRA,6547.824
+2020,UT,COM,11395.032
+2020,UT,IND,9672.119
+2020,UT,OTH,0.0
+2020,UT,RES,10546.793
+2020,UT,TRA,49.213
+2020,VA,COM,53526.846
+2020,VA,IND,17474.236
+2020,VA,OTH,0.0
+2020,VA,RES,46088.846
+2020,VA,TRA,164.46
+2020,VT,COM,1805.738
+2020,VT,IND,1368.719
+2020,VT,OTH,0.0
+2020,VT,RES,2157.001
+2020,VT,TRA,0
+2020,WA,COM,27307.412
+2020,WA,IND,22442.18601
+2020,WA,OTH,0.0
+2020,WA,RES,36858.798
+2020,WA,TRA,97.748
+2020,WI,COM,22436.27501
+2020,WI,IND,22164.38901
+2020,WI,OTH,0.0
+2020,WI,RES,22846.73402
+2020,WI,TRA,.963
+2020,WNC,COM,96335.19504
+2020,WNC,IND,92537.40302
+2020,WNC,OTH,0.0
+2020,WNC,RES,106677.48798
+2020,WNC,TRA,40.873
+2020,WSC,COM,197375.68898
+2020,WSC,IND,198511.65197
+2020,WSC,OTH,0.0
+2020,WSC,RES,228068.24402
+2020,WSC,TRA,184.675
+2020,WV,COM,6955.844
+2020,WV,IND,14243.24
+2020,WV,OTH,0.0
+2020,WV,RES,10877.499
+2020,WV,TRA,0
+2020,WY,COM,3320.02399
+2020,WY,IND,9131.466
+2020,WY,OTH,0.0
+2020,WY,RES,2879.528
+2020,WY,TRA,0
+2021,AK,COM,2558.649
+2021,AK,IND,1326.779
+2021,AK,OTH,0.0
+2021,AK,RES,2083.91101
+2021,AK,TRA,0
+2021,AL,COM,21844.283
+2021,AL,IND,32155.73
+2021,AL,OTH,0.0
+2021,AL,RES,31585.153
+2021,AL,TRA,0
+2021,AR,COM,11516.908
+2021,AR,IND,18228.01401
+2021,AR,OTH,0.0
+2021,AR,RES,18918.015
+2021,AR,TRA,.205
+2021,AZ,COM,29990.064
+2021,AZ,IND,14089.07201
+2021,AZ,OTH,0.0
+2021,AZ,RES,37130.339
+2021,AZ,TRA,10.515
+2021,CA,COM,108761.59401
+2021,CA,IND,47583.32899
+2021,CA,OTH,0.0
+2021,CA,RES,90284.143
+2021,CA,TRA,620.799
+2021,CO,COM,20584.46999
+2021,CO,IND,15053.158
+2021,CO,OTH,0.0
+2021,CO,RES,20625.00501
+2021,CO,TRA,88.576
+2021,CT,COM,11701.168
+2021,CT,IND,2799.194
+2021,CT,OTH,0.0
+2021,CT,RES,13092.128
+2021,CT,TRA,145.116
+2021,DC,COM,7043.709
+2021,DC,IND,239.501
+2021,DC,OTH,0.0
+2021,DC,RES,2528.049
+2021,DC,TRA,272.113
+2021,DE,COM,4196.263
+2021,DE,IND,2113.012
+2021,DE,OTH,0.0
+2021,DE,RES,5170.38
+2021,DE,TRA,0
+2021,ENC,COM,174951.47199
+2021,ENC,IND,184733.51897
+2021,ENC,OTH,0.0
+2021,ENC,RES,192188.37798
+2021,ENC,TRA,513.271
+2021,ESC,COM,89069.77901
+2021,ESC,IND,99238.972
+2021,ESC,OTH,0.0
+2021,ESC,RES,119429.90199
+2021,ESC,TRA,0
+2021,FL,COM,93965.07
+2021,FL,IND,17112.564
+2021,FL,OTH,0.0
+2021,FL,RES,130412.464
+2021,FL,TRA,71.984
+2021,GA,COM,45777.026
+2021,GA,IND,32758.98602
+2021,GA,OTH,0.0
+2021,GA,RES,58684.96201
+2021,GA,TRA,142.978
+2021,HI,COM,2784.538
+2021,HI,IND,3326.862
+2021,HI,OTH,0.0
+2021,HI,RES,2825.08201
+2021,HI,TRA,0
+2021,IA,COM,12135.097
+2021,IA,IND,26106.41701
+2021,IA,OTH,0.0
+2021,IA,RES,14651.755
+2021,IA,TRA,0
+2021,ID,COM,6600.296
+2021,ID,IND,9384.477
+2021,ID,OTH,0.0
+2021,ID,RES,9300.843
+2021,ID,TRA,0
+2021,IL,COM,46923.21
+2021,IL,IND,41498.024
+2021,IL,OTH,0.0
+2021,IL,RES,46813.06799
+2021,IL,TRA,454.531
+2021,IN,COM,22920.92901
+2021,IN,IND,43329.49098
+2021,IN,OTH,0.0
+2021,IN,RES,33471.97
+2021,IN,TRA,17.656
+2021,KS,COM,15356.45102
+2021,KS,IND,11365.92501
+2021,KS,OTH,0.0
+2021,KS,RES,13769.41001
+2021,KS,TRA,0
+2021,KY,COM,18685.936
+2021,KY,IND,29396.67902
+2021,KY,OTH,0.0
+2021,KY,RES,26434.371
+2021,KY,TRA,0
+2021,LA,COM,22459.648
+2021,LA,IND,37941.99
+2021,LA,OTH,0.0
+2021,LA,RES,30408.22401
+2021,LA,TRA,9.484
+2021,MA,COM,23832.46498
+2021,MA,IND,6345.83401
+2021,MA,OTH,0.0
+2021,MA,RES,20305.269
+2021,MA,TRA,314.82
+2021,MAT,COM,143045.84118
+2021,MAT,IND,73484.34099
+2021,MAT,OTH,0.0
+2021,MAT,RES,138192.42897
+2021,MAT,TRA,3111.787
+2021,MD,COM,27437.04999
+2021,MD,IND,3480.39201
+2021,MD,OTH,0.0
+2021,MD,RES,27964.54501
+2021,MD,TRA,421.987
+2021,ME,COM,3948.896
+2021,ME,IND,2573.512
+2021,ME,OTH,0.0
+2021,ME,RES,5062.266
+2021,ME,TRA,0
+2021,MI,COM,36860.868
+2021,MI,IND,27081.08199
+2021,MI,OTH,0.0
+2021,MI,RES,35868.09999
+2021,MI,TRA,3.231
+2021,MN,COM,22093.18901
+2021,MN,IND,21227.19599
+2021,MN,OTH,0.0
+2021,MN,RES,23246.05498
+2021,MN,TRA,22.728
+2021,MO,COM,28987.41202
+2021,MO,IND,13086.58798
+2021,MO,OTH,0.0
+2021,MO,RES,35668.40901
+2021,MO,TRA,20.632
+2021,MS,COM,13676.163
+2021,MS,IND,15769.265
+2021,MS,OTH,0.0
+2021,MS,RES,18569.936
+2021,MS,TRA,0
+2021,MT,COM,4906.13199
+2021,MT,IND,4495.98299
+2021,MT,OTH,0.0
+2021,MT,RES,5559.44601
+2021,MT,TRA,0
+2021,MTN,COM,98680.40997
+2021,MTN,IND,83947.446
+2021,MTN,OTH,0.0
+2021,MTN,RES,107925.26104
+2021,MTN,TRA,153.383
+2021,NC,COM,47714.832
+2021,NC,IND,27049.36702
+2021,NC,OTH,0.0
+2021,NC,RES,60914.68399
+2021,NC,TRA,14.194
+2021,ND,COM,6808.31599
+2021,ND,IND,11166.39
+2021,ND,OTH,0.0
+2021,ND,RES,4888.401
+2021,ND,TRA,0
+2021,NE,COM,9260.421
+2021,NE,IND,12588.38001
+2021,NE,OTH,0.0
+2021,NE,RES,10492.369
+2021,NE,TRA,0
+2021,NEW,COM,49060.84997
+2021,NEW,IND,15662.08001
+2021,NEW,OTH,0.0
+2021,NEW,RES,48597.59602
+2021,NEW,TRA,478.11
+2021,NH,COM,4106.69199
+2021,NH,IND,1928.665
+2021,NH,OTH,0.0
+2021,NH,RES,4831.911
+2021,NH,TRA,0
+2021,NJ,COM,36137.241
+2021,NJ,IND,6593.424
+2021,NJ,OTH,0.0
+2021,NJ,RES,30090.371
+2021,NJ,TRA,249.43
+2021,NM,COM,8655.82599
+2021,NM,IND,9649.559
+2021,NM,OTH,0.0
+2021,NM,RES,7088.358
+2021,NM,TRA,0
+2021,NV,COM,12293.815
+2021,NV,IND,12359.54301
+2021,NV,OTH,0.0
+2021,NV,RES,14373.357
+2021,NV,TRA,5.327
+2021,NY,COM,69920.48818
+2021,NY,IND,16891.15199
+2021,NY,OTH,0.0
+2021,NY,RES,52156.88199
+2021,NY,TRA,2455.256
+2021,OH,COM,44980.45198
+2021,OH,IND,49529.406
+2021,OH,OTH,0.0
+2021,OH,RES,53171.19298
+2021,OH,TRA,36.814
+2021,OK,COM,19999.31201
+2021,OK,IND,20779.95798
+2021,OK,OTH,0.0
+2021,OK,RES,23745.86701
+2021,OK,TRA,0
+2021,OR,COM,16508.755
+2021,OR,IND,17318.50801
+2021,OR,OTH,0.0
+2021,OR,RES,20285.346
+2021,OR,TRA,22.596
+2021,PA,COM,36988.11201
+2021,PA,IND,49999.765
+2021,PA,OTH,0.0
+2021,PA,RES,55945.17598
+2021,PA,TRA,407.101
+2021,PACC,COM,153907.73001
+2021,PACC,IND,86338.31701
+2021,PACC,OTH,0.0
+2021,PACC,RES,148590.722
+2021,PACC,TRA,746.969
+2021,PACN,COM,5343.18699
+2021,PACN,IND,4653.641
+2021,PACN,OTH,0.0
+2021,PACN,RES,4908.99301
+2021,PACN,TRA,0
+2021,RI,COM,3604.518
+2021,RI,IND,643.779
+2021,RI,OTH,0.0
+2021,RI,RES,3131.533
+2021,RI,TRA,18.174
+2021,SAT,COM,313128.555
+2021,SAT,IND,144329.01704
+2021,SAT,OTH,0.0
+2021,SAT,RES,374745.996
+2021,SAT,TRA,1097.864
+2021,SC,COM,21114.32301
+2021,SC,IND,27292.017
+2021,SC,OTH,0.0
+2021,SC,RES,31385.79599
+2021,SC,TRA,0
+2021,SD,COM,4791.689
+2021,SD,IND,3205.73801
+2021,SD,OTH,0.0
+2021,SD,RES,5043.96402
+2021,SD,TRA,0
+2021,TN,COM,34863.39701
+2021,TN,IND,21917.29799
+2021,TN,OTH,0.0
+2021,TN,RES,42840.44199
+2021,TN,TRA,0
+2021,TX,COM,147843.23098
+2021,TX,IND,132529.561
+2021,TX,OTH,0.0
+2021,TX,RES,155075.13599
+2021,TX,TRA,179.95
+2021,US,COM,1328439.49815
+2021,US,IND,1000613.49
+2021,US,OTH,0.0
+2021,US,RES,1470486.88203
+2021,US,TRA,6334.38299
+2021,UT,COM,12206.51
+2021,UT,IND,9471.73699
+2021,UT,OTH,0.0
+2021,UT,RES,10950.41501
+2021,UT,TRA,48.965
+2021,VA,COM,58723.97799
+2021,VA,IND,19712.19899
+2021,VA,OTH,0.0
+2021,VA,RES,46634.411
+2021,VA,TRA,174.608
+2021,VT,COM,1867.111
+2021,VT,IND,1371.096
+2021,VT,OTH,0.0
+2021,VT,RES,2174.48902
+2021,VT,TRA,0
+2021,WA,COM,28637.381
+2021,WA,IND,21436.48001
+2021,WA,OTH,0.0
+2021,WA,RES,38021.233
+2021,WA,TRA,103.574
+2021,WI,COM,23266.01301
+2021,WI,IND,23295.516
+2021,WI,OTH,0.0
+2021,WI,RES,22864.04701
+2021,WI,TRA,1.039
+2021,WNC,COM,99432.57504
+2021,WNC,IND,98746.63399
+2021,WNC,OTH,0.0
+2021,WNC,RES,107760.36303
+2021,WNC,TRA,43.36
+2021,WSC,COM,201819.09899
+2021,WSC,IND,209479.52299
+2021,WSC,OTH,0.0
+2021,WSC,RES,228147.242
+2021,WSC,TRA,189.639
+2021,WV,COM,7156.30401
+2021,WV,IND,14570.97901
+2021,WV,OTH,0.0
+2021,WV,RES,11050.705
+2021,WV,TRA,0
+2021,WY,COM,3443.297
+2021,WY,IND,9443.917
+2021,WY,OTH,0.0
+2021,WY,RES,2897.498
+2021,WY,TRA,0
+2022,AK,COM,2575.918
+2022,AK,IND,1375.69
+2022,AK,OTH,0.0
+2022,AK,RES,2050.472
+2022,AK,TRA,0
+2022,AL,COM,22391.06799
+2022,AL,IND,31712.90401
+2022,AL,OTH,0.0
+2022,AL,RES,32923.57299
+2022,AL,TRA,0
+2022,AR,COM,11786.52499
+2022,AR,IND,17960.25799
+2022,AR,OTH,0.0
+2022,AR,RES,19250.66101
+2022,AR,TRA,.219
+2022,AZ,COM,31507.06999
+2022,AZ,IND,14311.61002
+2022,AZ,OTH,0.0
+2022,AZ,RES,38367.633
+2022,AZ,TRA,10.204
+2022,CA,COM,114141.384
+2022,CA,IND,47500.42301
+2022,CA,OTH,0.0
+2022,CA,RES,89542.20798
+2022,CA,TRA,685.121
+2022,CO,COM,21059.41898
+2022,CO,IND,15018.32
+2022,CO,OTH,0.0
+2022,CO,RES,20593.94201
+2022,CO,TRA,91.36
+2022,CT,COM,11625.823
+2022,CT,IND,2780.106
+2022,CT,OTH,0.0
+2022,CT,RES,13190.687
+2022,CT,TRA,170.53
+2022,DC,COM,7290.077
+2022,DC,IND,181.716
+2022,DC,OTH,0.0
+2022,DC,RES,2519.079
+2022,DC,TRA,250.662
+2022,DE,COM,4298.80599
+2022,DE,IND,2030.396
+2022,DE,OTH,0.0
+2022,DE,RES,5210.069
+2022,DE,TRA,0
+2022,ENC,COM,177245.43696
+2022,ENC,IND,186405.913
+2022,ENC,OTH,0.0
+2022,ENC,RES,191772.80804
+2022,ENC,TRA,506.703
+2022,ESC,COM,91874.15799
+2022,ESC,IND,99298.09002
+2022,ESC,OTH,0.0
+2022,ESC,RES,122285.62299
+2022,ESC,TRA,0
+2022,FL,COM,96864.074
+2022,FL,IND,17635.655
+2022,FL,OTH,0.0
+2022,FL,RES,134245.97501
+2022,FL,TRA,75.099
+2022,GA,COM,49540.77399
+2022,GA,IND,34210.49798
+2022,GA,OTH,0.0
+2022,GA,RES,61140.241
+2022,GA,TRA,143.691
+2022,HI,COM,2837.85
+2022,HI,IND,3452.786
+2022,HI,OTH,0.0
+2022,HI,RES,2748.47901
+2022,HI,TRA,0
+2022,IA,COM,12470.07199
+2022,IA,IND,26541.02399
+2022,IA,OTH,0.0
+2022,IA,RES,15192.859
+2022,IA,TRA,0
+2022,ID,COM,6836.725
+2022,ID,IND,9400.753
+2022,ID,OTH,0.0
+2022,ID,RES,9963.65301
+2022,ID,TRA,0
+2022,IL,COM,47119.806
+2022,IL,IND,41817.849
+2022,IL,OTH,0.0
+2022,IL,RES,46479.195
+2022,IL,TRA,454.73
+2022,IN,COM,23493.75897
+2022,IN,IND,42479.59
+2022,IN,OTH,0.0
+2022,IN,RES,34058.49798
+2022,IN,TRA,12.518
+2022,KS,COM,15781.38399
+2022,KS,IND,11736.15902
+2022,KS,OTH,0.0
+2022,KS,RES,14443.52202
+2022,KS,TRA,0
+2022,KY,COM,19674.006
+2022,KY,IND,28824.55
+2022,KY,OTH,0.0
+2022,KY,RES,26840.18599
+2022,KY,TRA,0
+2022,LA,COM,23540.241
+2022,LA,IND,40143.868
+2022,LA,OTH,0.0
+2022,LA,RES,31444.70799
+2022,LA,TRA,10.181
+2022,MA,COM,24443.65901
+2022,MA,IND,6233.832
+2022,MA,OTH,0.0
+2022,MA,RES,20006.891
+2022,MA,TRA,299.058
+2022,MAT,COM,146798.67299
+2022,MAT,IND,73814.39199
+2022,MAT,OTH,0.0
+2022,MAT,RES,138702.82314
+2022,MAT,TRA,3381.956
+2022,MD,COM,27623.35801
+2022,MD,IND,3601.623
+2022,MD,OTH,0.0
+2022,MD,RES,28065.37901
+2022,MD,TRA,392.359
+2022,ME,COM,4129.399
+2022,ME,IND,2655.435
+2022,ME,OTH,0.0
+2022,ME,RES,5090.87401
+2022,ME,TRA,0
+2022,MI,COM,37114.401
+2022,MI,IND,28485.57001
+2022,MI,OTH,0.0
+2022,MI,RES,35034.97101
+2022,MI,TRA,4.32
+2022,MN,COM,22548.588
+2022,MN,IND,20648.58801
+2022,MN,OTH,0.0
+2022,MN,RES,23418.31302
+2022,MN,TRA,19.941
+2022,MO,COM,29790.51998
+2022,MO,IND,13245.66201
+2022,MO,OTH,0.0
+2022,MO,RES,37244.97003
+2022,MO,TRA,25.108
+2022,MS,COM,14089.632
+2022,MS,IND,15972.02401
+2022,MS,OTH,0.0
+2022,MS,RES,18917.877
+2022,MS,TRA,0
+2022,MT,COM,5019.65899
+2022,MT,IND,4669.62501
+2022,MT,OTH,0.0
+2022,MT,RES,5894.49901
+2022,MT,TRA,0
+2022,MTN,COM,102415.89995
+2022,MTN,IND,85753.10601
+2022,MTN,OTH,0.0
+2022,MTN,RES,110761.83702
+2022,MTN,TRA,154.744
+2022,NC,COM,49228.797
+2022,NC,IND,27519.33001
+2022,NC,OTH,0.0
+2022,NC,RES,62443.95303
+2022,NC,TRA,14.681
+2022,ND,COM,8392.425
+2022,ND,IND,11728.548
+2022,ND,OTH,0.0
+2022,ND,RES,5271.904
+2022,ND,TRA,0
+2022,NE,COM,9618.75501
+2022,NE,IND,13241.701
+2022,NE,OTH,0.0
+2022,NE,RES,10983.64901
+2022,NE,TRA,0
+2022,NEW,COM,49945.514
+2022,NEW,IND,15601.328
+2022,NEW,OTH,0.0
+2022,NEW,RES,48451.78002
+2022,NEW,TRA,492.557
+2022,NH,COM,4084.62499
+2022,NH,IND,1925.183
+2022,NH,OTH,0.0
+2022,NH,RES,4808.32201
+2022,NH,TRA,0
+2022,NJ,COM,37374.037
+2022,NJ,IND,6753.84399
+2022,NJ,OTH,0.0
+2022,NJ,RES,30062.192
+2022,NJ,TRA,252.662
+2022,NM,COM,9084.02199
+2022,NM,IND,10789.51999
+2022,NM,OTH,0.0
+2022,NM,RES,7282.636
+2022,NM,TRA,0
+2022,NV,COM,12427.663
+2022,NV,IND,12578.639
+2022,NV,OTH,0.0
+2022,NV,RES,14306.529
+2022,NV,TRA,7.176
+2022,NY,COM,72205.589
+2022,NY,IND,16177.769
+2022,NY,OTH,0.0
+2022,NY,RES,52227.41299
+2022,NY,TRA,2599.746
+2022,OH,COM,46090.80299
+2022,OH,IND,50062.73
+2022,OH,OTH,0.0
+2022,OH,RES,53312.216
+2022,OH,TRA,34.034
+2022,OK,COM,22211.52599
+2022,OK,IND,21796.272
+2022,OK,OTH,0.0
+2022,OK,RES,25479.14402
+2022,OK,TRA,0
+2022,OR,COM,16654.57599
+2022,OR,IND,18923.72201
+2022,OR,OTH,0.0
+2022,OR,RES,20725.899
+2022,OR,TRA,22.699
+2022,PA,COM,37219.04699
+2022,PA,IND,50882.77901
+2022,PA,OTH,0.0
+2022,PA,RES,56413.21816
+2022,PA,TRA,529.548
+2022,PACC,COM,160576.40798
+2022,PACC,IND,87651.23502
+2022,PACC,OTH,0.0
+2022,PACC,RES,150043.95597
+2022,PACC,TRA,821.75301
+2022,PACN,COM,5413.768
+2022,PACN,IND,4828.476
+2022,PACN,OTH,0.0
+2022,PACN,RES,4798.95101
+2022,PACN,TRA,0
+2022,RI,COM,3745.633
+2022,RI,IND,639.343
+2022,RI,OTH,0.0
+2022,RI,RES,3168.339
+2022,RI,TRA,22.969
+2022,SAT,COM,334807.62802
+2022,SAT,IND,142955.41901
+2022,SAT,OTH,0.0
+2022,SAT,RES,383766.28804
+2022,SAT,TRA,1006.294
+2022,SC,COM,24130.625
+2022,SC,IND,26340.73201
+2022,SC,OTH,0.0
+2022,SC,RES,32287.075
+2022,SC,TRA,0
+2022,SD,COM,4936.093
+2022,SD,IND,3208.06501
+2022,SD,OTH,0.0
+2022,SD,RES,5322.906
+2022,SD,TRA,0
+2022,TN,COM,35719.45201
+2022,TN,IND,22788.612
+2022,TN,OTH,0.0
+2022,TN,RES,43603.987
+2022,TN,TRA,0
+2022,TX,COM,160719.19804
+2022,TX,IND,143905.882
+2022,TX,OTH,0.0
+2022,TX,RES,170596.46002
+2022,TX,TRA,179.652
+2022,US,COM,1390872.81287
+2022,US,IND,1020463.98609
+2022,US,OTH,0.0
+2022,US,RES,1509233.16236
+2022,US,TRA,6599.108
+2022,UT,COM,12870.55201
+2022,UT,IND,9104.68001
+2022,UT,OTH,0.0
+2022,UT,RES,11344.26499
+2022,UT,TRA,46.004
+2022,VA,COM,68556.08201
+2022,VA,IND,16861.18602
+2022,VA,OTH,0.0
+2022,VA,RES,46717.547
+2022,VA,TRA,129.802
+2022,VT,COM,1916.375
+2022,VT,IND,1367.42901
+2022,VT,OTH,0.0
+2022,VT,RES,2186.66701
+2022,VT,TRA,0
+2022,WA,COM,29780.44799
+2022,WA,IND,21227.09
+2022,WA,OTH,0.0
+2022,WA,RES,39775.84899
+2022,WA,TRA,113.933
+2022,WI,COM,23426.66799
+2022,WI,IND,23560.17399
+2022,WI,OTH,0.0
+2022,WI,RES,22887.92805
+2022,WI,TRA,1.101
+2022,WNC,COM,103537.83697
+2022,WNC,IND,100349.74705
+2022,WNC,OTH,0.0
+2022,WNC,RES,111878.12309
+2022,WNC,TRA,45.049
+2022,WSC,COM,218257.49003
+2022,WSC,IND,223806.28
+2022,WSC,OTH,0.0
+2022,WSC,RES,246770.97304
+2022,WSC,TRA,190.052
+2022,WV,COM,7275.035
+2022,WV,IND,14574.283
+2022,WV,OTH,0.0
+2022,WV,RES,11136.97
+2022,WV,TRA,0
+2022,WY,COM,3610.78998
+2022,WY,IND,9879.95899
+2022,WY,OTH,0.0
+2022,WY,RES,3008.68001
+2022,WY,TRA,0
+2023,AK,COM,2574.46114
+2023,AK,IND,1382.99739
+2023,AK,OTH,0.0
+2023,AK,RES,2046.18113
+2023,AK,TRA,0
+2023,AL,COM,22670.85422
+2023,AL,IND,31236.01034
+2023,AL,OTH,0.0
+2023,AL,RES,31921.13125
+2023,AL,TRA,0
+2023,AR,COM,11895.49157
+2023,AR,IND,18728.25769
+2023,AR,OTH,0.0
+2023,AR,RES,18633.30174
+2023,AR,TRA,.26824
+2023,AZ,COM,32268.39231
+2023,AZ,IND,14217.845
+2023,AZ,OTH,0.0
+2023,AZ,RES,38832.86812
+2023,AZ,TRA,10.06646
+2023,CA,COM,112522.41483
+2023,CA,IND,41993.79014
+2023,CA,OTH,0.0
+2023,CA,RES,82998.27748
+2023,CA,TRA,725.43237
+2023,CO,COM,20564.18442
+2023,CO,IND,15450.24953
+2023,CO,OTH,0.0
+2023,CO,RES,20258.51648
+2023,CO,TRA,89.61351
+2023,CT,COM,11252.24399
+2023,CT,IND,2592.10473
+2023,CT,OTH,0.0
+2023,CT,RES,12534.91839
+2023,CT,TRA,178.89912
+2023,DC,COM,7009.97216
+2023,DC,IND,176.56624
+2023,DC,OTH,0.0
+2023,DC,RES,2371.64111
+2023,DC,TRA,301.38399
+2023,DE,COM,4139.12144
+2023,DE,IND,1943.99348
+2023,DE,OTH,0.0
+2023,DE,RES,4922.40124
+2023,DE,TRA,0
+2023,ENC,COM,174467.09385
+2023,ENC,IND,184256.06417
+2023,ENC,OTH,0.0
+2023,ENC,RES,180496.54855
+2023,ENC,TRA,463.68475
+2023,ESC,COM,91128.05004
+2023,ESC,IND,95156.62782
+2023,ESC,OTH,0.0
+2023,ESC,RES,117977.18007
+2023,ESC,TRA,0
+2023,FL,COM,98791.98155
+2023,FL,IND,17163.56977
+2023,FL,OTH,0.0
+2023,FL,RES,134713.78776
+2023,FL,TRA,71.1046
+2023,GA,COM,47975.86552
+2023,GA,IND,32963.65277
+2023,GA,OTH,0.0
+2023,GA,RES,59926.45353
+2023,GA,TRA,144.12382
+2023,HI,COM,2764.44967
+2023,HI,IND,3428.01579
+2023,HI,OTH,0.0
+2023,HI,RES,2695.19252
+2023,HI,TRA,0
+2023,IA,COM,12366.53684
+2023,IA,IND,27491.31057
+2023,IA,OTH,0.0
+2023,IA,RES,14938.29093
+2023,IA,TRA,0
+2023,ID,COM,6784.05247
+2023,ID,IND,9029.87653
+2023,ID,OTH,0.0
+2023,ID,RES,9695.26949
+2023,ID,TRA,0
+2023,IL,COM,45695.10934
+2023,IL,IND,41087.96805
+2023,IL,OTH,0.0
+2023,IL,RES,43582.44485
+2023,IL,TRA,414.75508
+2023,IN,COM,22852.83608
+2023,IN,IND,40854.99008
+2023,IN,OTH,0.0
+2023,IN,RES,31907.56734
+2023,IN,TRA,12.07465
+2023,KS,COM,16054.46651
+2023,KS,IND,11387.02482
+2023,KS,OTH,0.0
+2023,KS,RES,13977.45813
+2023,KS,TRA,0
+2023,KY,COM,18731.77722
+2023,KY,IND,26010.88287
+2023,KY,OTH,0.0
+2023,KY,RES,25200.11235
+2023,KY,TRA,0
+2023,LA,COM,24055.07049
+2023,LA,IND,40007.88569
+2023,LA,OTH,0.0
+2023,LA,RES,31926.24451
+2023,LA,TRA,10.45502
+2023,MA,COM,23894.98262
+2023,MA,IND,6101.65613
+2023,MA,OTH,0.0
+2023,MA,RES,19324.32535
+2023,MA,TRA,279.34777
+2023,MAT,COM,142242.78443
+2023,MAT,IND,71250.88114
+2023,MAT,OTH,0.0
+2023,MAT,RES,131167.41397
+2023,MAT,TRA,3427.77527
+2023,MD,COM,26813.59988
+2023,MD,IND,3432.57623
+2023,MD,OTH,0.0
+2023,MD,RES,26153.95375
+2023,MD,TRA,408.06521
+2023,ME,COM,3999.08289
+2023,ME,IND,2325.17558
+2023,ME,OTH,0.0
+2023,ME,RES,4906.80565
+2023,ME,TRA,0
+2023,MI,COM,36558.49515
+2023,MI,IND,28262.52973
+2023,MI,OTH,0.0
+2023,MI,RES,32699.30512
+2023,MI,TRA,5.45215
+2023,MN,COM,22431.7247
+2023,MN,IND,20542.29909
+2023,MN,OTH,0.0
+2023,MN,RES,23489.91857
+2023,MN,TRA,18.02884
+2023,MO,COM,29048.28481
+2023,MO,IND,12772.84882
+2023,MO,OTH,0.0
+2023,MO,RES,35088.25824
+2023,MO,TRA,22.44622
+2023,MS,COM,14769.08175
+2023,MS,IND,15787.01029
+2023,MS,OTH,0.0
+2023,MS,RES,19069.78971
+2023,MS,TRA,0
+2023,MT,COM,5022.43056
+2023,MT,IND,4685.11909
+2023,MT,OTH,0.0
+2023,MT,RES,5759.2552
+2023,MT,TRA,0
+2023,MTN,COM,103195.88089
+2023,MTN,IND,86708.82143
+2023,MTN,OTH,0.0
+2023,MTN,RES,109531.70291
+2023,MTN,TRA,161.21758
+2023,NC,COM,49099.55347
+2023,NC,IND,26354.79958
+2023,NC,OTH,0.0
+2023,NC,RES,59515.43641
+2023,NC,TRA,12.62001
+2023,ND,COM,9620.18184
+2023,ND,IND,13928.31478
+2023,ND,OTH,0.0
+2023,ND,RES,5098.39396
+2023,ND,TRA,0
+2023,NE,COM,9564.12696
+2023,NE,IND,13208.6414
+2023,NE,OTH,0.0
+2023,NE,RES,10674.45802
+2023,NE,TRA,0
+2023,NEW,COM,48699.08349
+2023,NEW,IND,14855.65772
+2023,NEW,OTH,0.0
+2023,NEW,RES,46546.60093
+2023,NEW,TRA,484.46048
+2023,NH,COM,4048.25313
+2023,NH,IND,1923.56494
+2023,NH,OTH,0.0
+2023,NH,RES,4618.81454
+2023,NH,TRA,0
+2023,NJ,COM,35673.1777
+2023,NJ,IND,6078.17411
+2023,NJ,OTH,0.0
+2023,NJ,RES,28428.649
+2023,NJ,TRA,273.47793
+2023,NM,COM,9287.64595
+2023,NM,IND,12054.67388
+2023,NM,OTH,0.0
+2023,NM,RES,7353.97608
+2023,NM,TRA,0
+2023,NV,COM,12409.01015
+2023,NV,IND,12416.70949
+2023,NV,OTH,0.0
+2023,NV,RES,13516.36946
+2023,NV,TRA,7.18096
+2023,NY,COM,71008.07926
+2023,NY,IND,15037.55016
+2023,NY,OTH,0.0
+2023,NY,RES,50301.91109
+2023,NY,TRA,2712.96028
+2023,OH,COM,46167.48939
+2023,OH,IND,50630.79715
+2023,OH,OTH,0.0
+2023,OH,RES,49910.8274
+2023,OH,TRA,30.26399
+2023,OK,COM,22403.14591
+2023,OK,IND,22467.6616
+2023,OK,OTH,0.0
+2023,OK,RES,23934.57653
+2023,OK,TRA,0
+2023,OR,COM,17142.57958
+2023,OR,IND,16399.62531
+2023,OR,OTH,0.0
+2023,OR,RES,20417.23751
+2023,OR,TRA,22.6295
+2023,PA,COM,35561.52747
+2023,PA,IND,50135.15687
+2023,PA,OTH,0.0
+2023,PA,RES,52436.85388
+2023,PA,TRA,441.33706
+2023,PACC,COM,158828.51279
+2023,PACC,IND,79041.32319
+2023,PACC,OTH,0.0
+2023,PACC,RES,142202.52275
+2023,PACC,TRA,851.45309
+2023,PACN,COM,5338.91081
+2023,PACN,IND,4811.01318
+2023,PACN,OTH,0.0
+2023,PACN,RES,4741.37365
+2023,PACN,TRA,0
+2023,RI,COM,3605.99786
+2023,RI,IND,628.88286
+2023,RI,OTH,0.0
+2023,RI,RES,2994.99297
+2023,RI,TRA,26.21359
+2023,SAT,COM,333907.51753
+2023,SAT,IND,139141.59578
+2023,SAT,OTH,0.0
+2023,SAT,RES,373039.80613
+2023,SAT,TRA,1176.90762
+2023,SC,COM,25305.13231
+2023,SC,IND,25495.99295
+2023,SC,OTH,0.0
+2023,SC,RES,31474.68162
+2023,SC,TRA,0
+2023,SD,COM,4947.76053
+2023,SD,IND,3238.49054
+2023,SD,OTH,0.0
+2023,SD,RES,5285.39813
+2023,SD,TRA,0
+2023,TN,COM,34956.33685
+2023,TN,IND,22122.72432
+2023,TN,OTH,0.0
+2023,TN,RES,41786.14676
+2023,TN,TRA,0
+2023,TX,COM,154727.42847
+2023,TX,IND,165954.54307
+2023,TX,OTH,0.0
+2023,TX,RES,165917.18783
+2023,TX,TRA,187.62617
+2023,US,COM,1374922.05246
+2023,US,IND,1024949.26249
+2023,US,OTH,0.0
+2023,US,RES,1454666.63552
+2023,US,TRA,6804.32326
+2023,UT,COM,13213.50529
+2023,UT,IND,8640.72137
+2023,UT,OTH,0.0
+2023,UT,RES,11142.90097
+2023,UT,TRA,54.35665
+2023,VA,COM,67595.91728
+2023,VA,IND,16947.72076
+2023,VA,OTH,0.0
+2023,VA,RES,43724.77037
+2023,VA,TRA,239.60999
+2023,VT,COM,1898.523
+2023,VT,IND,1284.27349
+2023,VT,OTH,0.0
+2023,VT,RES,2166.74403
+2023,VT,TRA,0
+2023,WA,COM,29163.51839
+2023,WA,IND,20647.90774
+2023,WA,OTH,0.0
+2023,WA,RES,38787.00776
+2023,WA,TRA,103.39123
+2023,WI,COM,23193.16389
+2023,WI,IND,23419.77916
+2023,WI,OTH,0.0
+2023,WI,RES,22396.40384
+2023,WI,TRA,1.13888
+2023,WNC,COM,104033.08219
+2023,WNC,IND,102568.93002
+2023,WNC,OTH,0.0
+2023,WNC,RES,108552.17598
+2023,WNC,TRA,40.47505
+2023,WSC,COM,213081.13644
+2023,WSC,IND,247158.34805
+2023,WSC,OTH,0.0
+2023,WSC,RES,240411.3106
+2023,WSC,TRA,198.34943
+2023,WV,COM,7176.37393
+2023,WV,IND,14662.724
+2023,WV,OTH,0.0
+2023,WV,RES,10236.68035
+2023,WV,TRA,0
+2023,WY,COM,3646.65974
+2023,WY,IND,10213.62655
+2023,WY,OTH,0.0
+2023,WY,RES,2972.54712
+2023,WY,TRA,0

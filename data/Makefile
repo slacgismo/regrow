@@ -16,6 +16,7 @@ FILES += wecc240_psse.glm
 FILES += wecc240_gis.glm
 FILES += powerplants.glm
 FILES += powerlines.glm
+FILES += loads.glm
 
 #
 # Targets
@@ -33,3 +34,14 @@ powerplants.glm: powerplants.py powerplants.csv.zip
 
 powerlines.glm: powerlines.py powerlines.csv.zip
 	gridlabd python $^ $@
+
+loads.glm: res_loadshapes.csv.zip
+
+res_loadshapes.csv.zip: resstock.csv.zip res_loadshapes/floorareas.csv res_loadshapes.py
+	gridlabd python res_loadshapes.py
+
+res_loadshapes/floorareas.csv: res_floorareas.py
+	gridlabd python res_floorareas.py
+
+com_loadshapes/floorareas.csv: com_loadshapes.py
+	gridlabd python com_loadshapes.py

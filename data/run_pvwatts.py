@@ -79,4 +79,4 @@ if __name__ == "__main__":
         r = requests.get('https://developer.nrel.gov/api/pvwatts/v8.json?',
                          params = payload)
         model_outputs = json.loads(r.content.decode('utf-8'))
-        hourly_outputs = module_outputs['outputs']['ac']
+        hourly_outputs = model_outputs['outputs']['ac']

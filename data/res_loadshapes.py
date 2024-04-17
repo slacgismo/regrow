@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.1.82"
+__generated_with = "0.3.9"
 app = marimo.App(width="full")
 
 
@@ -35,37 +35,36 @@ def __(os, pd, pumas, resstock, restype):
     #
     # Download loadshapes
     #
+    _columns = {
+        "in.county": "county",
+        "in.geometry_building_type_recs" : "building_type",
+        "timestamp" : "datetime",
+        "out.electricity.cooling.energy_consumption" : "electric-cooling[kWh]",
+        "out.electricity.heating.energy_consumption" : "electric-heating[kWh]",
+        "out.electricity.heating_supplement.energy_consumption" : "electric-supplemental-heating[kWh]",
+        "out.electricity.pv.energy_consumption" : "electric-pv[kWh]",
+        "out.electricity.total.energy_consumption" : "electric-total[kWh]",
+        "out.natural_gas.heating.energy_consumption" : "gas-heating[kWh]",
+        "out.natural_gas.total.energy_consumption" : "gas-total[kWh]",
+        "out.propane.heating.energy_consumption" : "propane-heating[kWh]",
+        "out.fuel_oil.heating.energy_consumption" : "fueloil-heating[kWh]",
+        "out.site_energy.total.energy_consumption" : "energy-total[kWh]",
+    }
     if not os.path.exists("resstock.csv.zip"):
         result = []
         for county,puma in pumas.items():
             for building_type in restype.keys():
                 print("Downloading",county,building_type,"...") 
                 _data = pd.read_csv(f"{resstock}/{puma}-{building_type.replace(' ','_')}.csv",
-                                    usecols = ["in.county","in.geometry_building_type_recs","timestamp",
-                                               "out.electricity.heating.energy_consumption",
-                                               "out.electricity.heating_supplement.energy_consumption",
-                                               "out.electricity.cooling.energy_consumption",
-                                               "out.electricity.pv.energy_consumption",
-                                               "out.electricity.total.energy_consumption",
-                                               "out.natural_gas.heating.energy_consumption",
-                                               "out.natural_gas.total.energy_consumption",
-                                               "out.propane.heating.energy_consumption",
-                                               "out.fuel_oil.heating.energy_consumption",
-                                               "out.site_energy.total.energy_consumption",
-                                              ]
+                                    usecols = _columns.keys(),
                                    )
                 _data['in.county'] = county
                 _data['in.geometry_building_type_recs'] = restype[building_type]
-                _data.columns = ["county","building_type","datetime",
-                                 "electric-heating[kWh]","electric-supplemental-heating[kWh]",
-                                 "electric-cooling[kWh]","electric-pv[kWh]","electric-total[kWh]",
-                                 "gas-heating[kWh]","gas-total[kWh]",
-                                 "propane-heating[kWh]","fueloil-heating[kWh]","energy-total[kWh]",
-                                ]
+                _data.rename(axis='columns',mapper=_columns,inplace=True)
                 result.append(_data)
         result = pd.concat(result)
         print("Saving resstock data...")
-        result.to_csv("restock.csv.zip",index=False,header=True,compression="zip")
+        result.to_csv("resstock.csv.zip",index=False,header=True,compression="zip")
     else:
         print("Loading resstock data...")
         result = pd.read_csv("resstock.csv.zip")
@@ -141,6 +140,9 @@ def __():
     import marimo as mo
     import pandas as pd
     import matplotlib.pyplot as plt
+
+    pd.options.display.max_columns = None
+    pd.options.display.width = None
     return mo, os, pd, plt, sys
 
 

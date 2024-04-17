@@ -48,5 +48,5 @@ def powerplant_control(obj,**kwargs):
 
     See also: `gridlabd --modhelp pypower:powerplant`
     """
-    print(obj,": powerplant control update",kwargs,file=sys.stderr)
-    return dict(t=kwargs['t']+3600, S=(-kwargs['S']))
+    # print(obj,": powerplant control update",kwargs,file=sys.stderr)
+    return dict(t=kwargs['t']+3600)

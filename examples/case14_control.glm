@@ -1,5 +1,7 @@
 // PyPower/GridLAB-D IEEE-14 bus example with controllers
 
+#version -ge 4.3.9
+
 clock
 {
     timezone "PST+8PDT";
@@ -10,7 +12,7 @@ clock
 module pypower
 {
     controllers "controllers"; // defines all controller functions
-    // save_case TRUE;
+    save_case TRUE;
 }
 
 module tape
@@ -34,7 +36,7 @@ object pypower.load
 
 object pypower.powerplant
 {
-    parent pp_bus_1;
+    parent pp_bus_2;
     S 0.0+0.0j; // initial value
     status ONLINE;
     controller "powerplant_control";  // defined in controllers.py, override player
@@ -44,8 +46,8 @@ object pypower.powerplant
 
 object recorder
 {
-    parent pp_bus_1;
-    file "pp_bus_1_recorder.csv";
+    parent pp_bus_2;
+    file "pp_bus_2_recorder.csv";
     property S,Pd,Qd,Gs,Bs,Vm,Va;
     interval -1; // on-change only
 }

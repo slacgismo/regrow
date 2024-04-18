@@ -147,8 +147,10 @@ if __name__ == "__main__":
                 psm3_master = psm3_5min
                 psm3_master = psm3_master.rename(columns={"key_0": "datetime"})
                 psm3_master = psm3_master.round(3)
-                psm3_master.to_csv(os.path.join("./nsrdb", geohash_val + ".csv"),
-                                   index=False)
+                # Set datetime index to ISO UTC format
+                psm3_master.index = psm3_master.index.tz_convert('UTC')
+                psm3_master.index = psm3_master.index.map(lambda x: x.isoformat())
+                psm3_master.to_csv(os.path.join("./nsrdb", geohash_val + ".csv"))
                 time.sleep(1)
             except:
                 print("Couldn't fetch NSRDB for the following bus:" + row['wecc_name'])

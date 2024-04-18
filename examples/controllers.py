@@ -9,6 +9,26 @@ def on_init():
     """
     return True
 
+def on_precommit(data):
+    """TODO"""
+
+    # get A - Laplacian matrix
+    # get Pd - demand
+    # get Pg - generation by gentype in columns
+    # get SOC - battery state of charge
+    # get constraints, e.g., Pmax, charger/discharge rate max/min, battery capacities (on_init?)
+    # store these in global arrays for on_sync to run MPC
+
+    # TODO: add energy storage calcs to powerplant model
+
+    # TODO: figure out forecasting for wind, solar, other generation, and load by peeking at future
+
+
+def on_commit(data):
+    """TODO"""
+    # get MPC result from global arras
+    # put C - charge/discharge rates
+
 def on_sync(data):
     """on_sync(data) is called when the clock updates
     

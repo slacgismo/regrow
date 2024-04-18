@@ -3,15 +3,9 @@ Generate PVWatts models for each of the particular sites for the CA heatwave.
 """
 
 import math
-import numpy as np
-import pvlib
 import pandas as pd
-import matplotlib.pyplot as plt 
-import pathlib 
 import requests
 import json
-import matplotlib
-import time
 import os
 
 array_type_dict = {'Fixed - Open Rack': 0,
@@ -27,8 +21,46 @@ module_type_dict = {'Standard': 0,
 # Set regular losses at 14. this is changeable!
 losses = 14
 
+def geohash(latitude, longitude, precision=6):
+    """Encode a position given in float arguments latitude, longitude to
+    a geohash which will have the character count precision.
+    """
+    from math import log10
+    __base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
+    __decodemap = { }
+    for i in range(len(__base32)):
+        __decodemap[__base32[i]] = i
+    del i
+    lat_interval, lon_interval = (-90.0, 90.0), (-180.0, 180.0)
+    geohash = []
+    bits = [ 16, 8, 4, 2, 1 ]
+    bit = 0
+    ch = 0
+    even = True
+    while len(geohash) < precision:
+        if even:
+            mid = (lon_interval[0] + lon_interval[1]) / 2
+            if longitude > mid:
+                ch |= bits[bit]
+                lon_interval = (mid, lon_interval[1])
+            else:
+                lon_interval = (lon_interval[0], mid)
+        else:
+            mid = (lat_interval[0] + lat_interval[1]) / 2
+            if latitude > mid:
+                ch |= bits[bit]
+                lat_interval = (mid, lat_interval[1])
+            else:
+                lat_interval = (lat_interval[0], mid)
+        even = not even
+        if bit < 4:
+            bit += 1
+        else:
+            geohash += __base32[ch]
+            bit = 0
+            ch = 0
+    return ''.join(geohash)
 
-matplotlib.rcParams.update({'font.size': 12})
 
 if __name__ == "__main__":
     # Point towards the particular local folder that contains the data  
@@ -80,3 +112,7 @@ if __name__ == "__main__":
                          params = payload)
         model_outputs = json.loads(r.content.decode('utf-8'))
         hourly_outputs = model_outputs['outputs']['ac']
+        # Write the model results to a JSON
+        geohash_val = geohash(lat, long, precision=6)
+        with open(str(geohash_val) + ".json", "w") as outfile:
+            outfile.write(str(model_outputs))

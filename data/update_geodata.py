@@ -26,7 +26,7 @@ for n,file in enumerate(files):
 		if output not in results:
 			results[output] = []
 		try:
-			results[output].append(pd.DataFrame({geocode:data[source].resample("1h").mean()}).round(1).fillna(method='ffill'))
+			results[output].append(pd.DataFrame({geocode:data[source].resample("1h").mean()}).round(1).fillna(method='ffill').fillna(method='bfill'))
 		except Exception as err:
 			print(source,"failed","-",err,end="!!!")
 	print(f"{n+1} of {len(files)} done")

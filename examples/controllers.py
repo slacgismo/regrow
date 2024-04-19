@@ -37,7 +37,7 @@ def on_precommit(data):
     row = [int(x)-1 for x in branch[:,0]]
     col = [int(x)-1 for x in branch[:,1]]
     A = sp.sparse.coo_array(([1]*len(row) + [-1]*len(row),(row+col,col+row)),(len(bus),len(bus)))
-    print("A:",A.toarray(),file=sys.stderr)
+    # print("A:",A.toarray(),file=sys.stderr)
 
     # get Pd - demand
     Pd = np.array([bus[:,2]])[0]

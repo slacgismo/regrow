@@ -47,7 +47,7 @@ object pypower.powerplant
 object recorder
 {
     parent pp_bus_2;
-    file "pp_bus_2_recorder.csv";
+    file "pp_bus_2_record.csv";
     property S,Pd,Qd,Gs,Bs,Vm,Va;
     interval -1; // on-change only
 }

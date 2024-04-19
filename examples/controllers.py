@@ -34,12 +34,10 @@ def on_precommit(data):
 
     # get A - Laplacian matrix
     global A
-    # TODO: rewrite using sparse matrix
-    A = np.zeros((len(bus),len(bus)))
-    for fbus,tbus in [(int(x)-1,int(y)-1) for x,y in branch[:,0:2]]:
-        A[fbus,tbus] = 1
-        A[tbus,fbus] = -1
-    print("A:",A,file=sys.stderr)
+    row = [int(x)-1 for x in branch[:,0]]
+    col = [int(x)-1 for x in branch[:,1]]
+    A = sp.sparse.coo_array(([1]*len(row) + [-1]*len(row),(row+col,col+row)),(len(bus),len(bus)))
+    print("A:",A.toarray(),file=sys.stderr)
 
     # get Pd - demand
     Pd = np.array([bus[:,2]])[0]

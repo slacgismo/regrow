@@ -1,3 +1,7 @@
-case14_control.json
 case14_control_*.csv
+case14.glm
+case14_control.json
+case14_control_casedata*.*
+case14_control_results*.*
 gridlabd.json
+*_record.csv

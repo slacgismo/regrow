@@ -3,7 +3,6 @@
 import sys
 import numpy as np
 import scipy as sp
-import gridlabd
 
 A = None
 Pd = None
@@ -16,6 +15,32 @@ def on_init():
 
     Return: True on success, False on failure
     """
+
+    # Access a global variable
+    loss = gridlabd.get_global("pypower::total_loss")
+    # print("loss:",loss,file=sys.stderr)
+
+    # Get a list of objects
+    objects = gridlabd.get("objects")
+    # print("objects:",objects,file=sys.stderr)
+
+    # Get the properties of an object
+    pp_gen_1 = gridlabd.get_object("pp_gen_1")
+    # print("pp_gen_1:",pp_gen_1,file=sys.stderr)
+
+    # Get a single object property
+    pp_branch_1_current = gridlabd.get_value("pp_branch_1","current")
+    # print("pp_branch_1_current:",pp_branch_1_current,file=sys.stderr)
+
+    # Set a single object property (handles unit conversion if needed)
+    # gridlabd.set_value("pp_gen_1","Pmax","350e3 kW")
+
+    # # Direct access to a property
+    pp_gen_1_Pmax = gridlabd.property("pp_gen_1","Pmax")
+    # print("pp_gen_1_Pmax:",pp_gen_1_Pmax.get_value(),file=sys.stderr)
+    pp_gen_1_Pmax.set_value(340.0)
+    # print("pp_gen_1_Pmax:",pp_gen_1_Pmax.get_value(),file=sys.stderr)
+
     return True
 
 def on_precommit(data):
@@ -83,6 +108,10 @@ def on_sync(data):
     # print(f"controllers sync called, data={data}",file=sys.stderr)
     
     return (int(data['t']/3600)+1)*3600 # advance to top of next hour 
+
+def on_term():
+    """on_term() is called when the simulation ends"""
+    # print("on_term()",file=sys.stderr)
 
 def load_control(obj,**kwargs):
     """load_control(obj,**kwargs) is called before on_sync()

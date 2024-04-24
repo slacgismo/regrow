@@ -8,7 +8,7 @@ import config
 pd.options.display.max_columns = None
 pd.options.display.width = 1024
 
-REFRESH = True # force regeneration of all results from original data
+REFRESH = False # force regeneration of all results from original data
 COMPRESS = False # compress output data files
 
 os.makedirs("geodata/commercial",exist_ok=True)
@@ -50,6 +50,7 @@ for file in sorted(os.listdir("com_loadshapes")):
         geocode = counties.loc[usps+fips[1:4]].geocode
         csv = os.path.join("geodata","commercial",geocode+(".csv.zip" if COMPRESS else ".csv"))
         if os.path.exists(csv) and not REFRESH:
+            print("File",csv,"ok",flush=True,file=sys.stderr)
             continue
 
         # load commercial building data
@@ -80,5 +81,17 @@ for file in sorted(os.listdir("com_loadshapes")):
 
         print("done",file=sys.stderr)
 
-
+basename = "geodata/commercial"
+if not os.path.exists(f"{basename}.csv"):
+    result = []
+    for file in sorted(os.listdir(basename)):
+        print("Processing",file,end="...",flush=True,file=sys.stderr)
+        if not file.endswith(".csv"):
+            continue
+        geocode = os.path.splitext(file)[0]
+        data = pd.read_csv(os.path.join(basename,file),index_col=[0],parse_dates=[0])
+        data.columns = [geocode]
+        result.append(data)
+        print("ok",file=sys.stderr)
+    pd.concat(result,axis=1).to_csv(f"{basename}.csv",index=True,header=True)
 

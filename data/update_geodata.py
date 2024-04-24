@@ -7,7 +7,14 @@ outputs = {
 	"Unnamed: 0" : None,
 	"ghi" : "solar",
 	"temp_air" : "temperature",
+	"wind_speed" : "wind",
 	}
+
+resample = "1h"
+precision = 1
+output_folder = "geodata"
+compression = None
+
 results = {}
 files = os.listdir("nsrdb")
 for n,file in enumerate(files):
@@ -26,7 +33,7 @@ for n,file in enumerate(files):
 		if output not in results:
 			results[output] = []
 		try:
-			results[output].append(pd.DataFrame({geocode:data[source].resample("1h").mean()}).round(1).fillna(method='ffill').fillna(method='bfill'))
+			results[output].append(pd.DataFrame({geocode:data[source].resample(resample).mean()}).round(precision).ffill().bfill())
 		except Exception as err:
 			print(source,"failed","-",err,end="!!!")
 	print(f"{n+1} of {len(files)} done")
@@ -35,4 +42,5 @@ for output in outputs.values():
 	if not output:
 		continue
 	results[output] = pd.concat(results[output],axis=1)
-	results[output].to_csv(os.path.join("geodata",output+".csv"),index=True,header=True)
+	results[output].index.name="timestamp"
+	results[output].to_csv(os.path.join(output_folder,output+".csv"+(("."+compression) if compression else "")),index=True,header=True,compression=compression)

@@ -1,4 +1,4 @@
-"""Update geodata files"""
+"""Update commercial building geodata files"""
 
 import os, sys
 import pandas as pd
@@ -11,7 +11,7 @@ pd.options.display.width = 1024
 REFRESH = True # force regeneration of all results from original data
 COMPRESS = False # compress output data files
 
-os.makedirs("geodata",exist_ok=True)
+os.makedirs("geodata/commercial",exist_ok=True)
 
 #
 # Update the counties geodata from the Census bureau data
@@ -48,7 +48,7 @@ for file in sorted(os.listdir("com_loadshapes")):
         usps = file[1:3]
         fips = file[3:8]
         geocode = counties.loc[usps+fips[1:4]].geocode
-        csv = os.path.join("geodata",geocode+(".csv.zip" if COMPRESS else ".csv"))
+        csv = os.path.join("geodata","commercial",geocode+(".csv.zip" if COMPRESS else ".csv"))
         if os.path.exists(csv) and not REFRESH:
             continue
 

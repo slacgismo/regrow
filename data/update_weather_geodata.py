@@ -1,4 +1,4 @@
-"""Update geodata files"""
+"""Update weather geodata files"""
 
 import os, sys
 import pandas as pd

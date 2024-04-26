@@ -17,6 +17,7 @@ FILES += wecc240_gis.glm
 FILES += powerplants.glm
 FILES += powerlines.glm
 FILES += loads.glm
+FILES += $(shell python3 -m weather_sensitivity --outputs)
 
 #
 # Targets
@@ -45,3 +46,6 @@ res_loadshapes/floorareas.csv: res_floorareas.py
 
 com_loadshapes/floorareas.csv: com_loadshapes.py
 	gridlabd python com_loadshapes.py
+
+$(shell python3 -m weather_sensitivity --outputs): $(shell python3 -m weather_sensitivity --inputs)
+	python3 -m weather_sensitivity --update

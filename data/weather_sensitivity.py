@@ -27,11 +27,13 @@ INPUTS = {
     "TEMPERATURE" : "geodata/temperature.csv",
     "SOLAR" : "geodata/solar.csv",
     "COMMERCIAL" : "geodata/commercial.csv",
-    "RESIDENTIAL" : "geodata/residential.csv",
-    "INDUSTRIAL" : "geodata/industrial.csv",
-    "TRANSPORTATION" : "geodata/transportation.csv",
-    "AGRICULTURAL" : "geodata/agricultural.csv",
+    # "RESIDENTIAL" : "geodata/residential.csv",
+    # "INDUSTRIAL" : "geodata/industrial.csv",
+    # "TRANSPORTATION" : "geodata/transportation.csv",
+    # "AGRICULTURAL" : "geodata/agricultural.csv",
     }
+
+INTERNAL = {}
 
 OUTPUTS = {
     "BASELOAD" : "geodata/baseload.csv",
@@ -52,6 +54,9 @@ elif "--inputs" in sys.argv:
 elif "--outputs" in sys.argv:
     print(" ".join(OUTPUTS.values()))
     exit(0)
+elif "--internal" in sys.argv:
+    print(" ".join(INTERNAL.values()))
+    exit(0)
 
 for arg in sys.argv[1:]:
     if arg.startswith("--heating="):
@@ -69,14 +74,22 @@ def verbose(msg,**kwargs):
     if VERBOSE:
         print(msg,file=sys.stderr,flush=True,**kwargs)
 
+def load(KEY):
+    verbose(INPUTS[KEY],end="...")
+    try:
+        result = pd.DataFrame(pd.read_csv(INPUTS[KEY],index_col=[0],parse_dates=[0]).resample(FREQ).mean())
+        verbose("ok")
+        return result
+    except Exception as err:
+        verbose(str(err))
+        return None
+
 if __name__ == "__main__" and "--update" in sys.argv:
 
-    verbose("Loading input files",end="...")
-    temperature = pd.DataFrame(pd.read_csv(INPUTS["TEMPERATURE"],index_col=[0],parse_dates=[0]).resample(FREQ).mean())
-    solar = pd.DataFrame(pd.read_csv(INPUTS["SOLAR"],index_col=[0],parse_dates=[0]).resample(FREQ).mean())
-    load = pd.DataFrame(pd.read_csv(INPUTS["COMMERCIAL"],index_col=[0],parse_dates=[0]).resample(FREQ).mean())
+    temperature = load("TEMPERATURE")
+    solar = load("SOLAR")
+    load = load("COMMERCIAL")
     # TODO: add other inputs
-    verbose("done")
 
     columns = [f"WD{n:02d}" for n in range(24)]+[f"WE{n:02d}" for n in range(24)]+["TH","TC","S"]
     def get_model(geohash):
@@ -115,7 +128,7 @@ if __name__ == "__main__" and "--update" in sys.argv:
             x,M,Y,ls,t,L,T,S = get_model(geohash)
             a,b,c = x[-3:]
             Lb = np.array(L) - a*np.array(S) - b*np.array([THEAT-x if x<THEAT else 0 for x in T]) - c*np.array([TCOOL-x if x>TCOOL else 0 for x in T])
-            verbose("done")
+            verbose("ok")
         except Exception as err:
             pd.DataFrame(M,columns=columns).round(4).to_csv(f"weather_sensitivity_{str(err).lower().replace(' ','-')}_{geohash}-M_err.csv")
             Lb = L

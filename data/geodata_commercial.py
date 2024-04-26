@@ -4,7 +4,6 @@ import os, sys
 import pandas as pd
 import geocode as gc
 import config
-import sensitivity
 
 pd.options.display.max_columns = None
 pd.options.display.width = 1024
@@ -12,13 +11,18 @@ pd.options.display.width = 1024
 REFRESH = False # force regeneration of all results from original data
 COMPRESS = False # compress output data files
 
+INPUTS = {
+    "COUNTIES" : "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2019_Gazetteer/2019_Gaz_counties_national.zip",
+    }
+OUTPUTS = {}
+
 os.makedirs("geodata/commercial",exist_ok=True)
 
 #
 # Update the counties geodata from the Census bureau data
 #
 if not os.path.exists("counties.csv") or REFRESH:
-    counties = pd.read_csv("https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2019_Gazetteer/2019_Gaz_counties_national.zip",
+    counties = pd.read_csv(INPUTS["COUNTIES"],
         delimiter = '\t',
         usecols = [0,1,3,8,9],
         skiprows = [0],
@@ -30,6 +34,13 @@ if not os.path.exists("counties.csv") or REFRESH:
 else:
     counties = pd.read_csv("counties.csv",dtype={"fips":str})
 counties.set_index("fips",inplace=True)
+
+if "--inputs" in sys.argv:
+    print(" ".join(INPUTS.values()))
+    exit(0)
+elif "--output" in sys.argv:
+    print(" ".join(OUTPUS.values()))
+    exit(0)
 
 #
 # Generate commercial building loadshapes
@@ -111,14 +122,10 @@ if not os.path.exists(f"{basename}.csv") or REFRESH:
         data.columns = [geocode]
         result.append(data)
 
-        sensitivity.analysis(
-            y=data,
-            x=pd.concat([temperature[nearest],solar[nearest]],axis=1),
-            c=[[Theat,Tcool],[]],
-            )
-
         print("ok",file=sys.stderr)
 
     # save results
+    print(f"Saving {basename}.csv",end="...")
     pd.concat(result,axis=1).to_csv(f"{basename}.csv",index=True,header=True)
+    print("done")
 

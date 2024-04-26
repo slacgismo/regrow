@@ -2,8 +2,9 @@
 
 import os, sys
 import pandas as pd
-from nsrdb_weather import geohash
+import geocode as gc
 import config
+import sensitivity
 
 pd.options.display.max_columns = None
 pd.options.display.width = 1024
@@ -24,22 +25,20 @@ if not os.path.exists("counties.csv") or REFRESH:
         names = ["usps","fips","county","latitude","longitude"],
         )
     counties["fips"] = [f"{x:05d}" for x in counties["fips"]]
-    counties["geocode"] = [geohash(float(x[0]),float(x[1])) for x in zip(counties["latitude"],counties["longitude"])]
+    counties["geocode"] = [gc.geohash(float(x[0]),float(x[1])) for x in zip(counties["latitude"],counties["longitude"])]
     counties.to_csv("counties.csv",index=False,header=True)
 else:
     counties = pd.read_csv("counties.csv",dtype={"fips":str})
 counties.set_index("fips",inplace=True)
 
 #
-# Read commercial building loadshapes
+# Generate commercial building loadshapes
 #
 variables = ["cooling[W/sf]","heating[W/sf]","extlight[W/sf]",
             "fans[W/sf]","heat_recovery[W/sf]","heat_rejection[W/sf]",
             "equipment[W/sf]","lighting[W/sf]","pumps[W/sf]","refrigeration[W/sf]",
             "watersystems[W/sf]","totalenergy[W/sf]"]
-
 floorareas = pd.read_csv("com_loadshapes/floorareas.csv",index_col=["county","building_type"])
-
 for file in sorted(os.listdir("com_loadshapes")):
     result = None
     if file.startswith("G") and file.endswith(".csv.zip"):
@@ -81,17 +80,45 @@ for file in sorted(os.listdir("com_loadshapes")):
 
         print("done",file=sys.stderr)
 
+#
+# Generate commercial building geodata
+#
+Tcool = 20 # degC cooling cutoff temperature
+Theat = 15 # degC heating cutoff temperature
 basename = "geodata/commercial"
-if not os.path.exists(f"{basename}.csv"):
+REFRESH = True
+if not os.path.exists(f"{basename}.csv") or REFRESH:
+
+    # Load the weather geodata panels
+    temperature = pd.read_csv("geodata/temperature.csv",index_col=[0],parse_dates=[0])
+    solar = pd.read_csv("geodata/solar.csv",index_col=[0],parse_dates=[0])
+    geosites = dict([(x,gc.geocode(x)) for x in temperature.columns])
+    
+    # Process input files
     result = []
     for file in sorted(os.listdir(basename)):
         print("Processing",file,end="...",flush=True,file=sys.stderr)
         if not file.endswith(".csv"):
             continue
+
+        # find the nearest weather site
         geocode = os.path.splitext(file)[0]
+        nearest = gc.nearest(geocode,geosites)
+        # print("-->",nearest,end="...",flush=True,file=sys.stderr)
+
+        # post result to geodata panel
         data = pd.read_csv(os.path.join(basename,file),index_col=[0],parse_dates=[0])
         data.columns = [geocode]
         result.append(data)
+
+        sensitivity.analysis(
+            y=data,
+            x=pd.concat([temperature[nearest],solar[nearest]],axis=1),
+            c=[[Theat,Tcool],[]],
+            )
+
         print("ok",file=sys.stderr)
+
+    # save results
     pd.concat(result,axis=1).to_csv(f"{basename}.csv",index=True,header=True)
 

@@ -6,46 +6,7 @@ import pandas as pd
 import pvlib
 import os
 import time
-
-def geohash(latitude, longitude, precision=6):
-    """Encode a position given in float arguments latitude, longitude to
-    a geohash which will have the character count precision.
-    """
-    from math import log10
-    __base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
-    __decodemap = { }
-    for i in range(len(__base32)):
-        __decodemap[__base32[i]] = i
-    del i
-    lat_interval, lon_interval = (-90.0, 90.0), (-180.0, 180.0)
-    geohash = []
-    bits = [ 16, 8, 4, 2, 1 ]
-    bit = 0
-    ch = 0
-    even = True
-    while len(geohash) < precision:
-        if even:
-            mid = (lon_interval[0] + lon_interval[1]) / 2
-            if longitude > mid:
-                ch |= bits[bit]
-                lon_interval = (mid, lon_interval[1])
-            else:
-                lon_interval = (lon_interval[0], mid)
-        else:
-            mid = (lat_interval[0] + lat_interval[1]) / 2
-            if latitude > mid:
-                ch |= bits[bit]
-                lat_interval = (mid, lat_interval[1])
-            else:
-                lat_interval = (lat_interval[0], mid)
-        even = not even
-        if bit < 4:
-            bit += 1
-        else:
-            geohash += __base32[ch]
-            bit = 0
-            ch = 0
-    return ''.join(geohash)
+from geocode import geohash
 
 # Let NSRDB login be global variables
 nsrdb_api_key = '4z5fRAXbGB3qldVVd3c6WH5CuhtY5mhgC2DyD952'

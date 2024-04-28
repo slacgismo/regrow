@@ -6,7 +6,7 @@
 
 #include "config.glm"
 
-#version "${VERSION}"
+//#version "${VERSION}"
 
 clock {
     timezone ${TIMEZONE};

@@ -21,6 +21,9 @@ def error(code,msg):
     elif type(code) is Exception:
         raise code
 
+def warning(msg):
+    print(f"WARNING [{options.context}]: {msg}",file=sys.stderr)
+
 def verbose(msg,end="\n"):
     if options.verbose:
         print(msg,end=end,file=sys.stderr,flush=True)
@@ -136,8 +139,11 @@ def distance2(a,b):
 
 def nearest(hash,hashlist,withdist=False):
     """Find the nearest geohash in a list of geohashes"""
-    dist = sorted([(x,distance2(hash,x)) for x in hashlist],key=lambda y:y[1])
-    return dist[0][0],distance(hash,dist[0][0]) if withdist else dist[0][0]
+    if hashlist:
+        dist = sorted([(x,distance2(hash,x)) for x in hashlist],key=lambda y:y[1])
+        return (dist[0][0],distance(hash,dist[0][0])) if withdist else dist[0][0]
+    else:
+        return (None,float('nan')) if withdist else None
 
 #
 # Weather data

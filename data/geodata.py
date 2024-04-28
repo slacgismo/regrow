@@ -12,6 +12,7 @@ from utils import *
 options.context = "commercial.py"
 options.verbose = True
 
+REFRESH = False
 FREQ = "1h"
 
 pd.options.display.max_columns = None
@@ -74,8 +75,26 @@ if __name__ == "__main__":
         heating = "heating[MW]",
         total = "total[MW]",
         )
+
+    verbose("Loading existing county geodata",end="...")
+    for table in geodata:
+        data = pd.read_csv(f"geodata/counties/{table}.csv",index_col=["timestamp"])
+        for column in data:
+            geodata[table].append(pd.DataFrame(data=data[column].values,index=data.index,columns=[column]))
+    verbose("ok")
+
     for state_usps,state_fips in [(states.state_codes_byname[x]["usps"],states.state_codes_byname[x]["fips"]) for x in config.state_list if x in states.state_codes_byname]:
         for puma in [x for x in counties.index.values if x.startswith(state_fips)]:
+
+            # check if data exists already
+            found = 0
+            for table in geodata:
+                if counties.loc[puma]['geocode'] in [list(x.columns)[0] for x in geodata[table]]:
+                    found += 1
+            if found == len(geodata) and not REFRESH:
+                verbose(f"{counties.loc[puma]['county']} {counties.loc[puma]['usps']} geodata is ok")
+                continue # data is up-to-date
+
             geocode = counties.loc[puma]['geocode']
 
             verbose(f"Processing {counties.loc[puma]['county']} {counties.loc[puma]['usps']}",end="...")
@@ -173,14 +192,10 @@ if __name__ == "__main__":
 
                 verbose(err)
 
-            verbose(f"Saving geodata",end="...")
+            # save progress
             os.makedirs("geodata",exist_ok=True)
-
             for item,data in geodata.items():
-                pd.concat(data,axis=1).to_csv(f"geodata/{item}.csv",index=True,header=True)
-                verbose(".",end="")
-
-            verbose("ok")
+                pd.concat(data,axis=1).to_csv(f"geodata/counties/{item}.csv",index=True,header=True)
 
 
 

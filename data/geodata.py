@@ -17,13 +17,22 @@ INPUTS = {
     "COUNTIES" : "counties.csv",
 }
 
-OUTPUTS = {
+INTERIM = {
     "COOLING" : "geodata/counties/cooling.csv",
     "HEATING" : "geodata/counties/heating.csv",
     "SOLAR" : "geodata/counties/solar.csv",
     "TEMPERATURE" : "geodata/counties/temperature.csv",
     "TOTAL" : "geodata/counties/total.csv",
     "WIND" : "geodata/counties/wind.csv",
+}
+
+OUTPUTS = {
+    "COOLING" : "geodata/cooling.csv",
+    "HEATING" : "geodata/heating.csv",
+    "SOLAR" : "geodata/solar.csv",
+    "TEMPERATURE" : "geodata/temperature.csv",
+    "TOTAL" : "geodata/total.csv",
+    "WIND" : "geodata/wind.csv",
 }
 
 REFRESH = False
@@ -68,6 +77,12 @@ weather_data = "{repo}/G{fips}0{puma}0_2018.csv"
 
 if __name__ == "__main__":
 
+    ok = True
+    for file in OUTPUTS.values():
+        ok |= os.path.exist(file)
+    if ok:
+        exit(0)
+        
     counties = pd.read_csv(INPUTS["COUNTIES"],
         converters = {"fips":str},
         index_col = ["fips"],
@@ -92,9 +107,12 @@ if __name__ == "__main__":
 
     verbose("Loading existing county geodata",end="...")
     for table in geodata:
-        data = pd.read_csv(OUTPUTS[table.upper()],index_col=["timestamp"],parse_dates=["timestamp"])
-        for column in data:
-            geodata[table].append(pd.DataFrame(data=data[column].values,index=data.index,columns=[column]))
+        try:
+            data = pd.read_csv(INTERIM[table.upper()],index_col=["timestamp"],parse_dates=["timestamp"])
+            for column in data:
+                geodata[table].append(pd.DataFrame(data=data[column].values,index=data.index,columns=[column]))
+        except:
+            geodata[table] = pd.DataFrame()
     verbose("ok")
 
     for state_usps,state_fips in [(states.state_codes_byname[x]["usps"],states.state_codes_byname[x]["fips"]) for x in config.state_list if x in states.state_codes_byname]:
@@ -108,7 +126,6 @@ if __name__ == "__main__":
                 if geocode in [list(x.columns)[0] for x in geodata[table]]:
                     found += 1
             if found == len(geodata) and not REFRESH:
-                #verbose(f"{counties.loc[puma]['county']} {counties.loc[puma]['usps']} geodata is ok")
                 continue # data is up-to-date
 
             verbose(f"Processing {counties.loc[puma]['county']} {counties.loc[puma]['usps']}",end="...")
@@ -257,102 +274,4 @@ if __name__ == "__main__":
 
     for table,data in node_geodata.items():
         data.round(2).to_csv(f"geodata/{table}.csv",index=True,header=True)
-    # print(node_geodata)
-
-    # nodes = pd.read_csv(INPUTS["NODES"],index_col=[0],usecols=["Bus  Number","Lat","Long"])
-    # node_geocodes = [geohash(x,y,6) for x,y in nodes[["Lat","Long"]].values]
-    # node_map = dict([x,[]] for x in node_geocodes)
-    # for county_geocode in counties['geocode'].values:
-    #     node = nearest(county_geocode,node_geocodes)
-    #     node_map[node].append(county_geocode)
-    # node_geodata = dict([(x,[]) for x in sources])
-    # for node,county_list in node_map.items():
-    #     closest = nearest(node,county_list)
-    #     if not closest:
-    #         warning(f"No counties found for node f{node}")
-    #         continue
-    #     for table in sources:
-    #         if not sources[table].endswith("[MW]"):
-    #             node_geodata[table].append(geodata[table][closest])
-    #     for table in sources:
-    #         if sources[table].endswith("[MW]"):
-    #             data = []
-    #             # print(node,county_list,flush=True)
-    #             for county in county_list:
-    #                 if county in geodata[table].columns:
-    #                     data.append(geodata[table][county])
-    #                 else:
-    #                     warning(f"County {county} not found in geodata")
-    #             node_geodata[table].append(pd.concat(data))
-    # print(node_geodata)
-
-
-    # node_geodata = dict([(x,{}) for x in sources])
-    # weather_map = dict([(x,[]) for x in node_geocodes])
-    # sum_tables = [x for x,y in sources.items() if y.endswith("[MW]")]
-    # for county,node in node_map.items():
-    #     for table in sum_tables: # sum tables for power data
-    #         print(county,node,table,flush=True)
-    #         node_geodata[table][node].append(geodata[table][county])
-    #     weather_map[node].append(county)
-    # print(node_geodata,flush=True)
-    # quit()
-    # near_tables = [x for x,y in sources.items() if not y.endswith("[MW]")]
-    # for node,county in list(weather_map.items()):
-    #     weather_map[node] = nearest(node,county)
-
-
-    # for table in [x for x,y in sources.items() if not y.endswith("[MW]")]: # nearest tables for weather data
-    #     pass
-
     verbose("ok")
-
-
-
-    # for state_usps,state_fips in [(y,z) for x,y,z in states.state_codes if x in config.state_list]:
-    #     print(state_usps,state_fips)
-
-    # with open("commercial/floorareas.csv","w") as fh:
-    #     print("county,building_type,floorarea[sf]",file=fh)
-    #     for state_usps,state_fips in [(y,z) for x,y,z in states.state_codes if x in config.state_list]:
-    #         for n in range(10,99999,20):
-    #             file = f"commercial/G{state_fips}{n:05d}.csv.zip"
-    #             result = []
-    #             for type in commercial_buildings:
-    #                 try:
-    #                     url = comstock_data.format(repo=comstock_server,usps=state_usps,fips=state_fips,puma=f"{n:05d}",type=type)
-    #                     data = pd.read_csv(url,
-    #                         index_col=["timestamp","in.building_type"],
-    #                         usecols = ["timestamp","in.building_type","floor_area_represented",
-    #                             "out.electricity.cooling.energy_consumption","out.electricity.heating.energy_consumption",
-    #                             "out.electricity.exterior_lighting.energy_consumption","out.electricity.fans.energy_consumption",
-    #                             "out.electricity.heat_recovery.energy_consumption","out.electricity.heat_rejection.energy_consumption",
-    #                             "out.electricity.interior_equipment.energy_consumption","out.electricity.interior_lighting.energy_consumption",
-    #                             "out.electricity.pumps.energy_consumption","out.electricity.refrigeration.energy_consumption",
-    #                             "out.electricity.water_systems.energy_consumption","out.site_energy.total.energy_consumption",
-    #                             ],
-    #                         low_memory=True)
-    #                     print("Processing",os.path.basename(url),end="...",flush=True,file=sys.stderr)
-    #                     for column in data.columns:
-    #                         if column.startswith("out."):
-    #                             data[column] = (data[column]/data.floor_area_represented*1000/0.25).round(3)
-    #                     print(f"G{state_fips}{n:05d},{type},{round(data.floor_area_represented.mean(),0)}",file=fh,flush=True)
-    #                     data.drop("floor_area_represented",axis=1,inplace=True)
-    #                     data.index.names = ["datetime","building_type"]
-    #                     data.columns = ["cooling[W/sf]","heating[W/sf]","extlight[W/sf]",
-    #                         "fans[W/sf]","heat_recovery[W/sf]","heat_rejection[W/sf]",
-    #                         "equipment[W/sf]","lighting[W/sf]","pumps[W/sf]","refrigeration[W/sf]",
-    #                         "watersystems[W/sf]","totalenergy[W/sf]"]
-    #                     result.append(data)
-    #                     print("done",file=sys.stderr)
-    #                 except urllib.error.HTTPError:
-    #                     pass
-    #             if result and not os.path.exists(file):
-    #                 print("Saving",f"G{state_fips}{n:05d}",end="...",flush=True,file=sys.stderr)
-    #                 pd.concat(result).to_csv(file,index=True,header=True,compression="zip")
-    #                 print("done",file=sys.stderr)
-    #             else:
-    #                 break
-
-    # os.makedirs("commercial",exist_ok=True)
-

@@ -23,7 +23,7 @@ def error(code,msg):
 
 def verbose(msg,end="\n"):
     if options.verbose:
-        print(msg,end=end,file=sys.stderr)
+        print(msg,end=end,file=sys.stderr,flush=True)
 
 #
 # Geographic location encoding/decoding

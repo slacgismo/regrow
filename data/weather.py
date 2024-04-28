@@ -5,19 +5,19 @@ Syntax: python3 -m weather OPTIONS [...]
 Options
 -------
 
-    -h|--help|help Generate this help
+    -h|--help|help    Generate this help
 
-    --inputs       Generate list of input files
+    --inputs          Generate list of input files
 
-    --outputs      Generate list of output files
+    --outputs         Generate list of output files
 
-    --update       Update weather folder
+    --update          Update weather folder
 
-    --verbose      Enable verbose output (default False)
+    --verbose         Enable verbose output (default False)
 
-    --year=YEAR    Set the year (default 2020)
+    --years=YEAR,...  Set the year(s) (default 2020)
 
-    --freq=FREQ    Set the sampling frequency (default 1h)
+    --freq=FREQ       Set the sampling frequency (default 1h)
 
 Description
 -----------
@@ -57,7 +57,7 @@ OUTPUTS = {
     "wind[m/s]" : "weather/wind.csv",
 }
 
-YEAR = 2020
+YEARS = "2020"
 FREQ = "1h"
 ROUND = 1
 
@@ -66,26 +66,26 @@ if __name__ == "__main__":
     if len(sys.argv) == 1:
         print("".join([x for x in __doc__.split("\n") if x.startswith("Syntax: ")]))
     
-    if "--inputs" in sys.argv:
+    elif "-h" in sys.argv or "--help" in sys.argv or "help" in sys.argv:
+        print(__doc__)
+
+    elif "--inputs" in sys.argv:
         print(' '.join(INPUTS.values()))
 
-    if "--outputs" in sys.argv:
+    elif "--outputs" in sys.argv:
         print(' '.join(OUTPUTS.values()))
 
-    if "--verbose" in sys.argv:
-        options.verbose = True
+    elif "--update" in sys.argv:
+        if "--verbose" in sys.argv:
+            options.verbose = True
 
-    for arg in sys.argv[1:]:
-        if arg.startswith("--year="):
-            YEAR = int(arg.split("=")[1])
-        elif arg.startswith("--freq="):
-            FREQ = arg.split("=")[1]
-        elif arg.startswith("--round="):
-            ROUND = int(arg.split("=")[1])
-        if arg in ["-h","--help","help"]:
-            print(__doc__)
-
-    if "--update" in sys.argv:
+        for arg in sys.argv[1:]:
+            if arg.startswith("--years="):
+                YEARS = arg.split("=")[1]
+            elif arg.startswith("--freq="):
+                FREQ = arg.split("=")[1]
+            elif arg.startswith("--round="):
+                ROUND = int(arg.split("=")[1])
 
         # load WECC bus data
         gis = pd.read_csv("wecc240_gis.csv",index_col=['Bus  Number'])
@@ -93,8 +93,11 @@ if __name__ == "__main__":
         results = {}
         for location in sorted(gis["geocode"].unique()):
             verbose(f"Processing {location}",end="...")
-            data = pd.DataFrame(nsrdb_weather(location,YEAR).resample(FREQ).mean())
-            # print(data,file=sys.stderr)
+            data = []
+            for year in [int(x) for x in YEARS.split(',')]:
+                verbose(".",end="")
+                data.append(pd.DataFrame(nsrdb_weather(location,year).resample(FREQ).mean()))
+            data = pd.concat(data)
             for column in data.columns:
                 if not column in results:
                     results[column] = []

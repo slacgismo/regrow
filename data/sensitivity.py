@@ -27,6 +27,7 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 import cvxpy as cp
+import config
 
 INPUTS = {
     "TEMPERATURE" : "geodata/temperature.csv",
@@ -44,10 +45,8 @@ OUTPUTS = {
     "BASELOAD" : "geodata/baseload.csv",
     "SENSITIVITY" : "sensitivity.csv",
 }
-FORCE = False
-VERBOSE = False
-TCOOL = 20 # degC cooling cutoff temperature
-THEAT = 10 # degC heating cutoff temperature
+TCOOL = config.Tcool # degC cooling cutoff temperature
+THEAT = config.Theat # degC heating cutoff temperature
 FREQ = "1h"
 
 from utils import *
@@ -132,23 +131,28 @@ if __name__ == "__main__" and "--update" in sys.argv:
                 raise Exception("infeasible")
             else:
                 x = x.value
-            ls = {
-                "Weekday" : [x[0]] + [x[0]+y for y in x[1:24]],
-                "Weekend" : [x[24]] + [x[24]+y for y in x[25:48]],
-                }
+
+            # ls = {
+            #     "Weekday" : [x[0]] + [x[0]+y for y in x[1:24]],
+            #     "Weekend" : [x[24]] + [x[24]+y for y in x[25:48]],
+            #     }
+
             Lb = np.array(L) - x[-3:]@M.T[-3:] # baseload 
 
             verbose("ok")
+
         except Exception as err:
-            pd.DataFrame(M,columns=columns).round(4).to_csv(f"sensitivity_{str(err).lower().replace(' ','-')}_{geohash}-M_err.csv")
+
             Lb = L
             x = [0]*n
             verbose(err)
+
         result.append(pd.DataFrame(data=[x[-3:]],index=[geohash],
                                    columns=["heating[MW/degC]","cooling[MW/degC","solar[MW/W/m^2]"]))
         loads.append(pd.DataFrame(data=Lb,index=t,columns=[geohash]).round(4))
 
     verbose("Saving output files",end="...")
+
     result = pd.concat(result).round(3)
     result.index.name = "geocode"
     result.to_csv(OUTPUTS["SENSITIVITY"],index=True,header=True)
@@ -156,5 +160,6 @@ if __name__ == "__main__" and "--update" in sys.argv:
     loads = pd.concat(loads,axis=1)
     loads.index.name = "timestamp"
     loads.to_csv(OUTPUTS["BASELOAD"])
+
     verbose("done")
 

@@ -9,6 +9,7 @@ Options
     -h|--help|help  generate this help document
     --inputs        generate list of input files
     --outputs       generate list of output files
+    --refresh       refresh intermediate files before updating
     --update        update only missing/outdates files
     --verbose       verbose progress updates
 
@@ -53,16 +54,16 @@ FREQ = "1h"
 from utils import *
 
 options.context = "geodata.py"
+pd.options.display.max_columns = None
+pd.options.display.width = None
 
 for arg in read_args(sys.argv,__doc__):
     if arg.startswith("--freq"):
         FREQ = arg.split("=")[1]
+    elif arg == "--refresh":
+        REFRESH = True
     elif arg != "--update":
         raise Exception(f"option '{arg}' is not valid")
-
-
-pd.options.display.max_columns = None
-pd.options.display.width = None
 
 commercial_buildings = [
     "fullservicerestaurant",
@@ -135,7 +136,7 @@ if __name__ == "__main__":
             for column in data:
                 geodata[table].append(pd.DataFrame(data=data[column].values,index=data.index,columns=[column]))
         except:
-            geodata[table] = pd.DataFrame()
+            geodata[table] = []
     verbose("ok")
 
     for state_usps,state_fips in [(states.state_codes_byname[x]["usps"],states.state_codes_byname[x]["fips"]) for x in config.state_list if x in states.state_codes_byname]:
@@ -247,9 +248,9 @@ if __name__ == "__main__":
                 verbose(err)
 
             # save progress
-            os.makedirs("geodata",exist_ok=True)
+            os.makedirs("geodata/counties",exist_ok=True)
             for table,data in geodata.items():
-                pd.concat(data,axis=1).to_csv(OUTPUTS[table.upper()],index=True,header=True)
+                pd.concat(data,axis=1).to_csv(INTERNAL[table.upper()],index=True,header=True)
 
     # final data consolidation for node processing
     verbose("Consolidating county geodata tables",end="...")

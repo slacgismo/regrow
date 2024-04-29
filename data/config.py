@@ -15,3 +15,5 @@ state_list = [
     "Wyoming"
 ]
 year = 2020
+Theat = 10
+Tcool = 20

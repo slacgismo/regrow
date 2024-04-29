@@ -45,7 +45,7 @@ OUTPUTS = {
 }
 FORCE = False
 VERBOSE = False
-TCOOL = 25 # degC cooling cutoff temperature
+TCOOL = 20 # degC cooling cutoff temperature
 THEAT = 10 # degC heating cutoff temperature
 FREQ = "1h"
 
@@ -81,46 +81,40 @@ if __name__ == "__main__" and "--update" in sys.argv:
     # TODO: add other inputs
 
     columns = [f"WD{n:02d}" for n in range(24)]+[f"WE{n:02d}" for n in range(24)]+["TH","TC","S"]
-    def get_model(geohash):
-        _T = pd.DataFrame({"T":temperature[nearest(geohash,list(temperature.columns))]})
-        _S = pd.DataFrame({"S":solar[nearest(geohash,list(solar.columns))]})
-        _L = pd.DataFrame({"L":load[geohash]})
-        #_L.index = pd.to_datetime(_L.index-dt.timedelta(hours=7),utc=True)
-        _L.index = pd.to_datetime(_L.index)
-        data = _T.join(_S).join(_L).dropna()
-        T = data["T"].tolist()
-        S = data["S"].tolist()
-        L = data["L"].tolist()
-        t = data.index
-        
-        M = [[1 if x.weekday()<5 else 0 for x in t]]
-        M.extend([[1 if x.weekday()<5 and x.hour == h else 0 for x in t] for h in range(1,24)])
-        M.append([1 if x.weekday()>4 else 0 for x in t])
-        M.extend([[1 if x.weekday()>4 and x.hour == h else 0 for x in t] for h in range(1,24)])
-        M.extend([
-            [x-THEAT if x<THEAT else 0 for x in T], # heating load
-            [x-TCOOL if x>TCOOL else 0 for x in T], # cooling load
-            S, # solar load]
-        ])
-        M= np.array(M).T
-        x = np.linalg.solve(M.T@M,M.T@L)
-        Y = M@x
-        ls = {"Weekday":[x[0]] + [x[0]+y for y in x[1:24]],
-              "Weekend":[x[24]] + [x[24]+y for y in x[25:48]],
-             }
-        return x,M,Y,ls,t,L,T,S
-
     result = []
     loads = []
     for geohash in load.columns:
         verbose(f"Processing {geohash}",end="...")
         try:
-            x,M,Y,ls,t,L,T,S = get_model(geohash)
+            T = pd.DataFrame({"T":temperature[nearest(geohash,list(temperature.columns))]})
+            S = pd.DataFrame({"S":solar[nearest(geohash,list(solar.columns))]})
+            L = pd.DataFrame({"L":load[geohash]})
+            data = T.join(S).join(L).dropna()
+            T = data["T"].tolist()
+            S = data["S"].tolist()
+            L = data["L"].tolist()
+            t = data.index
+            M = [[1 if x.weekday()<5 else 0 for x in t]]
+            M.extend([[1 if x.weekday()<5 and x.hour == h else 0 for x in t] for h in range(1,24)])
+            M.append([1 if x.weekday()>4 else 0 for x in t])
+            M.extend([[1 if x.weekday()>4 and x.hour == h else 0 for x in t] for h in range(1,24)])
+            M.extend([
+                [x-THEAT if x<THEAT else 0 for x in T], # heating load
+                [x-TCOOL if x>TCOOL else 0 for x in T], # cooling load
+                S, # solar load]
+            ])
+            M= np.array(M).T
+            b = np.array(L)
+            x = np.linalg.solve(M.T@M,M.T@b)
+            Y = M@x
+            ls = {"Weekday":[x[0]] + [x[0]+y for y in x[1:24]],
+                  "Weekend":[x[24]] + [x[24]+y for y in x[25:48]],
+                 }
             a,b,c = x[-3:]
             Lb = np.array(L) - a*np.array(S) - b*np.array([THEAT-x if x<THEAT else 0 for x in T]) - c*np.array([TCOOL-x if x>TCOOL else 0 for x in T])
             verbose("ok")
         except Exception as err:
-            pd.DataFrame(M,columns=columns).round(4).to_csv(f"weather_sensitivity_{str(err).lower().replace(' ','-')}_{geohash}-M_err.csv")
+            pd.DataFrame(M,columns=columns).round(4).to_csv(f"sensitivity_{str(err).lower().replace(' ','-')}_{geohash}-M_err.csv")
             Lb = L
             x=[0,0,0]*3
             verbose(err)

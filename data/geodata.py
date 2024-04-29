@@ -1,6 +1,13 @@
-"""Commercial building loadshapes
+"""Building load geodata
 
-This script updates the files in the com_loadshapes folder.
+This script generates the building load and weather geodata for the nodes in the system.
+
+- cooling.csv
+- heating.csv
+- solar.csv
+- temperature.csv
+- total.csv
+- wind.csv
 """
 
 import os,sys
@@ -79,7 +86,7 @@ if __name__ == "__main__":
 
     ok = True
     for file in OUTPUTS.values():
-        ok |= os.path.exist(file)
+        ok |= os.path.exists(file)
     if ok:
         exit(0)
         

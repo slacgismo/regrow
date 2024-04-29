@@ -26,6 +26,7 @@ import os, sys
 import numpy as np
 import pandas as pd
 import datetime as dt
+import cvxpy as cp
 
 INPUTS = {
     "TEMPERATURE" : "geodata/temperature.csv",
@@ -86,6 +87,8 @@ if __name__ == "__main__" and "--update" in sys.argv:
     for geohash in load.columns:
         verbose(f"Processing {geohash}",end="...")
         try:
+
+            # data
             T = pd.DataFrame({"T":temperature[nearest(geohash,list(temperature.columns))]})
             S = pd.DataFrame({"S":solar[nearest(geohash,list(solar.columns))]})
             L = pd.DataFrame({"L":load[geohash]})
@@ -94,29 +97,52 @@ if __name__ == "__main__" and "--update" in sys.argv:
             S = data["S"].tolist()
             L = data["L"].tolist()
             t = data.index
+
+            # measurements
             M = [[1 if x.weekday()<5 else 0 for x in t]]
             M.extend([[1 if x.weekday()<5 and x.hour == h else 0 for x in t] for h in range(1,24)])
             M.append([1 if x.weekday()>4 else 0 for x in t])
             M.extend([[1 if x.weekday()>4 and x.hour == h else 0 for x in t] for h in range(1,24)])
             M.extend([
-                [x-THEAT if x<THEAT else 0 for x in T], # heating load
-                [x-TCOOL if x>TCOOL else 0 for x in T], # cooling load
+                [x-THEAT if x<THEAT else 0 for x in T], # heating delta T
+                [x-TCOOL if x>TCOOL else 0 for x in T], # cooling delta T
                 S, # solar load]
             ])
-            M= np.array(M).T
+            M = np.array(M).T
             b = np.array(L)
-            x = np.linalg.solve(M.T@M,M.T@b)
-            Y = M@x
-            ls = {"Weekday":[x[0]] + [x[0]+y for y in x[1:24]],
-                  "Weekend":[x[24]] + [x[24]+y for y in x[25:48]],
-                 }
-            a,b,c = x[-3:]
-            Lb = np.array(L) - a*np.array(S) - b*np.array([THEAT-x if x<THEAT else 0 for x in T]) - c*np.array([TCOOL-x if x>TCOOL else 0 for x in T])
+            
+            # least squares fit solution
+            n = len(M[0])
+            m = len(M)
+            x = cp.Variable(n)
+            def constraint(i):
+                result = [0]*n
+                result[i] = 1
+                return result
+            cost = cp.sum_squares(M@x-b) # least squares cost function
+            cp.Problem(
+                cp.Minimize(cost),
+                [ 
+                    constraint(0)@x >= 0,
+                    constraint(-3)@x <= 0,
+                    constraint(-2)@x >= 0,
+                ]
+                ).solve()
+            if x.value is None:
+                raise Exception("infeasible")
+            else:
+                x = x.value
+            ls = {
+                "Weekday" : [x[0]] + [x[0]+y for y in x[1:24]],
+                "Weekend" : [x[24]] + [x[24]+y for y in x[25:48]],
+                }
+            Lb = np.array(L) - x[-3:]@M.T[-3:] # baseload 
+
             verbose("ok")
         except Exception as err:
             pd.DataFrame(M,columns=columns).round(4).to_csv(f"sensitivity_{str(err).lower().replace(' ','-')}_{geohash}-M_err.csv")
             Lb = L
-            x=[0,0,0]*3
+            x = [0]*n
             verbose(err)
         result.append(pd.DataFrame(data=[x[-3:]],index=[geohash],
                                    columns=["heating[MW/degC]","cooling[MW/degC","solar[MW/W/m^2]"]))

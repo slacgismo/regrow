@@ -149,7 +149,7 @@ if __name__ == "__main__":
             for table in geodata:
                 if geocode in [list(x.columns)[0] for x in geodata[table]]:
                     found += 1
-            if found == len(geodata) and not REFRESH:
+            if found == len(geodata):
                 continue # data is up-to-date
 
             verbose(f"Processing {counties.loc[puma]['county']} {counties.loc[puma]['usps']}",end="...")

@@ -5,13 +5,27 @@ app = marimo.App(width="full")
 
 
 @app.cell
-def __(os, pd):
+def __(mo):
+    mo.md("# Load model validation")
+    return
+
+
+@app.cell
+def __(mo):
+    set_ui = mo.ui.switch()
+    mo.hstack([mo.md("Data aggregation: Node level"),set_ui,mo.md("County level")],justify='start')
+    return set_ui,
+
+
+@app.cell
+def __(os, pd, set_ui):
     #
     # Review results of data curation
     #
+    folder = "geodata/counties" if set_ui.value else "geodata"
     data = dict([
         (os.path.splitext(os.path.basename(file))[0],
-        pd.read_csv(os.path.join("geodata",file),index_col=[0],parse_dates=[0])) for file in os.listdir("geodata") if file.endswith(".csv")])
+        pd.read_csv(os.path.join(folder if set_ui.value else folder,file),index_col=[0],parse_dates=[0])) for file in os.listdir(folder) if file.endswith(".csv")])
 
     label = {
         "baseload" : "MW",
@@ -22,19 +36,26 @@ def __(os, pd):
         "wind" : "m/s",
         "solar" : "W/m$^2$",
     }
-    return data, label
+    return data, folder, label
 
 
 @app.cell
-def __(data, panel_ui, pd, utils):
-    _wecc = pd.read_csv("wecc240_gis.csv",index_col=[0],usecols=[1,11,12])
-    _wecc["geocode"] = [utils.geohash(x,y,6) for x,y in _wecc[["Lat","Long"]].values]
-    _wecc.drop(["Lat","Long"],inplace=True,axis=1)
-    _wecc.index = [x.title() for x in _wecc.index]
-    _wecc = _wecc[~_wecc.index.duplicated(keep='first')]
-
-    #buslist = _wecc["geocode"].sort_index().to_dict()
-    buslist = list(data[panel_ui.value].columns)
+def __(data, panel_ui, pd, set_ui, utils):
+    if set_ui.value:
+        _locations = pd.read_csv("counties.csv",usecols=[0,2,5],index_col=[0,1])
+        # buslist = list(data[panel_ui.value].columns)
+        _locations.index = [' '.join(x) for x in _locations.index]
+        buslist = _locations[_locations["geocode"].isin(data[panel_ui.value].columns)].to_dict()["geocode"]
+    else:
+        _locations = pd.read_csv("wecc240_gis.csv",index_col=[0],usecols=[1,11,12])
+        _locations["geocode"] = [utils.geohash(x,y,6) for x,y in _locations[["Lat","Long"]].values]
+        _locations.drop(["Lat","Long"],inplace=True,axis=1)
+        _locations.index = [x.title() for x in _locations.index]
+        _locations = _locations[~_locations.index.duplicated(keep='first')]
+        # buslist = dict([(x,y) for x,y in _locations["geocode"].sort_index().to_dict().items() if x in data[panel_ui.value].columns])
+        # buslist =_locations["geocode"].sort_index().to_dict()
+        buslist = list(data[panel_ui.value].columns)
+    # buslist
     return buslist,
 
 
@@ -83,7 +104,7 @@ def __(data, geocode_ui, label, panel_ui):
                                                 linewidth = 0,
                                                 grid = True,
                                                 ylabel = label[panel_ui.value],
-                                                title = geocode_ui.value + " " + panel_ui.value.title(),
+                                                title = geocode_ui.selected_key + " " + panel_ui.value.title(),
                                                )
     _fig.figure.tight_layout()
     _fig

@@ -4,6 +4,22 @@ import pandas as pd
 import math
 
 #
+# Command args
+#
+def read_args(argv,docs=__doc__):
+    if len(argv) == 1:
+        print("\n".join([x for x in docs.split("\n") if x.startswith("Syntax: ")]))
+        exit(1)
+    elif "-h" in argv or "--help" in argv or "help" in argv:
+        print(__doc__)
+        exit(0)
+    elif "--verbose" in argv:
+        options.verbose = True
+        argv.remove("--verbose")
+    return argv[1:]
+
+
+#
 # General messaging to stderr
 #
 class options:

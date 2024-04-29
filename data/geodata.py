@@ -1,13 +1,21 @@
 """Building load geodata
 
-This script generates the building load and weather geodata for the nodes in the system.
+Syntax: python3 -m geodata OPTION [...]
 
-- cooling.csv
-- heating.csv
-- solar.csv
-- temperature.csv
-- total.csv
-- wind.csv
+Options
+-------
+
+    --freq=FREQ     set the data resample frequency (default is 1H)
+    -h|--help|help  generate this help document
+    --inputs        generate list of input files
+    --outputs       generate list of output files
+    --update        update only missing/outdates files
+    --verbose       verbose progress updates
+
+Description
+-----------
+
+This script generates the building load and weather geodata for the nodes in the system.
 """
 
 import os,sys
@@ -15,16 +23,13 @@ import pandas as pd
 import config
 import states
 import urllib
-from utils import *
-options.context = "commercial.py"
-options.verbose = True
 
 INPUTS = {
     "NODES" : "wecc240_gis.csv",
     "COUNTIES" : "counties.csv",
 }
 
-INTERIM = {
+INTERNAL = {
     "COOLING" : "geodata/counties/cooling.csv",
     "HEATING" : "geodata/counties/heating.csv",
     "SOLAR" : "geodata/counties/solar.csv",
@@ -44,6 +49,17 @@ OUTPUTS = {
 
 REFRESH = False
 FREQ = "1h"
+
+from utils import *
+
+options.context = "geodata.py"
+
+for arg in read_args(sys.argv,__doc__):
+    if arg.startswith("--freq"):
+        FREQ = arg.split("=")[1]
+    elif arg != "--update":
+        raise Exception(f"option '{arg}' is not valid")
+
 
 pd.options.display.max_columns = None
 pd.options.display.width = None
@@ -87,7 +103,7 @@ if __name__ == "__main__":
     ok = True
     for file in OUTPUTS.values():
         ok |= os.path.exists(file)
-    if ok:
+    if ok and not REFRESH:
         exit(0)
         
     counties = pd.read_csv(INPUTS["COUNTIES"],
@@ -115,7 +131,7 @@ if __name__ == "__main__":
     verbose("Loading existing county geodata",end="...")
     for table in geodata:
         try:
-            data = pd.read_csv(INTERIM[table.upper()],index_col=["timestamp"],parse_dates=["timestamp"])
+            data = pd.read_csv(INTERNAL[table.upper()],index_col=["timestamp"],parse_dates=["timestamp"])
             for column in data:
                 geodata[table].append(pd.DataFrame(data=data[column].values,index=data.index,columns=[column]))
         except:

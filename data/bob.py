@@ -112,15 +112,48 @@ def __(data, geocode_ui, label, panel_ui):
 
 
 @app.cell
+def __(data, geocode_ui, mo, panel_ui):
+    num_days = len(data[panel_ui.value][geocode_ui.value]) // 24
+    start_day = mo.ui.slider(0, num_days, label='start day')
+    num_days = mo.ui.slider(1, 30, label='num days')
+    mo.hstack([start_day, num_days])
+    return num_days, start_day
+
+
+@app.cell
+def __(data, geocode_ui, label, num_days, panel_ui, start_day):
+    _fig = data[panel_ui.value][geocode_ui.value].iloc[int(start_day.value*24):int((start_day.value+num_days.value)*24)].plot(marker = '.',
+                                                figsize=(10,5),
+                                                markersize = 1,
+                                                linewidth = 1,
+                                                grid = True,
+                                                ylabel = label[panel_ui.value],
+                                                title = geocode_ui.selected_key + " " + panel_ui.value.title(),
+                                               )
+    _fig.figure.tight_layout()
+    _fig
+    return
+
+
+@app.cell
+def __(data, geocode_ui, panel_ui, sns):
+    heatmap_data = data[panel_ui.value][geocode_ui.value].values
+    heatmap_data = heatmap_data[:8760].reshape((24,-1), order='F')
+    sns.heatmap(heatmap_data, cmap='plasma')
+    return heatmap_data,
+
+
+@app.cell
 def __():
     import os, sys
     import marimo as mo
     import pandas as pd
     import utils
+    import seaborn as sns
 
     pd.options.display.max_columns = None
     pd.options.display.width = None
-    return mo, os, pd, sys, utils
+    return mo, os, pd, sns, sys, utils
 
 
 if __name__ == "__main__":

@@ -1,5 +1,7 @@
 To update the GLM file, run the Makefile.
 
+    make
+
 # Validation
 
 To review the load model, run the following marimo app:

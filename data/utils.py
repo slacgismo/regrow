@@ -188,6 +188,8 @@ def nsrdb_weather(location,year,interval=5,
     Parameters
     ----------
     location: Str.
+        Geohash of a particular location that will be decoded to get lat-long
+        coordinates.
     year: Int.
         Year of data we want to pull data for.
     interval: Int.

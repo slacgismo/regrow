@@ -2,6 +2,7 @@ import os, sys
 import json
 import pandas as pd
 import math
+import pvlib
 
 #
 # Command args
@@ -171,26 +172,54 @@ def nsrdb_credentials(path=os.path.join(os.environ["HOME"],".nsrdb","credentials
     except Exception as err:
         error(E_INVAL,f"~/.nsrdb/credentials.json read failed - {err}")
 
-def nsrdb_weather(location,year,interval=30,attributes={
-        "solar[W/m^2]" : "ghi",
-        "temperature[degC]" : "air_temperature",
-        "wind[m/s]" : "wind_speed",
-    }):
+def nsrdb_weather(location,year,interval=5,
+                  attributes=['dhi',
+                              'dni',
+                              'ghi',
+                              'wind_direction',
+                              'wind_speed',
+                              'air_temperature',
+                              'dew_point',
+                              'relative_humidity',
+                              'total_precipitable_water']):
+    """
+    Pull NSRDB data for a particular year and location. 
+    
+    Parameters
+    ----------
+    location: Str.
+    year: Int.
+        Year of data we want to pull data for.
+    interval: Int.
+        Frequency of data in minutes. Default 5
+    attributes: List of strings.
+        Desired data fields to return. See pvlib documentaton for the
+        full list:
+        https://pvlib-python.readthedocs.io/en/v0.9.0/generated/pvlib.iotools.get_psm3.html
+    
+    Returns
+    -------
+    Pandas dataframe containing 'attribute' fields, with UTC ISO format
+    datetime index.
+    """
     lat,lon = geocode(location)
     leap = (year%4 == 0)
-    utc = True
-    email,apikey = nsrdb_credentials()
-    server = "https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv"
-    url = f"{server}?wkt=POINT({lon}%20{lat})&names={year}&leap_day={str(leap).lower()}&interval={interval}&utc={str(utc).lower()}&api_key={apikey}&attributes={','.join(attributes.values())}&email={email}&full_name=None&affiliation=None&mailing_list=false&reason=None"
-    data = pd.read_csv(url,skiprows=2,
-        # parse_dates={"timestamp":['Year','Month','Day','Hour','Minute']},
-        # index_col=[0],
-        # date_format = "YYYY m d H M", # this won't work but omitting it results in a date format warning
-        converters = dict([[x,float] for x in attributes.values()]),
-        )
-    data["timestamp"] = [pd.to_datetime(f"{Y} {m} {d} {H} {M}",format="%Y %m %d %H %M",yearfirst=True,utc=True) for Y,m,d,H,M in data[["Year","Month","Day","Hour","Minute"]].values]
-    data.set_index("timestamp",inplace=True)
-    data.drop(['Year','Month','Day','Hour','Minute'],axis=1,inplace=True)
-    # data.index = [pd.to_datetime(f"{Y} {m} {d} {H} {M}",format="%Y %m %d %H %M",yearfirst=True,utc=True) for Y,m,d,H,M in data[["Year","Month","Day","Hour","Minute"]].values]
-    data.columns = attributes.keys()
-    return data.sort_index()
+    email, api_key = nsrdb_credentials()
+    # Pull from API and save locally
+    psm3, _ = pvlib.iotools.get_psm3(lat, lon,
+                                    api_key,
+                                    email, year,
+                                    attributes=attributes,
+                                    map_variables=True,
+                                    interval=interval,
+                                    leap_day=leap,
+                                    timeout=60)
+    cols_to_remove = ['Year', 'Month', 'Day', 'Hour', 'Minute']
+    psm3 = psm3.drop(columns=cols_to_remove)
+    psm3.index = pd.to_datetime(psm3.index)
+    psm3 = psm3.rename(columns={"key_0": "datetime"})
+    psm3 = psm3.round(3)
+    # Set datetime index to ISO UTC format
+    psm3.index = psm3.index.tz_convert('UTC')
+    psm3.index = psm3.index.map(lambda x: x.isoformat())
+    return psm3.sort_index()

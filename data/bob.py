@@ -30,8 +30,8 @@ def __(os, pd, set_ui):
     label = {
         "baseload" : "MW",
         "total" : "MW",
-        "heating" : "MW/$^o$C",
-        "cooling" : "MW/$^o$C",
+        "heating" : "MW",
+        "cooling" : "MW",
         "temperature"  : "$^o$C",
         "wind" : "m/s",
         "solar" : "W/m$^2$",

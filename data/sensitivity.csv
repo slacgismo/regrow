@@ -1,4 +1,4 @@
-geocode,heating[MW/degC],cooling[MW/degC,solar[MW/W/m^2]
+geocode,heating[MW/degC],cooling[MW/degC],solar[MW/W/m^2]
 9wdb95,-2.652,8.991,-0.046
 9we1bp,-5.278,55.01,-0.215
 9w1zzg,-2.922,27.064,-0.082

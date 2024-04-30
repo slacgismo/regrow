@@ -148,7 +148,7 @@ if __name__ == "__main__" and "--update" in sys.argv:
             verbose(err)
 
         result.append(pd.DataFrame(data=[x[-3:]],index=[geohash],
-                                   columns=["heating[MW/degC]","cooling[MW/degC","solar[MW/W/m^2]"]))
+                                   columns=["heating[MW/degC]","cooling[MW/degC]","solar[MW/W/m^2]"]))
         loads.append(pd.DataFrame(data=Lb,index=t,columns=[geohash]).round(4))
 
     verbose("Saving output files",end="...")

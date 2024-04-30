@@ -9,7 +9,7 @@ import config
 import states
 from utils import *
 
-YEAR = 2020
+YEAR = 2019
 ROUND = 1
 
 if __name__ == "__main__":

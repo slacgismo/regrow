@@ -1,3 +1,22 @@
+"""Update the node data
+
+Options
+-------
+
+	--update
+	--inputs
+	--outputs
+"""
+
+INPUTS = {
+	"COUNTIES" : "counties.csv",
+	"NETWORK" : "wecc240_gis.csv",
+}
+
+OUTPUTS = {
+	"NODES" : "nodes.csv",
+}
+
 import os, sys
 import datetime as dt
 import pandas as pd
@@ -6,6 +25,12 @@ import states
 from utils import *
 
 if __name__ == "__main__":
+
+	options.context = "nodes.py"
+
+	for arg in read_args(sys.argv,__doc__):
+		if arg != "--update":
+	        raise Exception(f"option '{arg}' is not valid")
 
 	state_list = [states.state_codes_byname[x]["usps"] for x in config.state_list if x in [y[0] for y in states.state_codes]]
 	# print(state_list)

@@ -89,7 +89,7 @@ def __(os, pd, set_ui):
 
 
 @app.cell
-def __(data, panel_ui, pd, set_ui):
+def __(data, panel_ui, pd, set_ui, utils):
     #
     # Network bus list (nodes)
     #
@@ -100,7 +100,11 @@ def __(data, panel_ui, pd, set_ui):
         buslist = _locations[_locations["geocode"].isin(data[panel_ui.value].columns)].to_dict()["geocode"]
     else:
         _locations = pd.read_csv("nodes.csv",index_col=[0])
-        buslist = dict([(y.title(),x) for x,y in _locations.sort_values("Bus  Name").to_dict()["Bus  Name"].items() if x in data[panel_ui.value].columns])
+        _counties = pd.read_csv("counties.csv",index_col=[5])
+        def _county(x):
+            _nearest = utils.nearest(x,_counties.index.values)
+            return " ".join(_counties.loc[_nearest][["county","usps"]].values)
+        buslist = dict([(f"{y.title()} ({_county(x)})",x) for x,y in _locations.sort_values("Bus  Name").to_dict()["Bus  Name"].items() if x in data[panel_ui.value].columns])
         # buslist = list(data[panel_ui.value].columns)
     # buslist
     return buslist,

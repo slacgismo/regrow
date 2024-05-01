@@ -37,6 +37,12 @@ module pypower
 //
 #include "../data/powerplants.glm"
 #include "../data/powerplants_gis.glm"
+
+//
+// Load loads data
+//
+#include "../data/loads.glm"
+
 //
 // Save the final result to JSON
 //

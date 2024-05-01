@@ -9,22 +9,34 @@ import config
 import states
 from utils import *
 
-YEAR = 2019
+INPUTS = {
+	"COUNTIES" : "counties.csv",
+	"NETWORK" : "wecc240_gis.csv",
+	"SENSITIVITY" : "sensitivity.csv",
+	"GEODATA" : " ".join([os.path.join("geodata",x) for x in os.listdir("geodata") if x.endswith(".csv")]),
+	"WEATHER" : " ".join([os.path.join("weather",x) for x in os.listdir("weather") if x.endswith(".csv")]),
+}
+
+YEAR = 2020
 ROUND = 1
+
+OUTPUTS = {
+	"LOADYEAR" : f"load_{YEAR}.csv",
+}
 
 if __name__ == "__main__":
 
 	state_list = [states.state_codes_byname[x]["usps"] for x in config.state_list if x in [y[0] for y in states.state_codes]]
 	# print(state_list)
 
-	counties = pd.read_csv("counties.csv",index_col=["geocode"])
+	counties = pd.read_csv(INPUTS["COUNTIES"],index_col=["geocode"])
 	counties = counties[counties["usps"].isin(state_list)]
 
 	#
 	# Load network data
 	#
 
-	network = pd.read_csv("wecc240_gis.csv",usecols=["Bus  Name","Lat","Long"])
+	network = pd.read_csv(INPUTS["NETWORK"],usecols=["Bus  Name","Lat","Long"])
 	network["geocode"] = [geohash(x,y) for x,y in network[["Lat","Long"]].values]
 	network.set_index("geocode",inplace=True)
 	network = network[~network.index.duplicated(keep='first')]
@@ -101,6 +113,6 @@ if __name__ == "__main__":
 		+ cooling * sensitivity.loc["cooling[MW/degC]"] \
 		+ weather["solar"] * sensitivity.loc["solar[MW/W/m^2]"]
 
-	target.round(ROUND).to_csv(f"load_{YEAR}.csv",index=True,header=True)
+	target.round(ROUND).to_csv(OUTPUTS["LOADYEAR"],index=True,header=True)
 
 

@@ -98,10 +98,11 @@ if __name__ == "__main__" and "--update" in sys.argv:
             t = data.index
 
             # measurements
-            M = [[1 if x.weekday()<5 else 0 for x in t]]
-            M.extend([[1 if x.weekday()<5 and x.hour == h else 0 for x in t] for h in range(1,24)])
-            M.append([1 if x.weekday()>4 else 0 for x in t])
-            M.extend([[1 if x.weekday()>4 and x.hour == h else 0 for x in t] for h in range(1,24)])
+            workday = dict([(x,is_workday(x)) for x in t])
+            M = [[1 if workday[x] else 0 for x in t]]
+            M.extend([[1 if workday[x] and x.hour == h else 0 for x in t] for h in range(1,24)])
+            M.append([1 if ~workday[x] else 0 for x in t])
+            M.extend([[1 if ~workday[x] and x.hour == h else 0 for x in t] for h in range(1,24)])
             M.extend([
                 [x-THEAT if x<THEAT else 0 for x in T], # heating delta T
                 [x-TCOOL if x>TCOOL else 0 for x in T], # cooling delta T
@@ -144,7 +145,7 @@ if __name__ == "__main__" and "--update" in sys.argv:
         except Exception as err:
 
             Lb = L
-            x = [0]*n
+            x = [0]*len(columns)
             verbose(err)
 
         result.append(pd.DataFrame(data=[x[-3:]],index=[geohash],

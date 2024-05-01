@@ -217,7 +217,7 @@ def __(data, geocode_ui, label, panel_ui, plt, sns):
     heatmap_data = data[panel_ui.value][geocode_ui.value].values
     heatmap_data = heatmap_data[:8760].reshape((24,-1), order='F')
     heatmap_plot = sns.heatmap(heatmap_data, cmap='plasma')
-    heatmap_plot.set(xlabel='Day', ylabel='Hour (UTC)')
+    heatmap_plot.set(xlabel='Day', ylabel='Hour')
     heatmap_plot.collections[0].colorbar.set_label(label[panel_ui.value])
     return heatmap_data, heatmap_plot
 

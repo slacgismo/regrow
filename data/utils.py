@@ -2,6 +2,7 @@ import os, sys
 import json
 import pandas as pd
 import math
+import datetime as dt
 
 #
 # Command args
@@ -155,11 +156,28 @@ def distance2(a,b):
 
 def nearest(hash,hashlist,withdist=False):
     """Find the nearest geohash in a list of geohashes"""
-    if hashlist:
+    if len(hashlist) > 0:
         dist = sorted([(x,distance2(hash,x)) for x in hashlist],key=lambda y:y[1])
         return (dist[0][0],distance(hash,dist[0][0])) if withdist else dist[0][0]
     else:
         return (None,float('nan')) if withdist else None
+
+#
+# Calendar data
+#
+holidays = []
+def is_workday(date,date_format="%Y-%m-%d %H:%M:%S"):
+    global holidays
+    if len(holidays) == 0:
+        holidays = pd.read_csv("holidays.csv",
+            index_col=[0],
+            parse_dates=[0],
+            date_format="%Y-%m-%d").sort_index()
+    if type(date) is str:
+        date = dt.datetime.strptime(date,date_format)
+    if date.year < holidays.index.min().year or date.year > holidays.index.max().year:
+        warning(f"is_workday(date='{date}',date_format='{date_format}') date is not in range of known holidays")
+    return date.weekday()<5 and date not in holidays.index
 
 #
 # Weather data
@@ -182,12 +200,13 @@ def nsrdb_weather(location,year,interval=30,attributes={
     email,apikey = nsrdb_credentials()
     server = "https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv"
     url = f"{server}?wkt=POINT({lon}%20{lat})&names={year}&leap_day={str(leap).lower()}&interval={interval}&utc={str(utc).lower()}&api_key={apikey}&attributes={','.join(attributes.values())}&email={email}&full_name=None&affiliation=None&mailing_list=false&reason=None"
-    data = pd.read_csv(url,skiprows=2,
-        # parse_dates={"timestamp":['Year','Month','Day','Hour','Minute']},
-        # index_col=[0],
-        # date_format = "YYYY m d H M", # this won't work but omitting it results in a date format warning
-        converters = dict([[x,float] for x in attributes.values()]),
-        )
+    try:
+        data = pd.read_csv(url,skiprows=2,
+            converters = dict([[x,float] for x in attributes.values()]),
+            )
+    except Exception as err:
+        error(E_INVAL,f"{url} - {err}")
+        raise
     data["timestamp"] = [pd.to_datetime(f"{Y} {m} {d} {H} {M}",format="%Y %m %d %H %M",yearfirst=True,utc=True) for Y,m,d,H,M in data[["Year","Month","Day","Hour","Minute"]].values]
     data.set_index("timestamp",inplace=True)
     data.drop(['Year','Month','Day','Hour','Minute'],axis=1,inplace=True)

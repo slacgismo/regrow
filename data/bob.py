@@ -70,7 +70,11 @@ def __(os, pd, set_ui):
     folder = "geodata/counties" if set_ui and set_ui.value else "geodata"
     data = dict([
         (os.path.splitext(os.path.basename(file))[0],
-        pd.read_csv(os.path.join(folder if set_ui and set_ui.value else folder,file),index_col=[0],parse_dates=[0])) for file in os.listdir(folder) if file.endswith(".csv")])
+        pd.read_csv(os.path.join(folder if set_ui and set_ui.value else folder,file),
+                    index_col=[0],
+                    parse_dates=[0],
+                    # date_format="%Y-%m-%d %H:%M:%S+00:00",
+                   )) for file in os.listdir(folder) if file.endswith(".csv")])
 
     label = {
         "baseload" : "MW",
@@ -85,7 +89,7 @@ def __(os, pd, set_ui):
 
 
 @app.cell
-def __(data, panel_ui, pd, set_ui, utils):
+def __(data, panel_ui, pd, set_ui):
     #
     # Network bus list (nodes)
     #
@@ -95,14 +99,9 @@ def __(data, panel_ui, pd, set_ui, utils):
         _locations.index = [' '.join(x) for x in _locations.index]
         buslist = _locations[_locations["geocode"].isin(data[panel_ui.value].columns)].to_dict()["geocode"]
     else:
-        _locations = pd.read_csv("wecc240_gis.csv",index_col=[0],usecols=[1,11,12])
-        _locations["geocode"] = [utils.geohash(x,y,6) for x,y in _locations[["Lat","Long"]].values]
-        _locations.drop(["Lat","Long"],inplace=True,axis=1)
-        _locations.index = [x.title() for x in _locations.index]
-        _locations = _locations[~_locations.index.duplicated(keep='first')]
-        # buslist = dict([(x,y) for x,y in _locations["geocode"].sort_index().to_dict().items() if x in data[panel_ui.value].columns])
-        # buslist =_locations["geocode"].sort_index().to_dict()
-        buslist = list(data[panel_ui.value].columns)
+        _locations = pd.read_csv("nodes.csv",index_col=[0])
+        buslist = dict([(y.title(),x) for x,y in _locations.sort_values("Bus  Name").to_dict()["Bus  Name"].items() if x in data[panel_ui.value].columns])
+        # buslist = list(data[panel_ui.value].columns)
     # buslist
     return buslist,
 
@@ -192,14 +191,15 @@ def __(data, geocode_ui, label, num_days, panel_ui, start_day):
     #
     # Zoom level plot
     #
-    zoom_plot = data[panel_ui.value][geocode_ui.value].iloc[int(start_day.value*24):int((start_day.value+num_days.value)*24)].plot(marker = '.',
-                                                figsize=(10,5),
-                                                markersize = 1,
-                                                linewidth = 1,
-                                                grid = True,
-                                                ylabel = label[panel_ui.value],
-                                                title = geocode_ui.selected_key + " " + panel_ui.value.title(),
-                                               )
+    zoom_plot = data[panel_ui.value][geocode_ui.value].iloc[int(start_day.value*24):int((start_day.value+num_days.value)*24)].plot(
+        marker = '.',
+        figsize=(10,5),
+        markersize = 1,
+        linewidth = 1,
+        grid = True,
+        ylabel = label[panel_ui.value],
+        title = geocode_ui.selected_key + " " + panel_ui.value.title(),
+       )
     zoom_plot.figure.tight_layout()
     return zoom_plot,
 
@@ -227,13 +227,14 @@ def __():
     import marimo as mo
     import pandas as pd
     import utils
+    import states
     import seaborn as sns
     import matplotlib.pyplot as plt
     import datetime as dt
 
     pd.options.display.max_columns = None
     pd.options.display.width = None
-    return dt, mo, os, pd, plt, sns, sys, utils
+    return dt, mo, os, pd, plt, sns, states, sys, utils
 
 
 if __name__ == "__main__":

@@ -4,6 +4,7 @@ import pandas as pd
 import math
 import psm3 as pvlib_psm3
 import datetime as dt
+import psm3 as pvlib_psm3
 
 #
 # Command args
@@ -194,14 +195,15 @@ def nsrdb_credentials(path=os.path.join(os.environ["HOME"],".nsrdb","credentials
             return list(json.load(fh).items())[0]
     except Exception as err:
         error(E_INVAL,f"~/.nsrdb/credentials.json read failed - {err}")
-
+        
+        
 def nsrdb_weather(location,year,
                   interval=30,
                   attributes={"solar[W/m^2]" : "ghi",
                               "temperature[degC]" : "air_temperature",
                               "wind[m/s]" : "wind_speed",
                               'dhi[W/m^2]': 'dhi',
-                              'dhi[W/m^2]': 'dni',
+                              'dni[W/m^2]': 'dni',
                               'winddirection[deg]': 'wind_direction',
                               'dewpoint[degC]': 'dew_point',
                               'relhumidity[pct]': 'relative_humidity',
@@ -219,9 +221,9 @@ def nsrdb_weather(location,year,
         Year of data we want to pull data for.
     interval: Int.
         Frequency of data in minutes. Default 5
-    attributes: List of strings.
-        Desired data fields to return. See pvlib documentaton for the
-        full list:
+    attributes: Dictionary of string keys/values.
+        Desired data fields to return as values, and final column names as keys.
+        See pvlib documentaton for the full list of fields in NSRDB:
         https://pvlib-python.readthedocs.io/en/v0.9.0/generated/pvlib.iotools.get_psm3.html
     
     Returns
@@ -233,21 +235,19 @@ def nsrdb_weather(location,year,
     leap = (year%4 == 0)
     email, api_key = nsrdb_credentials()
     # Pull from API and save locally
-    psm3, _ = pvlib.iotools.get_psm3(lat, lon,
-                                    api_key,
-                                    email, year,
-                                    attributes=attributes.values() if type(attributes) is dict else attributes,
-                                    map_variables=True,
-                                    interval=interval,
-                                    leap_day=leap,
-                                    timeout=60)
+    psm3, _ = pvlib_psm3.get_psm3(lat, lon,
+                                  api_key,
+                                  email, year,
+                                  attributes=attributes.values(),
+                                  map_variables=True,
+                                  interval=interval,
+                                  leap_day=leap,
+                                  timeout=60)
     cols_to_remove = ['Year', 'Month', 'Day', 'Hour', 'Minute']
     psm3 = psm3.drop(columns=cols_to_remove)
     psm3.index = pd.to_datetime(psm3.index)
-    psm3 = psm3.rename(columns={"key_0": "datetime"})
-    psm3 = psm3.round(3)
-    # Set datetime index to ISO UTC format
-    psm3.index = psm3.index.tz_convert('UTC')
-    if type(attributes) is dict:
-        psm3.rename(columns=dict([(y,x) for x,y in attributes.items()]),inplace=True)    
+    psm3.rename(columns={"key_0": "datetime",
+                         **{v: k for k, v in attributes.items()}},
+                inplace=True)
+    psm3 = psm3.round(3)  
     return psm3.sort_index()

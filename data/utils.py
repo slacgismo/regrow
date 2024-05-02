@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import math
 import pvlib
+import datetime as dt
 
 #
 # Command args
@@ -156,11 +157,28 @@ def distance2(a,b):
 
 def nearest(hash,hashlist,withdist=False):
     """Find the nearest geohash in a list of geohashes"""
-    if hashlist:
+    if len(hashlist) > 0:
         dist = sorted([(x,distance2(hash,x)) for x in hashlist],key=lambda y:y[1])
         return (dist[0][0],distance(hash,dist[0][0])) if withdist else dist[0][0]
     else:
         return (None,float('nan')) if withdist else None
+
+#
+# Calendar data
+#
+holidays = []
+def is_workday(date,date_format="%Y-%m-%d %H:%M:%S"):
+    global holidays
+    if len(holidays) == 0:
+        holidays = pd.read_csv("holidays.csv",
+            index_col=[0],
+            parse_dates=[0],
+            date_format="%Y-%m-%d").sort_index()
+    if type(date) is str:
+        date = dt.datetime.strptime(date,date_format)
+    if date.year < holidays.index.min().year or date.year > holidays.index.max().year:
+        warning(f"is_workday(date='{date}',date_format='{date_format}') date is not in range of known holidays")
+    return date.weekday()<5 and date not in holidays.index
 
 #
 # Weather data

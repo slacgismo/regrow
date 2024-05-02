@@ -70,7 +70,11 @@ def __(os, pd, set_ui):
     folder = "geodata/counties" if set_ui and set_ui.value else "geodata"
     data = dict([
         (os.path.splitext(os.path.basename(file))[0],
-        pd.read_csv(os.path.join(folder if set_ui and set_ui.value else folder,file),index_col=[0],parse_dates=[0])) for file in os.listdir(folder) if file.endswith(".csv")])
+        pd.read_csv(os.path.join(folder if set_ui and set_ui.value else folder,file),
+                    index_col=[0],
+                    parse_dates=[0],
+                    # date_format="%Y-%m-%d %H:%M:%S+00:00",
+                   )) for file in os.listdir(folder) if file.endswith(".csv")])
 
     label = {
         "baseload" : "MW",
@@ -95,14 +99,13 @@ def __(data, panel_ui, pd, set_ui, utils):
         _locations.index = [' '.join(x) for x in _locations.index]
         buslist = _locations[_locations["geocode"].isin(data[panel_ui.value].columns)].to_dict()["geocode"]
     else:
-        _locations = pd.read_csv("wecc240_gis.csv",index_col=[0],usecols=[1,11,12])
-        _locations["geocode"] = [utils.geohash(x,y,6) for x,y in _locations[["Lat","Long"]].values]
-        _locations.drop(["Lat","Long"],inplace=True,axis=1)
-        _locations.index = [x.title() for x in _locations.index]
-        _locations = _locations[~_locations.index.duplicated(keep='first')]
-        # buslist = dict([(x,y) for x,y in _locations["geocode"].sort_index().to_dict().items() if x in data[panel_ui.value].columns])
-        # buslist =_locations["geocode"].sort_index().to_dict()
-        buslist = list(data[panel_ui.value].columns)
+        _locations = pd.read_csv("nodes.csv",index_col=[0])
+        _counties = pd.read_csv("counties.csv",index_col=[5])
+        def _county(x):
+            _nearest = utils.nearest(x,_counties.index.values)
+            return " ".join(_counties.loc[_nearest][["county","usps"]].values)
+        buslist = dict([(f"{y.title()} ({_county(x)})",x) for x,y in _locations.sort_values("Bus  Name").to_dict()["Bus  Name"].items() if x in data[panel_ui.value].columns])
+        # buslist = list(data[panel_ui.value].columns)
     # buslist
     return buslist,
 
@@ -192,14 +195,15 @@ def __(data, geocode_ui, label, num_days, panel_ui, start_day):
     #
     # Zoom level plot
     #
-    zoom_plot = data[panel_ui.value][geocode_ui.value].iloc[int(start_day.value*24):int((start_day.value+num_days.value)*24)].plot(marker = '.',
-                                                figsize=(10,5),
-                                                markersize = 1,
-                                                linewidth = 1,
-                                                grid = True,
-                                                ylabel = label[panel_ui.value],
-                                                title = geocode_ui.selected_key + " " + panel_ui.value.title(),
-                                               )
+    zoom_plot = data[panel_ui.value][geocode_ui.value].iloc[int(start_day.value*24):int((start_day.value+num_days.value)*24)].plot(
+        marker = '.',
+        figsize=(10,5),
+        markersize = 1,
+        linewidth = 1,
+        grid = True,
+        ylabel = label[panel_ui.value],
+        title = geocode_ui.selected_key + " " + panel_ui.value.title(),
+       )
     zoom_plot.figure.tight_layout()
     return zoom_plot,
 
@@ -213,7 +217,7 @@ def __(data, geocode_ui, label, panel_ui, plt, sns):
     heatmap_data = data[panel_ui.value][geocode_ui.value].values
     heatmap_data = heatmap_data[:8760].reshape((24,-1), order='F')
     heatmap_plot = sns.heatmap(heatmap_data, cmap='plasma')
-    heatmap_plot.set(xlabel='Day', ylabel='Hour (UTC)')
+    heatmap_plot.set(xlabel='Day', ylabel='Hour')
     heatmap_plot.collections[0].colorbar.set_label(label[panel_ui.value])
     return heatmap_data, heatmap_plot
 
@@ -227,13 +231,14 @@ def __():
     import marimo as mo
     import pandas as pd
     import utils
+    import states
     import seaborn as sns
     import matplotlib.pyplot as plt
     import datetime as dt
 
     pd.options.display.max_columns = None
     pd.options.display.width = None
-    return dt, mo, os, pd, plt, sns, sys, utils
+    return dt, mo, os, pd, plt, sns, states, sys, utils
 
 
 if __name__ == "__main__":

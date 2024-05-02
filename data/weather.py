@@ -57,7 +57,7 @@ OUTPUTS = {
     "wind[m/s]" : "weather/wind.csv",
 }
 
-YEARS = "2020"
+YEARS = "2018,2019,2020,2021"
 FREQ = "1h"
 ROUND = 1
 
@@ -65,20 +65,23 @@ if __name__ == "__main__":
 
     if len(sys.argv) == 1:
         print("".join([x for x in __doc__.split("\n") if x.startswith("Syntax: ")]))
+        exit(E_MISSING)
     
     elif "-h" in sys.argv or "--help" in sys.argv or "help" in sys.argv:
         print(__doc__)
+        exit(E_OK)
 
     elif "--inputs" in sys.argv:
         print(' '.join(INPUTS.values()))
+        exit(E_OK)
 
     elif "--outputs" in sys.argv:
         print(' '.join(OUTPUTS.values()))
+        exit(E_OK)
 
     elif "--update" in sys.argv:
         if "--verbose" in sys.argv:
             options.verbose = True
-
         for arg in sys.argv[1:]:
             if arg.startswith("--years="):
                 YEARS = arg.split("=")[1]
@@ -86,6 +89,8 @@ if __name__ == "__main__":
                 FREQ = arg.split("=")[1]
             elif arg.startswith("--round="):
                 ROUND = int(arg.split("=")[1])
+            elif not arg in ["--verbose","--update"]:
+                error(E_INVAL,f"option '{arg}' is invalid")
 
         # load WECC bus data
         gis = pd.read_csv("wecc240_gis.csv",index_col=['Bus  Number'])

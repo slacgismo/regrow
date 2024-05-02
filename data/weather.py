@@ -103,63 +103,56 @@ def main(YEARS=YEARS,FREQ=FREQ,ROUND=ROUND):
             
             verbose("Creating weather folder",end="...")
             os.makedirs("weather",exist_ok=True)
+            panel = {}
+            for name in [x.split("[")[0] for x in OUTPUTS]:
+                panel[name] = []
             verbose("ok")
 
         else:
 
-            results = {}
+            panel = {}
             verbose("Loading old weather data",end="...")
-            for file in os.listdir("weather"):
-                data = pd.read_csv(os.path.join("weather",file),
+            for channel,file in OUTPUTS.items():
+                name = channel.split("[")[0]
+                panel[name] = pd.read_csv(file,
                     index_col=[0],
                     parse_dates=[0],
                     date_format="%Y-%m-%d %H:%M:%S+00:00",
                     )
-                data.index = data.index.tz_localize("UTC")
-                name = os.path.splitext(file)[0]
-                results[name] = {}
-                for year in data.index.year.unique():
-                    results[name][year] = {}
-                    for location in data.columns:
-                        result = data[location][data.index.year==year].dropna()
-                        if len(result) > 0:
-                            results[name][year][location] = pd.DataFrame(result.values,result.index,columns=[location])
+                panel[name].index = panel[name].index.tz_localize("UTC")
             verbose("ok")
 
         # load WECC bus data
-        gis = pd.read_csv(INPUTS["NETWORK"],index_col=['Bus  Number'])
-        gis["geocode"] = [geohash(x,y,6) for x,y in gis[["Lat","Long"]].values]
-        for location in sorted(gis["geocode"].unique()):
+        nodes = pd.read_csv(INPUTS["NETWORK"],index_col=['Bus  Number'])
+        nodes["geocode"] = [geohash(x,y,6) for x,y in nodes[["Lat","Long"]].values]
+        for location in sorted(nodes["geocode"].unique()):
             verbose(f"Processing {location}",end="...")
             for year in [int(x) for x in YEARS.split(',')]:
-                # verbose(".",end="")
                 data = None
-                for channel in OUTPUTS:
-                    channel_name = channel.split('[')[0]
-                    if channel_name not in results:
-                        results[channel_name] = {}
-                    if year not in results[channel_name]:
-                        results[channel_name][year] = {}
-                    if location not in results[channel_name][year]:
-                        data = pd.DataFrame(nsrdb_weather(location,year,30,channel_names).resample(FREQ).mean()).round(ROUND)
-                        verbose(".",end="")    
-                        for name,column in channel_names.items():
-                            cname = name.split("[")[0]
-                            if year not in results[cname]:
-                                results[cname][year] = {}
-                            # verbose(f"({cname},{year},{location})")
-                            results[cname][year][location] = pd.DataFrame(data[name].values,data.index,columns=[location])
-            verbose(".",end="")    
+                for channel in channel_names:
+                    name = channel.split("[")[0]
+                    if len(panel[name][location][panel[name][location].index.year==year].dropna()) == 0:
+                        if data is None:
+                            data = pd.DataFrame(nsrdb_weather(location,year,30,channel_names).resample(FREQ).mean()).round(ROUND)
+                        if not location in panel[name].columns:
+                            panel[name].loc[pd.to_datetime(data[channel].index.values,utc=True),location] = data[channel].values.astype('float')
+                        elif int(year) not in panel[name].index.year.unique():
+                            panel[name] = pd.concat([
+                                panel[name].astype(float),
+                                pd.DataFrame(
+                                    data[channel].values,
+                                    pd.to_datetime(data[channel].index.values,utc=True),
+                                    columns=[location]).astype(float),
+                                ])
+                        else:
+                            panel[name].loc[data[channel].index,location] = data[channel].values
             for channel,file in OUTPUTS.items():
                 name = channel.split('[')[0]
-                data = []
-                for year,years in sorted(results[name].items()):
-                    result = pd.DataFrame(pd.concat(years.values(),axis=1),columns=[location])
-                    data.append(result)
-                results[name][location] = pd.concat(data,axis=0)
-                print(results[name])
-                quit()
-                pd.concat(list(results[name].values()),axis=1).to_csv(file,index=True,header=True)
+                try:
+                    panel[name].to_csv(file,index=True,header=True)
+                except KeyboardInterrupt:
+                    panel[name].to_csv(file,index=True,header=True)
+                    raise
             verbose("ok")   
 
 if __name__ == "__main__":

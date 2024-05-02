@@ -183,7 +183,7 @@ def is_workday(date,date_format="%Y-%m-%d %H:%M:%S"):
 #
 # Weather data
 #
-def nsrdb_credentials(path=os.path.join(os.environ["USERPROFILE"],".nsrdb","credentials.json")):
+def nsrdb_credentials(path=os.path.join(os.environ["HOME"],".nsrdb","credentials.json")):
     try:
         with open(path,"r") as fh:
             return list(json.load(fh).items())[0]

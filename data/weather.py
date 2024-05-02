@@ -48,8 +48,11 @@ import pandas as pd
 from utils import *
 options.context = "weather.py"
 options.verbose = False
+options.debug = True
 
-INPUTS = {}
+INPUTS = {
+    "NETWORK" : "wecc240_gis.csv",
+}
 
 OUTPUTS = {
     "solar[W/m^2]" : "weather/solar.csv",
@@ -57,31 +60,37 @@ OUTPUTS = {
     "wind[m/s]" : "weather/wind.csv",
 }
 
+channel_names = {
+    "solar[W/m^2]" : "ghi",
+    "temperature[degC]" : "temp_air",
+    "wind[m/s]" : "wind_speed",
+}
+
 YEARS = "2018,2019,2020,2021"
 FREQ = "1h"
 ROUND = 1
 
-if __name__ == "__main__":
+def main(YEARS=YEARS,FREQ=FREQ,ROUND=ROUND):
 
+    global INPUTS
+    global OUTPUTS
+    global channel_names
     if len(sys.argv) == 1:
         print("".join([x for x in __doc__.split("\n") if x.startswith("Syntax: ")]))
-        exit(E_MISSING)
     
     elif "-h" in sys.argv or "--help" in sys.argv or "help" in sys.argv:
         print(__doc__)
-        exit(E_OK)
 
     elif "--inputs" in sys.argv:
         print(' '.join(INPUTS.values()))
-        exit(E_OK)
 
     elif "--outputs" in sys.argv:
         print(' '.join(OUTPUTS.values()))
-        exit(E_OK)
 
     elif "--update" in sys.argv:
         if "--verbose" in sys.argv:
             options.verbose = True
+
         for arg in sys.argv[1:]:
             if arg.startswith("--years="):
                 YEARS = arg.split("=")[1]
@@ -89,30 +98,69 @@ if __name__ == "__main__":
                 FREQ = arg.split("=")[1]
             elif arg.startswith("--round="):
                 ROUND = int(arg.split("=")[1])
-            elif not arg in ["--verbose","--update"]:
-                error(E_INVAL,f"option '{arg}' is invalid")
+
+        if not os.path.exists("weather"):
+            
+            verbose("Creating weather folder",end="...")
+            os.makedirs("weather",exist_ok=True)
+            panel = {}
+            for name in [x.split("[")[0] for x in OUTPUTS]:
+                panel[name] = []
+            verbose("ok")
+
+        else:
+
+            panel = {}
+            verbose("Loading old weather data",end="...")
+            for channel,file in OUTPUTS.items():
+                name = channel.split("[")[0]
+                panel[name] = pd.read_csv(file,
+                    index_col=[0],
+                    parse_dates=[0],
+                    date_format="%Y-%m-%d %H:%M:%S+00:00",
+                    )
+                panel[name].index = panel[name].index.tz_localize("UTC")
+            verbose("ok")
 
         # load WECC bus data
-        gis = pd.read_csv("wecc240_gis.csv",index_col=['Bus  Number'])
-        gis["geocode"] = [geohash(x,y,6) for x,y in gis[["Lat","Long"]].values]
-        results = {}
-        for location in sorted(gis["geocode"].unique()):
+        nodes = pd.read_csv(INPUTS["NETWORK"],index_col=['Bus  Number'])
+        nodes["geocode"] = [geohash(x,y,6) for x,y in nodes[["Lat","Long"]].values]
+        for location in sorted(nodes["geocode"].unique()):
             verbose(f"Processing {location}",end="...")
-            data = []
             for year in [int(x) for x in YEARS.split(',')]:
-                verbose(".",end="")
-                data.append(pd.DataFrame(nsrdb_weather(location,year).resample(FREQ).mean()))
-            data = pd.concat(data)
-            for column in data.columns:
-                if not column in results:
-                    results[column] = []
-                results[column].append(pd.DataFrame(data={location:data[column]},index=data.index).round(ROUND))
-            verbose("ok")
+                data = None
+                for channel in channel_names:
+                    name = channel.split("[")[0]
+                    if len(panel[name][location][panel[name][location].index.year==year].dropna()) == 0:
+                        if data is None:
+                            data = pd.DataFrame(nsrdb_weather(location,year,30,channel_names).resample(FREQ).mean()).round(ROUND)
+                        if not location in panel[name].columns:
+                            panel[name].loc[pd.to_datetime(data[channel].index.values,utc=True),location] = data[channel].values.astype('float')
+                        elif int(year) not in panel[name].index.year.unique():
+                            panel[name] = pd.concat([
+                                panel[name].astype(float),
+                                pd.DataFrame(
+                                    data[channel].values,
+                                    pd.to_datetime(data[channel].index.values,utc=True),
+                                    columns=[location]).astype(float),
+                                ])
+                        else:
+                            panel[name].loc[data[channel].index,location] = data[channel].values
+            for channel,file in OUTPUTS.items():
+                name = channel.split('[')[0]
+                try:
+                    panel[name].to_csv(file,index=True,header=True)
+                except KeyboardInterrupt:
+                    panel[name].to_csv(file,index=True,header=True)
+                    raise
+            verbose("ok")   
 
-        verbose("Creating weather folder")
-        os.makedirs("weather",exist_ok=True)
-
-        for name,data in results.items():
-            verbose(f"Saving {OUTPUTS[name]}",end="...")
-            pd.concat(data,axis=1).to_csv(OUTPUTS[name],header=True,index=True)
-            verbose("ok")
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        error(E_INTR,"keyboard interrupt")
+    except Exception as err:
+        if options.debug:
+            raise
+        error(E_INTR,err)

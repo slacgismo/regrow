@@ -8,7 +8,6 @@ import requests
 import pandas as pd
 from json import JSONDecodeError
 import warnings
-from pvlib._deprecation import pvlibDeprecationWarning
 
 NSRDB_API_BASE = "https://developer.nrel.gov"
 PSM_URL = NSRDB_API_BASE + "/api/nsrdb/v2/solar/psm3-2-2-download.csv"
@@ -184,7 +183,7 @@ def get_psm3(latitude, longitude, api_key, email, names='tmy', interval=60,
             'The ``get_psm3`` function will default to leap_day=True '
             'starting in pvlib 0.11.0. Specify leap_day=True '
             'to enable this behavior now, or specify leap_day=False '
-            'to hide this warning.', pvlibDeprecationWarning)
+            'to hide this warning.')
         leap_day = False
 
     # required query-string parameters for request to PSM3 API
@@ -361,7 +360,7 @@ def parse_psm3(fbuf, map_variables=None):
             'PSM3 variable names will be renamed to pvlib conventions by '
             'default starting in pvlib 0.11.0. Specify map_variables=True '
             'to enable that behavior now, or specify map_variables=False '
-            'to hide this warning.', pvlibDeprecationWarning)
+            'to hide this warning.')
         map_variables = False
     if map_variables:
         data = data.rename(columns=VARIABLE_MAP)

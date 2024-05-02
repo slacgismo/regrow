@@ -17,6 +17,9 @@ def read_args(argv,docs=__doc__):
     elif "--verbose" in argv:
         options.verbose = True
         argv.remove("--verbose")
+    elif "--debug" in argv:
+        options.debug = True
+        argv.remove("--debug")
     return argv[1:]
 
 
@@ -26,9 +29,11 @@ def read_args(argv,docs=__doc__):
 class options:
     context = '(no context)'
     verbose = False
+    debug = True
 
 E_OK = 0
 E_NOENT = 2 # not found error
+E_INTR = 4 # interrupted
 E_INVAL = 22 # invalid argument
 
 def error(code,msg):
@@ -211,7 +216,7 @@ def nsrdb_weather(location,year,interval=5,
     psm3, _ = pvlib.iotools.get_psm3(lat, lon,
                                     api_key,
                                     email, year,
-                                    attributes=attributes,
+                                    attributes=attributes.values() if type(attributes) is dict else attributes,
                                     map_variables=True,
                                     interval=interval,
                                     leap_day=leap,
@@ -223,5 +228,6 @@ def nsrdb_weather(location,year,interval=5,
     psm3 = psm3.round(3)
     # Set datetime index to ISO UTC format
     psm3.index = psm3.index.tz_convert('UTC')
-    psm3.index = psm3.index.map(lambda x: x.isoformat())
+    if type(attributes) is dict:
+        psm3.rename(columns=dict([(y,x) for x,y in attributes.items()]),inplace=True)    
     return psm3.sort_index()

@@ -48,8 +48,11 @@ import pandas as pd
 from utils import *
 options.context = "weather.py"
 options.verbose = False
+options.debug = True
 
-INPUTS = {}
+INPUTS = {
+    "NETWORK" : "wecc240_gis.csv",
+}
 
 OUTPUTS = {
     "solar[W/m^2]" : "weather/solar.csv",
@@ -57,12 +60,21 @@ OUTPUTS = {
     "wind[m/s]" : "weather/wind.csv",
 }
 
-YEARS = "2020"
+channel_names = {
+    "solar[W/m^2]" : "ghi",
+    "temperature[degC]" : "temp_air",
+    "wind[m/s]" : "wind_speed",
+}
+
+YEARS = "2018,2019,2020,2021"
 FREQ = "1h"
 ROUND = 1
 
-if __name__ == "__main__":
+def main(YEARS=YEARS,FREQ=FREQ,ROUND=ROUND):
 
+    global INPUTS
+    global OUTPUTS
+    global channel_names
     if len(sys.argv) == 1:
         print("".join([x for x in __doc__.split("\n") if x.startswith("Syntax: ")]))
     
@@ -87,27 +99,75 @@ if __name__ == "__main__":
             elif arg.startswith("--round="):
                 ROUND = int(arg.split("=")[1])
 
+        if not os.path.exists("weather"):
+            
+            verbose("Creating weather folder",end="...")
+            os.makedirs("weather",exist_ok=True)
+            verbose("ok")
+
+        else:
+
+            results = {}
+            verbose("Loading old weather data",end="...")
+            for file in os.listdir("weather"):
+                data = pd.read_csv(os.path.join("weather",file),
+                    index_col=[0],
+                    parse_dates=[0],
+                    date_format="%Y-%m-%d %H:%M:%S+00:00",
+                    )
+                data.index = data.index.tz_localize("UTC")
+                name = os.path.splitext(file)[0]
+                results[name] = {}
+                for year in data.index.year.unique():
+                    results[name][year] = {}
+                    for location in data.columns:
+                        result = data[location][data.index.year==year].dropna()
+                        if len(result) > 0:
+                            results[name][year][location] = pd.DataFrame(result.values,result.index,columns=[location])
+            verbose("ok")
+
         # load WECC bus data
-        gis = pd.read_csv("wecc240_gis.csv",index_col=['Bus  Number'])
+        gis = pd.read_csv(INPUTS["NETWORK"],index_col=['Bus  Number'])
         gis["geocode"] = [geohash(x,y,6) for x,y in gis[["Lat","Long"]].values]
-        results = {}
         for location in sorted(gis["geocode"].unique()):
             verbose(f"Processing {location}",end="...")
-            data = []
             for year in [int(x) for x in YEARS.split(',')]:
-                verbose(".",end="")
-                data.append(pd.DataFrame(nsrdb_weather(location,year).resample(FREQ).mean()))
-            data = pd.concat(data)
-            for column in data.columns:
-                if not column in results:
-                    results[column] = []
-                results[column].append(pd.DataFrame(data={location:data[column]},index=data.index).round(ROUND))
-            verbose("ok")
+                # verbose(".",end="")
+                data = None
+                for channel in OUTPUTS:
+                    channel_name = channel.split('[')[0]
+                    if channel_name not in results:
+                        results[channel_name] = {}
+                    if year not in results[channel_name]:
+                        results[channel_name][year] = {}
+                    if location not in results[channel_name][year]:
+                        data = pd.DataFrame(nsrdb_weather(location,year,30,channel_names).resample(FREQ).mean()).round(ROUND)
+                        verbose(".",end="")    
+                        for name,column in channel_names.items():
+                            cname = name.split("[")[0]
+                            if year not in results[cname]:
+                                results[cname][year] = {}
+                            # verbose(f"({cname},{year},{location})")
+                            results[cname][year][location] = pd.DataFrame(data[name].values,data.index,columns=[location])
+            verbose(".",end="")    
+            for channel,file in OUTPUTS.items():
+                name = channel.split('[')[0]
+                data = []
+                for year,years in sorted(results[name].items()):
+                    result = pd.DataFrame(pd.concat(years.values(),axis=1),columns=[location])
+                    data.append(result)
+                results[name][location] = pd.concat(data,axis=0)
+                print(results[name])
+                quit()
+                pd.concat(list(results[name].values()),axis=1).to_csv(file,index=True,header=True)
+            verbose("ok")   
 
-        verbose("Creating weather folder")
-        os.makedirs("weather",exist_ok=True)
-
-        for name,data in results.items():
-            verbose(f"Saving {OUTPUTS[name]}",end="...")
-            pd.concat(data,axis=1).to_csv(OUTPUTS[name],header=True,index=True)
-            verbose("ok")
+if __name__ == "__main__":
+    try:
+        main()
+    except KeyboardInterrupt:
+        error(E_INTR,"keyboard interrupt")
+    except Exception as err:
+        if options.debug:
+            raise
+        error(E_INTR,err)

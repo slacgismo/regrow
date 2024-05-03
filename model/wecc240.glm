@@ -20,6 +20,8 @@ module pypower
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
     controllers ${CONTROLLERS_FILE};
+    //save_case TRUE;
+    enable_opf TRUE;
 }
 
 //
@@ -39,9 +41,10 @@ module pypower
 #include "../data/powerplants_gis.glm"
 
 //
-// Load loads data
+// Building load geodata
 //
-#include "../data/loads.glm"
+#include "../data/buildings.glm"
+#include "../data/buildings_gis.glm"
 
 //
 // Save the final result to JSON

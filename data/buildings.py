@@ -9,7 +9,7 @@ TARGETS = {
 	"P" : "../data/geodata/total.csv",
 }
 
-with open("loads.glm","w") as glm:
+with open("buildings.glm","w") as glm:
 	for target,source in TARGETS.items():
 		print(f"""object geodata
 {{

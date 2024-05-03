@@ -1065,3 +1065,4 @@ model/wecc240_exception_branch.csv
 model/wecc240_exception_bus.csv
 model/wecc240_exception_gen.csv
 model/wecc240_exception_gencost.csv
+model/wecc240.json

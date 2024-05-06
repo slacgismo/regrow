@@ -52,3 +52,5 @@
 // GIS data
 //
 #define GISDATA "../data/wecc240_gis.glm"
+
+#set suppress_repeat_messages=FALSE

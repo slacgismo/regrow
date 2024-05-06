@@ -47,6 +47,11 @@ module pypower
 #include "../data/buildings_gis.glm"
 
 //
+// Manual model fixes 
+//
+#include "fixes.glm"
+
+//
 // Save the final result to JSON
 //
 #set savefile="${SAVEFILE}"

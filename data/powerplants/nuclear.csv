@@ -1,0 +1,100 @@
+name,unit_id,capacity[MW],reactor_type,reactor_model,start[y],retirement[y],planned_retirement[y],reference_capacity[MW],design_capacity[MW],thermal_capacity[MW],latitude,longitude
+Alvin W Vogtle nuclear power plant,1,1229.0,pressurized water reactor,WH 4LP (DRYAMB),1987.0,,,1150.0,1122.0,3626.0,33.13001,-81.7729
+Alvin W Vogtle nuclear power plant,2,1229.0,pressurized water reactor,WH 4LP (DRYAMB),1989.0,,,1152.0,1101.0,3626.0,33.13001,-81.7729
+Arkansas Nuclear One nuclear power plant,1,903.0,pressurized water reactor,B&W LLP (DRYAMB),1974.0,,,836.0,850.0,2568.0,35.311,-93.2351
+Arkansas Nuclear One nuclear power plant,2,1065.0,pressurized water reactor,CE 2LP (DRYAMB),1980.0,,,988.0,912.0,3026.0,35.311,-93.2351
+Beaver Valley nuclear power plant,1,959.0,pressurized water reactor,WH 3LP (DRYSUB),1976.0,,,908.0,835.0,2900.0,40.6219,-80.4336
+Beaver Valley nuclear power plant,2,958.0,pressurized water reactor,WH 3LP (DRYSUB),1987.0,,,905.0,836.0,2900.0,40.6219,-80.4336
+Braidwood nuclear power plant,1,1270.0,pressurized water reactor,WH 4LP (DRYAMB),1988.0,,,1194.0,1120.0,3645.0,41.2435,-88.2286
+Braidwood nuclear power plant,2,1230.0,pressurized water reactor,WH 4LP (DRYAMB),1988.0,,,1160.0,1120.0,3645.0,41.2435,-88.2286
+Browns Ferry nuclear power plant,1,1256.0,boiling water reactor,BWR-4 (Mark 1),1974.0,,,1200.0,1065.0,3458.0,34.7042,-87.1189
+Browns Ferry nuclear power plant,2,1259.0,boiling water reactor,BWR-4 (Mark 1),1975.0,,,1200.0,1065.0,3458.0,34.7042,-87.1189
+Browns Ferry nuclear power plant,3,1260.0,boiling water reactor,BWR-4 (Mark 1),1977.0,,,1210.0,1065.0,3458.0,34.7042,-87.1189
+Brunswick nuclear power plant,1,990.0,boiling water reactor,BWR-4 (Mark 1),1977.0,,,938.0,821.0,2923.0,33.9597,-78.0114
+Brunswick nuclear power plant,2,960.0,boiling water reactor,BWR-4 (Mark 1),1975.0,,,932.0,821.0,2923.0,33.9597,-78.0114
+Byron nuclear power plant,1,1242.0,pressurized water reactor,WH 4LP (DRYAMB),1985.0,,,1164.0,1120.0,3645.0,42.0742,-89.2819
+Byron nuclear power plant,2,1210.0,pressurized water reactor,WH 4LP (DRYAMB),1987.0,,,1136.0,1120.0,3645.0,42.0742,-89.2819
+Callaway nuclear power plant,1,1275.0,pressurized water reactor,WH 4LP (DRYAMB),1984.0,,,1215.0,1171.0,3565.0,38.7589,-91.7788
+Calvert Cliffs nuclear power plant,1,918.0,pressurized water reactor,CE 2LP (DRYAMB),1975.0,,,877.0,845.0,2737.0,38.4344,-76.4417
+Calvert Cliffs nuclear power plant,2,911.0,pressurized water reactor,CE 2LP (DRYAMB),1977.0,,,855.0,845.0,2737.0,38.4344,-76.4417
+Catawba nuclear power plant,1,1188.0,pressurized water reactor,WH 4LP (ICECND),1985.0,,,1160.0,1145.0,3411.0,35.0514,-81.0694
+Catawba nuclear power plant,2,1188.0,pressurized water reactor,WH 4LP (ICECND),1986.0,,,1150.0,1145.0,3411.0,35.0514,-81.0694
+Clinton nuclear power plant,1,1098.0,boiling water reactor,BWR-6 (Mark 3),1987.0,,,1062.0,950.0,3473.0,40.1719,-88.8339
+Columbia nuclear power plant,,1190.0,boiling water reactor,BWR-5 (Mark 2),1984.0,,,1131.0,1100.0,3486.0,46.4711,-119.3339
+Comanche Peak nuclear power plant,1,1259.0,pressurized water reactor,WH 4LP (DRYAMB),1990.0,,,1205.0,1150.0,3612.0,32.2984,-97.7855
+Comanche Peak nuclear power plant,2,1250.0,pressurized water reactor,WH 4LP (DRYAMB),1993.0,,,1195.0,1150.0,3612.0,32.2984,-97.7855
+Cooper nuclear power plant,,801.0,boiling water reactor,BWR-4 (Mark 1),1974.0,,,769.0,778.0,2419.0,40.3628,-95.6408
+Davis Besse nuclear power plant,1,925.0,pressurized water reactor,B&W RLP (DRYAMB),1978.0,,,894.0,906.0,2817.0,41.5967,-83.0861
+Diablo Canyon nuclear power plant,1,1197.0,pressurized water reactor,WH 4LP (DRYAMB),1985.0,2024.0,Y,1138.0,1084.0,3411.0,35.2115,-120.8555
+Diablo Canyon nuclear power plant,2,1197.0,pressurized water reactor,WH 4LP (DRYAMB),1986.0,2025.0,Y,1118.0,1106.0,3411.0,35.2115,-120.8555
+Donald C Cook nuclear power plant,1,1131.0,pressurized water reactor,WH 4LP (ICECDN),1975.0,,,1030.0,1030.0,3304.0,41.9756,-86.5652
+Donald C Cook nuclear power plant,2,1231.0,pressurized water reactor,WH 4LP (ICECDN),1978.0,,,1168.0,1100.0,3468.0,41.9756,-86.5652
+Dresden nuclear power plant,2,950.0,boiling water reactor,BWR-3 (Mark 1),1970.0,,,894.0,794.0,2957.0,41.3901,-88.2701
+Dresden nuclear power plant,3,935.0,boiling water reactor,BWR-3 (Mark 1),1971.0,,,879.0,794.0,2957.0,41.3901,-88.2701
+Duane Arnold nuclear power plant,1,624.0,boiling water reactor,BWR-4 (Mark 1),1975.0,2020.0,N,601.0,601.0,1912.0,42.1011,-91.7781
+Edwin I Hatch nuclear power plant,1,911.0,boiling water reactor,BWR-4 (Mark 1),1975.0,,,876.0,777.0,2804.0,31.9342,-82.3447
+Edwin I Hatch nuclear power plant,2,921.0,boiling water reactor,BWR-4 (Mark 1),1979.0,,,883.0,784.0,2804.0,31.9342,-82.3447
+Fermi nuclear power plant,2,1198.0,boiling water reactor,BWR-4 (Mark 1),1988.0,,,1115.0,1093.0,3486.0,41.96278,-83.2575
+Grand Gulf nuclear power plant,1,1500.0,boiling water reactor,BWR-6 (Mark 3),1985.0,,,1401.0,1250.0,4408.0,32.0081,-91.0478
+H. B. Robinson nuclear power plant,2,780.0,pressurized water reactor,WH 3LP (DRYAMB),1971.0,,,741.0,700.0,2339.0,34.4017,-80.1589
+Hope Creek nuclear power plant,1,1240.0,boiling water reactor,BWR-4 (Mark 1),1986.0,,,1172.0,1067.0,3840.0,39.4666,-75.5377
+Indian Point nuclear power plant,2,1067.0,pressurized water reactor,WH 4LP (DRYAMB),1974.0,2020.0,N,998.0,873.0,3216.0,41.2706,-73.9527
+Indian Point nuclear power plant,3,1085.0,pressurized water reactor,WH 4LP (DRYAMB),1976.0,2021.0,N,1030.0,965.0,3216.0,41.2706,-73.9527
+James A Fitzpatrick nuclear power plant,,849.0,boiling water reactor,BWR-4 (Mark 1),1975.0,,,813.0,821.0,2536.0,43.5223,-76.3955
+Joseph M Farley nuclear power plant,1,918.0,pressurized water reactor,WH 3LP (DRYAMB),1977.0,,,874.0,829.0,2775.0,31.2231,-85.1116
+Joseph M Farley nuclear power plant,2,928.0,pressurized water reactor,WH 3LP (DRYAMB),1981.0,,,883.0,829.0,2775.0,31.2231,-85.1116
+LaSalle nuclear power plant,1,1207.0,boiling water reactor,BWR-5 (Mark 2),1984.0,,,1137.0,1078.0,3546.0,41.2455,-88.6691
+LaSalle nuclear power plant,2,1207.0,boiling water reactor,BWR-5 (Mark 2),1984.0,,,1140.0,1078.0,3546.0,41.2455,-88.6691
+Limerick nuclear power plant,1,1194.0,boiling water reactor,BWR-4 (Mark 2),1986.0,,,1134.0,1055.0,3515.0,40.2243,-75.5874
+Limerick nuclear power plant,2,1194.0,boiling water reactor,BWR-4 (Mark 2),1990.0,,,1134.0,1055.0,3515.0,40.2243,-75.5874
+McGuire nuclear power plant,1,1215.0,pressurized water reactor,WH 4LP (ICECND),1981.0,,,1158.0,1180.0,3411.0,35.4331,-80.9486
+McGuire nuclear power plant,2,1215.0,pressurized water reactor,WH 4LP (ICECND),1984.0,,,1158.0,1180.0,3411.0,35.4331,-80.9486
+Millstone nuclear power plant,2,918.0,pressurized water reactor,CE 2LP (DRYAMB),1975.0,,,869.0,870.0,2700.0,41.3107,-72.1677
+Millstone nuclear power plant,3,1280.0,pressurized water reactor,WH 4LP (DRYSUB),1986.0,,,1210.0,1159.0,3650.0,41.3107,-72.1677
+Monticello nuclear power plant,,691.0,boiling water reactor,BWR-3 (Mark 1),1971.0,,,628.0,545.0,2004.0,45.3338,-93.8493
+Nine Mile Point nuclear power plant,1,642.0,boiling water reactor,BWR-2 (Mark 1),1969.0,,,613.0,620.0,1850.0,43.5205,-76.4068
+Nine Mile Point nuclear power plant,2,1320.0,boiling water reactor,BWR-5 (Mark 2),1988.0,,,1277.0,1100.0,3988.0,43.5205,-76.4068
+North Anna nuclear power plant,1,990.0,pressurized water reactor,WH 3LP (DRYSUB),1978.0,,,948.0,907.0,2940.0,38.0601,-77.7897
+North Anna nuclear power plant,2,1011.0,pressurized water reactor,WH 3LP (DRYSUB),1980.0,,,944.0,907.0,2940.0,38.0601,-77.7897
+Oconee nuclear power plant,1,891.0,pressurized water reactor,B&W LLP (DRYAMB),1973.0,,,847.0,887.0,2568.0,34.7939,-82.8986
+Oconee nuclear power plant,2,891.0,pressurized water reactor,B&W LLP (DRYAMB),1974.0,,,848.0,887.0,2568.0,34.7939,-82.8986
+Oconee nuclear power plant,3,900.0,pressurized water reactor,B&W LLP (DRYAMB),1974.0,,,859.0,887.0,2568.0,34.7939,-82.8986
+Oyster Creek nuclear power plant,,652.0,boiling water reactor,BWR-2 (Mark 1),1969.0,2018.0,N,619.0,650.0,1930.0,39.8144,-74.2058
+Palisades nuclear power plant,,850.0,pressurized water reactor,CE 2LP (DRYAMB),1971.0,2022.0,N,805.0,805.0,2565.0,42.323,-86.3146
+Palo Verde nuclear power plant,1,1414.0,pressurized water reactor,CE80 2LP (DRYAMB),1986.0,,,1311.0,1221.0,3990.0,33.3881,-112.8617
+Palo Verde nuclear power plant,2,1414.0,pressurized water reactor,CE80 2LP (DRYAMB),1986.0,,,1314.0,1304.0,3990.0,33.3881,-112.8617
+Palo Verde nuclear power plant,3,1414.0,pressurized water reactor,CE80 2LP (DRYAMB),1988.0,,,1312.0,1304.0,3990.0,33.3881,-112.8617
+Peach Bottom nuclear power plant,2,1412.0,boiling water reactor,BWR-4 (Mark 1),1974.0,,,1300.0,1065.0,3951.0,39.7589,-76.2687
+Peach Bottom nuclear power plant,3,1412.0,boiling water reactor,BWR-4 (Mark 1),1974.0,,,1331.0,1065.0,3951.0,39.7589,-76.2687
+Perry nuclear power plant,1,1303.0,boiling water reactor,BWR-6 (Mark 3),1987.0,,,1240.0,1205.0,3758.0,41.8006,-81.1439
+Pilgrim nuclear power plant,1,711.0,boiling water reactor,BWR-3 (Mark 1),1972.0,2019.0,N,677.0,655.0,2028.0,41.9436,-70.5771
+Point Beach nuclear power plant,1,640.0,pressurized water reactor,WH 2LP (DRYAMB),1970.0,,,591.0,497.0,1800.0,44.2806,-87.5369
+Point Beach nuclear power plant,2,640.0,pressurized water reactor,WH 2LP (DRYAMB),1972.0,,,591.0,497.0,1800.0,44.2806,-87.5369
+Prairie Island nuclear power plant,1,566.0,pressurized water reactor,WH 2LP (DRYAMB),1973.0,,,522.0,530.0,1677.0,44.622,-92.6333
+Prairie Island nuclear power plant,2,560.0,pressurized water reactor,WH 2LP (DRYAMB),1974.0,,,519.0,530.0,1677.0,44.622,-92.6333
+Quad Cities nuclear power plant,1,940.0,boiling water reactor,BWR-3 (Mark 1),1973.0,,,908.0,789.0,2957.0,41.7261,-90.3103
+Quad Cities nuclear power plant,2,940.0,boiling water reactor,BWR-3 (Mark 1),1973.0,,,911.0,789.0,2957.0,41.7261,-90.3103
+River Bend nuclear power plant,1,1016.0,boiling water reactor,BWR-6 (Mark 3),1986.0,,,967.0,966.0,3091.0,30.757,-91.3327
+Robert Emmett Ginna nuclear power plant,,608.0,pressurized water reactor,WH 2LP (DRYAMB),1970.0,,,560.0,470.0,1775.0,43.2777,-77.3099
+Salem nuclear power plant,1,1254.0,pressurized water reactor,WH 4LP (DRYAMB),1977.0,2036.0,Y,1169.0,1090.0,3459.0,39.4625,-75.5358
+Salem nuclear power plant,2,1200.0,pressurized water reactor,WH 4LP (DRYAMB),1981.0,2040.0,Y,1158.0,1115.0,3459.0,39.4625,-75.5358
+Seabrook nuclear power plant,1,1296.0,pressurized water reactor,WH 4LP (DRYAMB),1990.0,,,1246.0,1149.0,3648.0,42.8992,-70.8489
+Sequoyah nuclear power plant,1,1221.0,pressurized water reactor,WH 4LP (ICECND),1981.0,,,1152.0,1148.0,3455.0,35.2267,-85.0917
+Sequoyah nuclear power plant,2,1200.0,pressurized water reactor,WH 4LP (ICECND),1982.0,,,1139.0,1148.0,3455.0,35.2267,-85.0917
+Shearon Harris nuclear power plant,1,980.0,pressurized water reactor,WH 3LP (DRYAMB),1987.0,,,964.0,900.0,2900.0,35.6334,-78.9556
+South Texas nuclear power plant,1,1354.0,pressurized water reactor,WH 4LP (DRYAMB),1988.0,,,1280.0,1250.0,3853.0,28.79501,-96.0481
+South Texas nuclear power plant,2,1354.0,pressurized water reactor,WH 4LP (DRYAMB),1989.0,,,1280.0,1250.0,3853.0,28.79501,-96.0481
+St. Lucie nuclear power plant,1,1045.0,pressurized water reactor,CE 2LP (DRYAMB),1976.0,,,981.0,830.0,3020.0,27.3486,-80.2464
+St. Lucie nuclear power plant,2,1050.0,pressurized water reactor,CE 2LP (DRYAMB),1983.0,,,987.0,830.0,3020.0,27.3486,-80.2464
+Surry nuclear power plant,1,890.0,pressurized water reactor,WH 3LP (DRYSUB),1972.0,,,838.0,788.0,2587.0,37.1661,-76.6986
+Surry nuclear power plant,2,890.0,pressurized water reactor,WH 3LP (DRYSUB),1973.0,,,838.0,788.0,2587.0,37.1661,-76.6986
+Susquehanna nuclear power plant,1,1330.0,boiling water reactor,BWR-4 (Mark 2),1983.0,,,1257.0,1065.0,3952.0,41.0919,-76.1462
+Susquehanna nuclear power plant,2,1330.0,boiling water reactor,BWR-4 (Mark 2),1985.0,,,1257.0,1065.0,3952.0,41.0919,-76.1462
+Three Mile Island nuclear power plant,1,880.0,pressurized water reactor,B&W LLP (DRYAMB),1974.0,2019.0,N,819.0,819.0,2568.0,40.1539,-76.7248
+Turkey Point power station,3,829.0,pressurized water reactor,WH 3LP (DRYAMB),1972.0,,,837.0,693.0,2644.0,25.43448,-80.3324
+Turkey Point power station,4,829.0,pressurized water reactor,WH 3LP (DRYAMB),1973.0,,,821.0,693.0,2644.0,25.43448,-80.3324
+Virgil C Summer nuclear power plant,1,1006.0,pressurized water reactor,WH 3LP (DRYAMB),1984.0,,,973.0,900.0,2900.0,34.2983,-81.3153
+Waterford nuclear power plant,3,1250.0,pressurized water reactor,CE 2LP (DRYAMB),1985.0,,,1168.0,1104.0,3716.0,29.9953,-90.4716
+Watts Bar nuclear power plant,1,1210.0,pressurized water reactor,WH 4LP (ICECND),1996.0,,,1157.0,1218.0,3459.0,35.6021,-84.7895
+Watts Bar nuclear power plant,2,1218.0,pressurized water reactor,WH 4LP (ICECND),2016.0,,,1164.0,1165.0,3411.0,35.6015,-84.7909
+Wolf Creek nuclear power plant,,1285.0,pressurized water reactor,WH 4LP (DRYAMB),1985.0,,,1200.0,1170.0,3565.0,38.2393,-95.6898

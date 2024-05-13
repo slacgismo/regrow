@@ -1,1 +1,2 @@
-Data from https://globalenergymonitor.org.
+Global data from https://globalenergymonitor.org.
+

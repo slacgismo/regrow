@@ -1,4 +1,5 @@
 pandas
+xlrd
 marimo
 cvxpy
 seaborn

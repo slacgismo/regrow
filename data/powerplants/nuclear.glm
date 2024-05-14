@@ -1,0 +1,1288 @@
+module pypower;
+object powerplant
+{
+    name "ALVIN_W_VOGTLE_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Burke County";
+    state "Georgia";
+    latitude 33.13001;
+    longitude -81.7729;
+    out_svc +1987-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1229.0 MW";
+}
+
+object powerplant
+{
+    name "ALVIN_W_VOGTLE_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Burke County";
+    state "Georgia";
+    latitude 33.13001;
+    longitude -81.7729;
+    out_svc +1989-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1229.0 MW";
+}
+
+object powerplant
+{
+    name "ARKANSAS_NUCLEAR_ONE_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Pope County";
+    state "Arkansas";
+    latitude 35.311;
+    longitude -93.2351;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "903.0 MW";
+}
+
+object powerplant
+{
+    name "ARKANSAS_NUCLEAR_ONE_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Pope County";
+    state "Arkansas";
+    latitude 35.311;
+    longitude -93.2351;
+    out_svc +1980-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1065.0 MW";
+}
+
+object powerplant
+{
+    name "BEAVER_VALLEY_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Beaver County";
+    state "Pennsylvania";
+    latitude 40.6219;
+    longitude -80.4336;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "959.0 MW";
+}
+
+object powerplant
+{
+    name "BEAVER_VALLEY_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Beaver County";
+    state "Pennsylvania";
+    latitude 40.6219;
+    longitude -80.4336;
+    out_svc +1987-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "958.0 MW";
+}
+
+object powerplant
+{
+    name "BRAIDWOOD_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Will County";
+    state "Illinois";
+    latitude 41.2435;
+    longitude -88.2286;
+    out_svc +1988-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1270.0 MW";
+}
+
+object powerplant
+{
+    name "BRAIDWOOD_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Will County";
+    state "Illinois";
+    latitude 41.2435;
+    longitude -88.2286;
+    out_svc +1988-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1230.0 MW";
+}
+
+object powerplant
+{
+    name "BROWNS_FERRY_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Limestone County";
+    state "Alabama";
+    latitude 34.7042;
+    longitude -87.1189;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1256.0 MW";
+}
+
+object powerplant
+{
+    name "BROWNS_FERRY_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Limestone County";
+    state "Alabama";
+    latitude 34.7042;
+    longitude -87.1189;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1259.0 MW";
+}
+
+object powerplant
+{
+    name "BROWNS_FERRY_NUCLEAR_POWER_PLANT_3";
+    // type "boiling water reactor";
+    // county "Limestone County";
+    state "Alabama";
+    latitude 34.7042;
+    longitude -87.1189;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1260.0 MW";
+}
+
+object powerplant
+{
+    name "BRUNSWICK_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Brunswick County";
+    state "North Carolina";
+    latitude 33.9597;
+    longitude -78.0114;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "990.0 MW";
+}
+
+object powerplant
+{
+    name "BRUNSWICK_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Brunswick County";
+    state "North Carolina";
+    latitude 33.9597;
+    longitude -78.0114;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "960.0 MW";
+}
+
+object powerplant
+{
+    name "BYRON_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Ogle County";
+    state "Illinois";
+    latitude 42.0742;
+    longitude -89.2819;
+    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1242.0 MW";
+}
+
+object powerplant
+{
+    name "BYRON_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Ogle County";
+    state "Illinois";
+    latitude 42.0742;
+    longitude -89.2819;
+    out_svc +1987-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1210.0 MW";
+}
+
+object powerplant
+{
+    name "CALLAWAY_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Callaway County";
+    state "Missouri";
+    latitude 38.7589;
+    longitude -91.7788;
+    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1275.0 MW";
+}
+
+object powerplant
+{
+    name "CALVERT_CLIFFS_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Calvert County";
+    state "Maryland";
+    latitude 38.4344;
+    longitude -76.4417;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "918.0 MW";
+}
+
+object powerplant
+{
+    name "CALVERT_CLIFFS_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Calvert County";
+    state "Maryland";
+    latitude 38.4344;
+    longitude -76.4417;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "911.0 MW";
+}
+
+object powerplant
+{
+    name "CATAWBA_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "York County";
+    state "South Carolina";
+    latitude 35.0514;
+    longitude -81.0694;
+    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1188.0 MW";
+}
+
+object powerplant
+{
+    name "CATAWBA_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "York County";
+    state "South Carolina";
+    latitude 35.0514;
+    longitude -81.0694;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1188.0 MW";
+}
+
+object powerplant
+{
+    name "CLINTON_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "DeWitt County";
+    state "Illinois";
+    latitude 40.1719;
+    longitude -88.8339;
+    out_svc +1987-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1098.0 MW";
+}
+
+object powerplant
+{
+    name "COLUMBIA_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Benton County";
+    state "Washington";
+    latitude 46.4711;
+    longitude -119.3339;
+    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1190.0 MW";
+}
+
+object powerplant
+{
+    name "COMANCHE_PEAK_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Somervell County";
+    state "Texas";
+    latitude 32.2984;
+    longitude -97.7855;
+    out_svc +1990-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1259.0 MW";
+}
+
+object powerplant
+{
+    name "COMANCHE_PEAK_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Somervell County";
+    state "Texas";
+    latitude 32.2984;
+    longitude -97.7855;
+    out_svc +1993-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1250.0 MW";
+}
+
+object powerplant
+{
+    name "COOPER_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Nemaha County";
+    state "Nebraska";
+    latitude 40.3628;
+    longitude -95.6408;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "801.0 MW";
+}
+
+object powerplant
+{
+    name "DAVIS_BESSE_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Ottawa County";
+    state "Ohio";
+    latitude 41.5967;
+    longitude -83.0861;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "925.0 MW";
+}
+
+object powerplant
+{
+    name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "San Luis Obispo County";
+    state "California";
+    latitude 35.2115;
+    longitude -120.8555;
+    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc +2024-01-01 00:00:00 UTC;
+    operating_capacity "1197.0 MW";
+}
+
+object powerplant
+{
+    name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "San Luis Obispo County";
+    state "California";
+    latitude 35.2115;
+    longitude -120.8555;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc +2025-01-01 00:00:00 UTC;
+    operating_capacity "1197.0 MW";
+}
+
+object powerplant
+{
+    name "DONALD_C_COOK_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Berrien County";
+    state "Michigan";
+    latitude 41.9756;
+    longitude -86.5652;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1131.0 MW";
+}
+
+object powerplant
+{
+    name "DONALD_C_COOK_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Berrien County";
+    state "Michigan";
+    latitude 41.9756;
+    longitude -86.5652;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1231.0 MW";
+}
+
+object powerplant
+{
+    name "DRESDEN_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Grundy County";
+    state "Illinois";
+    latitude 41.3901;
+    longitude -88.2701;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "950.0 MW";
+}
+
+object powerplant
+{
+    name "DRESDEN_NUCLEAR_POWER_PLANT_3";
+    // type "boiling water reactor";
+    // county "Grundy County";
+    state "Illinois";
+    latitude 41.3901;
+    longitude -88.2701;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "935.0 MW";
+}
+
+object powerplant
+{
+    name "DUANE_ARNOLD_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Linn County";
+    state "Iowa";
+    latitude 42.1011;
+    longitude -91.7781;
+    out_svc INIT;
+    out_svc +2020-01-01 00:00:00 UTC;
+    operating_capacity "624.0 MW";
+}
+
+object powerplant
+{
+    name "EDWIN_I_HATCH_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Appling County";
+    state "Georgia";
+    latitude 31.9342;
+    longitude -82.3447;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "911.0 MW";
+}
+
+object powerplant
+{
+    name "EDWIN_I_HATCH_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Appling County";
+    state "Georgia";
+    latitude 31.9342;
+    longitude -82.3447;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "921.0 MW";
+}
+
+object powerplant
+{
+    name "FERMI_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Monroe County";
+    state "Michigan";
+    latitude 41.96278;
+    longitude -83.2575;
+    out_svc +1988-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1198.0 MW";
+}
+
+object powerplant
+{
+    name "GRAND_GULF_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Claiborne County";
+    state "Mississippi";
+    latitude 32.0081;
+    longitude -91.0478;
+    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1500.0 MW";
+}
+
+object powerplant
+{
+    name "H._B._ROBINSON_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Darlington County";
+    state "South Carolina";
+    latitude 34.4017;
+    longitude -80.1589;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "780.0 MW";
+}
+
+object powerplant
+{
+    name "HOPE_CREEK_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Salem County";
+    state "New Jersey";
+    latitude 39.4666;
+    longitude -75.5377;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1240.0 MW";
+}
+
+object powerplant
+{
+    name "INDIAN_POINT_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Westchester County";
+    state "New York";
+    latitude 41.2706;
+    longitude -73.9527;
+    out_svc INIT;
+    out_svc +2020-01-01 00:00:00 UTC;
+    operating_capacity "1067.0 MW";
+}
+
+object powerplant
+{
+    name "INDIAN_POINT_NUCLEAR_POWER_PLANT_3";
+    // type "pressurized water reactor";
+    // county "Westchester County";
+    state "New York";
+    latitude 41.2706;
+    longitude -73.9527;
+    out_svc INIT;
+    out_svc +2021-01-01 00:00:00 UTC;
+    operating_capacity "1085.0 MW";
+}
+
+object powerplant
+{
+    name "JAMES_A_FITZPATRICK_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Oswego County";
+    state "New York";
+    latitude 43.5223;
+    longitude -76.3955;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "849.0 MW";
+}
+
+object powerplant
+{
+    name "JOSEPH_M_FARLEY_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Houston County";
+    state "Alabama";
+    latitude 31.2231;
+    longitude -85.1116;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "918.0 MW";
+}
+
+object powerplant
+{
+    name "JOSEPH_M_FARLEY_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Houston County";
+    state "Alabama";
+    latitude 31.2231;
+    longitude -85.1116;
+    out_svc +1981-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "928.0 MW";
+}
+
+object powerplant
+{
+    name "LASALLE_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "LaSalle County";
+    state "Illinois";
+    latitude 41.2455;
+    longitude -88.6691;
+    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1207.0 MW";
+}
+
+object powerplant
+{
+    name "LASALLE_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "LaSalle County";
+    state "Illinois";
+    latitude 41.2455;
+    longitude -88.6691;
+    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1207.0 MW";
+}
+
+object powerplant
+{
+    name "LIMERICK_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Montgomery County";
+    state "Pennsylvania";
+    latitude 40.2243;
+    longitude -75.5874;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1194.0 MW";
+}
+
+object powerplant
+{
+    name "LIMERICK_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Montgomery County";
+    state "Pennsylvania";
+    latitude 40.2243;
+    longitude -75.5874;
+    out_svc +1990-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1194.0 MW";
+}
+
+object powerplant
+{
+    name "MCGUIRE_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Mecklenburg County";
+    state "North Carolina";
+    latitude 35.4331;
+    longitude -80.9486;
+    out_svc +1981-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1215.0 MW";
+}
+
+object powerplant
+{
+    name "MCGUIRE_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Mecklenburg County";
+    state "North Carolina";
+    latitude 35.4331;
+    longitude -80.9486;
+    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1215.0 MW";
+}
+
+object powerplant
+{
+    name "MILLSTONE_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "New London County";
+    state "Connecticut";
+    latitude 41.3107;
+    longitude -72.1677;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "918.0 MW";
+}
+
+object powerplant
+{
+    name "MILLSTONE_NUCLEAR_POWER_PLANT_3";
+    // type "pressurized water reactor";
+    // county "New London County";
+    state "Connecticut";
+    latitude 41.3107;
+    longitude -72.1677;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1280.0 MW";
+}
+
+object powerplant
+{
+    name "MONTICELLO_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Wright County";
+    state "Minnesota";
+    latitude 45.3338;
+    longitude -93.8493;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "691.0 MW";
+}
+
+object powerplant
+{
+    name "NINE_MILE_POINT_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Oswego County";
+    state "New York";
+    latitude 43.5205;
+    longitude -76.4068;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "642.0 MW";
+}
+
+object powerplant
+{
+    name "NINE_MILE_POINT_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Oswego County";
+    state "New York";
+    latitude 43.5205;
+    longitude -76.4068;
+    out_svc +1988-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1320.0 MW";
+}
+
+object powerplant
+{
+    name "NORTH_ANNA_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Louisa County";
+    state "Virginia";
+    latitude 38.0601;
+    longitude -77.7897;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "990.0 MW";
+}
+
+object powerplant
+{
+    name "NORTH_ANNA_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Louisa County";
+    state "Virginia";
+    latitude 38.0601;
+    longitude -77.7897;
+    out_svc +1980-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1011.0 MW";
+}
+
+object powerplant
+{
+    name "OCONEE_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Oconee County";
+    state "South Carolina";
+    latitude 34.7939;
+    longitude -82.8986;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "891.0 MW";
+}
+
+object powerplant
+{
+    name "OCONEE_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Oconee County";
+    state "South Carolina";
+    latitude 34.7939;
+    longitude -82.8986;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "891.0 MW";
+}
+
+object powerplant
+{
+    name "OCONEE_NUCLEAR_POWER_PLANT_3";
+    // type "pressurized water reactor";
+    // county "Oconee County";
+    state "South Carolina";
+    latitude 34.7939;
+    longitude -82.8986;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "900.0 MW";
+}
+
+object powerplant
+{
+    name "OYSTER_CREEK_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Ocean County";
+    state "New Jersey";
+    latitude 39.8144;
+    longitude -74.2058;
+    out_svc INIT;
+    out_svc +2018-01-01 00:00:00 UTC;
+    operating_capacity "652.0 MW";
+}
+
+object powerplant
+{
+    name "PALISADES_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Van Buren County";
+    state "Michigan";
+    latitude 42.323;
+    longitude -86.3146;
+    out_svc INIT;
+    out_svc +2022-01-01 00:00:00 UTC;
+    operating_capacity "850.0 MW";
+}
+
+object powerplant
+{
+    name "PALO_VERDE_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Maricopa County";
+    state "Arizona";
+    latitude 33.3881;
+    longitude -112.8617;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1414.0 MW";
+}
+
+object powerplant
+{
+    name "PALO_VERDE_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Maricopa County";
+    state "Arizona";
+    latitude 33.3881;
+    longitude -112.8617;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1414.0 MW";
+}
+
+object powerplant
+{
+    name "PALO_VERDE_NUCLEAR_POWER_PLANT_3";
+    // type "pressurized water reactor";
+    // county "Maricopa County";
+    state "Arizona";
+    latitude 33.3881;
+    longitude -112.8617;
+    out_svc +1988-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1414.0 MW";
+}
+
+object powerplant
+{
+    name "PEACH_BOTTOM_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "York County";
+    state "Pennsylvania";
+    latitude 39.7589;
+    longitude -76.2687;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1412.0 MW";
+}
+
+object powerplant
+{
+    name "PEACH_BOTTOM_NUCLEAR_POWER_PLANT_3";
+    // type "boiling water reactor";
+    // county "York County";
+    state "Pennsylvania";
+    latitude 39.7589;
+    longitude -76.2687;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1412.0 MW";
+}
+
+object powerplant
+{
+    name "PERRY_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Lake County";
+    state "Ohio";
+    latitude 41.8006;
+    longitude -81.1439;
+    out_svc +1987-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1303.0 MW";
+}
+
+object powerplant
+{
+    name "PILGRIM_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Plymouth County";
+    state "Massachusetts";
+    latitude 41.9436;
+    longitude -70.5771;
+    out_svc INIT;
+    out_svc +2019-01-01 00:00:00 UTC;
+    operating_capacity "711.0 MW";
+}
+
+object powerplant
+{
+    name "POINT_BEACH_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Manitowoc County";
+    state "Wisconsin";
+    latitude 44.2806;
+    longitude -87.5369;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "640.0 MW";
+}
+
+object powerplant
+{
+    name "POINT_BEACH_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Manitowoc County";
+    state "Wisconsin";
+    latitude 44.2806;
+    longitude -87.5369;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "640.0 MW";
+}
+
+object powerplant
+{
+    name "PRAIRIE_ISLAND_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Goodhue County";
+    state "Minnesota";
+    latitude 44.622;
+    longitude -92.6333;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "566.0 MW";
+}
+
+object powerplant
+{
+    name "PRAIRIE_ISLAND_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Goodhue County";
+    state "Minnesota";
+    latitude 44.622;
+    longitude -92.6333;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "560.0 MW";
+}
+
+object powerplant
+{
+    name "QUAD_CITIES_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Rock Island County";
+    state "Illinois";
+    latitude 41.7261;
+    longitude -90.3103;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "940.0 MW";
+}
+
+object powerplant
+{
+    name "QUAD_CITIES_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Rock Island County";
+    state "Illinois";
+    latitude 41.7261;
+    longitude -90.3103;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "940.0 MW";
+}
+
+object powerplant
+{
+    name "RIVER_BEND_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "West Feliciana Parish";
+    state "Louisiana";
+    latitude 30.757;
+    longitude -91.3327;
+    out_svc +1986-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1016.0 MW";
+}
+
+object powerplant
+{
+    name "ROBERT_EMMETT_GINNA_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Wayne County";
+    state "New York";
+    latitude 43.2777;
+    longitude -77.3099;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "608.0 MW";
+}
+
+object powerplant
+{
+    name "SALEM_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Salem County";
+    state "New Jersey";
+    latitude 39.4625;
+    longitude -75.5358;
+    out_svc INIT;
+    out_svc +2036-01-01 00:00:00 UTC;
+    operating_capacity "1254.0 MW";
+}
+
+object powerplant
+{
+    name "SALEM_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Salem County";
+    state "New Jersey";
+    latitude 39.4625;
+    longitude -75.5358;
+    out_svc +1981-01-01 00:00:00 UTC;
+    out_svc +2040-01-01 00:00:00 UTC;
+    operating_capacity "1200.0 MW";
+}
+
+object powerplant
+{
+    name "SEABROOK_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Rockingham County";
+    state "New Hampshire";
+    latitude 42.8992;
+    longitude -70.8489;
+    out_svc +1990-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1296.0 MW";
+}
+
+object powerplant
+{
+    name "SEQUOYAH_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Hamilton County";
+    state "Tennessee";
+    latitude 35.2267;
+    longitude -85.0917;
+    out_svc +1981-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1221.0 MW";
+}
+
+object powerplant
+{
+    name "SEQUOYAH_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Hamilton County";
+    state "Tennessee";
+    latitude 35.2267;
+    longitude -85.0917;
+    out_svc +1982-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1200.0 MW";
+}
+
+object powerplant
+{
+    name "SHEARON_HARRIS_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Wake County";
+    state "North Carolina";
+    latitude 35.6334;
+    longitude -78.9556;
+    out_svc +1987-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "980.0 MW";
+}
+
+object powerplant
+{
+    name "SOUTH_TEXAS_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Matagorda County";
+    state "Texas";
+    latitude 28.79501;
+    longitude -96.0481;
+    out_svc +1988-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1354.0 MW";
+}
+
+object powerplant
+{
+    name "SOUTH_TEXAS_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Matagorda County";
+    state "Texas";
+    latitude 28.79501;
+    longitude -96.0481;
+    out_svc +1989-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1354.0 MW";
+}
+
+object powerplant
+{
+    name "ST._LUCIE_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Saint Lucie County";
+    state "Florida";
+    latitude 27.3486;
+    longitude -80.2464;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "1045.0 MW";
+}
+
+object powerplant
+{
+    name "ST._LUCIE_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Saint Lucie County";
+    state "Florida";
+    latitude 27.3486;
+    longitude -80.2464;
+    out_svc +1983-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1050.0 MW";
+}
+
+object powerplant
+{
+    name "SURRY_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Surry County";
+    state "Virginia";
+    latitude 37.1661;
+    longitude -76.6986;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "890.0 MW";
+}
+
+object powerplant
+{
+    name "SURRY_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Surry County";
+    state "Virginia";
+    latitude 37.1661;
+    longitude -76.6986;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "890.0 MW";
+}
+
+object powerplant
+{
+    name "SUSQUEHANNA_NUCLEAR_POWER_PLANT_1";
+    // type "boiling water reactor";
+    // county "Luzerne County";
+    state "Pennsylvania";
+    latitude 41.0919;
+    longitude -76.1462;
+    out_svc +1983-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1330.0 MW";
+}
+
+object powerplant
+{
+    name "SUSQUEHANNA_NUCLEAR_POWER_PLANT_2";
+    // type "boiling water reactor";
+    // county "Luzerne County";
+    state "Pennsylvania";
+    latitude 41.0919;
+    longitude -76.1462;
+    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1330.0 MW";
+}
+
+object powerplant
+{
+    name "THREE_MILE_ISLAND_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Dauphin County";
+    state "Pennsylvania";
+    latitude 40.1539;
+    longitude -76.7248;
+    out_svc INIT;
+    out_svc +2019-01-01 00:00:00 UTC;
+    operating_capacity "880.0 MW";
+}
+
+object powerplant
+{
+    name "TURKEY_POINT_POWER_STATION_3";
+    // type "pressurized water reactor";
+    // county "Miami-Dade County";
+    state "Florida";
+    latitude 25.43448;
+    longitude -80.3324;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "829.0 MW";
+}
+
+object powerplant
+{
+    name "TURKEY_POINT_POWER_STATION_4";
+    // type "pressurized water reactor";
+    // county "Miami-Dade County";
+    state "Florida";
+    latitude 25.43448;
+    longitude -80.3324;
+    out_svc INIT;
+    out_svc NEVER;
+    operating_capacity "829.0 MW";
+}
+
+object powerplant
+{
+    name "VIRGIL_C_SUMMER_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Fairfield County";
+    state "South Carolina";
+    latitude 34.2983;
+    longitude -81.3153;
+    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1006.0 MW";
+}
+
+object powerplant
+{
+    name "WATERFORD_NUCLEAR_POWER_PLANT_3";
+    // type "pressurized water reactor";
+    // county "St. Charles Parish";
+    state "Louisiana";
+    latitude 29.9953;
+    longitude -90.4716;
+    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1250.0 MW";
+}
+
+object powerplant
+{
+    name "WATTS_BAR_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Rhea County";
+    state "Tennessee";
+    latitude 35.6021;
+    longitude -84.7895;
+    out_svc +1996-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1210.0 MW";
+}
+
+object powerplant
+{
+    name "WATTS_BAR_NUCLEAR_POWER_PLANT_2";
+    // type "pressurized water reactor";
+    // county "Rhea County";
+    state "Tennessee";
+    latitude 35.6015;
+    longitude -84.7909;
+    out_svc +2016-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1218.0 MW";
+}
+
+object powerplant
+{
+    name "WOLF_CREEK_NUCLEAR_POWER_PLANT_1";
+    // type "pressurized water reactor";
+    // county "Coffey County";
+    state "Kansas";
+    latitude 38.2393;
+    longitude -95.6898;
+    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc NEVER;
+    operating_capacity "1285.0 MW";
+}
+

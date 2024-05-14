@@ -1,25 +1,34 @@
+import os, sys
 import pandas as pd
 import math
 
 pd.options.display.max_columns = None
 pd.options.display.width = None
 
-plants = pd.read_csv("nuclear.csv")
-print(plants)
+def toascii(text,replace=""):
+    return "".join([x if 32<=ord(x)<=127 else replace for x in text])
 
-with open("nuclear.glm","w") as glm:
-    for _,data in plants.iterrows():
-        print(f"""object powerplant
+for file in os.listdir("."):
+    if file.endswith(".csv") and not file.endswith("_cost.csv"):
+        plants = pd.read_csv(file)
+
+        with open(os.path.splitext(file)[0]+".glm","w") as glm:
+            print("module pypower;",file=glm)
+            for _,data in plants.iterrows():
+                try:
+                    print(f"""object powerplant
 {{
-    name "{data['name']}_{1 if math.isnan(data['unit_id']) else int(data['unit_id'])}";
+    name "{toascii(data['name'].upper().replace(" ","_"))}_{1 if math.isnan(data['unit']) else int(data['unit'])}";
     // type "{data['type']}";
-    // model "{data['model']}";
     // county "{data['county']}";
-    // state "{data['state']}";
+    state "{data['state']}";
     latitude {data['latitude']};
     longitude {data['longitude']};
-    in_svc "{max(2000,int(data['start[y]']))}-01-01 00:00:00 UTC";
+    out_svc {'INIT' if data['start[y]'] < 1980 else "+"+str(int(data['start[y]']))+"-01-01 00:00:00 UTC"};
     out_svc {'NEVER' if math.isnan(data['retirement[y]']) else "+"+str(int(data['retirement[y]']))+"-01-01 00:00:00 UTC"};
-    capacity "{data['capacity[MW]']} MW";
+    operating_capacity "{data['capacity[MW]']} MW";
 }}
-""")
+""",file=glm)
+                except Exception as err:
+                    print(f"EXCEPTION [powerplants.py]: {err}",file=sys.stderr)
+                    print("DATA RECORD:",data,file=sys.stderr)

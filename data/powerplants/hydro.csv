@@ -1,0 +1,240 @@
+name,capacity[MW],start[y],retirement[y],type,latitude,longitude,county,state,unit
+Allatoona hydroelectric plant,87,1950.0,,conventional storage,34.1637,-84.7282,Bartow County,Georgia,1
+American Falls hydroelectric plant,92,1978.0,,conventional storage,42.7778,-112.876,Power County,Idaho,1
+Apalachia hydroelectric plant,94,1943.0,,run-of-river,35.1677,-84.2956,Polk County,Tennessee,1
+Bad Creek hydroelectric plant,1488,1991.0,,pumped storage,35.0075,-82.9975,Oconee County,South Carolina,1
+Bagnell Dam hydroelectric plant,208,1931.0,,conventional storage,38.2044,-92.6239,Miller County,Missouri,1
+Balch 2 hydroelectric plant,97,1958.0,,conventional storage,36.9089,-119.088,Fresno County,California,1
+Barkley hydroelectric plant,130,1966.0,,conventional storage,37.0217,-88.2211,Lyon County,Kentucky,1
+Bartletts Ferry hydroelectric plant,173,1926.0,,conventional storage,32.663,-85.0908,Lee County,Alabama,1
+Bath County hydroelectric plant,2862,1985.0,,pumped storage,38.2089,-79.8001,Bath County,Virginia,1
+Bear Swamp hydroelectric plant,600,1974.0,,pumped storage,42.6839,-72.9599,Berkshire County,Massachusetts,1
+Beaver Dam hydroelectric plant,112,1965.0,,run-of-river,36.4215,-93.8474,Carroll County,Arkansas,1
+Belden hydroelectric plant,118,1969.0,,conventional storage,40.0074,-121.249,Plumas County,California,1
+Big Bend Dam hydroelectric plant,538,1964.0,,conventional storage,44.0384,-99.4463,Buffalo County,South Dakota,1
+Big Creek 1 hydroelectric plant,88,1913.0,,conventional storage,37.2042,-119.2401,Fresno County,California,1
+Big Creek 2A hydroelectric plant,110,1928.0,,conventional storage,37.2001,-119.307,Fresno County,California,1
+Big Creek 3 hydroelectric plant,175,1923.0,,conventional storage,37.1485,-119.387,Fresno County,California,1
+Big Creek 4 hydroelectric plant,100,1951.0,,conventional storage,37.139,-119.4901,Madera County,California,1
+Big Creek 8 hydroelectric plant,75,1921.0,,conventional storage,37.2096,-119.329,Fresno County,California,1
+Blakely Mountain hydroelectric plant,75,1955.0,,conventional storage,34.571,-93.1944,Garland County,Arkansas,1
+Blenheim Gilboa hydroelectric plant,1000,1973.0,,pumped storage,42.4423,-74.4479,Schoharie County,New York,1
+Bliss hydroelectric plant,75,1949.0,,run-of-river,42.9138,-115.071,Gooding County,Idaho,1
+Blue Mesa hydroelectric plant,86,1967.0,,conventional storage,38.4532,-107.338,Gunnison County,Colorado,1
+Bonneville hydroelectric plant,1162,1938.0,,run-of-river,45.6441,-121.941,Multnomah County,Oregon,1
+Boone hydroelectric plant,106,1953.0,,conventional storage,36.4403,-82.4381,Sullivan County,Tennessee,1
+Boundary hydroelectric plant,1119,1967.0,,conventional storage,48.9871,-117.348,Pend Oreille County,Washington,1
+Box Canyon hydroelectric plant,90,1955.0,,run-of-river,48.7809,-117.418,Pend Oreille County,Washington,1
+Bradley Lake hydroelectric plant,126,1991.0,,conventional storage,59.7786,-150.9401,Kenai Peninsula County,Alaska,1
+Broken Bow Dam hydroelectric plant,100,1970.0,,conventional storage,34.1388,-94.6845,McCurtain County,Oklahoma,1
+Brownlee hydroelectric plant,675,1958.0,,conventional storage,44.8367,-116.898,Washington County,Idaho,1
+Buford hydroelectric plant,131,1957.0,,conventional storage,34.1623,-84.0774,Forsyth County,Georgia,1
+Bull Shoals hydroelectric plant,340,1952.0,,conventional storage,36.3635,-92.5763,Marion County,Arkansas,1
+C. J. Strike hydroelectric plant,83,1952.0,,conventional storage,42.9449,-115.978,Owyhee County,Idaho,1
+Cabin Creek hydroelectric plant,300,1967.0,,pumped storage,39.6551,-105.709,Clear Creek County,Colorado,1
+Cabinet Gorge hydroelectric plant,265,1952.0,,conventional storage,48.0844,-116.053,Bonner County,Idaho,1
+Calderwood hydroelectric plant,157,1930.0,,conventional storage,35.4923,-83.9806,Blount County,Tennessee,1
+Camino hydroelectric plant,158,1963.0,,conventional storage,38.8288,-120.537,El Dorado County,California,1
+Cannelton hydroelectric plant,88,2016.0,,run-of-river,37.8997,-86.7058,Hancock County,Kentucky,1
+Caribou 2 hydroelectric plant,118,1958.0,,conventional storage,40.086,-121.149,Plumas County,California,1
+Carmen Smith hydroelectric plant,114,1963.0,,conventional storage,44.286,-122.041,Linn County,Oregon,1
+Carters hydroelectric plant,250,1975.0,,conventional storage,34.6121,-84.6733,Murray County,Georgia,1
+Carters Pumped Storage hydroelectric plant,250,1975.0,,pumped storage,34.6121,-84.6733,Murray County,Georgia,1
+Castaic hydroelectric plant,1682,1972.0,,conventional and pumped storage,34.5872,-118.657,Los Angeles County,California,1
+Center Hill hydroelectric plant,140,1950.0,,run-of-river,36.0972,-85.8274,DeKalb County,Tennessee,1
+Cheoah hydroelectric plant,140,1919.0,,conventional storage,35.4478,-83.9383,Graham County,North Carolina,1
+Cherokee hydroelectric plant,135,1942.0,,conventional storage,36.1682,-83.4977,Jefferson County,Tennessee,1
+Chickamauga hydroelectric plant,160,1940.0,,conventional storage,35.1018,-85.2295,Hamilton County,Tennessee,1
+Chief Joseph hydroelectric plant,2456,1955.0,,conventional storage,47.9951,-119.6401,Douglas County,Washington,1
+Claytor hydroelectric plant,75,1939.0,,run-of-river,37.0751,-80.5847,Pulaski County,Virginia,1
+Colgate hydroelectric plant,315,1969.0,,conventional storage,39.3308,-121.192,Yuba County,California,1
+Collierville hydroelectric plant,253,1989.0,,conventional storage,38.1446,-120.381,Calaveras County,California,1
+Comerford hydroelectric plant,168,1930.0,,conventional storage,44.325,-72.001,Grafton County,New Hampshire,1
+Conowingo hydroelectric plant,531,1928.0,,conventional storage,39.6572,-76.1752,Harford County,Maryland,1
+Cordell Hull hydroelectric plant,100,1973.0,,conventional storage,36.2895,-85.9442,Smith County,Tennessee,1
+Cowans Ford hydroelectric plant,350,1963.0,,run-of-river,35.4346,-80.9588,Lincoln County,North Carolina,1
+Cushman 2 hydroelectric plant,85,1930.0,,conventional storage,47.3698,-123.1601,Mason County,Washington,1
+Dam 2 hydroelectric plant,103,1999.0,,run-of-river,33.9865,-91.3158,Desha County,Arkansas,1
+Dardanelle hydroelectric plant,161,1965.0,,conventional storage,35.2503,-93.1686,Pope County,Arkansas,1
+Davis Dam hydroelectric plant,255,1951.0,,conventional storage,35.197,-114.571,Mohave County,Arizona,1
+Denison hydroelectric plant,104,1945.0,,conventional storage,33.8181,-96.5692,Grayson County,Texas,1
+Detroit Dam hydroelectric plant,100,1953.0,,conventional storage,44.7224,-122.251,Marion County,Oregon,1
+Devil Canyon hydroelectric plant,276,1972.0,,conventional storage,34.2056,-117.334,San Bernardino County,California,1
+Diablo hydroelectric plant,182,1936.0,,run-of-river,48.7138,-121.132,Whatcom County,Washington,1
+Dion R. Holm hydroelectric plant,157,1960.0,,conventional storage,37.8966,-119.968,Tuolumne County,California,1
+Don Pedro hydroelectric plant,171,1971.0,,conventional storage,37.696,-120.4201,Tuolumne County,California,1
+Douglas hydroelectric plant,151,1943.0,,conventional storage,35.9623,-83.5393,Sevier County,Tennessee,1
+Dworshak hydroelectric plant,465,1974.0,,conventional storage,46.5143,-116.298,Clearwater County,Idaho,1
+Edward C. Hyatt hydroelectric plant,351,1968.0,,conventional storage,39.543,-121.492,Butte County,California,1
+Edward C. Hyatt Pumped Storage hydroelectric plant,293,1968.0,,pumped storage,39.543,-121.492,Butte County,California,1
+Electra hydroelectric plant,103,1948.0,,conventional storage,38.331,-120.6701,Amador County,California,1
+Eufaula hydroelectric plant,90,1964.0,,conventional storage,35.3069,-95.3572,Haskell County,Oklahoma,1
+Fairfield hydroelectric plant,587,1978.0,,pumped storage,34.3061,-81.3308,Fairfield County,South Carolina,1
+Flaming Gorge hydroelectric plant,152,1963.0,,conventional storage,40.9146,-109.422,Daggett County,Utah,1
+Flatiron hydroelectric plant,95,1954.0,,conventional and pumped storage,40.365,-105.236,Larimer County,Colorado,1
+Folsom hydroelectric plant,199,1955.0,,conventional storage,38.7068,-121.158,Sacramento County,California,1
+Fontana hydroelectric plant,255,1945.0,,conventional storage,35.4507,-83.805,Swain County,North Carolina,1
+Fort Loudoun hydroelectric plant,153,1943.0,,conventional storage,35.7917,-84.2431,Loudon County,Tennessee,1
+Fort Peck hydroelectric plant,180,1943.0,,conventional storage,48.0122,-106.412,McCone County,Montana,1
+Fort Randall hydroelectric plant,320,1954.0,,conventional storage,43.0653,-98.5539,Charles Mix County,South Dakota,1
+Garrison hydroelectric plant,583,1956.0,,conventional storage,47.4945,-101.412,Mercer County,North Dakota,1
+Gaston hydroelectric plant,178,1963.0,,conventional storage,36.4992,-77.8115,Halifax County,North Carolina,1
+Gavins Point hydroelectric plant,132,1956.0,,run-of-river,42.8488,-97.4815,Cedar County,Nebraska,1
+Glen Canyon hydroelectric plant,1312,1964.0,,conventional storage,36.9366,-111.484,Coconino County,Arizona,1
+Gorge hydroelectric plant,207,1924.0,,conventional storage,48.6981,-121.209,Whatcom County,Washington,1
+Grand Coulee Left hydroelectric plant,1155,1941.0,,conventional storage,47.9565,-118.981,Grant County,Washington,1
+Grand Coulee Right hydroelectric plant,1125,1941.0,,conventional storage,47.9565,-118.981,Grant County,Washington,1
+Green Peter hydroelectric plant,80,1967.0,,conventional storage,44.4494,-122.549,Linn County,Oregon,1
+Greers Ferry Lake hydroelectric plant,96,1964.0,,conventional storage,35.5207,-91.9953,Cleburne County,Arkansas,1
+Guntersville hydroelectric plant,115,1939.0,,conventional storage,34.4213,-86.3939,Marshall County,Alabama,1
+Haas hydroelectric plant,135,1958.0,,conventional storage,36.9274,-119.0201,Fresno County,California,1
+Harris Station hydroelectric plant,76,1954.0,,conventional storage,45.4592,-69.8658,Somerset County,Maine,1
+Harry Truman hydroelectric plant,161,1979.0,,pumped storage,38.2623,-93.4062,Benton County,Missouri,1
+Hartwell Lake hydroelectric plant,420,1962.0,,conventional storage,34.3564,-82.8219,Hart County,Georgia,1
+Hawks Nest hydroelectric plant,102,1936.0,,run-of-river,38.1478,-81.1753,Fayette County,West Virginia,1
+Hells Canyon hydroelectric plant,392,1967.0,,conventional storage,45.2439,-116.701,Wallowa County,Oregon,1
+Helms hydroelectric plant,1053,1984.0,,pumped storage,37.0293,-118.968,Fresno County,California,1
+Henry M. Jackson hydroelectric plant,112,1984.0,,conventional storage,47.9084,-121.814,Snohomish County,Washington,1
+Hiwassee hydroelectric plant,166,1940.0,,conventional and pumped storage,35.1509,-84.1775,Cherokee County,North Carolina,1
+Holtwood hydroelectric plant,247,1910.0,,run-of-river,39.8272,-76.3318,Lancaster County,Pennsylvania,1
+Hoover Dam hydroelectric plant,2080,1936.0,,conventional storage,36.0155,-114.738,,Arizona and Nevada,1
+Horse Mesa hydroelectric plant,130,1927.0,,conventional and pumped storage,33.5907,-111.344,Maricopa County,Arizona,1
+Hungry Horse hydroelectric plant,428,1952.0,,conventional storage,48.3415,-114.014,Flathead County,Montana,1
+Ice Harbor hydroelectric plant,603,1962.0,,run-of-river,46.2498,-118.8801,Walla Walla County,Washington,1
+J. S. Eastwood hydroelectric plant,200,1987.0,,pumped storage,37.1479,-119.257,Fresno County,California,1
+J. Strom Thurmond hydroelectric plant,362,1953.0,,conventional storage,33.6602,-82.1961,McCormick County,South Carolina,1
+James B. Black hydroelectric plant,169,1965.0,,conventional storage,40.9923,-121.975,Shasta County,California,1
+Jaybird hydroelectric plant,162,1961.0,,conventional storage,38.834,-120.532,El Dorado County,California,1
+Jefferies hydroelectric plant,145,1942.0,,run-of-river,33.2444,-79.9909,Berkeley County,South Carolina,1
+Jocassee hydroelectric plant,774,1973.0,,pumped storage,34.9594,-82.9147,Pickens County,South Carolina,1
+John C. Boyle hydroelectric plant,99,1958.0,,conventional storage,42.0936,-122.0701,Klamath County,Oregon,1
+John Day hydroelectric plant,2160,1968.0,,run-of-river,45.7164,-120.694,Sherman County,Oregon,1
+John H. Kerr hydroelectric plant,297,1952.0,,conventional storage,36.5994,-78.3005,Mecklenburg County,Virginia,1
+John W Keys III hydroelectric plant,314,1951.0,,pumped storage,47.9565,-118.981,Grant County,Washington,1
+Jones Bluff hydroelectric plant,82,1975.0,,conventional storage,32.3242,-86.7843,Autauga County,Alabama,1
+Jordan hydroelectric plant,100,1929.0,,run-of-river,32.6189,-86.2548,Elmore County,Alabama,1
+Judge Francis Carr hydroelectric plant,154,1963.0,,conventional storage,40.6469,-122.627,Shasta County,California,1
+Kentucky Dam hydroelectric plant,219,1944.0,,conventional storage,37.0131,-88.2692,Marshall County,Kentucky,1
+Keokuk hydroelectric plant,125,1913.0,,conventional storage,40.3965,-91.3719,Lee County,Iowa,1
+Keowee hydroelectric plant,158,1971.0,,conventional storage,34.7981,-82.8872,Pickens County,South Carolina,1
+Kerckhoff 2 hydroelectric plant,140,1983.0,,conventional storage,37.0718,-119.558,Fresno County,California,1
+Keswick hydroelectric plant,117,1949.0,,conventional storage,40.6119,-122.446,Shasta County,California,1
+Lay hydroelectric plant,177,1967.0,,run-of-river,32.9633,-86.5187,Chilton County,Alabama,1
+Lewis Smith hydroelectric plant,181,1961.0,,conventional storage,33.9406,-87.1077,Walker County,Alabama,1
+Lewiston Niagara hydroelectric plant,240,1961.0,,pumped storage,43.143,-79.022,Niagara County,New York,1
+Libby hydroelectric plant,525,1975.0,,conventional storage,48.4098,-115.314,Lincoln County,Montana,1
+Little Goose hydroelectric plant,810,1970.0,,run-of-river,46.5838,-118.027,Columbia County,Washington,1
+Logan Martin hydroelectric plant,128,1964.0,,conventional storage,33.4259,-86.3375,Talladega County,Alabama,1
+Lookout Point hydroelectric plant,120,1955.0,,conventional storage,43.9153,-122.753,Lane County,Oregon,1
+Lower Baker hydroelectric plant,111,1960.0,,conventional storage,48.5478,-121.741,Skagit County,Washington,1
+Lower Granite hydroelectric plant,810,1975.0,,run-of-river,46.6595,-117.429,Whitman County,Washington,1
+Lower Monumental hydroelectric plant,810,1969.0,,run-of-river,46.5635,-118.5401,Walla Walla County,Washington,1
+Lucky Peak hydroelectric plant,101,1988.0,,conventional storage,43.528,-116.058,Ada County,Idaho,1
+Ludington hydroelectric plant,1979,1973.0,,pumped storage,43.8942,-86.4447,Mason County,Michigan,1
+Mammoth Pool hydroelectric plant,190,1960.0,,conventional storage,37.2203,-119.338,Madera County,California,1
+Mansfield hydroelectric plant,108,1941.0,,conventional storage,30.3899,-97.9073,Travis County,Texas,1
+Markham Ferry hydroelectric plant,128,1964.0,,conventional storage,36.2317,-95.1822,Mayes County,Oklahoma,1
+Markland hydroelectric plant,78,1967.0,,run-of-river,38.7795,-84.964,Switzerland County,Indiana,1
+Martin hydroelectric plant,211,1927.0,,conventional storage,32.6804,-85.9114,Elmore County,Alabama,1
+Mayfield hydroelectric plant,162,1963.0,,run-of-river,46.5035,-122.589,Lewis County,Washington,1
+McNary hydroelectric plant,991,1953.0,,run-of-river,45.9402,-119.299,Umatilla County,Oregon,1
+Meldahl hydroelectric plant,105,2016.0,,run-of-river,38.7914,-84.173,Bracken County,Kentucky,1
+Merwin hydroelectric plant,136,1931.0,,conventional storage,45.9567,-122.554,Cowlitz County,Washington,1
+Middle Fork hydroelectric plant,122,1966.0,,conventional storage,39.0248,-120.596,Placer County,California,1
+Millers Ferry hydroelectric plant,101,1970.0,,run-of-river,32.1009,-87.3998,Wilcox County,Alabama,1
+Mitchell hydroelectric plant,170,1949.0,,run-of-river,32.806,-86.4449,Coosa County,Alabama,1
+Moccasin hydroelectric plant,100,1969.0,,conventional storage,37.8094,-120.299,Tuolumne County,California,1
+Morrow Point hydroelectric plant,173,1970.0,,conventional storage,38.4517,-107.539,Montrose County,Colorado,1
+Mossyrock hydroelectric plant,300,1968.0,,conventional storage,46.5347,-122.425,Lewis County,Washington,1
+Mount Elbert hydroelectric plant,200,1981.0,,pumped storage,39.0942,-106.352,Lake County,Colorado,1
+Muddy Run hydroelectric plant,1072,1967.0,,pumped storage,39.8076,-76.2993,Lancaster County,Pennsylvania,1
+Narrows hydroelectric plant,109,1917.0,,run-of-river,35.4189,-80.0917,Stanly County,North Carolina,1
+Nathaniel Washington hydroelectric plant,4215,1975.0,,conventional storage,47.9565,-118.981,Grant County,Washington,1
+New Exchequer hydroelectric plant,95,1967.0,,conventional storage,37.5844,-120.269,Mariposa County,California,1
+New Melones hydroelectric plant,300,1979.0,,conventional storage,37.9469,-120.528,Tuolumne County,California,1
+Nickajack hydroelectric plant,104,1968.0,,run-of-river,35.0017,-85.6218,Marion County,Tennessee,1
+Norfork hydroelectric plant,80,1944.0,,conventional storage,36.2491,-92.2401,Baxter County,Arkansas,1
+Norris hydroelectric plant,131,1936.0,,conventional storage,36.2242,-84.0914,Anderson County,Tennessee,1
+Northfield Mountain hydroelectric plant,1168,1972.0,,pumped storage,42.6107,-72.4716,Franklin County,Massachusetts,1
+Noxon Rapids hydroelectric plant,488,1959.0,,conventional storage,47.9605,-115.734,Sanders County,Montana,1
+Oahe hydroelectric plant,786,1962.0,,conventional storage,44.4504,-100.387,Hughes County,South Dakota,1
+Ohio Falls hydroelectric plant,110,1928.0,,run-of-river,38.2832,-85.7792,Jefferson County,Kentucky,1
+Old Hickory hydroelectric plant,162,1957.0,,conventional storage,36.2972,-86.6556,Sumner County,Tennessee,1
+Oxbow hydroelectric plant,190,1961.0,,conventional storage,44.9716,-116.835,Baker County,Oregon,1
+Ozark hydroelectric plant,100,1972.0,,run-of-river,35.4693,-93.8175,Franklin County,Arkansas,1
+Palisades hydroelectric plant,176,1957.0,,conventional storage,43.3349,-111.206,Bonneville County,Idaho,1
+Parker hydroelectric plant,120,1942.0,,conventional storage,34.2953,-114.1401,San Bernardino County,California,1
+Pelton hydroelectric plant,110,1957.0,,conventional storage,44.6944,-121.231,Jefferson County,Oregon,1
+Pensacola hydroelectric plant,130,1940.0,,conventional storage,36.4675,-95.0414,Mayes County,Oklahoma,1
+Pickwick Landing hydroelectric plant,240,1938.0,,conventional storage,35.0683,-88.2494,Hardin County,Tennessee,1
+Pine Flat hydroelectric plant,165,1984.0,,conventional storage,36.8326,-119.327,Fresno County,California,1
+Pit 3 hydroelectric plant,80,1925.0,,conventional storage,40.9974,-121.748,Shasta County,California,1
+Pit 4 hydroelectric plant,103,1955.0,,conventional storage,40.9864,-121.849,Shasta County,California,1
+Pit 5 hydroelectric plant,142,1944.0,,conventional storage,40.9862,-121.978,Shasta County,California,1
+Pit 6 hydroelectric plant,79,1965.0,,conventional storage,40.9226,-121.993,Shasta County,California,1
+Pit 7 hydroelectric plant,110,1965.0,,conventional storage,40.8475,-121.991,Shasta County,California,1
+Poe hydroelectric plant,143,1958.0,,conventional storage,39.7229,-121.4701,Butte County,California,1
+Priest Rapids hydroelectric plant,956,1959.0,,conventional storage,46.6451,-119.908,Grant County,Washington,1
+R. C. Kirkwood hydroelectric plant,116,1967.0,,conventional storage,37.8777,-119.953,Tuolumne County,California,1
+R. L. Harris hydroelectric plant,135,1983.0,,conventional storage,33.2583,-85.616,Randolph County,Alabama,1
+Raccoon Mountain hydroelectric plant,1714,1978.0,,pumped storage,35.0558,-85.3879,Hamilton County,Tennessee,1
+Ralston hydroelectric plant,79,1966.0,,conventional storage,39.001,-120.725,Placer County,California,1
+Richard B. Russell hydroelectric plant,300,1985.0,,conventional storage,34.0256,-82.5953,Elbert County,Georgia,1
+Richard B. Russell Pumped Storage hydroelectric plant,300,1985.0,,pumped storage,34.0256,-82.5953,Elbert County,Georgia,1
+Roanoke Rapids hydroelectric plant,100,1955.0,,conventional storage,36.4789,-77.6722,Halifax County,North Carolina,1
+Robert Moses Niagara hydroelectric plant,2429,1961.0,,run-of-river,43.1427,-79.0394,Niagara County,New York,1
+Robert S. Kerr hydroelectric plant,110,1971.0,,run-of-river,35.3445,-94.7755,Sequoyah County,Oklahoma,1
+Rock Creek hydroelectric plant,126,1950.0,,conventional storage,39.9052,-121.345,Plumas County,California,1
+Rock Island hydroelectric plant,629,1931.0,,run-of-river,47.3461,-120.092,Chelan County,Washington,1
+Rocky Mountain hydroelectric plant,848,1995.0,,pumped storage,34.3555,-85.3039,Floyd County,Georgia,1
+Rocky Reach hydroelectric plant,1300,1961.0,,run-of-river,47.5336,-120.295,Chelan County,Washington,1
+Ross hydroelectric plant,450,1952.0,,conventional storage,48.7326,-121.068,Whatcom County,Washington,1
+Round Butte hydroelectric plant,373,1964.0,,conventional storage,44.6058,-121.277,Jefferson County,Oregon,1
+S. C. Moore hydroelectric plant,191,1957.0,,conventional storage,44.3356,-71.8742,Grafton County,New Hampshire,1
+Safe Harbor hydroelectric plant,418,1931.0,,run-of-river,39.9244,-76.3901,Lancaster County,Pennsylvania,1
+Salina hydroelectric plant,260,1968.0,,pumped storage,36.2647,-95.1036,Mayes County,Oklahoma,1
+Saluda hydroelectric plant,207,1930.0,,conventional storage,34.0533,-81.2172,Lexington County,South Carolina,1
+Seli’š Ksanka Qlispe’ hydroelectric plant,228,1938.0,,conventional storage,47.6777,-114.234,Lake County,Montana,1
+Seneca hydroelectric plant,438,1970.0,,pumped storage,41.8389,-79.0056,Warren County,Pennsylvania,1
+Shasta hydroelectric plant,714,1944.0,,conventional storage,40.7175,-122.422,Shasta County,California,1
+Sidney A. Murray Jr. hydroelectric plant,192,1990.0,,run-of-river,31.088,-91.6188,Concordia County,Louisiana,1
+Smith Mountain hydroelectric plant,300,1965.0,,conventional storage,37.0413,-79.5356,Pittsylvania County,Virginia,1
+Smith Mountain Pumped Storage hydroelectric plant,247,1965.0,,pumped storage,37.0413,-79.5356,Pittsylvania County,Virginia,1
+Smithland hydroelectric plant,76,2017.0,,conventional storage,37.1696,-88.4195,Livingston County,Kentucky,1
+Snettisham hydroelectric plant,78,1973.0,,conventional storage,58.1415,-133.737,Juneau County,Alaska,1
+Spring Creek hydroelectric plant,180,1964.0,,conventional storage,40.6281,-122.468,Shasta County,California,1
+St. Lawrence-Franklin D. Roosevelt hydroelectric plant,912,1958.0,,conventional storage,45.0038,-74.7994,St Lawrence County,New York,1
+St. Stephen hydroelectric plant,84,1985.0,,run-of-river,33.4261,-79.9301,Berkeley County,South Carolina,1
+Stanislaus hydroelectric plant,82,1963.0,,conventional storage,38.139,-120.3701,Tuolumne County,California,1
+Summer Falls hydroelectric plant,92,1985.0,,conventional storage,47.5025,-119.292,Grant County,Washington,1
+Summersville hydroelectric plant,80,2001.0,,run-of-river,38.2192,-80.8906,Nicholas County,West Virginia,1
+Swift 1 hydroelectric plant,240,1958.0,,run-of-river,46.0608,-122.202,Skamania County,Washington,1
+Table Rock hydroelectric plant,200,1959.0,,run-of-river,36.597,-93.3086,Taney County,Missouri,1
+Taum Sauk hydroelectric plant,408,1963.0,,pumped storage,37.5208,-90.8347,Reynolds County,Missouri,1
+The Dalles hydroelectric plant,1820,1957.0,,run-of-river,45.614,-121.135,Wasco County,Oregon,1
+Thermalito hydroelectric plant,115,1968.0,,conventional and pumped storage,39.5149,-121.6301,Butte County,California,1
+Thompson Falls hydroelectric plant,98,1915.0,,run-of-river,47.5932,-115.358,Sanders County,Montana,1
+Thurlow hydroelectric plant,91,1931.0,,conventional storage,32.5354,-85.8876,Elmore County,Alabama,1
+Tillery hydroelectric plant,84,1928.0,,conventional storage,35.2067,-80.0648,Montgomery County,North Carolina,1
+Toledo Bend hydroelectric plant,81,1969.0,,conventional storage,31.1735,-93.5659,Newton County,Texas,1
+Trinity hydroelectric plant,140,1964.0,,conventional storage,40.7973,-122.763,Trinity County,California,1
+Upper Baker hydroelectric plant,105,1959.0,,conventional storage,48.649,-121.691,Whatcom County,Washington,1
+W. R. Gianelli hydroelectric plant,424,1967.0,,run-of-river,37.0692,-121.077,Merced County,California,1
+Wallace Dam hydroelectric plant,112,1979.0,,conventional storage,33.3502,-83.1574,Hancock County,Georgia,1
+Wallace Dam Pumped Storage hydroelectric plant,216,1979.0,,pumped storage,33.3502,-83.1574,Hancock County,Georgia,1
+Walter Bouldin hydroelectric plant,225,1967.0,,run-of-river,32.5839,-86.2831,Elmore County,Alabama,1
+Walter F. George hydroelectric plant,168,1963.0,,conventional storage,31.6245,-85.0652,Clay County,Georgia,1
+Walters hydroelectric plant,108,1930.0,,conventional storage,35.6946,-83.0503,Haywood County,North Carolina,1
+Wanapum hydroelectric plant,1220,1963.0,,conventional storage,46.8731,-119.9701,Grant County,Washington,1
+Wateree hydroelectric plant,91,1919.0,,run-of-river,34.3355,-80.7021,Kershaw County,South Carolina,1
+Watts Bar hydroelectric plant,175,1942.0,,conventional storage,35.6197,-84.7855,Rhea County,Tennessee,1
+Webbers Falls hydroelectric plant,75,1973.0,,run-of-river,35.5531,-95.1708,Muskogee County,Oklahoma,1
+Weiss hydroelectric plant,88,1961.0,,conventional storage,34.1721,-85.7538,Cherokee County,Alabama,1
+Wells hydroelectric plant (United States),774,1967.0,,conventional storage,47.9469,-119.865,Douglas County,Washington,1
+Wheeler hydroelectric plant,404,1936.0,,conventional storage,34.8069,-87.3819,Lawrence County,Alabama,1
+White Rock-Slab Creek hydroelectric plant,269,1968.0,,conventional storage,38.7653,-120.787,El Dorado County,California,1
+Wilson hydroelectric plant,667,1925.0,,run-of-river,34.7978,-87.6254,Lauderdale County,Alabama,1
+Wolf Creek hydroelectric plant,270,1951.0,,conventional storage,36.8691,-85.147,Russell County,Kentucky,1
+Yale hydroelectric plant,134,1953.0,,conventional storage,45.9628,-122.336,Cowlitz County,Washington,1
+Yards Creek hydroelectric plant,453,1965.0,,pumped storage,41.0006,-75.0314,Warren County,New Jersey,1
+Yellowtail hydroelectric plant,278,1966.0,,conventional storage,45.3074,-107.958,Big Horn County,Montana,1

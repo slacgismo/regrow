@@ -72,11 +72,12 @@ data.drop(data[data["retirement[y]"]<STARTYEAR].index,inplace=True)
 data.drop(data[data["start[y]"].astype('int')>STOPYEAR].index,inplace=True)
 data.drop(["country","status"],axis=1,inplace=True)
 data.drop(data[~data["state"].isin(config.state_list)].index,inplace=True)
-gasfuel = [isgas(x) for x in data["fuel"]]
-oilfuel = [not isgas(x) for x in data["fuel"]]
+data["type"][data["type"]=="GT"] = "CT"
 
+oilfuel = [not isgas(x) for x in data["fuel"]]
 oil = data.loc[oilfuel]
 oil.to_csv(OUTPUTS["OILDATA"],header=True,index=False)
 
+gasfuel = [isgas(x) for x in data["fuel"]]
 gas = data.loc[gasfuel]
 gas.to_csv(OUTPUTS["GASDATA"],header=True,index=False)

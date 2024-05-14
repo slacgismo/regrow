@@ -14,6 +14,7 @@ fuels = {
     "solar.csv" : "SUN",
     "geothermal.csv" : "GEO",
     "bioenergy.csv" : "BIO",
+    "coal.csv" : "COAL",
 }
 
 def toascii(text,replace=""):
@@ -26,11 +27,11 @@ def tounit(value):
     if type(value) is float:
         return "" if math.isnan(value) else f"_{int(value)}"
     else:
-        return f"_{value}"
+        return f"_{value.replace(' ','_')}"
 
 def toname(value):
     name = toascii(data['name'].upper().replace(" ","_"))
-    return "_"+name if '0'<=name[0]<='9' else name
+    return ("_"+name) if '0' <= name[0] <= '9' else name
 
 def totimestamp(value,nan='INVALID',init=1980,never=3000):
     if type(value) is float and math.isnan(value):

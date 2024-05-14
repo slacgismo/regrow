@@ -1,0 +1,1070 @@
+module pypower;
+class powerplant
+{
+    char32 county;
+}
+
+object powerplant
+{
+    name "APACHE_GENERATING_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Cochise";
+    state "Arizona";
+    latitude 32.061875;
+    longitude -109.894686;
+    in_svc INIT;
+    out_svc "2018-01-01 00:00:00 UTC";
+    operating_capacity "204.0 MW";
+}
+
+object powerplant
+{
+    name "APACHE_GENERATING_STATION_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Cochise";
+    state "Arizona";
+    latitude 32.061875;
+    longitude -109.894686;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "204.0 MW";
+}
+
+object powerplant
+{
+    name "BOARDMAN_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Morrow";
+    state "Oregon";
+    latitude 45.693597;
+    longitude -119.805792;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "642.2 MW";
+}
+
+object powerplant
+{
+    name "BONANZA_POWER_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Uintah";
+    state "Utah";
+    latitude 40.0864333;
+    longitude -109.2853528;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "499.5 MW";
+}
+
+object powerplant
+{
+    name "CENTRALIA_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Lewis";
+    state "Washington";
+    latitude 46.755925;
+    longitude -122.857217;
+    in_svc INIT;
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "730.0 MW";
+}
+
+object powerplant
+{
+    name "CENTRALIA_POWER_PLANT_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Lewis";
+    state "Washington";
+    latitude 46.755925;
+    longitude -122.857217;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "730.0 MW";
+}
+
+object powerplant
+{
+    name "CHOLLA_GENERATING_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Navajo";
+    state "Arizona";
+    latitude 34.940914;
+    longitude -110.3004;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "113.6 MW";
+}
+
+object powerplant
+{
+    name "CHOLLA_GENERATING_STATION_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Navajo";
+    state "Arizona";
+    latitude 34.940914;
+    longitude -110.3004;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "312.3 MW";
+}
+
+object powerplant
+{
+    name "CHOLLA_GENERATING_STATION_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "Navajo";
+    state "Arizona";
+    latitude 34.940914;
+    longitude -110.3004;
+    in_svc "1981-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "414.0 MW";
+}
+
+object powerplant
+{
+    name "COLSTRIP_STEAM_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Rosebud";
+    state "Montana";
+    latitude 45.882386;
+    longitude -106.612847;
+    in_svc INIT;
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "358.4 MW";
+}
+
+object powerplant
+{
+    name "COLSTRIP_STEAM_PLANT_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Rosebud";
+    state "Montana";
+    latitude 45.882386;
+    longitude -106.612847;
+    in_svc INIT;
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "358.4 MW";
+}
+
+object powerplant
+{
+    name "COLSTRIP_STEAM_PLANT_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Rosebud";
+    state "Montana";
+    latitude 45.882386;
+    longitude -106.612847;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "778.0 MW";
+}
+
+object powerplant
+{
+    name "COLSTRIP_STEAM_PLANT_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "Rosebud";
+    state "Montana";
+    latitude 45.882386;
+    longitude -106.612847;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "778.0 MW";
+}
+
+object powerplant
+{
+    name "COMANCHE_POWER_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Pueblo";
+    state "Colorado";
+    latitude 38.2075611;
+    longitude -104.5762722;
+    in_svc INIT;
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "382.5 MW";
+}
+
+object powerplant
+{
+    name "COMANCHE_POWER_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Pueblo";
+    state "Colorado";
+    latitude 38.2075611;
+    longitude -104.5762722;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "396.0 MW";
+}
+
+object powerplant
+{
+    name "COMANCHE_POWER_STATION_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "";
+    state "Colorado";
+    latitude 38.208546;
+    longitude -104.57531;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "856.8 MW";
+}
+
+object powerplant
+{
+    name "CORONADO_GENERATING_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Apache";
+    state "Arizona";
+    latitude 34.577847;
+    longitude -109.272511;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "410.9 MW";
+}
+
+object powerplant
+{
+    name "CORONADO_GENERATING_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Apache";
+    state "Arizona";
+    latitude 34.577847;
+    longitude -109.272511;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "410.9 MW";
+}
+
+object powerplant
+{
+    name "CRAIG_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Moffat";
+    state "Colorado";
+    latitude 40.4627;
+    longitude -107.591153;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "446.4 MW";
+}
+
+object powerplant
+{
+    name "CRAIG_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Moffat";
+    state "Colorado";
+    latitude 40.4627;
+    longitude -107.591153;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "446.4 MW";
+}
+
+object powerplant
+{
+    name "CRAIG_STATION_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Moffat";
+    state "Colorado";
+    latitude 40.4627;
+    longitude -107.591153;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "534.8 MW";
+}
+
+object powerplant
+{
+    name "DAVE_JOHNSTON_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Converse";
+    state "Wyoming";
+    latitude 42.839072;
+    longitude -105.777397;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "113.6 MW";
+}
+
+object powerplant
+{
+    name "DAVE_JOHNSTON_POWER_PLANT_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Converse";
+    state "Wyoming";
+    latitude 42.839072;
+    longitude -105.777397;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "113.6 MW";
+}
+
+object powerplant
+{
+    name "DAVE_JOHNSTON_POWER_PLANT_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Converse";
+    state "Wyoming";
+    latitude 42.839072;
+    longitude -105.777397;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "229.5 MW";
+}
+
+object powerplant
+{
+    name "DAVE_JOHNSTON_POWER_PLANT_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "Converse";
+    state "Wyoming";
+    latitude 42.839072;
+    longitude -105.777397;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "360.0 MW";
+}
+
+object powerplant
+{
+    name "DRY_FORK_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Campbell";
+    state "Wyoming";
+    latitude 44.387442;
+    longitude -105.461327;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "484.0 MW";
+}
+
+object powerplant
+{
+    name "ESCALANTE_GENERATING_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "McKinley";
+    state "New Mexico";
+    latitude 35.415986;
+    longitude -108.082608;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "257.0 MW";
+}
+
+object powerplant
+{
+    name "FOUR_CORNERS_STEAM_PLANT_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "San Juan";
+    state "New Mexico";
+    latitude 36.689369;
+    longitude -108.480339;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "818.1 MW";
+}
+
+object powerplant
+{
+    name "FOUR_CORNERS_STEAM_PLANT_Unit_5";
+    generator "ST";
+    fuel "COAL";
+    county "San Juan";
+    state "New Mexico";
+    latitude 36.689369;
+    longitude -108.480339;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "818.1 MW";
+}
+
+object powerplant
+{
+    name "HARDIN_GENERATING_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Big Horn";
+    state "Montana";
+    latitude 45.764342;
+    longitude -107.598292;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "115.7 MW";
+}
+
+object powerplant
+{
+    name "HAYDEN_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Routt";
+    state "Colorado";
+    latitude 40.487122;
+    longitude -107.185669;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "190.0 MW";
+}
+
+object powerplant
+{
+    name "HAYDEN_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Routt";
+    state "Colorado";
+    latitude 40.487122;
+    longitude -107.185669;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "257.0 MW";
+}
+
+object powerplant
+{
+    name "HUNTER_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Emery";
+    state "Utah";
+    latitude 39.173339;
+    longitude -111.028911;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "525.0 MW";
+}
+
+object powerplant
+{
+    name "HUNTER_POWER_PLANT_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Emery";
+    state "Utah";
+    latitude 39.173339;
+    longitude -111.028911;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "525.0 MW";
+}
+
+object powerplant
+{
+    name "HUNTER_POWER_PLANT_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Emery";
+    state "Utah";
+    latitude 39.173339;
+    longitude -111.028911;
+    in_svc "1983-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "527.2 MW";
+}
+
+object powerplant
+{
+    name "HUNTINGTON_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Emery";
+    state "Utah";
+    latitude 39.378786;
+    longitude -111.079314;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "496.0 MW";
+}
+
+object powerplant
+{
+    name "HUNTINGTON_POWER_PLANT_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Emery";
+    state "Utah";
+    latitude 39.378786;
+    longitude -111.079314;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "541.3 MW";
+}
+
+object powerplant
+{
+    name "INTERMOUNTAIN_POWER_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Millard";
+    state "Utah";
+    latitude 39.51095;
+    longitude -112.580122;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "820.0 MW";
+}
+
+object powerplant
+{
+    name "INTERMOUNTAIN_POWER_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Millard";
+    state "Utah";
+    latitude 39.51095;
+    longitude -112.580122;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "820.0 MW";
+}
+
+object powerplant
+{
+    name "JIM_BRIDGER_STEAM_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Sweetwater";
+    state "Wyoming";
+    latitude 41.738081;
+    longitude -108.786556;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "608.3 MW";
+}
+
+object powerplant
+{
+    name "JIM_BRIDGER_STEAM_PLANT_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Sweetwater";
+    state "Wyoming";
+    latitude 41.738081;
+    longitude -108.786556;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "617.0 MW";
+}
+
+object powerplant
+{
+    name "JIM_BRIDGER_STEAM_PLANT_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Sweetwater";
+    state "Wyoming";
+    latitude 41.738081;
+    longitude -108.786556;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "608.3 MW";
+}
+
+object powerplant
+{
+    name "JIM_BRIDGER_STEAM_PLANT_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "Sweetwater";
+    state "Wyoming";
+    latitude 41.738081;
+    longitude -108.786556;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "608.3 MW";
+}
+
+object powerplant
+{
+    name "LARAMIE_RIVER_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Platte";
+    state "Wyoming";
+    latitude 42.109056;
+    longitude -104.880772;
+    in_svc "1981-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "570.0 MW";
+}
+
+object powerplant
+{
+    name "LARAMIE_RIVER_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Platte";
+    state "Wyoming";
+    latitude 42.109056;
+    longitude -104.880772;
+    in_svc "1981-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "570.0 MW";
+}
+
+object powerplant
+{
+    name "LARAMIE_RIVER_STATION_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Platte";
+    state "Wyoming";
+    latitude 42.109056;
+    longitude -104.880772;
+    in_svc "1982-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "570.0 MW";
+}
+
+object powerplant
+{
+    name "LEWIS_&_CLARK_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "";
+    state "Montana";
+    latitude 47.678611;
+    longitude -104.158;
+    in_svc INIT;
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "MARTIN_DRAKE_POWER_PLANT_Unit_6";
+    generator "ST";
+    fuel "COAL";
+    county "El Paso";
+    state "Colorado";
+    latitude 38.825022;
+    longitude -104.832844;
+    in_svc INIT;
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "75.0 MW";
+}
+
+object powerplant
+{
+    name "MARTIN_DRAKE_POWER_PLANT_Unit_7";
+    generator "ST";
+    fuel "COAL";
+    county "El Paso";
+    state "Colorado";
+    latitude 38.825022;
+    longitude -104.832844;
+    in_svc INIT;
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "132.0 MW";
+}
+
+object powerplant
+{
+    name "NAUGHTON_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Lincoln";
+    state "Wyoming";
+    latitude 41.758886;
+    longitude -110.597031;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "192.0 MW";
+}
+
+object powerplant
+{
+    name "NAUGHTON_POWER_PLANT_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Lincoln";
+    state "Wyoming";
+    latitude 41.758886;
+    longitude -110.597031;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "256.0 MW";
+}
+
+object powerplant
+{
+    name "NAUGHTON_POWER_PLANT_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Lincoln";
+    state "Wyoming";
+    latitude 41.758886;
+    longitude -110.597031;
+    in_svc INIT;
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "384.0 MW";
+}
+
+object powerplant
+{
+    name "NAVAJO_GENERATING_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Coconino";
+    state "Arizona";
+    latitude 36.90405;
+    longitude -111.388817;
+    in_svc INIT;
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "803.1 MW";
+}
+
+object powerplant
+{
+    name "NAVAJO_GENERATING_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Coconino";
+    state "Arizona";
+    latitude 36.90405;
+    longitude -111.388817;
+    in_svc INIT;
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "803.1 MW";
+}
+
+object powerplant
+{
+    name "NAVAJO_GENERATING_STATION_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Coconino";
+    state "Arizona";
+    latitude 36.90405;
+    longitude -111.388817;
+    in_svc INIT;
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "803.1 MW";
+}
+
+object powerplant
+{
+    name "NEIL_SIMPSON_POWER_PLANTS_Plant_II";
+    generator "ST";
+    fuel "COAL";
+    county "Campbell";
+    state "Wyoming";
+    latitude 44.287911;
+    longitude -105.383969;
+    in_svc "1995-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "NORTH_VALMY_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Humboldt";
+    state "Nevada";
+    latitude 40.881736;
+    longitude -117.152272;
+    in_svc "1981-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "277.2 MW";
+}
+
+object powerplant
+{
+    name "NORTH_VALMY_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Humboldt";
+    state "Nevada";
+    latitude 40.881736;
+    longitude -117.152272;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.8 MW";
+}
+
+object powerplant
+{
+    name "NUCLA_STATION_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "Montrose";
+    state "Colorado";
+    latitude 38.238658;
+    longitude -108.508303;
+    in_svc "1991-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "79.3 MW";
+}
+
+object powerplant
+{
+    name "PAWNEE_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Morgan";
+    state "Colorado";
+    latitude 40.220197;
+    longitude -103.679472;
+    in_svc "1981-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "552.3 MW";
+}
+
+object powerplant
+{
+    name "RAWHIDE_ENERGY_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Larimer";
+    state "Colorado";
+    latitude 40.860042;
+    longitude -105.026917;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "293.6 MW";
+}
+
+object powerplant
+{
+    name "RAY_NIXON_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "El Paso";
+    state "Colorado";
+    latitude 38.633447;
+    longitude -104.707803;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "207.0 MW";
+}
+
+object powerplant
+{
+    name "ROSEBUD_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "";
+    state "Montana";
+    latitude 45.975156;
+    longitude -106.655244;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "41.5 MW";
+}
+
+object powerplant
+{
+    name "SAN_JUAN_GENERATING_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "San Juan";
+    state "New Mexico";
+    latitude 36.802039;
+    longitude -108.438094;
+    in_svc INIT;
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "369.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_JUAN_GENERATING_STATION_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "San Juan";
+    state "New Mexico";
+    latitude 36.802039;
+    longitude -108.438094;
+    in_svc "1982-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "555.0 MW";
+}
+
+object powerplant
+{
+    name "SPRINGERVILLE_POWER_STATION_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Apache";
+    state "Arizona";
+    latitude 34.318533;
+    longitude -109.166003;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "424.8 MW";
+}
+
+object powerplant
+{
+    name "SPRINGERVILLE_POWER_STATION_Unit_2";
+    generator "ST";
+    fuel "COAL";
+    county "Apache";
+    state "Arizona";
+    latitude 34.318533;
+    longitude -109.166003;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "424.8 MW";
+}
+
+object powerplant
+{
+    name "SPRINGERVILLE_POWER_STATION_Unit_3";
+    generator "ST";
+    fuel "COAL";
+    county "Apache";
+    state "Arizona";
+    latitude 34.318533;
+    longitude -109.166003;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "458.1 MW";
+}
+
+object powerplant
+{
+    name "SPRINGERVILLE_POWER_STATION_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "Apache";
+    state "Arizona";
+    latitude 34.318533;
+    longitude -109.166003;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "458.1 MW";
+}
+
+object powerplant
+{
+    name "SUNNYSIDE_COGENERATION_FACILITY_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "";
+    state "Utah";
+    latitude 39.546133;
+    longitude -110.389422;
+    in_svc "1993-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.1 MW";
+}
+
+object powerplant
+{
+    name "TS_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Eureka";
+    state "Nevada";
+    latitude 40.746006;
+    longitude -116.529833;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "242.0 MW";
+}
+
+object powerplant
+{
+    name "UTAH_SMELTER_POWER_PLANT_Unit_4";
+    generator "ST";
+    fuel "COAL";
+    county "Salt Lake";
+    state "Utah";
+    latitude 40.721589;
+    longitude -112.198006;
+    in_svc INIT;
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "82.0 MW";
+}
+
+object powerplant
+{
+    name "WYGEN_I_POWER_STATION_--";
+    generator "ST";
+    fuel "COAL";
+    county "Campbell";
+    state "Wyoming";
+    latitude 44.286754;
+    longitude -105.387451;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "88.0 MW";
+}
+
+object powerplant
+{
+    name "WYGEN_II_POWER_STATION_--";
+    generator "ST";
+    fuel "COAL";
+    county "Campbell";
+    state "Wyoming";
+    latitude 44.287911;
+    longitude -105.383969;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "95.0 MW";
+}
+
+object powerplant
+{
+    name "WYGEN_III_POWER_STATION_--";
+    generator "ST";
+    fuel "COAL";
+    county "Campbell";
+    state "Wyoming";
+    latitude 44.286754;
+    longitude -105.387451;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "116.2 MW";
+}
+
+object powerplant
+{
+    name "WYODAK_POWER_PLANT_Unit_1";
+    generator "ST";
+    fuel "COAL";
+    county "Campbell";
+    state "Wyoming";
+    latitude 44.287911;
+    longitude -105.383969;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "402.3 MW";
+}
+

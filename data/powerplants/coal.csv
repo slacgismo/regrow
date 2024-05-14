@@ -1,0 +1,77 @@
+name,unit,capacity[MW],start[y],retirement[y],county,state,latitude,longitude,type
+Apache Generating Station,Unit 2,204.0,1979.0,2018.0,Cochise,Arizona,32.061875,-109.894686,ST
+Apache Generating Station,Unit 3,204.0,1979.0,,Cochise,Arizona,32.061875,-109.894686,ST
+Boardman Plant,Unit 1,642.2,1980.0,2020.0,Morrow,Oregon,45.693597,-119.805792,ST
+Bonanza power station,Unit 1,499.5,1986.0,,Uintah,Utah,40.0864333,-109.2853528,ST
+Centralia Power Plant,Unit 1,730.0,1972.0,2020.0,Lewis,Washington,46.755925,-122.857217,ST
+Centralia Power Plant,Unit 2,730.0,1973.0,,Lewis,Washington,46.755925,-122.857217,ST
+Cholla Generating Station,Unit 1,113.6,1962.0,,Navajo,Arizona,34.940914,-110.3004,ST
+Cholla Generating Station,Unit 3,312.3,1980.0,,Navajo,Arizona,34.940914,-110.3004,ST
+Cholla Generating Station,Unit 4,414.0,1981.0,2020.0,Navajo,Arizona,34.940914,-110.3004,ST
+Colstrip Steam Plant,Unit 1,358.4,1975.0,2020.0,Rosebud,Montana,45.882386,-106.612847,ST
+Colstrip Steam Plant,Unit 2,358.4,1976.0,2020.0,Rosebud,Montana,45.882386,-106.612847,ST
+Colstrip Steam Plant,Unit 3,778.0,1984.0,,Rosebud,Montana,45.882386,-106.612847,ST
+Colstrip Steam Plant,Unit 4,778.0,1986.0,,Rosebud,Montana,45.882386,-106.612847,ST
+Comanche power station,Unit 1,382.5,1973.0,2022.0,Pueblo,Colorado,38.2075611,-104.5762722,ST
+Comanche power station,Unit 2,396.0,1975.0,,Pueblo,Colorado,38.2075611,-104.5762722,ST
+Comanche power station,Unit 3,856.8,2010.0,,,Colorado,38.208546,-104.57531,ST
+Coronado Generating Station,Unit 1,410.9,1979.0,,Apache,Arizona,34.577847,-109.272511,ST
+Coronado Generating Station,Unit 2,410.9,1980.0,,Apache,Arizona,34.577847,-109.272511,ST
+Craig Station,Unit 1,446.4,1980.0,,Moffat,Colorado,40.4627,-107.591153,ST
+Craig Station,Unit 2,446.4,1979.0,,Moffat,Colorado,40.4627,-107.591153,ST
+Craig Station,Unit 3,534.8,1984.0,,Moffat,Colorado,40.4627,-107.591153,ST
+Dave Johnston Power Plant,Unit 1,113.6,1959.0,,Converse,Wyoming,42.839072,-105.777397,ST
+Dave Johnston Power Plant,Unit 2,113.6,1961.0,,Converse,Wyoming,42.839072,-105.777397,ST
+Dave Johnston Power Plant,Unit 3,229.5,1964.0,,Converse,Wyoming,42.839072,-105.777397,ST
+Dave Johnston Power Plant,Unit 4,360.0,1972.0,,Converse,Wyoming,42.839072,-105.777397,ST
+Dry Fork Station,Unit 1,484.0,2011.0,,Campbell,Wyoming,44.387442,-105.461327,ST
+Escalante Generating Station,Unit 1,257.0,1984.0,2020.0,McKinley,New Mexico,35.415986,-108.082608,ST
+Four Corners Steam Plant,Unit 4,818.1,1969.0,,San Juan,New Mexico,36.689369,-108.480339,ST
+Four Corners Steam Plant,Unit 5,818.1,1970.0,,San Juan,New Mexico,36.689369,-108.480339,ST
+Hardin Generating Station,Unit 1,115.7,2006.0,,Big Horn,Montana,45.764342,-107.598292,ST
+Hayden Station,Unit 1,190.0,1965.0,,Routt,Colorado,40.487122,-107.185669,ST
+Hayden Station,Unit 2,257.0,1976.0,,Routt,Colorado,40.487122,-107.185669,ST
+Hunter Power Plant,Unit 1,525.0,1978.0,,Emery,Utah,39.173339,-111.028911,ST
+Hunter Power Plant,Unit 2,525.0,1980.0,,Emery,Utah,39.173339,-111.028911,ST
+Hunter Power Plant,Unit 3,527.2,1983.0,,Emery,Utah,39.173339,-111.028911,ST
+Huntington Power Plant,Unit 1,496.0,1974.0,,Emery,Utah,39.378786,-111.079314,ST
+Huntington Power Plant,Unit 2,541.3,1977.0,,Emery,Utah,39.378786,-111.079314,ST
+Intermountain power station,Unit 1,820.0,1986.0,,Millard,Utah,39.51095,-112.580122,ST
+Intermountain power station,Unit 2,820.0,1987.0,,Millard,Utah,39.51095,-112.580122,ST
+Jim Bridger Steam Plant,Unit 1,608.3,1974.0,,Sweetwater,Wyoming,41.738081,-108.786556,ST
+Jim Bridger Steam Plant,Unit 2,617.0,1975.0,,Sweetwater,Wyoming,41.738081,-108.786556,ST
+Jim Bridger Steam Plant,Unit 3,608.3,1976.0,,Sweetwater,Wyoming,41.738081,-108.786556,ST
+Jim Bridger Steam Plant,Unit 4,608.3,1979.0,,Sweetwater,Wyoming,41.738081,-108.786556,ST
+Laramie River Station,Unit 1,570.0,1981.0,,Platte,Wyoming,42.109056,-104.880772,ST
+Laramie River Station,Unit 2,570.0,1981.0,,Platte,Wyoming,42.109056,-104.880772,ST
+Laramie River Station,Unit 3,570.0,1982.0,,Platte,Wyoming,42.109056,-104.880772,ST
+Lewis & Clark Station,Unit 1,50.0,1958.0,2021.0,,Montana,47.678611,-104.158,ST
+Martin Drake Power Plant,Unit 6,75.0,1968.0,2021.0,El Paso,Colorado,38.825022,-104.832844,ST
+Martin Drake Power Plant,Unit 7,132.0,1974.0,2021.0,El Paso,Colorado,38.825022,-104.832844,ST
+Naughton Power Plant,Unit 1,192.0,1963.0,,Lincoln,Wyoming,41.758886,-110.597031,ST
+Naughton Power Plant,Unit 2,256.0,1968.0,,Lincoln,Wyoming,41.758886,-110.597031,ST
+Naughton Power Plant,Unit 3,384.0,1971.0,2019.0,Lincoln,Wyoming,41.758886,-110.597031,ST
+Navajo Generating Station,Unit 1,803.1,1974.0,2019.0,Coconino,Arizona,36.90405,-111.388817,ST
+Navajo Generating Station,Unit 2,803.1,1975.0,2019.0,Coconino,Arizona,36.90405,-111.388817,ST
+Navajo Generating Station,Unit 3,803.1,1976.0,2019.0,Coconino,Arizona,36.90405,-111.388817,ST
+Neil Simpson Power Plants,Plant II,90.0,1995.0,,Campbell,Wyoming,44.287911,-105.383969,ST
+North Valmy Station,Unit 1,277.2,1981.0,,Humboldt,Nevada,40.881736,-117.152272,ST
+North Valmy Station,Unit 2,289.8,1985.0,,Humboldt,Nevada,40.881736,-117.152272,ST
+Nucla Station,Unit 4,79.3,1991.0,2019.0,Montrose,Colorado,38.238658,-108.508303,ST
+Pawnee Station,Unit 1,552.3,1981.0,,Morgan,Colorado,40.220197,-103.679472,ST
+Rawhide Energy Station,Unit 1,293.6,1984.0,,Larimer,Colorado,40.860042,-105.026917,ST
+Ray Nixon Power Plant,Unit 1,207.0,1980.0,,El Paso,Colorado,38.633447,-104.707803,ST
+Rosebud Power Plant,Unit 1,41.5,1990.0,,,Montana,45.975156,-106.655244,ST
+San Juan Generating Station,Unit 1,369.0,1973.0,2022.0,San Juan,New Mexico,36.802039,-108.438094,ST
+San Juan Generating Station,Unit 4,555.0,1982.0,2022.0,San Juan,New Mexico,36.802039,-108.438094,ST
+Springerville power station,Unit 1,424.8,1985.0,,Apache,Arizona,34.318533,-109.166003,ST
+Springerville power station,Unit 2,424.8,1990.0,,Apache,Arizona,34.318533,-109.166003,ST
+Springerville power station,Unit 3,458.1,2006.0,,Apache,Arizona,34.318533,-109.166003,ST
+Springerville power station,Unit 4,458.1,2009.0,,Apache,Arizona,34.318533,-109.166003,ST
+Sunnyside Cogeneration Facility,Unit 1,58.1,1993.0,,,Utah,39.546133,-110.389422,ST
+TS Power Plant,Unit 1,242.0,2008.0,,Eureka,Nevada,40.746006,-116.529833,ST
+Utah Smelter Power Plant,Unit 4,82.0,1958.0,2019.0,Salt Lake,Utah,40.721589,-112.198006,ST
+Wygen I power station,--,88.0,2003.0,,Campbell,Wyoming,44.286754,-105.387451,ST
+Wygen II power station,--,95.0,2008.0,,Campbell,Wyoming,44.287911,-105.383969,ST
+Wygen III power station,--,116.2,2010.0,,Campbell,Wyoming,44.286754,-105.387451,ST
+Wyodak Power Plant,Unit 1,402.3,1978.0,,Campbell,Wyoming,44.287911,-105.383969,ST

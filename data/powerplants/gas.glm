@@ -510,7 +510,7 @@ object powerplant
 
 object powerplant
 {
-    name "CARLSBAD_ENERGY_CENTER_CEC 6";
+    name "CARLSBAD_ENERGY_CENTER_CEC_6";
     generator "GT";
     fuel "NG";
     county "San Diego";
@@ -524,7 +524,7 @@ object powerplant
 
 object powerplant
 {
-    name "CARLSBAD_ENERGY_CENTER_CEC 7";
+    name "CARLSBAD_ENERGY_CENTER_CEC_7";
     generator "GT";
     fuel "NG";
     county "San Diego";
@@ -538,7 +538,7 @@ object powerplant
 
 object powerplant
 {
-    name "CARLSBAD_ENERGY_CENTER_CEC 8";
+    name "CARLSBAD_ENERGY_CENTER_CEC_8";
     generator "GT";
     fuel "NG";
     county "San Diego";
@@ -552,7 +552,7 @@ object powerplant
 
 object powerplant
 {
-    name "CARLSBAD_ENERGY_CENTER_CEC 9";
+    name "CARLSBAD_ENERGY_CENTER_CEC_9";
     generator "GT";
     fuel "NG";
     county "San Diego";

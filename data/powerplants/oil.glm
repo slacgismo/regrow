@@ -860,7 +860,7 @@ object powerplant
 
 object powerplant
 {
-    name "VALERO_REFINERY_COGENERATION_UNIT_1_POWER_STATION_GT 1";
+    name "VALERO_REFINERY_COGENERATION_UNIT_1_POWER_STATION_GT_1";
     generator "GT";
     fuel "OIL";
     county "Solano";

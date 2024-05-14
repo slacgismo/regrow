@@ -3198,7 +3198,7 @@ object powerplant
 
 object powerplant
 {
-    name "LOST_HILLS-BLACKWELL_SOLAR_FARM_Lost Hills";
+    name "LOST_HILLS-BLACKWELL_SOLAR_FARM_Lost_Hills";
     generator "PV";
     fuel "SUN";
     county "Kern County";

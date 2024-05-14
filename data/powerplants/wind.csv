@@ -1,0 +1,327 @@
+name,unit,capacity[MW],start[y],retirement[y],latitude,longitude,county,state,type
+251 wind farm,1,18.0,1987.0,2020.0,35.0758,-118.368,Kern County,California,WT
+Alite wind farm,1,24.0,2008.0,,35.036,-118.3401,Kern County,California,WT
+Alta Mesa wind farm,1&2,19.0,1988.0,2021.0,33.9384,-116.659,Riverside County,California,WT
+Alta Wind Energy Center,1,150.0,2010.0,,35.0281,-118.364,Kern County,California,WT
+Alta Wind Energy Center,2,150.0,2010.0,,35.0082,-118.234,Kern County,California,WT
+Alta Wind Energy Center,3,150.0,2011.0,,35.006,-118.267,Kern County,California,WT
+Alta Wind Energy Center,4,102.0,2011.0,,35.0208,-118.259,Kern County,California,WT
+Alta Wind Energy Center,5,168.0,2011.0,,35.0012,-118.262,Kern County,California,WT
+Alta Wind Energy Center,8,150.0,2012.0,,34.9836,-118.227,Kern County,California,WT
+Alta Wind Energy Center,10,137.0,2013.0,,35.1098,-118.216,Kern County,California,WT
+Alta Wind Energy Center,11,90.0,2013.0,,35.0735,-118.383,Kern County,California,WT
+Altech III wind farm,1,22.0,1985.0,2020.0,33.8979,-116.598,Riverside County,California,WT
+Andreson Wind Project,2,10.0,2014.0,,33.0139,-103.865,Chaves County,New Mexico,WT
+Aragonne Wind Project,1,90.0,2006.0,2022.0,34.815,-105.081,Guadalupe County,New Mexico,WT
+Aragonne Wind Project,2,145.0,2022.0,,34.8152,-105.0911,Guadalupe County,New Mexico,WT
+Aragonne Wind Project,RP1,90.0,2022.0,,34.815,-105.081,Guadalupe County,New Mexico,WT
+Bennett Creek wind farm,1,21.0,2008.0,,43.0447,-115.484,Elmore County,Idaho,WT
+Benson Creek wind farm,1,10.0,2017.0,,44.4243,-117.277,Baker County,Oregon,WT
+Big Horn Wind Project,1,200.0,2006.0,,45.9019,-120.263,Klickitat County,Washington,WT
+Big Horn Wind Project,2,50.0,2010.0,,45.9467,-120.302,Klickitat County,Washington,WT
+Big Timber wind farm,1,25.0,2018.0,,45.8189,-109.645,Sweet Grass County,Montana,WT
+Biglow Canyon wind farm,1,125.0,2007.0,,45.6692,-120.585,Sherman County,Oregon,WT
+Biglow Canyon wind farm,2,150.0,2009.0,,45.6335,-120.597,Sherman County,Oregon,WT
+Biglow Canyon wind farm,3,175.0,2010.0,,45.6484,-120.548,Sherman County,Oregon,WT
+Borderlands wind farm,1,100.0,2021.0,,34.1031,-108.9078,Catron County,New Mexico,WT
+Brahms wind farm,1,20.0,2014.0,,34.7478,-103.269,Curry County,New Mexico,WT
+Broadview Energy wind farm,1NM,241.0,2017.0,,34.7957,-103.071,Curry County,New Mexico,WT
+Broadview Energy wind farm,1TX,83.0,2017.0,,34.832,-102.936,Curry County,New Mexico,WT
+Bronco Plains wind farm,1,299.0,2020.0,,39.0463,-102.944,Kit Carson County,Colorado,WT
+Brookfield Tehachapi wind farm,1,102.0,2012.0,,35.0644,-118.335,Kern County,California,WT
+Brookfield Tehachapi wind farm,2,21.0,2012.0,,35.0452,-118.245,Kern County,California,WT
+Buena Vista wind farm,1,38.0,2006.0,,37.8036,-121.655,Contra Costa County,California,WT
+Burley Butte wind farm,1,20.0,2011.0,,42.4879,-113.926,Cassia County,Idaho,WT
+Busch Ranch wind farm,1,29.0,2012.0,,37.7958,-104.488,Huerfano County,Colorado,WT
+Busch Ranch wind farm,2,59.0,2019.0,,37.7611,-104.383,Las Animas County,Colorado,WT
+Cabazon wind farm,1,40.0,1999.0,,33.911,-116.702,Riverside County,California,WT
+Cabazon wind farm,2,41.0,2002.0,,33.9166,-116.729,Riverside County,California,WT
+Cameron Ridge wind farm,1,60.0,1999.0,,35.0765,-118.313,Kern County,California,WT
+Camp Reed wind farm,1,22.0,2010.0,,42.8173,-115.065,Elmore County,Idaho,WT
+Campbell Hill wind farm,1,99.0,2009.0,,42.9993,-106.021,Converse County,Wyoming,WT
+Caprock Wind Ranch,1,60.0,2004.0,,34.9652,-103.317,Quay County,New Mexico,WT
+Caprock Wind Ranch,2,20.0,2005.0,,34.9844,-103.425,Quay County,New Mexico,WT
+Carousel wind farm,1,150.0,2015.0,,39.3384,-102.1501,Kit Carson County,Colorado,WT
+Casa Mesa wind farm,1,51.0,2018.0,,34.6308,-103.976,Quay County,New Mexico,WT
+Casper wind farm,1,16.0,2009.0,,42.8833,-106.2201,Natrona County,Wyoming,WT
+Cassia wind farm,1,19.0,2009.0,,42.8704,-115.018,Twin Falls County,Idaho,WT
+Cassia wind farm,2,10.0,2009.0,,42.8444,-115.0369,Twin Falls County,Idaho,WT
+Cedar Creek (Infigen) wind farm,1A,221.0,2007.0,,40.8577,-104.067,Weld County,Colorado,WT
+Cedar Creek (Infigen) wind farm,1B,80.0,2007.0,,40.8577,-104.067,Weld County,Colorado,WT
+Cedar Creek II wind farm,1,251.0,2011.0,,40.9136,-103.815,Weld County,Colorado,WT
+Cedar Point wind farm,1,250.0,2011.0,,39.5113,-103.5701,Lincoln County,Colorado,WT
+Cedar Springs wind farm,1,199.0,2020.0,,43.1283,-105.462,Converse County,Wyoming,WT
+Cedar Springs wind farm,2,202.0,2020.0,,42.9036,-105.3203,Converse County,Wyoming,WT
+Cedar Springs wind farm,3,133.0,2020.0,,43.0693,-105.5701,Converse County,Wyoming,WT
+Cheyenne Ridge wind farm,1,498.0,2020.0,,38.9793,-102.323,Cheyenne County,Colorado,WT
+Cheyenne Ridge wind farm,2,37.0,2020.0,,38.9793,-102.323,Cheyenne County,Colorado,WT
+Chopin wind farm,1,10.0,2016.0,,45.8941,-118.474,Umatilla County,Oregon,WT
+Clearwater wind farm,1,365.0,2022.0,,46.8142,-106.3493,Rosebud County,Montana,WT
+Clines Corners wind farm,1,325.0,2021.0,,34.3566,-105.437,Torrance County,New Mexico,WT
+Coachella Hills wind farm,RP1,61.0,2021.0,,33.9077,-116.5801,Riverside County,California,WT
+Cold Springs wind farm,1,23.0,2012.0,,43.0281,-115.401,Elmore County,Idaho,WT
+Colorado Green Wind Project,1,162.0,2003.0,2020.0,37.7156,-102.6119,Prowers County,Colorado,WT
+Colorado Highlands wind farm,1,67.0,2012.0,,40.7457,-102.752,Logan County,Colorado,WT
+Colorado Highlands wind farm,2,24.0,2013.0,,40.7438,-102.805,Logan County,Colorado,WT
+Combine Hills wind farm,1,41.0,2003.0,,45.9282,-118.581,Umatilla County,Oregon,WT
+Combine Hills wind farm,2,63.0,2009.0,,45.9319,-118.541,Umatilla County,Oregon,WT
+Condon Wind Project,1,25.0,2001.0,,45.2802,-120.282,Gilliam County,Oregon,WT
+Condon Wind Project,2,25.0,2002.0,,45.2826,-120.272,Gilliam County,Oregon,WT
+Corriedale Wind Energy Project,1,59.0,2020.0,,41.1271,-104.9901,Laramie County,Wyoming,WT
+Crossing Trails wind farm,1,104.0,2021.0,,39.0466,-102.822,Kit Carson County,Colorado,WT
+Desert Meadow wind farm,1,23.0,2012.0,,43.0566,-115.452,Elmore County,Idaho,WT
+Diablo Winds wind farm,1,20.0,2004.0,,37.7746,-121.658,Alameda County,California,WT
+Diamond Willow wind farm,1,18.0,2008.0,,46.2739,-104.192,Fallon County,Montana,WT
+Diamond Willow wind farm,2,10.0,2010.0,,46.2743,-104.1601,Fallon County,Montana,WT
+DifWind wind farm,5,12.0,1985.0,2020.0,33.8889,-116.554,Riverside County,California,WT
+DifWind wind farm,6,27.0,1987.0,,35.0658,-118.265,Kern County,California,WT
+Dillon wind farm,1,45.0,2008.0,,33.9166,-116.569,Riverside County,California,WT
+Dinosaur Point wind farm,1,17.0,1988.0,,37.0424,-121.167,Merced County,California,WT
+Dry Lake wind farm,1,63.0,2009.0,,34.6706,-110.258,Navajo County,Arizona,WT
+Dry Lake wind farm,2,65.0,2010.0,,34.5984,-110.1601,Navajo County,Arizona,WT
+Dunlap wind farm,1,111.0,2010.0,2020.0,42.0232,-106.153,Carbon County,Wyoming,WT
+Duran Mesa wind farm,1,105.0,2021.0,,34.3907,-105.492,Torrance County,New Mexico,WT
+Durbin Creek wind farm,1,10.0,2017.0,,44.3527,-117.3201,Baker County,Oregon,WT
+Dutch Energy wind farm,1,10.0,1994.0,2020.0,33.895,-116.5601,Riverside County,California,WT
+Echo wind farm,1,45.0,2009.0,,45.7063,-119.405,Umatilla County,Oregon,WT
+Echo wind farm,2,20.0,2009.0,,45.7181,-119.408,Umatilla County,Oregon,WT
+Edom Hills wind farm,RP1,20.0,2008.0,,33.8845,-116.468,Riverside County,California,WT
+Ekola Flats wind farm,1,251.0,2020.0,,42.0143,-106.343,Carbon County,Wyoming,WT
+El Cabo wind farm,1,298.0,2017.0,,34.8219,-105.645,Torrance County,New Mexico,WT
+Elkhorn Valley wind farm,1,97.0,2007.0,,45.118,-117.8001,Union County,Oregon,WT
+Enron Earth Smart wind farm,1,16.0,1999.0,,33.9167,-116.5601,Riverside County,California,WT
+Euiph wind farm,1,26.0,1985.0,2019.0,33.9447,-116.622,Riverside County,California,WT
+Evanston Wyoming Wind Energy Center,1,144.0,2003.0,,41.3263,-110.801,Uinta County,Wyoming,WT
+Fairfield wind farm (United States),1,10.0,2014.0,,47.7233,-111.965,Teton County,Montana,WT
+Foote Creek wind farm,1,41.0,1999.0,,41.6283,-106.201,Carbon County,Wyoming,WT
+Foote Creek wind farm,3,25.0,1999.0,2020.0,41.6692,-106.184,Carbon County,Wyoming,WT
+Foote Creek wind farm,4,17.0,2000.0,2020.0,41.6735,-106.1801,Carbon County,Wyoming,WT
+Foote Creek wind farm,RP1,66.0,2021.0,,41.6283,-106.201,Carbon County,Wyoming,WT
+Fossil Gulch wind farm,1,10.0,2005.0,,42.8544,-114.9501,Twin Falls County,Idaho,WT
+Glacier wind farm,1,106.0,2008.0,,48.5172,-112.113,Toole County,Montana,WT
+Glacier wind farm,2,104.0,2009.0,,48.5536,-112.1701,Toole County,Montana,WT
+Glenrock wind farm,1,99.0,2008.0,2019.0,43.0467,-105.8201,Converse County,Wyoming,WT
+Glenrock wind farm,3,39.0,2009.0,2019.0,43.0146,-105.808,Converse County,Wyoming,WT
+Golden Hills (California) wind farm,1,86.0,2015.0,,37.7187,-121.649,Alameda County,California,WT
+Golden Hills (California) wind farm,2,46.0,2017.0,,37.7464,-121.616,Alameda County,California,WT
+Golden Hills (Oregon) wind farm,1,201.0,2022.0,,45.5627,-120.709,Sherman County,Oregon,WT
+Golden Valley wind farm (United States),1,12.0,2011.0,,42.4404,-113.907,Cassia County,Idaho,WT
+Golden West wind farm,1,249.0,2015.0,,38.9244,-104.224,El Paso County,Colorado,WT
+Goodnoe Hills wind farm,1,94.0,2008.0,2020.0,45.7799,-120.477,Klickitat County,Washington,WT
+Goodnoe Hills wind farm,RP1,103.0,2020.0,,45.7799,-120.477,Klickitat County,Washington,WT
+Goshen North wind farm,1,124.0,2010.0,,43.4617,-111.831,Bonneville County,Idaho,WT
+Grady wind farm,1,220.0,2019.0,,34.7474,-103.208,Curry County,New Mexico,WT
+Greenfield wind farm,1,30.0,2016.0,,47.7085,-111.912,Teton County,Montana,WT
+Hammett Hill wind farm,1,23.0,2012.0,,43.0092,-115.443,Elmore County,Idaho,WT
+Hancock County wind farm,1,98.0,2002.0,,42.9422,-93.664,Carbon County,Wyoming,WT
+Happy Jack Windpower Project,1,29.0,2008.0,,41.1413,-105.009,Laramie County,Wyoming,WT
+Harvest wind farm,1,99.0,2009.0,,45.7874,-120.412,Klickitat County,Washington,WT
+Hatchet Ridge wind farm,1,101.0,2010.0,,40.8987,-121.801,Shasta County,California,WT
+Hay Canyon wind farm,1,101.0,2009.0,,45.5164,-120.602,Sherman County,Oregon,WT
+High Lonesome Mesa wind farm,1,100.0,2009.0,2019.0,34.489,-105.969,Torrance County,New Mexico,WT
+High Mesa wind farm,1,40.0,2012.0,,42.8855,-115.036,Twin Falls County,Idaho,WT
+High Plains wind farm,1,99.0,2009.0,2019.0,41.6798,-106.0399,Albany County,Wyoming,WT
+High Winds wind farm,1,146.0,2003.0,,38.149,-121.795,Solano County,California,WT
+High Winds wind farm,2,16.0,2003.0,,38.149,-121.795,Solano County,California,WT
+Historic Victory Garden wind farm,1,17.0,1981.0,,35.0706,-118.379,Kern County,California,WT
+Hopkins Ridge Wind Project,1,149.0,2005.0,,46.4502,-117.854,Columbia County,Washington,WT
+Horse Butte wind farm,1,58.0,2012.0,,43.4026,-111.741,Bonneville County,Idaho,WT
+Hurlburt wind farm,Central,290.0,2012.0,2022.0,45.5643,-119.962,Morrow County,Oregon,WT
+Hurlburt wind farm,North1,60.0,2012.0,2022.0,45.7408,-120.076,Gilliam County,Oregon,WT
+Hurlburt wind farm,North2,205.0,2011.0,2022.0,45.7511,-120.116,Gilliam County,Oregon,WT
+Hurlburt wind farm,RP,845.0,2022.0,,45.5643,-119.962,Morrow County,Oregon,WT
+Hurlburt wind farm,South,290.0,2012.0,2022.0,45.6435,-120.052,Gilliam County,Oregon,WT
+Jett Creek wind farm,1,10.0,2017.0,,44.4254,-117.274,Baker County,Oregon,WT
+Judith Gap wind farm,1,135.0,2005.0,,46.5872,-109.744,Wheatland County,Montana,WT
+Juniper Canyon wind farm,1,151.0,2011.0,,45.9445,-120.229,Klickitat County,Washington,WT
+Karen Avenue wind farm,1,12.0,1985.0,,33.9223,-116.561,Riverside County,California,WT
+Kingman wind farm,1,10.0,2011.0,,35.1465,-114.069,Mohave County,Arizona,WT
+Kit Carson Project wind farm,1,51.0,2010.0,,39.354,-102.305,Kit Carson County,Colorado,WT
+Klondike wind farm,1,24.0,2001.0,,45.5606,-120.551,Sherman County,Oregon,WT
+Klondike wind farm,2,75.0,2005.0,2020.0,45.5916,-120.589,Sherman County,Oregon,WT
+Klondike wind farm,3A,221.0,2007.0,,45.5582,-120.621,Sherman County,Oregon,WT
+Klondike wind farm,3B,76.0,2008.0,,45.5364,-120.587,Sherman County,Oregon,WT
+Kumeyaay wind farm,1,50.0,2005.0,,32.7217,-116.344,San Diego County,California,WT
+La Joya NM wind farm,1,165.0,2021.0,,34.81001,-105.74001,Torrance County,New Mexico,WT
+La Joya NM wind farm,2,141.0,2021.0,,34.81001,-105.74001,Torrance County,New Mexico,WT
+Latigo wind farm,1,62.0,2016.0,,37.8891,-109.361,San Juan County,Utah,WT
+Leaning Juniper I wind farm,1,100.0,2006.0,2019.0,45.6618,-120.241,Gilliam County,Oregon,WT
+Leaning Juniper II wind farm,1,201.0,2011.0,,45.5781,-120.178,Gilliam County,Oregon,WT
+Limon wind farm,1,200.0,2012.0,,39.3836,-103.5296,Elbert County,Colorado,WT
+Limon wind farm,2,200.0,2012.0,,39.3749,-103.5202,Lincoln County,Colorado,WT
+Limon wind farm,3,201.0,2014.0,,39.3586,-103.369,Lincoln County,Colorado,WT
+Linden wind farm,1,50.0,2010.0,,45.7509,-120.762,Klickitat County,Washington,WT
+Lower Snake River Wind Energy Project,1,343.0,2011.0,,46.5542,-117.859,Garfield County,Washington,WT
+Macho Springs wind farm,1,50.0,2011.0,,32.5602,-107.521,Luna County,New Mexico,WT
+Mainline wind farm,1,23.0,2012.0,,43.0484,-115.413,Elmore County,Idaho,WT
+Manzana Winds wind farm,1,189.0,2012.0,,34.9299,-118.463,Kern County,California,WT
+Marengo Wind Plant,1,140.0,2007.0,2020.0,46.3847,-117.762,Columbia County,Washington,WT
+Marengo Wind Plant,2,70.0,2008.0,2020.0,46.3637,-117.858,Columbia County,Washington,WT
+Marengo Wind Plant,RP,234.0,2020.0,,46.3637,-117.858,Columbia County,Washington,WT
+Mcfadden Ridge wind farm,1,28.0,2009.0,2019.0,41.656,-106.028,Albany County,Wyoming,WT
+Meadow Creek wind farm,1,120.0,2012.0,,43.5585,-111.813,Bonneville County,Idaho,WT
+Mesa wind farm,1,30.0,1984.0,,33.9609,-116.661,Riverside County,California,WT
+Milford Wind Corridor Farm,1,204.0,2009.0,,38.5315,-112.923,Beaver County,Utah,WT
+Milford Wind Corridor Farm,2,102.0,2011.0,,38.5982,-112.899,Millard County,Utah,WT
+Milner Dam wind farm,1,20.0,2011.0,,42.4562,-114.019,Cassia County,Idaho,WT
+Milo Wind Project,1,50.0,2016.0,,33.9056,-103.3602,Roosevelt County,New Mexico,WT
+"Mojave 16, 17 & 18 wind farm",1,85.0,1989.0,,35.0459,-118.283,Kern County,California,WT
+"Mojave 3, 4, & 5 wind farm",1,75.0,1990.0,,35.0506,-118.257,Kern County,California,WT
+Montague Wind Power Facility,1,201.0,2019.0,,45.5755,-120.113,Gilliam County,Oregon,WT
+Montezuma wind farm,1,37.0,2010.0,,38.1626,-121.793,Solano County,California,WT
+Montezuma wind farm,2,78.0,2012.0,,38.1169,-121.8096,Solano County,California,WT
+Mountain Breeze wind farm,1,172.0,2020.0,,40.9971,-103.993,Weld County,Colorado,WT
+Mountain Home wind farm,1,42.0,2009.0,,43.0245,-115.468,Elmore County,Idaho,WT
+Mountain View wind farm,1,43.0,2001.0,2021.0,33.9055,-116.6089,Riverside County,California,WT
+Mountain View wind farm,2,22.0,2001.0,2021.0,33.9055,-116.6089,Riverside County,California,WT
+Mountain View wind farm,3,22.0,2003.0,,33.9141,-116.592,Riverside County,California,WT
+Mountain View wind farm,4,49.0,2012.0,,33.8773,-116.565,Riverside County,California,WT
+Mountain wind farm (United States),1,61.0,2008.0,,41.2847,-110.519,Uinta County,Wyoming,WT
+Mountain wind farm (United States),2,80.0,2008.0,,41.2761,-110.562,Uinta County,Wyoming,WT
+Musselshell wind farm,1,10.0,2012.0,,46.287,-109.472,Wheatland County,Montana,WT
+Musselshell wind farm,2,10.0,2012.0,,46.2662,-109.495,Wheatland County,Montana,WT
+Mustang Hills wind farm,6,150.0,2012.0,,35.0179,-118.314,Kern County,California,WT
+New Mexico Wind Energy Center,1,204.0,2003.0,,34.5374,-104.081,De Baca County,New Mexico,WT
+Nine Canyon wind farm,1,48.0,2002.0,,46.1056,-119.073,Benton County,Washington,WT
+Nine Canyon wind farm,2,16.0,2003.0,,46.104,-119.141,Benton County,Washington,WT
+Nine Canyon wind farm,3,32.0,2008.0,,46.0954,-119.136,Benton County,Washington,WT
+Niyol wind farm,1,206.0,2021.0,,40.63303,-102.9265,Logan County,Colorado,WT
+North Sky River wind farm,1,162.0,2012.0,,35.3064,-118.226,Kern County,California,WT
+Northeast Colorado Wind,1,22.0,2009.0,2020.0,40.9808,-102.804,Logan County,Colorado,WT
+Northeast Colorado Wind,2,152.0,2009.0,2020.0,40.9808,-102.804,Logan County,Colorado,WT
+Oak Creek Wind Power,RP2,23.0,1999.0,,35.0375,-118.354,Kern County,California,WT
+Oasis Alta wind farm,1,14.0,2021.0,,35.0592,-118.292,Kern County,California,WT
+Oasis Wind,1,59.0,2004.0,2021.0,35.0609,-118.292,Kern County,California,WT
+Oasis Wind,RP1,72.0,2020.0,,35.0571,-118.282,Kern County,California,WT
+Ocotillo (Pattern) wind farm,1,266.0,2012.0,,32.7427,-116.0702,Imperial County,California,WT
+Orchard wind farm,1,10.0,2020.0,,45.3801,-119.333,Morrow County,Oregon,WT
+Orchard wind farm,2,10.0,2020.0,,45.3801,-119.333,Morrow County,Oregon,WT
+Orchard wind farm,3,10.0,2020.0,,45.3801,-119.333,Morrow County,Oregon,WT
+Orchard wind farm,4,10.0,2020.0,,45.3801,-119.333,Morrow County,Oregon,WT
+Oregon Trail wind farm,1,14.0,2011.0,,42.8494,-114.9903,Twin Falls County,Idaho,WT
+Oso Grande wind farm,1,34.0,2020.0,,33.102,-103.743,Lea County,New Mexico,WT
+Oso Grande wind farm,2,216.0,2020.0,,33.102,-103.743,Lea County,New Mexico,WT
+Pacific wind farm,1,140.0,2012.0,,34.8996,-118.457,Kern County,California,WT
+Painted Hills Wind Park,1,19.0,1985.0,2019.0,33.9094,-116.734,Riverside County,California,WT
+Painted Hills Wind Park,RP1,39.0,2021.0,,33.9434,-116.619,Riverside County,California,WT
+Palm Springs wind farm,RP1,50.0,2011.0,,33.9109,-116.574,Riverside County,California,WT
+Palouse wind farm,1,104.0,2012.0,,47.1053,-117.303,Whitman County,Washington,WT
+Panorama wind farm,1,145.0,2022.0,,40.9956,-103.9253,Weld County,Colorado,WT
+Payne's Ferry wind farm,1,21.0,2010.0,,42.8349,-115.011,Twin Falls County,Idaho,WT
+Peak View wind farm,1,61.0,2016.0,,37.6622,-104.494,Las Animas County,Colorado,WT
+Pebble Springs wind farm,1,99.0,2009.0,,45.6869,-120.096,Gilliam County,Oregon,WT
+Peetz Table (NextEra) wind farm,1,201.0,2007.0,,40.941,-103.259,Logan County,Colorado,WT
+Peetz Table (NextEra) wind farm,2,200.0,2007.0,,40.9988,-103.375,Logan County,Colorado,WT
+Peetz Table (Terra-Gen) wind farm,1,30.0,2001.0,,40.9354,-103.178,Logan County,Colorado,WT
+Perrin Ranch wind farm,1,99.0,2012.0,,35.4535,-112.2203,Coconino County,Arizona,WT
+Pilgrim Stage Station wind farm,1,10.0,2011.0,,42.7864,-115.001,Twin Falls County,Idaho,WT
+Pine Tree Wind Power Project,1,120.0,2009.0,,35.2508,-118.177,Kern County,California,WT
+Pine Tree Wind Power Project,2,15.0,2010.0,,35.2768,-118.198,Kern County,California,WT
+Pinyon Pines wind farm,1,168.0,2012.0,,35.0594,-118.217,Kern County,California,WT
+Pinyon Pines wind farm,2,132.0,2012.0,,35.0221,-118.214,Kern County,California,WT
+Pioneer Wind Park,1,80.0,2016.0,,42.6838,-105.878,Converse County,Wyoming,WT
+Point wind farm,1,64.0,2021.0,,35.0808,-118.361,Kern County,California,WT
+Power County Wind Park,North,22.0,2011.0,,42.7389,-112.749,Power County,Idaho,WT
+Power County Wind Park,South,22.0,2011.0,,42.7083,-112.761,Power County,Idaho,WT
+Prospector wind farm,1,10.0,2017.0,,44.415,-117.262,Baker County,Oregon,WT
+Pryor Mountain wind farm,1,240.0,2021.0,,45.1409,-108.6816,Carbon County,Montana,WT
+Rattlesnake Flat wind farm,1,150.0,2020.0,,46.8692,-118.413,Adams County,Washington,WT
+Rattlesnake Road wind farm,1,103.0,2008.0,,45.6839,-120.2399,Gilliam County,Oregon,WT
+Red Cloud wind farm,1,350.0,2021.0,,34.2569,-105.3316,Lincoln County,New Mexico,WT
+Red Horse 2 wind farm,1,30.0,2015.0,,32.3096,-110.087,Cochise County,Arizona,WT
+Red Mesa wind farm,1,102.0,2010.0,,35.2627,-107.381,Cibola County,New Mexico,WT
+Ridgetop wind farm,1,29.0,1984.0,,35.0818,-118.304,Kern County,California,WT
+Ridgetop wind farm,2,47.0,1994.0,,35.074,-118.315,Kern County,California,WT
+Rim Rock wind farm,1,189.0,2012.0,,48.8877,-112.071,Toole County,Montana,WT
+Rising Tree wind farm,1,79.0,2014.0,,35.0888,-118.207,Kern County,California,WT
+Rising Tree wind farm,2,20.0,2015.0,,35.0889,-118.206,Kern County,California,WT
+Rising Tree wind farm,3,99.0,2015.0,,35.0612,-118.259,Kern County,California,WT
+Rock River wind farm,1,50.0,2001.0,,41.7202,-106.095,Carbon County,Wyoming,WT
+Rockland wind farm,1,79.0,2011.0,,42.7033,-112.918,Power County,Idaho,WT
+Rolling Hills (PacifiCorp) wind farm,1,99.0,2009.0,2019.0,43.1345,-105.819,Converse County,Wyoming,WT
+Roosevelt County wind farm (United States),1,250.0,2015.0,,33.8856,-103.436,Roosevelt County,New Mexico,WT
+Roundhouse Wind Energy Project,1,227.0,2020.0,,41.0752,-105.117,Laramie County,Wyoming,WT
+Rush Creek wind farm,1&2,600.0,2018.0,,39.1036,-103.227,Lincoln County,Colorado,WT
+Ryegrass wind farm,1,23.0,2012.0,,43.0369,-115.443,Elmore County,Idaho,WT
+Sagamore Wind,1,523.0,2020.0,,33.832,-103.311,Roosevelt County,New Mexico,WT
+Sagebrush wind farm,1,101.0,2010.0,,47.1425,-120.715,Kittitas County,Washington,WT
+Salmon Falls Wind Park,1,21.0,2011.0,,42.6848,-114.9899,Twin Falls County,Idaho,WT
+San Gorgonio Farms wind farm,1,31.0,1986.0,,33.9313,-116.612,Riverside County,California,WT
+San Gorgonio Westwinds wind farm,2,43.0,1999.0,,33.8947,-116.576,Riverside County,California,WT
+San Juan Mesa Wind Project,1,120.0,2005.0,2021.0,33.9232,-103.802,Roosevelt County,New Mexico,WT
+San Juan Mesa Wind Project,RP1,90.0,2021.0,,33.9232,-103.802,Roosevelt County,New Mexico,WT
+Sawtooth Wind Project,1,22.0,2011.0,,42.9856,-115.3998,Elmore County,Idaho,WT
+Seven Mile Hill wind farm,1,99.0,2008.0,2019.0,41.9522,-106.366,Carbon County,Wyoming,WT
+Seven Mile Hill wind farm,2,20.0,2008.0,2019.0,41.9374,-106.373,Carbon County,Wyoming,WT
+Shiloh Wind Project,1,150.0,2006.0,,38.1624,-121.828,Solano County,California,WT
+Shiloh Wind Project,2,150.0,2009.0,,38.1671,-121.766,Solano County,California,WT
+Shiloh Wind Project,3,102.0,2011.0,,38.1756,-121.752,Solano County,California,WT
+Shiloh Wind Project,4,102.0,2012.0,,38.141,-121.855,Solano County,California,WT
+Silver Sage Windpower,1,42.0,2009.0,,41.137,-105.029,Laramie County,Wyoming,WT
+Skookumchuck Wind Facility,1,136.0,2020.0,,46.7329,-122.629,Lewis County,Washington,WT
+Sky River Wind Energy Center,1,77.0,1991.0,2020.0,35.2689,-118.242,Kern County,California,WT
+Sky River Wind Energy Center,RP1,60.0,2021.0,,35.2689,-118.242,Kern County,California,WT
+Solano Wind Project,3,128.0,2012.0,2022.0,38.0845,-121.801,Solano County,California,WT
+Solano Wind Project,1A,11.0,2003.0,2022.0,38.1221,-121.7681,Solano County,California,WT
+Solano Wind Project,2A,24.0,2007.0,2022.0,38.0989,-121.775,Solano County,California,WT
+Solano Wind Project,2B,63.0,2007.0,2022.0,38.0938,-121.772,Solano County,California,WT
+South Peak wind farm,1,80.0,2020.0,,47.3027,-110.691,Judith Basin County,Montana,WT
+Spanish Fork Wind Park,1,19.0,2008.0,,40.0739,-111.587,Utah County,Utah,WT
+Spion Kop wind farm,1,40.0,2012.0,,47.3376,-110.636,Judith Basin County,Montana,WT
+Spring Canyon wind farm,1,60.0,2006.0,,40.9735,-103.025,Logan County,Colorado,WT
+Spring Canyon wind farm,2A,34.0,2014.0,,40.9981,-103.003,Logan County,Colorado,WT
+Spring Canyon wind farm,2B,29.0,2014.0,,40.9981,-103.003,Logan County,Colorado,WT
+Spring Valley Wind Project,1,152.0,2012.0,,39.0751,-114.485,White Pine County,Nevada,WT
+Star Point Wind Project,1,99.0,2010.0,,45.5415,-120.423,Sherman County,Oregon,WT
+Stateline Wind Project,OR-1A,83.0,2001.0,,45.9996,-118.812,Umatilla County,Oregon,WT
+Stateline Wind Project,OR-1B,40.0,2002.0,,45.9763,-118.783,Umatilla County,Oregon,WT
+Stateline Wind Project,WA,177.0,2001.0,,46.0401,-118.8802,Walla Walla County,Washington,WT
+Sterling I wind farm,1,30.0,2017.0,,33.3566,-103.281,Lea County,New Mexico,WT
+Stillwater Big Sky wind farm,1,80.0,2018.0,,45.869,-109.499,Stillwater County,Montana,WT
+Summit Winds wind farm,1,10.0,2021.0,,37.7682,-121.6764,Alameda County,California,WT
+Summit Winds wind farm,2,48.0,2021.0,,37.7682,-121.6764,Alameda County,California,WT
+Swanmill wind farm,1,19.0,1989.0,,33.9211,-116.564,Riverside County,California,WT
+TB Flats wind farm,1,503.0,2021.0,,42.1773,-106.1635,Carbon County,Wyoming,WT
+Tecolote Wind,1,272.0,2021.0,,34.2569,-105.3316,Lincoln County,New Mexico,WT
+Tehachapi Hills wind farm,85A,14.0,1985.0,2021.0,35.1016,-118.337,Kern County,California,WT
+Tehachapi Hills wind farm,85B,19.0,1985.0,2021.0,35.0957,-118.3402,Kern County,California,WT
+Tehachapi Hills wind farm,RPA&B,46.0,2021.0,,35.0976,-118.3213,Kern County,California,WT
+Tehachapi Windplant II wind farm,1,22.0,1997.0,,35.1265,-118.295,Kern County,California,WT
+Thousand Springs Wind Park,1,12.0,2011.0,,42.8765,-114.967,Twin Falls County,Idaho,WT
+Top Of The World Windpower Project,1,200.0,2010.0,,42.9632,-105.7399,Converse County,Wyoming,WT
+TPC wind farm,1,29.0,1986.0,,35.0501,-118.257,Kern County,California,WT
+Tres Vaqueros Wind Farms,1,25.0,2002.0,,37.7719,-121.7401,Contra Costa County,California,WT
+Tuana Gulch wind farm,1,10.0,2011.0,,42.8461,-114.969,Twin Falls County,Idaho,WT
+Tuana Springs wind farm,1,17.0,2010.0,,42.8882,-115.017,Twin Falls County,Idaho,WT
+Tucannon River wind farm,1,267.0,2014.0,,46.4348,-118.025,Columbia County,Washington,WT
+Tule wind farm,1,131.0,2018.0,,32.7395,-116.282,San Diego County,California,WT
+Tule wind farm,2,71.0,2018.0,,32.7395,-116.282,San Diego County,California,WT
+Twin Buttes Wind Project,1,75.0,2007.0,,37.6717,-102.876,Bent County,Colorado,WT
+Twin Buttes Wind Project,2,75.0,2017.0,,37.7599,-102.565,Prowers County,Colorado,WT
+Two Ponds wind farm,1,23.0,2012.0,,43.0338,-115.483,Elmore County,Idaho,WT
+Vansycle wind farm,1,25.0,1998.0,,45.9408,-118.666,Umatilla County,Oregon,WT
+Vansycle wind farm,2,99.0,2009.0,,45.8916,-118.531,Umatilla County,Oregon,WT
+Vantage Point wind farm,1,90.0,2010.0,,46.9604,-120.195,Kittitas County,Washington,WT
+Vasco wind farm,1,78.0,2011.0,,37.7985,-121.701,Contra Costa County,California,WT
+Victory Garden Phase IV wind farm,4,22.0,1990.0,2020.0,35.076,-118.366,Kern County,California,WT
+Voyager wind farm,1,131.0,2019.0,,35.0514,-118.287,Kern County,California,WT
+Voyager wind farm,2,129.0,2018.0,,35.0734,-118.269,Kern County,California,WT
+Voyager wind farm,3,43.0,2018.0,,35.0608,-118.265,Kern County,California,WT
+Voyager wind farm,4,22.0,2018.0,,35.0779,-118.25001,Kern County,California,WT
+Wheat Field Wind Power Project,1,97.0,2009.0,,45.6725,-120.325,Gilliam County,Oregon,WT
+Wheatridge Renewable Wind Energy Center,1,300.0,2020.0,,45.4905,-119.531,Morrow County,Oregon,WT
+White Creek wind farm,1,205.0,2007.0,,45.8299,-120.327,Klickitat County,Washington,WT
+White Hills wind farm,1,350.0,2020.0,,35.8005,-114.441,Mohave County,Arizona,WT
+Whitewater Hill wind farm,1,62.0,2002.0,,33.9258,-116.616,Riverside County,California,WT
+Wild Horse wind farm,1,229.0,2006.0,,47.0026,-120.166,Kittitas County,Washington,WT
+Wild Horse wind farm,2,44.0,2009.0,,47.059,-120.236,Kittitas County,Washington,WT
+Wildcat (Exelon) Wind Project,1,27.0,2012.0,,32.9511,-103.279,Lea County,New Mexico,WT
+Willow Creek (Invenergy) Wind Energy Center,1,72.0,2009.0,,45.6533,-119.9795,Morrow County,Oregon,WT
+Willow Spring (Oregon) wind farm,1,10.0,2017.0,,44.3808,-117.277,Baker County,Oregon,WT
+Windland wind farm,1,15.0,1982.0,2020.0,35.0522,-118.358,Kern County,California,WT
+Windstar wind farm (United States),1,120.0,2012.0,,35.0275,-118.271,Kern County,California,WT
+Windy Flats Wind Project,1,202.0,2009.0,,45.733,-120.837,Klickitat County,Washington,WT
+Windy Flats Wind Project,2,60.0,2009.0,,45.699,-120.886,Klickitat County,Washington,WT
+Windy Point wind farm (United States),1,137.0,2009.0,,45.7653,-120.686,Klickitat County,Washington,WT
+Wolverine Creek wind farm,1,64.0,2005.0,,43.3711,-111.844,Bonneville County,Idaho,WT
+Yahoo Creek Wind Project,1,21.0,2010.0,,42.7669,-115.007,Twin Falls County,Idaho,WT

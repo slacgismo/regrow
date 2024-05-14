@@ -1,7 +1,7 @@
-name,unit,capacity[MW],type,start[y],retirement[y],latitude,longitude,county,state
-Columbia nuclear power plant,,1190.0,boiling water reactor,1984.0,,46.4711,-119.3339,Benton County,Washington
-Diablo Canyon nuclear power plant,1,1197.0,pressurized water reactor,1985.0,2024.0,35.2115,-120.8555,San Luis Obispo County,California
-Diablo Canyon nuclear power plant,2,1197.0,pressurized water reactor,1986.0,2025.0,35.2115,-120.8555,San Luis Obispo County,California
-Palo Verde nuclear power plant,1,1414.0,pressurized water reactor,1986.0,,33.3881,-112.8617,Maricopa County,Arizona
-Palo Verde nuclear power plant,2,1414.0,pressurized water reactor,1986.0,,33.3881,-112.8617,Maricopa County,Arizona
-Palo Verde nuclear power plant,3,1414.0,pressurized water reactor,1988.0,,33.3881,-112.8617,Maricopa County,Arizona
+name,unit,capacity[MW],start[y],retirement[y],latitude,longitude,county,state,type
+Columbia nuclear power plant,,1190.0,1984.0,,46.4711,-119.3339,Benton County,Washington,ST
+Diablo Canyon nuclear power plant,1,1197.0,1985.0,2024.0,35.2115,-120.8555,San Luis Obispo County,California,ST
+Diablo Canyon nuclear power plant,2,1197.0,1986.0,2025.0,35.2115,-120.8555,San Luis Obispo County,California,ST
+Palo Verde nuclear power plant,1,1414.0,1986.0,,33.3881,-112.8617,Maricopa County,Arizona,ST
+Palo Verde nuclear power plant,2,1414.0,1986.0,,33.3881,-112.8617,Maricopa County,Arizona,ST
+Palo Verde nuclear power plant,3,1414.0,1988.0,,33.3881,-112.8617,Maricopa County,Arizona,ST

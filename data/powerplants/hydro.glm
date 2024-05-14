@@ -1,1508 +1,1629 @@
 module pypower;
+class powerplant
+{
+    char32 county;
+}
+
 object powerplant
 {
-    name "AMERICAN_FALLS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Power County";
+    name "AMERICAN_FALLS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Power County";
     state "Idaho";
     latitude 42.7778;
     longitude -112.876;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "92 MW";
 }
 
 object powerplant
 {
-    name "BALCH_2_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "BALCH_2_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 36.9089;
     longitude -119.088;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "97 MW";
 }
 
 object powerplant
 {
-    name "BELDEN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Plumas County";
+    name "BELDEN_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Plumas County";
     state "California";
     latitude 40.0074;
     longitude -121.249;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "118 MW";
 }
 
 object powerplant
 {
-    name "BIG_CREEK_1_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "BIG_CREEK_1_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 37.2042;
     longitude -119.2401;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "88 MW";
 }
 
 object powerplant
 {
-    name "BIG_CREEK_2A_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "BIG_CREEK_2A_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 37.2001;
     longitude -119.307;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "110 MW";
 }
 
 object powerplant
 {
-    name "BIG_CREEK_3_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "BIG_CREEK_3_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 37.1485;
     longitude -119.387;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "175 MW";
 }
 
 object powerplant
 {
-    name "BIG_CREEK_4_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Madera County";
+    name "BIG_CREEK_4_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Madera County";
     state "California";
     latitude 37.139;
     longitude -119.4901;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "100 MW";
 }
 
 object powerplant
 {
-    name "BIG_CREEK_8_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "BIG_CREEK_8_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 37.2096;
     longitude -119.329;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "75 MW";
 }
 
 object powerplant
 {
-    name "BLISS_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Gooding County";
+    name "BLISS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Gooding County";
     state "Idaho";
     latitude 42.9138;
     longitude -115.071;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "75 MW";
 }
 
 object powerplant
 {
-    name "BLUE_MESA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Gunnison County";
+    name "BLUE_MESA_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Gunnison County";
     state "Colorado";
     latitude 38.4532;
     longitude -107.338;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "86 MW";
 }
 
 object powerplant
 {
-    name "BONNEVILLE_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Multnomah County";
+    name "BONNEVILLE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Multnomah County";
     state "Oregon";
     latitude 45.6441;
     longitude -121.941;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1162 MW";
 }
 
 object powerplant
 {
-    name "BOUNDARY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Pend Oreille County";
+    name "BOUNDARY_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Pend Oreille County";
     state "Washington";
     latitude 48.9871;
     longitude -117.348;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1119 MW";
 }
 
 object powerplant
 {
-    name "BOX_CANYON_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Pend Oreille County";
+    name "BOX_CANYON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Pend Oreille County";
     state "Washington";
     latitude 48.7809;
     longitude -117.418;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "90 MW";
 }
 
 object powerplant
 {
-    name "BROWNLEE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Washington County";
+    name "BROWNLEE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Washington County";
     state "Idaho";
     latitude 44.8367;
     longitude -116.898;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "675 MW";
 }
 
 object powerplant
 {
-    name "C._J._STRIKE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Owyhee County";
+    name "C._J._STRIKE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Owyhee County";
     state "Idaho";
     latitude 42.9449;
     longitude -115.978;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "83 MW";
 }
 
 object powerplant
 {
-    name "CABIN_CREEK_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Clear Creek County";
+    name "CABIN_CREEK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Clear Creek County";
     state "Colorado";
     latitude 39.6551;
     longitude -105.709;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "300 MW";
 }
 
 object powerplant
 {
-    name "CABINET_GORGE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Bonner County";
+    name "CABINET_GORGE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Bonner County";
     state "Idaho";
     latitude 48.0844;
     longitude -116.053;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "265 MW";
 }
 
 object powerplant
 {
-    name "CAMINO_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "El Dorado County";
+    name "CAMINO_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "El Dorado County";
     state "California";
     latitude 38.8288;
     longitude -120.537;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "158 MW";
 }
 
 object powerplant
 {
-    name "CARIBOU_2_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Plumas County";
+    name "CARIBOU_2_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Plumas County";
     state "California";
     latitude 40.086;
     longitude -121.149;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "118 MW";
 }
 
 object powerplant
 {
-    name "CARMEN_SMITH_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Linn County";
+    name "CARMEN_SMITH_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Linn County";
     state "Oregon";
     latitude 44.286;
     longitude -122.041;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "114 MW";
 }
 
 object powerplant
 {
-    name "CASTAIC_HYDROELECTRIC_PLANT_1";
-    // type "conventional and pumped storage";
-    // county "Los Angeles County";
+    name "CASTAIC_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Los Angeles County";
     state "California";
     latitude 34.5872;
     longitude -118.657;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1682 MW";
 }
 
 object powerplant
 {
-    name "CHIEF_JOSEPH_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Douglas County";
+    name "CHIEF_JOSEPH_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Douglas County";
     state "Washington";
     latitude 47.9951;
     longitude -119.6401;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "2456 MW";
 }
 
 object powerplant
 {
-    name "COLGATE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Yuba County";
+    name "COLGATE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Yuba County";
     state "California";
     latitude 39.3308;
     longitude -121.192;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "315 MW";
 }
 
 object powerplant
 {
-    name "COLLIERVILLE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Calaveras County";
+    name "COLLIERVILLE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Calaveras County";
     state "California";
     latitude 38.1446;
     longitude -120.381;
-    out_svc "1989-01-01 00:00:00 UTC";
+    in_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "253 MW";
 }
 
 object powerplant
 {
-    name "CUSHMAN_2_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Mason County";
+    name "CUSHMAN_2_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Mason County";
     state "Washington";
     latitude 47.3698;
     longitude -123.1601;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "85 MW";
 }
 
 object powerplant
 {
-    name "DAVIS_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Mohave County";
+    name "DAVIS_DAM_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Mohave County";
     state "Arizona";
     latitude 35.197;
     longitude -114.571;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "255 MW";
 }
 
 object powerplant
 {
-    name "DETROIT_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Marion County";
+    name "DETROIT_DAM_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Marion County";
     state "Oregon";
     latitude 44.7224;
     longitude -122.251;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "100 MW";
 }
 
 object powerplant
 {
-    name "DEVIL_CANYON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "San Bernardino County";
+    name "DEVIL_CANYON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "San Bernardino County";
     state "California";
     latitude 34.2056;
     longitude -117.334;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "276 MW";
 }
 
 object powerplant
 {
-    name "DIABLO_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Whatcom County";
+    name "DIABLO_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Whatcom County";
     state "Washington";
     latitude 48.7138;
     longitude -121.132;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "182 MW";
 }
 
 object powerplant
 {
-    name "DION_R._HOLM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Tuolumne County";
+    name "DION_R._HOLM_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Tuolumne County";
     state "California";
     latitude 37.8966;
     longitude -119.968;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "157 MW";
 }
 
 object powerplant
 {
-    name "DON_PEDRO_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Tuolumne County";
+    name "DON_PEDRO_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Tuolumne County";
     state "California";
     latitude 37.696;
     longitude -120.4201;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "171 MW";
 }
 
 object powerplant
 {
-    name "DWORSHAK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Clearwater County";
+    name "DWORSHAK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Clearwater County";
     state "Idaho";
     latitude 46.5143;
     longitude -116.298;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "465 MW";
 }
 
 object powerplant
 {
-    name "EDWARD_C._HYATT_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Butte County";
+    name "EDWARD_C._HYATT_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Butte County";
     state "California";
     latitude 39.543;
     longitude -121.492;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "351 MW";
 }
 
 object powerplant
 {
-    name "EDWARD_C._HYATT_PUMPED_STORAGE_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Butte County";
+    name "EDWARD_C._HYATT_PUMPED_STORAGE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Butte County";
     state "California";
     latitude 39.543;
     longitude -121.492;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "293 MW";
 }
 
 object powerplant
 {
-    name "ELECTRA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Amador County";
+    name "ELECTRA_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Amador County";
     state "California";
     latitude 38.331;
     longitude -120.6701;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "103 MW";
 }
 
 object powerplant
 {
-    name "FLAMING_GORGE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Daggett County";
+    name "FLAMING_GORGE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Daggett County";
     state "Utah";
     latitude 40.9146;
     longitude -109.422;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "152 MW";
 }
 
 object powerplant
 {
-    name "FLATIRON_HYDROELECTRIC_PLANT_1";
-    // type "conventional and pumped storage";
-    // county "Larimer County";
+    name "FLATIRON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Larimer County";
     state "Colorado";
     latitude 40.365;
     longitude -105.236;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "95 MW";
 }
 
 object powerplant
 {
-    name "FOLSOM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Sacramento County";
+    name "FOLSOM_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Sacramento County";
     state "California";
     latitude 38.7068;
     longitude -121.158;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "199 MW";
 }
 
 object powerplant
 {
-    name "FORT_PECK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "McCone County";
+    name "FORT_PECK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "McCone County";
     state "Montana";
     latitude 48.0122;
     longitude -106.412;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "180 MW";
 }
 
 object powerplant
 {
-    name "GLEN_CANYON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Coconino County";
+    name "GLEN_CANYON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Coconino County";
     state "Arizona";
     latitude 36.9366;
     longitude -111.484;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1312 MW";
 }
 
 object powerplant
 {
-    name "GORGE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Whatcom County";
+    name "GORGE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Whatcom County";
     state "Washington";
     latitude 48.6981;
     longitude -121.209;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "207 MW";
 }
 
 object powerplant
 {
-    name "GRAND_COULEE_LEFT_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grant County";
+    name "GRAND_COULEE_LEFT_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Grant County";
     state "Washington";
     latitude 47.9565;
     longitude -118.981;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1155 MW";
 }
 
 object powerplant
 {
-    name "GRAND_COULEE_RIGHT_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grant County";
+    name "GRAND_COULEE_RIGHT_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Grant County";
     state "Washington";
     latitude 47.9565;
     longitude -118.981;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1125 MW";
 }
 
 object powerplant
 {
-    name "GREEN_PETER_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Linn County";
+    name "GREEN_PETER_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Linn County";
     state "Oregon";
     latitude 44.4494;
     longitude -122.549;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "80 MW";
 }
 
 object powerplant
 {
-    name "HAAS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "HAAS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 36.9274;
     longitude -119.0201;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "135 MW";
 }
 
 object powerplant
 {
-    name "HELLS_CANYON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Wallowa County";
+    name "HELLS_CANYON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Wallowa County";
     state "Oregon";
     latitude 45.2439;
     longitude -116.701;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "392 MW";
 }
 
 object powerplant
 {
-    name "HELMS_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Fresno County";
+    name "HELMS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 37.0293;
     longitude -118.968;
-    out_svc "1984-01-01 00:00:00 UTC";
+    in_svc "1984-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "1053 MW";
 }
 
 object powerplant
 {
-    name "HENRY_M._JACKSON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Snohomish County";
+    name "HENRY_M._JACKSON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Snohomish County";
     state "Washington";
     latitude 47.9084;
     longitude -121.814;
-    out_svc "1984-01-01 00:00:00 UTC";
+    in_svc "1984-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "112 MW";
 }
 
 object powerplant
 {
-    name "HORSE_MESA_HYDROELECTRIC_PLANT_1";
-    // type "conventional and pumped storage";
-    // county "Maricopa County";
+    name "HORSE_MESA_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Maricopa County";
     state "Arizona";
     latitude 33.5907;
     longitude -111.344;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "130 MW";
 }
 
 object powerplant
 {
-    name "HUNGRY_HORSE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Flathead County";
+    name "HUNGRY_HORSE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Flathead County";
     state "Montana";
     latitude 48.3415;
     longitude -114.014;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "428 MW";
 }
 
 object powerplant
 {
-    name "ICE_HARBOR_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Walla Walla County";
+    name "ICE_HARBOR_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Walla Walla County";
     state "Washington";
     latitude 46.2498;
     longitude -118.8801;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "603 MW";
 }
 
 object powerplant
 {
-    name "J._S._EASTWOOD_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Fresno County";
+    name "J._S._EASTWOOD_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 37.1479;
     longitude -119.257;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "200 MW";
 }
 
 object powerplant
 {
-    name "JAMES_B._BLACK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "JAMES_B._BLACK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.9923;
     longitude -121.975;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "169 MW";
 }
 
 object powerplant
 {
-    name "JAYBIRD_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "El Dorado County";
+    name "JAYBIRD_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "El Dorado County";
     state "California";
     latitude 38.834;
     longitude -120.532;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "162 MW";
 }
 
 object powerplant
 {
-    name "JOHN_C._BOYLE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Klamath County";
+    name "JOHN_C._BOYLE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Klamath County";
     state "Oregon";
     latitude 42.0936;
     longitude -122.0701;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "99 MW";
 }
 
 object powerplant
 {
-    name "JOHN_DAY_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Sherman County";
+    name "JOHN_DAY_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Sherman County";
     state "Oregon";
     latitude 45.7164;
     longitude -120.694;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "2160 MW";
 }
 
 object powerplant
 {
-    name "JOHN_W_KEYS_III_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Grant County";
+    name "JOHN_W_KEYS_III_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Grant County";
     state "Washington";
     latitude 47.9565;
     longitude -118.981;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "314 MW";
 }
 
 object powerplant
 {
-    name "JUDGE_FRANCIS_CARR_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "JUDGE_FRANCIS_CARR_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.6469;
     longitude -122.627;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "154 MW";
 }
 
 object powerplant
 {
-    name "KERCKHOFF_2_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "KERCKHOFF_2_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 37.0718;
     longitude -119.558;
-    out_svc "1983-01-01 00:00:00 UTC";
+    in_svc "1983-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "140 MW";
 }
 
 object powerplant
 {
-    name "KESWICK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "KESWICK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.6119;
     longitude -122.446;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "117 MW";
 }
 
 object powerplant
 {
-    name "LIBBY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lincoln County";
+    name "LIBBY_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Lincoln County";
     state "Montana";
     latitude 48.4098;
     longitude -115.314;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "525 MW";
 }
 
 object powerplant
 {
-    name "LITTLE_GOOSE_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Columbia County";
+    name "LITTLE_GOOSE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Columbia County";
     state "Washington";
     latitude 46.5838;
     longitude -118.027;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "810 MW";
 }
 
 object powerplant
 {
-    name "LOOKOUT_POINT_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lane County";
+    name "LOOKOUT_POINT_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Lane County";
     state "Oregon";
     latitude 43.9153;
     longitude -122.753;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "120 MW";
 }
 
 object powerplant
 {
-    name "LOWER_BAKER_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Skagit County";
+    name "LOWER_BAKER_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Skagit County";
     state "Washington";
     latitude 48.5478;
     longitude -121.741;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "111 MW";
 }
 
 object powerplant
 {
-    name "LOWER_GRANITE_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Whitman County";
+    name "LOWER_GRANITE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Whitman County";
     state "Washington";
     latitude 46.6595;
     longitude -117.429;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "810 MW";
 }
 
 object powerplant
 {
-    name "LOWER_MONUMENTAL_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Walla Walla County";
+    name "LOWER_MONUMENTAL_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Walla Walla County";
     state "Washington";
     latitude 46.5635;
     longitude -118.5401;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "810 MW";
 }
 
 object powerplant
 {
-    name "LUCKY_PEAK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Ada County";
+    name "LUCKY_PEAK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Ada County";
     state "Idaho";
     latitude 43.528;
     longitude -116.058;
-    out_svc "1988-01-01 00:00:00 UTC";
+    in_svc "1988-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "101 MW";
 }
 
 object powerplant
 {
-    name "MAMMOTH_POOL_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Madera County";
+    name "MAMMOTH_POOL_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Madera County";
     state "California";
     latitude 37.2203;
     longitude -119.338;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "190 MW";
 }
 
 object powerplant
 {
-    name "MAYFIELD_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Lewis County";
+    name "MAYFIELD_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Lewis County";
     state "Washington";
     latitude 46.5035;
     longitude -122.589;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "162 MW";
 }
 
 object powerplant
 {
-    name "MCNARY_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Umatilla County";
+    name "MCNARY_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Umatilla County";
     state "Oregon";
     latitude 45.9402;
     longitude -119.299;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "991 MW";
 }
 
 object powerplant
 {
-    name "MERWIN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Cowlitz County";
+    name "MERWIN_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Cowlitz County";
     state "Washington";
     latitude 45.9567;
     longitude -122.554;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "136 MW";
 }
 
 object powerplant
 {
-    name "MIDDLE_FORK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Placer County";
+    name "MIDDLE_FORK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Placer County";
     state "California";
     latitude 39.0248;
     longitude -120.596;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "122 MW";
 }
 
 object powerplant
 {
-    name "MOCCASIN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Tuolumne County";
+    name "MOCCASIN_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Tuolumne County";
     state "California";
     latitude 37.8094;
     longitude -120.299;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "100 MW";
 }
 
 object powerplant
 {
-    name "MORROW_POINT_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Montrose County";
+    name "MORROW_POINT_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Montrose County";
     state "Colorado";
     latitude 38.4517;
     longitude -107.539;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "173 MW";
 }
 
 object powerplant
 {
-    name "MOSSYROCK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lewis County";
+    name "MOSSYROCK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Lewis County";
     state "Washington";
     latitude 46.5347;
     longitude -122.425;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "300 MW";
 }
 
 object powerplant
 {
-    name "MOUNT_ELBERT_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Lake County";
+    name "MOUNT_ELBERT_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Lake County";
     state "Colorado";
     latitude 39.0942;
     longitude -106.352;
-    out_svc "1981-01-01 00:00:00 UTC";
+    in_svc "1981-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "200 MW";
 }
 
 object powerplant
 {
-    name "NATHANIEL_WASHINGTON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grant County";
+    name "NATHANIEL_WASHINGTON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Grant County";
     state "Washington";
     latitude 47.9565;
     longitude -118.981;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "4215 MW";
 }
 
 object powerplant
 {
-    name "NEW_EXCHEQUER_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Mariposa County";
+    name "NEW_EXCHEQUER_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Mariposa County";
     state "California";
     latitude 37.5844;
     longitude -120.269;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "95 MW";
 }
 
 object powerplant
 {
-    name "NEW_MELONES_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Tuolumne County";
+    name "NEW_MELONES_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Tuolumne County";
     state "California";
     latitude 37.9469;
     longitude -120.528;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "300 MW";
 }
 
 object powerplant
 {
-    name "NOXON_RAPIDS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Sanders County";
+    name "NOXON_RAPIDS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Sanders County";
     state "Montana";
     latitude 47.9605;
     longitude -115.734;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "488 MW";
 }
 
 object powerplant
 {
-    name "OXBOW_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Baker County";
+    name "OXBOW_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Baker County";
     state "Oregon";
     latitude 44.9716;
     longitude -116.835;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "190 MW";
 }
 
 object powerplant
 {
-    name "PALISADES_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Bonneville County";
+    name "PALISADES_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Bonneville County";
     state "Idaho";
     latitude 43.3349;
     longitude -111.206;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "176 MW";
 }
 
 object powerplant
 {
-    name "PARKER_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "San Bernardino County";
+    name "PARKER_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "San Bernardino County";
     state "California";
     latitude 34.2953;
     longitude -114.1401;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "120 MW";
 }
 
 object powerplant
 {
-    name "PELTON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Jefferson County";
+    name "PELTON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Jefferson County";
     state "Oregon";
     latitude 44.6944;
     longitude -121.231;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "110 MW";
 }
 
 object powerplant
 {
-    name "PINE_FLAT_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Fresno County";
+    name "PINE_FLAT_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Fresno County";
     state "California";
     latitude 36.8326;
     longitude -119.327;
-    out_svc "1984-01-01 00:00:00 UTC";
+    in_svc "1984-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "165 MW";
 }
 
 object powerplant
 {
-    name "PIT_3_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "PIT_3_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.9974;
     longitude -121.748;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "80 MW";
 }
 
 object powerplant
 {
-    name "PIT_4_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "PIT_4_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.9864;
     longitude -121.849;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "103 MW";
 }
 
 object powerplant
 {
-    name "PIT_5_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "PIT_5_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.9862;
     longitude -121.978;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "142 MW";
 }
 
 object powerplant
 {
-    name "PIT_6_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "PIT_6_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.9226;
     longitude -121.993;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "79 MW";
 }
 
 object powerplant
 {
-    name "PIT_7_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "PIT_7_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.8475;
     longitude -121.991;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "110 MW";
 }
 
 object powerplant
 {
-    name "POE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Butte County";
+    name "POE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Butte County";
     state "California";
     latitude 39.7229;
     longitude -121.4701;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "143 MW";
 }
 
 object powerplant
 {
-    name "PRIEST_RAPIDS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grant County";
+    name "PRIEST_RAPIDS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Grant County";
     state "Washington";
     latitude 46.6451;
     longitude -119.908;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "956 MW";
 }
 
 object powerplant
 {
-    name "R._C._KIRKWOOD_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Tuolumne County";
+    name "R._C._KIRKWOOD_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Tuolumne County";
     state "California";
     latitude 37.8777;
     longitude -119.953;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "116 MW";
 }
 
 object powerplant
 {
-    name "RALSTON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Placer County";
+    name "RALSTON_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Placer County";
     state "California";
     latitude 39.001;
     longitude -120.725;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "79 MW";
 }
 
 object powerplant
 {
-    name "ROCK_CREEK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Plumas County";
+    name "ROCK_CREEK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Plumas County";
     state "California";
     latitude 39.9052;
     longitude -121.345;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "126 MW";
 }
 
 object powerplant
 {
-    name "ROCK_ISLAND_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Chelan County";
+    name "ROCK_ISLAND_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Chelan County";
     state "Washington";
     latitude 47.3461;
     longitude -120.092;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "629 MW";
 }
 
 object powerplant
 {
-    name "ROCKY_REACH_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Chelan County";
+    name "ROCKY_REACH_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Chelan County";
     state "Washington";
     latitude 47.5336;
     longitude -120.295;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1300 MW";
 }
 
 object powerplant
 {
-    name "ROSS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Whatcom County";
+    name "ROSS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Whatcom County";
     state "Washington";
     latitude 48.7326;
     longitude -121.068;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "450 MW";
 }
 
 object powerplant
 {
-    name "ROUND_BUTTE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Jefferson County";
+    name "ROUND_BUTTE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Jefferson County";
     state "Oregon";
     latitude 44.6058;
     longitude -121.277;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "373 MW";
 }
 
 object powerplant
 {
-    name "SELI_KSANKA_QLISPE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lake County";
+    name "SELI_KSANKA_QLISPE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Lake County";
     state "Montana";
     latitude 47.6777;
     longitude -114.234;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "228 MW";
 }
 
 object powerplant
 {
-    name "SHASTA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "SHASTA_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.7175;
     longitude -122.422;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "714 MW";
 }
 
 object powerplant
 {
-    name "SPRING_CREEK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Shasta County";
+    name "SPRING_CREEK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Shasta County";
     state "California";
     latitude 40.6281;
     longitude -122.468;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "180 MW";
 }
 
 object powerplant
 {
-    name "STANISLAUS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Tuolumne County";
+    name "STANISLAUS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Tuolumne County";
     state "California";
     latitude 38.139;
     longitude -120.3701;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "82 MW";
 }
 
 object powerplant
 {
-    name "SUMMER_FALLS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grant County";
+    name "SUMMER_FALLS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Grant County";
     state "Washington";
     latitude 47.5025;
     longitude -119.292;
-    out_svc "1985-01-01 00:00:00 UTC";
+    in_svc "1985-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "92 MW";
 }
 
 object powerplant
 {
-    name "SWIFT_1_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Skamania County";
+    name "SWIFT_1_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Skamania County";
     state "Washington";
     latitude 46.0608;
     longitude -122.202;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "240 MW";
 }
 
 object powerplant
 {
-    name "THE_DALLES_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Wasco County";
+    name "THE_DALLES_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Wasco County";
     state "Oregon";
     latitude 45.614;
     longitude -121.135;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1820 MW";
 }
 
 object powerplant
 {
-    name "THERMALITO_HYDROELECTRIC_PLANT_1";
-    // type "conventional and pumped storage";
-    // county "Butte County";
+    name "THERMALITO_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Butte County";
     state "California";
     latitude 39.5149;
     longitude -121.6301;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "115 MW";
 }
 
 object powerplant
 {
-    name "THOMPSON_FALLS_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Sanders County";
+    name "THOMPSON_FALLS_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Sanders County";
     state "Montana";
     latitude 47.5932;
     longitude -115.358;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "98 MW";
 }
 
 object powerplant
 {
-    name "TRINITY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Trinity County";
+    name "TRINITY_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Trinity County";
     state "California";
     latitude 40.7973;
     longitude -122.763;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "140 MW";
 }
 
 object powerplant
 {
-    name "UPPER_BAKER_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Whatcom County";
+    name "UPPER_BAKER_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Whatcom County";
     state "Washington";
     latitude 48.649;
     longitude -121.691;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "105 MW";
 }
 
 object powerplant
 {
-    name "W._R._GIANELLI_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Merced County";
+    name "W._R._GIANELLI_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Merced County";
     state "California";
     latitude 37.0692;
     longitude -121.077;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "424 MW";
 }
 
 object powerplant
 {
-    name "WANAPUM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grant County";
+    name "WANAPUM_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Grant County";
     state "Washington";
     latitude 46.8731;
     longitude -119.9701;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "1220 MW";
 }
 
 object powerplant
 {
-    name "WELLS_HYDROELECTRIC_PLANT_(UNITED_STATES)_1";
-    // type "conventional storage";
-    // county "Douglas County";
+    name "WELLS_HYDROELECTRIC_PLANT_(UNITED_STATES)";
+    generator "HT";
+    fuel "WATER";
+    county "Douglas County";
     state "Washington";
     latitude 47.9469;
     longitude -119.865;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "774 MW";
 }
 
 object powerplant
 {
-    name "WHITE_ROCK-SLAB_CREEK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "El Dorado County";
+    name "WHITE_ROCK-SLAB_CREEK_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "El Dorado County";
     state "California";
     latitude 38.7653;
     longitude -120.787;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "269 MW";
 }
 
 object powerplant
 {
-    name "YALE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Cowlitz County";
+    name "YALE_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Cowlitz County";
     state "Washington";
     latitude 45.9628;
     longitude -122.336;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "134 MW";
 }
 
 object powerplant
 {
-    name "YELLOWTAIL_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Big Horn County";
+    name "YELLOWTAIL_HYDROELECTRIC_PLANT";
+    generator "HT";
+    fuel "WATER";
+    county "Big Horn County";
     state "Montana";
     latitude 45.3074;
     longitude -107.958;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "278 MW";
 }

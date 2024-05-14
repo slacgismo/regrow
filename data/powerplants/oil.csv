@@ -1,0 +1,75 @@
+name,unit,fuel,capacity[MW],type,start[y],retirement[y],latitude,longitude,county,state
+Agua Fria power station,AF1,NG/FO,114,ST,1958,,33.5561,-112.2153,Maricopa,Arizona
+Agua Fria power station,AF2,NG/FO,114,ST,1957,,33.5561,-112.2153,Maricopa,Arizona
+Agua Fria power station,AF3,NG/FO,163,ST,1961,,33.5561,-112.2153,Maricopa,Arizona
+Agua Fria power station,AF4,NG/FO,81,GT,1975,,33.5561,-112.2153,Maricopa,Arizona
+Agua Fria power station,AF5,NG/FO,71,GT,1974,,33.5561,-112.2153,Maricopa,Arizona
+Agua Fria power station,AF6,NG/FO,71,GT,1974,,33.5561,-112.2153,Maricopa,Arizona
+Beaver power station,CC1,NG/FO,586,CC,1977,,46.172401,-123.1739,Columbia,Oregon
+Blue Spruce energy center,CT01,NG/FO,199,GT,2003,,39.747875,-104.6814,Adams,Colorado
+Blue Spruce energy center,CT02,NG/FO,199,GT,2003,,39.747875,-104.6814,Adams,Colorado
+Dave Gates generating station,1,NG/FO,68,GT,2011,,46.104713,-112.8766,Deer Lodge,Montana
+Dave Gates generating station,2,NG/FO,68,GT,2011,,46.104713,-112.8766,Deer Lodge,Montana
+Dave Gates generating station,3,NG/FO,68,GT,2011,,46.104713,-112.8766,Deer Lodge,Montana
+Dynegy Oakland Power Plant,GEN1,FO/J,74.5,GT,1978,,37.79675,-122.28185,Alameda,California
+Dynegy Oakland Power Plant,GEN2,FO/J,74.5,GT,1978,2021,37.79675,-122.28185,Alameda,California
+Dynegy Oakland Power Plant,GEN3,FO/J,74.5,GT,1978,,37.79675,-122.28185,Alameda,California
+El Centro power station,4,NG/FO,82,ST,1968,,32.802222,-115.54,Imperial,California
+El Segundo cogeneration power station,CC1,OG/NG,180,CC,2013,,33.9058,-118.4031,Los Angeles,California
+Encogeneration power station,CC1,NG/FO,176,CC,1993,,48.746,-122.486,Whatcom,Washington
+Ferndale generating station,CC1,NG/FO,286,CC,1994,,48.828996,-122.6851,Whatcom,Washington
+Fort Lupton power station,1,NG/FO,50,GT,1972,,40.0922,-104.796,Weld,Colorado
+Fort Lupton power station,2,NG/FO,50,GT,1972,,40.0922,-104.796,Weld,Colorado
+Frank Knutson power station,BR1,NG/FO,77,GT,2002,,39.941129,-104.682,Adams,Colorado
+Frank Knutson power station,BR2,NG/FO,77,GT,2002,,39.941129,-104.682,Adams,Colorado
+Frederickson power station,1,NG/FO,89,GT,1981,,47.079722,-122.365,Pierce,Washington
+Frederickson power station,2,NG/FO,89,GT,1981,,47.079722,-122.365,Pierce,Washington
+Grayson power station,4,NG/LFG,50,ST,1959,,34.1556,-118.2782,Los Angeles,California
+Grayson power station,5,NG/LFG,50,ST,1964,,34.1556,-118.2782,Los Angeles,California
+H. Wilson Sundt Generating Station,4,LFG/NG,173,ST,1967,,32.16,-110.9047,Pima,Arizona
+Harbor power station,CC1,NG/FO,246,CC,1995,,33.7706,-118.2656,Los Angeles,California
+Harbor power station,GT10,NG/FO,61,GT,2002,,33.7706,-118.2656,Los Angeles,California
+Harbor power station,GT11,NG/FO,61,GT,2002,,33.7706,-118.2656,Los Angeles,California
+Harbor power station,GT12,NG/FO,61,GT,2002,,33.7706,-118.2656,Los Angeles,California
+Harbor power station,GT13,NG/FO,61,GT,2002,,33.7706,-118.2656,Los Angeles,California
+Harbor power station,GT14,NG/FO,61,GT,2002,,33.7706,-118.2656,Los Angeles,California
+Humboldt Bay power station,IC,BG/NG/FO,167,IC,2010,,40.7415,-124.2103,Humboldt,California
+Ivanpah 1 power station,ST1,NG/S,126,ST,2013,,35.533056,-115.4525,San Bernardino,California
+Ivanpah 2 power station,ST1,NG/S,133,ST,2013,,35.556111,-115.4686,San Bernardino,California
+Ivanpah 3 power station,ST1,NG/S,133,ST,2013,,35.580833,-115.4825,San Bernardino,California
+Kyrene power station,KY4,NG/FO,53,GT,1971,,33.3556,-111.9353,Maricopa,Arizona
+Kyrene power station,KY5,NG/FO,60,GT,1973,,33.3556,-111.9353,Maricopa,Arizona
+Kyrene power station,KY6,NG/FO,60,GT,1973,,33.3556,-111.9353,Maricopa,Arizona
+Kyrene power station,KYS7,NG/FO,292,CC,2002,,33.3556,-111.9353,Maricopa,Arizona
+Larkspur energy facility,CTG1,NG/FO,50,GT,2001,,32.567041,-116.9442,San Diego,California
+Larkspur energy facility,CTG2,NG/FO,50,GT,2001,,32.567041,-116.9442,San Diego,California
+Limon generating station,L1,NG/FO,77,GT,2002,,39.2038,-103.7005,Lincoln,Colorado
+Limon generating station,L2,NG/FO,77,GT,2002,,39.2038,-103.7005,Lincoln,Colorado
+Los Angeles Refinery Wilmington power station,G2,NG/OG,59,GT,1988,,33.7686,-118.2867,Los Angeles,California
+Malburg power station,MGS,NG/BU,130,CC,2005,,33.9986,-118.2219,Los Angeles,California
+McClure power station,1,NG/FO,71,GT,1980,,37.62936,-120.9314,Stanislaus,California
+McClure power station,2,NG/FO,71,GT,1981,,37.62936,-120.9314,Stanislaus,California
+Nevada Solar One power station,ONE,NG/S,76,ST,2007,,35.799798,-114.9817,Clark,Nevada
+Richmond cogeneration power station,CC1,NG/OG,156,CC,2006,,37.9418,-122.3909,Contra Costa,California
+Rio Bravo (NM) power station,GT1,NG/FO,150,GT,2000,,35.026,-106.644,Bernalillo,New Mexico
+Saguaro power (NV) station,CC1,NG/FO,127,CC,1991,,36.0417,-115.0117,Clark,Nevada
+SEGS IX power station,GEN1,NG/S,92,ST,1990,,35.033,-117.338,San Bernardino,California
+SEGS VIII power station,GEN1,NG/S,92,ST,1989,2021,35.0308,-117.3563,San Bernardino,California
+Spindle Hill energy center,GEN1,NG/FO,210,GT,2007,,40.092192,-104.8878,Weld,Colorado
+Spindle Hill energy center,GEN2,NG/FO,210,GT,2007,,40.092192,-104.8878,Weld,Colorado
+Tracy power station,GT3,NG/D,85,GT,1994,,39.5625,-119.525,Storey,Nevada
+Tracy power station,GT4,NG/D,85,GT,1994,,39.5625,-119.525,Storey,Nevada
+Valencia power station,GT4,NG/FO,54,GT,2006,,31.363472,-110.9313,Santa Cruz,Arizona
+Valero Refinery cogeneration Unit 1 power station,GT 1,NG/OG,50,GT,2002,,38.0736,-122.1411,Solano,California
+Valley (CA) power station,5,NG/FO,61,GT,2001,,34.244991,-118.3913,Los Angeles,California
+Valley (CA) power station,CC1,NG/FO,630,CC,2003,,34.244991,-118.3913,Los Angeles,California
+Watson cogeneration power station,CC1,NG/OG/WO,405,CC,1988,,33.816647,-118.2448,Los Angeles,California
+Whitehorn power station,2,NG/FO,85,GT,1981,,48.885636,-122.7516,Whatcom,Washington
+Whitehorn power station,3,NG/FO,85,GT,1981,,48.885636,-122.7516,Whatcom,Washington
+Woodland power station,NA1,NG/FO,50,GT,1993,,37.652602,-121.0204,Stanislaus,California
+Yellowstone Energy LP power station,GEN1,OG/COKE,68,ST,1995,,45.8117,-108.4278,Yellowstone,Montana
+Yucca power station,GT3,NG/FO,72,GT,1973,,32.7214,-114.7106,Yuma,Arizona
+Yucca power station,GT4,FO,72.4,GT,1974,,32.7214,-114.7106,Yuma,Arizona
+Yucca power station,GT5,NG/FO,61,GT,2008,,32.7214,-114.7106,Yuma,Arizona
+Yucca power station,GT6,NG/FO,61,GT,2008,,32.7214,-114.7106,Yuma,Arizona
+Yucca power station,ST1,NG/FO,87,ST,1959,,32.7214,-114.7106,Yuma,Arizona

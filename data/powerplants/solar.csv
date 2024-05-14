@@ -1,0 +1,426 @@
+name,unit,capacity[MW],Capacity Rating,start[y],retirement[y],latitude,longitude,county,state,type
+Adelanto Solar,,20.0,MWac,2015.0,,34.5572,-117.3775,San Bernardino County,California,PV
+Adera Solar,,20.0,MWac,2015.0,,37.1206,-120.3249,Madera County,California,PV
+Adobe Solar,,20.0,MWac,2014.0,,35.1028,-118.9544,Kern County,California,PV
+Agua Caliente Solar Project,1,91.0,MWac,2012.0,,32.9774,-113.4945,Yuma County,Arizona,PV
+Agua Caliente Solar Project,2,136.0,MWac,2012.0,,32.9774,-113.4945,Yuma County,Arizona,PV
+Agua Caliente Solar Project,3,121.0,MWac,2014.0,,32.9774,-113.4945,Yuma County,Arizona,PV
+Airport Solar,,47.0,MWac,2019.0,,42.1702,-120.4023,Lake County,Oregon,PV
+Alamo (California) solar farm,,20.0,MWac,2015.0,,34.685,-117.346,San Bernardino County,California,PV
+Alpaugh solar farm,50,50.0,MWac,2012.0,,35.8983,-119.4353,Tulare County,California,PV
+Alpaugh solar farm,North,20.0,MWac,2012.0,,35.9025,-119.4428,Tulare County,California,PV
+Alpine Solar,1,66.0,MWac,2013.0,,34.7892,-118.5047,Los Angeles County,California,PV
+Alta Luna solar farm,,28.0,MWac,2017.0,,32.573,-107.459,Luna County,New Mexico,PV
+American Falls Solar,1,20.0,MWac,2017.0,,42.824,-112.752,Power County,Idaho,PV
+American Falls Solar,2,20.0,MWac,2017.0,,42.824,-112.752,Power County,Idaho,PV
+American Kings Solar,,128.0,MWac,2020.0,,36.2401,-119.898,Kings County,California,PV
+Antelope Big Sky Ranch solar farm,,20.0,MWac,2016.0,,34.6948,-118.2877,Los Angeles County,California,PV
+Antelope Dsr solar farm,1,50.0,MWac,2016.0,,34.6556,-118.2807,Los Angeles County,California,PV
+Antelope Dsr solar farm,2,105.0,MWac,2018.0,,34.752,-118.315,Los Angeles County,California,PV
+Antelope Dsr solar farm,3,20.0,MWac,2019.0,,34.74,-118.303,Los Angeles County,California,PV
+Ap North Lake I solar farm,,20.0,MWac,2015.0,,33.7401,-117.0106,Riverside County,California,PV
+Apache Solar 1,,20.0,MWac,2017.0,,32.0681,-109.8904,Cochise County,Arizona,PV
+Apex Solar Power Project,,20.0,MWac,2012.0,,36.391,-114.964,Clark County,Nevada,PV
+Arlington Energy Center (NextEra) solar farm,1,100.0,MWac,2022.0,,33.6909,-114.7749,Riverside County,California,PV
+Arlington Energy Center (NextEra) solar farm,3,131.0,MWac,2022.0,,33.6909,-114.7749,Riverside County,California,PV
+Arlington Valley Solar Energy II,1,28.0,MWac,2013.0,,33.305,-112.8339,Maricopa County,Arizona,PV
+Arlington Valley Solar Energy II,2,28.0,MWac,2013.0,,33.305,-112.8339,Maricopa County,Arizona,PV
+Arlington Valley Solar Energy II,3,26.0,MWac,2013.0,,33.305,-112.8339,Maricopa County,Arizona,PV
+Arlington Valley Solar Energy II,4,28.0,MWac,2013.0,,33.305,-112.8339,Maricopa County,Arizona,PV
+Arrow Canyon Solar Hybrid,,200.0,MWac,2022.0,,36.4593,-114.8444,Clark County,Nevada,PV
+Astoria solar farm,1,100.0,MWac,2016.0,,34.8442,-118.4585,Kern County,California,PV
+Astoria solar farm,2,75.0,MWac,2016.0,,34.8366,-118.4802,Kern County,California,PV
+Athos Solar,1,250.0,MWac,2022.0,,33.7513,-115.355,Riverside County,California,PV
+Athos Solar,2,200.0,MWac,2021.0,,33.7513,-115.355,Riverside County,California,PV
+Atwell Island solar farm,East,20.0,MWac,2013.0,,35.8143,-119.4519,Tulare County,California,PV
+Atwell Island solar farm,West,20.0,MWac,2015.0,,35.815,-119.4597,Tulare County,California,PV
+Av Solar Ranch One solar farm,,253.0,MWac,2014.0,,34.7803,-118.4244,Los Angeles County,California,PV
+Avalon (Coronal Group) solar farm,,29.0,MWac,2014.0,,32.03,-110.959,Pima County,Arizona,PV
+Avra Valley Solar,,25.0,MWac,2013.0,,32.3717,-111.2828,Pima County,Arizona,PV
+Axium Modesto Solar,,25.0,MWac,2012.0,,37.7357,-120.9908,Stanislaus County,California,PV
+Bakersfield Solar,,20.0,MWac,2015.0,,35.1261,-119.2433,Kern County,California,PV
+Barren Ridge solar farm,,60.0,MWac,2016.0,,35.2047,-118.0688,Kern County,California,PV
+Battle Mountain Solar Project,,101.0,MWac,2021.0,,40.7184,-117.0614,Humboldt County,Nevada,PV
+Bayshore Solar,1,20.0,MWac,2017.0,,34.6678,-118.2981,Los Angeles County,California,PV
+Bayshore Solar,2,20.0,MWac,2017.0,,34.6783,-118.3026,Los Angeles County,California,PV
+Bayshore Solar,3,20.0,MWac,2017.0,,34.6813,-118.3141,Los Angeles County,California,PV
+Beacon Solar Plant,2,47.0,MWac,2017.0,,35.2658,-117.9992,Kern County,California,PV
+Beacon Solar Plant,5,38.0,MWac,2017.0,,35.2489,-118.0344,Kern County,California,PV
+Big Beau Solar,,128.0,MWac,2022.0,,34.907,-118.3441,,California,PV
+Bighorn Solar 1,,240.0,MWac,2021.0,,38.2075,-104.5967,Pueblo County,Colorado,PV
+Bison Solar,,30.0,MWac,2016.0,,40.8638,-105.0111,Larimer County,Colorado,PV
+Blackwell Solar Park,,20.0,MWac,2019.0,,35.612,-119.845,Kern County,California,PV
+Blythe (Clearway) solar farm,1,21.0,MWac,2009.0,,33.5917,-114.7444,Riverside County,California,PV
+Blythe (Clearway) solar farm,2,20.0,MWac,2017.0,,33.6187,-114.6962,Riverside County,California,PV
+Blythe (NextEra) solar farm,1A,39.0,MWac,2016.0,,33.6801,-114.742,Riverside County,California,PV
+Blythe (NextEra) solar farm,1B,36.0,MWac,2016.0,,33.6801,-114.742,Riverside County,California,PV
+Blythe (NextEra) solar farm,1C,35.0,MWac,2016.0,,33.6801,-114.742,Riverside County,California,PV
+Blythe (NextEra) solar farm,2A,33.0,MWac,2016.0,,33.6801,-114.73,Riverside County,California,PV
+Blythe (NextEra) solar farm,2B,34.0,MWac,2016.0,,33.6801,-114.73,Riverside County,California,PV
+Blythe (NextEra) solar farm,2C,32.0,MWac,2016.0,,33.674,-114.744,Riverside County,California,PV
+Blythe (NextEra) solar farm,2D,32.0,MWac,2016.0,,33.674,-114.744,Riverside County,California,PV
+Blythe (NextEra) solar farm,3A,137.0,MWac,2020.0,,33.656,-114.742,Riverside County,California,PV
+Blythe (NextEra) solar farm,4A,69.0,MWac,2020.0,,33.682,-114.768,Riverside County,California,PV
+Blythe (NextEra) solar farm,4B,69.0,MWac,2020.0,,33.682,-114.768,Riverside County,California,PV
+Boise solar farm,,40.0,MWac,2016.0,,43.444,-116.333,Ada County,Idaho,PV
+Bonnybrooke PV solar farm,,50.0,MWac,2016.0,,33.053,-111.34,Pinal County,Arizona,PV
+Borden solar farm,,50.0,MWac,2020.0,,36.9411,-119.96,Madera County,California,PV
+Borrego solar farm,,26.0,MWac,2013.0,,33.295,-116.353,San Diego County,California,PV
+Boulder Solar,1,100.0,MWac,2016.0,,35.833,-114.983,Clark County,Nevada,PV
+Boulder Solar,2,50.0,MWac,2017.0,,35.8501,-114.944,Clark County,Nevada,PV
+Britton Solar Energy Center,,50.0,MWac,2019.0,,35.016,-106.098,Torrance County,New Mexico,PV
+CA Flats Solar,1,130.0,MWac,2017.0,,35.869,-120.34,San Luis Obispo County,California,PV
+CA Flats Solar,2,150.0,MWac,2019.0,,35.84,-120.305,San Luis Obispo County,California,PV
+CED Ducor solar farm,1,20.0,MWac,2016.0,,35.8563,-119.0684,Tulare County,California,PV
+CED Ducor solar farm,2,20.0,MWac,2016.0,,35.8442,-119.0681,Tulare County,California,PV
+CED Ducor solar farm,4,20.0,MWac,2016.0,,35.8504,-119.027,Tulare County,California,PV
+CID Solar,,20.0,MWac,2014.0,,36.13,-119.544,Kings County,California,PV
+California Valley Solar Ranch,1,21.0,MWac,2012.0,,35.3237,-119.9166,San Luis Obispo County,California,PV
+California Valley Solar Ranch,2,40.0,MWac,2013.0,,35.3237,-119.9166,San Luis Obispo County,California,PV
+California Valley Solar Ranch,3,87.0,MWac,2013.0,,35.3237,-119.9166,San Luis Obispo County,California,PV
+California Valley Solar Ranch,4,70.0,MWac,2013.0,,35.3237,-119.9166,San Luis Obispo County,California,PV
+California Valley Solar Ranch,5,32.0,MWac,2013.0,,35.3237,-119.9166,San Luis Obispo County,California,PV
+Calipatria solar farm,,20.0,MWac,2016.0,,33.144,-115.499,Imperial County,California,PV
+Camelot solar farm,,45.0,MWac,2014.0,,35.017,-118.177,Kern County,California,PV
+Campo Verde Solar,,147.0,MWac,2013.0,,32.7533,-115.7264,Imperial County,California,PV
+Cantua Solar Station,,20.0,MWac,2012.0,,36.4251,-120.3435,Fresno County,California,PV
+Caprock Solar,1,25.0,MWac,2016.0,,34.984,-103.623,Quay County,New Mexico,PV
+Catalina Solar,1,110.0,MWac,2012.0,,34.9383,-118.3345,Kern County,California,PV
+Catalina Solar,2,24.0,unknown,2015.0,,34.922,-118.362,Kern County,California,PV
+Centinela Solar Energy,1,34.0,MWac,2013.0,,32.6869,-115.6478,Imperial County,California,PV
+Centinela Solar Energy,2,27.0,MWac,2013.0,,32.6869,-115.6478,Imperial County,California,PV
+Centinela Solar Energy,3,34.0,MWac,2013.0,,32.6869,-115.6478,Imperial County,California,PV
+Centinela Solar Energy,4,34.0,MWac,2013.0,,32.6869,-115.6478,Imperial County,California,PV
+Centinela Solar Energy,6,27.0,MWac,2014.0,,32.6869,-115.6478,Imperial County,California,PV
+Central 40 solar farm,,40.0,MWac,2021.0,,37.246,-121.104,Stanislaus County,California,PV
+Central Antelope Dry Ranch solar farm,,20.0,MWac,2016.0,,34.7205,-118.3005,Los Angeles County,California,PV
+Central Line Solar,,100.0,MWac,2022.0,,32.8343,-111.568,Pinal County,Arizona,PV
+Chaves Solar,,70.0,MWac,2016.0,,33.4501,-104.456,Chaves County,New Mexico,PV
+Cimarron Solar Facility,,31.0,MWac,2010.0,,36.4681,-104.6357,Colfax County,New Mexico,PV
+Citizens Imperial Solar,,30.0,MWac,2019.0,,33.1917,-115.4338,Imperial County,California,PV
+Clover Creek (Utah) Solar,,80.0,MWac,2021.0,,39.8407,-111.8877,Juab County,Utah,PV
+Cogentrix Of Alamosa solar farm,,30.0,MWac,2012.0,,37.5986,-105.9558,Alamosa County,Colorado,PV
+Colgreen North Shore solar farm,,75.0,MWac,2018.0,,33.5401,-115.9748,Riverside County,California,PV
+Comanche Solar,,120.0,MWac,2016.0,,38.2053,-104.5667,Pueblo County,Colorado,PV
+Copper Crossing solar farm,,20.0,MWac,2011.0,,33.1606,-111.484,Pinal County,Arizona,PV
+Copper Mountain Solar 1,,48.0,MWac,2010.0,,35.7814,-114.993,Clark County,Nevada,PV
+Copper Mountain Solar 2,1,34.0,MWac,2012.0,,35.7864,-114.9628,Clark County,Nevada,PV
+Copper Mountain Solar 2,2,30.0,MWac,2012.0,,35.7864,-114.9628,Clark County,Nevada,PV
+Copper Mountain Solar 2,3,30.0,MWac,2012.0,,35.7864,-114.9628,Clark County,Nevada,PV
+Copper Mountain Solar 2,4,30.0,MWac,2015.0,,35.7864,-114.9628,Clark County,Nevada,PV
+Copper Mountain Solar 2,5,30.0,MWac,2015.0,,35.7864,-114.9628,Clark County,Nevada,PV
+Copper Mountain Solar 3,1,26.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,10,24.0,MWac,2015.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,2,27.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,3,26.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,4,28.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,5,25.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,6,26.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,7,26.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,8,26.0,MWac,2014.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 3,9,21.0,MWac,2015.0,,35.8894,-114.9579,Clark County,Nevada,PV
+Copper Mountain Solar 4,1,42.0,MWac,2016.0,,35.7822,-114.9754,Clark County,Nevada,PV
+Copper Mountain Solar 4,2,52.0,MWac,2016.0,,35.7822,-114.9754,Clark County,Nevada,PV
+Copper Mountain Solar 5,,252.0,MWac,2021.0,,35.7763,-114.9737,Clark County,Nevada,PV
+Corcoran Solar,1,20.0,MWac,2013.0,,36.1383,-119.5733,Kings County,California,PV
+Corcoran Solar,2,20.0,MWac,2015.0,,36.1419,-119.5817,Kings County,California,PV
+Corcoran Solar,3,20.0,MWac,2016.0,,36.1504,-119.5854,Kings County,California,PV
+Coronal Lost Hills solar farm,,20.0,MWac,2015.0,,35.7267,-119.9058,Kern County,California,PV
+Cove Mountain Solar,1,58.0,MWac,2020.0,,37.6231,-113.6192,Iron County,Utah,PV
+Cove Mountain Solar,2,122.0,MWac,2020.0,,37.6386,-113.6371,Iron County,Utah,PV
+Crescent Dunes Solar Energy,,125.0,MWac,2015.0,,38.2389,-117.3636,Nye County,Nevada,PV
+Cuyama Solar,,40.0,MWac,2017.0,,34.901,-119.596,Santa Barbara County,California,PV
+Desert Harvest solar farm,1,80.0,MWac,2020.0,,33.8001,-115.38,Riverside County,California,PV
+Desert Harvest solar farm,2,70.0,MWac,2020.0,,33.8001,-115.38,Riverside County,California,PV
+Desert Sunlight 250 solar farm,12,29.0,MWac,2013.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 250 solar farm,13,25.0,MWac,2013.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 250 solar farm,14,23.0,MWac,2013.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 250 solar farm,16,39.0,MWac,2013.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 250 solar farm,17,39.0,MWac,2014.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 250 solar farm,18,26.0,MWac,2014.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 250 solar farm,19,29.0,MWac,2014.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 250 solar farm,20,25.0,MWac,2014.0,,33.8055,-115.3947,Riverside County,California,PV
+Desert Sunlight 300 solar farm,1,20.0,MWac,2013.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,10,23.0,MWac,2014.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,2,30.0,MWac,2013.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,3,30.0,MWac,2013.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,4,40.0,MWac,2013.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,5,40.0,MWac,2013.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,6,40.0,MWac,2013.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,7,25.0,MWac,2014.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,8,20.0,MWac,2014.0,,33.8231,-115.3939,Riverside County,California,PV
+Desert Sunlight 300 solar farm,9,25.0,MWac,2014.0,,33.8231,-115.3939,Riverside County,California,PV
+Dodge Flat solar farm,,200.0,MWac,2022.0,,40.713,-119.4672,Washoe County,Nevada,PV
+Drew Solar,,100.0,MWac,2022.0,,32.6872,-115.6656,Imperial County,California,PV
+East Line Solar,,100.0,MWac,2020.0,,32.847,-111.5651,Pinal County,Arizona,PV
+Edwards Sanborn solar farm,E1A,149.0,MWac,2022.0,,34.9619,-118.1242,Kern County,California,PV
+Edwards Sanborn solar farm,E1B,154.0,MWac,2022.0,,35.9924,-118.1026,Tulare County,California,PV
+Edwards Sanborn solar farm,E2,138.0,MWac,2021.0,,34.9415,-118.129,Kern County,California,PV
+Edwards Sanborn solar farm,E3,27.0,MWac,2021.0,,34.9463,-118.1265,Kern County,California,PV
+Edwards Sanborn solar farm,E4,149.0,MWac,2022.0,,34.9436,-118.088,Kern County,California,PV
+Edwards Sanborn solar farm,E5,68.0,MWac,2022.0,,34.9653,-118.0773,Kern County,California,PV
+Edwards Sanborn solar farm,S1,45.0,MWac,2022.0,,35.0277,-118.1328,Kern County,California,PV
+Edwards Sanborn solar farm,S3,38.0,MWac,2022.0,,35.0164,-118.1225,Kern County,California,PV
+Edwards Sanborn solar farm,S4,41.0,MWac,2022.0,,35.0125,-118.1193,Kern County,California,PV
+Elevation Solar C,,40.0,MWac,2016.0,,34.7303,-118.3043,Los Angeles County,California,PV
+Encino Solar Energy Center,,55.0,MWac,2020.0,,35.354,-106.858,Sandoval County,New Mexico,PV
+Enterprise (Milford) solar farm,1,80.0,MWac,2016.0,,38.5242,-113.0339,Beaver County,Utah,PV
+Enterprise (Milford) solar farm,2,80.0,MWac,2016.0,,38.5008,-113.03,Beaver County,Utah,PV
+Enterprise (Milford) solar farm,3,80.0,MWac,2016.0,,38.4978,-112.9869,Beaver County,Utah,PV
+Enterprise (New Castle) solar farm,,80.0,MWac,2016.0,,37.6411,-113.6125,Iron County,Utah,PV
+Fish Springs Ranch solar farm,1,100.0,MWac,2022.0,,40.0747,-119.9742,Washoe County,Nevada,PV
+Five Points Solar Park,,60.0,MWac,2016.0,,36.393,-120.239,Fresno County,California,PV
+Frontier Solar,,20.0,MWac,2016.0,,37.367,-121.149,Stanislaus County,California,PV
+Garland solar farm,1,20.0,MWac,2016.0,,34.823,-118.504,Kern County,California,PV
+Garland solar farm,2,185.0,MWac,2016.0,,34.8253,-118.525,Kern County,California,PV
+Gaskell West 1 Solar Facility,,20.0,MWac,2018.0,,34.8328,-118.5636,Kern County,California,PV
+Gates Solar Station,,20.0,MWac,2013.0,,36.1764,-120.1142,Kings County,California,PV
+Genesis Solar Enegy Project,1,125.0,MWac,2013.0,,33.665,-114.9981,Riverside County,California,PV
+Genesis Solar Enegy Project,2,125.0,MWac,2014.0,,33.665,-114.9981,Riverside County,California,PV
+Giffen Solar Park,,20.0,MWac,2017.0,,36.552,-120.339,Fresno County,California,PV
+Gila Bend Hybrid solar farm,,32.0,MWac,2014.0,,32.949,-112.771,Maricopa County,Arizona,PV
+Golden Field Solar,1,54.0,MWac,2016.0,,34.839,-118.3868,Kern County,California,PV
+Golden Field Solar,3,192.0,MWac,2020.0,,34.86,-118.331,Kern County,California,PV
+Grand View Solar Two,1,20.0,MWac,2016.0,,43.0186,-116.0071,Owyhee County,Idaho,PV
+Grand View Solar Two,2,60.0,MWac,2016.0,,43.0186,-116.0071,Owyhee County,Idaho,PV
+Granite Mountain Solar,East,80.0,MWac,2016.0,,37.7751,-113.2264,Iron County,Utah,PV
+Granite Mountain Solar,West,50.0,MWac,2016.0,,37.786,-113.28,Iron County,Utah,PV
+Graphite Solar I,,80.0,MWac,2022.0,,39.554,-110.715,Carbon County,Utah,PV
+Gray Hawk Solar,,55.0,MWac,2018.0,,35.346,-113.912,Mohave County,Arizona,PV
+Grazing Yak Solar,,35.0,MWac,2019.0,,38.9778,-104.2527,El Paso County,Colorado,PV
+Great Valley Solar Portfolio Holdings,1,20.0,MWac,2017.0,,36.5812,-120.3796,Fresno County,California,PV
+Great Valley Solar Portfolio Holdings,2,20.0,MWac,2017.0,,36.5812,-120.3796,Fresno County,California,PV
+Great Valley Solar Portfolio Holdings,3,60.0,MWac,2017.0,,36.613,-120.385,Fresno County,California,PV
+Great Valley Solar Portfolio Holdings,4,102.0,MWac,2018.0,,36.5812,-120.3796,Fresno County,California,PV
+Guernsey Solar Station,,20.0,MWac,2013.0,,36.1639,-119.6506,Kings County,California,PV
+Harry Allen Solar Energy,,100.0,MWac,2021.0,,36.426,-114.923,Clark County,Nevada,PV
+Hayworth Solar,,27.0,MWac,2015.0,,35.323,-118.82,Kern County,California,PV
+Hecate Energy Beacon Solar,1,56.0,MWac,2017.0,,35.2694,-118.0144,Kern County,California,PV
+Hecate Energy Beacon Solar,3,56.0,MWac,2016.0,,35.2531,-118.0147,Kern County,California,PV
+Hecate Energy Beacon Solar,4,50.0,MWac,2016.0,,35.2536,-118.0269,Kern County,California,PV
+Henrietta Solar Project,,102.0,MWac,2016.0,,36.2188,-119.8058,Kings County,California,PV
+High Desert Hybrid solar farm,,100.0,MWac,2021.0,,34.6365,-117.3724,San Bernardino County,California,PV
+Hooper Solar,,52.0,MWac,2015.0,,37.6919,-105.9908,Alamosa County,Colorado,PV
+Hunter Solar,1,100.0,MWac,2021.0,,39.1422,-111.0511,Emery County,Utah,PV
+Huron Solar Station,,20.0,MWac,2012.0,,36.179,-120.106,Fresno County,California,PV
+Imperial Valley Solar Company 1,,23.0,MWac,2012.0,,33.2458,-115.4975,Imperial County,California,PV
+Imperial Valley Solar Company 2,,20.0,MWac,2015.0,,33.2522,-115.4975,Imperial County,California,PV
+Iron Springs Solar,,80.0,MWac,2016.0,,37.7212,-113.1516,Iron County,Utah,PV
+Ivanpah Solar Electric Generating System,1,117.0,MWac,2013.0,,35.5331,-115.4525,San Bernardino County,California,PV
+Ivanpah Solar Electric Generating System,2,130.0,MWac,2013.0,,35.5561,-115.4686,San Bernardino County,California,PV
+Ivanpah Solar Electric Generating System,3,130.0,MWac,2013.0,,35.5808,-115.4825,San Bernardino County,California,PV
+Jackpot Solar,,120.0,MWac,2022.0,,42.2042,-114.6099,,Idaho,PV
+Jacumba solar farm,,20.0,MWac,2017.0,,32.6212,-116.129,San Diego County,California,PV
+Jicarilla Solar,2,50.0,MWac,2022.0,,36.1411,-107.1712,Rio Arriba County,New Mexico,PV
+Kansas Solar,,20.0,MWac,2014.0,,36.243,-119.832,Kings County,California,PV
+Kansas South solar farm,,20.0,MWac,2013.0,,36.2261,-119.8342,Kings County,California,PV
+Kayenta Solar Project,1,27.0,MWac,2017.0,,36.787,-110.24,Navajo County,Arizona,PV
+Kayenta Solar Project,2,28.0,MWac,2019.0,,36.7719,-110.2639,Navajo County,Arizona,PV
+Kent South solar farm,,20.0,MWac,2014.0,,36.2261,-119.9053,Kings County,California,PV
+Kettleman (Clenera) solar farm,,20.0,MWac,2015.0,,36.0508,-119.9475,Kings County,California,PV
+Kingbird Solar,1,20.0,MWac,2016.0,,34.819,-118.432,Los Angeles County,California,PV
+Kingbird Solar,2,20.0,MWac,2016.0,,34.844,-118.448,Kern County,California,PV
+Little Bear solar farm,1,40.0,MWac,2020.0,,36.716,-120.415,Fresno County,California,PV
+Little Bear solar farm,3,20.0,MWac,2020.0,,36.716,-120.415,Fresno County,California,PV
+Little Bear solar farm,4,50.0,MWac,2020.0,,36.716,-120.415,Fresno County,California,PV
+Little Bear solar farm,5,50.0,MWac,2020.0,,36.716,-120.415,Fresno County,California,PV
+Lone Valley Solar Park,2,20.0,MWac,2014.0,,34.4083,-116.8625,San Bernardino County,California,PV
+Longboat Solar,,20.0,MWac,2016.0,,34.905,-117.104,San Bernardino County,California,PV
+Lost Hills Hybrid solar farm,,30.0,MWac,2020.0,,35.603,-119.696,Kern County,California,PV
+Lost Hills-Blackwell solar farm,Lost Hills,20.0,MWac,2015.0,,35.6201,-119.85,Kern County,California,PV
+Luciana solar farm,,56.0,MWac,2022.0,,35.8237,-119.0623,Tulare County,California,PV
+Lund Hill Solar,,150.0,MWac,2022.0,,45.888,-120.355,Klickitat County,Washington,PV
+Luning Energy solar farm,,50.0,MWac,2017.0,,38.5469,-118.1916,Mineral County,Nevada,PV
+Macho Springs solar farm,,55.0,MWac,2014.0,,32.5701,-107.48,Luna County,New Mexico,PV
+Maricopa West Solar PV,,20.0,MWac,2015.0,,35.113,-119.329,Kern County,California,PV
+Maverick Solar,1,125.0,MWac,2020.0,,33.7001,-115.38,Riverside County,California,PV
+Maverick Solar,4,100.0,MWac,2020.0,,33.7001,-115.38,Riverside County,California,PV
+Maverick Solar,6,100.0,MWac,2021.0,,33.7001,-115.38,Riverside County,California,PV
+Maverick Solar,7,132.0,MWac,2021.0,,33.7001,-115.38,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,1,42.0,MWac,2016.0,,33.6947,-114.7397,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,2,21.0,MWac,2016.0,,33.6947,-114.7397,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,3,40.0,MWac,2016.0,,33.6947,-114.7397,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,4,31.0,MWac,2015.0,,33.6947,-114.7397,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,5,31.0,MWac,2015.0,,33.6947,-114.7397,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,6,27.0,MWac,2015.0,,33.6947,-114.7397,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,7,42.0,MWac,2016.0,,33.6947,-114.7397,Riverside County,California,PV
+Mccoy Solar Energy Project Hybrid,8,36.0,MWac,2015.0,,33.6947,-114.7397,Riverside County,California,PV
+Mesquite Solar,1,170.0,MWac,2012.0,,33.3418,-112.904,Maricopa County,Arizona,PV
+Mesquite Solar,2,100.0,MWac,2016.0,,33.3328,-112.9114,Maricopa County,Arizona,PV
+Mesquite Solar,3,150.0,MWac,2016.0,,33.3476,-112.9368,Maricopa County,Arizona,PV
+Midway (California) solar farm,1,50.0,MWac,2018.0,,33.165,-115.54,Imperial County,California,PV
+Midway (California) solar farm,2,30.0,MWac,2017.0,,33.158,-115.541,Imperial County,California,PV
+Midway (California) solar farm,3,20.0,MWac,2018.0,,33.173,-115.549,Imperial County,California,PV
+Milford Solar 1,,99.0,MWac,2020.0,,38.4907,-113.0183,Beaver County,Utah,PV
+Millican Solar Energy,,71.0,MWac,2021.0,,44.1541,-120.5341,Crook County,Oregon,PV
+Moapa Southern Paiute solar farm,,250.0,MWac,2016.0,,36.5301,-114.7703,Clark County,Nevada,PV
+Mojave Solar Project,1,140.0,MWac,2014.0,,35.0177,-117.3391,San Bernardino County,California,PV
+Mojave Solar Project,2,140.0,MWac,2014.0,,35.0177,-117.3391,San Bernardino County,California,PV
+Mount solar farm (United States),1A,101.0,MWac,2013.0,,32.677,-115.597,Imperial County,California,PV
+Mount solar farm (United States),1B,65.0,MWac,2013.0,,32.669,-115.633,Imperial County,California,PV
+Mount solar farm (United States),1C,34.0,MWac,2014.0,,32.662,-115.577,Imperial County,California,PV
+Mount solar farm (United States),2,154.0,MWac,2020.0,,32.6685,-115.6292,Imperial County,California,PV
+Mount solar farm (United States),3,252.0,MWac,2018.0,,32.6788,-115.5672,Imperial County,California,PV
+Mountain View (NextEra) solar farm,,20.0,MWac,2014.0,,36.3906,-114.9644,Clark County,Nevada,PV
+Mt. Home Solar,,20.0,MWac,2017.0,,43.147,-115.722,Elmore County,Idaho,PV
+Murphy Flat Solar,,20.0,MWac,2017.0,,43.213,-116.439,Owyhee County,Idaho,PV
+Mustang Two solar farm,1,100.0,MWac,2020.0,,36.2168,-119.8964,Kings County,California,PV
+Mustang Two solar farm,2,50.0,MWac,2020.0,,36.2168,-119.8964,Kings County,California,PV
+Mustang solar farm,,100.0,MWac,2016.0,,36.2217,-119.9031,Kings County,California,PV
+Nevada Solar One,,72.0,MWac,2007.0,,35.798,-114.979,San Bernardino County,California,PV
+Nicolis Solar Pv Plant,,20.0,MWac,2016.0,,35.822,-119.041,Tulare County,California,PV
+North Lancaster Ranch solar farm,,20.0,MWac,2016.0,,34.7195,-118.313,Los Angeles County,California,PV
+North Rosamond Solar,,151.0,MWac,2019.0,,34.862,-118.38,Kern County,California,PV
+North Star (Southern Power) solar farm,,62.0,MWac,2015.0,,36.7301,-120.41,Fresno County,California,PV
+Old River One solar farm,,20.0,MWac,2014.0,,35.218,-119.078,Kern County,California,PV
+Orchard Ranch Solar,,20.0,MWac,2017.0,,43.467,-116.285,Ada County,Idaho,PV
+Oro Loma solar farm,,20.0,MWac,2017.0,,36.8768,-120.6676,Merced County,California,PV
+Palmer Solar,,60.0,MWac,2020.0,,38.6299,-104.6526,El Paso County,Colorado,PV
+Panoche Valley solar farm,,140.0,MWac,2018.0,,36.627,-120.879,San Benito County,California,PV
+Pavant Solar 1,1,50.0,MWac,2015.0,,39.15,-112.352,Millard County,Utah,PV
+Pavant Solar 2,2,50.0,MWac,2016.0,,39.162,-112.356,Millard County,Utah,PV
+Pavant Solar 3,3,20.0,MWac,2016.0,,39.157,-112.371,,Utah,PV
+Picture Rocks Solar,,20.0,MWac,2012.0,,32.3697,-111.2428,Pima County,Arizona,PV
+Pinal Central Energy Center Hybrid solar farm,,20.0,MWac,2018.0,,32.8757,-111.5511,Pinal County,Arizona,PV
+Pioneer Solar,,80.0,MWac,2021.0,,39.7616,-104.459,Adams County,Colorado,PV
+Playa Solar 1,1,79.0,MWac,2017.0,,36.408,-114.908,Clark County,Nevada,PV
+Playa Solar 1,2,100.0,MWac,2017.0,,36.408,-114.908,Clark County,Nevada,PV
+Portal Ridge Solar B,,20.0,MWac,2017.0,,34.7165,-118.2821,Los Angeles County,California,PV
+Prineville Solar Energy,,46.0,MWac,2021.0,,44.268,-120.878,Crook County,Oregon,PV
+Pumpjack Solar I,,20.0,MWac,2015.0,,35.3056,-119.6225,Kern County,California,PV
+Quinto Solar Pv Project,,108.0,MWac,2015.0,,37.122,-121.044,Merced County,California,PV
+Rabbitbrush Solar,,100.0,MWac,2022.0,,34.8301,-118.32,Kern County,California,PV
+Rancho Seco Solar II,RSS2,160.0,MWac,2021.0,,38.3468,-121.1198,Sacramento County,California,PV
+Rawhide Prairie Solar Hybrid,,22.0,MWac,2021.0,,40.858,-105.0156,Larimer County,Colorado,PV
+Red Horse solar farm,2,51.0,MWac,2015.0,,32.261,-110.158,Cochise County,Arizona,PV
+Red Horse solar farm,3,30.0,MWac,2016.0,,32.269,-110.155,Cochise County,Arizona,PV
+Red Rock solar farm,,40.0,MWac,2017.0,,32.551,-111.2892,Pinal County,Arizona,PV
+Redwood 4 solar farm,,20.0,MWac,2017.0,,35.3142,-118.8119,Kern County,California,PV
+Regulus Solar Project,,60.0,MWac,2014.0,,35.3001,-118.8519,Kern County,California,PV
+Rio Bravo Solar,1,20.0,MWac,2016.0,,35.416,-119.63,Kern County,California,PV
+Rio Bravo Solar,2,20.0,MWac,2016.0,,35.4225,-119.6292,Kern County,California,PV
+Roadrunner (Clearway) solar farm,,20.0,MWac,2011.0,,31.8086,-106.67,Doña Ana County,New Mexico,PV
+Rosamond solar farm,1,20.0,MWac,2014.0,,34.9001,-118.2469,Kern County,California,PV
+Rosamond solar farm,2,20.0,MWac,2014.0,,34.904,-118.253,Kern County,California,PV
+Roswell Solar,,70.0,MWac,2016.0,,33.4529,-104.4611,Chaves County,New Mexico,PV
+Route 66 Energy Center solar farm,,50.0,MWac,2022.0,,35.0984,-107.6146,Cibola County,New Mexico,PV
+SEPV Mojave West solar farm,,20.0,MWac,2016.0,,35.0229,-118.2827,Kern County,California,PV
+Sage Solar I-III,,58.0,MWac,2019.0,,41.7701,-111.06,Rich County,Utah,PV
+Saint Solar,,100.0,MWac,2021.0,,32.8663,-111.5024,Pinal County,Arizona,PV
+Salome Solar,,32.0,MWac,2020.0,,33.7767,-113.6561,La Paz County,Arizona,PV
+San Isabel Solar,,30.0,MWac,2016.0,,37.371,-104.474,Las Animas County,Colorado,PV
+San Luis Valley Solar Ranch,,35.0,MWac,2011.0,,37.6945,-105.9276,Alamosa County,Colorado,PV
+San Pablo Raceway solar farm,,100.0,MWac,2019.0,,34.7237,-118.2803,Los Angeles County,California,PV
+Sandstone Solar,,45.0,MWac,2015.0,,33.041,-111.452,Pinal County,Arizona,PV
+Seville solar farm,1,20.0,MWac,2015.0,,33.1125,-116.0139,Imperial County,California,PV
+Seville solar farm,2,30.0,MWac,2015.0,,33.1101,-116.0059,Imperial County,California,PV
+Shafter Solar,,20.0,MWac,2015.0,,35.451,-119.128,Kern County,California,PV
+Sierra Solar Greenworks,,20.0,MWac,2015.0,,34.7036,-118.3342,Los Angeles County,California,PV
+Sigurd Solar,,80.0,MWac,2021.0,,38.8505,-112.0052,Sevier County,Utah,PV
+Silver State Solar Power North,,52.0,MWac,2012.0,,35.6237,-115.3562,Clark County,Nevada,PV
+Silver State Solar Power South,1,26.0,MWac,2015.0,,35.604,-115.341,Clark County,Nevada,PV
+Silver State Solar Power South,2,28.0,MWac,2015.0,,35.604,-115.341,Clark County,Nevada,PV
+Silver State Solar Power South,3,37.0,MWac,2015.0,,35.604,-115.341,Clark County,Nevada,PV
+Silver State Solar Power South,4,36.0,MWac,2016.0,,35.604,-115.341,Clark County,Nevada,PV
+Silver State Solar Power South,5,35.0,MWac,2016.0,,35.604,-115.341,Clark County,Nevada,PV
+Silver State Solar Power South,6,37.0,MWac,2016.0,,35.604,-115.341,Clark County,Nevada,PV
+Silver State Solar Power South,7,35.0,MWac,2016.0,,35.604,-115.341,Clark County,Nevada,PV
+Silver State Solar Power South,8,26.0,MWac,2016.0,,35.604,-115.341,Clark County,Nevada,PV
+Simcoe Solar,,20.0,MWac,2017.0,,43.325,-115.938,Elmore County,Idaho,PV
+Slate Hybrid solar farm,1,50.0,MWac,2021.0,,36.227,-119.8948,Kings County,California,PV
+Slate Hybrid solar farm,2,93.0,MWac,2022.0,,36.227,-119.8948,Kings County,California,PV
+Slate Hybrid solar farm,3,68.0,MWac,2022.0,,36.227,-119.8948,Kings County,California,PV
+Slate Hybrid solar farm,4,26.0,MWac,2022.0,,36.227,-119.8948,Kings County,California,PV
+Slate Hybrid solar farm,5,63.0,MWac,2022.0,,36.227,-119.8948,Kings County,California,PV
+Sol Orchard El Centro solar farm,,20.0,MWac,2013.0,,32.8033,-115.5464,Imperial County,California,PV
+Solana Solar Generating Station,1,125.0,MWac,2013.0,,32.9223,-112.9559,Maricopa County,Arizona,PV
+Solana Solar Generating Station,2,125.0,MWac,2013.0,,32.9223,-112.9559,Maricopa County,Arizona,PV
+Solar Electric Generating Station,3,30.0,MWac,1986.0,2021.0,35.0069,-117.5558,San Bernardino County,California,PV
+Solar Electric Generating Station,4,30.0,MWac,1986.0,2021.0,35.0122,-117.5557,San Bernardino County,California,PV
+Solar Electric Generating Station,5,30.0,MWac,1987.0,2021.0,35.0195,-117.5555,San Bernardino County,California,PV
+Solar Electric Generating Station,6,30.0,MWac,1988.0,2021.0,35.021,-117.5661,San Bernardino County,California,PV
+Solar Electric Generating Station,7,30.0,MWac,1988.0,2021.0,35.0148,-117.5659,San Bernardino County,California,PV
+Solar Electric Generating Station,8,80.0,MWac,1989.0,2021.0,35.0308,-117.3563,San Bernardino County,California,PV
+Solar Electric Generating Station,9,80.0,MWac,1990.0,,35.033,-117.338,San Bernardino County,California,PV
+Solar Gen 2 Solar Facility,ALHM,54.0,MWac,2014.0,,33.0801,-115.47,Imperial County,California,PV
+Solar Gen 2 Solar Facility,ARK,54.0,MWac,2014.0,,33.142,-115.468,Imperial County,California,PV
+Solar Gen 2 Solar Facility,SONR,54.0,MWac,2014.0,,33.167,-115.448,Imperial County,California,PV
+Solar Oasis,,20.0,MWac,2016.0,,34.666,-118.088,Los Angeles County,California,PV
+Solar Star 1,1,39.0,MWac,2014.0,,34.8181,-118.4036,Kern County,California,PV
+Solar Star 1,2,64.0,MWac,2014.0,,34.8181,-118.4036,Kern County,California,PV
+Solar Star 1,3,58.0,MWac,2014.0,,34.8181,-118.4036,Kern County,California,PV
+Solar Star 1,4,54.0,MWac,2015.0,,34.8181,-118.4036,Kern County,California,PV
+Solar Star 1,5,54.0,MWac,2015.0,,34.8181,-118.4036,Kern County,California,PV
+Solar Star 1,6,33.0,MWac,2015.0,,34.8181,-118.4036,Kern County,California,PV
+Solar Star 2,2,52.0,MWac,2014.0,,34.8486,-118.3528,Kern County,California,PV
+Solar Star 2,3,60.0,MWac,2014.0,,34.8486,-118.3528,Kern County,California,PV
+Solar Star 2,4,56.0,MWac,2014.0,,34.8486,-118.3528,Kern County,California,PV
+Solar Star 2,5,48.0,MWac,2014.0,,34.8486,-118.3528,Kern County,California,PV
+Solar Star 2,6,44.0,MWac,2015.0,,34.8486,-118.3528,Kern County,California,PV
+Solar Star California,RS1,54.0,MWac,2016.0,,34.839,-118.3868,Kern County,California,PV
+Solar Star Oregon II,2,56.0,MWac,2017.0,,44.1843,-120.918,Crook County,Oregon,PV
+Solverde 1 solar farm,,85.0,MWac,2016.0,,34.6557,-118.2982,Los Angeles County,California,PV
+Spectrum Solar Power Project,,30.0,MWac,2013.0,,36.2301,-114.87,Clark County,Nevada,PV
+Springbok solar farm,1,105.0,MWac,2016.0,,35.2492,-117.9553,Kern County,California,PV
+Springbok solar farm,2,155.0,MWac,2016.0,,35.2492,-117.9768,Kern County,California,PV
+Springbok solar farm,3,90.0,MWac,2019.0,,35.1712,-118.0017,Kern County,California,PV
+Stateline Solar,1,76.0,MWac,2015.0,,35.6001,-115.4001,San Bernardino County,California,PV
+Stateline Solar,2,34.0,MWac,2015.0,,35.6001,-115.4001,San Bernardino County,California,PV
+Stateline Solar,3,38.0,MWac,2016.0,,35.6001,-115.4001,San Bernardino County,California,PV
+Stateline Solar,4,38.0,MWac,2016.0,,35.6001,-115.4001,San Bernardino County,California,PV
+Stateline Solar,5,38.0,MWac,2016.0,,35.6001,-115.4001,San Bernardino County,California,PV
+Stateline Solar,6,38.0,MWac,2016.0,,35.6001,-115.4001,San Bernardino County,California,PV
+Stateline Solar,7,38.0,MWac,2016.0,,35.6001,-115.4001,San Bernardino County,California,PV
+Stillwater Facility solar farm,1,22.0,MWac,2012.0,,39.5475,-118.5556,Churchill County,Nevada,PV
+Stillwater Facility solar farm,2,20.0,MWac,2018.0,,39.542,-118.5601,Churchill County,Nevada,PV
+Stroud Solar Station,,20.0,MWac,2011.0,,36.524,-120.123,Fresno County,California,PV
+Sulphur Springs solar farm,,20.0,MWac,2016.0,,32.0628,-109.9193,Cochise County,Arizona,PV
+Summer Solar,,20.0,MWac,2016.0,,34.7147,-118.311,Los Angeles County,California,PV
+Sun City Project solar farm,,20.0,MWac,2011.0,,35.9831,-120.1103,Kings County,California,PV
+Sun Mountain Solar,,200.0,MWac,2022.0,,38.1803,-104.5185,Pueblo County,Colorado,PV
+Sun Streams 2 solar farm,,150.0,MWac,2021.0,,33.3204,-112.8168,Maricopa County,Arizona,PV
+Sun Streams solar farm,,160.0,MWac,2020.0,,33.355,-112.84,Maricopa County,Arizona,PV
+Sun Valley solar farm,,250.0,MWac,2022.0,,31.8698,-97.015,Maricopa County,Arizona,PV
+Sunray 2 solar farm,,20.0,MWac,2017.0,,34.8634,-116.8276,San Bernardino County,California,PV
+Sunshine Valley Solar,,104.0,MWac,2019.0,,36.518,-116.497,Nye County,Nevada,PV
+Sweetwater Solar,,92.0,MWac,2018.0,,41.6291,-109.6835,Sweetwater County,Wyoming,PV
+TA-High Desert solar farm,,20.0,MWac,2013.0,,34.7089,-118.3047,Los Angeles County,California,PV
+Ta-Acacia solar farm,,20.0,MWac,2014.0,,34.6892,-118.3247,Los Angeles County,California,PV
+Techren Solar,1,100.0,MWac,2019.0,,35.8513,-114.9744,Clark County,Nevada,PV
+Techren Solar,2,200.0,MWac,2019.0,,35.8673,-114.9564,Clark County,Nevada,PV
+Techren Solar,3,25.0,MWac,2020.0,,35.8441,-114.9713,Clark County,Nevada,PV
+Techren Solar,4,25.0,MWac,2020.0,,35.8927,-114.9365,Clark County,Nevada,PV
+Techren Solar,5,50.0,MWac,2020.0,,35.8997,-114.9263,Clark County,Nevada,PV
+Tenaska Imperial Solar Energy Center,South,129.0,MWac,2013.0,,32.6633,-115.6583,Imperial County,California,PV
+Tenaska Imperial Solar Energy Center,West,149.0,MWac,2016.0,,32.7722,-115.7793,Imperial County,California,PV
+Three Peaks Power solar farm,,80.0,MWac,2016.0,,37.8271,-113.1371,Iron County,Utah,PV
+Titan (California) solar farm,,70.0,MWac,2020.0,,33.1016,-116.01,Imperial County,California,PV
+Titan (Colorado) solar farm,,50.0,MWac,2018.0,,39.6865,-104.014,Arapahoe County,Colorado,PV
+Topaz solar farm,1,130.0,MWac,2013.0,,35.4056,-120.0686,San Luis Obispo County,California,PV
+Topaz solar farm,2,151.0,MWac,2013.0,,35.4056,-120.0686,San Luis Obispo County,California,PV
+Topaz solar farm,3,102.0,MWac,2014.0,,35.4056,-120.0686,San Luis Obispo County,California,PV
+Topaz solar farm,4,112.0,MWac,2014.0,,35.4056,-120.0686,San Luis Obispo County,California,PV
+Topaz solar farm,5,90.0,MWac,2014.0,,35.4056,-120.0686,San Luis Obispo County,California,PV
+Townsite Solar Project Hybrid,,180.0,MWac,2022.0,,35.9373,-114.884,Clark County,Nevada,PV
+Tranquillity solar farm,,205.0,MWac,2016.0,,36.5814,-120.4045,Fresno County,California,PV
+Turquoise solar farm,,60.0,MWac,2020.0,,39.574,-119.5242,Washoe County,Nevada,PV
+Utah Red Hills solar farm,,80.0,MWac,2015.0,,37.8828,-112.9042,Iron County,Utah,PV
+Valentine Solar,,111.0,MWac,2019.0,,34.9042,-118.3843,Kern County,California,PV
+Vandenberg Solar Project,,25.0,MWac,2017.0,,34.7497,-120.51,Santa Barbara County,California,PV
+Vega (SunEdison) solar farm,,20.0,MWac,2015.0,,36.9258,-120.82,Merced County,California,PV
+Victor Phelan Solar One,,20.0,MWac,2013.0,,34.5123,-117.4775,San Bernardino County,California,PV
+West Line Solar,,100.0,MWac,2022.0,,32.7559,-111.5548,Pinal County,Arizona,PV
+Western Antelope Blue Sky A solar farm,,20.0,MWac,2014.0,,34.6817,-118.3247,Los Angeles County,California,PV
+Western Antelope Blue Sky B solar farm,,20.0,MWac,2016.0,,34.7321,-118.3136,Los Angeles County,California,PV
+Westland solar farm,Aquamarine,250.0,MWac,2021.0,,36.1897,-119.9042,Kings County,California,PV
+Westside (NextEra) solar farm,,20.0,MWac,2017.0,,36.3818,-120.1345,Fresno County,California,PV
+Wheatridge Hybrid solar farm,,50.0,MWac,2022.0,,45.557,-119.612,Morrow County,Oregon,PV
+White River Solar,1,20.0,MWac,2013.0,,35.8714,-119.4625,Tulare County,California,PV
+White River Solar,2,20.0,MWac,2014.0,,35.8747,-119.0461,Tulare County,California,PV
+Whitney Point Solar,,20.0,MWac,2017.0,,36.3769,-120.1385,Fresno County,California,PV
+Willow Spring Solar,2,108.0,MWac,2019.0,,34.8267,-118.3352,Los Angeles County,California,PV
+Wilmot Energy Center solar farm,,130.0,MWac,2021.0,,32.0435,-110.8927,Pima County,Arizona,PV
+Windhub Solar A,,20.0,MWac,2019.0,,35.0199,-118.2879,Kern County,California,PV
+Wistaria Ranch Solar,,107.0,MWac,2018.0,,32.676,-115.619,Imperial County,California,PV
+Wister Solar,,20.0,MWac,2022.0,,33.2694,-115.503,Imperial County,California,PV
+Wright Solar Park,,200.0,MWac,2019.0,,37.0094,-120.9572,Merced County,California,PV

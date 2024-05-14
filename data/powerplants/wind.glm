@@ -1,0 +1,4570 @@
+module pypower;
+class powerplant
+{
+    char32 county;
+}
+
+object powerplant
+{
+    name "_251_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0758;
+    longitude -118.368;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "18.0 MW";
+}
+
+object powerplant
+{
+    name "ALITE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.036;
+    longitude -118.3401;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "24.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_MESA_WIND_FARM_1&2";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9384;
+    longitude -116.659;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "19.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0281;
+    longitude -118.364;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0082;
+    longitude -118.234;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_3";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.006;
+    longitude -118.267;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_4";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0208;
+    longitude -118.259;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_5";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0012;
+    longitude -118.262;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "168.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_8";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 34.9836;
+    longitude -118.227;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_10";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.1098;
+    longitude -118.216;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "137.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_WIND_ENERGY_CENTER_11";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0735;
+    longitude -118.383;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "ALTECH_III_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.8979;
+    longitude -116.598;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "ANDRESON_WIND_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Chaves County";
+    state "New Mexico";
+    latitude 33.0139;
+    longitude -103.865;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "ARAGONNE_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Guadalupe County";
+    state "New Mexico";
+    latitude 34.815;
+    longitude -105.081;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "ARAGONNE_WIND_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Guadalupe County";
+    state "New Mexico";
+    latitude 34.8152;
+    longitude -105.0911;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "145.0 MW";
+}
+
+object powerplant
+{
+    name "ARAGONNE_WIND_PROJECT_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Guadalupe County";
+    state "New Mexico";
+    latitude 34.815;
+    longitude -105.081;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "BENNETT_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0447;
+    longitude -115.484;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "BENSON_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Baker County";
+    state "Oregon";
+    latitude 44.4243;
+    longitude -117.277;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "BIG_HORN_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.9019;
+    longitude -120.263;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "BIG_HORN_WIND_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.9467;
+    longitude -120.302;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "BIG_TIMBER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Sweet Grass County";
+    state "Montana";
+    latitude 45.8189;
+    longitude -109.645;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "BIGLOW_CANYON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.6692;
+    longitude -120.585;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "125.0 MW";
+}
+
+object powerplant
+{
+    name "BIGLOW_CANYON_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.6335;
+    longitude -120.597;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "BIGLOW_CANYON_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.6484;
+    longitude -120.548;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "175.0 MW";
+}
+
+object powerplant
+{
+    name "BORDERLANDS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Catron County";
+    state "New Mexico";
+    latitude 34.1031;
+    longitude -108.9078;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "BRAHMS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Curry County";
+    state "New Mexico";
+    latitude 34.7478;
+    longitude -103.269;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BROADVIEW_ENERGY_WIND_FARM_1NM";
+    generator "WT";
+    fuel "WIND";
+    county "Curry County";
+    state "New Mexico";
+    latitude 34.7957;
+    longitude -103.071;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "241.0 MW";
+}
+
+object powerplant
+{
+    name "BROADVIEW_ENERGY_WIND_FARM_1TX";
+    generator "WT";
+    fuel "WIND";
+    county "Curry County";
+    state "New Mexico";
+    latitude 34.832;
+    longitude -102.936;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "83.0 MW";
+}
+
+object powerplant
+{
+    name "BRONCO_PLAINS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kit Carson County";
+    state "Colorado";
+    latitude 39.0463;
+    longitude -102.944;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "299.0 MW";
+}
+
+object powerplant
+{
+    name "BROOKFIELD_TEHACHAPI_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0644;
+    longitude -118.335;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "BROOKFIELD_TEHACHAPI_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0452;
+    longitude -118.245;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "BUENA_VISTA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Contra Costa County";
+    state "California";
+    latitude 37.8036;
+    longitude -121.655;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "BURLEY_BUTTE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Cassia County";
+    state "Idaho";
+    latitude 42.4879;
+    longitude -113.926;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BUSCH_RANCH_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Huerfano County";
+    state "Colorado";
+    latitude 37.7958;
+    longitude -104.488;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "BUSCH_RANCH_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Las Animas County";
+    state "Colorado";
+    latitude 37.7611;
+    longitude -104.383;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "59.0 MW";
+}
+
+object powerplant
+{
+    name "CABAZON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.911;
+    longitude -116.702;
+    in_svc "1999-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "CABAZON_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9166;
+    longitude -116.729;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "41.0 MW";
+}
+
+object powerplant
+{
+    name "CAMERON_RIDGE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0765;
+    longitude -118.313;
+    in_svc "1999-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "CAMP_REED_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 42.8173;
+    longitude -115.065;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "CAMPBELL_HILL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 42.9993;
+    longitude -106.021;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "CAPROCK_WIND_RANCH_1";
+    generator "WT";
+    fuel "WIND";
+    county "Quay County";
+    state "New Mexico";
+    latitude 34.9652;
+    longitude -103.317;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "CAPROCK_WIND_RANCH_2";
+    generator "WT";
+    fuel "WIND";
+    county "Quay County";
+    state "New Mexico";
+    latitude 34.9844;
+    longitude -103.425;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CAROUSEL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kit Carson County";
+    state "Colorado";
+    latitude 39.3384;
+    longitude -102.1501;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "CASA_MESA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Quay County";
+    state "New Mexico";
+    latitude 34.6308;
+    longitude -103.976;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "51.0 MW";
+}
+
+object powerplant
+{
+    name "CASPER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Natrona County";
+    state "Wyoming";
+    latitude 42.8833;
+    longitude -106.2201;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "16.0 MW";
+}
+
+object powerplant
+{
+    name "CASSIA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8704;
+    longitude -115.018;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "19.0 MW";
+}
+
+object powerplant
+{
+    name "CASSIA_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8444;
+    longitude -115.0369;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "CEDAR_CREEK_(INFIGEN)_WIND_FARM_1A";
+    generator "WT";
+    fuel "WIND";
+    county "Weld County";
+    state "Colorado";
+    latitude 40.8577;
+    longitude -104.067;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "221.0 MW";
+}
+
+object powerplant
+{
+    name "CEDAR_CREEK_(INFIGEN)_WIND_FARM_1B";
+    generator "WT";
+    fuel "WIND";
+    county "Weld County";
+    state "Colorado";
+    latitude 40.8577;
+    longitude -104.067;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "CEDAR_CREEK_II_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Weld County";
+    state "Colorado";
+    latitude 40.9136;
+    longitude -103.815;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "251.0 MW";
+}
+
+object powerplant
+{
+    name "CEDAR_POINT_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Lincoln County";
+    state "Colorado";
+    latitude 39.5113;
+    longitude -103.5701;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "250.0 MW";
+}
+
+object powerplant
+{
+    name "CEDAR_SPRINGS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 43.1283;
+    longitude -105.462;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "199.0 MW";
+}
+
+object powerplant
+{
+    name "CEDAR_SPRINGS_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 42.9036;
+    longitude -105.3203;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "202.0 MW";
+}
+
+object powerplant
+{
+    name "CEDAR_SPRINGS_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 43.0693;
+    longitude -105.5701;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "133.0 MW";
+}
+
+object powerplant
+{
+    name "CHEYENNE_RIDGE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Cheyenne County";
+    state "Colorado";
+    latitude 38.9793;
+    longitude -102.323;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "498.0 MW";
+}
+
+object powerplant
+{
+    name "CHEYENNE_RIDGE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Cheyenne County";
+    state "Colorado";
+    latitude 38.9793;
+    longitude -102.323;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "37.0 MW";
+}
+
+object powerplant
+{
+    name "CHOPIN_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.8941;
+    longitude -118.474;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "CLEARWATER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Rosebud County";
+    state "Montana";
+    latitude 46.8142;
+    longitude -106.3493;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "365.0 MW";
+}
+
+object powerplant
+{
+    name "CLINES_CORNERS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Torrance County";
+    state "New Mexico";
+    latitude 34.3566;
+    longitude -105.437;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "325.0 MW";
+}
+
+object powerplant
+{
+    name "COACHELLA_HILLS_WIND_FARM_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9077;
+    longitude -116.5801;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object powerplant
+{
+    name "COLD_SPRINGS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0281;
+    longitude -115.401;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "COLORADO_GREEN_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Prowers County";
+    state "Colorado";
+    latitude 37.7156;
+    longitude -102.6119;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "162.0 MW";
+}
+
+object powerplant
+{
+    name "COLORADO_HIGHLANDS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.7457;
+    longitude -102.752;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "67.0 MW";
+}
+
+object powerplant
+{
+    name "COLORADO_HIGHLANDS_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.7438;
+    longitude -102.805;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "24.0 MW";
+}
+
+object powerplant
+{
+    name "COMBINE_HILLS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.9282;
+    longitude -118.581;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "41.0 MW";
+}
+
+object powerplant
+{
+    name "COMBINE_HILLS_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.9319;
+    longitude -118.541;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+
+object powerplant
+{
+    name "CONDON_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.2802;
+    longitude -120.282;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "CONDON_WIND_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.2826;
+    longitude -120.272;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "CORRIEDALE_WIND_ENERGY_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Laramie County";
+    state "Wyoming";
+    latitude 41.1271;
+    longitude -104.9901;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "59.0 MW";
+}
+
+object powerplant
+{
+    name "CROSSING_TRAILS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kit Carson County";
+    state "Colorado";
+    latitude 39.0466;
+    longitude -102.822;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_MEADOW_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0566;
+    longitude -115.452;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "DIABLO_WINDS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Alameda County";
+    state "California";
+    latitude 37.7746;
+    longitude -121.658;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "DIAMOND_WILLOW_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Fallon County";
+    state "Montana";
+    latitude 46.2739;
+    longitude -104.192;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "18.0 MW";
+}
+
+object powerplant
+{
+    name "DIAMOND_WILLOW_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Fallon County";
+    state "Montana";
+    latitude 46.2743;
+    longitude -104.1601;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "DIFWIND_WIND_FARM_5";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.8889;
+    longitude -116.554;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "12.0 MW";
+}
+
+object powerplant
+{
+    name "DIFWIND_WIND_FARM_6";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0658;
+    longitude -118.265;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "DILLON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9166;
+    longitude -116.569;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "45.0 MW";
+}
+
+object powerplant
+{
+    name "DINOSAUR_POINT_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Merced County";
+    state "California";
+    latitude 37.0424;
+    longitude -121.167;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "17.0 MW";
+}
+
+object powerplant
+{
+    name "DRY_LAKE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Navajo County";
+    state "Arizona";
+    latitude 34.6706;
+    longitude -110.258;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+
+object powerplant
+{
+    name "DRY_LAKE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Navajo County";
+    state "Arizona";
+    latitude 34.5984;
+    longitude -110.1601;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "65.0 MW";
+}
+
+object powerplant
+{
+    name "DUNLAP_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 42.0232;
+    longitude -106.153;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "111.0 MW";
+}
+
+object powerplant
+{
+    name "DURAN_MESA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Torrance County";
+    state "New Mexico";
+    latitude 34.3907;
+    longitude -105.492;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "105.0 MW";
+}
+
+object powerplant
+{
+    name "DURBIN_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Baker County";
+    state "Oregon";
+    latitude 44.3527;
+    longitude -117.3201;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "DUTCH_ENERGY_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.895;
+    longitude -116.5601;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "ECHO_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.7063;
+    longitude -119.405;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "45.0 MW";
+}
+
+object powerplant
+{
+    name "ECHO_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.7181;
+    longitude -119.408;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "EDOM_HILLS_WIND_FARM_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.8845;
+    longitude -116.468;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "EKOLA_FLATS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 42.0143;
+    longitude -106.343;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "251.0 MW";
+}
+
+object powerplant
+{
+    name "EL_CABO_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Torrance County";
+    state "New Mexico";
+    latitude 34.8219;
+    longitude -105.645;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "298.0 MW";
+}
+
+object powerplant
+{
+    name "ELKHORN_VALLEY_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Union County";
+    state "Oregon";
+    latitude 45.118;
+    longitude -117.8001;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "97.0 MW";
+}
+
+object powerplant
+{
+    name "ENRON_EARTH_SMART_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9167;
+    longitude -116.5601;
+    in_svc "1999-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "16.0 MW";
+}
+
+object powerplant
+{
+    name "EUIPH_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9447;
+    longitude -116.622;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "EVANSTON_WYOMING_WIND_ENERGY_CENTER_1";
+    generator "WT";
+    fuel "WIND";
+    county "Uinta County";
+    state "Wyoming";
+    latitude 41.3263;
+    longitude -110.801;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "144.0 MW";
+}
+
+object powerplant
+{
+    name "FAIRFIELD_WIND_FARM_(UNITED_STATES)_1";
+    generator "WT";
+    fuel "WIND";
+    county "Teton County";
+    state "Montana";
+    latitude 47.7233;
+    longitude -111.965;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "FOOTE_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 41.6283;
+    longitude -106.201;
+    in_svc "1999-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "41.0 MW";
+}
+
+object powerplant
+{
+    name "FOOTE_CREEK_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 41.6692;
+    longitude -106.184;
+    in_svc "1999-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "FOOTE_CREEK_WIND_FARM_4";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 41.6735;
+    longitude -106.1801;
+    in_svc "2000-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "17.0 MW";
+}
+
+object powerplant
+{
+    name "FOOTE_CREEK_WIND_FARM_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 41.6283;
+    longitude -106.201;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "66.0 MW";
+}
+
+object powerplant
+{
+    name "FOSSIL_GULCH_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8544;
+    longitude -114.9501;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "GLACIER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Toole County";
+    state "Montana";
+    latitude 48.5172;
+    longitude -112.113;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "106.0 MW";
+}
+
+object powerplant
+{
+    name "GLACIER_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Toole County";
+    state "Montana";
+    latitude 48.5536;
+    longitude -112.1701;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object powerplant
+{
+    name "GLENROCK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 43.0467;
+    longitude -105.8201;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "GLENROCK_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 43.0146;
+    longitude -105.808;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "39.0 MW";
+}
+
+object powerplant
+{
+    name "GOLDEN_HILLS_(CALIFORNIA)_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Alameda County";
+    state "California";
+    latitude 37.7187;
+    longitude -121.649;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "86.0 MW";
+}
+
+object powerplant
+{
+    name "GOLDEN_HILLS_(CALIFORNIA)_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Alameda County";
+    state "California";
+    latitude 37.7464;
+    longitude -121.616;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "46.0 MW";
+}
+
+object powerplant
+{
+    name "GOLDEN_HILLS_(OREGON)_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.5627;
+    longitude -120.709;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "201.0 MW";
+}
+
+object powerplant
+{
+    name "GOLDEN_VALLEY_WIND_FARM_(UNITED_STATES)_1";
+    generator "WT";
+    fuel "WIND";
+    county "Cassia County";
+    state "Idaho";
+    latitude 42.4404;
+    longitude -113.907;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "12.0 MW";
+}
+
+object powerplant
+{
+    name "GOLDEN_WEST_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "El Paso County";
+    state "Colorado";
+    latitude 38.9244;
+    longitude -104.224;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "249.0 MW";
+}
+
+object powerplant
+{
+    name "GOODNOE_HILLS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.7799;
+    longitude -120.477;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "94.0 MW";
+}
+
+object powerplant
+{
+    name "GOODNOE_HILLS_WIND_FARM_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.7799;
+    longitude -120.477;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "103.0 MW";
+}
+
+object powerplant
+{
+    name "GOSHEN_NORTH_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Bonneville County";
+    state "Idaho";
+    latitude 43.4617;
+    longitude -111.831;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "124.0 MW";
+}
+
+object powerplant
+{
+    name "GRADY_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Curry County";
+    state "New Mexico";
+    latitude 34.7474;
+    longitude -103.208;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "220.0 MW";
+}
+
+object powerplant
+{
+    name "GREENFIELD_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Teton County";
+    state "Montana";
+    latitude 47.7085;
+    longitude -111.912;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "HAMMETT_HILL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0092;
+    longitude -115.443;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "HANCOCK_COUNTY_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 42.9422;
+    longitude -93.664;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "98.0 MW";
+}
+
+object powerplant
+{
+    name "HAPPY_JACK_WINDPOWER_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Laramie County";
+    state "Wyoming";
+    latitude 41.1413;
+    longitude -105.009;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "HARVEST_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.7874;
+    longitude -120.412;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "HATCHET_RIDGE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Shasta County";
+    state "California";
+    latitude 40.8987;
+    longitude -121.801;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "101.0 MW";
+}
+
+object powerplant
+{
+    name "HAY_CANYON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.5164;
+    longitude -120.602;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "101.0 MW";
+}
+
+object powerplant
+{
+    name "HIGH_LONESOME_MESA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Torrance County";
+    state "New Mexico";
+    latitude 34.489;
+    longitude -105.969;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "HIGH_MESA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8855;
+    longitude -115.036;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "HIGH_PLAINS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Albany County";
+    state "Wyoming";
+    latitude 41.6798;
+    longitude -106.0399;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "HIGH_WINDS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.149;
+    longitude -121.795;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "146.0 MW";
+}
+
+object powerplant
+{
+    name "HIGH_WINDS_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.149;
+    longitude -121.795;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "16.0 MW";
+}
+
+object powerplant
+{
+    name "HISTORIC_VICTORY_GARDEN_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0706;
+    longitude -118.379;
+    in_svc "1981-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "17.0 MW";
+}
+
+object powerplant
+{
+    name "HOPKINS_RIDGE_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Columbia County";
+    state "Washington";
+    latitude 46.4502;
+    longitude -117.854;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "149.0 MW";
+}
+
+object powerplant
+{
+    name "HORSE_BUTTE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Bonneville County";
+    state "Idaho";
+    latitude 43.4026;
+    longitude -111.741;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object powerplant
+{
+    name "HURLBURT_WIND_FARM_Central";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.5643;
+    longitude -119.962;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "290.0 MW";
+}
+
+object powerplant
+{
+    name "HURLBURT_WIND_FARM_North1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.7408;
+    longitude -120.076;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "HURLBURT_WIND_FARM_North2";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.7511;
+    longitude -120.116;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "205.0 MW";
+}
+
+object powerplant
+{
+    name "HURLBURT_WIND_FARM_RP";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.5643;
+    longitude -119.962;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "845.0 MW";
+}
+
+object powerplant
+{
+    name "HURLBURT_WIND_FARM_South";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.6435;
+    longitude -120.052;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "290.0 MW";
+}
+
+object powerplant
+{
+    name "JETT_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Baker County";
+    state "Oregon";
+    latitude 44.4254;
+    longitude -117.274;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "JUDITH_GAP_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Wheatland County";
+    state "Montana";
+    latitude 46.5872;
+    longitude -109.744;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "135.0 MW";
+}
+
+object powerplant
+{
+    name "JUNIPER_CANYON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.9445;
+    longitude -120.229;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "151.0 MW";
+}
+
+object powerplant
+{
+    name "KAREN_AVENUE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9223;
+    longitude -116.561;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "12.0 MW";
+}
+
+object powerplant
+{
+    name "KINGMAN_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Mohave County";
+    state "Arizona";
+    latitude 35.1465;
+    longitude -114.069;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "KIT_CARSON_PROJECT_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kit Carson County";
+    state "Colorado";
+    latitude 39.354;
+    longitude -102.305;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "51.0 MW";
+}
+
+object powerplant
+{
+    name "KLONDIKE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.5606;
+    longitude -120.551;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "24.0 MW";
+}
+
+object powerplant
+{
+    name "KLONDIKE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.5916;
+    longitude -120.589;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "75.0 MW";
+}
+
+object powerplant
+{
+    name "KLONDIKE_WIND_FARM_3A";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.5582;
+    longitude -120.621;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "221.0 MW";
+}
+
+object powerplant
+{
+    name "KLONDIKE_WIND_FARM_3B";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.5364;
+    longitude -120.587;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "76.0 MW";
+}
+
+object powerplant
+{
+    name "KUMEYAAY_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "San Diego County";
+    state "California";
+    latitude 32.7217;
+    longitude -116.344;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "LA_JOYA_NM_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Torrance County";
+    state "New Mexico";
+    latitude 34.81001;
+    longitude -105.74001;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "165.0 MW";
+}
+
+object powerplant
+{
+    name "LA_JOYA_NM_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Torrance County";
+    state "New Mexico";
+    latitude 34.81001;
+    longitude -105.74001;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "141.0 MW";
+}
+
+object powerplant
+{
+    name "LATIGO_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "San Juan County";
+    state "Utah";
+    latitude 37.8891;
+    longitude -109.361;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object powerplant
+{
+    name "LEANING_JUNIPER_I_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.6618;
+    longitude -120.241;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "LEANING_JUNIPER_II_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.5781;
+    longitude -120.178;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "201.0 MW";
+}
+
+object powerplant
+{
+    name "LIMON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elbert County";
+    state "Colorado";
+    latitude 39.3836;
+    longitude -103.5296;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "LIMON_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Lincoln County";
+    state "Colorado";
+    latitude 39.3749;
+    longitude -103.5202;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "LIMON_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Lincoln County";
+    state "Colorado";
+    latitude 39.3586;
+    longitude -103.369;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "201.0 MW";
+}
+
+object powerplant
+{
+    name "LINDEN_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.7509;
+    longitude -120.762;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "LOWER_SNAKE_RIVER_WIND_ENERGY_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Garfield County";
+    state "Washington";
+    latitude 46.5542;
+    longitude -117.859;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "343.0 MW";
+}
+
+object powerplant
+{
+    name "MACHO_SPRINGS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Luna County";
+    state "New Mexico";
+    latitude 32.5602;
+    longitude -107.521;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "MAINLINE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0484;
+    longitude -115.413;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "MANZANA_WINDS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 34.9299;
+    longitude -118.463;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "189.0 MW";
+}
+
+object powerplant
+{
+    name "MARENGO_WIND_PLANT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Columbia County";
+    state "Washington";
+    latitude 46.3847;
+    longitude -117.762;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "140.0 MW";
+}
+
+object powerplant
+{
+    name "MARENGO_WIND_PLANT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Columbia County";
+    state "Washington";
+    latitude 46.3637;
+    longitude -117.858;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "70.0 MW";
+}
+
+object powerplant
+{
+    name "MARENGO_WIND_PLANT_RP";
+    generator "WT";
+    fuel "WIND";
+    county "Columbia County";
+    state "Washington";
+    latitude 46.3637;
+    longitude -117.858;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "234.0 MW";
+}
+
+object powerplant
+{
+    name "MCFADDEN_RIDGE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Albany County";
+    state "Wyoming";
+    latitude 41.656;
+    longitude -106.028;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "MEADOW_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Bonneville County";
+    state "Idaho";
+    latitude 43.5585;
+    longitude -111.813;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "120.0 MW";
+}
+
+object powerplant
+{
+    name "MESA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9609;
+    longitude -116.661;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "MILFORD_WIND_CORRIDOR_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Beaver County";
+    state "Utah";
+    latitude 38.5315;
+    longitude -112.923;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "204.0 MW";
+}
+
+object powerplant
+{
+    name "MILFORD_WIND_CORRIDOR_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Millard County";
+    state "Utah";
+    latitude 38.5982;
+    longitude -112.899;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "MILNER_DAM_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Cassia County";
+    state "Idaho";
+    latitude 42.4562;
+    longitude -114.019;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "MILO_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Roosevelt County";
+    state "New Mexico";
+    latitude 33.9056;
+    longitude -103.3602;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "MOJAVE_16,_17_&_18_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0459;
+    longitude -118.283;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "85.0 MW";
+}
+
+object powerplant
+{
+    name "MOJAVE_3,_4,_&_5_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0506;
+    longitude -118.257;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object powerplant
+{
+    name "MONTAGUE_WIND_POWER_FACILITY_1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.5755;
+    longitude -120.113;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "201.0 MW";
+}
+
+object powerplant
+{
+    name "MONTEZUMA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.1626;
+    longitude -121.793;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "37.0 MW";
+}
+
+object powerplant
+{
+    name "MONTEZUMA_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.1169;
+    longitude -121.8096;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "78.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_BREEZE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Weld County";
+    state "Colorado";
+    latitude 40.9971;
+    longitude -103.993;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "172.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_HOME_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0245;
+    longitude -115.468;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "42.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_VIEW_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9055;
+    longitude -116.6089;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "43.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_VIEW_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9055;
+    longitude -116.6089;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_VIEW_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9141;
+    longitude -116.592;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_VIEW_WIND_FARM_4";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.8773;
+    longitude -116.565;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "49.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_WIND_FARM_(UNITED_STATES)_1";
+    generator "WT";
+    fuel "WIND";
+    county "Uinta County";
+    state "Wyoming";
+    latitude 41.2847;
+    longitude -110.519;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_WIND_FARM_(UNITED_STATES)_2";
+    generator "WT";
+    fuel "WIND";
+    county "Uinta County";
+    state "Wyoming";
+    latitude 41.2761;
+    longitude -110.562;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "MUSSELSHELL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Wheatland County";
+    state "Montana";
+    latitude 46.287;
+    longitude -109.472;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "MUSSELSHELL_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Wheatland County";
+    state "Montana";
+    latitude 46.2662;
+    longitude -109.495;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "MUSTANG_HILLS_WIND_FARM_6";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0179;
+    longitude -118.314;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "NEW_MEXICO_WIND_ENERGY_CENTER_1";
+    generator "WT";
+    fuel "WIND";
+    county "De Baca County";
+    state "New Mexico";
+    latitude 34.5374;
+    longitude -104.081;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "204.0 MW";
+}
+
+object powerplant
+{
+    name "NINE_CANYON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Benton County";
+    state "Washington";
+    latitude 46.1056;
+    longitude -119.073;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48.0 MW";
+}
+
+object powerplant
+{
+    name "NINE_CANYON_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Benton County";
+    state "Washington";
+    latitude 46.104;
+    longitude -119.141;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "16.0 MW";
+}
+
+object powerplant
+{
+    name "NINE_CANYON_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Benton County";
+    state "Washington";
+    latitude 46.0954;
+    longitude -119.136;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "32.0 MW";
+}
+
+object powerplant
+{
+    name "NIYOL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.63303;
+    longitude -102.9265;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "206.0 MW";
+}
+
+object powerplant
+{
+    name "NORTH_SKY_RIVER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.3064;
+    longitude -118.226;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "162.0 MW";
+}
+
+object powerplant
+{
+    name "NORTHEAST_COLORADO_WIND_1";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.9808;
+    longitude -102.804;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "NORTHEAST_COLORADO_WIND_2";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.9808;
+    longitude -102.804;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "152.0 MW";
+}
+
+object powerplant
+{
+    name "OAK_CREEK_WIND_POWER_RP2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0375;
+    longitude -118.354;
+    in_svc "1999-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "OASIS_ALTA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0592;
+    longitude -118.292;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "14.0 MW";
+}
+
+object powerplant
+{
+    name "OASIS_WIND_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0609;
+    longitude -118.292;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "59.0 MW";
+}
+
+object powerplant
+{
+    name "OASIS_WIND_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0571;
+    longitude -118.282;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "72.0 MW";
+}
+
+object powerplant
+{
+    name "OCOTILLO_(PATTERN)_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Imperial County";
+    state "California";
+    latitude 32.7427;
+    longitude -116.0702;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "266.0 MW";
+}
+
+object powerplant
+{
+    name "ORCHARD_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.3801;
+    longitude -119.333;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "ORCHARD_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.3801;
+    longitude -119.333;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "ORCHARD_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.3801;
+    longitude -119.333;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "ORCHARD_WIND_FARM_4";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.3801;
+    longitude -119.333;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "OREGON_TRAIL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8494;
+    longitude -114.9903;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "14.0 MW";
+}
+
+object powerplant
+{
+    name "OSO_GRANDE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Lea County";
+    state "New Mexico";
+    latitude 33.102;
+    longitude -103.743;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "OSO_GRANDE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Lea County";
+    state "New Mexico";
+    latitude 33.102;
+    longitude -103.743;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "216.0 MW";
+}
+
+object powerplant
+{
+    name "PACIFIC_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 34.8996;
+    longitude -118.457;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "140.0 MW";
+}
+
+object powerplant
+{
+    name "PAINTED_HILLS_WIND_PARK_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9094;
+    longitude -116.734;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "19.0 MW";
+}
+
+object powerplant
+{
+    name "PAINTED_HILLS_WIND_PARK_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9434;
+    longitude -116.619;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "39.0 MW";
+}
+
+object powerplant
+{
+    name "PALM_SPRINGS_WIND_FARM_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9109;
+    longitude -116.574;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "PALOUSE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Whitman County";
+    state "Washington";
+    latitude 47.1053;
+    longitude -117.303;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object powerplant
+{
+    name "PANORAMA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Weld County";
+    state "Colorado";
+    latitude 40.9956;
+    longitude -103.9253;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "145.0 MW";
+}
+
+object powerplant
+{
+    name "PAYNE'S_FERRY_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8349;
+    longitude -115.011;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "PEAK_VIEW_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Las Animas County";
+    state "Colorado";
+    latitude 37.6622;
+    longitude -104.494;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object powerplant
+{
+    name "PEBBLE_SPRINGS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.6869;
+    longitude -120.096;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "PEETZ_TABLE_(NEXTERA)_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.941;
+    longitude -103.259;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "201.0 MW";
+}
+
+object powerplant
+{
+    name "PEETZ_TABLE_(NEXTERA)_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.9988;
+    longitude -103.375;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "PEETZ_TABLE_(TERRA-GEN)_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.9354;
+    longitude -103.178;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "PERRIN_RANCH_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Coconino County";
+    state "Arizona";
+    latitude 35.4535;
+    longitude -112.2203;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "PILGRIM_STAGE_STATION_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.7864;
+    longitude -115.001;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "PINE_TREE_WIND_POWER_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.2508;
+    longitude -118.177;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "120.0 MW";
+}
+
+object powerplant
+{
+    name "PINE_TREE_WIND_POWER_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.2768;
+    longitude -118.198;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "15.0 MW";
+}
+
+object powerplant
+{
+    name "PINYON_PINES_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0594;
+    longitude -118.217;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "168.0 MW";
+}
+
+object powerplant
+{
+    name "PINYON_PINES_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0221;
+    longitude -118.214;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object powerplant
+{
+    name "PIONEER_WIND_PARK_1";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 42.6838;
+    longitude -105.878;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "POINT_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0808;
+    longitude -118.361;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "64.0 MW";
+}
+
+object powerplant
+{
+    name "POWER_COUNTY_WIND_PARK_North";
+    generator "WT";
+    fuel "WIND";
+    county "Power County";
+    state "Idaho";
+    latitude 42.7389;
+    longitude -112.749;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "POWER_COUNTY_WIND_PARK_South";
+    generator "WT";
+    fuel "WIND";
+    county "Power County";
+    state "Idaho";
+    latitude 42.7083;
+    longitude -112.761;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "PROSPECTOR_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Baker County";
+    state "Oregon";
+    latitude 44.415;
+    longitude -117.262;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "PRYOR_MOUNTAIN_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Montana";
+    latitude 45.1409;
+    longitude -108.6816;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "240.0 MW";
+}
+
+object powerplant
+{
+    name "RATTLESNAKE_FLAT_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Adams County";
+    state "Washington";
+    latitude 46.8692;
+    longitude -118.413;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "RATTLESNAKE_ROAD_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.6839;
+    longitude -120.2399;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "103.0 MW";
+}
+
+object powerplant
+{
+    name "RED_CLOUD_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Lincoln County";
+    state "New Mexico";
+    latitude 34.2569;
+    longitude -105.3316;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "350.0 MW";
+}
+
+object powerplant
+{
+    name "RED_HORSE_2_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Cochise County";
+    state "Arizona";
+    latitude 32.3096;
+    longitude -110.087;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "RED_MESA_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Cibola County";
+    state "New Mexico";
+    latitude 35.2627;
+    longitude -107.381;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "RIDGETOP_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0818;
+    longitude -118.304;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "RIDGETOP_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.074;
+    longitude -118.315;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "47.0 MW";
+}
+
+object powerplant
+{
+    name "RIM_ROCK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Toole County";
+    state "Montana";
+    latitude 48.8877;
+    longitude -112.071;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "189.0 MW";
+}
+
+object powerplant
+{
+    name "RISING_TREE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0888;
+    longitude -118.207;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "79.0 MW";
+}
+
+object powerplant
+{
+    name "RISING_TREE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0889;
+    longitude -118.206;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "RISING_TREE_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0612;
+    longitude -118.259;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "ROCK_RIVER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 41.7202;
+    longitude -106.095;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "ROCKLAND_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Power County";
+    state "Idaho";
+    latitude 42.7033;
+    longitude -112.918;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "79.0 MW";
+}
+
+object powerplant
+{
+    name "ROLLING_HILLS_(PACIFICORP)_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 43.1345;
+    longitude -105.819;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "ROOSEVELT_COUNTY_WIND_FARM_(UNITED_STATES)_1";
+    generator "WT";
+    fuel "WIND";
+    county "Roosevelt County";
+    state "New Mexico";
+    latitude 33.8856;
+    longitude -103.436;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "250.0 MW";
+}
+
+object powerplant
+{
+    name "ROUNDHOUSE_WIND_ENERGY_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Laramie County";
+    state "Wyoming";
+    latitude 41.0752;
+    longitude -105.117;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "227.0 MW";
+}
+
+object powerplant
+{
+    name "RUSH_CREEK_WIND_FARM_1&2";
+    generator "WT";
+    fuel "WIND";
+    county "Lincoln County";
+    state "Colorado";
+    latitude 39.1036;
+    longitude -103.227;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "600.0 MW";
+}
+
+object powerplant
+{
+    name "RYEGRASS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0369;
+    longitude -115.443;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "SAGAMORE_WIND_1";
+    generator "WT";
+    fuel "WIND";
+    county "Roosevelt County";
+    state "New Mexico";
+    latitude 33.832;
+    longitude -103.311;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "523.0 MW";
+}
+
+object powerplant
+{
+    name "SAGEBRUSH_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kittitas County";
+    state "Washington";
+    latitude 47.1425;
+    longitude -120.715;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "101.0 MW";
+}
+
+object powerplant
+{
+    name "SALMON_FALLS_WIND_PARK_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.6848;
+    longitude -114.9899;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_GORGONIO_FARMS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9313;
+    longitude -116.612;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "31.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_GORGONIO_WESTWINDS_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.8947;
+    longitude -116.576;
+    in_svc "1999-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "43.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_JUAN_MESA_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Roosevelt County";
+    state "New Mexico";
+    latitude 33.9232;
+    longitude -103.802;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "120.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_JUAN_MESA_WIND_PROJECT_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Roosevelt County";
+    state "New Mexico";
+    latitude 33.9232;
+    longitude -103.802;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "SAWTOOTH_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 42.9856;
+    longitude -115.3998;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "SEVEN_MILE_HILL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 41.9522;
+    longitude -106.366;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "SEVEN_MILE_HILL_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 41.9374;
+    longitude -106.373;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc "2019-01-01 00:00:00 UTC";
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SHILOH_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.1624;
+    longitude -121.828;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "SHILOH_WIND_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.1671;
+    longitude -121.766;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "SHILOH_WIND_PROJECT_3";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.1756;
+    longitude -121.752;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "SHILOH_WIND_PROJECT_4";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.141;
+    longitude -121.855;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_SAGE_WINDPOWER_1";
+    generator "WT";
+    fuel "WIND";
+    county "Laramie County";
+    state "Wyoming";
+    latitude 41.137;
+    longitude -105.029;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "42.0 MW";
+}
+
+object powerplant
+{
+    name "SKOOKUMCHUCK_WIND_FACILITY_1";
+    generator "WT";
+    fuel "WIND";
+    county "Lewis County";
+    state "Washington";
+    latitude 46.7329;
+    longitude -122.629;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "136.0 MW";
+}
+
+object powerplant
+{
+    name "SKY_RIVER_WIND_ENERGY_CENTER_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.2689;
+    longitude -118.242;
+    in_svc "1991-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "77.0 MW";
+}
+
+object powerplant
+{
+    name "SKY_RIVER_WIND_ENERGY_CENTER_RP1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.2689;
+    longitude -118.242;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "SOLANO_WIND_PROJECT_3";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.0845;
+    longitude -121.801;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "128.0 MW";
+}
+
+object powerplant
+{
+    name "SOLANO_WIND_PROJECT_1A";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.1221;
+    longitude -121.7681;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "11.0 MW";
+}
+
+object powerplant
+{
+    name "SOLANO_WIND_PROJECT_2A";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.0989;
+    longitude -121.775;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "24.0 MW";
+}
+
+object powerplant
+{
+    name "SOLANO_WIND_PROJECT_2B";
+    generator "WT";
+    fuel "WIND";
+    county "Solano County";
+    state "California";
+    latitude 38.0938;
+    longitude -121.772;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "63.0 MW";
+}
+
+object powerplant
+{
+    name "SOUTH_PEAK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Judith Basin County";
+    state "Montana";
+    latitude 47.3027;
+    longitude -110.691;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "SPANISH_FORK_WIND_PARK_1";
+    generator "WT";
+    fuel "WIND";
+    county "Utah County";
+    state "Utah";
+    latitude 40.0739;
+    longitude -111.587;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "19.0 MW";
+}
+
+object powerplant
+{
+    name "SPION_KOP_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Judith Basin County";
+    state "Montana";
+    latitude 47.3376;
+    longitude -110.636;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "SPRING_CANYON_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.9735;
+    longitude -103.025;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "SPRING_CANYON_WIND_FARM_2A";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.9981;
+    longitude -103.003;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "SPRING_CANYON_WIND_FARM_2B";
+    generator "WT";
+    fuel "WIND";
+    county "Logan County";
+    state "Colorado";
+    latitude 40.9981;
+    longitude -103.003;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "SPRING_VALLEY_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "White Pine County";
+    state "Nevada";
+    latitude 39.0751;
+    longitude -114.485;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "152.0 MW";
+}
+
+object powerplant
+{
+    name "STAR_POINT_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Sherman County";
+    state "Oregon";
+    latitude 45.5415;
+    longitude -120.423;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_WIND_PROJECT_OR-1A";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.9996;
+    longitude -118.812;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "83.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_WIND_PROJECT_OR-1B";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.9763;
+    longitude -118.783;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_WIND_PROJECT_WA";
+    generator "WT";
+    fuel "WIND";
+    county "Walla Walla County";
+    state "Washington";
+    latitude 46.0401;
+    longitude -118.8802;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "177.0 MW";
+}
+
+object powerplant
+{
+    name "STERLING_I_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Lea County";
+    state "New Mexico";
+    latitude 33.3566;
+    longitude -103.281;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "STILLWATER_BIG_SKY_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Stillwater County";
+    state "Montana";
+    latitude 45.869;
+    longitude -109.499;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "SUMMIT_WINDS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Alameda County";
+    state "California";
+    latitude 37.7682;
+    longitude -121.6764;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "SUMMIT_WINDS_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Alameda County";
+    state "California";
+    latitude 37.7682;
+    longitude -121.6764;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48.0 MW";
+}
+
+object powerplant
+{
+    name "SWANMILL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9211;
+    longitude -116.564;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "19.0 MW";
+}
+
+object powerplant
+{
+    name "TB_FLATS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Carbon County";
+    state "Wyoming";
+    latitude 42.1773;
+    longitude -106.1635;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "503.0 MW";
+}
+
+object powerplant
+{
+    name "TECOLOTE_WIND_1";
+    generator "WT";
+    fuel "WIND";
+    county "Lincoln County";
+    state "New Mexico";
+    latitude 34.2569;
+    longitude -105.3316;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "272.0 MW";
+}
+
+object powerplant
+{
+    name "TEHACHAPI_HILLS_WIND_FARM_85A";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.1016;
+    longitude -118.337;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "14.0 MW";
+}
+
+object powerplant
+{
+    name "TEHACHAPI_HILLS_WIND_FARM_85B";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0957;
+    longitude -118.3402;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "19.0 MW";
+}
+
+object powerplant
+{
+    name "TEHACHAPI_HILLS_WIND_FARM_RPA&B";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0976;
+    longitude -118.3213;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "46.0 MW";
+}
+
+object powerplant
+{
+    name "TEHACHAPI_WINDPLANT_II_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.1265;
+    longitude -118.295;
+    in_svc "1997-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "THOUSAND_SPRINGS_WIND_PARK_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8765;
+    longitude -114.967;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "12.0 MW";
+}
+
+object powerplant
+{
+    name "TOP_OF_THE_WORLD_WINDPOWER_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Converse County";
+    state "Wyoming";
+    latitude 42.9632;
+    longitude -105.7399;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "TPC_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0501;
+    longitude -118.257;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "TRES_VAQUEROS_WIND_FARMS_1";
+    generator "WT";
+    fuel "WIND";
+    county "Contra Costa County";
+    state "California";
+    latitude 37.7719;
+    longitude -121.7401;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "TUANA_GULCH_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8461;
+    longitude -114.969;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "TUANA_SPRINGS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.8882;
+    longitude -115.017;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "17.0 MW";
+}
+
+object powerplant
+{
+    name "TUCANNON_RIVER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Columbia County";
+    state "Washington";
+    latitude 46.4348;
+    longitude -118.025;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "267.0 MW";
+}
+
+object powerplant
+{
+    name "TULE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "San Diego County";
+    state "California";
+    latitude 32.7395;
+    longitude -116.282;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "131.0 MW";
+}
+
+object powerplant
+{
+    name "TULE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "San Diego County";
+    state "California";
+    latitude 32.7395;
+    longitude -116.282;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object powerplant
+{
+    name "TWIN_BUTTES_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Bent County";
+    state "Colorado";
+    latitude 37.6717;
+    longitude -102.876;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object powerplant
+{
+    name "TWIN_BUTTES_WIND_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Prowers County";
+    state "Colorado";
+    latitude 37.7599;
+    longitude -102.565;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object powerplant
+{
+    name "TWO_PONDS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.0338;
+    longitude -115.483;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "VANSYCLE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.9408;
+    longitude -118.666;
+    in_svc "1998-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "VANSYCLE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Umatilla County";
+    state "Oregon";
+    latitude 45.8916;
+    longitude -118.531;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "VANTAGE_POINT_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kittitas County";
+    state "Washington";
+    latitude 46.9604;
+    longitude -120.195;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "VASCO_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Contra Costa County";
+    state "California";
+    latitude 37.7985;
+    longitude -121.701;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "78.0 MW";
+}
+
+object powerplant
+{
+    name "VICTORY_GARDEN_PHASE_IV_WIND_FARM_4";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.076;
+    longitude -118.366;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "VOYAGER_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0514;
+    longitude -118.287;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "131.0 MW";
+}
+
+object powerplant
+{
+    name "VOYAGER_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0734;
+    longitude -118.269;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "129.0 MW";
+}
+
+object powerplant
+{
+    name "VOYAGER_WIND_FARM_3";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0608;
+    longitude -118.265;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "43.0 MW";
+}
+
+object powerplant
+{
+    name "VOYAGER_WIND_FARM_4";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0779;
+    longitude -118.25001;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "WHEAT_FIELD_WIND_POWER_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Gilliam County";
+    state "Oregon";
+    latitude 45.6725;
+    longitude -120.325;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "97.0 MW";
+}
+
+object powerplant
+{
+    name "WHEATRIDGE_RENEWABLE_WIND_ENERGY_CENTER_1";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.4905;
+    longitude -119.531;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "300.0 MW";
+}
+
+object powerplant
+{
+    name "WHITE_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.8299;
+    longitude -120.327;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "205.0 MW";
+}
+
+object powerplant
+{
+    name "WHITE_HILLS_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Mohave County";
+    state "Arizona";
+    latitude 35.8005;
+    longitude -114.441;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "350.0 MW";
+}
+
+object powerplant
+{
+    name "WHITEWATER_HILL_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Riverside County";
+    state "California";
+    latitude 33.9258;
+    longitude -116.616;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object powerplant
+{
+    name "WILD_HORSE_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kittitas County";
+    state "Washington";
+    latitude 47.0026;
+    longitude -120.166;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "229.0 MW";
+}
+
+object powerplant
+{
+    name "WILD_HORSE_WIND_FARM_2";
+    generator "WT";
+    fuel "WIND";
+    county "Kittitas County";
+    state "Washington";
+    latitude 47.059;
+    longitude -120.236;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "44.0 MW";
+}
+
+object powerplant
+{
+    name "WILDCAT_(EXELON)_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Lea County";
+    state "New Mexico";
+    latitude 32.9511;
+    longitude -103.279;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "WILLOW_CREEK_(INVENERGY)_WIND_ENERGY_CENTER_1";
+    generator "WT";
+    fuel "WIND";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.6533;
+    longitude -119.9795;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "72.0 MW";
+}
+
+object powerplant
+{
+    name "WILLOW_SPRING_(OREGON)_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Baker County";
+    state "Oregon";
+    latitude 44.3808;
+    longitude -117.277;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "10.0 MW";
+}
+
+object powerplant
+{
+    name "WINDLAND_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0522;
+    longitude -118.358;
+    in_svc "1982-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "15.0 MW";
+}
+
+object powerplant
+{
+    name "WINDSTAR_WIND_FARM_(UNITED_STATES)_1";
+    generator "WT";
+    fuel "WIND";
+    county "Kern County";
+    state "California";
+    latitude 35.0275;
+    longitude -118.271;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "120.0 MW";
+}
+
+object powerplant
+{
+    name "WINDY_FLATS_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.733;
+    longitude -120.837;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "202.0 MW";
+}
+
+object powerplant
+{
+    name "WINDY_FLATS_WIND_PROJECT_2";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.699;
+    longitude -120.886;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "WINDY_POINT_WIND_FARM_(UNITED_STATES)_1";
+    generator "WT";
+    fuel "WIND";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.7653;
+    longitude -120.686;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "137.0 MW";
+}
+
+object powerplant
+{
+    name "WOLVERINE_CREEK_WIND_FARM_1";
+    generator "WT";
+    fuel "WIND";
+    county "Bonneville County";
+    state "Idaho";
+    latitude 43.3711;
+    longitude -111.844;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "64.0 MW";
+}
+
+object powerplant
+{
+    name "YAHOO_CREEK_WIND_PROJECT_1";
+    generator "WT";
+    fuel "WIND";
+    county "Twin Falls County";
+    state "Idaho";
+    latitude 42.7669;
+    longitude -115.007;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+

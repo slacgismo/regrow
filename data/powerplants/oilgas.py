@@ -11,7 +11,8 @@ INPUTS = {
 }
 
 OUTPUTS = {
-    "PLANTDATA" : "oilgas.csv",
+    "GASDATA" : "gas.csv",
+    "OILDATA" : "oil.csv",
 }
 
 STARTYEAR=2018
@@ -25,7 +26,7 @@ mapper = {
     'Plant name' : "name",
     'Plant name (local script)' : None,
     'Unit name' : "unit",
-    'Fuel' : None,
+    'Fuel' : "fuel",
     'Capacity (MW)' : "capacity[MW]", 
     'Status' : "status",
     'Technology' : "type",
@@ -58,6 +59,11 @@ mapper = {
     'GEM unit ID' : None,
     }
 
+gasfuels = ["NG","LNG","WSTH-NG","LFG","BG","BFG","COG","LPG","OG"]
+
+def isgas(fuels):
+    return len([x for x in fuels.split("|") if x in gasfuels])>0
+
 data.rename(dict([(x,y) for x,y in mapper.items() if not y is None]),inplace=True,axis=1)
 data.drop([x for x,y in mapper.items() if y is None],axis=1,inplace=True)
 data.drop(data[~data["status"].isin(["operating","retired"])].index,inplace=True)
@@ -66,4 +72,11 @@ data.drop(data[data["retirement[y]"]<STARTYEAR].index,inplace=True)
 data.drop(data[data["start[y]"].astype('int')>STOPYEAR].index,inplace=True)
 data.drop(["country","status"],axis=1,inplace=True)
 data.drop(data[~data["state"].isin(config.state_list)].index,inplace=True)
-data.to_csv(OUTPUTS["PLANTDATA"],header=True,index=False)
+gasfuel = [isgas(x) for x in data["fuel"]]
+oilfuel = [not isgas(x) for x in data["fuel"]]
+
+oil = data.loc[oilfuel]
+oil.to_csv(OUTPUTS["OILDATA"],header=True,index=False)
+
+gas = data.loc[gasfuel]
+gas.to_csv(OUTPUTS["GASDATA"],header=True,index=False)

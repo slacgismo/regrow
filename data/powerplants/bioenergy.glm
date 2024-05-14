@@ -1,0 +1,174 @@
+module pypower;
+class powerplant
+{
+    char32 county;
+}
+
+object powerplant
+{
+    name "COLMAC_ENERGY_POWER_STATION_1";
+    generator "ST";
+    fuel "BIO";
+    county "Riverside County";
+    state "California";
+    latitude 33.5868;
+    longitude -116.0876;
+    in_svc "1992-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "47.0 MW";
+}
+
+object powerplant
+{
+    name "COVANTA_LONG_BEACH_POWER_STATION_GEN1";
+    generator "ST";
+    fuel "BIO";
+    county "Los Angeles County";
+    state "California";
+    latitude 33.7592;
+    longitude -118.2399;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "36.0 MW";
+}
+
+object powerplant
+{
+    name "HONEY_LAKE_POWER_STATION_1";
+    generator "ST";
+    fuel "BIO";
+    county "Lassen County";
+    state "California";
+    latitude 40.3683;
+    longitude -120.2647;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "KETTLE_FALLS_POWER_STATION_1";
+    generator "ST";
+    fuel "BIO";
+    county "Stevens County";
+    state "Washington";
+    latitude 48.6203;
+    longitude -118.1111;
+    in_svc "1983-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "51.0 MW";
+}
+
+object powerplant
+{
+    name "LEWISTON_PULP_MILL_POWER_STATION_GEN4";
+    generator "ST";
+    fuel "BIO";
+    county "Nez Perce County";
+    state "Idaho";
+    latitude 46.4231;
+    longitude -116.9764;
+    in_svc "1991-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "65.0 MW";
+}
+
+object powerplant
+{
+    name "MT._POSO_COGENERATION_PLANT_TG01";
+    generator "ST";
+    fuel "BIO";
+    county "Kern County";
+    state "California";
+    latitude 35.5763;
+    longitude -119.0062;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object powerplant
+{
+    name "PUENTE_HILLS_ENERGY_RECOVERY_POWER_STATION_GEN1";
+    generator "ST";
+    fuel "BIO";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.0233;
+    longitude -118.0241;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "SIERRA_PACIFIC_QUINCY_POWER_STATION_GEN3";
+    generator "ST";
+    fuel "BIO";
+    county "Plumas County";
+    state "California";
+    latitude 39.9412;
+    longitude -120.9092;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "35.0 MW";
+}
+
+object powerplant
+{
+    name "SIMPSON_TACOMA_POWER_STATION_STG1";
+    generator "ST";
+    fuel "BIO";
+    county "Pierce County";
+    state "Washington";
+    latitude 47.2661;
+    longitude -122.4283;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "64.0 MW";
+}
+
+object powerplant
+{
+    name "SPI_ANDERSON_2_POWER_STATION_GEN1";
+    generator "ST";
+    fuel "BIO";
+    county "Shasta County";
+    state "California";
+    latitude 40.4723;
+    longitude -122.3242;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SPRINGFIELD_MILL_POWER_STATION_TG4";
+    generator "ST";
+    fuel "BIO";
+    county "Lane County";
+    state "Oregon";
+    latitude 44.0569;
+    longitude -122.9555;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "STOCKTON_COGENERATION_FACILITY_1";
+    generator "ST";
+    fuel "BIO";
+    county "San Joaquin County";
+    state "California";
+    latitude 37.9436;
+    longitude -121.3304;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+

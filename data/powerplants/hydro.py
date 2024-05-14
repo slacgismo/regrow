@@ -39,7 +39,7 @@ mapper = {
     'Owner Name (local lang/script)' : None, 
     'Operator' : None,
     'Operator Name (local lang/script)' : None, 
-    'Technology Type' : "type",
+    'Technology Type' : None,
     'River / Watercourse' : None, 
     'Latitude' : "latitude", 
     'Longitude' : "longitude", 
@@ -69,5 +69,6 @@ data.drop(data[data["retirement[y]"]<STARTYEAR].index,inplace=True)
 data.drop(data[data["start[y]"]>STOPYEAR].index,inplace=True)
 data.drop(["country","status"],axis=1,inplace=True)
 data.drop(data[~data["state"].isin(config.state_list)].index,inplace=True)
-data["unit"] = 1
+data["type"] = "HT"
+data["unit"] = ""
 data.to_csv(OUTPUTS["PLANTDATA"],header=True,index=False)

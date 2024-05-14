@@ -1,104 +1,33 @@
 module pypower;
+class powerplant
+{
+    char32 county;
+}
+
 object powerplant
 {
     name "AFTON_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Dona Ana";
+    generator "CC";
+    fuel "NG";
+    county "Dona Ana";
     state "New Mexico";
     latitude 32.114185;
     longitude -106.8465;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "287.0 MW";
 }
 
 object powerplant
 {
-    name "AGUA_FRIA_POWER_STATION_AF1";
-    // type "ST";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.5561;
-    longitude -112.2153;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "114.0 MW";
-}
-
-object powerplant
-{
-    name "AGUA_FRIA_POWER_STATION_AF2";
-    // type "ST";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.5561;
-    longitude -112.2153;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "114.0 MW";
-}
-
-object powerplant
-{
-    name "AGUA_FRIA_POWER_STATION_AF3";
-    // type "ST";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.5561;
-    longitude -112.2153;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "163.0 MW";
-}
-
-object powerplant
-{
-    name "AGUA_FRIA_POWER_STATION_AF4";
-    // type "GT";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.5561;
-    longitude -112.2153;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "81.0 MW";
-}
-
-object powerplant
-{
-    name "AGUA_FRIA_POWER_STATION_AF5";
-    // type "GT";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.5561;
-    longitude -112.2153;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "71.0 MW";
-}
-
-object powerplant
-{
-    name "AGUA_FRIA_POWER_STATION_AF6";
-    // type "GT";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.5561;
-    longitude -112.2153;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "71.0 MW";
-}
-
-object powerplant
-{
     name "AGUA_FRIA_POWER_STATION_AF7";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.5561;
     longitude -112.2153;
-    out_svc "2022-01-01 00:00:00 UTC";
+    in_svc "2022-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -106,12 +35,13 @@ object powerplant
 object powerplant
 {
     name "AGUA_FRIA_POWER_STATION_AF8";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.5561;
     longitude -112.2153;
-    out_svc "2022-01-01 00:00:00 UTC";
+    in_svc "2022-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -119,12 +49,13 @@ object powerplant
 object powerplant
 {
     name "AGUA_MANSA_POWER_PLANT_AMP1";
-    // type "GT";
-    // county "San Bernardino";
+    generator "GT";
+    fuel "NG";
+    county "San Bernardino";
     state "California";
     latitude 34.0414;
     longitude -117.3603;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -132,12 +63,13 @@ object powerplant
 object powerplant
 {
     name "ALAMITOS_ENERGY_CENTER_3";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.767229;
     longitude -118.1002;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "310.0 MW";
 }
@@ -145,12 +77,13 @@ object powerplant
 object powerplant
 {
     name "ALAMITOS_ENERGY_CENTER_4";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.767229;
     longitude -118.1002;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "310.0 MW";
 }
@@ -158,12 +91,13 @@ object powerplant
 object powerplant
 {
     name "ALAMITOS_ENERGY_CENTER_5";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.767229;
     longitude -118.1002;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "495.0 MW";
 }
@@ -171,12 +105,13 @@ object powerplant
 object powerplant
 {
     name "ALAMITOS_ENERGY_CENTER_CCT1";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.767229;
     longitude -118.1002;
-    out_svc "2020-01-01 00:00:00 UTC";
+    in_svc "2020-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "678.0 MW";
 }
@@ -184,12 +119,13 @@ object powerplant
 object powerplant
 {
     name "ALGONQUIN_POWER_SANGER_POWER_STATION_CC1";
-    // type "CC";
-    // county "Fresno";
+    generator "CC";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6842;
     longitude -119.5522;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "62.0 MW";
 }
@@ -197,12 +133,13 @@ object powerplant
 object powerplant
 {
     name "ALMOND_POWER_PLANT_1";
-    // type "GT";
-    // county "Stanislaus";
+    generator "GT";
+    fuel "NG";
+    county "Stanislaus";
     state "California";
     latitude 37.5744;
     longitude -120.985;
-    out_svc "1996-01-01 00:00:00 UTC";
+    in_svc "1996-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -210,12 +147,13 @@ object powerplant
 object powerplant
 {
     name "ALMOND_POWER_PLANT_2";
-    // type "GT";
-    // county "Stanislaus";
+    generator "GT";
+    fuel "NG";
+    county "Stanislaus";
     state "California";
     latitude 37.5744;
     longitude -120.985;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "58.0 MW";
 }
@@ -223,12 +161,13 @@ object powerplant
 object powerplant
 {
     name "ALMOND_POWER_PLANT_3";
-    // type "GT";
-    // county "Stanislaus";
+    generator "GT";
+    fuel "NG";
+    county "Stanislaus";
     state "California";
     latitude 37.5744;
     longitude -120.985;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "58.0 MW";
 }
@@ -236,12 +175,13 @@ object powerplant
 object powerplant
 {
     name "ALMOND_POWER_PLANT_4";
-    // type "GT";
-    // county "Stanislaus";
+    generator "GT";
+    fuel "NG";
+    county "Stanislaus";
     state "California";
     latitude 37.5744;
     longitude -120.985;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "58.0 MW";
 }
@@ -249,12 +189,13 @@ object powerplant
 object powerplant
 {
     name "ALTAGAS_RIPON_ENERGY_POWER_STATION_GEN1";
-    // type "GT";
-    // county "San Joaquin";
+    generator "GT";
+    fuel "NG";
+    county "San Joaquin";
     state "California";
     latitude 37.732533;
     longitude -121.116;
-    out_svc "1988-01-01 00:00:00 UTC";
+    in_svc "1988-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -262,12 +203,13 @@ object powerplant
 object powerplant
 {
     name "APACHE_GENERATING_STATION_ST2";
-    // type "ST";
-    // county "Cochise";
+    generator "ST";
+    fuel "NG";
+    county "Cochise";
     state "Arizona";
     latitude 32.0603;
     longitude -109.8931;
-    out_svc "2017-01-01 00:00:00 UTC";
+    in_svc "2017-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "204.0 MW";
 }
@@ -275,12 +217,13 @@ object powerplant
 object powerplant
 {
     name "APEX_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.415999;
     longitude -114.9609;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "601.0 MW";
 }
@@ -288,12 +231,13 @@ object powerplant
 object powerplant
 {
     name "ARAPAHOE_STATION_A567";
-    // type "CC";
-    // county "Denver";
+    generator "CC";
+    fuel "NG";
+    county "Denver";
     state "Colorado";
     latitude 39.6692;
     longitude -105.0018;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "194.0 MW";
 }
@@ -301,12 +245,13 @@ object powerplant
 object powerplant
 {
     name "ARLINGTON_VALLEY_ENERGY_FACILITY_CC1";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.3417;
     longitude -112.8897;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "713.0 MW";
 }
@@ -314,12 +259,13 @@ object powerplant
 object powerplant
 {
     name "BARRE_PEAKER_POWER_STATION_1";
-    // type "GT";
-    // county "Orange";
+    generator "GT";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.8073;
     longitude -117.9832;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -327,38 +273,27 @@ object powerplant
 object powerplant
 {
     name "BASIN_CREEK_PLANT_1";
-    // type "IC";
-    // county "Silver Bow";
+    generator "IC";
+    fuel "NG";
+    county "Silver Bow";
     state "Montana";
     latitude 45.9293;
     longitude -112.5194;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "54.9 MW";
 }
 
 object powerplant
 {
-    name "BEAVER_POWER_STATION_CC1";
-    // type "CC";
-    // county "Columbia";
-    state "Oregon";
-    latitude 46.172401;
-    longitude -123.1739;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "586.0 MW";
-}
-
-object powerplant
-{
     name "BENNETT_MOUNTAIN_POWER_STATION_1";
-    // type "GT";
-    // county "Elmore";
+    generator "GT";
+    fuel "NG";
+    county "Elmore";
     state "Idaho";
     latitude 43.147153;
     longitude -115.6666;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "173.0 MW";
 }
@@ -366,12 +301,13 @@ object powerplant
 object powerplant
 {
     name "BLACK_MOUNTAIN_GENERATING_STATION_1";
-    // type "GT";
-    // county "Mohave";
+    generator "GT";
+    fuel "NG";
+    county "Mohave";
     state "Arizona";
     latitude 35.0361;
     longitude -114.1594;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -379,51 +315,27 @@ object powerplant
 object powerplant
 {
     name "BLACK_MOUNTAIN_GENERATING_STATION_2";
-    // type "GT";
-    // county "Mohave";
+    generator "GT";
+    fuel "NG";
+    county "Mohave";
     state "Arizona";
     latitude 35.0361;
     longitude -114.1594;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
 
 object powerplant
 {
-    name "BLUE_SPRUCE_ENERGY_CENTER_CT01";
-    // type "GT";
-    // county "Adams";
-    state "Colorado";
-    latitude 39.747875;
-    longitude -104.6814;
-    out_svc "2003-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "199.0 MW";
-}
-
-object powerplant
-{
-    name "BLUE_SPRUCE_ENERGY_CENTER_CT02";
-    // type "GT";
-    // county "Adams";
-    state "Colorado";
-    latitude 39.747875;
-    longitude -104.6814;
-    out_svc "2003-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "199.0 MW";
-}
-
-object powerplant
-{
     name "BLUFFVIEW_POWER_STATION_CC1";
-    // type "CC";
-    // county "San Juan";
+    generator "CC";
+    fuel "NG";
+    county "San Juan";
     state "New Mexico";
     latitude 36.716628;
     longitude -108.2153;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "67.0 MW";
 }
@@ -431,12 +343,13 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_ENERGY_POWER_STATION_CC1";
-    // type "CC";
-    // county "Riverside";
+    generator "CC";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.6157;
     longitude -114.6865;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "591.0 MW";
 }
@@ -444,12 +357,13 @@ object powerplant
 object powerplant
 {
     name "BRUSH_GENERATION_FACILITY_BCP";
-    // type "CC";
-    // county "Morgan";
+    generator "CC";
+    fuel "NG";
+    county "Morgan";
     state "Colorado";
     latitude 40.2415;
     longitude -103.631;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "74.0 MW";
 }
@@ -457,12 +371,13 @@ object powerplant
 object powerplant
 {
     name "BRUSH_GENERATION_FACILITY_BIV";
-    // type "CC";
-    // county "Morgan";
+    generator "CC";
+    fuel "NG";
+    county "Morgan";
     state "Colorado";
     latitude 40.2415;
     longitude -103.631;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "138.0 MW";
 }
@@ -470,12 +385,13 @@ object powerplant
 object powerplant
 {
     name "BRUSH_GENERATION_FACILITY_CPP";
-    // type "CC";
-    // county "Morgan";
+    generator "CC";
+    fuel "NG";
+    county "Morgan";
     state "Colorado";
     latitude 40.2415;
     longitude -103.631;
-    out_svc "1990-01-01 00:00:00 UTC";
+    in_svc "1990-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "62.0 MW";
 }
@@ -483,12 +399,13 @@ object powerplant
 object powerplant
 {
     name "CALPEAK_POWER_BORDER_PEAKER_PLANT_CPP4";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.562448;
     longitude -116.9439;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -496,12 +413,13 @@ object powerplant
 object powerplant
 {
     name "CALPEAK_POWER_ENTERPRISE_PEAKER_PLANT_CPP7";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.121943;
     longitude -117.1174;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "59.0 MW";
 }
@@ -509,12 +427,13 @@ object powerplant
 object powerplant
 {
     name "CALPEAK_POWER_PANOCHE_PEAKER_PLANT_CPP2";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.652905;
     longitude -120.5806;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -522,12 +441,13 @@ object powerplant
 object powerplant
 {
     name "CALPEAK_POWER_VACA_DIXON_PEAKER_PLANT_CPP1";
-    // type "GT";
-    // county "Solano";
+    generator "GT";
+    fuel "NG";
+    county "Solano";
     state "California";
     latitude 38.398867;
     longitude -121.924;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -535,12 +455,13 @@ object powerplant
 object powerplant
 {
     name "CANYON_POWER_PLANT_CPP1";
-    // type "GT";
-    // county "Orange";
+    generator "GT";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.858056;
     longitude -117.8617;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -548,12 +469,13 @@ object powerplant
 object powerplant
 {
     name "CANYON_POWER_PLANT_CPP2";
-    // type "GT";
-    // county "Orange";
+    generator "GT";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.858056;
     longitude -117.8617;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -561,12 +483,13 @@ object powerplant
 object powerplant
 {
     name "CANYON_POWER_PLANT_CPP3";
-    // type "GT";
-    // county "Orange";
+    generator "GT";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.858056;
     longitude -117.8617;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -574,12 +497,13 @@ object powerplant
 object powerplant
 {
     name "CANYON_POWER_PLANT_CPP4";
-    // type "GT";
-    // county "Orange";
+    generator "GT";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.858056;
     longitude -117.8617;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -587,12 +511,13 @@ object powerplant
 object powerplant
 {
     name "CARLSBAD_ENERGY_CENTER_CEC 6";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.140507;
     longitude -117.3339;
-    out_svc "2018-01-01 00:00:00 UTC";
+    in_svc "2018-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -600,12 +525,13 @@ object powerplant
 object powerplant
 {
     name "CARLSBAD_ENERGY_CENTER_CEC 7";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.140507;
     longitude -117.3339;
-    out_svc "2018-01-01 00:00:00 UTC";
+    in_svc "2018-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -613,12 +539,13 @@ object powerplant
 object powerplant
 {
     name "CARLSBAD_ENERGY_CENTER_CEC 8";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.140507;
     longitude -117.3339;
-    out_svc "2018-01-01 00:00:00 UTC";
+    in_svc "2018-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -626,12 +553,13 @@ object powerplant
 object powerplant
 {
     name "CARLSBAD_ENERGY_CENTER_CEC 9";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.140507;
     longitude -117.3339;
-    out_svc "2018-01-01 00:00:00 UTC";
+    in_svc "2018-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -639,12 +567,13 @@ object powerplant
 object powerplant
 {
     name "CARLSBAD_ENERGY_CENTER_CEC10";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.140507;
     longitude -117.3339;
-    out_svc "2018-01-01 00:00:00 UTC";
+    in_svc "2018-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -652,12 +581,13 @@ object powerplant
 object powerplant
 {
     name "CARSON_COGENERATION_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.8759;
     longitude -118.2491;
-    out_svc "1990-01-01 00:00:00 UTC";
+    in_svc "1990-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "56.0 MW";
 }
@@ -665,12 +595,13 @@ object powerplant
 object powerplant
 {
     name "CARSON_ICE-GEN_PROJECT_POWER_STATION_1";
-    // type "GT";
-    // county "Sacramento";
+    generator "GT";
+    fuel "NG";
+    county "Sacramento";
     state "California";
     latitude 38.445681;
     longitude -121.4624;
-    out_svc "1995-01-01 00:00:00 UTC";
+    in_svc "1995-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "54.0 MW";
 }
@@ -678,12 +609,13 @@ object powerplant
 object powerplant
 {
     name "CARSON_ICE-GEN_PROJECT_POWER_STATION_CC1";
-    // type "CC";
-    // county "Sacramento";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
     state "California";
     latitude 38.445681;
     longitude -121.4624;
-    out_svc "1995-01-01 00:00:00 UTC";
+    in_svc "1995-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "72.0 MW";
 }
@@ -691,12 +623,13 @@ object powerplant
 object powerplant
 {
     name "CARTY_GENERATING_STATION_CCG1";
-    // type "CC";
-    // county "Morrow";
+    generator "CC";
+    fuel "NG";
+    county "Morrow";
     state "Oregon";
     latitude 45.698611;
     longitude -119.8131;
-    out_svc "2016-01-01 00:00:00 UTC";
+    in_svc "2016-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "500.0 MW";
 }
@@ -704,12 +637,13 @@ object powerplant
 object powerplant
 {
     name "CENTER_HYBRID_POWER_STATION_1";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.9296;
     longitude -118.1046;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -717,12 +651,13 @@ object powerplant
 object powerplant
 {
     name "CHEHALIS_GENERATING_FACILITY_CC1";
-    // type "CC";
-    // county "Lewis";
+    generator "CC";
+    fuel "NG";
+    county "Lewis";
     state "Washington";
     latitude 46.6225;
     longitude -122.9131;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "698.0 MW";
 }
@@ -730,12 +665,13 @@ object powerplant
 object powerplant
 {
     name "CHEROKEE_STATION_4";
-    // type "ST";
-    // county "Adams";
+    generator "ST";
+    fuel "NG";
+    county "Adams";
     state "Colorado";
     latitude 39.807275;
     longitude -104.9645;
-    out_svc "2017-01-01 00:00:00 UTC";
+    in_svc "2017-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "381.0 MW";
 }
@@ -743,12 +679,13 @@ object powerplant
 object powerplant
 {
     name "CHEROKEE_STATION_CHR0";
-    // type "CC";
-    // county "Adams";
+    generator "CC";
+    fuel "NG";
+    county "Adams";
     state "Colorado";
     latitude 39.807275;
     longitude -104.9645;
-    out_svc "2015-01-01 00:00:00 UTC";
+    in_svc "2015-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "626.0 MW";
 }
@@ -756,12 +693,13 @@ object powerplant
 object powerplant
 {
     name "CHEYENNE_PRAIRIE_GENERATING_STATION_PB1";
-    // type "CC";
-    // county "Laramie";
+    generator "CC";
+    fuel "NG";
+    county "Laramie";
     state "Wyoming";
     latitude 41.123611;
     longitude -104.72;
-    out_svc "2014-01-01 00:00:00 UTC";
+    in_svc "2014-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -769,12 +707,13 @@ object powerplant
 object powerplant
 {
     name "CHUCK_LENZIE_GENERATING_STATION_PB1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.383719;
     longitude -114.9218;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "733.0 MW";
 }
@@ -782,12 +721,13 @@ object powerplant
 object powerplant
 {
     name "CHUCK_LENZIE_GENERATING_STATION_PB2";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.383719;
     longitude -114.9218;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "733.0 MW";
 }
@@ -795,12 +735,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_11";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -808,12 +749,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_12";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -821,12 +763,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_13";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -834,12 +777,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_14";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -847,12 +791,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_15";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -860,12 +805,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_16";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -873,12 +819,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_17";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -886,12 +833,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_18";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -899,12 +847,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_19";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -912,12 +861,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_20";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -925,12 +875,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_21";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "59.0 MW";
 }
@@ -938,12 +889,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_22";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -951,12 +903,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_GT4";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "72.0 MW";
 }
@@ -964,12 +917,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_PB1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "289.0 MW";
 }
@@ -977,12 +931,13 @@ object powerplant
 object powerplant
 {
     name "CLARK_(NVE)_POWER_STATION_PB2";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.0875;
     longitude -115.0507;
-    out_svc "1993-01-01 00:00:00 UTC";
+    in_svc "1993-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "289.0 MW";
 }
@@ -990,12 +945,13 @@ object powerplant
 object powerplant
 {
     name "COLUSA_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Colusa";
+    generator "CC";
+    fuel "NG";
+    county "Colusa";
     state "California";
     latitude 39.3661;
     longitude -122.27;
-    out_svc "2010-01-01 00:00:00 UTC";
+    in_svc "2010-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "712.0 MW";
 }
@@ -1003,12 +959,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_1";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1016,12 +973,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_2";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1029,12 +987,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_3";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1042,12 +1001,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_4";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1055,12 +1015,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_5";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1068,12 +1029,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_6";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1081,12 +1043,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_7";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1094,12 +1057,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_8";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1107,12 +1071,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_9";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1120,12 +1085,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_10";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1133,12 +1099,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_11";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1146,12 +1113,13 @@ object powerplant
 object powerplant
 {
     name "COOLIDGE_GENERATION_STATION_12";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.917399;
     longitude -111.5033;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1159,12 +1127,13 @@ object powerplant
 object powerplant
 {
     name "COSUMNES_POWER_STATION_CCC1";
-    // type "CC";
-    // county "Sacramento";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
     state "California";
     latitude 38.338475;
     longitude -121.124;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "557.0 MW";
 }
@@ -1172,12 +1141,13 @@ object powerplant
 object powerplant
 {
     name "COYOTE_SPRINGS_II_POWER_STATION_U2CT";
-    // type "CC";
-    // county "Morrow";
+    generator "CC";
+    fuel "NG";
+    county "Morrow";
     state "Oregon";
     latitude 45.848039;
     longitude -119.674;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "287.0 MW";
 }
@@ -1185,12 +1155,13 @@ object powerplant
 object powerplant
 {
     name "COYOTE_SPRINGS_POWER_STATION_CC1";
-    // type "CC";
-    // county "Morrow";
+    generator "CC";
+    fuel "NG";
+    county "Morrow";
     state "Oregon";
     latitude 45.847998;
     longitude -119.6739;
-    out_svc "1995-01-01 00:00:00 UTC";
+    in_svc "1995-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "296.0 MW";
 }
@@ -1198,12 +1169,13 @@ object powerplant
 object powerplant
 {
     name "CROCKETT_COGENERATION_PROJECT_POWER_STATION_GE1";
-    // type "CC";
-    // county "Contra Costa";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.0569;
     longitude -122.2161;
-    out_svc "1995-01-01 00:00:00 UTC";
+    in_svc "1995-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "247.0 MW";
 }
@@ -1211,12 +1183,13 @@ object powerplant
 object powerplant
 {
     name "CULBERTSON_GENERATION_STATION_1";
-    // type "GT";
-    // county "Roosevelt";
+    generator "GT";
+    fuel "NG";
+    county "Roosevelt";
     state "Montana";
     latitude 48.21;
     longitude -104.3917;
-    out_svc "2010-01-01 00:00:00 UTC";
+    in_svc "2010-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -1224,12 +1197,13 @@ object powerplant
 object powerplant
 {
     name "CUNNINGHAM_POWER_STATION_1";
-    // type "ST";
-    // county "Lea";
+    generator "ST";
+    fuel "NG";
+    county "Lea";
     state "New Mexico";
     latitude 32.7131;
     longitude -103.3533;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -1237,12 +1211,13 @@ object powerplant
 object powerplant
 {
     name "CUNNINGHAM_POWER_STATION_2";
-    // type "ST";
-    // county "Lea";
+    generator "ST";
+    fuel "NG";
+    county "Lea";
     state "New Mexico";
     latitude 32.7131;
     longitude -103.3533;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "190.0 MW";
 }
@@ -1250,12 +1225,13 @@ object powerplant
 object powerplant
 {
     name "CUNNINGHAM_POWER_STATION_3";
-    // type "GT";
-    // county "Lea";
+    generator "GT";
+    fuel "NG";
+    county "Lea";
     state "New Mexico";
     latitude 32.7131;
     longitude -103.3533;
-    out_svc "1998-01-01 00:00:00 UTC";
+    in_svc "1998-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "127.0 MW";
 }
@@ -1263,12 +1239,13 @@ object powerplant
 object powerplant
 {
     name "CUNNINGHAM_POWER_STATION_4";
-    // type "GT";
-    // county "Lea";
+    generator "GT";
+    fuel "NG";
+    county "Lea";
     state "New Mexico";
     latitude 32.7131;
     longitude -103.3533;
-    out_svc "1998-01-01 00:00:00 UTC";
+    in_svc "1998-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "127.0 MW";
 }
@@ -1276,64 +1253,27 @@ object powerplant
 object powerplant
 {
     name "CURRANT_CREEK_POWER_STATION_CC1";
-    // type "CC";
-    // county "Juab";
+    generator "CC";
+    fuel "NG";
+    county "Juab";
     state "Utah";
     latitude 39.82144;
     longitude -111.8935;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "649.0 MW";
 }
 
 object powerplant
 {
-    name "DAVE_GATES_GENERATING_STATION_1";
-    // type "GT";
-    // county "Deer Lodge";
-    state "Montana";
-    latitude 46.104713;
-    longitude -112.8766;
-    out_svc "2011-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "68.0 MW";
-}
-
-object powerplant
-{
-    name "DAVE_GATES_GENERATING_STATION_2";
-    // type "GT";
-    // county "Deer Lodge";
-    state "Montana";
-    latitude 46.104713;
-    longitude -112.8766;
-    out_svc "2011-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "68.0 MW";
-}
-
-object powerplant
-{
-    name "DAVE_GATES_GENERATING_STATION_3";
-    // type "GT";
-    // county "Deer Lodge";
-    state "Montana";
-    latitude 46.104713;
-    longitude -112.8766;
-    out_svc "2011-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "68.0 MW";
-}
-
-object powerplant
-{
     name "DELANO_ENERGY_CENTER_GEN1";
-    // type "GT";
-    // county "Tulare";
+    generator "GT";
+    fuel "NG";
+    county "Tulare";
     state "California";
     latitude 35.790864;
     longitude -119.2945;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -1341,12 +1281,13 @@ object powerplant
 object powerplant
 {
     name "DELTA_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Contra Costa";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.0169;
     longitude -121.8439;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "944.0 MW";
 }
@@ -1354,12 +1295,13 @@ object powerplant
 object powerplant
 {
     name "DEMOSS_PETRIE_POWER_STATION_GT2";
-    // type "GT";
-    // county "Pima";
+    generator "GT";
+    fuel "NG";
+    county "Pima";
     state "Arizona";
     latitude 32.252273;
     longitude -110.9921;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "85.0 MW";
 }
@@ -1367,12 +1309,13 @@ object powerplant
 object powerplant
 {
     name "DESERT_BASIN_POWER_STATION_CTG4";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9042;
     longitude -111.7889;
-    out_svc "2022-01-01 00:00:00 UTC";
+    in_svc "2022-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -1380,12 +1323,13 @@ object powerplant
 object powerplant
 {
     name "DESERT_BASIN_POWER_STATION_CTG5";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9042;
     longitude -111.7889;
-    out_svc "2022-01-01 00:00:00 UTC";
+    in_svc "2022-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -1393,12 +1337,13 @@ object powerplant
 object powerplant
 {
     name "DESERT_BASIN_POWER_STATION_STG3";
-    // type "CC";
-    // county "Pinal";
+    generator "CC";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9042;
     longitude -111.7889;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "646.0 MW";
 }
@@ -1406,12 +1351,13 @@ object powerplant
 object powerplant
 {
     name "DESERT_STAR_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 35.788889;
     longitude -114.9942;
-    out_svc "2000-01-01 00:00:00 UTC";
+    in_svc "2000-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "537.0 MW";
 }
@@ -1419,12 +1365,13 @@ object powerplant
 object powerplant
 {
     name "DONALD_VON_RAESFELD_POWER_PLANT_DVR1";
-    // type "CC";
-    // county "Santa Clara";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
     state "California";
     latitude 37.3767;
     longitude -121.9508;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "154.0 MW";
 }
@@ -1432,12 +1379,13 @@ object powerplant
 object powerplant
 {
     name "DYNEGY_MOSS_LANDING_POWER_PLANT_CC1";
-    // type "CC";
-    // county "Monterey";
+    generator "CC";
+    fuel "NG";
+    county "Monterey";
     state "California";
     latitude 36.804837;
     longitude -121.7822;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "699.0 MW";
 }
@@ -1445,90 +1393,41 @@ object powerplant
 object powerplant
 {
     name "DYNEGY_MOSS_LANDING_POWER_PLANT_CC2";
-    // type "CC";
-    // county "Monterey";
+    generator "CC";
+    fuel "NG";
+    county "Monterey";
     state "California";
     latitude 36.804837;
     longitude -121.7822;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "699.0 MW";
 }
 
 object powerplant
 {
-    name "DYNEGY_OAKLAND_POWER_PLANT_GEN1";
-    // type "GT";
-    // county "Alameda";
-    state "California";
-    latitude 37.79675;
-    longitude -122.28185;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "74.5 MW";
-}
-
-object powerplant
-{
-    name "DYNEGY_OAKLAND_POWER_PLANT_GEN2";
-    // type "GT";
-    // county "Alameda";
-    state "California";
-    latitude 37.79675;
-    longitude -122.28185;
-    out_svc INIT;
-    out_svc "2021-01-01 00:00:00 UTC";
-    operating_capacity "74.5 MW";
-}
-
-object powerplant
-{
-    name "DYNEGY_OAKLAND_POWER_PLANT_GEN3";
-    // type "GT";
-    // county "Alameda";
-    state "California";
-    latitude 37.79675;
-    longitude -122.28185;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "74.5 MW";
-}
-
-object powerplant
-{
     name "EL_CAJON_ENERGY_CENTER_GEN1";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.796106;
     longitude -116.9721;
-    out_svc "2010-01-01 00:00:00 UTC";
+    in_svc "2010-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
 
 object powerplant
 {
-    name "EL_CENTRO_POWER_STATION_4";
-    // type "ST";
-    // county "Imperial";
-    state "California";
-    latitude 32.802222;
-    longitude -115.54;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "82.0 MW";
-}
-
-object powerplant
-{
     name "EL_CENTRO_POWER_STATION_STM2";
-    // type "CC";
-    // county "Imperial";
+    generator "CC";
+    fuel "NG";
+    county "Imperial";
     state "California";
     latitude 32.802222;
     longitude -115.54;
-    out_svc "1993-01-01 00:00:00 UTC";
+    in_svc "1993-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "124.0 MW";
 }
@@ -1536,38 +1435,27 @@ object powerplant
 object powerplant
 {
     name "EL_CENTRO_POWER_STATION_STM3";
-    // type "CC";
-    // county "Imperial";
+    generator "CC";
+    fuel "NG";
+    county "Imperial";
     state "California";
     latitude 32.802222;
     longitude -115.54;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "152.0 MW";
 }
 
 object powerplant
 {
-    name "EL_SEGUNDO_COGENERATION_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.9058;
-    longitude -118.4031;
-    out_svc "2013-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "180.0 MW";
-}
-
-object powerplant
-{
     name "EL_SEGUNDO_ENERGY_CENTER_1011";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.910556;
     longitude -118.425;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "269.0 MW";
 }
@@ -1575,12 +1463,13 @@ object powerplant
 object powerplant
 {
     name "EL_SEGUNDO_ENERGY_CENTER_2021";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.910556;
     longitude -118.425;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "269.0 MW";
 }
@@ -1588,12 +1477,13 @@ object powerplant
 object powerplant
 {
     name "ELK_HILLS_POWER_STATION_G541";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.280318;
     longitude -119.4707;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "623.0 MW";
 }
@@ -1601,38 +1491,27 @@ object powerplant
 object powerplant
 {
     name "ELLWOOD_POWER_STATION_1";
-    // type "GT";
-    // county "Santa Barbara";
+    generator "GT";
+    fuel "NG";
+    county "Santa Barbara";
     state "California";
     latitude 34.431419;
     longitude -119.9001;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "58.0 MW";
 }
 
 object powerplant
 {
-    name "ENCOGENERATION_POWER_STATION_CC1";
-    // type "CC";
-    // county "Whatcom";
-    state "Washington";
-    latitude 48.746;
-    longitude -122.486;
-    out_svc "1993-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "176.0 MW";
-}
-
-object powerplant
-{
     name "ESCONDIDO_ENERGY_CENTER_CTG1";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.1261;
     longitude -117.1172;
-    out_svc "2014-01-01 00:00:00 UTC";
+    in_svc "2014-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "54.0 MW";
 }
@@ -1640,38 +1519,27 @@ object powerplant
 object powerplant
 {
     name "EVANDER_ANDREWS_POWER_COMPLEX_1";
-    // type "GT";
-    // county "Elmore";
+    generator "GT";
+    fuel "NG";
+    county "Elmore";
     state "Idaho";
     latitude 43.179176;
     longitude -115.7343;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "179.0 MW";
 }
 
 object powerplant
 {
-    name "FERNDALE_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Whatcom";
-    state "Washington";
-    latitude 48.828996;
-    longitude -122.6851;
-    out_svc "1994-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "286.0 MW";
-}
-
-object powerplant
-{
     name "FORT_CHURCHILL_POWER_STATION_1";
-    // type "ST";
-    // county "Lyon";
+    generator "ST";
+    fuel "NG";
+    county "Lyon";
     state "Nevada";
     latitude 39.1281;
     longitude -119.1322;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "115.0 MW";
 }
@@ -1679,51 +1547,27 @@ object powerplant
 object powerplant
 {
     name "FORT_CHURCHILL_POWER_STATION_2";
-    // type "ST";
-    // county "Lyon";
+    generator "ST";
+    fuel "NG";
+    county "Lyon";
     state "Nevada";
     latitude 39.1281;
     longitude -119.1322;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "115.0 MW";
 }
 
 object powerplant
 {
-    name "FORT_LUPTON_POWER_STATION_1";
-    // type "GT";
-    // county "Weld";
-    state "Colorado";
-    latitude 40.0922;
-    longitude -104.796;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
-    name "FORT_LUPTON_POWER_STATION_2";
-    // type "GT";
-    // county "Weld";
-    state "Colorado";
-    latitude 40.0922;
-    longitude -104.796;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
     name "FORT_ST_VRAIN_POWER_STATION_5";
-    // type "GT";
-    // county "Weld";
+    generator "GT";
+    fuel "NG";
+    county "Weld";
     state "Colorado";
     latitude 40.2461;
     longitude -104.8742;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "140.0 MW";
 }
@@ -1731,12 +1575,13 @@ object powerplant
 object powerplant
 {
     name "FORT_ST_VRAIN_POWER_STATION_6";
-    // type "GT";
-    // county "Weld";
+    generator "GT";
+    fuel "NG";
+    county "Weld";
     state "Colorado";
     latitude 40.2461;
     longitude -104.8742;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "140.0 MW";
 }
@@ -1744,12 +1589,13 @@ object powerplant
 object powerplant
 {
     name "FORT_ST_VRAIN_POWER_STATION_FSV0";
-    // type "CC";
-    // county "Weld";
+    generator "CC";
+    fuel "NG";
+    county "Weld";
     state "Colorado";
     latitude 40.2461;
     longitude -104.8742;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "868.0 MW";
 }
@@ -1757,90 +1603,41 @@ object powerplant
 object powerplant
 {
     name "FOSTER_WHEELER_MARTINEZ_POWER_STATION_CC1";
-    // type "CC";
-    // county "Contra Costa";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.0244;
     longitude -122.0589;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "114.0 MW";
 }
 
 object powerplant
 {
-    name "FRANK_KNUTSON_POWER_STATION_BR1";
-    // type "GT";
-    // county "Adams";
-    state "Colorado";
-    latitude 39.941129;
-    longitude -104.682;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "77.0 MW";
-}
-
-object powerplant
-{
-    name "FRANK_KNUTSON_POWER_STATION_BR2";
-    // type "GT";
-    // county "Adams";
-    state "Colorado";
-    latitude 39.941129;
-    longitude -104.682;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "77.0 MW";
-}
-
-object powerplant
-{
     name "FREDERICKSON_POWER_POWER_STATION_FP1";
-    // type "CC";
-    // county "Pierce";
+    generator "CC";
+    fuel "NG";
+    county "Pierce";
     state "Washington";
     latitude 47.086111;
     longitude -122.3657;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "318.0 MW";
 }
 
 object powerplant
 {
-    name "FREDERICKSON_POWER_STATION_1";
-    // type "GT";
-    // county "Pierce";
-    state "Washington";
-    latitude 47.079722;
-    longitude -122.365;
-    out_svc "1981-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "89.0 MW";
-}
-
-object powerplant
-{
-    name "FREDERICKSON_POWER_STATION_2";
-    // type "GT";
-    // county "Pierce";
-    state "Washington";
-    latitude 47.079722;
-    longitude -122.365;
-    out_svc "1981-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "89.0 MW";
-}
-
-object powerplant
-{
     name "FRESNO_COGENERATION_PARTNERS_POWER_STATION_CC1";
-    // type "CC";
-    // county "Fresno";
+    generator "CC";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.617022;
     longitude -120.0998;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "62.0 MW";
 }
@@ -1848,12 +1645,13 @@ object powerplant
 object powerplant
 {
     name "FRONT_RANGE_POWER_PLANT_CC1";
-    // type "CC";
-    // county "El Paso";
+    generator "CC";
+    fuel "NG";
+    county "El Paso";
     state "Colorado";
     latitude 38.6281;
     longitude -104.7069;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "554.0 MW";
 }
@@ -1861,12 +1659,13 @@ object powerplant
 object powerplant
 {
     name "GADSBY_POWER_STATION_1";
-    // type "ST";
-    // county "Salt Lake";
+    generator "ST";
+    fuel "NG";
+    county "Salt Lake";
     state "Utah";
     latitude 40.7686;
     longitude -111.9289;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "69.0 MW";
 }
@@ -1874,12 +1673,13 @@ object powerplant
 object powerplant
 {
     name "GADSBY_POWER_STATION_2";
-    // type "ST";
-    // county "Salt Lake";
+    generator "ST";
+    fuel "NG";
+    county "Salt Lake";
     state "Utah";
     latitude 40.7686;
     longitude -111.9289;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "69.0 MW";
 }
@@ -1887,12 +1687,13 @@ object powerplant
 object powerplant
 {
     name "GADSBY_POWER_STATION_3";
-    // type "ST";
-    // county "Salt Lake";
+    generator "ST";
+    fuel "NG";
+    county "Salt Lake";
     state "Utah";
     latitude 40.7686;
     longitude -111.9289;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "134.0 MW";
 }
@@ -1900,12 +1701,13 @@ object powerplant
 object powerplant
 {
     name "GADSBY_POWER_STATION_4";
-    // type "GT";
-    // county "Salt Lake";
+    generator "GT";
+    fuel "NG";
+    county "Salt Lake";
     state "Utah";
     latitude 40.7686;
     longitude -111.9289;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "71.0 MW";
 }
@@ -1913,12 +1715,13 @@ object powerplant
 object powerplant
 {
     name "GADSBY_POWER_STATION_5";
-    // type "GT";
-    // county "Salt Lake";
+    generator "GT";
+    fuel "NG";
+    county "Salt Lake";
     state "Utah";
     latitude 40.7686;
     longitude -111.9289;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "71.0 MW";
 }
@@ -1926,12 +1729,13 @@ object powerplant
 object powerplant
 {
     name "GADSBY_POWER_STATION_6";
-    // type "GT";
-    // county "Salt Lake";
+    generator "GT";
+    fuel "NG";
+    county "Salt Lake";
     state "Utah";
     latitude 40.7686;
     longitude -111.9289;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "71.0 MW";
 }
@@ -1939,12 +1743,13 @@ object powerplant
 object powerplant
 {
     name "GATEWAY_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Contra Costa";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.0175;
     longitude -121.7587;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "620.0 MW";
 }
@@ -1952,12 +1757,13 @@ object powerplant
 object powerplant
 {
     name "GILA_RIVER_POWER_STATION_BL03";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 32.975;
     longitude -112.6944;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "619.0 MW";
 }
@@ -1965,12 +1771,13 @@ object powerplant
 object powerplant
 {
     name "GILA_RIVER_POWER_STATION_BL04";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 32.975;
     longitude -112.6944;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "619.0 MW";
 }
@@ -1978,12 +1785,13 @@ object powerplant
 object powerplant
 {
     name "GILA_RIVER_POWER_STATION_PB1";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 32.975;
     longitude -112.6944;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "619.0 MW";
 }
@@ -1991,12 +1799,13 @@ object powerplant
 object powerplant
 {
     name "GILA_RIVER_POWER_STATION_PB2";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 32.975;
     longitude -112.6944;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "619.0 MW";
 }
@@ -2004,12 +1813,13 @@ object powerplant
 object powerplant
 {
     name "GILROY_POWER_PLANT_CC1";
-    // type "CC";
-    // county "Santa Clara";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
     state "California";
     latitude 37.0001;
     longitude -121.5367;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "130.0 MW";
 }
@@ -2017,12 +1827,13 @@ object powerplant
 object powerplant
 {
     name "GLENARM_POWER_STATION_1";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.126;
     longitude -118.1494;
-    out_svc "2016-01-01 00:00:00 UTC";
+    in_svc "2016-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "87.0 MW";
 }
@@ -2030,12 +1841,13 @@ object powerplant
 object powerplant
 {
     name "GLENARM_POWER_STATION_GT3";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.126;
     longitude -118.1494;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -2043,12 +1855,13 @@ object powerplant
 object powerplant
 {
     name "GLENARM_POWER_STATION_GT4";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.126;
     longitude -118.1494;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -2056,12 +1869,13 @@ object powerplant
 object powerplant
 {
     name "GOAL_LINE_POWER_STATION_CC1";
-    // type "CC";
-    // county "San Diego";
+    generator "CC";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.1185;
     longitude -117.0995;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "51.0 MW";
 }
@@ -2069,12 +1883,13 @@ object powerplant
 object powerplant
 {
     name "GOLDENDALE_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Klickitat";
+    generator "CC";
+    fuel "NG";
+    county "Klickitat";
     state "Washington";
     latitude 45.8114;
     longitude -120.833;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "303.0 MW";
 }
@@ -2082,12 +1897,13 @@ object powerplant
 object powerplant
 {
     name "GRAPELAND_HYBRID_POWER_STATION_1";
-    // type "GT";
-    // county "San Bernardino";
+    generator "GT";
+    fuel "NG";
+    county "San Bernardino";
     state "California";
     latitude 34.0903;
     longitude -117.5343;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -2095,51 +1911,27 @@ object powerplant
 object powerplant
 {
     name "GRAYS_HARBOR_ENERGY_FACILITY_CC01";
-    // type "CC";
-    // county "Grays Harbor";
+    generator "CC";
+    fuel "NG";
+    county "Grays Harbor";
     state "Washington";
     latitude 46.9692;
     longitude -123.48;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "715.0 MW";
 }
 
 object powerplant
 {
-    name "GRAYSON_POWER_STATION_4";
-    // type "ST";
-    // county "Los Angeles";
-    state "California";
-    latitude 34.1556;
-    longitude -118.2782;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
-    name "GRAYSON_POWER_STATION_5";
-    // type "ST";
-    // county "Los Angeles";
-    state "California";
-    latitude 34.1556;
-    longitude -118.2782;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
     name "GRAYSON_POWER_STATION_9";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.1556;
     longitude -118.2782;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "57.0 MW";
 }
@@ -2147,12 +1939,13 @@ object powerplant
 object powerplant
 {
     name "GRAYSON_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.1556;
     longitude -118.2782;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "121.0 MW";
 }
@@ -2160,12 +1953,13 @@ object powerplant
 object powerplant
 {
     name "GREENLEAF_2_POWER_PLANT_GEN1";
-    // type "GT";
-    // county "Sutter";
+    generator "GT";
+    fuel "NG";
+    county "Sutter";
     state "California";
     latitude 39.1365;
     longitude -121.6397;
-    out_svc "1989-01-01 00:00:00 UTC";
+    in_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -2173,38 +1967,27 @@ object powerplant
 object powerplant
 {
     name "GRIFFITH_ENERGY_POWER_STATION_1111";
-    // type "CC";
-    // county "Mohave";
+    generator "CC";
+    fuel "NG";
+    county "Mohave";
     state "Arizona";
     latitude 35.054029;
     longitude -114.1333;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "655.0 MW";
 }
 
 object powerplant
 {
-    name "H._WILSON_SUNDT_GENERATING_STATION_4";
-    // type "ST";
-    // county "Pima";
-    state "Arizona";
-    latitude 32.16;
-    longitude -110.9047;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "173.0 MW";
-}
-
-object powerplant
-{
     name "H._WILSON_SUNDT_GENERATING_STATION_IC";
-    // type "IC";
-    // county "Pima";
+    generator "IC";
+    fuel "NG";
+    county "Pima";
     state "Arizona";
     latitude 32.16;
     longitude -110.905;
-    out_svc "2020-01-01 00:00:00 UTC";
+    in_svc "2020-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "188.0 MW";
 }
@@ -2212,12 +1995,13 @@ object powerplant
 object powerplant
 {
     name "H._WILSON_SUNDT_GENERATING_STATION_ST3";
-    // type "ST";
-    // county "Pima";
+    generator "ST";
+    fuel "NG";
+    county "Pima";
     state "Arizona";
     latitude 32.16;
     longitude -110.9047;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "114.0 MW";
 }
@@ -2225,12 +2009,13 @@ object powerplant
 object powerplant
 {
     name "HANFORD_ENERGY_PARK_EMERGENCY_PEAKER_PROJECT_1";
-    // type "GT";
-    // county "Kings";
+    generator "GT";
+    fuel "NG";
+    county "Kings";
     state "California";
     latitude 36.3315688718025;
     longitude -119.646187814904;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "95.0 MW";
 }
@@ -2238,103 +2023,27 @@ object powerplant
 object powerplant
 {
     name "HARBOR_COGENERATION_POWER_STATION_HCCC";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.7771;
     longitude -118.2303;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "107.0 MW";
 }
 
 object powerplant
 {
-    name "HARBOR_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.7706;
-    longitude -118.2656;
-    out_svc "1995-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "246.0 MW";
-}
-
-object powerplant
-{
-    name "HARBOR_POWER_STATION_GT10";
-    // type "GT";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.7706;
-    longitude -118.2656;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
-    name "HARBOR_POWER_STATION_GT11";
-    // type "GT";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.7706;
-    longitude -118.2656;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
-    name "HARBOR_POWER_STATION_GT12";
-    // type "GT";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.7706;
-    longitude -118.2656;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
-    name "HARBOR_POWER_STATION_GT13";
-    // type "GT";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.7706;
-    longitude -118.2656;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
-    name "HARBOR_POWER_STATION_GT14";
-    // type "GT";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.7706;
-    longitude -118.2656;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
     name "HARQUAHALA_GENERATING_PROJECT_BLK1";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.47596;
     longitude -113.1134;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "426.0 MW";
 }
@@ -2342,12 +2051,13 @@ object powerplant
 object powerplant
 {
     name "HARQUAHALA_GENERATING_PROJECT_BLK2";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.47596;
     longitude -113.1134;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "426.0 MW";
 }
@@ -2355,12 +2065,13 @@ object powerplant
 object powerplant
 {
     name "HARQUAHALA_GENERATING_PROJECT_BLK3";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.47596;
     longitude -113.1134;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "426.0 MW";
 }
@@ -2368,12 +2079,13 @@ object powerplant
 object powerplant
 {
     name "HARRY_ALLEN_POWER_STATION_GT1";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.430554;
     longitude -114.9024;
-    out_svc "1995-01-01 00:00:00 UTC";
+    in_svc "1995-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "102.0 MW";
 }
@@ -2381,12 +2093,13 @@ object powerplant
 object powerplant
 {
     name "HARRY_ALLEN_POWER_STATION_GT4";
-    // type "GT";
-    // county "Clark";
+    generator "GT";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.430554;
     longitude -114.9024;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "85.0 MW";
 }
@@ -2394,12 +2107,13 @@ object powerplant
 object powerplant
 {
     name "HARRY_ALLEN_POWER_STATION_PB1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.430554;
     longitude -114.9024;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "559.0 MW";
 }
@@ -2407,12 +2121,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_1";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "230.0 MW";
 }
@@ -2420,12 +2135,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_2";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "230.0 MW";
 }
@@ -2433,12 +2149,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_11";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -2446,12 +2163,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_12";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -2459,12 +2177,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_13";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -2472,12 +2191,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_14";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -2485,12 +2205,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_15";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -2498,12 +2219,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_16";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -2511,12 +2233,13 @@ object powerplant
 object powerplant
 {
     name "HAYNES_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.764741;
     longitude -118.0991;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "630.0 MW";
 }
@@ -2524,12 +2247,13 @@ object powerplant
 object powerplant
 {
     name "HENRIETTA_PEAKER_PROJECT_1";
-    // type "GT";
-    // county "Kings";
+    generator "GT";
+    fuel "NG";
+    county "Kings";
     state "California";
     latitude 36.3491838188483;
     longitude -119.784642615204;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "95.0 MW";
 }
@@ -2537,12 +2261,13 @@ object powerplant
 object powerplant
 {
     name "HERMISTON_GENERATING_PLANT_CC1";
-    // type "CC";
-    // county "Umatilla";
+    generator "CC";
+    fuel "NG";
+    county "Umatilla";
     state "Oregon";
     latitude 45.8042;
     longitude -119.37;
-    out_svc "1996-01-01 00:00:00 UTC";
+    in_svc "1996-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "311.0 MW";
 }
@@ -2550,12 +2275,13 @@ object powerplant
 object powerplant
 {
     name "HERMISTON_GENERATING_PLANT_CC2";
-    // type "CC";
-    // county "Umatilla";
+    generator "CC";
+    fuel "NG";
+    county "Umatilla";
     state "Oregon";
     latitude 45.8042;
     longitude -119.37;
-    out_svc "1996-01-01 00:00:00 UTC";
+    in_svc "1996-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "311.0 MW";
 }
@@ -2563,12 +2289,13 @@ object powerplant
 object powerplant
 {
     name "HERMISTON_POWER_PROJECT_CC1";
-    // type "CC";
-    // county "Umatilla";
+    generator "CC";
+    fuel "NG";
+    county "Umatilla";
     state "Oregon";
     latitude 45.794046;
     longitude -119.3133;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "689.0 MW";
 }
@@ -2576,12 +2303,13 @@ object powerplant
 object powerplant
 {
     name "HIGGINS_GENERATING_STATION_PB1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 35.6139;
     longitude -115.3561;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "688.0 MW";
 }
@@ -2589,12 +2317,13 @@ object powerplant
 object powerplant
 {
     name "HIGH_DESERT_POWER_PLANT_STG1";
-    // type "CC";
-    // county "San Bernardino";
+    generator "CC";
+    fuel "NG";
+    county "San Bernardino";
     state "California";
     latitude 34.5953;
     longitude -117.3647;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "852.0 MW";
 }
@@ -2602,38 +2331,27 @@ object powerplant
 object powerplant
 {
     name "HOBBS_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Lea";
+    generator "CC";
+    fuel "NG";
+    county "Lea";
     state "New Mexico";
     latitude 32.728333;
     longitude -103.3094;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "682.0 MW";
 }
 
 object powerplant
 {
-    name "HUMBOLDT_BAY_POWER_STATION_IC";
-    // type "IC";
-    // county "Humboldt";
-    state "California";
-    latitude 40.7415;
-    longitude -124.2103;
-    out_svc "2010-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "167.0 MW";
-}
-
-object powerplant
-{
     name "HUNTINGTON_BEACH_GENERATING_STATION_2";
-    // type "ST";
-    // county "Orange";
+    generator "ST";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.645618;
     longitude -117.9794;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "218.0 MW";
 }
@@ -2641,12 +2359,13 @@ object powerplant
 object powerplant
 {
     name "HUNTINGTON_BEACH_GENERATING_STATION_CCT1";
-    // type "CC";
-    // county "Orange";
+    generator "CC";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.645618;
     longitude -117.9794;
-    out_svc "2020-01-01 00:00:00 UTC";
+    in_svc "2020-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "699.0 MW";
 }
@@ -2654,12 +2373,13 @@ object powerplant
 object powerplant
 {
     name "INDIGO_ENERGY_FACILITY_CTG1";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.910873;
     longitude -116.553;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -2667,12 +2387,13 @@ object powerplant
 object powerplant
 {
     name "INDIGO_ENERGY_FACILITY_CTG2";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.910873;
     longitude -116.553;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -2680,12 +2401,13 @@ object powerplant
 object powerplant
 {
     name "INDIGO_ENERGY_FACILITY_CTG3";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.910873;
     longitude -116.553;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -2693,12 +2415,13 @@ object powerplant
 object powerplant
 {
     name "INLAND_EMPIRE_ENERGY_CENTER_1";
-    // type "CC";
-    // county "Riverside";
+    generator "CC";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.738839;
     longitude -117.1704;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc "2020-01-01 00:00:00 UTC";
     operating_capacity "410.0 MW";
 }
@@ -2706,64 +2429,27 @@ object powerplant
 object powerplant
 {
     name "INLAND_EMPIRE_ENERGY_CENTER_2";
-    // type "CC";
-    // county "Riverside";
+    generator "CC";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.738839;
     longitude -117.1704;
-    out_svc "2010-01-01 00:00:00 UTC";
+    in_svc "2010-01-01 00:00:00 UTC";
     out_svc "2020-01-01 00:00:00 UTC";
     operating_capacity "410.0 MW";
 }
 
 object powerplant
 {
-    name "IVANPAH_1_POWER_STATION_ST1";
-    // type "ST";
-    // county "San Bernardino";
-    state "California";
-    latitude 35.533056;
-    longitude -115.4525;
-    out_svc "2013-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "126.0 MW";
-}
-
-object powerplant
-{
-    name "IVANPAH_2_POWER_STATION_ST1";
-    // type "ST";
-    // county "San Bernardino";
-    state "California";
-    latitude 35.556111;
-    longitude -115.4686;
-    out_svc "2013-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "133.0 MW";
-}
-
-object powerplant
-{
-    name "IVANPAH_3_POWER_STATION_ST1";
-    // type "ST";
-    // county "San Bernardino";
-    state "California";
-    latitude 35.580833;
-    longitude -115.4825;
-    out_svc "2013-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "133.0 MW";
-}
-
-object powerplant
-{
     name "JM_SHAFER_GENERATING_STATION_J272";
-    // type "CC";
-    // county "Weld";
+    generator "CC";
+    fuel "NG";
+    county "Weld";
     state "Colorado";
     latitude 40.0986;
     longitude -104.7736;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "397.0 MW";
 }
@@ -2771,12 +2457,13 @@ object powerplant
 object powerplant
 {
     name "KERN_RIVER_COGENERATION_POWER_STATION_GTAG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.4515;
     longitude -118.9849;
-    out_svc "1985-01-01 00:00:00 UTC";
+    in_svc "1985-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -2784,12 +2471,13 @@ object powerplant
 object powerplant
 {
     name "KERN_RIVER_COGENERATION_POWER_STATION_GTBG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.4515;
     longitude -118.9849;
-    out_svc "1985-01-01 00:00:00 UTC";
+    in_svc "1985-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -2797,12 +2485,13 @@ object powerplant
 object powerplant
 {
     name "KERN_RIVER_COGENERATION_POWER_STATION_GTCG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.4515;
     longitude -118.9849;
-    out_svc "1985-01-01 00:00:00 UTC";
+    in_svc "1985-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -2810,12 +2499,13 @@ object powerplant
 object powerplant
 {
     name "KERN_RIVER_COGENERATION_POWER_STATION_GTDG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.4515;
     longitude -118.9849;
-    out_svc "1985-01-01 00:00:00 UTC";
+    in_svc "1985-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -2823,12 +2513,13 @@ object powerplant
 object powerplant
 {
     name "KING_CITY_POWER_PLANT_CC01";
-    // type "CC";
-    // county "Monterey";
+    generator "CC";
+    fuel "NG";
+    county "Monterey";
     state "California";
     latitude 36.225;
     longitude -121.1278;
-    out_svc "1989-01-01 00:00:00 UTC";
+    in_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "133.0 MW";
 }
@@ -2836,77 +2527,27 @@ object powerplant
 object powerplant
 {
     name "KLAMATH_COGENERATION_PLANT_CC1";
-    // type "CC";
-    // county "Klamath";
+    generator "CC";
+    fuel "NG";
+    county "Klamath";
     state "Oregon";
     latitude 42.173889;
     longitude -121.8106;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "502.0 MW";
 }
 
 object powerplant
 {
-    name "KYRENE_POWER_STATION_KY4";
-    // type "GT";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.3556;
-    longitude -111.9353;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "53.0 MW";
-}
-
-object powerplant
-{
-    name "KYRENE_POWER_STATION_KY5";
-    // type "GT";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.3556;
-    longitude -111.9353;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "60.0 MW";
-}
-
-object powerplant
-{
-    name "KYRENE_POWER_STATION_KY6";
-    // type "GT";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.3556;
-    longitude -111.9353;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "60.0 MW";
-}
-
-object powerplant
-{
-    name "KYRENE_POWER_STATION_KYS7";
-    // type "CC";
-    // county "Maricopa";
-    state "Arizona";
-    latitude 33.3556;
-    longitude -111.9353;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "292.0 MW";
-}
-
-object powerplant
-{
     name "LA_PALOMA_GENERATING_PLANT_GEN1";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2956;
     longitude -119.5919;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "289.0 MW";
 }
@@ -2914,12 +2555,13 @@ object powerplant
 object powerplant
 {
     name "LA_PALOMA_GENERATING_PLANT_GEN2";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2956;
     longitude -119.5919;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "289.0 MW";
 }
@@ -2927,12 +2569,13 @@ object powerplant
 object powerplant
 {
     name "LA_PALOMA_GENERATING_PLANT_GEN3";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2956;
     longitude -119.5919;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "289.0 MW";
 }
@@ -2940,12 +2583,13 @@ object powerplant
 object powerplant
 {
     name "LA_PALOMA_GENERATING_PLANT_GEN4";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2956;
     longitude -119.5919;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "289.0 MW";
 }
@@ -2953,12 +2597,13 @@ object powerplant
 object powerplant
 {
     name "LAKE_ONE_POWER_STATION_L1";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.1772;
     longitude -118.3147;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -2966,12 +2611,13 @@ object powerplant
 object powerplant
 {
     name "LAKE_SIDE_POWER_PLANT_CC1";
-    // type "CC";
-    // county "Utah";
+    generator "CC";
+    fuel "NG";
+    county "Utah";
     state "Utah";
     latitude 40.331667;
     longitude -111.7542;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "657.0 MW";
 }
@@ -2979,12 +2625,13 @@ object powerplant
 object powerplant
 {
     name "LAKE_SIDE_POWER_PLANT_CC2";
-    // type "CC";
-    // county "Utah";
+    generator "CC";
+    fuel "NG";
+    county "Utah";
     state "Utah";
     latitude 40.331667;
     longitude -111.7542;
-    out_svc "2014-01-01 00:00:00 UTC";
+    in_svc "2014-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "728.0 MW";
 }
@@ -2992,51 +2639,27 @@ object powerplant
 object powerplant
 {
     name "LANGLEY_GULCH_POWER_PLANT_LG1";
-    // type "CC";
-    // county "Payette";
+    generator "CC";
+    fuel "NG";
+    county "Payette";
     state "Idaho";
     latitude 43.904444;
     longitude -116.8197;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "319.0 MW";
 }
 
 object powerplant
 {
-    name "LARKSPUR_ENERGY_FACILITY_CTG1";
-    // type "GT";
-    // county "San Diego";
-    state "California";
-    latitude 32.567041;
-    longitude -116.9442;
-    out_svc "2001-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
-    name "LARKSPUR_ENERGY_FACILITY_CTG2";
-    // type "GT";
-    // county "San Diego";
-    state "California";
-    latitude 32.567041;
-    longitude -116.9442;
-    out_svc "2001-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
     name "LAS_VEGAS_GENERATING_STATION_CCB1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.2319;
     longitude -115.1222;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -3044,12 +2667,13 @@ object powerplant
 object powerplant
 {
     name "LAS_VEGAS_GENERATING_STATION_CCB2";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.2319;
     longitude -115.1222;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "149.0 MW";
 }
@@ -3057,51 +2681,27 @@ object powerplant
 object powerplant
 {
     name "LAS_VEGAS_GENERATING_STATION_CCB3";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.2319;
     longitude -115.1222;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "149.0 MW";
 }
 
 object powerplant
 {
-    name "LIMON_GENERATING_STATION_L1";
-    // type "GT";
-    // county "Lincoln";
-    state "Colorado";
-    latitude 39.2038;
-    longitude -103.7005;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "77.0 MW";
-}
-
-object powerplant
-{
-    name "LIMON_GENERATING_STATION_L2";
-    // type "GT";
-    // county "Lincoln";
-    state "Colorado";
-    latitude 39.2038;
-    longitude -103.7005;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "77.0 MW";
-}
-
-object powerplant
-{
     name "LODI_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "San Joaquin";
+    generator "CC";
+    fuel "NG";
+    county "San Joaquin";
     state "California";
     latitude 38.088056;
     longitude -121.3875;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "289.0 MW";
 }
@@ -3109,12 +2709,13 @@ object powerplant
 object powerplant
 {
     name "LONG_BEACH_GENERATION_POWER_STATION_CT1";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.7641;
     longitude -118.2248;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "63.0 MW";
 }
@@ -3122,12 +2723,13 @@ object powerplant
 object powerplant
 {
     name "LONG_BEACH_GENERATION_POWER_STATION_CT2";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.7641;
     longitude -118.2248;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "63.0 MW";
 }
@@ -3135,12 +2737,13 @@ object powerplant
 object powerplant
 {
     name "LONG_BEACH_GENERATION_POWER_STATION_CT3";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.7641;
     longitude -118.2248;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "63.0 MW";
 }
@@ -3148,38 +2751,27 @@ object powerplant
 object powerplant
 {
     name "LONG_BEACH_GENERATION_POWER_STATION_CT4";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.7641;
     longitude -118.2248;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "63.0 MW";
 }
 
 object powerplant
 {
-    name "LOS_ANGELES_REFINERY_WILMINGTON_POWER_STATION_G2";
-    // type "GT";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.7686;
-    longitude -118.2867;
-    out_svc "1988-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "59.0 MW";
-}
-
-object powerplant
-{
     name "LOS_ESTEROS_CRITICAL_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Santa Clara";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
     state "California";
     latitude 37.425;
     longitude -121.9319;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "306.0 MW";
 }
@@ -3187,12 +2779,13 @@ object powerplant
 object powerplant
 {
     name "LOS_MEDANOS_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Contra Costa";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.030071;
     longitude -121.873;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "678.0 MW";
 }
@@ -3200,12 +2793,13 @@ object powerplant
 object powerplant
 {
     name "LUNA_ENERGY_FACILITY_CC1";
-    // type "CC";
-    // county "Luna";
+    generator "CC";
+    fuel "NG";
+    county "Luna";
     state "New Mexico";
     latitude 32.299349;
     longitude -107.7834;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "650.0 MW";
 }
@@ -3213,12 +2807,13 @@ object powerplant
 object powerplant
 {
     name "MADDOX_POWER_STATION_1";
-    // type "ST";
-    // county "Lea";
+    generator "ST";
+    fuel "NG";
+    county "Lea";
     state "New Mexico";
     latitude 32.714224;
     longitude -103.3015;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "114.0 MW";
 }
@@ -3226,12 +2821,13 @@ object powerplant
 object powerplant
 {
     name "MADDOX_POWER_STATION_2";
-    // type "GT";
-    // county "Lea";
+    generator "GT";
+    fuel "NG";
+    county "Lea";
     state "New Mexico";
     latitude 32.714224;
     longitude -103.3015;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "87.0 MW";
 }
@@ -3239,12 +2835,13 @@ object powerplant
 object powerplant
 {
     name "MAGNOLIA_POWER_PROJECT_CC1";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.1786;
     longitude -118.3153;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "388.0 MW";
 }
@@ -3252,12 +2849,13 @@ object powerplant
 object powerplant
 {
     name "MALAGA_POWER_STATION_GT-1";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6697;
     longitude -119.7404;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -3265,38 +2863,27 @@ object powerplant
 object powerplant
 {
     name "MALAGA_POWER_STATION_GT-2";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6697;
     longitude -119.7404;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
 
 object powerplant
 {
-    name "MALBURG_POWER_STATION_MGS";
-    // type "CC";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.9986;
-    longitude -118.2219;
-    out_svc "2005-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "130.0 MW";
-}
-
-object powerplant
-{
     name "MANCHIEF_ELECTRIC_GENERATING_STATION_UN1";
-    // type "GT";
-    // county "Morgan";
+    generator "GT";
+    fuel "NG";
+    county "Morgan";
     state "Colorado";
     latitude 40.217143;
     longitude -103.685;
-    out_svc "2000-01-01 00:00:00 UTC";
+    in_svc "2000-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "150.0 MW";
 }
@@ -3304,12 +2891,13 @@ object powerplant
 object powerplant
 {
     name "MANCHIEF_ELECTRIC_GENERATING_STATION_UN2";
-    // type "GT";
-    // county "Morgan";
+    generator "GT";
+    fuel "NG";
+    county "Morgan";
     state "Colorado";
     latitude 40.217143;
     longitude -103.685;
-    out_svc "2000-01-01 00:00:00 UTC";
+    in_svc "2000-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "150.0 MW";
 }
@@ -3317,12 +2905,13 @@ object powerplant
 object powerplant
 {
     name "MARIPOSA_ENERGY_PROJECT_CTG1";
-    // type "GT";
-    // county "Alameda";
+    generator "GT";
+    fuel "NG";
+    county "Alameda";
     state "California";
     latitude 37.789167;
     longitude -121.6019;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3330,12 +2919,13 @@ object powerplant
 object powerplant
 {
     name "MARIPOSA_ENERGY_PROJECT_CTG2";
-    // type "GT";
-    // county "Alameda";
+    generator "GT";
+    fuel "NG";
+    county "Alameda";
     state "California";
     latitude 37.789167;
     longitude -121.6019;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3343,12 +2933,13 @@ object powerplant
 object powerplant
 {
     name "MARIPOSA_ENERGY_PROJECT_CTG3";
-    // type "GT";
-    // county "Alameda";
+    generator "GT";
+    fuel "NG";
+    county "Alameda";
     state "California";
     latitude 37.789167;
     longitude -121.6019;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3356,12 +2947,13 @@ object powerplant
 object powerplant
 {
     name "MARIPOSA_ENERGY_PROJECT_CTG4";
-    // type "GT";
-    // county "Alameda";
+    generator "GT";
+    fuel "NG";
+    county "Alameda";
     state "California";
     latitude 37.789167;
     longitude -121.6019;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3369,12 +2961,13 @@ object powerplant
 object powerplant
 {
     name "MARSH_LANDING_GENERATING_STATION_1";
-    // type "GT";
-    // county "Contra Costa";
+    generator "GT";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.016944;
     longitude -121.765;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "207.0 MW";
 }
@@ -3382,12 +2975,13 @@ object powerplant
 object powerplant
 {
     name "MARSH_LANDING_GENERATING_STATION_2";
-    // type "GT";
-    // county "Contra Costa";
+    generator "GT";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.016944;
     longitude -121.765;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "207.0 MW";
 }
@@ -3395,12 +2989,13 @@ object powerplant
 object powerplant
 {
     name "MARSH_LANDING_GENERATING_STATION_3";
-    // type "GT";
-    // county "Contra Costa";
+    generator "GT";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.016944;
     longitude -121.765;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "207.0 MW";
 }
@@ -3408,12 +3003,13 @@ object powerplant
 object powerplant
 {
     name "MARSH_LANDING_GENERATING_STATION_4";
-    // type "GT";
-    // county "Contra Costa";
+    generator "GT";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.016944;
     longitude -121.765;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "207.0 MW";
 }
@@ -3421,12 +3017,13 @@ object powerplant
 object powerplant
 {
     name "MARTIN_DRAKE_POWER_PLANT_7";
-    // type "ST";
-    // county "El Paso";
+    generator "ST";
+    fuel "NG";
+    county "El Paso";
     state "Colorado";
     latitude 38.824444;
     longitude -104.8333;
-    out_svc INIT;
+    in_svc INIT;
     out_svc "2022-01-01 00:00:00 UTC";
     operating_capacity "132.0 MW";
 }
@@ -3434,12 +3031,13 @@ object powerplant
 object powerplant
 {
     name "MARTINEZ_REFINING_POWER_STATION_CC1";
-    // type "CC";
-    // county "Contra Costa";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
     state "California";
     latitude 38.0169;
     longitude -122.1117;
-    out_svc "1996-01-01 00:00:00 UTC";
+    in_svc "1996-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -3447,51 +3045,27 @@ object powerplant
 object powerplant
 {
     name "MCCLELLAN_(CA)_POWER_STATION_1";
-    // type "GT";
-    // county "Sacramento";
+    generator "GT";
+    fuel "NG";
+    county "Sacramento";
     state "California";
     latitude 38.652731;
     longitude -121.3933;
-    out_svc "1986-01-01 00:00:00 UTC";
+    in_svc "1986-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "77.0 MW";
 }
 
 object powerplant
 {
-    name "MCCLURE_POWER_STATION_1";
-    // type "GT";
-    // county "Stanislaus";
-    state "California";
-    latitude 37.62936;
-    longitude -120.9314;
-    out_svc "1980-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "71.0 MW";
-}
-
-object powerplant
-{
-    name "MCCLURE_POWER_STATION_2";
-    // type "GT";
-    // county "Stanislaus";
-    state "California";
-    latitude 37.62936;
-    longitude -120.9314;
-    out_svc "1981-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "71.0 MW";
-}
-
-object powerplant
-{
     name "MCGRATH_PEAKER_POWER_STATION_1";
-    // type "GT";
-    // county "Ventura";
+    generator "GT";
+    fuel "NG";
+    county "Ventura";
     state "California";
     latitude 34.205556;
     longitude -119.2469;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3499,12 +3073,13 @@ object powerplant
 object powerplant
 {
     name "MESQUITE_GENERATING_STATION_BLOCK_1_BLK1";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.345;
     longitude -112.8642;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "692.0 MW";
 }
@@ -3512,12 +3087,13 @@ object powerplant
 object powerplant
 {
     name "MESQUITE_GENERATING_STATION_BLOCK_2_BLK2";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.345047;
     longitude -112.8642;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "692.0 MW";
 }
@@ -3525,12 +3101,13 @@ object powerplant
 object powerplant
 {
     name "METCALF_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Santa Clara";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
     state "California";
     latitude 37.2207;
     longitude -121.7457;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "635.0 MW";
 }
@@ -3538,12 +3115,13 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_PEAKING_POWER_STATION_1";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.654114;
     longitude -120.5797;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "70.0 MW";
 }
@@ -3551,12 +3129,13 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_PEAKING_POWER_STATION_2";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.654114;
     longitude -120.5797;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "70.0 MW";
 }
@@ -3564,12 +3143,13 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_SUNSET_COGENERATION_POWER_STATION_A";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2269;
     longitude -119.6294;
-    out_svc "1989-01-01 00:00:00 UTC";
+    in_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "78.0 MW";
 }
@@ -3577,12 +3157,13 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_SUNSET_COGENERATION_POWER_STATION_B";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2269;
     longitude -119.6294;
-    out_svc "1989-01-01 00:00:00 UTC";
+    in_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "78.0 MW";
 }
@@ -3590,12 +3171,13 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_SUNSET_COGENERATION_POWER_STATION_C";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2269;
     longitude -119.6294;
-    out_svc "1989-01-01 00:00:00 UTC";
+    in_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "78.0 MW";
 }
@@ -3603,12 +3185,13 @@ object powerplant
 object powerplant
 {
     name "MINT_FARM_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Cowlitz";
+    generator "CC";
+    fuel "NG";
+    county "Cowlitz";
     state "Washington";
     latitude 46.138824;
     longitude -122.9855;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "319.0 MW";
 }
@@ -3616,12 +3199,13 @@ object powerplant
 object powerplant
 {
     name "MIRA_LOMA_PEAKER_POWER_STATION_1";
-    // type "GT";
-    // county "San Bernardino";
+    generator "GT";
+    fuel "NG";
+    county "San Bernardino";
     state "California";
     latitude 34.0053;
     longitude -117.5604;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3629,12 +3213,13 @@ object powerplant
 object powerplant
 {
     name "MIRAMAR_ENERGY_FACILITY_1";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.8769;
     longitude -117.1664;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
@@ -3642,12 +3227,13 @@ object powerplant
 object powerplant
 {
     name "MIRAMAR_ENERGY_FACILITY_2";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.8769;
     longitude -117.1664;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
@@ -3655,12 +3241,13 @@ object powerplant
 object powerplant
 {
     name "MOUNTAINVIEW_GENERATING_STATION_3";
-    // type "CC";
-    // county "San Bernardino";
+    generator "CC";
+    fuel "NG";
+    county "San Bernardino";
     state "California";
     latitude 34.0818;
     longitude -117.2418;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "518.0 MW";
 }
@@ -3668,12 +3255,13 @@ object powerplant
 object powerplant
 {
     name "MOUNTAINVIEW_GENERATING_STATION_4";
-    // type "CC";
-    // county "San Bernardino";
+    generator "CC";
+    fuel "NG";
+    county "San Bernardino";
     state "California";
     latitude 34.0818;
     longitude -117.2418;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "518.0 MW";
 }
@@ -3681,12 +3269,13 @@ object powerplant
 object powerplant
 {
     name "NAUGHTON_POWER_PLANT_3";
-    // type "ST";
-    // county "Lincoln";
+    generator "ST";
+    fuel "NG";
+    county "Lincoln";
     state "Wyoming";
     latitude 41.7581;
     longitude -110.5983;
-    out_svc "2021-01-01 00:00:00 UTC";
+    in_svc "2021-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "384.0 MW";
 }
@@ -3694,12 +3283,13 @@ object powerplant
 object powerplant
 {
     name "NEBO_POWER_STATION_CC1";
-    // type "CC";
-    // county "Utah";
+    generator "CC";
+    fuel "NG";
+    county "Utah";
     state "Utah";
     latitude 40.0614;
     longitude -111.7294;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "140.0 MW";
 }
@@ -3707,12 +3297,13 @@ object powerplant
 object powerplant
 {
     name "NEVADA_COGENERATION_ASSOCIATES_1_POWER_STATION_CC1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.343229;
     longitude -114.9207;
-    out_svc "1992-01-01 00:00:00 UTC";
+    in_svc "1992-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "95.0 MW";
 }
@@ -3720,38 +3311,27 @@ object powerplant
 object powerplant
 {
     name "NEVADA_COGENERATION_ASSOCIATES_2_POWER_STATION_STG1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.2253;
     longitude -114.8783;
-    out_svc "1992-01-01 00:00:00 UTC";
+    in_svc "1992-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "96.0 MW";
 }
 
 object powerplant
 {
-    name "NEVADA_SOLAR_ONE_POWER_STATION_ONE";
-    // type "ST";
-    // county "Clark";
-    state "Nevada";
-    latitude 35.799798;
-    longitude -114.9817;
-    out_svc "2007-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "76.0 MW";
-}
-
-object powerplant
-{
     name "NILAND_GAS_TURBINE_PLANT_1";
-    // type "GT";
-    // county "Imperial";
+    generator "GT";
+    fuel "NG";
+    county "Imperial";
     state "California";
     latitude 33.238842;
     longitude -115.5045;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -3759,12 +3339,13 @@ object powerplant
 object powerplant
 {
     name "NILAND_GAS_TURBINE_PLANT_2";
-    // type "GT";
-    // county "Imperial";
+    generator "GT";
+    fuel "NG";
+    county "Imperial";
     state "California";
     latitude 33.238842;
     longitude -115.5045;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -3772,12 +3353,13 @@ object powerplant
 object powerplant
 {
     name "NORTHEAST_(WA)_POWER_STATION_1";
-    // type "GT";
-    // county "Spokane";
+    generator "GT";
+    fuel "NG";
+    county "Spokane";
     state "Washington";
     latitude 47.73511;
     longitude -117.3705;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "62.0 MW";
 }
@@ -3785,12 +3367,13 @@ object powerplant
 object powerplant
 {
     name "NORTHERN_CALIFORNIA_POWER_AGENCY_CT_PROJECT_2_NA1";
-    // type "GT";
-    // county "San Joaquin";
+    generator "GT";
+    fuel "NG";
+    county "San Joaquin";
     state "California";
     latitude 38.088138;
     longitude -121.3869;
-    out_svc "1996-01-01 00:00:00 UTC";
+    in_svc "1996-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3798,12 +3381,13 @@ object powerplant
 object powerplant
 {
     name "OCOTILLO_POWER_STATION_GT1";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4225;
     longitude -111.9122;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
@@ -3811,12 +3395,13 @@ object powerplant
 object powerplant
 {
     name "OCOTILLO_POWER_STATION_GT2";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4225;
     longitude -111.9122;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
@@ -3824,12 +3409,13 @@ object powerplant
 object powerplant
 {
     name "OCOTILLO_POWER_STATION_GT3";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4225;
     longitude -111.9122;
-    out_svc "2019-01-01 00:00:00 UTC";
+    in_svc "2019-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "162.0 MW";
 }
@@ -3837,12 +3423,13 @@ object powerplant
 object powerplant
 {
     name "OCOTILLO_POWER_STATION_GT4";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4225;
     longitude -111.9122;
-    out_svc "2019-01-01 00:00:00 UTC";
+    in_svc "2019-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "162.0 MW";
 }
@@ -3850,12 +3437,13 @@ object powerplant
 object powerplant
 {
     name "OCOTILLO_POWER_STATION_GT5";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4225;
     longitude -111.9122;
-    out_svc "2019-01-01 00:00:00 UTC";
+    in_svc "2019-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "162.0 MW";
 }
@@ -3863,12 +3451,13 @@ object powerplant
 object powerplant
 {
     name "OCOTILLO_POWER_STATION_GT6";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4225;
     longitude -111.9122;
-    out_svc "2019-01-01 00:00:00 UTC";
+    in_svc "2019-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "162.0 MW";
 }
@@ -3876,12 +3465,13 @@ object powerplant
 object powerplant
 {
     name "OCOTILLO_POWER_STATION_GT7";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4225;
     longitude -111.9122;
-    out_svc "2019-01-01 00:00:00 UTC";
+    in_svc "2019-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "162.0 MW";
 }
@@ -3889,12 +3479,13 @@ object powerplant
 object powerplant
 {
     name "ORANGE_GROVE_PEAKING_FACILITY_CTG1";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.3594;
     longitude -117.1114;
-    out_svc "2010-01-01 00:00:00 UTC";
+    in_svc "2010-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "59.0 MW";
 }
@@ -3902,12 +3493,13 @@ object powerplant
 object powerplant
 {
     name "ORANGE_GROVE_PEAKING_FACILITY_CTG2";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.3594;
     longitude -117.1114;
-    out_svc "2010-01-01 00:00:00 UTC";
+    in_svc "2010-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "59.0 MW";
 }
@@ -3915,12 +3507,13 @@ object powerplant
 object powerplant
 {
     name "ORMOND_BEACH_POWER_STATION_1";
-    // type "ST";
-    // county "Ventura";
+    generator "ST";
+    fuel "NG";
+    county "Ventura";
     state "California";
     latitude 34.1292;
     longitude -119.1689;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "806.0 MW";
 }
@@ -3928,12 +3521,13 @@ object powerplant
 object powerplant
 {
     name "ORMOND_BEACH_POWER_STATION_2";
-    // type "ST";
-    // county "Ventura";
+    generator "ST";
+    fuel "NG";
+    county "Ventura";
     state "California";
     latitude 34.1292;
     longitude -119.1689;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "806.0 MW";
 }
@@ -3941,12 +3535,13 @@ object powerplant
 object powerplant
 {
     name "OTAY_MESA_GENERATING_PROJECT_CC1";
-    // type "CC";
-    // county "San Diego";
+    generator "CC";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.581481;
     longitude -116.915;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "689.0 MW";
 }
@@ -3954,12 +3549,13 @@ object powerplant
 object powerplant
 {
     name "OXNARD_POWER_STATION_GEN2";
-    // type "GT";
-    // county "Ventura";
+    generator "GT";
+    fuel "NG";
+    county "Ventura";
     state "California";
     latitude 34.196;
     longitude -119.1667;
-    out_svc "1989-01-01 00:00:00 UTC";
+    in_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -3967,12 +3563,13 @@ object powerplant
 object powerplant
 {
     name "PALOMAR_ENERGY_POWER_STATION_CC1";
-    // type "CC";
-    // county "San Diego";
+    generator "CC";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 33.1197;
     longitude -117.1178;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "559.0 MW";
 }
@@ -3980,12 +3577,13 @@ object powerplant
 object powerplant
 {
     name "PANOCHE_ENERGY_CENTER_1";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6514;
     longitude -120.5833;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -3993,12 +3591,13 @@ object powerplant
 object powerplant
 {
     name "PANOCHE_ENERGY_CENTER_2";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6514;
     longitude -120.5833;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -4006,12 +3605,13 @@ object powerplant
 object powerplant
 {
     name "PANOCHE_ENERGY_CENTER_3";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6514;
     longitude -120.5833;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -4019,12 +3619,13 @@ object powerplant
 object powerplant
 {
     name "PANOCHE_ENERGY_CENTER_4";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6514;
     longitude -120.5833;
-    out_svc "2009-01-01 00:00:00 UTC";
+    in_svc "2009-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "108.0 MW";
 }
@@ -4032,12 +3633,13 @@ object powerplant
 object powerplant
 {
     name "PANOCHE_PEAKER_POWER_STATION_8";
-    // type "GT";
-    // county "Fresno";
+    generator "GT";
+    fuel "NG";
+    county "Fresno";
     state "California";
     latitude 36.6535;
     longitude -120.5783;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "57.0 MW";
 }
@@ -4045,12 +3647,13 @@ object powerplant
 object powerplant
 {
     name "PASTORIA_ENERGY_FACILITY_PB01";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 34.9556;
     longitude -118.844;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "521.0 MW";
 }
@@ -4058,12 +3661,13 @@ object powerplant
 object powerplant
 {
     name "PASTORIA_ENERGY_FACILITY_PB02";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 34.9556;
     longitude -118.844;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "258.0 MW";
 }
@@ -4071,12 +3675,13 @@ object powerplant
 object powerplant
 {
     name "PIO_PICO_ENERGY_CENTER_CTG1";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.573889;
     longitude -116.9178;
-    out_svc "2016-01-01 00:00:00 UTC";
+    in_svc "2016-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -4084,12 +3689,13 @@ object powerplant
 object powerplant
 {
     name "PIO_PICO_ENERGY_CENTER_CTG2";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.573889;
     longitude -116.9178;
-    out_svc "2016-01-01 00:00:00 UTC";
+    in_svc "2016-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -4097,12 +3703,13 @@ object powerplant
 object powerplant
 {
     name "PIO_PICO_ENERGY_CENTER_CTG3";
-    // type "GT";
-    // county "San Diego";
+    generator "GT";
+    fuel "NG";
+    county "San Diego";
     state "California";
     latitude 32.573889;
     longitude -116.9178;
-    out_svc "2016-01-01 00:00:00 UTC";
+    in_svc "2016-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -4110,12 +3717,13 @@ object powerplant
 object powerplant
 {
     name "PLAINS_END_II_POWER_STATION_IC";
-    // type "IC";
-    // county "Jefferson";
+    generator "IC";
+    fuel "NG";
+    county "Jefferson";
     state "Colorado";
     latitude 39.8586;
     longitude -105.2256;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "117.6 MW";
 }
@@ -4123,12 +3731,13 @@ object powerplant
 object powerplant
 {
     name "PLAINS_END_POWER_STATION_IC";
-    // type "IC";
-    // county "Jefferson";
+    generator "IC";
+    fuel "NG";
+    county "Jefferson";
     state "Colorado";
     latitude 39.857499;
     longitude -105.225967;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "114.0 MW";
 }
@@ -4136,12 +3745,13 @@ object powerplant
 object powerplant
 {
     name "PORT_WESTWARD_POWER_STATION_CCG1";
-    // type "CC";
-    // county "Columbia";
+    generator "CC";
+    fuel "NG";
+    county "Columbia";
     state "Oregon";
     latitude 46.17894;
     longitude -123.172;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "483.0 MW";
 }
@@ -4149,12 +3759,13 @@ object powerplant
 object powerplant
 {
     name "PORT_WESTWARD_UNIT_2_POWER_STATION_1";
-    // type "IC";
-    // county "Columbia";
+    generator "IC";
+    fuel "NG";
+    county "Columbia";
     state "Oregon";
     latitude 46.178889;
     longitude -123.171944;
-    out_svc "2014-01-01 00:00:00 UTC";
+    in_svc "2014-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "225.6 MW";
 }
@@ -4162,12 +3773,13 @@ object powerplant
 object powerplant
 {
     name "PUEBLO_AIRPORT_GENERATING_STATION_GT1";
-    // type "GT";
-    // county "Pueblo";
+    generator "GT";
+    fuel "NG";
+    county "Pueblo";
     state "Colorado";
     latitude 38.320833;
     longitude -104.5264;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4175,12 +3787,13 @@ object powerplant
 object powerplant
 {
     name "PUEBLO_AIRPORT_GENERATING_STATION_GT2";
-    // type "GT";
-    // county "Pueblo";
+    generator "GT";
+    fuel "NG";
+    county "Pueblo";
     state "Colorado";
     latitude 38.320833;
     longitude -104.5264;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4188,12 +3801,13 @@ object powerplant
 object powerplant
 {
     name "PUEBLO_AIRPORT_GENERATING_STATION_PB4";
-    // type "CC";
-    // county "Pueblo";
+    generator "CC";
+    fuel "NG";
+    county "Pueblo";
     state "Colorado";
     latitude 38.320833;
     longitude -104.5264;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4201,12 +3815,13 @@ object powerplant
 object powerplant
 {
     name "PUEBLO_AIRPORT_GENERATING_STATION_PB5";
-    // type "CC";
-    // county "Pueblo";
+    generator "CC";
+    fuel "NG";
+    county "Pueblo";
     state "Colorado";
     latitude 38.320833;
     longitude -104.5264;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4214,12 +3829,13 @@ object powerplant
 object powerplant
 {
     name "RATHDRUM_POWER_STATION_1";
-    // type "GT";
-    // county "Kootenai";
+    generator "GT";
+    fuel "NG";
+    county "Kootenai";
     state "Idaho";
     latitude 47.7858;
     longitude -116.9203;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "83.0 MW";
 }
@@ -4227,12 +3843,13 @@ object powerplant
 object powerplant
 {
     name "RATHDRUM_POWER_STATION_2";
-    // type "GT";
-    // county "Kootenai";
+    generator "GT";
+    fuel "NG";
+    county "Kootenai";
     state "Idaho";
     latitude 47.7858;
     longitude -116.9203;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "83.0 MW";
 }
@@ -4240,12 +3857,13 @@ object powerplant
 object powerplant
 {
     name "RATHDRUM_POWER_STATION_CC1";
-    // type "CC";
-    // county "Kootenai";
+    generator "CC";
+    fuel "NG";
+    county "Kootenai";
     state "Idaho";
     latitude 47.7858;
     longitude -116.9203;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "302.0 MW";
 }
@@ -4253,12 +3871,13 @@ object powerplant
 object powerplant
 {
     name "RAWHIDE_ENERGY_STATION_A";
-    // type "GT";
-    // county "Larimer";
+    generator "GT";
+    fuel "NG";
+    county "Larimer";
     state "Colorado";
     latitude 40.860905;
     longitude -105.0212;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "89.0 MW";
 }
@@ -4266,12 +3885,13 @@ object powerplant
 object powerplant
 {
     name "RAWHIDE_ENERGY_STATION_B";
-    // type "GT";
-    // county "Larimer";
+    generator "GT";
+    fuel "NG";
+    county "Larimer";
     state "Colorado";
     latitude 40.860905;
     longitude -105.0212;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "89.0 MW";
 }
@@ -4279,12 +3899,13 @@ object powerplant
 object powerplant
 {
     name "RAWHIDE_ENERGY_STATION_C";
-    // type "GT";
-    // county "Larimer";
+    generator "GT";
+    fuel "NG";
+    county "Larimer";
     state "Colorado";
     latitude 40.860905;
     longitude -105.0212;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "89.0 MW";
 }
@@ -4292,12 +3913,13 @@ object powerplant
 object powerplant
 {
     name "RAWHIDE_ENERGY_STATION_D";
-    // type "GT";
-    // county "Larimer";
+    generator "GT";
+    fuel "NG";
+    county "Larimer";
     state "Colorado";
     latitude 40.860905;
     longitude -105.0212;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "89.0 MW";
 }
@@ -4305,12 +3927,13 @@ object powerplant
 object powerplant
 {
     name "RAWHIDE_ENERGY_STATION_F";
-    // type "GT";
-    // county "Larimer";
+    generator "GT";
+    fuel "NG";
+    county "Larimer";
     state "Colorado";
     latitude 40.860905;
     longitude -105.0212;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "150.0 MW";
 }
@@ -4318,12 +3941,13 @@ object powerplant
 object powerplant
 {
     name "RED_HAWK_POWER_STATION_CC1";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.334562;
     longitude -112.8406;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "573.0 MW";
 }
@@ -4331,12 +3955,13 @@ object powerplant
 object powerplant
 {
     name "RED_HAWK_POWER_STATION_CC2";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.334562;
     longitude -112.8406;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "567.0 MW";
 }
@@ -4344,12 +3969,13 @@ object powerplant
 object powerplant
 {
     name "REDDING_POWER_STATION_101";
-    // type "CC";
-    // county "Shasta";
+    generator "CC";
+    fuel "NG";
+    county "Shasta";
     state "California";
     latitude 40.507292;
     longitude -122.4233;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "109.0 MW";
 }
@@ -4357,12 +3983,13 @@ object powerplant
 object powerplant
 {
     name "REDONDO_BEACH_GENERATION_STATION_5";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.8504;
     longitude -118.395;
-    out_svc INIT;
+    in_svc INIT;
     out_svc "2023-01-01 00:00:00 UTC";
     operating_capacity "163.0 MW";
 }
@@ -4370,12 +3997,13 @@ object powerplant
 object powerplant
 {
     name "REDONDO_BEACH_GENERATION_STATION_6";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.8504;
     longitude -118.395;
-    out_svc INIT;
+    in_svc INIT;
     out_svc "2023-01-01 00:00:00 UTC";
     operating_capacity "163.0 MW";
 }
@@ -4383,12 +4011,13 @@ object powerplant
 object powerplant
 {
     name "REDONDO_BEACH_GENERATION_STATION_8";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.8504;
     longitude -118.395;
-    out_svc INIT;
+    in_svc INIT;
     out_svc "2023-01-01 00:00:00 UTC";
     operating_capacity "495.0 MW";
 }
@@ -4396,64 +4025,41 @@ object powerplant
 object powerplant
 {
     name "REEVES_POWER_STATION_3";
-    // type "ST";
-    // county "Bernalillo";
+    generator "ST";
+    fuel "NG";
+    county "Bernalillo";
     state "New Mexico";
     latitude 35.171;
     longitude -106.6019;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "66.0 MW";
 }
 
 object powerplant
 {
-    name "RICHMOND_COGENERATION_POWER_STATION_CC1";
-    // type "CC";
-    // county "Contra Costa";
-    state "California";
-    latitude 37.9418;
-    longitude -122.3909;
-    out_svc "2006-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "156.0 MW";
-}
-
-object powerplant
-{
     name "RIFLE_GENERATING_STATION_CC1";
-    // type "CC";
-    // county "Garfield";
+    generator "CC";
+    fuel "NG";
+    county "Garfield";
     state "Colorado";
     latitude 39.5173;
     longitude -107.7299;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc "2022-01-01 00:00:00 UTC";
     operating_capacity "84.0 MW";
 }
 
 object powerplant
 {
-    name "RIO_BRAVO_(NM)_POWER_STATION_GT1";
-    // type "GT";
-    // county "Bernalillo";
-    state "New Mexico";
-    latitude 35.026;
-    longitude -106.644;
-    out_svc "2000-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "150.0 MW";
-}
-
-object powerplant
-{
     name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_6";
-    // type "ST";
-    // county "Dona Ana";
+    generator "ST";
+    fuel "NG";
+    county "Dona Ana";
     state "New Mexico";
     latitude 31.8047;
     longitude -106.5472;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -4461,12 +4067,13 @@ object powerplant
 object powerplant
 {
     name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_7";
-    // type "ST";
-    // county "Dona Ana";
+    generator "ST";
+    fuel "NG";
+    county "Dona Ana";
     state "New Mexico";
     latitude 31.8047;
     longitude -106.5472;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -4474,12 +4081,13 @@ object powerplant
 object powerplant
 {
     name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_8";
-    // type "ST";
-    // county "Dona Ana";
+    generator "ST";
+    fuel "NG";
+    county "Dona Ana";
     state "New Mexico";
     latitude 31.8047;
     longitude -106.5472;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "167.0 MW";
 }
@@ -4487,12 +4095,13 @@ object powerplant
 object powerplant
 {
     name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_9";
-    // type "GT";
-    // county "Dona Ana";
+    generator "GT";
+    fuel "NG";
+    county "Dona Ana";
     state "New Mexico";
     latitude 31.8047;
     longitude -106.5472;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -4500,12 +4109,13 @@ object powerplant
 object powerplant
 {
     name "RIPON_GENERATION_STATION_1";
-    // type "GT";
-    // county "San Joaquin";
+    generator "GT";
+    fuel "NG";
+    county "San Joaquin";
     state "California";
     latitude 37.7315;
     longitude -121.116;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -4513,12 +4123,13 @@ object powerplant
 object powerplant
 {
     name "RIPON_GENERATION_STATION_2";
-    // type "GT";
-    // county "San Joaquin";
+    generator "GT";
+    fuel "NG";
+    county "San Joaquin";
     state "California";
     latitude 37.7315;
     longitude -121.116;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -4526,12 +4137,13 @@ object powerplant
 object powerplant
 {
     name "RIVER_ROAD_GEN_PLANT_1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Washington";
     latitude 45.6497;
     longitude -122.7256;
-    out_svc "1997-01-01 00:00:00 UTC";
+    in_svc "1997-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "248.0 MW";
 }
@@ -4539,12 +4151,13 @@ object powerplant
 object powerplant
 {
     name "RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_1";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.9636;
     longitude -117.4528;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -4552,12 +4165,13 @@ object powerplant
 object powerplant
 {
     name "RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_2";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.9636;
     longitude -117.4528;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
 }
@@ -4565,12 +4179,13 @@ object powerplant
 object powerplant
 {
     name "ROCKY_MOUNTAIN_ENERGY_CENTER_RKM0";
-    // type "CC";
-    // county "Weld";
+    generator "CC";
+    fuel "NG";
+    county "Weld";
     state "Colorado";
     latitude 40.0908;
     longitude -104.5953;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "685.0 MW";
 }
@@ -4578,12 +4193,13 @@ object powerplant
 object powerplant
 {
     name "ROSEVILLE_ENERGY_PARK_A101";
-    // type "CC";
-    // county "Placer";
+    generator "CC";
+    fuel "NG";
+    county "Placer";
     state "California";
     latitude 38.7928;
     longitude -121.3811;
-    out_svc "2007-01-01 00:00:00 UTC";
+    in_svc "2007-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "165.0 MW";
 }
@@ -4591,12 +4207,13 @@ object powerplant
 object powerplant
 {
     name "RUSSELL_CITY_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Alameda";
+    generator "CC";
+    fuel "NG";
+    county "Alameda";
     state "California";
     latitude 37.63466;
     longitude -122.1338;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "655.0 MW";
 }
@@ -4604,12 +4221,13 @@ object powerplant
 object powerplant
 {
     name "SAGUARO_(AZ)_POWER_STATION_GE1";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.5517;
     longitude -111.3;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "78.0 MW";
 }
@@ -4617,12 +4235,13 @@ object powerplant
 object powerplant
 {
     name "SAGUARO_(AZ)_POWER_STATION_GT1";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.5517;
     longitude -111.3;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
@@ -4630,38 +4249,27 @@ object powerplant
 object powerplant
 {
     name "SAGUARO_(AZ)_POWER_STATION_GT2";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.5517;
     longitude -111.3;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
 
 object powerplant
 {
-    name "SAGUARO_POWER_(NV)_STATION_CC1";
-    // type "CC";
-    // county "Clark";
-    state "Nevada";
-    latitude 36.0417;
-    longitude -115.0117;
-    out_svc "1991-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "127.0 MW";
-}
-
-object powerplant
-{
     name "SANTAN_POWER_STATION_ST1";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.3325;
     longitude -111.7503;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "104.0 MW";
 }
@@ -4669,12 +4277,13 @@ object powerplant
 object powerplant
 {
     name "SANTAN_POWER_STATION_ST2";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.3325;
     longitude -111.7503;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "104.0 MW";
 }
@@ -4682,12 +4291,13 @@ object powerplant
 object powerplant
 {
     name "SANTAN_POWER_STATION_ST3";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.3325;
     longitude -111.7503;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "104.0 MW";
 }
@@ -4695,12 +4305,13 @@ object powerplant
 object powerplant
 {
     name "SANTAN_POWER_STATION_ST4";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.3325;
     longitude -111.7503;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "104.0 MW";
 }
@@ -4708,12 +4319,13 @@ object powerplant
 object powerplant
 {
     name "SANTAN_POWER_STATION_STS5";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.3325;
     longitude -111.7503;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "622.0 MW";
 }
@@ -4721,12 +4333,13 @@ object powerplant
 object powerplant
 {
     name "SANTAN_POWER_STATION_STS6";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.3325;
     longitude -111.7503;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "290.0 MW";
 }
@@ -4734,12 +4347,13 @@ object powerplant
 object powerplant
 {
     name "SCA_COGENERATION_2_POWER_STATION_CCC1";
-    // type "CC";
-    // county "Sacramento";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
     state "California";
     latitude 38.530943;
     longitude -121.4001;
-    out_svc "1997-01-01 00:00:00 UTC";
+    in_svc "1997-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "149.0 MW";
 }
@@ -4747,12 +4361,13 @@ object powerplant
 object powerplant
 {
     name "SCATTERGOOD_POWER_STATION_1";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.918151;
     longitude -118.4276;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "163.0 MW";
 }
@@ -4760,12 +4375,13 @@ object powerplant
 object powerplant
 {
     name "SCATTERGOOD_POWER_STATION_2";
-    // type "ST";
-    // county "Los Angeles";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.918151;
     longitude -118.4276;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "163.0 MW";
 }
@@ -4773,12 +4389,13 @@ object powerplant
 object powerplant
 {
     name "SCATTERGOOD_POWER_STATION_6";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.918151;
     longitude -118.4276;
-    out_svc "2015-01-01 00:00:00 UTC";
+    in_svc "2015-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "107.0 MW";
 }
@@ -4786,12 +4403,13 @@ object powerplant
 object powerplant
 {
     name "SCATTERGOOD_POWER_STATION_7";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.918151;
     longitude -118.4276;
-    out_svc "2015-01-01 00:00:00 UTC";
+    in_svc "2015-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "107.0 MW";
 }
@@ -4799,51 +4417,27 @@ object powerplant
 object powerplant
 {
     name "SCATTERGOOD_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.918151;
     longitude -118.4276;
-    out_svc "2015-01-01 00:00:00 UTC";
+    in_svc "2015-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "336.0 MW";
 }
 
 object powerplant
 {
-    name "SEGS_IX_POWER_STATION_GEN1";
-    // type "ST";
-    // county "San Bernardino";
-    state "California";
-    latitude 35.033;
-    longitude -117.338;
-    out_svc "1990-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "92.0 MW";
-}
-
-object powerplant
-{
-    name "SEGS_VIII_POWER_STATION_GEN1";
-    // type "ST";
-    // county "San Bernardino";
-    state "California";
-    latitude 35.0308;
-    longitude -117.3563;
-    out_svc "1989-01-01 00:00:00 UTC";
-    out_svc "2021-01-01 00:00:00 UTC";
-    operating_capacity "92.0 MW";
-}
-
-object powerplant
-{
     name "SENTINEL_ENERGY_CENTER_CTG1";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4851,12 +4445,13 @@ object powerplant
 object powerplant
 {
     name "SENTINEL_ENERGY_CENTER_CTG2";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4864,12 +4459,13 @@ object powerplant
 object powerplant
 {
     name "SENTINEL_ENERGY_CENTER_CTG3";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4877,12 +4473,13 @@ object powerplant
 object powerplant
 {
     name "SENTINEL_ENERGY_CENTER_CTG4";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4890,12 +4487,13 @@ object powerplant
 object powerplant
 {
     name "SENTINEL_ENERGY_CENTER_CTG5";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4903,12 +4501,13 @@ object powerplant
 object powerplant
 {
     name "SENTINEL_ENERGY_CENTER_CTG6";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4916,12 +4515,13 @@ object powerplant
 object powerplant
 {
     name "SENTINEL_ENERGY_CENTER_CTG7";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4929,12 +4529,13 @@ object powerplant
 object powerplant
 {
     name "SENTINEL_ENERGY_CENTER_CTG8";
-    // type "GT";
-    // county "Riverside";
+    generator "GT";
+    fuel "NG";
+    county "Riverside";
     state "California";
     latitude 33.934167;
     longitude -116.5714;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -4942,12 +4543,13 @@ object powerplant
 object powerplant
 {
     name "SILVERHAWK_POWER_STATION_PB1";
-    // type "CC";
-    // county "Clark";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
     state "Nevada";
     latitude 36.4078;
     longitude -114.9606;
-    out_svc "2004-01-01 00:00:00 UTC";
+    in_svc "2004-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "665.0 MW";
 }
@@ -4955,12 +4557,13 @@ object powerplant
 object powerplant
 {
     name "SOUTH_POINT_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Mohave";
+    generator "CC";
+    fuel "NG";
+    county "Mohave";
     state "Arizona";
     latitude 34.8678;
     longitude -114.5317;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "708.0 MW";
 }
@@ -4968,51 +4571,27 @@ object powerplant
 object powerplant
 {
     name "SPA_COGENERATION_3_POWER_STATION_CCC1";
-    // type "CC";
-    // county "Sacramento";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
     state "California";
     latitude 38.511;
     longitude -121.4735;
-    out_svc "1997-01-01 00:00:00 UTC";
+    in_svc "1997-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "174.0 MW";
 }
 
 object powerplant
 {
-    name "SPINDLE_HILL_ENERGY_CENTER_GEN1";
-    // type "GT";
-    // county "Weld";
-    state "Colorado";
-    latitude 40.092192;
-    longitude -104.8878;
-    out_svc "2007-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "210.0 MW";
-}
-
-object powerplant
-{
-    name "SPINDLE_HILL_ENERGY_CENTER_GEN2";
-    // type "GT";
-    // county "Weld";
-    state "Colorado";
-    latitude 40.092192;
-    longitude -104.8878;
-    out_svc "2007-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "210.0 MW";
-}
-
-object powerplant
-{
     name "STANTON_ENERGY_RELIABILITY_CENTER_GT1";
-    // type "GT";
-    // county "Orange";
+    generator "GT";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.806801;
     longitude -117.9858;
-    out_svc "2020-01-01 00:00:00 UTC";
+    in_svc "2020-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "71.0 MW";
 }
@@ -5020,12 +4599,13 @@ object powerplant
 object powerplant
 {
     name "STANTON_ENERGY_RELIABILITY_CENTER_GT2";
-    // type "GT";
-    // county "Orange";
+    generator "GT";
+    fuel "NG";
+    county "Orange";
     state "California";
     latitude 33.806801;
     longitude -117.9858;
-    out_svc "2020-01-01 00:00:00 UTC";
+    in_svc "2020-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "71.0 MW";
 }
@@ -5033,12 +4613,13 @@ object powerplant
 object powerplant
 {
     name "SUMAS_POWER_PLANT_CC1";
-    // type "CC";
-    // county "Whatcom";
+    generator "CC";
+    fuel "NG";
+    county "Whatcom";
     state "Washington";
     latitude 48.9905;
     longitude -122.2733;
-    out_svc "1993-01-01 00:00:00 UTC";
+    in_svc "1993-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "126.0 MW";
 }
@@ -5046,12 +4627,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT1";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5059,12 +4641,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT10";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5072,12 +4655,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT2";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5085,12 +4669,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT3";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5098,12 +4683,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT4";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5111,12 +4697,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT5";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5124,12 +4711,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT6";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5137,12 +4725,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT7";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5150,12 +4739,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT8";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5163,12 +4753,13 @@ object powerplant
 object powerplant
 {
     name "SUNDANCE_POWER_STATION_CT9";
-    // type "GT";
-    // county "Pinal";
+    generator "GT";
+    fuel "NG";
+    county "Pinal";
     state "Arizona";
     latitude 32.9285;
     longitude -111.5899;
-    out_svc "2002-01-01 00:00:00 UTC";
+    in_svc "2002-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "61.0 MW";
 }
@@ -5176,12 +4767,13 @@ object powerplant
 object powerplant
 {
     name "SUNRISE_POWER_STATION_CC1";
-    // type "CC";
-    // county "Kern";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.2097;
     longitude -119.585;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "685.0 MW";
 }
@@ -5189,12 +4781,13 @@ object powerplant
 object powerplant
 {
     name "SUTTER_ENERGY_CENTER_CC1";
-    // type "CC";
-    // county "Sutter";
+    generator "CC";
+    fuel "NG";
+    county "Sutter";
     state "California";
     latitude 39.053139;
     longitude -121.6959;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "636.0 MW";
 }
@@ -5202,12 +4795,13 @@ object powerplant
 object powerplant
 {
     name "SYCAMORE_COGENERATION_POWER_STATION_GTAG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.452577;
     longitude -118.9853;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -5215,12 +4809,13 @@ object powerplant
 object powerplant
 {
     name "SYCAMORE_COGENERATION_POWER_STATION_GTBG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.452577;
     longitude -118.9853;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -5228,12 +4823,13 @@ object powerplant
 object powerplant
 {
     name "SYCAMORE_COGENERATION_POWER_STATION_GTCG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.452577;
     longitude -118.9853;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -5241,12 +4837,13 @@ object powerplant
 object powerplant
 {
     name "SYCAMORE_COGENERATION_POWER_STATION_GTDG";
-    // type "GT";
-    // county "Kern";
+    generator "GT";
+    fuel "NG";
+    county "Kern";
     state "California";
     latitude 35.452577;
     longitude -118.9853;
-    out_svc "1987-01-01 00:00:00 UTC";
+    in_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "75.0 MW";
 }
@@ -5254,12 +4851,13 @@ object powerplant
 object powerplant
 {
     name "THUMS_POWER_STATION_GEN1";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 33.7684;
     longitude -118.2141;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "57.0 MW";
 }
@@ -5267,12 +4865,13 @@ object powerplant
 object powerplant
 {
     name "TRACY_COMBINED_CYCLE_POWER_PLANT_CC12";
-    // type "CC";
-    // county "San Joaquin";
+    generator "CC";
+    fuel "NG";
+    county "San Joaquin";
     state "California";
     latitude 37.7107;
     longitude -121.4906;
-    out_svc "2012-01-01 00:00:00 UTC";
+    in_svc "2012-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "336.0 MW";
 }
@@ -5280,12 +4879,13 @@ object powerplant
 object powerplant
 {
     name "TRACY_POWER_STATION_3";
-    // type "ST";
-    // county "Storey";
+    generator "ST";
+    fuel "NG";
+    county "Storey";
     state "Nevada";
     latitude 39.5625;
     longitude -119.525;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "120.0 MW";
 }
@@ -5293,51 +4893,27 @@ object powerplant
 object powerplant
 {
     name "TRACY_POWER_STATION_G240";
-    // type "CC";
-    // county "Storey";
+    generator "CC";
+    fuel "NG";
+    county "Storey";
     state "Nevada";
     latitude 39.5625;
     longitude -119.525;
-    out_svc "1996-01-01 00:00:00 UTC";
+    in_svc "1996-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "120.0 MW";
 }
 
 object powerplant
 {
-    name "TRACY_POWER_STATION_GT3";
-    // type "GT";
-    // county "Storey";
-    state "Nevada";
-    latitude 39.5625;
-    longitude -119.525;
-    out_svc "1994-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "85.0 MW";
-}
-
-object powerplant
-{
-    name "TRACY_POWER_STATION_GT4";
-    // type "GT";
-    // county "Storey";
-    state "Nevada";
-    latitude 39.5625;
-    longitude -119.525;
-    out_svc "1994-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "85.0 MW";
-}
-
-object powerplant
-{
     name "TRACY_POWER_STATION_PB1";
-    // type "CC";
-    // county "Storey";
+    generator "CC";
+    fuel "NG";
+    county "Storey";
     state "Nevada";
     latitude 39.5625;
     longitude -119.525;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "623.0 MW";
 }
@@ -5345,77 +4921,27 @@ object powerplant
 object powerplant
 {
     name "VALENCIA_ENERGY_FACILITY_CTG1";
-    // type "GT";
-    // county "Valencia";
+    generator "GT";
+    fuel "NG";
+    county "Valencia";
     state "New Mexico";
     latitude 34.611549;
     longitude -106.7322;
-    out_svc "2008-01-01 00:00:00 UTC";
+    in_svc "2008-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "160.0 MW";
 }
 
 object powerplant
 {
-    name "VALENCIA_POWER_STATION_GT4";
-    // type "GT";
-    // county "Santa Cruz";
-    state "Arizona";
-    latitude 31.363472;
-    longitude -110.9313;
-    out_svc "2006-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "54.0 MW";
-}
-
-object powerplant
-{
-    name "VALERO_REFINERY_COGENERATION_UNIT_1_POWER_STATION_GT 1";
-    // type "GT";
-    // county "Solano";
-    state "California";
-    latitude 38.0736;
-    longitude -122.1411;
-    out_svc "2002-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
-    name "VALLEY_(CA)_POWER_STATION_5";
-    // type "GT";
-    // county "Los Angeles";
-    state "California";
-    latitude 34.244991;
-    longitude -118.3913;
-    out_svc "2001-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
-    name "VALLEY_(CA)_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
-    state "California";
-    latitude 34.244991;
-    longitude -118.3913;
-    out_svc "2003-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "630.0 MW";
-}
-
-object powerplant
-{
     name "VALMONT_STATION_6";
-    // type "GT";
-    // county "Boulder";
+    generator "GT";
+    fuel "NG";
+    county "Boulder";
     state "Colorado";
     latitude 40.0205;
     longitude -105.2009;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "59.0 MW";
 }
@@ -5423,12 +4949,13 @@ object powerplant
 object powerplant
 {
     name "VALMONT_STATION_UN7";
-    // type "GT";
-    // county "Boulder";
+    generator "GT";
+    fuel "NG";
+    county "Boulder";
     state "Colorado";
     latitude 40.0205;
     longitude -105.2009;
-    out_svc "2000-01-01 00:00:00 UTC";
+    in_svc "2000-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "71.0 MW";
 }
@@ -5436,12 +4963,13 @@ object powerplant
 object powerplant
 {
     name "VALMONT_STATION_UN8";
-    // type "GT";
-    // county "Boulder";
+    generator "GT";
+    fuel "NG";
+    county "Boulder";
     state "Colorado";
     latitude 40.0205;
     longitude -105.2009;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "71.0 MW";
 }
@@ -5449,12 +4977,13 @@ object powerplant
 object powerplant
 {
     name "WALNUT_CREEK_ENERGY_PARK_GT1";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.008709;
     longitude -117.9449;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -5462,12 +4991,13 @@ object powerplant
 object powerplant
 {
     name "WALNUT_CREEK_ENERGY_PARK_GT2";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.008709;
     longitude -117.9449;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -5475,12 +5005,13 @@ object powerplant
 object powerplant
 {
     name "WALNUT_CREEK_ENERGY_PARK_GT3";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.008709;
     longitude -117.9449;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -5488,12 +5019,13 @@ object powerplant
 object powerplant
 {
     name "WALNUT_CREEK_ENERGY_PARK_GT4";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.008709;
     longitude -117.9449;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -5501,12 +5033,13 @@ object powerplant
 object powerplant
 {
     name "WALNUT_CREEK_ENERGY_PARK_GT5";
-    // type "GT";
-    // county "Los Angeles";
+    generator "GT";
+    fuel "NG";
+    county "Los Angeles";
     state "California";
     latitude 34.008709;
     longitude -117.9449;
-    out_svc "2013-01-01 00:00:00 UTC";
+    in_svc "2013-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "100.0 MW";
 }
@@ -5514,38 +5047,27 @@ object powerplant
 object powerplant
 {
     name "WALNUT_ENERGY_CENTER_WEC";
-    // type "CC";
-    // county "Stanislaus";
+    generator "CC";
+    fuel "NG";
+    county "Stanislaus";
     state "California";
     latitude 37.4878;
     longitude -120.8956;
-    out_svc "2006-01-01 00:00:00 UTC";
+    in_svc "2006-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "301.0 MW";
 }
 
 object powerplant
 {
-    name "WATSON_COGENERATION_POWER_STATION_CC1";
-    // type "CC";
-    // county "Los Angeles";
-    state "California";
-    latitude 33.816647;
-    longitude -118.2448;
-    out_svc "1988-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "405.0 MW";
-}
-
-object powerplant
-{
     name "WEST_PHOENIX_POWER_STATION_1B";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4417;
     longitude -112.1583;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -5553,12 +5075,13 @@ object powerplant
 object powerplant
 {
     name "WEST_PHOENIX_POWER_STATION_2B";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4417;
     longitude -112.1583;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -5566,12 +5089,13 @@ object powerplant
 object powerplant
 {
     name "WEST_PHOENIX_POWER_STATION_3B";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4417;
     longitude -112.1583;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "132.0 MW";
 }
@@ -5579,12 +5103,13 @@ object powerplant
 object powerplant
 {
     name "WEST_PHOENIX_POWER_STATION_CC1";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4417;
     longitude -112.1583;
-    out_svc "2001-01-01 00:00:00 UTC";
+    in_svc "2001-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "136.0 MW";
 }
@@ -5592,12 +5117,13 @@ object powerplant
 object powerplant
 {
     name "WEST_PHOENIX_POWER_STATION_CC2";
-    // type "CC";
-    // county "Maricopa";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4417;
     longitude -112.1583;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "570.0 MW";
 }
@@ -5605,12 +5131,13 @@ object powerplant
 object powerplant
 {
     name "WEST_PHOENIX_POWER_STATION_GT1";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4417;
     longitude -112.1583;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
@@ -5618,12 +5145,13 @@ object powerplant
 object powerplant
 {
     name "WEST_PHOENIX_POWER_STATION_GT2";
-    // type "GT";
-    // county "Maricopa";
+    generator "GT";
+    fuel "NG";
+    county "Maricopa";
     state "Arizona";
     latitude 33.4417;
     longitude -112.1583;
-    out_svc INIT;
+    in_svc INIT;
     out_svc NEVER;
     operating_capacity "53.0 MW";
 }
@@ -5631,51 +5159,27 @@ object powerplant
 object powerplant
 {
     name "WESTERN_102_POWER_STATION_1";
-    // type "IC";
-    // county "Storey";
+    generator "IC";
+    fuel "NG";
+    county "Storey";
     state "Nevada";
     latitude 39.5603;
     longitude -119.5108;
-    out_svc "2005-01-01 00:00:00 UTC";
+    in_svc "2005-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "117.6 MW";
 }
 
 object powerplant
 {
-    name "WHITEHORN_POWER_STATION_2";
-    // type "GT";
-    // county "Whatcom";
-    state "Washington";
-    latitude 48.885636;
-    longitude -122.7516;
-    out_svc "1981-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "85.0 MW";
-}
-
-object powerplant
-{
-    name "WHITEHORN_POWER_STATION_3";
-    // type "GT";
-    // county "Whatcom";
-    state "Washington";
-    latitude 48.885636;
-    longitude -122.7516;
-    out_svc "1981-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "85.0 MW";
-}
-
-object powerplant
-{
     name "WOODLAND_POWER_STATION_CC1";
-    // type "CC";
-    // county "Stanislaus";
+    generator "CC";
+    fuel "NG";
+    county "Stanislaus";
     state "California";
     latitude 37.652602;
     longitude -121.0204;
-    out_svc "2003-01-01 00:00:00 UTC";
+    in_svc "2003-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "98.0 MW";
 }
@@ -5683,129 +5187,41 @@ object powerplant
 object powerplant
 {
     name "WOODLAND_POWER_STATION_IC";
-    // type "IC";
-    // county "Stanislaus";
+    generator "IC";
+    fuel "NG";
+    county "Stanislaus";
     state "California";
     latitude 37.652602;
     longitude -121.020397;
-    out_svc "2011-01-01 00:00:00 UTC";
+    in_svc "2011-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.4 MW";
 }
 
 object powerplant
 {
-    name "WOODLAND_POWER_STATION_NA1";
-    // type "GT";
-    // county "Stanislaus";
-    state "California";
-    latitude 37.652602;
-    longitude -121.0204;
-    out_svc "1993-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
-    name "YELLOWSTONE_ENERGY_LP_POWER_STATION_GEN1";
-    // type "ST";
-    // county "Yellowstone";
-    state "Montana";
-    latitude 45.8117;
-    longitude -108.4278;
-    out_svc "1995-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "68.0 MW";
-}
-
-object powerplant
-{
     name "YUBA_CITY_COGENERATION_PARTNERS_POWER_STATION_GEN1";
-    // type "GT";
-    // county "Sutter";
+    generator "GT";
+    fuel "NG";
+    county "Sutter";
     state "California";
     latitude 39.13667;
     longitude -121.6398;
-    out_svc "1990-01-01 00:00:00 UTC";
+    in_svc "1990-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "50.0 MW";
-}
-
-object powerplant
-{
-    name "YUCCA_POWER_STATION_GT3";
-    // type "GT";
-    // county "Yuma";
-    state "Arizona";
-    latitude 32.7214;
-    longitude -114.7106;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "72.0 MW";
-}
-
-object powerplant
-{
-    name "YUCCA_POWER_STATION_GT4";
-    // type "GT";
-    // county "Yuma";
-    state "Arizona";
-    latitude 32.7214;
-    longitude -114.7106;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "72.4 MW";
-}
-
-object powerplant
-{
-    name "YUCCA_POWER_STATION_GT5";
-    // type "GT";
-    // county "Yuma";
-    state "Arizona";
-    latitude 32.7214;
-    longitude -114.7106;
-    out_svc "2008-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
-    name "YUCCA_POWER_STATION_GT6";
-    // type "GT";
-    // county "Yuma";
-    state "Arizona";
-    latitude 32.7214;
-    longitude -114.7106;
-    out_svc "2008-01-01 00:00:00 UTC";
-    out_svc NEVER;
-    operating_capacity "61.0 MW";
-}
-
-object powerplant
-{
-    name "YUCCA_POWER_STATION_ST1";
-    // type "ST";
-    // county "Yuma";
-    state "Arizona";
-    latitude 32.7214;
-    longitude -114.7106;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "87.0 MW";
 }
 
 object powerplant
 {
     name "YUMA_COGENERATION_ASSOCIATES_POWER_STATION_YUCG";
-    // type "CC";
-    // county "Yuma";
+    generator "CC";
+    fuel "NG";
+    county "Yuma";
     state "Arizona";
     latitude 32.728822;
     longitude -114.6541;
-    out_svc "1994-01-01 00:00:00 UTC";
+    in_svc "1994-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "63.0 MW";
 }

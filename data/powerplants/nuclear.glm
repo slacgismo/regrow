@@ -1,13 +1,19 @@
 module pypower;
+class powerplant
+{
+    char32 county;
+}
+
 object powerplant
 {
     name "COLUMBIA_NUCLEAR_POWER_PLANT";
-    // type "boiling water reactor";
-    // county "Benton County";
+    generator "ST";
+    fuel "NUC";
+    county "Benton County";
     state "Washington";
     latitude 46.4711;
     longitude -119.3339;
-    out_svc "1984-01-01 00:00:00 UTC";
+    in_svc "1984-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "1190.0 MW";
 }
@@ -15,12 +21,13 @@ object powerplant
 object powerplant
 {
     name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_1";
-    // type "pressurized water reactor";
-    // county "San Luis Obispo County";
+    generator "ST";
+    fuel "NUC";
+    county "San Luis Obispo County";
     state "California";
     latitude 35.2115;
     longitude -120.8555;
-    out_svc "1985-01-01 00:00:00 UTC";
+    in_svc "1985-01-01 00:00:00 UTC";
     out_svc "2024-01-01 00:00:00 UTC";
     operating_capacity "1197.0 MW";
 }
@@ -28,12 +35,13 @@ object powerplant
 object powerplant
 {
     name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_2";
-    // type "pressurized water reactor";
-    // county "San Luis Obispo County";
+    generator "ST";
+    fuel "NUC";
+    county "San Luis Obispo County";
     state "California";
     latitude 35.2115;
     longitude -120.8555;
-    out_svc "1986-01-01 00:00:00 UTC";
+    in_svc "1986-01-01 00:00:00 UTC";
     out_svc "2025-01-01 00:00:00 UTC";
     operating_capacity "1197.0 MW";
 }
@@ -41,12 +49,13 @@ object powerplant
 object powerplant
 {
     name "PALO_VERDE_NUCLEAR_POWER_PLANT_1";
-    // type "pressurized water reactor";
-    // county "Maricopa County";
+    generator "ST";
+    fuel "NUC";
+    county "Maricopa County";
     state "Arizona";
     latitude 33.3881;
     longitude -112.8617;
-    out_svc "1986-01-01 00:00:00 UTC";
+    in_svc "1986-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "1414.0 MW";
 }
@@ -54,12 +63,13 @@ object powerplant
 object powerplant
 {
     name "PALO_VERDE_NUCLEAR_POWER_PLANT_2";
-    // type "pressurized water reactor";
-    // county "Maricopa County";
+    generator "ST";
+    fuel "NUC";
+    county "Maricopa County";
     state "Arizona";
     latitude 33.3881;
     longitude -112.8617;
-    out_svc "1986-01-01 00:00:00 UTC";
+    in_svc "1986-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "1414.0 MW";
 }
@@ -67,12 +77,13 @@ object powerplant
 object powerplant
 {
     name "PALO_VERDE_NUCLEAR_POWER_PLANT_3";
-    // type "pressurized water reactor";
-    // county "Maricopa County";
+    generator "ST";
+    fuel "NUC";
+    county "Maricopa County";
     state "Arizona";
     latitude 33.3881;
     longitude -112.8617;
-    out_svc "1988-01-01 00:00:00 UTC";
+    in_svc "1988-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "1414.0 MW";
 }

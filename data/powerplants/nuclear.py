@@ -28,7 +28,7 @@ mapper = {
 	'Other Name(s)' : None,
 	'Capacity (MW)' : "capacity[MW]", 
 	'Status' : "status", 
-	'Reactor Type' : "type", 
+	'Reactor Type' : None, 
 	'Model' : None, 
 	'Start Year' : "start[y]",
 	'Retirement Year' : "retirement[y]", 
@@ -67,5 +67,6 @@ data.drop(data[data["country"]!="United States"].index,inplace=True)
 data.drop(data[data["retirement[y]"]<STARTYEAR].index,inplace=True)
 data.drop(data[data["start[y]"]>STOPYEAR].index,inplace=True)
 data.drop(["country","status"],axis=1,inplace=True)
+data["type"] = "ST"
 data.drop(data[~data["state"].isin(config.state_list)].index,inplace=True)
 data.to_csv(OUTPUTS["PLANTDATA"],header=True,index=False)

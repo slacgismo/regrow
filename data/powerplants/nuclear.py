@@ -1,3 +1,6 @@
+import os, sys
+sys.path.insert(0,"..")
+import config
 import pandas as pd
 
 pd.options.display.max_columns = None
@@ -64,4 +67,5 @@ data.drop(data[data["country"]!="United States"].index,inplace=True)
 data.drop(data[data["retirement[y]"]<STARTYEAR].index,inplace=True)
 data.drop(data[data["start[y]"]>STOPYEAR].index,inplace=True)
 data.drop(["country","status"],axis=1,inplace=True)
+data.drop(data[~data["state"].isin(config.state_list)].index,inplace=True)
 data.to_csv(OUTPUTS["PLANTDATA"],header=True,index=False)

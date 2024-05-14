@@ -1,19 +1,6 @@
 module pypower;
 object powerplant
 {
-    name "ALLATOONA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Bartow County";
-    state "Georgia";
-    latitude 34.1637;
-    longitude -84.7282;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "87 MW";
-}
-
-object powerplant
-{
     name "AMERICAN_FALLS_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Power County";
@@ -23,45 +10,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "92 MW";
-}
-
-object powerplant
-{
-    name "APALACHIA_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Polk County";
-    state "Tennessee";
-    latitude 35.1677;
-    longitude -84.2956;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "94 MW";
-}
-
-object powerplant
-{
-    name "BAD_CREEK_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Oconee County";
-    state "South Carolina";
-    latitude 35.0075;
-    longitude -82.9975;
-    out_svc +1991-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "1488 MW";
-}
-
-object powerplant
-{
-    name "BAGNELL_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Miller County";
-    state "Missouri";
-    latitude 38.2044;
-    longitude -92.6239;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "208 MW";
 }
 
 object powerplant
@@ -79,71 +27,6 @@ object powerplant
 
 object powerplant
 {
-    name "BARKLEY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lyon County";
-    state "Kentucky";
-    latitude 37.0217;
-    longitude -88.2211;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "130 MW";
-}
-
-object powerplant
-{
-    name "BARTLETTS_FERRY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lee County";
-    state "Alabama";
-    latitude 32.663;
-    longitude -85.0908;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "173 MW";
-}
-
-object powerplant
-{
-    name "BATH_COUNTY_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Bath County";
-    state "Virginia";
-    latitude 38.2089;
-    longitude -79.8001;
-    out_svc +1985-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "2862 MW";
-}
-
-object powerplant
-{
-    name "BEAR_SWAMP_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Berkshire County";
-    state "Massachusetts";
-    latitude 42.6839;
-    longitude -72.9599;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "600 MW";
-}
-
-object powerplant
-{
-    name "BEAVER_DAM_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Carroll County";
-    state "Arkansas";
-    latitude 36.4215;
-    longitude -93.8474;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "112 MW";
-}
-
-object powerplant
-{
     name "BELDEN_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Plumas County";
@@ -153,19 +36,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "118 MW";
-}
-
-object powerplant
-{
-    name "BIG_BEND_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Buffalo County";
-    state "South Dakota";
-    latitude 44.0384;
-    longitude -99.4463;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "538 MW";
 }
 
 object powerplant
@@ -235,32 +105,6 @@ object powerplant
 
 object powerplant
 {
-    name "BLAKELY_MOUNTAIN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Garland County";
-    state "Arkansas";
-    latitude 34.571;
-    longitude -93.1944;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "75 MW";
-}
-
-object powerplant
-{
-    name "BLENHEIM_GILBOA_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Schoharie County";
-    state "New York";
-    latitude 42.4423;
-    longitude -74.4479;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "1000 MW";
-}
-
-object powerplant
-{
     name "BLISS_HYDROELECTRIC_PLANT_1";
     // type "run-of-river";
     // county "Gooding County";
@@ -300,19 +144,6 @@ object powerplant
 
 object powerplant
 {
-    name "BOONE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Sullivan County";
-    state "Tennessee";
-    latitude 36.4403;
-    longitude -82.4381;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "106 MW";
-}
-
-object powerplant
-{
     name "BOUNDARY_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Pend Oreille County";
@@ -339,32 +170,6 @@ object powerplant
 
 object powerplant
 {
-    name "BRADLEY_LAKE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Kenai Peninsula County";
-    state "Alaska";
-    latitude 59.7786;
-    longitude -150.9401;
-    out_svc +1991-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "126 MW";
-}
-
-object powerplant
-{
-    name "BROKEN_BOW_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "McCurtain County";
-    state "Oklahoma";
-    latitude 34.1388;
-    longitude -94.6845;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "100 MW";
-}
-
-object powerplant
-{
     name "BROWNLEE_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Washington County";
@@ -374,32 +179,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "675 MW";
-}
-
-object powerplant
-{
-    name "BUFORD_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Forsyth County";
-    state "Georgia";
-    latitude 34.1623;
-    longitude -84.0774;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "131 MW";
-}
-
-object powerplant
-{
-    name "BULL_SHOALS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Marion County";
-    state "Arkansas";
-    latitude 36.3635;
-    longitude -92.5763;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "340 MW";
 }
 
 object powerplant
@@ -443,19 +222,6 @@ object powerplant
 
 object powerplant
 {
-    name "CALDERWOOD_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Blount County";
-    state "Tennessee";
-    latitude 35.4923;
-    longitude -83.9806;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "157 MW";
-}
-
-object powerplant
-{
     name "CAMINO_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "El Dorado County";
@@ -465,19 +231,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "158 MW";
-}
-
-object powerplant
-{
-    name "CANNELTON_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Hancock County";
-    state "Kentucky";
-    latitude 37.8997;
-    longitude -86.7058;
-    out_svc +2016-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "88 MW";
 }
 
 object powerplant
@@ -508,32 +261,6 @@ object powerplant
 
 object powerplant
 {
-    name "CARTERS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Murray County";
-    state "Georgia";
-    latitude 34.6121;
-    longitude -84.6733;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "250 MW";
-}
-
-object powerplant
-{
-    name "CARTERS_PUMPED_STORAGE_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Murray County";
-    state "Georgia";
-    latitude 34.6121;
-    longitude -84.6733;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "250 MW";
-}
-
-object powerplant
-{
     name "CASTAIC_HYDROELECTRIC_PLANT_1";
     // type "conventional and pumped storage";
     // county "Los Angeles County";
@@ -547,58 +274,6 @@ object powerplant
 
 object powerplant
 {
-    name "CENTER_HILL_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "DeKalb County";
-    state "Tennessee";
-    latitude 36.0972;
-    longitude -85.8274;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "140 MW";
-}
-
-object powerplant
-{
-    name "CHEOAH_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Graham County";
-    state "North Carolina";
-    latitude 35.4478;
-    longitude -83.9383;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "140 MW";
-}
-
-object powerplant
-{
-    name "CHEROKEE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Jefferson County";
-    state "Tennessee";
-    latitude 36.1682;
-    longitude -83.4977;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "135 MW";
-}
-
-object powerplant
-{
-    name "CHICKAMAUGA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Hamilton County";
-    state "Tennessee";
-    latitude 35.1018;
-    longitude -85.2295;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "160 MW";
-}
-
-object powerplant
-{
     name "CHIEF_JOSEPH_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Douglas County";
@@ -608,19 +283,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "2456 MW";
-}
-
-object powerplant
-{
-    name "CLAYTOR_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Pulaski County";
-    state "Virginia";
-    latitude 37.0751;
-    longitude -80.5847;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "75 MW";
 }
 
 object powerplant
@@ -644,61 +306,9 @@ object powerplant
     state "California";
     latitude 38.1446;
     longitude -120.381;
-    out_svc +1989-01-01 00:00:00 UTC;
+    out_svc "1989-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "253 MW";
-}
-
-object powerplant
-{
-    name "COMERFORD_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grafton County";
-    state "New Hampshire";
-    latitude 44.325;
-    longitude -72.001;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "168 MW";
-}
-
-object powerplant
-{
-    name "CONOWINGO_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Harford County";
-    state "Maryland";
-    latitude 39.6572;
-    longitude -76.1752;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "531 MW";
-}
-
-object powerplant
-{
-    name "CORDELL_HULL_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Smith County";
-    state "Tennessee";
-    latitude 36.2895;
-    longitude -85.9442;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "100 MW";
-}
-
-object powerplant
-{
-    name "COWANS_FORD_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Lincoln County";
-    state "North Carolina";
-    latitude 35.4346;
-    longitude -80.9588;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "350 MW";
 }
 
 object powerplant
@@ -716,32 +326,6 @@ object powerplant
 
 object powerplant
 {
-    name "DAM_2_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Desha County";
-    state "Arkansas";
-    latitude 33.9865;
-    longitude -91.3158;
-    out_svc +1999-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "103 MW";
-}
-
-object powerplant
-{
-    name "DARDANELLE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Pope County";
-    state "Arkansas";
-    latitude 35.2503;
-    longitude -93.1686;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "161 MW";
-}
-
-object powerplant
-{
     name "DAVIS_DAM_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Mohave County";
@@ -751,19 +335,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "255 MW";
-}
-
-object powerplant
-{
-    name "DENISON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grayson County";
-    state "Texas";
-    latitude 33.8181;
-    longitude -96.5692;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "104 MW";
 }
 
 object powerplant
@@ -833,19 +404,6 @@ object powerplant
 
 object powerplant
 {
-    name "DOUGLAS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Sevier County";
-    state "Tennessee";
-    latitude 35.9623;
-    longitude -83.5393;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "151 MW";
-}
-
-object powerplant
-{
     name "DWORSHAK_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Clearwater County";
@@ -898,32 +456,6 @@ object powerplant
 
 object powerplant
 {
-    name "EUFAULA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Haskell County";
-    state "Oklahoma";
-    latitude 35.3069;
-    longitude -95.3572;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "90 MW";
-}
-
-object powerplant
-{
-    name "FAIRFIELD_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Fairfield County";
-    state "South Carolina";
-    latitude 34.3061;
-    longitude -81.3308;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "587 MW";
-}
-
-object powerplant
-{
     name "FLAMING_GORGE_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Daggett County";
@@ -963,32 +495,6 @@ object powerplant
 
 object powerplant
 {
-    name "FONTANA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Swain County";
-    state "North Carolina";
-    latitude 35.4507;
-    longitude -83.805;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "255 MW";
-}
-
-object powerplant
-{
-    name "FORT_LOUDOUN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Loudon County";
-    state "Tennessee";
-    latitude 35.7917;
-    longitude -84.2431;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "153 MW";
-}
-
-object powerplant
-{
     name "FORT_PECK_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "McCone County";
@@ -998,58 +504,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "180 MW";
-}
-
-object powerplant
-{
-    name "FORT_RANDALL_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Charles Mix County";
-    state "South Dakota";
-    latitude 43.0653;
-    longitude -98.5539;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "320 MW";
-}
-
-object powerplant
-{
-    name "GARRISON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Mercer County";
-    state "North Dakota";
-    latitude 47.4945;
-    longitude -101.412;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "583 MW";
-}
-
-object powerplant
-{
-    name "GASTON_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Halifax County";
-    state "North Carolina";
-    latitude 36.4992;
-    longitude -77.8115;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "178 MW";
-}
-
-object powerplant
-{
-    name "GAVINS_POINT_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Cedar County";
-    state "Nebraska";
-    latitude 42.8488;
-    longitude -97.4815;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "132 MW";
 }
 
 object powerplant
@@ -1119,32 +573,6 @@ object powerplant
 
 object powerplant
 {
-    name "GREERS_FERRY_LAKE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Cleburne County";
-    state "Arkansas";
-    latitude 35.5207;
-    longitude -91.9953;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "96 MW";
-}
-
-object powerplant
-{
-    name "GUNTERSVILLE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Marshall County";
-    state "Alabama";
-    latitude 34.4213;
-    longitude -86.3939;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "115 MW";
-}
-
-object powerplant
-{
     name "HAAS_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Fresno County";
@@ -1154,58 +582,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "135 MW";
-}
-
-object powerplant
-{
-    name "HARRIS_STATION_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Somerset County";
-    state "Maine";
-    latitude 45.4592;
-    longitude -69.8658;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "76 MW";
-}
-
-object powerplant
-{
-    name "HARRY_TRUMAN_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Benton County";
-    state "Missouri";
-    latitude 38.2623;
-    longitude -93.4062;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "161 MW";
-}
-
-object powerplant
-{
-    name "HARTWELL_LAKE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Hart County";
-    state "Georgia";
-    latitude 34.3564;
-    longitude -82.8219;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "420 MW";
-}
-
-object powerplant
-{
-    name "HAWKS_NEST_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Fayette County";
-    state "West Virginia";
-    latitude 38.1478;
-    longitude -81.1753;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "102 MW";
 }
 
 object powerplant
@@ -1229,7 +605,7 @@ object powerplant
     state "California";
     latitude 37.0293;
     longitude -118.968;
-    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc "1984-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "1053 MW";
 }
@@ -1242,48 +618,9 @@ object powerplant
     state "Washington";
     latitude 47.9084;
     longitude -121.814;
-    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc "1984-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "112 MW";
-}
-
-object powerplant
-{
-    name "HIWASSEE_HYDROELECTRIC_PLANT_1";
-    // type "conventional and pumped storage";
-    // county "Cherokee County";
-    state "North Carolina";
-    latitude 35.1509;
-    longitude -84.1775;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "166 MW";
-}
-
-object powerplant
-{
-    name "HOLTWOOD_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Lancaster County";
-    state "Pennsylvania";
-    latitude 39.8272;
-    longitude -76.3318;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "247 MW";
-}
-
-object powerplant
-{
-    name "HOOVER_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "nan";
-    state "Arizona and Nevada";
-    latitude 36.0155;
-    longitude -114.738;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "2080 MW";
 }
 
 object powerplant
@@ -1333,22 +670,9 @@ object powerplant
     state "California";
     latitude 37.1479;
     longitude -119.257;
-    out_svc +1987-01-01 00:00:00 UTC;
+    out_svc "1987-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "200 MW";
-}
-
-object powerplant
-{
-    name "J._STROM_THURMOND_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "McCormick County";
-    state "South Carolina";
-    latitude 33.6602;
-    longitude -82.1961;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "362 MW";
 }
 
 object powerplant
@@ -1379,32 +703,6 @@ object powerplant
 
 object powerplant
 {
-    name "JEFFERIES_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Berkeley County";
-    state "South Carolina";
-    latitude 33.2444;
-    longitude -79.9909;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "145 MW";
-}
-
-object powerplant
-{
-    name "JOCASSEE_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Pickens County";
-    state "South Carolina";
-    latitude 34.9594;
-    longitude -82.9147;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "774 MW";
-}
-
-object powerplant
-{
     name "JOHN_C._BOYLE_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Klamath County";
@@ -1431,19 +729,6 @@ object powerplant
 
 object powerplant
 {
-    name "JOHN_H._KERR_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Mecklenburg County";
-    state "Virginia";
-    latitude 36.5994;
-    longitude -78.3005;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "297 MW";
-}
-
-object powerplant
-{
     name "JOHN_W_KEYS_III_HYDROELECTRIC_PLANT_1";
     // type "pumped storage";
     // county "Grant County";
@@ -1453,32 +738,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "314 MW";
-}
-
-object powerplant
-{
-    name "JONES_BLUFF_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Autauga County";
-    state "Alabama";
-    latitude 32.3242;
-    longitude -86.7843;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "82 MW";
-}
-
-object powerplant
-{
-    name "JORDAN_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Elmore County";
-    state "Alabama";
-    latitude 32.6189;
-    longitude -86.2548;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "100 MW";
 }
 
 object powerplant
@@ -1496,52 +755,13 @@ object powerplant
 
 object powerplant
 {
-    name "KENTUCKY_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Marshall County";
-    state "Kentucky";
-    latitude 37.0131;
-    longitude -88.2692;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "219 MW";
-}
-
-object powerplant
-{
-    name "KEOKUK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lee County";
-    state "Iowa";
-    latitude 40.3965;
-    longitude -91.3719;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "125 MW";
-}
-
-object powerplant
-{
-    name "KEOWEE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Pickens County";
-    state "South Carolina";
-    latitude 34.7981;
-    longitude -82.8872;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "158 MW";
-}
-
-object powerplant
-{
     name "KERCKHOFF_2_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Fresno County";
     state "California";
     latitude 37.0718;
     longitude -119.558;
-    out_svc +1983-01-01 00:00:00 UTC;
+    out_svc "1983-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "140 MW";
 }
@@ -1557,45 +777,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "117 MW";
-}
-
-object powerplant
-{
-    name "LAY_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Chilton County";
-    state "Alabama";
-    latitude 32.9633;
-    longitude -86.5187;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "177 MW";
-}
-
-object powerplant
-{
-    name "LEWIS_SMITH_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Walker County";
-    state "Alabama";
-    latitude 33.9406;
-    longitude -87.1077;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "181 MW";
-}
-
-object powerplant
-{
-    name "LEWISTON_NIAGARA_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Niagara County";
-    state "New York";
-    latitude 43.143;
-    longitude -79.022;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "240 MW";
 }
 
 object powerplant
@@ -1622,19 +803,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "810 MW";
-}
-
-object powerplant
-{
-    name "LOGAN_MARTIN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Talladega County";
-    state "Alabama";
-    latitude 33.4259;
-    longitude -86.3375;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "128 MW";
 }
 
 object powerplant
@@ -1697,22 +865,9 @@ object powerplant
     state "Idaho";
     latitude 43.528;
     longitude -116.058;
-    out_svc +1988-01-01 00:00:00 UTC;
+    out_svc "1988-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "101 MW";
-}
-
-object powerplant
-{
-    name "LUDINGTON_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Mason County";
-    state "Michigan";
-    latitude 43.8942;
-    longitude -86.4447;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "1979 MW";
 }
 
 object powerplant
@@ -1726,58 +881,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "190 MW";
-}
-
-object powerplant
-{
-    name "MANSFIELD_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Travis County";
-    state "Texas";
-    latitude 30.3899;
-    longitude -97.9073;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "108 MW";
-}
-
-object powerplant
-{
-    name "MARKHAM_FERRY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Mayes County";
-    state "Oklahoma";
-    latitude 36.2317;
-    longitude -95.1822;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "128 MW";
-}
-
-object powerplant
-{
-    name "MARKLAND_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Switzerland County";
-    state "Indiana";
-    latitude 38.7795;
-    longitude -84.964;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "78 MW";
-}
-
-object powerplant
-{
-    name "MARTIN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Elmore County";
-    state "Alabama";
-    latitude 32.6804;
-    longitude -85.9114;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "211 MW";
 }
 
 object powerplant
@@ -1808,19 +911,6 @@ object powerplant
 
 object powerplant
 {
-    name "MELDAHL_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Bracken County";
-    state "Kentucky";
-    latitude 38.7914;
-    longitude -84.173;
-    out_svc +2016-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "105 MW";
-}
-
-object powerplant
-{
     name "MERWIN_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Cowlitz County";
@@ -1843,32 +933,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "122 MW";
-}
-
-object powerplant
-{
-    name "MILLERS_FERRY_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Wilcox County";
-    state "Alabama";
-    latitude 32.1009;
-    longitude -87.3998;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "101 MW";
-}
-
-object powerplant
-{
-    name "MITCHELL_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Coosa County";
-    state "Alabama";
-    latitude 32.806;
-    longitude -86.4449;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "170 MW";
 }
 
 object powerplant
@@ -1918,35 +982,9 @@ object powerplant
     state "Colorado";
     latitude 39.0942;
     longitude -106.352;
-    out_svc +1981-01-01 00:00:00 UTC;
+    out_svc "1981-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "200 MW";
-}
-
-object powerplant
-{
-    name "MUDDY_RUN_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Lancaster County";
-    state "Pennsylvania";
-    latitude 39.8076;
-    longitude -76.2993;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "1072 MW";
-}
-
-object powerplant
-{
-    name "NARROWS_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Stanly County";
-    state "North Carolina";
-    latitude 35.4189;
-    longitude -80.0917;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "109 MW";
 }
 
 object powerplant
@@ -1990,58 +1028,6 @@ object powerplant
 
 object powerplant
 {
-    name "NICKAJACK_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Marion County";
-    state "Tennessee";
-    latitude 35.0017;
-    longitude -85.6218;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "104 MW";
-}
-
-object powerplant
-{
-    name "NORFORK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Baxter County";
-    state "Arkansas";
-    latitude 36.2491;
-    longitude -92.2401;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "80 MW";
-}
-
-object powerplant
-{
-    name "NORRIS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Anderson County";
-    state "Tennessee";
-    latitude 36.2242;
-    longitude -84.0914;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "131 MW";
-}
-
-object powerplant
-{
-    name "NORTHFIELD_MOUNTAIN_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Franklin County";
-    state "Massachusetts";
-    latitude 42.6107;
-    longitude -72.4716;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "1168 MW";
-}
-
-object powerplant
-{
     name "NOXON_RAPIDS_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Sanders County";
@@ -2055,45 +1041,6 @@ object powerplant
 
 object powerplant
 {
-    name "OAHE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Hughes County";
-    state "South Dakota";
-    latitude 44.4504;
-    longitude -100.387;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "786 MW";
-}
-
-object powerplant
-{
-    name "OHIO_FALLS_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Jefferson County";
-    state "Kentucky";
-    latitude 38.2832;
-    longitude -85.7792;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "110 MW";
-}
-
-object powerplant
-{
-    name "OLD_HICKORY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Sumner County";
-    state "Tennessee";
-    latitude 36.2972;
-    longitude -86.6556;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "162 MW";
-}
-
-object powerplant
-{
     name "OXBOW_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Baker County";
@@ -2103,19 +1050,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "190 MW";
-}
-
-object powerplant
-{
-    name "OZARK_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Franklin County";
-    state "Arkansas";
-    latitude 35.4693;
-    longitude -93.8175;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "100 MW";
 }
 
 object powerplant
@@ -2159,39 +1093,13 @@ object powerplant
 
 object powerplant
 {
-    name "PENSACOLA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Mayes County";
-    state "Oklahoma";
-    latitude 36.4675;
-    longitude -95.0414;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "130 MW";
-}
-
-object powerplant
-{
-    name "PICKWICK_LANDING_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Hardin County";
-    state "Tennessee";
-    latitude 35.0683;
-    longitude -88.2494;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "240 MW";
-}
-
-object powerplant
-{
     name "PINE_FLAT_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Fresno County";
     state "California";
     latitude 36.8326;
     longitude -119.327;
-    out_svc +1984-01-01 00:00:00 UTC;
+    out_svc "1984-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "165 MW";
 }
@@ -2302,32 +1210,6 @@ object powerplant
 
 object powerplant
 {
-    name "R._L._HARRIS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Randolph County";
-    state "Alabama";
-    latitude 33.2583;
-    longitude -85.616;
-    out_svc +1983-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "135 MW";
-}
-
-object powerplant
-{
-    name "RACCOON_MOUNTAIN_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Hamilton County";
-    state "Tennessee";
-    latitude 35.0558;
-    longitude -85.3879;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "1714 MW";
-}
-
-object powerplant
-{
     name "RALSTON_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Placer County";
@@ -2337,71 +1219,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "79 MW";
-}
-
-object powerplant
-{
-    name "RICHARD_B._RUSSELL_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Elbert County";
-    state "Georgia";
-    latitude 34.0256;
-    longitude -82.5953;
-    out_svc +1985-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "300 MW";
-}
-
-object powerplant
-{
-    name "RICHARD_B._RUSSELL_PUMPED_STORAGE_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Elbert County";
-    state "Georgia";
-    latitude 34.0256;
-    longitude -82.5953;
-    out_svc +1985-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "300 MW";
-}
-
-object powerplant
-{
-    name "ROANOKE_RAPIDS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Halifax County";
-    state "North Carolina";
-    latitude 36.4789;
-    longitude -77.6722;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "100 MW";
-}
-
-object powerplant
-{
-    name "ROBERT_MOSES_NIAGARA_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Niagara County";
-    state "New York";
-    latitude 43.1427;
-    longitude -79.0394;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "2429 MW";
-}
-
-object powerplant
-{
-    name "ROBERT_S._KERR_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Sequoyah County";
-    state "Oklahoma";
-    latitude 35.3445;
-    longitude -94.7755;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "110 MW";
 }
 
 object powerplant
@@ -2428,19 +1245,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "629 MW";
-}
-
-object powerplant
-{
-    name "ROCKY_MOUNTAIN_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Floyd County";
-    state "Georgia";
-    latitude 34.3555;
-    longitude -85.3039;
-    out_svc +1995-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "848 MW";
 }
 
 object powerplant
@@ -2484,58 +1288,6 @@ object powerplant
 
 object powerplant
 {
-    name "S._C._MOORE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Grafton County";
-    state "New Hampshire";
-    latitude 44.3356;
-    longitude -71.8742;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "191 MW";
-}
-
-object powerplant
-{
-    name "SAFE_HARBOR_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Lancaster County";
-    state "Pennsylvania";
-    latitude 39.9244;
-    longitude -76.3901;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "418 MW";
-}
-
-object powerplant
-{
-    name "SALINA_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Mayes County";
-    state "Oklahoma";
-    latitude 36.2647;
-    longitude -95.1036;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "260 MW";
-}
-
-object powerplant
-{
-    name "SALUDA_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lexington County";
-    state "South Carolina";
-    latitude 34.0533;
-    longitude -81.2172;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "207 MW";
-}
-
-object powerplant
-{
     name "SELI_KSANKA_QLISPE_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Lake County";
@@ -2545,19 +1297,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "228 MW";
-}
-
-object powerplant
-{
-    name "SENECA_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Warren County";
-    state "Pennsylvania";
-    latitude 41.8389;
-    longitude -79.0056;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "438 MW";
 }
 
 object powerplant
@@ -2575,71 +1314,6 @@ object powerplant
 
 object powerplant
 {
-    name "SIDNEY_A._MURRAY_JR._HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Concordia County";
-    state "Louisiana";
-    latitude 31.088;
-    longitude -91.6188;
-    out_svc +1990-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "192 MW";
-}
-
-object powerplant
-{
-    name "SMITH_MOUNTAIN_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Pittsylvania County";
-    state "Virginia";
-    latitude 37.0413;
-    longitude -79.5356;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "300 MW";
-}
-
-object powerplant
-{
-    name "SMITH_MOUNTAIN_PUMPED_STORAGE_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Pittsylvania County";
-    state "Virginia";
-    latitude 37.0413;
-    longitude -79.5356;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "247 MW";
-}
-
-object powerplant
-{
-    name "SMITHLAND_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Livingston County";
-    state "Kentucky";
-    latitude 37.1696;
-    longitude -88.4195;
-    out_svc +2017-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "76 MW";
-}
-
-object powerplant
-{
-    name "SNETTISHAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Juneau County";
-    state "Alaska";
-    latitude 58.1415;
-    longitude -133.737;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "78 MW";
-}
-
-object powerplant
-{
     name "SPRING_CREEK_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Shasta County";
@@ -2649,32 +1323,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "180 MW";
-}
-
-object powerplant
-{
-    name "ST._LAWRENCE-FRANKLIN_D._ROOSEVELT_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "St Lawrence County";
-    state "New York";
-    latitude 45.0038;
-    longitude -74.7994;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "912 MW";
-}
-
-object powerplant
-{
-    name "ST._STEPHEN_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Berkeley County";
-    state "South Carolina";
-    latitude 33.4261;
-    longitude -79.9301;
-    out_svc +1985-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "84 MW";
 }
 
 object powerplant
@@ -2698,22 +1346,9 @@ object powerplant
     state "Washington";
     latitude 47.5025;
     longitude -119.292;
-    out_svc +1985-01-01 00:00:00 UTC;
+    out_svc "1985-01-01 00:00:00 UTC";
     out_svc NEVER;
     operating_capacity "92 MW";
-}
-
-object powerplant
-{
-    name "SUMMERSVILLE_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Nicholas County";
-    state "West Virginia";
-    latitude 38.2192;
-    longitude -80.8906;
-    out_svc +2001-01-01 00:00:00 UTC;
-    out_svc NEVER;
-    operating_capacity "80 MW";
 }
 
 object powerplant
@@ -2727,32 +1362,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "240 MW";
-}
-
-object powerplant
-{
-    name "TABLE_ROCK_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Taney County";
-    state "Missouri";
-    latitude 36.597;
-    longitude -93.3086;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "200 MW";
-}
-
-object powerplant
-{
-    name "TAUM_SAUK_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Reynolds County";
-    state "Missouri";
-    latitude 37.5208;
-    longitude -90.8347;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "408 MW";
 }
 
 object powerplant
@@ -2796,45 +1405,6 @@ object powerplant
 
 object powerplant
 {
-    name "THURLOW_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Elmore County";
-    state "Alabama";
-    latitude 32.5354;
-    longitude -85.8876;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "91 MW";
-}
-
-object powerplant
-{
-    name "TILLERY_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Montgomery County";
-    state "North Carolina";
-    latitude 35.2067;
-    longitude -80.0648;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "84 MW";
-}
-
-object powerplant
-{
-    name "TOLEDO_BEND_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Newton County";
-    state "Texas";
-    latitude 31.1735;
-    longitude -93.5659;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "81 MW";
-}
-
-object powerplant
-{
     name "TRINITY_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Trinity County";
@@ -2874,71 +1444,6 @@ object powerplant
 
 object powerplant
 {
-    name "WALLACE_DAM_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Hancock County";
-    state "Georgia";
-    latitude 33.3502;
-    longitude -83.1574;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "112 MW";
-}
-
-object powerplant
-{
-    name "WALLACE_DAM_PUMPED_STORAGE_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Hancock County";
-    state "Georgia";
-    latitude 33.3502;
-    longitude -83.1574;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "216 MW";
-}
-
-object powerplant
-{
-    name "WALTER_BOULDIN_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Elmore County";
-    state "Alabama";
-    latitude 32.5839;
-    longitude -86.2831;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "225 MW";
-}
-
-object powerplant
-{
-    name "WALTER_F._GEORGE_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Clay County";
-    state "Georgia";
-    latitude 31.6245;
-    longitude -85.0652;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "168 MW";
-}
-
-object powerplant
-{
-    name "WALTERS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Haywood County";
-    state "North Carolina";
-    latitude 35.6946;
-    longitude -83.0503;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "108 MW";
-}
-
-object powerplant
-{
     name "WANAPUM_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Grant County";
@@ -2948,58 +1453,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "1220 MW";
-}
-
-object powerplant
-{
-    name "WATEREE_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Kershaw County";
-    state "South Carolina";
-    latitude 34.3355;
-    longitude -80.7021;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "91 MW";
-}
-
-object powerplant
-{
-    name "WATTS_BAR_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Rhea County";
-    state "Tennessee";
-    latitude 35.6197;
-    longitude -84.7855;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "175 MW";
-}
-
-object powerplant
-{
-    name "WEBBERS_FALLS_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Muskogee County";
-    state "Oklahoma";
-    latitude 35.5531;
-    longitude -95.1708;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "75 MW";
-}
-
-object powerplant
-{
-    name "WEISS_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Cherokee County";
-    state "Alabama";
-    latitude 34.1721;
-    longitude -85.7538;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "88 MW";
 }
 
 object powerplant
@@ -3017,19 +1470,6 @@ object powerplant
 
 object powerplant
 {
-    name "WHEELER_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Lawrence County";
-    state "Alabama";
-    latitude 34.8069;
-    longitude -87.3819;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "404 MW";
-}
-
-object powerplant
-{
     name "WHITE_ROCK-SLAB_CREEK_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "El Dorado County";
@@ -3043,32 +1483,6 @@ object powerplant
 
 object powerplant
 {
-    name "WILSON_HYDROELECTRIC_PLANT_1";
-    // type "run-of-river";
-    // county "Lauderdale County";
-    state "Alabama";
-    latitude 34.7978;
-    longitude -87.6254;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "667 MW";
-}
-
-object powerplant
-{
-    name "WOLF_CREEK_HYDROELECTRIC_PLANT_1";
-    // type "conventional storage";
-    // county "Russell County";
-    state "Kentucky";
-    latitude 36.8691;
-    longitude -85.147;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "270 MW";
-}
-
-object powerplant
-{
     name "YALE_HYDROELECTRIC_PLANT_1";
     // type "conventional storage";
     // county "Cowlitz County";
@@ -3078,19 +1492,6 @@ object powerplant
     out_svc INIT;
     out_svc NEVER;
     operating_capacity "134 MW";
-}
-
-object powerplant
-{
-    name "YARDS_CREEK_HYDROELECTRIC_PLANT_1";
-    // type "pumped storage";
-    // county "Warren County";
-    state "New Jersey";
-    latitude 41.0006;
-    longitude -75.0314;
-    out_svc INIT;
-    out_svc NEVER;
-    operating_capacity "453 MW";
 }
 
 object powerplant

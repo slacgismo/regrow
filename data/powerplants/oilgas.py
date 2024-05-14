@@ -1,3 +1,6 @@
+import os, sys
+sys.path.insert(0,"..")
+import config
 import pandas as pd
 
 pd.options.display.max_columns = None
@@ -15,49 +18,44 @@ STARTYEAR=2018
 STOPYEAR=2022
 
 data = pd.read_excel(INPUTS["GLOBALDATA"],sheet_name="Gas & Oil Units")
-print(data)
-quit()
 
 mapper = {
-    'Date Last Researched' : None, 
-    'Country 1' : "country", 
-    'Country 2' : None,
-    'Project Name' : "name", 
-    'Project Name (local lang/script)' : None, 
-    'Other name(s)' : None, 
-    'Capacity (MW)' : "capacity[MW]",
-    'Binational' : None, 
-    'Country 1 Capacity (MW)' : None, 
-    'Country 2 Capacity (MW)' : None,
-    'Turbines' : None, 
-    'Status' : "status", 
-    'Complex' : None, 
-    'Start Year' : "start[y]", 
-    'Retired Year' : "retirement[y]", 
-    'Owner' : None,
-    'Owner Name (local lang/script)' : None, 
-    'Operator' : None,
-    'Operator Name (local lang/script)' : None, 
-    'Technology Type' : "type",
-    'River / Watercourse' : None, 
-    'Latitude' : "latitude", 
-    'Longitude' : "longitude", 
-    'Location Accuracy' : None,
-    'City 1' : None, 
-    'Local Area 1' : "county", 
-    'Major Area 1' : None, 
-    'State/Province 1' : "state",
-    'Subregion 1' : None, 
-    'Region 1' : None, 
-    'City 2' : None, 
-    'Local Area 2' : None, 
-    'Major Area 2' : None,
-    'State/Province 2' : None, 
-    'Subregion 2' : None, 
-    'Region 2' : None, 
-    'GEM location ID' : None,
-    'GEM unit ID' : None, 
     'Wiki URL' : None,
+    'Country' : "country",
+    'Plant name' : "name",
+    'Plant name (local script)' : None,
+    'Unit name' : "unit",
+    'Fuel' : None,
+    'Capacity (MW)' : "capacity[MW]", 
+    'Status' : "status",
+    'Technology' : "type",
+    'CHP' : None,
+    'Hydrogen capable?' : None, 
+    'CCS attachment?' : None,
+    'Coal-to-gas conversion/replacement?' : None, 
+    'Start year' : "start[y]",
+    'Retired year' : "retirement[y]",
+    'Planned retire' : None,
+    'Operator' : None,
+    'Owner' : None,
+    'Parent' : None,
+    'Latitude' : "latitude",
+    'Longitude' : "longitude",
+    'Location accuracy' : None,
+    'City' : None,
+    'Local area (taluk/county)' : "county",
+    'Major area (prefecture/district)' : None, 
+    'Subnational unit (province/state)' : "state",
+    'Region' : None,
+    'Sub-region' : None,
+    'Other IDs (location)' : None, 
+    'Other IDs (unit)' : None,
+    'Other plant names' : None,
+    'Captive [heat/power/both]' : None,
+    'Captive industry type' : None,
+    'Captive non-industry use [heat/power/both/none]' : None, 
+    'GEM location ID' : None,
+    'GEM unit ID' : None,
     }
 
 data.rename(dict([(x,y) for x,y in mapper.items() if not y is None]),inplace=True,axis=1)
@@ -65,7 +63,7 @@ data.drop([x for x,y in mapper.items() if y is None],axis=1,inplace=True)
 data.drop(data[~data["status"].isin(["operating","retired"])].index,inplace=True)
 data.drop(data[data["country"]!="United States"].index,inplace=True)
 data.drop(data[data["retirement[y]"]<STARTYEAR].index,inplace=True)
-data.drop(data[data["start[y]"]>STOPYEAR].index,inplace=True)
+data.drop(data[data["start[y]"].astype('int')>STOPYEAR].index,inplace=True)
 data.drop(["country","status"],axis=1,inplace=True)
-data["unit"] = 1
+data.drop(data[~data["state"].isin(config.state_list)].index,inplace=True)
 data.to_csv(OUTPUTS["PLANTDATA"],header=True,index=False)

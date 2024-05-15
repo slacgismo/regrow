@@ -7,6 +7,7 @@ class powerplant
 object powerplant
 {
     name "BIG_GEYSERS_GEOTHERMAL_PLANT_13";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -21,6 +22,7 @@ object powerplant
 object powerplant
 {
     name "BLUE_MOUNTAIN_GEOTHERMAL_PLANT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Humboldt County";
@@ -35,6 +37,7 @@ object powerplant
 object powerplant
 {
     name "BLUNDELL_1_GEOTHERMAL_PLANT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Beaver County";
@@ -49,6 +52,7 @@ object powerplant
 object powerplant
 {
     name "BOTTLE_ROCK_POWER_GEOTHERMAL_PLANT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lake County";
@@ -63,6 +67,7 @@ object powerplant
 object powerplant
 {
     name "CALISTOGA_GEOTHERMAL_PLANT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lake County";
@@ -77,6 +82,7 @@ object powerplant
 object powerplant
 {
     name "CALISTOGA_GEOTHERMAL_PLANT_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lake County";
@@ -91,6 +97,7 @@ object powerplant
 object powerplant
 {
     name "CASA_DIABLO_4_GEOTHERMAL_POWER_PLANT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Mono County";
@@ -105,6 +112,7 @@ object powerplant
 object powerplant
 {
     name "CE_LEATHERS_GEOTHERMAL_PLANT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -119,6 +127,7 @@ object powerplant
 object powerplant
 {
     name "COBB_CREEK_GEOTHERMAL_PLANT_12";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -133,6 +142,7 @@ object powerplant
 object powerplant
 {
     name "COSO_BLM_GEOTHERMAL_PLANT_GEN1-3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Inyo County";
@@ -147,6 +157,7 @@ object powerplant
 object powerplant
 {
     name "DEL_RANCH_GEOTHERMAL_PROJECT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -161,6 +172,7 @@ object powerplant
 object powerplant
 {
     name "EAGLE_ROCK_GEOTHERMAL_PLANT_11";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -175,6 +187,7 @@ object powerplant
 object powerplant
 {
     name "ELMORE_GEOTHERMAL_PROJECT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -189,6 +202,7 @@ object powerplant
 object powerplant
 {
     name "GALENA_1_GEOTHERMAL_PLANT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Washoe County";
@@ -203,6 +217,7 @@ object powerplant
 object powerplant
 {
     name "GRANT_GEOTHERMAL_PLANT_20";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -217,6 +232,7 @@ object powerplant
 object powerplant
 {
     name "HEBER_1_GEOTHERMAL";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -231,6 +247,7 @@ object powerplant
 object powerplant
 {
     name "JOHN_L._FEATHERSTONE_GEOTHERMAL_PLANT_HR1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -245,6 +262,7 @@ object powerplant
 object powerplant
 {
     name "LAKE_VIEW_GEOTHERMAL_PLANT_17";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -259,6 +277,7 @@ object powerplant
 object powerplant
 {
     name "MCCABE_GEOTHERMAL_PLANT_5-6";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -273,6 +292,7 @@ object powerplant
 object powerplant
 {
     name "MCGINNESS_HILLS_3_GEOTHERMAL_PLANT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lander County";
@@ -287,6 +307,7 @@ object powerplant
 object powerplant
 {
     name "MCGINNESS_HILLS_GEOTHERMAL_PLANT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lander County";
@@ -301,6 +322,7 @@ object powerplant
 object powerplant
 {
     name "MCGINNESS_HILLS_GEOTHERMAL_PLANT_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lander County";
@@ -315,6 +337,7 @@ object powerplant
 object powerplant
 {
     name "NAVY_1_GEOTHERMAL_PLANT_GEN7-9";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Inyo County";
@@ -329,6 +352,7 @@ object powerplant
 object powerplant
 {
     name "NAVY_2_GEOTHERMAL_PLANT_GEN4-6";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Inyo County";
@@ -343,6 +367,7 @@ object powerplant
 object powerplant
 {
     name "NCPA_GEOTHERMAL_PLANT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lake County";
@@ -357,6 +382,7 @@ object powerplant
 object powerplant
 {
     name "NCPA_GEOTHERMAL_PLANT_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lake County";
@@ -371,6 +397,7 @@ object powerplant
 object powerplant
 {
     name "NCPA_GEOTHERMAL_PLANT_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Lake County";
@@ -385,6 +412,7 @@ object powerplant
 object powerplant
 {
     name "PATUA_GEOTHERMAL_PROJECT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Churchill County";
@@ -399,6 +427,7 @@ object powerplant
 object powerplant
 {
     name "QUICKSILVER_GEOTHERMAL_PLANT_16";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -413,6 +442,7 @@ object powerplant
 object powerplant
 {
     name "RIDGE_LINE_GEOTHERMAL_PLANT_7-8";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -427,6 +457,7 @@ object powerplant
 object powerplant
 {
     name "SALTON_SEA_GEOTHERMAL_PLANT_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -441,6 +472,7 @@ object powerplant
 object powerplant
 {
     name "SALTON_SEA_GEOTHERMAL_PLANT_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -455,6 +487,7 @@ object powerplant
 object powerplant
 {
     name "SALTON_SEA_GEOTHERMAL_PLANT_5";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -469,6 +502,7 @@ object powerplant
 object powerplant
 {
     name "SECOND_IMPERIAL_GEOTHERMAL_POWER_PLANT_GEN1-12";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";
@@ -483,6 +517,7 @@ object powerplant
 object powerplant
 {
     name "SOCRATES_GEOTHERMAL_PLANT_18";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -497,6 +532,7 @@ object powerplant
 object powerplant
 {
     name "SONOMA_CALIFORNIA_GEOTHERMAL_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -511,6 +547,7 @@ object powerplant
 object powerplant
 {
     name "STILLWATER_TRIPLE_HYBRID_GEOTHERMAL_PLANT";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Churchill County";
@@ -525,6 +562,7 @@ object powerplant
 object powerplant
 {
     name "SULFUR_SPRINGS_GEOTHERMAL_PLANT_14";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Sonoma County";
@@ -539,6 +577,7 @@ object powerplant
 object powerplant
 {
     name "TERRA-GEN_DIXIE_VALLEY_GEOTHERMAL_PLANT_GEN1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Churchill County";
@@ -553,6 +592,7 @@ object powerplant
 object powerplant
 {
     name "TUNGSTEN_MOUNTAIN_GEOTHERMAL_PLANT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Churchill County";
@@ -567,6 +607,7 @@ object powerplant
 object powerplant
 {
     name "VULCAN-BN_GEOTHERMAL_PLANT_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "GEO";
     county "Imperial County";

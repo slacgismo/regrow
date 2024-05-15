@@ -17,6 +17,8 @@ fuels = {
     "coal.csv" : "COAL",
 }
 
+dispatchable = ["OIL","NG","GEO","BIO","COAL"]
+
 def toascii(text,replace=""):
     if type(text) is float and math.isnan(text):
         return ""
@@ -48,6 +50,7 @@ for file in os.listdir("."):
         plants = pd.read_csv(file)
 
         with open(os.path.splitext(file)[0]+".glm","w") as glm:
+            number = "TODO"
             print(f"""module pypower;
 class powerplant
 {{
@@ -59,6 +62,7 @@ class powerplant
                     print(f"""object powerplant
 {{
     name "{toname(data['name'])}{tounit(data['unit'])}";
+    parent "pp_{"gen" if fuels[file] in dispatchable else "bus"}_{number}";
     generator "{data['type']}";
     fuel "{fuels[file]}";
     county "{toascii(data['county'])}";

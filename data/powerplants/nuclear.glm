@@ -7,6 +7,7 @@ class powerplant
 object powerplant
 {
     name "COLUMBIA_NUCLEAR_POWER_PLANT";
+    parent "pp_bus_TODO";
     generator "ST";
     fuel "NUC";
     county "Benton County";
@@ -21,6 +22,7 @@ object powerplant
 object powerplant
 {
     name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_1";
+    parent "pp_bus_TODO";
     generator "ST";
     fuel "NUC";
     county "San Luis Obispo County";
@@ -35,6 +37,7 @@ object powerplant
 object powerplant
 {
     name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_2";
+    parent "pp_bus_TODO";
     generator "ST";
     fuel "NUC";
     county "San Luis Obispo County";
@@ -49,6 +52,7 @@ object powerplant
 object powerplant
 {
     name "PALO_VERDE_NUCLEAR_POWER_PLANT_1";
+    parent "pp_bus_TODO";
     generator "ST";
     fuel "NUC";
     county "Maricopa County";
@@ -63,6 +67,7 @@ object powerplant
 object powerplant
 {
     name "PALO_VERDE_NUCLEAR_POWER_PLANT_2";
+    parent "pp_bus_TODO";
     generator "ST";
     fuel "NUC";
     county "Maricopa County";
@@ -77,6 +82,7 @@ object powerplant
 object powerplant
 {
     name "PALO_VERDE_NUCLEAR_POWER_PLANT_3";
+    parent "pp_bus_TODO";
     generator "ST";
     fuel "NUC";
     county "Maricopa County";

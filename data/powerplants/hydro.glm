@@ -7,6 +7,7 @@ class powerplant
 object powerplant
 {
     name "AMERICAN_FALLS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Power County";
@@ -21,6 +22,7 @@ object powerplant
 object powerplant
 {
     name "BALCH_2_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -35,6 +37,7 @@ object powerplant
 object powerplant
 {
     name "BELDEN_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Plumas County";
@@ -49,6 +52,7 @@ object powerplant
 object powerplant
 {
     name "BIG_CREEK_1_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -63,6 +67,7 @@ object powerplant
 object powerplant
 {
     name "BIG_CREEK_2A_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -77,6 +82,7 @@ object powerplant
 object powerplant
 {
     name "BIG_CREEK_3_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -91,6 +97,7 @@ object powerplant
 object powerplant
 {
     name "BIG_CREEK_4_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Madera County";
@@ -105,6 +112,7 @@ object powerplant
 object powerplant
 {
     name "BIG_CREEK_8_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -119,6 +127,7 @@ object powerplant
 object powerplant
 {
     name "BLISS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Gooding County";
@@ -133,6 +142,7 @@ object powerplant
 object powerplant
 {
     name "BLUE_MESA_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Gunnison County";
@@ -147,6 +157,7 @@ object powerplant
 object powerplant
 {
     name "BONNEVILLE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Multnomah County";
@@ -161,6 +172,7 @@ object powerplant
 object powerplant
 {
     name "BOUNDARY_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Pend Oreille County";
@@ -175,6 +187,7 @@ object powerplant
 object powerplant
 {
     name "BOX_CANYON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Pend Oreille County";
@@ -189,6 +202,7 @@ object powerplant
 object powerplant
 {
     name "BROWNLEE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Washington County";
@@ -203,6 +217,7 @@ object powerplant
 object powerplant
 {
     name "C._J._STRIKE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Owyhee County";
@@ -217,6 +232,7 @@ object powerplant
 object powerplant
 {
     name "CABIN_CREEK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Clear Creek County";
@@ -231,6 +247,7 @@ object powerplant
 object powerplant
 {
     name "CABINET_GORGE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Bonner County";
@@ -245,6 +262,7 @@ object powerplant
 object powerplant
 {
     name "CAMINO_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "El Dorado County";
@@ -259,6 +277,7 @@ object powerplant
 object powerplant
 {
     name "CARIBOU_2_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Plumas County";
@@ -273,6 +292,7 @@ object powerplant
 object powerplant
 {
     name "CARMEN_SMITH_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Linn County";
@@ -287,6 +307,7 @@ object powerplant
 object powerplant
 {
     name "CASTAIC_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Los Angeles County";
@@ -301,6 +322,7 @@ object powerplant
 object powerplant
 {
     name "CHIEF_JOSEPH_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Douglas County";
@@ -315,6 +337,7 @@ object powerplant
 object powerplant
 {
     name "COLGATE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Yuba County";
@@ -329,6 +352,7 @@ object powerplant
 object powerplant
 {
     name "COLLIERVILLE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Calaveras County";
@@ -343,6 +367,7 @@ object powerplant
 object powerplant
 {
     name "CUSHMAN_2_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Mason County";
@@ -357,6 +382,7 @@ object powerplant
 object powerplant
 {
     name "DAVIS_DAM_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Mohave County";
@@ -371,6 +397,7 @@ object powerplant
 object powerplant
 {
     name "DETROIT_DAM_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Marion County";
@@ -385,6 +412,7 @@ object powerplant
 object powerplant
 {
     name "DEVIL_CANYON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "San Bernardino County";
@@ -399,6 +427,7 @@ object powerplant
 object powerplant
 {
     name "DIABLO_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Whatcom County";
@@ -413,6 +442,7 @@ object powerplant
 object powerplant
 {
     name "DION_R._HOLM_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Tuolumne County";
@@ -427,6 +457,7 @@ object powerplant
 object powerplant
 {
     name "DON_PEDRO_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Tuolumne County";
@@ -441,6 +472,7 @@ object powerplant
 object powerplant
 {
     name "DWORSHAK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Clearwater County";
@@ -455,6 +487,7 @@ object powerplant
 object powerplant
 {
     name "EDWARD_C._HYATT_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Butte County";
@@ -469,6 +502,7 @@ object powerplant
 object powerplant
 {
     name "EDWARD_C._HYATT_PUMPED_STORAGE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Butte County";
@@ -483,6 +517,7 @@ object powerplant
 object powerplant
 {
     name "ELECTRA_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Amador County";
@@ -497,6 +532,7 @@ object powerplant
 object powerplant
 {
     name "FLAMING_GORGE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Daggett County";
@@ -511,6 +547,7 @@ object powerplant
 object powerplant
 {
     name "FLATIRON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Larimer County";
@@ -525,6 +562,7 @@ object powerplant
 object powerplant
 {
     name "FOLSOM_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Sacramento County";
@@ -539,6 +577,7 @@ object powerplant
 object powerplant
 {
     name "FORT_PECK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "McCone County";
@@ -553,6 +592,7 @@ object powerplant
 object powerplant
 {
     name "GLEN_CANYON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Coconino County";
@@ -567,6 +607,7 @@ object powerplant
 object powerplant
 {
     name "GORGE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Whatcom County";
@@ -581,6 +622,7 @@ object powerplant
 object powerplant
 {
     name "GRAND_COULEE_LEFT_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Grant County";
@@ -595,6 +637,7 @@ object powerplant
 object powerplant
 {
     name "GRAND_COULEE_RIGHT_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Grant County";
@@ -609,6 +652,7 @@ object powerplant
 object powerplant
 {
     name "GREEN_PETER_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Linn County";
@@ -623,6 +667,7 @@ object powerplant
 object powerplant
 {
     name "HAAS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -637,6 +682,7 @@ object powerplant
 object powerplant
 {
     name "HELLS_CANYON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Wallowa County";
@@ -651,6 +697,7 @@ object powerplant
 object powerplant
 {
     name "HELMS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -665,6 +712,7 @@ object powerplant
 object powerplant
 {
     name "HENRY_M._JACKSON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Snohomish County";
@@ -679,6 +727,7 @@ object powerplant
 object powerplant
 {
     name "HORSE_MESA_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Maricopa County";
@@ -693,6 +742,7 @@ object powerplant
 object powerplant
 {
     name "HUNGRY_HORSE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Flathead County";
@@ -707,6 +757,7 @@ object powerplant
 object powerplant
 {
     name "ICE_HARBOR_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Walla Walla County";
@@ -721,6 +772,7 @@ object powerplant
 object powerplant
 {
     name "J._S._EASTWOOD_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -735,6 +787,7 @@ object powerplant
 object powerplant
 {
     name "JAMES_B._BLACK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -749,6 +802,7 @@ object powerplant
 object powerplant
 {
     name "JAYBIRD_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "El Dorado County";
@@ -763,6 +817,7 @@ object powerplant
 object powerplant
 {
     name "JOHN_C._BOYLE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Klamath County";
@@ -777,6 +832,7 @@ object powerplant
 object powerplant
 {
     name "JOHN_DAY_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Sherman County";
@@ -791,6 +847,7 @@ object powerplant
 object powerplant
 {
     name "JOHN_W_KEYS_III_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Grant County";
@@ -805,6 +862,7 @@ object powerplant
 object powerplant
 {
     name "JUDGE_FRANCIS_CARR_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -819,6 +877,7 @@ object powerplant
 object powerplant
 {
     name "KERCKHOFF_2_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -833,6 +892,7 @@ object powerplant
 object powerplant
 {
     name "KESWICK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -847,6 +907,7 @@ object powerplant
 object powerplant
 {
     name "LIBBY_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Lincoln County";
@@ -861,6 +922,7 @@ object powerplant
 object powerplant
 {
     name "LITTLE_GOOSE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Columbia County";
@@ -875,6 +937,7 @@ object powerplant
 object powerplant
 {
     name "LOOKOUT_POINT_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Lane County";
@@ -889,6 +952,7 @@ object powerplant
 object powerplant
 {
     name "LOWER_BAKER_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Skagit County";
@@ -903,6 +967,7 @@ object powerplant
 object powerplant
 {
     name "LOWER_GRANITE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Whitman County";
@@ -917,6 +982,7 @@ object powerplant
 object powerplant
 {
     name "LOWER_MONUMENTAL_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Walla Walla County";
@@ -931,6 +997,7 @@ object powerplant
 object powerplant
 {
     name "LUCKY_PEAK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Ada County";
@@ -945,6 +1012,7 @@ object powerplant
 object powerplant
 {
     name "MAMMOTH_POOL_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Madera County";
@@ -959,6 +1027,7 @@ object powerplant
 object powerplant
 {
     name "MAYFIELD_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Lewis County";
@@ -973,6 +1042,7 @@ object powerplant
 object powerplant
 {
     name "MCNARY_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Umatilla County";
@@ -987,6 +1057,7 @@ object powerplant
 object powerplant
 {
     name "MERWIN_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Cowlitz County";
@@ -1001,6 +1072,7 @@ object powerplant
 object powerplant
 {
     name "MIDDLE_FORK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Placer County";
@@ -1015,6 +1087,7 @@ object powerplant
 object powerplant
 {
     name "MOCCASIN_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Tuolumne County";
@@ -1029,6 +1102,7 @@ object powerplant
 object powerplant
 {
     name "MORROW_POINT_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Montrose County";
@@ -1043,6 +1117,7 @@ object powerplant
 object powerplant
 {
     name "MOSSYROCK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Lewis County";
@@ -1057,6 +1132,7 @@ object powerplant
 object powerplant
 {
     name "MOUNT_ELBERT_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Lake County";
@@ -1071,6 +1147,7 @@ object powerplant
 object powerplant
 {
     name "NATHANIEL_WASHINGTON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Grant County";
@@ -1085,6 +1162,7 @@ object powerplant
 object powerplant
 {
     name "NEW_EXCHEQUER_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Mariposa County";
@@ -1099,6 +1177,7 @@ object powerplant
 object powerplant
 {
     name "NEW_MELONES_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Tuolumne County";
@@ -1113,6 +1192,7 @@ object powerplant
 object powerplant
 {
     name "NOXON_RAPIDS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Sanders County";
@@ -1127,6 +1207,7 @@ object powerplant
 object powerplant
 {
     name "OXBOW_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Baker County";
@@ -1141,6 +1222,7 @@ object powerplant
 object powerplant
 {
     name "PALISADES_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Bonneville County";
@@ -1155,6 +1237,7 @@ object powerplant
 object powerplant
 {
     name "PARKER_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "San Bernardino County";
@@ -1169,6 +1252,7 @@ object powerplant
 object powerplant
 {
     name "PELTON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Jefferson County";
@@ -1183,6 +1267,7 @@ object powerplant
 object powerplant
 {
     name "PINE_FLAT_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Fresno County";
@@ -1197,6 +1282,7 @@ object powerplant
 object powerplant
 {
     name "PIT_3_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -1211,6 +1297,7 @@ object powerplant
 object powerplant
 {
     name "PIT_4_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -1225,6 +1312,7 @@ object powerplant
 object powerplant
 {
     name "PIT_5_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -1239,6 +1327,7 @@ object powerplant
 object powerplant
 {
     name "PIT_6_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -1253,6 +1342,7 @@ object powerplant
 object powerplant
 {
     name "PIT_7_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -1267,6 +1357,7 @@ object powerplant
 object powerplant
 {
     name "POE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Butte County";
@@ -1281,6 +1372,7 @@ object powerplant
 object powerplant
 {
     name "PRIEST_RAPIDS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Grant County";
@@ -1295,6 +1387,7 @@ object powerplant
 object powerplant
 {
     name "R._C._KIRKWOOD_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Tuolumne County";
@@ -1309,6 +1402,7 @@ object powerplant
 object powerplant
 {
     name "RALSTON_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Placer County";
@@ -1323,6 +1417,7 @@ object powerplant
 object powerplant
 {
     name "ROCK_CREEK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Plumas County";
@@ -1337,6 +1432,7 @@ object powerplant
 object powerplant
 {
     name "ROCK_ISLAND_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Chelan County";
@@ -1351,6 +1447,7 @@ object powerplant
 object powerplant
 {
     name "ROCKY_REACH_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Chelan County";
@@ -1365,6 +1462,7 @@ object powerplant
 object powerplant
 {
     name "ROSS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Whatcom County";
@@ -1379,6 +1477,7 @@ object powerplant
 object powerplant
 {
     name "ROUND_BUTTE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Jefferson County";
@@ -1393,6 +1492,7 @@ object powerplant
 object powerplant
 {
     name "SELI_KSANKA_QLISPE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Lake County";
@@ -1407,6 +1507,7 @@ object powerplant
 object powerplant
 {
     name "SHASTA_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -1421,6 +1522,7 @@ object powerplant
 object powerplant
 {
     name "SPRING_CREEK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Shasta County";
@@ -1435,6 +1537,7 @@ object powerplant
 object powerplant
 {
     name "STANISLAUS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Tuolumne County";
@@ -1449,6 +1552,7 @@ object powerplant
 object powerplant
 {
     name "SUMMER_FALLS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Grant County";
@@ -1463,6 +1567,7 @@ object powerplant
 object powerplant
 {
     name "SWIFT_1_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Skamania County";
@@ -1477,6 +1582,7 @@ object powerplant
 object powerplant
 {
     name "THE_DALLES_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Wasco County";
@@ -1491,6 +1597,7 @@ object powerplant
 object powerplant
 {
     name "THERMALITO_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Butte County";
@@ -1505,6 +1612,7 @@ object powerplant
 object powerplant
 {
     name "THOMPSON_FALLS_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Sanders County";
@@ -1519,6 +1627,7 @@ object powerplant
 object powerplant
 {
     name "TRINITY_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Trinity County";
@@ -1533,6 +1642,7 @@ object powerplant
 object powerplant
 {
     name "UPPER_BAKER_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Whatcom County";
@@ -1547,6 +1657,7 @@ object powerplant
 object powerplant
 {
     name "W._R._GIANELLI_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Merced County";
@@ -1561,6 +1672,7 @@ object powerplant
 object powerplant
 {
     name "WANAPUM_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Grant County";
@@ -1575,6 +1687,7 @@ object powerplant
 object powerplant
 {
     name "WELLS_HYDROELECTRIC_PLANT_(UNITED_STATES)";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Douglas County";
@@ -1589,6 +1702,7 @@ object powerplant
 object powerplant
 {
     name "WHITE_ROCK-SLAB_CREEK_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "El Dorado County";
@@ -1603,6 +1717,7 @@ object powerplant
 object powerplant
 {
     name "YALE_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Cowlitz County";
@@ -1617,6 +1732,7 @@ object powerplant
 object powerplant
 {
     name "YELLOWTAIL_HYDROELECTRIC_PLANT";
+    parent "pp_bus_TODO";
     generator "HT";
     fuel "WATER";
     county "Big Horn County";

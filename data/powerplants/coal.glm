@@ -7,6 +7,7 @@ class powerplant
 object powerplant
 {
     name "APACHE_GENERATING_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Cochise";
@@ -21,6 +22,7 @@ object powerplant
 object powerplant
 {
     name "APACHE_GENERATING_STATION_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Cochise";
@@ -35,6 +37,7 @@ object powerplant
 object powerplant
 {
     name "BOARDMAN_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Morrow";
@@ -49,6 +52,7 @@ object powerplant
 object powerplant
 {
     name "BONANZA_POWER_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Uintah";
@@ -63,6 +67,7 @@ object powerplant
 object powerplant
 {
     name "CENTRALIA_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Lewis";
@@ -77,6 +82,7 @@ object powerplant
 object powerplant
 {
     name "CENTRALIA_POWER_PLANT_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Lewis";
@@ -91,6 +97,7 @@ object powerplant
 object powerplant
 {
     name "CHOLLA_GENERATING_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Navajo";
@@ -105,6 +112,7 @@ object powerplant
 object powerplant
 {
     name "CHOLLA_GENERATING_STATION_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Navajo";
@@ -119,6 +127,7 @@ object powerplant
 object powerplant
 {
     name "CHOLLA_GENERATING_STATION_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Navajo";
@@ -133,6 +142,7 @@ object powerplant
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -147,6 +157,7 @@ object powerplant
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -161,6 +172,7 @@ object powerplant
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -175,6 +187,7 @@ object powerplant
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -189,6 +202,7 @@ object powerplant
 object powerplant
 {
     name "COMANCHE_POWER_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Pueblo";
@@ -203,6 +217,7 @@ object powerplant
 object powerplant
 {
     name "COMANCHE_POWER_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Pueblo";
@@ -217,6 +232,7 @@ object powerplant
 object powerplant
 {
     name "COMANCHE_POWER_STATION_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "";
@@ -231,6 +247,7 @@ object powerplant
 object powerplant
 {
     name "CORONADO_GENERATING_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -245,6 +262,7 @@ object powerplant
 object powerplant
 {
     name "CORONADO_GENERATING_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -259,6 +277,7 @@ object powerplant
 object powerplant
 {
     name "CRAIG_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Moffat";
@@ -273,6 +292,7 @@ object powerplant
 object powerplant
 {
     name "CRAIG_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Moffat";
@@ -287,6 +307,7 @@ object powerplant
 object powerplant
 {
     name "CRAIG_STATION_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Moffat";
@@ -301,6 +322,7 @@ object powerplant
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -315,6 +337,7 @@ object powerplant
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -329,6 +352,7 @@ object powerplant
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -343,6 +367,7 @@ object powerplant
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -357,6 +382,7 @@ object powerplant
 object powerplant
 {
     name "DRY_FORK_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -371,6 +397,7 @@ object powerplant
 object powerplant
 {
     name "ESCALANTE_GENERATING_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "McKinley";
@@ -385,6 +412,7 @@ object powerplant
 object powerplant
 {
     name "FOUR_CORNERS_STEAM_PLANT_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -399,6 +427,7 @@ object powerplant
 object powerplant
 {
     name "FOUR_CORNERS_STEAM_PLANT_Unit_5";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -413,6 +442,7 @@ object powerplant
 object powerplant
 {
     name "HARDIN_GENERATING_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Big Horn";
@@ -427,6 +457,7 @@ object powerplant
 object powerplant
 {
     name "HAYDEN_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Routt";
@@ -441,6 +472,7 @@ object powerplant
 object powerplant
 {
     name "HAYDEN_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Routt";
@@ -455,6 +487,7 @@ object powerplant
 object powerplant
 {
     name "HUNTER_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -469,6 +502,7 @@ object powerplant
 object powerplant
 {
     name "HUNTER_POWER_PLANT_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -483,6 +517,7 @@ object powerplant
 object powerplant
 {
     name "HUNTER_POWER_PLANT_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -497,6 +532,7 @@ object powerplant
 object powerplant
 {
     name "HUNTINGTON_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -511,6 +547,7 @@ object powerplant
 object powerplant
 {
     name "HUNTINGTON_POWER_PLANT_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -525,6 +562,7 @@ object powerplant
 object powerplant
 {
     name "INTERMOUNTAIN_POWER_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Millard";
@@ -539,6 +577,7 @@ object powerplant
 object powerplant
 {
     name "INTERMOUNTAIN_POWER_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Millard";
@@ -553,6 +592,7 @@ object powerplant
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -567,6 +607,7 @@ object powerplant
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -581,6 +622,7 @@ object powerplant
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -595,6 +637,7 @@ object powerplant
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -609,6 +652,7 @@ object powerplant
 object powerplant
 {
     name "LARAMIE_RIVER_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Platte";
@@ -623,6 +667,7 @@ object powerplant
 object powerplant
 {
     name "LARAMIE_RIVER_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Platte";
@@ -637,6 +682,7 @@ object powerplant
 object powerplant
 {
     name "LARAMIE_RIVER_STATION_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Platte";
@@ -651,6 +697,7 @@ object powerplant
 object powerplant
 {
     name "LEWIS_&_CLARK_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "";
@@ -665,6 +712,7 @@ object powerplant
 object powerplant
 {
     name "MARTIN_DRAKE_POWER_PLANT_Unit_6";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "El Paso";
@@ -679,6 +727,7 @@ object powerplant
 object powerplant
 {
     name "MARTIN_DRAKE_POWER_PLANT_Unit_7";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "El Paso";
@@ -693,6 +742,7 @@ object powerplant
 object powerplant
 {
     name "NAUGHTON_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Lincoln";
@@ -707,6 +757,7 @@ object powerplant
 object powerplant
 {
     name "NAUGHTON_POWER_PLANT_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Lincoln";
@@ -721,6 +772,7 @@ object powerplant
 object powerplant
 {
     name "NAUGHTON_POWER_PLANT_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Lincoln";
@@ -735,6 +787,7 @@ object powerplant
 object powerplant
 {
     name "NAVAJO_GENERATING_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Coconino";
@@ -749,6 +802,7 @@ object powerplant
 object powerplant
 {
     name "NAVAJO_GENERATING_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Coconino";
@@ -763,6 +817,7 @@ object powerplant
 object powerplant
 {
     name "NAVAJO_GENERATING_STATION_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Coconino";
@@ -777,6 +832,7 @@ object powerplant
 object powerplant
 {
     name "NEIL_SIMPSON_POWER_PLANTS_Plant_II";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -791,6 +847,7 @@ object powerplant
 object powerplant
 {
     name "NORTH_VALMY_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Humboldt";
@@ -805,6 +862,7 @@ object powerplant
 object powerplant
 {
     name "NORTH_VALMY_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Humboldt";
@@ -819,6 +877,7 @@ object powerplant
 object powerplant
 {
     name "NUCLA_STATION_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Montrose";
@@ -833,6 +892,7 @@ object powerplant
 object powerplant
 {
     name "PAWNEE_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Morgan";
@@ -847,6 +907,7 @@ object powerplant
 object powerplant
 {
     name "RAWHIDE_ENERGY_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Larimer";
@@ -861,6 +922,7 @@ object powerplant
 object powerplant
 {
     name "RAY_NIXON_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "El Paso";
@@ -875,6 +937,7 @@ object powerplant
 object powerplant
 {
     name "ROSEBUD_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "";
@@ -889,6 +952,7 @@ object powerplant
 object powerplant
 {
     name "SAN_JUAN_GENERATING_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -903,6 +967,7 @@ object powerplant
 object powerplant
 {
     name "SAN_JUAN_GENERATING_STATION_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -917,6 +982,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -931,6 +997,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_2";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -945,6 +1012,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -959,6 +1027,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -973,6 +1042,7 @@ object powerplant
 object powerplant
 {
     name "SUNNYSIDE_COGENERATION_FACILITY_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "";
@@ -987,6 +1057,7 @@ object powerplant
 object powerplant
 {
     name "TS_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Eureka";
@@ -1001,6 +1072,7 @@ object powerplant
 object powerplant
 {
     name "UTAH_SMELTER_POWER_PLANT_Unit_4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Salt Lake";
@@ -1015,6 +1087,7 @@ object powerplant
 object powerplant
 {
     name "WYGEN_I_POWER_STATION_--";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -1029,6 +1102,7 @@ object powerplant
 object powerplant
 {
     name "WYGEN_II_POWER_STATION_--";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -1043,6 +1117,7 @@ object powerplant
 object powerplant
 {
     name "WYGEN_III_POWER_STATION_--";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -1057,6 +1132,7 @@ object powerplant
 object powerplant
 {
     name "WYODAK_POWER_PLANT_Unit_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "COAL";
     county "Campbell";

@@ -7,6 +7,7 @@ class powerplant
 object powerplant
 {
     name "ADELANTO_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -21,6 +22,7 @@ object powerplant
 object powerplant
 {
     name "ADERA_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Madera County";
@@ -35,6 +37,7 @@ object powerplant
 object powerplant
 {
     name "ADOBE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -49,6 +52,7 @@ object powerplant
 object powerplant
 {
     name "AGUA_CALIENTE_SOLAR_PROJECT_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Yuma County";
@@ -63,6 +67,7 @@ object powerplant
 object powerplant
 {
     name "AGUA_CALIENTE_SOLAR_PROJECT_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Yuma County";
@@ -77,6 +82,7 @@ object powerplant
 object powerplant
 {
     name "AGUA_CALIENTE_SOLAR_PROJECT_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Yuma County";
@@ -91,6 +97,7 @@ object powerplant
 object powerplant
 {
     name "AIRPORT_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Lake County";
@@ -105,6 +112,7 @@ object powerplant
 object powerplant
 {
     name "ALAMO_(CALIFORNIA)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -119,6 +127,7 @@ object powerplant
 object powerplant
 {
     name "ALPAUGH_SOLAR_FARM_50";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -133,6 +142,7 @@ object powerplant
 object powerplant
 {
     name "ALPAUGH_SOLAR_FARM_North";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -147,6 +157,7 @@ object powerplant
 object powerplant
 {
     name "ALPINE_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -161,6 +172,7 @@ object powerplant
 object powerplant
 {
     name "ALTA_LUNA_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Luna County";
@@ -175,6 +187,7 @@ object powerplant
 object powerplant
 {
     name "AMERICAN_FALLS_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Power County";
@@ -189,6 +202,7 @@ object powerplant
 object powerplant
 {
     name "AMERICAN_FALLS_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Power County";
@@ -203,6 +217,7 @@ object powerplant
 object powerplant
 {
     name "AMERICAN_KINGS_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -217,6 +232,7 @@ object powerplant
 object powerplant
 {
     name "ANTELOPE_BIG_SKY_RANCH_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -231,6 +247,7 @@ object powerplant
 object powerplant
 {
     name "ANTELOPE_DSR_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -245,6 +262,7 @@ object powerplant
 object powerplant
 {
     name "ANTELOPE_DSR_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -259,6 +277,7 @@ object powerplant
 object powerplant
 {
     name "ANTELOPE_DSR_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -273,6 +292,7 @@ object powerplant
 object powerplant
 {
     name "AP_NORTH_LAKE_I_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -287,6 +307,7 @@ object powerplant
 object powerplant
 {
     name "APACHE_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Cochise County";
@@ -301,6 +322,7 @@ object powerplant
 object powerplant
 {
     name "APEX_SOLAR_POWER_PROJECT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -315,6 +337,7 @@ object powerplant
 object powerplant
 {
     name "ARLINGTON_ENERGY_CENTER_(NEXTERA)_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -329,6 +352,7 @@ object powerplant
 object powerplant
 {
     name "ARLINGTON_ENERGY_CENTER_(NEXTERA)_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -343,6 +367,7 @@ object powerplant
 object powerplant
 {
     name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -357,6 +382,7 @@ object powerplant
 object powerplant
 {
     name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -371,6 +397,7 @@ object powerplant
 object powerplant
 {
     name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -385,6 +412,7 @@ object powerplant
 object powerplant
 {
     name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -399,6 +427,7 @@ object powerplant
 object powerplant
 {
     name "ARROW_CANYON_SOLAR_HYBRID";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -413,6 +442,7 @@ object powerplant
 object powerplant
 {
     name "ASTORIA_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -427,6 +457,7 @@ object powerplant
 object powerplant
 {
     name "ASTORIA_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -441,6 +472,7 @@ object powerplant
 object powerplant
 {
     name "ATHOS_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -455,6 +487,7 @@ object powerplant
 object powerplant
 {
     name "ATHOS_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -469,6 +502,7 @@ object powerplant
 object powerplant
 {
     name "ATWELL_ISLAND_SOLAR_FARM_East";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -483,6 +517,7 @@ object powerplant
 object powerplant
 {
     name "ATWELL_ISLAND_SOLAR_FARM_West";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -497,6 +532,7 @@ object powerplant
 object powerplant
 {
     name "AV_SOLAR_RANCH_ONE_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -511,6 +547,7 @@ object powerplant
 object powerplant
 {
     name "AVALON_(CORONAL_GROUP)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pima County";
@@ -525,6 +562,7 @@ object powerplant
 object powerplant
 {
     name "AVRA_VALLEY_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pima County";
@@ -539,6 +577,7 @@ object powerplant
 object powerplant
 {
     name "AXIUM_MODESTO_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Stanislaus County";
@@ -553,6 +592,7 @@ object powerplant
 object powerplant
 {
     name "BAKERSFIELD_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -567,6 +607,7 @@ object powerplant
 object powerplant
 {
     name "BARREN_RIDGE_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -581,6 +622,7 @@ object powerplant
 object powerplant
 {
     name "BATTLE_MOUNTAIN_SOLAR_PROJECT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Humboldt County";
@@ -595,6 +637,7 @@ object powerplant
 object powerplant
 {
     name "BAYSHORE_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -609,6 +652,7 @@ object powerplant
 object powerplant
 {
     name "BAYSHORE_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -623,6 +667,7 @@ object powerplant
 object powerplant
 {
     name "BAYSHORE_SOLAR_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -637,6 +682,7 @@ object powerplant
 object powerplant
 {
     name "BEACON_SOLAR_PLANT_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -651,6 +697,7 @@ object powerplant
 object powerplant
 {
     name "BEACON_SOLAR_PLANT_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -665,6 +712,7 @@ object powerplant
 object powerplant
 {
     name "BIG_BEAU_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "";
@@ -679,6 +727,7 @@ object powerplant
 object powerplant
 {
     name "BIGHORN_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pueblo County";
@@ -693,6 +742,7 @@ object powerplant
 object powerplant
 {
     name "BISON_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Larimer County";
@@ -707,6 +757,7 @@ object powerplant
 object powerplant
 {
     name "BLACKWELL_SOLAR_PARK";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -721,6 +772,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(CLEARWAY)_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -735,6 +787,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(CLEARWAY)_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -749,6 +802,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_1A";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -763,6 +817,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_1B";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -777,6 +832,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_1C";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -791,6 +847,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_2A";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -805,6 +862,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_2B";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -819,6 +877,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_2C";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -833,6 +892,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_2D";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -847,6 +907,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_3A";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -861,6 +922,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_4A";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -875,6 +937,7 @@ object powerplant
 object powerplant
 {
     name "BLYTHE_(NEXTERA)_SOLAR_FARM_4B";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -889,6 +952,7 @@ object powerplant
 object powerplant
 {
     name "BOISE_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Ada County";
@@ -903,6 +967,7 @@ object powerplant
 object powerplant
 {
     name "BONNYBROOKE_PV_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -917,6 +982,7 @@ object powerplant
 object powerplant
 {
     name "BORDEN_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Madera County";
@@ -931,6 +997,7 @@ object powerplant
 object powerplant
 {
     name "BORREGO_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Diego County";
@@ -945,6 +1012,7 @@ object powerplant
 object powerplant
 {
     name "BOULDER_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -959,6 +1027,7 @@ object powerplant
 object powerplant
 {
     name "BOULDER_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -973,6 +1042,7 @@ object powerplant
 object powerplant
 {
     name "BRITTON_SOLAR_ENERGY_CENTER";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Torrance County";
@@ -987,6 +1057,7 @@ object powerplant
 object powerplant
 {
     name "CA_FLATS_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -1001,6 +1072,7 @@ object powerplant
 object powerplant
 {
     name "CA_FLATS_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -1015,6 +1087,7 @@ object powerplant
 object powerplant
 {
     name "CED_DUCOR_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -1029,6 +1102,7 @@ object powerplant
 object powerplant
 {
     name "CED_DUCOR_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -1043,6 +1117,7 @@ object powerplant
 object powerplant
 {
     name "CED_DUCOR_SOLAR_FARM_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -1057,6 +1132,7 @@ object powerplant
 object powerplant
 {
     name "CID_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -1071,6 +1147,7 @@ object powerplant
 object powerplant
 {
     name "CALIFORNIA_VALLEY_SOLAR_RANCH_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -1085,6 +1162,7 @@ object powerplant
 object powerplant
 {
     name "CALIFORNIA_VALLEY_SOLAR_RANCH_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -1099,6 +1177,7 @@ object powerplant
 object powerplant
 {
     name "CALIFORNIA_VALLEY_SOLAR_RANCH_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -1113,6 +1192,7 @@ object powerplant
 object powerplant
 {
     name "CALIFORNIA_VALLEY_SOLAR_RANCH_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -1127,6 +1207,7 @@ object powerplant
 object powerplant
 {
     name "CALIFORNIA_VALLEY_SOLAR_RANCH_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -1141,6 +1222,7 @@ object powerplant
 object powerplant
 {
     name "CALIPATRIA_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1155,6 +1237,7 @@ object powerplant
 object powerplant
 {
     name "CAMELOT_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -1169,6 +1252,7 @@ object powerplant
 object powerplant
 {
     name "CAMPO_VERDE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1183,6 +1267,7 @@ object powerplant
 object powerplant
 {
     name "CANTUA_SOLAR_STATION";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -1197,6 +1282,7 @@ object powerplant
 object powerplant
 {
     name "CAPROCK_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Quay County";
@@ -1211,6 +1297,7 @@ object powerplant
 object powerplant
 {
     name "CATALINA_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -1225,6 +1312,7 @@ object powerplant
 object powerplant
 {
     name "CATALINA_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -1239,6 +1327,7 @@ object powerplant
 object powerplant
 {
     name "CENTINELA_SOLAR_ENERGY_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1253,6 +1342,7 @@ object powerplant
 object powerplant
 {
     name "CENTINELA_SOLAR_ENERGY_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1267,6 +1357,7 @@ object powerplant
 object powerplant
 {
     name "CENTINELA_SOLAR_ENERGY_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1281,6 +1372,7 @@ object powerplant
 object powerplant
 {
     name "CENTINELA_SOLAR_ENERGY_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1295,6 +1387,7 @@ object powerplant
 object powerplant
 {
     name "CENTINELA_SOLAR_ENERGY_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1309,6 +1402,7 @@ object powerplant
 object powerplant
 {
     name "CENTRAL_40_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Stanislaus County";
@@ -1323,6 +1417,7 @@ object powerplant
 object powerplant
 {
     name "CENTRAL_ANTELOPE_DRY_RANCH_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -1337,6 +1432,7 @@ object powerplant
 object powerplant
 {
     name "CENTRAL_LINE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -1351,6 +1447,7 @@ object powerplant
 object powerplant
 {
     name "CHAVES_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Chaves County";
@@ -1365,6 +1462,7 @@ object powerplant
 object powerplant
 {
     name "CIMARRON_SOLAR_FACILITY";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Colfax County";
@@ -1379,6 +1477,7 @@ object powerplant
 object powerplant
 {
     name "CITIZENS_IMPERIAL_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -1393,6 +1492,7 @@ object powerplant
 object powerplant
 {
     name "CLOVER_CREEK_(UTAH)_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Juab County";
@@ -1407,6 +1507,7 @@ object powerplant
 object powerplant
 {
     name "COGENTRIX_OF_ALAMOSA_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Alamosa County";
@@ -1421,6 +1522,7 @@ object powerplant
 object powerplant
 {
     name "COLGREEN_NORTH_SHORE_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1435,6 +1537,7 @@ object powerplant
 object powerplant
 {
     name "COMANCHE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pueblo County";
@@ -1449,6 +1552,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_CROSSING_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -1463,6 +1567,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1477,6 +1582,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_2_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1491,6 +1597,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_2_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1505,6 +1612,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_2_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1519,6 +1627,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_2_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1533,6 +1642,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_2_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1547,6 +1657,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1561,6 +1672,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_10";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1575,6 +1687,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1589,6 +1702,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1603,6 +1717,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1617,6 +1732,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1631,6 +1747,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1645,6 +1762,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_7";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1659,6 +1777,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_8";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1673,6 +1792,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_3_9";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1687,6 +1807,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_4_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1701,6 +1822,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_4_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1715,6 +1837,7 @@ object powerplant
 object powerplant
 {
     name "COPPER_MOUNTAIN_SOLAR_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -1729,6 +1852,7 @@ object powerplant
 object powerplant
 {
     name "CORCORAN_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -1743,6 +1867,7 @@ object powerplant
 object powerplant
 {
     name "CORCORAN_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -1757,6 +1882,7 @@ object powerplant
 object powerplant
 {
     name "CORCORAN_SOLAR_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -1771,6 +1897,7 @@ object powerplant
 object powerplant
 {
     name "CORONAL_LOST_HILLS_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -1785,6 +1912,7 @@ object powerplant
 object powerplant
 {
     name "COVE_MOUNTAIN_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -1799,6 +1927,7 @@ object powerplant
 object powerplant
 {
     name "COVE_MOUNTAIN_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -1813,6 +1942,7 @@ object powerplant
 object powerplant
 {
     name "CRESCENT_DUNES_SOLAR_ENERGY";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Nye County";
@@ -1827,6 +1957,7 @@ object powerplant
 object powerplant
 {
     name "CUYAMA_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Santa Barbara County";
@@ -1841,6 +1972,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_HARVEST_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1855,6 +1987,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_HARVEST_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1869,6 +2002,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_12";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1883,6 +2017,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_13";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1897,6 +2032,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_14";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1911,6 +2047,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_16";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1925,6 +2062,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_17";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1939,6 +2077,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_18";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1953,6 +2092,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_19";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1967,6 +2107,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_250_SOLAR_FARM_20";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1981,6 +2122,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -1995,6 +2137,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_10";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2009,6 +2152,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2023,6 +2167,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2037,6 +2182,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2051,6 +2197,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2065,6 +2212,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2079,6 +2227,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_7";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2093,6 +2242,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_8";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2107,6 +2257,7 @@ object powerplant
 object powerplant
 {
     name "DESERT_SUNLIGHT_300_SOLAR_FARM_9";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2121,6 +2272,7 @@ object powerplant
 object powerplant
 {
     name "DODGE_FLAT_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Washoe County";
@@ -2135,6 +2287,7 @@ object powerplant
 object powerplant
 {
     name "DREW_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -2149,6 +2302,7 @@ object powerplant
 object powerplant
 {
     name "EAST_LINE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -2163,6 +2317,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_E1A";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2177,6 +2332,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_E1B";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -2191,6 +2347,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_E2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2205,6 +2362,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_E3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2219,6 +2377,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_E4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2233,6 +2392,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_E5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2247,6 +2407,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_S1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2261,6 +2422,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_S3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2275,6 +2437,7 @@ object powerplant
 object powerplant
 {
     name "EDWARDS_SANBORN_SOLAR_FARM_S4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2289,6 +2452,7 @@ object powerplant
 object powerplant
 {
     name "ELEVATION_SOLAR_C";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -2303,6 +2467,7 @@ object powerplant
 object powerplant
 {
     name "ENCINO_SOLAR_ENERGY_CENTER";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Sandoval County";
@@ -2317,6 +2482,7 @@ object powerplant
 object powerplant
 {
     name "ENTERPRISE_(MILFORD)_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Beaver County";
@@ -2331,6 +2497,7 @@ object powerplant
 object powerplant
 {
     name "ENTERPRISE_(MILFORD)_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Beaver County";
@@ -2345,6 +2512,7 @@ object powerplant
 object powerplant
 {
     name "ENTERPRISE_(MILFORD)_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Beaver County";
@@ -2359,6 +2527,7 @@ object powerplant
 object powerplant
 {
     name "ENTERPRISE_(NEW_CASTLE)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -2373,6 +2542,7 @@ object powerplant
 object powerplant
 {
     name "FISH_SPRINGS_RANCH_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Washoe County";
@@ -2387,6 +2557,7 @@ object powerplant
 object powerplant
 {
     name "FIVE_POINTS_SOLAR_PARK";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -2401,6 +2572,7 @@ object powerplant
 object powerplant
 {
     name "FRONTIER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Stanislaus County";
@@ -2415,6 +2587,7 @@ object powerplant
 object powerplant
 {
     name "GARLAND_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2429,6 +2602,7 @@ object powerplant
 object powerplant
 {
     name "GARLAND_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2443,6 +2617,7 @@ object powerplant
 object powerplant
 {
     name "GASKELL_WEST_1_SOLAR_FACILITY";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2457,6 +2632,7 @@ object powerplant
 object powerplant
 {
     name "GATES_SOLAR_STATION";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -2471,6 +2647,7 @@ object powerplant
 object powerplant
 {
     name "GENESIS_SOLAR_ENEGY_PROJECT_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2485,6 +2662,7 @@ object powerplant
 object powerplant
 {
     name "GENESIS_SOLAR_ENEGY_PROJECT_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -2499,6 +2677,7 @@ object powerplant
 object powerplant
 {
     name "GIFFEN_SOLAR_PARK";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -2513,6 +2692,7 @@ object powerplant
 object powerplant
 {
     name "GILA_BEND_HYBRID_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -2527,6 +2707,7 @@ object powerplant
 object powerplant
 {
     name "GOLDEN_FIELD_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2541,6 +2722,7 @@ object powerplant
 object powerplant
 {
     name "GOLDEN_FIELD_SOLAR_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2555,6 +2737,7 @@ object powerplant
 object powerplant
 {
     name "GRAND_VIEW_SOLAR_TWO_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Owyhee County";
@@ -2569,6 +2752,7 @@ object powerplant
 object powerplant
 {
     name "GRAND_VIEW_SOLAR_TWO_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Owyhee County";
@@ -2583,6 +2767,7 @@ object powerplant
 object powerplant
 {
     name "GRANITE_MOUNTAIN_SOLAR_East";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -2597,6 +2782,7 @@ object powerplant
 object powerplant
 {
     name "GRANITE_MOUNTAIN_SOLAR_West";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -2611,6 +2797,7 @@ object powerplant
 object powerplant
 {
     name "GRAPHITE_SOLAR_I";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Carbon County";
@@ -2625,6 +2812,7 @@ object powerplant
 object powerplant
 {
     name "GRAY_HAWK_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Mohave County";
@@ -2639,6 +2827,7 @@ object powerplant
 object powerplant
 {
     name "GRAZING_YAK_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "El Paso County";
@@ -2653,6 +2842,7 @@ object powerplant
 object powerplant
 {
     name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -2667,6 +2857,7 @@ object powerplant
 object powerplant
 {
     name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -2681,6 +2872,7 @@ object powerplant
 object powerplant
 {
     name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -2695,6 +2887,7 @@ object powerplant
 object powerplant
 {
     name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -2709,6 +2902,7 @@ object powerplant
 object powerplant
 {
     name "GUERNSEY_SOLAR_STATION";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -2723,6 +2917,7 @@ object powerplant
 object powerplant
 {
     name "HARRY_ALLEN_SOLAR_ENERGY";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -2737,6 +2932,7 @@ object powerplant
 object powerplant
 {
     name "HAYWORTH_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2751,6 +2947,7 @@ object powerplant
 object powerplant
 {
     name "HECATE_ENERGY_BEACON_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2765,6 +2962,7 @@ object powerplant
 object powerplant
 {
     name "HECATE_ENERGY_BEACON_SOLAR_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2779,6 +2977,7 @@ object powerplant
 object powerplant
 {
     name "HECATE_ENERGY_BEACON_SOLAR_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -2793,6 +2992,7 @@ object powerplant
 object powerplant
 {
     name "HENRIETTA_SOLAR_PROJECT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -2807,6 +3007,7 @@ object powerplant
 object powerplant
 {
     name "HIGH_DESERT_HYBRID_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -2821,6 +3022,7 @@ object powerplant
 object powerplant
 {
     name "HOOPER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Alamosa County";
@@ -2835,6 +3037,7 @@ object powerplant
 object powerplant
 {
     name "HUNTER_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Emery County";
@@ -2849,6 +3052,7 @@ object powerplant
 object powerplant
 {
     name "HURON_SOLAR_STATION";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -2863,6 +3067,7 @@ object powerplant
 object powerplant
 {
     name "IMPERIAL_VALLEY_SOLAR_COMPANY_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -2877,6 +3082,7 @@ object powerplant
 object powerplant
 {
     name "IMPERIAL_VALLEY_SOLAR_COMPANY_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -2891,6 +3097,7 @@ object powerplant
 object powerplant
 {
     name "IRON_SPRINGS_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -2905,6 +3112,7 @@ object powerplant
 object powerplant
 {
     name "IVANPAH_SOLAR_ELECTRIC_GENERATING_SYSTEM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -2919,6 +3127,7 @@ object powerplant
 object powerplant
 {
     name "IVANPAH_SOLAR_ELECTRIC_GENERATING_SYSTEM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -2933,6 +3142,7 @@ object powerplant
 object powerplant
 {
     name "IVANPAH_SOLAR_ELECTRIC_GENERATING_SYSTEM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -2947,6 +3157,7 @@ object powerplant
 object powerplant
 {
     name "JACKPOT_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "";
@@ -2961,6 +3172,7 @@ object powerplant
 object powerplant
 {
     name "JACUMBA_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Diego County";
@@ -2975,6 +3187,7 @@ object powerplant
 object powerplant
 {
     name "JICARILLA_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Rio Arriba County";
@@ -2989,6 +3202,7 @@ object powerplant
 object powerplant
 {
     name "KANSAS_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -3003,6 +3217,7 @@ object powerplant
 object powerplant
 {
     name "KANSAS_SOUTH_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -3017,6 +3232,7 @@ object powerplant
 object powerplant
 {
     name "KAYENTA_SOLAR_PROJECT_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Navajo County";
@@ -3031,6 +3247,7 @@ object powerplant
 object powerplant
 {
     name "KAYENTA_SOLAR_PROJECT_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Navajo County";
@@ -3045,6 +3262,7 @@ object powerplant
 object powerplant
 {
     name "KENT_SOUTH_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -3059,6 +3277,7 @@ object powerplant
 object powerplant
 {
     name "KETTLEMAN_(CLENERA)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -3073,6 +3292,7 @@ object powerplant
 object powerplant
 {
     name "KINGBIRD_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -3087,6 +3307,7 @@ object powerplant
 object powerplant
 {
     name "KINGBIRD_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -3101,6 +3322,7 @@ object powerplant
 object powerplant
 {
     name "LITTLE_BEAR_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -3115,6 +3337,7 @@ object powerplant
 object powerplant
 {
     name "LITTLE_BEAR_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -3129,6 +3352,7 @@ object powerplant
 object powerplant
 {
     name "LITTLE_BEAR_SOLAR_FARM_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -3143,6 +3367,7 @@ object powerplant
 object powerplant
 {
     name "LITTLE_BEAR_SOLAR_FARM_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -3157,6 +3382,7 @@ object powerplant
 object powerplant
 {
     name "LONE_VALLEY_SOLAR_PARK_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -3171,6 +3397,7 @@ object powerplant
 object powerplant
 {
     name "LONGBOAT_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -3185,6 +3412,7 @@ object powerplant
 object powerplant
 {
     name "LOST_HILLS_HYBRID_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -3199,6 +3427,7 @@ object powerplant
 object powerplant
 {
     name "LOST_HILLS-BLACKWELL_SOLAR_FARM_Lost_Hills";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -3213,6 +3442,7 @@ object powerplant
 object powerplant
 {
     name "LUCIANA_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -3227,6 +3457,7 @@ object powerplant
 object powerplant
 {
     name "LUND_HILL_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Klickitat County";
@@ -3241,6 +3472,7 @@ object powerplant
 object powerplant
 {
     name "LUNING_ENERGY_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Mineral County";
@@ -3255,6 +3487,7 @@ object powerplant
 object powerplant
 {
     name "MACHO_SPRINGS_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Luna County";
@@ -3269,6 +3502,7 @@ object powerplant
 object powerplant
 {
     name "MARICOPA_WEST_SOLAR_PV";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -3283,6 +3517,7 @@ object powerplant
 object powerplant
 {
     name "MAVERICK_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3297,6 +3532,7 @@ object powerplant
 object powerplant
 {
     name "MAVERICK_SOLAR_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3311,6 +3547,7 @@ object powerplant
 object powerplant
 {
     name "MAVERICK_SOLAR_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3325,6 +3562,7 @@ object powerplant
 object powerplant
 {
     name "MAVERICK_SOLAR_7";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3339,6 +3577,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3353,6 +3592,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3367,6 +3607,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3381,6 +3622,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3395,6 +3637,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3409,6 +3652,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3423,6 +3667,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_7";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3437,6 +3682,7 @@ object powerplant
 object powerplant
 {
     name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_8";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Riverside County";
@@ -3451,6 +3697,7 @@ object powerplant
 object powerplant
 {
     name "MESQUITE_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -3465,6 +3712,7 @@ object powerplant
 object powerplant
 {
     name "MESQUITE_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -3479,6 +3727,7 @@ object powerplant
 object powerplant
 {
     name "MESQUITE_SOLAR_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -3493,6 +3742,7 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_(CALIFORNIA)_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3507,6 +3757,7 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_(CALIFORNIA)_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3521,6 +3772,7 @@ object powerplant
 object powerplant
 {
     name "MIDWAY_(CALIFORNIA)_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3535,6 +3787,7 @@ object powerplant
 object powerplant
 {
     name "MILFORD_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Beaver County";
@@ -3549,6 +3802,7 @@ object powerplant
 object powerplant
 {
     name "MILLICAN_SOLAR_ENERGY";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Crook County";
@@ -3563,6 +3817,7 @@ object powerplant
 object powerplant
 {
     name "MOAPA_SOUTHERN_PAIUTE_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -3577,6 +3832,7 @@ object powerplant
 object powerplant
 {
     name "MOJAVE_SOLAR_PROJECT_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -3591,6 +3847,7 @@ object powerplant
 object powerplant
 {
     name "MOJAVE_SOLAR_PROJECT_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -3605,6 +3862,7 @@ object powerplant
 object powerplant
 {
     name "MOUNT_SOLAR_FARM_(UNITED_STATES)_1A";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3619,6 +3877,7 @@ object powerplant
 object powerplant
 {
     name "MOUNT_SOLAR_FARM_(UNITED_STATES)_1B";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3633,6 +3892,7 @@ object powerplant
 object powerplant
 {
     name "MOUNT_SOLAR_FARM_(UNITED_STATES)_1C";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3647,6 +3907,7 @@ object powerplant
 object powerplant
 {
     name "MOUNT_SOLAR_FARM_(UNITED_STATES)_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3661,6 +3922,7 @@ object powerplant
 object powerplant
 {
     name "MOUNT_SOLAR_FARM_(UNITED_STATES)_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -3675,6 +3937,7 @@ object powerplant
 object powerplant
 {
     name "MOUNTAIN_VIEW_(NEXTERA)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -3689,6 +3952,7 @@ object powerplant
 object powerplant
 {
     name "MT._HOME_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Elmore County";
@@ -3703,6 +3967,7 @@ object powerplant
 object powerplant
 {
     name "MURPHY_FLAT_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Owyhee County";
@@ -3717,6 +3982,7 @@ object powerplant
 object powerplant
 {
     name "MUSTANG_TWO_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -3731,6 +3997,7 @@ object powerplant
 object powerplant
 {
     name "MUSTANG_TWO_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -3745,6 +4012,7 @@ object powerplant
 object powerplant
 {
     name "MUSTANG_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -3759,6 +4027,7 @@ object powerplant
 object powerplant
 {
     name "NEVADA_SOLAR_ONE";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -3773,6 +4042,7 @@ object powerplant
 object powerplant
 {
     name "NICOLIS_SOLAR_PV_PLANT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -3787,6 +4057,7 @@ object powerplant
 object powerplant
 {
     name "NORTH_LANCASTER_RANCH_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -3801,6 +4072,7 @@ object powerplant
 object powerplant
 {
     name "NORTH_ROSAMOND_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -3815,6 +4087,7 @@ object powerplant
 object powerplant
 {
     name "NORTH_STAR_(SOUTHERN_POWER)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -3829,6 +4102,7 @@ object powerplant
 object powerplant
 {
     name "OLD_RIVER_ONE_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -3843,6 +4117,7 @@ object powerplant
 object powerplant
 {
     name "ORCHARD_RANCH_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Ada County";
@@ -3857,6 +4132,7 @@ object powerplant
 object powerplant
 {
     name "ORO_LOMA_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Merced County";
@@ -3871,6 +4147,7 @@ object powerplant
 object powerplant
 {
     name "PALMER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "El Paso County";
@@ -3885,6 +4162,7 @@ object powerplant
 object powerplant
 {
     name "PANOCHE_VALLEY_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Benito County";
@@ -3899,6 +4177,7 @@ object powerplant
 object powerplant
 {
     name "PAVANT_SOLAR_1_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Millard County";
@@ -3913,6 +4192,7 @@ object powerplant
 object powerplant
 {
     name "PAVANT_SOLAR_2_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Millard County";
@@ -3927,6 +4207,7 @@ object powerplant
 object powerplant
 {
     name "PAVANT_SOLAR_3_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "";
@@ -3941,6 +4222,7 @@ object powerplant
 object powerplant
 {
     name "PICTURE_ROCKS_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pima County";
@@ -3955,6 +4237,7 @@ object powerplant
 object powerplant
 {
     name "PINAL_CENTRAL_ENERGY_CENTER_HYBRID_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -3969,6 +4252,7 @@ object powerplant
 object powerplant
 {
     name "PIONEER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Adams County";
@@ -3983,6 +4267,7 @@ object powerplant
 object powerplant
 {
     name "PLAYA_SOLAR_1_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -3997,6 +4282,7 @@ object powerplant
 object powerplant
 {
     name "PLAYA_SOLAR_1_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4011,6 +4297,7 @@ object powerplant
 object powerplant
 {
     name "PORTAL_RIDGE_SOLAR_B";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -4025,6 +4312,7 @@ object powerplant
 object powerplant
 {
     name "PRINEVILLE_SOLAR_ENERGY";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Crook County";
@@ -4039,6 +4327,7 @@ object powerplant
 object powerplant
 {
     name "PUMPJACK_SOLAR_I";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4053,6 +4342,7 @@ object powerplant
 object powerplant
 {
     name "QUINTO_SOLAR_PV_PROJECT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Merced County";
@@ -4067,6 +4357,7 @@ object powerplant
 object powerplant
 {
     name "RABBITBRUSH_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4081,6 +4372,7 @@ object powerplant
 object powerplant
 {
     name "RANCHO_SECO_SOLAR_II_RSS2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Sacramento County";
@@ -4095,6 +4387,7 @@ object powerplant
 object powerplant
 {
     name "RAWHIDE_PRAIRIE_SOLAR_HYBRID";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Larimer County";
@@ -4109,6 +4402,7 @@ object powerplant
 object powerplant
 {
     name "RED_HORSE_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Cochise County";
@@ -4123,6 +4417,7 @@ object powerplant
 object powerplant
 {
     name "RED_HORSE_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Cochise County";
@@ -4137,6 +4432,7 @@ object powerplant
 object powerplant
 {
     name "RED_ROCK_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -4151,6 +4447,7 @@ object powerplant
 object powerplant
 {
     name "REDWOOD_4_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4165,6 +4462,7 @@ object powerplant
 object powerplant
 {
     name "REGULUS_SOLAR_PROJECT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4179,6 +4477,7 @@ object powerplant
 object powerplant
 {
     name "RIO_BRAVO_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4193,6 +4492,7 @@ object powerplant
 object powerplant
 {
     name "RIO_BRAVO_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4207,6 +4507,7 @@ object powerplant
 object powerplant
 {
     name "ROADRUNNER_(CLEARWAY)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Doa Ana County";
@@ -4221,6 +4522,7 @@ object powerplant
 object powerplant
 {
     name "ROSAMOND_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4235,6 +4537,7 @@ object powerplant
 object powerplant
 {
     name "ROSAMOND_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4249,6 +4552,7 @@ object powerplant
 object powerplant
 {
     name "ROSWELL_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Chaves County";
@@ -4263,6 +4567,7 @@ object powerplant
 object powerplant
 {
     name "ROUTE_66_ENERGY_CENTER_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Cibola County";
@@ -4277,6 +4582,7 @@ object powerplant
 object powerplant
 {
     name "SEPV_MOJAVE_WEST_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4291,6 +4597,7 @@ object powerplant
 object powerplant
 {
     name "SAGE_SOLAR_I-III";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Rich County";
@@ -4305,6 +4612,7 @@ object powerplant
 object powerplant
 {
     name "SAINT_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -4319,6 +4627,7 @@ object powerplant
 object powerplant
 {
     name "SALOME_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "La Paz County";
@@ -4333,6 +4642,7 @@ object powerplant
 object powerplant
 {
     name "SAN_ISABEL_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Las Animas County";
@@ -4347,6 +4657,7 @@ object powerplant
 object powerplant
 {
     name "SAN_LUIS_VALLEY_SOLAR_RANCH";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Alamosa County";
@@ -4361,6 +4672,7 @@ object powerplant
 object powerplant
 {
     name "SAN_PABLO_RACEWAY_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -4375,6 +4687,7 @@ object powerplant
 object powerplant
 {
     name "SANDSTONE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -4389,6 +4702,7 @@ object powerplant
 object powerplant
 {
     name "SEVILLE_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -4403,6 +4717,7 @@ object powerplant
 object powerplant
 {
     name "SEVILLE_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -4417,6 +4732,7 @@ object powerplant
 object powerplant
 {
     name "SHAFTER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4431,6 +4747,7 @@ object powerplant
 object powerplant
 {
     name "SIERRA_SOLAR_GREENWORKS";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -4445,6 +4762,7 @@ object powerplant
 object powerplant
 {
     name "SIGURD_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Sevier County";
@@ -4459,6 +4777,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_NORTH";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4473,6 +4792,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4487,6 +4807,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4501,6 +4822,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4515,6 +4837,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4529,6 +4852,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4543,6 +4867,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4557,6 +4882,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_7";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4571,6 +4897,7 @@ object powerplant
 object powerplant
 {
     name "SILVER_STATE_SOLAR_POWER_SOUTH_8";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -4585,6 +4912,7 @@ object powerplant
 object powerplant
 {
     name "SIMCOE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Elmore County";
@@ -4599,6 +4927,7 @@ object powerplant
 object powerplant
 {
     name "SLATE_HYBRID_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -4613,6 +4942,7 @@ object powerplant
 object powerplant
 {
     name "SLATE_HYBRID_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -4627,6 +4957,7 @@ object powerplant
 object powerplant
 {
     name "SLATE_HYBRID_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -4641,6 +4972,7 @@ object powerplant
 object powerplant
 {
     name "SLATE_HYBRID_SOLAR_FARM_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -4655,6 +4987,7 @@ object powerplant
 object powerplant
 {
     name "SLATE_HYBRID_SOLAR_FARM_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -4669,6 +5002,7 @@ object powerplant
 object powerplant
 {
     name "SOL_ORCHARD_EL_CENTRO_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -4683,6 +5017,7 @@ object powerplant
 object powerplant
 {
     name "SOLANA_SOLAR_GENERATING_STATION_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -4697,6 +5032,7 @@ object powerplant
 object powerplant
 {
     name "SOLANA_SOLAR_GENERATING_STATION_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -4711,6 +5047,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_ELECTRIC_GENERATING_STATION_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -4725,6 +5062,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_ELECTRIC_GENERATING_STATION_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -4739,6 +5077,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_ELECTRIC_GENERATING_STATION_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -4753,6 +5092,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_ELECTRIC_GENERATING_STATION_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -4767,6 +5107,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_ELECTRIC_GENERATING_STATION_7";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -4781,6 +5122,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_ELECTRIC_GENERATING_STATION_8";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -4795,6 +5137,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_ELECTRIC_GENERATING_STATION_9";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -4809,6 +5152,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_GEN_2_SOLAR_FACILITY_ALHM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -4823,6 +5167,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_GEN_2_SOLAR_FACILITY_ARK";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -4837,6 +5182,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_GEN_2_SOLAR_FACILITY_SONR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -4851,6 +5197,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_OASIS";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -4865,6 +5212,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_1_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4879,6 +5227,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_1_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4893,6 +5242,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_1_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4907,6 +5257,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_1_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4921,6 +5272,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_1_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4935,6 +5287,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_1_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4949,6 +5302,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_2_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4963,6 +5317,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_2_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4977,6 +5332,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_2_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -4991,6 +5347,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_2_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5005,6 +5362,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_2_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5019,6 +5377,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_CALIFORNIA_RS1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5033,6 +5392,7 @@ object powerplant
 object powerplant
 {
     name "SOLAR_STAR_OREGON_II_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Crook County";
@@ -5047,6 +5407,7 @@ object powerplant
 object powerplant
 {
     name "SOLVERDE_1_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -5061,6 +5422,7 @@ object powerplant
 object powerplant
 {
     name "SPECTRUM_SOLAR_POWER_PROJECT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -5075,6 +5437,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGBOK_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5089,6 +5452,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGBOK_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5103,6 +5467,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGBOK_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5117,6 +5482,7 @@ object powerplant
 object powerplant
 {
     name "STATELINE_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5131,6 +5497,7 @@ object powerplant
 object powerplant
 {
     name "STATELINE_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5145,6 +5512,7 @@ object powerplant
 object powerplant
 {
     name "STATELINE_SOLAR_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5159,6 +5527,7 @@ object powerplant
 object powerplant
 {
     name "STATELINE_SOLAR_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5173,6 +5542,7 @@ object powerplant
 object powerplant
 {
     name "STATELINE_SOLAR_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5187,6 +5557,7 @@ object powerplant
 object powerplant
 {
     name "STATELINE_SOLAR_6";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5201,6 +5572,7 @@ object powerplant
 object powerplant
 {
     name "STATELINE_SOLAR_7";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5215,6 +5587,7 @@ object powerplant
 object powerplant
 {
     name "STILLWATER_FACILITY_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Churchill County";
@@ -5229,6 +5602,7 @@ object powerplant
 object powerplant
 {
     name "STILLWATER_FACILITY_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Churchill County";
@@ -5243,6 +5617,7 @@ object powerplant
 object powerplant
 {
     name "STROUD_SOLAR_STATION";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -5257,6 +5632,7 @@ object powerplant
 object powerplant
 {
     name "SULPHUR_SPRINGS_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Cochise County";
@@ -5271,6 +5647,7 @@ object powerplant
 object powerplant
 {
     name "SUMMER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -5285,6 +5662,7 @@ object powerplant
 object powerplant
 {
     name "SUN_CITY_PROJECT_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -5299,6 +5677,7 @@ object powerplant
 object powerplant
 {
     name "SUN_MOUNTAIN_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pueblo County";
@@ -5313,6 +5692,7 @@ object powerplant
 object powerplant
 {
     name "SUN_STREAMS_2_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -5327,6 +5707,7 @@ object powerplant
 object powerplant
 {
     name "SUN_STREAMS_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -5341,6 +5722,7 @@ object powerplant
 object powerplant
 {
     name "SUN_VALLEY_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Maricopa County";
@@ -5355,6 +5737,7 @@ object powerplant
 object powerplant
 {
     name "SUNRAY_2_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5369,6 +5752,7 @@ object powerplant
 object powerplant
 {
     name "SUNSHINE_VALLEY_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Nye County";
@@ -5383,6 +5767,7 @@ object powerplant
 object powerplant
 {
     name "SWEETWATER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Sweetwater County";
@@ -5397,6 +5782,7 @@ object powerplant
 object powerplant
 {
     name "TA-HIGH_DESERT_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -5411,6 +5797,7 @@ object powerplant
 object powerplant
 {
     name "TA-ACACIA_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -5425,6 +5812,7 @@ object powerplant
 object powerplant
 {
     name "TECHREN_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -5439,6 +5827,7 @@ object powerplant
 object powerplant
 {
     name "TECHREN_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -5453,6 +5842,7 @@ object powerplant
 object powerplant
 {
     name "TECHREN_SOLAR_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -5467,6 +5857,7 @@ object powerplant
 object powerplant
 {
     name "TECHREN_SOLAR_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -5481,6 +5872,7 @@ object powerplant
 object powerplant
 {
     name "TECHREN_SOLAR_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -5495,6 +5887,7 @@ object powerplant
 object powerplant
 {
     name "TENASKA_IMPERIAL_SOLAR_ENERGY_CENTER_South";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -5509,6 +5902,7 @@ object powerplant
 object powerplant
 {
     name "TENASKA_IMPERIAL_SOLAR_ENERGY_CENTER_West";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -5523,6 +5917,7 @@ object powerplant
 object powerplant
 {
     name "THREE_PEAKS_POWER_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -5537,6 +5932,7 @@ object powerplant
 object powerplant
 {
     name "TITAN_(CALIFORNIA)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -5551,6 +5947,7 @@ object powerplant
 object powerplant
 {
     name "TITAN_(COLORADO)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Arapahoe County";
@@ -5565,6 +5962,7 @@ object powerplant
 object powerplant
 {
     name "TOPAZ_SOLAR_FARM_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -5579,6 +5977,7 @@ object powerplant
 object powerplant
 {
     name "TOPAZ_SOLAR_FARM_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -5593,6 +5992,7 @@ object powerplant
 object powerplant
 {
     name "TOPAZ_SOLAR_FARM_3";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -5607,6 +6007,7 @@ object powerplant
 object powerplant
 {
     name "TOPAZ_SOLAR_FARM_4";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -5621,6 +6022,7 @@ object powerplant
 object powerplant
 {
     name "TOPAZ_SOLAR_FARM_5";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Luis Obispo County";
@@ -5635,6 +6037,7 @@ object powerplant
 object powerplant
 {
     name "TOWNSITE_SOLAR_PROJECT_HYBRID";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Clark County";
@@ -5649,6 +6052,7 @@ object powerplant
 object powerplant
 {
     name "TRANQUILLITY_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -5663,6 +6067,7 @@ object powerplant
 object powerplant
 {
     name "TURQUOISE_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Washoe County";
@@ -5677,6 +6082,7 @@ object powerplant
 object powerplant
 {
     name "UTAH_RED_HILLS_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Iron County";
@@ -5691,6 +6097,7 @@ object powerplant
 object powerplant
 {
     name "VALENTINE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5705,6 +6112,7 @@ object powerplant
 object powerplant
 {
     name "VANDENBERG_SOLAR_PROJECT";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Santa Barbara County";
@@ -5719,6 +6127,7 @@ object powerplant
 object powerplant
 {
     name "VEGA_(SUNEDISON)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Merced County";
@@ -5733,6 +6142,7 @@ object powerplant
 object powerplant
 {
     name "VICTOR_PHELAN_SOLAR_ONE";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "San Bernardino County";
@@ -5747,6 +6157,7 @@ object powerplant
 object powerplant
 {
     name "WEST_LINE_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pinal County";
@@ -5761,6 +6172,7 @@ object powerplant
 object powerplant
 {
     name "WESTERN_ANTELOPE_BLUE_SKY_A_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -5775,6 +6187,7 @@ object powerplant
 object powerplant
 {
     name "WESTERN_ANTELOPE_BLUE_SKY_B_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -5789,6 +6202,7 @@ object powerplant
 object powerplant
 {
     name "WESTLAND_SOLAR_FARM_Aquamarine";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kings County";
@@ -5803,6 +6217,7 @@ object powerplant
 object powerplant
 {
     name "WESTSIDE_(NEXTERA)_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -5817,6 +6232,7 @@ object powerplant
 object powerplant
 {
     name "WHEATRIDGE_HYBRID_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Morrow County";
@@ -5831,6 +6247,7 @@ object powerplant
 object powerplant
 {
     name "WHITE_RIVER_SOLAR_1";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -5845,6 +6262,7 @@ object powerplant
 object powerplant
 {
     name "WHITE_RIVER_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Tulare County";
@@ -5859,6 +6277,7 @@ object powerplant
 object powerplant
 {
     name "WHITNEY_POINT_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Fresno County";
@@ -5873,6 +6292,7 @@ object powerplant
 object powerplant
 {
     name "WILLOW_SPRING_SOLAR_2";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Los Angeles County";
@@ -5887,6 +6307,7 @@ object powerplant
 object powerplant
 {
     name "WILMOT_ENERGY_CENTER_SOLAR_FARM";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Pima County";
@@ -5901,6 +6322,7 @@ object powerplant
 object powerplant
 {
     name "WINDHUB_SOLAR_A";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Kern County";
@@ -5915,6 +6337,7 @@ object powerplant
 object powerplant
 {
     name "WISTARIA_RANCH_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -5929,6 +6352,7 @@ object powerplant
 object powerplant
 {
     name "WISTER_SOLAR";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Imperial County";
@@ -5943,6 +6367,7 @@ object powerplant
 object powerplant
 {
     name "WRIGHT_SOLAR_PARK";
+    parent "pp_bus_TODO";
     generator "PV";
     fuel "SUN";
     county "Merced County";

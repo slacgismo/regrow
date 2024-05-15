@@ -7,6 +7,7 @@ class powerplant
 object powerplant
 {
     name "COLMAC_ENERGY_POWER_STATION_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Riverside County";
@@ -21,6 +22,7 @@ object powerplant
 object powerplant
 {
     name "COVANTA_LONG_BEACH_POWER_STATION_GEN1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Los Angeles County";
@@ -35,6 +37,7 @@ object powerplant
 object powerplant
 {
     name "HONEY_LAKE_POWER_STATION_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Lassen County";
@@ -49,6 +52,7 @@ object powerplant
 object powerplant
 {
     name "KETTLE_FALLS_POWER_STATION_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Stevens County";
@@ -63,6 +67,7 @@ object powerplant
 object powerplant
 {
     name "LEWISTON_PULP_MILL_POWER_STATION_GEN4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Nez Perce County";
@@ -77,6 +82,7 @@ object powerplant
 object powerplant
 {
     name "MT._POSO_COGENERATION_PLANT_TG01";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Kern County";
@@ -91,6 +97,7 @@ object powerplant
 object powerplant
 {
     name "PUENTE_HILLS_ENERGY_RECOVERY_POWER_STATION_GEN1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Los Angeles County";
@@ -105,6 +112,7 @@ object powerplant
 object powerplant
 {
     name "SIERRA_PACIFIC_QUINCY_POWER_STATION_GEN3";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Plumas County";
@@ -119,6 +127,7 @@ object powerplant
 object powerplant
 {
     name "SIMPSON_TACOMA_POWER_STATION_STG1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Pierce County";
@@ -133,6 +142,7 @@ object powerplant
 object powerplant
 {
     name "SPI_ANDERSON_2_POWER_STATION_GEN1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Shasta County";
@@ -147,6 +157,7 @@ object powerplant
 object powerplant
 {
     name "SPRINGFIELD_MILL_POWER_STATION_TG4";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "Lane County";
@@ -161,6 +172,7 @@ object powerplant
 object powerplant
 {
     name "STOCKTON_COGENERATION_FACILITY_1";
+    parent "pp_gen_TODO";
     generator "ST";
     fuel "BIO";
     county "San Joaquin County";

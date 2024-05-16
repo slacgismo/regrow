@@ -8,6 +8,7 @@
    * Heat resulted in derating of conventional generation
    * High clouds, haze, and smoke resulted in derating of solar
    * Hydro generation derated due to below normal water conditions
+   * Natural gas generation capacity was offline, forced out, or under-dispatched
    * Imports from NW limited due to increased demand in NW and intertie derating
 * August 14-15 2020 rotating blackouts ordered by CAISO
 * Supply shortfalls projected for Aug 17-19 required statewide load relief
@@ -100,6 +101,9 @@
 * Natural gas
    * Powerplant derates are already considered in planning models
    * Fleet asked to make effort to improve plant efficiency [3] [4]
+   * 400 MW of NG generation did not respond to RMO and was offline
+   * 498 MW of NG generation was subject to a forced outage
+   * 248 MW of NG generation was erroneously under-dispatched.
 * Imports
    * Imports were 40-50% higher than RA obligations
    * Excessive reliance on uncontracted/unobligated imports

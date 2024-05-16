@@ -4,10 +4,15 @@ class powerplant
     char32 county;
 }
 
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF1";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "AGUA_FRIA_POWER_STATION_AF1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF1";
     generator "ST";
     fuel "OIL";
     county "Maricopa";
@@ -19,10 +24,15 @@ object powerplant
     operating_capacity "114.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF2";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "AGUA_FRIA_POWER_STATION_AF2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF2";
     generator "ST";
     fuel "OIL";
     county "Maricopa";
@@ -34,10 +44,15 @@ object powerplant
     operating_capacity "114.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF3";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "AGUA_FRIA_POWER_STATION_AF3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF3";
     generator "ST";
     fuel "OIL";
     county "Maricopa";
@@ -49,10 +64,15 @@ object powerplant
     operating_capacity "163.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF4";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "AGUA_FRIA_POWER_STATION_AF4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF4";
     generator "CT";
     fuel "OIL";
     county "Maricopa";
@@ -64,10 +84,15 @@ object powerplant
     operating_capacity "81.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF5";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "AGUA_FRIA_POWER_STATION_AF5";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF5";
     generator "CT";
     fuel "OIL";
     county "Maricopa";
@@ -79,10 +104,15 @@ object powerplant
     operating_capacity "71.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF6";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "AGUA_FRIA_POWER_STATION_AF6";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF6";
     generator "CT";
     fuel "OIL";
     county "Maricopa";
@@ -94,10 +124,15 @@ object powerplant
     operating_capacity "71.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_BEAVER_POWER_STATION_CC1";
+    parent "wecc240_psse_N_4202";
+}
 object powerplant
 {
     name "BEAVER_POWER_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_BEAVER_POWER_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Columbia";
@@ -109,10 +144,15 @@ object powerplant
     operating_capacity "586.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_BLUE_SPRUCE_ENERGY_CENTER_CT01";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "BLUE_SPRUCE_ENERGY_CENTER_CT01";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_BLUE_SPRUCE_ENERGY_CENTER_CT01";
     generator "CT";
     fuel "OIL";
     county "Adams";
@@ -124,10 +164,15 @@ object powerplant
     operating_capacity "199.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_BLUE_SPRUCE_ENERGY_CENTER_CT02";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "BLUE_SPRUCE_ENERGY_CENTER_CT02";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_BLUE_SPRUCE_ENERGY_CENTER_CT02";
     generator "CT";
     fuel "OIL";
     county "Adams";
@@ -139,10 +184,15 @@ object powerplant
     operating_capacity "199.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DAVE_GATES_GENERATING_STATION_1";
+    parent "wecc240_psse_N_6202";
+}
 object powerplant
 {
     name "DAVE_GATES_GENERATING_STATION_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DAVE_GATES_GENERATING_STATION_1";
     generator "CT";
     fuel "OIL";
     county "Deer Lodge";
@@ -154,10 +204,15 @@ object powerplant
     operating_capacity "68.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DAVE_GATES_GENERATING_STATION_2";
+    parent "wecc240_psse_N_6202";
+}
 object powerplant
 {
     name "DAVE_GATES_GENERATING_STATION_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DAVE_GATES_GENERATING_STATION_2";
     generator "CT";
     fuel "OIL";
     county "Deer Lodge";
@@ -169,10 +224,15 @@ object powerplant
     operating_capacity "68.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DAVE_GATES_GENERATING_STATION_3";
+    parent "wecc240_psse_N_6202";
+}
 object powerplant
 {
     name "DAVE_GATES_GENERATING_STATION_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DAVE_GATES_GENERATING_STATION_3";
     generator "CT";
     fuel "OIL";
     county "Deer Lodge";
@@ -184,10 +244,15 @@ object powerplant
     operating_capacity "68.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DYNEGY_OAKLAND_POWER_PLANT_GEN1";
+    parent "wecc240_psse_N_3101";
+}
 object powerplant
 {
     name "DYNEGY_OAKLAND_POWER_PLANT_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DYNEGY_OAKLAND_POWER_PLANT_GEN1";
     generator "CT";
     fuel "OIL";
     county "Alameda";
@@ -199,10 +264,15 @@ object powerplant
     operating_capacity "74.5 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DYNEGY_OAKLAND_POWER_PLANT_GEN2";
+    parent "wecc240_psse_N_3101";
+}
 object powerplant
 {
     name "DYNEGY_OAKLAND_POWER_PLANT_GEN2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DYNEGY_OAKLAND_POWER_PLANT_GEN2";
     generator "CT";
     fuel "OIL";
     county "Alameda";
@@ -214,10 +284,15 @@ object powerplant
     operating_capacity "74.5 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DYNEGY_OAKLAND_POWER_PLANT_GEN3";
+    parent "wecc240_psse_N_3101";
+}
 object powerplant
 {
     name "DYNEGY_OAKLAND_POWER_PLANT_GEN3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DYNEGY_OAKLAND_POWER_PLANT_GEN3";
     generator "CT";
     fuel "OIL";
     county "Alameda";
@@ -229,10 +304,15 @@ object powerplant
     operating_capacity "74.5 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_EL_CENTRO_POWER_STATION_4";
+    parent "wecc240_psse_N_2301";
+}
 object powerplant
 {
     name "EL_CENTRO_POWER_STATION_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_EL_CENTRO_POWER_STATION_4";
     generator "ST";
     fuel "OIL";
     county "Imperial";
@@ -244,10 +324,15 @@ object powerplant
     operating_capacity "82.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_EL_SEGUNDO_COGENERATION_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "EL_SEGUNDO_COGENERATION_POWER_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_EL_SEGUNDO_COGENERATION_POWER_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Los Angeles";
@@ -259,10 +344,15 @@ object powerplant
     operating_capacity "180.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_ENCOGENERATION_POWER_STATION_CC1";
+    parent "wecc240_psse_N_5001";
+}
 object powerplant
 {
     name "ENCOGENERATION_POWER_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_ENCOGENERATION_POWER_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Whatcom";
@@ -274,10 +364,15 @@ object powerplant
     operating_capacity "176.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FERNDALE_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_5001";
+}
 object powerplant
 {
     name "FERNDALE_GENERATING_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FERNDALE_GENERATING_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Whatcom";
@@ -289,10 +384,15 @@ object powerplant
     operating_capacity "286.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FORT_LUPTON_POWER_STATION_1";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "FORT_LUPTON_POWER_STATION_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FORT_LUPTON_POWER_STATION_1";
     generator "CT";
     fuel "OIL";
     county "Weld";
@@ -304,10 +404,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FORT_LUPTON_POWER_STATION_2";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "FORT_LUPTON_POWER_STATION_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FORT_LUPTON_POWER_STATION_2";
     generator "CT";
     fuel "OIL";
     county "Weld";
@@ -319,10 +424,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FRANK_KNUTSON_POWER_STATION_BR1";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "FRANK_KNUTSON_POWER_STATION_BR1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FRANK_KNUTSON_POWER_STATION_BR1";
     generator "CT";
     fuel "OIL";
     county "Adams";
@@ -334,10 +444,15 @@ object powerplant
     operating_capacity "77.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FRANK_KNUTSON_POWER_STATION_BR2";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "FRANK_KNUTSON_POWER_STATION_BR2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FRANK_KNUTSON_POWER_STATION_BR2";
     generator "CT";
     fuel "OIL";
     county "Adams";
@@ -349,10 +464,15 @@ object powerplant
     operating_capacity "77.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FREDERICKSON_POWER_STATION_1";
+    parent "wecc240_psse_N_4202";
+}
 object powerplant
 {
     name "FREDERICKSON_POWER_STATION_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FREDERICKSON_POWER_STATION_1";
     generator "CT";
     fuel "OIL";
     county "Pierce";
@@ -364,10 +484,15 @@ object powerplant
     operating_capacity "89.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FREDERICKSON_POWER_STATION_2";
+    parent "wecc240_psse_N_4202";
+}
 object powerplant
 {
     name "FREDERICKSON_POWER_STATION_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FREDERICKSON_POWER_STATION_2";
     generator "CT";
     fuel "OIL";
     county "Pierce";
@@ -379,10 +504,15 @@ object powerplant
     operating_capacity "89.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_GRAYSON_POWER_STATION_4";
+    parent "wecc240_psse_N_2609";
+}
 object powerplant
 {
     name "GRAYSON_POWER_STATION_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_GRAYSON_POWER_STATION_4";
     generator "ST";
     fuel "OIL";
     county "Los Angeles";
@@ -394,10 +524,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_GRAYSON_POWER_STATION_5";
+    parent "wecc240_psse_N_2609";
+}
 object powerplant
 {
     name "GRAYSON_POWER_STATION_5";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_GRAYSON_POWER_STATION_5";
     generator "ST";
     fuel "OIL";
     county "Los Angeles";
@@ -409,10 +544,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_H_WILSON_SUNDT_GENERATING_STATION_4";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
-    name "H._WILSON_SUNDT_GENERATING_STATION_4";
-    parent "pp_gen_TODO";
+    name "H_WILSON_SUNDT_GENERATING_STATION_4";
+    parent "wecc240_psse_G_H_WILSON_SUNDT_GENERATING_STATION_4";
     generator "ST";
     fuel "OIL";
     county "Pima";
@@ -424,10 +564,15 @@ object powerplant
     operating_capacity "173.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HARBOR_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "HARBOR_POWER_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HARBOR_POWER_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Los Angeles";
@@ -439,10 +584,15 @@ object powerplant
     operating_capacity "246.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HARBOR_POWER_STATION_GT10";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "HARBOR_POWER_STATION_GT10";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HARBOR_POWER_STATION_GT10";
     generator "CT";
     fuel "OIL";
     county "Los Angeles";
@@ -454,10 +604,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HARBOR_POWER_STATION_GT11";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "HARBOR_POWER_STATION_GT11";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HARBOR_POWER_STATION_GT11";
     generator "CT";
     fuel "OIL";
     county "Los Angeles";
@@ -469,10 +624,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HARBOR_POWER_STATION_GT12";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "HARBOR_POWER_STATION_GT12";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HARBOR_POWER_STATION_GT12";
     generator "CT";
     fuel "OIL";
     county "Los Angeles";
@@ -484,10 +644,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HARBOR_POWER_STATION_GT13";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "HARBOR_POWER_STATION_GT13";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HARBOR_POWER_STATION_GT13";
     generator "CT";
     fuel "OIL";
     county "Los Angeles";
@@ -499,10 +664,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HARBOR_POWER_STATION_GT14";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "HARBOR_POWER_STATION_GT14";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HARBOR_POWER_STATION_GT14";
     generator "CT";
     fuel "OIL";
     county "Los Angeles";
@@ -514,10 +684,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HUMBOLDT_BAY_POWER_STATION_IC";
+    parent "wecc240_psse_N_3601";
+}
 object powerplant
 {
     name "HUMBOLDT_BAY_POWER_STATION_IC";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HUMBOLDT_BAY_POWER_STATION_IC";
     generator "IC";
     fuel "OIL";
     county "Humboldt";
@@ -529,10 +704,15 @@ object powerplant
     operating_capacity "167.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_IVANPAH_1_POWER_STATION_ST1";
+    parent "wecc240_psse_N_2901";
+}
 object powerplant
 {
     name "IVANPAH_1_POWER_STATION_ST1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_IVANPAH_1_POWER_STATION_ST1";
     generator "ST";
     fuel "OIL";
     county "San Bernardino";
@@ -544,10 +724,15 @@ object powerplant
     operating_capacity "126.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_IVANPAH_2_POWER_STATION_ST1";
+    parent "wecc240_psse_N_2901";
+}
 object powerplant
 {
     name "IVANPAH_2_POWER_STATION_ST1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_IVANPAH_2_POWER_STATION_ST1";
     generator "ST";
     fuel "OIL";
     county "San Bernardino";
@@ -559,10 +744,15 @@ object powerplant
     operating_capacity "133.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_IVANPAH_3_POWER_STATION_ST1";
+    parent "wecc240_psse_N_2901";
+}
 object powerplant
 {
     name "IVANPAH_3_POWER_STATION_ST1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_IVANPAH_3_POWER_STATION_ST1";
     generator "ST";
     fuel "OIL";
     county "San Bernardino";
@@ -574,10 +764,15 @@ object powerplant
     operating_capacity "133.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_KYRENE_POWER_STATION_KY4";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "KYRENE_POWER_STATION_KY4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_KYRENE_POWER_STATION_KY4";
     generator "CT";
     fuel "OIL";
     county "Maricopa";
@@ -589,10 +784,15 @@ object powerplant
     operating_capacity "53.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_KYRENE_POWER_STATION_KY5";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "KYRENE_POWER_STATION_KY5";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_KYRENE_POWER_STATION_KY5";
     generator "CT";
     fuel "OIL";
     county "Maricopa";
@@ -604,10 +804,15 @@ object powerplant
     operating_capacity "60.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_KYRENE_POWER_STATION_KY6";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "KYRENE_POWER_STATION_KY6";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_KYRENE_POWER_STATION_KY6";
     generator "CT";
     fuel "OIL";
     county "Maricopa";
@@ -619,10 +824,15 @@ object powerplant
     operating_capacity "60.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_KYRENE_POWER_STATION_KYS7";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "KYRENE_POWER_STATION_KYS7";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_KYRENE_POWER_STATION_KYS7";
     generator "CC";
     fuel "OIL";
     county "Maricopa";
@@ -634,10 +844,15 @@ object powerplant
     operating_capacity "292.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LARKSPUR_ENERGY_FACILITY_CTG1";
+    parent "wecc240_psse_N_2201";
+}
 object powerplant
 {
     name "LARKSPUR_ENERGY_FACILITY_CTG1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LARKSPUR_ENERGY_FACILITY_CTG1";
     generator "CT";
     fuel "OIL";
     county "San Diego";
@@ -649,10 +864,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LARKSPUR_ENERGY_FACILITY_CTG2";
+    parent "wecc240_psse_N_2201";
+}
 object powerplant
 {
     name "LARKSPUR_ENERGY_FACILITY_CTG2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LARKSPUR_ENERGY_FACILITY_CTG2";
     generator "CT";
     fuel "OIL";
     county "San Diego";
@@ -664,10 +884,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LIMON_GENERATING_STATION_L1";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "LIMON_GENERATING_STATION_L1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LIMON_GENERATING_STATION_L1";
     generator "CT";
     fuel "OIL";
     county "Lincoln";
@@ -679,10 +904,15 @@ object powerplant
     operating_capacity "77.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LIMON_GENERATING_STATION_L2";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "LIMON_GENERATING_STATION_L2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LIMON_GENERATING_STATION_L2";
     generator "CT";
     fuel "OIL";
     county "Lincoln";
@@ -694,10 +924,15 @@ object powerplant
     operating_capacity "77.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LOS_ANGELES_REFINERY_WILMINGTON_POWER_STATION_G2";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "LOS_ANGELES_REFINERY_WILMINGTON_POWER_STATION_G2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LOS_ANGELES_REFINERY_WILMINGTON_POWER_STATION_G2";
     generator "CT";
     fuel "OIL";
     county "Los Angeles";
@@ -709,10 +944,15 @@ object powerplant
     operating_capacity "59.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_MALBURG_POWER_STATION_MGS";
+    parent "wecc240_psse_N_2605";
+}
 object powerplant
 {
     name "MALBURG_POWER_STATION_MGS";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_MALBURG_POWER_STATION_MGS";
     generator "CC";
     fuel "OIL";
     county "Los Angeles";
@@ -724,10 +964,15 @@ object powerplant
     operating_capacity "130.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_MCCLURE_POWER_STATION_1";
+    parent "wecc240_psse_N_3907";
+}
 object powerplant
 {
     name "MCCLURE_POWER_STATION_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_MCCLURE_POWER_STATION_1";
     generator "CT";
     fuel "OIL";
     county "Stanislaus";
@@ -739,10 +984,15 @@ object powerplant
     operating_capacity "71.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_MCCLURE_POWER_STATION_2";
+    parent "wecc240_psse_N_3907";
+}
 object powerplant
 {
     name "MCCLURE_POWER_STATION_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_MCCLURE_POWER_STATION_2";
     generator "CT";
     fuel "OIL";
     county "Stanislaus";
@@ -754,10 +1004,15 @@ object powerplant
     operating_capacity "71.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NEVADA_SOLAR_ONE_POWER_STATION_ONE";
+    parent "wecc240_psse_N_2901";
+}
 object powerplant
 {
     name "NEVADA_SOLAR_ONE_POWER_STATION_ONE";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NEVADA_SOLAR_ONE_POWER_STATION_ONE";
     generator "ST";
     fuel "OIL";
     county "Clark";
@@ -769,10 +1024,15 @@ object powerplant
     operating_capacity "76.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_RICHMOND_COGENERATION_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3101";
+}
 object powerplant
 {
     name "RICHMOND_COGENERATION_POWER_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_RICHMOND_COGENERATION_POWER_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Contra Costa";
@@ -784,10 +1044,15 @@ object powerplant
     operating_capacity "156.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_RIO_BRAVO_(NM)_POWER_STATION_GT1";
+    parent "wecc240_psse_N_1004";
+}
 object powerplant
 {
     name "RIO_BRAVO_(NM)_POWER_STATION_GT1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_RIO_BRAVO_(NM)_POWER_STATION_GT1";
     generator "CT";
     fuel "OIL";
     county "Bernalillo";
@@ -799,10 +1064,15 @@ object powerplant
     operating_capacity "150.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SAGUARO_POWER_(NV)_STATION_CC1";
+    parent "wecc240_psse_N_1301";
+}
 object powerplant
 {
     name "SAGUARO_POWER_(NV)_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SAGUARO_POWER_(NV)_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Clark";
@@ -814,10 +1084,15 @@ object powerplant
     operating_capacity "127.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SEGS_IX_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_2603";
+}
 object powerplant
 {
     name "SEGS_IX_POWER_STATION_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SEGS_IX_POWER_STATION_GEN1";
     generator "ST";
     fuel "OIL";
     county "San Bernardino";
@@ -829,10 +1104,15 @@ object powerplant
     operating_capacity "92.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SEGS_VIII_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_2603";
+}
 object powerplant
 {
     name "SEGS_VIII_POWER_STATION_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SEGS_VIII_POWER_STATION_GEN1";
     generator "ST";
     fuel "OIL";
     county "San Bernardino";
@@ -844,10 +1124,15 @@ object powerplant
     operating_capacity "92.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPINDLE_HILL_ENERGY_CENTER_GEN1";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "SPINDLE_HILL_ENERGY_CENTER_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPINDLE_HILL_ENERGY_CENTER_GEN1";
     generator "CT";
     fuel "OIL";
     county "Weld";
@@ -859,10 +1144,15 @@ object powerplant
     operating_capacity "210.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPINDLE_HILL_ENERGY_CENTER_GEN2";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "SPINDLE_HILL_ENERGY_CENTER_GEN2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPINDLE_HILL_ENERGY_CENTER_GEN2";
     generator "CT";
     fuel "OIL";
     county "Weld";
@@ -874,10 +1164,15 @@ object powerplant
     operating_capacity "210.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_TRACY_POWER_STATION_GT3";
+    parent "wecc240_psse_N_3701";
+}
 object powerplant
 {
     name "TRACY_POWER_STATION_GT3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_TRACY_POWER_STATION_GT3";
     generator "CT";
     fuel "OIL";
     county "Storey";
@@ -889,10 +1184,15 @@ object powerplant
     operating_capacity "85.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_TRACY_POWER_STATION_GT4";
+    parent "wecc240_psse_N_3701";
+}
 object powerplant
 {
     name "TRACY_POWER_STATION_GT4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_TRACY_POWER_STATION_GT4";
     generator "CT";
     fuel "OIL";
     county "Storey";
@@ -904,10 +1204,15 @@ object powerplant
     operating_capacity "85.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_VALENCIA_POWER_STATION_GT4";
+    parent "wecc240_psse_N_1402";
+}
 object powerplant
 {
     name "VALENCIA_POWER_STATION_GT4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_VALENCIA_POWER_STATION_GT4";
     generator "CT";
     fuel "OIL";
     county "Santa Cruz";
@@ -919,10 +1224,15 @@ object powerplant
     operating_capacity "54.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_VALERO_REFINERY_COGENERATION_UNIT_1_POWER_STATION_GT_1";
+    parent "wecc240_psse_N_3201";
+}
 object powerplant
 {
     name "VALERO_REFINERY_COGENERATION_UNIT_1_POWER_STATION_GT_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_VALERO_REFINERY_COGENERATION_UNIT_1_POWER_STATION_GT_1";
     generator "CT";
     fuel "OIL";
     county "Solano";
@@ -934,10 +1244,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_VALLEY_(CA)_POWER_STATION_5";
+    parent "wecc240_psse_N_2602";
+}
 object powerplant
 {
     name "VALLEY_(CA)_POWER_STATION_5";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_VALLEY_(CA)_POWER_STATION_5";
     generator "CT";
     fuel "OIL";
     county "Los Angeles";
@@ -949,10 +1264,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_VALLEY_(CA)_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2602";
+}
 object powerplant
 {
     name "VALLEY_(CA)_POWER_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_VALLEY_(CA)_POWER_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Los Angeles";
@@ -964,10 +1284,15 @@ object powerplant
     operating_capacity "630.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WATSON_COGENERATION_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "WATSON_COGENERATION_POWER_STATION_CC1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WATSON_COGENERATION_POWER_STATION_CC1";
     generator "CC";
     fuel "OIL";
     county "Los Angeles";
@@ -979,10 +1304,15 @@ object powerplant
     operating_capacity "405.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WHITEHORN_POWER_STATION_2";
+    parent "wecc240_psse_N_5001";
+}
 object powerplant
 {
     name "WHITEHORN_POWER_STATION_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WHITEHORN_POWER_STATION_2";
     generator "CT";
     fuel "OIL";
     county "Whatcom";
@@ -994,10 +1324,15 @@ object powerplant
     operating_capacity "85.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WHITEHORN_POWER_STATION_3";
+    parent "wecc240_psse_N_5001";
+}
 object powerplant
 {
     name "WHITEHORN_POWER_STATION_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WHITEHORN_POWER_STATION_3";
     generator "CT";
     fuel "OIL";
     county "Whatcom";
@@ -1009,10 +1344,15 @@ object powerplant
     operating_capacity "85.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WOODLAND_POWER_STATION_NA1";
+    parent "wecc240_psse_N_3907";
+}
 object powerplant
 {
     name "WOODLAND_POWER_STATION_NA1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WOODLAND_POWER_STATION_NA1";
     generator "CT";
     fuel "OIL";
     county "Stanislaus";
@@ -1024,10 +1364,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_YELLOWSTONE_ENERGY_LP_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "YELLOWSTONE_ENERGY_LP_POWER_STATION_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_YELLOWSTONE_ENERGY_LP_POWER_STATION_GEN1";
     generator "ST";
     fuel "OIL";
     county "Yellowstone";
@@ -1039,10 +1384,15 @@ object powerplant
     operating_capacity "68.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_YUCCA_POWER_STATION_GT3";
+    parent "wecc240_psse_N_2100";
+}
 object powerplant
 {
     name "YUCCA_POWER_STATION_GT3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_YUCCA_POWER_STATION_GT3";
     generator "CT";
     fuel "OIL";
     county "Yuma";
@@ -1054,10 +1404,15 @@ object powerplant
     operating_capacity "72.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_YUCCA_POWER_STATION_GT4";
+    parent "wecc240_psse_N_2100";
+}
 object powerplant
 {
     name "YUCCA_POWER_STATION_GT4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_YUCCA_POWER_STATION_GT4";
     generator "CT";
     fuel "OIL";
     county "Yuma";
@@ -1069,10 +1424,15 @@ object powerplant
     operating_capacity "72.4 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_YUCCA_POWER_STATION_GT5";
+    parent "wecc240_psse_N_2100";
+}
 object powerplant
 {
     name "YUCCA_POWER_STATION_GT5";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_YUCCA_POWER_STATION_GT5";
     generator "CT";
     fuel "OIL";
     county "Yuma";
@@ -1084,10 +1444,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_YUCCA_POWER_STATION_GT6";
+    parent "wecc240_psse_N_2100";
+}
 object powerplant
 {
     name "YUCCA_POWER_STATION_GT6";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_YUCCA_POWER_STATION_GT6";
     generator "CT";
     fuel "OIL";
     county "Yuma";
@@ -1099,10 +1464,15 @@ object powerplant
     operating_capacity "61.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_YUCCA_POWER_STATION_ST1";
+    parent "wecc240_psse_N_2100";
+}
 object powerplant
 {
     name "YUCCA_POWER_STATION_ST1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_YUCCA_POWER_STATION_ST1";
     generator "ST";
     fuel "OIL";
     county "Yuma";

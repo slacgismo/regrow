@@ -4,10 +4,15 @@ class powerplant
     char32 county;
 }
 
+object gen
+{
+    name "wecc240_psse_G_APACHE_GENERATING_STATION_Unit_2";
+    parent "wecc240_psse_N_1102";
+}
 object powerplant
 {
     name "APACHE_GENERATING_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_APACHE_GENERATING_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Cochise";
@@ -19,10 +24,15 @@ object powerplant
     operating_capacity "204.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_APACHE_GENERATING_STATION_Unit_3";
+    parent "wecc240_psse_N_1102";
+}
 object powerplant
 {
     name "APACHE_GENERATING_STATION_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_APACHE_GENERATING_STATION_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Cochise";
@@ -34,10 +44,15 @@ object powerplant
     operating_capacity "204.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_BOARDMAN_PLANT_Unit_1";
+    parent "wecc240_psse_N_4005";
+}
 object powerplant
 {
     name "BOARDMAN_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_BOARDMAN_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Morrow";
@@ -49,10 +64,15 @@ object powerplant
     operating_capacity "642.2 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_BONANZA_POWER_STATION_Unit_1";
+    parent "wecc240_psse_N_6503";
+}
 object powerplant
 {
     name "BONANZA_POWER_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_BONANZA_POWER_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Uintah";
@@ -64,10 +84,15 @@ object powerplant
     operating_capacity "499.5 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CENTRALIA_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_4202";
+}
 object powerplant
 {
     name "CENTRALIA_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CENTRALIA_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Lewis";
@@ -79,10 +104,15 @@ object powerplant
     operating_capacity "730.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CENTRALIA_POWER_PLANT_Unit_2";
+    parent "wecc240_psse_N_4202";
+}
 object powerplant
 {
     name "CENTRALIA_POWER_PLANT_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CENTRALIA_POWER_PLANT_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Lewis";
@@ -94,10 +124,15 @@ object powerplant
     operating_capacity "730.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CHOLLA_GENERATING_STATION_Unit_1";
+    parent "wecc240_psse_N_1102";
+}
 object powerplant
 {
     name "CHOLLA_GENERATING_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CHOLLA_GENERATING_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Navajo";
@@ -109,10 +144,15 @@ object powerplant
     operating_capacity "113.6 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CHOLLA_GENERATING_STATION_Unit_3";
+    parent "wecc240_psse_N_1102";
+}
 object powerplant
 {
     name "CHOLLA_GENERATING_STATION_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CHOLLA_GENERATING_STATION_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Navajo";
@@ -124,10 +164,15 @@ object powerplant
     operating_capacity "312.3 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CHOLLA_GENERATING_STATION_Unit_4";
+    parent "wecc240_psse_N_1102";
+}
 object powerplant
 {
     name "CHOLLA_GENERATING_STATION_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CHOLLA_GENERATING_STATION_Unit_4";
     generator "ST";
     fuel "COAL";
     county "Navajo";
@@ -139,10 +184,15 @@ object powerplant
     operating_capacity "414.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_1";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -154,10 +204,15 @@ object powerplant
     operating_capacity "358.4 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_2";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -169,10 +224,15 @@ object powerplant
     operating_capacity "358.4 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_3";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -184,10 +244,15 @@ object powerplant
     operating_capacity "778.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_4";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "COLSTRIP_STEAM_PLANT_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COLSTRIP_STEAM_PLANT_Unit_4";
     generator "ST";
     fuel "COAL";
     county "Rosebud";
@@ -199,10 +264,15 @@ object powerplant
     operating_capacity "778.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COMANCHE_POWER_STATION_Unit_1";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "COMANCHE_POWER_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COMANCHE_POWER_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Pueblo";
@@ -214,10 +284,15 @@ object powerplant
     operating_capacity "382.5 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COMANCHE_POWER_STATION_Unit_2";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "COMANCHE_POWER_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COMANCHE_POWER_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Pueblo";
@@ -229,10 +304,15 @@ object powerplant
     operating_capacity "396.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COMANCHE_POWER_STATION_Unit_3";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "COMANCHE_POWER_STATION_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COMANCHE_POWER_STATION_Unit_3";
     generator "ST";
     fuel "COAL";
     county "";
@@ -244,10 +324,15 @@ object powerplant
     operating_capacity "856.8 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CORONADO_GENERATING_STATION_Unit_1";
+    parent "wecc240_psse_N_1101";
+}
 object powerplant
 {
     name "CORONADO_GENERATING_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CORONADO_GENERATING_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -259,10 +344,15 @@ object powerplant
     operating_capacity "410.9 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CORONADO_GENERATING_STATION_Unit_2";
+    parent "wecc240_psse_N_1101";
+}
 object powerplant
 {
     name "CORONADO_GENERATING_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CORONADO_GENERATING_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -274,10 +364,15 @@ object powerplant
     operating_capacity "410.9 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CRAIG_STATION_Unit_1";
+    parent "wecc240_psse_N_7002";
+}
 object powerplant
 {
     name "CRAIG_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CRAIG_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Moffat";
@@ -289,10 +384,15 @@ object powerplant
     operating_capacity "446.4 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CRAIG_STATION_Unit_2";
+    parent "wecc240_psse_N_7002";
+}
 object powerplant
 {
     name "CRAIG_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CRAIG_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Moffat";
@@ -304,10 +404,15 @@ object powerplant
     operating_capacity "446.4 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_CRAIG_STATION_Unit_3";
+    parent "wecc240_psse_N_7002";
+}
 object powerplant
 {
     name "CRAIG_STATION_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_CRAIG_STATION_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Moffat";
@@ -319,10 +424,15 @@ object powerplant
     operating_capacity "534.8 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -334,10 +444,15 @@ object powerplant
     operating_capacity "113.6 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_2";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -349,10 +464,15 @@ object powerplant
     operating_capacity "113.6 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_3";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -364,10 +484,15 @@ object powerplant
     operating_capacity "229.5 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_4";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "DAVE_JOHNSTON_POWER_PLANT_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DAVE_JOHNSTON_POWER_PLANT_Unit_4";
     generator "ST";
     fuel "COAL";
     county "Converse";
@@ -379,10 +504,15 @@ object powerplant
     operating_capacity "360.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_DRY_FORK_STATION_Unit_1";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "DRY_FORK_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_DRY_FORK_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -394,10 +524,15 @@ object powerplant
     operating_capacity "484.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_ESCALANTE_GENERATING_STATION_Unit_1";
+    parent "wecc240_psse_N_1001";
+}
 object powerplant
 {
     name "ESCALANTE_GENERATING_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_ESCALANTE_GENERATING_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "McKinley";
@@ -409,10 +544,15 @@ object powerplant
     operating_capacity "257.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FOUR_CORNERS_STEAM_PLANT_Unit_4";
+    parent "wecc240_psse_N_1001";
+}
 object powerplant
 {
     name "FOUR_CORNERS_STEAM_PLANT_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FOUR_CORNERS_STEAM_PLANT_Unit_4";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -424,10 +564,15 @@ object powerplant
     operating_capacity "818.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_FOUR_CORNERS_STEAM_PLANT_Unit_5";
+    parent "wecc240_psse_N_1001";
+}
 object powerplant
 {
     name "FOUR_CORNERS_STEAM_PLANT_Unit_5";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_FOUR_CORNERS_STEAM_PLANT_Unit_5";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -439,10 +584,15 @@ object powerplant
     operating_capacity "818.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HARDIN_GENERATING_STATION_Unit_1";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "HARDIN_GENERATING_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HARDIN_GENERATING_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Big Horn";
@@ -454,10 +604,15 @@ object powerplant
     operating_capacity "115.7 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HAYDEN_STATION_Unit_1";
+    parent "wecc240_psse_N_7002";
+}
 object powerplant
 {
     name "HAYDEN_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HAYDEN_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Routt";
@@ -469,10 +624,15 @@ object powerplant
     operating_capacity "190.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HAYDEN_STATION_Unit_2";
+    parent "wecc240_psse_N_7002";
+}
 object powerplant
 {
     name "HAYDEN_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HAYDEN_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Routt";
@@ -484,10 +644,15 @@ object powerplant
     operating_capacity "257.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HUNTER_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_6507";
+}
 object powerplant
 {
     name "HUNTER_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HUNTER_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -499,10 +664,15 @@ object powerplant
     operating_capacity "525.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HUNTER_POWER_PLANT_Unit_2";
+    parent "wecc240_psse_N_6507";
+}
 object powerplant
 {
     name "HUNTER_POWER_PLANT_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HUNTER_POWER_PLANT_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -514,10 +684,15 @@ object powerplant
     operating_capacity "525.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HUNTER_POWER_PLANT_Unit_3";
+    parent "wecc240_psse_N_6507";
+}
 object powerplant
 {
     name "HUNTER_POWER_PLANT_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HUNTER_POWER_PLANT_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -529,10 +704,15 @@ object powerplant
     operating_capacity "527.2 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HUNTINGTON_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_6508";
+}
 object powerplant
 {
     name "HUNTINGTON_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HUNTINGTON_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -544,10 +724,15 @@ object powerplant
     operating_capacity "496.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HUNTINGTON_POWER_PLANT_Unit_2";
+    parent "wecc240_psse_N_6508";
+}
 object powerplant
 {
     name "HUNTINGTON_POWER_PLANT_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HUNTINGTON_POWER_PLANT_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Emery";
@@ -559,10 +744,15 @@ object powerplant
     operating_capacity "541.3 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_INTERMOUNTAIN_POWER_STATION_Unit_1";
+    parent "wecc240_psse_N_2604";
+}
 object powerplant
 {
     name "INTERMOUNTAIN_POWER_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_INTERMOUNTAIN_POWER_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Millard";
@@ -574,10 +764,15 @@ object powerplant
     operating_capacity "820.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_INTERMOUNTAIN_POWER_STATION_Unit_2";
+    parent "wecc240_psse_N_2604";
+}
 object powerplant
 {
     name "INTERMOUNTAIN_POWER_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_INTERMOUNTAIN_POWER_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Millard";
@@ -589,10 +784,15 @@ object powerplant
     operating_capacity "820.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_1";
+    parent "wecc240_psse_N_6301";
+}
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -604,10 +804,15 @@ object powerplant
     operating_capacity "608.3 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_2";
+    parent "wecc240_psse_N_6301";
+}
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -619,10 +824,15 @@ object powerplant
     operating_capacity "617.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_3";
+    parent "wecc240_psse_N_6301";
+}
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -634,10 +844,15 @@ object powerplant
     operating_capacity "608.3 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_4";
+    parent "wecc240_psse_N_6301";
+}
 object powerplant
 {
     name "JIM_BRIDGER_STEAM_PLANT_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_JIM_BRIDGER_STEAM_PLANT_Unit_4";
     generator "ST";
     fuel "COAL";
     county "Sweetwater";
@@ -649,10 +864,15 @@ object powerplant
     operating_capacity "608.3 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LARAMIE_RIVER_STATION_Unit_1";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "LARAMIE_RIVER_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LARAMIE_RIVER_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Platte";
@@ -664,10 +884,15 @@ object powerplant
     operating_capacity "570.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LARAMIE_RIVER_STATION_Unit_2";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "LARAMIE_RIVER_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LARAMIE_RIVER_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Platte";
@@ -679,10 +904,15 @@ object powerplant
     operating_capacity "570.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LARAMIE_RIVER_STATION_Unit_3";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "LARAMIE_RIVER_STATION_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LARAMIE_RIVER_STATION_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Platte";
@@ -694,10 +924,15 @@ object powerplant
     operating_capacity "570.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LEWIS_&_CLARK_STATION_Unit_1";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "LEWIS_&_CLARK_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LEWIS_&_CLARK_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "";
@@ -709,10 +944,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_MARTIN_DRAKE_POWER_PLANT_Unit_6";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "MARTIN_DRAKE_POWER_PLANT_Unit_6";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_MARTIN_DRAKE_POWER_PLANT_Unit_6";
     generator "ST";
     fuel "COAL";
     county "El Paso";
@@ -724,10 +964,15 @@ object powerplant
     operating_capacity "75.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_MARTIN_DRAKE_POWER_PLANT_Unit_7";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "MARTIN_DRAKE_POWER_PLANT_Unit_7";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_MARTIN_DRAKE_POWER_PLANT_Unit_7";
     generator "ST";
     fuel "COAL";
     county "El Paso";
@@ -739,10 +984,15 @@ object powerplant
     operating_capacity "132.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NAUGHTON_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_6305";
+}
 object powerplant
 {
     name "NAUGHTON_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NAUGHTON_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Lincoln";
@@ -754,10 +1004,15 @@ object powerplant
     operating_capacity "192.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NAUGHTON_POWER_PLANT_Unit_2";
+    parent "wecc240_psse_N_6305";
+}
 object powerplant
 {
     name "NAUGHTON_POWER_PLANT_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NAUGHTON_POWER_PLANT_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Lincoln";
@@ -769,10 +1024,15 @@ object powerplant
     operating_capacity "256.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NAUGHTON_POWER_PLANT_Unit_3";
+    parent "wecc240_psse_N_6305";
+}
 object powerplant
 {
     name "NAUGHTON_POWER_PLANT_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NAUGHTON_POWER_PLANT_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Lincoln";
@@ -784,10 +1044,15 @@ object powerplant
     operating_capacity "384.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NAVAJO_GENERATING_STATION_Unit_1";
+    parent "wecc240_psse_N_1202";
+}
 object powerplant
 {
     name "NAVAJO_GENERATING_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NAVAJO_GENERATING_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Coconino";
@@ -799,10 +1064,15 @@ object powerplant
     operating_capacity "803.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NAVAJO_GENERATING_STATION_Unit_2";
+    parent "wecc240_psse_N_1202";
+}
 object powerplant
 {
     name "NAVAJO_GENERATING_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NAVAJO_GENERATING_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Coconino";
@@ -814,10 +1084,15 @@ object powerplant
     operating_capacity "803.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NAVAJO_GENERATING_STATION_Unit_3";
+    parent "wecc240_psse_N_1202";
+}
 object powerplant
 {
     name "NAVAJO_GENERATING_STATION_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NAVAJO_GENERATING_STATION_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Coconino";
@@ -829,10 +1104,15 @@ object powerplant
     operating_capacity "803.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NEIL_SIMPSON_POWER_PLANTS_Plant_II";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "NEIL_SIMPSON_POWER_PLANTS_Plant_II";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NEIL_SIMPSON_POWER_PLANTS_Plant_II";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -844,10 +1124,15 @@ object powerplant
     operating_capacity "90.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NORTH_VALMY_STATION_Unit_1";
+    parent "wecc240_psse_N_6403";
+}
 object powerplant
 {
     name "NORTH_VALMY_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NORTH_VALMY_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Humboldt";
@@ -859,10 +1144,15 @@ object powerplant
     operating_capacity "277.2 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NORTH_VALMY_STATION_Unit_2";
+    parent "wecc240_psse_N_6403";
+}
 object powerplant
 {
     name "NORTH_VALMY_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NORTH_VALMY_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Humboldt";
@@ -874,10 +1164,15 @@ object powerplant
     operating_capacity "289.8 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_NUCLA_STATION_Unit_4";
+    parent "wecc240_psse_N_6505";
+}
 object powerplant
 {
     name "NUCLA_STATION_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_NUCLA_STATION_Unit_4";
     generator "ST";
     fuel "COAL";
     county "Montrose";
@@ -889,10 +1184,15 @@ object powerplant
     operating_capacity "79.3 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_PAWNEE_STATION_Unit_1";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "PAWNEE_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_PAWNEE_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Morgan";
@@ -904,10 +1204,15 @@ object powerplant
     operating_capacity "552.3 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_RAWHIDE_ENERGY_STATION_Unit_1";
+    parent "wecc240_psse_N_6302";
+}
 object powerplant
 {
     name "RAWHIDE_ENERGY_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_RAWHIDE_ENERGY_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Larimer";
@@ -919,10 +1224,15 @@ object powerplant
     operating_capacity "293.6 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_RAY_NIXON_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_7001";
+}
 object powerplant
 {
     name "RAY_NIXON_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_RAY_NIXON_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "El Paso";
@@ -934,10 +1244,15 @@ object powerplant
     operating_capacity "207.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_ROSEBUD_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "ROSEBUD_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_ROSEBUD_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "";
@@ -949,10 +1264,15 @@ object powerplant
     operating_capacity "41.5 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SAN_JUAN_GENERATING_STATION_Unit_1";
+    parent "wecc240_psse_N_1004";
+}
 object powerplant
 {
     name "SAN_JUAN_GENERATING_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SAN_JUAN_GENERATING_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -964,10 +1284,15 @@ object powerplant
     operating_capacity "369.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SAN_JUAN_GENERATING_STATION_Unit_4";
+    parent "wecc240_psse_N_1004";
+}
 object powerplant
 {
     name "SAN_JUAN_GENERATING_STATION_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SAN_JUAN_GENERATING_STATION_Unit_4";
     generator "ST";
     fuel "COAL";
     county "San Juan";
@@ -979,10 +1304,15 @@ object powerplant
     operating_capacity "555.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_1";
+    parent "wecc240_psse_N_1101";
+}
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -994,10 +1324,15 @@ object powerplant
     operating_capacity "424.8 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_2";
+    parent "wecc240_psse_N_1101";
+}
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_2";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_2";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -1009,10 +1344,15 @@ object powerplant
     operating_capacity "424.8 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_3";
+    parent "wecc240_psse_N_1101";
+}
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_3";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -1024,10 +1364,15 @@ object powerplant
     operating_capacity "458.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_4";
+    parent "wecc240_psse_N_1101";
+}
 object powerplant
 {
     name "SPRINGERVILLE_POWER_STATION_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPRINGERVILLE_POWER_STATION_Unit_4";
     generator "ST";
     fuel "COAL";
     county "Apache";
@@ -1039,10 +1384,15 @@ object powerplant
     operating_capacity "458.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SUNNYSIDE_COGENERATION_FACILITY_Unit_1";
+    parent "wecc240_psse_N_6508";
+}
 object powerplant
 {
     name "SUNNYSIDE_COGENERATION_FACILITY_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SUNNYSIDE_COGENERATION_FACILITY_Unit_1";
     generator "ST";
     fuel "COAL";
     county "";
@@ -1054,10 +1404,15 @@ object powerplant
     operating_capacity "58.1 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_TS_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_6403";
+}
 object powerplant
 {
     name "TS_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_TS_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Eureka";
@@ -1069,10 +1424,15 @@ object powerplant
     operating_capacity "242.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_UTAH_SMELTER_POWER_PLANT_Unit_4";
+    parent "wecc240_psse_N_6502";
+}
 object powerplant
 {
     name "UTAH_SMELTER_POWER_PLANT_Unit_4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_UTAH_SMELTER_POWER_PLANT_Unit_4";
     generator "ST";
     fuel "COAL";
     county "Salt Lake";
@@ -1084,10 +1444,15 @@ object powerplant
     operating_capacity "82.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WYGEN_I_POWER_STATION_--";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "WYGEN_I_POWER_STATION_--";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WYGEN_I_POWER_STATION_--";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -1099,10 +1464,15 @@ object powerplant
     operating_capacity "88.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WYGEN_II_POWER_STATION_--";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "WYGEN_II_POWER_STATION_--";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WYGEN_II_POWER_STATION_--";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -1114,10 +1484,15 @@ object powerplant
     operating_capacity "95.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WYGEN_III_POWER_STATION_--";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "WYGEN_III_POWER_STATION_--";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WYGEN_III_POWER_STATION_--";
     generator "ST";
     fuel "COAL";
     county "Campbell";
@@ -1129,10 +1504,15 @@ object powerplant
     operating_capacity "116.2 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_WYODAK_POWER_PLANT_Unit_1";
+    parent "wecc240_psse_N_6201";
+}
 object powerplant
 {
     name "WYODAK_POWER_PLANT_Unit_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_WYODAK_POWER_PLANT_Unit_1";
     generator "ST";
     fuel "COAL";
     county "Campbell";

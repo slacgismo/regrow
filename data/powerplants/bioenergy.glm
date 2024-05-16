@@ -4,10 +4,15 @@ class powerplant
     char32 county;
 }
 
+object gen
+{
+    name "wecc240_psse_G_COLMAC_ENERGY_POWER_STATION_1";
+    parent "wecc240_psse_N_2400";
+}
 object powerplant
 {
     name "COLMAC_ENERGY_POWER_STATION_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COLMAC_ENERGY_POWER_STATION_1";
     generator "ST";
     fuel "BIO";
     county "Riverside County";
@@ -19,10 +24,15 @@ object powerplant
     operating_capacity "47.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_COVANTA_LONG_BEACH_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_2407";
+}
 object powerplant
 {
     name "COVANTA_LONG_BEACH_POWER_STATION_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_COVANTA_LONG_BEACH_POWER_STATION_GEN1";
     generator "ST";
     fuel "BIO";
     county "Los Angeles County";
@@ -34,10 +44,15 @@ object powerplant
     operating_capacity "36.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_HONEY_LAKE_POWER_STATION_1";
+    parent "wecc240_psse_N_3701";
+}
 object powerplant
 {
     name "HONEY_LAKE_POWER_STATION_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_HONEY_LAKE_POWER_STATION_1";
     generator "ST";
     fuel "BIO";
     county "Lassen County";
@@ -49,10 +64,15 @@ object powerplant
     operating_capacity "30.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_KETTLE_FALLS_POWER_STATION_1";
+    parent "wecc240_psse_N_4101";
+}
 object powerplant
 {
     name "KETTLE_FALLS_POWER_STATION_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_KETTLE_FALLS_POWER_STATION_1";
     generator "ST";
     fuel "BIO";
     county "Stevens County";
@@ -64,10 +84,15 @@ object powerplant
     operating_capacity "51.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_LEWISTON_PULP_MILL_POWER_STATION_GEN4";
+    parent "wecc240_psse_N_4103";
+}
 object powerplant
 {
     name "LEWISTON_PULP_MILL_POWER_STATION_GEN4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_LEWISTON_PULP_MILL_POWER_STATION_GEN4";
     generator "ST";
     fuel "BIO";
     county "Nez Perce County";
@@ -79,10 +104,15 @@ object powerplant
     operating_capacity "65.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_MT_POSO_COGENERATION_PLANT_TG01";
+    parent "wecc240_psse_N_3803";
+}
 object powerplant
 {
-    name "MT._POSO_COGENERATION_PLANT_TG01";
-    parent "pp_gen_TODO";
+    name "MT_POSO_COGENERATION_PLANT_TG01";
+    parent "wecc240_psse_G_MT_POSO_COGENERATION_PLANT_TG01";
     generator "ST";
     fuel "BIO";
     county "Kern County";
@@ -94,10 +124,15 @@ object powerplant
     operating_capacity "62.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_PUENTE_HILLS_ENERGY_RECOVERY_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_2408";
+}
 object powerplant
 {
     name "PUENTE_HILLS_ENERGY_RECOVERY_POWER_STATION_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_PUENTE_HILLS_ENERGY_RECOVERY_POWER_STATION_GEN1";
     generator "ST";
     fuel "BIO";
     county "Los Angeles County";
@@ -109,10 +144,15 @@ object powerplant
     operating_capacity "50.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SIERRA_PACIFIC_QUINCY_POWER_STATION_GEN3";
+    parent "wecc240_psse_N_3919";
+}
 object powerplant
 {
     name "SIERRA_PACIFIC_QUINCY_POWER_STATION_GEN3";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SIERRA_PACIFIC_QUINCY_POWER_STATION_GEN3";
     generator "ST";
     fuel "BIO";
     county "Plumas County";
@@ -124,10 +164,15 @@ object powerplant
     operating_capacity "35.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SIMPSON_TACOMA_POWER_STATION_STG1";
+    parent "wecc240_psse_N_4202";
+}
 object powerplant
 {
     name "SIMPSON_TACOMA_POWER_STATION_STG1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SIMPSON_TACOMA_POWER_STATION_STG1";
     generator "ST";
     fuel "BIO";
     county "Pierce County";
@@ -139,10 +184,15 @@ object powerplant
     operating_capacity "64.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPI_ANDERSON_2_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_3911";
+}
 object powerplant
 {
     name "SPI_ANDERSON_2_POWER_STATION_GEN1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPI_ANDERSON_2_POWER_STATION_GEN1";
     generator "ST";
     fuel "BIO";
     county "Shasta County";
@@ -154,10 +204,15 @@ object powerplant
     operating_capacity "30.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_SPRINGFIELD_MILL_POWER_STATION_TG4";
+    parent "wecc240_psse_N_4203";
+}
 object powerplant
 {
     name "SPRINGFIELD_MILL_POWER_STATION_TG4";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_SPRINGFIELD_MILL_POWER_STATION_TG4";
     generator "ST";
     fuel "BIO";
     county "Lane County";
@@ -169,10 +224,15 @@ object powerplant
     operating_capacity "40.0 MW";
 }
 
+object gen
+{
+    name "wecc240_psse_G_STOCKTON_COGENERATION_FACILITY_1";
+    parent "wecc240_psse_N_8002";
+}
 object powerplant
 {
     name "STOCKTON_COGENERATION_FACILITY_1";
-    parent "pp_gen_TODO";
+    parent "wecc240_psse_G_STOCKTON_COGENERATION_FACILITY_1";
     generator "ST";
     fuel "BIO";
     county "San Joaquin County";

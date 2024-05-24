@@ -21,7 +21,6 @@ module pypower
     stop_on_failure ${STOP_ON_FAILURE};
     controllers ${CONTROLLERS_FILE};
     save_case TRUE;
-    enable_opf TRUE;
 }
 
 //
@@ -54,4 +53,4 @@ module pypower
 //
 // Save the final result to JSON
 //
-#set savefile="${SAVEFILE}"
+#set savefile="${SAVEFILE:-wecc240.json}"

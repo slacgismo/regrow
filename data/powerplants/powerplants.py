@@ -8,15 +8,18 @@ pd.options.display.max_columns = None
 pd.options.display.width = None
 
 fuels = {
-    "nuclear.csv" : "NUC",
-    "hydro.csv" : "WATER",
+    # dispatchable
     "oil.csv" : "OIL",
     "gas.csv" : "NG",
-    "wind.csv" : "WIND",
-    "solar.csv" : "SUN",
     "geothermal.csv" : "GEO",
     "bioenergy.csv" : "BIO",
     "coal.csv" : "COAL",
+    # non-dispatchable (flat or played)
+    "nuclear.csv" : "NUC",
+    "hydro.csv" : "WATER",
+    # intermittent
+    "wind.csv" : "WIND",
+    "solar.csv" : "SUN",
 }
 
 dispatchable = ["OIL","NG","GEO","BIO","COAL"]

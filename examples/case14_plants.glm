@@ -1,0 +1,32 @@
+#for ID in ${RANGE 1,14}
+object pypower.powerplant
+{
+    name "solar_${ID}";
+    parent pp_bus_${ID};
+    status ONLINE;
+    generator PV;
+    fuel SUN; 
+    controller "powerplant_control";  // defined in controllers.py, override player
+}
+object pypower.powerplant
+{
+    name "battery_${ID}";
+    parent pp_bus_${ID};
+    status ONLINE;
+    generator ES;
+    fuel ELEC; 
+    controller "powerplant_control";  // defined in controllers.py, override player
+}
+#done
+
+#for ID in ${RANGE 1,5}
+object pypower.powerplant
+{
+    name "plant_${ID}";
+    parent pp_gen_${ID};
+    status ONLINE;
+    generator CT;
+    fuel NG; 
+    controller "powerplant_control";  // defined in controllers.py, override player
+}
+#done

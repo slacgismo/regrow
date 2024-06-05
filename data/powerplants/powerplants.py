@@ -62,6 +62,7 @@ for file in os.listdir("."):
         plants = pd.read_csv(file)
         if os.path.exists(file.replace(".csv","_cost.csv")):
             costdata = pd.read_csv(file.replace(".csv","_cost.csv"))
+            costdata.index.name = file
             print(costdata)
         else:
             costdata = None

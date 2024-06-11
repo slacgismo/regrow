@@ -3,12 +3,14 @@
 import sys
 import numpy as np
 import scipy as sp
+import cvxpy as cp
 
-A = None
+A = None # unweighted Laplacian matrix
 Pd = None
 Pg = None
 SOC = None
 Pmax = None
+gendict = {}
 
 def on_init():
     """on_init() is called when the simulation first starts up
@@ -41,6 +43,11 @@ def on_init():
     pp_gen_1_Pmax.set_value(340.0)
     # print("pp_gen_1_Pmax:",pp_gen_1_Pmax.get_value(),file=sys.stderr)
 
+    for obj in objects:
+        data = gridlabd.get_object(obj)
+        if data["class"] == "gen":
+            gendict[int(data["bus"])] = dict(real=gridlabd.property(obj,"Pg"),reactive=gridlabd.property(obj,"Qg"))
+
     return True
 
 def on_precommit(data):
@@ -49,20 +56,35 @@ def on_precommit(data):
     # print(data,file=sys.stderr)
 
     bus = np.array(data['bus'])
+    N = len(bus)
     # print("bus:",bus,file=sys.stderr)
 
     branch = np.array(data['branch'])
+    M = len(branch)
     # print("branch:",branch,file=sys.stderr)
+
+    # impedance values
+    Z = np.array([complex(*x) for x in zip(branch.T[2],branch.T[3])])
+    # print(Z,file=sys.stderr)
 
     gen = np.array(data['gen'])
     # print("gen:",gen,file=sys.stderr)
 
     # get A - Laplacian matrix
-    global A
     row = [int(x)-1 for x in branch[:,0]]
     col = [int(x)-1 for x in branch[:,1]]
+    # print(row,col,file=sys.stderr)
+    global A
     A = sp.sparse.coo_array(([1]*len(row) + [-1]*len(row),(row+col,col+row)),(len(bus),len(bus)))
     # print("A:",A.toarray(),file=sys.stderr)
+
+    # get I - weighted line-node incidence matrix
+    I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
+    # print("I:",I.toarray(),file=sys.stderr)
+
+    # get L - weighted Laplacian
+    L = I.T@I
+    # print("L:",L.toarray(),file=sys.stderr)
 
     # get Pd - demand
     Pd = np.array([bus[:,2]])[0]
@@ -70,14 +92,45 @@ def on_precommit(data):
 
     # get Pg - generation by gentype in columns
     # get constraints, e.g., Pmax, charger/discharge rate max/min, battery capacities (on_init?)
-    Pg = np.zeros((len(bus)))
-    Pmax = np.zeros((len(bus)))
+    Pg = np.zeros(N)
+    Pmax = np.zeros(N)
     for n,g,m in gen[:,[0,1,8]]:
         Pg[int(n)] = g
         Pmax[int(n)] = m
     # print("Pg:",Pg,file=sys.stderr)
     # print("Pmax:",Pmax,file=sys.stderr)
 
+    # reference nodes
+    ref = [int(x[0]) for x in bus if x[1] == 3]
+
+    # TODO: get energy prices (if any)
+    P = np.zeros(N)
+
+    # solve OPF for the upcoming time interval
+    x = cp.Variable(N)
+    g = cp.Variable(N)
+    objective = cp.Minimize(P@g)
+    constraints = [
+        L.real @ x - g + Pd == 0, # KVL/KCL laws
+        x[ref] == 0, # voltage angle of reference bus(es)
+        g >= 0, # minimum generation capability
+        g <= Pmax, # maximum generation capability
+        # TODO: add line flow limits (if any)
+    ]
+    problem = cp.Problem(objective,constraints)
+    problem.solve()
+    # print(gridlabd.get_global("clock"),"-- OPF is",problem.status,file=sys.stderr)
+    if x.value is None:
+        gridlabd.error(f"controllers.on_precommit(t='{gridlabd.get_block('clock')}'): OPF problem is {problem.status}")
+        return gridlabd.TS_INVALID
+
+    # post optimal generation dispatch to main solver
+    # print(data["bus"])
+    _g = g.value.round(3).tolist()
+    # print("g.value =",_g,file=sys.stderr)
+    for n,gen in gendict.items():
+        gen["real"].set_value(_g[n])
+        # gen["reactive"].set_value(h.value[n])
 
     # get SOC - battery state of charge
     

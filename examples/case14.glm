@@ -1,12 +1,12 @@
 // PyPower/GridLAB-D IEEE-14 bus example with controllers
 
-#version -ge 4.3.9
+#version -ge 4.3.10
 
 clock
 {
     timezone "PST+8PDT";
     starttime "2020-01-01 00:00:00 PST";
-    stoptime "2020-02-01 00:00:00 PST";
+    stoptime "2020-01-02 00:00:00 PST";
 }
 
 module pypower

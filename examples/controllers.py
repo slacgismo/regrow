@@ -117,9 +117,9 @@ def on_precommit(data):
     Pg = np.zeros(N)
     Pmax = np.zeros(N)
     Pmin = np.zeros(N)
-    for n,g,m0,m1 in gen[:,[0,1,8,9]]:
+    for n,g,m0,m1 in gen[:,[0,1,9,8]]:
         Pg[int(n)] = g
-        # Pmin[int(n)] = m0
+        Pmin[int(n)] = m0
         Pmax[int(n)] = m1
     # print("Pg:",Pg,file=sys.stderr)
     # print("Pmax:",Pmax,file=sys.stderr)

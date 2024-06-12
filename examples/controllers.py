@@ -66,7 +66,7 @@ def on_init():
             else:
                 gridlabd.warning(f"object {obj} does not have a parent")
 
-    print(Tgen,Tbus,file=sys.stderr)
+    # print(Tgen,Tbus,file=sys.stderr)
     return True
 
 def on_precommit(data):
@@ -145,16 +145,16 @@ def on_precommit(data):
     problem.solve()
     # print(gridlabd.get_global("clock"),"-- OPF is",problem.status,file=sys.stderr)
     if x.value is None:
-        gridlabd.error(f"controllers.on_precommit(t='{gridlabd.get_global('clock')}'): OPF problem is {problem.status}")
-        return gridlabd.INVALID
+        gridlabd.warning(f"controllers.on_precommit(t='{gridlabd.get_global('clock')}'): OPF problem is {problem.status}")
+    else:
 
-    # post optimal generation dispatch to main solver
-    # print(data["bus"])
-    _g = g.value.round(3).tolist()
-    # print("g.value =",_g,file=sys.stderr)
-    for n,gen in gendict.items():
-        gen["real"].set_value(_g[n])
-        # gen["reactive"].set_value(h.value[n])
+        # post optimal generation dispatch to main solver
+        # print(data["bus"])
+        _g = g.value.round(3).tolist()
+        # print("g.value =",_g,file=sys.stderr)
+        for n,gen in gendict.items():
+            gen["real"].set_value(_g[n])
+            # gen["reactive"].set_value(h.value[n])
 
     # get SOC - battery state of charge
     

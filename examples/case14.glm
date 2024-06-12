@@ -1,6 +1,7 @@
 // PyPower/GridLAB-D IEEE-14 bus example with controllers
 
 #version -ge 4.3.10
+#require cvxpy
 
 clock
 {

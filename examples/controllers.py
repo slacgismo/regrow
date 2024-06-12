@@ -10,7 +10,8 @@ Pd = None
 Pg = None
 SOC = None
 Pmax = None
-gendict = {}
+Tgen = {} 
+Tbus = {}
 
 def on_init():
     """on_init() is called when the simulation first starts up
@@ -45,9 +46,27 @@ def on_init():
 
     for obj in objects:
         data = gridlabd.get_object(obj)
-        if data["class"] == "gen":
-            gendict[int(data["bus"])] = dict(real=gridlabd.property(obj,"Pg"),reactive=gridlabd.property(obj,"Qg"))
+        if data["class"] in "powerplant":
+            _T = dict(
+                S=gridlabd.property(obj,"S"),
+                operating_capacity=gridlabd.property(obj,"operating_capacity"),
+                storage_capacity=gridlabd.property(obj,"storage_capacity"),
+                charging_capacity=gridlabd.property(obj,"charging_capacity"),
+                storage_efficiency=gridlabd.property(obj,"storage_efficiency"),
+                state_of_charge=gridlabd.property(obj,"state_of_charge"),
+                )
+            if "parent" in data:
+                parent_data = gridlabd.get_object(data["parent"])
+                if parent_data["class"] == "gen":
+                    Tgen[obj] = _T
+                elif parent_data["class"] == "bus":
+                    Tbus[obj] = _T
+                else:
+                    gridlabd.warning(f"object {obj} does not have a bus or gen parent")
+            else:
+                gridlabd.warning(f"object {obj} does not have a parent")
 
+    print(Tgen,Tbus,file=sys.stderr)
     return True
 
 def on_precommit(data):
@@ -78,6 +97,9 @@ def on_precommit(data):
     A = sp.sparse.coo_array(([1]*len(row) + [-1]*len(row),(row+col,col+row)),(len(bus),len(bus)))
     # print("A:",A.toarray(),file=sys.stderr)
 
+    # SOLVE MPC here (maybe?)
+
+
     # get I - weighted line-node incidence matrix
     I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
     # print("I:",I.toarray(),file=sys.stderr)
@@ -94,9 +116,11 @@ def on_precommit(data):
     # get constraints, e.g., Pmax, charger/discharge rate max/min, battery capacities (on_init?)
     Pg = np.zeros(N)
     Pmax = np.zeros(N)
-    for n,g,m in gen[:,[0,1,8]]:
+    Pmin = np.zeros(N)
+    for n,g,m0,m1 in gen[:,[0,1,8,9]]:
         Pg[int(n)] = g
-        Pmax[int(n)] = m
+        # Pmin[int(n)] = m0
+        Pmax[int(n)] = m1
     # print("Pg:",Pg,file=sys.stderr)
     # print("Pmax:",Pmax,file=sys.stderr)
 
@@ -113,7 +137,7 @@ def on_precommit(data):
     constraints = [
         L.real @ x - g + Pd == 0, # KVL/KCL laws
         x[ref] == 0, # voltage angle of reference bus(es)
-        g >= 0, # minimum generation capability
+        g >= Pmin, # minimum generation capability
         g <= Pmax, # maximum generation capability
         # TODO: add line flow limits (if any)
     ]
@@ -121,8 +145,8 @@ def on_precommit(data):
     problem.solve()
     # print(gridlabd.get_global("clock"),"-- OPF is",problem.status,file=sys.stderr)
     if x.value is None:
-        gridlabd.error(f"controllers.on_precommit(t='{gridlabd.get_block('clock')}'): OPF problem is {problem.status}")
-        return gridlabd.TS_INVALID
+        gridlabd.error(f"controllers.on_precommit(t='{gridlabd.get_global('clock')}'): OPF problem is {problem.status}")
+        return gridlabd.INVALID
 
     # post optimal generation dispatch to main solver
     # print(data["bus"])

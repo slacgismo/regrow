@@ -29,4 +29,5 @@ object pypower.powerplant
     fuel NG; 
     controller "powerplant_control";  // defined in controllers.py, override player
 }
+modify pp_gen_${ID}.parent pp_bus_${ID};
 #done

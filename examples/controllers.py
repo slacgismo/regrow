@@ -4,6 +4,9 @@ import sys
 import numpy as np
 import scipy as sp
 import cvxpy as cp
+import mpc
+
+MPC_FORECAST_LENGTH = 72
 
 A = None # unweighted Laplacian matrix
 Pd = None
@@ -97,17 +100,6 @@ def on_precommit(data):
     A = sp.sparse.coo_array(([1]*len(row) + [-1]*len(row),(row+col,col+row)),(len(bus),len(bus)))
     # print("A:",A.toarray(),file=sys.stderr)
 
-    # SOLVE MPC here (maybe?)
-
-
-    # get I - weighted line-node incidence matrix
-    I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
-    # print("I:",I.toarray(),file=sys.stderr)
-
-    # get L - weighted Laplacian
-    L = I.T@I
-    # print("L:",L.toarray(),file=sys.stderr)
-
     # get Pd - demand
     Pd = np.array([bus[:,2]])[0]
     # print("Pd:",Pd,file=sys.stderr)
@@ -123,6 +115,45 @@ def on_precommit(data):
         Pmax[int(n)] = m1
     # print("Pg:",Pg,file=sys.stderr)
     # print("Pmax:",Pmax,file=sys.stderr)
+
+    # SOLVE MPC here
+
+    # TODO: Use correct values
+    T = MPC_FORECAST_LENGTH
+    s = np.zeros(N)
+    Q = np.ones(N) * 10000
+    F = np.ones(M) * 10000
+    C = np.ones(N) * 10000
+    r = np.repeat(Pg[:, None], T, axis=1)
+    g = np.zeros((M, T))
+    l = np.repeat(Pd[:, None], T, axis=1)
+    R = np.zeros(M)
+    kappa = np.zeros(N)
+
+    incidence = mpc.adjacency_to_incidence(A)
+    N, M = incidence.shape
+
+    c = mpc.mpc(
+        s = s,
+        Q = Q,
+        A = incidence,
+        F = F,
+        C = C,
+        r = r,
+        g = g,
+        l = l,
+        R = R,
+        kappa = kappa,
+        verbose=False
+    )
+    
+    # get I - weighted line-node incidence matrix
+    I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
+    # print("I:",I.toarray(),file=sys.stderr)
+
+    # get L - weighted Laplacian
+    L = I.T@I
+    # print("L:",L.toarray(),file=sys.stderr)
 
     # reference nodes
     ref = [int(x[0]) for x in bus if x[1] == 3]

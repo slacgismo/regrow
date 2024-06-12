@@ -14,6 +14,7 @@ def mpc(
     l: np.array,
     R: np.array,
     kappa: np.array,
+    verbose: bool = False
 ) -> np.array:
     """
     Args:
@@ -55,9 +56,9 @@ def mpc(
     objective = -cp.sum(q[:, -1]) + cp.norm1(c) * Delta_T + cp.sum(R @ cp.square(f)) * Delta_T
 
     problem = cp.Problem(cp.Minimize(objective), constraints)
-    problem.solve(solver=cp.CLARABEL, verbose=True)
+    problem.solve(solver=cp.CLARABEL, verbose=verbose)
 
-    return c.value
+    return c.value[:, 0]
 
 
 def adjacency_to_incidence(A: sp.spmatrix) -> sp.spmatrix:

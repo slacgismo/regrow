@@ -61,8 +61,11 @@ def on_init():
             if "parent" in data:
                 parent_data = gridlabd.get_object(data["parent"])
                 if parent_data["class"] == "gen":
+                    gparent_data = gridlabd.get_object(parent_data["parent"])
+                    _T["bus"] = gparent_data["bus_i"]
                     Tgen[obj] = _T
                 elif parent_data["class"] == "bus":
+                    _T["bus"] = parent_data["bus_i"]
                     Tbus[obj] = _T
                 else:
                     gridlabd.warning(f"object {obj} does not have a bus or gen parent")
@@ -183,8 +186,8 @@ def on_precommit(data):
         # print(data["bus"])
         _g = g.value.round(3).tolist()
         # print("g.value =",_g,file=sys.stderr)
-        for n,gen in gendict.items():
-            gen["real"].set_value(_g[n])
+        for obj,gen in Tgen.items():
+            gen["S"].set_value(complex(_g[int(gen["bus"])-1],0))
             # gen["reactive"].set_value(h.value[n])
 
     # get SOC - battery state of charge

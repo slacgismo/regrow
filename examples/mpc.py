@@ -6,61 +6,61 @@ import scipy.sparse as sp
 def mpc(
     s: np.array,
     Q: np.array,
-    A: sp.sparray,
+    A: sp.spmatrix,
     F: np.array,
     C: np.array,
     r: np.array,
     g: np.array,
     l: np.array,
+    R: np.array,
+    kappa: np.array,
 ) -> np.array:
     """
     Args:
         s: battery SOC,             np.array of shape N
-        A: adjacency matrix,        sp.sparray of shape N x N
+        A: incidence matrix,        sp.sparray of shape N x M
         Q: battery capacity,        np.array of shape N
         F: line capacity,           np.array of shape M
         C: charge/discharge limit,  np.array of shape N
         r: renewable generation,    np.array of shape N x T
         g: fossil generation,       np.array of shape N x T
         l: load,                    np.array of shape N x T
+        R: line resistance,         np.array of shape M
+        kappa: charge/discharge cost,   np.array of shape N
 
     Returns:
         c: charge/discharge rate, np.array of shape N
         positive for charge, negative for discharge
     """
-    I = adjacency_to_incidence(A)
 
-    N = s.shape[0]
-    T = r.shape[1]
-    M = I.shape[1]
+    N, T = r.shape
+    M = A.shape[1]
+    Delta_T = 1
 
     c = cp.Variable((N, T))
     q = cp.Variable((N, T + 1), nonneg=True)
-    r_tilde = cp.Variable((N, T), nonneg=True)
+    r_curt = cp.Variable((N, T), nonneg=True)
     f = cp.Variable((M, T))
 
     constraints = [
-        r_tilde <= r,
+        r_curt <= r,
         q[:, 0] == s,
-        q[:, 1:] == q[:, :-1] + c,
-        I @ f - c + r_tilde + g == l,
+        q[:, 1:] == q[:, :-1] + c * Delta_T,
+        A @ f - c + r_curt + g == l,
         q <= Q[:, None],
         cp.abs(f) <= F[:, None],
         cp.abs(c) <= C[:, None],
     ]
 
-    tau_c = 1e-3
-    tau_f = 1e-3
-    regularizer = tau_c * cp.norm1(c) + tau_f * cp.sum_squares(f)
-    objective = -cp.sum(q[:, -1]) + regularizer
+    objective = -cp.sum(q[:, -1]) + cp.norm1(c) * Delta_T + cp.sum(R @ cp.square(f)) * Delta_T
 
     problem = cp.Problem(cp.Minimize(objective), constraints)
     problem.solve(solver=cp.CLARABEL, verbose=True)
 
-    return c[:, 0].value
+    return c.value
 
 
-def adjacency_to_incidence(A: sp.sparray) -> sp.sparray:
+def adjacency_to_incidence(A: sp.spmatrix) -> sp.spmatrix:
     """
     Args:
         A: adjacency matrix, sp.sparray of shape N x N

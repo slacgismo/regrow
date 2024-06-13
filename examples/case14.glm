@@ -14,7 +14,7 @@ module pypower
 {
     controllers "controllers"; // defines all controller functions
     save_case TRUE;
-    maximum_timestep 3600;
+    maximum_timestep 1h;
 }
 
 module tape

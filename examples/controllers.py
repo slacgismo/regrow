@@ -16,6 +16,8 @@ Pmax = None
 batteries = dict()
 solar = dict()
 plants = dict()
+Tgen = dict()
+Tbus = dict()
 
 def on_init():
     """on_init() is called when the simulation first starts up
@@ -65,6 +67,18 @@ def on_init():
                 batteries[int(data["name"].split("_")[1])] = _T
             elif "plant" in data["name"]:
                 plants[int(data["name"].split("_")[1])] = _T
+
+            if "parent" in data:
+                parent_data = gridlabd.get_object(data["parent"])
+                if parent_data["class"] == "gen":
+                    gparent_data = gridlabd.get_object(parent_data["parent"])
+                    _T["bus"] = gparent_data["bus_i"]
+                    Tgen[obj] = _T
+                elif parent_data["class"] == "bus":
+                    _T["bus"] = parent_data["bus_i"]
+                    Tbus[obj] = _T
+                else:
+                    gridlabd.warning(f"object {obj} does not have a bus or gen parent")
             else:
                 raise ValueError(f"Unknown power plant {obj}")
 
@@ -76,8 +90,19 @@ def on_init():
 def on_precommit(data):
     """TODO"""
 
-    # print(data,file=sys.stderr)
+    M, N, L, incidence = get_network_data(data)
 
+    c = solve_mpc(M, N, incidence)
+    
+    x, g, problem = solve_dc_opf(N, data, L, c)
+
+    update_generators(x, g, problem)
+
+    # TODO: add energy storage calcs to powerplant model
+
+    return (int(data['t']/3600)+1)*3600
+
+def get_network_data(data):
     bus = np.array(data['bus'])
     N = len(bus)
     # print("bus:",bus,file=sys.stderr)
@@ -90,9 +115,6 @@ def on_precommit(data):
     Z = np.array([complex(*x) for x in zip(branch.T[2],branch.T[3])])
     # print(Z,file=sys.stderr)
 
-    gen = np.array(data['gen'])
-    # print("gen:",gen,file=sys.stderr)
-
     # get A - Laplacian matrix
     row = [int(x)-1 for x in branch[:,0]]
     col = [int(x)-1 for x in branch[:,1]]
@@ -101,27 +123,20 @@ def on_precommit(data):
     A = sp.sparse.coo_array(([1]*len(row) + [-1]*len(row),(row+col,col+row)),(len(bus),len(bus)))
     # print("A:",A.toarray(),file=sys.stderr)
 
-    # get Pd - demand
-    Pd = np.array([bus[:,2]])[0]
-    # print("Pd:",Pd,file=sys.stderr)
+    # get I - weighted line-node incidence matrix
+    I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
+    # print("I:",I.toarray(),file=sys.stderr)
 
-    # get Pg - generation by gentype in columns
-    # get constraints, e.g., Pmax, charger/discharge rate max/min, battery capacities (on_init?)
-    Pg = np.zeros(N)
-    Pmax = np.zeros(N)
-    Pmin = np.zeros(N)
-    for n,g,m0,m1 in gen[:,[0,1,9,8]]:
-        Pg[int(n)] = g
-        Pmin[int(n)] = m0
-        Pmax[int(n)] = m1
-    # print("Pg:",Pg,file=sys.stderr)
-    # print("Pmax:",Pmax,file=sys.stderr)
-
-    # SOLVE MPC here
+    # get L - weighted Laplacian
+    L = I.T@I
+    # print("L:",L.toarray(),file=sys.stderr)
 
     incidence = mpc.adjacency_to_incidence(A)
-    assert N,M == incidence.shape
 
+    return M, N, L, incidence
+
+
+def solve_mpc(M, N, incidence):
     # TODO: Use correct values
     T = MPC_FORECAST_LENGTH
     s = np.zeros(N)
@@ -146,7 +161,7 @@ def on_precommit(data):
     r = r[:, None].repeat(T, axis=1)
     l = l[:, None].repeat(T, axis=1)
 
-    c = mpc.mpc(
+    return mpc.mpc(
         s = s,
         Q = Q,
         A = incidence,
@@ -159,15 +174,30 @@ def on_precommit(data):
         kappa = kappa,
         verbose=False
     )
-    print("c:",c.round(2),file=sys.stderr)
-    
-    # get I - weighted line-node incidence matrix
-    I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
-    # print("I:",I.toarray(),file=sys.stderr)
 
-    # get L - weighted Laplacian
-    L = I.T@I
-    # print("L:",L.toarray(),file=sys.stderr)
+
+def solve_dc_opf(N, data, L, c):
+
+    gen = np.array(data['gen'])
+    # print("gen:",gen,file=sys.stderr)
+
+    bus = np.array(data['bus'])
+
+    # get Pd - demand
+    Pd = np.array([bus[:,2]])[0]
+    # print("Pd:",Pd,file=sys.stderr)
+
+    # get Pg - generation by gentype in columns
+    # get constraints, e.g., Pmax, charger/discharge rate max/min, battery capacities (on_init?)
+    Pg = np.zeros(N)
+    Pmax = np.zeros(N)
+    Pmin = np.zeros(N)
+    for n,g,m0,m1 in gen[:,[0,1,9,8]]:
+        Pg[int(n)] = g
+        Pmin[int(n)] = m0
+        Pmax[int(n)] = m1
+    # print("Pg:",Pg,file=sys.stderr)
+    # print("Pmax:",Pmax,file=sys.stderr)
 
     # reference nodes
     ref = [int(x[0]) for x in bus if x[1] == 3]
@@ -188,26 +218,21 @@ def on_precommit(data):
     ]
     problem = cp.Problem(objective,constraints)
     problem.solve()
-    # print(gridlabd.get_global("clock"),"-- OPF is",problem.status,file=sys.stderr)
+
+    return x, g, problem
+
+def update_generators(x, g, problem):
     if x.value is None:
         gridlabd.warning(f"controllers.on_precommit(t='{gridlabd.get_global('clock')}'): OPF problem is {problem.status}")
     else:
-        pass
-
-        # # post optimal generation dispatch to main solver
-        # # print(data["bus"])
-        # _g = g.value.round(3).tolist()
-        # # print("g.value =",_g,file=sys.stderr)
-        # for n,gen in gendict.items():
-        #     gen["real"].set_value(_g[n])
-        #     # gen["reactive"].set_value(h.value[n])
-    
-    # store these in global arrays for on_sync to run MPC
-
-    # TODO: add energy storage calcs to powerplant model
-
-    # TODO: figure out forecasting for wind, solar, other generation, and load by peeking at future
-    return (int(data['t']/3600)+1)*3600
+        # post optimal generation dispatch to main solver
+        # print(data["bus"])
+        _g = g.value.round(3).tolist()
+        # print("g.value =",_g,file=sys.stderr)
+        for obj,gen in Tgen.items():
+            gen["S"].set_value(complex(_g[int(gen["bus"])-1],0))
+            print(f"set {obj} to {gen['S'].get_value()}",file=sys.stderr)
+            # gen["reactive"].set_value(h.value[n])
 
 def on_commit(data):
     """TODO"""

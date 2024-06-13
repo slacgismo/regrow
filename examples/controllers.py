@@ -13,8 +13,9 @@ Pd = None
 Pg = None
 SOC = None
 Pmax = None
-Tgen = {} 
-Tbus = {}
+batteries = dict()
+solar = dict()
+plants = dict()
 
 def on_init():
     """on_init() is called when the simulation first starts up
@@ -49,7 +50,7 @@ def on_init():
 
     for obj in objects:
         data = gridlabd.get_object(obj)
-        if data["class"] in "powerplant":
+        if data["class"] == "powerplant":
             _T = dict(
                 S=gridlabd.property(obj,"S"),
                 operating_capacity=gridlabd.property(obj,"operating_capacity"),
@@ -58,18 +59,18 @@ def on_init():
                 storage_efficiency=gridlabd.property(obj,"storage_efficiency"),
                 state_of_charge=gridlabd.property(obj,"state_of_charge"),
                 )
-            if "parent" in data:
-                parent_data = gridlabd.get_object(data["parent"])
-                if parent_data["class"] == "gen":
-                    Tgen[obj] = _T
-                elif parent_data["class"] == "bus":
-                    Tbus[obj] = _T
-                else:
-                    gridlabd.warning(f"object {obj} does not have a bus or gen parent")
+            if "solar" in data["name"]:
+                solar[int(data["name"].split("_")[1])] = _T
+            elif "battery" in data["name"]:
+                batteries[int(data["name"].split("_")[1])] = _T
+            elif "plant" in data["name"]:
+                plants[int(data["name"].split("_")[1])] = _T
             else:
-                gridlabd.warning(f"object {obj} does not have a parent")
+                raise ValueError(f"Unknown power plant {obj}")
 
-    # print(Tgen,Tbus,file=sys.stderr)
+    # print(batteries,file=sys.stderr)
+    # print(solar,file=sys.stderr)
+    # print(plants,file=sys.stderr)
     return True
 
 def on_precommit(data):
@@ -118,20 +119,32 @@ def on_precommit(data):
 
     # SOLVE MPC here
 
+    incidence = mpc.adjacency_to_incidence(A)
+    assert N,M == incidence.shape
+
     # TODO: Use correct values
     T = MPC_FORECAST_LENGTH
     s = np.zeros(N)
     Q = np.ones(N) * 10000
     F = np.ones(M) * 10000
     C = np.ones(N) * 10000
-    r = np.repeat(Pg[:, None], T, axis=1)
     g = np.zeros((M, T))
-    l = np.repeat(Pd[:, None], T, axis=1)
     R = np.zeros(M)
     kappa = np.zeros(N)
 
-    incidence = mpc.adjacency_to_incidence(A)
-    N, M = incidence.shape
+    s = np.array([
+        batteries[i]["state_of_charge"].get_value() if i in batteries else 0.0 for i in range(1,N+1)
+    ])
+    r = np.array([
+        solar[i]["operating_capacity"].get_value() if i in solar else 0.0 for i in range(1,N+1)
+    ])
+
+    l = np.array([
+        plants[i]["operating_capacity"].get_value() if i in plants else 0.0 for i in range(1,N+1)
+    ])
+
+    r = r[:, None].repeat(T, axis=1)
+    l = l[:, None].repeat(T, axis=1)
 
     c = mpc.mpc(
         s = s,
@@ -146,6 +159,7 @@ def on_precommit(data):
         kappa = kappa,
         verbose=False
     )
+    print("c:",c.round(2),file=sys.stderr)
     
     # get I - weighted line-node incidence matrix
     I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
@@ -178,16 +192,15 @@ def on_precommit(data):
     if x.value is None:
         gridlabd.warning(f"controllers.on_precommit(t='{gridlabd.get_global('clock')}'): OPF problem is {problem.status}")
     else:
+        pass
 
-        # post optimal generation dispatch to main solver
-        # print(data["bus"])
-        _g = g.value.round(3).tolist()
-        # print("g.value =",_g,file=sys.stderr)
-        for n,gen in gendict.items():
-            gen["real"].set_value(_g[n])
-            # gen["reactive"].set_value(h.value[n])
-
-    # get SOC - battery state of charge
+        # # post optimal generation dispatch to main solver
+        # # print(data["bus"])
+        # _g = g.value.round(3).tolist()
+        # # print("g.value =",_g,file=sys.stderr)
+        # for n,gen in gendict.items():
+        #     gen["real"].set_value(_g[n])
+        #     # gen["reactive"].set_value(h.value[n])
     
     # store these in global arrays for on_sync to run MPC
 

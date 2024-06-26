@@ -1,15 +1,15 @@
 Node,Characteristic components,Latitude,Longitude
-1,Reference and slack generator,40.6° N,105.13° W
-2,Conventional Generator and load,38.96° N,105.8° W
-3,Load bus,38.21° N,107.01° W
-4,Load bus,37.59° N,105.26° W
-5,Wind farm and load bus,40.09° N,103.35° W
-6,Wind farm and load bus,36.58 °N,102.18° W
-7,Wind farm,36.65° N,106.64° W
-8,---,36.22° N,108.54° W
-9,Load bus,36.44° N,105.51° W
+1,Reference and slack generator,40.6,105.13
+2,Conventional Generator and load,38.96,105.8
+3,Load bus,38.21,107.01
+4,Load bus,37.59,105.26
+5,Wind farm and load bus,40.09,103.35
+6,Wind farm and load bus,36.58 °N,102.18
+7,Wind farm,36.65,106.64
+8,---,36.22,108.54
+9,Load bus,36.44,105.51
 10,Load bus,35.75°N,105.58°W
-11,Load bus,36.38° N,101.31° W
-12,Load bus,36.32° N,103.02° W
-13,Load bus,35.87° N,102.41° W
-14,Load bus,35.87° N,104.68° W
+11,Load bus,36.38,101.31
+12,Load bus,36.32,103.02
+13,Load bus,35.87,102.41
+14,Load bus,35.87,104.68

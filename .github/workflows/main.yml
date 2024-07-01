@@ -16,7 +16,7 @@ jobs:
 
     - name: Validate examples
       run: |
-        cd example
+        cd examples
         gridlabd case14.glm
 
     - name: Run simulation

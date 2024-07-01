@@ -19,13 +19,21 @@ jobs:
         cd examples
         gridlabd case14.glm
 
+    - name: Save example results
+      if: failure()
+      uses: actions/upload-artifact@v3
+      with:
+        name: Example results
+        path: examples/
+
     - name: Run simulation
       run: |
         cd model
         gridlabd wecc240.glm
       
-    - name: Save results
+    - name: Save model results
+      if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: Results
+        name: Model results
         path: model/

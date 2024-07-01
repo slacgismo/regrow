@@ -217,7 +217,7 @@ def solve_dc_opf(N, data, L, c):
         # TODO: add line flow limits (if any)
     ]
     problem = cp.Problem(objective,constraints)
-    problem.solve()
+    problem.solve(verbose=(gridlabd.get_global("verbose")=="TRUE"))
 
     return x, g, problem
 

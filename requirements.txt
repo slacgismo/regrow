@@ -1,2 +1,5 @@
 pandas
 marimo
+cvxpy
+seaborn
+pvlib

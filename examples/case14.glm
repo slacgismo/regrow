@@ -30,4 +30,7 @@ module tape
 #include "case14_recorders.glm"
 #include "case14_modify.glm"
 
+#set verbose=TRUE
+#output "${modelname/.glm/.png}" -t profile
+
 #set savefile=${modelname/.glm/.json}

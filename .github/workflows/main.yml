@@ -14,6 +14,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Validate examples
+      run: |
+        cd example
+        gridlabd case14.glm
+
     - name: Run simulation
       run: |
         cd model

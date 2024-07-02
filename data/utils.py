@@ -189,7 +189,7 @@ def is_workday(date,date_format="%Y-%m-%d %H:%M:%S"):
 #
 # Weather data
 #
-def nsrdb_credentials(path=os.path.join(os.environ["HOME"],".nsrdb","credentials.json")):
+def nsrdb_credentials(path=os.path.join("C:/users/kperry",".nsrdb","credentials.json")):
     try:
         with open(path,"r") as fh:
             return list(json.load(fh).items())[0]
@@ -242,7 +242,7 @@ def nsrdb_weather(location,year,
                                   map_variables=True,
                                   interval=interval,
                                   leap_day=leap,
-                                  timeout=60)
+                                  timeout=200)
     cols_to_remove = ['Year', 'Month', 'Day', 'Hour', 'Minute']
     psm3 = psm3.drop(columns=cols_to_remove)
     psm3.index = pd.to_datetime(psm3.index)

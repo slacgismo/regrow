@@ -1,6 +1,6 @@
 // PyPower/GridLAB-D IEEE-14 bus example with controllers
 
-#set verbose=TRUE
+#set verbose=FALSE
 
 #version -ge 4.3.10
 #require cvxpy

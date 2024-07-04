@@ -7,17 +7,20 @@ import cvxpy as cp
 import mpc
 
 MPC_FORECAST_LENGTH = 72
+T_0 = 1577865600
+Delta_T = 1.0
 
 A = None # unweighted Laplacian matrix
 Pd = None
 Pg = None
 SOC = None
 Pmax = None
-batteries = dict()
-solar = dict()
-plants = dict()
 Tgen = dict()
 Tbus = dict()
+
+index = []
+R_glob = []
+G_glob = []
 
 def on_init():
     """on_init() is called when the simulation first starts up
@@ -28,6 +31,8 @@ def on_init():
     # Access a global variable
     loss = gridlabd.get_global("pypower::total_loss")
     # print("loss:",loss,file=sys.stderr)
+
+    # T_0 = gridlabd.get_global("starttime")
 
     # Get a list of objects
     objects = gridlabd.get("objects")
@@ -60,13 +65,8 @@ def on_init():
                 charging_capacity=gridlabd.property(obj,"charging_capacity"),
                 storage_efficiency=gridlabd.property(obj,"storage_efficiency"),
                 state_of_charge=gridlabd.property(obj,"state_of_charge"),
+                name = data["name"],
                 )
-            if "solar" in data["name"]:
-                solar[int(data["name"].split("_")[1])] = _T
-            elif "battery" in data["name"]:
-                batteries[int(data["name"].split("_")[1])] = _T
-            elif "plant" in data["name"]:
-                plants[int(data["name"].split("_")[1])] = _T
 
             if "parent" in data:
                 parent_data = gridlabd.get_object(data["parent"])
@@ -82,17 +82,18 @@ def on_init():
             else:
                 raise ValueError(f"Unknown power plant {obj}")
 
-    # print(batteries,file=sys.stderr)
-    # print(solar,file=sys.stderr)
-    # print(plants,file=sys.stderr)
+    # print(Tgen,file=sys.stderr)
+    # print(Tbus,file=sys.stderr)
     return True
 
 def on_precommit(data):
     """TODO"""
 
-    M, N, L, incidence = get_network_data(data)
+    index.append(data['t'])
 
-    c = solve_mpc(M, N, incidence)
+    M, N, L, incidence, R = get_network_data(data)
+
+    c = solve_mpc(M, N, incidence, data['t'], R)
     
     x, g, problem = solve_dc_opf(N, data, L, c)
 
@@ -115,6 +116,9 @@ def get_network_data(data):
     Z = np.array([complex(*x) for x in zip(branch.T[2],branch.T[3])])
     # print(Z,file=sys.stderr)
 
+    # Real impedance by line
+    R = branch.T[2]
+
     # get A - Laplacian matrix
     row = [int(x)-1 for x in branch[:,0]]
     col = [int(x)-1 for x in branch[:,1]]
@@ -133,47 +137,66 @@ def get_network_data(data):
 
     incidence = mpc.adjacency_to_incidence(A)
 
-    return M, N, L, incidence
+    return M, N, L, incidence, R
 
 
-def solve_mpc(M, N, incidence):
+def solve_mpc(M, N, incidence, t, R):
     # TODO: Use correct values
     T = MPC_FORECAST_LENGTH
-    s = np.zeros(N)
-    Q = np.ones(N) * 10000
+    Q = np.ones(N) * 10000  # TODO: should read capacity from gridlabd
     F = np.ones(M) * 10000
     C = np.ones(N) * 10000
-    g = np.zeros((M, T))
-    R = np.zeros(M)
+    g = np.zeros((N, T))
+    l = np.zeros((N, T))  # TODO: right now we set g to g + l and l to 0, but could be read independently
+    s = np.zeros(N)
+
+    r = np.zeros((N, T))  # TODO: forecast solar output (as deviation from nominal)
+
     kappa = np.zeros(N)
 
-    s = np.array([
-        batteries[i]["state_of_charge"].get_value() if i in batteries else 0.0 for i in range(1,N+1)
-    ])
-    r = np.array([
-        solar[i]["operating_capacity"].get_value() if i in solar else 0.0 for i in range(1,N+1)
-    ])
+    for gen in Tgen.values():
+        g[int(gen['bus']) - 1] = gen['S'].get_value().real
 
-    l = np.array([
-        plants[i]["operating_capacity"].get_value() if i in plants else 0.0 for i in range(1,N+1)
-    ])
+    for bus in Tbus.values():
+        if "battery" in bus["name"]:
+            s[int(bus['bus']) - 1] = bus['state_of_charge'].get_value()
+        elif "solar" in bus["name"]:
+            hour = (t - T_0) // 3600 % 24
+            # output is a sinusoidal function of time, 0 at night and 100 at noon
+            output = 50 * np.sin(np.pi * ((hour-6)/12)) + 50
+            r[int(bus['bus']) - 1] = output
+            bus["S"].set_value(complex(output,0))  # TODO: is this seen by opf (probably not)
+        else:
+            raise ValueError(f"Unknown bus type {bus}")
+ 
+    print(g[:,0].round(2),file=sys.stderr)
+    print(r[:,0].round(2),file=sys.stderr)
+    print(s.round(2),file=sys.stderr)
 
-    r = r[:, None].repeat(T, axis=1)
-    l = l[:, None].repeat(T, axis=1)
+    # Export to global
+    G_glob.append(g)
+    R_glob.append(r)
 
-    return mpc.mpc(
-        s = s,
-        Q = Q,
-        A = incidence,
-        F = F,
-        C = C,
-        r = r,
-        g = g,
-        l = l,
-        R = R,
-        kappa = kappa,
-        verbose=False
-    )
+    c = mpc.mpc(
+            s = s,
+            Q = Q,
+            A = incidence,
+            F = F,
+            C = C,
+            r = r,
+            g = g,
+            l = l,
+            R = R,
+            kappa = kappa,
+            Delta_T = Delta_T,
+            verbose=False
+        )
+    
+    for bus in Tbus.values():
+        if "battery" in bus["name"]:
+            bus["state_of_charge"].set_value(s[int(bus['bus']) - 1] + c[int(bus['bus']) - 1] * Delta_T * (1-kappa))  # TODO: should be updated by gridlabd
+
+    return 
 
 
 def solve_dc_opf(N, data, L, c):
@@ -184,7 +207,7 @@ def solve_dc_opf(N, data, L, c):
     bus = np.array(data['bus'])
 
     # get Pd - demand
-    Pd = np.array([bus[:,2]])[0]
+    Pd = np.array([bus[:,2]])[0] + c
     # print("Pd:",Pd,file=sys.stderr)
 
     # get Pg - generation by gentype in columns
@@ -207,13 +230,19 @@ def solve_dc_opf(N, data, L, c):
 
     # solve OPF for the upcoming time interval
     x = cp.Variable(N)
+    # y = cp.Variable(N)
     g = cp.Variable(N)
+    # h = cp.Variable(N)
     objective = cp.Minimize(P@g)
     constraints = [
         L.real @ x - g + Pd == 0, # KVL/KCL laws
+        # L.imag @ y - h + Qd == 0, # KVL/KCL laws
         x[ref] == 0, # voltage angle of reference bus(es)
+        # y[ref] == 1, # voltage magnitude of reference bus(es)
         g >= Pmin, # minimum generation capability
         g <= Pmax, # maximum generation capability
+        # h >= Qmin, # minimum reactive power generation capability
+        # h <= Qmax, # maximum reactive power generation capability
         # TODO: add line flow limits (if any)
     ]
     problem = cp.Problem(objective,constraints)
@@ -257,6 +286,11 @@ def on_sync(data):
 
 def on_term():
     """on_term() is called when the simulation ends"""
+
+    np.array(index).dump("index.npy")
+    np.array(G_glob).dump("G.npy")
+    np.array(R_glob).dump("R.npy")
+
     # print("on_term()",file=sys.stderr)
 
 def load_control(obj,**kwargs):

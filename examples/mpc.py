@@ -14,6 +14,7 @@ def mpc(
     l: np.array,
     R: np.array,
     kappa: np.array,
+    Delta_T: int,
     verbose: bool = False
 ) -> np.array:
     """
@@ -28,6 +29,7 @@ def mpc(
         l: load,                    np.array of shape N x T
         R: line resistance,         np.array of shape M
         kappa: charge/discharge cost,   np.array of shape N
+        Delta_T: time step,         int
 
     Returns:
         c: charge/discharge rate, np.array of shape N
@@ -36,7 +38,6 @@ def mpc(
 
     N, T = r.shape
     M = A.shape[1]
-    Delta_T = 1
 
     c = cp.Variable((N, T))
     q = cp.Variable((N, T + 1), nonneg=True)
@@ -57,6 +58,8 @@ def mpc(
 
     problem = cp.Problem(cp.Minimize(objective), constraints)
     problem.solve(solver=cp.CLARABEL, verbose=verbose)
+
+    assert problem.status in {cp.OPTIMAL, cp.OPTIMAL_INACCURATE}
 
     return c.value[:, 0]
 

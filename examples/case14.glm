@@ -1,5 +1,7 @@
 // PyPower/GridLAB-D IEEE-14 bus example with controllers
 
+#set verbose=FALSE
+
 #version -ge 4.3.10
 #require cvxpy
 
@@ -29,5 +31,7 @@ module tape
 #include "case14_plants.glm"
 #include "case14_recorders.glm"
 #include "case14_modify.glm"
+
+#output "${modelname/.glm/.png}" -t profile
 
 #set savefile=${modelname/.glm/.json}

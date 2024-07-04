@@ -1,56 +1,56 @@
 //
 // Requires Arras Energy version 4.3.9 or later
 //
-#define VERSION "-ge 4.3.9"
+#define VERSION=-ge 4.3.9
 
 //
 // Work in Pacific timezone (even though some parts of the system are in MT and CT)
 //
-#define TIMEZONE "PST+8PDT"
+#define TIMEZONE="PST+8PDT"
 
 //
 // Start simulation on 1-Jan-2018
 //
-#define STARTTIME "2018-01-01 00:00:00 PST"
+#define STARTTIME="2018-01-01 00:00:00 PST"
 
 //
 // Stop simulation on 21-Dec-2022
 //
-#define STOPTIME "2019-01-01 00:00:00 PST"
+#define STOPTIME="2019-01-01 00:00:00 PST"
 
 //
 // Specify the PSS/E model filename
 //
-#define RAWFILE "wecc240_psse.raw"
+#define RAWFILE="wecc240_psse.raw"
 
 //
 // Save the final result to JSON
 //
-#define SAVEFILE "wecc240.json"
+#define SAVEFILE="wecc240.json"
 
 //
 // Maximum iterations allowed for any single solution
 //
-#define MAXIMUM_ITERATIONS 50
+#define MAXIMUM_ITERATIONS=50
 
 //
 // Maximum timestep allowed during simulation
 //
-#define MAXIMUM_TIMESTEP 3600
+#define MAXIMUM_TIMESTEP=3600
 
 //
 // Stop on solver failure flag
 //
-#define STOP_ON_FAILURE TRUE
+#define STOP_ON_FAILURE=TRUE
 
 //
 // Controllers module name
 //
-#define CONTROLLERS_FILE "controllers"
+#define CONTROLLERS_FILE="controllers"
 
 //
 // GIS data
 //
-#define GISDATA "../data/wecc240_gis.glm"
+#define GISDATA="../data/wecc240_gis.glm"
 
 #set suppress_repeat_messages=FALSE

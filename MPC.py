@@ -14,7 +14,7 @@ def __():
     return cp, mo, np, pd, plt
 
 
-@app.cell
+@app.cell(hide_code=True)
 def __(mo):
     mo.md(
         r"""
@@ -65,13 +65,6 @@ def __(mo):
         """
     )
     return
-
-
-@app.cell(hide_code=True)
-def __(mo):
-    tau_slider = mo.ui.slider(0, 100, 0.5, label=r"$\tau$", show_value=True)
-    tau_slider
-    return tau_slider,
 
 
 @app.cell
@@ -165,10 +158,10 @@ def __(mo):
 
 
 @app.cell
-def __(pd):
+def __(pd, solar_scale):
     weather = pd.read_csv("data/weather/solar.csv", index_col=0)
     solar = weather.iloc[:72, :14].values.T
-    solar[:, 60:] = 0
+    solar *= solar_scale.value
     return solar, weather
 
 
@@ -196,40 +189,47 @@ def __(batter_soc_slider, np, solar):
     N, M = A.shape
     T = 72
 
-    # TODO: replace r with PVWatts data for 14 bus locations.
-
-    def hello_world():
+    def simulation():
         Q = np.ones(N) * 10000
         F = np.ones(M) * 10000
         C = np.ones(N) * 10000
         g = np.ones((N, T)) * 50
         l = np.ones((N, T)) * 100
         s = np.ones(N) * batter_soc_slider.value
-        r = solar * 10
+        r = solar
         R = np.zeros(M)
         kappa = np.zeros(N)
         return s, Q, A, F, C ,r, g, l, R, kappa
-    return A, M, N, T, hello_world
+    return A, M, N, T, simulation
 
 
 @app.cell
 def __(mo):
+    tau_slider = mo.ui.slider(0, 100, 0.5, value = 1, label=r"$\tau$", show_value=True)
+    tau_slider
+
     batter_soc_slider = mo.ui.slider(0,1000,1,value=263,label="initial battery SOC", show_value=True)
     batter_soc_slider
-    return batter_soc_slider,
+
+    solar_scale= mo.ui.slider(0, 5, 0.05, value=1, label="solar scale", show_value=True)
+    solar_scale
+
+    mo.vstack([tau_slider, batter_soc_slider, solar_scale])
+    return batter_soc_slider, solar_scale, tau_slider
 
 
 @app.cell
 def __(plt, solar):
-    plt.figure()
-    plt.plot(solar[0])
+    _fig = plt.figure()
+    plt.plot(solar[0], label="solar generation")
+    plt.legend()
     return
 
 
 @app.cell
-def __(hello_world, mpc, plt):
+def __(mpc, plt, simulation):
     # Execute single plan step
-    _c, _g, _q, _r, _problem = mpc(*hello_world())
+    _c, _g, _q, _r, _problem = mpc(*simulation())
     print(_problem.status)
     fig = plt.figure()
     axis0 = plt.subplot(4,1,1)
@@ -247,104 +247,7 @@ def __(hello_world, mpc, plt):
     axis3.set_title("renewable generation")
     plt.tight_layout()
     fig
-
     return axis0, axis1, axis2, axis3, fig
-
-
-@app.cell
-def __(A, M, N, T, np, solar):
-    def changing_renewable_generation():
-        Q = np.ones(N) * 10000
-        F = np.ones(M) * 10000
-        C = np.ones(N) * 10000
-        g = np.ones((N, T)) * 50
-        l = np.ones((N, T)) * 100
-        s = np.zeros(N)
-        r = solar * 10
-        r[:, : 24] = r[:, : 24]*1.5
-        r[:, 24:48] = r[:, 24:48]*0.5
-        R = np.zeros(M)
-        kappa = np.zeros(N)
-        return s, Q, A, F, C ,r, g, l, R, kappa
-
-    def noisy():
-        Q = np.ones(N) * 10000
-        F = np.ones(M) * 10000
-        C = np.ones(N) * 10000
-        g = np.ones((N, T)) * 50 + (np.random.random((N,T)) - 0.3) * 10
-        l = np.ones((N, T)) * 100 + (np.random.random((N,T)) - 0.7) * 10
-        s = np.zeros(N)
-        r = solar * 10
-        R = np.zeros(M)
-        kappa = np.zeros(N)
-        return s, Q, A, F, C ,r, g, l, R, kappa
-    return changing_renewable_generation, noisy
-
-
-@app.cell
-def __(changing_renewable_generation, mpc, plt):
-    # Execute single plan step
-    _c, _problem = mpc(*changing_renewable_generation())
-    print(_problem.status)
-    plt.figure()
-    plt.plot(_c[0])
-    return
-
-
-@app.cell
-def __(mpc, noisy, plt):
-    # Execute single plan step
-    _c, _problem = mpc(*noisy())
-    print(_problem.status)
-    plt.figure()
-    plt.plot(_c[0])
-    return
-
-
-@app.cell
-def __(mo):
-    mo.md("## Prescient vs. forecasting")
-    return
-
-
-@app.cell
-def __(mo):
-    mo.md("## Robust MPC using quantile regression")
-    return
-
-
-@app.cell(hide_code=True)
-def __(mo):
-    demand_slider = mo.ui.slider(0,100,1,value=70,label="demand quantile", show_value=True)
-    generation_slider = mo.ui.slider(0,100,1,value=30,label="generation quantile", show_value=True)
-    mo.vstack([demand_slider, generation_slider])
-    return demand_slider, generation_slider
-
-
-@app.cell
-def __(A, M, N, T, np, solar):
-    def quantiles(d, g):
-        Q = np.ones(N) * 10000
-        F = np.ones(M) * 10000
-        C = np.ones(N) * 10000
-        g = np.ones((N, T)) * 50 + (np.random.random((N,T)) - 0.3) * 10
-        l = np.ones((N, T)) * 100 + (np.random.random((N,T)) - 0.7) * 10
-        s = np.zeros(N)
-        r = solar * 10
-        R = np.zeros(M)
-        kappa = np.zeros(N)
-        return s, Q, A, F, C ,r, g, l, R, kappa
-    return quantiles,
-
-
-@app.cell
-def __(demand_slider, generation_slider, mpc, plt, quantiles):
-    # Execute single plan step
-    _c, _problem = mpc(*(quantiles(demand_slider.value, generation_slider.value)))
-    print(_problem.status)
-    plt.figure()
-    plt.plot(_c[0])
-    return
 
 
 if __name__ == "__main__":

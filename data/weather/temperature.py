@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.7.0"
+__generated_with = "0.7.3"
 app = marimo.App(width="medium")
 
 
@@ -19,9 +19,8 @@ def __():
     import matplotlib.dates as mdates
     import utils
     import os, sys
-    import geopandas as gpd
     import numpy as np
-    return gpd, mdates, mo, np, os, pd, plt, sns, sys, utils
+    return mdates, mo, np, os, pd, plt, sns, sys, utils
 
 
 @app.cell
@@ -252,13 +251,17 @@ def __(mo):
 
 
 @app.cell
-def __(pd):
+def __(__file__, pd):
     # Marimo special feature (_varible), cell-specific identified, pulling from local computer
-    _fp = "/Users/melody/Documents/REGROW/regrow/data/weather/temperature.csv"
+    # _fp = "/Users/melody/Documents/REGROW/regrow/data/weather/temperature.csv"
+
+    from pathlib import Path
+
+    _fp = Path(__file__).parent / 'temperature.csv'
 
     # Organizing columns 
     temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
-    return temperature,
+    return Path, temperature
 
 
 @app.cell

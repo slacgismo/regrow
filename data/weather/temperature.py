@@ -6,7 +6,12 @@ app = marimo.App(width="medium")
 
 @app.cell
 def __(mo):
-    mo.md(r"# REGROW: Temperature Forecasting")
+    mo.md(
+        r"""
+        # REGROW: Temperature Forecasting
+         Study of extreme weather in Western Interconnection (WECC) locations.
+        """
+    )
     return
 
 
@@ -17,17 +22,12 @@ def __():
     import seaborn as sns
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
+
     import os, sys
     import numpy as np
     import tornado as tn
     from pathlib import Path
     return Path, mdates, mo, np, os, pd, plt, sns, sys, tn
-
-
-@app.cell
-def __(mo):
-    mo.md(r"## Geographic location coding")
-    return
 
 
 @app.cell
@@ -246,16 +246,24 @@ def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
 
 
 @app.cell
+def __(Path, __file__, pd):
+    # Loading the Data
+    _fp = Path(__file__).parent / 'temperature.csv'
+    print(_fp)
+    temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
+    return temperature,
+
+
+@app.cell
 def __(mo):
-    mo.md(r"## Loading the Data")
+    mo.md(r"## Viewing nodes on Google Earth:")
     return
 
 
 @app.cell
-def __(Path, __file__, pd):
-    _fp = Path(__file__).parent / 'temperature.csv'
-    temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
-    return temperature,
+def __(mo):
+    mo.image(src="/Users/melody/Documents/REGROW/weather/wecc_google_earth.png")
+    return
 
 
 @app.cell
@@ -266,21 +274,29 @@ def __(geocode, nodes, pd):
         # key = value
         latlong.loc[node] = geocode(node)
             # arrays, dic.   # functions
-
-    latlong
     return latlong, node
 
 
 @app.cell
 def __(temperature):
-    # Remove column header
     nodes = temperature.columns.tolist()
-    nodes
     return nodes,
 
 
 @app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ## Plotting the Data
+        Full time series plot from years 2018-2022.
+        """
+    )
+    return
+
+
+@app.cell
 def __(mo, nodes):
+    # Drop down selection for all nodes, default selection is the first node
     nodes_dropdown = mo.ui.dropdown(nodes, value=nodes[0], label='Select a node:')
 
     nodes_dropdown
@@ -288,14 +304,8 @@ def __(mo, nodes):
 
 
 @app.cell
-def __(mo):
-    mo.md(r"## Plotting the Data")
-    return
-
-
-@app.cell
 def __(mo, nodes_dropdown, pd, plt, temperature):
-    # Setting a varible, picking one node in New Mexico
+    # Setting a varible, picking one node
     data_view = temperature[nodes_dropdown.value]
     data_view.index = data_view.index - pd.Timedelta(7, 'hr')
 
@@ -313,18 +323,19 @@ def __(mo, nodes_dropdown, pd, plt, temperature):
 
 @app.cell
 def __(mo):
-    mo.md(r"## Heat Map")
+    mo.md(
+        r"""
+        ### Heat map of temperatures (2018-2022)
+        A visual representation of daily average temperatures, showing temperature variations over the four-year period.
+        """
+    )
     return
 
 
 @app.cell
 def __(data_view):
-    '''
-    Pulling together axes for heat map. 
-    24 hours (midnight to day to night), 365 days x 4 years (-1 puts year on x-axis)
-    '''
+    # Pulling together axes for heat map. 
     my_data_array = data_view.loc['2018-01-01':'2021-12-30'].values.reshape((24, -1), order='F')
-    my_data_array.shape
     return my_data_array,
 
 
@@ -337,31 +348,35 @@ def __(my_data_array, plt, sns):
     sns.heatmap(my_data_array, cmap="plasma")
     plt.gcf()
 
-    plt.xlabel('Days over 4 Years')
-    plt.ylabel('Hours of the Day')
-    plt.title('Temperature in New Mexico (2018-2022)')
+    plt.xlabel('Days')
+    plt.ylabel('Hours')
+    plt.title('Temperature (2018-2022)')
     return
 
 
 @app.cell
 def __(mo):
-    mo.md(r"## Time Slicing: One Month of Data")
+    mo.md(
+        r"""
+        ### Time Slicing: 
+        Selection of one month of data to analyze.
+        """
+    )
     return
 
 
 @app.cell
 def __(mo, nodes_dropdown, pd, plt, temperature):
-    # Location near Gilroy, CA 
-    gilroy = temperature[nodes_dropdown.value]
+    location = temperature[nodes_dropdown.value]
 
     # Adjusting timezone
-    gilroy.index = gilroy.index - pd.Timedelta(7, 'hr')
+    location.index = location.index - pd.Timedelta(7, 'hr')
 
     # Time slices - August 2018 to 2022
-    august1 = gilroy.loc['2018-08-01':'2018-08-31']
-    august2 = gilroy.loc['2019-08-01':'2019-08-31']
-    august3 = gilroy.loc['2020-08-01':'2020-08-31']
-    august4 = gilroy.loc['2021-08-01':'2021-08-31']
+    august1 = location.loc['2018-08-01':'2018-08-31']
+    august2 = location.loc['2019-08-01':'2019-08-31']
+    august3 = location.loc['2020-08-01':'2020-08-31']
+    august4 = location.loc['2021-08-01':'2021-08-31']
 
     # New data frame
     august1 = pd.DataFrame(august1)
@@ -375,13 +390,18 @@ def __(mo, nodes_dropdown, pd, plt, temperature):
 
     plt.xlabel('Date and Time')
     plt.ylabel('Average Temperature') 
-    plt.title('Hourly temp in Gilroy (August 2018)')
-    return august1, august2, august3, august4, gilroy
+    plt.title('Hourly Temperature (August)')
+    return august1, august2, august3, august4, location
 
 
 @app.cell
 def __(mo):
-    mo.md(r"## Averaging the data:")
+    mo.md(
+        r"""
+        ## Averaging the data:
+        Calculating and displaying daily average temperatures for August.
+        """
+    )
     return
 
 
@@ -401,9 +421,9 @@ def __(august1, plt):
 def __(mo):
     mo.md(
         r"""
-        ## Comparing Years - Heat Wave:
+        ## Comparing Years:
 
-        Comparing the years 2018-2022, the visble peak of **2020** displays rise of temperatures from the heatwave.
+        Analyzing the data from years 2018-2022, the peaks in the line graph will displays rise of temperatures from the heatwave.
         """
     )
     return
@@ -424,27 +444,14 @@ def __(august1, august2, august3, august4, mo, plt):
     plt.plot(avg3.values, label='2020', ls=":")
     plt.plot(avg4.values, label='2021')
 
-    plt.gcf().autofmt_xdate() # adjusts x-axis dates
-    mo.mpl.interactive(plt.gcf()) # marimo feature to zoom in and out
+    plt.gcf().autofmt_xdate() 
+    mo.mpl.interactive(plt.gcf()) 
 
     plt.xlabel('Date')
     plt.ylabel('Average Temperature')
     plt.title('Daily Average Temperature (August 2018-2022)')
-    plt.legend() # adds info box
+    plt.legend()
     return avg1, avg2, avg3, avg4
-
-
-@app.cell
-def __(mo):
-    mo.md(r"### Viewing nodes on a global map: Used Google Earth")
-    return
-
-
-@app.cell
-def __():
-    # Opened in Google Earth
-    # latlong.to_csv('latlon_for_google_earth.csv')
-    return
 
 
 if __name__ == "__main__":

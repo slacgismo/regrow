@@ -17,10 +17,11 @@ def __():
     import seaborn as sns
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
-    import utils
     import os, sys
     import numpy as np
-    return mdates, mo, np, os, pd, plt, sns, sys, utils
+    import tornado as tn
+    from pathlib import Path
+    return Path, mdates, mo, np, os, pd, plt, sns, sys, tn
 
 
 @app.cell
@@ -251,33 +252,15 @@ def __(mo):
 
 
 @app.cell
-def __(__file__, pd):
-    # Marimo special feature (_varible), cell-specific identified, pulling from local computer
-    # _fp = "/Users/melody/Documents/REGROW/regrow/data/weather/temperature.csv"
-
-    from pathlib import Path
-
+def __(Path, __file__, pd):
     _fp = Path(__file__).parent / 'temperature.csv'
-
-    # Organizing columns 
     temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
-    return Path, temperature
-
-
-@app.cell
-def __(temperature):
-    temperature
-    return
-
-
-@app.cell
-def __(mo):
-    mo.md(r"## Manipulating the Data")
-    return
+    return temperature,
 
 
 @app.cell
 def __(geocode, nodes, pd):
+    # Manipulating data
     latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
     for node in nodes:
         # key = value
@@ -290,88 +273,18 @@ def __(geocode, nodes, pd):
 
 @app.cell
 def __(temperature):
-    # time slicing
-    temperature.loc["2018-03":"2018-07-15"]
-    return
-
-
-@app.cell
-def __(temperature):
     # Remove column header
-    nodes = temperature.columns.tolist()[1:]
+    nodes = temperature.columns.tolist()
+    nodes
     return nodes,
 
 
 @app.cell
-def __(nodes):
-    nodes
-    return
+def __(mo, nodes):
+    nodes_dropdown = mo.ui.dropdown(nodes, value=nodes[0], label='Select a node:')
 
-
-@app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## Checking nodes convert to location:
-
-        For graphical consistency and accuracy using latitude and longitude data.
-        """
-    )
-    return
-
-
-@app.cell
-def __(geohash):
-    # converting from latlong to nodes
-    geohash(32.23, -115.4)
-    return
-
-
-@app.cell
-def __(geocode, nodes):
-    # converting from nodes to latlong
-    geocode(nodes[0])
-    return
-
-
-@app.cell
-def __(geohash):
-    geohash(36.91, -108.28)
-    return
-
-
-@app.cell
-def __(geocode, geohash, nodes):
-    geohash(*geocode(nodes[0]))
-    return
-
-
-@app.cell
-def __(nodes):
-    # Picked out one specific node
-    code = nodes[0]
-    code
-    return code,
-
-
-@app.cell
-def __(geocode, geohash, nodes):
-    geocode(geohash(*geocode(nodes[0])))
-    return
-
-
-@app.cell
-def __(code, geocode):
-    # Breaking it down by latitude and longitude
-    geocode(code)
-    return
-
-
-@app.cell
-def __(code, geocode, geohash):
-    # Converting latlong back to a node
-    geocode(geohash(*geocode(code)))
-    return
+    nodes_dropdown
+    return nodes_dropdown,
 
 
 @app.cell
@@ -381,9 +294,9 @@ def __(mo):
 
 
 @app.cell
-def __(mo, pd, plt, temperature):
+def __(mo, nodes_dropdown, pd, plt, temperature):
     # Setting a varible, picking one node in New Mexico
-    data_view = temperature[['9r106e']]
+    data_view = temperature[nodes_dropdown.value]
     data_view.index = data_view.index - pd.Timedelta(7, 'hr')
 
     # Plotting the node
@@ -394,7 +307,7 @@ def __(mo, pd, plt, temperature):
 
     plt.xlabel('Year')
     plt.ylabel('Average Temperature')
-    plt.title('Temperature in New Mexico (2018-2022)')
+    plt.title('Temperature (2018-2022)')
     return data_view,
 
 
@@ -437,9 +350,9 @@ def __(mo):
 
 
 @app.cell
-def __(mo, pd, plt, temperature):
+def __(mo, nodes_dropdown, pd, plt, temperature):
     # Location near Gilroy, CA 
-    gilroy = temperature[['9q97v8']]
+    gilroy = temperature[nodes_dropdown.value]
 
     # Adjusting timezone
     gilroy.index = gilroy.index - pd.Timedelta(7, 'hr')
@@ -480,7 +393,7 @@ def __(august1, plt):
 
     plt.xlabel('Date and Time')
     plt.ylabel('Average Temperature')
-    plt.title('Daily Avg Temperature (August 2018)')
+    plt.title('Daily Avg Temperature (August)')
     return gilroy_avg,
 
 

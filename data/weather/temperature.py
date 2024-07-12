@@ -417,7 +417,7 @@ def __(august1, august2, august3, august4, mo, plt):
     avg3 = august3.resample(rule="1D").mean()
     avg4 = august4.resample(rule="1D").mean()
 
-    # Plotting thy data
+    # Plotting the data
     plt.figure(figsize=(12, 6))
     plt.plot(avg1.values, label='2018')
     plt.plot(avg2.values, label='2019')

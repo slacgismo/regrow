@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.6.0"
+__generated_with = "0.1.82"
 app = marimo.App()
 
 
@@ -45,7 +45,9 @@ def __():
     import pandas as pd
     import plotly.express as px
     import plotly.graph_objects as go
-    return go, json, mo, os, pd, px, sys
+    import plotly.io as pio
+    pio.renderers.default = "notebook"
+    return go, json, mo, os, pd, pio, px, sys
 
 
 if __name__ == "__main__":

@@ -22,38 +22,51 @@ index = []
 R_glob = []
 G_glob = []
 
+VERBOSE = False
+def verbose(*args,**kwargs):
+    if not "file" in kwargs:
+        kwargs["file"] = sys.stderr
+    if not "flush" in kwargs:
+        kwargs["flush"] = True
+    if VERBOSE:
+        print("VERBOSE [controllers.py]:",*args,**kwargs)
+
 def on_init():
     """on_init() is called when the simulation first starts up
 
     Return: True on success, False on failure
     """
 
+    # get verbose status
+    global VERBOSE
+    VERBOSE = ( gridlabd.get_global("verbose") == "TRUE" )
+
     # Access a global variable
     loss = gridlabd.get_global("pypower::total_loss")
-    # print("loss:",loss,file=sys.stderr)
+    verbose("loss:",loss,file=sys.stderr)
 
     # T_0 = gridlabd.get_global("starttime")
 
     # Get a list of objects
     objects = gridlabd.get("objects")
-    # print("objects:",objects,file=sys.stderr)
+    verbose("objects:",objects,file=sys.stderr)
 
     # Get the properties of an object
     pp_gen_1 = gridlabd.get_object("pp_gen_1")
-    # print("pp_gen_1:",pp_gen_1,file=sys.stderr)
+    verbose("pp_gen_1:",pp_gen_1,file=sys.stderr)
 
     # Get a single object property
     pp_branch_1_current = gridlabd.get_value("pp_branch_1","current")
-    # print("pp_branch_1_current:",pp_branch_1_current,file=sys.stderr)
+    verbose("pp_branch_1_current:",pp_branch_1_current,file=sys.stderr)
 
     # Set a single object property (handles unit conversion if needed)
     # gridlabd.set_value("pp_gen_1","Pmax","350e3 kW")
 
     # # Direct access to a property
     pp_gen_1_Pmax = gridlabd.property("pp_gen_1","Pmax")
-    # print("pp_gen_1_Pmax:",pp_gen_1_Pmax.get_value(),file=sys.stderr)
+    verbose("pp_gen_1_Pmax:",pp_gen_1_Pmax.get_value(),file=sys.stderr)
     pp_gen_1_Pmax.set_value(340.0)
-    # print("pp_gen_1_Pmax:",pp_gen_1_Pmax.get_value(),file=sys.stderr)
+    verbose("pp_gen_1_Pmax:",pp_gen_1_Pmax.get_value(),file=sys.stderr)
 
     for obj in objects:
         data = gridlabd.get_object(obj)
@@ -82,8 +95,10 @@ def on_init():
             else:
                 raise ValueError(f"Unknown power plant {obj}")
 
-    # print(Tgen,file=sys.stderr)
-    # print(Tbus,file=sys.stderr)
+    verbose(batteries,file=sys.stderr)
+    verbose(solar,file=sys.stderr)
+    verbose(plants,file=sys.stderr)
+
     return True
 
 def on_precommit(data):
@@ -106,15 +121,15 @@ def on_precommit(data):
 def get_network_data(data):
     bus = np.array(data['bus'])
     N = len(bus)
-    # print("bus:",bus,file=sys.stderr)
+    verbose("bus:",bus,file=sys.stderr)
 
     branch = np.array(data['branch'])
     M = len(branch)
-    # print("branch:",branch,file=sys.stderr)
+    verbose("branch:",branch,file=sys.stderr)
 
     # impedance values
     Z = np.array([complex(*x) for x in zip(branch.T[2],branch.T[3])])
-    # print(Z,file=sys.stderr)
+    verbose(Z,file=sys.stderr)
 
     # Real impedance by line
     R = branch.T[2]
@@ -122,18 +137,18 @@ def get_network_data(data):
     # get A - Laplacian matrix
     row = [int(x)-1 for x in branch[:,0]]
     col = [int(x)-1 for x in branch[:,1]]
-    # print(row,col,file=sys.stderr)
+    verbose(row,col,file=sys.stderr)
     global A
     A = sp.sparse.coo_array(([1]*len(row) + [-1]*len(row),(row+col,col+row)),(len(bus),len(bus)))
-    # print("A:",A.toarray(),file=sys.stderr)
+    verbose("A:",A.toarray(),file=sys.stderr)
 
     # get I - weighted line-node incidence matrix
     I = sp.sparse.coo_array((Z,(list(range(M)),row)),shape=(M,N)) - sp.sparse.coo_array((Z,(list(range(M)),col)),shape=(M,N))
-    # print("I:",I.toarray(),file=sys.stderr)
+    verbose("I:",I.toarray(),file=sys.stderr)
 
     # get L - weighted Laplacian
     L = I.T@I
-    # print("L:",L.toarray(),file=sys.stderr)
+    verbose("L:",L.toarray(),file=sys.stderr)
 
     incidence = mpc.adjacency_to_incidence(A)
 
@@ -202,13 +217,13 @@ def solve_mpc(M, N, incidence, t, R):
 def solve_dc_opf(N, data, L, c):
 
     gen = np.array(data['gen'])
-    # print("gen:",gen,file=sys.stderr)
+    verbose("gen:",gen,file=sys.stderr)
 
     bus = np.array(data['bus'])
 
     # get Pd - demand
     Pd = np.array([bus[:,2]])[0] + c
-    # print("Pd:",Pd,file=sys.stderr)
+    verbose("Pd:",Pd,file=sys.stderr)
 
     # get Pg - generation by gentype in columns
     # get constraints, e.g., Pmax, charger/discharge rate max/min, battery capacities (on_init?)
@@ -219,8 +234,8 @@ def solve_dc_opf(N, data, L, c):
         Pg[int(n)] = g
         Pmin[int(n)] = m0
         Pmax[int(n)] = m1
-    # print("Pg:",Pg,file=sys.stderr)
-    # print("Pmax:",Pmax,file=sys.stderr)
+    verbose("Pg:",Pg,file=sys.stderr)
+    verbose("Pmax:",Pmax,file=sys.stderr)
 
     # reference nodes
     ref = [int(x[0]) for x in bus if x[1] == 3]
@@ -246,7 +261,7 @@ def solve_dc_opf(N, data, L, c):
         # TODO: add line flow limits (if any)
     ]
     problem = cp.Problem(objective,constraints)
-    problem.solve(verbose=(gridlabd.get_global("verbose")=="TRUE"))
+    problem.solve(verbose=VERBOSE)
 
     return x, g, problem
 
@@ -255,12 +270,12 @@ def update_generators(x, g, problem):
         gridlabd.warning(f"controllers.on_precommit(t='{gridlabd.get_global('clock')}'): OPF problem is {problem.status}")
     else:
         # post optimal generation dispatch to main solver
-        # print(data["bus"])
+        verbose(data["bus"])
         _g = g.value.round(3).tolist()
-        # print("g.value =",_g,file=sys.stderr)
+        verbose("g.value =",_g,file=sys.stderr)
         for obj,gen in Tgen.items():
             gen["S"].set_value(complex(_g[int(gen["bus"])-1],0))
-            print(f"set {obj} to {gen['S'].get_value()}",file=sys.stderr)
+            verbose(f"set {obj} to {gen['S'].get_value()}",file=sys.stderr)
             # gen["reactive"].set_value(h.value[n])
 
 def on_commit(data):
@@ -280,7 +295,7 @@ def on_sync(data):
     See also: `gridlabd --modhelp pypower` for properties in pypower objects
               (i.e., bus, branch, gen, gencost)
     """
-    # print(f"controllers sync called, data={data}",file=sys.stderr)
+    verbose(f"controllers sync called, data={data}",file=sys.stderr)
     
     return (int(data['t']/3600)+1)*3600 # advance to top of next hour 
 
@@ -291,7 +306,7 @@ def on_term():
     np.array(G_glob).dump("G.npy")
     np.array(R_glob).dump("R.npy")
 
-    # print("on_term()",file=sys.stderr)
+    verbose("on_term()",file=sys.stderr)
 
 def load_control(obj,**kwargs):
     """load_control(obj,**kwargs) is called before on_sync()
@@ -303,7 +318,7 @@ def load_control(obj,**kwargs):
 
     See also: `gridlabd --modhelp pypower:load`
     """
-    # print(obj,": load control update",kwargs,file=sys.stderr)
+    verbose(obj,": load control update",kwargs,file=sys.stderr)
     
     return dict(t=kwargs['t']+3600) # on_sync() return value to meaning of `t`
 
@@ -317,5 +332,5 @@ def powerplant_control(obj,**kwargs):
 
     See also: `gridlabd --modhelp pypower:powerplant`
     """
-    # print(obj,": powerplant control update",kwargs,file=sys.stderr)
+    verbose(obj,": powerplant control update",kwargs,file=sys.stderr)
     return dict(t=kwargs['t']+3600)

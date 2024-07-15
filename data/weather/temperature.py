@@ -9,7 +9,7 @@ def __(mo):
     mo.md(
         r"""
         # REGROW: Temperature Forecasting
-         Study of extreme weather in Western Interconnection (WECC) locations.
+         Study of extreme weather and temperature rises in Western Interconnection (WECC) locations.
         """
     )
     return
@@ -22,7 +22,6 @@ def __():
     import seaborn as sns
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
-
     import os, sys
     import numpy as np
     import tornado as tn
@@ -308,11 +307,7 @@ def __(mo, nodes_dropdown, pd, plt, temperature):
     # Setting a varible, picking one node
     data_view = temperature[nodes_dropdown.value]
     data_view.index = data_view.index - pd.Timedelta(7, 'hr')
-
-    # Plotting the node
     data_view.plot()
-
-    # Converting static grid to zoom-able view
     mo.mpl.interactive(plt.gcf())
 
     plt.xlabel('Year')

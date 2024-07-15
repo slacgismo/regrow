@@ -261,7 +261,7 @@ def __(mo):
 
 @app.cell
 def __(mo):
-    mo.image(src="/Users/melody/Documents/REGROW/weather/wecc_google_earth.png")
+    mo.image(src="/Users/melody/Documents/repos/regrow/data/weather/wecc_google_earth.png")
     return
 
 
@@ -270,9 +270,7 @@ def __(geocode, nodes, pd):
     # Manipulating data
     latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
     for node in nodes:
-        # key = value
         latlong.loc[node] = geocode(node)
-            # arrays, dic.   # functions
     return latlong, node
 
 
@@ -303,17 +301,22 @@ def __(mo, nodes):
 
 
 @app.cell
-def __(mo, nodes_dropdown, pd, plt, temperature):
+def __(heat_map, mo, time_series):
+    mo.hstack([time_series, heat_map])
+    return
+
+
+@app.cell
+def __(nodes_dropdown, pd, plt, temperature):
     # Setting a varible, picking one node
-    data_view = temperature[nodes_dropdown.value]
+    data_view = temperature[[nodes_dropdown.value]]
     data_view.index = data_view.index - pd.Timedelta(7, 'hr')
     data_view.plot()
-    mo.mpl.interactive(plt.gcf())
-
     plt.xlabel('Year')
     plt.ylabel('Average Temperature')
     plt.title('Temperature (2018-2022)')
-    return data_view,
+    time_series = plt.gcf()
+    return data_view, time_series
 
 
 @app.cell
@@ -336,17 +339,12 @@ def __(data_view):
 
 @app.cell
 def __(my_data_array, plt, sns):
-    # Heat map feature! 
-    # gcf - get current figure 
-    # cmap - color map
-
     sns.heatmap(my_data_array, cmap="plasma")
-    plt.gcf()
-
     plt.xlabel('Days')
     plt.ylabel('Hours')
     plt.title('Temperature (2018-2022)')
-    return
+    heat_map = plt.gcf()
+    return heat_map,
 
 
 @app.cell
@@ -367,25 +365,22 @@ def __(mo, nodes_dropdown, pd, plt, temperature):
     # Adjusting timezone
     location.index = location.index - pd.Timedelta(7, 'hr')
 
-    # Time slices - August 2018 to 2022
+    # August 2018 to 2022
     august1 = location.loc['2018-08-01':'2018-08-31']
     august2 = location.loc['2019-08-01':'2019-08-31']
     august3 = location.loc['2020-08-01':'2020-08-31']
     august4 = location.loc['2021-08-01':'2021-08-31']
 
-    # New data frame
     august1 = pd.DataFrame(august1)
     august2 = pd.DataFrame(august2)
     august3 = pd.DataFrame(august3)
     august4 = pd.DataFrame(august4)
 
-    # Graphing
     august1.plot()
-    mo.mpl.interactive(plt.gcf())
-
     plt.xlabel('Date and Time')
     plt.ylabel('Average Temperature') 
     plt.title('Hourly Temperature (August)')
+    mo.mpl.interactive(plt.gcf())
     return august1, august2, august3, august4, location
 
 

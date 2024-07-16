@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.7.3"
+__generated_with = "0.6.26"
 app = marimo.App(width="medium")
 
 
@@ -260,8 +260,9 @@ def __(mo):
 
 
 @app.cell
-def __(mo):
-    mo.image(src="/Users/melody/Documents/repos/regrow/data/weather/wecc_google_earth.png")
+def __(Path, __file__, mo):
+    _img = (Path(__file__).parent / 'wecc_google_earth.png')
+    mo.image(src=f"{_img}")
     return
 
 
@@ -308,7 +309,7 @@ def __(heat_map, mo, time_series):
 
 @app.cell
 def __(nodes_dropdown, pd, plt, temperature):
-    # Setting a varible, picking one node
+    # Time Series of Temperatures (2018-2022)
     data_view = temperature[[nodes_dropdown.value]]
     data_view.index = data_view.index - pd.Timedelta(7, 'hr')
     data_view.plot()
@@ -320,19 +321,8 @@ def __(nodes_dropdown, pd, plt, temperature):
 
 
 @app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ### Heat map of temperatures (2018-2022)
-        A visual representation of daily average temperatures, showing temperature variations over the four-year period.
-        """
-    )
-    return
-
-
-@app.cell
 def __(data_view):
-    # Pulling together axes for heat map. 
+    # Heat Map
     my_data_array = data_view.loc['2018-01-01':'2021-12-30'].values.reshape((24, -1), order='F')
     return my_data_array,
 
@@ -342,7 +332,7 @@ def __(my_data_array, plt, sns):
     sns.heatmap(my_data_array, cmap="plasma")
     plt.xlabel('Days')
     plt.ylabel('Hours')
-    plt.title('Temperature (2018-2022)')
+    plt.title('Heat map of temperatures (2018-2022)')
     heat_map = plt.gcf()
     return heat_map,
 

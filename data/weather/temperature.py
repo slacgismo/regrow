@@ -30,6 +30,149 @@ def __():
 
 
 @app.cell
+def __(Path, __file__, pd):
+    # Loading the Data
+    _fp = Path(__file__).parent / 'temperature.csv'
+    print(_fp)
+    temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
+    return temperature,
+
+
+@app.cell
+def __(mo):
+    mo.md(r"## Viewing nodes on Google Earth:")
+    return
+
+
+@app.cell
+def __(Path, __file__, mo):
+    # Google Earth Snapshot
+    _img = (Path(__file__).parent / 'wecc_google_earth.png')
+    mo.image(src=f"{_img}")
+    return
+
+
+@app.cell
+def __(geocode, nodes, pd):
+    # Manipulating data from nodes to latitude/longitude
+    latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
+    for node in nodes:
+        latlong.loc[node] = geocode(node)
+    return latlong, node
+
+
+@app.cell
+def __(temperature):
+    nodes = temperature.columns.tolist()
+    return nodes,
+
+
+@app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ## Plotting the Data
+        Full time series plot from years 2018-2022.
+        """
+    )
+    return
+
+
+@app.cell
+def __(mo, nodes):
+    # Drop down selection for all nodes, default selection is the first node
+    nodes_dropdown = mo.ui.dropdown(nodes, value=nodes[0], label='Select a node:')
+    nodes_dropdown
+    return nodes_dropdown,
+
+
+@app.cell
+def __(heat_map, mo, time_series):
+    mo.hstack([time_series, heat_map])
+    return
+
+
+@app.cell
+def __(nodes_dropdown, pd, plt, temperature):
+    # Time Series of Temperatures (2018-2022)
+    data_view = temperature[[nodes_dropdown.value]]
+    data_view.index = data_view.index - pd.Timedelta(7, 'hr')
+    data_view.plot()
+    plt.xlabel('Year')
+    plt.ylabel('Average Temperature')
+    plt.title('Temperature (2018-2022)')
+    time_series = plt.gcf()
+    return data_view, time_series
+
+
+@app.cell
+def __(data_view, plt, sns):
+    # Heat Map
+    my_data_array = data_view.loc['2018-01-01':'2021-12-30'].values.reshape((24, -1), order='F')
+    sns.heatmap(my_data_array, cmap="plasma")
+    plt.xlabel('Days')
+    plt.ylabel('Hours')
+    plt.title('Heat map of temperatures (2018-2022)')
+    heat_map = plt.gcf()
+    return heat_map, my_data_array
+
+
+@app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ## Comparing Years:
+
+        Analyzing the data from the month of August in years 2018-2022, the peaks in the line graph will displays rise of temperatures from the heatwave.
+        """
+    )
+    return
+
+
+@app.cell
+def __(nodes_dropdown, pd, temperature):
+    # Adjusting timezone
+    location = temperature[nodes_dropdown.value]
+    location.index = location.index - pd.Timedelta(7, 'hr')
+
+    # Time slicing for August
+    august1 = location.loc['2018-08-01':'2018-08-31']
+    august2 = location.loc['2019-08-01':'2019-08-31']
+    august3 = location.loc['2020-08-01':'2020-08-31']
+    august4 = location.loc['2021-08-01':'2021-08-31']
+
+    august1 = pd.DataFrame(august1)
+    august2 = pd.DataFrame(august2)
+    august3 = pd.DataFrame(august3)
+    august4 = pd.DataFrame(august4)
+    return august1, august2, august3, august4, location
+
+
+@app.cell
+def __(august1, august2, august3, august4, mo, plt):
+    # Plotting all years together
+    avg1 = august1.resample(rule="1D").mean()
+    avg2 = august2.resample(rule="1D").mean()
+    avg3 = august3.resample(rule="1D").mean()
+    avg4 = august4.resample(rule="1D").mean()
+
+    # Plotting the data
+    plt.figure(figsize=(10, 6))
+    plt.plot(avg1.values, label='2018')
+    plt.plot(avg2.values, label='2019')
+    plt.plot(avg3.values, label='2020', ls=":")
+    plt.plot(avg4.values, label='2021')
+
+    plt.xlabel('Date')
+    plt.ylabel('Average Temperature')
+    plt.title('Daily Average Temperature (August 2018-2022)')
+    plt.legend()
+    plt.gcf().autofmt_xdate() 
+    mo.mpl.interactive(plt.gcf()) 
+    return avg1, avg2, avg3, avg4
+
+
+@app.cell
 def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
     #
     # Geographic location encoding/decoding
@@ -242,196 +385,6 @@ def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
         nsrdb_credentials,
         nsrdb_weather,
     )
-
-
-@app.cell
-def __(Path, __file__, pd):
-    # Loading the Data
-    _fp = Path(__file__).parent / 'temperature.csv'
-    print(_fp)
-    temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
-    return temperature,
-
-
-@app.cell
-def __(mo):
-    mo.md(r"## Viewing nodes on Google Earth:")
-    return
-
-
-@app.cell
-def __(Path, __file__, mo):
-    _img = (Path(__file__).parent / 'wecc_google_earth.png')
-    mo.image(src=f"{_img}")
-    return
-
-
-@app.cell
-def __(geocode, nodes, pd):
-    # Manipulating data
-    latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
-    for node in nodes:
-        latlong.loc[node] = geocode(node)
-    return latlong, node
-
-
-@app.cell
-def __(temperature):
-    nodes = temperature.columns.tolist()
-    return nodes,
-
-
-@app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## Plotting the Data
-        Full time series plot from years 2018-2022.
-        """
-    )
-    return
-
-
-@app.cell
-def __(mo, nodes):
-    # Drop down selection for all nodes, default selection is the first node
-    nodes_dropdown = mo.ui.dropdown(nodes, value=nodes[0], label='Select a node:')
-
-    nodes_dropdown
-    return nodes_dropdown,
-
-
-@app.cell
-def __(heat_map, mo, time_series):
-    mo.hstack([time_series, heat_map])
-    return
-
-
-@app.cell
-def __(nodes_dropdown, pd, plt, temperature):
-    # Time Series of Temperatures (2018-2022)
-    data_view = temperature[[nodes_dropdown.value]]
-    data_view.index = data_view.index - pd.Timedelta(7, 'hr')
-    data_view.plot()
-    plt.xlabel('Year')
-    plt.ylabel('Average Temperature')
-    plt.title('Temperature (2018-2022)')
-    time_series = plt.gcf()
-    return data_view, time_series
-
-
-@app.cell
-def __(data_view):
-    # Heat Map
-    my_data_array = data_view.loc['2018-01-01':'2021-12-30'].values.reshape((24, -1), order='F')
-    return my_data_array,
-
-
-@app.cell
-def __(my_data_array, plt, sns):
-    sns.heatmap(my_data_array, cmap="plasma")
-    plt.xlabel('Days')
-    plt.ylabel('Hours')
-    plt.title('Heat map of temperatures (2018-2022)')
-    heat_map = plt.gcf()
-    return heat_map,
-
-
-@app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ### Time Slicing: 
-        Selection of one month of data to analyze.
-        """
-    )
-    return
-
-
-@app.cell
-def __(mo, nodes_dropdown, pd, plt, temperature):
-    location = temperature[nodes_dropdown.value]
-
-    # Adjusting timezone
-    location.index = location.index - pd.Timedelta(7, 'hr')
-
-    # August 2018 to 2022
-    august1 = location.loc['2018-08-01':'2018-08-31']
-    august2 = location.loc['2019-08-01':'2019-08-31']
-    august3 = location.loc['2020-08-01':'2020-08-31']
-    august4 = location.loc['2021-08-01':'2021-08-31']
-
-    august1 = pd.DataFrame(august1)
-    august2 = pd.DataFrame(august2)
-    august3 = pd.DataFrame(august3)
-    august4 = pd.DataFrame(august4)
-
-    august1.plot()
-    plt.xlabel('Date and Time')
-    plt.ylabel('Average Temperature') 
-    plt.title('Hourly Temperature (August)')
-    mo.mpl.interactive(plt.gcf())
-    return august1, august2, august3, august4, location
-
-
-@app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## Averaging the data:
-        Calculating and displaying daily average temperatures for August.
-        """
-    )
-    return
-
-
-@app.cell
-def __(august1, plt):
-    # Using portion of Data frame, to take date and time, then average it 
-    gilroy_avg = august1.resample(rule="1D").mean()
-    gilroy_avg.plot()
-
-    plt.xlabel('Date and Time')
-    plt.ylabel('Average Temperature')
-    plt.title('Daily Avg Temperature (August)')
-    return gilroy_avg,
-
-
-@app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## Comparing Years:
-
-        Analyzing the data from years 2018-2022, the peaks in the line graph will displays rise of temperatures from the heatwave.
-        """
-    )
-    return
-
-
-@app.cell
-def __(august1, august2, august3, august4, mo, plt):
-    # Plotting all years together
-    avg1 = august1.resample(rule="1D").mean()
-    avg2 = august2.resample(rule="1D").mean()
-    avg3 = august3.resample(rule="1D").mean()
-    avg4 = august4.resample(rule="1D").mean()
-
-    # Plotting the data
-    plt.figure(figsize=(12, 6))
-    plt.plot(avg1.values, label='2018')
-    plt.plot(avg2.values, label='2019')
-    plt.plot(avg3.values, label='2020', ls=":")
-    plt.plot(avg4.values, label='2021')
-
-    plt.gcf().autofmt_xdate() 
-    mo.mpl.interactive(plt.gcf()) 
-
-    plt.xlabel('Date')
-    plt.ylabel('Average Temperature')
-    plt.title('Daily Average Temperature (August 2018-2022)')
-    plt.legend()
-    return avg1, avg2, avg3, avg4
 
 
 if __name__ == "__main__":

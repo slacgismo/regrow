@@ -185,40 +185,6 @@ def __(august1, august2, august3, august4, mo, plt):
 
 
 @app.cell
-def __(mo):
-    mo.md(
-        """
-        ## Case Study:
-        Chosen locations along the WECC: (1) San Mateo, California
-        """
-    )
-    return
-
-
-@app.cell
-def __(Path, __file__, mo):
-    # Google Earth map of selected locations
-    _img = (Path(__file__).parent / 'san_mateo_map.png')
-    mo.image(src=f"{_img}")
-    return
-
-
-@app.cell
-def __():
-    # Case Study - Predicted vs. Actual Data in San Mateo, CA (9q8yqr)
-
-    return
-
-
-@app.cell
-def __(Path, __file__, pd):
-    # Read historical csv files into a dataframe
-    _df1 = Path(__file__).parent / 'san_mateo_2010.csv'
-    san_mateo_2010 = pd.read_csv(_df1)
-    return san_mateo_2010,
-
-
-@app.cell
 def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
     #
     # Geographic location encoding/decoding

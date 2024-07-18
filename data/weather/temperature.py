@@ -33,7 +33,6 @@ def __():
 def __(Path, __file__, pd):
     # Loading the Data
     _fp = Path(__file__).parent / 'temperature.csv'
-    print(_fp)
     temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
     return temperature,
 
@@ -150,26 +149,73 @@ def __(nodes_dropdown, pd, temperature):
 
 @app.cell
 def __(august1, august2, august3, august4, mo, plt):
-    # Plotting all years together
-    avg1 = august1.resample(rule="1D").mean()
-    avg2 = august2.resample(rule="1D").mean()
-    avg3 = august3.resample(rule="1D").mean()
-    avg4 = august4.resample(rule="1D").mean()
+    # Calculated average daily temperatures
+    avg_daily_2018 = august1.resample(rule="1D").mean()
+    avg_daily_2019 = august2.resample(rule="1D").mean()
+    avg_daily_2020 = august3.resample(rule="1D").mean()
+    avg_daily_2021 = august4.resample(rule="1D").mean()
+
+    # Average daily temperatures for non-heatwave years
+    avg_daily_non_heatwave = (avg_daily_2018 + avg_daily_2019 + avg_daily_2021) / 3
+
+    # Calculating the residual
+    residual = avg_daily_2020 - avg_daily_non_heatwave
 
     # Plotting the data
-    plt.figure(figsize=(10, 6))
-    plt.plot(avg1.values, label='2018')
-    plt.plot(avg2.values, label='2019')
-    plt.plot(avg3.values, label='2020', ls=":")
-    plt.plot(avg4.values, label='2021')
+    plt.figure(figsize=(9, 5))
+    plt.plot(avg_daily_2018.values, label='2018')
+    plt.plot(avg_daily_2019.values, label='2019')
+    plt.plot(avg_daily_2020.values, label='2020', ls=":")
+    plt.plot(avg_daily_2021.values, label='2021')
 
     plt.xlabel('Date')
     plt.ylabel('Average Temperature')
     plt.title('Daily Average Temperature (August 2018-2022)')
     plt.legend()
     plt.gcf().autofmt_xdate() 
-    mo.mpl.interactive(plt.gcf()) 
-    return avg1, avg2, avg3, avg4
+    mo.mpl.interactive(plt.gcf())
+    return (
+        avg_daily_2018,
+        avg_daily_2019,
+        avg_daily_2020,
+        avg_daily_2021,
+        avg_daily_non_heatwave,
+        residual,
+    )
+
+
+@app.cell
+def __(mo):
+    mo.md(
+        """
+        ## Case Study:
+        Chosen locations along the WECC: (1) San Mateo, California
+        """
+    )
+    return
+
+
+@app.cell
+def __(Path, __file__, mo):
+    # Google Earth map of selected locations
+    _img = (Path(__file__).parent / 'san_mateo_map.png')
+    mo.image(src=f"{_img}")
+    return
+
+
+@app.cell
+def __():
+    # Case Study - Predicted vs. Actual Data in San Mateo, CA (9q8yqr)
+
+    return
+
+
+@app.cell
+def __(Path, __file__, pd):
+    # Read historical csv files into a dataframe
+    _df1 = Path(__file__).parent / 'san_mateo_2010.csv'
+    san_mateo_2010 = pd.read_csv(_df1)
+    return san_mateo_2010,
 
 
 @app.cell

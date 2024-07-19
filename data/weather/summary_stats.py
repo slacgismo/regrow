@@ -9,9 +9,7 @@ def __(mo):
     mo.md(
         """
         # REGROW: Magnitude of Heat Waves
-        Study of extreme weather and temperature rises in Western Interconnection (WECC) locations. Measuring the magnitude of a heatwave using summary statistics.
-
-        Goal: Calculate residual using non-heat wave years minus aggeragate daily and hour.
+        Study of extreme weather and temperature rises in Western Interconnection (WECC) locations by measuring the maginitude of temperature deviation over four years.
         """
     )
     return
@@ -55,7 +53,13 @@ def __(temperature):
 
 @app.cell
 def __(mo):
-    mo.md("## Case study (1) viewed on Google Earth:")
+    mo.md(
+        """
+        ## Case Study of Temperature Deviation:
+
+        Analyzing temperature data in Southern California over several years to compare typical August temperature fluctuations with extreme weather events by identifying patterns and deviations.
+        """
+    )
     return
 
 
@@ -68,8 +72,8 @@ def __(Path, __file__, mo):
 
 
 @app.cell
-def __(mo, np, pd, plt, temperature):
-    # Case Study
+def __(pd, temperature):
+    # Case study of location in SoCal
     location1 = temperature[['9qj152']]
     location1.index = location1.index - pd.Timedelta(7, 'hr')
 
@@ -79,62 +83,18 @@ def __(mo, np, pd, plt, temperature):
     df_august_2020 = location1.loc['2020-08-01':'2020-08-31']
     df_august_2021 = location1.loc['2021-08-01':'2021-08-31']
 
-    # Monthly Data Frame 
+    # Monthly Data Frames 
     df_august_2018 = pd.DataFrame(df_august_2018)
     df_august_2019 = pd.DataFrame(df_august_2019)
     df_august_2020 = pd.DataFrame(df_august_2020)
     df_august_2021 = pd.DataFrame(df_august_2021)
 
-    # grouping by hour
+    # Adding 'hour' column for grouping
     df_august_2018["hour"] = df_august_2018.index.hour
-
-    # averaging a specific hour from each day of the month (e.g. all 1ams)
-    df_august_2018.groupby("hour").agg({"9qj152":"std"})
-    # df_august_2019.groupby("hour").agg({"9qj152":"std"})
-    # df_august_2020.groupby("hour").agg({"9qj152":"std"})
-    # df_august_2021.groupby("hour").agg({"9qj152":"std"})
-
-    # Calculated standard deviation daily temperatures
-    avg_daily_2018 = df_august_2018.resample(rule="1D").std()
-    avg_daily_2019 = df_august_2019.resample(rule="1D").std()
-    avg_daily_2020 = df_august_2020.resample(rule="1D").std()
-    avg_daily_2021 = df_august_2021.resample(rule="1D").std()
-
-    avg_daily_2018["day"] = avg_daily_2018.index.day
-    avg_daily_2019["day"] = avg_daily_2019.index.day
-    avg_daily_2020["day"] = avg_daily_2020.index.day
-    avg_daily_2021["day"] = avg_daily_2021.index.day
-
-    [ np.std(avg_daily_2018["9qj152"].values), np.std(avg_daily_2019["9qj152"].values), np.std(avg_daily_2020["9qj152"].values), np.std(avg_daily_2021["9qj152"].values)]
-
-    base_line_temp = (avg_daily_2018["9qj152"].values + avg_daily_2019["9qj152"].values + avg_daily_2021["9qj152"].values)/3
-
-    plt.plot(avg_daily_2018.index.day, base_line_temp, label="baseline")
-    plt.plot(avg_daily_2018.index.day, avg_daily_2020["9qj152"], label="heatwave")
-
-
-    # Combining data for non-heatwave years
-    # df_combined = pd.concat([df_august_2018, df_august_2019, df_august_2021])
-    # temp_combined = df_combined.iloc[,1]
-
-    # Average daily temperatures for non-heatwave years
-    # mean_variance = variance(df_combined)
-
-    # Residual = (heatwave) - (mean abs deviation of non-heatwave years)
-    # residual = avg_daily_2020 - avg_daily_non_heatwave
-
-    plt.xlabel('Days in August')
-    plt.ylabel('Temp. Deviation')
-    plt.title('Temperature Deviation: Heatwave vs. Normal')
-    plt.legend()
-    plt.gcf().autofmt_xdate() 
-    mo.mpl.interactive(plt.gcf())
+    df_august_2019["hour"] = df_august_2019.index.hour
+    df_august_2020["hour"] = df_august_2020.index.hour
+    df_august_2021["hour"] = df_august_2021.index.hour
     return (
-        avg_daily_2018,
-        avg_daily_2019,
-        avg_daily_2020,
-        avg_daily_2021,
-        base_line_temp,
         df_august_2018,
         df_august_2019,
         df_august_2020,
@@ -144,15 +104,113 @@ def __(mo, np, pd, plt, temperature):
 
 
 @app.cell
-def __(temp_combined):
-    temp_combined
+def __(mo):
+    mo.md("## Daily Standard Deviation")
     return
 
 
 @app.cell
-def __(df_combined):
-    df_combined
+def __(
+    df_august_2018,
+    df_august_2019,
+    df_august_2020,
+    df_august_2021,
+    mo,
+    np,
+    plt,
+):
+    # Calculated daily standard deviation for each year
+    std_daily_2018 = df_august_2018.resample(rule="1D").std()
+    std_daily_2019 = df_august_2019.resample(rule="1D").std()
+    std_daily_2020 = df_august_2020.resample(rule="1D").std()
+    std_daily_2021 = df_august_2021.resample(rule="1D").std()
+
+    # Creating baseline temperature deviation with mean standard deviation of non-heat-wave years
+    baseline_daily_temp = (std_daily_2018["9qj152"].values + std_daily_2019["9qj152"].values + std_daily_2021["9qj152"].values)/3
+
+    # Residual (2020 - baseline)
+    residual_daily = std_daily_2020["9qj152"].values - baseline_daily_temp
+
+    std_daily_2018["day"] = std_daily_2018.index.day
+    std_daily_2019["day"] = std_daily_2019.index.day
+    std_daily_2020["day"] = std_daily_2020.index.day
+    std_daily_2021["day"] = std_daily_2021.index.day
+
+    # Overall standard deviation of daily average temperatures for each year
+    [np.std(std_daily_2018["9qj152"].values), 
+     np.std(std_daily_2019["9qj152"].values), 
+     np.std(std_daily_2020["9qj152"].values), 
+     np.std(std_daily_2021["9qj152"].values)]
+
+    # Plotting Daily Standard Deviation to compare temperature fluctuations 
+    plt.figure(figsize=(10, 5))
+    plt.plot(std_daily_2018.index.day, baseline_daily_temp, label="baseline")
+    plt.plot(std_daily_2018.index.day, std_daily_2020["9qj152"], label="heatwave")
+    plt.xlabel('Days in August')
+    plt.ylabel('Standard Temp Deviation (°C)')
+    plt.title('Daily Temperature Standard Deviation')
+    plt.legend()
+    mo.mpl.interactive(plt.gcf())
+    return (
+        baseline_daily_temp,
+        residual_daily,
+        std_daily_2018,
+        std_daily_2019,
+        std_daily_2020,
+        std_daily_2021,
+    )
+
+
+@app.cell
+def __(residual_daily):
+    residual_daily.mean()
     return
+
+
+@app.cell
+def __(mo):
+    mo.md("## Hourly Standard Deviation")
+    return
+
+
+@app.cell
+def __(
+    df_august_2018,
+    df_august_2019,
+    df_august_2020,
+    df_august_2021,
+    mo,
+    plt,
+):
+    # Hourly standard deviation: Averaging a specific hour from each date of the month (e.g. all 1ams)
+    hourly_std_2018 = df_august_2018.groupby("hour").agg({"9qj152":"std"})
+    hourly_std_2019 = df_august_2019.groupby("hour").agg({"9qj152":"std"})
+    hourly_std_2020 = df_august_2020.groupby("hour").agg({"9qj152":"std"})
+    hourly_std_2021 = df_august_2021.groupby("hour").agg({"9qj152":"std"})
+
+    # Creating a baseline by averaging the hourly standard deviations of non-heatwave years
+    baseline_hourly_std = (hourly_std_2018 + hourly_std_2019 + hourly_std_2021) / 3
+
+    # Calculating the residuals (2020 hourly std - baseline hourly std)
+    hourly_residuals = hourly_std_2020 - baseline_hourly_std
+
+    # Plotting Hourly Standard Deviation
+    plt.figure(figsize=(10, 5))
+    plt.plot(hourly_std_2018.index, baseline_hourly_std, label='Baseline (2018, 2019, 2021)')
+    plt.plot(hourly_std_2018.index, hourly_std_2020, label='2020')
+    plt.xlabel('Hour of the Day')
+    plt.ylabel('Temperature Standard Deviation (°C)')
+    plt.title('Hourly Temperature Standard Deviation')
+    plt.legend() 
+    mo.mpl.interactive(plt.gcf())
+    return (
+        baseline_hourly_std,
+        hourly_residuals,
+        hourly_std_2018,
+        hourly_std_2019,
+        hourly_std_2020,
+        hourly_std_2021,
+    )
 
 
 @app.cell

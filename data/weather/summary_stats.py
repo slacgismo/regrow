@@ -7,9 +7,11 @@ app = marimo.App(width="medium")
 @app.cell
 def __(mo):
     mo.md(
-        r"""
-        # REGROW: Temperature Forecasting
-         Study of extreme weather and temperature rises in Western Interconnection (WECC) locations.
+        """
+        # REGROW: Magnitude of Heat Waves
+        Study of extreme weather and temperature rises in Western Interconnection (WECC) locations. Measuring the magnitude of a heatwave using summary statistics.
+
+        Goal: Calculate residual using non-heat wave years minus aggeragate daily and hour.
         """
     )
     return
@@ -19,14 +21,13 @@ def __(mo):
 def __():
     import marimo as mo
     import pandas as pd
-    import seaborn as sns
     import matplotlib.pyplot as plt
     import matplotlib.dates as mdates
     import os, sys
     import numpy as np
     import tornado as tn
     from pathlib import Path
-    return Path, mdates, mo, np, os, pd, plt, sns, sys, tn
+    return Path, mdates, mo, np, os, pd, plt, sys, tn
 
 
 @app.cell
@@ -35,20 +36,6 @@ def __(Path, __file__, pd):
     _fp = Path(__file__).parent / 'temperature.csv'
     temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
     return temperature,
-
-
-@app.cell
-def __(mo):
-    mo.md(r"## Viewing nodes on Google Earth:")
-    return
-
-
-@app.cell
-def __(Path, __file__, mo):
-    # Google Earth Snapshot
-    _img = (Path(__file__).parent / 'wecc_google_earth.png')
-    mo.image(src=f"{_img}")
-    return
 
 
 @app.cell
@@ -68,107 +55,104 @@ def __(temperature):
 
 @app.cell
 def __(mo):
-    mo.md(
-        r"""
-        ## Plotting the Data
-        Full time series plot from years 2018-2022.
-        """
-    )
+    mo.md("## Case study (1) viewed on Google Earth:")
     return
 
 
 @app.cell
-def __(mo, nodes):
-    # Drop down selection for all nodes, default selection is the first node
-    nodes_dropdown = mo.ui.dropdown(nodes, value=nodes[0], label='Select a node:')
-    nodes_dropdown
-    return nodes_dropdown,
-
-
-@app.cell
-def __(heat_map, mo, time_series):
-    mo.hstack([time_series, heat_map])
+def __(Path, __file__, mo):
+    # Google Earth Snapshot
+    _img = (Path(__file__).parent / 'case_study1.png')
+    mo.image(src=f"{_img}")
     return
 
 
 @app.cell
-def __(nodes_dropdown, pd, plt, temperature):
-    # Time Series of Temperatures (2018-2022)
-    data_view = temperature[[nodes_dropdown.value]]
-    data_view.index = data_view.index - pd.Timedelta(7, 'hr')
-    data_view.plot()
-    plt.xlabel('Year')
-    plt.ylabel('Average Temperature')
-    plt.title('Temperature (2018-2022)')
-    time_series = plt.gcf()
-    return data_view, time_series
+def __(mo, np, pd, plt, temperature):
+    # Case Study
+    location1 = temperature[['9qj152']]
+    location1.index = location1.index - pd.Timedelta(7, 'hr')
+
+    # Filtering data for August
+    df_august_2018 = location1.loc['2018-08-01':'2018-08-31']
+    df_august_2019 = location1.loc['2019-08-01':'2019-08-31']
+    df_august_2020 = location1.loc['2020-08-01':'2020-08-31']
+    df_august_2021 = location1.loc['2021-08-01':'2021-08-31']
+
+    # Monthly Data Frame 
+    df_august_2018 = pd.DataFrame(df_august_2018)
+    df_august_2019 = pd.DataFrame(df_august_2019)
+    df_august_2020 = pd.DataFrame(df_august_2020)
+    df_august_2021 = pd.DataFrame(df_august_2021)
+
+    # grouping by hour
+    df_august_2018["hour"] = df_august_2018.index.hour
+
+    # averaging a specific hour from each day of the month (e.g. all 1ams)
+    df_august_2018.groupby("hour").agg({"9qj152":"std"})
+    # df_august_2019.groupby("hour").agg({"9qj152":"std"})
+    # df_august_2020.groupby("hour").agg({"9qj152":"std"})
+    # df_august_2021.groupby("hour").agg({"9qj152":"std"})
+
+    # Calculated standard deviation daily temperatures
+    avg_daily_2018 = df_august_2018.resample(rule="1D").std()
+    avg_daily_2019 = df_august_2019.resample(rule="1D").std()
+    avg_daily_2020 = df_august_2020.resample(rule="1D").std()
+    avg_daily_2021 = df_august_2021.resample(rule="1D").std()
+
+    avg_daily_2018["day"] = avg_daily_2018.index.day
+    avg_daily_2019["day"] = avg_daily_2019.index.day
+    avg_daily_2020["day"] = avg_daily_2020.index.day
+    avg_daily_2021["day"] = avg_daily_2021.index.day
+
+    [ np.std(avg_daily_2018["9qj152"].values), np.std(avg_daily_2019["9qj152"].values), np.std(avg_daily_2020["9qj152"].values), np.std(avg_daily_2021["9qj152"].values)]
+
+    base_line_temp = (avg_daily_2018["9qj152"].values + avg_daily_2019["9qj152"].values + avg_daily_2021["9qj152"].values)/3
+
+    plt.plot(avg_daily_2018.index.day, base_line_temp, label="baseline")
+    plt.plot(avg_daily_2018.index.day, avg_daily_2020["9qj152"], label="heatwave")
 
 
-@app.cell
-def __(data_view, plt, sns):
-    # Heat Map
-    my_data_array = data_view.loc['2018-01-01':'2021-12-30'].values.reshape((24, -1), order='F')
-    sns.heatmap(my_data_array, cmap="plasma")
-    plt.xlabel('Days')
-    plt.ylabel('Hours')
-    plt.title('Heat map of temperatures (2018-2022)')
-    heat_map = plt.gcf()
-    return heat_map, my_data_array
+    # Combining data for non-heatwave years
+    # df_combined = pd.concat([df_august_2018, df_august_2019, df_august_2021])
+    # temp_combined = df_combined.iloc[,1]
 
+    # Average daily temperatures for non-heatwave years
+    # mean_variance = variance(df_combined)
 
-@app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## Comparing Years:
+    # Residual = (heatwave) - (mean abs deviation of non-heatwave years)
+    # residual = avg_daily_2020 - avg_daily_non_heatwave
 
-        Analyzing the data from the month of August in years 2018-2022, the peaks in the line graph will displays rise of temperatures from the heatwave.
-        """
-    )
-    return
-
-
-@app.cell
-def __(nodes_dropdown, pd, temperature):
-    # Adjusting timezone
-    location = temperature[nodes_dropdown.value]
-    location.index = location.index - pd.Timedelta(7, 'hr')
-
-    # Time slicing for August
-    august1 = location.loc['2018-08-01':'2018-08-31']
-    august2 = location.loc['2019-08-01':'2019-08-31']
-    august3 = location.loc['2020-08-01':'2020-08-31']
-    august4 = location.loc['2021-08-01':'2021-08-31']
-
-    august1 = pd.DataFrame(august1)
-    august2 = pd.DataFrame(august2)
-    august3 = pd.DataFrame(august3)
-    august4 = pd.DataFrame(august4)
-    return august1, august2, august3, august4, location
-
-
-@app.cell
-def __(august1, august2, august3, august4, mo, plt):
-    # Calculated average daily temperatures
-    avg_daily_2018 = august1.resample(rule="1D").mean()
-    avg_daily_2019 = august2.resample(rule="1D").mean()
-    avg_daily_2020 = august3.resample(rule="1D").mean()
-    avg_daily_2021 = august4.resample(rule="1D").mean()
-
-    # Plotting the data
-    plt.figure(figsize=(9, 5))
-    plt.plot(avg_daily_2018.values, label='2018')
-    plt.plot(avg_daily_2019.values, label='2019')
-    plt.plot(avg_daily_2020.values, label='2020', ls=":")
-    plt.plot(avg_daily_2021.values, label='2021')
-
-    plt.xlabel('Date')
-    plt.ylabel('Average Temperature')
-    plt.title('Daily Average Temperature (August 2018-2022)')
+    plt.xlabel('Days in August')
+    plt.ylabel('Temp. Deviation')
+    plt.title('Temperature Deviation: Heatwave vs. Normal')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return avg_daily_2018, avg_daily_2019, avg_daily_2020, avg_daily_2021
+    return (
+        avg_daily_2018,
+        avg_daily_2019,
+        avg_daily_2020,
+        avg_daily_2021,
+        base_line_temp,
+        df_august_2018,
+        df_august_2019,
+        df_august_2020,
+        df_august_2021,
+        location1,
+    )
+
+
+@app.cell
+def __(temp_combined):
+    temp_combined
+    return
+
+
+@app.cell
+def __(df_combined):
+    df_combined
+    return
 
 
 @app.cell

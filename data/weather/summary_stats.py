@@ -6,7 +6,12 @@ app = marimo.App(width="medium")
 
 @app.cell
 def __(mo):
-    mo.md("# REGROW: Magnitude of Heat Waves")
+    mo.md(
+        """
+        # REGROW: Magnitude of Heat Waves
+        Calculating residual using non-heat wave years minus 2020, the year of the heat wave.
+        """
+    )
     return
 
 
@@ -48,37 +53,15 @@ def __(temperature):
 
 @app.cell
 def __(mo):
-    mo.md(
-        """
-        ## Case study:
-        Location in socal
-        """
-    )
+    mo.md("## Viewing nodes on Google Earth:")
     return
 
 
 @app.cell
 def __(Path, __file__, mo):
     # Google Earth Snapshot
-    _img = (Path(__file__).parent / 'case_study1.png')
+    _img = (Path(__file__).parent / 'wecc_google_earth.png')
     mo.image(src=f"{_img}")
-    return
-
-
-@app.cell
-def __(mo):
-    mo.md(
-        """
-        ## 6 Graphs: 
-        - Average (hourly, daily)
-        - Actual (hourly, daily) 
-        - Residual (hourly, daily) done
-
-        Hourly data keep it normal since the temperatures are measured by hour.
-
-        Daily is the mean/average of the temperatures over a month.
-        """
-    )
     return
 
 
@@ -92,7 +75,7 @@ def __(mo, nodes):
 
 @app.cell
 def __(nodes_dropdown, pd, temperature):
-    # Case study of location in SoCal
+    # Select any node
     location = temperature[[nodes_dropdown.value]]
     location.index = location.index - pd.Timedelta(7, 'hr')
 
@@ -421,7 +404,7 @@ def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
     )
 
 
-@app.cell(disabled=True)
+@app.cell
 def __(
     august_2018_df,
     august_2019_df,
@@ -460,9 +443,9 @@ def __(
     plt.plot(days_in_august, hourly_temps_2020[:31], label='2020', linestyle=':')
     plt.plot(days_in_august, hourly_temps_2021[:31], label='2021')
 
-    plt.xlabel('Date and Time')
+    plt.xlabel('Days in August')
     plt.ylabel('Hourly Temperature (°C)') 
-    plt.title('Hourly Temperature (August 2018-2022)')
+    plt.title('Hourly Temperature')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
@@ -477,6 +460,31 @@ def __(
         hourly_temps_2020,
         hourly_temps_2021,
     )
+
+
+@app.cell
+def __(
+    avg_daily_2018,
+    avg_daily_2019,
+    avg_daily_2020,
+    avg_daily_2021,
+    mo,
+    plt,
+):
+    # Daily Average Temperature (August 2018-2022)
+    plt.figure(figsize=(9, 5))
+    plt.plot(avg_daily_2018.values, label='2018')
+    plt.plot(avg_daily_2019.values, label='2019')
+    plt.plot(avg_daily_2020.values, label='2020', ls=":")
+    plt.plot(avg_daily_2021.values, label='2021')
+
+    plt.xlabel('Date')
+    plt.ylabel('Average Temperature')
+    plt.title('Daily Average Temperature (August 2018-2022)')
+    plt.legend()
+    plt.gcf().autofmt_xdate() 
+    mo.mpl.interactive(plt.gcf())
+    return
 
 
 if __name__ == "__main__":

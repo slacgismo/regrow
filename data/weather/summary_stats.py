@@ -75,118 +75,45 @@ def __(mo, nodes):
 
 @app.cell
 def __(nodes_dropdown, pd, temperature):
-    # Select any node
     location = temperature[[nodes_dropdown.value]]
     location.index = location.index - pd.Timedelta(7, 'hr')
 
-    # Filtering data for August
-    august_2018_df = location.loc['2018-08-01':'2018-08-31']
-    august_2019_df = location.loc['2019-08-01':'2019-08-31']
-    august_2020_df = location.loc['2020-08-01':'2020-08-31']
-    august_2021_df = location.loc['2021-08-01':'2021-08-31']
-
-    # Monthly Data Frames 
-    august_2018_df = pd.DataFrame(august_2018_df)
-    august_2019_df = pd.DataFrame(august_2019_df)
-    august_2020_df = pd.DataFrame(august_2020_df)
-    august_2021_df = pd.DataFrame(august_2021_df)
-
-    # Daily Average Temperature
-    avg_daily_2018 = august_2018_df.resample(rule="1D").mean()
-    avg_daily_2019 = august_2019_df.resample(rule="1D").mean()
-    avg_daily_2020 = august_2020_df.resample(rule="1D").mean()
-    avg_daily_2021 = august_2021_df.resample(rule="1D").mean()
-    return (
-        august_2018_df,
-        august_2019_df,
-        august_2020_df,
-        august_2021_df,
-        avg_daily_2018,
-        avg_daily_2019,
-        avg_daily_2020,
-        avg_daily_2021,
-        location,
-    )
+    def analyze_baseline(df, node):
+        actual = df.loc['2020-08-01':'2020-08-31'].values
+        predicted = (df.loc['2018-08-01':'2018-08-31'].values 
+                     + df.loc['2019-08-01':'2019-08-31'].values 
+                     + df.loc['2021-08-01':'2021-08-31'].values) / 3
+        return actual - predicted
+    return analyze_baseline, location
 
 
 @app.cell
-def __(
-    avg_daily_2018,
-    avg_daily_2019,
-    avg_daily_2020,
-    avg_daily_2021,
-    mo,
-    nodes_dropdown,
-    pd,
-    plt,
-):
-    daily_2018_df = pd.DataFrame(avg_daily_2018)
-    daily_2019_df = pd.DataFrame(avg_daily_2019)
-    daily_2020_df = pd.DataFrame(avg_daily_2020)
-    daily_2021_df = pd.DataFrame(avg_daily_2021)
+def __(analyze_baseline, location, mo, nodes_dropdown, plt):
+    daily_residual = analyze_baseline(location.resample(rule="1D").mean(), nodes_dropdown.value)
 
-    # Calculating residual
-    predicted_daily = (daily_2018_df[[nodes_dropdown.value]].values + daily_2019_df[[nodes_dropdown.value]].values + daily_2021_df[[nodes_dropdown.value]].values) / 3
-    residual_daily = daily_2020_df[[nodes_dropdown.value]].values - predicted_daily
-
-    # Plotting the data
     plt.figure(figsize=(9, 5))
-    plt.plot(residual_daily, label='residual')
-
+    plt.plot(daily_residual)
     plt.xlabel('Days in August')
     plt.ylabel('Average Temperature (°C)')
     plt.title('Daily Residual Temperature')
-    plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return (
-        daily_2018_df,
-        daily_2019_df,
-        daily_2020_df,
-        daily_2021_df,
-        predicted_daily,
-        residual_daily,
-    )
+    return daily_residual,
 
 
 @app.cell
-def __(
-    august_2018_df,
-    august_2019_df,
-    august_2020_df,
-    august_2021_df,
-    mo,
-    nodes_dropdown,
-    pd,
-    plt,
-):
-    hourly_2018 = pd.DataFrame(august_2018_df)
-    hourly_2019 = pd.DataFrame(august_2019_df)
-    hourly_2020 = pd.DataFrame(august_2020_df)
-    hourly_2021 = pd.DataFrame(august_2021_df)
+def __(analyze_baseline, location, mo, nodes_dropdown, plt):
+    hourly_residual = analyze_baseline(location, nodes_dropdown.value)
+    plt.plot(hourly_residual)
 
-    # Calculating residual
-    predicted_hourly = (hourly_2018[[nodes_dropdown.value]].values + hourly_2019[[nodes_dropdown.value]].values + hourly_2021[[nodes_dropdown.value]].values) / 3
-    residual_hourly = hourly_2020[[nodes_dropdown.value]].values - predicted_hourly
-
-    # Plotting the data
     plt.figure(figsize=(9, 5))
-    plt.plot(residual_hourly, label='residual')
-
+    plt.plot(hourly_residual)
     plt.xlabel('Hours in August')
     plt.ylabel('Average Temperature (°C)')
     plt.title('Hourly Residual Temperature')
-    plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return (
-        hourly_2018,
-        hourly_2019,
-        hourly_2020,
-        hourly_2021,
-        predicted_hourly,
-        residual_hourly,
-    )
+    return hourly_residual,
 
 
 @app.cell
@@ -402,89 +329,6 @@ def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
         nsrdb_credentials,
         nsrdb_weather,
     )
-
-
-@app.cell
-def __(
-    august_2018_df,
-    august_2019_df,
-    august_2020_df,
-    august_2021_df,
-    mo,
-    nodes_dropdown,
-    np,
-    plt,
-):
-    # Create a common x-axis for the days in August
-    days_in_august = np.arange(1, 32)
-
-    # Extract hourly temperature values
-    hourly_temps_2018 = august_2018_df[[nodes_dropdown.value]].values
-    hourly_temps_2019 = august_2019_df[[nodes_dropdown.value]].values
-    hourly_temps_2020 = august_2020_df[[nodes_dropdown.value]].values
-    hourly_temps_2021 = august_2021_df[[nodes_dropdown.value]].values
-
-    days_august_2018 = august_2018_df.index.day
-    days_august_2019 = august_2019_df.index.day
-    days_august_2020 = august_2020_df.index.day
-    days_august_2021 = august_2021_df.index.day
-
-    # # Graphing
-    # plt.figure(figsize=(9, 5))
-    # plt.plot(df_august_2018.values, label='2018')
-    # plt.plot(df_august_2019.values, label='2019')
-    # plt.plot(df_august_2020.values, label='2020', ls=":")
-    # plt.plot(df_august_2021.values, label='2021')
-
-
-    # Ensure that each line corresponds to the appropriate number of data points for each day
-    plt.plot(days_in_august, hourly_temps_2018[:31], label='2018')
-    plt.plot(days_in_august, hourly_temps_2019[:31], label='2019')
-    plt.plot(days_in_august, hourly_temps_2020[:31], label='2020', linestyle=':')
-    plt.plot(days_in_august, hourly_temps_2021[:31], label='2021')
-
-    plt.xlabel('Days in August')
-    plt.ylabel('Hourly Temperature (°C)') 
-    plt.title('Hourly Temperature')
-    plt.legend()
-    plt.gcf().autofmt_xdate() 
-    mo.mpl.interactive(plt.gcf())
-    return (
-        days_august_2018,
-        days_august_2019,
-        days_august_2020,
-        days_august_2021,
-        days_in_august,
-        hourly_temps_2018,
-        hourly_temps_2019,
-        hourly_temps_2020,
-        hourly_temps_2021,
-    )
-
-
-@app.cell
-def __(
-    avg_daily_2018,
-    avg_daily_2019,
-    avg_daily_2020,
-    avg_daily_2021,
-    mo,
-    plt,
-):
-    # Daily Average Temperature (August 2018-2022)
-    plt.figure(figsize=(9, 5))
-    plt.plot(avg_daily_2018.values, label='2018')
-    plt.plot(avg_daily_2019.values, label='2019')
-    plt.plot(avg_daily_2020.values, label='2020', ls=":")
-    plt.plot(avg_daily_2021.values, label='2021')
-
-    plt.xlabel('Date')
-    plt.ylabel('Average Temperature')
-    plt.title('Daily Average Temperature (August 2018-2022)')
-    plt.legend()
-    plt.gcf().autofmt_xdate() 
-    mo.mpl.interactive(plt.gcf())
-    return
 
 
 if __name__ == "__main__":

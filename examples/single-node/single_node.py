@@ -126,6 +126,7 @@ def __(get_range, mo, set_range):
         steps=[1, 7, 31, 92, 365],
         value=get_range(),
         on_change=set_range,
+        show_value=True,
         debounce=True,
     )
     return range_ui,
@@ -140,19 +141,28 @@ def __(get_day, get_range, mo, range_ui, set_day, start, stop):
         steps=list(range(0,int(stop.as_unit("s").value/3600e9/24) - int(start.as_unit("s").value/3600e9/24),range_ui.value)),
         value=get_day() % get_range(),
         on_change=set_day,
+        show_value=True,
         debounce=True,
     )
     return day_ui,
 
 
 @app.cell
-def __(get_day, mo, range_ui, set_day):
+def __(get_day, mo, range_ui, set_day, start, stop):
     #
     # Time range navigation button
     #
-    prev_ui = mo.ui.button(label="Back",on_click=lambda x:set_day(get_day()-range_ui.value))#max(get_day()-range_ui.value,int(start.as_unit("s").value/3600e9/24))))
-    next_ui = mo.ui.button(label="Next",on_click=lambda x:set_day(get_day()+range_ui.value))#min(get_day()+range_ui.value),int(stop.as_unit("s").value/3600e9/24-range_ui.value)))
-    return next_ui, prev_ui
+    def set_prev(_):
+        _prev = max(0,get_day()-range_ui.value)
+        set_day(_prev)
+    def set_next(_):
+        _max = int(stop.as_unit("s").value/3600e9/24-range_ui.value) - int(start.as_unit("s").value/3600e9/24)
+        _next = min(_max,get_day()+range_ui.value)
+        set_day(_next)
+    prev_ui = mo.ui.button(label="Back",on_click=set_prev)
+    next_ui = mo.ui.button(label="Next",on_click=set_next)
+
+    return next_ui, prev_ui, set_next, set_prev
 
 
 @app.cell
@@ -188,7 +198,7 @@ def __(
 
 
 @app.cell
-def __(G, data, day_ui, get_location, mo, plt, range_ui):
+def __(G, data, datasets, get_day, get_location, get_range, mo, plt):
     #
     # Tabs
     #
@@ -196,13 +206,13 @@ def __(G, data, day_ui, get_location, mo, plt, range_ui):
     _opts = dict(grid=True, figsize=(30, 10), xlabel="Date/Time")
     for _x, _y in data.items():
         plt.figure()
-        _units = "$^o$C" if _x in ["temperature"] else "MW"
-        _tabs[_x.title()] = _y[int(day_ui.value*24) : int(day_ui.value + range_ui.value)*24][get_location()].plot(
+        _units = datasets[_x]["unit"]
+        _tabs[_x.title()] = _y[int(get_day()*24) : int(get_day() + get_range())*24][get_location()].plot(
             ylabel=f"{_x.title()} [{_units}]", **_opts
         )
     plt.figure()
-    _tabs["Dispatch"] = G[int(day_ui.value*24) : int(day_ui.value + range_ui.value) * 24][G > 0].plot(ylabel=f"Dispatch [MW]", label="OK", **_opts)
-    plt.plot(G[int(day_ui.value*24) : int(day_ui.value + range_ui.value) * 24][G <= 0], "xr", label="Outage")
+    _tabs["Dispatch"] = G[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Dispatch [MW]", label="OK", **_opts)
+    plt.plot(G[int(get_day()*24) : int(get_day() + get_range()) * 24][G <= 0], "xr", label="Outage")
     mo.ui.tabs(_tabs, lazy=True)
     return
 

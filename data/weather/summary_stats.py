@@ -6,12 +6,7 @@ app = marimo.App(width="medium")
 
 @app.cell
 def __(mo):
-    mo.md(
-        """
-        # REGROW: Magnitude of Heat Waves
-        Calculating residual using non-heat wave years minus 2020, the year of the heat wave.
-        """
-    )
+    mo.md("# REGROW: Magnitude of Heat Waves")
     return
 
 
@@ -78,6 +73,7 @@ def __(nodes_dropdown, pd, temperature):
     location = temperature[[nodes_dropdown.value]]
     location.index = location.index - pd.Timedelta(7, 'hr')
 
+    # Temperature Residual Function
     def analyze_baseline(df, node):
         actual = df.loc['2020-08-01':'2020-08-31'].values
         predicted = (df.loc['2018-08-01':'2018-08-31'].values 
@@ -88,14 +84,26 @@ def __(nodes_dropdown, pd, temperature):
 
 
 @app.cell
+def __(mo):
+    mo.md("### August 16 through 19 in 2020, excessive heat was forecasted consistently for California.")
+    return
+
+
+@app.cell
 def __(analyze_baseline, location, mo, nodes_dropdown, plt):
     daily_residual = analyze_baseline(location.resample(rule="1D").mean(), nodes_dropdown.value)
 
     plt.figure(figsize=(9, 5))
+
+    # August 16 through 19, excessive heat was forecasted consistently for California.
+    plt.axvline(x = 16, color = 'r', label = 'start of heatwave')
+    plt.axvline(x = 19, color = 'b', label = 'end of heatwave')
+
     plt.plot(daily_residual)
     plt.xlabel('Days in August')
     plt.ylabel('Average Temperature (°C)')
     plt.title('Daily Residual Temperature')
+    plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
     return daily_residual,
@@ -107,10 +115,14 @@ def __(analyze_baseline, location, mo, nodes_dropdown, plt):
     plt.plot(hourly_residual)
 
     plt.figure(figsize=(9, 5))
+    plt.axvline(x = 16*24, color = 'r', label = 'start of heatwave')
+    plt.axvline(x = 19*24, color = 'b', label = 'end of heatwave')
+
     plt.plot(hourly_residual)
     plt.xlabel('Hours in August')
     plt.ylabel('Average Temperature (°C)')
     plt.title('Hourly Residual Temperature')
+    plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
     return hourly_residual,

@@ -137,13 +137,15 @@ def __(get_day, get_range, mo, range_ui, set_day, start, stop):
     #
     # Day slider
     #
-    day_ui = mo.ui.slider(
-        steps=list(range(0,int(stop.as_unit("s").value/3600e9/24) - int(start.as_unit("s").value/3600e9/24),range_ui.value)),
-        value=get_day() % get_range(),
+    _steps = list(range(0,int(stop.as_unit("s").value/3600e9/24) - int(start.as_unit("s").value/3600e9/24),range_ui.value))
+    day_ui = mo.md("") if len(_steps)<2 else mo.md(f" (day {mo.ui.slider(
+        steps=_steps,
+        value=(get_day() // get_range())*get_range(),
         on_change=set_day,
         show_value=True,
         debounce=True,
-    )
+        # disable = len(_steps)<2,
+    )})")
     return day_ui,
 
 
@@ -161,7 +163,6 @@ def __(get_day, mo, range_ui, set_day, start, stop):
         set_day(_next)
     prev_ui = mo.ui.button(label="Back",on_click=set_prev)
     next_ui = mo.ui.button(label="Next",on_click=set_next)
-
     return next_ui, prev_ui, set_next, set_prev
 
 
@@ -186,9 +187,8 @@ def __(
             location_ui,
             mo.md(f"Window by {get_range()}"),
             range_ui,
-            mo.md(f"day(s), starting on {start+pd.Timedelta(days=get_day())} (day"),
+            mo.md(f"day(s), starting on {start+pd.Timedelta(days=get_day())}"),
             day_ui,
-            mo.md(")"),
             prev_ui,
             next_ui,
         ],

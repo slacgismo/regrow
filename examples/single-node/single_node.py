@@ -170,7 +170,6 @@ def __(get_day, mo, range_ui, set_day, start, stop):
 def __(
     day_ui,
     get_day,
-    get_range,
     location_ui,
     mo,
     next_ui,
@@ -185,7 +184,7 @@ def __(
     mo.hstack(
         [
             location_ui,
-            mo.md(f"Window by {get_range()}"),
+            mo.md(f"Window by"),
             range_ui,
             mo.md(f"day(s), starting on {start+pd.Timedelta(days=get_day())}"),
             day_ui,
@@ -198,7 +197,18 @@ def __(
 
 
 @app.cell
-def __(G, data, datasets, get_day, get_location, get_range, mo, plt):
+def __(
+    G,
+    data,
+    datasets,
+    get_day,
+    get_location,
+    get_range,
+    mo,
+    np,
+    pd,
+    plt,
+):
     #
     # Tabs
     #
@@ -211,8 +221,10 @@ def __(G, data, datasets, get_day, get_location, get_range, mo, plt):
             ylabel=f"{_x.title()} [{_units}]", **_opts
         )
     plt.figure()
-    _tabs["Dispatch"] = G[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Dispatch [MW]", label="OK", **_opts)
+    _tabs["Generation"] = G[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Generation dispatch [MW]", label="OK", **_opts)
     plt.plot(G[int(get_day()*24) : int(get_day() + get_range()) * 24][G <= 0], "xr", label="Outage")
+    plt.figure()
+    _tabs["Storage"] = pd.DataFrame(np.zeros(len(G.index)),index=G.index).plot(ylabel="Storage dispatch [MW]",**_opts)
     mo.ui.tabs(_tabs, lazy=True)
     return
 

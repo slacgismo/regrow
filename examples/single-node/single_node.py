@@ -11,8 +11,9 @@ def __():
     #
     DATA_SOURCE = "../../data/geodata"
     DATA_FILES = ["temperature","solar","wind","baseload","heating","cooling","total"]
+    DATA_GROUPS = {"Weather":["temperature","solar","wind"],"Power":["baseload","heating","cooling","total"]}
     DEFAULT_LOCATION = "9q9wtp"
-    return DATA_FILES, DATA_SOURCE, DEFAULT_LOCATION
+    return DATA_FILES, DATA_GROUPS, DATA_SOURCE, DEFAULT_LOCATION
 
 
 @app.cell
@@ -197,35 +198,99 @@ def __(
 
 
 @app.cell
+def __():
+    #
+    # Tabs
+    #
+    # _tabs = {}
+    # _opts = dict(grid=True, figsize=(30, 10), xlabel="Date/Time")
+    # for _g in DATA_GROUPS:
+    #     _tabs[_g] = {}
+    #     for _x in DATA_GROUPS[_g]:
+    #         _y = data[_x]
+    #         plt.figure()
+    #         _units = datasets[_x]["unit"]
+    #         _tabs[_g][_x.title()] = _y[int(get_day()*24) : int(get_day() + get_range())*24][get_location()].plot(
+    #             ylabel=f"{_x.title()} [{_units}]", **_opts
+    #         )
+    #     _tabs[_g] = mo.ui.tabs(_tabs[_g],lazy=True)
+        
+    # plt.figure()
+    # _tabs["Dispatch"] = {}
+    # _tabs["Dispatch"]["Generation"] = G[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Generation dispatch [MW]", label="OK", **_opts)
+    # plt.plot(G[int(get_day()*24) : int(get_day() + get_range()) * 24][G <= 0], "xr", label="Outage")
+
+    # plt.figure()
+    # _tabs["Dispatch"]["Storage"] = pd.DataFrame(np.zeros(len(G.index)),index=G.index).plot(ylabel="Storage dispatch [MW]",**_opts)
+
+    # _tabs["Dispatch"] = mo.ui.tabs(_tabs["Dispatch"],lazy=True)
+    # mo.ui.tabs(_tabs)
+    return
+
+
+@app.cell
 def __(
-    G,
+    DATA_GROUPS,
     data,
     datasets,
     get_day,
     get_location,
     get_range,
     mo,
-    np,
-    pd,
     plt,
 ):
-    #
-    # Tabs
-    #
-    _tabs = {}
     _opts = dict(grid=True, figsize=(30, 10), xlabel="Date/Time")
-    for _x, _y in data.items():
+    _tabs = {}
+    for _x in DATA_GROUPS["Weather"]:
+        _y = data[_x]
         plt.figure()
         _units = datasets[_x]["unit"]
         _tabs[_x.title()] = _y[int(get_day()*24) : int(get_day() + get_range())*24][get_location()].plot(
             ylabel=f"{_x.title()} [{_units}]", **_opts
         )
+        
+    mo.vstack([mo.md("# Weather"),mo.ui.tabs(_tabs,lazy=True)])
+    return
+
+
+@app.cell
+def __(
+    DATA_GROUPS,
+    data,
+    datasets,
+    get_day,
+    get_location,
+    get_range,
+    mo,
+    plt,
+):
+    _opts = dict(grid=True, figsize=(30, 10), xlabel="Date/Time")
+    _tabs = {}
+    for _x in DATA_GROUPS["Power"]:
+        _y = data[_x]
+        plt.figure()
+        _units = datasets[_x]["unit"]
+        _tabs[_x.title()] = _y[int(get_day()*24) : int(get_day() + get_range())*24][get_location()].plot(
+            ylabel=f"{_x.title()} [{_units}]", **_opts
+        )
+        
+    mo.vstack([mo.md("# Load"),mo.ui.tabs(_tabs,lazy=True)])
+    return
+
+
+@app.cell
+def __(G, get_day, get_range, mo, np, pd, plt):
+    _opts = dict(grid=True, figsize=(30, 10), xlabel="Date/Time")
+    _tabs = {}
+
     plt.figure()
     _tabs["Generation"] = G[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Generation dispatch [MW]", label="OK", **_opts)
     plt.plot(G[int(get_day()*24) : int(get_day() + get_range()) * 24][G <= 0], "xr", label="Outage")
+
     plt.figure()
     _tabs["Storage"] = pd.DataFrame(np.zeros(len(G.index)),index=G.index).plot(ylabel="Storage dispatch [MW]",**_opts)
-    mo.ui.tabs(_tabs, lazy=True)
+
+    mo.vstack([mo.md("# Dispatch"),mo.ui.tabs(_tabs,lazy=True)])
     return
 
 

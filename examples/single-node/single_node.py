@@ -55,8 +55,10 @@ def __(data, get_location, pd):
     #
     L = sum([data[x][get_location()] for x in ["baseload","cooling","heating"]])  # loads 
     R = sum([data[x][get_location()] for x in ["solar","wind"]])  # renewables 
-    G = pd.DataFrame(data=L - R, index=L.index)
-    return G, L, R
+    G = pd.DataFrame(data=L-R, index=L.index)
+    Q = G.copy() # storage
+    Q[get_location()] = 0
+    return G, L, Q, R
 
 
 @app.cell
@@ -198,37 +200,6 @@ def __(
 
 
 @app.cell
-def __():
-    #
-    # Tabs
-    #
-    # _tabs = {}
-    # _opts = dict(grid=True, figsize=(30, 10), xlabel="Date/Time")
-    # for _g in DATA_GROUPS:
-    #     _tabs[_g] = {}
-    #     for _x in DATA_GROUPS[_g]:
-    #         _y = data[_x]
-    #         plt.figure()
-    #         _units = datasets[_x]["unit"]
-    #         _tabs[_g][_x.title()] = _y[int(get_day()*24) : int(get_day() + get_range())*24][get_location()].plot(
-    #             ylabel=f"{_x.title()} [{_units}]", **_opts
-    #         )
-    #     _tabs[_g] = mo.ui.tabs(_tabs[_g],lazy=True)
-        
-    # plt.figure()
-    # _tabs["Dispatch"] = {}
-    # _tabs["Dispatch"]["Generation"] = G[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Generation dispatch [MW]", label="OK", **_opts)
-    # plt.plot(G[int(get_day()*24) : int(get_day() + get_range()) * 24][G <= 0], "xr", label="Outage")
-
-    # plt.figure()
-    # _tabs["Dispatch"]["Storage"] = pd.DataFrame(np.zeros(len(G.index)),index=G.index).plot(ylabel="Storage dispatch [MW]",**_opts)
-
-    # _tabs["Dispatch"] = mo.ui.tabs(_tabs["Dispatch"],lazy=True)
-    # mo.ui.tabs(_tabs)
-    return
-
-
-@app.cell
 def __(
     DATA_GROUPS,
     data,
@@ -279,7 +250,7 @@ def __(
 
 
 @app.cell
-def __(G, get_day, get_range, mo, np, pd, plt):
+def __(G, Q, get_day, get_range, mo, plt):
     _opts = dict(grid=True, figsize=(30, 10), xlabel="Date/Time")
     _tabs = {}
 
@@ -288,7 +259,7 @@ def __(G, get_day, get_range, mo, np, pd, plt):
     plt.plot(G[int(get_day()*24) : int(get_day() + get_range()) * 24][G <= 0], "xr", label="Outage")
 
     plt.figure()
-    _tabs["Storage"] = pd.DataFrame(np.zeros(len(G.index)),index=G.index).plot(ylabel="Storage dispatch [MW]",**_opts)
+    _tabs["Storage"] = Q[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Generation dispatch [MW]", label="OK", **_opts)
 
     mo.vstack([mo.md("# Dispatch"),mo.ui.tabs(_tabs,lazy=True)])
     return

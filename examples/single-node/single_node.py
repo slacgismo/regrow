@@ -231,6 +231,7 @@ def __(
         _tabs[_x.title()] = _y[int(get_day()*24) : int(get_day() + get_range())*24][get_location()].plot(
             ylabel=f"{_x.title()} [{_units}]", **_opts
         )
+        _tabs[_x.title()].grid('on',which='minor',axis='x')
         
     mo.vstack([mo.md("# Weather"),mo.ui.tabs(_tabs,lazy=True)])
     return
@@ -256,6 +257,7 @@ def __(
         _tabs[_x.title()] = _y[int(get_day()*24) : int(get_day() + get_range())*24][get_location()].plot(
             ylabel=f"{_x.title()} [{_units}]", **_opts
         )
+        _tabs[_x.title()].grid('on',which='minor',axis='x')
         
     mo.vstack([mo.md("# Load"),mo.ui.tabs(_tabs,lazy=True)])
     return
@@ -269,9 +271,11 @@ def __(G, Q, get_day, get_range, mo, plt):
     plt.figure()
     _tabs["Generation"] = G[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Generation dispatch [MW]", label="OK", **_opts)
     plt.plot(G[int(get_day()*24) : int(get_day() + get_range()) * 24][G <= 0], "xr", label="Outage")
+    plt.grid('on',which='minor',axis='x')
 
     plt.figure()
     _tabs["Storage"] = Q[int(get_day()*24) : int(get_day() + get_range()) * 24][G > 0].plot(ylabel=f"Generation dispatch [MW]", label="OK", **_opts)
+    plt.grid('on',which='minor',axis='x')
 
     mo.vstack([mo.md("# Dispatch"),mo.ui.tabs(_tabs,lazy=True)])
     return

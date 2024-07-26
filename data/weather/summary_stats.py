@@ -85,7 +85,12 @@ def __(nodes_dropdown, pd, temperature):
 
 @app.cell
 def __(mo):
-    mo.md("### August 16 through 19 in 2020, excessive heat was forecasted consistently for California.")
+    mo.md(
+        """
+        ### August 16 through 19 in 2020, excessive heat was forecasted consistently for California.
+        Graphs display a slight drop in temperature before the temperature peaks displaying cimate oscillation.
+        """
+    )
     return
 
 
@@ -110,6 +115,15 @@ def __(analyze_baseline, location, mo, nodes_dropdown, plt):
 
 
 @app.cell
+def __(daily_residual, mo):
+    daily_std = daily_residual.std()
+    max_daily_deviation = daily_std.max().round(3)
+
+    mo.md(f"Max Daily Deviation: {max_daily_deviation}")
+    return daily_std, max_daily_deviation
+
+
+@app.cell
 def __(analyze_baseline, location, mo, nodes_dropdown, plt):
     hourly_residual = analyze_baseline(location, nodes_dropdown.value)
     plt.plot(hourly_residual)
@@ -120,12 +134,21 @@ def __(analyze_baseline, location, mo, nodes_dropdown, plt):
 
     plt.plot(hourly_residual)
     plt.xlabel('Hours in August')
-    plt.ylabel('Average Temperature (°C)')
+    plt.ylabel('Temperature (°C)')
     plt.title('Hourly Residual Temperature')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
     return hourly_residual,
+
+
+@app.cell
+def __(hourly_residual, mo):
+    hourly_std = hourly_residual.std()
+    max_hourly_deviation = hourly_residual.max().round(3)
+
+    mo.md(f"Max Hourly Deviation: {max_hourly_deviation}")
+    return hourly_std, max_hourly_deviation
 
 
 @app.cell

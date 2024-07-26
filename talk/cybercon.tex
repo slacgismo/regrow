@@ -128,7 +128,7 @@ Stephen Boyd\inst{1} \and
 \EIT
 \end{frame}
 
-\begin{frame}{Research pillar I: dataset curation}
+\begin{frame}{Dataset curation and grid modeling}
 \begin{columns}
 	\begin{column}{0.42\textwidth}
 		\begin{figure}
@@ -140,7 +140,7 @@ Stephen Boyd\inst{1} \and
 		\BIT
 		\item curate datasets covering historical abnormal weather patterns
 		\item obtain multidimensional data covering grid conditions, renewable generation, and weather
-		\item \textbf{example datasets:} \\
+		\item \textbf{example datasets} \\
 		\hspace{12mm} $-$ NREL PVFleets \\
 		\hspace{12mm} $-$ NREL 144-bus model of WECC electrical grid\\
 		\hspace{12mm} $-$ NOAA extreme weather\\
@@ -149,7 +149,7 @@ Stephen Boyd\inst{1} \and
 \end{columns}
 \end{frame}
 
-\begin{frame}{Research pillar II: risk modeling}
+\begin{frame}{Risk modeling}
 \begin{columns}
 	\begin{column}{0.55\textwidth}
 		\begin{figure}
@@ -161,16 +161,16 @@ Stephen Boyd\inst{1} \and
 		\BIT
 		\item develop risk models of renewable generator underperformance and outages
 		\item capture correlations between generators and ambient meteorological conditions
-		\item make a “nightmare scenario generator”
+		\item make a `nightmare scenario generator'
 		\item figure shows estimated quantiles for power generation of a residential PV system
 		\EIT
 	\end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Research pillar III: grid modeling}
+\begin{frame}{Robust control}
 \BIT
-\item model predictive control (MPC) consisting of: \\
+\item model predictive control (MPC) consisting of \\
 \hspace{12mm} $-$ \textbf{forecast:} predict stochastic future values \\
 \hspace{12mm} $-$ \textbf{plan:} solve optimization problem assuming forecasts are correct \\
 \hspace{12mm} $-$ \textbf{execute:} take first action in plan \\
@@ -181,7 +181,7 @@ Stephen Boyd\inst{1} \and
 \EIT
 \end{frame}
 
-\begin{frame}{Robust MPC}
+\begin{frame}{Multi-forecast MPC}
 \begin{columns}
 	\begin{column}{0.65\textwidth}
 		\begin{figure}
@@ -191,9 +191,8 @@ Stephen Boyd\inst{1} \and
 	\end{column}
 	\begin{column}{0.35\textwidth}
 		\BIT
-		\item handle probabilistic forecasts
-		\item balance multiple divergent forecasts using multi-forecast model predictive control
-		\item can be tuned using historical data as well as future forecasts
+		\item incorporate uncertainty and information patterns via multiple scenarios
+		\item can be conditioned on historical and future information 
 		\item figure shows net load forecast for Rhode Island
 		\EIT
 	\end{column}
@@ -244,23 +243,19 @@ can be implemented in only a few lines of code
 \end{frame}
 
 
-\begin{frame}{Prescient example}
-\begin{columns}
-	\begin{column}{0.65\textwidth}
-		\begin{figure}
-			\centering
-			%\includegraphics[width=\columnwidth]{./figures/marginal_quantile_forecasts.pdf}
-		\end{figure}
-	\end{column}
-	\begin{column}{0.35\textwidth}
-		\BIT
-		\item start with a \textbf{prescient} model (full knowledge)
-		\item provides a benchmark for MPC performance
-		\item try causal model by replacing actual data with forecasts
-		\item figure shows optimal charging policy for a battery
-		\EIT
-	\end{column}
-\end{columns}
+\begin{frame}{Impact}
+\BIT
+\item \textbf{current paradigm:} we need fossil energy 
+sources for grid resilience during extreme weather events
+\item \textbf{hypothesis:} extreme weather 
+events are not a barrier to large-scale renewable integration
+provided that we have the right planning tools
+\item \textbf{potential benefits:}
+enable high-penetration of renewables and decarbonize the grid
+\item \textbf{transfer of knowledge:}
+use well-known techniques from finance and portfolio optimization
+to mitigate risks in the energy sector
+\EIT
 \end{frame}
 	
 

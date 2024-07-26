@@ -2,3 +2,4 @@ marimo
 pandas
 numpy
 matplotlib
+requests

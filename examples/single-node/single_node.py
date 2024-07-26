@@ -103,19 +103,31 @@ def __(DEFAULT_LOCATION, mo):
 
 
 @app.cell
-def __(data, datasets, get_location, mo, set_location):
+def __(DATA_SOURCE, os, pd):
+    #
+    # Location names
+    #
+    counties = pd.read_csv(os.path.join(DATA_SOURCE,"..","counties.csv"),index_col="geocode")
+
+    return counties,
+
+
+@app.cell
+def __(counties, data, datasets, mo, set_location, utils):
     #
     # Choose location
     #
     locations = sorted(list(
         set.intersection(*[set(data[x].columns[1:]) for x in datasets])
     ))
+    _options = dict([(f"{x} ({counties.loc[utils.nearest(x,counties.index)].county})",x) for x in locations])
+    _index = dict([(y,x) for x,y in _options.items()])
     location_ui = mo.ui.dropdown(
         label="Location:",
-        value=get_location(),
         on_change=set_location,
-        options=locations,
-        allow_select_none=False,
+        options=_options, # locations,
+        # value=get_location(), #utils.nearest(get_location(),counties.index),
+        # allow_select_none=False,
     )
     return location_ui, locations
 
@@ -276,7 +288,10 @@ def __():
     import numpy as np
     import matplotlib.pyplot as plt
     from collections.abc import Iterable
-    return Iterable, mo, np, os, pd, plt, sys
+    sys.path.append("../../data")
+    import requests
+    import utils
+    return Iterable, mo, np, os, pd, plt, requests, sys, utils
 
 
 if __name__ == "__main__":

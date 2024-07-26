@@ -113,7 +113,7 @@ def __(DATA_SOURCE, os, pd):
 
 
 @app.cell
-def __(counties, data, datasets, mo, set_location, utils):
+def __(counties, data, datasets, get_location, mo, set_location, utils):
     #
     # Choose location
     #
@@ -126,8 +126,8 @@ def __(counties, data, datasets, mo, set_location, utils):
         label="Location:",
         on_change=set_location,
         options=_options, # locations,
-        # value=get_location(), #utils.nearest(get_location(),counties.index),
-        # allow_select_none=False,
+        value=_index[get_location()],
+        allow_select_none=False,
     )
     return location_ui, locations
 

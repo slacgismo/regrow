@@ -283,6 +283,41 @@ def __(G, Q, get_day, get_range, mo, plt):
 
 
 @app.cell
+def __(get_location, json, mo, utils):
+    #
+    # Model data
+    #
+    with open("../../model/wecc240.json") as fh:
+        _glm = json.load(fh)
+        assert(_glm["application"]=="gridlabd")
+        assert(_glm["version"]>="4.3.10")
+    _objects = _glm["objects"]
+
+    _latlons = dict([(x,(float(y["latitude"]),float(y["longitude"]))) for x,y in _objects.items() if y["class"] in ["bus"]])
+    _geocodes = dict([(utils.geohash(*y),x) for x,y in _latlons.items()])
+    _nearest = _geocodes[utils.nearest(get_location(),_geocodes.keys())]
+
+    _node = [x for x,y in _objects.items() if x == _nearest]
+    _gens = [x for x,y in _objects.items() if y["class"] == "powerplant" and y["parent"] in _node]
+    _loads = [x for x,y in _objects.items() if y["class"] == "load" and y["parent"] in _node]
+    _lines = [x for x,y in _objects.items() if y["class"] == "branch" and (y["to"] in _node or y["from"] in _node)]
+    model = dict(nodes=dict([(x,_objects[x]) for x in _node]),
+                 generators=dict([(x,_objects[x]) for x in _gens]),
+                 loads=dict([(x,_objects[x]) for x in _loads]),
+                 lines=dict([(x,_objects[x]) for x in _lines]),
+                )
+    mo.md(f"""**Bus name**: {", ".join(_node)}
+
+    **Loads**: {", ".join(_loads)}
+
+    **Generators**: {", ".join(_gens)}
+
+    **Import lines**: {", ".join(_lines)}
+    """)
+    return fh, model
+
+
+@app.cell
 def __():
     #
     # Modules
@@ -296,7 +331,8 @@ def __():
     sys.path.append("../../data")
     import requests
     import utils
-    return Iterable, mo, np, os, pd, plt, requests, sys, utils
+    import json
+    return Iterable, json, mo, np, os, pd, plt, requests, sys, utils
 
 
 if __name__ == "__main__":

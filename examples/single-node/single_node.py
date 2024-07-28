@@ -236,15 +236,20 @@ def __(get_location, json, mo, utils):
                  loads=dict([(x,_objects[x]) for x in _loads]),
                  lines=dict([(x,_objects[x]) for x in _lines]),
                 )
+    node_name = list(model["nodes"].keys())[0] # might have to search for one that has the load
+    baseKV = float(model["nodes"][node_name]["baseKV"].split()[0])
+    line_cap = sum([y if y>0 else 1000/baseKV for y in [float(_objects[x]["rateA"].split()[0]) for x in _lines]])
+    gens_cap = sum([float(_objects[x]["summer_capacity"].split()[0]) for x in _gens])
+    load_cap = sum([float(_objects[x]["S"].split()[0]) for x in _gens])
     mo.md(f"""**Bus name**: {", ".join(_node)}
 
-    **Loads**: {", ".join(_loads)}
+    **Loads**: {load_cap:.1f} MW ({", ".join(_loads)})
 
-    **Generators**: {", ".join(_gens)}
+    **Generators**: {gens_cap:.1f} MW ({", ".join(_gens)})
 
-    **Import lines**: {", ".join(_lines)}
+    **Import lines**: {line_cap:.1f} MW ({", ".join(_lines)})
     """)
-    return fh, model
+    return baseKV, fh, gens_cap, line_cap, load_cap, model, node_name
 
 
 @app.cell
@@ -268,7 +273,7 @@ def __(
             ylabel=f"{_x.title()} [{_units}]", **_opts
         )
         _tabs[_x.title()].grid('on',which='minor',axis='x')
-        
+
     mo.vstack([mo.md("# Weather"),mo.ui.tabs(_tabs,lazy=True)])
     return
 
@@ -294,7 +299,7 @@ def __(
             ylabel=f"{_x.title()} [{_units}]", **_opts
         )
         _tabs[_x.title()].grid('on',which='minor',axis='x')
-        
+
     mo.vstack([mo.md("# Load"),mo.ui.tabs(_tabs,lazy=True)])
     return
 

@@ -240,7 +240,7 @@ def __(get_location, json, mo, utils):
     baseKV = float(model["nodes"][node_name]["baseKV"].split()[0])
     line_cap = sum([y if y>0 else 1000/baseKV for y in [float(_objects[x]["rateA"].split()[0]) for x in _lines]])
     gens_cap = sum([float(_objects[x]["summer_capacity"].split()[0]) for x in _gens])
-    load_cap = sum([float(_objects[x]["S"].split()[0]) for x in _gens])
+    load_cap = sum([complex(_objects[x]["S"].split()[0]) for x in _gens])
     mo.md(f"""**Bus name**: {", ".join(_node)}
 
     **Loads**: {load_cap:.1f} MW ({", ".join(_loads)})

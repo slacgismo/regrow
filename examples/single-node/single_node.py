@@ -240,16 +240,43 @@ def __(get_location, json, mo, utils):
     baseKV = float(model["nodes"][node_name]["baseKV"].split()[0])
     line_cap = sum([y if y>0 else 1000/baseKV for y in [float(_objects[x]["rateA"].split()[0]) for x in _lines]])
     gens_cap = sum([float(_objects[x]["summer_capacity"].split()[0]) for x in _gens])
-    load_cap = sum([complex(_objects[x]["S"].split()[0]) for x in _gens])
+    load_cap = sum([complex(_objects[x]["S"].split()[0]).real for x in _gens])
+
+    get_load,set_load = mo.state(load_cap)
+    load_ui = mo.ui.slider(value=get_load().real,start=0,stop=999,step=1,on_change=set_load,debounce=True,show_value=True)
+
+    get_gens,set_gens = mo.state(gens_cap)
+    gens_ui = mo.ui.slider(value=get_gens(),start=0,stop=999,step=1,on_change=set_gens,debounce=True,show_value=True)
+
+    get_line,set_line = mo.state(line_cap)
+    line_ui = mo.ui.slider(value=get_line(),start=0,stop=999,step=1,on_change=set_line,debounce=True,show_value=True)
+
     mo.md(f"""**Bus name**: {", ".join(_node)}
 
-    **Loads**: {load_cap:.1f} MW ({", ".join(_loads)})
+    **Loads**: {load_ui} MW ({", ".join(_loads)})
 
-    **Generators**: {gens_cap:.1f} MW ({", ".join(_gens)})
+    **Generators**: {gens_ui} MW ({", ".join(_gens)})
 
-    **Import lines**: {line_cap:.1f} MW ({", ".join(_lines)})
+    **Imports**: {line_ui} MW ({", ".join(_lines)})
     """)
-    return baseKV, fh, gens_cap, line_cap, load_cap, model, node_name
+    return (
+        baseKV,
+        fh,
+        gens_cap,
+        gens_ui,
+        get_gens,
+        get_line,
+        get_load,
+        line_cap,
+        line_ui,
+        load_cap,
+        load_ui,
+        model,
+        node_name,
+        set_gens,
+        set_line,
+        set_load,
+    )
 
 
 @app.cell

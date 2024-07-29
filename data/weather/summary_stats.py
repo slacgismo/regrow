@@ -20,7 +20,9 @@ def __():
     import numpy as np
     import tornado as tn
     from pathlib import Path
-    return Path, mdates, mo, np, os, pd, plt, sys, tn
+    sys.path.insert(0,"..")
+    import utils
+    return Path, mdates, mo, np, os, pd, plt, sys, tn, utils
 
 
 @app.cell
@@ -61,16 +63,39 @@ def __(Path, __file__, mo):
 
 
 @app.cell
-def __(mo, nodes):
+def __(mo, nodes, os, pd, utils):
+    # Converting geohash list into a dropdown that includes county names
+    get_location, set_location = mo.state(nodes[0])
+    _counties = pd.read_csv(os.path.join("..","counties.csv"),index_col="geocode")
+    _options = dict([(f"{x} ({_counties.loc[utils.nearest(x,_counties.index)].county})",x) for x in nodes])
+    _index = dict([(y,x) for x,y in _options.items()])
+
     # Drop down selection for all nodes, default selection is the first node
-    nodes_dropdown = mo.ui.dropdown(nodes, value=nodes[0], label='Select a node:')
-    nodes_dropdown
-    return nodes_dropdown,
+    location_ui = mo.ui.dropdown(
+        label="Location:",
+        on_change=set_location,
+        options=_options, # locations,
+        value=_index[get_location()],
+        allow_select_none=False,
+    )
+
+    # Toggle between daily to hourly average temps
+    get_daily_switch,set_daily_switch = mo.state(False)
+    grouping_switch = mo.ui.switch(label="Hourly / Daily average",value=get_daily_switch(),on_change=set_daily_switch)
+    mo.hstack([location_ui,grouping_switch],justify='start') 
+    return (
+        get_daily_switch,
+        get_location,
+        grouping_switch,
+        location_ui,
+        set_daily_switch,
+        set_location,
+    )
 
 
 @app.cell
-def __(nodes_dropdown, pd, temperature):
-    location = temperature[[nodes_dropdown.value]]
+def __(get_location, pd, temperature):
+    location = temperature[get_location()]
     location.index = location.index - pd.Timedelta(7, 'hr')
 
     # Temperature Residual Function
@@ -88,30 +113,41 @@ def __(mo):
     mo.md(
         """
         ### August 16 through 19 in 2020, excessive heat was forecasted consistently for California.
-        Graphs display a slight drop in temperature before the temperature peaks displaying cimate oscillation.
+        Graphs display a slight drop in temperature before the temperature peaks displaying climate oscillation.
         """
     )
     return
 
 
 @app.cell
-def __(analyze_baseline, location, mo, nodes_dropdown, plt):
-    daily_residual = analyze_baseline(location.resample(rule="1D").mean(), nodes_dropdown.value)
+def __(
+    analyze_baseline,
+    get_daily_switch,
+    get_location,
+    location,
+    mo,
+    plt,
+):
+    def _is_daily(x,y):
+        return x if get_daily_switch() else y
+
+    daily_residual = analyze_baseline(location.resample(rule=_is_daily("1D","1h")).mean(), get_location())
+    hourly_residual = analyze_baseline(location, get_location())
 
     plt.figure(figsize=(9, 5))
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
-    plt.axvline(x = 16, color = 'r', label = 'start of heatwave')
-    plt.axvline(x = 19, color = 'b', label = 'end of heatwave')
+    plt.axvline(_is_daily(16, 16*24), color = 'r', label = 'start of heatwave')
+    plt.axvline(_is_daily(19, 19*24), color = 'b', label = 'end of heatwave')
 
     plt.plot(daily_residual)
-    plt.xlabel('Days in August')
-    plt.ylabel('Average Temperature (°C)')
-    plt.title('Daily Residual Temperature')
+    plt.xlabel(_is_daily('Days in August','Hours in August'))
+    plt.ylabel(_is_daily('Average Temperature (°C)', 'Temperature (°C)'))
+    plt.title(_is_daily('Daily Residual Temperature', 'Hourly Residual Temperature'))
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return daily_residual,
+    return daily_residual, hourly_residual
 
 
 @app.cell
@@ -124,31 +160,18 @@ def __(daily_residual, mo):
 
 
 @app.cell
-def __(analyze_baseline, location, mo, nodes_dropdown, plt):
-    hourly_residual = analyze_baseline(location, nodes_dropdown.value)
-    plt.plot(hourly_residual)
-
-    plt.figure(figsize=(9, 5))
-    plt.axvline(x = 16*24, color = 'r', label = 'start of heatwave')
-    plt.axvline(x = 19*24, color = 'b', label = 'end of heatwave')
-
-    plt.plot(hourly_residual)
-    plt.xlabel('Hours in August')
-    plt.ylabel('Temperature (°C)')
-    plt.title('Hourly Residual Temperature')
-    plt.legend()
-    plt.gcf().autofmt_xdate() 
-    mo.mpl.interactive(plt.gcf())
-    return hourly_residual,
-
-
-@app.cell
 def __(hourly_residual, mo):
     hourly_std = hourly_residual.std()
     max_hourly_deviation = hourly_residual.max().round(3)
 
     mo.md(f"Max Hourly Deviation: {max_hourly_deviation}")
     return hourly_std, max_hourly_deviation
+
+
+@app.cell
+def __(hourly_residual, plt):
+    plt.hist(hourly_residual)
+    return
 
 
 @app.cell

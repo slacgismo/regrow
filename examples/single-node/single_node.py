@@ -213,7 +213,7 @@ def __(
 
 
 @app.cell
-def __(get_location, json, mo, utils):
+def __(get_location, json, utils):
     #
     # Model data
     #
@@ -227,56 +227,88 @@ def __(get_location, json, mo, utils):
     _geocodes = dict([(utils.geohash(*y),x) for x,y in _latlons.items()])
     _nearest = _geocodes[utils.nearest(get_location(),_geocodes.keys())]
 
-    _node = [x for x,y in _objects.items() if x == _nearest]
-    _gens = [x for x,y in _objects.items() if y["class"] == "powerplant" and y["parent"] in _node]
-    _loads = [x for x,y in _objects.items() if y["class"] == "load" and y["parent"] in _node]
-    _lines = [x for x,y in _objects.items() if y["class"] == "branch" and (y["to"] in _node or y["from"] in _node)]
-    model = dict(nodes=dict([(x,_objects[x]) for x in _node]),
-                 generators=dict([(x,_objects[x]) for x in _gens]),
-                 loads=dict([(x,_objects[x]) for x in _loads]),
-                 lines=dict([(x,_objects[x]) for x in _lines]),
+    node = [x for x,y in _objects.items() if x == _nearest]
+    gens = [x for x,y in _objects.items() if y["class"] == "powerplant" and y["parent"] in node]
+    loads = [x for x,y in _objects.items() if y["class"] == "load" and y["parent"] in node]
+    lines = [x for x,y in _objects.items() if y["class"] == "branch" and (y["to"] in node or y["from"] in node)]
+    model = dict(nodes=dict([(x,_objects[x]) for x in node]),
+                 generators=dict([(x,_objects[x]) for x in gens]),
+                 loads=dict([(x,_objects[x]) for x in loads]),
+                 lines=dict([(x,_objects[x]) for x in lines]),
                 )
     node_name = list(model["nodes"].keys())[0] # might have to search for one that has the load
     baseKV = float(model["nodes"][node_name]["baseKV"].split()[0])
-    line_cap = sum([y if y>0 else 1000/baseKV for y in [float(_objects[x]["rateA"].split()[0]) for x in _lines]])
-    gens_cap = sum([float(_objects[x]["summer_capacity"].split()[0]) for x in _gens])
-    load_cap = sum([complex(_objects[x]["S"].split()[0]).real for x in _gens])
-
-    get_load,set_load = mo.state(load_cap)
-    load_ui = mo.ui.slider(value=get_load().real,start=0,stop=999,step=1,on_change=set_load,debounce=True,show_value=True)
-
-    get_gens,set_gens = mo.state(gens_cap)
-    gens_ui = mo.ui.slider(value=get_gens(),start=0,stop=999,step=1,on_change=set_gens,debounce=True,show_value=True)
-
-    get_line,set_line = mo.state(line_cap)
-    line_ui = mo.ui.slider(value=get_line(),start=0,stop=999,step=1,on_change=set_line,debounce=True,show_value=True)
-
-    mo.md(f"""**Bus name**: {", ".join(_node)}
-
-    **Loads**: {load_ui} MW ({", ".join(_loads)})
-
-    **Generators**: {gens_ui} MW ({", ".join(_gens)})
-
-    **Imports**: {line_ui} MW ({", ".join(_lines)})
-    """)
+    line_cap = max(0,min(999,int(sum([y if y>0 else 1000/baseKV for y in [float(_objects[x]["rateA"].split()[0]) for x in lines]]))))
+    gens_cap = max(0,min(999,int(sum([float(_objects[x]["summer_capacity"].split()[0]) for x in gens]))))
+    load_cap = max(0,min(999,int(sum([complex(_objects[x]["S"].split()[0]).real for x in loads]))))
     return (
         baseKV,
         fh,
+        gens,
         gens_cap,
-        gens_ui,
-        get_gens,
-        get_line,
-        get_load,
         line_cap,
-        line_ui,
+        lines,
         load_cap,
-        load_ui,
+        loads,
         model,
+        node,
         node_name,
-        set_gens,
-        set_line,
-        set_load,
     )
+
+
+@app.cell
+def __(gens_cap, line_cap, load_cap, mo):
+    get_load,set_load = mo.state(load_cap)
+    get_gens,set_gens = mo.state(gens_cap)
+    get_line,set_line = mo.state(line_cap)
+    return get_gens, get_line, get_load, set_gens, set_line, set_load
+
+
+@app.cell
+def __(gens_cap, load_cap, mo, set_gens, set_line, set_load):
+    load_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_load(load_cap))
+    gens_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_gens(gens_cap))
+    line_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_line(load_cap))
+    return gens_reset_ui, line_reset_ui, load_reset_ui
+
+
+@app.cell
+def __(get_gens, get_line, get_load, mo, set_gens, set_line, set_load):
+    load_ui = mo.ui.slider(value=get_load().real,start=0,stop=999,step=1,on_change=set_load,debounce=True,show_value=True)
+    gens_ui = mo.ui.slider(value=get_gens(),start=0,stop=999,step=1,on_change=set_gens,debounce=True,show_value=True)
+    line_ui = mo.ui.slider(value=get_line(),start=0,stop=999,step=1,on_change=set_line,debounce=True,show_value=True)
+    return gens_ui, line_ui, load_ui
+
+
+@app.cell
+def __(
+    gens,
+    gens_reset_ui,
+    gens_ui,
+    line_reset_ui,
+    line_ui,
+    lines,
+    load_reset_ui,
+    load_ui,
+    loads,
+    mo,
+    node,
+):
+    mo.md(f"""## WECC Model Extract
+
+    **Bus name**: {", ".join(node)}
+
+    <table>
+    <caption><h3>Resource capacities</h3><hr/></caption>
+    <tr><th>Type</th><th>Capacity</th><th>Action</th><th>Objects</th>
+    <tr><td colspan=4><hr/></td></tr>
+    <tr><th>Loads</th><td>{load_ui} MW</td><td>{load_reset_ui}</td><td>{"<br/>".join(loads)}</td></tr>
+    <tr><th>Generator</th><td>{gens_ui} MW</td><td>{gens_reset_ui}</td><td>{"<br/>".join(gens)}</td></tr>
+    <tr><th>Imports</th><td>{line_ui} MW</td><td>{line_reset_ui}</td><td>{"<br/>".join(lines)}</td></tr>
+    <tr><td colspan=4><hr/></td></tr>
+    </table>
+    """)
+    return
 
 
 @app.cell

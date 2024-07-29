@@ -1,0 +1,5 @@
+marimo
+matplotlib
+numpy
+pandas
+tornado

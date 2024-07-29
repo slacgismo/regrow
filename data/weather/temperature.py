@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.6.26"
+__generated_with = "0.7.12"
 app = marimo.App(width="medium")
 
 
@@ -26,7 +26,9 @@ def __():
     import numpy as np
     import tornado as tn
     from pathlib import Path
-    return Path, mdates, mo, np, os, pd, plt, sns, sys, tn
+    sys.path.insert(0,"..")
+    import utils
+    return Path, mdates, mo, np, os, pd, plt, sns, sys, tn, utils
 
 
 @app.cell
@@ -39,7 +41,7 @@ def __(Path, __file__, pd):
 
 @app.cell
 def __(mo):
-    mo.md(r"## Viewing nodes on Google Earth:")
+    mo.md(r"""## Viewing nodes on Google Earth:""")
     return
 
 
@@ -78,11 +80,21 @@ def __(mo):
 
 
 @app.cell
-def __(mo, nodes):
-    # Drop down selection for all nodes, default selection is the first node
-    nodes_dropdown = mo.ui.dropdown(nodes, value=nodes[0], label='Select a node:')
-    nodes_dropdown
-    return nodes_dropdown,
+def __(mo, nodes, os, pd, utils):
+    # Converting geohash list into a dropdown that includes county names
+    get_location, set_location = mo.state(nodes[0])
+    _counties = pd.read_csv(os.path.join("..","counties.csv"),index_col="geocode")
+    _options = dict([(f"{x} ({_counties.loc[utils.nearest(x,_counties.index)].county})",x) for x in nodes])
+    _index = dict([(y,x) for x,y in _options.items()])
+    location_ui = mo.ui.dropdown(
+        label="Location:",
+        on_change=set_location,
+        options=_options, # locations,
+        value=_index[get_location()],
+        allow_select_none=False,
+    )
+    location_ui
+    return get_location, location_ui, set_location
 
 
 @app.cell
@@ -92,9 +104,9 @@ def __(heat_map, mo, time_series):
 
 
 @app.cell
-def __(nodes_dropdown, pd, plt, temperature):
+def __(get_location, pd, plt, temperature):
     # Time Series of Temperatures (2018-2022)
-    data_view = temperature[[nodes_dropdown.value]]
+    data_view = temperature[get_location()]
     data_view.index = data_view.index - pd.Timedelta(7, 'hr')
     data_view.plot()
     plt.xlabel('Year')
@@ -129,9 +141,9 @@ def __(mo):
 
 
 @app.cell
-def __(nodes_dropdown, pd, temperature):
+def __(get_location, pd, temperature):
     # Adjusting timezone
-    location = temperature[nodes_dropdown.value]
+    location = temperature[get_location()]
     location.index = location.index - pd.Timedelta(7, 'hr')
 
     # Time slicing for August

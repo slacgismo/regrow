@@ -1,12 +1,12 @@
 import marimo
 
-__generated_with = "0.6.26"
+__generated_with = "0.7.12"
 app = marimo.App(width="medium")
 
 
 @app.cell
 def __(mo):
-    mo.md("# REGROW: Magnitude of Heat Waves")
+    mo.md("""# REGROW: Magnitude of Heat Waves""")
     return
 
 
@@ -50,7 +50,7 @@ def __(temperature):
 
 @app.cell
 def __(mo):
-    mo.md("## Viewing nodes on Google Earth:")
+    mo.md("""## Viewing nodes on Google Earth:""")
     return
 
 
@@ -82,7 +82,7 @@ def __(mo, nodes, os, pd, utils):
     # Toggle between daily to hourly average temps
     get_daily_switch,set_daily_switch = mo.state(False)
     grouping_switch = mo.ui.switch(label="Hourly / Daily average",value=get_daily_switch(),on_change=set_daily_switch)
-    mo.hstack([location_ui,grouping_switch],justify='start') 
+    mo.hstack([location_ui,grouping_switch],justify='start')
     return (
         get_daily_switch,
         get_location,
@@ -151,21 +151,44 @@ def __(
 
 
 @app.cell
-def __(daily_residual, mo):
-    daily_std = daily_residual.std()
-    max_daily_deviation = daily_std.max().round(3)
-
-    mo.md(f"Max Daily Deviation: {max_daily_deviation}")
-    return daily_std, max_daily_deviation
+def __(max_daily_deviation, max_hourly_deviation, mo):
+    # Toggle between daily to hourly max deviations
+    get_max_deviation,deviation_switch = mo.state(False)
+    grouping_deviation_switch = mo.ui.switch(label="Hourly / Daily deviations",value=max_daily_deviation(),on_change=max_hourly_deviation)
+    return deviation_switch, get_max_deviation, grouping_deviation_switch
 
 
 @app.cell
-def __(hourly_residual, mo):
+def __(daily_residual, deviation_switch, hourly_residual, mo):
+    def _max_deviation(x,y):
+        return x if deviation_switch() else y
+
+    daily_std = daily_residual.std()
+    max_daily_deviation = daily_std.max().round(3)
+
     hourly_std = hourly_residual.std()
     max_hourly_deviation = hourly_residual.max().round(3)
 
-    mo.md(f"Max Hourly Deviation: {max_hourly_deviation}")
-    return hourly_std, max_hourly_deviation
+    mo.md(_max_deviation(f"Max Daily Deviation: {max_daily_deviation}", f"Max Hourly Deviation: {max_hourly_deviation}"))
+    return daily_std, hourly_std, max_daily_deviation, max_hourly_deviation
+
+
+@app.cell
+def __():
+    # daily_std = daily_residual.std()
+    # max_daily_deviation = daily_std.max().round(3)
+
+    # mo.md(f"Max Daily Deviation: {max_daily_deviation}")
+    return
+
+
+@app.cell
+def __():
+    # hourly_std = hourly_residual.std()
+    # max_hourly_deviation = hourly_residual.max().round(3)
+
+    # mo.md(f"Max Hourly Deviation: {max_hourly_deviation}")
+    return
 
 
 @app.cell

@@ -446,10 +446,13 @@ def __():
 
 @app.cell
 def __(mo):
-    import git
-    repo = git.Repo(".")
-    repo.config_reader()
-    mo.md(f"Currently using repo branch '`{repo.head.reference.checkout()}`'")
+    try:
+        import git
+        repo = git.Repo(".")
+        repo.config_reader()
+        mo.md(f"Currently using repo branch '`{repo.head.reference.checkout()}`'")
+    except Exception as err:
+        mo.md(f"Unable to fetch branch data: {err}")
     return git, repo
 
 

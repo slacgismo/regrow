@@ -439,13 +439,18 @@ def __():
     import json
     sys.path.insert(0,"data")
     import utils
+
+
     return Iterable, json, mo, np, os, pd, plt, requests, sys, utils
 
 
 @app.cell
-def __(utils):
-    utils.geohash
-    return
+def __(mo):
+    import git
+    repo = git.Repo(".")
+    repo.config_reader()
+    mo.md(f"Currently using repo branch '`{repo.head.reference.checkout()}`'")
+    return git, repo
 
 
 if __name__ == "__main__":

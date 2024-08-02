@@ -9,7 +9,7 @@ def __():
     #
     # Simulation environment and defaults
     #
-    DATA_SOURCE = "../../data/geodata"
+    DATA_SOURCE = "data/geodata"
     DATA_FILES = ["temperature","solar","wind","baseload","heating","cooling","total"]
     DATA_GROUPS = {"Weather":["temperature","solar","wind"],"Power":["baseload","heating","cooling","total"]}
     DEFAULT_LOCATION = "9q9wtp"
@@ -217,7 +217,7 @@ def __(get_location, json, utils):
     #
     # Model data
     #
-    with open("../../model/wecc240.json") as fh:
+    with open("model/wecc240.json") as fh:
         _glm = json.load(fh)
         assert(_glm["application"]=="gridlabd")
         assert(_glm["version"]>="4.3.10")
@@ -291,7 +291,6 @@ def __(
     load_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_load(get_gens()+get_line()))
     gens_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_gens(max(0,get_load()-get_line())))
     line_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_line(abs(get_gens()-get_load())))
-
     return (
         gens_balance_ui,
         gens_down_ui,
@@ -436,11 +435,17 @@ def __():
     import numpy as np
     import matplotlib.pyplot as plt
     from collections.abc import Iterable
-    sys.path.append("../../data")
     import requests
-    import utils
     import json
+    sys.path.insert(0,"data")
+    import utils
     return Iterable, json, mo, np, os, pd, plt, requests, sys, utils
+
+
+@app.cell
+def __(utils):
+    utils.geohash
+    return
 
 
 if __name__ == "__main__":

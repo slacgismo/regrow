@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.7.9"
+__generated_with = "0.7.14"
 app = marimo.App(width="full")
 
 
@@ -265,11 +265,47 @@ def __(gens_cap, line_cap, load_cap, mo):
 
 
 @app.cell
-def __(gens_cap, load_cap, mo, set_gens, set_line, set_load):
+def __(
+    gens_cap,
+    get_gens,
+    get_line,
+    get_load,
+    load_cap,
+    mo,
+    set_gens,
+    set_line,
+    set_load,
+):
+    load_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_load(max(0,get_load()-1)))
+    gens_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_gens(max(0,get_gens()-1)))
+    line_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_line(max(0,get_line()-1)))
+
+    load_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_load(min(999,get_load()+1)))
+    gens_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_gens(min(999,get_gens()+1)))
+    line_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_line(min(999,get_line()+1)))
+
     load_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_load(load_cap))
     gens_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_gens(gens_cap))
     line_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_line(load_cap))
-    return gens_reset_ui, line_reset_ui, load_reset_ui
+
+    load_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_load(get_gens()+get_line()))
+    gens_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_gens(max(0,get_load()-get_line())))
+    line_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_line(abs(get_gens()-get_load())))
+
+    return (
+        gens_balance_ui,
+        gens_down_ui,
+        gens_plus_ui,
+        gens_reset_ui,
+        line_balance_ui,
+        line_down_ui,
+        line_plus_ui,
+        line_reset_ui,
+        load_balance_ui,
+        load_down_ui,
+        load_plus_ui,
+        load_reset_ui,
+    )
 
 
 @app.cell
@@ -283,11 +319,20 @@ def __(get_gens, get_line, get_load, mo, set_gens, set_line, set_load):
 @app.cell
 def __(
     gens,
+    gens_balance_ui,
+    gens_down_ui,
+    gens_plus_ui,
     gens_reset_ui,
     gens_ui,
+    line_balance_ui,
+    line_down_ui,
+    line_plus_ui,
     line_reset_ui,
     line_ui,
     lines,
+    load_balance_ui,
+    load_down_ui,
+    load_plus_ui,
     load_reset_ui,
     load_ui,
     loads,
@@ -299,13 +344,12 @@ def __(
     **Bus name**: {", ".join(node)}
 
     <table>
-    <caption><h3>Resource capacities</h3><hr/></caption>
-    <tr><th>Type</th><th>Capacity</th><th>Action</th><th>Objects</th>
-    <tr><td colspan=4><hr/></td></tr>
-    <tr><th>Loads</th><td>{load_ui} MW</td><td>{load_reset_ui}</td><td>{"<br/>".join(loads)}</td></tr>
-    <tr><th>Generator</th><td>{gens_ui} MW</td><td>{gens_reset_ui}</td><td>{"<br/>".join(gens)}</td></tr>
-    <tr><th>Imports</th><td>{line_ui} MW</td><td>{line_reset_ui}</td><td>{"<br/>".join(lines)}</td></tr>
-    <tr><td colspan=4><hr/></td></tr>
+    <caption><h3>Resources Capacities</h3></caption>
+    <tr><th width=100>Type</th><th colspan=2 width=400>Installed capacity</th><th width=400>Objects</th>
+    <tr><th>Loads</th><td>{load_ui} MW</td><td>{load_down_ui} {load_plus_ui} {load_reset_ui} {load_balance_ui}</td><td>{"<br/>".join(loads)}</td></tr>
+    <tr><th>Generator</th><td>{gens_ui} MW</td><td>{gens_down_ui} {gens_plus_ui} {gens_reset_ui} {gens_balance_ui}</td><td>{"<br/>".join(gens)}</td></tr>
+    <tr><th>Imports</th><td>{line_ui} MW</td><td>{line_down_ui} {line_plus_ui} {line_reset_ui} {line_balance_ui}</td><td>{"<br/>".join(lines)}</td></tr>
+    <tr><th>Net capacity</th><td>{gens_ui.value+line_ui.value-load_ui.value:.0f} MW</td><td></td><td></td></tr>
     </table>
     """)
     return

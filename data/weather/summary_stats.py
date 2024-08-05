@@ -22,7 +22,8 @@ def __():
     from pathlib import Path
     sys.path.insert(0,"..")
     import utils
-    return Path, mdates, mo, np, os, pd, plt, sys, tn, utils
+    import sympy as sy
+    return Path, mdates, mo, np, os, pd, plt, sy, sys, tn, utils
 
 
 @app.cell
@@ -31,13 +32,6 @@ def __(Path, __file__, pd):
     _fp = Path(__file__).parent / 'temperature.csv'
     temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
     return temperature,
-
-
-@app.cell
-def __():
-    # Geographic location encoding/decoding
-    # _utils = Path(__file__).parent / 'utils.py'
-    return
 
 
 @app.cell
@@ -87,17 +81,15 @@ def __(mo, nodes, os, pd, utils):
     )
 
     # Toggle between daily to hourly average temps
-    get_daily_switch,set_daily_switch = mo.state(False)
-    grouping_switch = mo.ui.switch(label="Hourly | Daily Average",value=get_daily_switch(),on_change=set_daily_switch)
+    grouping_switch = mo.ui.switch(label="Hourly | Daily Average")
     mo.hstack([location_ui,grouping_switch],justify='start')
-    return (
-        get_daily_switch,
-        get_location,
-        grouping_switch,
-        location_ui,
-        set_daily_switch,
-        set_location,
-    )
+    return get_location, grouping_switch, location_ui, set_location
+
+
+@app.cell
+def __(grouping_switch):
+    grouping_switch.value
+    return
 
 
 @app.cell
@@ -127,6 +119,14 @@ def __(mo):
 
 
 @app.cell
+def __(daily_residual, hourly_residual, mo):
+    max_daily = daily_residual.max().round(2)
+    max_hourly = hourly_residual.max().round(2)
+    mo.md(f"Max residual temperature: {max_daily} (C˚)")
+    return max_daily, max_hourly
+
+
+@app.cell
 def __(
     analyze_baseline,
     get_daily_switch,
@@ -144,12 +144,12 @@ def __(
     plt.figure(figsize=(9, 5))
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
-    plt.axvline(_is_daily(16, 16*24), linestyle='--',color = 'r', label = 'start of heatwave')
-    plt.axvline(_is_daily(19, 19*24), linestyle='--',color = 'b', label = 'end of heatwave')
+    plt.axvline(_is_daily(16, 16*24), linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(_is_daily(19, 19*24), linestyle='-.',color = 'b', label = 'end of heatwave')
     plt.axhline(0,0,daily_residual.shape[0],linestyle=':',label='Baseline')
     plt.plot(daily_residual)
     plt.xlabel(_is_daily('Days in August','Hours in August'))
-    plt.ylabel(_is_daily('Average Temperature (°C)', 'Temperature (°C)'))
+    plt.ylabel(_is_daily('Temperature (°C)', 'Temperature (°C)'))
     plt.title(_is_daily('Daily Residual Temperature', 'Hourly Residual Temperature'))
     plt.legend()
     plt.gcf().autofmt_xdate() 
@@ -158,44 +158,72 @@ def __(
 
 
 @app.cell
-def __():
-    # # Toggle between daily to hourly max deviations
-    # get_max_deviation,deviation_switch = mo.state(False)
-    # grouping_deviation_switch = mo.ui.switch(label="Hourly / Daily deviations",value=max_daily_deviation(),on_change=max_hourly_deviation)
+def __(mo):
+    mo.md(r"""### Temperature Integrals""")
     return
 
 
 @app.cell
-def __():
-    # def _max_deviation(x,y):
-    #     return x if deviation_switch() else y
+def __(daily_residual, hourly_residual, np):
+    # First half of August
+    first_daily_integral = np.sum(daily_residual[:15])
+    first_hourly_integral = np.sum(hourly_residual[:360]) / 24
 
+    # Second half of August
+    second_daily_integral = np.sum(daily_residual[15:])
+    second_hourly_integral = np.sum(hourly_residual[360:]) / 24
+    return (
+        first_daily_integral,
+        first_hourly_integral,
+        second_daily_integral,
+        second_hourly_integral,
+    )
+
+
+@app.cell
+def __(first_daily_integral, mo, second_daily_integral):
+    mo.hstack([(mo.md(f"Daily first half of August: {first_daily_integral:.2f} (C˚),")),mo.md(f"Daily second half of August: {second_daily_integral:.2f} (C˚)")],justify='start')
+    return
+
+
+@app.cell
+def __(first_hourly_integral, mo, second_hourly_integral):
+    mo.hstack([(mo.md(f"Hourly first half of August: {first_hourly_integral:.2f} (C˚),")),mo.md(f"Hourly second half of August: {second_hourly_integral:.2f} (C˚)")],justify='start')
+    return
+
+
+@app.cell
+def __(daily_residual, hourly_residual, mo, np):
+    # Final integral temperatures of August
+    daily_integral = np.sum(daily_residual)
+    hourly_integral = np.sum(hourly_residual) /24
+
+    mo.hstack([(mo.md(f"Final daily temperature integral: {daily_integral:.2f} (C˚),")),mo.md(f"Final hourly temperature integral: {hourly_integral:.2f} (C˚)")],justify='start')
+    return daily_integral, hourly_integral
+
+
+@app.cell
+def __():
     # daily_std = daily_residual.std()
     # max_daily_deviation = daily_std.max().round(3)
 
-    # hourly_std = hourly_residual.std()
-    # max_hourly_deviation = hourly_residual.max().round(3)
-
-    # mo.md(_max_deviation(f"Max Daily Deviation: {max_daily_deviation}", f"Max Hourly Deviation: {max_hourly_deviation}"))
+    # mo.md(f"Max Daily Deviation: {max_daily_deviation}")
     return
 
 
 @app.cell
-def __(daily_residual, mo):
-    daily_std = daily_residual.std()
-    max_daily_deviation = daily_std.max().round(3)
+def __():
+    # hourly_std = hourly_residual.std()
+    # max_hourly_deviation = hourly_residual.max().round(3)
 
-    mo.md(f"Max Daily Deviation: {max_daily_deviation}")
-    return daily_std, max_daily_deviation
+    # mo.md(f"Max Hourly Deviation: {max_hourly_deviation}")
+    return
 
 
 @app.cell
-def __(hourly_residual, mo):
-    hourly_std = hourly_residual.std()
-    max_hourly_deviation = hourly_residual.max().round(3)
-
-    mo.md(f"Max Hourly Deviation: {max_hourly_deviation}")
-    return hourly_std, max_hourly_deviation
+def __():
+    # Calculating the Intergral 
+    return
 
 
 @app.cell

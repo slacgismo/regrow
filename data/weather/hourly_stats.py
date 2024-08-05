@@ -6,7 +6,7 @@ app = marimo.App(width="medium")
 
 @app.cell
 def __(mo):
-    mo.md(r"""# Regrow: Weather analysis of daily temperature""")
+    mo.md(r"""# Regrow: Weather analysis of hourly temperature""")
     return
 
 
@@ -38,12 +38,10 @@ def __(temperature):
 
 
 @app.cell
-def __(nodes, pd, utils):
-    # Manipulating data from nodes to latitude/longitude
-    latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
-    for node in nodes:
-        latlong.loc[node] = utils.geocode(node)
-    return latlong, node
+def __(nodes_dropdown, pd, temperature):
+    location = temperature[nodes_dropdown.value]
+    location.index = location.index - pd.Timedelta(8, 'hr')
+    return location,
 
 
 @app.cell
@@ -55,18 +53,15 @@ def __(mo, nodes):
 
 
 @app.cell
-def __(nodes_dropdown, pd, temperature):
-    location = temperature[nodes_dropdown.value]
-    location.index = location.index - pd.Timedelta(7, 'hr')
-
+def __():
     # Temperature Residual Function
-    def analyze_baseline(df, node):
+    def analyze_baseline(df, nodes): # remove second arguement
         actual = df.loc['2020-08-01':'2020-08-31'].values
         predicted = (df.loc['2018-08-01':'2018-08-31'].values 
                      + df.loc['2019-08-01':'2019-08-31'].values 
                      + df.loc['2021-08-01':'2021-08-31'].values) / 3
         return actual - predicted
-    return analyze_baseline, location
+    return analyze_baseline,
 
 
 @app.cell

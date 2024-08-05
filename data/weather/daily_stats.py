@@ -32,15 +32,6 @@ def __(Path, __file__, pd):
 
 
 @app.cell
-def __(nodes, pd, utils):
-    # Manipulating data from nodes to latitude/longitude
-    latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
-    for node in nodes:
-        latlong.loc[node] = utils.geocode(node)
-    return latlong, node
-
-
-@app.cell
 def __(temperature):
     nodes = temperature.columns.tolist()
     return nodes,
@@ -57,8 +48,12 @@ def __(mo, nodes):
 @app.cell
 def __(nodes_dropdown, pd, temperature):
     location = temperature[nodes_dropdown.value]
-    location.index = location.index - pd.Timedelta(7, 'hr')
+    location.index = location.index - pd.Timedelta(8, 'hr')
+    return location,
 
+
+@app.cell
+def __():
     # Temperature Residual Function
     def analyze_baseline(df, node):
         actual = df.loc['2020-08-01':'2020-08-31'].values
@@ -66,7 +61,7 @@ def __(nodes_dropdown, pd, temperature):
                      + df.loc['2019-08-01':'2019-08-31'].values 
                      + df.loc['2021-08-01':'2021-08-31'].values) / 3
         return actual - predicted
-    return analyze_baseline, location
+    return analyze_baseline,
 
 
 @app.cell
@@ -124,11 +119,6 @@ def __(daily_integral, mo):
 @app.cell
 def __(first_integral, mo, second_integral):
     mo.hstack([mo.md(f"First half of August: {first_integral:.2f} (C˚),"), mo.md(f"Second half of August: {second_integral:.2f} (C˚)")], justify='start')
-    return
-
-
-@app.cell
-def __():
     return
 
 

@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.7.14"
+__generated_with = "0.7.17"
 app = marimo.App(width="full")
 
 
@@ -230,6 +230,8 @@ def __(get_location, json, utils):
     gens = [x for x,y in _objects.items() if y["class"] == "powerplant" and y["parent"] in node]
     loads = [x for x,y in _objects.items() if y["class"] == "load" and y["parent"] in node]
     lines = [x for x,y in _objects.items() if y["class"] == "branch" and (y["to"] in node or y["from"] in node)]
+    winds = []
+    solrs = []
     model = dict(nodes=dict([(x,_objects[x]) for x in node]),
                  generators=dict([(x,_objects[x]) for x in gens]),
                  loads=dict([(x,_objects[x]) for x in loads]),
@@ -240,6 +242,8 @@ def __(get_location, json, utils):
     line_cap = max(0,min(999,int(sum([y if y>0 else 1000/baseKV for y in [float(_objects[x]["rateA"].split()[0]) for x in lines]]))))
     gens_cap = max(0,min(999,int(sum([float(_objects[x]["summer_capacity"].split()[0]) for x in gens]))))
     load_cap = max(0,min(999,int(sum([complex(_objects[x]["S"].split()[0]).real for x in loads]))))
+    wind_cap = 0.0
+    solr_cap = 0.0
     return (
         baseKV,
         fh,
@@ -252,15 +256,32 @@ def __(get_location, json, utils):
         model,
         node,
         node_name,
+        solr_cap,
+        solrs,
+        wind_cap,
+        winds,
     )
 
 
 @app.cell
-def __(gens_cap, line_cap, load_cap, mo):
+def __(gens_cap, line_cap, load_cap, mo, solr_cap, wind_cap):
     get_load,set_load = mo.state(load_cap)
     get_gens,set_gens = mo.state(gens_cap)
+    get_wind,set_wind = mo.state(wind_cap)
+    get_solr,set_solr = mo.state(solr_cap)
     get_line,set_line = mo.state(line_cap)
-    return get_gens, get_line, get_load, set_gens, set_line, set_load
+    return (
+        get_gens,
+        get_line,
+        get_load,
+        get_solr,
+        get_wind,
+        set_gens,
+        set_line,
+        set_load,
+        set_solr,
+        set_wind,
+    )
 
 
 @app.cell
@@ -269,27 +290,42 @@ def __(
     get_gens,
     get_line,
     get_load,
+    get_solr,
+    get_wind,
+    line_cap,
     load_cap,
     mo,
     set_gens,
     set_line,
     set_load,
+    set_solr,
+    set_wind,
+    solr_cap,
+    wind_cap,
 ):
     load_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_load(max(0,get_load()-1)))
     gens_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_gens(max(0,get_gens()-1)))
+    wind_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_wind(max(0,get_wind()-1)))
+    solr_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_solr(max(0,get_solr()-1)))
     line_down_ui = mo.ui.button(label="$-$",on_click=lambda x:set_line(max(0,get_line()-1)))
 
     load_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_load(min(999,get_load()+1)))
     gens_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_gens(min(999,get_gens()+1)))
+    wind_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_wind(min(999,get_wind()+1)))
+    solr_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_solr(min(999,get_solr()+1)))
     line_plus_ui = mo.ui.button(label="$+$",on_click=lambda x:set_line(min(999,get_line()+1)))
 
     load_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_load(load_cap))
     gens_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_gens(gens_cap))
-    line_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_line(load_cap))
+    wind_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_wind(wind_cap))
+    solr_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_solr(solr_cap))
+    line_reset_ui = mo.ui.button(label="Reset",on_click=lambda x:set_line(line_cap))
 
-    load_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_load(get_gens()+get_line()))
-    gens_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_gens(max(0,get_load()-get_line())))
-    line_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_line(abs(get_gens()-get_load())))
+    load_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_load(get_gens()+get_line()+get_wind()+get_solr()))
+    gens_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_gens(max(0,get_load()-get_line()-get_wind()-get_solr())))
+    wind_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_wind(max(0,(get_load()-get_gens()-get_line()-get_solr()))))
+    solr_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_solr(max(0,get_load()-get_gens()-get_wind()-get_line())))
+    line_balance_ui = mo.ui.button(label="Balance",on_click=lambda x:set_line(max(0,get_load()-get_gens()-get_wind()-get_solr())))
     return (
         gens_balance_ui,
         gens_down_ui,
@@ -303,15 +339,37 @@ def __(
         load_down_ui,
         load_plus_ui,
         load_reset_ui,
+        solr_balance_ui,
+        solr_down_ui,
+        solr_plus_ui,
+        solr_reset_ui,
+        wind_balance_ui,
+        wind_down_ui,
+        wind_plus_ui,
+        wind_reset_ui,
     )
 
 
 @app.cell
-def __(get_gens, get_line, get_load, mo, set_gens, set_line, set_load):
+def __(
+    get_gens,
+    get_line,
+    get_load,
+    get_solr,
+    get_wind,
+    mo,
+    set_gens,
+    set_line,
+    set_load,
+    set_solr,
+    set_wind,
+):
     load_ui = mo.ui.slider(value=get_load().real,start=0,stop=999,step=1,on_change=set_load,debounce=True,show_value=True)
     gens_ui = mo.ui.slider(value=get_gens(),start=0,stop=999,step=1,on_change=set_gens,debounce=True,show_value=True)
+    wind_ui = mo.ui.slider(value=get_wind(),start=0,stop=999,step=1,on_change=set_wind,debounce=True,show_value=True)
+    solr_ui = mo.ui.slider(value=get_solr(),start=0,stop=999,step=1,on_change=set_solr,debounce=True,show_value=True)
     line_ui = mo.ui.slider(value=get_line(),start=0,stop=999,step=1,on_change=set_line,debounce=True,show_value=True)
-    return gens_ui, line_ui, load_ui
+    return gens_ui, line_ui, load_ui, solr_ui, wind_ui
 
 
 @app.cell
@@ -336,6 +394,18 @@ def __(
     loads,
     mo,
     node,
+    solr_balance_ui,
+    solr_down_ui,
+    solr_plus_ui,
+    solr_reset_ui,
+    solr_ui,
+    solrs,
+    wind_balance_ui,
+    wind_down_ui,
+    wind_plus_ui,
+    wind_reset_ui,
+    wind_ui,
+    winds,
 ):
     mo.md(f"""## WECC Model Extract
 
@@ -346,8 +416,10 @@ def __(
     <tr><th width=100>Type</th><th colspan=2 width=400>Installed capacity</th><th width=400>Objects</th>
     <tr><th>Loads</th><td>{load_ui} MW</td><td>{load_down_ui} {load_plus_ui} {load_reset_ui} {load_balance_ui}</td><td>{"<br/>".join(loads)}</td></tr>
     <tr><th>Generator</th><td>{gens_ui} MW</td><td>{gens_down_ui} {gens_plus_ui} {gens_reset_ui} {gens_balance_ui}</td><td>{"<br/>".join(gens)}</td></tr>
+    <tr><th>Wind</th><td>{wind_ui} MW</td><td>{wind_down_ui} {wind_plus_ui} {wind_reset_ui} {wind_balance_ui}</td><td>{"<br/>".join(winds)}</td></tr>
+    <tr><th>Solar</th><td>{solr_ui} MW</td><td>{solr_down_ui} {solr_plus_ui} {solr_reset_ui} {solr_balance_ui}</td><td>{"<br/>".join(solrs)}</td></tr>
     <tr><th>Imports</th><td>{line_ui} MW</td><td>{line_down_ui} {line_plus_ui} {line_reset_ui} {line_balance_ui}</td><td>{"<br/>".join(lines)}</td></tr>
-    <tr><th>Net capacity</th><td>{gens_ui.value+line_ui.value-load_ui.value:.0f} MW</td><td></td><td></td></tr>
+    <tr><th>Net capacity</th><td>{gens_ui.value+line_ui.value+wind_ui.value+solr_ui.value-load_ui.value:.0f} MW</td><td>{'OK' if round(gens_ui.value+line_ui.value+wind_ui.value+solr_ui.value-load_ui.value)>=round(load_ui.value*0.15) else f'{load_ui.value*0.15:.0f} MW reserve needed'}</td><td></td></tr>
     </table>
     """)
     return
@@ -438,8 +510,6 @@ def __():
     import json
     sys.path.insert(0,"data")
     import utils
-
-
     return Iterable, json, mo, np, os, pd, plt, requests, sys, utils
 
 

@@ -32,18 +32,18 @@ def __(Path, __file__, pd):
 
 
 @app.cell
+def __(temperature):
+    nodes = temperature.columns.tolist()
+    return nodes,
+
+
+@app.cell
 def __(nodes, pd, utils):
     # Manipulating data from nodes to latitude/longitude
     latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
     for node in nodes:
         latlong.loc[node] = utils.geocode(node)
     return latlong, node
-
-
-@app.cell
-def __(temperature):
-    nodes = temperature.columns.tolist()
-    return nodes,
 
 
 @app.cell
@@ -82,42 +82,42 @@ def __(mo):
 
 @app.cell
 def __(analyze_baseline, location, mo, nodes_dropdown, plt):
-    daily_residual = analyze_baseline(location.resample(rule="1D").mean(), nodes_dropdown.value)
+    hourly_residual = analyze_baseline(location, nodes_dropdown.value)
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
     plt.figure(figsize=(9, 5))
-    plt.axvline(16, linestyle='-.',color = 'r', label = 'start of heatwave')
-    plt.axvline(19, linestyle='-.',color = 'b', label = 'end of heatwave')
-    plt.axhline(0,0,daily_residual.shape[0],linestyle=':',label='Baseline')
-    plt.plot(daily_residual)
-    plt.xlabel('Days in August')
+    plt.axvline(16 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(19 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axhline(0,0,hourly_residual.shape[0],linestyle=':',label='Baseline')
+    plt.plot(hourly_residual)
+    plt.xlabel('Hours in August')
     plt.ylabel('Temperature (°C)')
-    plt.title('Daily Residual Temperature')
+    plt.title('Hourly Residual Temperature')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return daily_residual,
+    return hourly_residual,
 
 
 @app.cell
-def __(daily_residual, mo):
-    max_daily = daily_residual.max() 
-    mo.md(f"Max residual temperature: {max_daily:.2f} (C˚)")
-    return max_daily,
+def __(hourly_residual, mo):
+    max_hourly = hourly_residual.max() 
+    mo.md(f"Max residual temperature: {max_hourly:.2f} (C˚)")
+    return max_hourly,
 
 
 @app.cell
-def __(daily_residual, np):
-    mid_point = len(daily_residual) // 2
-    first_integral = np.sum(daily_residual[:mid_point])
-    second_integral = np.sum(daily_residual[mid_point:])
-    daily_integral = np.sum(daily_residual)
-    return daily_integral, first_integral, mid_point, second_integral
+def __(hourly_residual, np):
+    mid_point = len(hourly_residual) // 2
+    first_integral = np.sum(hourly_residual[:mid_point]) / 24 
+    second_integral = np.sum(hourly_residual[mid_point:]) / 24
+    hourly_integral = np.sum(hourly_residual) / 24
+    return first_integral, hourly_integral, mid_point, second_integral
 
 
 @app.cell
-def __(daily_integral, mo):
-    mo.md(f"Overall temperature integral of August: {daily_integral:.2f} (C˚)")
+def __(hourly_integral, mo):
+    mo.md(f"Overall temperature integral of August: {hourly_integral:.2f} (C˚)")
     return
 
 

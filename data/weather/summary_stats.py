@@ -87,12 +87,6 @@ def __(mo, nodes, os, pd, utils):
 
 
 @app.cell
-def __(grouping_switch):
-    grouping_switch.value
-    return
-
-
-@app.cell
 def __(get_location, pd, temperature):
     location = temperature[get_location()]
     location.index = location.index - pd.Timedelta(7, 'hr')
@@ -116,14 +110,6 @@ def __(mo):
         """
     )
     return
-
-
-@app.cell
-def __(daily_residual, hourly_residual, mo):
-    max_daily = daily_residual.max().round(2)
-    max_hourly = hourly_residual.max().round(2)
-    mo.md(f"Max residual temperature: {max_daily} (C˚)")
-    return max_daily, max_hourly
 
 
 @app.cell
@@ -155,6 +141,14 @@ def __(
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
     return daily_residual, hourly_residual
+
+
+@app.cell
+def __(daily_residual, hourly_residual, mo):
+    max_daily = daily_residual.max() 
+    max_hourly = hourly_residual.max() 
+    mo.md(f"Max residual temperature: {max_daily:.2f} (C˚)")
+    return max_daily, max_hourly
 
 
 @app.cell
@@ -222,7 +216,7 @@ def __():
 
 @app.cell
 def __():
-    # Calculating the Intergral 
+    # Calculating the Intergral
     return
 
 

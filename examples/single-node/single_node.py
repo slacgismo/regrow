@@ -154,14 +154,13 @@ def __(get_day, get_range, mo, range_ui, set_day, start, stop):
     # Day slider
     #
     _steps = list(range(0,int(stop.as_unit("s").value/3600e9/24) - int(start.as_unit("s").value/3600e9/24),range_ui.value))
-    day_ui = mo.md("") if len(_steps)<2 else mo.md(f" (day {mo.ui.slider(
-        steps=_steps,
-        value=(get_day() // get_range())*get_range(),
-        on_change=set_day,
-        show_value=True,
-        debounce=True,
-        # disable = len(_steps)<2,
-    )})")
+    day_ui = mo.md("") if len(_steps)<2 else mo.md(f""" (day {mo.ui.slider(
+                steps=_steps,
+                value=(get_day() // get_range())*get_range(),
+                on_change=set_day,
+                show_value=True,
+                debounce=True,
+            )})""")
     return day_ui,
 
 

@@ -127,5 +127,10 @@ def __(first_integral, mo, second_integral):
     return
 
 
+@app.cell
+def __():
+    return
+
+
 if __name__ == "__main__":
     app.run()

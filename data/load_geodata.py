@@ -1,6 +1,6 @@
 """Building load geodata
 
-Syntax: python3 -m geodata OPTION [...]
+Syntax: python3 -m load_geodata OPTION [...]
 
 Options
 -------

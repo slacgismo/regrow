@@ -9,7 +9,7 @@ def __(mo):
     mo.md(
         r"""
         # REGROW: Temperature Report
-         Study of extreme weather. Measuring the magnitude of heatwaves through temperature peaks and integrals.
+         Study of extreme weather across WECC. Report measures the magnitude of the 2020 heatwave through temperature peaks and integrals.
         """
     )
     return
@@ -19,13 +19,11 @@ def __(mo):
 def __():
     import marimo as mo
     import pandas as pd
-    import matplotlib.pyplot as plt
     import os, sys
     import numpy as np
-    import tornado as tn
     from pathlib import Path
     import utils
-    return Path, mo, np, os, pd, plt, sys, tn, utils
+    return Path, mo, np, os, pd, sys, utils
 
 
 @app.cell
@@ -38,6 +36,7 @@ def __(Path, __file__, pd):
 
 @app.cell
 def __(pd, temperature):
+    # Adjusting data to display Pacfic timezone
     temperature.index = temperature.index - pd.Timedelta(8, 'hr')
     return
 
@@ -68,16 +67,20 @@ def __(mo):
 
 @app.cell
 def __(analyze_baseline, nodes, np, pd, temperature):
+    # Creating lists
     max_residuals_hourly = []
     august_integral_hourly = []
     firsthalf_hourly = []
     secondhalf_hourly = []
 
     for node_hourly in nodes:
+        # Calculating residual temperature for each node
         hourly_residual = analyze_baseline(temperature[node_hourly])
         midpoint_hourly = len(hourly_residual) // 2
+        # Location's peak temperature for august
         max_hourly = hourly_residual.max()
         max_residuals_hourly = np.append(max_residuals_hourly, max_hourly)
+        # Temperature integrals of august 1st, 2nd and overall 
         integral_one_hourly = np.sum(hourly_residual[:midpoint_hourly]) / 24
         firsthalf_hourly = np.append(firsthalf_hourly, integral_one_hourly)
         integral_two_hourly = np.sum(hourly_residual[midpoint_hourly:]) / 24

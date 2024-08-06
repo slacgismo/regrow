@@ -113,17 +113,11 @@ def __(mo):
 
 
 @app.cell
-def __(
-    analyze_baseline,
-    get_daily_switch,
-    get_location,
-    location,
-    mo,
-    plt,
-):
+def __(analyze_baseline, get_location, location, mo, plt):
     def _is_daily(x,y):
         return x if get_daily_switch() else y
 
+    get_daily_switch,set_daily_switch = mo.state(False)
     daily_residual = analyze_baseline(location.resample(rule=_is_daily("1D","1h")).mean(), get_location())
     hourly_residual = analyze_baseline(location, get_location())
 
@@ -140,7 +134,12 @@ def __(
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return daily_residual, hourly_residual
+    return (
+        daily_residual,
+        get_daily_switch,
+        hourly_residual,
+        set_daily_switch,
+    )
 
 
 @app.cell
@@ -197,32 +196,8 @@ def __(daily_residual, hourly_residual, mo, np):
 
 
 @app.cell
-def __():
-    # daily_std = daily_residual.std()
-    # max_daily_deviation = daily_std.max().round(3)
-
-    # mo.md(f"Max Daily Deviation: {max_daily_deviation}")
-    return
-
-
-@app.cell
-def __():
-    # hourly_std = hourly_residual.std()
-    # max_hourly_deviation = hourly_residual.max().round(3)
-
-    # mo.md(f"Max Hourly Deviation: {max_hourly_deviation}")
-    return
-
-
-@app.cell
-def __():
-    # Calculating the Intergral
-    return
-
-
-@app.cell
-def __():
-    # plt.hist(hourly_residual)
+def __(hourly_residual, plt):
+    plt.hist(hourly_residual)
     return
 
 

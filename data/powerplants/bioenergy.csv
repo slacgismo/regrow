@@ -1,0 +1,13 @@
+name,unit,capacity[MW],start[y],retirement[y],latitude,longitude,county,state,type
+Colmac Energy power station,1,47.0,1992.0,,33.5868,-116.0876,Riverside County,California,ST
+Covanta Long Beach power station,GEN1,36.0,1988.0,,33.7592,-118.2399,Los Angeles County,California,ST
+Honey Lake power station,1,30.0,1989.0,,40.3683,-120.2647,Lassen County,California,ST
+Kettle Falls power station,1,51.0,1983.0,,48.6203,-118.1111,Stevens County,Washington,ST
+Lewiston Pulp Mill power station,GEN4,65.0,1991.0,,46.4231,-116.9764,Nez Perce County,Idaho,ST
+Mt. Poso Cogeneration Plant,TG01,62.0,1989.0,,35.5763,-119.0062,Kern County,California,ST
+Puente Hills Energy Recovery power station,GEN1,50.0,1986.0,,34.0233,-118.0241,Los Angeles County,California,ST
+Sierra Pacific Quincy power station,GEN3,35.0,2018.0,,39.9412,-120.9092,Plumas County,California,ST
+Simpson Tacoma power station,STG1,64.0,2009.0,,47.2661,-122.4283,Pierce County,Washington,ST
+SPI Anderson 2 power station,GEN1,30.0,2015.0,,40.4723,-122.3242,Shasta County,California,ST
+Springfield Mill power station,TG4,40.0,1976.0,,44.0569,-122.9555,Lane County,Oregon,ST
+Stockton Cogeneration Facility,1,54.0,1987.0,,37.9436,-121.3304,San Joaquin County,California,ST

@@ -1,9 +1,17 @@
 # Files
 
-* `.gitignore` should list `case14.glm` to avoid saving the output of the converter from `py` format.
-* `case14.py` is the PyPower version of the IEEE 14 bus model
-* `case14_control.glm` is the GLM file linking the IEEE 14 bus model to the controller objects.
-* `controllers.glm` is the Python module that define the controller object and event handlers.
+* `.gitignore` should list `case14_network.glm` to avoid saving the output of
+  the converter from `py` format.
+* `case14.glm` is the GLM file linking the IEEE 14 bus model to the controller
+  and model objects.
+* `case14_network.py` is the PyPower version of the IEEE 14 bus model use to
+  generate the network GLM file.
+* `case14_loads.glm` is the load model
+* `case14_plants.glm` is the generation model
+* `case14_recorders.glm` is the data collection model
+* `case14_modify.glm` is the model parameter settings file.
+* `controllers.glm` is the Python module that define the controller object and
+  event handlers.
 
 # References
 

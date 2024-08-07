@@ -1,0 +1,1160 @@
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1032_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1032_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1032_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1034_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1034_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1034_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1131_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1131_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1232_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1232_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1331_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1331_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1333_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1333_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1333_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1431_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1431_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_1431_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2030_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2030_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2130_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2130_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2130_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2130_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2233_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2233_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2233_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2332_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2431_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2434_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_4";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_5";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_6";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2438_7";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2439_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2533_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2630_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2631_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2634_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2637_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_2638_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3133_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3133_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3135_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3135_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3234_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3234_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3234_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3234_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3333_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3333_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3432_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3433_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3433_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3531_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3531_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3531_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3631_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3631_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3731_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3831_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3835_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3835_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3835_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3836_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3931_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3931_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3932_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3933_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3933_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3933_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3933_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3933_4";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3933_5";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_3933_6";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4031_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4031_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4031_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4031_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4035_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4035_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4035_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4035_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4039_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4039_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4039_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4131_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4131_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4131_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4132_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4132_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4132_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4132_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4231_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4231_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4231_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4232_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4232_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_4232_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_5031_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_5031_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_5032_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_5032_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_5032_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_5032_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_5032_4";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6132_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6132_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6132_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6132_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6132_4";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6231_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6231_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6235_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6235_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6235_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6333_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6333_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6335_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6335_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6335_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6433_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6433_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6433_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6433_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6533_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6533_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6533_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6533_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_6533_4";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7031_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7031_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7031_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7031_4";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7032_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7032_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7032_2";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_7032_3";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_8033_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_8034_0";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}
+object pypower.gencost 
+{
+    parent "wecc240_psse_G_8034_1";
+    startup 0;
+    shutdown 0;
+    model 2;
+    costs "0.01,40,0";
+}

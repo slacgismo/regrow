@@ -1,0 +1,9 @@
+#for ID in ${RANGE 1,14}
+object recorder
+{
+    parent pp_bus_${ID};
+    file "case14_bus_${ID}_record.csv";
+    property S,Pd,Qd,Gs,Bs,Vm,Va;
+    interval ${pypower::maximum_timestep}; // on-change only
+}
+#done

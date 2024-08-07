@@ -1,0 +1,374 @@
+name,unit,fuel,capacity[MW],type,start[y],retirement[y],latitude,longitude,county,state
+Afton generating station,CC1,NG,287,CC,2007,,32.114185,-106.8465,Dona Ana,New Mexico
+Agua Fria power station,AF7,NG,50,CT,2022,,33.5561,-112.2153,Maricopa,Arizona
+Agua Fria power station,AF8,NG,50,CT,2022,,33.5561,-112.2153,Maricopa,Arizona
+Agua Mansa power plant,AMP1,NG,61,CT,2003,,34.0414,-117.3603,San Bernardino,California
+Alamitos energy center,3,NG,310,ST,1961,,33.767229,-118.1002,Los Angeles,California
+Alamitos energy center,4,NG,310,ST,1962,,33.767229,-118.1002,Los Angeles,California
+Alamitos energy center,5,NG,495,ST,1964,,33.767229,-118.1002,Los Angeles,California
+Alamitos energy center,CCT1,NG,678,CC,2020,,33.767229,-118.1002,Los Angeles,California
+Algonquin Power Sanger power station,CC1,NG,62,CC,2012,,36.6842,-119.5522,Fresno,California
+Almond power plant,1,NG,50,CT,1996,,37.5744,-120.985,Stanislaus,California
+Almond power plant,2,NG,58,CT,2012,,37.5744,-120.985,Stanislaus,California
+Almond power plant,3,NG,58,CT,2012,,37.5744,-120.985,Stanislaus,California
+Almond power plant,4,NG,58,CT,2012,,37.5744,-120.985,Stanislaus,California
+AltaGas Ripon Energy power station,GEN1,NG,50,CT,1988,,37.732533,-121.116,San Joaquin,California
+Apache Generating Station,ST2,NG,204,ST,2017,,32.0603,-109.8931,Cochise,Arizona
+Apex generating station,CC1,NG,601,CC,2003,,36.415999,-114.9609,Clark,Nevada
+Arapahoe Station,A567,NG,194,CC,2002,,39.6692,-105.0018,Denver,Colorado
+Arlington Valley energy facility,CC1,NG,713,CC,2002,,33.3417,-112.8897,Maricopa,Arizona
+Barre Peaker power station,1,NG,50,CT,2007,,33.8073,-117.9832,Orange,California
+Basin Creek Plant,1,NG,54.9,IC,2006,,45.9293,-112.5194,Silver Bow,Montana
+Bennett Mountain power station,1,NG,173,CT,2005,,43.147153,-115.6666,Elmore,Idaho
+Black Mountain generating station,1,NG,61,CT,2008,,35.0361,-114.1594,Mohave,Arizona
+Black Mountain generating station,2,NG,61,CT,2008,,35.0361,-114.1594,Mohave,Arizona
+Bluffview power station,CC1,NG,67,CC,2005,,36.716628,-108.2153,San Juan,New Mexico
+Blythe Energy power station,CC1,NG,591,CC,2003,,33.6157,-114.6865,Riverside,California
+Brush generation facility,BCP,NG,74,CC,1994,,40.2415,-103.631,Morgan,Colorado
+Brush generation facility,BIV,NG,138,CC,2002,,40.2415,-103.631,Morgan,Colorado
+Brush generation facility,CPP,NG,62,CC,1990,,40.2415,-103.631,Morgan,Colorado
+CalPeak Power Border Peaker Plant,CPP4,NG,61,CT,2001,,32.562448,-116.9439,San Diego,California
+CalPeak Power Enterprise Peaker Plant,CPP7,NG,59,CT,2001,,33.121943,-117.1174,San Diego,California
+CalPeak Power Panoche Peaker Plant,CPP2,NG,61,CT,2001,,36.652905,-120.5806,Fresno,California
+CalPeak Power Vaca Dixon Peaker Plant,CPP1,NG,61,CT,2002,,38.398867,-121.924,Solano,California
+Canyon power plant,CPP1,NG,50,CT,2011,,33.858056,-117.8617,Orange,California
+Canyon power plant,CPP2,NG,50,CT,2011,,33.858056,-117.8617,Orange,California
+Canyon power plant,CPP3,NG,50,CT,2011,,33.858056,-117.8617,Orange,California
+Canyon power plant,CPP4,NG,50,CT,2011,,33.858056,-117.8617,Orange,California
+Carlsbad energy center,CEC 6,NG,132,CT,2018,,33.140507,-117.3339,San Diego,California
+Carlsbad energy center,CEC 7,NG,132,CT,2018,,33.140507,-117.3339,San Diego,California
+Carlsbad energy center,CEC 8,NG,132,CT,2018,,33.140507,-117.3339,San Diego,California
+Carlsbad energy center,CEC 9,NG,132,CT,2018,,33.140507,-117.3339,San Diego,California
+Carlsbad energy center,CEC10,NG,132,CT,2018,,33.140507,-117.3339,San Diego,California
+Carson cogeneration power station,CC1,NG,56,CC,1990,,33.8759,-118.2491,Los Angeles,California
+Carson Ice-Gen Project power station,1,NG,54,CT,1995,,38.445681,-121.4624,Sacramento,California
+Carson Ice-Gen Project power station,CC1,NG,72,CC,1995,,38.445681,-121.4624,Sacramento,California
+Carty generating station,CCG1,NG,500,CC,2016,,45.698611,-119.8131,Morrow,Oregon
+Center Hybrid power station,1,NG,50,CT,2007,,33.9296,-118.1046,Los Angeles,California
+Chehalis generating facility,CC1,NG,698,CC,2003,,46.6225,-122.9131,Lewis,Washington
+Cherokee Station,4,NG,381,ST,2017,,39.807275,-104.9645,Adams,Colorado
+Cherokee Station,CHR0,NG,626,CC,2015,,39.807275,-104.9645,Adams,Colorado
+Cheyenne Prairie generating station,PB1,NG,100,CC,2014,,41.123611,-104.72,Laramie,Wyoming
+Chuck Lenzie generating station,PB1,NG,733,CC,2006,,36.383719,-114.9218,Clark,Nevada
+Chuck Lenzie generating station,PB2,NG,733,CC,2006,,36.383719,-114.9218,Clark,Nevada
+Clark (NVE) power station,11,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,12,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,13,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,14,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,15,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,16,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,17,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,18,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,19,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,20,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,21,NG,59,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,22,NG,61,CT,2008,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,GT4,NG,72,CT,1973,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,PB1,NG,289,CC,1994,,36.0875,-115.0507,Clark,Nevada
+Clark (NVE) power station,PB2,NG,289,CC,1993,,36.0875,-115.0507,Clark,Nevada
+Colusa generating station,CC1,NG,712,CC,2010,,39.3661,-122.27,Colusa,California
+Coolidge generation station,1,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,2,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,3,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,4,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,5,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,6,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,7,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,8,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,9,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,10,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,11,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Coolidge generation station,12,NG,61,CT,2011,,32.917399,-111.5033,Pinal,Arizona
+Cosumnes power station,CCC1,NG,557,CC,2006,,38.338475,-121.124,Sacramento,California
+Coyote Springs II power station,U2CT,NG,287,CC,2003,,45.848039,-119.674,Morrow,Oregon
+Coyote Springs power station,CC1,NG,296,CC,1995,,45.847998,-119.6739,Morrow,Oregon
+Crockett cogeneration Project power station,GE1,NG,247,CC,1995,,38.0569,-122.2161,Contra Costa,California
+Culbertson generation station,1,NG,108,CT,2010,,48.21,-104.3917,Roosevelt,Montana
+Cunningham power station,1,NG,75,ST,1957,,32.7131,-103.3533,Lea,New Mexico
+Cunningham power station,2,NG,190,ST,1965,,32.7131,-103.3533,Lea,New Mexico
+Cunningham power station,3,NG,127,CT,1998,,32.7131,-103.3533,Lea,New Mexico
+Cunningham power station,4,NG,127,CT,1998,,32.7131,-103.3533,Lea,New Mexico
+Currant Creek power station,CC1,NG,649,CC,2006,,39.82144,-111.8935,Juab,Utah
+Delano energy center,GEN1,NG,61,CT,2013,,35.790864,-119.2945,Tulare,California
+Delta energy center,CC1,NG,944,CC,2002,,38.0169,-121.8439,Contra Costa,California
+Demoss Petrie power station,GT2,NG,85,CT,2001,,32.252273,-110.9921,Pima,Arizona
+Desert Basin power station,CTG4,NG,50,CT,2022,,32.9042,-111.7889,Pinal,Arizona
+Desert Basin power station,CTG5,NG,50,CT,2022,,32.9042,-111.7889,Pinal,Arizona
+Desert Basin power station,STG3,NG,646,CC,2001,,32.9042,-111.7889,Pinal,Arizona
+Desert Star energy center,CC1,NG,537,CC,2000,,35.788889,-114.9942,Clark,Nevada
+Donald Von Raesfeld power plant,DVR1,NG,154,CC,2005,,37.3767,-121.9508,Santa Clara,California
+Dynegy Moss Landing power plant,CC1,NG,699,CC,2002,,36.804837,-121.7822,Monterey,California
+Dynegy Moss Landing power plant,CC2,NG,699,CC,2002,,36.804837,-121.7822,Monterey,California
+El Cajon energy center,GEN1,NG,61,CT,2010,,32.796106,-116.9721,San Diego,California
+El Centro power station,STM2,NG,124,CC,1993,,32.802222,-115.54,Imperial,California
+El Centro power station,STM3,NG,152,CC,2012,,32.802222,-115.54,Imperial,California
+El Segundo energy center,1011,NG,269,CC,2013,,33.910556,-118.425,Los Angeles,California
+El Segundo energy center,2021,NG,269,CC,2013,,33.910556,-118.425,Los Angeles,California
+Elk Hills power station,G541,NG,623,CC,2003,,35.280318,-119.4707,Kern,California
+Ellwood power station,1,NG,58,CT,1974,,34.431419,-119.9001,Santa Barbara,California
+Escondido energy center,CTG1,NG,54,CT,2014,,33.1261,-117.1172,San Diego,California
+Evander Andrews power Complex,1,NG,179,CT,2008,,43.179176,-115.7343,Elmore,Idaho
+Fort Churchill power station,1,NG,115,ST,1968,,39.1281,-119.1322,Lyon,Nevada
+Fort Churchill power station,2,NG,115,ST,1971,,39.1281,-119.1322,Lyon,Nevada
+Fort St Vrain power station,5,NG,140,CT,2009,,40.2461,-104.8742,Weld,Colorado
+Fort St Vrain power station,6,NG,140,CT,2009,,40.2461,-104.8742,Weld,Colorado
+Fort St Vrain power station,FSV0,NG,868,CC,2001,,40.2461,-104.8742,Weld,Colorado
+Foster Wheeler Martinez power station,CC1,NG,114,CC,1987,,38.0244,-122.0589,Contra Costa,California
+Frederickson Power power station,FP1,NG,318,CC,2002,,47.086111,-122.3657,Pierce,Washington
+Fresno cogeneration Partners power station,CC1,NG,62,CC,2004,,36.617022,-120.0998,Fresno,California
+Front Range power plant,CC1,NG,554,CC,2003,,38.6281,-104.7069,El Paso,Colorado
+Gadsby power station,1,NG,69,ST,1951,,40.7686,-111.9289,Salt Lake,Utah
+Gadsby power station,2,NG,69,ST,1952,,40.7686,-111.9289,Salt Lake,Utah
+Gadsby power station,3,NG,134,ST,1955,,40.7686,-111.9289,Salt Lake,Utah
+Gadsby power station,4,NG,71,CT,2002,,40.7686,-111.9289,Salt Lake,Utah
+Gadsby power station,5,NG,71,CT,2002,,40.7686,-111.9289,Salt Lake,Utah
+Gadsby power station,6,NG,71,CT,2002,,40.7686,-111.9289,Salt Lake,Utah
+Gateway generating station,CC1,NG,620,CC,2009,,38.0175,-121.7587,Contra Costa,California
+Gila River power station,BL03,NG,619,CC,2003,,32.975,-112.6944,Maricopa,Arizona
+Gila River power station,BL04,NG,619,CC,2003,,32.975,-112.6944,Maricopa,Arizona
+Gila River power station,PB1,NG,619,CC,2003,,32.975,-112.6944,Maricopa,Arizona
+Gila River power station,PB2,NG,619,CC,2003,,32.975,-112.6944,Maricopa,Arizona
+Gilroy power plant,CC1,NG,130,CC,1987,,37.0001,-121.5367,Santa Clara,California
+Glenarm power station,1,NG,87,CC,2016,,34.126,-118.1494,Los Angeles,California
+Glenarm power station,GT3,NG,61,CT,2004,,34.126,-118.1494,Los Angeles,California
+Glenarm power station,GT4,NG,61,CT,2004,,34.126,-118.1494,Los Angeles,California
+Goal Line power station,CC1,NG,51,CC,1994,,33.1185,-117.0995,San Diego,California
+Goldendale generating station,CC1,NG,303,CC,2004,,45.8114,-120.833,Klickitat,Washington
+Grapeland Hybrid power station,1,NG,50,CT,2007,,34.0903,-117.5343,San Bernardino,California
+Grays Harbor energy facility,CC01,NG,715,CC,2008,,46.9692,-123.48,Grays Harbor,Washington
+Grayson power station,9,NG,57,CT,2004,,34.1556,-118.2782,Los Angeles,California
+Grayson power station,CC1,NG,121,CC,1977,,34.1556,-118.2782,Los Angeles,California
+Greenleaf 2 power plant,GEN1,NG,50,CT,1989,,39.1365,-121.6397,Sutter,California
+Griffith Energy power station,1111,NG,655,CC,2002,,35.054029,-114.1333,Mohave,Arizona
+H. Wilson Sundt Generating Station,IC,NG,188,IC,2020,,32.16,-110.905,Pima,Arizona
+H. Wilson Sundt Generating Station,ST3,NG,114,ST,1962,,32.16,-110.9047,Pima,Arizona
+Hanford Energy Park Emergency Peaker Project,1,NG,95,CT,2001,,36.3315688718025,-119.646187814904,Kings,California
+Harbor cogeneration power station,HCCC,NG,107,CC,2001,,33.7771,-118.2303,Los Angeles,California
+Harquahala generating project,BLK1,NG,426,CC,2004,,33.47596,-113.1134,Maricopa,Arizona
+Harquahala generating project,BLK2,NG,426,CC,2004,,33.47596,-113.1134,Maricopa,Arizona
+Harquahala generating project,BLK3,NG,426,CC,2004,,33.47596,-113.1134,Maricopa,Arizona
+Harry Allen power station,GT1,NG,102,CT,1995,,36.430554,-114.9024,Clark,Nevada
+Harry Allen power station,GT4,NG,85,CT,2006,,36.430554,-114.9024,Clark,Nevada
+Harry Allen power station,PB1,NG,559,CC,2011,,36.430554,-114.9024,Clark,Nevada
+Haynes power station,1,NG,230,ST,1962,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,2,NG,230,ST,1963,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,11,NG,108,CT,2013,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,12,NG,108,CT,2013,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,13,NG,108,CT,2013,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,14,NG,108,CT,2013,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,15,NG,108,CT,2013,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,16,NG,108,CT,2013,,33.764741,-118.0991,Los Angeles,California
+Haynes power station,CC1,NG,630,CC,2005,,33.764741,-118.0991,Los Angeles,California
+Henrietta Peaker Project,1,NG,95,CT,2002,,36.3491838188483,-119.784642615204,Kings,California
+Hermiston generating plant,CC1,NG,311,CC,1996,,45.8042,-119.37,Umatilla,Oregon
+Hermiston generating plant,CC2,NG,311,CC,1996,,45.8042,-119.37,Umatilla,Oregon
+Hermiston power project,CC1,NG,689,CC,2002,,45.794046,-119.3133,Umatilla,Oregon
+Higgins generating station,PB1,NG,688,CC,2004,,35.6139,-115.3561,Clark,Nevada
+High Desert power plant,STG1,NG,852,CC,2003,,34.5953,-117.3647,San Bernardino,California
+Hobbs generating station,CC1,NG,682,CC,2008,,32.728333,-103.3094,Lea,New Mexico
+Huntington Beach generating station,2,NG,218,ST,1958,,33.645618,-117.9794,Orange,California
+Huntington Beach generating station,CCT1,NG,699,CC,2020,,33.645618,-117.9794,Orange,California
+Indigo energy facility,CTG1,NG,50,CT,2001,,33.910873,-116.553,Riverside,California
+Indigo energy facility,CTG2,NG,50,CT,2001,,33.910873,-116.553,Riverside,California
+Indigo energy facility,CTG3,NG,50,CT,2001,,33.910873,-116.553,Riverside,California
+Inland Empire energy center,1,NG,410,CC,2009,2020,33.738839,-117.1704,Riverside,California
+Inland Empire energy center,2,NG,410,CC,2010,2020,33.738839,-117.1704,Riverside,California
+JM Shafer generating station,J272,NG,397,CC,1994,,40.0986,-104.7736,Weld,Colorado
+Kern River cogeneration power station,GTAG,NG,75,CT,1985,,35.4515,-118.9849,Kern,California
+Kern River cogeneration power station,GTBG,NG,75,CT,1985,,35.4515,-118.9849,Kern,California
+Kern River cogeneration power station,GTCG,NG,75,CT,1985,,35.4515,-118.9849,Kern,California
+Kern River cogeneration power station,GTDG,NG,75,CT,1985,,35.4515,-118.9849,Kern,California
+King City power plant,CC01,NG,133,CC,1989,,36.225,-121.1278,Monterey,California
+Klamath cogeneration plant,CC1,NG,502,CC,2001,,42.173889,-121.8106,Klamath,Oregon
+La Paloma generating plant,GEN1,NG,289,CC,2003,,35.2956,-119.5919,Kern,California
+La Paloma generating plant,GEN2,NG,289,CC,2003,,35.2956,-119.5919,Kern,California
+La Paloma generating plant,GEN3,NG,289,CC,2003,,35.2956,-119.5919,Kern,California
+La Paloma generating plant,GEN4,NG,289,CC,2003,,35.2956,-119.5919,Kern,California
+Lake One power station,L1,NG,61,CT,2002,,34.1772,-118.3147,Los Angeles,California
+Lake Side power plant,CC1,NG,657,CC,2007,,40.331667,-111.7542,Utah,Utah
+Lake Side power plant,CC2,NG,728,CC,2014,,40.331667,-111.7542,Utah,Utah
+Langley Gulch power plant,LG1,NG,319,CC,2012,,43.904444,-116.8197,Payette,Idaho
+Las Vegas generating station,CCB1,NG,61,CC,1994,,36.2319,-115.1222,Clark,Nevada
+Las Vegas generating station,CCB2,NG,149,CC,2003,,36.2319,-115.1222,Clark,Nevada
+Las Vegas generating station,CCB3,NG,149,CC,2003,,36.2319,-115.1222,Clark,Nevada
+Lodi energy center,CC1,NG,289,CC,2012,,38.088056,-121.3875,San Joaquin,California
+Long Beach Generation power station,CT1,NG,63,CT,1976,,33.7641,-118.2248,Los Angeles,California
+Long Beach Generation power station,CT2,NG,63,CT,1976,,33.7641,-118.2248,Los Angeles,California
+Long Beach Generation power station,CT3,NG,63,CT,1976,,33.7641,-118.2248,Los Angeles,California
+Long Beach Generation power station,CT4,NG,63,CT,1976,,33.7641,-118.2248,Los Angeles,California
+Los Esteros Critical energy center,CC1,NG,306,CC,2013,,37.425,-121.9319,Santa Clara,California
+Los Medanos energy center,CC1,NG,678,CC,2001,,38.030071,-121.873,Contra Costa,California
+Luna energy facility,CC1,NG,650,CC,2006,,32.299349,-107.7834,Luna,New Mexico
+Maddox power station,1,NG,114,ST,1967,,32.714224,-103.3015,Lea,New Mexico
+Maddox power station,2,NG,87,CT,1976,,32.714224,-103.3015,Lea,New Mexico
+Magnolia power project,CC1,NG,388,CC,2005,,34.1786,-118.3153,Los Angeles,California
+Malaga power station,GT-1,NG,61,CT,2005,,36.6697,-119.7404,Fresno,California
+Malaga power station,GT-2,NG,61,CT,2005,,36.6697,-119.7404,Fresno,California
+Manchief Electric generating station,UN1,NG,150,CT,2000,,40.217143,-103.685,Morgan,Colorado
+Manchief Electric generating station,UN2,NG,150,CT,2000,,40.217143,-103.685,Morgan,Colorado
+Mariposa Energy Project,CTG1,NG,50,CT,2012,,37.789167,-121.6019,Alameda,California
+Mariposa Energy Project,CTG2,NG,50,CT,2012,,37.789167,-121.6019,Alameda,California
+Mariposa Energy Project,CTG3,NG,50,CT,2012,,37.789167,-121.6019,Alameda,California
+Mariposa Energy Project,CTG4,NG,50,CT,2012,,37.789167,-121.6019,Alameda,California
+Marsh Landing generating station,1,NG,207,CT,2013,,38.016944,-121.765,Contra Costa,California
+Marsh Landing generating station,2,NG,207,CT,2013,,38.016944,-121.765,Contra Costa,California
+Marsh Landing generating station,3,NG,207,CT,2013,,38.016944,-121.765,Contra Costa,California
+Marsh Landing generating station,4,NG,207,CT,2013,,38.016944,-121.765,Contra Costa,California
+Martin Drake Power Plant,7,NG,132,ST,1974,2022,38.824444,-104.8333,El Paso,Colorado
+Martinez Refining power station,CC1,NG,100,CC,1996,,38.0169,-122.1117,Contra Costa,California
+McClellan (CA) power station,1,NG,77,CT,1986,,38.652731,-121.3933,Sacramento,California
+McGrath Peaker power station,1,NG,50,CT,2012,,34.205556,-119.2469,Ventura,California
+Mesquite generating station block 1,BLK1,NG,692,CC,2003,,33.345,-112.8642,Maricopa,Arizona
+Mesquite generating station block 2,BLK2,NG,692,CC,2003,,33.345047,-112.8642,Maricopa,Arizona
+Metcalf energy center,CC1,NG,635,CC,2005,,37.2207,-121.7457,Santa Clara,California
+Midway Peaking power station,1,NG,70,CT,2009,,36.654114,-120.5797,Fresno,California
+Midway Peaking power station,2,NG,70,CT,2009,,36.654114,-120.5797,Fresno,California
+Midway Sunset cogeneration power station,A,NG,78,CT,1989,,35.2269,-119.6294,Kern,California
+Midway Sunset cogeneration power station,B,NG,78,CT,1989,,35.2269,-119.6294,Kern,California
+Midway Sunset cogeneration power station,C,NG,78,CT,1989,,35.2269,-119.6294,Kern,California
+Mint Farm generating station,CC1,NG,319,CC,2008,,46.138824,-122.9855,Cowlitz,Washington
+Mira Loma Peaker power station,1,NG,50,CT,2007,,34.0053,-117.5604,San Bernardino,California
+Miramar energy facility,1,NG,53,CT,2005,,32.8769,-117.1664,San Diego,California
+Miramar energy facility,2,NG,53,CT,2009,,32.8769,-117.1664,San Diego,California
+Mountainview generating station,3,NG,518,CC,2005,,34.0818,-117.2418,San Bernardino,California
+Mountainview generating station,4,NG,518,CC,2006,,34.0818,-117.2418,San Bernardino,California
+Naughton Power Plant,3,NG,384,ST,2021,,41.7581,-110.5983,Lincoln,Wyoming
+Nebo power station,CC1,NG,140,CC,2004,,40.0614,-111.7294,Utah,Utah
+Nevada cogeneration Associates 1 power station,CC1,NG,95,CC,1992,,36.343229,-114.9207,Clark,Nevada
+Nevada cogeneration Associates 2 power station,STG1,NG,96,CC,1992,,36.2253,-114.8783,Clark,Nevada
+Niland Gas Turbine Plant,1,NG,61,CT,2008,,33.238842,-115.5045,Imperial,California
+Niland Gas Turbine Plant,2,NG,61,CT,2008,,33.238842,-115.5045,Imperial,California
+Northeast (WA) power station,1,NG,62,CT,1978,,47.73511,-117.3705,Spokane,Washington
+Northern California Power Agency CT Project 2,NA1,NG,50,CT,1996,,38.088138,-121.3869,San Joaquin,California
+Ocotillo power station,GT1,NG,53,CT,1972,,33.4225,-111.9122,Maricopa,Arizona
+Ocotillo power station,GT2,NG,53,CT,1973,,33.4225,-111.9122,Maricopa,Arizona
+Ocotillo power station,GT3,NG,162,CT,2019,,33.4225,-111.9122,Maricopa,Arizona
+Ocotillo power station,GT4,NG,162,CT,2019,,33.4225,-111.9122,Maricopa,Arizona
+Ocotillo power station,GT5,NG,162,CT,2019,,33.4225,-111.9122,Maricopa,Arizona
+Ocotillo power station,GT6,NG,162,CT,2019,,33.4225,-111.9122,Maricopa,Arizona
+Ocotillo power station,GT7,NG,162,CT,2019,,33.4225,-111.9122,Maricopa,Arizona
+Orange Grove peaking facility,CTG1,NG,59,CT,2010,,33.3594,-117.1114,San Diego,California
+Orange Grove peaking facility,CTG2,NG,59,CT,2010,,33.3594,-117.1114,San Diego,California
+Ormond Beach power station,1,NG,806,ST,1971,,34.1292,-119.1689,Ventura,California
+Ormond Beach power station,2,NG,806,ST,1973,,34.1292,-119.1689,Ventura,California
+Otay Mesa Generating Project,CC1,NG,689,CC,2009,,32.581481,-116.915,San Diego,California
+Oxnard power station,GEN2,NG,50,CT,1989,,34.196,-119.1667,Ventura,California
+Palomar Energy power station,CC1,NG,559,CC,2006,,33.1197,-117.1178,San Diego,California
+Panoche energy center,1,NG,108,CT,2009,,36.6514,-120.5833,Fresno,California
+Panoche energy center,2,NG,108,CT,2009,,36.6514,-120.5833,Fresno,California
+Panoche energy center,3,NG,108,CT,2009,,36.6514,-120.5833,Fresno,California
+Panoche energy center,4,NG,108,CT,2009,,36.6514,-120.5833,Fresno,California
+Panoche Peaker power station,8,NG,57,CT,1973,,36.6535,-120.5783,Fresno,California
+Pastoria energy facility,PB01,NG,521,CC,2005,,34.9556,-118.844,Kern,California
+Pastoria energy facility,PB02,NG,258,CC,2005,,34.9556,-118.844,Kern,California
+Pio Pico energy center,CTG1,NG,132,CT,2016,,32.573889,-116.9178,San Diego,California
+Pio Pico energy center,CTG2,NG,132,CT,2016,,32.573889,-116.9178,San Diego,California
+Pio Pico energy center,CTG3,NG,132,CT,2016,,32.573889,-116.9178,San Diego,California
+Plains End II power station,IC,NG,117.6,IC,2008,,39.8586,-105.2256,Jefferson,Colorado
+Plains End power station,IC,NG,114,IC,2002,,39.857499,-105.225967,Jefferson,Colorado
+Port Westward power station,CCG1,NG,483,CC,2007,,46.17894,-123.172,Columbia,Oregon
+Port Westward Unit 2 power station,1,NG,225.6,IC,2014,,46.178889,-123.171944,Columbia,Oregon
+Pueblo Airport generating station,GT1,NG,100,CT,2012,,38.320833,-104.5264,Pueblo,Colorado
+Pueblo Airport generating station,GT2,NG,100,CT,2012,,38.320833,-104.5264,Pueblo,Colorado
+Pueblo Airport generating station,PB4,NG,100,CC,2012,,38.320833,-104.5264,Pueblo,Colorado
+Pueblo Airport generating station,PB5,NG,100,CC,2012,,38.320833,-104.5264,Pueblo,Colorado
+Rathdrum power station,1,NG,83,CT,1994,,47.7858,-116.9203,Kootenai,Idaho
+Rathdrum power station,2,NG,83,CT,1994,,47.7858,-116.9203,Kootenai,Idaho
+Rathdrum power station,CC1,NG,302,CC,2001,,47.7858,-116.9203,Kootenai,Idaho
+Rawhide Energy Station,A,NG,89,CT,2002,,40.860905,-105.0212,Larimer,Colorado
+Rawhide Energy Station,B,NG,89,CT,2002,,40.860905,-105.0212,Larimer,Colorado
+Rawhide Energy Station,C,NG,89,CT,2002,,40.860905,-105.0212,Larimer,Colorado
+Rawhide Energy Station,D,NG,89,CT,2004,,40.860905,-105.0212,Larimer,Colorado
+Rawhide Energy Station,F,NG,150,CT,2008,,40.860905,-105.0212,Larimer,Colorado
+Red Hawk power station,CC1,NG,573,CC,2002,,33.334562,-112.8406,Maricopa,Arizona
+Red Hawk power station,CC2,NG,567,CC,2002,,33.334562,-112.8406,Maricopa,Arizona
+Redding power station,101,NG,109,CC,2011,,40.507292,-122.4233,Shasta,California
+Redondo Beach generation station,5,NG,163,ST,1954,2023,33.8504,-118.395,Los Angeles,California
+Redondo Beach generation station,6,NG,163,ST,1957,2023,33.8504,-118.395,Los Angeles,California
+Redondo Beach generation station,8,NG,495,ST,1967,2023,33.8504,-118.395,Los Angeles,California
+Reeves power station,3,NG,66,ST,1962,,35.171,-106.6019,Bernalillo,New Mexico
+Rifle generating station,CC1,NG,84,CC,1987,2022,39.5173,-107.7299,Garfield,Colorado
+Rio Grande (New Mexico) power station,6,NG,50,ST,1957,,31.8047,-106.5472,Dona Ana,New Mexico
+Rio Grande (New Mexico) power station,7,NG,50,ST,1958,,31.8047,-106.5472,Dona Ana,New Mexico
+Rio Grande (New Mexico) power station,8,NG,167,ST,1972,,31.8047,-106.5472,Dona Ana,New Mexico
+Rio Grande (New Mexico) power station,9,NG,132,CT,2013,,31.8047,-106.5472,Dona Ana,New Mexico
+Ripon generation station,1,NG,61,CT,2006,,37.7315,-121.116,San Joaquin,California
+Ripon generation station,2,NG,61,CT,2006,,37.7315,-121.116,San Joaquin,California
+River Road Gen Plant,1,NG,248,CC,1997,,45.6497,-122.7256,Clark,Washington
+Riverside Energy Resource Center (CA),1,NG,50,CT,2006,,33.9636,-117.4528,Riverside,California
+Riverside Energy Resource Center (CA),2,NG,50,CT,2006,,33.9636,-117.4528,Riverside,California
+Rocky Mountain energy center,RKM0,NG,685,CC,2004,,40.0908,-104.5953,Weld,Colorado
+Roseville energy park,A101,NG,165,CC,2007,,38.7928,-121.3811,Placer,California
+Russell City energy center,CC1,NG,655,CC,2013,,37.63466,-122.1338,Alameda,California
+Saguaro (AZ) power station,GE1,NG,78,CT,2002,,32.5517,-111.3,Pinal,Arizona
+Saguaro (AZ) power station,GT1,NG,53,CT,1972,,32.5517,-111.3,Pinal,Arizona
+Saguaro (AZ) power station,GT2,NG,53,CT,1973,,32.5517,-111.3,Pinal,Arizona
+Santan power station,ST1,NG,104,CC,1974,,33.3325,-111.7503,Maricopa,Arizona
+Santan power station,ST2,NG,104,CC,1974,,33.3325,-111.7503,Maricopa,Arizona
+Santan power station,ST3,NG,104,CC,1974,,33.3325,-111.7503,Maricopa,Arizona
+Santan power station,ST4,NG,104,CC,1975,,33.3325,-111.7503,Maricopa,Arizona
+Santan power station,STS5,NG,622,CC,2005,,33.3325,-111.7503,Maricopa,Arizona
+Santan power station,STS6,NG,290,CC,2006,,33.3325,-111.7503,Maricopa,Arizona
+SCA cogeneration 2 power station,CCC1,NG,149,CC,1997,,38.530943,-121.4001,Sacramento,California
+Scattergood power station,1,NG,163,ST,1958,,33.918151,-118.4276,Los Angeles,California
+Scattergood power station,2,NG,163,ST,1959,,33.918151,-118.4276,Los Angeles,California
+Scattergood power station,6,NG,107,CT,2015,,33.918151,-118.4276,Los Angeles,California
+Scattergood power station,7,NG,107,CT,2015,,33.918151,-118.4276,Los Angeles,California
+Scattergood power station,CC1,NG,336,CC,2015,,33.918151,-118.4276,Los Angeles,California
+Sentinel energy center,CTG1,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Sentinel energy center,CTG2,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Sentinel energy center,CTG3,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Sentinel energy center,CTG4,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Sentinel energy center,CTG5,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Sentinel energy center,CTG6,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Sentinel energy center,CTG7,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Sentinel energy center,CTG8,NG,100,CT,2013,,33.934167,-116.5714,Riverside,California
+Silverhawk power station,PB1,NG,665,CC,2004,,36.4078,-114.9606,Clark,Nevada
+South Point energy center,CC1,NG,708,CC,2001,,34.8678,-114.5317,Mohave,Arizona
+SPA cogeneration 3 power station,CCC1,NG,174,CC,1997,,38.511,-121.4735,Sacramento,California
+Stanton Energy Reliability Center,GT1,NG,71,CT,2020,,33.806801,-117.9858,Orange,California
+Stanton Energy Reliability Center,GT2,NG,71,CT,2020,,33.806801,-117.9858,Orange,California
+Sumas power plant,CC1,NG,126,CC,1993,,48.9905,-122.2733,Whatcom,Washington
+Sundance power station,CT1,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT10,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT2,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT3,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT4,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT5,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT6,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT7,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT8,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sundance power station,CT9,NG,61,CT,2002,,32.9285,-111.5899,Pinal,Arizona
+Sunrise power station,CC1,NG,685,CC,2003,,35.2097,-119.585,Kern,California
+Sutter energy center,CC1,NG,636,CC,2001,,39.053139,-121.6959,Sutter,California
+Sycamore cogeneration power station,GTAG,NG,75,CT,1987,,35.452577,-118.9853,Kern,California
+Sycamore cogeneration power station,GTBG,NG,75,CT,1987,,35.452577,-118.9853,Kern,California
+Sycamore cogeneration power station,GTCG,NG,75,CT,1987,,35.452577,-118.9853,Kern,California
+Sycamore cogeneration power station,GTDG,NG,75,CT,1987,,35.452577,-118.9853,Kern,California
+THUMS power station,GEN1,NG,57,CT,2003,,33.7684,-118.2141,Los Angeles,California
+Tracy Combined Cycle power plant,CC12,NG,336,CC,2012,,37.7107,-121.4906,San Joaquin,California
+Tracy power station,3,NG,120,ST,1974,,39.5625,-119.525,Storey,Nevada
+Tracy power station,G240,NG,120,CC,1996,,39.5625,-119.525,Storey,Nevada
+Tracy power station,PB1,NG,623,CC,2008,,39.5625,-119.525,Storey,Nevada
+Valencia energy facility,CTG1,NG,160,CT,2008,,34.611549,-106.7322,Valencia,New Mexico
+Valmont Station,6,NG,59,CT,1973,,40.0205,-105.2009,Boulder,Colorado
+Valmont Station,UN7,NG,71,CT,2000,,40.0205,-105.2009,Boulder,Colorado
+Valmont Station,UN8,NG,71,CT,2001,,40.0205,-105.2009,Boulder,Colorado
+Walnut Creek energy park,GT1,NG,100,CT,2013,,34.008709,-117.9449,Los Angeles,California
+Walnut Creek energy park,GT2,NG,100,CT,2013,,34.008709,-117.9449,Los Angeles,California
+Walnut Creek energy park,GT3,NG,100,CT,2013,,34.008709,-117.9449,Los Angeles,California
+Walnut Creek energy park,GT4,NG,100,CT,2013,,34.008709,-117.9449,Los Angeles,California
+Walnut Creek energy park,GT5,NG,100,CT,2013,,34.008709,-117.9449,Los Angeles,California
+Walnut energy center,WEC,NG,301,CC,2006,,37.4878,-120.8956,Stanislaus,California
+West Phoenix power station,1B,NG,132,CC,1976,,33.4417,-112.1583,Maricopa,Arizona
+West Phoenix power station,2B,NG,132,CC,1976,,33.4417,-112.1583,Maricopa,Arizona
+West Phoenix power station,3B,NG,132,CC,1976,,33.4417,-112.1583,Maricopa,Arizona
+West Phoenix power station,CC1,NG,136,CC,2001,,33.4417,-112.1583,Maricopa,Arizona
+West Phoenix power station,CC2,NG,570,CC,2003,,33.4417,-112.1583,Maricopa,Arizona
+West Phoenix power station,GT1,NG,53,CT,1972,,33.4417,-112.1583,Maricopa,Arizona
+West Phoenix power station,GT2,NG,53,CT,1973,,33.4417,-112.1583,Maricopa,Arizona
+Western 102 power station,1,NG,117.6,IC,2005,,39.5603,-119.5108,Storey,Nevada
+Woodland power station,CC1,NG,98,CC,2003,,37.652602,-121.0204,Stanislaus,California
+Woodland power station,IC,NG,50.4,IC,2011,,37.652602,-121.020397,Stanislaus,California
+Yuba City cogeneration Partners power station,GEN1,NG,50,CT,1990,,39.13667,-121.6398,Sutter,California
+Yuma cogeneration Associates power station,YUCG,NG,63,CC,1994,,32.728822,-114.6541,Yuma,Arizona

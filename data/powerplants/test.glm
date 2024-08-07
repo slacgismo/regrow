@@ -1,0 +1,18 @@
+class test
+{
+	double startup[$/MW];
+	double shutdown[$/MW];
+	double energy[$/MWh];
+}
+
+module tape;
+
+object test
+{
+	object player 
+	{
+		file "nuclear_cost.csv";
+		property startup[$/MW],shutdown[$/MW],energy[$/MWh];
+	};
+}
+

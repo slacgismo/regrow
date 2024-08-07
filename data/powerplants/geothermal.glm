@@ -1,0 +1,826 @@
+module pypower;
+class powerplant
+{
+    char32 county;
+}
+
+object gen
+{
+    name "wecc240_psse_G_BIG_GEYSERS_GEOTHERMAL_PLANT_13";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "BIG_GEYSERS_GEOTHERMAL_PLANT_13";
+    parent "wecc240_psse_G_BIG_GEYSERS_GEOTHERMAL_PLANT_13";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "138 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BLUE_MOUNTAIN_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_N_6403";
+}
+object powerplant
+{
+    name "BLUE_MOUNTAIN_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_G_BLUE_MOUNTAIN_GEOTHERMAL_PLANT";
+    generator "ST";
+    fuel "GEO";
+    county "Humboldt County";
+    state "Nevada";
+    latitude 40.9952;
+    longitude -118.142;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BLUNDELL_1_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_N_2604";
+}
+object powerplant
+{
+    name "BLUNDELL_1_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_G_BLUNDELL_1_GEOTHERMAL_PLANT";
+    generator "ST";
+    fuel "GEO";
+    county "Beaver County";
+    state "Utah";
+    latitude 38.4889;
+    longitude -112.8533;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "31 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BOTTLE_ROCK_POWER_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "BOTTLE_ROCK_POWER_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_G_BOTTLE_ROCK_POWER_GEOTHERMAL_PLANT";
+    generator "ST";
+    fuel "GEO";
+    county "Lake County";
+    state "California";
+    latitude 38.8348;
+    longitude -122.7677;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CALISTOGA_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "CALISTOGA_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_G_CALISTOGA_GEOTHERMAL_PLANT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Lake County";
+    state "California";
+    latitude 38.7879;
+    longitude -122.7434;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "88 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CALISTOGA_GEOTHERMAL_PLANT_2";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "CALISTOGA_GEOTHERMAL_PLANT_2";
+    parent "wecc240_psse_G_CALISTOGA_GEOTHERMAL_PLANT_2";
+    generator "ST";
+    fuel "GEO";
+    county "Lake County";
+    state "California";
+    latitude 38.7894;
+    longitude -122.7455;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "88 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CASA_DIABLO_4_GEOTHERMAL_POWER_PLANT";
+    parent "wecc240_psse_N_3402";
+}
+object powerplant
+{
+    name "CASA_DIABLO_4_GEOTHERMAL_POWER_PLANT";
+    parent "wecc240_psse_G_CASA_DIABLO_4_GEOTHERMAL_POWER_PLANT";
+    generator "ST";
+    fuel "GEO";
+    county "Mono County";
+    state "California";
+    latitude 37.6449;
+    longitude -118.9149;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CE_LEATHERS_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "CE_LEATHERS_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_G_CE_LEATHERS_GEOTHERMAL_PLANT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.1779;
+    longitude -115.565;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "46 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COBB_CREEK_GEOTHERMAL_PLANT_12";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "COBB_CREEK_GEOTHERMAL_PLANT_12";
+    parent "wecc240_psse_G_COBB_CREEK_GEOTHERMAL_PLANT_12";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "110 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COSO_BLM_GEOTHERMAL_PLANT_GEN1-3";
+    parent "wecc240_psse_N_2902";
+}
+object powerplant
+{
+    name "COSO_BLM_GEOTHERMAL_PLANT_GEN1-3";
+    parent "wecc240_psse_G_COSO_BLM_GEOTHERMAL_PLANT_GEN1-3";
+    generator "ST";
+    fuel "GEO";
+    county "Inyo County";
+    state "California";
+    latitude 36.0372;
+    longitude -117.7981;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DEL_RANCH_GEOTHERMAL_PROJECT";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "DEL_RANCH_GEOTHERMAL_PROJECT";
+    parent "wecc240_psse_G_DEL_RANCH_GEOTHERMAL_PROJECT";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.1646;
+    longitude -115.616;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "46 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_EAGLE_ROCK_GEOTHERMAL_PLANT_11";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "EAGLE_ROCK_GEOTHERMAL_PLANT_11";
+    parent "wecc240_psse_G_EAGLE_ROCK_GEOTHERMAL_PLANT_11";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "110 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ELMORE_GEOTHERMAL_PROJECT_1";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "ELMORE_GEOTHERMAL_PROJECT_1";
+    parent "wecc240_psse_G_ELMORE_GEOTHERMAL_PROJECT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.1777;
+    longitude -115.6033;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "46 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GALENA_1_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_N_3701";
+}
+object powerplant
+{
+    name "GALENA_1_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_G_GALENA_1_GEOTHERMAL_PLANT";
+    generator "ST";
+    fuel "GEO";
+    county "Washoe County";
+    state "Nevada";
+    latitude 39.3908;
+    longitude -119.7546;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GRANT_GEOTHERMAL_PLANT_20";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "GRANT_GEOTHERMAL_PLANT_20";
+    parent "wecc240_psse_G_GRANT_GEOTHERMAL_PLANT_20";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "118 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HEBER_1_GEOTHERMAL";
+    parent "wecc240_psse_N_2301";
+}
+object powerplant
+{
+    name "HEBER_1_GEOTHERMAL";
+    parent "wecc240_psse_G_HEBER_1_GEOTHERMAL";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 32.7146;
+    longitude -115.518;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "52 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_JOHN_L_FEATHERSTONE_GEOTHERMAL_PLANT_HR1";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "JOHN_L_FEATHERSTONE_GEOTHERMAL_PLANT_HR1";
+    parent "wecc240_psse_G_JOHN_L_FEATHERSTONE_GEOTHERMAL_PLANT_HR1";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.2046;
+    longitude -115.5733;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LAKE_VIEW_GEOTHERMAL_PLANT_17";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "LAKE_VIEW_GEOTHERMAL_PLANT_17";
+    parent "wecc240_psse_G_LAKE_VIEW_GEOTHERMAL_PLANT_17";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc "1982-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "118 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MCCABE_GEOTHERMAL_PLANT_5-6";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "MCCABE_GEOTHERMAL_PLANT_5-6";
+    parent "wecc240_psse_G_MCCABE_GEOTHERMAL_PLANT_5-6";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "110 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MCGINNESS_HILLS_3_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_N_6403";
+}
+object powerplant
+{
+    name "MCGINNESS_HILLS_3_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_G_MCGINNESS_HILLS_3_GEOTHERMAL_PLANT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Lander County";
+    state "Nevada";
+    latitude 39.5933;
+    longitude -116.9126;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MCGINNESS_HILLS_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_N_6403";
+}
+object powerplant
+{
+    name "MCGINNESS_HILLS_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_G_MCGINNESS_HILLS_GEOTHERMAL_PLANT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Lander County";
+    state "Nevada";
+    latitude 39.5963;
+    longitude -116.8942;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "45 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MCGINNESS_HILLS_GEOTHERMAL_PLANT_2";
+    parent "wecc240_psse_N_6403";
+}
+object powerplant
+{
+    name "MCGINNESS_HILLS_GEOTHERMAL_PLANT_2";
+    parent "wecc240_psse_G_MCGINNESS_HILLS_GEOTHERMAL_PLANT_2";
+    generator "ST";
+    fuel "GEO";
+    county "Lander County";
+    state "Nevada";
+    latitude 39.5963;
+    longitude -116.8942;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "45 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NAVY_1_GEOTHERMAL_PLANT_GEN7-9";
+    parent "wecc240_psse_N_2902";
+}
+object powerplant
+{
+    name "NAVY_1_GEOTHERMAL_PLANT_GEN7-9";
+    parent "wecc240_psse_G_NAVY_1_GEOTHERMAL_PLANT_GEN7-9";
+    generator "ST";
+    fuel "GEO";
+    county "Inyo County";
+    state "California";
+    latitude 36.0019;
+    longitude -117.7886;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NAVY_2_GEOTHERMAL_PLANT_GEN4-6";
+    parent "wecc240_psse_N_2902";
+}
+object powerplant
+{
+    name "NAVY_2_GEOTHERMAL_PLANT_GEN4-6";
+    parent "wecc240_psse_G_NAVY_2_GEOTHERMAL_PLANT_GEN4-6";
+    generator "ST";
+    fuel "GEO";
+    county "Inyo County";
+    state "California";
+    latitude 36.0192;
+    longitude -117.7917;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NCPA_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "NCPA_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_G_NCPA_GEOTHERMAL_PLANT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Lake County";
+    state "California";
+    latitude 38.752;
+    longitude -122.7195;
+    in_svc "1983-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NCPA_GEOTHERMAL_PLANT_2";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "NCPA_GEOTHERMAL_PLANT_2";
+    parent "wecc240_psse_G_NCPA_GEOTHERMAL_PLANT_2";
+    generator "ST";
+    fuel "GEO";
+    county "Lake County";
+    state "California";
+    latitude 38.7492;
+    longitude -122.7117;
+    in_svc "1983-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NCPA_GEOTHERMAL_PLANT_4";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "NCPA_GEOTHERMAL_PLANT_4";
+    parent "wecc240_psse_G_NCPA_GEOTHERMAL_PLANT_4";
+    generator "ST";
+    fuel "GEO";
+    county "Lake County";
+    state "California";
+    latitude 38.7492;
+    longitude -122.7117;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PATUA_GEOTHERMAL_PROJECT";
+    parent "wecc240_psse_N_6401";
+}
+object powerplant
+{
+    name "PATUA_GEOTHERMAL_PROJECT";
+    parent "wecc240_psse_G_PATUA_GEOTHERMAL_PROJECT";
+    generator "ST";
+    fuel "GEO";
+    county "Churchill County";
+    state "Nevada";
+    latitude 39.583;
+    longitude -119.0737;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_QUICKSILVER_GEOTHERMAL_PLANT_16";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "QUICKSILVER_GEOTHERMAL_PLANT_16";
+    parent "wecc240_psse_G_QUICKSILVER_GEOTHERMAL_PLANT_16";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "118 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIDGE_LINE_GEOTHERMAL_PLANT_7-8";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "RIDGE_LINE_GEOTHERMAL_PLANT_7-8";
+    parent "wecc240_psse_G_RIDGE_LINE_GEOTHERMAL_PLANT_7-8";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "110 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SALTON_SEA_GEOTHERMAL_PLANT_3";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "SALTON_SEA_GEOTHERMAL_PLANT_3";
+    parent "wecc240_psse_G_SALTON_SEA_GEOTHERMAL_PLANT_3";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.1582;
+    longitude -115.6387;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SALTON_SEA_GEOTHERMAL_PLANT_4";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "SALTON_SEA_GEOTHERMAL_PLANT_4";
+    parent "wecc240_psse_G_SALTON_SEA_GEOTHERMAL_PLANT_4";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.157;
+    longitude -115.6386;
+    in_svc "1996-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SALTON_SEA_GEOTHERMAL_PLANT_5";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "SALTON_SEA_GEOTHERMAL_PLANT_5";
+    parent "wecc240_psse_G_SALTON_SEA_GEOTHERMAL_PLANT_5";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.1533;
+    longitude -115.6384;
+    in_svc "2000-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SECOND_IMPERIAL_GEOTHERMAL_POWER_PLANT_GEN1-12";
+    parent "wecc240_psse_N_2301";
+}
+object powerplant
+{
+    name "SECOND_IMPERIAL_GEOTHERMAL_POWER_PLANT_GEN1-12";
+    parent "wecc240_psse_G_SECOND_IMPERIAL_GEOTHERMAL_POWER_PLANT_GEN1-12";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 32.7144;
+    longitude -115.5356;
+    in_svc "1993-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SOCRATES_GEOTHERMAL_PLANT_18";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "SOCRATES_GEOTHERMAL_PLANT_18";
+    parent "wecc240_psse_G_SOCRATES_GEOTHERMAL_PLANT_18";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc "1983-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "118 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SONOMA_CALIFORNIA_GEOTHERMAL_1";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "SONOMA_CALIFORNIA_GEOTHERMAL_1";
+    parent "wecc240_psse_G_SONOMA_CALIFORNIA_GEOTHERMAL_1";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.7903;
+    longitude -122.7559;
+    in_svc "1983-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "78 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_STILLWATER_TRIPLE_HYBRID_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_N_6401";
+}
+object powerplant
+{
+    name "STILLWATER_TRIPLE_HYBRID_GEOTHERMAL_PLANT";
+    parent "wecc240_psse_G_STILLWATER_TRIPLE_HYBRID_GEOTHERMAL_PLANT";
+    generator "ST";
+    fuel "GEO";
+    county "Churchill County";
+    state "Nevada";
+    latitude 39.5475;
+    longitude -118.5554;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "33 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SULFUR_SPRINGS_GEOTHERMAL_PLANT_14";
+    parent "wecc240_psse_N_3501";
+}
+object powerplant
+{
+    name "SULFUR_SPRINGS_GEOTHERMAL_PLANT_14";
+    parent "wecc240_psse_G_SULFUR_SPRINGS_GEOTHERMAL_PLANT_14";
+    generator "ST";
+    fuel "GEO";
+    county "Sonoma County";
+    state "California";
+    latitude 38.777;
+    longitude -122.745;
+    in_svc "1980-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "113 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_TERRA-GEN_DIXIE_VALLEY_GEOTHERMAL_PLANT_GEN1";
+    parent "wecc240_psse_N_6401";
+}
+object powerplant
+{
+    name "TERRA-GEN_DIXIE_VALLEY_GEOTHERMAL_PLANT_GEN1";
+    parent "wecc240_psse_G_TERRA-GEN_DIXIE_VALLEY_GEOTHERMAL_PLANT_GEN1";
+    generator "ST";
+    fuel "GEO";
+    county "Churchill County";
+    state "Nevada";
+    latitude 39.9663;
+    longitude -117.8557;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "65 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_TUNGSTEN_MOUNTAIN_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_N_6401";
+}
+object powerplant
+{
+    name "TUNGSTEN_MOUNTAIN_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_G_TUNGSTEN_MOUNTAIN_GEOTHERMAL_PLANT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Churchill County";
+    state "Nevada";
+    latitude 39.667;
+    longitude -117.6937;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "37 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_VULCAN-BN_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "VULCAN-BN_GEOTHERMAL_PLANT_1";
+    parent "wecc240_psse_G_VULCAN-BN_GEOTHERMAL_PLANT_1";
+    generator "ST";
+    fuel "GEO";
+    county "Imperial County";
+    state "California";
+    latitude 33.1633;
+    longitude -115.6167;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30 MW";
+}
+

@@ -1,6 +1,0 @@
-object geodata
-{
-	file "../data/geodata/total.csv";
-	target "load::P";
-}
-

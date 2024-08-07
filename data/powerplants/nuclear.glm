@@ -1,0 +1,96 @@
+module pypower;
+class powerplant
+{
+    char32 county;
+}
+
+object powerplant
+{
+    name "COLUMBIA_NUCLEAR_POWER_PLANT";
+    parent "wecc240_psse_N_4102";
+    generator "ST";
+    fuel "NUC";
+    county "Benton County";
+    state "Washington";
+    latitude 46.4711;
+    longitude -119.3339;
+    in_svc "1984-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "1190.0 MW";
+}
+
+object powerplant
+{
+    name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_1";
+    parent "wecc240_psse_N_3801";
+    generator "ST";
+    fuel "NUC";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.2115;
+    longitude -120.8555;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc "2024-01-01 00:00:00 UTC";
+    operating_capacity "1197.0 MW";
+}
+
+object powerplant
+{
+    name "DIABLO_CANYON_NUCLEAR_POWER_PLANT_2";
+    parent "wecc240_psse_N_3801";
+    generator "ST";
+    fuel "NUC";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.2115;
+    longitude -120.8555;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc "2025-01-01 00:00:00 UTC";
+    operating_capacity "1197.0 MW";
+}
+
+object powerplant
+{
+    name "PALO_VERDE_NUCLEAR_POWER_PLANT_1";
+    parent "wecc240_psse_N_1401";
+    generator "ST";
+    fuel "NUC";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.3881;
+    longitude -112.8617;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "1414.0 MW";
+}
+
+object powerplant
+{
+    name "PALO_VERDE_NUCLEAR_POWER_PLANT_2";
+    parent "wecc240_psse_N_1401";
+    generator "ST";
+    fuel "NUC";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.3881;
+    longitude -112.8617;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "1414.0 MW";
+}
+
+object powerplant
+{
+    name "PALO_VERDE_NUCLEAR_POWER_PLANT_3";
+    parent "wecc240_psse_N_1401";
+    generator "ST";
+    fuel "NUC";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.3881;
+    longitude -112.8617;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "1414.0 MW";
+}
+

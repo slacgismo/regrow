@@ -1,0 +1,6381 @@
+module pypower;
+class powerplant
+{
+    char32 county;
+}
+
+object powerplant
+{
+    name "ADELANTO_SOLAR";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 34.5572;
+    longitude -117.3775;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ADERA_SOLAR";
+    parent "wecc240_psse_N_3401";
+    generator "PV";
+    fuel "SUN";
+    county "Madera County";
+    state "California";
+    latitude 37.1206;
+    longitude -120.3249;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ADOBE_SOLAR";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.1028;
+    longitude -118.9544;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "AGUA_CALIENTE_SOLAR_PROJECT_1";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Yuma County";
+    state "Arizona";
+    latitude 32.9774;
+    longitude -113.4945;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "91.0 MW";
+}
+
+object powerplant
+{
+    name "AGUA_CALIENTE_SOLAR_PROJECT_2";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Yuma County";
+    state "Arizona";
+    latitude 32.9774;
+    longitude -113.4945;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "136.0 MW";
+}
+
+object powerplant
+{
+    name "AGUA_CALIENTE_SOLAR_PROJECT_3";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Yuma County";
+    state "Arizona";
+    latitude 32.9774;
+    longitude -113.4945;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "121.0 MW";
+}
+
+object powerplant
+{
+    name "AIRPORT_SOLAR";
+    parent "wecc240_psse_N_4001";
+    generator "PV";
+    fuel "SUN";
+    county "Lake County";
+    state "Oregon";
+    latitude 42.1702;
+    longitude -120.4023;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "47.0 MW";
+}
+
+object powerplant
+{
+    name "ALAMO_(CALIFORNIA)_SOLAR_FARM";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 34.685;
+    longitude -117.346;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ALPAUGH_SOLAR_FARM_50";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8983;
+    longitude -119.4353;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "ALPAUGH_SOLAR_FARM_North";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.9025;
+    longitude -119.4428;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ALPINE_SOLAR_1";
+    parent "wecc240_psse_N_2608";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7892;
+    longitude -118.5047;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "66.0 MW";
+}
+
+object powerplant
+{
+    name "ALTA_LUNA_SOLAR_FARM";
+    parent "wecc240_psse_N_1101";
+    generator "PV";
+    fuel "SUN";
+    county "Luna County";
+    state "New Mexico";
+    latitude 32.573;
+    longitude -107.459;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "AMERICAN_FALLS_SOLAR_1";
+    parent "wecc240_psse_N_6103";
+    generator "PV";
+    fuel "SUN";
+    county "Power County";
+    state "Idaho";
+    latitude 42.824;
+    longitude -112.752;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "AMERICAN_FALLS_SOLAR_2";
+    parent "wecc240_psse_N_6103";
+    generator "PV";
+    fuel "SUN";
+    county "Power County";
+    state "Idaho";
+    latitude 42.824;
+    longitude -112.752;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "AMERICAN_KINGS_SOLAR";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.2401;
+    longitude -119.898;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "128.0 MW";
+}
+
+object powerplant
+{
+    name "ANTELOPE_BIG_SKY_RANCH_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6948;
+    longitude -118.2877;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ANTELOPE_DSR_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6556;
+    longitude -118.2807;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "ANTELOPE_DSR_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.752;
+    longitude -118.315;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "105.0 MW";
+}
+
+object powerplant
+{
+    name "ANTELOPE_DSR_SOLAR_FARM_3";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.74;
+    longitude -118.303;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "AP_NORTH_LAKE_I_SOLAR_FARM";
+    parent "wecc240_psse_N_2403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.7401;
+    longitude -117.0106;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "APACHE_SOLAR_1";
+    parent "wecc240_psse_N_1102";
+    generator "PV";
+    fuel "SUN";
+    county "Cochise County";
+    state "Arizona";
+    latitude 32.0681;
+    longitude -109.8904;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "APEX_SOLAR_POWER_PROJECT";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.391;
+    longitude -114.964;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ARLINGTON_ENERGY_CENTER_(NEXTERA)_SOLAR_FARM_1";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6909;
+    longitude -114.7749;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "ARLINGTON_ENERGY_CENTER_(NEXTERA)_SOLAR_FARM_3";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6909;
+    longitude -114.7749;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "131.0 MW";
+}
+
+object powerplant
+{
+    name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_1";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.305;
+    longitude -112.8339;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_2";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.305;
+    longitude -112.8339;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_3";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.305;
+    longitude -112.8339;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "ARLINGTON_VALLEY_SOLAR_ENERGY_II_4";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.305;
+    longitude -112.8339;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "ARROW_CANYON_SOLAR_HYBRID";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.4593;
+    longitude -114.8444;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "ASTORIA_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2608";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8442;
+    longitude -118.4585;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "ASTORIA_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2608";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8366;
+    longitude -118.4802;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object powerplant
+{
+    name "ATHOS_SOLAR_1";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.7513;
+    longitude -115.355;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "250.0 MW";
+}
+
+object powerplant
+{
+    name "ATHOS_SOLAR_2";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.7513;
+    longitude -115.355;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "ATWELL_ISLAND_SOLAR_FARM_East";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8143;
+    longitude -119.4519;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ATWELL_ISLAND_SOLAR_FARM_West";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.815;
+    longitude -119.4597;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "AV_SOLAR_RANCH_ONE_SOLAR_FARM";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7803;
+    longitude -118.4244;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "253.0 MW";
+}
+
+object powerplant
+{
+    name "AVALON_(CORONAL_GROUP)_SOLAR_FARM";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pima County";
+    state "Arizona";
+    latitude 32.03;
+    longitude -110.959;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "AVRA_VALLEY_SOLAR";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pima County";
+    state "Arizona";
+    latitude 32.3717;
+    longitude -111.2828;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "AXIUM_MODESTO_SOLAR";
+    parent "wecc240_psse_N_3907";
+    generator "PV";
+    fuel "SUN";
+    county "Stanislaus County";
+    state "California";
+    latitude 37.7357;
+    longitude -120.9908;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "BAKERSFIELD_SOLAR";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.1261;
+    longitude -119.2433;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BARREN_RIDGE_SOLAR_FARM";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2047;
+    longitude -118.0688;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "BATTLE_MOUNTAIN_SOLAR_PROJECT";
+    parent "wecc240_psse_N_6403";
+    generator "PV";
+    fuel "SUN";
+    county "Humboldt County";
+    state "Nevada";
+    latitude 40.7184;
+    longitude -117.0614;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "101.0 MW";
+}
+
+object powerplant
+{
+    name "BAYSHORE_SOLAR_1";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6678;
+    longitude -118.2981;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BAYSHORE_SOLAR_2";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6783;
+    longitude -118.3026;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BAYSHORE_SOLAR_3";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6813;
+    longitude -118.3141;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BEACON_SOLAR_PLANT_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2658;
+    longitude -117.9992;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "47.0 MW";
+}
+
+object powerplant
+{
+    name "BEACON_SOLAR_PLANT_5";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2489;
+    longitude -118.0344;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "BIG_BEAU_SOLAR";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "";
+    state "California";
+    latitude 34.907;
+    longitude -118.3441;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "128.0 MW";
+}
+
+object powerplant
+{
+    name "BIGHORN_SOLAR_1";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Pueblo County";
+    state "Colorado";
+    latitude 38.2075;
+    longitude -104.5967;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "240.0 MW";
+}
+
+object powerplant
+{
+    name "BISON_SOLAR";
+    parent "wecc240_psse_N_6302";
+    generator "PV";
+    fuel "SUN";
+    county "Larimer County";
+    state "Colorado";
+    latitude 40.8638;
+    longitude -105.0111;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "BLACKWELL_SOLAR_PARK";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.612;
+    longitude -119.845;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(CLEARWAY)_SOLAR_FARM_1";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.5917;
+    longitude -114.7444;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(CLEARWAY)_SOLAR_FARM_2";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6187;
+    longitude -114.6962;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_1A";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6801;
+    longitude -114.742;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "39.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_1B";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6801;
+    longitude -114.742;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "36.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_1C";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6801;
+    longitude -114.742;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "35.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_2A";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6801;
+    longitude -114.73;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "33.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_2B";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6801;
+    longitude -114.73;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_2C";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.674;
+    longitude -114.744;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "32.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_2D";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.674;
+    longitude -114.744;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "32.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_3A";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.656;
+    longitude -114.742;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "137.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_4A";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.682;
+    longitude -114.768;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "69.0 MW";
+}
+
+object powerplant
+{
+    name "BLYTHE_(NEXTERA)_SOLAR_FARM_4B";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.682;
+    longitude -114.768;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "69.0 MW";
+}
+
+object powerplant
+{
+    name "BOISE_SOLAR_FARM";
+    parent "wecc240_psse_N_6101";
+    generator "PV";
+    fuel "SUN";
+    county "Ada County";
+    state "Idaho";
+    latitude 43.444;
+    longitude -116.333;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "BONNYBROOKE_PV_SOLAR_FARM";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 33.053;
+    longitude -111.34;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "BORDEN_SOLAR_FARM";
+    parent "wecc240_psse_N_3401";
+    generator "PV";
+    fuel "SUN";
+    county "Madera County";
+    state "California";
+    latitude 36.9411;
+    longitude -119.96;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "BORREGO_SOLAR_FARM";
+    parent "wecc240_psse_N_2400";
+    generator "PV";
+    fuel "SUN";
+    county "San Diego County";
+    state "California";
+    latitude 33.295;
+    longitude -116.353;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "BOULDER_SOLAR_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.833;
+    longitude -114.983;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "BOULDER_SOLAR_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8501;
+    longitude -114.944;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "BRITTON_SOLAR_ENERGY_CENTER";
+    parent "wecc240_psse_N_1004";
+    generator "PV";
+    fuel "SUN";
+    county "Torrance County";
+    state "New Mexico";
+    latitude 35.016;
+    longitude -106.098;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "CA_FLATS_SOLAR_1";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.869;
+    longitude -120.34;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "130.0 MW";
+}
+
+object powerplant
+{
+    name "CA_FLATS_SOLAR_2";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.84;
+    longitude -120.305;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "CED_DUCOR_SOLAR_FARM_1";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8563;
+    longitude -119.0684;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CED_DUCOR_SOLAR_FARM_2";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8442;
+    longitude -119.0681;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CED_DUCOR_SOLAR_FARM_4";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8504;
+    longitude -119.027;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CID_SOLAR";
+    parent "wecc240_psse_N_3403";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.13;
+    longitude -119.544;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CALIFORNIA_VALLEY_SOLAR_RANCH_1";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.3237;
+    longitude -119.9166;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "CALIFORNIA_VALLEY_SOLAR_RANCH_2";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.3237;
+    longitude -119.9166;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "CALIFORNIA_VALLEY_SOLAR_RANCH_3";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.3237;
+    longitude -119.9166;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "87.0 MW";
+}
+
+object powerplant
+{
+    name "CALIFORNIA_VALLEY_SOLAR_RANCH_4";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.3237;
+    longitude -119.9166;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "70.0 MW";
+}
+
+object powerplant
+{
+    name "CALIFORNIA_VALLEY_SOLAR_RANCH_5";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.3237;
+    longitude -119.9166;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "32.0 MW";
+}
+
+object powerplant
+{
+    name "CALIPATRIA_SOLAR_FARM";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.144;
+    longitude -115.499;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CAMELOT_SOLAR_FARM";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.017;
+    longitude -118.177;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "45.0 MW";
+}
+
+object powerplant
+{
+    name "CAMPO_VERDE_SOLAR";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.7533;
+    longitude -115.7264;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "147.0 MW";
+}
+
+object powerplant
+{
+    name "CANTUA_SOLAR_STATION";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.4251;
+    longitude -120.3435;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CAPROCK_SOLAR_1";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Quay County";
+    state "New Mexico";
+    latitude 34.984;
+    longitude -103.623;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "CATALINA_SOLAR_1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9383;
+    longitude -118.3345;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "110.0 MW";
+}
+
+object powerplant
+{
+    name "CATALINA_SOLAR_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.922;
+    longitude -118.362;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "24.0 MW";
+}
+
+object powerplant
+{
+    name "CENTINELA_SOLAR_ENERGY_1";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6869;
+    longitude -115.6478;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "CENTINELA_SOLAR_ENERGY_2";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6869;
+    longitude -115.6478;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "CENTINELA_SOLAR_ENERGY_3";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6869;
+    longitude -115.6478;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "CENTINELA_SOLAR_ENERGY_4";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6869;
+    longitude -115.6478;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "CENTINELA_SOLAR_ENERGY_6";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6869;
+    longitude -115.6478;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "CENTRAL_40_SOLAR_FARM";
+    parent "wecc240_psse_N_3901";
+    generator "PV";
+    fuel "SUN";
+    county "Stanislaus County";
+    state "California";
+    latitude 37.246;
+    longitude -121.104;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "CENTRAL_ANTELOPE_DRY_RANCH_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7205;
+    longitude -118.3005;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CENTRAL_LINE_SOLAR";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 32.8343;
+    longitude -111.568;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "CHAVES_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Chaves County";
+    state "New Mexico";
+    latitude 33.4501;
+    longitude -104.456;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "70.0 MW";
+}
+
+object powerplant
+{
+    name "CIMARRON_SOLAR_FACILITY";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Colfax County";
+    state "New Mexico";
+    latitude 36.4681;
+    longitude -104.6357;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "31.0 MW";
+}
+
+object powerplant
+{
+    name "CITIZENS_IMPERIAL_SOLAR";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.1917;
+    longitude -115.4338;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "CLOVER_CREEK_(UTAH)_SOLAR";
+    parent "wecc240_psse_N_6504";
+    generator "PV";
+    fuel "SUN";
+    county "Juab County";
+    state "Utah";
+    latitude 39.8407;
+    longitude -111.8877;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "COGENTRIX_OF_ALAMOSA_SOLAR_FARM";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Alamosa County";
+    state "Colorado";
+    latitude 37.5986;
+    longitude -105.9558;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "COLGREEN_NORTH_SHORE_SOLAR_FARM";
+    parent "wecc240_psse_N_2400";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.5401;
+    longitude -115.9748;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object powerplant
+{
+    name "COMANCHE_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Pueblo County";
+    state "Colorado";
+    latitude 38.2053;
+    longitude -104.5667;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "120.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_CROSSING_SOLAR_FARM";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 33.1606;
+    longitude -111.484;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7814;
+    longitude -114.993;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_2_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7864;
+    longitude -114.9628;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_2_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7864;
+    longitude -114.9628;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_2_3";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7864;
+    longitude -114.9628;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_2_4";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7864;
+    longitude -114.9628;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_2_5";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7864;
+    longitude -114.9628;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_10";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "24.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_3";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_4";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_5";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_6";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_7";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_8";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_3_9";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8894;
+    longitude -114.9579;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_4_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7822;
+    longitude -114.9754;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "42.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_4_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7822;
+    longitude -114.9754;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "52.0 MW";
+}
+
+object powerplant
+{
+    name "COPPER_MOUNTAIN_SOLAR_5";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.7763;
+    longitude -114.9737;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "252.0 MW";
+}
+
+object powerplant
+{
+    name "CORCORAN_SOLAR_1";
+    parent "wecc240_psse_N_3403";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.1383;
+    longitude -119.5733;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CORCORAN_SOLAR_2";
+    parent "wecc240_psse_N_3403";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.1419;
+    longitude -119.5817;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CORCORAN_SOLAR_3";
+    parent "wecc240_psse_N_3403";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.1504;
+    longitude -119.5854;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "CORONAL_LOST_HILLS_SOLAR_FARM";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.7267;
+    longitude -119.9058;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "COVE_MOUNTAIN_SOLAR_1";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.6231;
+    longitude -113.6192;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object powerplant
+{
+    name "COVE_MOUNTAIN_SOLAR_2";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.6386;
+    longitude -113.6371;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "122.0 MW";
+}
+
+object powerplant
+{
+    name "CRESCENT_DUNES_SOLAR_ENERGY";
+    parent "wecc240_psse_N_3402";
+    generator "PV";
+    fuel "SUN";
+    county "Nye County";
+    state "Nevada";
+    latitude 38.2389;
+    longitude -117.3636;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "125.0 MW";
+}
+
+object powerplant
+{
+    name "CUYAMA_SOLAR";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Santa Barbara County";
+    state "California";
+    latitude 34.901;
+    longitude -119.596;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_HARVEST_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8001;
+    longitude -115.38;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_HARVEST_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8001;
+    longitude -115.38;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "70.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_12";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_13";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_14";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_16";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "39.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_17";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "39.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_18";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_19";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "29.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_250_SOLAR_FARM_20";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8055;
+    longitude -115.3947;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_10";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_3";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_4";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_5";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_6";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_7";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_8";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "DESERT_SUNLIGHT_300_SOLAR_FARM_9";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.8231;
+    longitude -115.3939;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "DODGE_FLAT_SOLAR_FARM";
+    parent "wecc240_psse_N_3701";
+    generator "PV";
+    fuel "SUN";
+    county "Washoe County";
+    state "Nevada";
+    latitude 40.713;
+    longitude -119.4672;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "DREW_SOLAR";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6872;
+    longitude -115.6656;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "EAST_LINE_SOLAR";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 32.847;
+    longitude -111.5651;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_E1A";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9619;
+    longitude -118.1242;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "149.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_E1B";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.9924;
+    longitude -118.1026;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "154.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_E2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9415;
+    longitude -118.129;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "138.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_E3";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9463;
+    longitude -118.1265;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_E4";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9436;
+    longitude -118.088;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "149.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_E5";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9653;
+    longitude -118.0773;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "68.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_S1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.0277;
+    longitude -118.1328;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "45.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_S3";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.0164;
+    longitude -118.1225;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "EDWARDS_SANBORN_SOLAR_FARM_S4";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.0125;
+    longitude -118.1193;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "41.0 MW";
+}
+
+object powerplant
+{
+    name "ELEVATION_SOLAR_C";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7303;
+    longitude -118.3043;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "ENCINO_SOLAR_ENERGY_CENTER";
+    parent "wecc240_psse_N_1004";
+    generator "PV";
+    fuel "SUN";
+    county "Sandoval County";
+    state "New Mexico";
+    latitude 35.354;
+    longitude -106.858;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55.0 MW";
+}
+
+object powerplant
+{
+    name "ENTERPRISE_(MILFORD)_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2604";
+    generator "PV";
+    fuel "SUN";
+    county "Beaver County";
+    state "Utah";
+    latitude 38.5242;
+    longitude -113.0339;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "ENTERPRISE_(MILFORD)_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2604";
+    generator "PV";
+    fuel "SUN";
+    county "Beaver County";
+    state "Utah";
+    latitude 38.5008;
+    longitude -113.03;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "ENTERPRISE_(MILFORD)_SOLAR_FARM_3";
+    parent "wecc240_psse_N_2604";
+    generator "PV";
+    fuel "SUN";
+    county "Beaver County";
+    state "Utah";
+    latitude 38.4978;
+    longitude -112.9869;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "ENTERPRISE_(NEW_CASTLE)_SOLAR_FARM";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.6411;
+    longitude -113.6125;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "FISH_SPRINGS_RANCH_SOLAR_FARM_1";
+    parent "wecc240_psse_N_3701";
+    generator "PV";
+    fuel "SUN";
+    county "Washoe County";
+    state "Nevada";
+    latitude 40.0747;
+    longitude -119.9742;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "FIVE_POINTS_SOLAR_PARK";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.393;
+    longitude -120.239;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "FRONTIER_SOLAR";
+    parent "wecc240_psse_N_3901";
+    generator "PV";
+    fuel "SUN";
+    county "Stanislaus County";
+    state "California";
+    latitude 37.367;
+    longitude -121.149;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GARLAND_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2608";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.823;
+    longitude -118.504;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GARLAND_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2608";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8253;
+    longitude -118.525;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "185.0 MW";
+}
+
+object powerplant
+{
+    name "GASKELL_WEST_1_SOLAR_FACILITY";
+    parent "wecc240_psse_N_2608";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8328;
+    longitude -118.5636;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GATES_SOLAR_STATION";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.1764;
+    longitude -120.1142;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GENESIS_SOLAR_ENEGY_PROJECT_1";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.665;
+    longitude -114.9981;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "125.0 MW";
+}
+
+object powerplant
+{
+    name "GENESIS_SOLAR_ENEGY_PROJECT_2";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.665;
+    longitude -114.9981;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "125.0 MW";
+}
+
+object powerplant
+{
+    name "GIFFEN_SOLAR_PARK";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.552;
+    longitude -120.339;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GILA_BEND_HYBRID_SOLAR_FARM";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 32.949;
+    longitude -112.771;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "32.0 MW";
+}
+
+object powerplant
+{
+    name "GOLDEN_FIELD_SOLAR_1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.839;
+    longitude -118.3868;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object powerplant
+{
+    name "GOLDEN_FIELD_SOLAR_3";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.86;
+    longitude -118.331;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "192.0 MW";
+}
+
+object powerplant
+{
+    name "GRAND_VIEW_SOLAR_TWO_1";
+    parent "wecc240_psse_N_6101";
+    generator "PV";
+    fuel "SUN";
+    county "Owyhee County";
+    state "Idaho";
+    latitude 43.0186;
+    longitude -116.0071;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GRAND_VIEW_SOLAR_TWO_2";
+    parent "wecc240_psse_N_6101";
+    generator "PV";
+    fuel "SUN";
+    county "Owyhee County";
+    state "Idaho";
+    latitude 43.0186;
+    longitude -116.0071;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "GRANITE_MOUNTAIN_SOLAR_East";
+    parent "wecc240_psse_N_6507";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.7751;
+    longitude -113.2264;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "GRANITE_MOUNTAIN_SOLAR_West";
+    parent "wecc240_psse_N_6507";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.786;
+    longitude -113.28;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "GRAPHITE_SOLAR_I";
+    parent "wecc240_psse_N_6508";
+    generator "PV";
+    fuel "SUN";
+    county "Carbon County";
+    state "Utah";
+    latitude 39.554;
+    longitude -110.715;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "GRAY_HAWK_SOLAR";
+    parent "wecc240_psse_N_1301";
+    generator "PV";
+    fuel "SUN";
+    county "Mohave County";
+    state "Arizona";
+    latitude 35.346;
+    longitude -113.912;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55.0 MW";
+}
+
+object powerplant
+{
+    name "GRAZING_YAK_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "El Paso County";
+    state "Colorado";
+    latitude 38.9778;
+    longitude -104.2527;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "35.0 MW";
+}
+
+object powerplant
+{
+    name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_1";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.5812;
+    longitude -120.3796;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_2";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.5812;
+    longitude -120.3796;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_3";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.613;
+    longitude -120.385;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_4";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.5812;
+    longitude -120.3796;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "GUERNSEY_SOLAR_STATION";
+    parent "wecc240_psse_N_3403";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.1639;
+    longitude -119.6506;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "HARRY_ALLEN_SOLAR_ENERGY";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.426;
+    longitude -114.923;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "HAYWORTH_SOLAR";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.323;
+    longitude -118.82;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "HECATE_ENERGY_BEACON_SOLAR_1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2694;
+    longitude -118.0144;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "56.0 MW";
+}
+
+object powerplant
+{
+    name "HECATE_ENERGY_BEACON_SOLAR_3";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2531;
+    longitude -118.0147;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "56.0 MW";
+}
+
+object powerplant
+{
+    name "HECATE_ENERGY_BEACON_SOLAR_4";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2536;
+    longitude -118.0269;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "HENRIETTA_SOLAR_PROJECT";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.2188;
+    longitude -119.8058;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "HIGH_DESERT_HYBRID_SOLAR_FARM";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 34.6365;
+    longitude -117.3724;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "HOOPER_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Alamosa County";
+    state "Colorado";
+    latitude 37.6919;
+    longitude -105.9908;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "52.0 MW";
+}
+
+object powerplant
+{
+    name "HUNTER_SOLAR_1";
+    parent "wecc240_psse_N_6507";
+    generator "PV";
+    fuel "SUN";
+    county "Emery County";
+    state "Utah";
+    latitude 39.1422;
+    longitude -111.0511;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "HURON_SOLAR_STATION";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.179;
+    longitude -120.106;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "IMPERIAL_VALLEY_SOLAR_COMPANY_1";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.2458;
+    longitude -115.4975;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "23.0 MW";
+}
+
+object powerplant
+{
+    name "IMPERIAL_VALLEY_SOLAR_COMPANY_2";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.2522;
+    longitude -115.4975;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "IRON_SPRINGS_SOLAR";
+    parent "wecc240_psse_N_6507";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.7212;
+    longitude -113.1516;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "IVANPAH_SOLAR_ELECTRIC_GENERATING_SYSTEM_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.5331;
+    longitude -115.4525;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "117.0 MW";
+}
+
+object powerplant
+{
+    name "IVANPAH_SOLAR_ELECTRIC_GENERATING_SYSTEM_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.5561;
+    longitude -115.4686;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "130.0 MW";
+}
+
+object powerplant
+{
+    name "IVANPAH_SOLAR_ELECTRIC_GENERATING_SYSTEM_3";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.5808;
+    longitude -115.4825;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "130.0 MW";
+}
+
+object powerplant
+{
+    name "JACKPOT_SOLAR";
+    parent "wecc240_psse_N_6101";
+    generator "PV";
+    fuel "SUN";
+    county "";
+    state "Idaho";
+    latitude 42.2042;
+    longitude -114.6099;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "120.0 MW";
+}
+
+object powerplant
+{
+    name "JACUMBA_SOLAR_FARM";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "San Diego County";
+    state "California";
+    latitude 32.6212;
+    longitude -116.129;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "JICARILLA_SOLAR_2";
+    parent "wecc240_psse_N_1004";
+    generator "PV";
+    fuel "SUN";
+    county "Rio Arriba County";
+    state "New Mexico";
+    latitude 36.1411;
+    longitude -107.1712;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "KANSAS_SOLAR";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.243;
+    longitude -119.832;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "KANSAS_SOUTH_SOLAR_FARM";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.2261;
+    longitude -119.8342;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "KAYENTA_SOLAR_PROJECT_1";
+    parent "wecc240_psse_N_1202";
+    generator "PV";
+    fuel "SUN";
+    county "Navajo County";
+    state "Arizona";
+    latitude 36.787;
+    longitude -110.24;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "KAYENTA_SOLAR_PROJECT_2";
+    parent "wecc240_psse_N_1202";
+    generator "PV";
+    fuel "SUN";
+    county "Navajo County";
+    state "Arizona";
+    latitude 36.7719;
+    longitude -110.2639;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "KENT_SOUTH_SOLAR_FARM";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.2261;
+    longitude -119.9053;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "KETTLEMAN_(CLENERA)_SOLAR_FARM";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.0508;
+    longitude -119.9475;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "KINGBIRD_SOLAR_1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.819;
+    longitude -118.432;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "KINGBIRD_SOLAR_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.844;
+    longitude -118.448;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "LITTLE_BEAR_SOLAR_FARM_1";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.716;
+    longitude -120.415;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "LITTLE_BEAR_SOLAR_FARM_3";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.716;
+    longitude -120.415;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "LITTLE_BEAR_SOLAR_FARM_4";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.716;
+    longitude -120.415;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "LITTLE_BEAR_SOLAR_FARM_5";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.716;
+    longitude -120.415;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "LONE_VALLEY_SOLAR_PARK_2";
+    parent "wecc240_psse_N_2603";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 34.4083;
+    longitude -116.8625;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "LONGBOAT_SOLAR";
+    parent "wecc240_psse_N_2603";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 34.905;
+    longitude -117.104;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "LOST_HILLS_HYBRID_SOLAR_FARM";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.603;
+    longitude -119.696;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "LOST_HILLS-BLACKWELL_SOLAR_FARM_Lost_Hills";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.6201;
+    longitude -119.85;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "LUCIANA_SOLAR_FARM";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8237;
+    longitude -119.0623;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "56.0 MW";
+}
+
+object powerplant
+{
+    name "LUND_HILL_SOLAR";
+    parent "wecc240_psse_N_4005";
+    generator "PV";
+    fuel "SUN";
+    county "Klickitat County";
+    state "Washington";
+    latitude 45.888;
+    longitude -120.355;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "LUNING_ENERGY_SOLAR_FARM";
+    parent "wecc240_psse_N_6401";
+    generator "PV";
+    fuel "SUN";
+    county "Mineral County";
+    state "Nevada";
+    latitude 38.5469;
+    longitude -118.1916;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "MACHO_SPRINGS_SOLAR_FARM";
+    parent "wecc240_psse_N_1101";
+    generator "PV";
+    fuel "SUN";
+    county "Luna County";
+    state "New Mexico";
+    latitude 32.5701;
+    longitude -107.48;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "55.0 MW";
+}
+
+object powerplant
+{
+    name "MARICOPA_WEST_SOLAR_PV";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.113;
+    longitude -119.329;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "MAVERICK_SOLAR_1";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.7001;
+    longitude -115.38;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "125.0 MW";
+}
+
+object powerplant
+{
+    name "MAVERICK_SOLAR_4";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.7001;
+    longitude -115.38;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "MAVERICK_SOLAR_6";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.7001;
+    longitude -115.38;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "MAVERICK_SOLAR_7";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.7001;
+    longitude -115.38;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_1";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "42.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_2";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "21.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_3";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_4";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "31.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_5";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "31.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_6";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "27.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_7";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "42.0 MW";
+}
+
+object powerplant
+{
+    name "MCCOY_SOLAR_ENERGY_PROJECT_HYBRID_8";
+    parent "wecc240_psse_N_1403";
+    generator "PV";
+    fuel "SUN";
+    county "Riverside County";
+    state "California";
+    latitude 33.6947;
+    longitude -114.7397;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "36.0 MW";
+}
+
+object powerplant
+{
+    name "MESQUITE_SOLAR_1";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.3418;
+    longitude -112.904;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "170.0 MW";
+}
+
+object powerplant
+{
+    name "MESQUITE_SOLAR_2";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.3328;
+    longitude -112.9114;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "MESQUITE_SOLAR_3";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.3476;
+    longitude -112.9368;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "MIDWAY_(CALIFORNIA)_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.165;
+    longitude -115.54;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "MIDWAY_(CALIFORNIA)_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.158;
+    longitude -115.541;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "MIDWAY_(CALIFORNIA)_SOLAR_FARM_3";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.173;
+    longitude -115.549;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "MILFORD_SOLAR_1";
+    parent "wecc240_psse_N_2604";
+    generator "PV";
+    fuel "SUN";
+    county "Beaver County";
+    state "Utah";
+    latitude 38.4907;
+    longitude -113.0183;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "99.0 MW";
+}
+
+object powerplant
+{
+    name "MILLICAN_SOLAR_ENERGY";
+    parent "wecc240_psse_N_4004";
+    generator "PV";
+    fuel "SUN";
+    county "Crook County";
+    state "Oregon";
+    latitude 44.1541;
+    longitude -120.5341;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object powerplant
+{
+    name "MOAPA_SOUTHERN_PAIUTE_SOLAR_FARM";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.5301;
+    longitude -114.7703;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "250.0 MW";
+}
+
+object powerplant
+{
+    name "MOJAVE_SOLAR_PROJECT_1";
+    parent "wecc240_psse_N_2603";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.0177;
+    longitude -117.3391;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "140.0 MW";
+}
+
+object powerplant
+{
+    name "MOJAVE_SOLAR_PROJECT_2";
+    parent "wecc240_psse_N_2603";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.0177;
+    longitude -117.3391;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "140.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNT_SOLAR_FARM_(UNITED_STATES)_1A";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.677;
+    longitude -115.597;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "101.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNT_SOLAR_FARM_(UNITED_STATES)_1B";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.669;
+    longitude -115.633;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "65.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNT_SOLAR_FARM_(UNITED_STATES)_1C";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.662;
+    longitude -115.577;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNT_SOLAR_FARM_(UNITED_STATES)_2";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6685;
+    longitude -115.6292;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "154.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNT_SOLAR_FARM_(UNITED_STATES)_3";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6788;
+    longitude -115.5672;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "252.0 MW";
+}
+
+object powerplant
+{
+    name "MOUNTAIN_VIEW_(NEXTERA)_SOLAR_FARM";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.3906;
+    longitude -114.9644;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "MT_HOME_SOLAR";
+    parent "wecc240_psse_N_6101";
+    generator "PV";
+    fuel "SUN";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.147;
+    longitude -115.722;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "MURPHY_FLAT_SOLAR";
+    parent "wecc240_psse_N_6403";
+    generator "PV";
+    fuel "SUN";
+    county "Owyhee County";
+    state "Idaho";
+    latitude 43.213;
+    longitude -116.439;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "MUSTANG_TWO_SOLAR_FARM_1";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.2168;
+    longitude -119.8964;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "MUSTANG_TWO_SOLAR_FARM_2";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.2168;
+    longitude -119.8964;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "MUSTANG_SOLAR_FARM";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.2217;
+    longitude -119.9031;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "NEVADA_SOLAR_ONE";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.798;
+    longitude -114.979;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "72.0 MW";
+}
+
+object powerplant
+{
+    name "NICOLIS_SOLAR_PV_PLANT";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.822;
+    longitude -119.041;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "NORTH_LANCASTER_RANCH_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7195;
+    longitude -118.313;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "NORTH_ROSAMOND_SOLAR";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.862;
+    longitude -118.38;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "151.0 MW";
+}
+
+object powerplant
+{
+    name "NORTH_STAR_(SOUTHERN_POWER)_SOLAR_FARM";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.7301;
+    longitude -120.41;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object powerplant
+{
+    name "OLD_RIVER_ONE_SOLAR_FARM";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.218;
+    longitude -119.078;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ORCHARD_RANCH_SOLAR";
+    parent "wecc240_psse_N_6101";
+    generator "PV";
+    fuel "SUN";
+    county "Ada County";
+    state "Idaho";
+    latitude 43.467;
+    longitude -116.285;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ORO_LOMA_SOLAR_FARM";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Merced County";
+    state "California";
+    latitude 36.8768;
+    longitude -120.6676;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "PALMER_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "El Paso County";
+    state "Colorado";
+    latitude 38.6299;
+    longitude -104.6526;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "PANOCHE_VALLEY_SOLAR_FARM";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "San Benito County";
+    state "California";
+    latitude 36.627;
+    longitude -120.879;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "140.0 MW";
+}
+
+object powerplant
+{
+    name "PAVANT_SOLAR_1_1";
+    parent "wecc240_psse_N_2604";
+    generator "PV";
+    fuel "SUN";
+    county "Millard County";
+    state "Utah";
+    latitude 39.15;
+    longitude -112.352;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "PAVANT_SOLAR_2_2";
+    parent "wecc240_psse_N_2604";
+    generator "PV";
+    fuel "SUN";
+    county "Millard County";
+    state "Utah";
+    latitude 39.162;
+    longitude -112.356;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "PAVANT_SOLAR_3_3";
+    parent "wecc240_psse_N_2604";
+    generator "PV";
+    fuel "SUN";
+    county "";
+    state "Utah";
+    latitude 39.157;
+    longitude -112.371;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "PICTURE_ROCKS_SOLAR";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pima County";
+    state "Arizona";
+    latitude 32.3697;
+    longitude -111.2428;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "PINAL_CENTRAL_ENERGY_CENTER_HYBRID_SOLAR_FARM";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 32.8757;
+    longitude -111.5511;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "PIONEER_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Adams County";
+    state "Colorado";
+    latitude 39.7616;
+    longitude -104.459;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "PLAYA_SOLAR_1_1";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.408;
+    longitude -114.908;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "79.0 MW";
+}
+
+object powerplant
+{
+    name "PLAYA_SOLAR_1_2";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.408;
+    longitude -114.908;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "PORTAL_RIDGE_SOLAR_B";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7165;
+    longitude -118.2821;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "PRINEVILLE_SOLAR_ENERGY";
+    parent "wecc240_psse_N_4004";
+    generator "PV";
+    fuel "SUN";
+    county "Crook County";
+    state "Oregon";
+    latitude 44.268;
+    longitude -120.878;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "46.0 MW";
+}
+
+object powerplant
+{
+    name "PUMPJACK_SOLAR_I";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.3056;
+    longitude -119.6225;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "QUINTO_SOLAR_PV_PROJECT";
+    parent "wecc240_psse_N_3901";
+    generator "PV";
+    fuel "SUN";
+    county "Merced County";
+    state "California";
+    latitude 37.122;
+    longitude -121.044;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object powerplant
+{
+    name "RABBITBRUSH_SOLAR";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8301;
+    longitude -118.32;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "RANCHO_SECO_SOLAR_II_RSS2";
+    parent "wecc240_psse_N_8004";
+    generator "PV";
+    fuel "SUN";
+    county "Sacramento County";
+    state "California";
+    latitude 38.3468;
+    longitude -121.1198;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "160.0 MW";
+}
+
+object powerplant
+{
+    name "RAWHIDE_PRAIRIE_SOLAR_HYBRID";
+    parent "wecc240_psse_N_6302";
+    generator "PV";
+    fuel "SUN";
+    county "Larimer County";
+    state "Colorado";
+    latitude 40.858;
+    longitude -105.0156;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "RED_HORSE_SOLAR_FARM_2";
+    parent "wecc240_psse_N_1102";
+    generator "PV";
+    fuel "SUN";
+    county "Cochise County";
+    state "Arizona";
+    latitude 32.261;
+    longitude -110.158;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "51.0 MW";
+}
+
+object powerplant
+{
+    name "RED_HORSE_SOLAR_FARM_3";
+    parent "wecc240_psse_N_1102";
+    generator "PV";
+    fuel "SUN";
+    county "Cochise County";
+    state "Arizona";
+    latitude 32.269;
+    longitude -110.155;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "RED_ROCK_SOLAR_FARM";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 32.551;
+    longitude -111.2892;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "40.0 MW";
+}
+
+object powerplant
+{
+    name "REDWOOD_4_SOLAR_FARM";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.3142;
+    longitude -118.8119;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "REGULUS_SOLAR_PROJECT";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.3001;
+    longitude -118.8519;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "RIO_BRAVO_SOLAR_1";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.416;
+    longitude -119.63;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "RIO_BRAVO_SOLAR_2";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.4225;
+    longitude -119.6292;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ROADRUNNER_(CLEARWAY)_SOLAR_FARM";
+    parent "wecc240_psse_N_1101";
+    generator "PV";
+    fuel "SUN";
+    county "Doa Ana County";
+    state "New Mexico";
+    latitude 31.8086;
+    longitude -106.67;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ROSAMOND_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9001;
+    longitude -118.2469;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ROSAMOND_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.904;
+    longitude -118.253;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "ROSWELL_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Chaves County";
+    state "New Mexico";
+    latitude 33.4529;
+    longitude -104.4611;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "70.0 MW";
+}
+
+object powerplant
+{
+    name "ROUTE_66_ENERGY_CENTER_SOLAR_FARM";
+    parent "wecc240_psse_N_1001";
+    generator "PV";
+    fuel "SUN";
+    county "Cibola County";
+    state "New Mexico";
+    latitude 35.0984;
+    longitude -107.6146;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "SEPV_MOJAVE_WEST_SOLAR_FARM";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.0229;
+    longitude -118.2827;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SAGE_SOLAR_I-III";
+    parent "wecc240_psse_N_6305";
+    generator "PV";
+    fuel "SUN";
+    county "Rich County";
+    state "Utah";
+    latitude 41.7701;
+    longitude -111.06;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object powerplant
+{
+    name "SAINT_SOLAR";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 32.8663;
+    longitude -111.5024;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "SALOME_SOLAR";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "La Paz County";
+    state "Arizona";
+    latitude 33.7767;
+    longitude -113.6561;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "32.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_ISABEL_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Las Animas County";
+    state "Colorado";
+    latitude 37.371;
+    longitude -104.474;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_LUIS_VALLEY_SOLAR_RANCH";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Alamosa County";
+    state "Colorado";
+    latitude 37.6945;
+    longitude -105.9276;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "35.0 MW";
+}
+
+object powerplant
+{
+    name "SAN_PABLO_RACEWAY_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7237;
+    longitude -118.2803;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "SANDSTONE_SOLAR";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 33.041;
+    longitude -111.452;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "45.0 MW";
+}
+
+object powerplant
+{
+    name "SEVILLE_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.1125;
+    longitude -116.0139;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SEVILLE_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.1101;
+    longitude -116.0059;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SHAFTER_SOLAR";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.451;
+    longitude -119.128;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SIERRA_SOLAR_GREENWORKS";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7036;
+    longitude -118.3342;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SIGURD_SOLAR";
+    parent "wecc240_psse_N_6507";
+    generator "PV";
+    fuel "SUN";
+    county "Sevier County";
+    state "Utah";
+    latitude 38.8505;
+    longitude -112.0052;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_NORTH";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.6237;
+    longitude -115.3562;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "52.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "28.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_3";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "37.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_4";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "36.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_5";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "35.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_6";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "37.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_7";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "35.0 MW";
+}
+
+object powerplant
+{
+    name "SILVER_STATE_SOLAR_POWER_SOUTH_8";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.604;
+    longitude -115.341;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "SIMCOE_SOLAR";
+    parent "wecc240_psse_N_6101";
+    generator "PV";
+    fuel "SUN";
+    county "Elmore County";
+    state "Idaho";
+    latitude 43.325;
+    longitude -115.938;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SLATE_HYBRID_SOLAR_FARM_1";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.227;
+    longitude -119.8948;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "SLATE_HYBRID_SOLAR_FARM_2";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.227;
+    longitude -119.8948;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "93.0 MW";
+}
+
+object powerplant
+{
+    name "SLATE_HYBRID_SOLAR_FARM_3";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.227;
+    longitude -119.8948;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "68.0 MW";
+}
+
+object powerplant
+{
+    name "SLATE_HYBRID_SOLAR_FARM_4";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.227;
+    longitude -119.8948;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "26.0 MW";
+}
+
+object powerplant
+{
+    name "SLATE_HYBRID_SOLAR_FARM_5";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.227;
+    longitude -119.8948;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+
+object powerplant
+{
+    name "SOL_ORCHARD_EL_CENTRO_SOLAR_FARM";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.8033;
+    longitude -115.5464;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SOLANA_SOLAR_GENERATING_STATION_1";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 32.9223;
+    longitude -112.9559;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "125.0 MW";
+}
+
+object powerplant
+{
+    name "SOLANA_SOLAR_GENERATING_STATION_2";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 32.9223;
+    longitude -112.9559;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "125.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_ELECTRIC_GENERATING_STATION_3";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.0069;
+    longitude -117.5558;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_ELECTRIC_GENERATING_STATION_4";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.0122;
+    longitude -117.5557;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_ELECTRIC_GENERATING_STATION_5";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.0195;
+    longitude -117.5555;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_ELECTRIC_GENERATING_STATION_6";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.021;
+    longitude -117.5661;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_ELECTRIC_GENERATING_STATION_7";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.0148;
+    longitude -117.5659;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_ELECTRIC_GENERATING_STATION_8";
+    parent "wecc240_psse_N_2603";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.0308;
+    longitude -117.3563;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc "2021-01-01 00:00:00 UTC";
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_ELECTRIC_GENERATING_STATION_9";
+    parent "wecc240_psse_N_2603";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.033;
+    longitude -117.338;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_GEN_2_SOLAR_FACILITY_ALHM";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.0801;
+    longitude -115.47;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_GEN_2_SOLAR_FACILITY_ARK";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.142;
+    longitude -115.468;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_GEN_2_SOLAR_FACILITY_SONR";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.167;
+    longitude -115.448;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_OASIS";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.666;
+    longitude -118.088;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_1_1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8181;
+    longitude -118.4036;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "39.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_1_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8181;
+    longitude -118.4036;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "64.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_1_3";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8181;
+    longitude -118.4036;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_1_4";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8181;
+    longitude -118.4036;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_1_5";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8181;
+    longitude -118.4036;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_1_6";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8181;
+    longitude -118.4036;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "33.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_2_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8486;
+    longitude -118.3528;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "52.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_2_3";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8486;
+    longitude -118.3528;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_2_4";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8486;
+    longitude -118.3528;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "56.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_2_5";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8486;
+    longitude -118.3528;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "48.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_2_6";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.8486;
+    longitude -118.3528;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "44.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_CALIFORNIA_RS1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.839;
+    longitude -118.3868;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object powerplant
+{
+    name "SOLAR_STAR_OREGON_II_2";
+    parent "wecc240_psse_N_4004";
+    generator "PV";
+    fuel "SUN";
+    county "Crook County";
+    state "Oregon";
+    latitude 44.1843;
+    longitude -120.918;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "56.0 MW";
+}
+
+object powerplant
+{
+    name "SOLVERDE_1_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6557;
+    longitude -118.2982;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "85.0 MW";
+}
+
+object powerplant
+{
+    name "SPECTRUM_SOLAR_POWER_PROJECT";
+    parent "wecc240_psse_N_1301";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 36.2301;
+    longitude -114.87;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "30.0 MW";
+}
+
+object powerplant
+{
+    name "SPRINGBOK_SOLAR_FARM_1";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2492;
+    longitude -117.9553;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "105.0 MW";
+}
+
+object powerplant
+{
+    name "SPRINGBOK_SOLAR_FARM_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.2492;
+    longitude -117.9768;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "155.0 MW";
+}
+
+object powerplant
+{
+    name "SPRINGBOK_SOLAR_FARM_3";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.1712;
+    longitude -118.0017;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_SOLAR_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.6001;
+    longitude -115.4001;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "76.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_SOLAR_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.6001;
+    longitude -115.4001;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "34.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_SOLAR_3";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.6001;
+    longitude -115.4001;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_SOLAR_4";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.6001;
+    longitude -115.4001;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_SOLAR_5";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.6001;
+    longitude -115.4001;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_SOLAR_6";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.6001;
+    longitude -115.4001;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "STATELINE_SOLAR_7";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 35.6001;
+    longitude -115.4001;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "38.0 MW";
+}
+
+object powerplant
+{
+    name "STILLWATER_FACILITY_SOLAR_FARM_1";
+    parent "wecc240_psse_N_6401";
+    generator "PV";
+    fuel "SUN";
+    county "Churchill County";
+    state "Nevada";
+    latitude 39.5475;
+    longitude -118.5556;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "22.0 MW";
+}
+
+object powerplant
+{
+    name "STILLWATER_FACILITY_SOLAR_FARM_2";
+    parent "wecc240_psse_N_6401";
+    generator "PV";
+    fuel "SUN";
+    county "Churchill County";
+    state "Nevada";
+    latitude 39.542;
+    longitude -118.5601;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "STROUD_SOLAR_STATION";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.524;
+    longitude -120.123;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SULPHUR_SPRINGS_SOLAR_FARM";
+    parent "wecc240_psse_N_1102";
+    generator "PV";
+    fuel "SUN";
+    county "Cochise County";
+    state "Arizona";
+    latitude 32.0628;
+    longitude -109.9193;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SUMMER_SOLAR";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7147;
+    longitude -118.311;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SUN_CITY_PROJECT_SOLAR_FARM";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 35.9831;
+    longitude -120.1103;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SUN_MOUNTAIN_SOLAR";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Pueblo County";
+    state "Colorado";
+    latitude 38.1803;
+    longitude -104.5185;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "SUN_STREAMS_2_SOLAR_FARM";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.3204;
+    longitude -112.8168;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object powerplant
+{
+    name "SUN_STREAMS_SOLAR_FARM";
+    parent "wecc240_psse_N_1401";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 33.355;
+    longitude -112.84;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "160.0 MW";
+}
+
+object powerplant
+{
+    name "SUN_VALLEY_SOLAR_FARM";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Maricopa County";
+    state "Arizona";
+    latitude 31.8698;
+    longitude -97.015;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "250.0 MW";
+}
+
+object powerplant
+{
+    name "SUNRAY_2_SOLAR_FARM";
+    parent "wecc240_psse_N_2603";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 34.8634;
+    longitude -116.8276;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "SUNSHINE_VALLEY_SOLAR";
+    parent "wecc240_psse_N_1302";
+    generator "PV";
+    fuel "SUN";
+    county "Nye County";
+    state "Nevada";
+    latitude 36.518;
+    longitude -116.497;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object powerplant
+{
+    name "SWEETWATER_SOLAR";
+    parent "wecc240_psse_N_6305";
+    generator "PV";
+    fuel "SUN";
+    county "Sweetwater County";
+    state "Wyoming";
+    latitude 41.6291;
+    longitude -109.6835;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "92.0 MW";
+}
+
+object powerplant
+{
+    name "TA-HIGH_DESERT_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7089;
+    longitude -118.3047;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "TA-ACACIA_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6892;
+    longitude -118.3247;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "TECHREN_SOLAR_1";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8513;
+    longitude -114.9744;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "TECHREN_SOLAR_2";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8673;
+    longitude -114.9564;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+
+object powerplant
+{
+    name "TECHREN_SOLAR_3";
+    parent "wecc240_psse_N_2901";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8441;
+    longitude -114.9713;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "TECHREN_SOLAR_4";
+    parent "wecc240_psse_N_1301";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8927;
+    longitude -114.9365;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "TECHREN_SOLAR_5";
+    parent "wecc240_psse_N_1301";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.8997;
+    longitude -114.9263;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "TENASKA_IMPERIAL_SOLAR_ENERGY_CENTER_South";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.6633;
+    longitude -115.6583;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "129.0 MW";
+}
+
+object powerplant
+{
+    name "TENASKA_IMPERIAL_SOLAR_ENERGY_CENTER_West";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.7722;
+    longitude -115.7793;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "149.0 MW";
+}
+
+object powerplant
+{
+    name "THREE_PEAKS_POWER_SOLAR_FARM";
+    parent "wecc240_psse_N_6507";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.8271;
+    longitude -113.1371;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "TITAN_(CALIFORNIA)_SOLAR_FARM";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.1016;
+    longitude -116.01;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "70.0 MW";
+}
+
+object powerplant
+{
+    name "TITAN_(COLORADO)_SOLAR_FARM";
+    parent "wecc240_psse_N_7001";
+    generator "PV";
+    fuel "SUN";
+    county "Arapahoe County";
+    state "Colorado";
+    latitude 39.6865;
+    longitude -104.014;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "TOPAZ_SOLAR_FARM_1";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.4056;
+    longitude -120.0686;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "130.0 MW";
+}
+
+object powerplant
+{
+    name "TOPAZ_SOLAR_FARM_2";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.4056;
+    longitude -120.0686;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "151.0 MW";
+}
+
+object powerplant
+{
+    name "TOPAZ_SOLAR_FARM_3";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.4056;
+    longitude -120.0686;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object powerplant
+{
+    name "TOPAZ_SOLAR_FARM_4";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.4056;
+    longitude -120.0686;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "112.0 MW";
+}
+
+object powerplant
+{
+    name "TOPAZ_SOLAR_FARM_5";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "San Luis Obispo County";
+    state "California";
+    latitude 35.4056;
+    longitude -120.0686;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "90.0 MW";
+}
+
+object powerplant
+{
+    name "TOWNSITE_SOLAR_PROJECT_HYBRID";
+    parent "wecc240_psse_N_1301";
+    generator "PV";
+    fuel "SUN";
+    county "Clark County";
+    state "Nevada";
+    latitude 35.9373;
+    longitude -114.884;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "180.0 MW";
+}
+
+object powerplant
+{
+    name "TRANQUILLITY_SOLAR_FARM";
+    parent "wecc240_psse_N_3404";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.5814;
+    longitude -120.4045;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "205.0 MW";
+}
+
+object powerplant
+{
+    name "TURQUOISE_SOLAR_FARM";
+    parent "wecc240_psse_N_3701";
+    generator "PV";
+    fuel "SUN";
+    county "Washoe County";
+    state "Nevada";
+    latitude 39.574;
+    longitude -119.5242;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "60.0 MW";
+}
+
+object powerplant
+{
+    name "UTAH_RED_HILLS_SOLAR_FARM";
+    parent "wecc240_psse_N_6507";
+    generator "PV";
+    fuel "SUN";
+    county "Iron County";
+    state "Utah";
+    latitude 37.8828;
+    longitude -112.9042;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "80.0 MW";
+}
+
+object powerplant
+{
+    name "VALENTINE_SOLAR";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 34.9042;
+    longitude -118.3843;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "111.0 MW";
+}
+
+object powerplant
+{
+    name "VANDENBERG_SOLAR_PROJECT";
+    parent "wecc240_psse_N_3801";
+    generator "PV";
+    fuel "SUN";
+    county "Santa Barbara County";
+    state "California";
+    latitude 34.7497;
+    longitude -120.51;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "25.0 MW";
+}
+
+object powerplant
+{
+    name "VEGA_(SUNEDISON)_SOLAR_FARM";
+    parent "wecc240_psse_N_3901";
+    generator "PV";
+    fuel "SUN";
+    county "Merced County";
+    state "California";
+    latitude 36.9258;
+    longitude -120.82;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "VICTOR_PHELAN_SOLAR_ONE";
+    parent "wecc240_psse_N_2600";
+    generator "PV";
+    fuel "SUN";
+    county "San Bernardino County";
+    state "California";
+    latitude 34.5123;
+    longitude -117.4775;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WEST_LINE_SOLAR";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pinal County";
+    state "Arizona";
+    latitude 32.7559;
+    longitude -111.5548;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object powerplant
+{
+    name "WESTERN_ANTELOPE_BLUE_SKY_A_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.6817;
+    longitude -118.3247;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WESTERN_ANTELOPE_BLUE_SKY_B_SOLAR_FARM";
+    parent "wecc240_psse_N_2404";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.7321;
+    longitude -118.3136;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WESTLAND_SOLAR_FARM_Aquamarine";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Kings County";
+    state "California";
+    latitude 36.1897;
+    longitude -119.9042;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "250.0 MW";
+}
+
+object powerplant
+{
+    name "WESTSIDE_(NEXTERA)_SOLAR_FARM";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.3818;
+    longitude -120.1345;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WHEATRIDGE_HYBRID_SOLAR_FARM";
+    parent "wecc240_psse_N_4005";
+    generator "PV";
+    fuel "SUN";
+    county "Morrow County";
+    state "Oregon";
+    latitude 45.557;
+    longitude -119.612;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object powerplant
+{
+    name "WHITE_RIVER_SOLAR_1";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8714;
+    longitude -119.4625;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WHITE_RIVER_SOLAR_2";
+    parent "wecc240_psse_N_3803";
+    generator "PV";
+    fuel "SUN";
+    county "Tulare County";
+    state "California";
+    latitude 35.8747;
+    longitude -119.0461;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WHITNEY_POINT_SOLAR";
+    parent "wecc240_psse_N_3802";
+    generator "PV";
+    fuel "SUN";
+    county "Fresno County";
+    state "California";
+    latitude 36.3769;
+    longitude -120.1385;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WILLOW_SPRING_SOLAR_2";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Los Angeles County";
+    state "California";
+    latitude 34.8267;
+    longitude -118.3352;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object powerplant
+{
+    name "WILMOT_ENERGY_CENTER_SOLAR_FARM";
+    parent "wecc240_psse_N_1402";
+    generator "PV";
+    fuel "SUN";
+    county "Pima County";
+    state "Arizona";
+    latitude 32.0435;
+    longitude -110.8927;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "130.0 MW";
+}
+
+object powerplant
+{
+    name "WINDHUB_SOLAR_A";
+    parent "wecc240_psse_N_2902";
+    generator "PV";
+    fuel "SUN";
+    county "Kern County";
+    state "California";
+    latitude 35.0199;
+    longitude -118.2879;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WISTARIA_RANCH_SOLAR";
+    parent "wecc240_psse_N_2301";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 32.676;
+    longitude -115.619;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "107.0 MW";
+}
+
+object powerplant
+{
+    name "WISTER_SOLAR";
+    parent "wecc240_psse_N_2100";
+    generator "PV";
+    fuel "SUN";
+    county "Imperial County";
+    state "California";
+    latitude 33.2694;
+    longitude -115.503;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "20.0 MW";
+}
+
+object powerplant
+{
+    name "WRIGHT_SOLAR_PARK";
+    parent "wecc240_psse_N_3901";
+    generator "PV";
+    fuel "SUN";
+    county "Merced County";
+    state "California";
+    latitude 37.0094;
+    longitude -120.9572;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "200.0 MW";
+}
+

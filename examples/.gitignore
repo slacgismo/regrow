@@ -1,6 +1,7 @@
-case14.glm
+case14_network.glm
 *_record.csv
 case*.json
 *_casedata_*.csv
 *_results_*.csv
 *_solver_*.csv
+case*.png

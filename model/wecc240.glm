@@ -20,6 +20,7 @@ module pypower
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
     controllers ${CONTROLLERS_FILE};
+    save_case TRUE;
 }
 
 //
@@ -36,14 +37,20 @@ module pypower
 // Load powerplant data
 //
 #include "../data/powerplants.glm"
-#include "../data/powerplants_gis.glm"
+//#include "../data/powerplants_gis.glm"
 
 //
-// Load loads data
+// Building load geodata
 //
-#include "../data/loads.glm"
+#include "../data/buildings.glm"
+#include "../data/buildings_gis.glm"
+
+//
+// Manual model fixes 
+//
+#include "fixes.glm"
 
 //
 // Save the final result to JSON
 //
-#set savefile="${SAVEFILE}"
+#set savefile="${SAVEFILE:-wecc240.json}"

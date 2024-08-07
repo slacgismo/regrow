@@ -1,0 +1,10 @@
+#for ID in ${RANGE 1,14}
+object pypower.load
+{
+    name "load_${ID}";
+    parent pp_bus_${ID};
+    Vn 12.5 kV;
+    status ONLINE;
+    controller "load_control"; // defined in controllers.py, overrides player
+}
+#done

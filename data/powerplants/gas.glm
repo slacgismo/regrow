@@ -1,0 +1,7466 @@
+module pypower;
+class powerplant
+{
+    char32 county;
+}
+
+object gen
+{
+    name "wecc240_psse_G_AFTON_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_1101";
+}
+object powerplant
+{
+    name "AFTON_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_AFTON_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Dona Ana";
+    state "New Mexico";
+    latitude 32.114185;
+    longitude -106.8465;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "287.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF7";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "AGUA_FRIA_POWER_STATION_AF7";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF7";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.5561;
+    longitude -112.2153;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF8";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "AGUA_FRIA_POWER_STATION_AF8";
+    parent "wecc240_psse_G_AGUA_FRIA_POWER_STATION_AF8";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.5561;
+    longitude -112.2153;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_AGUA_MANSA_POWER_PLANT_AMP1";
+    parent "wecc240_psse_N_2402";
+}
+object powerplant
+{
+    name "AGUA_MANSA_POWER_PLANT_AMP1";
+    parent "wecc240_psse_G_AGUA_MANSA_POWER_PLANT_AMP1";
+    generator "CT";
+    fuel "NG";
+    county "San Bernardino";
+    state "California";
+    latitude 34.0414;
+    longitude -117.3603;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_3";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "ALAMITOS_ENERGY_CENTER_3";
+    parent "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_3";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.767229;
+    longitude -118.1002;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "310.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_4";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "ALAMITOS_ENERGY_CENTER_4";
+    parent "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_4";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.767229;
+    longitude -118.1002;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "310.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_5";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "ALAMITOS_ENERGY_CENTER_5";
+    parent "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_5";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.767229;
+    longitude -118.1002;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "495.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_CCT1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "ALAMITOS_ENERGY_CENTER_CCT1";
+    parent "wecc240_psse_G_ALAMITOS_ENERGY_CENTER_CCT1";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.767229;
+    longitude -118.1002;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "678.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALGONQUIN_POWER_SANGER_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3403";
+}
+object powerplant
+{
+    name "ALGONQUIN_POWER_SANGER_POWER_STATION_CC1";
+    parent "wecc240_psse_G_ALGONQUIN_POWER_SANGER_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6842;
+    longitude -119.5522;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALMOND_POWER_PLANT_1";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "ALMOND_POWER_PLANT_1";
+    parent "wecc240_psse_G_ALMOND_POWER_PLANT_1";
+    generator "CT";
+    fuel "NG";
+    county "Stanislaus";
+    state "California";
+    latitude 37.5744;
+    longitude -120.985;
+    in_svc "1996-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALMOND_POWER_PLANT_2";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "ALMOND_POWER_PLANT_2";
+    parent "wecc240_psse_G_ALMOND_POWER_PLANT_2";
+    generator "CT";
+    fuel "NG";
+    county "Stanislaus";
+    state "California";
+    latitude 37.5744;
+    longitude -120.985;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALMOND_POWER_PLANT_3";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "ALMOND_POWER_PLANT_3";
+    parent "wecc240_psse_G_ALMOND_POWER_PLANT_3";
+    generator "CT";
+    fuel "NG";
+    county "Stanislaus";
+    state "California";
+    latitude 37.5744;
+    longitude -120.985;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALMOND_POWER_PLANT_4";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "ALMOND_POWER_PLANT_4";
+    parent "wecc240_psse_G_ALMOND_POWER_PLANT_4";
+    generator "CT";
+    fuel "NG";
+    county "Stanislaus";
+    state "California";
+    latitude 37.5744;
+    longitude -120.985;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ALTAGAS_RIPON_ENERGY_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "ALTAGAS_RIPON_ENERGY_POWER_STATION_GEN1";
+    parent "wecc240_psse_G_ALTAGAS_RIPON_ENERGY_POWER_STATION_GEN1";
+    generator "CT";
+    fuel "NG";
+    county "San Joaquin";
+    state "California";
+    latitude 37.732533;
+    longitude -121.116;
+    in_svc "1988-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_APACHE_GENERATING_STATION_ST2";
+    parent "wecc240_psse_N_1102";
+}
+object powerplant
+{
+    name "APACHE_GENERATING_STATION_ST2";
+    parent "wecc240_psse_G_APACHE_GENERATING_STATION_ST2";
+    generator "ST";
+    fuel "NG";
+    county "Cochise";
+    state "Arizona";
+    latitude 32.0603;
+    longitude -109.8931;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "204.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_APEX_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "APEX_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_APEX_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.415999;
+    longitude -114.9609;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "601.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ARAPAHOE_STATION_A567";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "ARAPAHOE_STATION_A567";
+    parent "wecc240_psse_G_ARAPAHOE_STATION_A567";
+    generator "CC";
+    fuel "NG";
+    county "Denver";
+    state "Colorado";
+    latitude 39.6692;
+    longitude -105.0018;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "194.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ARLINGTON_VALLEY_ENERGY_FACILITY_CC1";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "ARLINGTON_VALLEY_ENERGY_FACILITY_CC1";
+    parent "wecc240_psse_G_ARLINGTON_VALLEY_ENERGY_FACILITY_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.3417;
+    longitude -112.8897;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "713.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BARRE_PEAKER_POWER_STATION_1";
+    parent "wecc240_psse_N_2610";
+}
+object powerplant
+{
+    name "BARRE_PEAKER_POWER_STATION_1";
+    parent "wecc240_psse_G_BARRE_PEAKER_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.8073;
+    longitude -117.9832;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BASIN_CREEK_PLANT_1";
+    parent "wecc240_psse_N_6202";
+}
+object powerplant
+{
+    name "BASIN_CREEK_PLANT_1";
+    parent "wecc240_psse_G_BASIN_CREEK_PLANT_1";
+    generator "IC";
+    fuel "NG";
+    county "Silver Bow";
+    state "Montana";
+    latitude 45.9293;
+    longitude -112.5194;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.9 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BENNETT_MOUNTAIN_POWER_STATION_1";
+    parent "wecc240_psse_N_6101";
+}
+object powerplant
+{
+    name "BENNETT_MOUNTAIN_POWER_STATION_1";
+    parent "wecc240_psse_G_BENNETT_MOUNTAIN_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Elmore";
+    state "Idaho";
+    latitude 43.147153;
+    longitude -115.6666;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "173.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BLACK_MOUNTAIN_GENERATING_STATION_1";
+    parent "wecc240_psse_N_1403";
+}
+object powerplant
+{
+    name "BLACK_MOUNTAIN_GENERATING_STATION_1";
+    parent "wecc240_psse_G_BLACK_MOUNTAIN_GENERATING_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Mohave";
+    state "Arizona";
+    latitude 35.0361;
+    longitude -114.1594;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BLACK_MOUNTAIN_GENERATING_STATION_2";
+    parent "wecc240_psse_N_1403";
+}
+object powerplant
+{
+    name "BLACK_MOUNTAIN_GENERATING_STATION_2";
+    parent "wecc240_psse_G_BLACK_MOUNTAIN_GENERATING_STATION_2";
+    generator "CT";
+    fuel "NG";
+    county "Mohave";
+    state "Arizona";
+    latitude 35.0361;
+    longitude -114.1594;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BLUFFVIEW_POWER_STATION_CC1";
+    parent "wecc240_psse_N_1004";
+}
+object powerplant
+{
+    name "BLUFFVIEW_POWER_STATION_CC1";
+    parent "wecc240_psse_G_BLUFFVIEW_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "San Juan";
+    state "New Mexico";
+    latitude 36.716628;
+    longitude -108.2153;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "67.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BLYTHE_ENERGY_POWER_STATION_CC1";
+    parent "wecc240_psse_N_1403";
+}
+object powerplant
+{
+    name "BLYTHE_ENERGY_POWER_STATION_CC1";
+    parent "wecc240_psse_G_BLYTHE_ENERGY_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.6157;
+    longitude -114.6865;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "591.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BRUSH_GENERATION_FACILITY_BCP";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "BRUSH_GENERATION_FACILITY_BCP";
+    parent "wecc240_psse_G_BRUSH_GENERATION_FACILITY_BCP";
+    generator "CC";
+    fuel "NG";
+    county "Morgan";
+    state "Colorado";
+    latitude 40.2415;
+    longitude -103.631;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "74.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BRUSH_GENERATION_FACILITY_BIV";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "BRUSH_GENERATION_FACILITY_BIV";
+    parent "wecc240_psse_G_BRUSH_GENERATION_FACILITY_BIV";
+    generator "CC";
+    fuel "NG";
+    county "Morgan";
+    state "Colorado";
+    latitude 40.2415;
+    longitude -103.631;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "138.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_BRUSH_GENERATION_FACILITY_CPP";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "BRUSH_GENERATION_FACILITY_CPP";
+    parent "wecc240_psse_G_BRUSH_GENERATION_FACILITY_CPP";
+    generator "CC";
+    fuel "NG";
+    county "Morgan";
+    state "Colorado";
+    latitude 40.2415;
+    longitude -103.631;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CALPEAK_POWER_BORDER_PEAKER_PLANT_CPP4";
+    parent "wecc240_psse_N_2201";
+}
+object powerplant
+{
+    name "CALPEAK_POWER_BORDER_PEAKER_PLANT_CPP4";
+    parent "wecc240_psse_G_CALPEAK_POWER_BORDER_PEAKER_PLANT_CPP4";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.562448;
+    longitude -116.9439;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CALPEAK_POWER_ENTERPRISE_PEAKER_PLANT_CPP7";
+    parent "wecc240_psse_N_2203";
+}
+object powerplant
+{
+    name "CALPEAK_POWER_ENTERPRISE_PEAKER_PLANT_CPP7";
+    parent "wecc240_psse_G_CALPEAK_POWER_ENTERPRISE_PEAKER_PLANT_CPP7";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.121943;
+    longitude -117.1174;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "59.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CALPEAK_POWER_PANOCHE_PEAKER_PLANT_CPP2";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "CALPEAK_POWER_PANOCHE_PEAKER_PLANT_CPP2";
+    parent "wecc240_psse_G_CALPEAK_POWER_PANOCHE_PEAKER_PLANT_CPP2";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.652905;
+    longitude -120.5806;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CALPEAK_POWER_VACA_DIXON_PEAKER_PLANT_CPP1";
+    parent "wecc240_psse_N_3904";
+}
+object powerplant
+{
+    name "CALPEAK_POWER_VACA_DIXON_PEAKER_PLANT_CPP1";
+    parent "wecc240_psse_G_CALPEAK_POWER_VACA_DIXON_PEAKER_PLANT_CPP1";
+    generator "CT";
+    fuel "NG";
+    county "Solano";
+    state "California";
+    latitude 38.398867;
+    longitude -121.924;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CANYON_POWER_PLANT_CPP1";
+    parent "wecc240_psse_N_2501";
+}
+object powerplant
+{
+    name "CANYON_POWER_PLANT_CPP1";
+    parent "wecc240_psse_G_CANYON_POWER_PLANT_CPP1";
+    generator "CT";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.858056;
+    longitude -117.8617;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CANYON_POWER_PLANT_CPP2";
+    parent "wecc240_psse_N_2501";
+}
+object powerplant
+{
+    name "CANYON_POWER_PLANT_CPP2";
+    parent "wecc240_psse_G_CANYON_POWER_PLANT_CPP2";
+    generator "CT";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.858056;
+    longitude -117.8617;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CANYON_POWER_PLANT_CPP3";
+    parent "wecc240_psse_N_2501";
+}
+object powerplant
+{
+    name "CANYON_POWER_PLANT_CPP3";
+    parent "wecc240_psse_G_CANYON_POWER_PLANT_CPP3";
+    generator "CT";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.858056;
+    longitude -117.8617;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CANYON_POWER_PLANT_CPP4";
+    parent "wecc240_psse_N_2501";
+}
+object powerplant
+{
+    name "CANYON_POWER_PLANT_CPP4";
+    parent "wecc240_psse_G_CANYON_POWER_PLANT_CPP4";
+    generator "CT";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.858056;
+    longitude -117.8617;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_6";
+    parent "wecc240_psse_N_2503";
+}
+object powerplant
+{
+    name "CARLSBAD_ENERGY_CENTER_CEC_6";
+    parent "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_6";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.140507;
+    longitude -117.3339;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_7";
+    parent "wecc240_psse_N_2503";
+}
+object powerplant
+{
+    name "CARLSBAD_ENERGY_CENTER_CEC_7";
+    parent "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_7";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.140507;
+    longitude -117.3339;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_8";
+    parent "wecc240_psse_N_2503";
+}
+object powerplant
+{
+    name "CARLSBAD_ENERGY_CENTER_CEC_8";
+    parent "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_8";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.140507;
+    longitude -117.3339;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_9";
+    parent "wecc240_psse_N_2503";
+}
+object powerplant
+{
+    name "CARLSBAD_ENERGY_CENTER_CEC_9";
+    parent "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC_9";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.140507;
+    longitude -117.3339;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC10";
+    parent "wecc240_psse_N_2503";
+}
+object powerplant
+{
+    name "CARLSBAD_ENERGY_CENTER_CEC10";
+    parent "wecc240_psse_G_CARLSBAD_ENERGY_CENTER_CEC10";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.140507;
+    longitude -117.3339;
+    in_svc "2018-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARSON_COGENERATION_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "CARSON_COGENERATION_POWER_STATION_CC1";
+    parent "wecc240_psse_G_CARSON_COGENERATION_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.8759;
+    longitude -118.2491;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "56.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARSON_ICE-GEN_PROJECT_POWER_STATION_1";
+    parent "wecc240_psse_N_3908";
+}
+object powerplant
+{
+    name "CARSON_ICE-GEN_PROJECT_POWER_STATION_1";
+    parent "wecc240_psse_G_CARSON_ICE-GEN_PROJECT_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Sacramento";
+    state "California";
+    latitude 38.445681;
+    longitude -121.4624;
+    in_svc "1995-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARSON_ICE-GEN_PROJECT_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3908";
+}
+object powerplant
+{
+    name "CARSON_ICE-GEN_PROJECT_POWER_STATION_CC1";
+    parent "wecc240_psse_G_CARSON_ICE-GEN_PROJECT_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
+    state "California";
+    latitude 38.445681;
+    longitude -121.4624;
+    in_svc "1995-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "72.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CARTY_GENERATING_STATION_CCG1";
+    parent "wecc240_psse_N_4005";
+}
+object powerplant
+{
+    name "CARTY_GENERATING_STATION_CCG1";
+    parent "wecc240_psse_G_CARTY_GENERATING_STATION_CCG1";
+    generator "CC";
+    fuel "NG";
+    county "Morrow";
+    state "Oregon";
+    latitude 45.698611;
+    longitude -119.8131;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "500.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CENTER_HYBRID_POWER_STATION_1";
+    parent "wecc240_psse_N_2408";
+}
+object powerplant
+{
+    name "CENTER_HYBRID_POWER_STATION_1";
+    parent "wecc240_psse_G_CENTER_HYBRID_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.9296;
+    longitude -118.1046;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CHEHALIS_GENERATING_FACILITY_CC1";
+    parent "wecc240_psse_N_4202";
+}
+object powerplant
+{
+    name "CHEHALIS_GENERATING_FACILITY_CC1";
+    parent "wecc240_psse_G_CHEHALIS_GENERATING_FACILITY_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Lewis";
+    state "Washington";
+    latitude 46.6225;
+    longitude -122.9131;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "698.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CHEROKEE_STATION_4";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "CHEROKEE_STATION_4";
+    parent "wecc240_psse_G_CHEROKEE_STATION_4";
+    generator "ST";
+    fuel "NG";
+    county "Adams";
+    state "Colorado";
+    latitude 39.807275;
+    longitude -104.9645;
+    in_svc "2017-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "381.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CHEROKEE_STATION_CHR0";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "CHEROKEE_STATION_CHR0";
+    parent "wecc240_psse_G_CHEROKEE_STATION_CHR0";
+    generator "CC";
+    fuel "NG";
+    county "Adams";
+    state "Colorado";
+    latitude 39.807275;
+    longitude -104.9645;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "626.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CHEYENNE_PRAIRIE_GENERATING_STATION_PB1";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "CHEYENNE_PRAIRIE_GENERATING_STATION_PB1";
+    parent "wecc240_psse_G_CHEYENNE_PRAIRIE_GENERATING_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Laramie";
+    state "Wyoming";
+    latitude 41.123611;
+    longitude -104.72;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CHUCK_LENZIE_GENERATING_STATION_PB1";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "CHUCK_LENZIE_GENERATING_STATION_PB1";
+    parent "wecc240_psse_G_CHUCK_LENZIE_GENERATING_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.383719;
+    longitude -114.9218;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "733.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CHUCK_LENZIE_GENERATING_STATION_PB2";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "CHUCK_LENZIE_GENERATING_STATION_PB2";
+    parent "wecc240_psse_G_CHUCK_LENZIE_GENERATING_STATION_PB2";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.383719;
+    longitude -114.9218;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "733.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_11";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_11";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_11";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_12";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_12";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_12";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_13";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_13";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_13";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_14";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_14";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_14";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_15";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_15";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_15";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_16";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_16";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_16";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_17";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_17";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_17";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_18";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_18";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_18";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_19";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_19";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_19";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_20";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_20";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_20";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_21";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_21";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_21";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "59.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_22";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_22";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_22";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_GT4";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_GT4";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_GT4";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "72.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_PB1";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_PB1";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_PB2";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "CLARK_(NVE)_POWER_STATION_PB2";
+    parent "wecc240_psse_G_CLARK_(NVE)_POWER_STATION_PB2";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.0875;
+    longitude -115.0507;
+    in_svc "1993-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COLUSA_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_3916";
+}
+object powerplant
+{
+    name "COLUSA_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_COLUSA_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Colusa";
+    state "California";
+    latitude 39.3661;
+    longitude -122.27;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "712.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_1";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_2";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_2";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_3";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_3";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_3";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_4";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_4";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_4";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_5";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_5";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_5";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_6";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_6";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_6";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_7";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_7";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_7";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_8";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_8";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_8";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_9";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_9";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_9";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_10";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_10";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_10";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_11";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_11";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_11";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COOLIDGE_GENERATION_STATION_12";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "COOLIDGE_GENERATION_STATION_12";
+    parent "wecc240_psse_G_COOLIDGE_GENERATION_STATION_12";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.917399;
+    longitude -111.5033;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COSUMNES_POWER_STATION_CCC1";
+    parent "wecc240_psse_N_8004";
+}
+object powerplant
+{
+    name "COSUMNES_POWER_STATION_CCC1";
+    parent "wecc240_psse_G_COSUMNES_POWER_STATION_CCC1";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
+    state "California";
+    latitude 38.338475;
+    longitude -121.124;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "557.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COYOTE_SPRINGS_II_POWER_STATION_U2CT";
+    parent "wecc240_psse_N_4102";
+}
+object powerplant
+{
+    name "COYOTE_SPRINGS_II_POWER_STATION_U2CT";
+    parent "wecc240_psse_G_COYOTE_SPRINGS_II_POWER_STATION_U2CT";
+    generator "CC";
+    fuel "NG";
+    county "Morrow";
+    state "Oregon";
+    latitude 45.848039;
+    longitude -119.674;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "287.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_COYOTE_SPRINGS_POWER_STATION_CC1";
+    parent "wecc240_psse_N_4102";
+}
+object powerplant
+{
+    name "COYOTE_SPRINGS_POWER_STATION_CC1";
+    parent "wecc240_psse_G_COYOTE_SPRINGS_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Morrow";
+    state "Oregon";
+    latitude 45.847998;
+    longitude -119.6739;
+    in_svc "1995-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "296.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CROCKETT_COGENERATION_PROJECT_POWER_STATION_GE1";
+    parent "wecc240_psse_N_3205";
+}
+object powerplant
+{
+    name "CROCKETT_COGENERATION_PROJECT_POWER_STATION_GE1";
+    parent "wecc240_psse_G_CROCKETT_COGENERATION_PROJECT_POWER_STATION_GE1";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.0569;
+    longitude -122.2161;
+    in_svc "1995-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "247.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CULBERTSON_GENERATION_STATION_1";
+    parent "wecc240_psse_N_6201";
+}
+object powerplant
+{
+    name "CULBERTSON_GENERATION_STATION_1";
+    parent "wecc240_psse_G_CULBERTSON_GENERATION_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Roosevelt";
+    state "Montana";
+    latitude 48.21;
+    longitude -104.3917;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CUNNINGHAM_POWER_STATION_1";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "CUNNINGHAM_POWER_STATION_1";
+    parent "wecc240_psse_G_CUNNINGHAM_POWER_STATION_1";
+    generator "ST";
+    fuel "NG";
+    county "Lea";
+    state "New Mexico";
+    latitude 32.7131;
+    longitude -103.3533;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CUNNINGHAM_POWER_STATION_2";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "CUNNINGHAM_POWER_STATION_2";
+    parent "wecc240_psse_G_CUNNINGHAM_POWER_STATION_2";
+    generator "ST";
+    fuel "NG";
+    county "Lea";
+    state "New Mexico";
+    latitude 32.7131;
+    longitude -103.3533;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "190.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CUNNINGHAM_POWER_STATION_3";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "CUNNINGHAM_POWER_STATION_3";
+    parent "wecc240_psse_G_CUNNINGHAM_POWER_STATION_3";
+    generator "CT";
+    fuel "NG";
+    county "Lea";
+    state "New Mexico";
+    latitude 32.7131;
+    longitude -103.3533;
+    in_svc "1998-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "127.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CUNNINGHAM_POWER_STATION_4";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "CUNNINGHAM_POWER_STATION_4";
+    parent "wecc240_psse_G_CUNNINGHAM_POWER_STATION_4";
+    generator "CT";
+    fuel "NG";
+    county "Lea";
+    state "New Mexico";
+    latitude 32.7131;
+    longitude -103.3533;
+    in_svc "1998-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "127.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_CURRANT_CREEK_POWER_STATION_CC1";
+    parent "wecc240_psse_N_6504";
+}
+object powerplant
+{
+    name "CURRANT_CREEK_POWER_STATION_CC1";
+    parent "wecc240_psse_G_CURRANT_CREEK_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Juab";
+    state "Utah";
+    latitude 39.82144;
+    longitude -111.8935;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "649.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DELANO_ENERGY_CENTER_GEN1";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "DELANO_ENERGY_CENTER_GEN1";
+    parent "wecc240_psse_G_DELANO_ENERGY_CENTER_GEN1";
+    generator "CT";
+    fuel "NG";
+    county "Tulare";
+    state "California";
+    latitude 35.790864;
+    longitude -119.2945;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DELTA_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_3204";
+}
+object powerplant
+{
+    name "DELTA_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_DELTA_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.0169;
+    longitude -121.8439;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "944.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DEMOSS_PETRIE_POWER_STATION_GT2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "DEMOSS_PETRIE_POWER_STATION_GT2";
+    parent "wecc240_psse_G_DEMOSS_PETRIE_POWER_STATION_GT2";
+    generator "CT";
+    fuel "NG";
+    county "Pima";
+    state "Arizona";
+    latitude 32.252273;
+    longitude -110.9921;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "85.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DESERT_BASIN_POWER_STATION_CTG4";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "DESERT_BASIN_POWER_STATION_CTG4";
+    parent "wecc240_psse_G_DESERT_BASIN_POWER_STATION_CTG4";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9042;
+    longitude -111.7889;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DESERT_BASIN_POWER_STATION_CTG5";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "DESERT_BASIN_POWER_STATION_CTG5";
+    parent "wecc240_psse_G_DESERT_BASIN_POWER_STATION_CTG5";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9042;
+    longitude -111.7889;
+    in_svc "2022-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DESERT_BASIN_POWER_STATION_STG3";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "DESERT_BASIN_POWER_STATION_STG3";
+    parent "wecc240_psse_G_DESERT_BASIN_POWER_STATION_STG3";
+    generator "CC";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9042;
+    longitude -111.7889;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "646.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DESERT_STAR_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "DESERT_STAR_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_DESERT_STAR_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 35.788889;
+    longitude -114.9942;
+    in_svc "2000-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "537.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DONALD_VON_RAESFELD_POWER_PLANT_DVR1";
+    parent "wecc240_psse_N_3304";
+}
+object powerplant
+{
+    name "DONALD_VON_RAESFELD_POWER_PLANT_DVR1";
+    parent "wecc240_psse_G_DONALD_VON_RAESFELD_POWER_PLANT_DVR1";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
+    state "California";
+    latitude 37.3767;
+    longitude -121.9508;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "154.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DYNEGY_MOSS_LANDING_POWER_PLANT_CC1";
+    parent "wecc240_psse_N_3902";
+}
+object powerplant
+{
+    name "DYNEGY_MOSS_LANDING_POWER_PLANT_CC1";
+    parent "wecc240_psse_G_DYNEGY_MOSS_LANDING_POWER_PLANT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Monterey";
+    state "California";
+    latitude 36.804837;
+    longitude -121.7822;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "699.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_DYNEGY_MOSS_LANDING_POWER_PLANT_CC2";
+    parent "wecc240_psse_N_3902";
+}
+object powerplant
+{
+    name "DYNEGY_MOSS_LANDING_POWER_PLANT_CC2";
+    parent "wecc240_psse_G_DYNEGY_MOSS_LANDING_POWER_PLANT_CC2";
+    generator "CC";
+    fuel "NG";
+    county "Monterey";
+    state "California";
+    latitude 36.804837;
+    longitude -121.7822;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "699.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_EL_CAJON_ENERGY_CENTER_GEN1";
+    parent "wecc240_psse_N_2203";
+}
+object powerplant
+{
+    name "EL_CAJON_ENERGY_CENTER_GEN1";
+    parent "wecc240_psse_G_EL_CAJON_ENERGY_CENTER_GEN1";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.796106;
+    longitude -116.9721;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_EL_CENTRO_POWER_STATION_STM2";
+    parent "wecc240_psse_N_2301";
+}
+object powerplant
+{
+    name "EL_CENTRO_POWER_STATION_STM2";
+    parent "wecc240_psse_G_EL_CENTRO_POWER_STATION_STM2";
+    generator "CC";
+    fuel "NG";
+    county "Imperial";
+    state "California";
+    latitude 32.802222;
+    longitude -115.54;
+    in_svc "1993-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "124.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_EL_CENTRO_POWER_STATION_STM3";
+    parent "wecc240_psse_N_2301";
+}
+object powerplant
+{
+    name "EL_CENTRO_POWER_STATION_STM3";
+    parent "wecc240_psse_G_EL_CENTRO_POWER_STATION_STM3";
+    generator "CC";
+    fuel "NG";
+    county "Imperial";
+    state "California";
+    latitude 32.802222;
+    longitude -115.54;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "152.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_EL_SEGUNDO_ENERGY_CENTER_1011";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "EL_SEGUNDO_ENERGY_CENTER_1011";
+    parent "wecc240_psse_G_EL_SEGUNDO_ENERGY_CENTER_1011";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.910556;
+    longitude -118.425;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "269.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_EL_SEGUNDO_ENERGY_CENTER_2021";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "EL_SEGUNDO_ENERGY_CENTER_2021";
+    parent "wecc240_psse_G_EL_SEGUNDO_ENERGY_CENTER_2021";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.910556;
+    longitude -118.425;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "269.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ELK_HILLS_POWER_STATION_G541";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "ELK_HILLS_POWER_STATION_G541";
+    parent "wecc240_psse_G_ELK_HILLS_POWER_STATION_G541";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.280318;
+    longitude -119.4707;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "623.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ELLWOOD_POWER_STATION_1";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "ELLWOOD_POWER_STATION_1";
+    parent "wecc240_psse_G_ELLWOOD_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Santa Barbara";
+    state "California";
+    latitude 34.431419;
+    longitude -119.9001;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "58.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ESCONDIDO_ENERGY_CENTER_CTG1";
+    parent "wecc240_psse_N_2203";
+}
+object powerplant
+{
+    name "ESCONDIDO_ENERGY_CENTER_CTG1";
+    parent "wecc240_psse_G_ESCONDIDO_ENERGY_CENTER_CTG1";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.1261;
+    longitude -117.1172;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "54.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_EVANDER_ANDREWS_POWER_COMPLEX_1";
+    parent "wecc240_psse_N_6101";
+}
+object powerplant
+{
+    name "EVANDER_ANDREWS_POWER_COMPLEX_1";
+    parent "wecc240_psse_G_EVANDER_ANDREWS_POWER_COMPLEX_1";
+    generator "CT";
+    fuel "NG";
+    county "Elmore";
+    state "Idaho";
+    latitude 43.179176;
+    longitude -115.7343;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "179.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FORT_CHURCHILL_POWER_STATION_1";
+    parent "wecc240_psse_N_6401";
+}
+object powerplant
+{
+    name "FORT_CHURCHILL_POWER_STATION_1";
+    parent "wecc240_psse_G_FORT_CHURCHILL_POWER_STATION_1";
+    generator "ST";
+    fuel "NG";
+    county "Lyon";
+    state "Nevada";
+    latitude 39.1281;
+    longitude -119.1322;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "115.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FORT_CHURCHILL_POWER_STATION_2";
+    parent "wecc240_psse_N_6401";
+}
+object powerplant
+{
+    name "FORT_CHURCHILL_POWER_STATION_2";
+    parent "wecc240_psse_G_FORT_CHURCHILL_POWER_STATION_2";
+    generator "ST";
+    fuel "NG";
+    county "Lyon";
+    state "Nevada";
+    latitude 39.1281;
+    longitude -119.1322;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "115.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FORT_ST_VRAIN_POWER_STATION_5";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "FORT_ST_VRAIN_POWER_STATION_5";
+    parent "wecc240_psse_G_FORT_ST_VRAIN_POWER_STATION_5";
+    generator "CT";
+    fuel "NG";
+    county "Weld";
+    state "Colorado";
+    latitude 40.2461;
+    longitude -104.8742;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "140.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FORT_ST_VRAIN_POWER_STATION_6";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "FORT_ST_VRAIN_POWER_STATION_6";
+    parent "wecc240_psse_G_FORT_ST_VRAIN_POWER_STATION_6";
+    generator "CT";
+    fuel "NG";
+    county "Weld";
+    state "Colorado";
+    latitude 40.2461;
+    longitude -104.8742;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "140.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FORT_ST_VRAIN_POWER_STATION_FSV0";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "FORT_ST_VRAIN_POWER_STATION_FSV0";
+    parent "wecc240_psse_G_FORT_ST_VRAIN_POWER_STATION_FSV0";
+    generator "CC";
+    fuel "NG";
+    county "Weld";
+    state "Colorado";
+    latitude 40.2461;
+    longitude -104.8742;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "868.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FOSTER_WHEELER_MARTINEZ_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3201";
+}
+object powerplant
+{
+    name "FOSTER_WHEELER_MARTINEZ_POWER_STATION_CC1";
+    parent "wecc240_psse_G_FOSTER_WHEELER_MARTINEZ_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.0244;
+    longitude -122.0589;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "114.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FREDERICKSON_POWER_POWER_STATION_FP1";
+    parent "wecc240_psse_N_4202";
+}
+object powerplant
+{
+    name "FREDERICKSON_POWER_POWER_STATION_FP1";
+    parent "wecc240_psse_G_FREDERICKSON_POWER_POWER_STATION_FP1";
+    generator "CC";
+    fuel "NG";
+    county "Pierce";
+    state "Washington";
+    latitude 47.086111;
+    longitude -122.3657;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "318.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FRESNO_COGENERATION_PARTNERS_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3401";
+}
+object powerplant
+{
+    name "FRESNO_COGENERATION_PARTNERS_POWER_STATION_CC1";
+    parent "wecc240_psse_G_FRESNO_COGENERATION_PARTNERS_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.617022;
+    longitude -120.0998;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_FRONT_RANGE_POWER_PLANT_CC1";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "FRONT_RANGE_POWER_PLANT_CC1";
+    parent "wecc240_psse_G_FRONT_RANGE_POWER_PLANT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "El Paso";
+    state "Colorado";
+    latitude 38.6281;
+    longitude -104.7069;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "554.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GADSBY_POWER_STATION_1";
+    parent "wecc240_psse_N_6509";
+}
+object powerplant
+{
+    name "GADSBY_POWER_STATION_1";
+    parent "wecc240_psse_G_GADSBY_POWER_STATION_1";
+    generator "ST";
+    fuel "NG";
+    county "Salt Lake";
+    state "Utah";
+    latitude 40.7686;
+    longitude -111.9289;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "69.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GADSBY_POWER_STATION_2";
+    parent "wecc240_psse_N_6509";
+}
+object powerplant
+{
+    name "GADSBY_POWER_STATION_2";
+    parent "wecc240_psse_G_GADSBY_POWER_STATION_2";
+    generator "ST";
+    fuel "NG";
+    county "Salt Lake";
+    state "Utah";
+    latitude 40.7686;
+    longitude -111.9289;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "69.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GADSBY_POWER_STATION_3";
+    parent "wecc240_psse_N_6509";
+}
+object powerplant
+{
+    name "GADSBY_POWER_STATION_3";
+    parent "wecc240_psse_G_GADSBY_POWER_STATION_3";
+    generator "ST";
+    fuel "NG";
+    county "Salt Lake";
+    state "Utah";
+    latitude 40.7686;
+    longitude -111.9289;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "134.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GADSBY_POWER_STATION_4";
+    parent "wecc240_psse_N_6509";
+}
+object powerplant
+{
+    name "GADSBY_POWER_STATION_4";
+    parent "wecc240_psse_G_GADSBY_POWER_STATION_4";
+    generator "CT";
+    fuel "NG";
+    county "Salt Lake";
+    state "Utah";
+    latitude 40.7686;
+    longitude -111.9289;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GADSBY_POWER_STATION_5";
+    parent "wecc240_psse_N_6509";
+}
+object powerplant
+{
+    name "GADSBY_POWER_STATION_5";
+    parent "wecc240_psse_G_GADSBY_POWER_STATION_5";
+    generator "CT";
+    fuel "NG";
+    county "Salt Lake";
+    state "Utah";
+    latitude 40.7686;
+    longitude -111.9289;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GADSBY_POWER_STATION_6";
+    parent "wecc240_psse_N_6509";
+}
+object powerplant
+{
+    name "GADSBY_POWER_STATION_6";
+    parent "wecc240_psse_G_GADSBY_POWER_STATION_6";
+    generator "CT";
+    fuel "NG";
+    county "Salt Lake";
+    state "Utah";
+    latitude 40.7686;
+    longitude -111.9289;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GATEWAY_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_3204";
+}
+object powerplant
+{
+    name "GATEWAY_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_GATEWAY_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.0175;
+    longitude -121.7587;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "620.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GILA_RIVER_POWER_STATION_BL03";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "GILA_RIVER_POWER_STATION_BL03";
+    parent "wecc240_psse_G_GILA_RIVER_POWER_STATION_BL03";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 32.975;
+    longitude -112.6944;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "619.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GILA_RIVER_POWER_STATION_BL04";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "GILA_RIVER_POWER_STATION_BL04";
+    parent "wecc240_psse_G_GILA_RIVER_POWER_STATION_BL04";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 32.975;
+    longitude -112.6944;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "619.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GILA_RIVER_POWER_STATION_PB1";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "GILA_RIVER_POWER_STATION_PB1";
+    parent "wecc240_psse_G_GILA_RIVER_POWER_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 32.975;
+    longitude -112.6944;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "619.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GILA_RIVER_POWER_STATION_PB2";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "GILA_RIVER_POWER_STATION_PB2";
+    parent "wecc240_psse_G_GILA_RIVER_POWER_STATION_PB2";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 32.975;
+    longitude -112.6944;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "619.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GILROY_POWER_PLANT_CC1";
+    parent "wecc240_psse_N_3301";
+}
+object powerplant
+{
+    name "GILROY_POWER_PLANT_CC1";
+    parent "wecc240_psse_G_GILROY_POWER_PLANT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
+    state "California";
+    latitude 37.0001;
+    longitude -121.5367;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "130.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GLENARM_POWER_STATION_1";
+    parent "wecc240_psse_N_2406";
+}
+object powerplant
+{
+    name "GLENARM_POWER_STATION_1";
+    parent "wecc240_psse_G_GLENARM_POWER_STATION_1";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.126;
+    longitude -118.1494;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "87.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GLENARM_POWER_STATION_GT3";
+    parent "wecc240_psse_N_2406";
+}
+object powerplant
+{
+    name "GLENARM_POWER_STATION_GT3";
+    parent "wecc240_psse_G_GLENARM_POWER_STATION_GT3";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.126;
+    longitude -118.1494;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GLENARM_POWER_STATION_GT4";
+    parent "wecc240_psse_N_2406";
+}
+object powerplant
+{
+    name "GLENARM_POWER_STATION_GT4";
+    parent "wecc240_psse_G_GLENARM_POWER_STATION_GT4";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.126;
+    longitude -118.1494;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GOAL_LINE_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2203";
+}
+object powerplant
+{
+    name "GOAL_LINE_POWER_STATION_CC1";
+    parent "wecc240_psse_G_GOAL_LINE_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.1185;
+    longitude -117.0995;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "51.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GOLDENDALE_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_4005";
+}
+object powerplant
+{
+    name "GOLDENDALE_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_GOLDENDALE_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Klickitat";
+    state "Washington";
+    latitude 45.8114;
+    longitude -120.833;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "303.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GRAPELAND_HYBRID_POWER_STATION_1";
+    parent "wecc240_psse_N_2402";
+}
+object powerplant
+{
+    name "GRAPELAND_HYBRID_POWER_STATION_1";
+    parent "wecc240_psse_G_GRAPELAND_HYBRID_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "San Bernardino";
+    state "California";
+    latitude 34.0903;
+    longitude -117.5343;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GRAYS_HARBOR_ENERGY_FACILITY_CC01";
+    parent "wecc240_psse_N_4202";
+}
+object powerplant
+{
+    name "GRAYS_HARBOR_ENERGY_FACILITY_CC01";
+    parent "wecc240_psse_G_GRAYS_HARBOR_ENERGY_FACILITY_CC01";
+    generator "CC";
+    fuel "NG";
+    county "Grays Harbor";
+    state "Washington";
+    latitude 46.9692;
+    longitude -123.48;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "715.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GRAYSON_POWER_STATION_9";
+    parent "wecc240_psse_N_2609";
+}
+object powerplant
+{
+    name "GRAYSON_POWER_STATION_9";
+    parent "wecc240_psse_G_GRAYSON_POWER_STATION_9";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.1556;
+    longitude -118.2782;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "57.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GRAYSON_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2609";
+}
+object powerplant
+{
+    name "GRAYSON_POWER_STATION_CC1";
+    parent "wecc240_psse_G_GRAYSON_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.1556;
+    longitude -118.2782;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "121.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GREENLEAF_2_POWER_PLANT_GEN1";
+    parent "wecc240_psse_N_3405";
+}
+object powerplant
+{
+    name "GREENLEAF_2_POWER_PLANT_GEN1";
+    parent "wecc240_psse_G_GREENLEAF_2_POWER_PLANT_GEN1";
+    generator "CT";
+    fuel "NG";
+    county "Sutter";
+    state "California";
+    latitude 39.1365;
+    longitude -121.6397;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_GRIFFITH_ENERGY_POWER_STATION_1111";
+    parent "wecc240_psse_N_1403";
+}
+object powerplant
+{
+    name "GRIFFITH_ENERGY_POWER_STATION_1111";
+    parent "wecc240_psse_G_GRIFFITH_ENERGY_POWER_STATION_1111";
+    generator "CC";
+    fuel "NG";
+    county "Mohave";
+    state "Arizona";
+    latitude 35.054029;
+    longitude -114.1333;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "655.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_H_WILSON_SUNDT_GENERATING_STATION_IC";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "H_WILSON_SUNDT_GENERATING_STATION_IC";
+    parent "wecc240_psse_G_H_WILSON_SUNDT_GENERATING_STATION_IC";
+    generator "IC";
+    fuel "NG";
+    county "Pima";
+    state "Arizona";
+    latitude 32.16;
+    longitude -110.905;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "188.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_H_WILSON_SUNDT_GENERATING_STATION_ST3";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "H_WILSON_SUNDT_GENERATING_STATION_ST3";
+    parent "wecc240_psse_G_H_WILSON_SUNDT_GENERATING_STATION_ST3";
+    generator "ST";
+    fuel "NG";
+    county "Pima";
+    state "Arizona";
+    latitude 32.16;
+    longitude -110.9047;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "114.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HANFORD_ENERGY_PARK_EMERGENCY_PEAKER_PROJECT_1";
+    parent "wecc240_psse_N_3403";
+}
+object powerplant
+{
+    name "HANFORD_ENERGY_PARK_EMERGENCY_PEAKER_PROJECT_1";
+    parent "wecc240_psse_G_HANFORD_ENERGY_PARK_EMERGENCY_PEAKER_PROJECT_1";
+    generator "CT";
+    fuel "NG";
+    county "Kings";
+    state "California";
+    latitude 36.3315688718025;
+    longitude -119.646187814904;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "95.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HARBOR_COGENERATION_POWER_STATION_HCCC";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HARBOR_COGENERATION_POWER_STATION_HCCC";
+    parent "wecc240_psse_G_HARBOR_COGENERATION_POWER_STATION_HCCC";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.7771;
+    longitude -118.2303;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "107.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HARQUAHALA_GENERATING_PROJECT_BLK1";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "HARQUAHALA_GENERATING_PROJECT_BLK1";
+    parent "wecc240_psse_G_HARQUAHALA_GENERATING_PROJECT_BLK1";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.47596;
+    longitude -113.1134;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "426.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HARQUAHALA_GENERATING_PROJECT_BLK2";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "HARQUAHALA_GENERATING_PROJECT_BLK2";
+    parent "wecc240_psse_G_HARQUAHALA_GENERATING_PROJECT_BLK2";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.47596;
+    longitude -113.1134;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "426.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HARQUAHALA_GENERATING_PROJECT_BLK3";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "HARQUAHALA_GENERATING_PROJECT_BLK3";
+    parent "wecc240_psse_G_HARQUAHALA_GENERATING_PROJECT_BLK3";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.47596;
+    longitude -113.1134;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "426.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HARRY_ALLEN_POWER_STATION_GT1";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "HARRY_ALLEN_POWER_STATION_GT1";
+    parent "wecc240_psse_G_HARRY_ALLEN_POWER_STATION_GT1";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.430554;
+    longitude -114.9024;
+    in_svc "1995-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "102.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HARRY_ALLEN_POWER_STATION_GT4";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "HARRY_ALLEN_POWER_STATION_GT4";
+    parent "wecc240_psse_G_HARRY_ALLEN_POWER_STATION_GT4";
+    generator "CT";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.430554;
+    longitude -114.9024;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "85.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HARRY_ALLEN_POWER_STATION_PB1";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "HARRY_ALLEN_POWER_STATION_PB1";
+    parent "wecc240_psse_G_HARRY_ALLEN_POWER_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.430554;
+    longitude -114.9024;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "559.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_1";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_1";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "230.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_2";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_2";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_2";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "230.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_11";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_11";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_11";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_12";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_12";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_12";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_13";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_13";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_13";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_14";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_14";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_14";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_15";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_15";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_15";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_16";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_16";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_16";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HAYNES_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "HAYNES_POWER_STATION_CC1";
+    parent "wecc240_psse_G_HAYNES_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.764741;
+    longitude -118.0991;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "630.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HENRIETTA_PEAKER_PROJECT_1";
+    parent "wecc240_psse_N_3403";
+}
+object powerplant
+{
+    name "HENRIETTA_PEAKER_PROJECT_1";
+    parent "wecc240_psse_G_HENRIETTA_PEAKER_PROJECT_1";
+    generator "CT";
+    fuel "NG";
+    county "Kings";
+    state "California";
+    latitude 36.3491838188483;
+    longitude -119.784642615204;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "95.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HERMISTON_GENERATING_PLANT_CC1";
+    parent "wecc240_psse_N_4102";
+}
+object powerplant
+{
+    name "HERMISTON_GENERATING_PLANT_CC1";
+    parent "wecc240_psse_G_HERMISTON_GENERATING_PLANT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Umatilla";
+    state "Oregon";
+    latitude 45.8042;
+    longitude -119.37;
+    in_svc "1996-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "311.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HERMISTON_GENERATING_PLANT_CC2";
+    parent "wecc240_psse_N_4102";
+}
+object powerplant
+{
+    name "HERMISTON_GENERATING_PLANT_CC2";
+    parent "wecc240_psse_G_HERMISTON_GENERATING_PLANT_CC2";
+    generator "CC";
+    fuel "NG";
+    county "Umatilla";
+    state "Oregon";
+    latitude 45.8042;
+    longitude -119.37;
+    in_svc "1996-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "311.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HERMISTON_POWER_PROJECT_CC1";
+    parent "wecc240_psse_N_4102";
+}
+object powerplant
+{
+    name "HERMISTON_POWER_PROJECT_CC1";
+    parent "wecc240_psse_G_HERMISTON_POWER_PROJECT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Umatilla";
+    state "Oregon";
+    latitude 45.794046;
+    longitude -119.3133;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "689.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HIGGINS_GENERATING_STATION_PB1";
+    parent "wecc240_psse_N_2901";
+}
+object powerplant
+{
+    name "HIGGINS_GENERATING_STATION_PB1";
+    parent "wecc240_psse_G_HIGGINS_GENERATING_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 35.6139;
+    longitude -115.3561;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "688.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HIGH_DESERT_POWER_PLANT_STG1";
+    parent "wecc240_psse_N_2600";
+}
+object powerplant
+{
+    name "HIGH_DESERT_POWER_PLANT_STG1";
+    parent "wecc240_psse_G_HIGH_DESERT_POWER_PLANT_STG1";
+    generator "CC";
+    fuel "NG";
+    county "San Bernardino";
+    state "California";
+    latitude 34.5953;
+    longitude -117.3647;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "852.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HOBBS_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "HOBBS_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_HOBBS_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Lea";
+    state "New Mexico";
+    latitude 32.728333;
+    longitude -103.3094;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "682.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HUNTINGTON_BEACH_GENERATING_STATION_2";
+    parent "wecc240_psse_N_2610";
+}
+object powerplant
+{
+    name "HUNTINGTON_BEACH_GENERATING_STATION_2";
+    parent "wecc240_psse_G_HUNTINGTON_BEACH_GENERATING_STATION_2";
+    generator "ST";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.645618;
+    longitude -117.9794;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "218.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_HUNTINGTON_BEACH_GENERATING_STATION_CCT1";
+    parent "wecc240_psse_N_2610";
+}
+object powerplant
+{
+    name "HUNTINGTON_BEACH_GENERATING_STATION_CCT1";
+    parent "wecc240_psse_G_HUNTINGTON_BEACH_GENERATING_STATION_CCT1";
+    generator "CC";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.645618;
+    longitude -117.9794;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "699.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_INDIGO_ENERGY_FACILITY_CTG1";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "INDIGO_ENERGY_FACILITY_CTG1";
+    parent "wecc240_psse_G_INDIGO_ENERGY_FACILITY_CTG1";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.910873;
+    longitude -116.553;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_INDIGO_ENERGY_FACILITY_CTG2";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "INDIGO_ENERGY_FACILITY_CTG2";
+    parent "wecc240_psse_G_INDIGO_ENERGY_FACILITY_CTG2";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.910873;
+    longitude -116.553;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_INDIGO_ENERGY_FACILITY_CTG3";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "INDIGO_ENERGY_FACILITY_CTG3";
+    parent "wecc240_psse_G_INDIGO_ENERGY_FACILITY_CTG3";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.910873;
+    longitude -116.553;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_INLAND_EMPIRE_ENERGY_CENTER_1";
+    parent "wecc240_psse_N_2403";
+}
+object powerplant
+{
+    name "INLAND_EMPIRE_ENERGY_CENTER_1";
+    parent "wecc240_psse_G_INLAND_EMPIRE_ENERGY_CENTER_1";
+    generator "CC";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.738839;
+    longitude -117.1704;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "410.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_INLAND_EMPIRE_ENERGY_CENTER_2";
+    parent "wecc240_psse_N_2403";
+}
+object powerplant
+{
+    name "INLAND_EMPIRE_ENERGY_CENTER_2";
+    parent "wecc240_psse_G_INLAND_EMPIRE_ENERGY_CENTER_2";
+    generator "CC";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.738839;
+    longitude -117.1704;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc "2020-01-01 00:00:00 UTC";
+    operating_capacity "410.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_JM_SHAFER_GENERATING_STATION_J272";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "JM_SHAFER_GENERATING_STATION_J272";
+    parent "wecc240_psse_G_JM_SHAFER_GENERATING_STATION_J272";
+    generator "CC";
+    fuel "NG";
+    county "Weld";
+    state "Colorado";
+    latitude 40.0986;
+    longitude -104.7736;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "397.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTAG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "KERN_RIVER_COGENERATION_POWER_STATION_GTAG";
+    parent "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTAG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.4515;
+    longitude -118.9849;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTBG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "KERN_RIVER_COGENERATION_POWER_STATION_GTBG";
+    parent "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTBG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.4515;
+    longitude -118.9849;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTCG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "KERN_RIVER_COGENERATION_POWER_STATION_GTCG";
+    parent "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTCG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.4515;
+    longitude -118.9849;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTDG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "KERN_RIVER_COGENERATION_POWER_STATION_GTDG";
+    parent "wecc240_psse_G_KERN_RIVER_COGENERATION_POWER_STATION_GTDG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.4515;
+    longitude -118.9849;
+    in_svc "1985-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_KING_CITY_POWER_PLANT_CC01";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "KING_CITY_POWER_PLANT_CC01";
+    parent "wecc240_psse_G_KING_CITY_POWER_PLANT_CC01";
+    generator "CC";
+    fuel "NG";
+    county "Monterey";
+    state "California";
+    latitude 36.225;
+    longitude -121.1278;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "133.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_KLAMATH_COGENERATION_PLANT_CC1";
+    parent "wecc240_psse_N_4001";
+}
+object powerplant
+{
+    name "KLAMATH_COGENERATION_PLANT_CC1";
+    parent "wecc240_psse_G_KLAMATH_COGENERATION_PLANT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Klamath";
+    state "Oregon";
+    latitude 42.173889;
+    longitude -121.8106;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "502.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN1";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "LA_PALOMA_GENERATING_PLANT_GEN1";
+    parent "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN1";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2956;
+    longitude -119.5919;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN2";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "LA_PALOMA_GENERATING_PLANT_GEN2";
+    parent "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN2";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2956;
+    longitude -119.5919;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN3";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "LA_PALOMA_GENERATING_PLANT_GEN3";
+    parent "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN3";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2956;
+    longitude -119.5919;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN4";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "LA_PALOMA_GENERATING_PLANT_GEN4";
+    parent "wecc240_psse_G_LA_PALOMA_GENERATING_PLANT_GEN4";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2956;
+    longitude -119.5919;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LAKE_ONE_POWER_STATION_L1";
+    parent "wecc240_psse_N_2609";
+}
+object powerplant
+{
+    name "LAKE_ONE_POWER_STATION_L1";
+    parent "wecc240_psse_G_LAKE_ONE_POWER_STATION_L1";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.1772;
+    longitude -118.3147;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LAKE_SIDE_POWER_PLANT_CC1";
+    parent "wecc240_psse_N_6502";
+}
+object powerplant
+{
+    name "LAKE_SIDE_POWER_PLANT_CC1";
+    parent "wecc240_psse_G_LAKE_SIDE_POWER_PLANT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Utah";
+    state "Utah";
+    latitude 40.331667;
+    longitude -111.7542;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "657.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LAKE_SIDE_POWER_PLANT_CC2";
+    parent "wecc240_psse_N_6502";
+}
+object powerplant
+{
+    name "LAKE_SIDE_POWER_PLANT_CC2";
+    parent "wecc240_psse_G_LAKE_SIDE_POWER_PLANT_CC2";
+    generator "CC";
+    fuel "NG";
+    county "Utah";
+    state "Utah";
+    latitude 40.331667;
+    longitude -111.7542;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "728.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LANGLEY_GULCH_POWER_PLANT_LG1";
+    parent "wecc240_psse_N_4003";
+}
+object powerplant
+{
+    name "LANGLEY_GULCH_POWER_PLANT_LG1";
+    parent "wecc240_psse_G_LANGLEY_GULCH_POWER_PLANT_LG1";
+    generator "CC";
+    fuel "NG";
+    county "Payette";
+    state "Idaho";
+    latitude 43.904444;
+    longitude -116.8197;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "319.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LAS_VEGAS_GENERATING_STATION_CCB1";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "LAS_VEGAS_GENERATING_STATION_CCB1";
+    parent "wecc240_psse_G_LAS_VEGAS_GENERATING_STATION_CCB1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.2319;
+    longitude -115.1222;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LAS_VEGAS_GENERATING_STATION_CCB2";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "LAS_VEGAS_GENERATING_STATION_CCB2";
+    parent "wecc240_psse_G_LAS_VEGAS_GENERATING_STATION_CCB2";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.2319;
+    longitude -115.1222;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "149.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LAS_VEGAS_GENERATING_STATION_CCB3";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "LAS_VEGAS_GENERATING_STATION_CCB3";
+    parent "wecc240_psse_G_LAS_VEGAS_GENERATING_STATION_CCB3";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.2319;
+    longitude -115.1222;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "149.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LODI_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "LODI_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_LODI_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "San Joaquin";
+    state "California";
+    latitude 38.088056;
+    longitude -121.3875;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "289.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "LONG_BEACH_GENERATION_POWER_STATION_CT1";
+    parent "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT1";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.7641;
+    longitude -118.2248;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT2";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "LONG_BEACH_GENERATION_POWER_STATION_CT2";
+    parent "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT2";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.7641;
+    longitude -118.2248;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT3";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "LONG_BEACH_GENERATION_POWER_STATION_CT3";
+    parent "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT3";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.7641;
+    longitude -118.2248;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT4";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "LONG_BEACH_GENERATION_POWER_STATION_CT4";
+    parent "wecc240_psse_G_LONG_BEACH_GENERATION_POWER_STATION_CT4";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.7641;
+    longitude -118.2248;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LOS_ESTEROS_CRITICAL_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_3203";
+}
+object powerplant
+{
+    name "LOS_ESTEROS_CRITICAL_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_LOS_ESTEROS_CRITICAL_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
+    state "California";
+    latitude 37.425;
+    longitude -121.9319;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "306.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LOS_MEDANOS_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_3204";
+}
+object powerplant
+{
+    name "LOS_MEDANOS_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_LOS_MEDANOS_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.030071;
+    longitude -121.873;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "678.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_LUNA_ENERGY_FACILITY_CC1";
+    parent "wecc240_psse_N_1101";
+}
+object powerplant
+{
+    name "LUNA_ENERGY_FACILITY_CC1";
+    parent "wecc240_psse_G_LUNA_ENERGY_FACILITY_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Luna";
+    state "New Mexico";
+    latitude 32.299349;
+    longitude -107.7834;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "650.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MADDOX_POWER_STATION_1";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "MADDOX_POWER_STATION_1";
+    parent "wecc240_psse_G_MADDOX_POWER_STATION_1";
+    generator "ST";
+    fuel "NG";
+    county "Lea";
+    state "New Mexico";
+    latitude 32.714224;
+    longitude -103.3015;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "114.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MADDOX_POWER_STATION_2";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "MADDOX_POWER_STATION_2";
+    parent "wecc240_psse_G_MADDOX_POWER_STATION_2";
+    generator "CT";
+    fuel "NG";
+    county "Lea";
+    state "New Mexico";
+    latitude 32.714224;
+    longitude -103.3015;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "87.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MAGNOLIA_POWER_PROJECT_CC1";
+    parent "wecc240_psse_N_2609";
+}
+object powerplant
+{
+    name "MAGNOLIA_POWER_PROJECT_CC1";
+    parent "wecc240_psse_G_MAGNOLIA_POWER_PROJECT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.1786;
+    longitude -118.3153;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "388.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MALAGA_POWER_STATION_GT-1";
+    parent "wecc240_psse_N_3403";
+}
+object powerplant
+{
+    name "MALAGA_POWER_STATION_GT-1";
+    parent "wecc240_psse_G_MALAGA_POWER_STATION_GT-1";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6697;
+    longitude -119.7404;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MALAGA_POWER_STATION_GT-2";
+    parent "wecc240_psse_N_3403";
+}
+object powerplant
+{
+    name "MALAGA_POWER_STATION_GT-2";
+    parent "wecc240_psse_G_MALAGA_POWER_STATION_GT-2";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6697;
+    longitude -119.7404;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MANCHIEF_ELECTRIC_GENERATING_STATION_UN1";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "MANCHIEF_ELECTRIC_GENERATING_STATION_UN1";
+    parent "wecc240_psse_G_MANCHIEF_ELECTRIC_GENERATING_STATION_UN1";
+    generator "CT";
+    fuel "NG";
+    county "Morgan";
+    state "Colorado";
+    latitude 40.217143;
+    longitude -103.685;
+    in_svc "2000-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MANCHIEF_ELECTRIC_GENERATING_STATION_UN2";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "MANCHIEF_ELECTRIC_GENERATING_STATION_UN2";
+    parent "wecc240_psse_G_MANCHIEF_ELECTRIC_GENERATING_STATION_UN2";
+    generator "CT";
+    fuel "NG";
+    county "Morgan";
+    state "Colorado";
+    latitude 40.217143;
+    longitude -103.685;
+    in_svc "2000-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG1";
+    parent "wecc240_psse_N_3903";
+}
+object powerplant
+{
+    name "MARIPOSA_ENERGY_PROJECT_CTG1";
+    parent "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG1";
+    generator "CT";
+    fuel "NG";
+    county "Alameda";
+    state "California";
+    latitude 37.789167;
+    longitude -121.6019;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG2";
+    parent "wecc240_psse_N_3903";
+}
+object powerplant
+{
+    name "MARIPOSA_ENERGY_PROJECT_CTG2";
+    parent "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG2";
+    generator "CT";
+    fuel "NG";
+    county "Alameda";
+    state "California";
+    latitude 37.789167;
+    longitude -121.6019;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG3";
+    parent "wecc240_psse_N_3903";
+}
+object powerplant
+{
+    name "MARIPOSA_ENERGY_PROJECT_CTG3";
+    parent "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG3";
+    generator "CT";
+    fuel "NG";
+    county "Alameda";
+    state "California";
+    latitude 37.789167;
+    longitude -121.6019;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG4";
+    parent "wecc240_psse_N_3903";
+}
+object powerplant
+{
+    name "MARIPOSA_ENERGY_PROJECT_CTG4";
+    parent "wecc240_psse_G_MARIPOSA_ENERGY_PROJECT_CTG4";
+    generator "CT";
+    fuel "NG";
+    county "Alameda";
+    state "California";
+    latitude 37.789167;
+    longitude -121.6019;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_1";
+    parent "wecc240_psse_N_3204";
+}
+object powerplant
+{
+    name "MARSH_LANDING_GENERATING_STATION_1";
+    parent "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.016944;
+    longitude -121.765;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "207.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_2";
+    parent "wecc240_psse_N_3204";
+}
+object powerplant
+{
+    name "MARSH_LANDING_GENERATING_STATION_2";
+    parent "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_2";
+    generator "CT";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.016944;
+    longitude -121.765;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "207.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_3";
+    parent "wecc240_psse_N_3204";
+}
+object powerplant
+{
+    name "MARSH_LANDING_GENERATING_STATION_3";
+    parent "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_3";
+    generator "CT";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.016944;
+    longitude -121.765;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "207.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_4";
+    parent "wecc240_psse_N_3204";
+}
+object powerplant
+{
+    name "MARSH_LANDING_GENERATING_STATION_4";
+    parent "wecc240_psse_G_MARSH_LANDING_GENERATING_STATION_4";
+    generator "CT";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.016944;
+    longitude -121.765;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "207.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARTIN_DRAKE_POWER_PLANT_7";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "MARTIN_DRAKE_POWER_PLANT_7";
+    parent "wecc240_psse_G_MARTIN_DRAKE_POWER_PLANT_7";
+    generator "ST";
+    fuel "NG";
+    county "El Paso";
+    state "Colorado";
+    latitude 38.824444;
+    longitude -104.8333;
+    in_svc INIT;
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MARTINEZ_REFINING_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3201";
+}
+object powerplant
+{
+    name "MARTINEZ_REFINING_POWER_STATION_CC1";
+    parent "wecc240_psse_G_MARTINEZ_REFINING_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Contra Costa";
+    state "California";
+    latitude 38.0169;
+    longitude -122.1117;
+    in_svc "1996-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MCCLELLAN_(CA)_POWER_STATION_1";
+    parent "wecc240_psse_N_3908";
+}
+object powerplant
+{
+    name "MCCLELLAN_(CA)_POWER_STATION_1";
+    parent "wecc240_psse_G_MCCLELLAN_(CA)_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Sacramento";
+    state "California";
+    latitude 38.652731;
+    longitude -121.3933;
+    in_svc "1986-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "77.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MCGRATH_PEAKER_POWER_STATION_1";
+    parent "wecc240_psse_N_2608";
+}
+object powerplant
+{
+    name "MCGRATH_PEAKER_POWER_STATION_1";
+    parent "wecc240_psse_G_MCGRATH_PEAKER_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Ventura";
+    state "California";
+    latitude 34.205556;
+    longitude -119.2469;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MESQUITE_GENERATING_STATION_BLOCK_1_BLK1";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "MESQUITE_GENERATING_STATION_BLOCK_1_BLK1";
+    parent "wecc240_psse_G_MESQUITE_GENERATING_STATION_BLOCK_1_BLK1";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.345;
+    longitude -112.8642;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "692.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MESQUITE_GENERATING_STATION_BLOCK_2_BLK2";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "MESQUITE_GENERATING_STATION_BLOCK_2_BLK2";
+    parent "wecc240_psse_G_MESQUITE_GENERATING_STATION_BLOCK_2_BLK2";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.345047;
+    longitude -112.8642;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "692.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_METCALF_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_3301";
+}
+object powerplant
+{
+    name "METCALF_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_METCALF_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Santa Clara";
+    state "California";
+    latitude 37.2207;
+    longitude -121.7457;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "635.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIDWAY_PEAKING_POWER_STATION_1";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "MIDWAY_PEAKING_POWER_STATION_1";
+    parent "wecc240_psse_G_MIDWAY_PEAKING_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.654114;
+    longitude -120.5797;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "70.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIDWAY_PEAKING_POWER_STATION_2";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "MIDWAY_PEAKING_POWER_STATION_2";
+    parent "wecc240_psse_G_MIDWAY_PEAKING_POWER_STATION_2";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.654114;
+    longitude -120.5797;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "70.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIDWAY_SUNSET_COGENERATION_POWER_STATION_A";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "MIDWAY_SUNSET_COGENERATION_POWER_STATION_A";
+    parent "wecc240_psse_G_MIDWAY_SUNSET_COGENERATION_POWER_STATION_A";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2269;
+    longitude -119.6294;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "78.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIDWAY_SUNSET_COGENERATION_POWER_STATION_B";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "MIDWAY_SUNSET_COGENERATION_POWER_STATION_B";
+    parent "wecc240_psse_G_MIDWAY_SUNSET_COGENERATION_POWER_STATION_B";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2269;
+    longitude -119.6294;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "78.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIDWAY_SUNSET_COGENERATION_POWER_STATION_C";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "MIDWAY_SUNSET_COGENERATION_POWER_STATION_C";
+    parent "wecc240_psse_G_MIDWAY_SUNSET_COGENERATION_POWER_STATION_C";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2269;
+    longitude -119.6294;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "78.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MINT_FARM_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_4202";
+}
+object powerplant
+{
+    name "MINT_FARM_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_MINT_FARM_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Cowlitz";
+    state "Washington";
+    latitude 46.138824;
+    longitude -122.9855;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "319.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIRA_LOMA_PEAKER_POWER_STATION_1";
+    parent "wecc240_psse_N_2402";
+}
+object powerplant
+{
+    name "MIRA_LOMA_PEAKER_POWER_STATION_1";
+    parent "wecc240_psse_G_MIRA_LOMA_PEAKER_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "San Bernardino";
+    state "California";
+    latitude 34.0053;
+    longitude -117.5604;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIRAMAR_ENERGY_FACILITY_1";
+    parent "wecc240_psse_N_2203";
+}
+object powerplant
+{
+    name "MIRAMAR_ENERGY_FACILITY_1";
+    parent "wecc240_psse_G_MIRAMAR_ENERGY_FACILITY_1";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.8769;
+    longitude -117.1664;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MIRAMAR_ENERGY_FACILITY_2";
+    parent "wecc240_psse_N_2203";
+}
+object powerplant
+{
+    name "MIRAMAR_ENERGY_FACILITY_2";
+    parent "wecc240_psse_G_MIRAMAR_ENERGY_FACILITY_2";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.8769;
+    longitude -117.1664;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MOUNTAINVIEW_GENERATING_STATION_3";
+    parent "wecc240_psse_N_2403";
+}
+object powerplant
+{
+    name "MOUNTAINVIEW_GENERATING_STATION_3";
+    parent "wecc240_psse_G_MOUNTAINVIEW_GENERATING_STATION_3";
+    generator "CC";
+    fuel "NG";
+    county "San Bernardino";
+    state "California";
+    latitude 34.0818;
+    longitude -117.2418;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "518.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_MOUNTAINVIEW_GENERATING_STATION_4";
+    parent "wecc240_psse_N_2403";
+}
+object powerplant
+{
+    name "MOUNTAINVIEW_GENERATING_STATION_4";
+    parent "wecc240_psse_G_MOUNTAINVIEW_GENERATING_STATION_4";
+    generator "CC";
+    fuel "NG";
+    county "San Bernardino";
+    state "California";
+    latitude 34.0818;
+    longitude -117.2418;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "518.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NAUGHTON_POWER_PLANT_3";
+    parent "wecc240_psse_N_6305";
+}
+object powerplant
+{
+    name "NAUGHTON_POWER_PLANT_3";
+    parent "wecc240_psse_G_NAUGHTON_POWER_PLANT_3";
+    generator "ST";
+    fuel "NG";
+    county "Lincoln";
+    state "Wyoming";
+    latitude 41.7581;
+    longitude -110.5983;
+    in_svc "2021-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "384.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NEBO_POWER_STATION_CC1";
+    parent "wecc240_psse_N_6508";
+}
+object powerplant
+{
+    name "NEBO_POWER_STATION_CC1";
+    parent "wecc240_psse_G_NEBO_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Utah";
+    state "Utah";
+    latitude 40.0614;
+    longitude -111.7294;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "140.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NEVADA_COGENERATION_ASSOCIATES_1_POWER_STATION_CC1";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "NEVADA_COGENERATION_ASSOCIATES_1_POWER_STATION_CC1";
+    parent "wecc240_psse_G_NEVADA_COGENERATION_ASSOCIATES_1_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.343229;
+    longitude -114.9207;
+    in_svc "1992-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "95.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NEVADA_COGENERATION_ASSOCIATES_2_POWER_STATION_STG1";
+    parent "wecc240_psse_N_1301";
+}
+object powerplant
+{
+    name "NEVADA_COGENERATION_ASSOCIATES_2_POWER_STATION_STG1";
+    parent "wecc240_psse_G_NEVADA_COGENERATION_ASSOCIATES_2_POWER_STATION_STG1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.2253;
+    longitude -114.8783;
+    in_svc "1992-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "96.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NILAND_GAS_TURBINE_PLANT_1";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "NILAND_GAS_TURBINE_PLANT_1";
+    parent "wecc240_psse_G_NILAND_GAS_TURBINE_PLANT_1";
+    generator "CT";
+    fuel "NG";
+    county "Imperial";
+    state "California";
+    latitude 33.238842;
+    longitude -115.5045;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NILAND_GAS_TURBINE_PLANT_2";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "NILAND_GAS_TURBINE_PLANT_2";
+    parent "wecc240_psse_G_NILAND_GAS_TURBINE_PLANT_2";
+    generator "CT";
+    fuel "NG";
+    county "Imperial";
+    state "California";
+    latitude 33.238842;
+    longitude -115.5045;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NORTHEAST_(WA)_POWER_STATION_1";
+    parent "wecc240_psse_N_4103";
+}
+object powerplant
+{
+    name "NORTHEAST_(WA)_POWER_STATION_1";
+    parent "wecc240_psse_G_NORTHEAST_(WA)_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Spokane";
+    state "Washington";
+    latitude 47.73511;
+    longitude -117.3705;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "62.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_NORTHERN_CALIFORNIA_POWER_AGENCY_CT_PROJECT_2_NA1";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "NORTHERN_CALIFORNIA_POWER_AGENCY_CT_PROJECT_2_NA1";
+    parent "wecc240_psse_G_NORTHERN_CALIFORNIA_POWER_AGENCY_CT_PROJECT_2_NA1";
+    generator "CT";
+    fuel "NG";
+    county "San Joaquin";
+    state "California";
+    latitude 38.088138;
+    longitude -121.3869;
+    in_svc "1996-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OCOTILLO_POWER_STATION_GT1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "OCOTILLO_POWER_STATION_GT1";
+    parent "wecc240_psse_G_OCOTILLO_POWER_STATION_GT1";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4225;
+    longitude -111.9122;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OCOTILLO_POWER_STATION_GT2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "OCOTILLO_POWER_STATION_GT2";
+    parent "wecc240_psse_G_OCOTILLO_POWER_STATION_GT2";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4225;
+    longitude -111.9122;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OCOTILLO_POWER_STATION_GT3";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "OCOTILLO_POWER_STATION_GT3";
+    parent "wecc240_psse_G_OCOTILLO_POWER_STATION_GT3";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4225;
+    longitude -111.9122;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "162.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OCOTILLO_POWER_STATION_GT4";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "OCOTILLO_POWER_STATION_GT4";
+    parent "wecc240_psse_G_OCOTILLO_POWER_STATION_GT4";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4225;
+    longitude -111.9122;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "162.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OCOTILLO_POWER_STATION_GT5";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "OCOTILLO_POWER_STATION_GT5";
+    parent "wecc240_psse_G_OCOTILLO_POWER_STATION_GT5";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4225;
+    longitude -111.9122;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "162.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OCOTILLO_POWER_STATION_GT6";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "OCOTILLO_POWER_STATION_GT6";
+    parent "wecc240_psse_G_OCOTILLO_POWER_STATION_GT6";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4225;
+    longitude -111.9122;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "162.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OCOTILLO_POWER_STATION_GT7";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "OCOTILLO_POWER_STATION_GT7";
+    parent "wecc240_psse_G_OCOTILLO_POWER_STATION_GT7";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4225;
+    longitude -111.9122;
+    in_svc "2019-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "162.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ORANGE_GROVE_PEAKING_FACILITY_CTG1";
+    parent "wecc240_psse_N_2403";
+}
+object powerplant
+{
+    name "ORANGE_GROVE_PEAKING_FACILITY_CTG1";
+    parent "wecc240_psse_G_ORANGE_GROVE_PEAKING_FACILITY_CTG1";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.3594;
+    longitude -117.1114;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "59.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ORANGE_GROVE_PEAKING_FACILITY_CTG2";
+    parent "wecc240_psse_N_2403";
+}
+object powerplant
+{
+    name "ORANGE_GROVE_PEAKING_FACILITY_CTG2";
+    parent "wecc240_psse_G_ORANGE_GROVE_PEAKING_FACILITY_CTG2";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.3594;
+    longitude -117.1114;
+    in_svc "2010-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "59.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ORMOND_BEACH_POWER_STATION_1";
+    parent "wecc240_psse_N_2410";
+}
+object powerplant
+{
+    name "ORMOND_BEACH_POWER_STATION_1";
+    parent "wecc240_psse_G_ORMOND_BEACH_POWER_STATION_1";
+    generator "ST";
+    fuel "NG";
+    county "Ventura";
+    state "California";
+    latitude 34.1292;
+    longitude -119.1689;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "806.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ORMOND_BEACH_POWER_STATION_2";
+    parent "wecc240_psse_N_2410";
+}
+object powerplant
+{
+    name "ORMOND_BEACH_POWER_STATION_2";
+    parent "wecc240_psse_G_ORMOND_BEACH_POWER_STATION_2";
+    generator "ST";
+    fuel "NG";
+    county "Ventura";
+    state "California";
+    latitude 34.1292;
+    longitude -119.1689;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "806.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OTAY_MESA_GENERATING_PROJECT_CC1";
+    parent "wecc240_psse_N_2201";
+}
+object powerplant
+{
+    name "OTAY_MESA_GENERATING_PROJECT_CC1";
+    parent "wecc240_psse_G_OTAY_MESA_GENERATING_PROJECT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.581481;
+    longitude -116.915;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "689.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_OXNARD_POWER_STATION_GEN2";
+    parent "wecc240_psse_N_2608";
+}
+object powerplant
+{
+    name "OXNARD_POWER_STATION_GEN2";
+    parent "wecc240_psse_G_OXNARD_POWER_STATION_GEN2";
+    generator "CT";
+    fuel "NG";
+    county "Ventura";
+    state "California";
+    latitude 34.196;
+    longitude -119.1667;
+    in_svc "1989-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PALOMAR_ENERGY_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2203";
+}
+object powerplant
+{
+    name "PALOMAR_ENERGY_POWER_STATION_CC1";
+    parent "wecc240_psse_G_PALOMAR_ENERGY_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 33.1197;
+    longitude -117.1178;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "559.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PANOCHE_ENERGY_CENTER_1";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "PANOCHE_ENERGY_CENTER_1";
+    parent "wecc240_psse_G_PANOCHE_ENERGY_CENTER_1";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6514;
+    longitude -120.5833;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PANOCHE_ENERGY_CENTER_2";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "PANOCHE_ENERGY_CENTER_2";
+    parent "wecc240_psse_G_PANOCHE_ENERGY_CENTER_2";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6514;
+    longitude -120.5833;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PANOCHE_ENERGY_CENTER_3";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "PANOCHE_ENERGY_CENTER_3";
+    parent "wecc240_psse_G_PANOCHE_ENERGY_CENTER_3";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6514;
+    longitude -120.5833;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PANOCHE_ENERGY_CENTER_4";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "PANOCHE_ENERGY_CENTER_4";
+    parent "wecc240_psse_G_PANOCHE_ENERGY_CENTER_4";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6514;
+    longitude -120.5833;
+    in_svc "2009-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "108.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PANOCHE_PEAKER_POWER_STATION_8";
+    parent "wecc240_psse_N_3404";
+}
+object powerplant
+{
+    name "PANOCHE_PEAKER_POWER_STATION_8";
+    parent "wecc240_psse_G_PANOCHE_PEAKER_POWER_STATION_8";
+    generator "CT";
+    fuel "NG";
+    county "Fresno";
+    state "California";
+    latitude 36.6535;
+    longitude -120.5783;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "57.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PASTORIA_ENERGY_FACILITY_PB01";
+    parent "wecc240_psse_N_2608";
+}
+object powerplant
+{
+    name "PASTORIA_ENERGY_FACILITY_PB01";
+    parent "wecc240_psse_G_PASTORIA_ENERGY_FACILITY_PB01";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 34.9556;
+    longitude -118.844;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "521.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PASTORIA_ENERGY_FACILITY_PB02";
+    parent "wecc240_psse_N_2608";
+}
+object powerplant
+{
+    name "PASTORIA_ENERGY_FACILITY_PB02";
+    parent "wecc240_psse_G_PASTORIA_ENERGY_FACILITY_PB02";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 34.9556;
+    longitude -118.844;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "258.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PIO_PICO_ENERGY_CENTER_CTG1";
+    parent "wecc240_psse_N_2201";
+}
+object powerplant
+{
+    name "PIO_PICO_ENERGY_CENTER_CTG1";
+    parent "wecc240_psse_G_PIO_PICO_ENERGY_CENTER_CTG1";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.573889;
+    longitude -116.9178;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PIO_PICO_ENERGY_CENTER_CTG2";
+    parent "wecc240_psse_N_2201";
+}
+object powerplant
+{
+    name "PIO_PICO_ENERGY_CENTER_CTG2";
+    parent "wecc240_psse_G_PIO_PICO_ENERGY_CENTER_CTG2";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.573889;
+    longitude -116.9178;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PIO_PICO_ENERGY_CENTER_CTG3";
+    parent "wecc240_psse_N_2201";
+}
+object powerplant
+{
+    name "PIO_PICO_ENERGY_CENTER_CTG3";
+    parent "wecc240_psse_G_PIO_PICO_ENERGY_CENTER_CTG3";
+    generator "CT";
+    fuel "NG";
+    county "San Diego";
+    state "California";
+    latitude 32.573889;
+    longitude -116.9178;
+    in_svc "2016-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PLAINS_END_II_POWER_STATION_IC";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "PLAINS_END_II_POWER_STATION_IC";
+    parent "wecc240_psse_G_PLAINS_END_II_POWER_STATION_IC";
+    generator "IC";
+    fuel "NG";
+    county "Jefferson";
+    state "Colorado";
+    latitude 39.8586;
+    longitude -105.2256;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "117.6 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PLAINS_END_POWER_STATION_IC";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "PLAINS_END_POWER_STATION_IC";
+    parent "wecc240_psse_G_PLAINS_END_POWER_STATION_IC";
+    generator "IC";
+    fuel "NG";
+    county "Jefferson";
+    state "Colorado";
+    latitude 39.857499;
+    longitude -105.225967;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "114.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PORT_WESTWARD_POWER_STATION_CCG1";
+    parent "wecc240_psse_N_4202";
+}
+object powerplant
+{
+    name "PORT_WESTWARD_POWER_STATION_CCG1";
+    parent "wecc240_psse_G_PORT_WESTWARD_POWER_STATION_CCG1";
+    generator "CC";
+    fuel "NG";
+    county "Columbia";
+    state "Oregon";
+    latitude 46.17894;
+    longitude -123.172;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "483.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PORT_WESTWARD_UNIT_2_POWER_STATION_1";
+    parent "wecc240_psse_N_4202";
+}
+object powerplant
+{
+    name "PORT_WESTWARD_UNIT_2_POWER_STATION_1";
+    parent "wecc240_psse_G_PORT_WESTWARD_UNIT_2_POWER_STATION_1";
+    generator "IC";
+    fuel "NG";
+    county "Columbia";
+    state "Oregon";
+    latitude 46.178889;
+    longitude -123.171944;
+    in_svc "2014-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "225.6 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_GT1";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "PUEBLO_AIRPORT_GENERATING_STATION_GT1";
+    parent "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_GT1";
+    generator "CT";
+    fuel "NG";
+    county "Pueblo";
+    state "Colorado";
+    latitude 38.320833;
+    longitude -104.5264;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_GT2";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "PUEBLO_AIRPORT_GENERATING_STATION_GT2";
+    parent "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_GT2";
+    generator "CT";
+    fuel "NG";
+    county "Pueblo";
+    state "Colorado";
+    latitude 38.320833;
+    longitude -104.5264;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_PB4";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "PUEBLO_AIRPORT_GENERATING_STATION_PB4";
+    parent "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_PB4";
+    generator "CC";
+    fuel "NG";
+    county "Pueblo";
+    state "Colorado";
+    latitude 38.320833;
+    longitude -104.5264;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_PB5";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "PUEBLO_AIRPORT_GENERATING_STATION_PB5";
+    parent "wecc240_psse_G_PUEBLO_AIRPORT_GENERATING_STATION_PB5";
+    generator "CC";
+    fuel "NG";
+    county "Pueblo";
+    state "Colorado";
+    latitude 38.320833;
+    longitude -104.5264;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RATHDRUM_POWER_STATION_1";
+    parent "wecc240_psse_N_4103";
+}
+object powerplant
+{
+    name "RATHDRUM_POWER_STATION_1";
+    parent "wecc240_psse_G_RATHDRUM_POWER_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "Kootenai";
+    state "Idaho";
+    latitude 47.7858;
+    longitude -116.9203;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "83.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RATHDRUM_POWER_STATION_2";
+    parent "wecc240_psse_N_4103";
+}
+object powerplant
+{
+    name "RATHDRUM_POWER_STATION_2";
+    parent "wecc240_psse_G_RATHDRUM_POWER_STATION_2";
+    generator "CT";
+    fuel "NG";
+    county "Kootenai";
+    state "Idaho";
+    latitude 47.7858;
+    longitude -116.9203;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "83.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RATHDRUM_POWER_STATION_CC1";
+    parent "wecc240_psse_N_4103";
+}
+object powerplant
+{
+    name "RATHDRUM_POWER_STATION_CC1";
+    parent "wecc240_psse_G_RATHDRUM_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Kootenai";
+    state "Idaho";
+    latitude 47.7858;
+    longitude -116.9203;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "302.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RAWHIDE_ENERGY_STATION_A";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "RAWHIDE_ENERGY_STATION_A";
+    parent "wecc240_psse_G_RAWHIDE_ENERGY_STATION_A";
+    generator "CT";
+    fuel "NG";
+    county "Larimer";
+    state "Colorado";
+    latitude 40.860905;
+    longitude -105.0212;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "89.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RAWHIDE_ENERGY_STATION_B";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "RAWHIDE_ENERGY_STATION_B";
+    parent "wecc240_psse_G_RAWHIDE_ENERGY_STATION_B";
+    generator "CT";
+    fuel "NG";
+    county "Larimer";
+    state "Colorado";
+    latitude 40.860905;
+    longitude -105.0212;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "89.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RAWHIDE_ENERGY_STATION_C";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "RAWHIDE_ENERGY_STATION_C";
+    parent "wecc240_psse_G_RAWHIDE_ENERGY_STATION_C";
+    generator "CT";
+    fuel "NG";
+    county "Larimer";
+    state "Colorado";
+    latitude 40.860905;
+    longitude -105.0212;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "89.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RAWHIDE_ENERGY_STATION_D";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "RAWHIDE_ENERGY_STATION_D";
+    parent "wecc240_psse_G_RAWHIDE_ENERGY_STATION_D";
+    generator "CT";
+    fuel "NG";
+    county "Larimer";
+    state "Colorado";
+    latitude 40.860905;
+    longitude -105.0212;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "89.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RAWHIDE_ENERGY_STATION_F";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "RAWHIDE_ENERGY_STATION_F";
+    parent "wecc240_psse_G_RAWHIDE_ENERGY_STATION_F";
+    generator "CT";
+    fuel "NG";
+    county "Larimer";
+    state "Colorado";
+    latitude 40.860905;
+    longitude -105.0212;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "150.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RED_HAWK_POWER_STATION_CC1";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "RED_HAWK_POWER_STATION_CC1";
+    parent "wecc240_psse_G_RED_HAWK_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.334562;
+    longitude -112.8406;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "573.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RED_HAWK_POWER_STATION_CC2";
+    parent "wecc240_psse_N_1401";
+}
+object powerplant
+{
+    name "RED_HAWK_POWER_STATION_CC2";
+    parent "wecc240_psse_G_RED_HAWK_POWER_STATION_CC2";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.334562;
+    longitude -112.8406;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "567.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_REDDING_POWER_STATION_101";
+    parent "wecc240_psse_N_8001";
+}
+object powerplant
+{
+    name "REDDING_POWER_STATION_101";
+    parent "wecc240_psse_G_REDDING_POWER_STATION_101";
+    generator "CC";
+    fuel "NG";
+    county "Shasta";
+    state "California";
+    latitude 40.507292;
+    longitude -122.4233;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "109.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_REDONDO_BEACH_GENERATION_STATION_5";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "REDONDO_BEACH_GENERATION_STATION_5";
+    parent "wecc240_psse_G_REDONDO_BEACH_GENERATION_STATION_5";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.8504;
+    longitude -118.395;
+    in_svc INIT;
+    out_svc "2023-01-01 00:00:00 UTC";
+    operating_capacity "163.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_REDONDO_BEACH_GENERATION_STATION_6";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "REDONDO_BEACH_GENERATION_STATION_6";
+    parent "wecc240_psse_G_REDONDO_BEACH_GENERATION_STATION_6";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.8504;
+    longitude -118.395;
+    in_svc INIT;
+    out_svc "2023-01-01 00:00:00 UTC";
+    operating_capacity "163.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_REDONDO_BEACH_GENERATION_STATION_8";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "REDONDO_BEACH_GENERATION_STATION_8";
+    parent "wecc240_psse_G_REDONDO_BEACH_GENERATION_STATION_8";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.8504;
+    longitude -118.395;
+    in_svc INIT;
+    out_svc "2023-01-01 00:00:00 UTC";
+    operating_capacity "495.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_REEVES_POWER_STATION_3";
+    parent "wecc240_psse_N_1004";
+}
+object powerplant
+{
+    name "REEVES_POWER_STATION_3";
+    parent "wecc240_psse_G_REEVES_POWER_STATION_3";
+    generator "ST";
+    fuel "NG";
+    county "Bernalillo";
+    state "New Mexico";
+    latitude 35.171;
+    longitude -106.6019;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "66.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIFLE_GENERATING_STATION_CC1";
+    parent "wecc240_psse_N_7002";
+}
+object powerplant
+{
+    name "RIFLE_GENERATING_STATION_CC1";
+    parent "wecc240_psse_G_RIFLE_GENERATING_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Garfield";
+    state "Colorado";
+    latitude 39.5173;
+    longitude -107.7299;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc "2022-01-01 00:00:00 UTC";
+    operating_capacity "84.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_6";
+    parent "wecc240_psse_N_1101";
+}
+object powerplant
+{
+    name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_6";
+    parent "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_6";
+    generator "ST";
+    fuel "NG";
+    county "Dona Ana";
+    state "New Mexico";
+    latitude 31.8047;
+    longitude -106.5472;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_7";
+    parent "wecc240_psse_N_1101";
+}
+object powerplant
+{
+    name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_7";
+    parent "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_7";
+    generator "ST";
+    fuel "NG";
+    county "Dona Ana";
+    state "New Mexico";
+    latitude 31.8047;
+    longitude -106.5472;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_8";
+    parent "wecc240_psse_N_1101";
+}
+object powerplant
+{
+    name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_8";
+    parent "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_8";
+    generator "ST";
+    fuel "NG";
+    county "Dona Ana";
+    state "New Mexico";
+    latitude 31.8047;
+    longitude -106.5472;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "167.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_9";
+    parent "wecc240_psse_N_1101";
+}
+object powerplant
+{
+    name "RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_9";
+    parent "wecc240_psse_G_RIO_GRANDE_(NEW_MEXICO)_POWER_STATION_9";
+    generator "CT";
+    fuel "NG";
+    county "Dona Ana";
+    state "New Mexico";
+    latitude 31.8047;
+    longitude -106.5472;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIPON_GENERATION_STATION_1";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "RIPON_GENERATION_STATION_1";
+    parent "wecc240_psse_G_RIPON_GENERATION_STATION_1";
+    generator "CT";
+    fuel "NG";
+    county "San Joaquin";
+    state "California";
+    latitude 37.7315;
+    longitude -121.116;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIPON_GENERATION_STATION_2";
+    parent "wecc240_psse_N_8002";
+}
+object powerplant
+{
+    name "RIPON_GENERATION_STATION_2";
+    parent "wecc240_psse_G_RIPON_GENERATION_STATION_2";
+    generator "CT";
+    fuel "NG";
+    county "San Joaquin";
+    state "California";
+    latitude 37.7315;
+    longitude -121.116;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIVER_ROAD_GEN_PLANT_1";
+    parent "wecc240_psse_N_4006";
+}
+object powerplant
+{
+    name "RIVER_ROAD_GEN_PLANT_1";
+    parent "wecc240_psse_G_RIVER_ROAD_GEN_PLANT_1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Washington";
+    latitude 45.6497;
+    longitude -122.7256;
+    in_svc "1997-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "248.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_1";
+    parent "wecc240_psse_N_2402";
+}
+object powerplant
+{
+    name "RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_1";
+    parent "wecc240_psse_G_RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_1";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.9636;
+    longitude -117.4528;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_2";
+    parent "wecc240_psse_N_2402";
+}
+object powerplant
+{
+    name "RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_2";
+    parent "wecc240_psse_G_RIVERSIDE_ENERGY_RESOURCE_CENTER_(CA)_2";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.9636;
+    longitude -117.4528;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ROCKY_MOUNTAIN_ENERGY_CENTER_RKM0";
+    parent "wecc240_psse_N_7001";
+}
+object powerplant
+{
+    name "ROCKY_MOUNTAIN_ENERGY_CENTER_RKM0";
+    parent "wecc240_psse_G_ROCKY_MOUNTAIN_ENERGY_CENTER_RKM0";
+    generator "CC";
+    fuel "NG";
+    county "Weld";
+    state "Colorado";
+    latitude 40.0908;
+    longitude -104.5953;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "685.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_ROSEVILLE_ENERGY_PARK_A101";
+    parent "wecc240_psse_N_3920";
+}
+object powerplant
+{
+    name "ROSEVILLE_ENERGY_PARK_A101";
+    parent "wecc240_psse_G_ROSEVILLE_ENERGY_PARK_A101";
+    generator "CC";
+    fuel "NG";
+    county "Placer";
+    state "California";
+    latitude 38.7928;
+    longitude -121.3811;
+    in_svc "2007-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "165.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_RUSSELL_CITY_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_3305";
+}
+object powerplant
+{
+    name "RUSSELL_CITY_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_RUSSELL_CITY_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Alameda";
+    state "California";
+    latitude 37.63466;
+    longitude -122.1338;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "655.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SAGUARO_(AZ)_POWER_STATION_GE1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SAGUARO_(AZ)_POWER_STATION_GE1";
+    parent "wecc240_psse_G_SAGUARO_(AZ)_POWER_STATION_GE1";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.5517;
+    longitude -111.3;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "78.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SAGUARO_(AZ)_POWER_STATION_GT1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SAGUARO_(AZ)_POWER_STATION_GT1";
+    parent "wecc240_psse_G_SAGUARO_(AZ)_POWER_STATION_GT1";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.5517;
+    longitude -111.3;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SAGUARO_(AZ)_POWER_STATION_GT2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SAGUARO_(AZ)_POWER_STATION_GT2";
+    parent "wecc240_psse_G_SAGUARO_(AZ)_POWER_STATION_GT2";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.5517;
+    longitude -111.3;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SANTAN_POWER_STATION_ST1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SANTAN_POWER_STATION_ST1";
+    parent "wecc240_psse_G_SANTAN_POWER_STATION_ST1";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.3325;
+    longitude -111.7503;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SANTAN_POWER_STATION_ST2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SANTAN_POWER_STATION_ST2";
+    parent "wecc240_psse_G_SANTAN_POWER_STATION_ST2";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.3325;
+    longitude -111.7503;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SANTAN_POWER_STATION_ST3";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SANTAN_POWER_STATION_ST3";
+    parent "wecc240_psse_G_SANTAN_POWER_STATION_ST3";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.3325;
+    longitude -111.7503;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SANTAN_POWER_STATION_ST4";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SANTAN_POWER_STATION_ST4";
+    parent "wecc240_psse_G_SANTAN_POWER_STATION_ST4";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.3325;
+    longitude -111.7503;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "104.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SANTAN_POWER_STATION_STS5";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SANTAN_POWER_STATION_STS5";
+    parent "wecc240_psse_G_SANTAN_POWER_STATION_STS5";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.3325;
+    longitude -111.7503;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "622.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SANTAN_POWER_STATION_STS6";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SANTAN_POWER_STATION_STS6";
+    parent "wecc240_psse_G_SANTAN_POWER_STATION_STS6";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.3325;
+    longitude -111.7503;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "290.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SCA_COGENERATION_2_POWER_STATION_CCC1";
+    parent "wecc240_psse_N_3908";
+}
+object powerplant
+{
+    name "SCA_COGENERATION_2_POWER_STATION_CCC1";
+    parent "wecc240_psse_G_SCA_COGENERATION_2_POWER_STATION_CCC1";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
+    state "California";
+    latitude 38.530943;
+    longitude -121.4001;
+    in_svc "1997-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "149.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SCATTERGOOD_POWER_STATION_1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "SCATTERGOOD_POWER_STATION_1";
+    parent "wecc240_psse_G_SCATTERGOOD_POWER_STATION_1";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.918151;
+    longitude -118.4276;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "163.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SCATTERGOOD_POWER_STATION_2";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "SCATTERGOOD_POWER_STATION_2";
+    parent "wecc240_psse_G_SCATTERGOOD_POWER_STATION_2";
+    generator "ST";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.918151;
+    longitude -118.4276;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "163.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SCATTERGOOD_POWER_STATION_6";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "SCATTERGOOD_POWER_STATION_6";
+    parent "wecc240_psse_G_SCATTERGOOD_POWER_STATION_6";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.918151;
+    longitude -118.4276;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "107.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SCATTERGOOD_POWER_STATION_7";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "SCATTERGOOD_POWER_STATION_7";
+    parent "wecc240_psse_G_SCATTERGOOD_POWER_STATION_7";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.918151;
+    longitude -118.4276;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "107.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SCATTERGOOD_POWER_STATION_CC1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "SCATTERGOOD_POWER_STATION_CC1";
+    parent "wecc240_psse_G_SCATTERGOOD_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.918151;
+    longitude -118.4276;
+    in_svc "2015-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "336.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG1";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG1";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG1";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG2";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG2";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG2";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG3";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG3";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG3";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG4";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG4";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG4";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG5";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG5";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG5";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG6";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG6";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG6";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG7";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG7";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG7";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG8";
+    parent "wecc240_psse_N_2400";
+}
+object powerplant
+{
+    name "SENTINEL_ENERGY_CENTER_CTG8";
+    parent "wecc240_psse_G_SENTINEL_ENERGY_CENTER_CTG8";
+    generator "CT";
+    fuel "NG";
+    county "Riverside";
+    state "California";
+    latitude 33.934167;
+    longitude -116.5714;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SILVERHAWK_POWER_STATION_PB1";
+    parent "wecc240_psse_N_1302";
+}
+object powerplant
+{
+    name "SILVERHAWK_POWER_STATION_PB1";
+    parent "wecc240_psse_G_SILVERHAWK_POWER_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Clark";
+    state "Nevada";
+    latitude 36.4078;
+    longitude -114.9606;
+    in_svc "2004-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "665.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SOUTH_POINT_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_1403";
+}
+object powerplant
+{
+    name "SOUTH_POINT_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_SOUTH_POINT_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Mohave";
+    state "Arizona";
+    latitude 34.8678;
+    longitude -114.5317;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "708.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SPA_COGENERATION_3_POWER_STATION_CCC1";
+    parent "wecc240_psse_N_3908";
+}
+object powerplant
+{
+    name "SPA_COGENERATION_3_POWER_STATION_CCC1";
+    parent "wecc240_psse_G_SPA_COGENERATION_3_POWER_STATION_CCC1";
+    generator "CC";
+    fuel "NG";
+    county "Sacramento";
+    state "California";
+    latitude 38.511;
+    longitude -121.4735;
+    in_svc "1997-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "174.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_STANTON_ENERGY_RELIABILITY_CENTER_GT1";
+    parent "wecc240_psse_N_2610";
+}
+object powerplant
+{
+    name "STANTON_ENERGY_RELIABILITY_CENTER_GT1";
+    parent "wecc240_psse_G_STANTON_ENERGY_RELIABILITY_CENTER_GT1";
+    generator "CT";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.806801;
+    longitude -117.9858;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_STANTON_ENERGY_RELIABILITY_CENTER_GT2";
+    parent "wecc240_psse_N_2610";
+}
+object powerplant
+{
+    name "STANTON_ENERGY_RELIABILITY_CENTER_GT2";
+    parent "wecc240_psse_G_STANTON_ENERGY_RELIABILITY_CENTER_GT2";
+    generator "CT";
+    fuel "NG";
+    county "Orange";
+    state "California";
+    latitude 33.806801;
+    longitude -117.9858;
+    in_svc "2020-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUMAS_POWER_PLANT_CC1";
+    parent "wecc240_psse_N_5001";
+}
+object powerplant
+{
+    name "SUMAS_POWER_PLANT_CC1";
+    parent "wecc240_psse_G_SUMAS_POWER_PLANT_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Whatcom";
+    state "Washington";
+    latitude 48.9905;
+    longitude -122.2733;
+    in_svc "1993-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "126.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT1";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT1";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT10";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT10";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT10";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT2";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT2";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT3";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT3";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT3";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT4";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT4";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT4";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT5";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT5";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT5";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT6";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT6";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT6";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT7";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT7";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT7";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT8";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT8";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT8";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNDANCE_POWER_STATION_CT9";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "SUNDANCE_POWER_STATION_CT9";
+    parent "wecc240_psse_G_SUNDANCE_POWER_STATION_CT9";
+    generator "CT";
+    fuel "NG";
+    county "Pinal";
+    state "Arizona";
+    latitude 32.9285;
+    longitude -111.5899;
+    in_svc "2002-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "61.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUNRISE_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "SUNRISE_POWER_STATION_CC1";
+    parent "wecc240_psse_G_SUNRISE_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.2097;
+    longitude -119.585;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "685.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SUTTER_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_N_3405";
+}
+object powerplant
+{
+    name "SUTTER_ENERGY_CENTER_CC1";
+    parent "wecc240_psse_G_SUTTER_ENERGY_CENTER_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Sutter";
+    state "California";
+    latitude 39.053139;
+    longitude -121.6959;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "636.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTAG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "SYCAMORE_COGENERATION_POWER_STATION_GTAG";
+    parent "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTAG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.452577;
+    longitude -118.9853;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTBG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "SYCAMORE_COGENERATION_POWER_STATION_GTBG";
+    parent "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTBG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.452577;
+    longitude -118.9853;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTCG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "SYCAMORE_COGENERATION_POWER_STATION_GTCG";
+    parent "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTCG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.452577;
+    longitude -118.9853;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTDG";
+    parent "wecc240_psse_N_3803";
+}
+object powerplant
+{
+    name "SYCAMORE_COGENERATION_POWER_STATION_GTDG";
+    parent "wecc240_psse_G_SYCAMORE_COGENERATION_POWER_STATION_GTDG";
+    generator "CT";
+    fuel "NG";
+    county "Kern";
+    state "California";
+    latitude 35.452577;
+    longitude -118.9853;
+    in_svc "1987-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "75.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_THUMS_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_2407";
+}
+object powerplant
+{
+    name "THUMS_POWER_STATION_GEN1";
+    parent "wecc240_psse_G_THUMS_POWER_STATION_GEN1";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 33.7684;
+    longitude -118.2141;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "57.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_TRACY_COMBINED_CYCLE_POWER_PLANT_CC12";
+    parent "wecc240_psse_N_3903";
+}
+object powerplant
+{
+    name "TRACY_COMBINED_CYCLE_POWER_PLANT_CC12";
+    parent "wecc240_psse_G_TRACY_COMBINED_CYCLE_POWER_PLANT_CC12";
+    generator "CC";
+    fuel "NG";
+    county "San Joaquin";
+    state "California";
+    latitude 37.7107;
+    longitude -121.4906;
+    in_svc "2012-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "336.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_TRACY_POWER_STATION_3";
+    parent "wecc240_psse_N_3701";
+}
+object powerplant
+{
+    name "TRACY_POWER_STATION_3";
+    parent "wecc240_psse_G_TRACY_POWER_STATION_3";
+    generator "ST";
+    fuel "NG";
+    county "Storey";
+    state "Nevada";
+    latitude 39.5625;
+    longitude -119.525;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "120.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_TRACY_POWER_STATION_G240";
+    parent "wecc240_psse_N_3701";
+}
+object powerplant
+{
+    name "TRACY_POWER_STATION_G240";
+    parent "wecc240_psse_G_TRACY_POWER_STATION_G240";
+    generator "CC";
+    fuel "NG";
+    county "Storey";
+    state "Nevada";
+    latitude 39.5625;
+    longitude -119.525;
+    in_svc "1996-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "120.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_TRACY_POWER_STATION_PB1";
+    parent "wecc240_psse_N_3701";
+}
+object powerplant
+{
+    name "TRACY_POWER_STATION_PB1";
+    parent "wecc240_psse_G_TRACY_POWER_STATION_PB1";
+    generator "CC";
+    fuel "NG";
+    county "Storey";
+    state "Nevada";
+    latitude 39.5625;
+    longitude -119.525;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "623.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_VALENCIA_ENERGY_FACILITY_CTG1";
+    parent "wecc240_psse_N_1004";
+}
+object powerplant
+{
+    name "VALENCIA_ENERGY_FACILITY_CTG1";
+    parent "wecc240_psse_G_VALENCIA_ENERGY_FACILITY_CTG1";
+    generator "CT";
+    fuel "NG";
+    county "Valencia";
+    state "New Mexico";
+    latitude 34.611549;
+    longitude -106.7322;
+    in_svc "2008-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "160.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_VALMONT_STATION_6";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "VALMONT_STATION_6";
+    parent "wecc240_psse_G_VALMONT_STATION_6";
+    generator "CT";
+    fuel "NG";
+    county "Boulder";
+    state "Colorado";
+    latitude 40.0205;
+    longitude -105.2009;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "59.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_VALMONT_STATION_UN7";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "VALMONT_STATION_UN7";
+    parent "wecc240_psse_G_VALMONT_STATION_UN7";
+    generator "CT";
+    fuel "NG";
+    county "Boulder";
+    state "Colorado";
+    latitude 40.0205;
+    longitude -105.2009;
+    in_svc "2000-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_VALMONT_STATION_UN8";
+    parent "wecc240_psse_N_6302";
+}
+object powerplant
+{
+    name "VALMONT_STATION_UN8";
+    parent "wecc240_psse_G_VALMONT_STATION_UN8";
+    generator "CT";
+    fuel "NG";
+    county "Boulder";
+    state "Colorado";
+    latitude 40.0205;
+    longitude -105.2009;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "71.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT1";
+    parent "wecc240_psse_N_2408";
+}
+object powerplant
+{
+    name "WALNUT_CREEK_ENERGY_PARK_GT1";
+    parent "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT1";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.008709;
+    longitude -117.9449;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT2";
+    parent "wecc240_psse_N_2408";
+}
+object powerplant
+{
+    name "WALNUT_CREEK_ENERGY_PARK_GT2";
+    parent "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT2";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.008709;
+    longitude -117.9449;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT3";
+    parent "wecc240_psse_N_2408";
+}
+object powerplant
+{
+    name "WALNUT_CREEK_ENERGY_PARK_GT3";
+    parent "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT3";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.008709;
+    longitude -117.9449;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT4";
+    parent "wecc240_psse_N_2408";
+}
+object powerplant
+{
+    name "WALNUT_CREEK_ENERGY_PARK_GT4";
+    parent "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT4";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.008709;
+    longitude -117.9449;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT5";
+    parent "wecc240_psse_N_2408";
+}
+object powerplant
+{
+    name "WALNUT_CREEK_ENERGY_PARK_GT5";
+    parent "wecc240_psse_G_WALNUT_CREEK_ENERGY_PARK_GT5";
+    generator "CT";
+    fuel "NG";
+    county "Los Angeles";
+    state "California";
+    latitude 34.008709;
+    longitude -117.9449;
+    in_svc "2013-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "100.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WALNUT_ENERGY_CENTER_WEC";
+    parent "wecc240_psse_N_3901";
+}
+object powerplant
+{
+    name "WALNUT_ENERGY_CENTER_WEC";
+    parent "wecc240_psse_G_WALNUT_ENERGY_CENTER_WEC";
+    generator "CC";
+    fuel "NG";
+    county "Stanislaus";
+    state "California";
+    latitude 37.4878;
+    longitude -120.8956;
+    in_svc "2006-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "301.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_1B";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "WEST_PHOENIX_POWER_STATION_1B";
+    parent "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_1B";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4417;
+    longitude -112.1583;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_2B";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "WEST_PHOENIX_POWER_STATION_2B";
+    parent "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_2B";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4417;
+    longitude -112.1583;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_3B";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "WEST_PHOENIX_POWER_STATION_3B";
+    parent "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_3B";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4417;
+    longitude -112.1583;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "132.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_CC1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "WEST_PHOENIX_POWER_STATION_CC1";
+    parent "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4417;
+    longitude -112.1583;
+    in_svc "2001-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "136.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_CC2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "WEST_PHOENIX_POWER_STATION_CC2";
+    parent "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_CC2";
+    generator "CC";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4417;
+    longitude -112.1583;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "570.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_GT1";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "WEST_PHOENIX_POWER_STATION_GT1";
+    parent "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_GT1";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4417;
+    longitude -112.1583;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_GT2";
+    parent "wecc240_psse_N_1402";
+}
+object powerplant
+{
+    name "WEST_PHOENIX_POWER_STATION_GT2";
+    parent "wecc240_psse_G_WEST_PHOENIX_POWER_STATION_GT2";
+    generator "CT";
+    fuel "NG";
+    county "Maricopa";
+    state "Arizona";
+    latitude 33.4417;
+    longitude -112.1583;
+    in_svc INIT;
+    out_svc NEVER;
+    operating_capacity "53.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WESTERN_102_POWER_STATION_1";
+    parent "wecc240_psse_N_3701";
+}
+object powerplant
+{
+    name "WESTERN_102_POWER_STATION_1";
+    parent "wecc240_psse_G_WESTERN_102_POWER_STATION_1";
+    generator "IC";
+    fuel "NG";
+    county "Storey";
+    state "Nevada";
+    latitude 39.5603;
+    longitude -119.5108;
+    in_svc "2005-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "117.6 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WOODLAND_POWER_STATION_CC1";
+    parent "wecc240_psse_N_3907";
+}
+object powerplant
+{
+    name "WOODLAND_POWER_STATION_CC1";
+    parent "wecc240_psse_G_WOODLAND_POWER_STATION_CC1";
+    generator "CC";
+    fuel "NG";
+    county "Stanislaus";
+    state "California";
+    latitude 37.652602;
+    longitude -121.0204;
+    in_svc "2003-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "98.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_WOODLAND_POWER_STATION_IC";
+    parent "wecc240_psse_N_3907";
+}
+object powerplant
+{
+    name "WOODLAND_POWER_STATION_IC";
+    parent "wecc240_psse_G_WOODLAND_POWER_STATION_IC";
+    generator "IC";
+    fuel "NG";
+    county "Stanislaus";
+    state "California";
+    latitude 37.652602;
+    longitude -121.020397;
+    in_svc "2011-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.4 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_YUBA_CITY_COGENERATION_PARTNERS_POWER_STATION_GEN1";
+    parent "wecc240_psse_N_3405";
+}
+object powerplant
+{
+    name "YUBA_CITY_COGENERATION_PARTNERS_POWER_STATION_GEN1";
+    parent "wecc240_psse_G_YUBA_CITY_COGENERATION_PARTNERS_POWER_STATION_GEN1";
+    generator "CT";
+    fuel "NG";
+    county "Sutter";
+    state "California";
+    latitude 39.13667;
+    longitude -121.6398;
+    in_svc "1990-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "50.0 MW";
+}
+
+object gen
+{
+    name "wecc240_psse_G_YUMA_COGENERATION_ASSOCIATES_POWER_STATION_YUCG";
+    parent "wecc240_psse_N_2100";
+}
+object powerplant
+{
+    name "YUMA_COGENERATION_ASSOCIATES_POWER_STATION_YUCG";
+    parent "wecc240_psse_G_YUMA_COGENERATION_ASSOCIATES_POWER_STATION_YUCG";
+    generator "CC";
+    fuel "NG";
+    county "Yuma";
+    state "Arizona";
+    latitude 32.728822;
+    longitude -114.6541;
+    in_svc "1994-01-01 00:00:00 UTC";
+    out_svc NEVER;
+    operating_capacity "63.0 MW";
+}
+

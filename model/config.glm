@@ -1,7 +1,7 @@
 //
-// Requires Arras Energy version 4.3.8 or later
+// Requires Arras Energy version 4.3.9 or later
 //
-#define VERSION "-ge 4.3.8"
+#define VERSION "-ge 4.3.9"
 
 //
 // Work in Pacific timezone (even though some parts of the system are in MT and CT)
@@ -16,7 +16,7 @@
 //
 // Stop simulation on 21-Dec-2022
 //
-#define STOPTIME "2023-01-01 00:00:00 PST"
+#define STOPTIME "2019-01-01 00:00:00 PST"
 
 //
 // Specify the PSS/E model filename

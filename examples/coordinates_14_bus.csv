@@ -1,0 +1,15 @@
+Node,Characteristic components,Latitude,Longitude
+1,Reference and slack generator,40.6,-105.13
+2,Conventional Generator and load,38.96,-105.8
+3,Load bus,38.21,-107.01
+4,Load bus,37.59,-105.26
+5,Wind farm and load bus,40.09,-103.35
+6,Wind farm and load bus,36.58,-102.18
+7,Wind farm,36.65,-106.64
+8,---,36.22,-108.54
+9,Load bus,36.44,-105.51
+10,Load bus,35.75,-105.58
+11,Load bus,36.38,-101.31
+12,Load bus,36.32,-103.02
+13,Load bus,35.87,-102.41
+14,Load bus,35.87,-104.68

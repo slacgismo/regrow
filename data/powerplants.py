@@ -18,9 +18,11 @@ if len(sys.argv) == 1:
     print("Syntax: python3 powerplants.py CSVFILE GLMFILE",file=sys.stderr)
 
 csvname = sys.argv[1] if len(sys.argv) > 1 else "powerplants.csv.zip"
-glmname = sys.argv[2] if len(sys.argv) > 2 else "powerplants.glm"
+glmname = sys.argv[2] if len(sys.argv) > 2 else "powerplants_raw.glm"
 
 columns = dict([(y,x) for x,y in enumerate(pd.read_csv(csvname,nrows=2).columns)])
+
+years = list(range(2018,2022))
 
 mapper = {
     "name" : "NAME",
@@ -147,6 +149,24 @@ nodesgis["geocode"] = [utils.geohash(float(x),float(y)) for x,y in nodesgis[["La
 nodesgis = nodesgis.set_index(["geocode","Base kV"]).sort_index().reset_index().set_index("geocode")
 nodesgis = nodesgis[~nodesgis.index.duplicated(keep='first')]
 
+locations = list(pd.read_csv("geodata/baseload.csv",header=[0],nrows=0,index_col=[0]).columns)
+gentypes = {
+    "dispatchable" : ["COAL","CC","NG","CT","COKE","ST","OIL","GAS","WASTE","WATER","WOOD","BIO","OTHER","UNKNOWN","HT","GEO","AT","IC","FW"],
+    "fixed" : ["NUC"],
+    "solar" : ["PV"],
+    "wind" : ["WIND","WT"],
+    "storage" : ["ES","ELEC"],
+}
+fuel_types = []
+for ft in plant_types.values():
+    fuel_types.append(ft[1]) # track the generator type only
+fuel_types = list(set(fuel_types))
+geodata = {}
+for ft in fuel_types:
+    geodata[ft] = {}
+    for unit in units.keys():
+        geodata[ft][unit] = dict(zip(locations,[0.0]*len(locations)))
+
 with open(glmname,'w') as glm:
     print(f"// generated from {csvname} at {dt.datetime.now()}",file=glm)
     if gridlabd_version:
@@ -173,6 +193,7 @@ with open(glmname,'w') as glm:
                 fuel = []
                 generator = []
                 location = {}
+                plantcap = dict(zip(units.keys(),[0.0]*len(units.keys())))
                 for name,column in mapper.items():
                     value = _plant[column]
                     if column == "NAME":
@@ -200,6 +221,7 @@ with open(glmname,'w') as glm:
                             print(f"""    status "{"ONLINE" if _plant['STATUS'] == "OP" else "OFFLINE"}";""",file=glm)
                         elif name in units:
                             print(f"""    {name} {value} {units[name]};""",file=glm)
+                            plantcap[name] = value
                         elif name in ["latitude","longitude"]:
                             location[name] = value
                             print(f"""    {name} {value:.4f};""",file=glm)
@@ -209,7 +231,7 @@ with open(glmname,'w') as glm:
                             print(f"""    {name} "{value}";""",file=glm)
                             if name == "name":
                                 genname = value
-                        
+
                 if "latitude" in location and "longitude" in location:
                     node = utils.nearest(utils.geohash(float(location["longitude"]),float(location["latitude"])),nodesgis.index)
                     print(f"""    parent "wecc240_psse_G_{nodesgis.loc[node]['Bus  Number']}_0";""",file=glm)
@@ -241,6 +263,50 @@ with open(glmname,'w') as glm:
                 print("}", file=glm)
                 count += 1
 
+                #
+                # Generate geodata
+                #
+                geohash = utils.nearest(utils.geohash(location["latitude"],location["longitude"]),locations)
+                for gentype in generator:
+                    # split capacity equally among fuels (best we can do without more data)
+                    for key in units.keys():
+                        geodata[gentype][key][geohash] += round(plantcap[key]/len(gentype),2)
+
+
     print(f"{count} generators found")
+
+    #
+    # Generate geodata
+    #
+    gendata = {}
+    for gentype in gentypes:
+        df = []
+        for year in years:
+            df.append(pd.DataFrame({
+                dt.datetime(year,1,1,0,0,0,tzinfo=dt.timezone.utc) : dict(zip(locations,[0]*len(locations))),
+                dt.datetime(year,3,1,0,0,0,tzinfo=dt.timezone.utc) : dict(zip(locations,[0]*len(locations))),
+                dt.datetime(year,6,1,0,0,0,tzinfo=dt.timezone.utc) : dict(zip(locations,[0]*len(locations))),
+                dt.datetime(year,10,1,0,0,0,tzinfo=dt.timezone.utc) : dict(zip(locations,[0]*len(locations))),
+                dt.datetime(year,12,1,0,0,0,tzinfo=dt.timezone.utc) : dict(zip(locations,[0]*len(locations))),
+                }))
+        gendata[gentype] = pd.concat(df,axis=1).transpose()
+    map_gentypes = {}
+    for k,values in gentypes.items():
+        for v in values:
+            map_gentypes[v] = k
+    for gen,data in geodata.items():
+        df = []
+        for year in years:
+            df.append(pd.DataFrame({
+                dt.datetime(year,1,1,0,0,0,tzinfo=dt.timezone.utc) : data["winter_capacity"],
+                dt.datetime(year,3,1,0,0,0,tzinfo=dt.timezone.utc) : data["operating_capacity"],
+                dt.datetime(year,6,1,0,0,0,tzinfo=dt.timezone.utc) : data["summer_capacity"],
+                dt.datetime(year,10,1,0,0,0,tzinfo=dt.timezone.utc) : data["operating_capacity"],
+                dt.datetime(year,12,1,0,0,0,tzinfo=dt.timezone.utc) : data["winter_capacity"],
+                }))
+        df = pd.concat(df,axis=1).transpose().fillna(0.0)
+        gentype = map_gentypes[gen]
+        gendata[gentype] += df
+        df.round(3).to_csv(f"geodata/gen_{gentype.lower()}.csv",index=True,header=True)
 
 gencosts.to_csv("gencosts.csv",index=True,header=True)

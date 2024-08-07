@@ -52,11 +52,18 @@ for data in DATA.values():
 #
 # 3. Project loads into years, adjusting for DOW
 #
-def get_offset_shift(year):
+def get_offset_shift(year,from_year=FROM_YEAR):
+	"""Compute from-year read shift and to-year write offset hours"""
 	OFFSET = int((dt.datetime(year=year,month=1,day=1) - 
-		dt.datetime(year=FROM_YEAR,month=1,day=1)).total_seconds()/3600)
+		dt.datetime(year=from_year,month=1,day=1)).total_seconds()/3600)
 	SHIFT = int(OFFSET%(24*7))
 	return OFFSET,SHIFT
+
+# check the shift/offset function
+assert(get_offset_shift(2019)==(8760,24))
+assert(get_offset_shift(2020)==(8760*2,48))
+assert(get_offset_shift(2021)==(8760*3+24,96))
+assert(get_offset_shift(2022)==(8760*4+24,120))
 
 print("Projecting dataset",flush=True,end="")
 for dataset in LOADS:

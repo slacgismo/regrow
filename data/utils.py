@@ -2,7 +2,9 @@ import os, sys
 import json
 import pandas as pd
 import math
+import psm3 as pvlib_psm3
 import datetime as dt
+import psm3 as pvlib_psm3
 
 #
 # Command args
@@ -17,6 +19,9 @@ def read_args(argv,docs=__doc__):
     elif "--verbose" in argv:
         options.verbose = True
         argv.remove("--verbose")
+    elif "--debug" in argv:
+        options.debug = True
+        argv.remove("--debug")
     return argv[1:]
 
 
@@ -26,9 +31,11 @@ def read_args(argv,docs=__doc__):
 class options:
     context = '(no context)'
     verbose = False
+    debug = True
 
 E_OK = 0
 E_NOENT = 2 # not found error
+E_INTR = 4 # interrupted
 E_INVAL = 22 # invalid argument
 
 def error(code,msg):
@@ -188,28 +195,59 @@ def nsrdb_credentials(path=os.path.join(os.environ["HOME"],".nsrdb","credentials
             return list(json.load(fh).items())[0]
     except Exception as err:
         error(E_INVAL,f"~/.nsrdb/credentials.json read failed - {err}")
-
-def nsrdb_weather(location,year,interval=30,attributes={
-        "solar[W/m^2]" : "ghi",
-        "temperature[degC]" : "air_temperature",
-        "wind[m/s]" : "wind_speed",
-    }):
+        
+        
+def nsrdb_weather(location,year,
+                  interval=30,
+                  attributes={"solar[W/m^2]" : "ghi",
+                              "temperature[degC]" : "air_temperature",
+                              "wind[m/s]" : "wind_speed",
+                              'dhi[W/m^2]': 'dhi',
+                              'dni[W/m^2]': 'dni',
+                              'winddirection[deg]': 'wind_direction',
+                              'dewpoint[degC]': 'dew_point',
+                              'relhumidity[pct]': 'relative_humidity',
+                              'water[mm]': 'total_precipitable_water'
+                              }):
+    """
+    Pull NSRDB data for a particular year and location. 
+    
+    Parameters
+    ----------
+    location: Str.
+        Geohash of a particular location that will be decoded to get lat-long
+        coordinates.
+    year: Int.
+        Year of data we want to pull data for.
+    interval: Int.
+        Frequency of data in minutes. Default 5
+    attributes: Dictionary of string keys/values.
+        Desired data fields to return as values, and final column names as keys.
+        See pvlib documentaton for the full list of fields in NSRDB:
+        https://pvlib-python.readthedocs.io/en/v0.9.0/generated/pvlib.iotools.get_psm3.html
+    
+    Returns
+    -------
+    Pandas dataframe containing 'attribute' fields, with UTC ISO format
+    datetime index.
+    """
     lat,lon = geocode(location)
     leap = (year%4 == 0)
-    utc = True
-    email,apikey = nsrdb_credentials()
-    server = "https://developer.nrel.gov/api/solar/nsrdb_psm3_download.csv"
-    url = f"{server}?wkt=POINT({lon}%20{lat})&names={year}&leap_day={str(leap).lower()}&interval={interval}&utc={str(utc).lower()}&api_key={apikey}&attributes={','.join(attributes.values())}&email={email}&full_name=None&affiliation=None&mailing_list=false&reason=None"
-    try:
-        data = pd.read_csv(url,skiprows=2,
-            converters = dict([[x,float] for x in attributes.values()]),
-            )
-    except Exception as err:
-        error(E_INVAL,f"{url} - {err}")
-        raise
-    data["timestamp"] = [pd.to_datetime(f"{Y} {m} {d} {H} {M}",format="%Y %m %d %H %M",yearfirst=True,utc=True) for Y,m,d,H,M in data[["Year","Month","Day","Hour","Minute"]].values]
-    data.set_index("timestamp",inplace=True)
-    data.drop(['Year','Month','Day','Hour','Minute'],axis=1,inplace=True)
-    # data.index = [pd.to_datetime(f"{Y} {m} {d} {H} {M}",format="%Y %m %d %H %M",yearfirst=True,utc=True) for Y,m,d,H,M in data[["Year","Month","Day","Hour","Minute"]].values]
-    data.columns = attributes.keys()
-    return data.sort_index()
+    email, api_key = nsrdb_credentials()
+    # Pull from API and save locally
+    psm3, _ = pvlib_psm3.get_psm3(lat, lon,
+                                  api_key,
+                                  email, year,
+                                  attributes=attributes.values(),
+                                  map_variables=True,
+                                  interval=interval,
+                                  leap_day=leap,
+                                  timeout=60)
+    cols_to_remove = ['Year', 'Month', 'Day', 'Hour', 'Minute']
+    psm3 = psm3.drop(columns=cols_to_remove)
+    psm3.index = pd.to_datetime(psm3.index)
+    psm3.rename(columns={"key_0": "datetime",
+                         **{v: k for k, v in attributes.items()}},
+                inplace=True)
+    psm3 = psm3.round(3)  
+    return psm3.sort_index()

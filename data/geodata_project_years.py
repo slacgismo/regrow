@@ -46,6 +46,7 @@ DATA = dict((x,pd.read_csv(FILES[x],index_col=[0],parse_dates=[0]))
 # 2. Fix datetime index to be all leading
 #
 for data in DATA.values():
+	# TODO: check that the data sources with start at 1am are indeed lagging
 	shift = -1 if data.index[0].to_datetime64() == dt.datetime(FROM_YEAR,1,1,1,0,0) else 0
 	data.index = (data.index.tz_localize('UTC') + pd.Timedelta(hours=shift)) 
 

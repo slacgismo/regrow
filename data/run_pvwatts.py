@@ -62,9 +62,9 @@ def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
 
 
 if __name__ == "__main__":
-    # Point towards the particular local folder that contains the data  
-    time_series_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave"
-    metadata = pd.read_csv(os.path.join(time_series_path,
+    # Point towards the particular local folder that contains the data
+    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave"
+    metadata = pd.read_csv(os.path.join(data_path,
                                         "all_states_heatwave_target_sites.csv")) 
     for idx, row in metadata.iterrows():
         lat = row['latitude']
@@ -80,10 +80,6 @@ if __name__ == "__main__":
         backtracking = row['backtracking']
         mount_type = row['mount_type']
         module_type = row['module_type']
-        # Pull down time series data
-        time_series = pd.read_csv(os.path.join(time_series_path, "data",
-                                               str(row['system_id'])) + ".csv",
-                                  parse_dates=True, index_col=0)
         # Pull the site's associated NSRDB data 
         master_weather_df = pd.DataFrame()
         for year in range(min_measured_date.year, max_measured_date.year):
@@ -129,8 +125,7 @@ if __name__ == "__main__":
         plt.show()
         plt.close()
         # Write the results to the associated S3 bucket.
-        pdc.to_csv(os.path.join(
-            "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_dc_power_estimates",
+        pdc.to_csv(os.path.join(data_path, "pvwatts_dc_power_estimates",
             str(row['system_id']) + ".csv"))
         
         

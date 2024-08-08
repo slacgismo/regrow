@@ -25,7 +25,7 @@ import utils
 import config
 
 FROM_YEAR = 2018
-TO_YEARS = [2019,2020,2021]
+TO_YEARS = [2019,2020,2021,2022]
 
 WEATHER = ["temperature","solar","wind"]
 LOADS = ["baseload","cooling","heating","total"]
@@ -33,7 +33,7 @@ UNITS = {"temperature":"$^o$C", "solar":"W/M$^2$", "wind":"m/s"}
 DATASETS = WEATHER + LOADS
 FILES = dict((x,f"geodata/{x}_{FROM_YEAR}.csv") for x in DATASETS)
 
-PLOT = False # True to enable plot output (slower)
+PLOT = True # True to enable plot output (slower)
 FIGSIZE=(20,10)
 
 #
@@ -139,6 +139,7 @@ temperature_sensitivity = pd.read_csv("sensitivity.csv",index_col=[0])
 for dataset in ["heating","cooling"]:
 	print(".",end="",flush=True)
 	data = DATA[dataset]
+	# TODO: replace with maybe with a better model of weather effects
 	dload = DT.copy()*temperature_sensitivity[f"{dataset}[MW/degC]"].transpose()
 	DATA[dataset] = (data + dload).clip(lower=0).dropna().round(4)
 print("OK")

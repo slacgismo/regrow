@@ -33,7 +33,7 @@ UNITS = {"temperature":"$^o$C", "solar":"W/M$^2$", "wind":"m/s"}
 DATASETS = WEATHER + LOADS
 FILES = dict((x,f"geodata/{x}_{FROM_YEAR}.csv") for x in DATASETS)
 
-PLOT = True # True to enable plot output (slower)
+PLOT = False # True to enable plot output (slower)
 FIGSIZE=(20,10)
 
 #
@@ -173,6 +173,7 @@ if PLOT:
 #
 print("Saving datasets",flush=True,end="")
 for name,data in DATA.items():
+	data.index.name="timestamp"
 	data.to_csv(f"geodata/{name}.csv",index=True,header=True)
 	print(".",end="",flush=True)
 print("OK")

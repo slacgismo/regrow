@@ -173,7 +173,7 @@ def __(mo):
     mo.md(
         r"""
         ### August 16 through 19 in 2020, excessive heat was forecasted consistently for California.
-        Graphs display a slight drop in temperature followed by abnormal temperature spikes, displaying climate oscillation.
+        To calculate the residual temperature of 2020, the median of the surroundnig years was taken to create a baseline for comparison. Graphs display a slight drop in temperature followed by abnormal temperature spikes, displaying climate oscillation.
         """
     )
     return

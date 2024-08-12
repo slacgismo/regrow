@@ -117,19 +117,6 @@ def __(data_view, plt, sns):
 
 
 @app.cell
-def __():
-    def average_august(df):
-        august1 = df.loc['2018-08-01':'2018-08-31']
-        august2 = df.loc['2019-08-01':'2019-08-31']
-        august3 = df.loc['2020-08-01':'2020-08-31']
-        august4 = df.loc['2021-08-01':'2021-08-31']
-
-        for august in average_august:
-            august = august.resample(rule='1D').mean()
-    return average_august,
-
-
-@app.cell
 def __(location, pd):
     # Time slicing for August
     august1 = location.loc['2018-08-01':'2018-08-31']
@@ -172,11 +159,32 @@ def __(august1, august2, august3, august4, mo, plt):
 def __(mo):
     mo.md(
         r"""
-        ### August 16 through 19 in 2020, excessive heat was forecasted consistently for California.
-        To calculate the residual temperature of 2020, the median of the surroundnig years was taken to create a baseline for comparison. Graphs display a slight drop in temperature followed by abnormal temperature spikes, displaying climate oscillation.
+        ## Hourly Statistics
+        August 16 through 19 in 2020, excessive heat was forecasted consistently for California.
         """
     )
     return
+
+
+@app.cell
+def __(mo):
+    mo.md(r"""To calculate the residual temperature of 2020, the median of the surroundnig years was taken to create a baseline for comparison.""")
+    return
+
+
+@app.cell
+def __(np):
+    # Temperature Residual Function
+    def analyze_baseline(df):
+        actual = df.loc['2020-08-01':'2020-08-31'].values
+        predicted = np.c_[
+            df.loc['2018-08-01':'2018-08-31'].values, 
+            df.loc['2019-08-01':'2019-08-31'].values,
+            df.loc['2021-08-01':'2021-08-31'].values
+        ]
+        predicted = np.median(predicted, axis=1)
+        return actual - predicted
+    return analyze_baseline,
 
 
 @app.cell
@@ -227,29 +235,39 @@ def __(first_integral, mo, second_integral):
 
 
 @app.cell
+def __(analyze_baseline, location, mo, plt):
+    daily_residual = analyze_baseline(location.resample(rule="1D").mean())
+
+    # August 16 through 19, excessive heat was forecasted consistently for California.
+    plt.figure(figsize=(9, 5))
+    plt.axvline(16, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(19, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
+    plt.plot(daily_residual)
+    plt.xlabel('Days in August')
+    plt.ylabel('Temperature (°C)')
+    plt.title('Daily Residual Temperature')
+    plt.legend()
+    plt.gcf().autofmt_xdate() 
+    mo.mpl.interactive(plt.gcf())
+    return daily_residual,
+
+
+@app.cell
 def __(mo):
-    mo.md(
-        r"""
-        ## Hourly Statistics
-        (1) Max residual temperature. (2) August integrals 1st half, 2nd half and overall.
-        """
-    )
+    mo.md(r"""Graphs display a slight drop in temperature followed by abnormal temperature spikes, displaying climate oscillation.""")
     return
 
 
 @app.cell
-def __(np):
-    # Temperature Residual Function
-    def analyze_baseline(df):
-        actual = df.loc['2020-08-01':'2020-08-31'].values
-        predicted = np.c_[
-            df.loc['2018-08-01':'2018-08-31'].values, 
-            df.loc['2019-08-01':'2019-08-31'].values,
-            df.loc['2021-08-01':'2021-08-31'].values
-        ]
-        predicted = np.median(predicted, axis=1)
-        return actual - predicted
-    return analyze_baseline,
+def __(mo):
+    mo.md(
+        r"""
+        ## Full Report
+        (1) Max residual temperature. (2) August integrals 1st half, 2nd half and overall.
+        """
+    )
+    return
 
 
 @app.cell

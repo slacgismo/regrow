@@ -136,6 +136,36 @@ def __(august1, august2, august3, august4, mo, plt):
 
 
 @app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ## Hourly Statistics
+        (1) Max residual temperature. (2) August integrals 1st half, 2nd half and overall.
+        """
+    )
+    return
+
+
+@app.cell
+def __(analyze_baseline, location, mo, plt):
+    hourly_residual = analyze_baseline(location)
+
+    # August 16 through 19, excessive heat was forecasted consistently for California.
+    plt.figure(figsize=(9, 5))
+    plt.axvline(16 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(19 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
+    plt.plot(hourly_residual)
+    plt.xlabel('Hours in August')
+    plt.ylabel('Solar  Output (kWh/m2)')
+    plt.title('Residual Solar Output')
+    plt.legend()
+    plt.gcf().autofmt_xdate() 
+    mo.mpl.interactive(plt.gcf())
+    return hourly_residual,
+
+
+@app.cell
 def __(hourly_residual, mo):
     max_hourly = hourly_residual.max() 
     mo.md(f"Max residual temperature: {max_hourly:.2f} (C˚)")
@@ -165,32 +195,21 @@ def __(first_integral, mo, second_integral):
 
 @app.cell
 def __(analyze_baseline, location, mo, plt):
-    hourly_residual = analyze_baseline(location)
+    daily_residual = analyze_baseline(location.resample(rule="1D").mean())
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
     plt.figure(figsize=(9, 5))
-    plt.axvline(16 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
-    plt.axvline(19 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axvline(16, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(19, linestyle='-.',color = 'b', label = 'end of heatwave')
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
-    plt.plot(hourly_residual)
-    plt.xlabel('Hours in August')
-    plt.ylabel('Solar  Output (kWh/m2)')
-    plt.title('Residual Solar Output')
+    plt.plot(daily_residual)
+    plt.xlabel('Days in August')
+    plt.ylabel('Temperature (°C)')
+    plt.title('Daily Residual Temperature')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return hourly_residual,
-
-
-@app.cell
-def __(mo):
-    mo.md(
-        r"""
-        ## Hourly Statistics
-        (1) Max residual temperature. (2) August integrals 1st half, 2nd half and overall.
-        """
-    )
-    return
+    return daily_residual,
 
 
 @app.cell
@@ -256,6 +275,17 @@ def __(analyze_baseline, nodes, np, pd, solar):
         residual,
         secondhalf,
     )
+
+
+@app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ## Full Report
+        Solar data of all nodes
+        """
+    )
+    return
 
 
 @app.cell

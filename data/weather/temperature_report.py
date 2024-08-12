@@ -9,7 +9,7 @@ def __(mo):
     mo.md(
         r"""
         # REGROW: Temperature Report
-         Study of extreme weather across WECC. Report measures the magnitude of the 2020 heatwave through temperature peaks and integrals.
+        Study of extreme weather and temperature rises in Western Interconnection (WECC) locations. Report measures the magnitude of the 2020 heatwave through max residual temperature and integrals.
         """
     )
     return
@@ -22,8 +22,13 @@ def __():
     import os, sys
     import numpy as np
     from pathlib import Path
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import matplotlib.dates as mdates
+    import tornado as tn
+    sys.path.insert(0,"..")
     import utils
-    return Path, mo, np, os, pd, sys, utils
+    return Path, mdates, mo, np, os, pd, plt, sns, sys, tn, utils
 
 
 @app.cell
@@ -31,147 +36,275 @@ def __(Path, __file__, pd):
     # Loading the Data
     _fp = Path(__file__).parent / 'temperature.csv'
     temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
-    return temperature,
+    temperature.index = temperature.index - pd.Timedelta(8, 'hr')
+    nodes = temperature.columns.tolist()
+    return nodes, temperature
 
 
 @app.cell
-def __(pd, temperature):
-    # Adjusting data to display Pacfic timezone
-    temperature.index = temperature.index - pd.Timedelta(8, 'hr')
+def __(Path, __file__, mo):
+    # Google Earth Snapshot
+    _img = (Path(__file__).parent / 'wecc_google_earth.png')
+    mo.image(src=f"{_img}")
     return
 
 
 @app.cell
-def __(temperature):
-    nodes = temperature.columns.tolist()
-    return nodes,
+def __(mo):
+    mo.md(
+        r"""
+        ## Plotting the Data
+        Full time series plot from years 2018-2022.
+        """
+    )
+    return
+
+
+@app.cell
+def __(mo, nodes, os, pd, utils):
+    # Converting geohash list into a dropdown that includes county names
+    get_location, set_location = mo.state(nodes[0])
+    _counties = pd.read_csv(os.path.join("..","counties.csv"),index_col="geocode")
+    _options = dict([(f"{x} ({_counties.loc[utils.nearest(x,_counties.index)].county})",x) for x in nodes])
+    _index = dict([(y,x) for x,y in _options.items()])
+    location_ui = mo.ui.dropdown(
+        label="Location:",
+        on_change=set_location,
+        options=_options, # locations,
+        value=_index[get_location()],
+        allow_select_none=False,
+    )
+    location_ui
+    return get_location, location_ui, set_location
+
+
+@app.cell
+def __(location_ui, pd, temperature):
+    location = temperature[location_ui.value]
+    location.index = location.index - pd.Timedelta(8, 'hr')
+    return location,
+
+
+@app.cell
+def __(heat_map, mo, time_series):
+    mo.hstack([time_series, heat_map])
+    return
+
+
+@app.cell
+def __(get_location, pd, plt, temperature):
+    # Time Series of Temperatures (2018-2022)
+    data_view = temperature[get_location()]
+    data_view.index = data_view.index - pd.Timedelta(8, 'hr')
+    data_view.plot()
+    plt.xlabel('Year')
+    plt.ylabel('Average Temperature (C˚)')
+    plt.title('Temperature (2018-2022)')
+    time_series = plt.gcf()
+    return data_view, time_series
+
+
+@app.cell
+def __(data_view, plt, sns):
+    # Heat Map
+    my_data_array = data_view.loc['2018-01-01':'2021-12-30'].values.reshape((24, -1), order='F')
+    sns.heatmap(my_data_array, cmap="plasma")
+    plt.xlabel('Days')
+    plt.ylabel('Hours')
+    plt.title('Heat map of temperatures (2018-2022)')
+    heat_map = plt.gcf()
+    return heat_map, my_data_array
 
 
 @app.cell
 def __():
+    def average_august(df):
+        august1 = df.loc['2018-08-01':'2018-08-31']
+        august2 = df.loc['2019-08-01':'2019-08-31']
+        august3 = df.loc['2020-08-01':'2020-08-31']
+        august4 = df.loc['2021-08-01':'2021-08-31']
+
+        for august in average_august:
+            august = august.resample(rule='1D').mean()
+    return average_august,
+
+
+@app.cell
+def __(location, pd):
+    # Time slicing for August
+    august1 = location.loc['2018-08-01':'2018-08-31']
+    august2 = location.loc['2019-08-01':'2019-08-31']
+    august3 = location.loc['2020-08-01':'2020-08-31']
+    august4 = location.loc['2021-08-01':'2021-08-31']
+
+    august1 = pd.DataFrame(august1)
+    august2 = pd.DataFrame(august2)
+    august3 = pd.DataFrame(august3)
+    august4 = pd.DataFrame(august4)
+    return august1, august2, august3, august4
+
+
+@app.cell
+def __(august1, august2, august3, august4, mo, plt):
+    # Calculated average daily temperatures
+    avg_daily_2018 = august1.resample(rule="1D").mean()
+    avg_daily_2019 = august2.resample(rule="1D").mean()
+    avg_daily_2020 = august3.resample(rule="1D").mean()
+    avg_daily_2021 = august4.resample(rule="1D").mean()
+
+    # Plotting the data
+    plt.figure(figsize=(9, 5))
+    plt.plot(avg_daily_2018.values, label='2018')
+    plt.plot(avg_daily_2019.values, label='2019')
+    plt.plot(avg_daily_2020.values, label='2020', ls=":")
+    plt.plot(avg_daily_2021.values, label='2021')
+
+    plt.xlabel('Date')
+    plt.ylabel('Average Temperature (C˚)')
+    plt.title('Daily Average Temperature (August 2018-2022)')
+    plt.legend()
+    plt.gcf().autofmt_xdate() 
+    mo.mpl.interactive(plt.gcf())
+    return avg_daily_2018, avg_daily_2019, avg_daily_2020, avg_daily_2021
+
+
+@app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ### August 16 through 19 in 2020, excessive heat was forecasted consistently for California.
+        Graphs display a slight drop in temperature followed by abnormal temperature spikes, displaying climate oscillation.
+        """
+    )
+    return
+
+
+@app.cell
+def __(analyze_baseline, location, mo, plt):
+    hourly_residual = analyze_baseline(location)
+
+    # August 16 through 19, excessive heat was forecasted consistently for California.
+    plt.figure(figsize=(9, 5))
+    plt.axvline(16 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(19 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
+    plt.plot(hourly_residual)
+    plt.xlabel('Hours in August')
+    plt.ylabel('Temperature (°C)')
+    plt.title('Hourly Residual Temperature')
+    plt.legend()
+    plt.gcf().autofmt_xdate() 
+    mo.mpl.interactive(plt.gcf())
+    return hourly_residual,
+
+
+@app.cell
+def __(hourly_residual, mo):
+    max_hourly = hourly_residual.max() 
+    mo.md(f"Max residual temperature: {max_hourly:.2f} (C˚)")
+    return max_hourly,
+
+
+@app.cell
+def __(hourly_residual, np):
+    mid_point = len(hourly_residual) // 2
+    first_integral = np.sum(hourly_residual[:mid_point]) / 24 
+    second_integral = np.sum(hourly_residual[mid_point:]) / 24
+    hourly_integral = np.sum(hourly_residual) / 24
+    return first_integral, hourly_integral, mid_point, second_integral
+
+
+@app.cell
+def __(hourly_integral, mo):
+    mo.md(f"Overall temperature integral of August: {hourly_integral:.2f} (C˚)")
+    return
+
+
+@app.cell
+def __(first_integral, mo, second_integral):
+    mo.hstack([mo.md(f"First half of August: {first_integral:.2f} (C˚),"), mo.md(f"Second half of August: {second_integral:.2f} (C˚)")], justify='start')
+    return
+
+
+@app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ## Hourly Statistics
+        (1) Max residual temperature. (2) August integrals 1st half, 2nd half and overall.
+        """
+    )
+    return
+
+
+@app.cell
+def __(np):
     # Temperature Residual Function
     def analyze_baseline(df):
         actual = df.loc['2020-08-01':'2020-08-31'].values
-        predicted = (df.loc['2018-08-01':'2018-08-31'].values 
-                     + df.loc['2019-08-01':'2019-08-31'].values 
-                     + df.loc['2021-08-01':'2021-08-31'].values) / 3
+        predicted = np.c_[
+            df.loc['2018-08-01':'2018-08-31'].values, 
+            df.loc['2019-08-01':'2019-08-31'].values,
+            df.loc['2021-08-01':'2021-08-31'].values
+        ]
+        predicted = np.median(predicted, axis=1)
         return actual - predicted
     return analyze_baseline,
 
 
 @app.cell
-def __(mo):
-    mo.md(r"""## Hourly Statistics""")
-    return
-
-
-@app.cell
 def __(analyze_baseline, nodes, np, pd, temperature):
-    # Creating lists
-    max_residuals_hourly = []
-    august_integral_hourly = []
-    firsthalf_hourly = []
-    secondhalf_hourly = []
+    # Initial lists for results
+    max_residuals = []
+    august_integral = []
+    firsthalf = []
+    secondhalf = []
 
-    for node_hourly in nodes:
-        # Calculating residual temperature for each node
-        hourly_residual = analyze_baseline(temperature[node_hourly])
-        midpoint_hourly = len(hourly_residual) // 2
-        # Location's peak temperature for august
-        max_hourly = hourly_residual.max()
-        max_residuals_hourly = np.append(max_residuals_hourly, max_hourly)
-        # Temperature integrals of august 1st, 2nd and overall 
-        integral_one_hourly = np.sum(hourly_residual[:midpoint_hourly]) / 24
-        firsthalf_hourly = np.append(firsthalf_hourly, integral_one_hourly)
-        integral_two_hourly = np.sum(hourly_residual[midpoint_hourly:]) / 24
-        secondhalf_hourly = np.append(secondhalf_hourly, integral_two_hourly)
-        hourly_integral = np.sum(hourly_residual) / 24
-        august_integral_hourly = np.append(august_integral_hourly, hourly_integral)
+    # Calculates residuals and integrals for each node
+    for node in nodes:
+        residual = analyze_baseline(temperature[node])
+        midpoint = len(residual) // 2
+        max = residual.max()
+        max_residuals = np.append(max_residuals, max)
 
-    hourly_report = pd.DataFrame(
+        integral_one = np.sum(residual[:midpoint]) / 24
+        firsthalf = np.append(firsthalf, integral_one)
+
+        integral_two = np.sum(residual[midpoint:]) / 24
+        secondhalf = np.append(secondhalf, integral_two)
+
+        integral = np.sum(residual) / 24
+        august_integral = np.append(august_integral, integral)
+
+    # DataFrame with results
+    report = pd.DataFrame(
         {
-            "Max Hourly Residuals": max_residuals_hourly,
-            "August Hourly Inegrals": august_integral_hourly,
-            "First Hourly 1/2 August": firsthalf_hourly,
-            "Second Hourly 1/2 August": secondhalf_hourly,
+            "Max Hourly Residuals": max_residuals,
+            "August Hourly Inegrals": august_integral,
+            "First Hourly 1/2 August": firsthalf,
+            "Second Hourly 1/2 August": secondhalf,
         },
         index=nodes,
     )
     return (
-        august_integral_hourly,
-        firsthalf_hourly,
-        hourly_integral,
-        hourly_report,
-        hourly_residual,
-        integral_one_hourly,
-        integral_two_hourly,
-        max_hourly,
-        max_residuals_hourly,
-        midpoint_hourly,
-        node_hourly,
-        secondhalf_hourly,
+        august_integral,
+        firsthalf,
+        integral,
+        integral_one,
+        integral_two,
+        max,
+        max_residuals,
+        midpoint,
+        node,
+        report,
+        residual,
+        secondhalf,
     )
 
 
 @app.cell
-def __(hourly_report, mo):
-    mo.ui.dataframe(hourly_report)
-    return
-
-
-@app.cell
-def __(mo):
-    mo.md(r"""## Daily Statistics""")
-    return
-
-
-@app.cell
-def __(analyze_baseline, nodes, np, pd, temperature):
-    max_residuals_daily = []
-    august_integral_daily = []
-    firsthalf_daily = []
-    secondhalf_daily = []
-
-    for node_daily in nodes:
-        daily_residual = analyze_baseline(temperature[node_daily].resample(rule="1D").mean())
-        midpoint_daily = len(daily_residual) // 2
-        max_daily = daily_residual.max()
-        max_residuals_daily = np.append(max_residuals_daily, max_daily)
-        integral_one_daily = np.sum(daily_residual[:midpoint_daily]) / 24
-        firsthalf_daily = np.append(firsthalf_daily, integral_one_daily)
-        integral_two_daily = np.sum(daily_residual[midpoint_daily:]) / 24
-        secondhalf_daily = np.append(secondhalf_daily, integral_two_daily)
-        daily_integral = np.sum(daily_residual) / 24
-        august_integral_daily = np.append(august_integral_daily, daily_integral)
-
-    daily_report = pd.DataFrame(
-        {
-            "Max Daily Residuals": max_residuals_daily,
-            "August Daily Inegrals": august_integral_daily,
-            "First Daily 1/2 August": firsthalf_daily,
-            "Second Daily 1/2 August": secondhalf_daily,
-        },
-        index=nodes,
-    )
-    return (
-        august_integral_daily,
-        daily_integral,
-        daily_report,
-        daily_residual,
-        firsthalf_daily,
-        integral_one_daily,
-        integral_two_daily,
-        max_daily,
-        max_residuals_daily,
-        midpoint_daily,
-        node_daily,
-        secondhalf_daily,
-    )
-
-
-@app.cell
-def __(daily_report, mo):
-    mo.ui.dataframe(daily_report)
+def __(mo, report):
+    mo.ui.dataframe(report.round(2))
     return
 
 

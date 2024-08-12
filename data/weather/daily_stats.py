@@ -55,7 +55,7 @@ def __(nodes_dropdown, pd, temperature):
 @app.cell
 def __():
     # Temperature Residual Function
-    def analyze_baseline(df, node):
+    def analyze_baseline(df):
         actual = df.loc['2020-08-01':'2020-08-31'].values
         predicted = (df.loc['2018-08-01':'2018-08-31'].values 
                      + df.loc['2019-08-01':'2019-08-31'].values 
@@ -76,14 +76,14 @@ def __(mo):
 
 
 @app.cell
-def __(analyze_baseline, location, mo, nodes_dropdown, plt):
-    daily_residual = analyze_baseline(location.resample(rule="1D").mean(), nodes_dropdown.value)
+def __(analyze_baseline, location, mo, plt):
+    daily_residual = analyze_baseline(location.resample(rule="1D").mean())
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
     plt.figure(figsize=(9, 5))
     plt.axvline(16, linestyle='-.',color = 'r', label = 'start of heatwave')
     plt.axvline(19, linestyle='-.',color = 'b', label = 'end of heatwave')
-    plt.axhline(0,0,daily_residual.shape[0],linestyle=':',label='Baseline')
+    # plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
     plt.plot(daily_residual)
     plt.xlabel('Days in August')
     plt.ylabel('Temperature (°C)')

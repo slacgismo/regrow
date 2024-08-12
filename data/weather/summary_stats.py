@@ -150,56 +150,5 @@ def __(daily_residual, hourly_residual, mo):
     return max_daily, max_hourly
 
 
-@app.cell
-def __(mo):
-    mo.md(r"""### Temperature Integrals""")
-    return
-
-
-@app.cell
-def __(daily_residual, hourly_residual, np):
-    # First half of August
-    first_daily_integral = np.sum(daily_residual[:15])
-    first_hourly_integral = np.sum(hourly_residual[:360]) / 24
-
-    # Second half of August
-    second_daily_integral = np.sum(daily_residual[15:])
-    second_hourly_integral = np.sum(hourly_residual[360:]) / 24
-    return (
-        first_daily_integral,
-        first_hourly_integral,
-        second_daily_integral,
-        second_hourly_integral,
-    )
-
-
-@app.cell
-def __(first_daily_integral, mo, second_daily_integral):
-    mo.hstack([(mo.md(f"Daily first half of August: {first_daily_integral:.2f} (C˚),")),mo.md(f"Daily second half of August: {second_daily_integral:.2f} (C˚)")],justify='start')
-    return
-
-
-@app.cell
-def __(first_hourly_integral, mo, second_hourly_integral):
-    mo.hstack([(mo.md(f"Hourly first half of August: {first_hourly_integral:.2f} (C˚),")),mo.md(f"Hourly second half of August: {second_hourly_integral:.2f} (C˚)")],justify='start')
-    return
-
-
-@app.cell
-def __(daily_residual, hourly_residual, mo, np):
-    # Final integral temperatures of August
-    daily_integral = np.sum(daily_residual)
-    hourly_integral = np.sum(hourly_residual) /24
-
-    mo.hstack([(mo.md(f"Final daily temperature integral: {daily_integral:.2f} (C˚),")),mo.md(f"Final hourly temperature integral: {hourly_integral:.2f} (C˚)")],justify='start')
-    return daily_integral, hourly_integral
-
-
-@app.cell
-def __(hourly_residual, plt):
-    plt.hist(hourly_residual)
-    return
-
-
 if __name__ == "__main__":
     app.run()

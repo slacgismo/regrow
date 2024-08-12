@@ -110,7 +110,7 @@ def __(get_location, pd, plt, temperature):
     data_view.index = data_view.index - pd.Timedelta(7, 'hr')
     data_view.plot()
     plt.xlabel('Year')
-    plt.ylabel('Average Temperature')
+    plt.ylabel('Average Temperature (C˚)')
     plt.title('Temperature (2018-2022)')
     time_series = plt.gcf()
     return data_view, time_series
@@ -145,7 +145,11 @@ def __(get_location, pd, temperature):
     # Adjusting timezone
     location = temperature[get_location()]
     location.index = location.index - pd.Timedelta(7, 'hr')
+    return location,
 
+
+@app.cell
+def __(location, pd):
     # Time slicing for August
     august1 = location.loc['2018-08-01':'2018-08-31']
     august2 = location.loc['2019-08-01':'2019-08-31']
@@ -156,7 +160,7 @@ def __(get_location, pd, temperature):
     august2 = pd.DataFrame(august2)
     august3 = pd.DataFrame(august3)
     august4 = pd.DataFrame(august4)
-    return august1, august2, august3, august4, location
+    return august1, august2, august3, august4
 
 
 @app.cell
@@ -175,7 +179,7 @@ def __(august1, august2, august3, august4, mo, plt):
     plt.plot(avg_daily_2021.values, label='2021')
 
     plt.xlabel('Date')
-    plt.ylabel('Average Temperature')
+    plt.ylabel('Average Temperature (C˚)')
     plt.title('Daily Average Temperature (August 2018-2022)')
     plt.legend()
     plt.gcf().autofmt_xdate() 

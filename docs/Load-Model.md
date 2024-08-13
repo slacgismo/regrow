@@ -6,6 +6,8 @@ The load model is generated for the nodes of the WECC model using the following 
 2. Map NSRDB weather data to county-level.
 3. Project 2018 load data to other years using weather sensitivity.
 
+This procedure gives us data that has the same errors relative to the temperature sensitivity model as the input year. This is a useful "quick and dirty" approximation of what the following years load might look like, and we will use this data to get the overall simulation up and running. We intend to revisit the question of how to estimate 2019–2022 (and especially 2020) load data in the future.
+
 The load model and weather data are delivered in the `geodata` format required by [Arras Energy's gridlabd pypower geodata object](https://docs.gridlabd.us/_page.html?owner=arras-energy&project=gridlabd&branch=develop&folder=/Module/Pypower&doc=/Module/Pypower/Geodata.md). The load and weather data are stored in the `data/geodata` folder for use by the simulation.
 
 ## Load Geodata

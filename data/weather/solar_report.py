@@ -42,6 +42,17 @@ def __(Path, __file__, pd):
 
 
 @app.cell
+def __(mo):
+    mo.md(
+        r"""
+        ## Plotting the Data
+        Full time series plot from years 2018-2022.
+        """
+    )
+    return
+
+
+@app.cell
 def __(mo, nodes, os, pd, utils):
     # Converting geohash list into a dropdown that includes county names
     get_location, set_location = mo.state(nodes[0])
@@ -72,14 +83,13 @@ def __(heat_map, mo, time_series):
 
 
 @app.cell
-def __(get_location, pd, plt, solar):
+def __(get_location, plt, solar):
     # Time series of solar data (2018-2022)
     data_view = solar[get_location()]
-    data_view.index = data_view.index - pd.Timedelta(8, 'hr')
     data_view.plot()
     plt.xlabel('Year')
-    plt.ylabel('Solar  Output (kWh/m2)')
-    plt.title('Solar Output (2018-2022)')
+    plt.ylabel('Solar Irradiance (W/m2)')
+    plt.title('Solar Irradiance (2018-2022)')
     time_series = plt.gcf()
     return data_view, time_series
 
@@ -91,7 +101,7 @@ def __(data_view, plt, sns):
     sns.heatmap(my_data_array, cmap="plasma")
     plt.xlabel('Days')
     plt.ylabel('Hours')
-    plt.title('Heat map of solar output (2018-2022)')
+    plt.title('Heat Map of Solar Irradiance (2018-2022)')
     heat_map = plt.gcf()
     return heat_map, my_data_array
 
@@ -127,8 +137,8 @@ def __(august1, august2, august3, august4, mo, plt):
     plt.plot(avg_daily_2021.values, label='2021')
 
     plt.xlabel('Days in August')
-    plt.ylabel('Solar Ouput (kWh/m2)')
-    plt.title('Daily Average Solar Production (2018-2022)')
+    plt.ylabel('Solar Irradiance (W/m2)')
+    plt.title('Daily Average Solar Irradiance (2018-2022)')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
@@ -147,6 +157,12 @@ def __(mo):
 
 
 @app.cell
+def __(mo):
+    mo.md(r"""The negative dip in solar irradiance after the heat wave event is evident to smoke coverage following the occurance of wild fires across California in 2020.""")
+    return
+
+
+@app.cell
 def __(analyze_baseline, location, mo, plt):
     hourly_residual = analyze_baseline(location)
 
@@ -157,8 +173,8 @@ def __(analyze_baseline, location, mo, plt):
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
     plt.plot(hourly_residual)
     plt.xlabel('Hours in August')
-    plt.ylabel('Solar  Output (kWh/m2)')
-    plt.title('Residual Solar Output')
+    plt.ylabel('Solar Irradiance (W/m2)')
+    plt.title('Residual Solar Irradiance')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
@@ -168,13 +184,13 @@ def __(analyze_baseline, location, mo, plt):
 @app.cell
 def __(hourly_residual, mo):
     max_hourly = hourly_residual.max() 
-    mo.md(f"Max residual temperature: {max_hourly:.2f} (C˚)")
+    mo.md(f"Max Residual Solar Irradiance: {max_hourly:.2f} (W/m2)")
     return max_hourly,
 
 
 @app.cell
 def __(hourly_integral, mo):
-    mo.md(f"Overall temperature integral of August: {hourly_integral:.2f} (C˚)")
+    mo.md(f"Integral of August: {hourly_integral:.2f} (W/m2)")
     return
 
 
@@ -189,7 +205,7 @@ def __(hourly_residual, np):
 
 @app.cell
 def __(first_integral, mo, second_integral):
-    mo.hstack([mo.md(f"First half of August: {first_integral:.2f} (C˚),"), mo.md(f"Second half of August: {second_integral:.2f} (C˚)")], justify='start')
+    mo.hstack([mo.md(f"First half of August: {first_integral:.2f} (W/m2),"), mo.md(f"Second half of August: {second_integral:.2f} (W/m2)")], justify='start')
     return
 
 
@@ -204,8 +220,8 @@ def __(analyze_baseline, location, mo, plt):
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
     plt.plot(daily_residual)
     plt.xlabel('Days in August')
-    plt.ylabel('Temperature (°C)')
-    plt.title('Daily Residual Temperature')
+    plt.ylabel('Solar Irradiance (W/m2)')
+    plt.title('Daily Residual Solar Irradiance')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())

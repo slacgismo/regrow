@@ -36,9 +36,19 @@ def __(Path, __file__, pd):
     # Loading the Data
     _fp = Path(__file__).parent / 'temperature.csv'
     temperature = pd.read_csv(_fp, index_col=0, parse_dates=[0])
+    return temperature,
+
+
+@app.cell
+def __(pd, temperature):
     temperature.index = temperature.index - pd.Timedelta(8, 'hr')
+    return
+
+
+@app.cell
+def __(temperature):
     nodes = temperature.columns.tolist()
-    return nodes, temperature
+    return nodes,
 
 
 @app.cell
@@ -79,9 +89,8 @@ def __(mo, nodes, os, pd, utils):
 
 
 @app.cell
-def __(location_ui, pd, temperature):
+def __(location_ui, temperature):
     location = temperature[location_ui.value]
-    location.index = location.index - pd.Timedelta(8, 'hr')
     return location,
 
 
@@ -92,10 +101,9 @@ def __(heat_map, mo, time_series):
 
 
 @app.cell
-def __(get_location, pd, plt, temperature):
+def __(get_location, plt, temperature):
     # Time Series of Temperatures (2018-2022)
     data_view = temperature[get_location()]
-    data_view.index = data_view.index - pd.Timedelta(8, 'hr')
     data_view.plot()
     plt.xlabel('Year')
     plt.ylabel('Average Temperature (C˚)')
@@ -232,25 +240,6 @@ def __(hourly_integral, mo):
 def __(first_integral, mo, second_integral):
     mo.hstack([mo.md(f"First half of August: {first_integral:.2f} (C˚),"), mo.md(f"Second half of August: {second_integral:.2f} (C˚)")], justify='start')
     return
-
-
-@app.cell
-def __(analyze_baseline, location, mo, plt):
-    daily_residual = analyze_baseline(location.resample(rule="1D").mean())
-
-    # August 16 through 19, excessive heat was forecasted consistently for California.
-    plt.figure(figsize=(9, 5))
-    plt.axvline(16, linestyle='-.',color = 'r', label = 'start of heatwave')
-    plt.axvline(19, linestyle='-.',color = 'b', label = 'end of heatwave')
-    plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
-    plt.plot(daily_residual)
-    plt.xlabel('Days in August')
-    plt.ylabel('Temperature (°C)')
-    plt.title('Daily Residual Temperature')
-    plt.legend()
-    plt.gcf().autofmt_xdate() 
-    mo.mpl.interactive(plt.gcf())
-    return daily_residual,
 
 
 @app.cell

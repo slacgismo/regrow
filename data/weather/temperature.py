@@ -40,6 +40,12 @@ def __(Path, __file__, pd):
 
 
 @app.cell
+def __(pd, temperature):
+    temperature.index = temperature.index - pd.Timedelta(8, 'hr')
+    return
+
+
+@app.cell
 def __(mo):
     mo.md(r"""## Viewing nodes on Google Earth:""")
     return
@@ -104,10 +110,9 @@ def __(heat_map, mo, time_series):
 
 
 @app.cell
-def __(get_location, pd, plt, temperature):
+def __(get_location, plt, temperature):
     # Time Series of Temperatures (2018-2022)
     data_view = temperature[get_location()]
-    data_view.index = data_view.index - pd.Timedelta(7, 'hr')
     data_view.plot()
     plt.xlabel('Year')
     plt.ylabel('Average Temperature (C˚)')
@@ -141,10 +146,9 @@ def __(mo):
 
 
 @app.cell
-def __(get_location, pd, temperature):
+def __(get_location, temperature):
     # Adjusting timezone
     location = temperature[get_location()]
-    location.index = location.index - pd.Timedelta(7, 'hr')
     return location,
 
 

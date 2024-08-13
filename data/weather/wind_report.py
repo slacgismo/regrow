@@ -32,21 +32,23 @@ def __():
 
 
 @app.cell
-def __(Path, __file__, mo):
-    # Google Earth Snapshot
-    _img = (Path(__file__).parent / 'wecc_google_earth.png')
-    mo.image(src=f"{_img}")
-    return
-
-
-@app.cell
 def __(Path, __file__, pd):
     # Loading the Data
     _fp = Path(__file__).parent / 'wind.csv'
     wind = pd.read_csv(_fp, index_col=0, parse_dates=[0])
+    return wind,
+
+
+@app.cell
+def __(pd, wind):
     wind.index = wind.index - pd.Timedelta(8, 'hr')
+    return
+
+
+@app.cell
+def __(wind):
     nodes = wind.columns.tolist()
-    return nodes, wind
+    return nodes,
 
 
 @app.cell
@@ -79,9 +81,8 @@ def __(mo, nodes, os, pd, utils):
 
 
 @app.cell
-def __(location_ui, pd, wind):
+def __(location_ui, wind):
     location = wind[location_ui.value]
-    location.index = location.index - pd.Timedelta(8, 'hr')
     return location,
 
 
@@ -92,10 +93,9 @@ def __(heat_map, mo, time_series):
 
 
 @app.cell
-def __(get_location, pd, plt, wind):
+def __(get_location, plt, wind):
     # Time Series of Temperatures (2018-2022)
     data_view = wind[get_location()]
-    data_view.index = data_view.index - pd.Timedelta(8, 'hr')
     data_view.plot()
     plt.xlabel('Year')
     plt.ylabel('Average Wind Speed (m/s)')
@@ -148,7 +148,7 @@ def __(august1, august2, august3, august4, mo, plt):
 
     plt.xlabel('Date')
     plt.ylabel('Average Wind Speed (m/s)')
-    plt.title('Daily Average Speed (August 2018-2022)')
+    plt.title('Daily Average Wind Speed (August 2018-2022)')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
@@ -179,11 +179,6 @@ def __(np):
         predicted = np.median(predicted, axis=1)
         return actual - predicted
     return analyze_baseline,
-
-
-@app.cell
-def __():
-    return
 
 
 @app.cell
@@ -244,8 +239,8 @@ def __(analyze_baseline, location, mo, plt):
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
     plt.plot(daily_residual)
     plt.xlabel('Days in August')
-    plt.ylabel('Temperature (°C)')
-    plt.title('Daily Residual Temperature')
+    plt.ylabel('Wind Speed (m/s)')
+    plt.title('Daily Residual Wind Speed')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())

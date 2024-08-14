@@ -123,21 +123,24 @@ def __(location, pd):
     august2 = location.loc['2019-08-01':'2019-08-31']
     august3 = location.loc['2020-08-01':'2020-08-31']
     august4 = location.loc['2021-08-01':'2021-08-31']
+    august5 = location.loc['2022-08-01':'2022-08-31']
 
     august1 = pd.DataFrame(august1)
     august2 = pd.DataFrame(august2)
     august3 = pd.DataFrame(august3)
     august4 = pd.DataFrame(august4)
-    return august1, august2, august3, august4
+    august5 = pd.DataFrame(august5)
+    return august1, august2, august3, august4, august5
 
 
 @app.cell
-def __(august1, august2, august3, august4, mo, plt):
+def __(august1, august2, august3, august4, august5, mo, plt):
     # Calculated average daily temperatures
     avg_daily_2018 = august1.resample(rule="1D").mean()
     avg_daily_2019 = august2.resample(rule="1D").mean()
     avg_daily_2020 = august3.resample(rule="1D").mean()
     avg_daily_2021 = august4.resample(rule="1D").mean()
+    avg_daily_2022 = august5.resample(rule="1D").mean()
 
     # Plotting the data
     plt.figure(figsize=(9, 5))
@@ -145,6 +148,7 @@ def __(august1, august2, august3, august4, mo, plt):
     plt.plot(avg_daily_2019.values, label='2019')
     plt.plot(avg_daily_2020.values, label='2020', ls=":")
     plt.plot(avg_daily_2021.values, label='2021')
+    plt.plot(avg_daily_2022.values, label='2022')
 
     plt.xlabel('Date')
     plt.ylabel('Average Wind Speed (m/s)')
@@ -152,7 +156,13 @@ def __(august1, august2, august3, august4, mo, plt):
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())
-    return avg_daily_2018, avg_daily_2019, avg_daily_2020, avg_daily_2021
+    return (
+        avg_daily_2018,
+        avg_daily_2019,
+        avg_daily_2020,
+        avg_daily_2021,
+        avg_daily_2022,
+    )
 
 
 @app.cell
@@ -174,7 +184,8 @@ def __(np):
         predicted = np.c_[
             df.loc['2018-08-01':'2018-08-31'].values, 
             df.loc['2019-08-01':'2019-08-31'].values,
-            df.loc['2021-08-01':'2021-08-31'].values
+            df.loc['2021-08-01':'2021-08-31'].values,
+            df.loc['2022-08-01':'2022-08-31'].values
         ]
         predicted = np.median(predicted, axis=1)
         return actual - predicted

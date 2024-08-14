@@ -2,6 +2,8 @@ To update the GLM file, run the Makefile.
 
     make
 
+# Description
+
 # Validation
 
 To review the load model, run the following marimo app:
@@ -10,6 +12,10 @@ To review the load model, run the following marimo app:
 
 Bob is the subject matter expert who can tell whether your solution is any good
 just by looking at it.
+
+# Notes
+
+The `nodes.csv` contains a list of all the WECC 240 bus model locations with duplicate locations removed (see `nodes.py` for node reduction methodology).
 
 # Data Sources
 1. `powerplants.csv`: https://hifld-geoplatform.hub.arcgis.com/datasets/9dd630378fcf439999094a56c352670d_0/explore

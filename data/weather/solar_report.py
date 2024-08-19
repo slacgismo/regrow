@@ -28,7 +28,27 @@ def __():
     import tornado as tn
     sys.path.insert(0,"..")
     import utils
-    return Path, mdates, mo, np, os, pd, plt, sns, sys, tn, utils
+    import geopandas
+    import geodatasets
+    from geodatasets import get_path
+    from matplotlib import colormaps
+    return (
+        Path,
+        colormaps,
+        geodatasets,
+        geopandas,
+        get_path,
+        mdates,
+        mo,
+        np,
+        os,
+        pd,
+        plt,
+        sns,
+        sys,
+        tn,
+        utils,
+    )
 
 
 @app.cell
@@ -36,9 +56,16 @@ def __(Path, __file__, pd):
     # Loading the Data
     _fp = Path(__file__).parent / 'solar.csv'
     solar = pd.read_csv(_fp, index_col=0, parse_dates=[0])
+
+    # Adjusting for time zone differences (shifting by 8 hours)
     solar.index = solar.index - pd.Timedelta(8, 'hr')
+    return solar,
+
+
+@app.cell
+def __(solar):
     nodes = solar.columns.tolist()
-    return nodes, solar
+    return nodes,
 
 
 @app.cell
@@ -255,12 +282,17 @@ def __(np):
 
 
 @app.cell
-def __(analyze_baseline, nodes, np, pd, solar):
+def __(analyze_baseline, nodes, np, os, pd, solar, utils):
     # Initial lists for results
     max_residuals = []
     august_integral = []
     firsthalf = []
     secondhalf = []
+
+    # County data connected to correlating node
+    _counties = pd.read_csv(os.path.join("..","counties.csv"),index_col="geocode")
+    node_county_map = {node: _counties.loc[utils.nearest(node, _counties.index)].county for node in nodes}
+    report_index = [f"{node} ({node_county_map[node]})" for node in nodes]
 
     # Calculates residuals and integrals for each node
     for node in nodes:
@@ -286,7 +318,7 @@ def __(analyze_baseline, nodes, np, pd, solar):
             "First 1/2 August": firsthalf,
             "Second 1/2 August": secondhalf,
         },
-        index=nodes,
+        index=report_index,
     )
     return (
         august_integral,
@@ -298,7 +330,9 @@ def __(analyze_baseline, nodes, np, pd, solar):
         max_residuals,
         midpoint,
         node,
+        node_county_map,
         report,
+        report_index,
         residual,
         secondhalf,
     )
@@ -319,6 +353,325 @@ def __(mo):
 def __(mo, report):
     mo.ui.dataframe(report.round(2))
     return
+
+
+@app.cell
+def __(mo):
+    mo.md(r"""## Locational Plotting""")
+    return
+
+
+@app.cell
+def __(geocode, nodes, pd):
+    # Manipulating data from nodes to latitude/longitude
+    latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
+    for geo_node in nodes:
+        latlong.loc[geo_node] = geocode(geo_node)
+    return geo_node, latlong
+
+
+@app.cell
+def __(geopandas, latlong):
+    # Geopandas library for plotting lat long to geometry shap
+    gdf = geopandas.GeoDataFrame(
+        latlong, geometry=geopandas.points_from_xy(latlong.lon, latlong.lat), crs="EPSG: 4326"
+    )
+    return gdf,
+
+
+@app.cell
+def __(geopandas):
+    # File containing counties and state boundaries, update to only state, maybe check geopandas
+    map = geopandas.read_file("c_05mr24.shp")
+    print(map)
+    return map,
+
+
+@app.cell
+def __(map):
+    map.plot()
+    return
+
+
+@app.cell
+def __(np):
+    def removeRepeats(arr):
+        newArr = []
+        addVal = True
+        for value in arr:
+            for n in newArr:
+                if value == n:
+                    addVal = False
+            if addVal:
+                newArr = np.append(newArr,value)
+            addVal = True
+        return(newArr)
+    return removeRepeats,
+
+
+@app.cell
+def __(map, removeRepeats):
+    states = removeRepeats(map.STATE)
+    return states,
+
+
+@app.cell
+def __(map):
+    # Dataframe excluding states to narrow geographical display
+    nonwestcoast = ['ME', 'GA', 'AS', 'PR', 'VI', 'CT', 'MA', 'MD', 'VT', 'NH', 'NY', 'PA', 'RI', 'VA','WV', 'NJ', 'KY', 'MI', 'MS', 'IA', 'IL', 'SD', 'KS', 'IN', 'NC', 'OH',
+     'SC', 'TN', 'AL', 'NE', 'ND', 'LA', 'AR', 'MN', 'MO', 'WI', 'FL', 'TX',
+     'OK','DC', 'DE', 'HI', 'PW', 'MH', 'MP', 'GU', 'FM', 'AK']
+    us49 = map
+    for i in nonwestcoast:
+        us49 = us49[us49.STATE != i]
+    return i, nonwestcoast, us49
+
+
+@app.cell
+def __(gdf, geopandas, get_path):
+    world = geopandas.read_file(get_path("naturalearth.land"))
+
+    # Creating frame for West Coast plots, outline of US, location of nodes
+    ax = world.clip([-130, 30, -102, 51]).plot(color="white", edgecolor="black")
+    gdf.plot(ax=ax)
+    return ax, world
+
+
+@app.cell
+def __(us49):
+    # County lines
+    us49.boundary.plot()
+    return
+
+
+@app.cell
+def __():
+    # # Combining both
+    # world = geopandas.read_file(get_path("naturalearth.land"))
+
+    # # Creating frame for West Coast plots
+    # # ax = world.clip([-130, 30, -102, 51]).plot(color="white", edgecolor="black")
+    # f, ax = plt.subplots()
+
+    # us49.boundary.plot(ax=ax,color="grey")
+    # gdf.plot(ax=ax,color='blue')
+    # plt.show()
+    return
+
+
+@app.cell
+def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
+    #
+    # Geographic location encoding/decoding
+    #
+    _cache = {}
+
+    def _decode(geohash):
+        """
+        Decode the geohash to its exact values, including the error
+        margins of the result.  Returns four float values: latitude,
+        longitude, the plus/minus error for latitude (as a positive
+        number) and the plus/minus error for longitude (as a positive
+        number).
+        """
+        __base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
+        __decodemap = { }
+        for i in range(len(__base32)):
+            __decodemap[__base32[i]] = i
+        del i
+        lat_interval, lon_interval = (-90.0, 90.0), (-180.0, 180.0)
+        lat_err, lon_err = 90.0, 180.0
+        is_even = True
+        for c in geohash:
+            cd = __decodemap[c]
+            for mask in [16, 8, 4, 2, 1]:
+                if is_even: # adds longitude info
+                    lon_err /= 2
+                    if cd & mask:
+                        lon_interval = ((lon_interval[0]+lon_interval[1])/2, lon_interval[1])
+                    else:
+                        lon_interval = (lon_interval[0], (lon_interval[0]+lon_interval[1])/2)
+                else:      # adds latitude info
+                    lat_err /= 2
+                    if cd & mask:
+                        lat_interval = ((lat_interval[0]+lat_interval[1])/2, lat_interval[1])
+                    else:
+                        lat_interval = (lat_interval[0], (lat_interval[0]+lat_interval[1])/2)
+                is_even = not is_even
+        lat = (lat_interval[0] + lat_interval[1]) / 2
+        lon = (lon_interval[0] + lon_interval[1]) / 2
+        return lat, lon, lat_err, lon_err
+
+    def geocode(geohash):
+        """
+        Decode geohash, returning two strings with latitude and longitude
+        containing only relevant digits and with trailing zeroes removed.
+        """
+        if geohash in _cache:
+            return _cache[geohash][0],_cache[geohash][1]
+        lati, long, lat_err, lon_err = _decode(geohash)
+        from math import log10
+        # Format to the number of decimals that are known
+        # lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lati)
+        # lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, long)
+        # if '.' in lats: lats = lats.rstrip('0')
+        # if '.' in lons: lons = lons.rstrip('0')
+        _cache[geohash] = (float(lati), float(long))
+        return float(lati), float(long)
+        # return lat, lon
+
+    def geohash(latitude, longitude, precision=6):
+        """Encode a position given in float arguments latitude, longitude to
+        a geohash which will have the character count precision.
+        """
+        from math import log10
+        __base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
+        __decodemap = { }
+        for i in range(len(__base32)):
+            __decodemap[__base32[i]] = i
+        del i
+        lat_interval, lon_interval = (-90.0, 90.0), (-180.0, 180.0)
+        geohash = []
+        bits = [ 16, 8, 4, 2, 1 ]
+        bit = 0
+        ch = 0
+        even = True
+        while len(geohash) < precision:
+            if even:
+                mid = (lon_interval[0] + lon_interval[1]) / 2
+                if longitude > mid:
+                    ch |= bits[bit]
+                    lon_interval = (mid, lon_interval[1])
+                else:
+                    lon_interval = (lon_interval[0], mid)
+            else:
+                mid = (lat_interval[0] + lat_interval[1]) / 2
+                if latitude > mid:
+                    ch |= bits[bit]
+                    lat_interval = (mid, lat_interval[1])
+                else:
+                    lat_interval = (lat_interval[0], mid)
+            even = not even
+            if bit < 4:
+                bit += 1
+            else:
+                geohash += __base32[ch]
+                bit = 0
+                ch = 0
+        return ''.join(geohash)
+
+    def distance(a,b):
+        """Get the distance between to geohashes"""
+        return math.sqrt(distance2(a,b))
+
+    def distance2(a,b):
+        """Get the distance squared between two geohashes"""
+        x0,y0 = geocode(a)
+        x1,y1 = geocode(b)
+        dx,dy = x0-x1,y0-y1
+        return dx*dx+dy*dy
+
+    def nearest(hash,hashlist,withdist=False):
+        """Find the nearest geohash in a list of geohashes"""
+        if len(hashlist) > 0:
+            dist = sorted([(x,distance2(hash,x)) for x in hashlist],key=lambda y:y[1])
+            return (dist[0][0],distance(hash,dist[0][0])) if withdist else dist[0][0]
+        else:
+            return (None,float('nan')) if withdist else None
+
+    #
+    # Calendar data
+    #
+    holidays = []
+    def is_workday(date,date_format="%Y-%m-%d %H:%M:%S"):
+        global holidays
+        if len(holidays) == 0:
+            holidays = pd.read_csv("holidays.csv",
+                index_col=[0],
+                parse_dates=[0],
+                date_format="%Y-%m-%d").sort_index()
+        if type(date) is str:
+            date = dt.datetime.strptime(date,date_format)
+        if date.year < holidays.index.min().year or date.year > holidays.index.max().year:
+            warning(f"is_workday(date='{date}',date_format='{date_format}') date is not in range of known holidays")
+        return date.weekday()<5 and date not in holidays.index
+
+    #
+    # Weather data
+    #
+    def nsrdb_credentials(path=os.path.join(os.environ["HOME"],".nsrdb","credentials.json")):
+        try:
+            with open(path,"r") as fh:
+                return list(json.load(fh).items())[0]
+        except Exception as err:
+            error(E_INVAL,f"~/.nsrdb/credentials.json read failed - {err}")
+
+
+    def nsrdb_weather(location,year,
+                      interval=30,
+                      attributes={"solar[W/m^2]" : "ghi",
+                                  "temperature[degC]" : "air_temperature",
+                                  "wind[m/s]" : "wind_speed",
+                                  'dhi[W/m^2]': 'dhi',
+                                  'dni[W/m^2]': 'dni',
+                                  'winddirection[deg]': 'wind_direction',
+                                  'dewpoint[degC]': 'dew_point',
+                                  'relhumidity[pct]': 'relative_humidity',
+                                  'water[mm]': 'total_precipitable_water'
+                                  }):
+        """
+        Pull NSRDB data for a particular year and location. 
+
+        Parameters
+        ----------
+        location: Str.
+            Geohash of a particular location that will be decoded to get lat-long
+            coordinates.
+        year: Int.
+            Year of data we want to pull data for.
+        interval: Int.
+            Frequency of data in minutes. Default 5
+        attributes: Dictionary of string keys/values.
+            Desired data fields to return as values, and final column names as keys.
+            See pvlib documentaton for the full list of fields in NSRDB:
+            https://pvlib-python.readthedocs.io/en/v0.9.0/generated/pvlib.iotools.get_psm3.html
+
+        Returns
+        -------
+        Pandas dataframe containing 'attribute' fields, with UTC ISO format
+        datetime index.
+        """
+        lat,lon = geocode(location)
+        leap = (year%4 == 0)
+        email, api_key = nsrdb_credentials()
+        # Pull from API and save locally
+        psm3, _ = pvlib_psm3.get_psm3(lat, lon,
+                                      api_key,
+                                      email, year,
+                                      attributes=attributes.values(),
+                                      map_variables=True,
+                                      interval=interval,
+                                      leap_day=leap,
+                                      timeout=60)
+        cols_to_remove = ['Year', 'Month', 'Day', 'Hour', 'Minute']
+        psm3 = psm3.drop(columns=cols_to_remove)
+        psm3.index = pd.to_datetime(psm3.index)
+        psm3.rename(columns={"key_0": "datetime",
+                             **{v: k for k, v in attributes.items()}},
+                    inplace=True)
+        psm3 = psm3.round(3)  
+        return psm3.sort_index()
+    return (
+        distance,
+        distance2,
+        geocode,
+        geohash,
+        holidays,
+        is_workday,
+        nearest,
+        nsrdb_credentials,
+        nsrdb_weather,
+    )
 
 
 if __name__ == "__main__":

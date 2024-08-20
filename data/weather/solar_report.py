@@ -298,8 +298,8 @@ def __(analyze_baseline, nodes, np, os, pd, solar, utils):
     for node in nodes:
         residual = analyze_baseline(solar[node])
         midpoint = len(residual) // 2
-        max = residual.max()
-        max_residuals = np.append(max_residuals, max)
+        _max = residual.max()
+        max_residuals = np.append(max_residuals, _max)
 
         integral_one = np.sum(residual[:midpoint]) / 24
         firsthalf = np.append(firsthalf, integral_one)
@@ -326,7 +326,6 @@ def __(analyze_baseline, nodes, np, os, pd, solar, utils):
         integral,
         integral_one,
         integral_two,
-        max,
         max_residuals,
         midpoint,
         node,
@@ -512,10 +511,10 @@ def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
         lati, long, lat_err, lon_err = _decode(geohash)
         from math import log10
         # Format to the number of decimals that are known
-        # lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lati)
-        # lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, long)
-        # if '.' in lats: lats = lats.rstrip('0')
-        # if '.' in lons: lons = lons.rstrip('0')
+        lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lati)
+        lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, long)
+        if '.' in lats: lats = lats.rstrip('0')
+        if '.' in lons: lons = lons.rstrip('0')
         _cache[geohash] = (float(lati), float(long))
         return float(lati), float(long)
         # return lat, lon

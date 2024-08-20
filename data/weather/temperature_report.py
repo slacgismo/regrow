@@ -308,8 +308,8 @@ def __(analyze_baseline, nodes, np, os, pd, temperature, utils):
     for node in nodes:
         residual = analyze_baseline(temperature[node])
         midpoint = len(residual) // 2
-        max = residual.max()
-        max_residuals = np.append(max_residuals, max)
+        _max = residual.max()
+        max_residuals = np.append(max_residuals, _max)
 
         integral_one = np.sum(residual[:midpoint]) / 24
         firsthalf = np.append(firsthalf, integral_one)
@@ -336,7 +336,6 @@ def __(analyze_baseline, nodes, np, os, pd, temperature, utils):
         integral,
         integral_one,
         integral_two,
-        max,
         max_residuals,
         midpoint,
         node,
@@ -428,35 +427,35 @@ def __(map):
 
 
 @app.cell
-def __(gdf, geopandas, get_path):
-    world = geopandas.read_file(get_path("naturalearth.land"))
+def __():
+    # world = geopandas.read_file(get_path("naturalearth.land"))
 
-    # Creating frame for West Coast plots, outline of US, location of nodes
-    ax = world.clip([-130, 30, -102, 51]).plot(color="white", edgecolor="black")
-    gdf.plot(ax=ax)
-    return ax, world
-
-
-@app.cell
-def __(us49):
-    # County lines
-    us49.boundary.plot()
+    # # Creating frame for West Coast plots, outline of US, location of nodes
+    # ax = world.clip([-130, 30, -102, 51]).plot(color="white", edgecolor="black")
+    # gdf.plot(ax=ax)
     return
 
 
 @app.cell
 def __():
-    # # Combining both
-    # world = geopandas.read_file(get_path("naturalearth.land"))
-
-    # # Creating frame for West Coast plots
-    # # ax = world.clip([-130, 30, -102, 51]).plot(color="white", edgecolor="black")
-    # f, ax = plt.subplots()
-
-    # us49.boundary.plot(ax=ax,color="grey")
-    # gdf.plot(ax=ax,color='blue')
-    # plt.show()
+    # # County lines
+    # us49.boundary.plot()
     return
+
+
+@app.cell
+def __(gdf, geopandas, get_path, plt, us49):
+    # Combining both
+    world = geopandas.read_file(get_path("naturalearth.land"))
+
+    # Creating frame for West Coast plots
+    # ax = world.clip([-130, 30, -102, 51]).plot(color="white", edgecolor="black")
+    f, ax = plt.subplots()
+
+    us49.boundary.plot(ax=ax,color="grey")
+    gdf.plot(ax=ax,color='blue')
+    plt.show()
+    return ax, f, world
 
 
 @app.cell
@@ -509,15 +508,15 @@ def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
         """
         if geohash in _cache:
             return _cache[geohash][0],_cache[geohash][1]
-        lati, long, lat_err, lon_err = _decode(geohash)
+        lat, lon, lat_err, lon_err = _decode(geohash)
         from math import log10
         # Format to the number of decimals that are known
-        # lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lati)
-        # lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, long)
-        # if '.' in lats: lats = lats.rstrip('0')
-        # if '.' in lons: lons = lons.rstrip('0')
-        _cache[geohash] = (float(lati), float(long))
-        return float(lati), float(long)
+        lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lat)
+        lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, lon)
+        if '.' in lats: lats = lats.rstrip('0')
+        if '.' in lons: lons = lons.rstrip('0')
+        _cache[geohash] = (float(lats), float(lons))
+        return float(lats), float(lons)
         # return lat, lon
 
     def geohash(latitude, longitude, precision=6):

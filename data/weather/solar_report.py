@@ -205,8 +205,8 @@ def __(analyze_baseline, location, mo, plt):
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
     plt.figure(figsize=(9, 5))
-    plt.axvline(16 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
-    plt.axvline(19 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axvline(14 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(16 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
     plt.plot(hourly_residual)
     plt.xlabel('Hours in August')
@@ -252,8 +252,8 @@ def __(analyze_baseline, location, mo, plt):
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
     plt.figure(figsize=(9, 5))
-    plt.axvline(16, linestyle='-.',color = 'r', label = 'start of heatwave')
-    plt.axvline(19, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axvline(14, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(16, linestyle='-.',color = 'b', label = 'end of heatwave')
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
     plt.plot(daily_residual)
     plt.xlabel('Days in August')
@@ -276,7 +276,7 @@ def __(np):
             df.loc['2021-08-01':'2021-08-31'].values,
             df.loc['2022-08-01':'2022-08-31'].values
         ]
-        predicted = np.median(predicted, axis=1)
+        predicted = np.mean(predicted, axis=1)
         return actual - predicted
     return analyze_baseline,
 

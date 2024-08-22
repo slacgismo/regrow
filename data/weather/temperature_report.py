@@ -222,7 +222,7 @@ def __(np):
             df.loc['2021-08-01':'2021-08-31'].values,
             df.loc['2022-08-01':'2022-08-31'].values
         ]
-        predicted = np.median(predicted, axis=1)
+        predicted = np.mean(predicted, axis=1)
         return actual - predicted
     return analyze_baseline,
 
@@ -233,8 +233,8 @@ def __(analyze_baseline, location, mo, plt):
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
     plt.figure(figsize=(9, 5))
-    plt.axvline(16 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
-    plt.axvline(19 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axvline(14 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
+    plt.axvline(16 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
     plt.plot(hourly_residual)
     plt.xlabel('Hours in August')
@@ -292,7 +292,14 @@ def __(mo):
 
 
 @app.cell
-def __(analyze_baseline, nodes, np, os, pd, temperature, utils):
+def __(latlong):
+    latlong
+    print(latlong["lat"])
+    return
+
+
+@app.cell
+def __(analyze_baseline, latlong, nodes, np, os, pd, temperature, utils):
     # Initial lists for results
     max_residuals = []
     august_integral = []
@@ -323,13 +330,17 @@ def __(analyze_baseline, nodes, np, os, pd, temperature, utils):
     # DataFrame with results
     report = pd.DataFrame(
         {
+            "Latitude": latlong["lat"],
+            "Longitude": latlong["lon"],
             "Max Hourly Residuals": max_residuals,
             "August Hourly Inegrals": august_integral,
             "First Hourly 1/2 August": firsthalf,
-            "Second Hourly 1/2 August": secondhalf,
+            "Second Hourly 1/2 August": secondhalf
         },
-        index=report_index,
+        index=report_index
     )
+    print(report)
+    print(report.dtypes)
     return (
         august_integral,
         firsthalf,
@@ -365,7 +376,17 @@ def __(geocode, nodes, pd):
     latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
     for geo_node in nodes:
         latlong.loc[geo_node] = geocode(geo_node)
+    # print(latlong.dtypes)
+
+    latlong["lat"] = latlong["lat"].astype("float64")
+    latlong["lon"] = latlong["lon"].astype("float64")
     return geo_node, latlong
+
+
+@app.cell
+def __(latlong):
+    latlong["lat"].dtype
+    return
 
 
 @app.cell
@@ -444,6 +465,12 @@ def __():
 
 
 @app.cell
+def __(geodatasets, geopandas):
+    chicago = geopandas.read_file(geodatasets.get_path("geoda.chicago_commpop"))
+    return chicago,
+
+
+@app.cell
 def __(gdf, geopandas, get_path, plt, us49):
     # Combining both
     world = geopandas.read_file(get_path("naturalearth.land"))
@@ -515,9 +542,8 @@ def __(E_INVAL, dt, error, json, math, os, pd, pvlib_psm3, warning):
         lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, lon)
         if '.' in lats: lats = lats.rstrip('0')
         if '.' in lons: lons = lons.rstrip('0')
-        _cache[geohash] = (float(lats), float(lons))
-        return float(lats), float(lons)
-        # return lat, lon
+        _cache[geohash] = (lats, lons)
+        return lats, lons
 
     def geohash(latitude, longitude, precision=6):
         """Encode a position given in float arguments latitude, longitude to

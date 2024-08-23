@@ -465,12 +465,6 @@ def __():
 
 
 @app.cell
-def __(geodatasets, geopandas):
-    chicago = geopandas.read_file(geodatasets.get_path("geoda.chicago_commpop"))
-    return chicago,
-
-
-@app.cell
 def __(gdf, geopandas, get_path, plt, us49):
     # Combining both
     world = geopandas.read_file(get_path("naturalearth.land"))

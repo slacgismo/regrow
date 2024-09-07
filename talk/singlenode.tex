@@ -94,7 +94,7 @@ REGROW: Renewable Energy Generation Risk from Outlier Weather
 \textbf{Giray Ogut}\inst{1} \and 
 Bennet Meyers\inst{2} \and
 David Chassin\inst{2} \and
-Kirsten Perry\inst{3} \and
+Kirsten Perry\inst{3} \and \\
 Stephen Boyd\inst{1} \and
 }
 
@@ -115,19 +115,21 @@ Stephen Boyd\inst{1} \and
 \begin{frame}{Single-node model}
 \BIT
 \item \textbf{setting:}  \\
-\hspace{12mm} $-$ single node with load, storage, renewable \& fossil generation\\
-\hspace{12mm} $-$ $1$-year long data sampled hourly (\ie \ $8760$ points)\\
-\hspace{12mm} $-$ load and renewable generation are given\\
-\hspace{12mm} $-$ storage, curtailed renewable \& fossil generation are variables\\
-\item \textbf{prescient model:} \\
-\hspace{12mm} $-$ we know exactly the supply and demand beforehand\\
-\hspace{12mm} $-$ we want to minimize fossil generation and external borrowings\\
-\hspace{12mm} $-$ we also want to ensure reliability (supply $=$ demand)\\
-\hspace{12mm} $-$ this is a single optimization problem\\
+\hspace{12mm} $-$ node in Central Valley, CA part of WECC grid\\
+\hspace{12mm} $-$ realistic load and renewable data for 2018 (hourly resolution)\\
+\hspace{12mm} $-$ storage, generation and shortfall variables\\
+\hspace{12mm} $-$ minimize fossil generation and shortfall\\
+\hspace{12mm} $-$ subject to physical constraints\\
+\item \textbf{prescient:} \\
+\hspace{12mm} $-$ load and renewable for the entire year known beforehand\\
+\hspace{12mm} $-$ single optimization problem\\
+\item \textbf{MPC:} \\
+\hspace{12mm} $-$ use load and renewable forecasts for next $24$ hours\\
+\hspace{12mm} $-$ optimize, execute single step \& repeat \\
+\hspace{12mm} $-$ multiple optimization problem\\
 \item \textbf{motivation:} \\
-\hspace{12mm} $-$ infeasible prescient case implies inability to do MPC in real case\\
-\hspace{12mm} $-$ prescient case performance is an upper bound on real performance\\
-\hspace{12mm} $-$ simplification to do sanity checks before model gets too complicated\\
+\hspace{12mm} $-$ upper bound on performance\\
+\hspace{12mm} $-$ simplification, sanity checks, pedagogy\\
 \EIT
 \end{frame}
 
@@ -135,178 +137,141 @@ Stephen Boyd\inst{1} \and
 	
 \begin{figure}
 \centering
-\includegraphics[width=0.8\columnwidth]{./figures/temp_load.pdf}
+\includegraphics[width=0.8\columnwidth]{./figures/load_renewable.pdf}
 \end{figure}
 
 \BIT
-\item node in Central Valley part of WECC grid
-\item year-long data sampled hourly
-\item peak load and temperature in July
+\item average load $1.07$ GW, average renewable $0.37$ GW, maximum fossil $1.25$ GW
+\item adjusted for $10\%$ shortfall (generation below load)
 \EIT
 	
 \end{frame}
 
-\begin{frame}{Preliminary analysis}
+\begin{frame}{Shortfall}
 	
 \begin{figure}
 \centering
-\includegraphics[width=0.8\columnwidth]{./figures/surplus_deficit.pdf}
+\includegraphics[width=0.8\columnwidth]{./figures/shortfall.pdf}
 \end{figure}
 
 \BIT
-\item total load is $\sum_{t=1}^{8760} l_t = 9404.96 \ \text{GWh}$
-\item total possible generation is $\sum_{t=1}^{8760} (R_t + G) = 14232.15 \ \text{GWh}$ ($23\%$ renewable)
-\item we can generate $4827.19 \ \text{GWh}$ more than we need
-\item however we still have deficit in $10\%$ of the time 
+\item we have enough energy surplus, it just does not come at the right time
+\item known as the optimal transport problem
 \EIT
 \end{frame}
 
-\begin{frame}{Importance of storage}
-    \BIT
-    \item we have energy surplus, it just doesn't come at the right time
-    \item we can reduce overall generation (fossil energy costs money)
-    \item we need to `move' generation curve such that there are no deficits or surplus
-    \item known as the optimal transport problem (measured by earth mover's distance)
-    \item that is why a battery is indispensable
-    \item analogy in finance: we have a portfolio of assets, we hold cash to rebalance risk
-    \EIT
-\end{frame}
 
-\begin{frame}[fragile]{Prescient model \& implementation}
+\begin{frame}[fragile]{Model}
     \begin{columns}
         \begin{column}{0.46\textwidth}
     \[
         \begin{array}{ll}
-            \mbox{minimize}   &  \frac{1}{T}\sum_{t=1}^{T} 10 s_t + 1.25 u_t + 0.5 u_t^2 \\
-            \mbox{subject to} & q_1 = Q/2, \\
-            & q_{T+1} = Q/2, \\
+            \mbox{minimize}   &  \frac{1}{T}\sum_{t=1}^{T} \gamma s_t + \alpha u_t + \beta u_t^2 \\
+            \mbox{subject to} & q_1 = q_{T+1}, \\
             & q_{t+1} = q_t - b_t, \; t = 1, \ldots, T, \\
-            & b + r + u = l(1-s), \\
-            & 0 \preceq s \preceq 1, \\
-            & 0 \preceq r \preceq R, \\
-            & 0 \preceq q \preceq Q \ones, \\
-            & 0 \preceq u \preceq G \ones, \\
-            & |b| \preceq B 1.
+            & b + r + u = l-s, \\
+            & 0 \leq s \leq l, \\
+            & 0 \leq r \leq R, \\
+            & 0 \leq q \leq Q \ones, \\
+            & 0 \leq u \leq G \ones, \\
         \end{array}
     \]
+    $\alpha$, $\beta$, $\gamma$ are hyperparameters
+    (we set $\alpha = 1.25$, $\beta = 0.5$, $\gamma = 10$)
     \vfill
-    coefficients chosen arbitrarily to reflect 
-    quadratic cost of fossil generation and high cost of 
-    borrowing slack energy 
     \end{column}
     \begin{column}{0.54\textwidth}
 \begin{lstlisting}[language=mypython, basicstyle=\footnotesize\ttfamily, belowskip=0em]
 T = R.shape[0]
-B = cp.Variable(nonneg=True)
 b = cp.Variable(T)
 q = cp.Variable(T+1, nonneg=True)
 r = cp.Variable(T, nonneg=True)
 u = cp.Variable(T, nonneg=True)
 s = cp.Variable(T, nonneg=True)
-cons = [
-    q[0] == Q/2, q[-1] == Q/2, r <= R,
-    q <= Q, u <= G, cp.abs(b) <= B,
-    cp.diff(q) == -b, s <= 1,
-    b + r + u == cp.multiply(l, 1-s)]
+cons = [q[0] == q[-1],r <= R,
+    q <= Q, u <= G, s <= l,
+    cp.diff(q) == -b,
+    b + r + u == l - s]
 obj = 1/T*(10*cp.sum(s) + 1.25*cp.sum(u) 
         + 0.5*cp.sum_squares(u))
 prob = cp.Problem(cp.Minimize(obj), cons)
 \end{lstlisting}
     \vfill
-    takes $\approx0.5$ seconds on average to compile and solve using Apple M2 CPU
-    (remarkable considering the problem is not small: $T=8760$)
+    takes $\approx0.5$ seconds on average
     \end{column}
     \end{columns}
 \end{frame}
 
-\begin{frame}{How much storage is enough?}
+\begin{frame}{Storage}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{./figures/storage_enough.pdf}
+            \includegraphics[width=\columnwidth]{./figures/storage.pdf}
         \end{figure}
     \end{column}
     \begin{column}{0.4\textwidth}
-        \begin{table}[ht]
-            \centering
-            \resizebox{\columnwidth}{!}{ % Scale the table to fit the column width
-                \begin{tabular}{|c|c|c|}
-                    \hline
-                    \textbf{Storage (GWh)} & \textbf{Average fossil cost (\$)} & \textbf{Reliability (\%)} \\
-                    \hline
-                    0.01 & 0.99 & 90.05 \\
-                    0.52 & 0.98 & 95.16 \\
-                    2.79 & 0.97 & 98.98 \\
-                    7.91 & 0.96 & 100.00 \\
-                    25.00 & 0.96 & 100.00 \\
-                    \hline
-                \end{tabular}
-            }
-        \end{table}
         \begin{itemize}
-            \item We require $7.91$ GWh of storage to eliminate all infeasible times ($\approx$ 1 week of load)
-            \item $0.52$ GWh of storage is enough to reduce infeasible times by $50\%$ (just $6.5\%$ of required storage!)
+            \item $8$ GWh storage enough to prevent shortfall ($\approx 8$ hours of load)
+            \item $3$ GWh enough to reduce shortfall more than a factor of $2$
+            \item insensitive to hyperparameters as long as $\gamma > 5 \beta$
         \end{itemize}
     \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Fossil generation profiles for different storage}
-	
+\begin{frame}{Prescient model with $8$ GWh storage}
 \begin{figure}
-\centering
-\includegraphics[width=0.5\columnwidth]{./figures/fossil_profiles.pdf}
+    \centering
+    \includegraphics[width=0.7\columnwidth]{./figures/hourly_profiles.pdf}
 \end{figure}
-
-\BIT
-\item fossil generation cost $\frac{1}{T}\sum_{t=1}^{T} 1.25 u_t + 0.5 u_t^2$ is strongly convex
-\item if $u_t$ varies greatly, the quadratic term penalizes this variance heavily
-\item by making $u_t$ more uniform (constant), we reduce the cost (\ie \ use Jensen's)
-\item analogy in engineering: diesel engine's torque vs. RPM curve and why trucks have lots of wheels
-\EIT
 \end{frame}
 
-\begin{frame}{Feasible case with minimum required storage}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=\columnwidth]{./figures/hourly_profiles.pdf}
-        \end{figure}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=\columnwidth]{./figures/stft_charge_2day_window.pdf}
-        \end{figure}
-            \BIT
-            \item oscillations in charge/discharge increase in high-stress times (load peaks)
-            \item same goes for oscillations in storage
-            \item fossil generation approaches its maximum in these times
-            \EIT
+\begin{frame}{10-day rolling median forecasts} 
+    \begin{columns}
+        \begin{column}{0.6\textwidth}
+            \begin{figure}
+                \centering
+                \includegraphics[width=\columnwidth]{./figures/simple_forecasts.pdf}
+            \end{figure}
         \end{column}
-\end{columns}
+        \begin{column}{0.4\textwidth}
+            \begin{itemize}
+                \item estimate load and renewable for the next step
+                as the median of the same time in the past $10$ days
+                \item AAE $0.12$ GW for load, $0.17$ GW for renewable
+                \item simple yet nontrivial forecaster to be used in MPC
+            \end{itemize}
+        \end{column}
+    \end{columns}
 \end{frame}
 
-\begin{frame}{Final remarks} 
+\begin{frame}{MPC with $8$ GWh storage}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\columnwidth]{./figures/mpc_hourly_profiles.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Summary} 
 \BIT
-\item \textbf{in this prescient single-node model, we:}  \\
-\hspace{12mm} $-$ showed the importance of storage in reducing fossil generation costs\\
-\hspace{12mm} $-$ showed that the fossil generation profile is smoother with more storage\\
-\hspace{12mm} $-$ analyzed minimum required storage for feasibility\\
-\hspace{12mm} $-$ analyzed storage, charging and energy generation profiles\\
-\item \textbf{next steps:} \\
-\hspace{12mm} $-$ refine our reliability analysis\\
-\hspace{12mm} $-$ current formulation allows for charging with borrowed energy\\
-\hspace{12mm} $-$ but preventing this results in non-convex problem\\
-\hspace{12mm} $-$ develop convex heuristics for a more detailed reliability analysis\\
-\hspace{12mm} $-$ move on from prescient case to MPC using forecasts\\
+\item \textbf{prescient model}  \\
+\hspace{12mm} $-$ small storage reduces shortfall a lot\\
+\hspace{12mm} $-$ high oscillations in storage and charge/discharge in summer\\
+\hspace{12mm} $-$ piecewise constant fossil ($0.7$ GW on average)\\
+\item \textbf{MPC}  \\
+\hspace{12mm} $-$ shortfall due to forecast errors\\
+\hspace{12mm} $-$ storage buildup towards summer\\
+\hspace{12mm} $-$ higher fossil use ($0.8$ GW on average)\\
+\item \textbf{next steps} \\
+\hspace{12mm} $-$ more sophisticated forecasters (time-dependent, AR)\\
+\hspace{12mm} $-$ penalize charge/discharge (longer battery life)\\
+\hspace{12mm} $-$ scaling to multiple nodes\\
 \EIT
 \end{frame}
     
 
-\begin{frame}{Outreach \& dissemination}
+\begin{frame}{Outreach}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{figure}

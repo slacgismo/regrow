@@ -124,7 +124,7 @@ Stephen Boyd\inst{1} \and
 \hspace{12mm} $-$ load and renewable for the entire year known beforehand\\
 \hspace{12mm} $-$ single optimization problem\\
 \item \textbf{MPC:} \\
-\hspace{12mm} $-$ use load and renewable forecasts for next $24$ hours\\
+\hspace{12mm} $-$ use load and renewable forecasts\\
 \hspace{12mm} $-$ optimize, execute single step \& repeat \\
 \hspace{12mm} $-$ multiple optimization problem\\
 \item \textbf{motivation:} \\
@@ -142,7 +142,7 @@ Stephen Boyd\inst{1} \and
 
 \BIT
 \item average load $1.07$ GW, average renewable $0.37$ GW, maximum fossil $1.25$ GW
-\item adjusted for $10\%$ shortfall (generation below load)
+\item adjusted for $10\%$ infeasible time (\ie, \ shortfall times)
 \EIT
 	
 \end{frame}
@@ -213,7 +213,7 @@ prob = cp.Problem(cp.Minimize(obj), cons)
     \begin{column}{0.4\textwidth}
         \begin{itemize}
             \item $8$ GWh storage enough to prevent shortfall ($\approx 8$ hours of load)
-            \item $3$ GWh enough to reduce shortfall more than a factor of $2$
+            \item $3$ GWh enough to reduce infeasible times more than a factor of $2$
             \item insensitive to hyperparameters as long as $\gamma > 5 \beta$
         \end{itemize}
     \end{column}

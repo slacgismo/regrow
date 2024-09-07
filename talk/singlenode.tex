@@ -214,17 +214,28 @@ prob = cp.Problem(cp.Minimize(obj), cons)
         \begin{itemize}
             \item $8$ GWh storage enough to prevent shortfall ($\approx 8$ hours of load)
             \item $3$ GWh enough to reduce infeasible times more than a factor of $2$
-            \item insensitive to hyperparameters as long as $\gamma > 5 \beta$
+            \item insensitive to hyperparameters provided $\gamma >> \beta$
         \end{itemize}
     \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}{Prescient model with $8$ GWh storage}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\columnwidth]{./figures/hourly_profiles.pdf}
-\end{figure}
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth]{./figures/hourly_profiles.pdf}
+        \end{figure}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        \begin{itemize}
+            \item small storage reduces shortfall a lot
+            \item high oscillations in storage and charge/discharge in summer
+            \item piecewise constant fossil
+        \end{itemize}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{10-day rolling median forecasts} 
@@ -246,27 +257,31 @@ prob = cp.Problem(cp.Minimize(obj), cons)
     \end{columns}
 \end{frame}
 
+
 \begin{frame}{MPC with $8$ GWh storage}
-\begin{figure}
-    \centering
-    \includegraphics[width=0.7\columnwidth]{./figures/mpc_hourly_profiles.pdf}
-\end{figure}
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth]{./figures/mpc_hourly_profiles.pdf}
+        \end{figure}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        \begin{itemize}
+            \item shortfall due to forecast errors
+            ($0.009$ GW shortfall on average, $13.6\%$ of the time)
+            \item storage buildup towards summer
+            \item higher fossil use
+        \end{itemize}
+    \end{column}
+\end{columns}
 \end{frame}
 
-\begin{frame}{Summary} 
+\begin{frame}{Next steps} 
 \BIT
-\item \textbf{prescient model}  \\
-\hspace{12mm} $-$ small storage reduces shortfall a lot\\
-\hspace{12mm} $-$ high oscillations in storage and charge/discharge in summer\\
-\hspace{12mm} $-$ piecewise constant fossil ($0.7$ GW on average)\\
-\item \textbf{MPC}  \\
-\hspace{12mm} $-$ shortfall due to forecast errors\\
-\hspace{12mm} $-$ storage buildup towards summer\\
-\hspace{12mm} $-$ higher fossil use ($0.8$ GW on average)\\
-\item \textbf{next steps} \\
-\hspace{12mm} $-$ more sophisticated forecasters (time-dependent, AR)\\
-\hspace{12mm} $-$ penalize charge/discharge (longer battery life)\\
-\hspace{12mm} $-$ scaling to multiple nodes\\
+\item more sophisticated forecasters (time-dependent, AR)
+\item more detailed model (ramp rate on fossil, charge/discharge penalty)
+\item scaling to multiple nodes
 \EIT
 \end{frame}
     

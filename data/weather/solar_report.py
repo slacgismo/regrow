@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.7.12"
+__generated_with = "0.8.11"
 app = marimo.App(width="medium")
 
 
@@ -247,7 +247,7 @@ def __(first_integral, mo, second_integral):
 
 
 @app.cell
-def __(analyze_baseline, location, mo, plt):
+def __(analyze_baseline, location, location_ui, mo, plt):
     daily_residual = analyze_baseline(location.resample(rule="1D").mean())
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
@@ -258,7 +258,7 @@ def __(analyze_baseline, location, mo, plt):
     plt.plot(daily_residual)
     plt.xlabel('Days in August')
     plt.ylabel('Solar Irradiance (W/m2)')
-    plt.title('Daily Residual Solar Irradiance')
+    plt.title(f'Daily Average Residual Solar Irradiance, {location_ui.selected_key}')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())

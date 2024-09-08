@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.7.12"
+__generated_with = "0.8.11"
 app = marimo.App(width="medium")
 
 
@@ -228,18 +228,18 @@ def __(np):
 
 
 @app.cell
-def __(analyze_baseline, location, mo, plt):
+def __(analyze_baseline, location, location_ui, mo, np, plt):
     hourly_residual = analyze_baseline(location)
 
     # August 16 through 19, excessive heat was forecasted consistently for California.
     plt.figure(figsize=(9, 5))
-    plt.axvline(14 * 24, linestyle='-.',color = 'r', label = 'start of heatwave')
-    plt.axvline(16 * 24, linestyle='-.',color = 'b', label = 'end of heatwave')
+    plt.axvline(14, linestyle='-.',color = 'r', label = 'start of rolling blackouts (8/14)')
+    plt.axvline(16, linestyle='-.',color = 'b', label = 'end of rolling blackout (8/15)')
     plt.axhline(0, linestyle=':',color = 'b', label = 'baseline')
-    plt.plot(hourly_residual)
-    plt.xlabel('Hours in August')
+    plt.plot(np.arange(len(hourly_residual)) / 24, hourly_residual)
+    plt.xlabel('Days in August')
     plt.ylabel('Temperature (°C)')
-    plt.title('Hourly Residual Temperature')
+    plt.title(f'Hourly Residual Temperature, {location_ui.selected_key}')
     plt.legend()
     plt.gcf().autofmt_xdate() 
     mo.mpl.interactive(plt.gcf())

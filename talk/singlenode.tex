@@ -274,6 +274,28 @@ prob = cp.Problem(cp.Minimize(obj), cons)
 \EIT
 \end{frame}
 
+\begin{frame}{Zooming in for fixed storage}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth]{./figures/p7.pdf}
+        \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth]{./figures/p8.pdf}
+        \end{figure}
+    \end{column}
+\end{columns}
+\vfill
+\BIT 
+\item peak load periods (july) have more volatile storage than off-peak periods (january)
+\item high (dis)charge can be detrimental to battery life
+\EIT
+\end{frame}
+
 \begin{frame}{Next steps} 
 \BIT
 \item more detailed model (ramp rate on fossil, charge/discharge penalty)

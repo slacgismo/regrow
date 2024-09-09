@@ -87,7 +87,7 @@ morecomment=[l]{\#}
 }
 %% begin presentation
 \title{
-REGROW: Renewable Energy Generation Risk from Outlier Weather
+A Prescient Analysis of Optimal Energy Storage
 }
 
 \author{
@@ -117,16 +117,12 @@ Stephen Boyd\inst{1} \and
 \item \textbf{setting:}  \\
 \hspace{12mm} $-$ node in Central Valley, CA part of WECC grid\\
 \hspace{12mm} $-$ realistic load and renewable data for 2018 (hourly resolution)\\
-\hspace{12mm} $-$ storage, generation and shortfall variables\\
-\hspace{12mm} $-$ minimize fossil generation and shortfall\\
-\hspace{12mm} $-$ subject to physical constraints\\
 \item \textbf{prescient:} \\
 \hspace{12mm} $-$ load and renewable for the entire year known beforehand\\
+\hspace{12mm} $-$ storage, generation and shortfall variables\\
 \hspace{12mm} $-$ single optimization problem\\
-\item \textbf{MPC:} \\
-\hspace{12mm} $-$ use load and renewable forecasts\\
-\hspace{12mm} $-$ optimize, execute single step \& repeat \\
-\hspace{12mm} $-$ multiple optimization problem\\
+\hspace{12mm} $-$ minimize fossil generation and shortfall\\
+\hspace{12mm} $-$ subject to physical constraints\\
 \item \textbf{motivation:} \\
 \hspace{12mm} $-$ upper bound on performance\\
 \hspace{12mm} $-$ simplification, sanity checks, pedagogy\\
@@ -160,7 +156,6 @@ Stephen Boyd\inst{1} \and
 \EIT
 \end{frame}
 
-\section{Prescient Battery Control}
 \begin{frame}[fragile]{Model}
     \begin{columns}
         \begin{column}{0.46\textwidth}
@@ -205,86 +200,90 @@ prob = cp.Problem(cp.Minimize(obj), cons)
     \end{columns}
 \end{frame}
 
-\begin{frame}{Storage}
+\begin{frame}{Shortfall vs. storage}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{./figures/storage.pdf}
+            \includegraphics[width=\columnwidth]{./figures/p1.pdf}
         \end{figure}
     \end{column}
     \begin{column}{0.4\textwidth}
         \begin{itemize}
             \item $8$ GWh storage enough to prevent shortfall ($\approx 8$ hours of load)
             \item $3$ GWh enough to reduce infeasible times more than a factor of $2$
-            \item insensitive to hyperparameters ($\gamma \gg \beta$)
         \end{itemize}
     \end{column}
 \end{columns}
 \end{frame}
 
-\begin{frame}{Prescient model with $8$ GWh storage}
+\begin{frame}{Fossil vs. storage}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{./figures/hourly_profiles.pdf}
+            \includegraphics[width=\columnwidth]{./figures/p2.pdf}
         \end{figure}
     \end{column}
     \begin{column}{0.4\textwidth}
         \begin{itemize}
-            \item small storage reduces shortfall a lot
-            \item high oscillations in storage and charge/discharge in summer
-            \item piecewise constant fossil
+            \item fossil generation does not change much with storage
+            \item fossil costs decrease with storage
         \end{itemize}
     \end{column}
 \end{columns}
 \end{frame}
-\section{Model Predictive Control}
-\begin{frame}{10-day rolling median forecasts} 
-    \begin{columns}
-        \begin{column}{0.6\textwidth}
-            \begin{figure}
-                \centering
-                \includegraphics[width=\columnwidth]{./figures/simple_forecasts.pdf}
-            \end{figure}
-        \end{column}
-        \begin{column}{0.4\textwidth}
-            \begin{itemize}
-                \item estimate load and renewable for the next step
-                as the median of the same time in the past $10$ days
-                \item AAE $0.12$ GW for load, $0.17$ GW for renewable
-                \item simple forecaster to be used in MPC
-            \end{itemize}
-        \end{column}
-    \end{columns}
-\end{frame}
 
-
-\begin{frame}{MPC with $8$ GWh storage}
+\begin{frame}{Renewables vs. storage}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{figure}
             \centering
-            \includegraphics[width=\columnwidth]{./figures/mpc_hourly_profiles.pdf}
+            \includegraphics[width=\columnwidth]{./figures/p3.pdf}
         \end{figure}
     \end{column}
     \begin{column}{0.4\textwidth}
         \begin{itemize}
-            \item shortfall due to forecast errors
-            ($0.009$ GW shortfall on average, $13.6\%$ of the time)
-            \item storage buildup towards summer
-            \item higher fossil use
+            \item renewable use increases with storage
+            \item curtailed renewable decreases with storage
         \end{itemize}
     \end{column}
 \end{columns}
+\end{frame}
+
+\begin{frame}{Hourly profiles}
+\begin{columns}
+    \begin{column}{0.33\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth]{./figures/p4.pdf}
+        \end{figure}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth]{./figures/p5.pdf}
+        \end{figure}
+    \end{column}
+    \begin{column}{0.33\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width=\columnwidth]{./figures/p6.pdf}
+        \end{figure}
+    \end{column}
+\end{columns}
+\vfill
+\BIT 
+\item fossil generation more constant with increased storage 
+\item more storage helps decrease curtailment and prevents shortfall
+\EIT
 \end{frame}
 
 \begin{frame}{Next steps} 
 \BIT
-\item more sophisticated forecasters (time-dependent, AR)
 \item more detailed model (ramp rate on fossil, charge/discharge penalty)
-\item scaling to multiple nodes
+\item model predictive control (MPC)
+\item simple and sophisticated forecasters (time-dependent, AR)
 \EIT
 \end{frame}
     

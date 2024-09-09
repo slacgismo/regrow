@@ -227,8 +227,9 @@ prob = cp.Problem(cp.Minimize(obj), cons)
     \end{column}
     \begin{column}{0.4\textwidth}
         \begin{itemize}
-            \item fossil generation does not change much with storage
-            \item fossil costs decrease with storage
+            \item average fossil generation ($\approx 0.7$ GW) does not change much with storage
+            \item it is equal to the difference between average load ($1.07$ GW) and renewable ($0.37$ GW)
+            \item average fossil costs decrease with storage
         \end{itemize}
     \end{column}
 \end{columns}
@@ -251,31 +252,25 @@ prob = cp.Problem(cp.Minimize(obj), cons)
 \end{columns}
 \end{frame}
 
-\begin{frame}{Hourly profiles}
+\begin{frame}{Profiles with low and high storage}
 \begin{columns}
-    \begin{column}{0.33\textwidth}
+    \begin{column}{0.5\textwidth}
         \begin{figure}
             \centering
             \includegraphics[width=\columnwidth]{./figures/p4.pdf}
         \end{figure}
     \end{column}
-    \begin{column}{0.33\textwidth}
+    \begin{column}{0.5\textwidth}
         \begin{figure}
             \centering
             \includegraphics[width=\columnwidth]{./figures/p5.pdf}
         \end{figure}
     \end{column}
-    \begin{column}{0.33\textwidth}
-        \begin{figure}
-            \centering
-            \includegraphics[width=\columnwidth]{./figures/p6.pdf}
-        \end{figure}
-    \end{column}
 \end{columns}
 \vfill
 \BIT 
-\item fossil generation more constant with increased storage 
-\item more storage helps decrease curtailment and prevents shortfall
+\item fossil generation more constant with increased storage
+\item increased storage decreases curtailment and prevent shortfall
 \EIT
 \end{frame}
 

@@ -195,8 +195,8 @@ def __(np):
         august4 = data.loc["2021-08-14":"2021-08-15", node]
         august5 = data.loc["2022-08-15":"2022-08-15", node]
 
-        baseline_avg = np.average(np.r_[august1, august2, august4, august5])
-        event_avg = np.average(august3)
+        baseline_avg = np.median(np.r_[august1, august2, august4, august5])
+        event_avg = np.median(august3)
 
         return 100 * (event_avg - baseline_avg) / baseline_avg
     return analyze,

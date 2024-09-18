@@ -63,9 +63,18 @@ def __(Path, __file__, mo):
 def __(geocode, nodes, pd):
     # Manipulating data from nodes to latitude/longitude
     latlong = pd.DataFrame(index=nodes, columns=['lat', 'lon'])
+
+    print(nodes)
+
     for node in nodes:
         latlong.loc[node] = geocode(node)
     return latlong, node
+
+
+@app.cell
+def __(latlong):
+    latlong
+    return
 
 
 @app.cell
@@ -124,7 +133,7 @@ def __(get_location, plt, temperature):
 @app.cell
 def __(data_view, plt, sns):
     # Heat Map
-    my_data_array = data_view.loc['2018-01-01':'2021-12-30'].values.reshape((24, -1), order='F')
+    my_data_array = data_view.loc['2018-01-01':'2022-12-30'].values.reshape((24, -1), order='F')
     sns.heatmap(my_data_array, cmap="plasma")
     plt.xlabel('Days')
     plt.ylabel('Hours')

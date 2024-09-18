@@ -66,7 +66,7 @@ channel_names = {
     "wind[m/s]" : "wind_speed",
 }
 
-YEARS = "2018,2019,2020,2021"
+YEARS = "2018,2019,2020,2021,2022"
 FREQ = "1h"
 ROUND = 1
 

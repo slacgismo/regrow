@@ -6,7 +6,8 @@ This private repository is for team members of the REGROW project, funded by the
 
 The Technical Work Plan for the project is available in the top-level directory. Sub-directories are:
 
-- `docs`: Documents, papers, etc. that are relevent to the research thrusts of the project. 
+- `docs`: Documents, papers, etc. that are relevent to the research thrusts of the project.
+- `data`: Weather folder contains `temperature.py` (comparison of heatwave peaks) and `summary_stats.py` (daily and hourly residual temperatures). 
 
 ## Simulation Model
 

@@ -1,5 +1,5 @@
 OPTIONS = --verbose
-YEARS = 2018,2020
+YEARS = 2018,2019,2020,2021,2022
 
 all: powerplants weather
 

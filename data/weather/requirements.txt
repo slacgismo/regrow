@@ -1,0 +1,7 @@
+marimo
+matplotlib
+numpy
+pandas
+tornado
+seaborn
+requests

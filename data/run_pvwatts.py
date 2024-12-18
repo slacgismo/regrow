@@ -63,9 +63,8 @@ def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
 
 if __name__ == "__main__":
     # Point towards the particular local folder that contains the data
-    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave"
-    metadata = pd.read_csv(os.path.join(data_path,
-                                        "all_states_heatwave_target_sites.csv")) 
+    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_wecc_nodes"
+    metadata = pd.read_csv("nodes_pvwatts_sim.csv") 
     for idx, row in metadata.iterrows():
         lat = row['latitude']
         long = row['longitude']
@@ -125,8 +124,8 @@ if __name__ == "__main__":
         plt.show()
         plt.close()
         # Write the results to the associated S3 bucket.
-        pdc.to_csv(os.path.join(data_path, "pvwatts_dc_power_estimates",
-            str(row['system_id']) + ".csv"))
+        pdc.to_csv(os.path.join(data_path,
+            str(row['geocode']) + ".csv"))
         
         
         

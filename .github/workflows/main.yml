@@ -12,7 +12,7 @@ jobs:
     container: lfenergy/arras:develop
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Run simulation
       run: |
@@ -20,7 +20,7 @@ jobs:
         gridlabd wecc240.glm
       
     - name: Save results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Results
         path: model/

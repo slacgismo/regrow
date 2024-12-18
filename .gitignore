@@ -1060,3 +1060,10 @@ TSWLatexianTemp*
 
 # End of https://www.toptal.com/developers/gitignore/api/latex
 pyvenv.cfg
+
+# Virtual Env
+.venv/
+marimo_env/
+/model
+/model
+/model

@@ -7,6 +7,7 @@
 #include "config.glm"
 
 //#version "${VERSION}"
+#set keep_progress=TRUE // progress update does not overwrite previous update
 
 clock {
     timezone ${TIMEZONE};
@@ -47,3 +48,8 @@ module pypower
 // Save the final result to JSON
 //
 #set savefile="${SAVEFILE}"
+
+//
+// Setup data collection
+//
+module recorder;

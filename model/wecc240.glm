@@ -52,4 +52,4 @@ module pypower
 //
 // Setup data collection
 //
-module recorder;
+module recorders;

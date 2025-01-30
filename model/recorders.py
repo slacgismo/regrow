@@ -6,18 +6,20 @@ import datetime as dt
 
 import tape
 
-load_recorder = None
+loads_recorder = None
+plant_recorder = None
 
 def voltage_pu(data):
     return f"{abs(data['V']) / data['Vn']:.3f}"
 
 def on_init(t0):
-    global load_recorder
-    load_recorder = tape.GeoRecorder(gridlabd,
+
+    global loads_recorder
+    loads_recorder = tape.GeoRecorder(gridlabd,
         csvname="loads.csv",
-        objnames="wecc240_psse_L",
+        objects=r"^wecc240_psse_L_[0-9]+",
         properties={
-            "status" : None,
+            "status" : lambda x:["OFFLINE","ONLINE","CURTAILED"][x],
             "S" : lambda x: f"{abs(x):.1f}",
             },
         alias={
@@ -28,8 +30,23 @@ def on_init(t0):
         },
         include_latlon=True,
         )
+
+    global powerplants_recorder
+    powerplants_recorder = tape.GeoRecorder(gridlabd,
+        csvname="powerplants.csv",
+        objects={"class":"powerplant"},
+        properties={
+            "status" : lambda x:["OFFLINE","ONLINE","CURTAILED"][x],
+            "S" : lambda x: f"{abs(x):.1f}",
+            },
+        alias={
+            "S": "power[MVA]",
+            },
+        include_latlon=True,            
+        )
     return True
 
 def on_commit(t0):
-    load_recorder.sample(t0)
+    loads_recorder.sample(t0)
+    powerplants_recorder.sample(t0)
     return True

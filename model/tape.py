@@ -39,7 +39,7 @@ class GeoRecorder:
 
     def __init__(self,gridlabd:TypeVar('module'),
             csvname:str,
-            objnames:list[str],
+            objects:list[str],
             properties:dict,
             alias:dict={},
             virtual:dict={},
@@ -80,12 +80,25 @@ class GeoRecorder:
         if alias:
             headers += [(alias[x] if x in alias else x) for x in properties]
         else:
-            headers += properties
+            headers += list(properties)
         print(",".join(headers + list(virtual)),file=self.fh)
 
         # object specs
         self.objects = {}
-        for obj in [x for x in gridlabd.get("objects") if re.match(objnames,x)]:
+        if isinstance(objects,str): # name pattern only
+            objects = [x for x in gridlabd.get("objects") if re.match(objects,x)]
+        elif isinstance(objects,dict): # multiple property pattern
+            result = gridlabd.get("objects")
+            for key,pattern in objects.items():
+                for name in list(result):
+                    data = gridlabd.get_object(name)
+                    data["name"] = name
+                    if not key in data or not re.match(pattern,data[key]):
+                        result.remove(name)
+            objects = result
+        elif not isinstance(objects,list): # verbatim list
+            raise TypeError(f"objects must be regex, list, or dict")
+        for obj in objects:
             getter = {x:gridlabd.property(obj,x) for x in properties.keys()}
             for name,values in virtual.values():
                 for value in values:
@@ -105,7 +118,7 @@ class GeoRecorder:
                 else:
                     parent = data["parent"] if "parent" in data else None
             if not geocode:
-                print(f"WARNING [{__name__}]: object '{obj}' has not geocode",file=sys.stderr)
+                print(f"WARNING [{__name__}]: object '{obj}' has no geocode",file=sys.stderr)
             else:
                 self.objects[obj] = RecorderSpec(geocode,getter)
 

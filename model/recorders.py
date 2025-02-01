@@ -15,7 +15,7 @@ def voltage_pu(data):
 
 def voltage_deg(data):
     V = data['V']
-    return f"{math.atan2(V.imag,V.real)*180/math.pi:.3f}"
+    return f"{math.atan2(V.imag,V.real):.3f}"
 
 def status(x):
     return ["OFFLINE","ONLINE","CURTAILED"][x]
@@ -36,10 +36,12 @@ def on_init(t0):
         objects=r"^wecc240_psse_L_[0-9]+",
         properties={
             "status" : status,
-            "S" : lambda x: f"{abs(x):.1f}",
+            "S": lambda x: f"{abs(x):.1f}",
+            "Vn": lambda x: f"{x:.0f}",
             },
         alias={
             "S": "power[MVA]",
+            "Vn": "voltage_level[kV]",
             },
         virtual={
             "voltage[pu]" : [voltage_pu,["V","Vn"]],

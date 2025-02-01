@@ -81,7 +81,8 @@ class GeoRecorder:
             headers += [(alias[x] if x in alias else x) for x in properties]
         else:
             headers += list(properties)
-        print(",".join(headers + list(virtual)),file=self.fh)
+        headers += list(virtual)
+        print(*headers,sep=",",file=self.fh)
 
         # object specs
         self.objects = {}
@@ -134,9 +135,13 @@ class GeoRecorder:
         * `t`: the timestamp (unix epoch)
         """
         for obj,recorder in self.objects.items():
-            output = f"{dt.datetime.fromtimestamp(t)},{','.join(recorder.geocode.values())},"
-            output += ",".join([str((call if call else lambda x:x)(recorder.getter[name].get_value())) for name,call in self.properties.items()])
-            for call,values in self.virtual.values():
-                args = {x:recorder.getter[x].get_value() for x in values}
-                output += f",{call(args)}"
-            print(output,file=self.fh)
+            output = [dt.datetime.fromtimestamp(t)] + list(recorder.geocode.values())
+            output.extend([str((call if call else lambda x:x)(recorder.getter[name].get_value())) for name,call in self.properties.items()])
+            # output = f"{dt.datetime.fromtimestamp(t)},{','.join(recorder.geocode.values())},"
+            # output += ",".join([str((call if call else lambda x:x)(recorder.getter[name].get_value())) for name,call in self.properties.items()])
+            # for call,values in self.virtual.values():
+            #     args = {x:recorder.getter[x].get_value() for x in values}
+            #     output.append(call(args))
+                # output += f",{call(args)}"
+            output.extend([call({x:recorder.getter[x].get_value() for x in values}) for call,values in self.virtual.values()])
+            print(*output,sep=",",file=self.fh)

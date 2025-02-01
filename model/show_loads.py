@@ -76,11 +76,13 @@ def _(
     _loads = loads.loc[timestamps[timestamp_ui.value]].set_index("geocode")
     _points = np.stack([_loads.longitude.tolist(), _loads.latitude.tolist()], -1)
     _values = np.array(_loads["voltage[deg]"].tolist())
-    _x0, _x1 = int(_loads.longitude.min()), int(_loads.longitude.max() + 1)
+    _x0, _x1 = int(_loads.longitude.min()-1), int(_loads.longitude.max())
     _y0, _y1 = int(_loads.latitude.min()), int(_loads.latitude.max() + 1)
-    _x, _y = np.mgrid[_x0:_x1:0.02, _y0:_y1:0.02]
+    _x, _y = np.meshgrid(np.linspace(_x0,_x1,int((_x1-_x0)/0.02)),
+                         np.linspace(_y0,_y1,int((_y1-_y0)/0.02)),
+                         indexing='xy')
     _z = interp.griddata(_points, _values, (_x, _y), method="cubic")
-    plt.imshow(_z, extent=[_x0, _x1, _y0, _y1], origin="lower")
+    plt.imshow(_z, extent=[_x0, _x1, _y1, _y0])
 
     # draw states
     for _feature in usmap["features"]:
@@ -95,7 +97,7 @@ def _(
     plt.grid()
     plt.xlim([_x0,_x1])
     plt.ylim([_y0,_y1])
-    plt.title(f"{timestamps[get_hour()]} (hour {get_hour()})")
+    plt.title(f"Voltage angle at {timestamps[get_hour()]}")
     return
 
 

@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.10.17"
-app = marimo.App(width="medium")
+app = marimo.App(width="full")
 
 
 @app.cell
@@ -36,31 +36,30 @@ def _(loads, np, timestamp_ui, timestamps):
     # Get geocode points
 
     geocodes = loads.loc[timestamps[timestamp_ui.value]].set_index("geocode")
-    points = np.stack([geocodes.longitude.tolist(), geocodes.latitude.tolist()], -1)
+    points = np.stack(
+        [geocodes.longitude.tolist(), geocodes.latitude.tolist()], -1
+    )
     return geocodes, points
 
 
 @app.cell
-def _(loads, np, plt, spatial):
+def _():
     # WIP: map load
 
-    _loads = loads.loc[loads.index[0]]
-    _points = np.array([_loads.longitude.tolist(), _loads.latitude.tolist()]).transpose()
-    _map = spatial.Voronoi(_points)
-    # spatial.voronoi_plot_2d(_map)
-    plt.show()
+    # _loads = loads.loc[loads.index[0]]
+    # _points = np.array([_loads.longitude.tolist(), _loads.latitude.tolist()]).transpose()
+    # _map = spatial.Voronoi(_points)
+    # # spatial.voronoi_plot_2d(_map)
+    # plt.show()
 
-    def area(x,y):
-        return 0.5*np.abs(np.dot(x,np.roll(y,1))-np.dot(y,np.roll(x,1)))
-    _regions = list(zip(_map.points.tolist(),[[tuple(_map.vertices[y]) for y in _map.regions[x]] for x in _map.point_region]))
-    _geocodes = _loads.set_index("geocode")
-    _geocodes = {x:np.unique(_geocodes.loc[x][["longitude","latitude"]].values).tolist() for x in _geocodes.index.unique()}
-    # print(_geocodes)
-    # print(_regions)
-    # for _point,_location in _geocodes.items():
+    # def area(x,y):
+    #     return 0.5*np.abs(np.dot(x,np.roll(y,1))-np.dot(y,np.roll(x,1)))
+    # _regions = list(zip(_map.points.tolist(),[[tuple(_map.vertices[y]) for y in _map.regions[x]] for x in _map.point_region]))
+    # _geocodes = _loads.set_index("geocode")
+    # _geocodes = {x:np.unique(_geocodes.loc[x][["longitude","latitude"]].values).tolist() for x in _geocodes.index.unique()}
+    # # print(_geocodes)
 
-    # for _location,_region in regions:
-    return (area,)
+    return
 
 
 @app.cell
@@ -139,6 +138,7 @@ def _(
 
 @app.cell
 def _(
+    figsize,
     geocodes,
     geojson,
     get_hour,
@@ -151,6 +151,7 @@ def _(
     voltage_ui,
 ):
     # Generate map
+    # See https://stackoverflow.com/questions/37872171/how-can-i-perform-two-dimensional-interpolation-using-scipy for a better interpolator
 
     _values = np.array(geocodes[voltage_ui.value].tolist())
     _x0, _x1 = int(geocodes.longitude.min()-1), int(geocodes.longitude.max())
@@ -161,7 +162,7 @@ def _(
     _z = interp.griddata(points, _values, (_x, _y), method="cubic")
 
     # draw map
-    plt.figure(figsize=(10,10))
+    plt.figure(figsize=figsize)
     plt.imshow(_z, extent=[_x0, _x1, _y1, _y0])
 
     # draw states
@@ -175,7 +176,7 @@ def _(
     plt.plot(geocodes.loc[_index].longitude.tolist(),geocodes.loc[_index].latitude.tolist(),'.k')
 
     # draw empty selection
-    highlight, = plt.plot([],[],'oy')
+    highlight, = plt.plot([-105],[34],'oy')
 
     # finalize map image
     plt.grid()
@@ -187,30 +188,33 @@ def _(
 
 
 @app.cell
-def _(data_ui, highlight, plt):
+def _(data_ui, highlight, np):
     # Update bus selection
-
-    # selected = np.array(data_ui.value[["longitude","latitude"]].values).transpose().tolist()
-    if data_ui:
-        highlight.set_xdata(data_ui.value["longitude"].values.tolist())
-        highlight.set_ydata(data_ui.value["latitude"].values.tolist())
-        plt.gcf().canvas.draw()
-        plt.gcf().canvas.flush_events()
-    return
-
-
-@app.cell
-def _(image):
-    image
-    return
+    if not data_ui is None:
+        selected = np.array(data_ui.value[["longitude","latitude"]].values).transpose().tolist()
+        highlight.set_xdata(selected[0])
+        highlight.set_ydata(selected[1])
+    return (selected,)
 
 
 @app.cell
 def _(browser_ui, geocodes, get_location, mo, set_location):
     # Browse data table
-    data_ui = mo.ui.table(geocodes,initial_selection=get_location(),on_change=set_location) if browser_ui.value else None
-    data_ui
+    data_ui = mo.ui.table(geocodes,initial_selection=get_location().values,on_change=set_location) if browser_ui.value else None
     return (data_ui,)
+
+
+@app.cell
+def _(data_ui, image, mo):
+    mo.hstack([image,data_ui])
+    return
+
+
+@app.cell
+def _():
+    # Settings
+    figsize=(10,10)
+    return (figsize,)
 
 
 @app.cell

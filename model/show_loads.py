@@ -40,7 +40,7 @@ def _(loads, np, timestamp_ui, timestamps):
     return geocodes, points
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(loads, np, plt, spatial):
     # WIP: map load
 
@@ -119,7 +119,21 @@ def _(
 ):
     # Show UI inputs
 
-    mo.hstack([voltage_ui,mo.md(str(f"at {timestamps[get_hour()]}")),timestamp_ui,start_ui,subday_ui,subhour_ui,addhour_ui,addday_ui,end_ui,browser_ui],justify='start')
+    mo.hstack(
+        [
+            voltage_ui,
+            mo.md(str(f"at {timestamps[get_hour()]}")),
+            timestamp_ui,
+            start_ui,
+            subday_ui,
+            subhour_ui,
+            addhour_ui,
+            addday_ui,
+            end_ui,
+            browser_ui,
+        ],
+        justify="start",
+    )
     return
 
 
@@ -152,8 +166,9 @@ def _(
 
     # draw states
     for _feature in usmap["features"]:
-        _lines = list(np.array(list(geojson.utils.coords(_feature))).T)
-        plt.plot(*_lines,"k")
+        _lines = np.array(list(geojson.utils.coords(_feature))).T
+        print(_lines)
+        plt.plot(*_lines,"k",linewidth=0.5)
 
     # draw geocoded points
     _index = geocodes.index.unique()
@@ -173,11 +188,14 @@ def _(
 
 @app.cell
 def _(data_ui, highlight, plt):
+    # Update bus selection
+
     # selected = np.array(data_ui.value[["longitude","latitude"]].values).transpose().tolist()
-    highlight.set_xdata(data_ui.value["longitude"].values.tolist())
-    highlight.set_ydata(data_ui.value["latitude"].values.tolist())
-    plt.gcf().canvas.draw()
-    plt.gcf().canvas.flush_events()
+    if data_ui:
+        highlight.set_xdata(data_ui.value["longitude"].values.tolist())
+        highlight.set_ydata(data_ui.value["latitude"].values.tolist())
+        plt.gcf().canvas.draw()
+        plt.gcf().canvas.flush_events()
     return
 
 

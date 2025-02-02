@@ -167,7 +167,7 @@ def _(
     # draw states
     for _feature in usmap["features"]:
         _lines = np.array(list(geojson.utils.coords(_feature))).T
-        print(_lines)
+        # print(_lines)
         plt.plot(*_lines,"k",linewidth=0.5)
 
     # draw geocoded points

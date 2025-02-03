@@ -32,34 +32,43 @@ def _(geojson, pd):
 
 
 @app.cell
-def _(loads, np, timestamp_ui, timestamps):
+def _(areas, loads, np, timestamp_ui, timestamps):
     # Get geocode points
 
     geocodes = loads.loc[timestamps[timestamp_ui.value]].set_index("geocode")
     points = np.stack(
         [geocodes.longitude.tolist(), geocodes.latitude.tolist()], -1
     )
+    geocodes["area[deg^2]"] = [round(areas[x],3) for x in geocodes.index.values.tolist()]
+    geocodes["load_density_log[MVA/deg^2]"] = np.round(np.log(geocodes["power[MVA]"] / geocodes["area[deg^2]"]),3)
+    # geocodes
     return geocodes, points
 
 
 @app.cell
-def _():
+def _(loads, np, spatial):
     # WIP: map load
 
-    # _loads = loads.loc[loads.index[0]]
-    # _points = np.array([_loads.longitude.tolist(), _loads.latitude.tolist()]).transpose()
-    # _map = spatial.Voronoi(_points)
-    # # spatial.voronoi_plot_2d(_map)
+    _loads = loads.loc[loads.index[0]]
+    _points = np.array([_loads.longitude.tolist(), _loads.latitude.tolist()]).transpose()
+    _map = spatial.Voronoi(_points)
+    # spatial.voronoi_plot_2d(_map)
     # plt.show()
 
-    # def area(x,y):
-    #     return 0.5*np.abs(np.dot(x,np.roll(y,1))-np.dot(y,np.roll(x,1)))
-    # _regions = list(zip(_map.points.tolist(),[[tuple(_map.vertices[y]) for y in _map.regions[x]] for x in _map.point_region]))
-    # _geocodes = _loads.set_index("geocode")
-    # _geocodes = {x:np.unique(_geocodes.loc[x][["longitude","latitude"]].values).tolist() for x in _geocodes.index.unique()}
-    # # print(_geocodes)
+    def area(xy):
+        x,y = [pt[0] for pt in xy],[pt[1] for pt in xy]
+        return 0.5*np.abs(np.dot(x,np.roll(y,1))-np.dot(y,np.roll(x,1)))
+    _regions = list(zip(_map.points.tolist(),[[tuple(_map.vertices[y]) for y in _map.regions[x]] for x in _map.point_region]))
+    _geocodes = _loads.set_index("geocode")
+    _geocodes = {x:np.unique(_geocodes.loc[x][["longitude","latitude"]].values).tolist() for x in _geocodes.index.unique()}
 
-    return
+    def geocode(xy):
+        for gc,pt in _geocodes.items():
+            if pt == xy:
+                return gc
+
+    areas = {geocode(x):area(y) for x,y in _regions}
+    return area, areas, geocode
 
 
 @app.cell
@@ -80,24 +89,40 @@ def _(loads, mo, set_hour):
 def _(get_hour, loads, mo, set_hour):
     # Setup UI buttons
 
-    start_ui = mo.ui.button(label="$|\lt$",on_click=lambda x:set_hour(0))
-    subday_ui = mo.ui.button(label="$\lt\lt$",on_click=lambda x:set_hour(max(get_hour()-24,0)))
-    subhour_ui = mo.ui.button(label="$\lt$",on_click=lambda x:set_hour(max(get_hour()-1,0)))
-    addhour_ui = mo.ui.button(label="$\gt$",on_click=lambda x:set_hour(min(get_hour()+1,len(loads.index)-1)))
-    addday_ui = mo.ui.button(label="$\gt\gt$",on_click=lambda x:set_hour(min(get_hour()+24,len(loads.index)-1)))
-    end_ui = mo.ui.button(label="$\gt|$",on_click=lambda x:set_hour(len(loads.index)-1))
-    _options = {"Voltage magnitude":"voltage[pu]","Voltage angle":"voltage[deg]"}
-    voltage_ui = mo.ui.dropdown(options=_options,value=list(_options)[0])
+    start_ui = mo.ui.button(label="$|\lt$", on_click=lambda x: set_hour(0))
+    subday_ui = mo.ui.button(
+        label="$\lt\lt$", on_click=lambda x: set_hour(max(get_hour() - 24, 0))
+    )
+    subhour_ui = mo.ui.button(
+        label="$\lt$", on_click=lambda x: set_hour(max(get_hour() - 1, 0))
+    )
+    addhour_ui = mo.ui.button(
+        label="$\gt$",
+        on_click=lambda x: set_hour(min(get_hour() + 1, len(loads.index) - 1)),
+    )
+    addday_ui = mo.ui.button(
+        label="$\gt\gt$",
+        on_click=lambda x: set_hour(min(get_hour() + 24, len(loads.index) - 1)),
+    )
+    end_ui = mo.ui.button(
+        label="$\gt|$", on_click=lambda x: set_hour(len(loads.index) - 1)
+    )
+    _options = {
+        "Voltage magnitude per unit nominal": "voltage[pu]",
+        "Voltage angle": "voltage[deg]",
+        "Log load density": "load_density_log[MVA/deg^2]",
+    }
+    dataset_ui = mo.ui.dropdown(options=_options, value=list(_options)[0])
     browser_ui = mo.ui.checkbox(label="Show data")
     return (
         addday_ui,
         addhour_ui,
         browser_ui,
+        dataset_ui,
         end_ui,
         start_ui,
         subday_ui,
         subhour_ui,
-        voltage_ui,
     )
 
 
@@ -106,6 +131,7 @@ def _(
     addday_ui,
     addhour_ui,
     browser_ui,
+    dataset_ui,
     end_ui,
     get_hour,
     mo,
@@ -114,13 +140,12 @@ def _(
     subhour_ui,
     timestamp_ui,
     timestamps,
-    voltage_ui,
 ):
     # Show UI inputs
 
     mo.hstack(
         [
-            voltage_ui,
+            dataset_ui,
             mo.md(str(f"at {timestamps[get_hour()]}")),
             timestamp_ui,
             start_ui,
@@ -138,6 +163,7 @@ def _(
 
 @app.cell
 def _(
+    dataset_ui,
     figsize,
     geocodes,
     geojson,
@@ -148,12 +174,11 @@ def _(
     points,
     timestamps,
     usmap,
-    voltage_ui,
 ):
     # Generate map
     # See https://stackoverflow.com/questions/37872171/how-can-i-perform-two-dimensional-interpolation-using-scipy for a better interpolator
 
-    _values = np.array(geocodes[voltage_ui.value].tolist())
+    _values = np.array(geocodes[dataset_ui.value].tolist())
     _x0, _x1 = int(geocodes.longitude.min()-1), int(geocodes.longitude.max())
     _y0, _y1 = int(geocodes.latitude.min()), int(geocodes.latitude.max() + 1)
     _x, _y = np.meshgrid(np.linspace(_x0,_x1,int((_x1-_x0)/0.02)),
@@ -182,25 +207,41 @@ def _(
     plt.grid()
     plt.xlim([_x0,_x1])
     plt.ylim([_y0,_y1])
-    plt.title(f"Voltage angle at {timestamps[get_hour()]}")
+    plt.title(f"{dataset_ui.selected_key} at {timestamps[get_hour()]}")
     image = plt.gca()
     return highlight, image
 
 
 @app.cell
-def _(data_ui, highlight, np):
+def _(data_ui, geocodes, highlight, np):
     # Update bus selection
-    if not data_ui is None:
-        selected = np.array(data_ui.value[["longitude","latitude"]].values).transpose().tolist()
+    if not data_ui is None and (_selection := data_ui.value.index.values).tolist():
+        print(_selection,geocodes.loc[_selection][["longitude","latitude"]].values)
+        selected = np.array(geocodes.loc[_selection][["longitude","latitude"]].values.tolist()).transpose().tolist()
         highlight.set_xdata(selected[0])
         highlight.set_ydata(selected[1])
+    else:
+        highlight.set_xdata([])
+        highlight.set_ydata([])
     return (selected,)
 
 
 @app.cell
 def _(browser_ui, geocodes, get_location, mo, set_location):
     # Browse data table
-    data_ui = mo.ui.table(geocodes,initial_selection=get_location().values,on_change=set_location) if browser_ui.value else None
+    try:
+        _initial = get_location().reset_index().index.tolist()
+    except:
+        _initial = None
+    data_ui = (
+        mo.ui.table(
+            geocodes[geocodes.columns[2:-2]], # drop lat/lon and calculated values
+            initial_selection=_initial,
+            on_change=set_location,
+        )
+        if browser_ui.value
+        else None
+    )
     return (data_ui,)
 
 

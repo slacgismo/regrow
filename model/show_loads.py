@@ -215,8 +215,8 @@ def _(
 @app.cell
 def _(data_ui, geocodes, highlight, np):
     # Update bus selection
+
     if not data_ui is None and (_selection := data_ui.value.index.values).tolist():
-        print(_selection,geocodes.loc[_selection][["longitude","latitude"]].values)
         selected = np.array(geocodes.loc[_selection][["longitude","latitude"]].values.tolist()).transpose().tolist()
         highlight.set_xdata(selected[0])
         highlight.set_ydata(selected[1])
@@ -229,6 +229,7 @@ def _(data_ui, geocodes, highlight, np):
 @app.cell
 def _(browser_ui, geocodes, get_location, mo, set_location):
     # Browse data table
+
     try:
         _initial = get_location().reset_index().index.tolist()
     except:
@@ -238,6 +239,7 @@ def _(browser_ui, geocodes, get_location, mo, set_location):
             geocodes[geocodes.columns[2:-2]], # drop lat/lon and calculated values
             initial_selection=_initial,
             on_change=set_location,
+            page_size=18,
         )
         if browser_ui.value
         else None
@@ -247,6 +249,8 @@ def _(browser_ui, geocodes, get_location, mo, set_location):
 
 @app.cell
 def _(data_ui, image, mo):
+    # Display map and data
+
     mo.hstack([image,data_ui])
     return
 
@@ -254,6 +258,7 @@ def _(data_ui, image, mo):
 @app.cell
 def _():
     # Settings
+
     figsize=(10,10)
     return (figsize,)
 

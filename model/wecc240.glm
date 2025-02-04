@@ -8,6 +8,7 @@
 
 //#version "${VERSION}"
 #set keep_progress=TRUE // progress update does not overwrite previous update
+#set suppress_repeat_messages=FALSE
 
 clock {
     timezone ${TIMEZONE};
@@ -17,10 +18,13 @@ clock {
 
 module pypower
 {
+//  message_flags VERBOSE;    
     maximum_iterations ${MAXIMUM_ITERATIONS};
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
     controllers ${CONTROLLERS_FILE};
+    // TODO: enable this after gencosts are added
+    // enable_opf TRUE;
 }
 
 //
@@ -34,15 +38,20 @@ module pypower
 #include "${GISDATA}"
 
 //
+// Load loads data
+//
+#include "../data/loads.glm"
+
+//
 // Load powerplant data
 //
 #include "../data/powerplants.glm"
 #include "../data/powerplants_gis.glm"
 
 //
-// Load loads data
+// Load weather geodata
 //
-#include "../data/loads.glm"
+#include "../data/weather.glm"
 
 //
 // Save the final result to JSON

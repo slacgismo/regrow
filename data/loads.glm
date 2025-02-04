@@ -1,5 +1,17 @@
+#for OBJ in ${FIND class=load}
+modify ${OBJ}.S 0+0j;
+modify ${OBJ}.Z 0+0j;
+modify ${OBJ}.I 0+0j;
+modify ${OBJ}.P 0+0j;
+#done
+
+// zero out loads before linking geodata
+// TODO: enable this after gencosts are added and OPF is enabled
+//#include "../data/loads_gis.glm"
+
 object geodata
 {
+//	flags VERBOSE;
 	file "../data/geodata/total.csv";
 	target "load::P";
 }

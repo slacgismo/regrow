@@ -6,7 +6,7 @@ app = marimo.App(width="full")
 
 @app.cell
 def _(mo):
-    mo.md(r"""# WECC 240 Loads""")
+    mo.md(r"""# WECC System (240 bus model)""")
     return
 
 
@@ -140,6 +140,7 @@ def _(
     subhour_ui,
     timestamp_ui,
     timestamps,
+    zoom_ui,
 ):
     # Show UI inputs
 
@@ -155,10 +156,17 @@ def _(
             addday_ui,
             end_ui,
             browser_ui,
+            zoom_ui
         ],
         justify="start",
     )
     return
+
+
+@app.cell
+def _(mo):
+    zoom_ui = mo.ui.slider(start=1,stop=10,step=1,label="Distance sensitivity",debounce=False,value=4)
+    return (zoom_ui,)
 
 
 @app.cell
@@ -176,6 +184,7 @@ def _(
     points,
     timestamps,
     usmap,
+    zoom_ui,
 ):
     # Draw map 
 
@@ -196,7 +205,7 @@ def _(
         _grd = np.vstack([_x.flatten(), _y.flatten()]).T
         _d0 = np.subtract.outer(_pts[:, 0], _grd[:, 0])
         _d1 = np.subtract.outer(_pts[:, 1], _grd[:, 1])
-        _weights = np.power(np.hypot(_d0, _d1),-5)
+        _weights = np.power(np.hypot(_d0, _d1),-zoom_ui.value)
         _weights /= _weights.sum(axis=0)
         mapdata = np.dot(_weights.T, _values).reshape(_size)
     else:

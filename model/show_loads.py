@@ -171,7 +171,7 @@ def _(
 ):
     # Show UI inputs
 
-    mo.vstack([
+    (mo.vstack if stack_ui.value else mo.hstack)([
         mo.hstack(
             [
                 dataset_ui,

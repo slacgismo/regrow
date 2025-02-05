@@ -10,7 +10,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     # Control time and place
     maptype = "iwd"
@@ -21,7 +21,7 @@ def _(mo):
     return get_hour, get_location, mapsize, maptype, set_hour, set_location
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(geojson, pd):
     # Load data
 
@@ -34,7 +34,7 @@ def _(geojson, pd):
     return loads, usmap
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(areas, loads, np, timestamp_ui, timestamps):
     # Get geocode points
 
@@ -48,7 +48,7 @@ def _(areas, loads, np, timestamp_ui, timestamps):
     return geocodes, points
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(loads, np, spatial):
     # WIP: map load
 
@@ -74,7 +74,7 @@ def _(loads, np, spatial):
     return area, areas, geocode
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(loads, mo, set_hour):
     # Setup UI slider
 
@@ -88,9 +88,9 @@ def _(loads, mo, set_hour):
     return timestamp_ui, timestamps
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(get_hour, loads, mo, set_hour):
-    # Setup UI buttons
+    # Dataset controls
 
     start_ui = mo.ui.button(label="&#x23EE;", on_click=lambda x: set_hour(0))
     subday_ui = mo.ui.button(
@@ -117,22 +117,39 @@ def _(get_hour, loads, mo, set_hour):
         "Log load density": "load_density_log[MVA/deg^2]",
     }
     dataset_ui = mo.ui.dropdown(options=_options, value=list(_options)[0])
-    browser_ui = mo.ui.checkbox(label="Show data")
-    stack_ui = mo.ui.checkbox(label="Stack data")
+
     return (
         addday_ui,
         addhour_ui,
-        browser_ui,
         dataset_ui,
         end_ui,
-        stack_ui,
         start_ui,
         subday_ui,
         subhour_ui,
     )
 
 
-@app.cell(hide_code=True)
+@app.cell
+def _(geocodes, mo):
+    # Display controls
+
+    zoom_ui = mo.ui.slider(
+        start=1,
+        stop=10,
+        step=1,
+        label="Distance sensitivity:",
+        debounce=False,
+        value=4,
+    )
+    browser_ui = mo.ui.checkbox(label="Show")
+    stack_ui = mo.ui.checkbox(label="Stack")
+    showall_ui = mo.ui.checkbox(label="All")
+    sort_ui = mo.ui.dropdown(label="Sort:", options=geocodes.columns)
+    reverse_ui = mo.ui.checkbox(label="Descending")
+    return browser_ui, reverse_ui, showall_ui, sort_ui, stack_ui, zoom_ui
+
+
+@app.cell
 def _(
     addday_ui,
     addhour_ui,
@@ -141,6 +158,9 @@ def _(
     end_ui,
     get_hour,
     mo,
+    reverse_ui,
+    showall_ui,
+    sort_ui,
     stack_ui,
     start_ui,
     subday_ui,
@@ -166,22 +186,17 @@ def _(
                 end_ui,
             ],justify="start"),
         mo.hstack([
+                zoom_ui,
                 browser_ui,
                 stack_ui,
-                zoom_ui
+                showall_ui,
+                sort_ui,
+                reverse_ui,
             ],
             justify="start",
         ),
     ])
     return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    # Distance sensitivity
-
-    zoom_ui = mo.ui.slider(start=1,stop=10,step=1,label="Distance sensitivity",debounce=False,value=4)
-    return (zoom_ui,)
 
 
 @app.cell
@@ -250,7 +265,7 @@ def _(
     return highlight, image, mapdata
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(interp, mapsize, np, points, zoom_ui):
     # Map generation routines
 
@@ -270,7 +285,7 @@ def _(interp, mapsize, np, points, zoom_ui):
     return get_map_cubic, get_map_idw
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(data_ui, geocodes, highlight, np):
     # Update bus selection
 
@@ -284,17 +299,30 @@ def _(data_ui, geocodes, highlight, np):
     return (selected,)
 
 
-@app.cell(hide_code=True)
-def _(browser_ui, geocodes, get_location, mo, set_location):
+@app.cell
+def _(
+    browser_ui,
+    geocodes,
+    get_location,
+    mo,
+    reverse_ui,
+    set_location,
+    showall_ui,
+    sort_ui,
+):
     # Browse data table
 
     try:
         _initial = get_location().reset_index().index.tolist()
     except:
         _initial = None
+
+    if sort_ui.value:
+        geocodes.sort_values(sort_ui.value,inplace=True,ascending=not reverse_ui.value)
+
     data_ui = (
         mo.ui.table(
-            geocodes[geocodes.columns[2:-2]], # drop lat/lon and calculated values
+            geocodes[geocodes.columns if showall_ui.value else geocodes.columns[2:-2]], # drop lat/lon and calculated values
             initial_selection=_initial,
             on_change=set_location,
             page_size=18,
@@ -308,8 +336,7 @@ def _(browser_ui, geocodes, get_location, mo, set_location):
 @app.cell
 def _(data_ui, image, mo, stack_ui):
     # Display map and data
-
-    (mo.vstack if stack_ui.value else mo.hstack)([mo.hstack([image]),data_ui])
+    (mo.vstack if stack_ui.value else mo.hstack)([mo.hstack([image]), data_ui if not data_ui is None else mo.md("")])
     return
 
 

@@ -10,16 +10,18 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     # Control time and place
     maptype = "iwd"
+    mapsize = (200, 200)
+
     get_hour,set_hour = mo.state(0)
     get_location,set_location = mo.state(None)
-    return get_hour, get_location, maptype, set_hour, set_location
+    return get_hour, get_location, mapsize, maptype, set_hour, set_location
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(geojson, pd):
     # Load data
 
@@ -28,10 +30,11 @@ def _(geojson, pd):
         index_col="datetime",
         )
     usmap = geojson.load(open("../data/geojson/usmap.geojson","r"))
+    # loads
     return loads, usmap
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(areas, loads, np, timestamp_ui, timestamps):
     # Get geocode points
 
@@ -45,7 +48,7 @@ def _(areas, loads, np, timestamp_ui, timestamps):
     return geocodes, points
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(loads, np, spatial):
     # WIP: map load
 
@@ -71,7 +74,7 @@ def _(loads, np, spatial):
     return area, areas, geocode
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(loads, mo, set_hour):
     # Setup UI slider
 
@@ -85,27 +88,28 @@ def _(loads, mo, set_hour):
     return timestamp_ui, timestamps
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(get_hour, loads, mo, set_hour):
     # Setup UI buttons
 
-    start_ui = mo.ui.button(label="$|\lt$", on_click=lambda x: set_hour(0))
+    start_ui = mo.ui.button(label="&#x23EE;", on_click=lambda x: set_hour(0))
     subday_ui = mo.ui.button(
-        label="$\lt\lt$", on_click=lambda x: set_hour(max(get_hour() - 24, 0))
+        label="&#x23EA;", on_click=lambda x: set_hour(max(get_hour() - 24, 0))
     )
     subhour_ui = mo.ui.button(
-        label="$\lt$", on_click=lambda x: set_hour(max(get_hour() - 1, 0))
+        label="&#x23F4;", on_click=lambda x: set_hour(max(get_hour() - 1, 0))
     )
     addhour_ui = mo.ui.button(
-        label="$\gt$",
+        label="&#x23F5;",
         on_click=lambda x: set_hour(min(get_hour() + 1, len(loads.index) - 1)),
     )
+    # pause_ui = mo.ui.button(label="&#x23F8;",disabled=True)
     addday_ui = mo.ui.button(
-        label="$\gt\gt$",
+        label="&#x23E9;",
         on_click=lambda x: set_hour(min(get_hour() + 24, len(loads.index) - 1)),
     )
     end_ui = mo.ui.button(
-        label="$\gt|$", on_click=lambda x: set_hour(len(loads.index) - 1)
+        label="&#x23ED;", on_click=lambda x: set_hour(len(loads.index) - 1)
     )
     _options = {
         "Voltage magnitude per unit nominal": "voltage[pu]",
@@ -114,19 +118,21 @@ def _(get_hour, loads, mo, set_hour):
     }
     dataset_ui = mo.ui.dropdown(options=_options, value=list(_options)[0])
     browser_ui = mo.ui.checkbox(label="Show data")
+    stack_ui = mo.ui.checkbox(label="Stack data")
     return (
         addday_ui,
         addhour_ui,
         browser_ui,
         dataset_ui,
         end_ui,
+        stack_ui,
         start_ui,
         subday_ui,
         subhour_ui,
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(
     addday_ui,
     addhour_ui,
@@ -135,6 +141,7 @@ def _(
     end_ui,
     get_hour,
     mo,
+    stack_ui,
     start_ui,
     subday_ui,
     subhour_ui,
@@ -144,27 +151,35 @@ def _(
 ):
     # Show UI inputs
 
-    mo.hstack(
-        [
-            dataset_ui,
-            mo.md(str(f"at {timestamps[get_hour()]}")),
-            timestamp_ui,
-            start_ui,
-            subday_ui,
-            subhour_ui,
-            addhour_ui,
-            addday_ui,
-            end_ui,
-            browser_ui,
-            zoom_ui
-        ],
-        justify="start",
-    )
+    mo.vstack([
+        mo.hstack(
+            [
+                dataset_ui,
+                mo.md(str(f"at {timestamps[get_hour()]}")),
+                timestamp_ui,
+                start_ui,
+                subday_ui,
+                subhour_ui,
+                # pause_ui,
+                addhour_ui,
+                addday_ui,
+                end_ui,
+            ],justify="start"),
+        mo.hstack([
+                browser_ui,
+                stack_ui,
+                zoom_ui
+            ],
+            justify="start",
+        ),
+    ])
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
+    # Distance sensitivity
+
     zoom_ui = mo.ui.slider(start=1,stop=10,step=1,label="Distance sensitivity",debounce=False,value=4)
     return (zoom_ui,)
 
@@ -176,44 +191,35 @@ def _(
     geocodes,
     geojson,
     get_hour,
-    interp,
+    get_map_cubic,
+    get_map_idw,
+    mapsize,
     maptype,
     mo,
     np,
     plt,
-    points,
     timestamps,
     usmap,
-    zoom_ui,
 ):
     # Draw map 
 
-    _size = (200, 200)
     _values = np.array(geocodes[dataset_ui.value].tolist())
     _xx, _yy = np.array(geocodes.longitude.values.tolist()), np.array(geocodes.latitude.values.tolist())
 
     _x0, _x1 = int(min(_xx) - 1), int(max(_xx))
     _y0, _y1 = int(min(_yy)), int(max(_yy) + 1)
-    _xi, _yi = np.linspace(_x0, _x1, _size[0]).tolist(),np.linspace(_y0, _y1, _size[1]).tolist()
-    _x, _y = np.meshgrid(_xi, _yi, indexing="xy")
-
+    _xi, _yi = np.linspace(_x0, _x1, mapsize[0]).tolist(),np.linspace(_y0, _y1, mapsize[1]).tolist()
 
     if maptype == 'int': # cubic interpolation method
-        mapdata = interp.griddata(points, _values, (_x, _y), method="cubic")
+        mapdata = get_map_cubic(_xx,_yy,_values,_xi,_yi)
     elif maptype == 'iwd': # inverse distance method
-        _pts = np.vstack((_xx, _yy)).T
-        _grd = np.vstack([_x.flatten(), _y.flatten()]).T
-        _d0 = np.subtract.outer(_pts[:, 0], _grd[:, 0])
-        _d1 = np.subtract.outer(_pts[:, 1], _grd[:, 1])
-        _weights = np.power(np.hypot(_d0, _d1),-zoom_ui.value)
-        _weights /= _weights.sum(axis=0)
-        mapdata = np.dot(_weights.T, _values).reshape(_size)
+        mapdata = get_map_idw(_xx,_yy,_values,_xi,_yi)
     else:
         mo.stop("invalid map method specified")
 
     # draw map
     plt.figure(figsize=figsize)
-    plt.imshow(mapdata, extent=[_x0, _x1, _y1, _y0])
+    _ax = plt.imshow(mapdata, extent=[_x0, _x1, _y1, _y0])
 
     # draw states
     for _feature in usmap["features"]:
@@ -230,7 +236,7 @@ def _(
     )
 
     # draw empty selection
-    (highlight,) = plt.plot([-105], [34], "oy")
+    highlight, = plt.plot([-105], [34], "oy")
 
     # finalize map image
     plt.grid()
@@ -238,35 +244,33 @@ def _(
     plt.ylim([_y0, _y1])
     plt.title(f"{dataset_ui.selected_key} at {timestamps[get_hour()]}")
     image = plt.gca()
+    _cb = _ax.figure.add_axes([0.95,0.165,0.03,0.662])
+    plt.colorbar(_ax,cax=_cb)
+    None
     return highlight, image, mapdata
 
 
-@app.cell
-def _():
-    # Draw map using 
+@app.cell(hide_code=True)
+def _(interp, mapsize, np, points, zoom_ui):
+    # Map generation routines
 
-    # _size = (1000, 1000)
-    # _values = np.array(geocodes[dataset_ui.value].tolist())
-    # _xx, _yy = np.array(geocodes.longitude.values.tolist()), np.array(geocodes.latitude.values.tolist())
+    def get_map_cubic(_xx,_yy,_values,_xi,_yi):
+        _x, _y = np.meshgrid(_xi, _yi, indexing="xy")
+        return interp.griddata(points, _values, (_x, _y), method="cubic")
 
-    # _x0, _x1 = int(min(_xx) - 1), int(max(_xx))
-    # _y0, _y1 = int(min(_yy)), int(max(_yy) + 1)
-    # _xi, _yi = np.linspace(_x0, _x1, _size[0]).tolist(), np.linspace(_y0, _y1, _size[1]).tolist()
-    # _x, _y = np.meshgrid(_xi, _yi, indexing="xy")
-    # _x,_y = _x.flatten(),_y.flatten()
-
-    # # inverse distance weighted method
-    # # plt.imshow(_z1, extent=[_x0, _x1, _y1, _y0])
-
-    return
-
-
-@app.cell
-def _():
-    return
+    def get_map_idw(_xx,_yy,_values,_xi,_yi):
+        _x, _y = np.meshgrid(_xi, _yi, indexing="xy")
+        _pts = np.vstack((_xx, _yy)).T
+        _grd = np.vstack([_x.flatten(), _y.flatten()]).T
+        _d0 = np.subtract.outer(_pts[:, 0], _grd[:, 0])
+        _d1 = np.subtract.outer(_pts[:, 1], _grd[:, 1])
+        _weights = np.power(np.hypot(_d0, _d1),-zoom_ui.value)
+        _weights /= _weights.sum(axis=0)
+        return np.dot(_weights.T, _values).reshape(mapsize)
+    return get_map_cubic, get_map_idw
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(data_ui, geocodes, highlight, np):
     # Update bus selection
 
@@ -280,7 +284,7 @@ def _(data_ui, geocodes, highlight, np):
     return (selected,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(browser_ui, geocodes, get_location, mo, set_location):
     # Browse data table
 
@@ -302,10 +306,10 @@ def _(browser_ui, geocodes, get_location, mo, set_location):
 
 
 @app.cell
-def _(data_ui, image, mo):
+def _(data_ui, image, mo, stack_ui):
     # Display map and data
 
-    mo.hstack([image,data_ui])
+    (mo.vstack if stack_ui.value else mo.hstack)([mo.hstack([image]),data_ui])
     return
 
 

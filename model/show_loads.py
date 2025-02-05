@@ -13,10 +13,10 @@ def _(mo):
 @app.cell
 def _(mo):
     # Control time and place
-
+    maptype = "iwd"
     get_hour,set_hour = mo.state(0)
     get_location,set_location = mo.state(None)
-    return get_hour, get_location, set_hour, set_location
+    return get_hour, get_location, maptype, set_hour, set_location
 
 
 @app.cell
@@ -35,7 +35,7 @@ def _(geojson, pd):
 def _(areas, loads, np, timestamp_ui, timestamps):
     # Get geocode points
 
-    geocodes = loads.loc[timestamps[timestamp_ui.value]].set_index("geocode")
+    geocodes = loads.loc[timestamps[timestamp_ui.value]].set_index("geocode").sort_index()
     points = np.stack(
         [geocodes.longitude.tolist(), geocodes.latitude.tolist()], -1
     )
@@ -169,47 +169,92 @@ def _(
     geojson,
     get_hour,
     interp,
+    maptype,
+    mo,
     np,
     plt,
     points,
     timestamps,
     usmap,
 ):
-    # Generate map
-    # See https://stackoverflow.com/questions/37872171/how-can-i-perform-two-dimensional-interpolation-using-scipy for a better interpolator
+    # Draw map 
 
+    _size = (200, 200)
     _values = np.array(geocodes[dataset_ui.value].tolist())
-    _x0, _x1 = int(geocodes.longitude.min()-1), int(geocodes.longitude.max())
-    _y0, _y1 = int(geocodes.latitude.min()), int(geocodes.latitude.max() + 1)
-    _x, _y = np.meshgrid(np.linspace(_x0,_x1,int((_x1-_x0)/0.02)),
-                         np.linspace(_y0,_y1,int((_y1-_y0)/0.02)),
-                         indexing='xy')
-    _z = interp.griddata(points, _values, (_x, _y), method="cubic")
+    _xx, _yy = np.array(geocodes.longitude.values.tolist()), np.array(geocodes.latitude.values.tolist())
+
+    _x0, _x1 = int(min(_xx) - 1), int(max(_xx))
+    _y0, _y1 = int(min(_yy)), int(max(_yy) + 1)
+    _xi, _yi = np.linspace(_x0, _x1, _size[0]).tolist(),np.linspace(_y0, _y1, _size[1]).tolist()
+    _x, _y = np.meshgrid(_xi, _yi, indexing="xy")
+
+
+    if maptype == 'int': # cubic interpolation method
+        mapdata = interp.griddata(points, _values, (_x, _y), method="cubic")
+    elif maptype == 'iwd': # inverse distance method
+        _pts = np.vstack((_xx, _yy)).T
+        _grd = np.vstack([_x.flatten(), _y.flatten()]).T
+        _d0 = np.subtract.outer(_pts[:, 0], _grd[:, 0])
+        _d1 = np.subtract.outer(_pts[:, 1], _grd[:, 1])
+        _weights = np.power(np.hypot(_d0, _d1),-5)
+        _weights /= _weights.sum(axis=0)
+        mapdata = np.dot(_weights.T, _values).reshape(_size)
+    else:
+        mo.stop("invalid map method specified")
 
     # draw map
     plt.figure(figsize=figsize)
-    plt.imshow(_z, extent=[_x0, _x1, _y1, _y0])
+    plt.imshow(mapdata, extent=[_x0, _x1, _y1, _y0])
 
     # draw states
     for _feature in usmap["features"]:
         _lines = np.array(list(geojson.utils.coords(_feature))).T
         # print(_lines)
-        plt.plot(*_lines,"k",linewidth=0.5)
+        plt.plot(*_lines, "k", linewidth=0.5)
 
     # draw geocoded points
     _index = geocodes.index.unique()
-    plt.plot(geocodes.loc[_index].longitude.tolist(),geocodes.loc[_index].latitude.tolist(),'.k')
+    plt.plot(
+        geocodes.loc[_index].longitude.tolist(),
+        geocodes.loc[_index].latitude.tolist(),
+        ".k",
+    )
 
     # draw empty selection
-    highlight, = plt.plot([-105],[34],'oy')
+    (highlight,) = plt.plot([-105], [34], "oy")
 
     # finalize map image
     plt.grid()
-    plt.xlim([_x0,_x1])
-    plt.ylim([_y0,_y1])
+    plt.xlim([_x0, _x1])
+    plt.ylim([_y0, _y1])
     plt.title(f"{dataset_ui.selected_key} at {timestamps[get_hour()]}")
     image = plt.gca()
-    return highlight, image
+    return highlight, image, mapdata
+
+
+@app.cell
+def _():
+    # Draw map using 
+
+    # _size = (1000, 1000)
+    # _values = np.array(geocodes[dataset_ui.value].tolist())
+    # _xx, _yy = np.array(geocodes.longitude.values.tolist()), np.array(geocodes.latitude.values.tolist())
+
+    # _x0, _x1 = int(min(_xx) - 1), int(max(_xx))
+    # _y0, _y1 = int(min(_yy)), int(max(_yy) + 1)
+    # _xi, _yi = np.linspace(_x0, _x1, _size[0]).tolist(), np.linspace(_y0, _y1, _size[1]).tolist()
+    # _x, _y = np.meshgrid(_xi, _yi, indexing="xy")
+    # _x,_y = _x.flatten(),_y.flatten()
+
+    # # inverse distance weighted method
+    # # plt.imshow(_z1, extent=[_x0, _x1, _y1, _y0])
+
+    return
+
+
+@app.cell
+def _():
+    return
 
 
 @app.cell

@@ -6,9 +6,13 @@
 
 #include "config.glm"
 
-//#version "${VERSION}"
+#version -ge 4.3.14
+
 #set keep_progress=TRUE // progress update does not overwrite previous update
 #set suppress_repeat_messages=FALSE
+
+// cleanup previous dumpdata
+#system rm -f wecc240_{failed,exception}_{branch,bus,gen,gencost}.csv
 
 clock {
     timezone ${TIMEZONE};
@@ -16,14 +20,16 @@ clock {
     stoptime ${STOPTIME};
 }
 
+//#option verbose // enable this to debug OPF solution
+//#option debug 
+
 module pypower
 {
-//  message_flags VERBOSE;    
+    // message_flags VERBOSE|DEBUG;    
     maximum_iterations ${MAXIMUM_ITERATIONS};
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
     controllers ${CONTROLLERS_FILE};
-    // TODO: enable this after gencosts are added
     enable_opf TRUE;
 }
 
@@ -40,7 +46,7 @@ module pypower
 //
 // Load loads data
 //
-#include "../data/loads.glm"
+//#include "../data/loads.glm"
 
 //
 // Load powerplant data

@@ -1,4 +1,4 @@
-// generated from powerplants.csv.zip at 2025-02-06 07:08:29.824119
+// generated from powerplants.csv.zip at 2025-02-06 09:08:11.237368
 #version -ge 4.3.7
 module pypower;
 object powerplant {
@@ -36,7 +36,7 @@ object powerplant {
     zipcode "85938";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator PV|ST;
+    generator ST|PV;
     fuel SUN|COAL;
     status "ONLINE";
     plant_code "8223";
@@ -136,7 +136,7 @@ object powerplant {
     zipcode "85043";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CC|CT|ST;
+    generator CC|ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "117";
@@ -407,7 +407,7 @@ object powerplant {
     zipcode "85606";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG|COAL;
     status "ONLINE";
     plant_code "160";
@@ -581,7 +581,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator PV|ST|CT;
-    fuel SUN|NG;
+    fuel NG|SUN;
     status "ONLINE";
     plant_code "141";
     operating_capacity 613.5 MW;
@@ -680,8 +680,8 @@ object powerplant {
     zipcode "85364";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
-    fuel OIL|NG;
+    generator ST|CT;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "120";
     operating_capacity 425.0 MW;
@@ -731,7 +731,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator PV|ST|CT;
-    fuel SUN|NG;
+    fuel NG|SUN;
     status "ONLINE";
     plant_code "116";
     operating_capacity 333.4 MW;
@@ -805,8 +805,8 @@ object powerplant {
     zipcode "85245";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
-    fuel SUN|NG;
+    generator ST|CT;
+    fuel NG|SUN;
     status "ONLINE";
     plant_code "118";
     operating_capacity 184.5 MW;
@@ -880,7 +880,7 @@ object powerplant {
     naics_code "221111";
     naics_description "Hydroelectric Power Generation";
     generator HT;
-    fuel WATER|ELEC;
+    fuel ELEC|WATER;
     status "ONLINE";
     plant_code "145";
     operating_capacity 129.5 MW;
@@ -1076,8 +1076,8 @@ object powerplant {
     zipcode "85643";
     naics_code "221114";
     naics_description "Solar Electric Power Generation";
-    generator PV|WT;
-    fuel WIND|SUN;
+    generator WT|PV;
+    fuel SUN|WIND;
     status "ONLINE";
     plant_code "58833";
     operating_capacity 81.0 MW;
@@ -1126,7 +1126,7 @@ object powerplant {
     naics_code "221111";
     naics_description "Hydroelectric Power Generation";
     generator HT;
-    fuel WATER|ELEC;
+    fuel ELEC|WATER;
     status "ONLINE";
     plant_code "148";
     operating_capacity 63.5 MW;
@@ -2054,7 +2054,7 @@ object powerplant {
     naics_code "221118";
     naics_description "Other Electric Power Generation";
     generator ES|PV;
-    fuel SUN|ELEC;
+    fuel ELEC|SUN;
     status "ONLINE";
     plant_code "60996";
     operating_capacity 12.0 MW;
@@ -2101,8 +2101,8 @@ object powerplant {
     zipcode "86401";
     naics_code "221115";
     naics_description "Wind Electric Power Generation";
-    generator PV|WT;
-    fuel WIND|SUN;
+    generator WT|PV;
+    fuel SUN|WIND;
     status "ONLINE";
     plant_code "57775";
     operating_capacity 10.5 MW;
@@ -2247,7 +2247,7 @@ object powerplant {
     zipcode "90803";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "315";
@@ -2272,7 +2272,7 @@ object powerplant {
     zipcode "90803";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CC|CT|ST;
+    generator CC|ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "400";
@@ -2298,7 +2298,7 @@ object powerplant {
     naics_code "221111";
     naics_description "Hydroelectric Power Generation";
     generator HT;
-    fuel WATER|ELEC;
+    fuel ELEC|WATER;
     status "ONLINE";
     plant_code "392";
     operating_capacity 1682.0 MW;
@@ -2520,7 +2520,7 @@ object powerplant {
     zipcode "92008";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "302";
@@ -2570,7 +2570,7 @@ object powerplant {
     zipcode "90293";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CC|CT|ST;
+    generator CC|ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "404";
@@ -2767,7 +2767,7 @@ object powerplant {
     zipcode "91352";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CC|CT|ST;
+    generator CC|ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "408";
@@ -2911,7 +2911,7 @@ object powerplant {
     naics_code "221111";
     naics_description "Hydroelectric Power Generation";
     generator HT;
-    fuel WATER|ELEC;
+    fuel ELEC|WATER;
     status "ONLINE";
     plant_code "437";
     operating_capacity 644.1 MW;
@@ -3279,7 +3279,7 @@ object powerplant {
     zipcode "92646";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "335";
@@ -3399,8 +3399,8 @@ object powerplant {
     zipcode "92243";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator ES|CC|ST;
-    fuel NG|ELEC;
+    generator ST|CC|ES;
+    fuel ELEC|NG;
     status "ONLINE";
     plant_code "389";
     operating_capacity 388.3 MW;
@@ -3645,8 +3645,8 @@ object powerplant {
     zipcode "91201";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CC|CT|ST;
-    fuel WASTE|NG;
+    generator CC|ST|CT;
+    fuel NG|WASTE;
     status "ONLINE";
     plant_code "377";
     operating_capacity 300.9 MW;
@@ -4491,7 +4491,7 @@ object powerplant {
     zipcode "95351";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CC|CT|IC;
+    generator IC|CC|CT;
     fuel NG;
     status "ONLINE";
     plant_code "7266";
@@ -4934,7 +4934,7 @@ object powerplant {
     zipcode "95503";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator IC|ST;
+    generator ST|IC;
     fuel NG;
     status "ONLINE";
     plant_code "246";
@@ -5134,7 +5134,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator CC|ST;
-    fuel GAS|NG;
+    fuel NG|GAS;
     status "ONLINE";
     plant_code "52109";
     operating_capacity 155.6 MW;
@@ -5604,8 +5604,8 @@ object powerplant {
     zipcode "95354";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
-    fuel OIL|NG;
+    generator ST|CT;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "151";
     operating_capacity 142.4 MW;
@@ -6423,7 +6423,7 @@ object powerplant {
     naics_code "221111";
     naics_description "Hydroelectric Power Generation";
     generator HT;
-    fuel WATER|ELEC;
+    fuel ELEC|WATER;
     status "ONLINE";
     plant_code "438";
     operating_capacity 115.1 MW;
@@ -7035,7 +7035,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator CC|ST;
-    fuel GAS|NG;
+    fuel NG|GAS;
     status "ONLINE";
     plant_code "54912";
     operating_capacity 100.0 MW;
@@ -8145,7 +8145,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator ST;
-    fuel GAS|NG;
+    fuel NG|GAS;
     status "ONLINE";
     plant_code "54451";
     operating_capacity 68.5 MW;
@@ -8219,7 +8219,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator ES|CT;
-    fuel NG|ELEC;
+    fuel ELEC|NG;
     status "ONLINE";
     plant_code "50300";
     operating_capacity 66.0 MW;
@@ -8733,7 +8733,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator ES|CT;
-    fuel NG|ELEC;
+    fuel ELEC|NG;
     status "ONLINE";
     plant_code "56475";
     operating_capacity 59.8 MW;
@@ -8758,7 +8758,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator ES|CT;
-    fuel NG|ELEC;
+    fuel ELEC|NG;
     status "ONLINE";
     plant_code "56472";
     operating_capacity 59.8 MW;
@@ -9643,8 +9643,8 @@ object powerplant {
     zipcode "92227";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
-    fuel OIL|NG;
+    generator ST|CT;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "7824";
     operating_capacity 49.8 MW;
@@ -9869,7 +9869,7 @@ object powerplant {
     naics_code "221118";
     naics_description "Other Electric Power Generation";
     generator UNKNOWN|CT;
-    fuel OTHER|NG;
+    fuel NG|OTHER;
     status "ONLINE";
     plant_code "50624";
     operating_capacity 49.3 MW;
@@ -11558,8 +11558,8 @@ object powerplant {
     zipcode "92093";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator ES|CC;
-    fuel NG|ELEC;
+    generator CC|ES;
+    fuel ELEC|NG;
     status "ONLINE";
     plant_code "57584";
     operating_capacity 35.5 MW;
@@ -16654,8 +16654,8 @@ object powerplant {
     zipcode "92182";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator PV|CC;
-    fuel SUN|NG;
+    generator CC|PV;
+    fuel NG|SUN;
     status "ONLINE";
     plant_code "50061";
     operating_capacity 15.1 MW;
@@ -17012,8 +17012,8 @@ object powerplant {
     zipcode "91706";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator PV|CT|ST;
-    fuel SUN|NG|BIO;
+    generator PV|ST|CT;
+    fuel NG|SUN|BIO;
     status "ONLINE";
     plant_code "58056";
     operating_capacity 13.9 MW;
@@ -17357,8 +17357,8 @@ object powerplant {
     zipcode "90704";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator ES|ST;
-    fuel OIL|ELEC;
+    generator ST|ES;
+    fuel ELEC|OIL;
     status "ONLINE";
     plant_code "6704";
     operating_capacity 12.7 MW;
@@ -17529,8 +17529,8 @@ object powerplant {
     zipcode "92350";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CC|CT|ST;
-    fuel OIL|NG;
+    generator CC|ST|CT;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "10206";
     operating_capacity 12.1 MW;
@@ -18011,7 +18011,7 @@ object powerplant {
     zipcode "95134";
     naics_code "221117";
     naics_description "Biomass Electric Power Generation";
-    generator IC|ST;
+    generator ST|IC;
     fuel NG|BIO;
     status "ONLINE";
     plant_code "56080";
@@ -18473,8 +18473,8 @@ object powerplant {
     zipcode "92123";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator IC|CT|ST;
-    fuel OIL|NG;
+    generator IC|ST|CT;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "10175";
     operating_capacity 10.0 MW;
@@ -19826,7 +19826,7 @@ object powerplant {
     naics_code "221111";
     naics_description "Hydroelectric Power Generation";
     generator HT;
-    fuel WATER|ELEC;
+    fuel ELEC|WATER;
     status "ONLINE";
     plant_code "518";
     operating_capacity 94.5 MW;
@@ -23238,7 +23238,7 @@ object powerplant {
     zipcode "59270";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator IC|ST;
+    generator ST|IC;
     fuel NG|COAL;
     status "ONLINE";
     plant_code "6089";
@@ -23958,7 +23958,7 @@ object powerplant {
     zipcode "88240";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "2454";
@@ -23983,7 +23983,7 @@ object powerplant {
     zipcode "88063";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "2444";
@@ -24033,7 +24033,7 @@ object powerplant {
     zipcode "88240";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "2446";
@@ -24651,7 +24651,7 @@ object powerplant {
     zipcode "87131";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "50906";
@@ -27616,7 +27616,7 @@ object powerplant {
     zipcode "84104";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
+    generator ST|CT;
     fuel NG;
     status "ONLINE";
     plant_code "3648";
@@ -28203,7 +28203,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator UNKNOWN|CC|ST|CT;
-    fuel OTHER|NG|COAL;
+    fuel NG|OTHER|COAL;
     status "ONLINE";
     plant_code "56163";
     operating_capacity 38.2 MW;
@@ -28253,8 +28253,8 @@ object powerplant {
     zipcode "84010";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator IC|CT|ST;
-    fuel OIL|NG;
+    generator IC|ST|CT;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "3665";
     operating_capacity 30.4 MW;
@@ -28425,8 +28425,8 @@ object powerplant {
     zipcode "84321";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
-    fuel OIL|NG;
+    generator ST|CT;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "4251";
     operating_capacity 15.9 MW;
@@ -28450,8 +28450,8 @@ object powerplant {
     zipcode "84737";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator IC|ST;
-    fuel OIL|NG;
+    generator ST|IC;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "57899";
     operating_capacity 15.1 MW;
@@ -28475,8 +28475,8 @@ object powerplant {
     zipcode "84032";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator IC|ST;
-    fuel OIL|NG;
+    generator ST|IC;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "7111";
     operating_capacity 14.1 MW;
@@ -28597,7 +28597,7 @@ object powerplant {
     naics_code "221111";
     naics_description "Hydroelectric Power Generation";
     generator HT;
-    fuel WATER|ELEC;
+    fuel ELEC|WATER;
     status "ONLINE";
     plant_code "6163";
     operating_capacity 6809.0 MW;
@@ -29178,8 +29178,8 @@ object powerplant {
     zipcode "98926";
     naics_code "221115";
     naics_description "Wind Electric Power Generation";
-    generator PV|WT;
-    fuel WIND|SUN;
+    generator WT|PV;
+    fuel SUN|WIND;
     status "ONLINE";
     plant_code "56322";
     operating_capacity 273.1 MW;
@@ -30226,8 +30226,8 @@ object powerplant {
     zipcode "99141";
     naics_code "221117";
     naics_description "Biomass Electric Power Generation";
-    generator CT|ST;
-    fuel WOOD|NG;
+    generator ST|CT;
+    fuel NG|WOOD;
     status "ONLINE";
     plant_code "550";
     operating_capacity 57.9 MW;
@@ -30326,8 +30326,8 @@ object powerplant {
     zipcode "98632";
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
-    generator CT|ST;
-    fuel WOOD|NG;
+    generator ST|CT;
+    fuel NG|WOOD;
     status "ONLINE";
     plant_code "54562";
     operating_capacity 45.0 MW;
@@ -30775,7 +30775,7 @@ object powerplant {
     naics_code "221112";
     naics_description "Fossil Fuel Electric Power Generation";
     generator ST;
-    fuel OIL|NG;
+    fuel NG|OIL;
     status "ONLINE";
     plant_code "54809";
     operating_capacity 15.0 MW;

@@ -5,7 +5,7 @@ import sys
 import datetime as dt
 import math
 
-import tape
+import geotape
 
 loads_recorder = None
 plant_recorder = None
@@ -31,7 +31,7 @@ def fuel(x):
 def on_init(t0):
 
     global loads_recorder
-    loads_recorder = tape.GeoRecorder(gldcore,
+    loads_recorder = geotape.GeoRecorder(gldcore,
         csvname="loads.csv",
         objects=r"^wecc240_psse_L_[0-9]+",
         properties={
@@ -51,7 +51,7 @@ def on_init(t0):
         )
 
     global powerplants_recorder
-    powerplants_recorder = tape.GeoRecorder(gldcore,
+    powerplants_recorder = geotape.GeoRecorder(gldcore,
         csvname="powerplants.csv",
         objects={"class":"powerplant"},
         properties={

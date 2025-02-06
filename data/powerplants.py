@@ -140,6 +140,22 @@ zipranges = {
     "SO" : [], # Sonora
 }
 
+# create stubs for fuel and gen cost data if not existing already
+if not os.path.exists("powerplants_fuelcosts.csv"):
+    with open("powerplants_fuelcosts.csv","w") as fh:
+        print("fuel,startup_cost,shutdown_cost,fixed_cost,variable_cost,scarcity_cost",file=fh)
+        for fuel in sorted(set([x[0] for x in plant_types.values()])):
+            print(f"{fuel},0,0,0,0,0",file=fh)
+if not os.path.exists("powerplants_typecosts.csv"):
+    with open("powerplants_typecosts.csv","w") as fh:
+        print("type,startup_cost,shutdown_cost,fixed_cost,variable_cost,scarcity_cost",file=fh)
+        for gen in sorted(set([x[1] for x in plant_types.values()])):
+            print(f"{gen},0,0,0,0,0",file=fh)
+
+# load fuel and gen cost data
+fuelcosts = pd.read_csv("powerplants_fuelcosts.csv",index_col=[0],comment="#")
+typecosts = pd.read_csv("powerplants_typecosts.csv",index_col=[0],comment="#")
+
 with open(glmname,'w') as glm:
     print(f"// generated from {csvname} at {dt.datetime.now()}",file=glm)
     if gridlabd_version:
@@ -155,15 +171,17 @@ with open(glmname,'w') as glm:
                     break # plants are ordered by size in each state
                 if _plant['STATUS'] != "OP":
                     if _plant['STATUS'] == "NOT AVAILABLE":
-                        print(f"WARNING [powerplant.py]: powerplant '{_plant['NAME']}' status is unknown and assumed OFFLINE",file=sys.stderr)
+                        print(f"WARNING [powerplants.py]: unit '{_plant['NAME']}' status is unknown and assumed OFFLINE",file=sys.stderr)
                     else:
                         continue
                 if len(_ziprange) > 1 and _plant['ZIP'] != "NOT AVAILABLE" and ( _plant['ZIP'] < _ziprange[0] or _plant['ZIP'] > _ziprange[1] ):
-                    print(f"WARNING [powerplant.py]: powerplant '{_plant['NAME']}' zipcode '{_plant['ZIP']}' is not valid for state '{_plant['STATE']}'",file=sys.stderr)
+                    print(f"WARNING [powerplants.py]: unit '{_plant['NAME']}' zipcode '{_plant['ZIP']}' is not valid for state '{_plant['STATE']}'",file=sys.stderr)
 
                 print("object powerplant {",file=glm)
                 fuel = []
                 generator = []
+                unitname = None
+                capacity = 0
                 for name,column in mapper.items():
                     value = _plant[column]
                     if column == "NAME":
@@ -179,7 +197,10 @@ with open(glmname,'w') as glm:
                         if '0' <= value[0] <= '9':
                             value = "_" + value
                         if len(value) > 63:
-                            print(f"WARNING [powerplant.py]: plant name '{value}' is too long",file=sys.stderr)
+                            print(f"WARNING [powerplants.py]: unit name '{value}' is too long (>63 chars)",file=sys.stderr)
+                        unitname = value
+                    if name == "operating_capacity":
+                        capacity = value
                     if value != "NOT AVAILABLE" or name in ['status']:
                         if name == "plant_type":
                             for item in value.split("; "):
@@ -197,6 +218,41 @@ with open(glmname,'w') as glm:
                             print(f"""    {name} "{value.title()}";""",file=glm)    
                         else:
                             print(f"""    {name} "{value}";""",file=glm)
+                startup_cost = 0.0
+                shutdown_cost = 0.0
+                fixed_cost = 0.0
+                variable_cost = 0.0
+                scarcity_cost = 0.0
+                for ndx in fuel:
+                    if not ndx in fuelcosts.index:
+                        print(f"WARNING [powerplants.py]: unit '{unitname}' fuel type '{ndx}' not found in 'fuelcosts.csv'",file=sys.stderr)
+                    else:
+                        startup_cost += fuelcosts.loc[ndx].startup_cost
+                        shutdown_cost += fuelcosts.loc[ndx].shutdown_cost
+                        fixed_cost += fuelcosts.loc[ndx].fixed_cost
+                        variable_cost += fuelcosts.loc[ndx].variable_cost
+                        scarcity_cost += fuelcosts.loc[ndx].scarcity_cost
+                for ndx in generator:
+                    if not ndx in typecosts.index:
+                        print(f"WARNING [powerplants.py]: unit '{unitname}' generator type '{ndx}' not found in 'fuelcosts.csv'",file=sys.stderr)
+                    else:
+                        startup_cost += typecosts.loc[ndx].startup_cost
+                        shutdown_cost += typecosts.loc[ndx].shutdown_cost
+                        fixed_cost += typecosts.loc[ndx].fixed_cost
+                        variable_cost += typecosts.loc[ndx].variable_cost
+                        scarcity_cost += typecosts.loc[ndx].scarcity_cost
+
+    #             print(f"""    object gencost {{
+    #     startup {startup_cost*capacity:.2f} $;
+    #     shutdown {shutdown_cost*capacity:.2f} $;
+    #     model POLYNOMIAL;
+    #     costs {fixed_cost},{variable_cost},{scarcity_cost};
+    # }};""",file=glm)
+                print(f"    startup_cost {startup_cost} $/MW;",file=glm)
+                print(f"    shutdown_cost {shutdown_cost} $/MW;",file=glm)
+                print(f"    fixed_cost {fixed_cost} $/h;",file=glm)
+                print(f"    variable_cost {variable_cost} $/MW/h;",file=glm)
+                print(f"    scarcity_cost {scarcity_cost} $/MW^2/h;",file=glm)
                 print("}", file=glm)
                 count += 1
 

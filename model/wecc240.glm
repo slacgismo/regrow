@@ -24,7 +24,7 @@ module pypower
     stop_on_failure ${STOP_ON_FAILURE};
     controllers ${CONTROLLERS_FILE};
     // TODO: enable this after gencosts are added
-    // enable_opf TRUE;
+    enable_opf TRUE;
 }
 
 //
@@ -47,6 +47,7 @@ module pypower
 //
 #include "../data/powerplants.glm"
 #include "../data/powerplants_gis.glm"
+#include "../data/powerplants_cost.glm"
 
 //
 // Load weather geodata

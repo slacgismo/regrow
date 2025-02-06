@@ -7,7 +7,7 @@
 //modify ${OBJ}.P 0+0j;
 //#done
 // load total demand gis
-//#include "../data/loads_gis.glm"
+#include "../data/loads_gis.glm"
 
 object geodata
 {

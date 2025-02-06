@@ -1,0 +1,12 @@
+// add gencost objects to all generator busses (for OPF solver)
+#for BUS in ${FIND class=gen}
+object pypower.gencost
+{
+    name ${BUS}_COST;
+    parent ${BUS};
+    model POLYNOMIAL;
+    startup 0;
+    shutdown 0;
+    costs "0,5,0";
+}
+#done

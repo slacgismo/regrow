@@ -1,0 +1,19 @@
+# Sources:
+#   - Cycling costs https://www.nrel.gov/docs/fy12osti/55433.pdf
+fuel,startup_cost,shutdown_cost,fixed_cost,variable_cost,scarcity_cost
+BIO,0,0,0,5,0
+COAL,100,0,1000,50,0.001
+COKE,0,0,0,5,0
+ELEC,0,0,0,5,0
+GAS,35,0,500,10,0.001
+GEO,0,0,0,5,0
+NG,35,0,500,10,0.001
+NUC,6500,0,1000,5,0.001
+OIL,0,0,0,50,0
+OTHER,0,0,0,5,0
+SUN,0,0,0,0,0
+UNKNOWN,0,0,0,0,0
+WASTE,0,0,0,5,0
+WATER,0,0,200,2,0.001
+WIND,0,0,0,0,0
+WOOD,0,0,0,5,0

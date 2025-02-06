@@ -233,7 +233,7 @@ def nsrdb_weather(location,year,
     """
     lat,lon = geocode(location)
     leap = (year%4 == 0)
-    email, api_key = "qnguyen@nrel.gov", "gIrZme0WGXbZQl6uPE3R3aehydAspclbtL9fXiFO"
+    email, api_key = nsrdb_credentials()
     # Pull from API and save locally
     psm3, _ = pvlib_psm3.get_psm3(lat, lon,
                                   api_key,

@@ -1,0 +1,14 @@
+# Sources:
+#   - Cycling costs https://www.nrel.gov/docs/fy12osti/55433.pdf
+type,startup_cost,shutdown_cost,fixed_cost,variable_cost,scarcity_cost
+AT,0,0,0,0,0
+CC,0,0,0,0,0
+CT,0,0,0,0,0
+ES,0,0,0,0,0
+FW,0,0,0,0,0
+HT,0,0,0,0,0
+IC,0,0,0,0,0
+PV,0,0,0,0,0
+ST,0,0,0,0,0
+UNKNOWN,0,0,0,0,0
+WT,0,0,0,0,0

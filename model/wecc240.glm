@@ -4,6 +4,8 @@
 // unless they are considered invariant across the scenarios being considered.
 //
 
+//#define DYNAMIC_MODEL // enable loading of geodata
+
 #include "config.glm"
 
 #version -ge 4.3.14
@@ -25,13 +27,13 @@ clock {
 
 module pypower
 {
-    // message_flags VERBOSE|DEBUG;    
+    message_flags VERBOSE|DEBUG;    
     maximum_iterations ${MAXIMUM_ITERATIONS};
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure FALSE; // ${STOP_ON_FAILURE};
     controllers ${CONTROLLERS_FILE};
     default_reactive_power_fraction 0.5;
-    enable_opf FALSE;
+    enable_opf TRUE;
 }
 
 //
@@ -47,19 +49,36 @@ module pypower
 //
 // Load loads data
 //
+#ifdef DYNAMIC_MODEL
 #include "../data/loads.glm"
+#endif
 
 //
 // Load powerplant data
 //
+#ifdef DYNAMIC_MODEL
 #include "../data/powerplants.glm"
 #include "../data/powerplants_gis.glm"
 #include "../data/powerplants_cost.glm"
+#else
+// fake gencost for unmodified model (delete this when powerplants data loads ok)
+#for GEN in ${FIND class=gen}
+object gencost {
+    parent "${GEN}";
+    startup 10;
+    shutdown 0;
+    model POLYNOMIAL;
+    costs "10,${RANDOM},0.001";
+}
+#done
+#endif
 
 //
 // Load weather geodata
 //
+#ifdef DYNAMIC_MODEL
 #include "../data/weather.glm"
+#endif
 
 //
 // Model fixups

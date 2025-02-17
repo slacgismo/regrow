@@ -15,10 +15,14 @@ power_plant_path = "pvwatts_powerplants"
 wecc_node_path = "pvwatts_wecc_nodes"
 aggregated_pp_wecc_node_path = "pvwatts_wecc_node_pp_agg"
 
-powerplant_pvwatts_files = glob.glob(os.path.join(base_path, power_plant_path, "*.csv"))
-available_plant_geohashes = [os.path.basename(x).replace(".csv", "") for x in powerplant_pvwatts_files]
+powerplant_pvwatts_files = glob.glob(os.path.join(base_path,
+                                                  power_plant_path, "*.csv"))
+available_plant_geohashes = [os.path.basename(x).replace(".csv", "")
+                             for x in powerplant_pvwatts_files]
 
-wecc_pvwatts_files = glob.glob(os.path.join(base_path, wecc_node_path, "*.csv"))
+wecc_pvwatts_files = glob.glob(os.path.join(base_path,
+                                            wecc_node_path,
+                                            "*.csv"))
 
 metadata = pd.read_csv("C:/Users/kperry/Documents/source/repos/regrow/data/nodes_pvwatts_sim.csv")
 

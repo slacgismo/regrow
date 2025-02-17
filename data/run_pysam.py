@@ -3,31 +3,8 @@ import os
 import numpy as np
 from matplotlib import pyplot as plt
 from utils import geohash, nsrdb_weather
-
 import PySAM.Windpower as wp
 import PySAM.ResourceTools as tools
-
-
-def filter_df_capacity():
-    """
-    Filters power capacity dataframe for "WT" generator.
-    """
-
-    df_capacity = pd.read_csv("./data/powerplants.csv")
-    df_capacity.loc[df_capacity['generator'].isna(), 'generator'] = ""
-    df_capacity = df_capacity[df_capacity['generator'].str.contains("WT")]
-    df_capacity['node_cnt'] = df_capacity.groupby(
-        "geocode")['geocode'].transform("count")
-    df_capacity['number_energy_sources'] = [
-        (x.count("|") + 1) for x in list(df_capacity['generator'])]
-    df_capacity['fractional_capacity_MW'] = df_capacity['capacity[MW]'] / \
-        df_capacity['number_energy_sources']
-
-    df_capacity['final_capacity_MW'] = df_capacity.groupby(
-        "geocode")['fractional_capacity_MW'].transform("sum")
-
-    return df_capacity
-
 
 def generate_turbine_metadata(df):
     """
@@ -53,7 +30,7 @@ def generate_turbine_metadata(df):
     df["altitude_m"] = 450
 
     # Generate the number of turbines needed to reach system capacity
-    df["num_turbines"] = (df['final_capacity_MW'] /
+    df["num_turbines"] = (df['aggregated_bus_fractional_capacity_MW'] /
                           df["turbine_rating_MW"]).astype(int)
     # Get the calculated capacity closest to the actual system's
     df["lower_capacity_MW"] = df["num_turbines"] * df["turbine_rating_MW"]
@@ -61,8 +38,8 @@ def generate_turbine_metadata(df):
 
     # Select the capacity closest to the actual capacity
     df["calculated_capacity_MW"] = np.where(
-        (abs(df['final_capacity_MW'] - df["lower_capacity_MW"]) <=
-            abs(df['final_capacity_MW'] - df["upper_capacity_MW"])),
+        (abs(df['aggregated_bus_fractional_capacity_MW'] - df["lower_capacity_MW"]) <=
+            abs(df['aggregated_bus_fractional_capacity_MW'] - df["upper_capacity_MW"])),
         df["lower_capacity_MW"],
         df["upper_capacity_MW"])
     # If the upper capacity is closer, add final turbine numbers by 1
@@ -72,7 +49,7 @@ def generate_turbine_metadata(df):
         df["num_turbines"])
     df = df.drop(columns=["lower_capacity_MW", "upper_capacity_MW"])
 
-    df["capacity_diff_MW"] = df["final_capacity_MW"] - \
+    df["capacity_diff_MW"] = df[ 'aggregated_bus_fractional_capacity_MW'] - \
         df["calculated_capacity_MW"]
 
     return df
@@ -183,20 +160,53 @@ def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
 
 if __name__ == "__main__":
     # Point towards the particular local folder that contains the data
-    data_path = "./pysam_wecc_nodes"
-    # Nodes metadata
-    nodes_df = pd.read_csv("nodes.csv")
-    # Nodes capacity info
-    df_capacity = filter_df_capacity()
-    metadata_df = pd.merge(nodes_df, df_capacity, on="geocode")
-    master_df = generate_turbine_metadata(metadata_df)
-    master_df.to_csv("nodes_pysam_sim.csv", index=False)
+    # metadata_df = pd.read_csv("nodes_pysam_sim.csv")
+    # master_df = generate_turbine_metadata(metadata_df)
+    metadata = pd.read_csv("nodes_pysam_sim.csv")
+    # Identify type of capacity we want to aggregate on (plant level, wecc node
+    # level)
+    capacity_type = "powerplant"
+    if capacity_type == "wecc_node":
+        metadata = metadata[['system_id', 'geocode', 'Bus  Number',
+                             'Bus  Name', 'bus_latitude', 'bus_longitude', 
+                             'aggregated_bus_fractional_capacity_MW', 
+                             'min_measured_date',
+                             'max_measured_date', 'turbine_rating_MW', 
+                             'rotor_diameter_m',
+                             'hub_height_m', 'max_rotor_tip_speed', 
+                             'tip_speed_ratio', 'max_cp',
+                             'drivetrain_design', 'cut_in_wind_speed_m/s', 
+                             'cut_out_wind_speed_m/s',
+                             'shear_exponent', 'altitude_m', 'num_turbines',
+                             'calculated_capacity_MW', 'capacity_diff_MW']].drop_duplicates()
+        metadata = metadata.rename(columns={
+            "bus_latitude": "latitude", 
+            "bus_longitude": "longitude",
+            'aggregated_bus_fractional_capacity_MW': "power"})
+        metadata = metadata.dropna(subset=['latitude', 'longitude'])
+    else:
+        metadata = metadata[['system_id', 'geocode', 'county', 
+                             'state', 'tzoffset', 'plant_latitude',
+                             'plant_longitude', 'plant_fractional_capacity_MW', 
+                             'generator','min_measured_date',
+                             'max_measured_date',
+                             'plant_capacity_MW', 'turbine_rating_MW', 
+                             'rotor_diameter_m',
+                             'hub_height_m', 'max_rotor_tip_speed', 
+                             'tip_speed_ratio', 'max_cp',
+                             'drivetrain_design', 'cut_in_wind_speed_m/s', 
+                             'cut_out_wind_speed_m/s',
+                             'shear_exponent', 'altitude_m', 'num_turbines',
+                             'calculated_capacity_MW', 'capacity_diff_MW']].drop_duplicates()
+        metadata = metadata.rename(columns={
+            "plant_latitude": "latitude", 
+            "plant_longitude": "longitude",
+            'plant_fractional_capacity_MW': "power"})
+        metadata = metadata.dropna(subset=['latitude', 'longitude'])
     geocode_error_list = []
     ran_geocode_list = [] 
-    
-    for idx, row in master_df.iterrows():
+    for idx, row in metadata.iterrows():
         geocode = row['geocode']
-        print(geocode)
         if geocode not in ran_geocode_list:
             ran_geocode_list.append(geocode)
             lat = row['latitude']
@@ -221,10 +231,6 @@ if __name__ == "__main__":
             num_turbines = row["num_turbines"]
             min_measured_date = pd.to_datetime(row['min_measured_date'])
             max_measured_date = pd.to_datetime(row['max_measured_date'])
-
-            nsrdb_file_path = os.path.join(data_path, "nsrdb_data",
-                                            str(geocode) + "_nsrdb.csv")
-
             all_nsrdb_data = pd.DataFrame()
             all_power_output = pd.DataFrame()
 
@@ -240,9 +246,6 @@ if __name__ == "__main__":
                 weather_df.reset_index(names=['datetime'], inplace=True)
                 all_nsrdb_data = pd.concat(
                     [all_nsrdb_data, weather_df], ignore_index=True)
-
-            all_nsrdb_data.to_csv(nsrdb_file_path, index=False)
-
             # Pysam takes exactly 8760 data points for a wind model run
             limit = 8760
             for i in range(0, len(all_nsrdb_data), limit):

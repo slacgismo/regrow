@@ -71,23 +71,30 @@ if __name__ == "__main__":
     if capacity_type == "wecc_node":
         metadata = metadata[['system_id', 'geocode', 'Bus  Number',
                              'Bus  Name', 'bus_latitude', 'bus_longitude', 
-                             'aggregated_bus_fractional_capacity_MW', 'azimuth',
-                             'tilt', 'tracking', 'module_type', 'min_measured_date',
+                             'aggregated_bus_fractional_capacity_MW', 
+                             'azimuth','tilt', 'tracking', 'module_type',
+                             'min_measured_date',
                              'max_measured_date', 'backtracking', 
                              'mount_type']].drop_duplicates()
-        metadata = metadata.rename(columns={"bus_latitude": "latitude", 
-                                            "bus_longitude": "longitude",
-                                            'aggregated_bus_fractional_capacity_MW': "power"})
+        metadata = metadata.rename(columns={
+            "bus_latitude": "latitude", 
+            "bus_longitude": "longitude",
+            'aggregated_bus_fractional_capacity_MW': "power"})
         metadata = metadata.dropna(subset=['latitude', 'longitude'])
     else:
-        metadata = metadata[['system_id', 'geocode', 'county', 'state', 'tzoffset', 'plant_latitude',
-                             'plant_longitude', 'plant_fractional_capacity_MW', 'generator',
+        metadata = metadata[['system_id', 'geocode', 'county', 
+                             'state', 'tzoffset', 'plant_latitude',
+                             'plant_longitude', 'plant_fractional_capacity_MW', 
+                             'generator',
                              'plant_capacity_MW', 'azimuth',
-                             'tilt', 'tracking', 'module_type', 'min_measured_date',
-                             'max_measured_date', 'backtracking', 'mount_type']].drop_duplicates()
-        metadata = metadata.rename(columns={"plant_latitude": "latitude", 
-                                            "plant_longitude": "longitude",
-                                            'plant_fractional_capacity_MW': "power"})
+                             'tilt', 'tracking', 'module_type',
+                             'min_measured_date',
+                             'max_measured_date', 'backtracking',
+                             'mount_type']].drop_duplicates()
+        metadata = metadata.rename(columns={
+            "plant_latitude": "latitude", 
+            "plant_longitude": "longitude",
+            'plant_fractional_capacity_MW': "power"})
         metadata = metadata.dropna(subset=['latitude', 'longitude'])
     # Loop through the metadata and generate the associated estimates
     for idx, row in metadata.iterrows():

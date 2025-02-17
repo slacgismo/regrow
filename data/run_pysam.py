@@ -163,12 +163,14 @@ if __name__ == "__main__":
     # metadata_df = pd.read_csv("nodes_pysam_sim.csv")
     # master_df = generate_turbine_metadata(metadata_df)
     metadata = pd.read_csv("nodes_pysam_sim.csv")
+    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pysam_powerplants"
     # Identify type of capacity we want to aggregate on (plant level, wecc node
     # level)
-    capacity_type = "powerplant"
+    capacity_type = "wecc_node"
     if capacity_type == "wecc_node":
-        metadata = metadata[['system_id', 'geocode', 'Bus  Number',
-                             'Bus  Name', 'bus_latitude', 'bus_longitude', 
+        metadata = metadata[['system_id', 'geocode', 'Bus  Number', 'state',
+                             'tzoffset', 'Bus  Name', 'bus_latitude',
+                             'bus_longitude', 
                              'aggregated_bus_fractional_capacity_MW', 
                              'min_measured_date',
                              'max_measured_date', 'turbine_rating_MW', 
@@ -292,18 +294,6 @@ if __name__ == "__main__":
 
                     power_output_df["power_MW"] = power_output_df["power_kW"] / 1000
                     power_output_df = power_output_df.drop("power_kW", axis=1)
-
-                    # Plot power_output by year
-                    plt.plot(power_output_df["datetime"],
-                              power_output_df["power_MW"])
-                    plt.title(f"Wind Predicted Power Output {year}")
-                    plt.ylabel("Power Output [MW]")
-                    plt.xlabel("Date")
-                    plt.xticks(rotation=45)
-                    plt.tight_layout()
-                    plt.savefig(os.path.join(data_path, "plots",
-                                              str(geocode) + f"_{year}.png"))
-                    plt.show()
 
                     all_power_output = pd.concat(
                         [all_power_output, power_output_df], ignore_index=True)

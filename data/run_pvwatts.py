@@ -63,11 +63,11 @@ def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
 
 if __name__ == "__main__":
     # Point towards the particular local folder that contains the data
-    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_wecc_nodes"
+    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_powerplants"
     metadata = pd.read_csv("nodes_pvwatts_sim.csv") 
     # Identify type of capacity we want to aggregate on (plant level, wecc node
     # level)
-    capacity_type = "wecc_node"
+    capacity_type = "powerplant"
     if capacity_type == "wecc_node":
         metadata = metadata[['system_id', 'geocode', 'Bus  Number',
                              'Bus  Name', 'bus_latitude', 'bus_longitude', 
@@ -111,7 +111,7 @@ if __name__ == "__main__":
                 try:
                     df = nsrdb_weather(geohash_val,
                                        year,
-                                       interval=60,
+                                       interval=30,
                                        attributes={'Temperature': 'temp_air',
                                                    'DHI': 'dhi',
                                                    'DNI': 'dni',
@@ -150,7 +150,7 @@ if __name__ == "__main__":
         plt.close()
         # Write the results to the associated S3 bucket.
         pdc.to_csv(os.path.join(data_path,
-            str(row['geocode']) + ".csv"))
+            str(geohash_val) + ".csv"))
         
         
         

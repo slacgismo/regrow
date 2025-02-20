@@ -112,7 +112,7 @@ def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
     # Make a single wind turbine
     wm.value("wind_farm_wake_model", 0)
     wm.value('wind_resource_model_choice', 0)  # Hourly output
-    # Generate a row of wind turbine coordinates sapaced 500m apart
+    # Generate a row of wind turbine coordinates spaced 500m apart
     x_coords = [i*500 for i in range(num_turbines)]
     y_coords = [0] * num_turbines
     wm.value("wind_farm_xCoordinates", x_coords)
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     # metadata_df = pd.read_csv("nodes_pysam_sim.csv")
     # master_df = generate_turbine_metadata(metadata_df)
     metadata = pd.read_csv("nodes_pysam_sim.csv")
-    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pysam_powerplants"
+    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pysam_wecc_nodes"
     # Identify type of capacity we want to aggregate on (plant level, wecc node
     # level)
     capacity_type = "wecc_node"
@@ -240,7 +240,7 @@ if __name__ == "__main__":
                 # Pull the site's associated NSRDB data
                 weather_df = nsrdb_weather(geohash_val,
                                             year,
-                                            interval=60,
+                                            interval=30,
                                             attributes={'speed': 'wind_speed',  # m/s
                                                         "direction": 'wind_direction',  # deg
                                                         "temperature": 'temp_air',  # C
@@ -286,12 +286,13 @@ if __name__ == "__main__":
                         max_tip_speed=max_tip_speed,
                         max_tip_sp_ratio=max_tip_sp_ratio,
                         system_capacity=system_capacity,
-                        num_turbines=num_turbines)
-
+                        num_turbines=1)
                     power_output_df = pd.DataFrame({
                         "datetime": temp_df["datetime"],
                         "power_kW": power_output})
-
+                    # Multiply output by total number of turbines,
+                    # based on the overall system capacity 
+                    power_output_df['power_kW'] = power_output_df['power_kW'] * num_turbines
                     power_output_df["power_MW"] = power_output_df["power_kW"] / 1000
                     power_output_df = power_output_df.drop("power_kW", axis=1)
 

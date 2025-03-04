@@ -110,7 +110,7 @@ for gt,bus in gentypes.items():
 
 # generate aggregate powerplant GLM model
 n,m = 0,0
-with open("powerplant_aggregated.glm","w") as fh:
+with open("powerplants_aggregated.glm","w") as fh:
     print("module pypower;",file=fh)
     for bus,plant in data.iterrows():
         n += 1

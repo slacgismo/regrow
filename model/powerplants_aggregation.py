@@ -27,17 +27,26 @@ sys.path.append("../data")
 import utils
 import pandas as pd
 
-force = True
-if not os.path.exists("powerplants_aggregated.csv") or force:
+# Options for generating data
+FORCE = True # force regeneration of all files
+STATUS_TO_INCLUDE = ["ONLINE"] # powerplant statuses to include
 
+# Regenerate check
+if not os.path.exists("powerplants_aggregated.csv") or FORCE:
+
+    # Load WECC model
     data = json.load(open("wecc240.json","r"))
     assert(data["application"]=="gridlabd")
     objects = data["objects"]
+
+    # Generate individual plant data
     plants = []
     with open("powerplants_split.csv","w") as fh:
-        # print("name,bus,gen,cap,cf,units",file=fh)
+
         for name,properties in [(x,y) for x,y in objects.items() if y["class"] == "powerplant"]:
             try:
+                if properties["status"] not in STATUS_TO_INCLUDE:
+                    continue
                 node = properties["parent"]
                 if "gencap" not in objects[node]:
                     objects[node]["gencap"] = 0.0
@@ -54,6 +63,8 @@ if not os.path.exists("powerplants_aggregated.csv") or force:
             except:
                 e_type,e_value,e_trace = sys.exc_info()
                 print(f"ERROR [{name}]: {e_type.__name__} {e_value}",file=sys.stderr)
+
+        # compute total capacities
         totals = {}
         for plant in plants:
             bus,cap,units = plant[1],plant[3],plant[5]
@@ -63,10 +74,12 @@ if not os.path.exists("powerplants_aggregated.csv") or force:
         for plant in plants:
             bus = plant[1]
             plant[4] = round(float(plant[3])/float(totals[bus]),3)
+
+        # save results
         data = pd.DataFrame(data=plants,columns=["name","bus","gen","cap","cf","units"])
         data.to_csv("powerplants_split.csv",index=False,header=True)
-        print(data)
 
+    # load and summarize plant data
     data = pd.read_csv("powerplants_split.csv",index_col=["bus","gen"],usecols=["bus","gen","cap","cf","units"])
     data.groupby(["bus","gen"]).sum().round(3).to_csv("powerplants_aggregated.csv")
 

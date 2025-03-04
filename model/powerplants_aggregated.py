@@ -93,19 +93,22 @@ weather = pd.read_csv("../data/geodata/temperature.csv")
 buslist = data[data.gen.isin(["WT","PV"])].index.unique()
 n = 0
 gentypes = {}
+gensizes = {}
 for bus in buslist:
     gens = data.loc[bus].gen if not isinstance(data.loc[bus].gen,str) else [data.loc[bus].gen]
     for gen in gens:
         if gen not in gentypes:
             gentypes[gen] = []
+            gensizes[gen] = 0
         gentypes[gen].append(bus)
+        gensizes[gen] += data.loc[bus].cap.sum()
         if gen in ["WT","PV"] and bus not in weather.columns:
             n+=1
             print(f"WARNING: bus {bus} not found in weather data for gen type {'|'.join([x for x in gens if x in ['PV','WT']])}",file=sys.stderr)
             break
 print(f"WARNING: {n} of {len(buslist)} powerplant busses not found in weather data",file=sys.stderr)
 for gt,bus in gentypes.items():
-    print("INFO:",gt,"located at",len(bus),"busses")
+    print("INFO:",gt,"located at",len(bus),"busses,",round(gensizes[gt]/1000,2),"GW installed capacity")
 
 # generate aggregate powerplant GLM model
 n,m = 0,0

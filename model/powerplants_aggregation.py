@@ -31,13 +31,15 @@ import pandas as pd
 FORCE = True # force regeneration of all files
 STATUS_TO_INCLUDE = ["ONLINE"] # powerplant statuses to include
 
+# Load WECC model
+data = json.load(open("wecc240.json","r"))
+assert(data["application"]=="gridlabd")
+objects = data["objects"]
+
+GENCOSTS = json.load(open("gencosts.json","r"))
+
 # Regenerate check
 if not os.path.exists("powerplants_aggregated.csv") or FORCE:
-
-    # Load WECC model
-    data = json.load(open("wecc240.json","r"))
-    assert(data["application"]=="gridlabd")
-    objects = data["objects"]
 
     # Generate individual plant data
     plants = []
@@ -53,7 +55,6 @@ if not os.path.exists("powerplants_aggregated.csv") or FORCE:
                 if "gencap" not in objects[node]:
                     objects[node]["gencap"] = 0.0
                 gen = properties["generator"]
-                # print(name,"->",node,gen,file=sys.stderr)
                 cap = float(properties["operating_capacity"].split()[0])
                 objects[node]["gencap"] += cap
                 lat = float(objects[node]["latitude"])
@@ -66,7 +67,7 @@ if not os.path.exists("powerplants_aggregated.csv") or FORCE:
             except:
                 e_type,e_value,e_trace = sys.exc_info()
                 print(f"ERROR [{name}]: {e_type.__name__} {e_value}",file=sys.stderr)
-        print(f"{n} powerplants found")
+        print("INFO:",f"{n} powerplants found with status {'|'.join(STATUS_TO_INCLUDE)}")
 
         # compute total capacities
         totals = {}
@@ -92,29 +93,70 @@ data = pd.read_csv("powerplants_aggregated.csv",index_col=["bus"])
 weather = pd.read_csv("../data/geodata/temperature.csv")
 buslist = data[data.gen.isin(["WT","PV"])].index.unique()
 n = 0
+gentypes = {}
 for bus in buslist:
-    for gen in data.loc[bus].gen:
+    gens = data.loc[bus].gen if not isinstance(data.loc[bus].gen,str) else [data.loc[bus].gen]
+    for gen in gens:
+        if gen not in gentypes:
+            gentypes[gen] = []
+        gentypes[gen].append(bus)
         if gen in ["WT","PV"] and bus not in weather.columns:
             n+=1
-            print(f"WARNING: bus {bus} not found in weather data for gen type {'|'.join([x for x in data.loc[bus].gen.tolist() if x in ['PV','WT']])}")
+            print(f"WARNING: bus {bus} not found in weather data for gen type {'|'.join([x for x in gens if x in ['PV','WT']])}",file=sys.stderr)
             break
-print(f"{n} of {len(buslist)} powerplant busses not found in weather data")
+print(f"WARNING: {n} of {len(buslist)} powerplant busses not found in weather data",file=sys.stderr)
+for gt,bus in gentypes.items():
+    print("INFO:",gt,"located at",len(bus),"busses")
 
-# generate aggregate powerplant model
-n = 0
+# generate aggregate powerplant GLM model
+n,m = 0,0
 with open("powerplant_aggregated.glm","w") as fh:
+    print("module pypower;",file=fh)
     for bus,plant in data.iterrows():
         n += 1
+
+        # add gen object if missing
         gen = nodelist[bus].replace("_N_","_G_")
+        if gen not in objects:
+            m += 1
+            objects[gen] = {
+                "parent":gen.replace("_G_","_N_"),
+                "Pmax": f"{round(totals[bus],1)} MW",
+                "Qmax": f"{round(totals[bus]*0.2,1)} MW",
+                "Qmin": f"{round(-totals[bus]*0.2,1)} MW",
+                }
+            properties = "\n".join([f"    {x} {y};" for x,y in objects[gen].items()])
+            print(f"""object pypower.gen
+{{
+    name "{gen}";
+{properties}
+    status IN_SERVICE;
+    object gencost 
+    {{
+        model POLYNOMIAL;
+        startup 0.0 $;
+        shutdown 0.0 $;
+        costs "0.0,0.0,0.0";
+    }};
+}}""",file=fh)
+
         geo = utils.geocode(bus)
-        print(f"""object powerplant
+        if plant.gen != "UNKNOWN":
+            properties = "\n".join([f"    {x} {y};" for x,y in GENCOSTS[plant.gen].items()])
+        else:
+            print(f"WARNING: {gen} has no cost data, gen type is UNKNOWN",file=sys.stderr)
+            properties = "    // no cost data for unknown plant type"
+        print(f"""object pypower.powerplant
 {{
     name "{gen}_{plant.gen}";
     parent "{gen}";
     latitude {geo[0]};
-    lontitude {geo[1]};
+    longitude {geo[1]};
     generator {plant.gen};
     operating_capacity {plant.cap} MW;
+{properties}
 }}
 """,file=fh)
-print(f"{n} powerplant objects generated to GLM")
+
+print("INFO:",f"{n} powerplant objects generated to GLM")
+print("INFO:",f"{m} gen object added to GLM")

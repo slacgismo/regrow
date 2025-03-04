@@ -98,7 +98,7 @@ for bus in buslist:
             n+=1
             print(f"WARNING: bus {bus} not found in weather data for gen type {'|'.join([x for x in data.loc[bus].gen.tolist() if x in ['PV','WT']])}")
             break
-print(f"{n} of {len(buslist)} busses not found in weather data")
+print(f"{n} of {len(buslist)} powerplant busses not found in weather data")
 
 # generate aggregate powerplant model
 n = 0
@@ -117,4 +117,4 @@ with open("powerplant_aggregated.glm","w") as fh:
     operating_capacity {plant.cap} MW;
 }}
 """,file=fh)
-print(f"{n} powerplant objects saved")
+print(f"{n} powerplant objects generated to GLM")

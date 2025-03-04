@@ -28,65 +28,64 @@ import utils
 import pandas as pd
 
 # Options for generating data
-FORCE = True # force regeneration of all files
 STATUS_TO_INCLUDE = ["ONLINE"] # powerplant statuses to include
 
-# Load WECC model
-data = json.load(open("wecc240.json","r"))
+# Load WECC240 raw PSSE model
+if os.system("gridlabd -C wecc240_psse.glm ../data/wecc240_gis.glm ../data/powerplants.glm ../data/powerplants_gis.glm -o wecc240_raw.json") != 0:
+    print("ERROR: gridlabd model compile failed",file=sys.stderr)
+    quit(1)
+data = json.load(open("wecc240_raw.json","r"))
 assert(data["application"]=="gridlabd")
 objects = data["objects"]
 
 GENCOSTS = json.load(open("gencosts.json","r"))
 
-# Regenerate check
-if not os.path.exists("powerplants_aggregated.csv") or FORCE:
+# Generate individual plant data
+plants = []
+nodelist = {}
+with open("powerplants_split.csv","w") as fh:
+    n = 0
+    for name,properties in [(x,y) for x,y in objects.items() if y["class"] == "powerplant"]:
+        n += 1
+        try:
+            if properties["status"] not in STATUS_TO_INCLUDE:
+                continue
+            node = properties["parent"]
+            if "gencap" not in objects[node]:
+                objects[node]["gencap"] = 0.0
+            gen = properties["generator"]
+            cap = float(properties["operating_capacity"].split()[0])
+            objects[node]["gencap"] += cap
+            lat = float(objects[node]["latitude"])
+            lon = float(objects[node]["longitude"])
+            geo = utils.geohash(lat,lon)
+            nodelist[geo] = node
+            for item in gen.split("|"):
+                plants.append([name,node,geo,item,cap,0,1])
+                # print(name,geo,item,cap,cap/pmax if pmax>0 else float('nan'),1,sep=",",file=fh)
+        except:
+            e_type,e_value,e_trace = sys.exc_info()
+            print(f"ERROR [{name}]: {e_type.__name__} {e_value}",file=sys.stderr)
+    print("INFO:",f"{n} powerplants found with status {'|'.join(STATUS_TO_INCLUDE)}")
 
-    # Generate individual plant data
-    plants = []
-    nodelist = {}
-    with open("powerplants_split.csv","w") as fh:
-        n = 0
-        for name,properties in [(x,y) for x,y in objects.items() if y["class"] == "powerplant"]:
-            n += 1
-            try:
-                if properties["status"] not in STATUS_TO_INCLUDE:
-                    continue
-                node = properties["parent"]
-                if "gencap" not in objects[node]:
-                    objects[node]["gencap"] = 0.0
-                gen = properties["generator"]
-                cap = float(properties["operating_capacity"].split()[0])
-                objects[node]["gencap"] += cap
-                lat = float(objects[node]["latitude"])
-                lon = float(objects[node]["longitude"])
-                geo = utils.geohash(lat,lon)
-                nodelist[geo] = node
-                for item in gen.split("|"):
-                    plants.append([name,node,geo,item,cap,0,1])
-                    # print(name,geo,item,cap,cap/pmax if pmax>0 else float('nan'),1,sep=",",file=fh)
-            except:
-                e_type,e_value,e_trace = sys.exc_info()
-                print(f"ERROR [{name}]: {e_type.__name__} {e_value}",file=sys.stderr)
-        print("INFO:",f"{n} powerplants found with status {'|'.join(STATUS_TO_INCLUDE)}")
+    # compute total capacities
+    totals = {}
+    for plant in plants:
+        bus,cap,units = plant[2],plant[4],plant[6]
+        if not plant[2] in totals:
+            totals[bus] = 0
+        totals[bus] += cap
+    for plant in plants:
+        bus = plant[2]
+        plant[5] = round(float(plant[4])/float(totals[bus]),3)
 
-        # compute total capacities
-        totals = {}
-        for plant in plants:
-            bus,cap,units = plant[2],plant[4],plant[6]
-            if not plant[2] in totals:
-                totals[bus] = 0
-            totals[bus] += cap
-        for plant in plants:
-            bus = plant[2]
-            plant[5] = round(float(plant[4])/float(totals[bus]),3)
+    # save results
+    data = pd.DataFrame(data=plants,columns=["name","node","bus","gen","cap","cf","units"])
+    data.to_csv("powerplants_split.csv",index=False,header=True)
 
-        # save results
-        data = pd.DataFrame(data=plants,columns=["name","node","bus","gen","cap","cf","units"])
-        data.to_csv("powerplants_split.csv",index=False,header=True)
-
-    # load and summarize plant data
-    data = pd.read_csv("powerplants_split.csv",index_col=["bus","gen"],usecols=["bus","gen","cap","cf","units"])
-    data.groupby(["bus","gen"]).sum().round(3).to_csv("powerplants_aggregated.csv")
+# load and summarize plant data
+data = pd.read_csv("powerplants_split.csv",index_col=["bus","gen"],usecols=["bus","gen","cap","cf","units"])
+data.groupby(["bus","gen"]).sum().round(3).to_csv("powerplants_aggregated.csv")
 
 # check geocodes
 data = pd.read_csv("powerplants_aggregated.csv",index_col=["bus"])

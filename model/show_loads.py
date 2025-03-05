@@ -117,7 +117,6 @@ def _(get_hour, loads, mo, set_hour):
         "Log load density": "load_density_log[MVA/deg^2]",
     }
     dataset_ui = mo.ui.dropdown(options=_options, value=list(_options)[0])
-
     return (
         addday_ui,
         addhour_ui,
@@ -142,7 +141,7 @@ def _(geocodes, mo):
         value=4,
     )
     browser_ui = mo.ui.checkbox(label="Show")
-    stack_ui = mo.ui.checkbox(label="Stack")
+    stack_ui = mo.ui.checkbox(label="Stack",value=True)
     showall_ui = mo.ui.checkbox(label="All")
     sort_ui = mo.ui.dropdown(label="Sort:", options=geocodes.columns)
     reverse_ui = mo.ui.checkbox(label="Descending")

@@ -75,57 +75,58 @@ def _(loads, np, spatial):
 
 
 @app.cell
-def _(loads, mo, set_hour):
+def _(get_hour, loads, mo, set_hour):
     # Setup UI slider
 
     timestamps = loads.index.unique().tolist()
     timestamp_ui = mo.ui.slider(
         start=0,
-        stop=len(timestamps),
+        stop=len(timestamps)-1,
         debounce=True,
         on_change=set_hour,
+        value = get_hour(),
     )
-    return timestamp_ui, timestamps
+    def get_timestamp():
+        h = min(len(timestamps)-1,max(0,get_hour()))
+        return timestamps[h]
+    return get_timestamp, timestamp_ui, timestamps
 
 
 @app.cell
-def _(get_hour, loads, mo, set_hour):
+def _(get_hour, mo, set_hour, timestamps):
     # Dataset controls
 
     start_ui = mo.ui.button(label="&#x23EE;", on_click=lambda x: set_hour(0))
     subday_ui = mo.ui.button(
-        label="&#x23EA;", on_click=lambda x: set_hour(max(get_hour() - 24, 0))
+        label="&#x23F4;&#x23F4;", on_click=lambda x: set_hour(max(get_hour() - 24, 0))
     )
     subhour_ui = mo.ui.button(
         label="&#x23F4;", on_click=lambda x: set_hour(max(get_hour() - 1, 0))
     )
     addhour_ui = mo.ui.button(
         label="&#x23F5;",
-        on_click=lambda x: set_hour(min(get_hour() + 1, len(loads.index) - 1)),
+        on_click=lambda x: set_hour(min(get_hour() + 1, len(timestamps) - 1)),
     )
     # pause_ui = mo.ui.button(label="&#x23F8;",disabled=True)
     addday_ui = mo.ui.button(
-        label="&#x23E9;",
-        on_click=lambda x: set_hour(min(get_hour() + 24, len(loads.index) - 1)),
+        label="&#x23F5;&#x23F5;",
+        on_click=lambda x: set_hour(min(get_hour() + 24, len(timestamps) - 1)),
     )
     end_ui = mo.ui.button(
-        label="&#x23ED;", on_click=lambda x: set_hour(len(loads.index) - 1)
+        label="&#x23ED;", on_click=lambda x: set_hour(len(timestamps) - 1)
     )
+    return addday_ui, addhour_ui, end_ui, start_ui, subday_ui, subhour_ui
+
+
+@app.cell
+def _(mo):
     _options = {
         "Voltage magnitude per unit nominal": "voltage[pu]",
         "Voltage angle": "voltage[deg]",
         "Log load density": "load_density_log[MVA/deg^2]",
     }
     dataset_ui = mo.ui.dropdown(options=_options, value=list(_options)[0])
-    return (
-        addday_ui,
-        addhour_ui,
-        dataset_ui,
-        end_ui,
-        start_ui,
-        subday_ui,
-        subhour_ui,
-    )
+    return (dataset_ui,)
 
 
 @app.cell
@@ -155,7 +156,7 @@ def _(
     browser_ui,
     dataset_ui,
     end_ui,
-    get_hour,
+    get_timestamp,
     mo,
     reverse_ui,
     showall_ui,
@@ -165,7 +166,6 @@ def _(
     subday_ui,
     subhour_ui,
     timestamp_ui,
-    timestamps,
     zoom_ui,
 ):
     # Show UI inputs
@@ -174,7 +174,7 @@ def _(
         mo.hstack(
             [
                 dataset_ui,
-                mo.md(str(f"at {timestamps[get_hour()]}")),
+                mo.md(str(f"at {get_timestamp()}")),
                 timestamp_ui,
                 start_ui,
                 subday_ui,
@@ -215,19 +215,25 @@ def _(
     timestamps,
     usmap,
 ):
-    # Draw map 
+    # Draw map
 
-    _values = np.array(geocodes[dataset_ui.value].tolist())
-    _xx, _yy = np.array(geocodes.longitude.values.tolist()), np.array(geocodes.latitude.values.tolist())
+    _values = geocodes[dataset_ui.value].groupby("geocode").sum()
+    _index = _values.index.tolist()
+    _lat = geocodes["latitude"].loc[_index].drop_duplicates()
+    _lon = geocodes["longitude"].loc[_index].drop_duplicates()
+    _xx,_yy,_values = np.array(_lon),np.array(_lat),np.array(_values)
 
     _x0, _x1 = int(min(_xx) - 1), int(max(_xx))
     _y0, _y1 = int(min(_yy)), int(max(_yy) + 1)
-    _xi, _yi = np.linspace(_x0, _x1, mapsize[0]).tolist(),np.linspace(_y0, _y1, mapsize[1]).tolist()
+    _xi, _yi = (
+        np.linspace(_x0, _x1, mapsize[0]).tolist(),
+        np.linspace(_y0, _y1, mapsize[1]).tolist(),
+    )
 
-    if maptype == 'int': # cubic interpolation method
-        mapdata = get_map_cubic(_xx,_yy,_values,_xi,_yi)
-    elif maptype == 'iwd': # inverse distance method
-        mapdata = get_map_idw(_xx,_yy,_values,_xi,_yi)
+    if maptype == "int":  # cubic interpolation method
+        mapdata = get_map_cubic(_xx, _yy, _values, _xi, _yi)
+    elif maptype == "iwd":  # inverse distance method
+        mapdata = get_map_idw(_xx, _yy, _values, _xi, _yi)
     else:
         mo.stop("invalid map method specified")
 
@@ -250,7 +256,7 @@ def _(
     )
 
     # draw empty selection
-    highlight, = plt.plot([-105], [34], "oy")
+    (highlight,) = plt.plot([-105], [34], "oy")
 
     # finalize map image
     plt.grid()
@@ -258,8 +264,8 @@ def _(
     plt.ylim([_y0, _y1])
     plt.title(f"{dataset_ui.selected_key} at {timestamps[get_hour()]}")
     image = plt.gca()
-    _cb = _ax.figure.add_axes([0.95,0.165,0.03,0.662])
-    plt.colorbar(_ax,cax=_cb)
+    _cb = _ax.figure.add_axes([0.95, 0.165, 0.03, 0.662])
+    plt.colorbar(_ax, cax=_cb)
     None
     return highlight, image, mapdata
 

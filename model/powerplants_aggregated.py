@@ -5,9 +5,10 @@ the generator type. The operating capacities are summed and their
 contribution to the total generating capacity is totaled.
 
 The input file is `wecc240_raw.json` after it is compiled by GridLAB-D from the original data. 
-The intermediate file is `powerplants_split.csv`. The output file is `powerplants_aggregated.csv`.
+The intermediate file is `powerplants_split.csv`. The output files are `powerplants_aggregated.csv`
+and `powerplants_aggregated.glm`.
 
-Output fields are as follows:
+Output CSV fields are as follows:
 
 * `bus`: the geocode of the bus at which the generator type is aggregated
 

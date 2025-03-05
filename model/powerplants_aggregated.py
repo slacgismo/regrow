@@ -1,11 +1,11 @@
 """Split and reaggregate powerplants by WECC node
 
-The script read the WECC240 model and splits up powerplant objects based on
+The script reads the WECC240 model and splits up powerplant objects based on
 the generator type. The operating capacities are summed and their
 contribution to the total generating capacity is totaled.
 
-Input file is `wecc240.json`. Intermediate file is `powerplants_split.csv`.
-Output file is `powerplants_aggregated.csv`.
+The input file is `wecc240_raw.json` after it is compiled by GridLAB-D from the original data. 
+The intermediate file is `powerplants_split.csv`. The output file is `powerplants_aggregated.csv`.
 
 Output fields are as follows:
 

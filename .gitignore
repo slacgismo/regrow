@@ -1064,6 +1064,3 @@ pyvenv.cfg
 # Virtual Env
 .venv/
 marimo_env/
-/model
-/model
-/model

@@ -40,12 +40,12 @@ INTERNAL = {
 }
 
 OUTPUTS = {
-    "COOLING" : "geodata/cooling.csv",
-    "HEATING" : "geodata/heating.csv",
-    "SOLAR" : "geodata/solar.csv",
-    "TEMPERATURE" : "geodata/temperature.csv",
-    "TOTAL" : "geodata/total.csv",
-    "WIND" : "geodata/wind.csv",
+    "COOLING" : "geodata/cooling_2018.csv",
+    "HEATING" : "geodata/heating_2018.csv",
+    "SOLAR" : "geodata/solar_2018.csv",
+    "TEMPERATURE" : "geodata/temperature_2018.csv",
+    "TOTAL" : "geodata/total_2018.csv",
+    "WIND" : "geodata/wind_2018.csv",
 }
 
 REFRESH = False
@@ -297,5 +297,5 @@ if __name__ == "__main__":
                     # print("  -->",node,"\n",node_geodata[table])
 
     for table,data in node_geodata.items():
-        data.round(2).to_csv(f"geodata/{table}.csv",index=True,header=True)
+        data.round(2).to_csv(f"geodata/{table}_2018.csv",index=True,header=True)
     verbose("ok")

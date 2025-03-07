@@ -35,8 +35,8 @@ module pypower
 //
 // Load powerplant data
 //
-#include "../data/powerplants.glm"
-#include "../data/powerplants_gis.glm"
+#system python3 powerplants_aggregated.py
+#include "powerplants_aggregated.glm"
 
 //
 // Load loads data

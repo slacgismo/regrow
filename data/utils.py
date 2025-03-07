@@ -5,6 +5,7 @@ import math
 import psm3 as pvlib_psm3
 import datetime as dt
 import psm3 as pvlib_psm3
+from typing import TypeVar, Union, Tuple
 
 #
 # Command args
@@ -150,9 +151,21 @@ def geohash(latitude, longitude, precision=6):
             ch = 0
     return ''.join(geohash)
 
-def distance(a,b):
+def distance(a,b,units='deg'):
     """Get the distance between to geohashes"""
-    return math.sqrt(distance2(a,b))
+    if units == 'deg':
+        return math.sqrt(distance2(a,b))
+    if units == 'mile':
+        x0,y0 = geocode(a)
+        x1,y1 = geocode(b)
+        dx,dy = (x0-x1)*69*math.cos((x0+x1)/2*math.pi/180),(y0-y1)*69
+        return math.sqrt(dx*dx+dy*dy)
+    if units == 'km':
+        x0,y0 = geocode(a)
+        x1,y1 = geocode(b)
+        dx,dy = (x0-x1)*111*math.cos((x0+x1)/2*math.pi/180),(y0-y1)*111
+        return math.sqrt(dx*dx+dy*dy)
+    raise ValueError(f"units '{units}' not supported")
 
 def distance2(a,b):
     """Get the distance squared between two geohashes"""
@@ -161,8 +174,21 @@ def distance2(a,b):
     dx,dy = x0-x1,y0-y1
     return dx*dx+dy*dy
 
-def nearest(hash,hashlist,withdist=False):
-    """Find the nearest geohash in a list of geohashes"""
+def nearest(hash:str,hashlist:list[str],withdist:bool=False) -> Union[str,Tuple[str,float]]:
+    """Find the nearest geohash in a list of geohashes
+
+    * `hash`: geocode to find
+
+    * `hastlist`: geocodes to choose from
+
+    * `withdist`: return distance as second value
+
+    Returns:
+
+    * `str`: chosen geocode (when `withdist` is False)
+
+    * `str,float`: chosen geocode and distance (when `withdist` is True)
+    """
     if len(hashlist) > 0:
         dist = sorted([(x,distance2(hash,x)) for x in hashlist],key=lambda y:y[1])
         return (dist[0][0],distance(hash,dist[0][0])) if withdist else dist[0][0]

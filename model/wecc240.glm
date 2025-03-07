@@ -41,7 +41,16 @@ module pypower
 //
 // Load loads data
 //
-#include "../data/loads.glm"
+//#include "../data/loads.glm"
+
+// DELETE THIS: temporary class definition for dev purposes only
+class building
+{
+    char32 type;
+    int32 units;
+    double occupancy;
+}
+#include "loads_aggregated.glm"
 
 //
 // Save the final result to JSON

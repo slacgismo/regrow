@@ -1,0 +1,553 @@
+object building
+{
+    parent "wecc240_psse_L_2203";
+    type RESIDENTIAL;
+    units 1241039;
+    occupancy 2.66;
+}
+object building
+{
+    parent "wecc240_psse_L_2610";
+    type RESIDENTIAL;
+    units 1893373;
+    occupancy 2.84;
+}
+object building
+{
+    parent "wecc240_psse_L_2100";
+    type RESIDENTIAL;
+    units 159214;
+    occupancy 2.41;
+}
+object building
+{
+    parent "wecc240_psse_L_1401";
+    type RESIDENTIAL;
+    units 16992;
+    occupancy 0.97;
+}
+object building
+{
+    parent "wecc240_psse_L_3601";
+    type RESIDENTIAL;
+    units 91368;
+    occupancy 2.05;
+}
+object building
+{
+    parent "wecc240_psse_L_2621";
+    type RESIDENTIAL;
+    units 4050283;
+    occupancy 2.47;
+}
+object building
+{
+    parent "wecc240_psse_L_2608";
+    type RESIDENTIAL;
+    units 299518;
+    occupancy 2.82;
+}
+object building
+{
+    parent "wecc240_psse_L_3806";
+    type RESIDENTIAL;
+    units 130207;
+    occupancy 2.17;
+}
+object building
+{
+    parent "wecc240_psse_L_3805";
+    type RESIDENTIAL;
+    units 472326;
+    occupancy 2.87;
+}
+object building
+{
+    parent "wecc240_psse_L_3105";
+    type RESIDENTIAL;
+    units 447542;
+    occupancy 1.95;
+}
+object building
+{
+    parent "wecc240_psse_L_3918";
+    type RESIDENTIAL;
+    units 172674;
+    occupancy 2.91;
+}
+object building
+{
+    parent "wecc240_psse_L_3303";
+    type RESIDENTIAL;
+    units 109023;
+    occupancy 2.48;
+}
+object building
+{
+    parent "wecc240_psse_L_3917";
+    type RESIDENTIAL;
+    units 90104;
+    occupancy 3.12;
+}
+object building
+{
+    parent "wecc240_psse_L_3304";
+    type RESIDENTIAL;
+    units 707738;
+    occupancy 2.74;
+}
+object building
+{
+    parent "wecc240_psse_L_3103";
+    type RESIDENTIAL;
+    units 289314;
+    occupancy 2.64;
+}
+object building
+{
+    parent "wecc240_psse_L_3305";
+    type RESIDENTIAL;
+    units 636787;
+    occupancy 2.64;
+}
+object building
+{
+    parent "wecc240_psse_L_8005";
+    type RESIDENTIAL;
+    units 256212;
+    occupancy 3.04;
+}
+object building
+{
+    parent "wecc240_psse_L_3914";
+    type RESIDENTIAL;
+    units 114945;
+    occupancy 2.28;
+}
+object building
+{
+    parent "wecc240_psse_L_3915";
+    type RESIDENTIAL;
+    units 58909;
+    occupancy 2.34;
+}
+object building
+{
+    parent "wecc240_psse_L_3501";
+    type RESIDENTIAL;
+    units 260617;
+    occupancy 2.23;
+}
+object building
+{
+    parent "wecc240_psse_L_3205";
+    type RESIDENTIAL;
+    units 429613;
+    occupancy 2.71;
+}
+object building
+{
+    parent "wecc240_psse_L_3924";
+    type RESIDENTIAL;
+    units 251133;
+    occupancy 2.67;
+}
+object building
+{
+    parent "wecc240_psse_L_3907";
+    type RESIDENTIAL;
+    units 249476;
+    occupancy 2.62;
+}
+object building
+{
+    parent "wecc240_psse_L_3908";
+    type RESIDENTIAL;
+    units 598302;
+    occupancy 2.65;
+}
+object building
+{
+    parent "wecc240_psse_L_8004";
+    type RESIDENTIAL;
+    units 19296;
+    occupancy 2.10;
+}
+object building
+{
+    parent "wecc240_psse_L_3913";
+    type RESIDENTIAL;
+    units 268753;
+    occupancy 2.22;
+}
+object building
+{
+    parent "wecc240_psse_L_3910";
+    type RESIDENTIAL;
+    units 45325;
+    occupancy 1.99;
+}
+object building
+{
+    parent "wecc240_psse_L_3926";
+    type RESIDENTIAL;
+    units 65976;
+    occupancy 2.75;
+}
+object building
+{
+    parent "wecc240_psse_L_3909";
+    type RESIDENTIAL;
+    units 72652;
+    occupancy 1.68;
+}
+object building
+{
+    parent "wecc240_psse_L_3401";
+    type RESIDENTIAL;
+    units 426757;
+    occupancy 2.80;
+}
+object building
+{
+    parent "wecc240_psse_L_3403";
+    type RESIDENTIAL;
+    units 214191;
+    occupancy 3.01;
+}
+object building
+{
+    parent "wecc240_psse_L_2620";
+    type RESIDENTIAL;
+    units 868916;
+    occupancy 2.78;
+}
+object building
+{
+    parent "wecc240_psse_L_1301";
+    type RESIDENTIAL;
+    units 1047943;
+    occupancy 2.37;
+}
+object building
+{
+    parent "wecc240_psse_L_1303";
+    type RESIDENTIAL;
+    units 114580;
+    occupancy 2.06;
+}
+object building
+{
+    parent "wecc240_psse_L_3916";
+    type RESIDENTIAL;
+    units 11438;
+    occupancy 2.53;
+}
+object building
+{
+    parent "wecc240_psse_L_3922";
+    type RESIDENTIAL;
+    units 115396;
+    occupancy 1.83;
+}
+object building
+{
+    parent "wecc240_psse_L_8003";
+    type RESIDENTIAL;
+    units 121841;
+    occupancy 2.17;
+}
+object building
+{
+    parent "wecc240_psse_L_4008";
+    type RESIDENTIAL;
+    units 42212;
+    occupancy 1.85;
+}
+object building
+{
+    parent "wecc240_psse_L_6402";
+    type RESIDENTIAL;
+    units 284078;
+    occupancy 2.24;
+}
+object building
+{
+    parent "wecc240_psse_L_6401";
+    type RESIDENTIAL;
+    units 42718;
+    occupancy 2.25;
+}
+object building
+{
+    parent "wecc240_psse_L_4204";
+    type RESIDENTIAL;
+    units 171632;
+    occupancy 2.07;
+}
+object building
+{
+    parent "wecc240_psse_L_4002";
+    type RESIDENTIAL;
+    units 9758;
+    occupancy 1.60;
+}
+object building
+{
+    parent "wecc240_psse_L_4203";
+    type RESIDENTIAL;
+    units 1086874;
+    occupancy 2.27;
+}
+object building
+{
+    parent "wecc240_psse_L_4004";
+    type RESIDENTIAL;
+    units 135504;
+    occupancy 1.89;
+}
+object building
+{
+    parent "wecc240_psse_L_6403";
+    type RESIDENTIAL;
+    units 148166;
+    occupancy 2.55;
+}
+object building
+{
+    parent "wecc240_psse_L_6404";
+    type RESIDENTIAL;
+    units 4893;
+    occupancy 1.86;
+}
+object building
+{
+    parent "wecc240_psse_L_2604";
+    type RESIDENTIAL;
+    units 5533;
+    occupancy 2.35;
+}
+object building
+{
+    parent "wecc240_psse_L_6102";
+    type RESIDENTIAL;
+    units 325063;
+    occupancy 2.28;
+}
+object building
+{
+    parent "wecc240_psse_L_6104";
+    type RESIDENTIAL;
+    units 161450;
+    occupancy 2.56;
+}
+object building
+{
+    parent "wecc240_psse_L_1402";
+    type RESIDENTIAL;
+    units 2691748;
+    occupancy 2.29;
+}
+object building
+{
+    parent "wecc240_psse_L_1102";
+    type RESIDENTIAL;
+    units 178706;
+    occupancy 1.81;
+}
+object building
+{
+    parent "wecc240_psse_L_1101";
+    type RESIDENTIAL;
+    units 559616;
+    occupancy 2.36;
+}
+object building
+{
+    parent "wecc240_psse_L_1201";
+    type RESIDENTIAL;
+    units 76643;
+    occupancy 1.89;
+}
+object building
+{
+    parent "wecc240_psse_L_1202";
+    type RESIDENTIAL;
+    units 6711;
+    occupancy 1.14;
+}
+object building
+{
+    parent "wecc240_psse_L_6507";
+    type RESIDENTIAL;
+    units 54185;
+    occupancy 2.28;
+}
+object building
+{
+    parent "wecc240_psse_L_1003";
+    type RESIDENTIAL;
+    units 43552;
+    occupancy 2.30;
+}
+object building
+{
+    parent "wecc240_psse_L_6505";
+    type RESIDENTIAL;
+    units 49582;
+    occupancy 2.02;
+}
+object building
+{
+    parent "wecc240_psse_L_1004";
+    type RESIDENTIAL;
+    units 712205;
+    occupancy 2.03;
+}
+object building
+{
+    parent "wecc240_psse_L_7001";
+    type RESIDENTIAL;
+    units 1908741;
+    occupancy 2.25;
+}
+object building
+{
+    parent "wecc240_psse_L_6508";
+    type RESIDENTIAL;
+    units 232711;
+    occupancy 3.16;
+}
+object building
+{
+    parent "wecc240_psse_L_6509";
+    type RESIDENTIAL;
+    units 615394;
+    occupancy 2.72;
+}
+object building
+{
+    parent "wecc240_psse_L_6510";
+    type RESIDENTIAL;
+    units 175712;
+    occupancy 2.73;
+}
+object building
+{
+    parent "wecc240_psse_L_6305";
+    type RESIDENTIAL;
+    units 57358;
+    occupancy 1.61;
+}
+object building
+{
+    parent "wecc240_psse_L_6503";
+    type RESIDENTIAL;
+    units 101690;
+    occupancy 2.15;
+}
+object building
+{
+    parent "wecc240_psse_L_7002";
+    type RESIDENTIAL;
+    units 159164;
+    occupancy 1.53;
+}
+object building
+{
+    parent "wecc240_psse_L_6303";
+    type RESIDENTIAL;
+    units 61937;
+    occupancy 1.99;
+}
+object building
+{
+    parent "wecc240_psse_L_6302";
+    type RESIDENTIAL;
+    units 614351;
+    occupancy 2.19;
+}
+object building
+{
+    parent "wecc240_psse_L_4010";
+    type RESIDENTIAL;
+    units 390933;
+    occupancy 2.15;
+}
+object building
+{
+    parent "wecc240_psse_L_4009";
+    type RESIDENTIAL;
+    units 229233;
+    occupancy 2.45;
+}
+object building
+{
+    parent "wecc240_psse_L_4202";
+    type RESIDENTIAL;
+    units 1804954;
+    occupancy 2.31;
+}
+object building
+{
+    parent "wecc240_psse_L_4005";
+    type RESIDENTIAL;
+    units 2678;
+    occupancy 1.44;
+}
+object building
+{
+    parent "wecc240_psse_L_4102";
+    type RESIDENTIAL;
+    units 426728;
+    occupancy 2.45;
+}
+object building
+{
+    parent "wecc240_psse_L_4201";
+    type RESIDENTIAL;
+    units 495535;
+    occupancy 2.33;
+}
+object building
+{
+    parent "wecc240_psse_L_5002";
+    type RESIDENTIAL;
+    units 117872;
+    occupancy 2.08;
+}
+object building
+{
+    parent "wecc240_psse_L_4101";
+    type RESIDENTIAL;
+    units 35302;
+    occupancy 1.70;
+}
+object building
+{
+    parent "wecc240_psse_L_4104";
+    type RESIDENTIAL;
+    units 509857;
+    occupancy 2.12;
+}
+object building
+{
+    parent "wecc240_psse_L_6204";
+    type RESIDENTIAL;
+    units 257593;
+    occupancy 1.81;
+}
+object building
+{
+    parent "wecc240_psse_L_6205";
+    type RESIDENTIAL;
+    units 162296;
+    occupancy 1.92;
+}
+object building
+{
+    parent "wecc240_psse_L_6203";
+    type RESIDENTIAL;
+    units 192605;
+    occupancy 1.94;
+}

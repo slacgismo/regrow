@@ -125,7 +125,7 @@ for county in COUNTY.values():
     geocodes[county['geonode']]["population"] += county["population"]
     geocodes[county['geonode']]["units"] += county["units"]
 
-# print(len(COUNTY),"counties loaded")
+print("INFO:",len(COUNTY),"counties loads added",file=sys.stderr)
 with open("loads_aggregated.glm","w") as glm:
     for geocode,data in sorted(geocodes.items()):
         if data["units"] > 0:

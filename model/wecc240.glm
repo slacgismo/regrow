@@ -25,7 +25,7 @@ module pypower
 //
 // Load the PSS/E model
 //
-#input "${RAWFILE}"
+#input "${RAWFILE}" -X psse_area,psse_zone,psse_owner
 
 //
 // Load the GIS data
@@ -50,6 +50,8 @@ class building
     int32 units;
     double occupancy;
 }
+#system gridlabd python -m loads_aggregated
+
 #include "loads_aggregated.glm"
 
 //

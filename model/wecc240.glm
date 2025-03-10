@@ -19,24 +19,20 @@ module pypower
     maximum_iterations ${MAXIMUM_ITERATIONS};
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
-    controllers ${CONTROLLERS_FILE};
+    controllers "wecc240_controllers";
 }
 
 //
 // Load the PSS/E model
 //
-#input "${RAWFILE}"
-
-// TODO: delete these after `-X gen` works on #input converter from raw to glm
-//#for GEN in ${FIND class=gen}
-//modify ${GEN}.Pg 0;
-//modify ${GEN}.Qg 0;
-//#done
+#input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
+// TODO: exclude gen once the model solves ok with all loads and powerplants included below
+//#input "wecc240_psse.raw" --exclude gen,psse_owner,psse_area,psse_zone
 
 //
 // Load the GIS data
 //
-#include "${GISDATA}"
+#include "../data/wecc240_gis.glm"
 
 //
 // Load powerplant data
@@ -53,4 +49,4 @@ module pypower
 //
 // Save the final result to JSON
 //
-#set savefile="${SAVEFILE}"
+#set savefile="wecc240.json"

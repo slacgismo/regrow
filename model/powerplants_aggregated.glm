@@ -17,6 +17,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // OTAY_MESA_GENERATING_PROJECT_2: cap=688.5, cf=0.334, units=1
     name "wecc240_psse_G_2201_CC";
     parent "wecc240_psse_G_2201";
     latitude 32.68;
@@ -32,6 +33,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CALPEAK_POWER_BORDER_PEAKER_PLANT: cap=60.5, cf=0.029, units=1
+    // CHULA_VISTA_I: cap=44.0, cf=0.021, units=1
+    // CUYAMACA_PEAK_ENERGY_PLANT: cap=48.7, cf=0.024, units=1
+    // EL_CAJON_ENERGY_CENTER: cap=49.9, cf=0.024, units=1
+    // LARKSPUR_ENERGY_FACILITY: cap=99.8, cf=0.048, units=1
+    // OTAY: cap=10.5, cf=0.005, units=1
+    // PIO_PICO_ENERGY_CENTER: cap=321.0, cf=0.156, units=1
     name "wecc240_psse_G_2201_CT";
     parent "wecc240_psse_G_2201";
     latitude 32.68;
@@ -47,6 +55,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // KUMEYAAY_WIND: cap=50.0, cf=0.024, units=1
     name "wecc240_psse_G_2201_WT";
     parent "wecc240_psse_G_2201";
     latitude 32.68;
@@ -78,6 +87,13 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // GOAL_LINE_LP: cap=51.4, cf=0.044, units=1
+    // NAVAL_STATION_ENERGY_FACILITY: cap=55.2, cf=0.047, units=1
+    // NORTH_ISLAND_ENERGY_FACILITY: cap=40.3, cf=0.034, units=1
+    // NTC_MCRD_ENERGY_FACILITY: cap=25.6, cf=0.022, units=1
+    // PALOMAR_ENERGY: cap=559.0, cf=0.475, units=1
+    // SAN_DIEGO_STATE_UNIVERSITY: cap=15.1, cf=0.013, units=1
+    // UNIVERSITY_OF_CALIFORNIA_SAN_DIEGO: cap=35.5, cf=0.03, units=1
     name "wecc240_psse_G_2203_CC";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -93,6 +109,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CALPEAK_POWER_ENTERPRISE_PEAKER_PLANT: cap=58.9, cf=0.05, units=1
+    // CHILDRENS_HOSPITAL: cap=10.0, cf=0.008, units=1
+    // C_P_KELCO_SAN_DIEGO_PLANT: cap=28.0, cf=0.024, units=1
+    // ESCONDIDO_POWER_PLANT: cap=49.9, cf=0.042, units=1
+    // MIRAMAR_ENERGY_FACILITY: cap=106.0, cf=0.09, units=1
     name "wecc240_psse_G_2203_CT";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -108,6 +129,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ESCONDIDO_ENERGY_STORAGE: cap=30.0, cf=0.025, units=1
+    // UNIVERSITY_OF_CALIFORNIA_SAN_DIEGO: cap=35.5, cf=0.03, units=1
     name "wecc240_psse_G_2203_ES";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -123,6 +146,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LAKE_HODGES_HYDROELECTRIC_FACILITY: cap=42.0, cf=0.036, units=1
     name "wecc240_psse_G_2203_HT";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -138,6 +162,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CHILDRENS_HOSPITAL: cap=10.0, cf=0.008, units=1
     name "wecc240_psse_G_2203_IC";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -153,6 +178,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SAN_DIEGO_STATE_UNIVERSITY: cap=15.1, cf=0.013, units=1
     name "wecc240_psse_G_2203_PV";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -168,6 +194,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CHILDRENS_HOSPITAL: cap=10.0, cf=0.008, units=1
     name "wecc240_psse_G_2203_ST";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -199,6 +226,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ENCINA: cap=999.6, cf=0.472, units=1
+    // ORANGE_GROVE_PEAKING_FACILITY: cap=118.0, cf=0.056, units=1
     name "wecc240_psse_G_2503_CT";
     parent "wecc240_psse_G_2503";
     latitude 33.37;
@@ -214,6 +243,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ENCINA: cap=999.6, cf=0.472, units=1
     name "wecc240_psse_G_2503_ST";
     parent "wecc240_psse_G_2503";
     latitude 33.37;
@@ -245,6 +275,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // UCI_FACILITIES_MANAGEMENT_CENTRAL_PLANT: cap=19.0, cf=0.019, units=1
     name "wecc240_psse_G_2610_CC";
     parent "wecc240_psse_G_2610";
     latitude 33.7;
@@ -260,6 +291,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AES_HUNTINGTON_BEACH_LLC: cap=436.0, cf=0.435, units=1
+    // BARRE_PEAKER: cap=49.8, cf=0.05, units=1
+    // GRS_COYOTE_CANYON: cap=20.0, cf=0.02, units=1
     name "wecc240_psse_G_2610_CT";
     parent "wecc240_psse_G_2610";
     latitude 33.7;
@@ -275,6 +309,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // PEBBLY_BEACH: cap=12.7, cf=0.013, units=1
     name "wecc240_psse_G_2610_ES";
     parent "wecc240_psse_G_2610";
     latitude 33.7;
@@ -290,6 +325,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AES_HUNTINGTON_BEACH_LLC: cap=436.0, cf=0.435, units=1
+    // PEBBLY_BEACH: cap=12.7, cf=0.013, units=1
+    // PLANT_NO_2_ORANGE_COUNTY: cap=16.0, cf=0.016, units=1
     name "wecc240_psse_G_2610_ST";
     parent "wecc240_psse_G_2610";
     latitude 33.7;
@@ -321,6 +359,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // EL_CENTRO: cap=388.3, cf=0.132, units=1
     name "wecc240_psse_G_2301_CC";
     parent "wecc240_psse_G_2301";
     latitude 32.86;
@@ -336,6 +375,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ROCKWOOD: cap=49.8, cf=0.017, units=1
     name "wecc240_psse_G_2301_CT";
     parent "wecc240_psse_G_2301";
     latitude 32.86;
@@ -351,6 +391,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // EL_CENTRO: cap=388.3, cf=0.132, units=1
     name "wecc240_psse_G_2301_ES";
     parent "wecc240_psse_G_2301";
     latitude 32.86;
@@ -366,6 +407,18 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CAMPO_VERDE_SOLAR: cap=147.4, cf=0.05, units=1
+    // CENTINELA_SOLAR_ENERGY: cap=174.8, cf=0.06, units=1
+    // HEBER_SOLAR: cap=10.9, cf=0.004, units=1
+    // IMPERIAL_CENTER_S: cap=128.9, cf=0.044, units=1
+    // IMPERIAL_SOLAR_ENERGY_CENTER_SOUTH: cap=128.9, cf=0.044, units=1
+    // IMPERIAL_SOLAR_ENERGY_CENTER_WEST: cap=148.7, cf=0.051, units=1
+    // IMPERIAL_VALLEY_SOLAR_LLC: cap=199.9, cf=0.068, units=1
+    // JACUMBA_SOLAR_FARM_2: cap=20.0, cf=0.007, units=1
+    // MT_SIGNAL: cap=199.9, cf=0.068, units=1
+    // SEVILLE_2: cap=30.0, cf=0.01, units=1
+    // SEVILLE_SOLAR_1: cap=20.0, cf=0.007, units=1
+    // SOL_ORCHARD_EL_CENTRO_PV: cap=20.0, cf=0.007, units=1
     name "wecc240_psse_G_2301_PV";
     parent "wecc240_psse_G_2301";
     latitude 32.86;
@@ -381,6 +434,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // EL_CENTRO: cap=388.3, cf=0.132, units=1
+    // HEBER_GEOTHERMAL: cap=62.5, cf=0.021, units=1
+    // ROCKWOOD: cap=49.8, cf=0.017, units=1
+    // SALTON_SEA_POWER_GEN_CO_-_UNIT_2: cap=20.0, cf=0.007, units=1
+    // SALTON_SEA_POWER_GEN_CO_UNIT_1: cap=10.0, cf=0.003, units=1
+    // SECOND_IMPERIAL_GEOTHERMAL: cap=80.0, cf=0.027, units=1
     name "wecc240_psse_G_2301_ST";
     parent "wecc240_psse_G_2301";
     latitude 32.86;
@@ -396,6 +455,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // OCOTILLO_EXPRESS_LLC: cap=265.4, cf=0.091, units=1
     name "wecc240_psse_G_2301_WT";
     parent "wecc240_psse_G_2301";
     latitude 32.86;
@@ -427,6 +487,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // YUMA_COGENERATION_ASSOCIATES: cap=62.6, cf=0.021, units=1
     name "wecc240_psse_G_2100_CC";
     parent "wecc240_psse_G_2100";
     latitude 32.97;
@@ -442,6 +503,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // NILAND_GAS_TURBINE_PLANT: cap=121.0, cf=0.04, units=1
+    // YUCCA: cap=425.0, cf=0.141, units=1
     name "wecc240_psse_G_2100_CT";
     parent "wecc240_psse_G_2100";
     latitude 32.97;
@@ -457,6 +520,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DROP_2_CA: cap=10.0, cf=0.003, units=1
+    // DROP_4: cap=19.6, cf=0.006, units=1
+    // PILOT_KNOB: cap=33.0, cf=0.011, units=1
     name "wecc240_psse_G_2100_HT";
     parent "wecc240_psse_G_2100";
     latitude 32.97;
@@ -472,6 +538,15 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ARKANSAS: cap=155.1, cf=0.051, units=1
+    // CALIPATRIA_SOLAR_FARM: cap=20.0, cf=0.007, units=1
+    // DESERT_SUNLIGHT_250_LLC: cap=249.7, cf=0.083, units=1
+    // DESERT_SUNLIGHT_300_LLC: cap=313.7, cf=0.104, units=1
+    // FOOTHILLS_SOLAR_PLANT: cap=35.0, cf=0.012, units=1
+    // IMPERIAL_VALLEY_SOLAR_COMPANY_1_LLC: cap=23.0, cf=0.008, units=1
+    // IMPERIAL_VALLEY_SOLAR_CO_IVSC_2_LLC: cap=20.0, cf=0.007, units=1
+    // SOLAR_GEN_2: cap=155.1, cf=0.051, units=1
+    // SONORA_FACILITY: cap=155.1, cf=0.051, units=1
     name "wecc240_psse_G_2100_PV";
     parent "wecc240_psse_G_2100";
     latitude 32.97;
@@ -487,6 +562,21 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CE_LEATHERS: cap=45.5, cf=0.015, units=1
+    // CE_TURBO_LLC: cap=11.5, cf=0.004, units=1
+    // DEL_RANCH_COMPANY: cap=45.5, cf=0.015, units=1
+    // ELMORE_COMPANY: cap=45.5, cf=0.015, units=1
+    // GENESIS_SOLAR_ENERGY_PROJECT: cap=250.0, cf=0.083, units=1
+    // GEO_EAST_MESA_III: cap=29.6, cf=0.01, units=1
+    // JOHN_L_FEATHERSTONE_PLANT: cap=55.0, cf=0.018, units=1
+    // NORTH_BRAWLEY_GEOTHERMAL_PLANT: cap=64.0, cf=0.021, units=1
+    // ORMESA_I: cap=26.4, cf=0.009, units=1
+    // ORMESA_II: cap=24.0, cf=0.008, units=1
+    // SALTON_SEA_POWER_GEN_CO_-_UNIT_3: cap=53.9, cf=0.018, units=1
+    // SALTON_SEA_POWER_GEN_CO_-_UNIT_4: cap=47.5, cf=0.016, units=1
+    // SALTON_SEA_POWER_LLC_-_UNIT_5: cap=58.3, cf=0.019, units=1
+    // VULCAN-BN_GEOTHERMAL_POWER_COMPANY: cap=39.6, cf=0.013, units=1
+    // YUCCA: cap=425.0, cf=0.141, units=1
     name "wecc240_psse_G_2100_ST";
     parent "wecc240_psse_G_2100";
     latitude 32.97;
@@ -518,6 +608,15 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ARLINGTON_VALLEY_ENERGY_FACILITY: cap=713.0, cf=0.057, units=1
+    // GILA_RIVER_POWER_BLOCK_2: cap=619.0, cf=0.049, units=1
+    // GILA_RIVER_POWER_BLOCK_3: cap=619.0, cf=0.049, units=1
+    // GILA_RIVER_POWER_STATION: cap=619.0, cf=0.049, units=1
+    // HARQUAHALA_GENERATING_PROJECT: cap=1325.1, cf=0.105, units=1
+    // MESQUITE_GENERATING_STATION_BLOCK_1: cap=691.6, cf=0.055, units=1
+    // MESQUITE_GENERATING_STATION_BLOCK_2: cap=691.6, cf=0.055, units=1
+    // RED_HAWK: cap=1140.3, cf=0.091, units=1
+    // SUNDEVIL_POWER_HOLDINGS_-_GILA_RIVER: cap=619.0, cf=0.049, units=1
     name "wecc240_psse_G_1401_CC";
     parent "wecc240_psse_G_1401";
     latitude 33.52;
@@ -533,6 +632,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SOLANA_GENERATING_STATION: cap=280.0, cf=0.022, units=1
     name "wecc240_psse_G_1401_ES";
     parent "wecc240_psse_G_1401";
     latitude 33.52;
@@ -548,6 +648,20 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AGUA_CALIENTE_SOLAR_PROJECT: cap=347.7, cf=0.028, units=1
+    // ARLINGTON_VALLEY_SOLAR_ENERGY_II: cap=129.0, cf=0.01, units=1
+    // BADGER_1: cap=14.8, cf=0.001, units=1
+    // COTTON_CENTER_SOLAR: cap=17.0, cf=0.001, units=1
+    // GILA_BEND: cap=32.0, cf=0.003, units=1
+    // GILLESPIE_1: cap=15.0, cf=0.001, units=1
+    // HYDER_II: cap=14.0, cf=0.001, units=1
+    // HYDER_SOLAR: cap=22.0, cf=0.002, units=1
+    // MESQUITE_2: cap=100.0, cf=0.008, units=1
+    // MESQUITE_3: cap=150.0, cf=0.012, units=1
+    // MESQUITE_SOLAR_1: cap=170.0, cf=0.014, units=1
+    // PALOMA_SOLAR: cap=17.6, cf=0.001, units=1
+    // SADDLE_MOUNTAIN_SOLAR_I: cap=15.0, cf=0.001, units=1
+    // SR85: cap=10.0, cf=0.001, units=1
     name "wecc240_psse_G_1401_PV";
     parent "wecc240_psse_G_1401";
     latitude 33.52;
@@ -563,6 +677,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // PALO_VERDE: cap=4209.6, cf=0.335, units=1
     name "wecc240_psse_G_1401_ST";
     parent "wecc240_psse_G_1401";
     latitude 33.52;
@@ -594,6 +709,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // HUMBOLDT_BAY: cap=167.0, cf=0.456, units=1
     name "wecc240_psse_G_3601_IC";
     parent "wecc240_psse_G_3601";
     latitude 40.8;
@@ -609,6 +725,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // EEL_RIVER_POWER: cap=32.5, cf=0.089, units=1
+    // HUMBOLDT_BAY: cap=167.0, cf=0.456, units=1
     name "wecc240_psse_G_3601_ST";
     parent "wecc240_psse_G_3601";
     latitude 40.8;
@@ -640,6 +758,13 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CARSON_COGENERATION: cap=55.8, cf=0.004, units=1
+    // HARBOR: cap=548.1, cf=0.042, units=1
+    // HARBOR_COGEN: cap=107.4, cf=0.008, units=1
+    // HAYNES: cap=1739.1, cf=0.132, units=1
+    // LONG_BEACH_GENERATION_LLC: cap=252.0, cf=0.019, units=1
+    // WATSON_COGENERATION: cap=405.0, cf=0.031, units=1
+    // WHEELABRATOR_NORWALK_ENERGY: cap=30.7, cf=0.002, units=1
     name "wecc240_psse_G_2407_CC";
     parent "wecc240_psse_G_2407";
     latitude 33.88;
@@ -655,12 +780,22 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AES_ALAMITOS_LLC: cap=1922.0, cf=0.146, units=1
+    // CENTER_PEAKER: cap=59.8, cf=0.005, units=1
+    // EXXONMOBIL_OIL_TORRANCE_REFINERY: cap=98.6, cf=0.008, units=2
+    // HARBOR: cap=548.1, cf=0.042, units=1
+    // HAYNES: cap=1739.1, cf=0.132, units=1
+    // LONG_BEACH_GENERATION_LLC: cap=252.0, cf=0.019, units=1
+    // SOUTHEAST_RESOURCE_RECOVERY: cap=35.6, cf=0.003, units=1
+    // TESORO_WILMINGTON_CALCINER: cap=34.0, cf=0.003, units=1
+    // THUMS: cap=57.4, cf=0.004, units=1
+    // WILMINGTON_HYDROGEN_PLANT: cap=31.9, cf=0.002, units=1
     name "wecc240_psse_G_2407_CT";
     parent "wecc240_psse_G_2407";
     latitude 33.88;
     longitude -118.2;
     generator CT;
-    operating_capacity 4663.3 MW;
+    operating_capacity 4778.5 MW;
     startup_cost 25.0;
     shutdown_cost 0.0;
     fixed_cost 350.0;
@@ -670,6 +805,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CENTER_PEAKER: cap=59.8, cf=0.005, units=1
     name "wecc240_psse_G_2407_ES";
     parent "wecc240_psse_G_2407";
     latitude 33.88;
@@ -685,6 +821,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AES_ALAMITOS_LLC: cap=1922.0, cf=0.146, units=1
+    // AES_REDONDO_BEACH_LLC: cap=1316.4, cf=0.1, units=1
+    // EQUILON_LOS_ANGELES_REFINING: cap=83.0, cf=0.006, units=1
+    // HAYNES: cap=1739.1, cf=0.132, units=1
+    // LOS_ANGELES_REFINERY_WILMINGTON: cap=68.5, cf=0.005, units=1
+    // TOTAL_ENERGY_FACILITIES: cap=38.4, cf=0.003, units=1
     name "wecc240_psse_G_2407_ST";
     parent "wecc240_psse_G_2407";
     latitude 33.88;
@@ -696,17 +838,6 @@ object pypower.powerplant
     fixed_cost 1000.0;
     variable_cost 5.0;
     scarcity_cost 0.001;
-}
-
-object pypower.powerplant
-{
-    name "wecc240_psse_G_2407_UNKNOWN";
-    parent "wecc240_psse_G_2407";
-    latitude 33.88;
-    longitude -118.2;
-    generator UNKNOWN;
-    operating_capacity 115.2 MW;
-    // no cost data for unknown plant type
 }
 
 object pypower.gen
@@ -727,6 +858,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CIVIC_CENTER: cap=34.5, cf=0.01, units=1
+    // EL_SEGUNDO_COGEN: cap=180.1, cf=0.053, units=1
+    // EL_SEGUNDO_ENERGY_CENTER_LLC: cap=537.4, cf=0.157, units=1
+    // SCATTERGOOD: cap=876.0, cf=0.256, units=1
     name "wecc240_psse_G_2613_CC";
     parent "wecc240_psse_G_2613";
     latitude 34.04;
@@ -742,6 +877,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SCATTERGOOD: cap=876.0, cf=0.256, units=1
     name "wecc240_psse_G_2613_CT";
     parent "wecc240_psse_G_2613";
     latitude 34.04;
@@ -757,6 +893,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // USPS_PV: cap=10.7, cf=0.003, units=1
     name "wecc240_psse_G_2613_PV";
     parent "wecc240_psse_G_2613";
     latitude 34.04;
@@ -772,6 +909,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HYPERION_TREATMENT_PLANT_CHP_PLANT: cap=33.0, cf=0.01, units=1
+    // SCATTERGOOD: cap=876.0, cf=0.256, units=1
     name "wecc240_psse_G_2613_ST";
     parent "wecc240_psse_G_2613";
     latitude 34.04;
@@ -803,6 +942,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // MALBURG: cap=130.0, cf=0.917, units=1
     name "wecc240_psse_G_2605_CC";
     parent "wecc240_psse_G_2605";
     latitude 34.02;
@@ -818,6 +958,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // H_GONZALES: cap=11.8, cf=0.083, units=1
     name "wecc240_psse_G_2605_CT";
     parent "wecc240_psse_G_2605";
     latitude 34.02;
@@ -849,6 +990,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // OLS_ENERGY_CAMARILLO: cap=31.1, cf=0.017, units=1
     name "wecc240_psse_G_2618_CC";
     parent "wecc240_psse_G_2618";
     latitude 34.24;
@@ -864,6 +1006,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CALABASAS_GAS_TO_ENERGY_FACILITY: cap=13.8, cf=0.007, units=1
+    // E_F_OXNARD_ENERGY_FACILITY: cap=48.5, cf=0.026, units=1
+    // MCGRATH_PEAKER: cap=49.8, cf=0.027, units=1
+    // OXNARD: cap=68.7, cf=0.037, units=1
+    // OXNARD_PAPER_MILL: cap=29.0, cf=0.016, units=1
     name "wecc240_psse_G_2618_CT";
     parent "wecc240_psse_G_2618";
     latitude 34.24;
@@ -879,6 +1026,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HOUWELING_NURSERIES: cap=13.2, cf=0.007, units=1
     name "wecc240_psse_G_2618_IC";
     parent "wecc240_psse_G_2618";
     latitude 34.24;
@@ -894,6 +1042,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ORMOND_BEACH: cap=1612.0, cf=0.864, units=1
     name "wecc240_psse_G_2618_ST";
     parent "wecc240_psse_G_2618";
     latitude 34.24;
@@ -925,6 +1074,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BERRY_PLACERITA_COGEN: cap=42.8, cf=0.557, units=1
+    // SUNSHINE_GAS_PRODUCERS: cap=23.0, cf=0.299, units=1
     name "wecc240_psse_G_2405_CT";
     parent "wecc240_psse_G_2405";
     latitude 34.32;
@@ -940,6 +1091,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FOOTHILL: cap=11.0, cf=0.143, units=1
     name "wecc240_psse_G_2405_HT";
     parent "wecc240_psse_G_2405";
     latitude 34.32;
@@ -971,6 +1123,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // SAN_FRANCISQUITO_1: cap=69.3, cf=0.623, units=1
+    // SAN_FRANCISQUITO_2: cap=42.0, cf=0.377, units=1
     name "wecc240_psse_G_2410_HT";
     parent "wecc240_psse_G_2410";
     latitude 34.44;
@@ -1002,6 +1156,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // MAGNOLIA_POWER_PROJECT: cap=387.6, cf=0.151, units=1
+    // UCLA_SO_CAMPUS_COGEN_PROJECT: cap=43.0, cf=0.017, units=1
+    // VALLEY_CA: cap=690.5, cf=0.269, units=1
     name "wecc240_psse_G_2602_CC";
     parent "wecc240_psse_G_2602";
     latitude 34.18;
@@ -1017,6 +1174,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LAKE_ONE: cap=60.5, cf=0.024, units=1
+    // VALLEY_CA: cap=690.5, cf=0.269, units=1
     name "wecc240_psse_G_2602_CT";
     parent "wecc240_psse_G_2602";
     latitude 34.18;
@@ -1032,6 +1191,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // VALLEY_CA: cap=690.5, cf=0.269, units=1
     name "wecc240_psse_G_2602_ST";
     parent "wecc240_psse_G_2602";
     latitude 34.18;
@@ -1063,6 +1223,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // GRAYSON: cap=300.9, cf=0.333, units=1
     name "wecc240_psse_G_2609_CC";
     parent "wecc240_psse_G_2609";
     latitude 34.15;
@@ -1078,6 +1239,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GRAYSON: cap=300.9, cf=0.333, units=1
     name "wecc240_psse_G_2609_CT";
     parent "wecc240_psse_G_2609";
     latitude 34.15;
@@ -1093,6 +1255,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GRAYSON: cap=300.9, cf=0.333, units=1
     name "wecc240_psse_G_2609_ST";
     parent "wecc240_psse_G_2609";
     latitude 34.15;
@@ -1124,6 +1287,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CALIFORNIA_INSTITUTE_OF_TECHNOLOGY: cap=13.0, cf=0.024, units=1
+    // GLENARM: cap=265.6, cf=0.488, units=1
     name "wecc240_psse_G_2406_CC";
     parent "wecc240_psse_G_2406";
     latitude 34.15;
@@ -1139,6 +1304,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GLENARM: cap=265.6, cf=0.488, units=1
     name "wecc240_psse_G_2406_CT";
     parent "wecc240_psse_G_2406";
     latitude 34.15;
@@ -1170,6 +1336,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // PASTORIA_ENERGY_FACILITY_LLC: cap=779.0, cf=0.233, units=1
     name "wecc240_psse_G_2608_CC";
     parent "wecc240_psse_G_2608";
     latitude 34.59;
@@ -1185,6 +1352,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALAMO: cap=19.6, cf=0.006, units=1
+    // CASTAIC: cap=1682.0, cf=0.504, units=1
+    // W_E_WARNE: cap=74.2, cf=0.022, units=1
     name "wecc240_psse_G_2608_HT";
     parent "wecc240_psse_G_2608";
     latitude 34.59;
@@ -1200,6 +1370,15 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALPINE_SOLAR: cap=66.0, cf=0.02, units=1
+    // ASTORIA_1: cap=100.0, cf=0.03, units=1
+    // ASTORIA_2: cap=75.0, cf=0.022, units=1
+    // AV_SOLAR_RANCH_ONE: cap=253.0, cf=0.076, units=1
+    // GARLAND: cap=185.0, cf=0.055, units=1
+    // KINGBIRD_SOLAR_A: cap=20.0, cf=0.006, units=1
+    // ORION_SOLAR_I: cap=12.0, cf=0.004, units=1
+    // RE_GARLAND_A: cap=20.0, cf=0.006, units=1
+    // ROSAMOND_W_2: cap=54.0, cf=0.016, units=1
     name "wecc240_psse_G_2608_PV";
     parent "wecc240_psse_G_2608";
     latitude 34.59;
@@ -1231,6 +1410,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // US_BORAX: cap=48.2, cf=0.009, units=1
     name "wecc240_psse_G_2902_CT";
     parent "wecc240_psse_G_2902";
     latitude 35.05;
@@ -1246,6 +1426,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ISABELLA_HYDRO_PROJECT: cap=11.8, cf=0.002, units=1
+    // KERN_RIVER_3: cap=40.1, cf=0.008, units=1
     name "wecc240_psse_G_2902_HT";
     parent "wecc240_psse_G_2902";
     latitude 35.05;
@@ -1261,6 +1443,26 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ANTELOPE_VALLEY_I: cap=318.0, cf=0.06, units=1
+    // BARREN_RIDGE_1: cap=60.0, cf=0.011, units=1
+    // CATALINA_1_2: cap=110.0, cf=0.021, units=1
+    // CATALINA_SOLAR_2_LLC: cap=18.0, cf=0.003, units=1
+    // CATALINA_SOLAR_LLC: cap=110.0, cf=0.021, units=1
+    // COLUMBIA_3: cap=10.0, cf=0.002, units=1
+    // HECATE_ENERGY_BEACON_SOLAR_3: cap=56.0, cf=0.011, units=1
+    // HECATE_ENERGY_BEACON_SOLAR_4: cap=50.0, cf=0.009, units=1
+    // KINGBIRD_SOLAR_B: cap=20.0, cf=0.004, units=1
+    // NAVAL_AIR_WEAPONS_STATION_CHINA_LAKE: cap=11.1, cf=0.002, units=1
+    // RE_CAMELOT_LLC: cap=45.0, cf=0.008, units=1
+    // RE_COLUMBIA_TWO_LLC: cap=15.0, cf=0.003, units=1
+    // ROSAMOND_ONE: cap=20.0, cf=0.004, units=1
+    // ROSAMOND_TWO: cap=20.0, cf=0.004, units=1
+    // ROSAMOND_W_1: cap=54.0, cf=0.01, units=1
+    // SEPV_MOJAVE_W: cap=20.0, cf=0.004, units=1
+    // SOLAR_STAR_1: cap=318.0, cf=0.06, units=1
+    // SOLAR_STAR_2: cap=279.0, cf=0.053, units=1
+    // SPRINGBOK_1: cap=105.0, cf=0.02, units=1
+    // SPRINGBOK_2: cap=155.0, cf=0.029, units=1
     name "wecc240_psse_G_2902_PV";
     parent "wecc240_psse_G_2902";
     latitude 35.05;
@@ -1276,6 +1478,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ARGUS_COGEN_PLANT: cap=62.5, cf=0.012, units=1
+    // COSO_ENERGY_DEVELOPERS: cap=90.0, cf=0.017, units=1
+    // COSO_FINANCE_PARTNERS: cap=92.2, cf=0.017, units=1
+    // COSO_POWER_DEVELOPERS: cap=90.0, cf=0.017, units=1
     name "wecc240_psse_G_2902_ST";
     parent "wecc240_psse_G_2902";
     latitude 35.05;
@@ -1291,6 +1497,40 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALTA_WIND_ENERGY_CENTER_I: cap=150.0, cf=0.028, units=1
+    // ALTA_WIND_ENERGY_CENTER_II: cap=150.0, cf=0.028, units=1
+    // ALTA_WIND_ENERGY_CENTER_III: cap=150.0, cf=0.028, units=1
+    // ALTA_WIND_ENERGY_CENTER_IV: cap=102.0, cf=0.019, units=1
+    // ALTA_WIND_ENERGY_CENTER_V: cap=168.0, cf=0.032, units=1
+    // ALTA_WIND_VIII: cap=150.0, cf=0.028, units=1
+    // ALTA_WIND_X: cap=138.0, cf=0.026, units=1
+    // ALTA_WIND_XI: cap=90.0, cf=0.017, units=1
+    // BROOKFIELD_TEHACHAPI_1: cap=102.0, cf=0.019, units=1
+    // CAMERON_RIDGE_LLC: cap=59.6, cf=0.011, units=1
+    // MANZANA_WIND_LLC: cap=189.0, cf=0.036, units=1
+    // MOJAVE_16: cap=30.0, cf=0.006, units=1
+    // MOJAVE_17: cap=25.0, cf=0.005, units=1
+    // MOJAVE_18: cap=30.0, cf=0.006, units=1
+    // MOJAVE_3: cap=23.5, cf=0.004, units=1
+    // MOJAVE_4: cap=29.0, cf=0.005, units=1
+    // MOJAVE_5: cap=22.5, cf=0.004, units=1
+    // MUSTANG_HILLS_LLC: cap=150.0, cf=0.028, units=1
+    // NORTH_SKY_RIVER_ENERGY_LLC: cap=162.0, cf=0.031, units=1
+    // OAK_CREEK_ENERGY_SYSTEMS_I: cap=34.5, cf=0.007, units=1
+    // OASIS_WIND: cap=60.0, cf=0.011, units=1
+    // PACIFIC_WIND_LLC: cap=151.7, cf=0.029, units=1
+    // PINE_TREE_WIND_POWER_PROJECT: cap=135.0, cf=0.025, units=1
+    // PINYON_PINE_I: cap=168.0, cf=0.032, units=1
+    // PINYON_PINE_II: cap=132.0, cf=0.025, units=1
+    // RIDGETOP: cap=46.8, cf=0.009, units=1
+    // RIDGETOP_ENERGY_LLC: cap=29.0, cf=0.005, units=1
+    // RISING_TREE_WIND_FARM: cap=79.2, cf=0.015, units=1
+    // RISING_TREE_WIND_FARM_II: cap=19.8, cf=0.004, units=1
+    // RISING_TREE_WIND_FARM_III: cap=99.0, cf=0.019, units=1
+    // TEHACHAPI_WIND_RESOURCE_II: cap=21.9, cf=0.004, units=1
+    // TPC_WINDFARMS_LLC: cap=28.7, cf=0.005, units=1
+    // VICTORY_GARDEN_TEHACHAPI: cap=21.1, cf=0.004, units=1
+    // WINDSTAR_1: cap=120.0, cf=0.023, units=1
     name "wecc240_psse_G_2902_WT";
     parent "wecc240_psse_G_2902";
     latitude 35.05;
@@ -1322,6 +1562,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // VANDENBERG_SOLAR_PROJECT: cap=22.5, cf=0.01, units=1
     name "wecc240_psse_G_3801_PV";
     parent "wecc240_psse_G_3801";
     latitude 35.23;
@@ -1337,6 +1578,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DIABLO_CANYON: cap=2323.0, cf=0.99, units=1
     name "wecc240_psse_G_3801_ST";
     parent "wecc240_psse_G_3801";
     latitude 35.23;
@@ -1368,6 +1610,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // SALINAS_RIVER_COGENERATION: cap=38.9, cf=0.23, units=1
     name "wecc240_psse_G_3806_CT";
     parent "wecc240_psse_G_3806";
     latitude 35.38;
@@ -1383,6 +1626,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CA_FLATS_SOLAR_130_LLC: cap=130.0, cf=0.77, units=1
     name "wecc240_psse_G_3806_PV";
     parent "wecc240_psse_G_3806";
     latitude 35.38;
@@ -1414,6 +1658,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // COALINGA_25D_COGEN: cap=13.6, cf=0.012, units=1
+    // HENRIETTA_PEAKER: cap=98.0, cf=0.088, units=1
     name "wecc240_psse_G_3802_CT";
     parent "wecc240_psse_G_3802";
     latitude 36.14;
@@ -1429,6 +1675,31 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CORONAL_LOST_HILLS: cap=20.0, cf=0.018, units=1
+    // FIVE_POINTS_1: cap=60.0, cf=0.054, units=1
+    // FIVE_POINTS_SOLAR_STATION_2: cap=15.0, cf=0.013, units=1
+    // GATES_SOLAR_STATION: cap=20.0, cf=0.018, units=1
+    // HENRIETTA_SOLAR: cap=102.0, cf=0.092, units=1
+    // HENRIETTA_SOLAR_PROJECT: cap=102.0, cf=0.092, units=1
+    // HURON: cap=20.0, cf=0.018, units=1
+    // HURON_SOLAR_STATION: cap=20.0, cf=0.018, units=1
+    // KANSAS: cap=20.0, cf=0.018, units=1
+    // KENT_SOUTH: cap=20.0, cf=0.018, units=1
+    // KETTLEMAN_SOLAR_-CENTAURUS: cap=20.0, cf=0.018, units=1
+    // NEXTERA_WESTSIDE_PV: cap=20.0, cf=0.018, units=1
+    // RE_KANSAS_SOLAR_LLC: cap=20.0, cf=0.018, units=1
+    // RE_KANSAS_SOUTH_LLC: cap=20.0, cf=0.018, units=1
+    // RE_KENT_SOUTH_LLC: cap=20.0, cf=0.018, units=1
+    // RE_MUSTANG: cap=100.0, cf=0.09, units=1
+    // RE_MUSTANG_3: cap=100.0, cf=0.09, units=1
+    // RE_MUSTANG_4: cap=100.0, cf=0.09, units=1
+    // RE_MUSTANG_LLC: cap=100.0, cf=0.09, units=1
+    // SAND_DRAG_LLC: cap=19.0, cf=0.017, units=1
+    // SUN_CITY_PROJECT_LLC: cap=20.0, cf=0.018, units=1
+    // WESTLANDS_SOLAR_PV_FARM: cap=18.0, cf=0.016, units=1
+    // WESTSIDE_SOLAR_STATION: cap=15.0, cf=0.013, units=1
+    // WEST_GATES_SOLAR_STATION: cap=10.0, cf=0.009, units=1
+    // WHITNEY_POINT_SOLAR: cap=20.0, cf=0.018, units=1
     name "wecc240_psse_G_3802_PV";
     parent "wecc240_psse_G_3802";
     latitude 36.14;
@@ -1460,6 +1731,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ELK_HILLS_POWER_LLC: cap=623.0, cf=0.091, units=1
+    // LA_PALOMA_GENERATING_LLC: cap=1200.0, cf=0.176, units=1
+    // SUNRISE_POWER_LLC: cap=605.4, cf=0.089, units=1
+    // WESTERN_POWER_STEAM_INC: cap=27.7, cf=0.004, units=1
     name "wecc240_psse_G_3803_CC";
     parent "wecc240_psse_G_3803";
     latitude 35.41;
@@ -1475,6 +1750,29 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BADGER_CREEK_LIMITED: cap=46.0, cf=0.007, units=1
+    // BEAR_MOUNTAIN_COGEN: cap=46.0, cf=0.007, units=1
+    // BERRY_COGEN: cap=38.7, cf=0.006, units=1
+    // BERRY_COGEN_TANNE_HILLS_18: cap=17.6, cf=0.003, units=1
+    // CHALK_CLIFF_COGEN: cap=46.0, cf=0.007, units=1
+    // CYMRIC_36W_COGEN: cap=12.4, cf=0.002, units=1
+    // DOUBLE_C: cap=49.8, cf=0.007, units=1
+    // ELLWOOD: cap=58.0, cf=0.009, units=1
+    // HIGH_SIERRA: cap=49.8, cf=0.007, units=1
+    // KERN_FRONT: cap=49.8, cf=0.007, units=1
+    // KERN_RIVER_COGENERATION: cap=300.0, cf=0.044, units=1
+    // KERN_RIVER_EASTRIDGE_COGEN: cap=48.8, cf=0.007, units=1
+    // LIVE_OAK_COGEN: cap=46.0, cf=0.007, units=1
+    // LOST_HILLS_COGENERATION_PLANT: cap=10.5, cf=0.002, units=1
+    // MCKITTRICK_COGEN: cap=12.0, cf=0.002, units=1
+    // MCKITTRICK_COGEN_FACILITY: cap=46.0, cf=0.007, units=1
+    // MIDWAY_SUNSET_COGEN: cap=234.0, cf=0.034, units=1
+    // SOUTHEAST_KERN_RIVER_COGEN: cap=30.8, cf=0.005, units=1
+    // SOUTH_BELRIDGE_COGENERATION_FACILITY: cap=94.2, cf=0.014, units=1
+    // SYCAMORE_COGENERATION: cap=300.0, cf=0.044, units=1
+    // TAFT_26C_COGEN: cap=12.4, cf=0.002, units=1
+    // WELLHEAD_POWER_DELANO_LLC: cap=48.5, cf=0.007, units=1
+    // WESTERN_POWER_STEAM_INC: cap=27.7, cf=0.004, units=1
     name "wecc240_psse_G_3803_CT";
     parent "wecc240_psse_G_3803";
     latitude 35.41;
@@ -1490,6 +1788,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // KERN_RIVER_1: cap=26.4, cf=0.004, units=1
     name "wecc240_psse_G_3803_HT";
     parent "wecc240_psse_G_3803";
     latitude 35.41;
@@ -1505,6 +1804,53 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ADOBE: cap=20.0, cf=0.003, units=1
+    // ALGONQUIN_SKIC20_SOLAR_LLC: cap=20.0, cf=0.003, units=1
+    // ALGONQUIN_SKIC_10_SOLAR_LLC: cap=10.0, cf=0.001, units=1
+    // ALPAUGH_50: cap=50.0, cf=0.007, units=1
+    // ALPAUGH_NORTH: cap=20.0, cf=0.003, units=1
+    // ATWELL_ISLAND: cap=20.2, cf=0.003, units=1
+    // ATWELL_ISLAND_SOLAR: cap=20.2, cf=0.003, units=1
+    // ATWELL_ISLAND_WEST_SOLAR: cap=20.0, cf=0.003, units=1
+    // BLACKWELL: cap=32.0, cf=0.005, units=1
+    // CALIFORNIA_VALLEY_SOLAR_RANCH: cap=249.8, cf=0.037, units=1
+    // CA_VALLEY: cap=249.8, cf=0.037, units=1
+    // CED_WHITE_RIVER: cap=20.0, cf=0.003, units=1
+    // CUYAMA_SOLAR_LLC: cap=40.0, cf=0.006, units=1
+    // DUCOR_1: cap=20.0, cf=0.003, units=1
+    // DUCOR_2: cap=20.0, cf=0.003, units=1
+    // DUCOR_3: cap=15.0, cf=0.002, units=1
+    // DUCOR_4: cap=20.0, cf=0.003, units=1
+    // GOOSE_LAKE_SOLAR: cap=12.0, cf=0.002, units=1
+    // HAYWORTH_SOLAR: cap=27.0, cf=0.004, units=1
+    // HAYWORTH_SOLAR_2: cap=27.0, cf=0.004, units=1
+    // LOST_HILLS: cap=32.0, cf=0.005, units=1
+    // MARICOPA_WEST: cap=20.0, cf=0.003, units=1
+    // MORELOS: cap=15.0, cf=0.002, units=1
+    // NICOLIS: cap=20.0, cf=0.003, units=1
+    // PIONEER_GREEN_ENERGY: cap=20.0, cf=0.003, units=1
+    // PUMPJACK_SOLAR_I: cap=20.0, cf=0.003, units=1
+    // REDCREST_SOLAR: cap=16.6, cf=0.002, units=1
+    // REDCREST_SOLAR_FARM: cap=16.6, cf=0.002, units=1
+    // REDWOOD_4_SOLAR_FARM: cap=20.0, cf=0.003, units=1
+    // REGULUS: cap=60.0, cf=0.009, units=1
+    // REGULUS_SOLAR_PROJECT: cap=60.0, cf=0.009, units=1
+    // RE_OLD_RIVER_ONE_LLC: cap=20.0, cf=0.003, units=1
+    // RIO_BRAVO_1: cap=20.0, cf=0.003, units=1
+    // RIO_BRAVO_2: cap=20.0, cf=0.003, units=1
+    // RIO_BRAVO_SOLAR_1_LLC: cap=20.0, cf=0.003, units=1
+    // RIO_BRAVO_SOLAR_II_LLC: cap=20.0, cf=0.003, units=1
+    // SHAFTER: cap=20.0, cf=0.003, units=1
+    // SHAFTER_SOLAR_LLC: cap=20.0, cf=0.003, units=1
+    // SKIC_SOLAR: cap=20.0, cf=0.003, units=1
+    // TOPAZ: cap=585.9, cf=0.086, units=1
+    // TOPAZ_SOLAR_FARM: cap=585.9, cf=0.086, units=1
+    // TROPICO: cap=14.0, cf=0.002, units=1
+    // WHITE_RIVER_SOLAR: cap=20.0, cf=0.003, units=1
+    // WHITE_RIVER_SOLAR_2: cap=19.8, cf=0.003, units=1
+    // WILDWOOD_SOLAR_I_LLC: cap=19.5, cf=0.003, units=1
+    // WOODMERE_SOLAR_FARM: cap=15.0, cf=0.002, units=1
+    // WOODMERE_SOLAR_FARM_2: cap=15.0, cf=0.002, units=1
     name "wecc240_psse_G_3803_PV";
     parent "wecc240_psse_G_3803";
     latitude 35.41;
@@ -1520,6 +1866,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MT_POSO_COGENERATION: cap=62.0, cf=0.009, units=1
     name "wecc240_psse_G_3803_ST";
     parent "wecc240_psse_G_3803";
     latitude 35.41;
@@ -1551,6 +1898,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // PARNASSUS_CENTRAL_UTILITY_PLANT: cap=13.4, cf=1.0, units=1
     name "wecc240_psse_G_3105_CC";
     parent "wecc240_psse_G_3105";
     latitude 37.76;
@@ -1582,6 +1930,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // RICHMOND_COGEN: cap=155.6, cf=0.259, units=1
     name "wecc240_psse_G_3101_CC";
     parent "wecc240_psse_G_3101";
     latitude 37.79;
@@ -1597,6 +1946,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALAMEDA: cap=54.8, cf=0.091, units=1
     name "wecc240_psse_G_3101_CT";
     parent "wecc240_psse_G_3101";
     latitude 37.79;
@@ -1612,6 +1962,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MARIN_CLEAN_ENERGY_SOLAR_ONE: cap=10.5, cf=0.018, units=1
     name "wecc240_psse_G_3101_PV";
     parent "wecc240_psse_G_3101";
     latitude 37.79;
@@ -1627,6 +1978,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DYNEGY_OAKLAND_POWER_PLANT: cap=223.5, cf=0.372, units=1
+    // RICHMOND_COGEN: cap=155.6, cf=0.259, units=1
     name "wecc240_psse_G_3101_ST";
     parent "wecc240_psse_G_3101";
     latitude 37.79;
@@ -1658,6 +2011,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // DYNEGY_MOSS_LANDING_POWER_PLANT: cap=1398.0, cf=0.47, units=1
+    // KING_CITY_POWER_PLANT: cap=133.2, cf=0.045, units=1
     name "wecc240_psse_G_3902_CC";
     parent "wecc240_psse_G_3902";
     latitude 36.74;
@@ -1673,6 +2028,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // KING_CITY_PEAKING: cap=47.3, cf=0.016, units=1
     name "wecc240_psse_G_3902_CT";
     parent "wecc240_psse_G_3902";
     latitude 36.74;
@@ -1688,6 +2044,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DYNEGY_MOSS_LANDING_POWER_PLANT: cap=1398.0, cf=0.47, units=1
     name "wecc240_psse_G_3902_ST";
     parent "wecc240_psse_G_3902";
     latitude 36.74;
@@ -1719,6 +2076,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // GILROY_POWER_PLANT: cap=130.0, cf=0.144, units=1
+    // METCALF_ENERGY_CENTER: cap=635.0, cf=0.706, units=1
     name "wecc240_psse_G_3301_CC";
     parent "wecc240_psse_G_3301";
     latitude 37.22;
@@ -1734,6 +2093,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GILROY_PEAKING_ENERGY_CENTER: cap=135.0, cf=0.15, units=1
     name "wecc240_psse_G_3301_CT";
     parent "wecc240_psse_G_3301";
     latitude 37.22;
@@ -1765,6 +2125,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // WALNUT_ENERGY_CENTER: cap=300.6, cf=0.274, units=1
     name "wecc240_psse_G_3901_CC";
     parent "wecc240_psse_G_3901";
     latitude 37.05;
@@ -1780,6 +2141,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // COVANTA_STANISLAUS_ENERGY: cap=24.0, cf=0.022, units=1
+    // WALNUT: cap=49.8, cf=0.045, units=1
     name "wecc240_psse_G_3901_CT";
     parent "wecc240_psse_G_3901";
     latitude 37.05;
@@ -1795,6 +2158,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ONEILL: cap=25.2, cf=0.023, units=1
+    // W_R_GIANELLI: cap=424.0, cf=0.387, units=1
     name "wecc240_psse_G_3901_HT";
     parent "wecc240_psse_G_3901";
     latitude 37.05;
@@ -1810,6 +2175,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FRONTIER_SOLAR_LLC: cap=20.0, cf=0.018, units=1
+    // QUINTO: cap=108.0, cf=0.098, units=1
+    // QUINTO_SOLAR_PV_PROJECT: cap=108.0, cf=0.098, units=1
+    // VEGA_SOLAR: cap=20.0, cf=0.018, units=1
     name "wecc240_psse_G_3901_PV";
     parent "wecc240_psse_G_3901";
     latitude 37.05;
@@ -1825,6 +2194,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DINOSAUR_POINT: cap=17.4, cf=0.016, units=1
     name "wecc240_psse_G_3901_WT";
     parent "wecc240_psse_G_3901";
     latitude 37.05;
@@ -1856,6 +2226,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // JEFFERSON_SMURFIT_SANTA_CLARA_MILL: cap=27.0, cf=0.652, units=1
     name "wecc240_psse_G_3304_CC";
     parent "wecc240_psse_G_3304";
     latitude 37.32;
@@ -1871,6 +2242,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // APPLE_CAMPUS_2_PV: cap=14.4, cf=0.348, units=1
     name "wecc240_psse_G_3304_PV";
     parent "wecc240_psse_G_3304";
     latitude 37.32;
@@ -1902,6 +2274,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // AMERESCO_OX_MOUNTAIN: cap=11.4, cf=1.0, units=1
     name "wecc240_psse_G_3103_CT";
     parent "wecc240_psse_G_3103";
     latitude 37.58;
@@ -1933,6 +2306,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // RUSSELL_CITY_ENERGY_CENTER: cap=655.0, cf=1.0, units=1
     name "wecc240_psse_G_3305_CC";
     parent "wecc240_psse_G_3305";
     latitude 37.49;
@@ -1964,6 +2338,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // AGNEWS_POWER_PLANT: cap=32.0, cf=0.055, units=1
+    // DONALD_VON_RAESFELD_POWER_PLANT: cap=154.0, cf=0.266, units=1
+    // LOS_ESTEROS_CRITICAL_ENERGY_CENTER: cap=306.1, cf=0.529, units=1
     name "wecc240_psse_G_3203_CC";
     parent "wecc240_psse_G_3203";
     latitude 37.5;
@@ -1979,6 +2356,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GIANERA: cap=64.6, cf=0.112, units=1
     name "wecc240_psse_G_3203_CT";
     parent "wecc240_psse_G_3203";
     latitude 37.5;
@@ -1994,6 +2372,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SJ_SC_WPCP: cap=11.0, cf=0.019, units=1
     name "wecc240_psse_G_3203_IC";
     parent "wecc240_psse_G_3203";
     latitude 37.5;
@@ -2009,6 +2388,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SJ_SC_WPCP: cap=11.0, cf=0.019, units=1
     name "wecc240_psse_G_3203_ST";
     parent "wecc240_psse_G_3203";
     latitude 37.5;
@@ -2040,6 +2420,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CROCKETT_COGEN_PROJECT: cap=247.4, cf=0.691, units=1
+    // PE_BERKELEY: cap=28.5, cf=0.08, units=1
     name "wecc240_psse_G_3205_CC";
     parent "wecc240_psse_G_3205";
     latitude 37.91;
@@ -2055,6 +2437,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // PHILLIPS_66_CARBON_PLANT: cap=27.3, cf=0.076, units=1
+    // PHILLIPS_66_RODEO_REFINERY: cap=54.9, cf=0.153, units=1
     name "wecc240_psse_G_3205_ST";
     parent "wecc240_psse_G_3205";
     latitude 37.91;
@@ -2086,6 +2470,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // TRACY_COMBINED_CYCLE_POWER_PLANT: cap=336.1, cf=0.419, units=1
     name "wecc240_psse_G_3903_CC";
     parent "wecc240_psse_G_3903";
     latitude 37.71;
@@ -2101,6 +2486,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MARIPOSA_ENERGY_PROJECT: cap=199.6, cf=0.249, units=1
     name "wecc240_psse_G_3903_CT";
     parent "wecc240_psse_G_3903";
     latitude 37.71;
@@ -2116,6 +2502,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BUENA_VISTA_ENERGY_LLC: cap=38.0, cf=0.047, units=1
+    // DIABLO_WIND_LLC: cap=18.0, cf=0.022, units=1
+    // GOLDEN_HILLS_NORTH_WIND_ENERGY_CENTER: cap=46.0, cf=0.057, units=1
+    // GOLDEN_HILLS_WIND: cap=85.9, cf=0.107, units=1
+    // VASCO_WINDS: cap=78.2, cf=0.098, units=1
     name "wecc240_psse_G_3903_WT";
     parent "wecc240_psse_G_3903";
     latitude 37.71;
@@ -2147,6 +2538,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // LODI_ENERGY_CENTER: cap=288.9, cf=0.513, units=1
     name "wecc240_psse_G_8002_CC";
     parent "wecc240_psse_G_8002";
     latitude 37.75;
@@ -2162,6 +2554,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // COMBUSTION_TURBINE_PROJECT_NO_2: cap=50.0, cf=0.089, units=1
+    // RIPON_GENERATION_STATION: cap=121.0, cf=0.215, units=1
+    // RIPON_MILL: cap=49.5, cf=0.088, units=1
     name "wecc240_psse_G_8002_CT";
     parent "wecc240_psse_G_8002";
     latitude 37.75;
@@ -2177,6 +2572,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // STOCKTON_BIOMASS: cap=54.0, cf=0.096, units=1
     name "wecc240_psse_G_8002_ST";
     parent "wecc240_psse_G_8002";
     latitude 37.75;
@@ -2208,6 +2604,12 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // AIDLIN_GEOTHERMAL_POWER_PLANT: cap=25.0, cf=0.014, units=1
+    // CALISTOGA_POWER_PLANT: cap=176.4, cf=0.1, units=1
+    // GEOTHERMAL_1: cap=110.0, cf=0.062, units=1
+    // GEOTHERMAL_2: cap=110.0, cf=0.062, units=1
+    // GEYSERS_UNIT_5-20: cap=1273.0, cf=0.718, units=1
+    // SONOMA_CALIFORNIA_GEOTHERMAL: cap=78.0, cf=0.044, units=1
     name "wecc240_psse_G_3501_ST";
     parent "wecc240_psse_G_3501";
     latitude 38.5;
@@ -2239,6 +2641,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // FOSTER_WHEELER_MARTINEZ: cap=113.5, cf=0.311, units=1
+    // MARTINEZ_REFINING: cap=100.0, cf=0.274, units=1
     name "wecc240_psse_G_3201_CC";
     parent "wecc240_psse_G_3201";
     latitude 37.98;
@@ -2254,6 +2658,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // VALERO_REFINERY_COGENERATION_UNIT_1: cap=51.0, cf=0.14, units=1
     name "wecc240_psse_G_3201_CT";
     parent "wecc240_psse_G_3201";
     latitude 37.98;
@@ -2269,6 +2674,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MARTINEZ_REFINING: cap=100.0, cf=0.274, units=1
     name "wecc240_psse_G_3201_ST";
     parent "wecc240_psse_G_3201";
     latitude 37.98;
@@ -2300,6 +2706,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // DELTA_ENERGY_CENTER: cap=943.5, cf=0.224, units=1
+    // GATEWAY_GENERATING_STATION: cap=619.7, cf=0.147, units=1
+    // LOS_MEDANOS_ENERGY_CENTER: cap=678.3, cf=0.161, units=1
     name "wecc240_psse_G_3204_CC";
     parent "wecc240_psse_G_3204";
     latitude 38.04;
@@ -2315,6 +2724,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LAMBIE_ENERGY_CENTER: cap=47.0, cf=0.011, units=1
+    // MARSH_LANDING_GENERATING_STATION: cap=828.0, cf=0.197, units=1
+    // RIVERVIEW_ENERGY_CENTER: cap=47.0, cf=0.011, units=1
     name "wecc240_psse_G_3204_CT";
     parent "wecc240_psse_G_3204";
     latitude 38.04;
@@ -2330,6 +2742,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // COLUMBIA_1: cap=19.2, cf=0.005, units=1
     name "wecc240_psse_G_3204_PV";
     parent "wecc240_psse_G_3204";
     latitude 38.04;
@@ -2345,6 +2758,15 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // EDF_RENEWABLE_WINDFARM_V_INC: cap=15.5, cf=0.004, units=1
+    // FPL_ENERGY_MONTEZUMA_WINDS_LLC: cap=36.8, cf=0.009, units=1
+    // HIGH_WINDS_LLC: cap=162.0, cf=0.038, units=1
+    // MONTEZUMA_WIND_II: cap=78.2, cf=0.019, units=1
+    // SHILOH_III_WIND_PROJECT_LLC: cap=102.5, cf=0.024, units=1
+    // SHILOH_IV_WIND_PROJECT_LLC: cap=102.5, cf=0.024, units=1
+    // SHILOH_I_WIND_PROJECT: cap=150.0, cf=0.036, units=1
+    // SHILOH_WIND_PROJECT_2_LLC: cap=150.0, cf=0.036, units=1
+    // SOLANO_WIND: cap=228.2, cf=0.054, units=1
     name "wecc240_psse_G_3204_WT";
     parent "wecc240_psse_G_3204";
     latitude 38.04;
@@ -2376,6 +2798,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CALPEAK_POWER_VACA_DIXON_PEAKER_PLANT: cap=60.5, cf=0.268, units=1
+    // CREED_ENERGY_CENTER: cap=47.0, cf=0.208, units=1
+    // GOOSE_HAVEN_ENERGY_CENTER: cap=47.0, cf=0.208, units=1
+    // WOLFSKILL_ENERGY_CENTER: cap=47.0, cf=0.208, units=1
     name "wecc240_psse_G_3904_CT";
     parent "wecc240_psse_G_3904";
     latitude 38.41;
@@ -2391,6 +2817,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MONTICELLO_DAM: cap=11.5, cf=0.051, units=1
     name "wecc240_psse_G_3904_HT";
     parent "wecc240_psse_G_3904";
     latitude 38.41;
@@ -2406,6 +2833,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // UC_DAVIS_SOUTH_CAMPUS: cap=13.0, cf=0.058, units=1
     name "wecc240_psse_G_3904_PV";
     parent "wecc240_psse_G_3904";
     latitude 38.41;
@@ -2437,6 +2865,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // WOODLAND: cap=199.0, cf=0.091, units=1
     name "wecc240_psse_G_3907_CC";
     parent "wecc240_psse_G_3907";
     latitude 38.02;
@@ -2452,6 +2881,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALMOND_POWER_PLANT: cap=223.5, cf=0.102, units=1
+    // MCCLURE: cap=142.4, cf=0.065, units=1
+    // WOODLAND: cap=199.0, cf=0.091, units=1
     name "wecc240_psse_G_3907_CT";
     parent "wecc240_psse_G_3907";
     latitude 38.02;
@@ -2467,6 +2899,15 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BEARDSLEY: cap=10.0, cf=0.005, units=1
+    // COLLIERVILLE_POWERHOUSE: cap=253.0, cf=0.116, units=1
+    // DONNELLS: cap=72.0, cf=0.033, units=1
+    // DON_PEDRO: cap=170.8, cf=0.078, units=1
+    // MOCCASIN: cap=100.0, cf=0.046, units=1
+    // NEW_MELONES: cap=300.0, cf=0.137, units=1
+    // SAND_BAR_POWER_PLANT: cap=16.2, cf=0.007, units=1
+    // STANISLAUS: cap=81.9, cf=0.038, units=1
+    // TULLOCH: cap=24.2, cf=0.011, units=1
     name "wecc240_psse_G_3907_HT";
     parent "wecc240_psse_G_3907";
     latitude 38.02;
@@ -2482,6 +2923,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // WOODLAND: cap=199.0, cf=0.091, units=1
     name "wecc240_psse_G_3907_IC";
     parent "wecc240_psse_G_3907";
     latitude 38.02;
@@ -2497,6 +2939,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // RET_MODESTO_SOLAR: cap=25.0, cf=0.011, units=1
     name "wecc240_psse_G_3907_PV";
     parent "wecc240_psse_G_3907";
     latitude 38.02;
@@ -2512,6 +2955,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MCCLURE: cap=142.4, cf=0.065, units=1
+    // PACIFIC-ULTRAPOWER_CHINESE_STATION: cap=25.0, cf=0.011, units=1
     name "wecc240_psse_G_3907_ST";
     parent "wecc240_psse_G_3907";
     latitude 38.02;
@@ -2543,6 +2988,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CARSON_ICE-GEN_PROJECT: cap=125.5, cf=0.139, units=1
+    // SCA_COGEN_2: cap=193.4, cf=0.214, units=1
+    // SPA_COGEN_3: cap=173.9, cf=0.192, units=1
     name "wecc240_psse_G_3908_CC";
     parent "wecc240_psse_G_3908";
     latitude 38.55;
@@ -2558,6 +3006,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CARSON_ICE-GEN_PROJECT: cap=125.5, cf=0.139, units=1
+    // MCCLELLAN_CA: cap=77.0, cf=0.085, units=1
+    // SCA_COGEN_2: cap=193.4, cf=0.214, units=1
     name "wecc240_psse_G_3908_CT";
     parent "wecc240_psse_G_3908";
     latitude 38.55;
@@ -2573,6 +3024,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SMUD_AT_GRUNDMAN: cap=17.0, cf=0.019, units=1
     name "wecc240_psse_G_3908_PV";
     parent "wecc240_psse_G_3908";
     latitude 38.55;
@@ -2604,6 +3056,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // COSUMNES: cap=530.0, cf=0.675, units=1
     name "wecc240_psse_G_8004_CC";
     parent "wecc240_psse_G_8004";
     latitude 38.35;
@@ -2619,6 +3072,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CAMANCHE: cap=10.8, cf=0.014, units=1
+    // ELECTRA: cap=102.5, cf=0.13, units=1
+    // PARDEE: cap=23.6, cf=0.03, units=1
+    // SALT_SPRINGS: cap=42.0, cf=0.053, units=1
+    // TIGER_CREEK: cap=52.2, cf=0.066, units=1
+    // WEST_POINT_PH: cap=13.6, cf=0.017, units=1
     name "wecc240_psse_G_8004_HT";
     parent "wecc240_psse_G_8004";
     latitude 38.35;
@@ -2634,6 +3093,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // RANCHO_SECO_SOLAR_LLC: cap=10.8, cf=0.014, units=1
     name "wecc240_psse_G_8004_PV";
     parent "wecc240_psse_G_8004";
     latitude 38.35;
@@ -2665,6 +3125,20 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CAMINO: cap=157.8, cf=0.139, units=1
+    // EL_DORADO: cap=20.0, cf=0.018, units=1
+    // FOLSOM: cap=198.6, cf=0.175, units=1
+    // HALSEY: cap=13.6, cf=0.012, units=1
+    // JAYBIRD: cap=161.6, cf=0.142, units=1
+    // JONES_FORK: cap=10.0, cf=0.009, units=1
+    // MIDDLE_FORK: cap=122.4, cf=0.108, units=1
+    // NEWCASTLE: cap=12.7, cf=0.011, units=1
+    // NIMBUS: cap=13.4, cf=0.012, units=1
+    // RALSTON: cap=79.2, cf=0.07, units=1
+    // ROBBS_PEAK: cap=25.5, cf=0.022, units=1
+    // UNION_VALLEY: cap=38.6, cf=0.034, units=1
+    // WHITE_ROCK_SLAB_CREEK: cap=266.5, cf=0.235, units=1
+    // WISE: cap=16.4, cf=0.014, units=1
     name "wecc240_psse_G_3913_HT";
     parent "wecc240_psse_G_3913";
     latitude 38.66;
@@ -2696,6 +3170,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // WADHAM_ENERGY_LP: cap=28.6, cf=1.0, units=1
     name "wecc240_psse_G_3910_ST";
     parent "wecc240_psse_G_3910";
     latitude 39.02;
@@ -2727,6 +3202,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // SUTTER_ENERGY_CENTER: cap=636.0, cf=0.788, units=1
     name "wecc240_psse_G_3405_CC";
     parent "wecc240_psse_G_3405";
     latitude 38.98;
@@ -2742,6 +3218,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FEATHER_RIVER_ENERGY_CENTER: cap=47.0, cf=0.058, units=1
+    // YUBA_CITY_COGEN_PARTNERS: cap=49.0, cf=0.061, units=1
+    // YUBA_CITY_ENERGY_CENTER: cap=47.3, cf=0.059, units=1
     name "wecc240_psse_G_3405_CT";
     parent "wecc240_psse_G_3405";
     latitude 38.98;
@@ -2757,6 +3236,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // WOODLAND_BIOMASS_POWER_LTD: cap=28.0, cf=0.035, units=1
     name "wecc240_psse_G_3405_ST";
     parent "wecc240_psse_G_3405";
     latitude 38.98;
@@ -2788,6 +3268,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ROSEVILLE_ENERGY_PARK: cap=164.0, cf=0.777, units=1
     name "wecc240_psse_G_3920_CC";
     parent "wecc240_psse_G_3920";
     latitude 38.94;
@@ -2803,6 +3284,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // RIO_BRAVO_ROCKLIN: cap=27.9, cf=0.132, units=1
+    // SIERRA_PACIFIC_LINCOLN_FACILITY: cap=19.2, cf=0.091, units=1
     name "wecc240_psse_G_3920_ST";
     parent "wecc240_psse_G_3920";
     latitude 38.94;
@@ -2834,6 +3317,17 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CHICAGO_PARK: cap=44.0, cf=0.065, units=1
+    // COLGATE: cap=315.0, cf=0.464, units=1
+    // DRUM_1: cap=49.2, cf=0.073, units=1
+    // DRUM_2: cap=53.1, cf=0.078, units=1
+    // DUTCH_FLAT: cap=22.0, cf=0.032, units=1
+    // DUTCH_FLAT_2: cap=27.3, cf=0.04, units=1
+    // NARROWS_2: cap=46.7, cf=0.069, units=1
+    // NARROWS_PH: cap=10.2, cf=0.015, units=1
+    // ROLLINS: cap=12.1, cf=0.018, units=1
+    // SLY_CREEK: cap=12.1, cf=0.018, units=1
+    // WOODLEAF: cap=59.0, cf=0.087, units=1
     name "wecc240_psse_G_3909_HT";
     parent "wecc240_psse_G_3909";
     latitude 39.26;
@@ -2849,6 +3343,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SIERRA_PACIFIC_QUINCY_FACILITY: cap=27.5, cf=0.041, units=1
     name "wecc240_psse_G_3909_ST";
     parent "wecc240_psse_G_3909";
     latitude 39.26;
@@ -2880,6 +3375,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CALPEAK_POWER_PANOCHE_PEAKER_PLANT: cap=60.5, cf=0.051, units=1
+    // MIDWAY_PEAKING_LLC: cap=139.8, cf=0.117, units=1
+    // PANOCHE_ENERGY_CENTER: cap=432.0, cf=0.363, units=1
+    // PANOCHE_PEAKER: cap=49.9, cf=0.042, units=1
     name "wecc240_psse_G_3404_CT";
     parent "wecc240_psse_G_3404";
     latitude 36.68;
@@ -2895,6 +3394,16 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ADAMS_E: cap=19.0, cf=0.016, units=1
+    // ADERA: cap=20.0, cf=0.017, units=1
+    // CANTUA_SOLAR_STATION: cap=20.0, cf=0.017, units=1
+    // GIFFEN: cap=10.0, cf=0.008, units=1
+    // GIFFEN_SOLAR_PARK: cap=20.0, cf=0.017, units=1
+    // GREAT_VALLEY_SOLAR_PORTFOLIO_HOLDINGS_LLC: cap=100.0, cf=0.084, units=1
+    // NORTH_STAR_SOLAR: cap=62.5, cf=0.052, units=1
+    // RE_ADAMS_EAST_LLC: cap=19.0, cf=0.016, units=1
+    // RE_TRANQUILLITY: cap=205.3, cf=0.172, units=1
+    // STROUD_SOLAR_STATION: cap=20.0, cf=0.017, units=1
     name "wecc240_psse_G_3404_PV";
     parent "wecc240_psse_G_3404";
     latitude 36.68;
@@ -2910,6 +3419,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // EL_NIDO_FACILITY: cap=12.5, cf=0.01, units=1
     name "wecc240_psse_G_3404_ST";
     parent "wecc240_psse_G_3404";
     latitude 36.68;
@@ -2941,6 +3451,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // FRESNO_COGEN_PARTNERS: cap=82.6, cf=0.094, units=1
     name "wecc240_psse_G_3401_CC";
     parent "wecc240_psse_G_3401";
     latitude 36.85;
@@ -2956,6 +3467,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FRESNO_COGEN_PARTNERS: cap=82.6, cf=0.094, units=1
     name "wecc240_psse_G_3401_CT";
     parent "wecc240_psse_G_3401";
     latitude 36.85;
@@ -2971,6 +3483,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // A_G_WISHON: cap=12.8, cf=0.015, units=1
+    // BIG_CREEK_4: cap=100.0, cf=0.114, units=1
+    // DION_R_HOLM: cap=156.8, cf=0.179, units=1
+    // EXCHEQUER: cap=94.5, cf=0.108, units=1
+    // FRIANT_HYDRO_FACILITY: cap=30.6, cf=0.035, units=1
+    // KERCKHOFF_2: cap=139.5, cf=0.159, units=1
+    // R_C_KIRKWOOD: cap=115.5, cf=0.132, units=1
     name "wecc240_psse_G_3401_HT";
     parent "wecc240_psse_G_3401";
     latitude 36.85;
@@ -2986,6 +3505,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CHOWCHILLA_II: cap=49.6, cf=0.057, units=1
     name "wecc240_psse_G_3401_IC";
     parent "wecc240_psse_G_3401";
     latitude 36.85;
@@ -3001,6 +3521,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AMPERSAND_CHOWCHILLA_BIOMASS_LLC: cap=12.5, cf=0.014, units=1
     name "wecc240_psse_G_3401_ST";
     parent "wecc240_psse_G_3401";
     latitude 36.85;
@@ -3032,6 +3553,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ALGONQUIN_POWER_SANGER_LLC: cap=61.5, cf=0.089, units=1
+    // KINGSBURG_COGEN: cap=36.2, cf=0.053, units=1
     name "wecc240_psse_G_3403_CC";
     parent "wecc240_psse_G_3403";
     latitude 36.61;
@@ -3047,6 +3570,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HANFORD_ENERGY_PARK_PEAKER: cap=92.2, cf=0.134, units=1
+    // KINGS_RIVER: cap=121.0, cf=0.176, units=1
     name "wecc240_psse_G_3403_CT";
     parent "wecc240_psse_G_3403";
     latitude 36.61;
@@ -3062,6 +3587,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // PINE_FLAT: cap=165.0, cf=0.24, units=1
     name "wecc240_psse_G_3403_HT";
     parent "wecc240_psse_G_3403";
     latitude 36.61;
@@ -3077,6 +3603,16 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CED_CORCORAN_2: cap=19.8, cf=0.029, units=1
+    // CITY_OF_CORCORAN: cap=12.0, cf=0.017, units=1
+    // CITY_OF_CORCORAN_SOLAR: cap=12.0, cf=0.017, units=1
+    // CORCORAN: cap=20.0, cf=0.029, units=1
+    // CORCORAN_IRRIGATION: cap=20.0, cf=0.029, units=1
+    // CORCORAN_IRRIGATION_DISTRICT_SOLAR: cap=20.0, cf=0.029, units=1
+    // CORCORAN_SOLAR: cap=20.0, cf=0.029, units=1
+    // CORCORAN_SOLAR_2: cap=19.8, cf=0.029, units=1
+    // CORCORAN_SOLAR_3: cap=20.0, cf=0.029, units=1
+    // GUERNSEY_SOLAR_STATION: cap=20.0, cf=0.029, units=1
     name "wecc240_psse_G_3403_PV";
     parent "wecc240_psse_G_3403";
     latitude 36.61;
@@ -3092,6 +3628,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // RIO_BRAVO_FRESNO: cap=28.0, cf=0.041, units=1
     name "wecc240_psse_G_3403_ST";
     parent "wecc240_psse_G_3403";
     latitude 36.61;
@@ -3123,6 +3660,19 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BALCH_1: cap=31.0, cf=0.017, units=1
+    // BALCH_2: cap=97.2, cf=0.053, units=1
+    // BIG_CREEK_1: cap=88.4, cf=0.048, units=1
+    // BIG_CREEK_3: cap=174.5, cf=0.095, units=1
+    // CONTROL_GORGE: cap=37.5, cf=0.02, units=1
+    // HAAS: cap=135.0, cf=0.073, units=1
+    // HELMS_PUMPED_STORAGE: cap=1053.0, cf=0.572, units=1
+    // KINGS_RIVER_PH: cap=48.6, cf=0.026, units=1
+    // MIDDLE_GORGE: cap=37.5, cf=0.02, units=1
+    // POOLE: cap=11.3, cf=0.006, units=1
+    // RUSH_CREEK: cap=13.1, cf=0.007, units=1
+    // TERMINUS_HYDROELECTRIC_PROJECT: cap=20.1, cf=0.011, units=1
+    // UPPER_GORGE: cap=37.5, cf=0.02, units=1
     name "wecc240_psse_G_3402_HT";
     parent "wecc240_psse_G_3402";
     latitude 37.04;
@@ -3138,6 +3688,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MAMMOTH_PACIFIC_I: cap=10.0, cf=0.005, units=1
+    // MAMMOTH_PACIFIC_II: cap=30.0, cf=0.016, units=1
+    // PLES_I: cap=15.0, cf=0.008, units=1
     name "wecc240_psse_G_3402_ST";
     parent "wecc240_psse_G_3402";
     latitude 37.04;
@@ -3169,6 +3722,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BOWERMAN_POWER_LFG_LLC: cap=23.8, cf=0.092, units=1
+    // BREA_EXPANSION_PLANT: cap=35.7, cf=0.138, units=1
+    // CANYON_POWER_PLANT: cap=200.0, cf=0.771, units=1
     name "wecc240_psse_G_2501_CT";
     parent "wecc240_psse_G_2501";
     latitude 33.83;
@@ -3200,6 +3756,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // MILLERCOORS_IRWINDALE_BREWERY: cap=13.9, cf=0.023, units=1
+    // MM_WEST_COVINA: cap=11.7, cf=0.019, units=1
+    // PUENTE_HILLS_ENERGY_RECOVERY: cap=50.0, cf=0.083, units=1
+    // WALNUT_CREEK_ENERGY_PARK: cap=500.0, cf=0.829, units=1
     name "wecc240_psse_G_2408_CT";
     parent "wecc240_psse_G_2408";
     latitude 34.04;
@@ -3215,6 +3775,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MILLERCOORS_IRWINDALE_BREWERY: cap=13.9, cf=0.023, units=1
     name "wecc240_psse_G_2408_PV";
     parent "wecc240_psse_G_2408";
     latitude 34.04;
@@ -3230,6 +3791,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MILLERCOORS_IRWINDALE_BREWERY: cap=13.9, cf=0.023, units=1
     name "wecc240_psse_G_2408_ST";
     parent "wecc240_psse_G_2408";
     latitude 34.04;
@@ -3261,6 +3823,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CLEARWATER_POWER_PLANT: cap=49.0, cf=0.061, units=1
+    // OLS_ENERGY_CHINO: cap=30.8, cf=0.038, units=1
     name "wecc240_psse_G_2402_CC";
     parent "wecc240_psse_G_2402";
     latitude 34.01;
@@ -3276,6 +3840,14 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AGUA_MANSA_POWER_PLANT: cap=60.5, cf=0.075, units=1
+    // CENTURY_GENERATING_FACILITY: cap=44.8, cf=0.056, units=1
+    // DREWS_GENERATING_FACILITY: cap=44.8, cf=0.056, units=1
+    // GRAPELAND_PEAKER: cap=59.8, cf=0.074, units=1
+    // MIRA_LOMA_PEAKER: cap=49.8, cf=0.062, units=1
+    // NEW-INDY_ONTARIO_MILL: cap=34.0, cf=0.042, units=1
+    // RIVERSIDE_ENERGY_RESOURCE_CENTER: cap=196.0, cf=0.243, units=1
+    // SAN_GABRIEL_FACILITY: cap=66.0, cf=0.082, units=1
     name "wecc240_psse_G_2402_CT";
     parent "wecc240_psse_G_2402";
     latitude 34.01;
@@ -3291,6 +3863,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GRAPELAND_PEAKER: cap=59.8, cf=0.074, units=1
+    // MIRA_LOMA_ENERGY_STORAGE_FACILITY: cap=20.0, cf=0.025, units=1
+    // SAN_GABRIEL_FACILITY: cap=66.0, cf=0.082, units=1
     name "wecc240_psse_G_2402_ES";
     parent "wecc240_psse_G_2402";
     latitude 34.01;
@@ -3306,6 +3881,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ETIWANDA: cap=23.9, cf=0.03, units=1
     name "wecc240_psse_G_2402_HT";
     parent "wecc240_psse_G_2402";
     latitude 34.01;
@@ -3337,6 +3913,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // LOMA_LINDA_UNIVERSITY_COGEN: cap=12.1, cf=0.006, units=1
+    // MOUNTAINVIEW_GENERATING_STATION: cap=1036.8, cf=0.471, units=1
     name "wecc240_psse_G_2403_CC";
     parent "wecc240_psse_G_2403";
     latitude 33.8;
@@ -3352,6 +3930,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LOMA_LINDA_UNIVERSITY_COGEN: cap=12.1, cf=0.006, units=1
+    // SPRINGS_GENERATING_STATION: cap=40.0, cf=0.018, units=1
     name "wecc240_psse_G_2403_CT";
     parent "wecc240_psse_G_2403";
     latitude 33.8;
@@ -3367,6 +3947,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DIAMOND_VALLEY_LAKE: cap=29.7, cf=0.014, units=1
     name "wecc240_psse_G_2403_HT";
     parent "wecc240_psse_G_2403";
     latitude 33.8;
@@ -3382,6 +3963,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AP_NORTH_LAKE_I: cap=20.0, cf=0.009, units=1
     name "wecc240_psse_G_2403_PV";
     parent "wecc240_psse_G_2403";
     latitude 33.8;
@@ -3397,6 +3979,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LOMA_LINDA_UNIVERSITY_COGEN: cap=12.1, cf=0.006, units=1
+    // MOUNTAINVIEW_GENERATING_STATION: cap=1036.8, cf=0.471, units=1
     name "wecc240_psse_G_2403_ST";
     parent "wecc240_psse_G_2403";
     latitude 33.8;
@@ -3428,6 +4012,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // DEVIL_CANYON: cap=276.2, cf=0.894, units=1
+    // MOJAVE_SIPHON: cap=32.7, cf=0.106, units=1
     name "wecc240_psse_G_2401_HT";
     parent "wecc240_psse_G_2401";
     latitude 34.37;
@@ -3459,6 +4045,29 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ANTELOPE_BIG_SKY_RANCH: cap=20.0, cf=0.037, units=1
+    // ANTELOPE_DSR_1: cap=50.0, cf=0.093, units=1
+    // BAYSHORE_SOLAR_A_LLC: cap=20.0, cf=0.037, units=1
+    // BAYSHORE_SOLAR_B_LLC: cap=20.0, cf=0.037, units=1
+    // BAYSHORE_SOLAR_C_LLC: cap=20.0, cf=0.037, units=1
+    // BLUE_SKY_RANCH_B: cap=20.0, cf=0.037, units=1
+    // CENTRAL_ANTELOPE_C: cap=20.0, cf=0.037, units=1
+    // ELEVATION_SOLAR_C: cap=40.0, cf=0.075, units=1
+    // NORTH_LANCASTER_RANCH: cap=20.0, cf=0.037, units=1
+    // OASIS_SOLAR: cap=20.0, cf=0.037, units=1
+    // PORTAL_RIDGE_SOLAR_B_LLC: cap=20.0, cf=0.037, units=1
+    // PORTAL_RIDGE_SOLAR_C_LLC: cap=11.4, cf=0.021, units=1
+    // SEPV_PALMDALE_EAST: cap=10.0, cf=0.019, units=1
+    // SIERRA_SOLAR_GREENWORKS: cap=20.0, cf=0.037, units=1
+    // SIERRA_SOLAR_GREENWORKS_2: cap=20.0, cf=0.037, units=1
+    // SOLVERDE_1: cap=85.0, cf=0.158, units=1
+    // SUMMER_SOLAR: cap=20.0, cf=0.037, units=1
+    // TA-HIGH_DESERT_LLC: cap=20.0, cf=0.037, units=1
+    // WESTERN_ANTELOPE_BLUE_SKY_RANCH_A: cap=20.0, cf=0.037, units=1
+    // WESTERN_ANTELOPE_DRY_RANCH: cap=10.0, cf=0.019, units=1
+    // WESTERN_ANTELOPE_DRY_RANCH_2: cap=10.0, cf=0.019, units=1
+    // W_ANTELOPE_SOLAR: cap=20.0, cf=0.037, units=1
+    // W_ANTELOPE_SOLAR_PARK: cap=20.0, cf=0.037, units=1
     name "wecc240_psse_G_2404_PV";
     parent "wecc240_psse_G_2404";
     latitude 34.49;
@@ -3490,6 +4099,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ADELANTO_SOLAR_PROJECT: cap=10.0, cf=0.2, units=1
+    // RE_VICTOR_PHELAN_SOLAR_ONE_LLC: cap=20.0, cf=0.4, units=1
+    // VICTOR_PHELAN_1: cap=20.0, cf=0.4, units=1
     name "wecc240_psse_G_2600_PV";
     parent "wecc240_psse_G_2600";
     latitude 34.55;
@@ -3521,6 +4133,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // HIGH_DESERT_POWER_PLANT: cap=852.0, cf=0.606, units=1
     name "wecc240_psse_G_2603_CC";
     parent "wecc240_psse_G_2603";
     latitude 34.57;
@@ -3536,6 +4149,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ADELANTO_I: cap=20.0, cf=0.014, units=1
+    // ALAMO_SOLAR: cap=20.0, cf=0.014, units=1
+    // LONE_VALLEY_SOLAR_PARK_II_LLC: cap=20.0, cf=0.014, units=1
+    // LONE_VALLEY_SOLAR_PARK_I_LLC: cap=10.0, cf=0.007, units=1
+    // LONG_BOAT_SOLAR: cap=20.0, cf=0.014, units=1
     name "wecc240_psse_G_2603_PV";
     parent "wecc240_psse_G_2603";
     latitude 34.57;
@@ -3551,6 +4169,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MOJAVE_SOLAR_PROJECT: cap=280.0, cf=0.199, units=1
+    // SEGS_IX: cap=92.0, cf=0.065, units=1
+    // SEGS_VIII: cap=92.0, cf=0.065, units=1
     name "wecc240_psse_G_2603_ST";
     parent "wecc240_psse_G_2603";
     latitude 34.57;
@@ -3582,6 +4203,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // COACHELLA: cap=92.4, cf=0.054, units=1
+    // CPV_SENTINEL_ENERGY_PROJECT: cap=800.0, cf=0.467, units=1
+    // INDIGO_ENERGY_FACILITY: cap=149.7, cf=0.087, units=1
+    // MCAGCC_COGEN_PLANT_1: cap=16.4, cf=0.01, units=1
     name "wecc240_psse_G_2400_CT";
     parent "wecc240_psse_G_2400";
     latitude 33.93;
@@ -3597,6 +4222,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CASCADE_SOLAR: cap=18.5, cf=0.011, units=1
+    // NRG_SOLAR_BORREGO_I: cap=26.0, cf=0.015, units=1
+    // SEPV_8: cap=12.0, cf=0.007, units=1
     name "wecc240_psse_G_2400_PV";
     parent "wecc240_psse_G_2400";
     latitude 33.93;
@@ -3612,6 +4240,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DESERT_VIEW_POWER: cap=55.5, cf=0.032, units=1
     name "wecc240_psse_G_2400_ST";
     parent "wecc240_psse_G_2400";
     latitude 33.93;
@@ -3627,6 +4256,21 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CABAZON_WIND_FARM: cap=39.7, cf=0.023, units=1
+    // CABAZON_WIND_PARTNERS: cap=41.0, cf=0.024, units=1
+    // DILLON_WIND_LLC: cap=45.0, cf=0.026, units=1
+    // EDOM_HILLS_PROJECT_1_LLC: cap=20.0, cf=0.012, units=1
+    // GREEN_POWER_I: cap=16.5, cf=0.01, units=1
+    // KAREN_AVENUE_WINDFARM: cap=11.7, cf=0.007, units=1
+    // MESA_WIND_POWER_CORP: cap=29.9, cf=0.017, units=1
+    // MOUNTAIN_VIEW_I2: cap=66.6, cf=0.039, units=1
+    // MOUNTAIN_VIEW_III: cap=22.4, cf=0.013, units=1
+    // MOUNTAIN_VIEW_IV: cap=49.0, cf=0.029, units=1
+    // SAN_GORGONIO_FARMS_WIND_FARM: cap=31.0, cf=0.018, units=1
+    // SAN_GORGONIO_WESTWINDS_II_LLC: cap=43.4, cf=0.025, units=1
+    // SAN_GORGONIO_WINDPLANT_WPP1993: cap=49.5, cf=0.029, units=1
+    // WHITEWATER_HILL_WIND_PARTNERS: cap=61.5, cf=0.036, units=1
+    // WINDPARK_UNLIMITED_2: cap=16.1, cf=0.009, units=1
     name "wecc240_psse_G_2400_WT";
     parent "wecc240_psse_G_2400";
     latitude 33.93;
@@ -3658,6 +4302,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BLYTHE_ENERGY_INC: cap=591.0, cf=0.211, units=1
+    // GRIFFITH_ENERGY_LLC: cap=655.0, cf=0.234, units=1
+    // SOUTH_POINT_ENERGY_CENTER: cap=708.0, cf=0.253, units=1
     name "wecc240_psse_G_1403_CC";
     parent "wecc240_psse_G_1403";
     latitude 34.14;
@@ -3673,6 +4320,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BLACK_MOUNTAIN_GENERATING_STATION: cap=121.0, cf=0.043, units=1
     name "wecc240_psse_G_1403_CT";
     parent "wecc240_psse_G_1403";
     latitude 34.14;
@@ -3688,6 +4336,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HEADGATE_ROCK: cap=19.5, cf=0.007, units=1
+    // PARKER_DAM: cap=120.0, cf=0.043, units=1
     name "wecc240_psse_G_1403_HT";
     parent "wecc240_psse_G_1403";
     latitude 34.14;
@@ -3703,6 +4353,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BLYTHE_SOLAR_II_LLC: cap=131.2, cf=0.047, units=1
+    // KINGMAN_1: cap=10.5, cf=0.004, units=1
+    // MCCOY_SOLAR_ENERGY_PROJECT: cap=270.6, cf=0.097, units=1
+    // MOHAVE_ELECTRIC_AT_FORT_MOHAVE: cap=14.4, cf=0.005, units=1
+    // NRG_SOLAR_BLYTHE_II: cap=109.8, cf=0.039, units=1
+    // NRG_SOLAR_BLYTHE_LLC: cap=21.0, cf=0.007, units=1
+    // SOLAR_BLYTHE_2: cap=20.0, cf=0.007, units=1
     name "wecc240_psse_G_1403_PV";
     parent "wecc240_psse_G_1403";
     latitude 34.14;
@@ -3718,6 +4375,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // KINGMAN_1: cap=10.5, cf=0.004, units=1
     name "wecc240_psse_G_1403_WT";
     parent "wecc240_psse_G_1403";
     latitude 34.14;
@@ -3749,6 +4407,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // DAVIS_DAM: cap=254.8, cf=0.267, units=1
     name "wecc240_psse_G_2901_HT";
     parent "wecc240_psse_G_2901";
     latitude 35.8;
@@ -3764,6 +4423,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DESERT_STATELINE: cap=299.5, cf=0.314, units=1
     name "wecc240_psse_G_2901_PV";
     parent "wecc240_psse_G_2901";
     latitude 35.8;
@@ -3779,6 +4439,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // IVANPAH_1: cap=133.0, cf=0.139, units=1
+    // IVANPAH_2: cap=133.4, cf=0.14, units=1
+    // IVANPAH_3: cap=133.4, cf=0.14, units=1
     name "wecc240_psse_G_2901_ST";
     parent "wecc240_psse_G_2901";
     latitude 35.8;
@@ -3810,6 +4473,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // HOOVER_DAM_AZ: cap=1039.4, cf=1.0, units=1
     name "wecc240_psse_G_1301_HT";
     parent "wecc240_psse_G_1301";
     latitude 35.93;
@@ -3841,6 +4505,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // MILLCREEK_POWER_GENERATION: cap=80.0, cf=0.399, units=1
     name "wecc240_psse_G_1302_CT";
     parent "wecc240_psse_G_1302";
     latitude 36.65;
@@ -3856,6 +4521,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HURRICANE_CITY_POWER: cap=15.1, cf=0.075, units=1
     name "wecc240_psse_G_1302_IC";
     parent "wecc240_psse_G_1302";
     latitude 36.65;
@@ -3871,6 +4537,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ENTERPRISE_SOLAR_LLC: cap=80.0, cf=0.399, units=1
     name "wecc240_psse_G_1302_PV";
     parent "wecc240_psse_G_1302";
     latitude 36.65;
@@ -3886,6 +4553,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BLOOMINGTON_POWER_PLANT: cap=10.2, cf=0.051, units=1
+    // HURRICANE_CITY_POWER: cap=15.1, cf=0.075, units=1
     name "wecc240_psse_G_1302_ST";
     parent "wecc240_psse_G_1302";
     latitude 36.65;
@@ -3917,6 +4586,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // REDDING_POWER: cap=183.1, cf=0.11, units=1
     name "wecc240_psse_G_8001_CC";
     parent "wecc240_psse_G_8001";
     latitude 40.38;
@@ -3932,6 +4602,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // REDDING_POWER: cap=183.1, cf=0.11, units=1
     name "wecc240_psse_G_8001_CT";
     parent "wecc240_psse_G_8001";
     latitude 40.38;
@@ -3947,6 +4618,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // JUDGE_F_CARR: cap=154.4, cf=0.092, units=1
+    // KESWICK: cap=117.0, cf=0.07, units=1
+    // SHASTA: cap=714.0, cf=0.427, units=1
+    // SPRING_CREEK: cap=180.0, cf=0.108, units=1
+    // TRINITY: cap=140.0, cf=0.084, units=1
     name "wecc240_psse_G_8001_HT";
     parent "wecc240_psse_G_8001";
     latitude 40.38;
@@ -3978,6 +4654,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // COLUSA_GENERATING_STATION: cap=712.4, cf=1.0, units=1
     name "wecc240_psse_G_3916_CC";
     parent "wecc240_psse_G_3916";
     latitude 39.44;
@@ -4009,6 +4686,18 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BELDEN: cap=117.9, cf=0.127, units=1
+    // BUCKS_CREEK: cap=66.0, cf=0.071, units=1
+    // BUTT_VALLEY: cap=40.0, cf=0.043, units=1
+    // CARIBOU_1: cap=73.8, cf=0.08, units=1
+    // CARIBOU_2: cap=117.9, cf=0.127, units=1
+    // CRESTA: cap=73.8, cf=0.08, units=1
+    // DE_SABLA: cap=18.4, cf=0.02, units=1
+    // FORKS_OF_BUTTE_HYDRO_PROJECT: cap=14.5, cf=0.016, units=1
+    // GRIZZLY: cap=22.0, cf=0.024, units=1
+    // POE: cap=142.8, cf=0.154, units=1
+    // ROCK_CREEK: cap=126.0, cf=0.136, units=1
+    // THERMALITO: cap=115.1, cf=0.124, units=1
     name "wecc240_psse_G_3905_HT";
     parent "wecc240_psse_G_3905";
     latitude 39.55;
@@ -4040,6 +4729,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // EDWARD_C_HYATT: cap=644.1, cf=0.925, units=1
+    // FORBESTOWN: cap=41.9, cf=0.06, units=1
+    // KELLY_RIDGE: cap=10.0, cf=0.014, units=1
     name "wecc240_psse_G_3919_HT";
     parent "wecc240_psse_G_3919";
     latitude 39.44;
@@ -4071,6 +4763,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // COLEMAN_PH: cap=12.1, cf=0.084, units=1
     name "wecc240_psse_G_3911_HT";
     parent "wecc240_psse_G_3911";
     latitude 40.4;
@@ -4086,6 +4779,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // RED_BLUFF: cap=46.4, cf=0.323, units=1
     name "wecc240_psse_G_3911_IC";
     parent "wecc240_psse_G_3911";
     latitude 40.4;
@@ -4101,6 +4795,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SPI_ANDERSON_2: cap=30.2, cf=0.21, units=1
+    // WHEELABRATOR_SHASTA: cap=54.9, cf=0.382, units=1
     name "wecc240_psse_G_3911_ST";
     parent "wecc240_psse_G_3911";
     latitude 40.4;
@@ -4132,6 +4828,16 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // HAT_CREEK_1: cap=10.0, cf=0.01, units=1
+    // HAT_CREEK_2: cap=10.0, cf=0.01, units=1
+    // JAMES_B_BLACK: cap=168.6, cf=0.174, units=1
+    // MUCK_VALLEY_HYDROELECTRIC: cap=29.9, cf=0.031, units=1
+    // PIT_1: cap=69.2, cf=0.072, units=1
+    // PIT_3: cap=80.1, cf=0.083, units=1
+    // PIT_4: cap=103.4, cf=0.107, units=1
+    // PIT_5: cap=141.6, cf=0.146, units=1
+    // PIT_6: cap=79.2, cf=0.082, units=1
+    // PIT_7: cap=109.8, cf=0.114, units=1
     name "wecc240_psse_G_3906_HT";
     parent "wecc240_psse_G_3906";
     latitude 40.81;
@@ -4147,6 +4853,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BURNEY_FOREST_PRODUCTS: cap=31.0, cf=0.032, units=1
+    // ROSEBURG_FOREST_PRODUCTS_BIOMASS: cap=13.0, cf=0.013, units=1
+    // SIERRA_PACIFIC_BURNEY_FACILITY: cap=20.0, cf=0.021, units=1
     name "wecc240_psse_G_3906_ST";
     parent "wecc240_psse_G_3906";
     latitude 40.81;
@@ -4162,6 +4871,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HATCHET_RIDGE_WIND_PROJECT: cap=101.2, cf=0.105, units=1
     name "wecc240_psse_G_3906_WT";
     parent "wecc240_psse_G_3906";
     latitude 40.81;
@@ -4193,6 +4903,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // KLAMATH_COGENERATION_PLANT: cap=501.5, cf=0.731, units=1
     name "wecc240_psse_G_4001_CC";
     parent "wecc240_psse_G_4001";
     latitude 42.0;
@@ -4208,6 +4919,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // KLAMATH_EXPANSION_PROJECT: cap=117.6, cf=0.171, units=1
     name "wecc240_psse_G_4001_CT";
     parent "wecc240_psse_G_4001";
     latitude 42.0;
@@ -4223,6 +4935,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AIRPORT_SOLAR: cap=47.3, cf=0.069, units=1
+    // GARRETT_SOLAR: cap=10.0, cf=0.015, units=1
+    // OR_SOLAR_3_LLC: cap=10.0, cf=0.015, units=1
     name "wecc240_psse_G_4001_PV";
     parent "wecc240_psse_G_4001";
     latitude 42.0;
@@ -4254,6 +4969,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // FRENCH_MEADOWS: cap=15.3, cf=0.102, units=1
+    // HAYPRESS: cap=10.0, cf=0.066, units=1
+    // LOON_LAKE: cap=74.1, cf=0.492, units=1
     name "wecc240_psse_G_3701_HT";
     parent "wecc240_psse_G_3701";
     latitude 39.53;
@@ -4269,6 +4987,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HL_POWER: cap=36.2, cf=0.24, units=1
+    // KINGS_BEACH: cap=15.0, cf=0.1, units=1
     name "wecc240_psse_G_3701_ST";
     parent "wecc240_psse_G_3701";
     latitude 39.53;
@@ -4300,6 +5020,18 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CLEARWATER_1: cap=15.0, cf=0.03, units=1
+    // CLEARWATER_2: cap=26.0, cf=0.052, units=1
+    // COPCO_1: cap=26.0, cf=0.052, units=1
+    // COPCO_2: cap=36.0, cf=0.072, units=1
+    // FISH_CREEK: cap=11.0, cf=0.022, units=1
+    // GREEN_SPRINGS: cap=17.2, cf=0.034, units=1
+    // IRON_GATE: cap=19.0, cf=0.038, units=1
+    // JOHN_C_BOYLE: cap=98.7, cf=0.196, units=1
+    // LEMOLO_2: cap=38.5, cf=0.077, units=1
+    // LOST_CREEK: cap=49.0, cf=0.098, units=1
+    // PROSPECT_2: cap=32.0, cf=0.064, units=1
+    // TOKETEE_FALLS: cap=42.6, cf=0.085, units=1
     name "wecc240_psse_G_4204_HT";
     parent "wecc240_psse_G_4204";
     latitude 42.36;
@@ -4315,6 +5047,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BIOMASS_ONE_LP: cap=40.0, cf=0.08, units=1
+    // DILLARD_COMPLEX: cap=51.5, cf=0.102, units=1
     name "wecc240_psse_G_4204_ST";
     parent "wecc240_psse_G_4204";
     latitude 42.36;
@@ -4346,6 +5080,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // UNIV_OF_OREGON_CENTRAL_POWER_STATION: cap=11.0, cf=0.017, units=1
     name "wecc240_psse_G_4203_CC";
     parent "wecc240_psse_G_4203";
     latitude 44.05;
@@ -4361,6 +5096,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // COVANTA_MARION_INC: cap=13.1, cf=0.02, units=1
     name "wecc240_psse_G_4203_CT";
     parent "wecc240_psse_G_4203";
     latitude 44.05;
@@ -4376,6 +5112,18 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BIG_CLIFF: cap=18.0, cf=0.028, units=1
+    // COUGAR: cap=26.0, cf=0.04, units=1
+    // DETROIT: cap=100.0, cf=0.153, units=1
+    // DEXTER: cap=15.0, cf=0.023, units=1
+    // FOSTER: cap=20.0, cf=0.031, units=1
+    // GREEN_PETER: cap=80.0, cf=0.123, units=1
+    // HILLS_CREEK: cap=30.0, cf=0.046, units=1
+    // LEMOLO_1: cap=32.0, cf=0.049, units=1
+    // LOOKOUT_POINT: cap=120.0, cf=0.184, units=1
+    // SLIDE_CREEK: cap=18.0, cf=0.028, units=1
+    // SODA_SPRINGS: cap=11.0, cf=0.017, units=1
+    // SULLIVAN: cap=15.4, cf=0.024, units=1
     name "wecc240_psse_G_4203_HT";
     parent "wecc240_psse_G_4203";
     latitude 44.05;
@@ -4391,6 +5139,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // EVERGREEN_BIOPOWER_LLC: cap=21.0, cf=0.032, units=1
+    // GEORGIA-PACIFIC_TOLEDO_MILL: cap=37.3, cf=0.057, units=1
+    // IP_SPRINGFIELD_OREGON: cap=65.0, cf=0.1, units=1
+    // SENECA_SUSTAINABLE_ENERGY_LLC: cap=19.8, cf=0.03, units=1
     name "wecc240_psse_G_4203_ST";
     parent "wecc240_psse_G_4203";
     latitude 44.05;
@@ -4422,6 +5174,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CARMEN_SMITH: cap=114.3, cf=0.163, units=1
+    // PELTON: cap=109.8, cf=0.156, units=1
+    // ROUND_BUTTE: cap=372.5, cf=0.53, units=1
+    // WARM_SPRINGS_POWER_ENTERPRISES: cap=19.6, cf=0.028, units=1
     name "wecc240_psse_G_4004_HT";
     parent "wecc240_psse_G_4004";
     latitude 44.48;
@@ -4437,6 +5193,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ADAMS_SOLAR_CENTER: cap=10.0, cf=0.014, units=1
+    // BEAR_CREEK_SOLAR_CENTER: cap=10.0, cf=0.014, units=1
+    // ELBE_SOLAR_CENTER: cap=10.0, cf=0.014, units=1
+    // GALA_SOLAR: cap=56.3, cf=0.08, units=1
     name "wecc240_psse_G_4004_PV";
     parent "wecc240_psse_G_4004";
     latitude 44.48;
@@ -4468,6 +5228,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // LANGLEY_GULCH_POWER_PLANT: cap=318.5, cf=0.178, units=1
     name "wecc240_psse_G_4003_CC";
     parent "wecc240_psse_G_4003";
     latitude 43.77;
@@ -4483,6 +5244,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BLACK_CANYON: cap=10.2, cf=0.006, units=1
+    // BROWNLEE: cap=675.0, cf=0.377, units=1
+    // HELLS_CANYON: cap=391.5, cf=0.219, units=1
+    // OXBOW: cap=190.0, cf=0.106, units=1
     name "wecc240_psse_G_4003_HT";
     parent "wecc240_psse_G_4003";
     latitude 43.77;
@@ -4498,6 +5263,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // OPEN_RANGE_SOLAR_CENTER_LLC: cap=10.0, cf=0.006, units=1
+    // THUNDEREGG_SOLAR_CENTER_LLC: cap=10.0, cf=0.006, units=1
+    // VALE_AIR_SOLAR_CENTER_LLC: cap=10.0, cf=0.006, units=1
     name "wecc240_psse_G_4003_PV";
     parent "wecc240_psse_G_4003";
     latitude 43.77;
@@ -4513,6 +5281,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // NEAL_HOT_SPRINGS_GEOTHERMAL_PROJECT: cap=33.0, cf=0.018, units=1
     name "wecc240_psse_G_4003_ST";
     parent "wecc240_psse_G_4003";
     latitude 43.77;
@@ -4528,6 +5297,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BENSON_CREEK_WINDFARM_BURNT_RIVER: cap=10.0, cf=0.006, units=1
+    // DURBIN_CREEK_WINDFARM_BURNT_CREEK: cap=10.0, cf=0.006, units=1
+    // ELKHORN_VALLEY_WIND_FARM: cap=100.7, cf=0.056, units=1
+    // JEFF_CREEK_WINDFARM_BURN_RIVER: cap=10.0, cf=0.006, units=1
+    // PROSPECTOR_WINDFARM_BURNT_RIVER: cap=10.0, cf=0.006, units=1
     name "wecc240_psse_G_4003_WT";
     parent "wecc240_psse_G_4003";
     latitude 43.77;
@@ -4559,6 +5333,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // SWAN_FALLS: cap=25.0, cf=0.556, units=1
     name "wecc240_psse_G_6403_HT";
     parent "wecc240_psse_G_6403";
     latitude 41.18;
@@ -4574,6 +5349,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MURPHY_FLAT_SOLAR: cap=20.0, cf=0.444, units=1
     name "wecc240_psse_G_6403_PV";
     parent "wecc240_psse_G_6403";
     latitude 41.18;
@@ -4605,6 +5381,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // INTERMOUNTAIN_POWER_PROJECT: cap=1640.0, cf=0.421, units=1
     name "wecc240_psse_G_2604_CC";
     parent "wecc240_psse_G_2604";
     latitude 39.5;
@@ -4620,6 +5397,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ESCALANTE_SOLAR_III_LLC: cap=80.0, cf=0.021, units=1
+    // ESCALANTE_SOLAR_II_LLC: cap=80.0, cf=0.021, units=1
+    // ESCALANTE_SOLAR_I_LLC: cap=80.0, cf=0.021, units=1
+    // PAVANT_SOLAR_III: cap=20.0, cf=0.005, units=1
+    // PAVANT_SOLAR_II_LLC: cap=50.0, cf=0.013, units=1
     name "wecc240_psse_G_2604_PV";
     parent "wecc240_psse_G_2604";
     latitude 39.5;
@@ -4635,6 +5417,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // INTERMOUNTAIN_POWER_PROJECT: cap=1640.0, cf=0.421, units=1
     name "wecc240_psse_G_2604_ST";
     parent "wecc240_psse_G_2604";
     latitude 39.5;
@@ -4650,6 +5433,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MILFORD_WIND_CORRIDOR_I_LLC: cap=203.5, cf=0.052, units=1
+    // MILFORD_WIND_CORRIDOR_STAGE_II_LLC: cap=102.0, cf=0.026, units=1
     name "wecc240_psse_G_2604_WT";
     parent "wecc240_psse_G_2604";
     latitude 39.5;
@@ -4681,6 +5466,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BENNETT_MOUNTAIN: cap=172.8, cf=0.11, units=1
+    // EVANDER_ANDREWS_POWER_COMPLEX: cap=270.9, cf=0.172, units=1
     name "wecc240_psse_G_6101_CT";
     parent "wecc240_psse_G_6101";
     latitude 42.89;
@@ -4696,6 +5483,19 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ANDERSON_RANCH: cap=40.0, cf=0.025, units=1
+    // ARROWROCK_HYDROELECTRIC_PROJECT: cap=15.0, cf=0.01, units=1
+    // BLISS: cap=75.0, cf=0.048, units=1
+    // CASCADE: cap=12.4, cf=0.008, units=1
+    // C_J_STRIKE: cap=82.8, cf=0.053, units=1
+    // LOWER_MALAD: cap=13.5, cf=0.009, units=1
+    // LOWER_SALMON: cap=60.0, cf=0.038, units=1
+    // LUCKY_PEAK_POWER_PLANT_PROJECT: cap=101.2, cf=0.064, units=1
+    // MILNER_HYDRO: cap=59.5, cf=0.038, units=1
+    // SHOSHONE_FALLS: cap=11.5, cf=0.007, units=1
+    // TWIN_FALLS: cap=52.7, cf=0.033, units=1
+    // UPPER_SALMON_A: cap=18.0, cf=0.011, units=1
+    // UPPER_SALMON_B: cap=16.5, cf=0.01, units=1
     name "wecc240_psse_G_6101_HT";
     parent "wecc240_psse_G_6101";
     latitude 42.89;
@@ -4711,6 +5511,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ID_SOLAR: cap=40.0, cf=0.025, units=1
+    // MT_HOME_SOLAR_1_LLC: cap=20.0, cf=0.013, units=1
+    // ORCHARD_RANCH_SOLAR: cap=20.0, cf=0.013, units=1
     name "wecc240_psse_G_6101_PV";
     parent "wecc240_psse_G_6101";
     latitude 42.89;
@@ -4726,6 +5529,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AMALGAMATED_SUGAR_TWIN_FALLS: cap=10.2, cf=0.006, units=1
     name "wecc240_psse_G_6101_ST";
     parent "wecc240_psse_G_6101";
     latitude 42.89;
@@ -4741,6 +5545,31 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BENNETT_CREEK_WINDFARM_LLC: cap=21.0, cf=0.013, units=1
+    // BURLEY_BUTTE_WINDPARK: cap=21.3, cf=0.014, units=1
+    // CAMP_REED: cap=22.5, cf=0.014, units=1
+    // CASSIA_GULCH_WIND_PARK_LLC: cap=18.9, cf=0.012, units=1
+    // CASSIA_WIND_FARM_LLC: cap=10.5, cf=0.007, units=1
+    // COLD_SPRINGS_WINDFARM: cap=23.0, cf=0.015, units=1
+    // DESERT_MEADOW_WINDFARM: cap=23.0, cf=0.015, units=1
+    // FOSSIL_GULCH: cap=10.5, cf=0.007, units=1
+    // GOLDEN_VALLEY_WIND_PARK_LLC: cap=12.0, cf=0.008, units=1
+    // HAMMETT_HILL_WINDFARM: cap=23.0, cf=0.015, units=1
+    // HIGH_MESA_ENERGY_LLC: cap=40.0, cf=0.025, units=1
+    // HOT_SPRINGS_WINDFARM_LLC: cap=21.0, cf=0.013, units=1
+    // MAINLINE_WINDFARM: cap=23.0, cf=0.015, units=1
+    // MILNER_DAM_WIND_PARK_LLC: cap=19.5, cf=0.012, units=1
+    // OREGON_TRAIL_WIND_PARK: cap=13.5, cf=0.009, units=1
+    // PAYNES_FERRY: cap=21.0, cf=0.013, units=1
+    // PILGRIM_STAGE_WIND_PARK: cap=10.5, cf=0.007, units=1
+    // RYEGRASS_WINDFARM: cap=23.0, cf=0.015, units=1
+    // SALMON_FALLS_WIND_PARK: cap=21.0, cf=0.013, units=1
+    // SAWTOOTH_WIND_PROJECT: cap=22.4, cf=0.014, units=1
+    // THOUSAND_SPRINGS_WIND_PARK: cap=12.0, cf=0.008, units=1
+    // TUANA_GULCH_WIND_PARK: cap=10.5, cf=0.007, units=1
+    // TUANA_SPRINGS: cap=16.8, cf=0.011, units=1
+    // TWO_PONDS_WINDFARM: cap=23.0, cf=0.015, units=1
+    // YAHOO_CREEK: cap=21.0, cf=0.013, units=1
     name "wecc240_psse_G_6101_WT";
     parent "wecc240_psse_G_6101";
     latitude 42.89;
@@ -4772,6 +5601,25 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // SIMPLOT_LEASING_DON_PLANT: cap=15.9, cf=0.023, units=1
+    name "wecc240_psse_G_6103_CT";
+    parent "wecc240_psse_G_6103";
+    latitude 42.83;
+    longitude -113.4;
+    generator CT;
+    operating_capacity 15.9 MW;
+    startup_cost 25.0;
+    shutdown_cost 0.0;
+    fixed_cost 350.0;
+    variable_cost 75.0;
+    scarcity_cost 0.001;
+}
+
+object pypower.powerplant
+{
+    // AMERICAN_FALLS: cap=92.4, cf=0.134, units=1
+    // GEM_STATE: cap=23.4, cf=0.034, units=1
+    // MINIDOKA: cap=27.7, cf=0.04, units=1
     name "wecc240_psse_G_6103_HT";
     parent "wecc240_psse_G_6103";
     latitude 42.83;
@@ -4787,6 +5635,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AMERICAN_FALLS_SOLAR: cap=20.0, cf=0.029, units=1
     name "wecc240_psse_G_6103_PV";
     parent "wecc240_psse_G_6103";
     latitude 42.83;
@@ -4802,6 +5651,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // RAFT_RIVER_GEOTHERMAL_POWER_PLANT: cap=18.0, cf=0.026, units=1
     name "wecc240_psse_G_6103_ST";
     parent "wecc240_psse_G_6103";
     latitude 42.83;
@@ -4817,17 +5667,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    name "wecc240_psse_G_6103_UNKNOWN";
-    parent "wecc240_psse_G_6103";
-    latitude 42.83;
-    longitude -113.4;
-    generator UNKNOWN;
-    operating_capacity 15.9 MW;
-    // no cost data for unknown plant type
-}
-
-object pypower.powerplant
-{
+    // GOSHEN_PHASE_II: cap=124.5, cf=0.181, units=1
+    // HORSE_BUTTE_WIND_I_LLC: cap=57.6, cf=0.084, units=1
+    // MEADOW_CREEK_PROJECT_COMPANY: cap=119.7, cf=0.174, units=1
+    // POWER_COUNTY_WIND_PARK_NORTH: cap=22.5, cf=0.033, units=1
+    // POWER_COUNTY_WIND_PARK_SOUTH: cap=22.5, cf=0.033, units=1
+    // ROCKLAND_WIND_FARM: cap=79.2, cf=0.115, units=1
+    // WOLVERINE_CREEK: cap=64.5, cf=0.094, units=1
     name "wecc240_psse_G_6103_WT";
     parent "wecc240_psse_G_6103";
     latitude 42.83;
@@ -4859,6 +5705,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // DESERT_BASIN: cap=646.1, cf=0.047, units=1
+    // KYRENE: cap=573.7, cf=0.041, units=1
+    // SANTAN: cap=1326.0, cf=0.096, units=1
+    // WEST_PHOENIX: cap=1207.4, cf=0.087, units=1
     name "wecc240_psse_G_1402_CC";
     parent "wecc240_psse_G_1402";
     latitude 34.07;
@@ -4874,6 +5724,16 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AGUA_FRIA: cap=613.5, cf=0.044, units=1
+    // COOLIDGE_GENERATION_STATION: cap=726.0, cf=0.052, units=1
+    // DEMOSS_PETRIE: cap=85.0, cf=0.006, units=1
+    // H_WILSON_SUNDT_GENERATING_STATION: cap=558.5, cf=0.04, units=1
+    // KYRENE: cap=573.7, cf=0.041, units=1
+    // NORTH_LOOP: cap=107.8, cf=0.008, units=1
+    // OCOTILLO: cap=333.4, cf=0.024, units=1
+    // SAGUARO: cap=184.5, cf=0.013, units=1
+    // SUNDANCE: cap=605.0, cf=0.044, units=1
+    // WEST_PHOENIX: cap=1207.4, cf=0.087, units=1
     name "wecc240_psse_G_1402_CT";
     parent "wecc240_psse_G_1402";
     latitude 34.07;
@@ -4889,6 +5749,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // IRON_HORSE_BATTERY_STORAGE: cap=12.0, cf=0.001, units=1
+    // PIMA_ENERGY_STORAGE_SYSTEM: cap=10.0, cf=0.001, units=1
     name "wecc240_psse_G_1402_ES";
     parent "wecc240_psse_G_1402";
     latitude 34.07;
@@ -4904,6 +5766,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HORSE_MESA: cap=129.5, cf=0.009, units=1
+    // MORMON_FLAT: cap=63.5, cf=0.005, units=1
+    // ROOSEVELT: cap=36.0, cf=0.003, units=1
+    // STEWART_MOUNTAIN: cap=13.0, cf=0.001, units=1
+    // WADDELL: cap=40.0, cf=0.003, units=1
     name "wecc240_psse_G_1402_HT";
     parent "wecc240_psse_G_1402";
     latitude 34.07;
@@ -4919,6 +5786,24 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AGUA_FRIA: cap=613.5, cf=0.044, units=1
+    // AVALON_SOLAR: cap=29.0, cf=0.002, units=1
+    // AVALON_SOLAR_II: cap=16.0, cf=0.001, units=1
+    // AVRA_VALLEY_SOLAR: cap=26.5, cf=0.002, units=1
+    // BONNYBROOKE_PV: cap=50.0, cf=0.004, units=1
+    // CHINO_SOLAR_VALLEY: cap=19.0, cf=0.001, units=1
+    // COPPER_CROSSING_SOLAR_LLC: cap=20.0, cf=0.001, units=1
+    // DAVIS_MONTHAN_AFB_AZ_WEST_AIRFIELD: cap=12.6, cf=0.001, units=1
+    // FORT_HUACHUCA_SOLAR_PV_PROJECT: cap=13.6, cf=0.001, units=1
+    // IRON_HORSE_BATTERY_STORAGE: cap=12.0, cf=0.001, units=1
+    // OCOTILLO: cap=333.4, cf=0.024, units=1
+    // PICTURE_ROCKS_SOLAR_LLC: cap=20.0, cf=0.001, units=1
+    // PRESCOTT_SOLAR_PLANT: cap=10.8, cf=0.001, units=1
+    // QUEEN_CREEK_SOLAR_FARM: cap=19.0, cf=0.001, units=1
+    // RED_ROCK: cap=40.0, cf=0.003, units=1
+    // RE_BAGDAD_SOLAR_I_LLC: cap=16.6, cf=0.001, units=1
+    // SANDSTONE_SOLAR: cap=45.0, cf=0.003, units=1
+    // VALENCIA_SOLAR: cap=10.0, cf=0.001, units=1
     name "wecc240_psse_G_1402_PV";
     parent "wecc240_psse_G_1402";
     latitude 34.07;
@@ -4934,6 +5819,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AGUA_FRIA: cap=613.5, cf=0.044, units=1
+    // H_WILSON_SUNDT_GENERATING_STATION: cap=558.5, cf=0.04, units=1
+    // KYRENE: cap=573.7, cf=0.041, units=1
+    // OCOTILLO: cap=333.4, cf=0.024, units=1
+    // SAGUARO: cap=184.5, cf=0.013, units=1
+    // WEST_PHOENIX: cap=1207.4, cf=0.087, units=1
     name "wecc240_psse_G_1402_ST";
     parent "wecc240_psse_G_1402";
     latitude 34.07;
@@ -4965,6 +5856,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // APACHE_STATION: cap=660.7, cf=0.25, units=1
     name "wecc240_psse_G_1102_CT";
     parent "wecc240_psse_G_1102";
     latitude 34.94;
@@ -4980,6 +5872,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // APACHE_SOLAR_1: cap=90.0, cf=0.034, units=1
+    // RED_HORSE_2: cap=81.0, cf=0.031, units=1
+    // RED_HORSE_III: cap=30.0, cf=0.011, units=1
+    // SULPHUR_SPRINGS: cap=20.0, cf=0.008, units=1
     name "wecc240_psse_G_1102_PV";
     parent "wecc240_psse_G_1102";
     latitude 34.94;
@@ -4995,6 +5891,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // APACHE_STATION: cap=660.7, cf=0.25, units=1
+    // CHOLLA: cap=839.9, cf=0.318, units=1
+    // DOUGLAS: cap=26.1, cf=0.01, units=1
+    // NOVO_BIOPOWER_PLANT: cap=27.2, cf=0.01, units=1
     name "wecc240_psse_G_1102_ST";
     parent "wecc240_psse_G_1102";
     latitude 34.94;
@@ -5010,6 +5910,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DRY_LAKE_WIND_II_LLC: cap=65.1, cf=0.025, units=1
+    // DRY_LAKE_WIND_LLC: cap=63.0, cf=0.024, units=1
+    // RED_HORSE_2: cap=81.0, cf=0.031, units=1
     name "wecc240_psse_G_1102_WT";
     parent "wecc240_psse_G_1102";
     latitude 34.94;
@@ -5041,6 +5944,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // AFTON_GENERATING_STATION: cap=287.0, cf=0.044, units=1
+    // LUNA_ENERGY_FACILITY: cap=650.0, cf=0.1, units=1
     name "wecc240_psse_G_1101_CC";
     parent "wecc240_psse_G_1101";
     latitude 35.13;
@@ -5056,6 +5961,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LORDSBURG_GENERATING: cap=88.0, cf=0.014, units=1
+    // PYRAMID: cap=186.0, cf=0.029, units=1
+    // RIO_GRANDE: cap=372.5, cf=0.057, units=1
     name "wecc240_psse_G_1101_CT";
     parent "wecc240_psse_G_1101";
     latitude 35.13;
@@ -5071,6 +5979,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ELEPHANT_BUTTE: cap=27.9, cf=0.004, units=1
     name "wecc240_psse_G_1101_HT";
     parent "wecc240_psse_G_1101";
     latitude 35.13;
@@ -5086,6 +5995,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MACHO_SPRINGS: cap=52.2, cf=0.008, units=1
+    // ROADRUNNER_SOLAR: cap=20.2, cf=0.003, units=1
+    // SPRINGERVILLE: cap=1779.2, cf=0.273, units=1
+    // SUNE_EPE1_LLC: cap=10.0, cf=0.002, units=1
+    // SUNE_EPE2_LLC: cap=12.0, cf=0.002, units=1
     name "wecc240_psse_G_1101_PV";
     parent "wecc240_psse_G_1101";
     latitude 35.13;
@@ -5101,6 +6015,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CORONADO: cap=821.8, cf=0.126, units=1
+    // RIO_GRANDE: cap=372.5, cf=0.057, units=1
+    // SPRINGERVILLE: cap=1779.2, cf=0.273, units=1
     name "wecc240_psse_G_1101_ST";
     parent "wecc240_psse_G_1101";
     latitude 35.13;
@@ -5116,6 +6033,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MACHO_SPRINGS_POWER_I: cap=50.4, cf=0.008, units=1
     name "wecc240_psse_G_1101_WT";
     parent "wecc240_psse_G_1101";
     latitude 35.13;
@@ -5147,6 +6065,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // PERRIN_RANCH_WIND_LLC: cap=99.2, cf=1.0, units=1
     name "wecc240_psse_G_1201_WT";
     parent "wecc240_psse_G_1201";
     latitude 35.98;
@@ -5178,6 +6097,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // GLEN_CANYON_DAM: cap=1312.0, cf=0.98, units=1
     name "wecc240_psse_G_1202_HT";
     parent "wecc240_psse_G_1202";
     latitude 36.96;
@@ -5193,6 +6113,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // KAYENTA_SOLAR_PROJECT: cap=27.3, cf=0.02, units=1
     name "wecc240_psse_G_1202_PV";
     parent "wecc240_psse_G_1202";
     latitude 36.96;
@@ -5224,6 +6145,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // GRANITE_MOUNTAIN_SOLAR_WEST_LLC: cap=50.4, cf=0.026, units=1
+    // PAVANT_SOLAR_LLC: cap=50.0, cf=0.026, units=1
+    // THREE_PEAKS_POWER: cap=80.0, cf=0.042, units=1
+    // UTAH_RED_HILLS_RENEWABLE_ENERGY_PARK: cap=80.0, cf=0.042, units=1
     name "wecc240_psse_G_6507_PV";
     parent "wecc240_psse_G_6507";
     latitude 38.89;
@@ -5239,6 +6164,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BLUNDELL: cap=44.8, cf=0.023, units=1
+    // ENEL_COVE_FORT: cap=25.0, cf=0.013, units=1
+    // HUNTER: cap=1577.2, cf=0.821, units=1
+    // THERMO_NO_1: cap=14.0, cf=0.007, units=1
     name "wecc240_psse_G_6507_ST";
     parent "wecc240_psse_G_6507";
     latitude 38.89;
@@ -5270,6 +6199,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // VALENCIA_ENERGY_FACILITY: cap=159.5, cf=0.04, units=1
     name "wecc240_psse_G_1001_CC";
     parent "wecc240_psse_G_1001";
     latitude 36.67;
@@ -5285,6 +6215,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LA_LUZ_ENERGY_CENTER: cap=42.3, cf=0.011, units=1
+    // VALENCIA_ENERGY_FACILITY: cap=159.5, cf=0.04, units=1
     name "wecc240_psse_G_1001_CT";
     parent "wecc240_psse_G_1001";
     latitude 36.67;
@@ -5300,6 +6232,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FOUR_CORNERS: cap=1636.2, cf=0.414, units=1
+    // SAN_JUAN: cap=1848.0, cf=0.468, units=1
     name "wecc240_psse_G_1001_ST";
     parent "wecc240_psse_G_1001";
     latitude 36.67;
@@ -5315,6 +6249,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // RED_MESA_WIND_LLC: cap=102.4, cf=0.026, units=1
     name "wecc240_psse_G_1001_WT";
     parent "wecc240_psse_G_1001";
     latitude 36.67;
@@ -5346,6 +6281,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BLUFFVIEW: cap=67.0, cf=0.078, units=1
     name "wecc240_psse_G_1004_CC";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -5361,6 +6297,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FORD_UTILITIES_CENTER: cap=14.8, cf=0.017, units=1
+    // RIO_BRAVO: cap=150.0, cf=0.175, units=1
     name "wecc240_psse_G_1004_CT";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -5376,6 +6314,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ABIQUIU_DAM: cap=15.6, cf=0.018, units=1
+    // BLUE_MESA: cap=86.4, cf=0.101, units=1
+    // CRYSTAL: cap=28.0, cf=0.033, units=1
+    // MORROW_POINT: cap=173.2, cf=0.203, units=1
+    // NAVAJO_DAM: cap=30.0, cf=0.035, units=1
+    // TOWAOC: cap=11.4, cf=0.013, units=1
     name "wecc240_psse_G_1004_HT";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -5391,6 +6335,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SPS5_HOPI: cap=10.1, cf=0.012, units=1
     name "wecc240_psse_G_1004_PV";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -5406,6 +6351,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FORD_UTILITIES_CENTER: cap=14.8, cf=0.017, units=1
+    // REEVES: cap=154.0, cf=0.18, units=1
     name "wecc240_psse_G_1004_ST";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -5421,6 +6368,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HIGH_LONESOME_MESA_LLC: cap=100.0, cf=0.117, units=1
     name "wecc240_psse_G_1004_WT";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -5452,6 +6400,13 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ARAPAHOE_COMBUSTION_TURBINE_PROJECT: cap=194.0, cf=0.013, units=1
+    // BRUSH_GENERATION_FACILITY: cap=297.2, cf=0.019, units=1
+    // CHEROKEE: cap=1006.4, cf=0.066, units=1
+    // FRONT_RANGE_POWER_PLANT: cap=554.3, cf=0.036, units=1
+    // HOBBS_GENERATING_STATION: cap=665.6, cf=0.044, units=1
+    // PUEBLO_AIRPORT_GENERATING_STATION: cap=440.0, cf=0.029, units=1
+    // ROCKY_MOUNTAIN_ENERGY_CENTER: cap=685.1, cf=0.045, units=1
     name "wecc240_psse_G_7001_CC";
     parent "wecc240_psse_G_7001";
     latitude 38.54;
@@ -5467,6 +6422,19 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALAMOSA: cap=53.2, cf=0.003, units=1
+    // BLUE_SPRUCE_ENERGY_CENTER: cap=397.8, cf=0.026, units=1
+    // BRUSH_GENERATION_FACILITY: cap=297.2, cf=0.019, units=1
+    // CUNNINGHAM: cap=519.2, cf=0.034, units=1
+    // FOUNTAIN_VALLEY_POWER_FACILITY: cap=228.0, cf=0.015, units=1
+    // FRANK_KNUTSON: cap=154.2, cf=0.01, units=1
+    // HOBBS_GENERATING_STATION: cap=665.6, cf=0.044, units=1
+    // LIMON_GENERATING_STATION: cap=154.2, cf=0.01, units=1
+    // MADDOX: cap=212.0, cf=0.014, units=1
+    // MANCHIEF_ELECTRIC_GENERATING_STATION: cap=300.0, cf=0.02, units=1
+    // MARTIN_DRAKE: cap=207.3, cf=0.014, units=1
+    // PUEBLO_AIRPORT_GENERATING_STATION: cap=440.0, cf=0.029, units=1
+    // RAY_D_NIXON: cap=282.6, cf=0.019, units=1
     name "wecc240_psse_G_7001_CT";
     parent "wecc240_psse_G_7001";
     latitude 38.54;
@@ -5482,6 +6450,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CABIN_CREEK: cap=300.0, cf=0.02, units=1
+    // MOUNT_ELBERT: cap=200.0, cf=0.013, units=1
+    // TESLA: cap=26.6, cf=0.002, units=1
     name "wecc240_psse_G_7001_HT";
     parent "wecc240_psse_G_7001";
     latitude 38.54;
@@ -5497,6 +6468,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LCEC_GENERATION_LLVC: cap=46.5, cf=0.003, units=1
+    // PLAINS_END: cap=114.0, cf=0.007, units=1
+    // PLAINS_END_II_LLC: cap=117.6, cf=0.008, units=1
     name "wecc240_psse_G_7001_IC";
     parent "wecc240_psse_G_7001";
     latitude 38.54;
@@ -5512,6 +6486,16 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CIMARRON_SOLAR_FACILITY: cap=30.6, cf=0.002, units=1
+    // COGENTRIX_OF_ALAMOSA: cap=30.0, cf=0.002, units=1
+    // COMANCHE_SOLAR: cap=120.0, cf=0.008, units=1
+    // GRAZING_YAK_SOLAR: cap=35.0, cf=0.002, units=1
+    // GREATER_SANDHILL_I: cap=19.0, cf=0.001, units=1
+    // SAN_LUIS_VALLEY_SOLAR_RANCH: cap=35.0, cf=0.002, units=1
+    // SPS1_DOLLARHIDE: cap=10.0, cf=0.001, units=1
+    // SPS2_JAL: cap=10.0, cf=0.001, units=1
+    // SPS3_LEA: cap=10.0, cf=0.001, units=1
+    // SPS4_MONUMENT: cap=10.1, cf=0.001, units=1
     name "wecc240_psse_G_7001_PV";
     parent "wecc240_psse_G_7001";
     latitude 38.54;
@@ -5527,6 +6511,19 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // AIRPORT_INDUSTRIAL: cap=10.0, cf=0.001, units=1
+    // CHEROKEE: cap=1006.4, cf=0.066, units=1
+    // COLORADO_ENERGY_NATIONS_COMPANY: cap=35.0, cf=0.002, units=1
+    // COMANCHE: cap=1635.3, cf=0.107, units=1
+    // CUNNINGHAM: cap=519.2, cf=0.034, units=1
+    // GEORGE_BIRDSALL: cap=61.1, cf=0.004, units=1
+    // MADDOX: cap=212.0, cf=0.014, units=1
+    // MARTIN_DRAKE: cap=207.3, cf=0.014, units=1
+    // METRO_WASTEWATER_RECLAMATION_DISTRICT: cap=15.0, cf=0.001, units=1
+    // PAWNEE: cap=552.3, cf=0.036, units=1
+    // QUAY_COUNTY: cap=27.0, cf=0.002, units=1
+    // RAY_D_NIXON: cap=282.6, cf=0.019, units=1
+    // ROCKY_FORD: cap=10.0, cf=0.001, units=1
     name "wecc240_psse_G_7001_ST";
     parent "wecc240_psse_G_7001";
     latitude 38.54;
@@ -5542,6 +6539,21 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ARAGONNE_WIND_LLC: cap=90.0, cf=0.006, units=1
+    // BUSCH_RANCH_II_WIND_FARM: cap=59.4, cf=0.004, units=1
+    // BUSCH_RANCH_WIND_ENERGY_FARM: cap=29.0, cf=0.002, units=1
+    // CAPROCK_WIND_FARM: cap=80.0, cf=0.005, units=1
+    // CEDAR_POINT_WIND: cap=252.0, cf=0.017, units=1
+    // COLORADO_GREEN_HOLDINGS_LLC: cap=162.0, cf=0.011, units=1
+    // KIT_CARSON_WINDPOWER: cap=51.0, cf=0.003, units=1
+    // LIMON_III_WIND_LLC: cap=200.6, cf=0.013, units=1
+    // LIMON_WIND_I: cap=200.0, cf=0.013, units=1
+    // LIMON_WIND_II: cap=200.0, cf=0.013, units=1
+    // NEW_MEXICO_WIND_ENERGY_CENTER: cap=204.0, cf=0.013, units=1
+    // PEAK_VIEW_WIND_FARM: cap=60.8, cf=0.004, units=1
+    // SAN_JUAN_MESA: cap=120.0, cf=0.008, units=1
+    // TWIN_BUTTES_WIND_PROJECT: cap=75.0, cf=0.005, units=1
+    // WILDCAT_WIND: cap=27.3, cf=0.002, units=1
     name "wecc240_psse_G_7001_WT";
     parent "wecc240_psse_G_7001";
     latitude 38.54;
@@ -5573,6 +6585,8 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CURRANT_CREEK: cap=649.0, cf=0.823, units=1
+    // NEBO_POWER_STATION: cap=140.0, cf=0.177, units=1
     name "wecc240_psse_G_6504_CC";
     parent "wecc240_psse_G_6504";
     latitude 39.87;
@@ -5604,6 +6618,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BYU_CENTRAL_HEATING_PLANT: cap=16.5, cf=0.014, units=1
     name "wecc240_psse_G_6508_CT";
     parent "wecc240_psse_G_6508";
     latitude 40.05;
@@ -5619,6 +6634,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HEBER_CITY: cap=14.1, cf=0.012, units=1
+    // PROVO_POWER_PLANT: cap=12.0, cf=0.01, units=1
+    // WHITEHEAD: cap=31.0, cf=0.026, units=1
     name "wecc240_psse_G_6508_IC";
     parent "wecc240_psse_G_6508";
     latitude 40.05;
@@ -5634,6 +6652,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HEBER_CITY: cap=14.1, cf=0.012, units=1
+    // HUNTINGTON: cap=1037.3, cf=0.863, units=1
+    // SUNNYSIDE_COGEN_ASSOCIATES: cap=58.1, cf=0.048, units=1
     name "wecc240_psse_G_6508_ST";
     parent "wecc240_psse_G_6508";
     latitude 40.05;
@@ -5649,6 +6670,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SPANISH_FORK_WIND_PARK_2_LLC: cap=18.9, cf=0.016, units=1
     name "wecc240_psse_G_6508_WT";
     parent "wecc240_psse_G_6508";
     latitude 40.05;
@@ -5680,6 +6702,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // LAKE_SIDE_POWER_PLANT: cap=1385.0, cf=0.967, units=1
     name "wecc240_psse_G_6502_CC";
     parent "wecc240_psse_G_6502";
     latitude 40.42;
@@ -5695,6 +6718,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // US_MAGNESIUM: cap=48.0, cf=0.033, units=1
     name "wecc240_psse_G_6502_CT";
     parent "wecc240_psse_G_6502";
     latitude 40.42;
@@ -5726,6 +6750,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // KENNECOTT_POWER_PLANT: cap=38.2, cf=0.025, units=1
     name "wecc240_psse_G_6509_CC";
     parent "wecc240_psse_G_6509";
     latitude 40.77;
@@ -5741,12 +6766,18 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BOUNTIFUL_CITY: cap=30.4, cf=0.02, units=1
+    // GADSBY: cap=492.1, cf=0.324, units=1
+    // KENNECOTT_POWER_PLANT: cap=76.4, cf=0.05, units=2
+    // MURRAY_TURBINE: cap=42.0, cf=0.028, units=1
+    // TESORO_SLC_COGENERATION_PLANT: cap=30.4, cf=0.02, units=1
+    // WEST_VALLEY_GENERATION_PROJECT: cap=217.0, cf=0.143, units=1
     name "wecc240_psse_G_6509_CT";
     parent "wecc240_psse_G_6509";
     latitude 40.77;
     longitude -111.8;
     generator CT;
-    operating_capacity 850.1 MW;
+    operating_capacity 888.3 MW;
     startup_cost 25.0;
     shutdown_cost 0.0;
     fixed_cost 350.0;
@@ -5756,6 +6787,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BOUNTIFUL_CITY: cap=30.4, cf=0.02, units=1
     name "wecc240_psse_G_6509_IC";
     parent "wecc240_psse_G_6509";
     latitude 40.77;
@@ -5771,6 +6803,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BOUNTIFUL_CITY: cap=30.4, cf=0.02, units=1
+    // GADSBY: cap=492.1, cf=0.324, units=1
+    // KENNECOTT_POWER_PLANT: cap=38.2, cf=0.025, units=1
     name "wecc240_psse_G_6509_ST";
     parent "wecc240_psse_G_6509";
     latitude 40.77;
@@ -5782,17 +6817,6 @@ object pypower.powerplant
     fixed_cost 1000.0;
     variable_cost 5.0;
     scarcity_cost 0.001;
-}
-
-object pypower.powerplant
-{
-    name "wecc240_psse_G_6509_UNKNOWN";
-    parent "wecc240_psse_G_6509";
-    latitude 40.77;
-    longitude -111.8;
-    generator UNKNOWN;
-    operating_capacity 38.2 MW;
-    // no cost data for unknown plant type
 }
 
 object pypower.gen
@@ -5813,6 +6837,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // LOGAN_CITY: cap=15.9, cf=0.114, units=1
     name "wecc240_psse_G_6501_CT";
     parent "wecc240_psse_G_6501";
     latitude 41.44;
@@ -5828,6 +6853,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CUTLER: cap=30.0, cf=0.215, units=1
+    // GRACE: cap=33.0, cf=0.237, units=1
+    // ONEIDA: cap=30.0, cf=0.215, units=1
+    // SODA: cap=14.5, cf=0.104, units=1
     name "wecc240_psse_G_6501_HT";
     parent "wecc240_psse_G_6501";
     latitude 41.44;
@@ -5843,6 +6872,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LOGAN_CITY: cap=15.9, cf=0.114, units=1
     name "wecc240_psse_G_6501_ST";
     parent "wecc240_psse_G_6501";
     latitude 41.44;
@@ -5874,6 +6904,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // SHUTE_CREEK_FACILITY: cap=144.0, cf=0.091, units=1
     name "wecc240_psse_G_6305_CT";
     parent "wecc240_psse_G_6305";
     latitude 41.83;
@@ -5889,6 +6920,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FONTENELLE: cap=10.0, cf=0.006, units=1
+    // PALISADES: cap=176.4, cf=0.112, units=1
     name "wecc240_psse_G_6305_HT";
     parent "wecc240_psse_G_6305";
     latitude 41.83;
@@ -5904,6 +6937,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SAGE_SOLAR_I-III: cap=57.6, cf=0.037, units=1
     name "wecc240_psse_G_6305_PV";
     parent "wecc240_psse_G_6305";
     latitude 41.83;
@@ -5919,6 +6953,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FMC_WESTVACO: cap=41.0, cf=0.026, units=1
+    // GENERAL_CHEMICAL: cap=30.0, cf=0.019, units=1
+    // NAUGHTON: cap=832.0, cf=0.528, units=1
     name "wecc240_psse_G_6305_ST";
     parent "wecc240_psse_G_6305";
     latitude 41.83;
@@ -5934,6 +6971,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MOUNTAIN_WIND_POWER_II_LLC: cap=80.0, cf=0.051, units=1
+    // MOUNTAIN_WIND_POWER_LLC: cap=61.0, cf=0.039, units=1
+    // WYOMING_WIND_ENERGY_CENTER: cap=144.0, cf=0.091, units=1
     name "wecc240_psse_G_6305_WT";
     parent "wecc240_psse_G_6305";
     latitude 41.83;
@@ -5965,6 +7005,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // FRUITA: cap=26.6, cf=0.039, units=1
     name "wecc240_psse_G_6503_CT";
     parent "wecc240_psse_G_6503";
     latitude 40.03;
@@ -5980,6 +7021,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FLAMING_GORGE: cap=151.8, cf=0.224, units=1
     name "wecc240_psse_G_6503_HT";
     parent "wecc240_psse_G_6503";
     latitude 40.03;
@@ -5995,6 +7037,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BONANZA: cap=499.5, cf=0.737, units=1
     name "wecc240_psse_G_6503_ST";
     parent "wecc240_psse_G_6503";
     latitude 40.03;
@@ -6026,6 +7069,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // RIFLE_GENERATING_STATION: cap=84.0, cf=0.041, units=1
     name "wecc240_psse_G_7002_CC";
     parent "wecc240_psse_G_7002";
     latitude 40.52;
@@ -6041,6 +7085,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GREEN_MOUNTAIN: cap=26.0, cf=0.013, units=1
+    // SHOSHONE: cap=14.4, cf=0.007, units=1
     name "wecc240_psse_G_7002_HT";
     parent "wecc240_psse_G_7002";
     latitude 40.52;
@@ -6056,6 +7102,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CRAIG: cap=1427.6, cf=0.703, units=1
+    // EAGLE_VALLEY_CLEAN_ENERGY_LLC_BIOMASS: cap=12.6, cf=0.006, units=1
+    // HAYDEN: cap=465.4, cf=0.229, units=1
     name "wecc240_psse_G_7002_ST";
     parent "wecc240_psse_G_7002";
     latitude 40.52;
@@ -6087,6 +7136,24 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // SIMPLOT_PHOSPHATES: cap=11.5, cf=0.005, units=1
+    name "wecc240_psse_G_6301_CT";
+    parent "wecc240_psse_G_6301";
+    latitude 42.09;
+    longitude -108.5;
+    generator CT;
+    operating_capacity 11.5 MW;
+    startup_cost 25.0;
+    shutdown_cost 0.0;
+    fixed_cost 350.0;
+    variable_cost 75.0;
+    scarcity_cost 0.001;
+}
+
+object pypower.powerplant
+{
+    // BOYSEN: cap=15.0, cf=0.006, units=1
+    // BUFFALO_BILL: cap=18.0, cf=0.007, units=1
     name "wecc240_psse_G_6301_HT";
     parent "wecc240_psse_G_6301";
     latitude 42.09;
@@ -6102,6 +7169,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // JIM_BRIDGER: cap=2441.9, cf=0.982, units=1
     name "wecc240_psse_G_6301_ST";
     parent "wecc240_psse_G_6301";
     latitude 42.09;
@@ -6113,17 +7181,6 @@ object pypower.powerplant
     fixed_cost 1000.0;
     variable_cost 5.0;
     scarcity_cost 0.001;
-}
-
-object pypower.powerplant
-{
-    name "wecc240_psse_G_6301_UNKNOWN";
-    parent "wecc240_psse_G_6301";
-    latitude 42.09;
-    longitude -108.5;
-    generator UNKNOWN;
-    operating_capacity 11.5 MW;
-    // no cost data for unknown plant type
 }
 
 object pypower.gen
@@ -6144,6 +7201,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CHEYENNE_PRAIRIE_GENERATING_STATION: cap=140.0, cf=0.012, units=1
+    // FORT_ST_VRAIN: cap=1148.5, cf=0.101, units=1
+    // JM_SHAFER_GENERATING_STATION: cap=396.9, cf=0.035, units=1
+    // UNIVERSITY_OF_COLORADO: cap=33.0, cf=0.003, units=1
     name "wecc240_psse_G_6302_CC";
     parent "wecc240_psse_G_6302";
     latitude 41.38;
@@ -6159,6 +7220,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CHEYENNE_PRAIRIE_GENERATING_STATION: cap=140.0, cf=0.012, units=1
+    // FORT_LUPTON: cap=100.8, cf=0.009, units=1
+    // FORT_ST_VRAIN: cap=1148.5, cf=0.101, units=1
+    // RAWHIDE: cap=800.4, cf=0.07, units=1
+    // SPINDLE_HILL_ENERGY_CENTER: cap=420.0, cf=0.037, units=1
+    // VALMONT: cap=59.3, cf=0.005, units=1
+    // VALMONT_COMBUSTION_TURBINE_PROJECT: cap=142.2, cf=0.013, units=1
     name "wecc240_psse_G_6302_CT";
     parent "wecc240_psse_G_6302";
     latitude 41.38;
@@ -6174,6 +7242,14 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALCOVA: cap=41.4, cf=0.004, units=1
+    // ESTES: cap=45.0, cf=0.004, units=1
+    // FLATIRON: cap=94.5, cf=0.008, units=1
+    // FREMONT_CANYON: cap=66.8, cf=0.006, units=1
+    // GLENDO: cap=38.0, cf=0.003, units=1
+    // KORTES: cap=36.0, cf=0.003, units=1
+    // POLE_HILL: cap=38.2, cf=0.003, units=1
+    // SEMINOE: cap=51.6, cf=0.005, units=1
     name "wecc240_psse_G_6302_HT";
     parent "wecc240_psse_G_6302";
     latitude 41.38;
@@ -6189,6 +7265,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BISON_SOLAR_LLC: cap=30.0, cf=0.003, units=1
+    // SR_PLATTE_SOLAR_FARM: cap=16.0, cf=0.001, units=1
     name "wecc240_psse_G_6302_PV";
     parent "wecc240_psse_G_6302";
     latitude 41.38;
@@ -6204,6 +7282,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DAVE_JOHNSTON: cap=922.2, cf=0.081, units=1
+    // LARAMIE_RIVER_STATION: cap=1710.0, cf=0.151, units=1
+    // RAWHIDE: cap=800.4, cf=0.07, units=1
+    // VALMONT: cap=59.3, cf=0.005, units=1
     name "wecc240_psse_G_6302_ST";
     parent "wecc240_psse_G_6302";
     latitude 41.38;
@@ -6219,6 +7301,30 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CAMPBELL_HILL_WINDPOWER: cap=99.0, cf=0.009, units=1
+    // CASPER_WIND_FARM: cap=17.0, cf=0.001, units=1
+    // CEDAR_CREEK_II: cap=248.3, cf=0.022, units=1
+    // CEDAR_CREEK_WIND: cap=300.5, cf=0.026, units=1
+    // COLORADO_HIGHLANDS_WIND: cap=96.1, cf=0.008, units=1
+    // DUNLAP: cap=111.0, cf=0.01, units=1
+    // EKOLA_FLATS: cap=250.9, cf=0.022, units=1
+    // FOOTE_CREEK_I: cap=41.4, cf=0.004, units=1
+    // GLENROCK: cap=165.6, cf=0.015, units=1
+    // HAPPY_JACK_WINDPOWER_PROJECT: cap=29.4, cf=0.003, units=1
+    // HIGH_PLAINS: cap=122.1, cf=0.011, units=1
+    // LOGAN_WIND_ENERGY: cap=201.0, cf=0.018, units=1
+    // MCFADDEN_RIDGE: cap=35.2, cf=0.003, units=1
+    // NORTHERN_COLORADO_WIND_LLC: cap=174.3, cf=0.015, units=1
+    // PEETZ_TABLE_WIND_ENERGY: cap=199.5, cf=0.018, units=1
+    // PIONEER_WIND_PARK_LLC: cap=80.0, cf=0.007, units=1
+    // RIDGE_CREST_WIND_PARTNERS: cap=29.7, cf=0.003, units=1
+    // ROCK_RIVER_I_LLC: cap=50.0, cf=0.004, units=1
+    // ROLLING_HILLS: cap=115.8, cf=0.01, units=1
+    // SEVEN_MILE_HILL: cap=146.2, cf=0.013, units=1
+    // SILVER_SAGE_WINDPOWER: cap=42.0, cf=0.004, units=1
+    // SPRING_CANYON: cap=60.0, cf=0.005, units=1
+    // SPRING_CANYON_EXPANSION_WIND_ENERGY_CENTER: cap=62.6, cf=0.006, units=1
+    // TOP_OF_THE_WORLD_WINDPOWER_PROJECT: cap=200.0, cf=0.018, units=1
     name "wecc240_psse_G_6302_WT";
     parent "wecc240_psse_G_6302";
     latitude 41.38;
@@ -6250,6 +7356,11 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // FARADAY: cap=19.2, cf=0.135, units=1
+    // NORTH_FORK: cap=40.8, cf=0.288, units=1
+    // OAK_GROVE: cap=51.0, cf=0.36, units=1
+    // RIVER_MILL: cap=18.8, cf=0.133, units=1
+    // STONE_CREEK: cap=12.0, cf=0.085, units=1
     name "wecc240_psse_G_4007_HT";
     parent "wecc240_psse_G_4007";
     latitude 45.6;
@@ -6281,6 +7392,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // RIVER_ROAD_GEN_PLANT: cap=248.0, cf=0.076, units=1
     name "wecc240_psse_G_4006_CC";
     parent "wecc240_psse_G_4006";
     latitude 45.61;
@@ -6296,6 +7408,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BONNEVILLE: cap=1162.0, cf=0.355, units=1
+    // PHP_1: cap=23.7, cf=0.007, units=1
+    // PHP_2: cap=11.8, cf=0.004, units=1
+    // THE_DALLES: cap=1819.7, cf=0.556, units=1
     name "wecc240_psse_G_4006_HT";
     parent "wecc240_psse_G_4006";
     latitude 45.61;
@@ -6311,6 +7427,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SDS_LUMBER_GORGE_ENERGY_DIVISION: cap=10.0, cf=0.003, units=1
     name "wecc240_psse_G_4006_ST";
     parent "wecc240_psse_G_4006";
     latitude 45.61;
@@ -6342,6 +7459,13 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BEAVER: cap=610.7, cf=0.069, units=1
+    // CHEHALIS_GENERATING_FACILITY: cap=698.0, cf=0.078, units=1
+    // FREDERICKSON_POWER_LP: cap=318.3, cf=0.036, units=1
+    // GRAYS_HARBOR_ENERGY_FACILITY: cap=697.8, cf=0.078, units=1
+    // MINT_FARM_GENERATING_STATION: cap=319.0, cf=0.036, units=1
+    // PORT_WESTWARD: cap=483.0, cf=0.054, units=1
+    // TRANSALTA_CENTRALIA_GENERATION: cap=1459.8, cf=0.164, units=1
     name "wecc240_psse_G_4202_CC";
     parent "wecc240_psse_G_4202";
     latitude 47.06;
@@ -6357,6 +7481,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BEAVER: cap=610.7, cf=0.069, units=1
+    // FREDERICKSON: cap=177.8, cf=0.02, units=1
+    // LONGVIEW_FIBRE: cap=45.0, cf=0.005, units=1
     name "wecc240_psse_G_4202_CT";
     parent "wecc240_psse_G_4202";
     latitude 47.06;
@@ -6372,6 +7499,25 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALDER: cap=50.0, cf=0.006, units=1
+    // CEDAR_FALLS: cap=30.0, cf=0.003, units=1
+    // COWLITZ_FALLS: cap=70.0, cf=0.008, units=1
+    // CUSHMAN_1: cap=43.2, cf=0.005, units=1
+    // CUSHMAN_2: cap=84.6, cf=0.009, units=1
+    // ELECTRON: cap=22.8, cf=0.003, units=1
+    // LAGRANDE: cap=64.0, cf=0.007, units=1
+    // MAYFIELD: cap=162.0, cf=0.018, units=1
+    // MERWIN: cap=136.0, cf=0.015, units=1
+    // MOSSYROCK: cap=300.0, cf=0.034, units=1
+    // PACKWOOD: cap=27.5, cf=0.003, units=1
+    // SNOQUALMIE: cap=12.8, cf=0.001, units=1
+    // SNOQUALMIE_2: cap=38.7, cf=0.004, units=1
+    // SWIFT_1: cap=240.0, cf=0.027, units=1
+    // TIETON_DAM_HYDRO_ELECTRIC_PROJECT: cap=13.8, cf=0.002, units=1
+    // TWIN_FALLS_HYDRO: cap=24.0, cf=0.003, units=1
+    // WYNOOCHEE: cap=12.8, cf=0.001, units=1
+    // YALE: cap=134.0, cf=0.015, units=1
+    // YELM: cap=12.0, cf=0.001, units=1
     name "wecc240_psse_G_4202_HT";
     parent "wecc240_psse_G_4202";
     latitude 47.06;
@@ -6387,6 +7533,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // PORT_WESTWARD_UNIT_2: cap=225.6, cf=0.025, units=1
     name "wecc240_psse_G_4202_IC";
     parent "wecc240_psse_G_4202";
     latitude 47.06;
@@ -6402,6 +7549,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // GEORGIA-PACIFIC_WAUNA_MILL: cap=36.0, cf=0.004, units=1
+    // LONGVIEW_FIBRE: cap=45.0, cf=0.005, units=1
+    // SIERRA_PACIFIC_ABERDEEN: cap=18.0, cf=0.002, units=1
+    // SIMPSON_TACOMA_KRAFT_BIOMASS: cap=64.0, cf=0.007, units=1
+    // TRANSALTA_CENTRALIA_GENERATION: cap=1459.8, cf=0.164, units=1
+    // WEYERHAEUSER_LONGVIEW_WA: cap=62.4, cf=0.007, units=1
     name "wecc240_psse_G_4202_ST";
     parent "wecc240_psse_G_4202";
     latitude 47.06;
@@ -6417,6 +7570,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SAGEBRUSH_POWER_PARTNERS: cap=100.7, cf=0.011, units=1
     name "wecc240_psse_G_4202_WT";
     parent "wecc240_psse_G_4202";
     latitude 47.06;
@@ -6448,6 +7602,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // GOLDENDALE_GENERATING_STATION: cap=284.3, cf=0.041, units=1
     name "wecc240_psse_G_4005_CC";
     parent "wecc240_psse_G_4005";
     latitude 45.68;
@@ -6463,6 +7618,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ROOSEVELT_BIOGAS_1: cap=36.5, cf=0.005, units=1
+    // WASTE_MANAGEMENT_COLUMBIA_RIDGE_LFGTE: cap=12.8, cf=0.002, units=1
     name "wecc240_psse_G_4005_CT";
     parent "wecc240_psse_G_4005";
     latitude 45.68;
@@ -6478,6 +7635,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // JOHN_DAY: cap=2160.0, cf=0.314, units=1
     name "wecc240_psse_G_4005_HT";
     parent "wecc240_psse_G_4005";
     latitude 45.68;
@@ -6493,6 +7651,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // WYEAST_SOLAR: cap=10.0, cf=0.001, units=1
     name "wecc240_psse_G_4005_PV";
     parent "wecc240_psse_G_4005";
     latitude 45.68;
@@ -6508,6 +7667,33 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ARLINGTON_WIND_POWER_PROJECT: cap=103.0, cf=0.015, units=1
+    // BIGLOW_CANYON_WIND_FARM: cap=449.7, cf=0.065, units=1
+    // BIG_HORN_WIND_II: cap=50.0, cf=0.007, units=1
+    // BIG_HORN_WIND_PROJECT: cap=199.0, cf=0.029, units=1
+    // CONDON_WINDPOWER_LLC: cap=49.8, cf=0.007, units=1
+    // GOODNOE_HILLS: cap=103.4, cf=0.015, units=1
+    // HARVEST_WIND_PROJECT: cap=98.9, cf=0.014, units=1
+    // HAY_CANYON_WIND_POWER_LLC: cap=100.8, cf=0.015, units=1
+    // HORSESHOE_BEND_WIND_LLC: cap=290.0, cf=0.042, units=1
+    // JUNIPER_CANYON_I_WIND_PROJECT: cap=151.2, cf=0.022, units=1
+    // KLONDIKE_WINDPOWER_II: cap=75.0, cf=0.011, units=1
+    // KLONDIKE_WINDPOWER_III_PHASE_1: cap=297.5, cf=0.043, units=1
+    // KLONDIKE_WINDPOWER_III_PHASE_2: cap=297.5, cf=0.043, units=1
+    // KLONDIKE_WIND_POWER: cap=24.5, cf=0.004, units=1
+    // LEANING_JUNIPER: cap=110.4, cf=0.016, units=1
+    // LEANING_JUNIPER_WIND_POWER_II: cap=201.0, cf=0.029, units=1
+    // LINDEN_WIND_ENERGY_PROJECT: cap=50.0, cf=0.007, units=1
+    // MONTAGUE_WIND_POWER_FACILITY_LLC: cap=200.0, cf=0.029, units=1
+    // NORTH_HURLBURT_WIND_LLC: cap=265.0, cf=0.039, units=1
+    // PEBBLE_SPRINGS_WIND_LLC: cap=98.7, cf=0.014, units=1
+    // SOUTH_HURLBURT_WIND_LLC: cap=290.0, cf=0.042, units=1
+    // STAR_POINT_WIND_PROJECT_LLC: cap=98.7, cf=0.014, units=1
+    // TUOLUMNE_WIND_PROJECT: cap=136.3, cf=0.02, units=1
+    // WHEAT_FIELD_WIND_POWER_PROJECT: cap=97.0, cf=0.014, units=1
+    // WHITE_CREEK_WIND_FARM: cap=204.0, cf=0.03, units=1
+    // WILLOW_CREEK_ENERGY_CENTER: cap=72.0, cf=0.01, units=1
+    // WINDY_FLATS_WIND_PROJECT: cap=262.2, cf=0.038, units=1
     name "wecc240_psse_G_4005_WT";
     parent "wecc240_psse_G_4005";
     latitude 45.68;
@@ -6539,6 +7725,11 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // CARTY_GENERATING_STATION: cap=500.0, cf=0.044, units=1
+    // COYOTE_SPRINGS: cap=296.0, cf=0.026, units=1
+    // COYOTE_SPRINGS_II: cap=287.0, cf=0.025, units=1
+    // HERMISTON_GENERATING_PLANT: cap=621.2, cf=0.055, units=1
+    // HERMISTON_POWER_PARTNERSHIP: cap=689.4, cf=0.061, units=1
     name "wecc240_psse_G_4102_CC";
     parent "wecc240_psse_G_4102";
     latitude 46.67;
@@ -6554,6 +7745,16 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CHANDLER: cap=12.0, cf=0.001, units=1
+    // ICE_HARBOR: cap=603.0, cf=0.053, units=1
+    // LOWER_MONUMENTAL: cap=810.0, cf=0.072, units=1
+    // MCNARY: cap=990.5, cf=0.088, units=1
+    // MCNARY_DAM_FISH_ATTRACTION_PROJECT: cap=10.0, cf=0.001, units=1
+    // PRIEST_RAPIDS: cap=955.6, cf=0.084, units=1
+    // ROCKY_REACH: cap=1299.6, cf=0.115, units=1
+    // ROCK_ISLAND: cap=629.4, cf=0.056, units=1
+    // ROZA: cap=12.9, cf=0.001, units=1
+    // WANAPUM: cap=1098.0, cf=0.097, units=1
     name "wecc240_psse_G_4102_HT";
     parent "wecc240_psse_G_4102";
     latitude 46.67;
@@ -6569,6 +7770,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // WILD_HORSE: cap=273.1, cf=0.024, units=1
     name "wecc240_psse_G_4102_PV";
     parent "wecc240_psse_G_4102";
     latitude 46.67;
@@ -6584,6 +7786,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // COLUMBIA_GENERATING_STATION: cap=1200.0, cf=0.106, units=1
     name "wecc240_psse_G_4102_ST";
     parent "wecc240_psse_G_4102";
     latitude 46.67;
@@ -6599,6 +7802,18 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CHOPIN_WIND_LLC: cap=10.0, cf=0.001, units=1
+    // COMBINE_HILLS_I: cap=43.0, cf=0.004, units=1
+    // EURUS_COMBINE_HILLS_TURBINE_RANCH_2: cap=66.1, cf=0.006, units=1
+    // FOUR_CORNERS_WINDFARM_LLC: cap=10.0, cf=0.001, units=1
+    // FOUR_MILE_CANYON_WINDFARM_LLC: cap=10.0, cf=0.001, units=1
+    // FPL_ENERGY_VANSYCLE_LLC_OR: cap=122.8, cf=0.011, units=1
+    // FPL_ENERGY_VANSYCLE_LLC_WA: cap=176.9, cf=0.016, units=1
+    // NINE_CANYON: cap=95.9, cf=0.008, units=1
+    // VANSYCLE: cap=25.0, cf=0.002, units=1
+    // VANSYCLE_II_WIND_ENERGY_CENTER: cap=98.9, cf=0.009, units=1
+    // VANTAGE_WIND_ENERGY_LLC: cap=90.0, cf=0.008, units=1
+    // WILD_HORSE: cap=273.1, cf=0.024, units=1
     name "wecc240_psse_G_4102_WT";
     parent "wecc240_psse_G_4102";
     latitude 46.67;
@@ -6630,6 +7845,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // MARCH_POINT_COGENERATION: cap=139.8, cf=0.092, units=1
     name "wecc240_psse_G_4201_CC";
     parent "wecc240_psse_G_4201";
     latitude 48.22;
@@ -6645,6 +7861,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // MARCH_POINT_COGENERATION: cap=139.8, cf=0.092, units=1
     name "wecc240_psse_G_4201_CT";
     parent "wecc240_psse_G_4201";
     latitude 48.22;
@@ -6660,6 +7877,14 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // DIABLO: cap=182.4, cf=0.12, units=1
+    // GORGE: cap=207.3, cf=0.136, units=1
+    // H_M_JACKSON: cap=111.8, cf=0.074, units=1
+    // KOMA_KULSHAN_ASSOCIATES: cap=12.0, cf=0.008, units=1
+    // LOWER_BAKER: cap=111.2, cf=0.073, units=1
+    // ROSS: cap=450.0, cf=0.296, units=1
+    // SOUTH_FORK_TOLT: cap=16.8, cf=0.011, units=1
+    // UPPER_BAKER: cap=104.8, cf=0.069, units=1
     name "wecc240_psse_G_4201_HT";
     parent "wecc240_psse_G_4201";
     latitude 48.22;
@@ -6675,6 +7900,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // SIERRA_PACIFIC_BURLINGTON_FACILITY: cap=28.0, cf=0.018, units=1
+    // UNIVERSITY_OF_WASHINGTON_POWER_PLANT: cap=15.0, cf=0.01, units=1
     name "wecc240_psse_G_4201_ST";
     parent "wecc240_psse_G_4201";
     latitude 48.22;
@@ -6706,6 +7933,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ENCOGEN: cap=176.4, cf=0.233, units=1
+    // FERNDALE_GENERATING_STATION: cap=285.5, cf=0.377, units=1
+    // SUMAS_POWER_PLANT: cap=125.5, cf=0.166, units=1
     name "wecc240_psse_G_5001_CC";
     parent "wecc240_psse_G_5001";
     latitude 49.43;
@@ -6721,6 +7951,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // WHITEHORN: cap=169.2, cf=0.224, units=1
     name "wecc240_psse_G_5001_CT";
     parent "wecc240_psse_G_5001";
     latitude 49.43;
@@ -6752,6 +7983,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // KETTLE_FALLS_GENERATING_STATION: cap=57.9, cf=0.006, units=1
     name "wecc240_psse_G_4101_CT";
     parent "wecc240_psse_G_4101";
     latitude 47.95;
@@ -6767,6 +7999,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CHELAN: cap=59.2, cf=0.006, units=1
+    // CHIEF_JOSEPH: cap=2456.2, cf=0.238, units=1
+    // GRAND_COULEE: cap=6809.0, cf=0.659, units=1
+    // MAIN_CANAL_HEADWORKS: cap=26.8, cf=0.003, units=1
+    // SUMMER_FALLS_POWER_PLANT: cap=92.0, cf=0.009, units=1
+    // WELLS: cap=774.0, cf=0.075, units=1
     name "wecc240_psse_G_4101_HT";
     parent "wecc240_psse_G_4101";
     latitude 47.95;
@@ -6782,6 +8020,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // KETTLE_FALLS_GENERATING_STATION: cap=57.9, cf=0.006, units=1
     name "wecc240_psse_G_4101_ST";
     parent "wecc240_psse_G_4101";
     latitude 47.95;
@@ -6813,6 +8052,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // RATHDRUM_POWER_LLC: cap=301.5, cf=0.054, units=1
     name "wecc240_psse_G_4103_CC";
     parent "wecc240_psse_G_4103";
     latitude 47.74;
@@ -6828,6 +8068,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // NORTHEAST: cap=61.8, cf=0.011, units=1
+    // RATHDRUM: cap=166.4, cf=0.03, units=1
+    // WHEELABRATOR_SPOKANE: cap=26.0, cf=0.005, units=1
     name "wecc240_psse_G_4103_CT";
     parent "wecc240_psse_G_4103";
     latitude 47.74;
@@ -6843,6 +8086,21 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // ALBENI_FALLS: cap=42.0, cf=0.008, units=1
+    // CABINET_GORGE: cap=265.2, cf=0.048, units=1
+    // DWORSHAK: cap=465.0, cf=0.084, units=1
+    // LIBBY: cap=525.0, cf=0.094, units=1
+    // LITTLE_FALLS: cap=43.2, cf=0.008, units=1
+    // LITTLE_GOOSE: cap=810.0, cf=0.145, units=1
+    // LONG_LAKE: cap=70.0, cf=0.013, units=1
+    // LOWER_GRANITE: cap=810.0, cf=0.145, units=1
+    // MONROE_STREET: cap=14.8, cf=0.003, units=1
+    // NINE_MILE: cap=37.6, cf=0.007, units=1
+    // NOXON_RAPIDS: cap=569.5, cf=0.102, units=1
+    // POST_FALLS: cap=14.5, cf=0.003, units=1
+    // THOMPSON_FALLS: cap=98.1, cf=0.018, units=1
+    // UPPER_FALLS: cap=10.0, cf=0.002, units=1
+    // UPRIVER_DAM_HYDRO_PLANT: cap=17.6, cf=0.003, units=1
     name "wecc240_psse_G_4103_HT";
     parent "wecc240_psse_G_4103";
     latitude 47.74;
@@ -6858,6 +8116,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BOULDER_PARK: cap=24.6, cf=0.004, units=1
     name "wecc240_psse_G_4103_IC";
     parent "wecc240_psse_G_4103";
     latitude 47.74;
@@ -6873,6 +8132,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // CLEARWATER_PAPER_IPP_LEWISTON: cap=113.8, cf=0.02, units=1
     name "wecc240_psse_G_4103_ST";
     parent "wecc240_psse_G_4103";
     latitude 47.74;
@@ -6888,6 +8148,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HOPKINS_RIDGE_WIND: cap=156.6, cf=0.028, units=1
+    // LOWER_SNAKE_RIVER_WIND_ENERGY_PROJECT: cap=342.7, cf=0.062, units=1
+    // MARENGO_WIND_PLANT: cap=210.6, cf=0.038, units=1
+    // PALOUSE: cap=105.3, cf=0.019, units=1
+    // TUCANNON_RIVER_WIND_FARM: cap=266.8, cf=0.048, units=1
     name "wecc240_psse_G_4103_WT";
     parent "wecc240_psse_G_4103";
     latitude 47.74;
@@ -6919,6 +8184,7 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // DAVE_GATES_GENERATING_STATION: cap=203.1, cf=0.227, units=1
     name "wecc240_psse_G_6202_CT";
     parent "wecc240_psse_G_6202";
     latitude 46.51;
@@ -6934,6 +8200,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // HUNGRY_HORSE: cap=428.0, cf=0.479, units=1
+    // KERR: cap=207.6, cf=0.232, units=1
     name "wecc240_psse_G_6202_HT";
     parent "wecc240_psse_G_6202";
     latitude 46.51;
@@ -6949,6 +8217,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BASIN_CREEK_PLANT: cap=54.9, cf=0.061, units=1
     name "wecc240_psse_G_6202_IC";
     parent "wecc240_psse_G_6202";
     latitude 46.51;
@@ -6980,6 +8249,9 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BOUNDARY: cap=1118.6, cf=0.897, units=1
+    // BOX_CANYON: cap=90.0, cf=0.072, units=1
+    // SMITH_FALLS_HYDRO_PROJECT: cap=38.1, cf=0.031, units=1
     name "wecc240_psse_G_5003_HT";
     parent "wecc240_psse_G_5003";
     latitude 49.69;
@@ -7011,6 +8283,16 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // BLACK_EAGLE: cap=24.0, cf=0.021, units=1
+    // CANYON_FERRY: cap=49.8, cf=0.044, units=1
+    // COCHRANE: cap=60.4, cf=0.053, units=1
+    // HAUSER: cap=17.7, cf=0.016, units=1
+    // HOLTER: cap=38.4, cf=0.034, units=1
+    // MORONY: cap=63.0, cf=0.055, units=1
+    // MYSTIC: cap=12.0, cf=0.011, units=1
+    // RAINBOW: cap=59.0, cf=0.052, units=1
+    // RYAN: cap=52.8, cf=0.046, units=1
+    // TURNBULL_HYDRO: cap=13.0, cf=0.011, units=1
     name "wecc240_psse_G_6205_HT";
     parent "wecc240_psse_G_6205";
     latitude 47.43;
@@ -7026,6 +8308,18 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // BIG_TIMBER_WIND_FARM: cap=25.0, cf=0.022, units=1
+    // FAIRFIELD_WIND: cap=10.0, cf=0.009, units=1
+    // GORDON_BUTTE_WIND_LLC: cap=17.7, cf=0.016, units=1
+    // GREENFIELD_WIND_-_MT: cap=25.0, cf=0.022, units=1
+    // JUDITH_GAP_WIND_ENERGY_CENTER: cap=135.0, cf=0.118, units=1
+    // MUSSELSHELL_WIND_PROJECT: cap=10.0, cf=0.009, units=1
+    // MUSSELSHELL_WIND_PROJECT_TWO_LLC: cap=10.0, cf=0.009, units=1
+    // NATURENER_GLACIER_WIND_ENERGY_1: cap=106.5, cf=0.093, units=1
+    // NATURENER_GLACIER_WIND_ENERGY_2: cap=103.5, cf=0.091, units=1
+    // NATURENER_RIM_ROCK_ENERGY: cap=189.0, cf=0.166, units=1
+    // SPION_KOP_WIND_FARM: cap=40.0, cf=0.035, units=1
+    // STILLWATER_WIND_LLC: cap=79.7, cf=0.07, units=1
     name "wecc240_psse_G_6205_WT";
     parent "wecc240_psse_G_6205";
     latitude 47.43;
@@ -7057,12 +8351,22 @@ object pypower.gen
 }
 object pypower.powerplant
 {
+    // ARVADA: cap=22.5, cf=0.004, units=1
+    // BARBER_CREEK: cap=22.5, cf=0.004, units=1
+    // CULBERTSON_GENERATION_STATION: cap=91.0, cf=0.018, units=1
+    // GLENDIVE_GT: cap=83.7, cf=0.017, units=1
+    // HARTZOG: cap=22.5, cf=0.004, units=1
+    // MILES_CITY_GT: cap=23.3, cf=0.005, units=1
+    // NEIL_SIMPSON_GAS_TURBINE_2: cap=40.0, cf=0.008, units=1
+    // NEIL_SIMPSON_II: cap=130.0, cf=0.026, units=1
+    // OREG_1_INC: cap=30.0, cf=0.006, units=1
+    // OREG_2_INC: cap=30.0, cf=0.006, units=1
     name "wecc240_psse_G_6201_CT";
     parent "wecc240_psse_G_6201";
     latitude 45.69;
     longitude -106.6;
     generator CT;
-    operating_capacity 435.5 MW;
+    operating_capacity 495.5 MW;
     startup_cost 25.0;
     shutdown_cost 0.0;
     fixed_cost 350.0;
@@ -7072,6 +8376,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // FORT_PECK: cap=179.7, cf=0.036, units=1
+    // YELLOWTAIL: cap=268.8, cf=0.054, units=1
     name "wecc240_psse_G_6201_HT";
     parent "wecc240_psse_G_6201";
     latitude 45.69;
@@ -7087,6 +8393,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // LEWIS_CLARK: cap=68.6, cf=0.014, units=1
     name "wecc240_psse_G_6201_IC";
     parent "wecc240_psse_G_6201";
     latitude 45.69;
@@ -7102,6 +8409,17 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
+    // COLSTRIP: cap=2363.4, cf=0.471, units=1
+    // COLSTRIP_ENERGY_LP: cap=46.1, cf=0.009, units=1
+    // DRY_FORK_STATION: cap=483.7, cf=0.096, units=1
+    // HARDIN_GENERATOR_PROJECT: cap=115.7, cf=0.023, units=1
+    // LEWIS_CLARK: cap=68.6, cf=0.014, units=1
+    // NEIL_SIMPSON_II: cap=130.0, cf=0.026, units=1
+    // WYGEN_1: cap=90.0, cf=0.018, units=1
+    // WYGEN_2: cap=95.0, cf=0.019, units=1
+    // WYGEN_III: cap=116.0, cf=0.023, units=1
+    // WYODAK: cap=402.3, cf=0.08, units=1
+    // YELLOWSTONE_ENERGY_LP: cap=68.0, cf=0.014, units=1
     name "wecc240_psse_G_6201_ST";
     parent "wecc240_psse_G_6201";
     latitude 45.69;
@@ -7117,17 +8435,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    name "wecc240_psse_G_6201_UNKNOWN";
-    parent "wecc240_psse_G_6201";
-    latitude 45.69;
-    longitude -106.6;
-    generator UNKNOWN;
-    operating_capacity 60.0 MW;
-    // no cost data for unknown plant type
-}
-
-object pypower.powerplant
-{
+    // DIAMOND_WILLOW_WIND_FACILITY: cap=30.0, cf=0.006, units=1
     name "wecc240_psse_G_6201_WT";
     parent "wecc240_psse_G_6201";
     latitude 45.69;

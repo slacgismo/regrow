@@ -27,6 +27,12 @@ module pypower
 //
 #input "${RAWFILE}"
 
+// TODO: delete these after `-X gen` works on #input converter from raw to glm
+//#for GEN in ${FIND class=gen}
+//modify ${GEN}.Pg 0;
+//modify ${GEN}.Qg 0;
+//#done
+
 //
 // Load the GIS data
 //
@@ -35,6 +41,7 @@ module pypower
 //
 // Load powerplant data
 //
+
 #system python3 powerplants_aggregated.py
 #include "powerplants_aggregated.glm"
 

@@ -59,8 +59,21 @@ def _(gendata):
 
 
 @app.cell
-def _(gendata, px):
-    _data = gendata.groupby(["bus","latitude","longitude","county"]).sum()[["cap","cf","units"]].reset_index()
+def _(mo):
+    mo.md(r"""## Powerplant Location""")
+    return
+
+
+@app.cell
+def _(gendata, mo):
+    gentype = mo.ui.multiselect(label="Show generator types:",options=gendata.gen.dropna().unique(),value=gendata.gen.dropna().unique())
+    gentype
+    return (gentype,)
+
+
+@app.cell
+def _(gendata, gentype, px):
+    _data = gendata[gendata.gen.isin(gentype.value)].groupby(["bus","latitude","longitude","county"]).sum()[["cap","cf","units"]].round(1).reset_index()
     fig = px.scatter_map(_data,lat="latitude",lon="longitude",size="cap",color="units",zoom=3,hover_name="county")
     fig
 
@@ -71,6 +84,12 @@ def _(gendata, px):
 def _(mo):
     by = mo.ui.dropdown(options={"bus":"bus","generator type":"gen","county":["county","state"]},value="bus")
     return (by,)
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""## Powerplant aggregation""")
+    return
 
 
 @app.cell

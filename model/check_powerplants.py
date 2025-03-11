@@ -87,6 +87,7 @@ def _(gendata, gentype, px):
         gendata[gendata.gen.isin(gentype.value)]
         .groupby(["latitude", "longitude", "county","state"])
         .sum()[["cap", "cf", "units"]]
+        .round(1)
         .reset_index()
     )
     fig = px.scatter_map(

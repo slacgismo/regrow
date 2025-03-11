@@ -29,8 +29,8 @@ def _(census, pd, utils):
         )
         _df["STATE"] = _state
         _df["GEOCODE"] = [utils.geohash(x,y) for x,y in zip(_df.LATITUDE,_df.LONGITUDE)]
-        _df.drop(["STATEFP","COUNTYFP","LATITUDE","LONGITUDE"],inplace=True,axis=1)
-        _df.columns = ["county","state","geocode"]
+        _df.drop(["STATEFP","COUNTYFP"],inplace=True,axis=1)
+        _df.columns = ["county","latitude","longitude","state","geocode"]
         COUNTY.update(_df.set_index("geocode").to_dict('index'))
     return (COUNTY,)
 
@@ -40,43 +40,48 @@ def _(COUNTY, pd, utils):
     gendata = pd.read_csv("powerplants_data.csv")
     gendata["county"] = [utils.nearest(x,COUNTY) for x in gendata.bus]
     gendata["state"] = [COUNTY[x]["state"] for x in gendata.county]
+    gendata["latitude"] = [COUNTY[x]["latitude"] for x in gendata.county]
+    gendata["longitude"] = [COUNTY[x]["longitude"] for x in gendata.county]
     gendata["county"] = [COUNTY[x]["county"] for x in gendata.county]
     return (gendata,)
 
 
 @app.cell
 def _(mo):
-    mo.md(r"""## Powerplants by bus""")
+    mo.md(r"""## Powerplant Data""")
     return
 
 
 @app.cell
 def _(gendata):
-    gendata.groupby("bus").sum().round(1)[["cap","cf","units"]]
+    gendata
     return
+
+
+@app.cell
+def _(gendata, px):
+    _data = gendata.groupby(["bus","latitude","longitude","county"]).sum()[["cap","cf","units"]].reset_index()
+    fig = px.scatter_map(_data,lat="latitude",lon="longitude",size="cap",color="units",zoom=3,hover_name="county")
+    fig
+
+    return (fig,)
 
 
 @app.cell
 def _(mo):
-    mo.md(r"""## Powerplants by generator type""")
+    by = mo.ui.dropdown(options={"bus":"bus","generator type":"gen","county":["county","state"]},value="bus")
+    return (by,)
+
+
+@app.cell
+def _(by, mo):
+    mo.md(f"""Powerplants by {by}""")
     return
 
 
 @app.cell
-def _(gendata):
-    gendata.groupby("gen").sum().round(1)[["cap","cf","units"]]
-    return
-
-
-@app.cell
-def _(mo):
-    mo.md(r"""## Powerplants by county""")
-    return
-
-
-@app.cell
-def _(gendata):
-    gendata.groupby(["state","county"]).sum().round(1)[["cap","cf","units"]]
+def _(by, gendata):
+    gendata.groupby(by.value).sum().round(1)[["cap","cf","units"]]
     return
 
 
@@ -86,10 +91,11 @@ def _():
     import sys
     import marimo as mo
     import pandas as pd
+    import plotly.express as px
     import gridlabd.census as census
     sys.path.append("../data")
     import utils
-    return census, mo, os, pd, sys, utils
+    return census, mo, os, pd, px, sys, utils
 
 
 if __name__ == "__main__":

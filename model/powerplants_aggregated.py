@@ -89,7 +89,7 @@ with open("powerplants_split.csv","w") as fh:
 
 # load and summarize plant data
 data = pd.read_csv("powerplants_split.csv",index_col=["name"],usecols=["bus","gen","name","cap","cf","units"]).sort_index()
-data.to_csv("powerplant_data.csv",index=True,header=True)
+data.to_csv("powerplants_data.csv",index=True,header=True)
 names = data.reset_index().set_index(["bus","gen","name"]).sort_index().groupby(level=[0,1,2]).sum()
 data = pd.read_csv("powerplants_split.csv",index_col=["bus","gen"],usecols=["bus","gen","cap","cf","units"])
 data.groupby(["bus","gen"]).sum().round(3).to_csv("powerplants_aggregated.csv")

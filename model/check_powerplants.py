@@ -65,16 +65,40 @@ def _(mo):
 
 
 @app.cell
-def _(gendata, mo):
-    gentype = mo.ui.multiselect(label="Show generator types:",options=gendata.gen.dropna().unique(),value=gendata.gen.dropna().unique())
+def _(mo):
+    types = {
+        "Hydroelectric": "HT",
+        "Photovoltaic": "PV",
+        "Steam": "ST",
+        "Combustion": "CT",
+        "Combined cycle": "CC",
+        "Wind": "WT",
+        "Internal": "IC",
+        "Storage": "ES",
+    }
+    gentype = mo.ui.multiselect(label="Show generator types:",options=types,value=list(types))
     gentype
-    return (gentype,)
+    return gentype, types
 
 
 @app.cell
 def _(gendata, gentype, px):
-    _data = gendata[gendata.gen.isin(gentype.value)].groupby(["bus","latitude","longitude","county"]).sum()[["cap","cf","units"]].round(1).reset_index()
-    fig = px.scatter_map(_data,lat="latitude",lon="longitude",size="cap",color="units",zoom=3,hover_name="county")
+    _data = (
+        gendata[gendata.gen.isin(gentype.value)]
+        .groupby(["bus", "latitude", "longitude", "county"])
+        .sum()[["cap", "cf", "units"]]
+        .round(1)
+        .reset_index()
+    )
+    fig = px.scatter_map(
+        _data,
+        lat="latitude",
+        lon="longitude",
+        size="cap",
+        color="units",
+        zoom=3,
+        hover_name="county",
+    )
     fig
     return (fig,)
 
@@ -100,6 +124,13 @@ def _(by, mo):
 @app.cell
 def _(by, gendata, gentype):
     gendata[gendata.gen.isin(gentype.value)].groupby(by.value).sum().round(1)[["cap","cf","units"]]
+    return
+
+
+@app.cell
+def _(gentype, mo, types):
+    _NL = '\n\n'
+    mo.md(f"*Generator type legend*:{_NL}{_NL.join([f'* {x}: {y}' for x,y in types.items() if y in gentype.value])}")
     return
 
 

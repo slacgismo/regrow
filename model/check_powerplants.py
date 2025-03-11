@@ -85,7 +85,7 @@ def _(mo):
 def _(gendata, gentype, px):
     _data = (
         gendata[gendata.gen.isin(gentype.value)]
-        .groupby(["bus", "latitude", "longitude", "county"])
+        .groupby(["bus", "latitude", "longitude", "county","state"])
         .sum()[["cap", "cf", "units"]]
         .round(1)
         .reset_index()
@@ -96,8 +96,11 @@ def _(gendata, gentype, px):
         lon="longitude",
         size="cap",
         color="units",
-        zoom=3,
-        hover_name="county",
+        zoom=4,
+        hover_name=[f"{x} {y}" for x,y in _data[["county","state"]].values],
+        hover_data={"latitude":False,"longitude":False},
+        width = 800,height = 800,
+        center = {"lat":39,"lon":-112},
     )
     fig
     return (fig,)
@@ -141,10 +144,11 @@ def _():
     import marimo as mo
     import pandas as pd
     import plotly.express as px
+    import matplotlib.pyplot as plt
     import gridlabd.census as census
     sys.path.append("../data")
     import utils
-    return census, mo, os, pd, px, sys, utils
+    return census, mo, os, pd, plt, px, sys, utils
 
 
 if __name__ == "__main__":

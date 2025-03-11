@@ -38,11 +38,29 @@ def _(census, pd, utils):
 @app.cell
 def _(COUNTY, pd, utils):
     gendata = pd.read_csv("powerplants_data.csv")
-    gendata["county"] = [utils.nearest(x,COUNTY) for x in gendata.bus]
+    gendata["county"] = [utils.nearest(x, COUNTY) for x in gendata.bus]
     gendata["state"] = [COUNTY[x]["state"] for x in gendata.county]
     gendata["latitude"] = [COUNTY[x]["latitude"] for x in gendata.county]
     gendata["longitude"] = [COUNTY[x]["longitude"] for x in gendata.county]
     gendata["county"] = [COUNTY[x]["county"] for x in gendata.county]
+    _bchydro_capacity = pd.read_csv(
+        "../data/BCHydro/bchydro_gen.csv", index_col=["Date"]
+    ).values.max().round(-2)
+    _bchydro_bus = [x for x, y in COUNTY.items() if y["county"].startswith("Whatcom")][0]
+    gendata = pd.concat([gendata,pd.DataFrame(
+        data={
+            "name": "BC_HYDRO",
+            "bus": _bchydro_bus,
+            "gen": "TL",
+            "cap": _bchydro_capacity,
+            "cf": 0.0,
+            "units": 1,
+            "county": "BC Hydro",
+            "state": "BC",
+            "latitude": 49.5,
+            "longitude": -122.5,
+        },index=[len(gendata)])])
+    print(gendata)
     return (gendata,)
 
 
@@ -75,6 +93,7 @@ def _(mo):
         "Wind": "WT",
         "Internal": "IC",
         "Storage": "ES",
+        "Tieline": "TL",
     }
     gentype = mo.ui.multiselect(label="Show generator types:",options=types,value=list(types))
     gentype

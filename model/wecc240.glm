@@ -47,3 +47,8 @@ module pypower
 // Save the final result to JSON
 //
 #set savefile="${SAVEFILE}"
+
+//
+// Setup georecorders
+//
+module recorders;

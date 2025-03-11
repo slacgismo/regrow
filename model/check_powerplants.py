@@ -131,9 +131,13 @@ def _(by, gendata, gentype):
 
 
 @app.cell
-def _(gentype, mo, types):
-    _NL = '\n\n'
-    mo.md(f"*Generator type legend*:{_NL}{_NL.join([f'* {x}: {y}' for x,y in types.items() if y in gentype.value])}")
+def _(by, gentype, mo, types):
+    if by.value == "gen":
+        _NL = '\n\n'
+        _legend = mo.md(f"*Generator type legend*:{_NL}{_NL.join([f'* {x}: {y}' for x,y in types.items() if y in gentype.value])}")
+    else:
+        _legend = None
+    _legend
     return
 
 
@@ -145,10 +149,16 @@ def _():
     import pandas as pd
     import plotly.express as px
     import matplotlib.pyplot as plt
+    mo.stop(not "GLD_ETC" in os.environ, mo.md("ERROR [check_powerplants.py]: not running in a gridlabd container/environment"))
     import gridlabd.census as census
     sys.path.append("../data")
     import utils
     return census, mo, os, pd, plt, px, sys, utils
+
+
+@app.cell
+def _():
+    return
 
 
 if __name__ == "__main__":

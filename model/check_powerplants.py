@@ -96,11 +96,11 @@ def _(gendata, gentype, px):
         lon="longitude",
         size="cap",
         color="units",
-        zoom=4,
+        zoom=4.2,
         hover_name=[f"{x} {y}" for x,y in _data[["county","state"]].values],
         hover_data={"latitude":False,"longitude":False},
         width = 800,height = 800,
-        center = {"lat":39,"lon":-112},
+        center = {"lat":41,"lon":-114},
     )
     fig
     return (fig,)

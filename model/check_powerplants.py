@@ -85,9 +85,8 @@ def _(mo):
 def _(gendata, gentype, px):
     _data = (
         gendata[gendata.gen.isin(gentype.value)]
-        .groupby(["bus", "latitude", "longitude", "county","state"])
+        .groupby(["latitude", "longitude", "county","state"])
         .sum()[["cap", "cf", "units"]]
-        .round(1)
         .reset_index()
     )
     fig = px.scatter_map(
@@ -98,7 +97,7 @@ def _(gendata, gentype, px):
         color="units",
         zoom=4.2,
         hover_name=[f"{x} {y}" for x,y in _data[["county","state"]].values],
-        hover_data={"latitude":False,"longitude":False},
+        hover_data={"latitude":False,"longitude":False,"cap":True,"units":True},
         width = 800,height = 800,
         center = {"lat":41,"lon":-114},
     )

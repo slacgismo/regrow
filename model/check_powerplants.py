@@ -76,7 +76,6 @@ def _(gendata, gentype, px):
     _data = gendata[gendata.gen.isin(gentype.value)].groupby(["bus","latitude","longitude","county"]).sum()[["cap","cf","units"]].round(1).reset_index()
     fig = px.scatter_map(_data,lat="latitude",lon="longitude",size="cap",color="units",zoom=3,hover_name="county")
     fig
-
     return (fig,)
 
 
@@ -99,8 +98,8 @@ def _(by, mo):
 
 
 @app.cell
-def _(by, gendata):
-    gendata.groupby(by.value).sum().round(1)[["cap","cf","units"]]
+def _(by, gendata, gentype):
+    gendata[gendata.gen.isin(gentype.value)].groupby(by.value).sum().round(1)[["cap","cf","units"]]
     return
 
 

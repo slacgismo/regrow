@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.10.17"
+__generated_with = "0.11.18"
 app = marimo.App(width="medium")
 
 
@@ -60,7 +60,6 @@ def _(COUNTY, pd, utils):
             "latitude": 49.5,
             "longitude": -122.5,
         },index=[len(gendata)])])
-    print(gendata)
     return (gendata,)
 
 

@@ -28,6 +28,9 @@ sys.path.append("../data")
 import utils
 import pandas as pd
 
+pd.options.display.width = None
+pd.options.display.max_columns = None
+
 # Options for generating data
 STATUS_TO_INCLUDE = ["ONLINE"] # powerplant statuses to include
 
@@ -48,6 +51,8 @@ plants = []
 nodelist = {}
 with open("powerplants_split.csv","w") as fh:
     n = 0
+
+    # gather non-renewable facilities
     for name,properties in [(x,y) for x,y in objects.items() if y["class"] == "powerplant"]:
         n += 1
         try:
@@ -63,14 +68,22 @@ with open("powerplants_split.csv","w") as fh:
             lon = float(objects[node]["longitude"])
             geo = utils.geohash(lat,lon)
             nodelist[geo] = node
-            for gentype in gen.split("|"):
+            types = [x for x in gen.split("|") if x not in ["PV"]] # ignore PV and WT facilities (add later)
+            for gentype in types:
                 if gentype == "UNKNOWN":
                     gentype = unknowns.loc[name].gentype
-                plants.append([name,node,geo,gentype,cap,0,1])
+                plants.append([name,node,geo,gentype,round(cap/len(types),1),0,1])
         except:
             e_type,e_value,e_trace = sys.exc_info()
             print(f"ERROR [{name}]: {e_type.__name__} {e_value}",file=sys.stderr)
     print("INFO:",f"{n} powerplants found with status {'|'.join(STATUS_TO_INCLUDE)}")
+
+    # add PV facilities from USPVDB
+    pvgens = pd.read_csv("../data/uspvdb.csv").set_index("name")
+    print("INFO:",len(pvgens),"photovoltaic facilities added")
+    for name,row in pvgens.iterrows():
+        geo = utils.nearest(row["bus"],nodelist)
+        plants.append([name,nodelist[geo],geo,"PV",row["capacity[MW]"],0,1])
 
     # compute total capacities
     totals = {}

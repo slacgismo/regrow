@@ -162,20 +162,20 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Desert Green Solar Farm, LLC: cap=6.3, cf=0.004, units=1
-    // Genentech-Oceanside Hybrid: cap=4.5, cf=0.003, units=1
-    // Granger: cap=3.0, cf=0.002, units=1
-    // Jacumba Solar Farm: cap=20.0, cf=0.014, units=1
-    // Ocotillo Wells: cap=50.0, cf=0.035, units=1
-    // Ramona 1: cap=2.0, cf=0.001, units=1
-    // Ramona 2: cap=5.0, cf=0.004, units=1
-    // Ramona Solar Energy: cap=3.7, cf=0.003, units=1
-    // SDCWA-Twin Oaks: cap=1.1, cf=0.001, units=1
-    // Solar Borrego I: cap=26.0, cf=0.018, units=1
-    // Vallecitos Water District: cap=1.4, cf=0.001, units=1
-    // Valley Center: cap=2.3, cf=0.002, units=1
-    // Valley Center 1: cap=2.5, cf=0.002, units=1
-    // Valley Center 2: cap=5.0, cf=0.004, units=1
+    // Desert Green Solar Farm, LLC: cap=6.3, cf=0.0, units=1
+    // Genentech-Oceanside Hybrid: cap=4.5, cf=0.0, units=1
+    // Granger: cap=3.0, cf=0.0, units=1
+    // Jacumba Solar Farm: cap=20.0, cf=0.0, units=1
+    // Ocotillo Wells: cap=50.0, cf=0.0, units=1
+    // Ramona 1: cap=2.0, cf=0.0, units=1
+    // Ramona 2: cap=5.0, cf=0.0, units=1
+    // Ramona Solar Energy: cap=3.7, cf=0.0, units=1
+    // SDCWA-Twin Oaks: cap=1.1, cf=0.0, units=1
+    // Solar Borrego I: cap=26.0, cf=0.0, units=1
+    // Vallecitos Water District: cap=1.4, cf=0.0, units=1
+    // Valley Center: cap=2.3, cf=0.0, units=1
+    // Valley Center 1: cap=2.5, cf=0.0, units=1
+    // Valley Center 2: cap=5.0, cf=0.0, units=1
     name "wecc240_psse_G_2203_PV";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -207,9 +207,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Golden Acorn Casino: cap=1.85, cf=0.001, units=1
-    // Kumeyaay Phase I: cap=50.0, cf=0.025, units=25
-    // Tule: cap=131.1, cf=0.114, units=57
+    // Golden Acorn Casino: cap=1.85, cf=0.0, units=1
+    // Kumeyaay Phase I: cap=50.0, cf=0.0, units=25
+    // Tule: cap=131.1, cf=0.0, units=57
     name "wecc240_psse_G_2203_WT";
     parent "wecc240_psse_G_2203";
     latitude 32.79;
@@ -340,60 +340,60 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Adelanto Solar II, LLC: cap=7.0, cf=0.005, units=1
-    // Adelanto Solar Project: cap=10.0, cf=0.008, units=1
-    // Adelanto Solar, LLC: cap=20.0, cf=0.015, units=1
-    // Alamo Solar: cap=18.7, cf=0.014, units=1
-    // BCE Los Alamitos 1: cap=10.0, cf=0.008, units=1
-    // BCE Los Alamitos 2: cap=10.0, cf=0.008, units=1
-    // CA Institute for Women: cap=1.0, cf=0.001, units=1
-    // Cascade Solar: cap=18.5, cf=0.014, units=1
-    // Colton Solar One, LLC: cap=2.5, cf=0.002, units=1
-    // Colton Solar Two, LLC: cap=1.0, cf=0.001, units=1
-    // Coronus Adelanto West 1: cap=1.5, cf=0.001, units=1
-    // Coronus Adelanto West 2: cap=1.5, cf=0.001, units=1
-    // Crafton Hills College Solar Farm: cap=1.3, cf=0.001, units=1
-    // Expressway Solar A: cap=2.0, cf=0.002, units=1
-    // Expressway Solar B: cap=2.0, cf=0.002, units=1
-    // Expressway Solar C2: cap=1.5, cf=0.001, units=1
-    // Hudson-High Desert Hybrid: cap=100.0, cf=0.075, units=1
-    // Industry Solar Power Generation Station 1, LLC: cap=1.5, cf=0.001, units=1
-    // Lockhart Solar PV, LLC: cap=85.0, cf=0.064, units=1
-    // Lone Valley Solar Park I, LLC: cap=10.0, cf=0.008, units=1
-    // Lone Valley Solar Park II, LLC: cap=20.0, cf=0.015, units=1
-    // Longboat Solar, LLC: cap=20.0, cf=0.015, units=1
-    // Madelyn Solar, LLC: cap=1.0, cf=0.001, units=1
-    // Mitchell Solar, LLC: cap=1.5, cf=0.001, units=1
-    // Navajo Solar Power Generation Station 1, LLC: cap=1.5, cf=0.001, units=1
-    // Newberry Solar 1, LLC: cap=1.5, cf=0.001, units=1
-    // Nunn: cap=1.0, cf=0.001, units=1
-    // Otoe Solar Power Generation Station 1, LLC: cap=1.5, cf=0.001, units=1
-    // PVN Milliken, LLC: cap=3.0, cf=0.002, units=1
-    // Phelan Pinon Hills CSD Solar: cap=1.1, cf=0.001, units=1
-    // Powhatan Solar Power Generation Station 1, LLC: cap=1.5, cf=0.001, units=1
-    // RE Victor Phelan Solar One, LLC: cap=17.5, cf=0.013, units=1
-    // Rudy Solar, LLC: cap=1.5, cf=0.001, units=1
-    // SCE-Snowline-Duncan Road (North): cap=1.5, cf=0.001, units=1
-    // SCE-Snowline-Duncan Road (South): cap=1.0, cf=0.001, units=1
-    // SCE-Snowline-White Rd (Central): cap=1.5, cf=0.001, units=1
-    // SCE-Snowline-White Road (North): cap=1.5, cf=0.001, units=1
-    // SCE-Snowline-White Road (South): cap=1.5, cf=0.001, units=1
-    // SEPV 2: cap=2.0, cf=0.002, units=1
-    // SEPV 8: cap=12.0, cf=0.009, units=1
-    // SEPV9 Power Plant: cap=8.5, cf=0.006, units=1
-    // Sheep Creek Community Solar Farm: cap=3.0, cf=0.002, units=1
-    // Stateline Solar: cap=299.5, cf=0.226, units=1
-    // SunEdison Walmart Apple Valley DC: cap=0.9, cf=0.001, units=1
-    // Sunray 2: cap=20.0, cf=0.015, units=1
-    // Sunray 3: cap=13.8, cf=0.01, units=1
-    // Target Shafter: cap=3.0, cf=0.002, units=1
-    // Victor Dry Farm Ranch A: cap=5.0, cf=0.004, units=1
-    // Victor Dry Farm Ranch B: cap=5.0, cf=0.004, units=1
-    // Victor Mesa Linda B2: cap=1.6, cf=0.001, units=1
-    // Victor Mesa Linda C2: cap=1.6, cf=0.001, units=1
-    // Victor Mesa Linda D2: cap=1.6, cf=0.001, units=1
-    // Victor Valley CC CPV Solar: cap=1.0, cf=0.001, units=1
-    // Watts 3115: cap=2.0, cf=0.002, units=1
+    // Adelanto Solar II, LLC: cap=7.0, cf=0.0, units=1
+    // Adelanto Solar Project: cap=10.0, cf=0.0, units=1
+    // Adelanto Solar, LLC: cap=20.0, cf=0.0, units=1
+    // Alamo Solar: cap=18.7, cf=0.0, units=1
+    // BCE Los Alamitos 1: cap=10.0, cf=0.0, units=1
+    // BCE Los Alamitos 2: cap=10.0, cf=0.0, units=1
+    // CA Institute for Women: cap=1.0, cf=0.0, units=1
+    // Cascade Solar: cap=18.5, cf=0.0, units=1
+    // Colton Solar One, LLC: cap=2.5, cf=0.0, units=1
+    // Colton Solar Two, LLC: cap=1.0, cf=0.0, units=1
+    // Coronus Adelanto West 1: cap=1.5, cf=0.0, units=1
+    // Coronus Adelanto West 2: cap=1.5, cf=0.0, units=1
+    // Crafton Hills College Solar Farm: cap=1.3, cf=0.0, units=1
+    // Expressway Solar A: cap=2.0, cf=0.0, units=1
+    // Expressway Solar B: cap=2.0, cf=0.0, units=1
+    // Expressway Solar C2: cap=1.5, cf=0.0, units=1
+    // Hudson-High Desert Hybrid: cap=100.0, cf=0.0, units=1
+    // Industry Solar Power Generation Station 1, LLC: cap=1.5, cf=0.0, units=1
+    // Lockhart Solar PV, LLC: cap=85.0, cf=0.0, units=1
+    // Lone Valley Solar Park I, LLC: cap=10.0, cf=0.0, units=1
+    // Lone Valley Solar Park II, LLC: cap=20.0, cf=0.0, units=1
+    // Longboat Solar, LLC: cap=20.0, cf=0.0, units=1
+    // Madelyn Solar, LLC: cap=1.0, cf=0.0, units=1
+    // Mitchell Solar, LLC: cap=1.5, cf=0.0, units=1
+    // Navajo Solar Power Generation Station 1, LLC: cap=1.5, cf=0.0, units=1
+    // Newberry Solar 1, LLC: cap=1.5, cf=0.0, units=1
+    // Nunn: cap=1.0, cf=0.0, units=1
+    // Otoe Solar Power Generation Station 1, LLC: cap=1.5, cf=0.0, units=1
+    // PVN Milliken, LLC: cap=3.0, cf=0.0, units=1
+    // Phelan Pinon Hills CSD Solar: cap=1.1, cf=0.0, units=1
+    // Powhatan Solar Power Generation Station 1, LLC: cap=1.5, cf=0.0, units=1
+    // RE Victor Phelan Solar One, LLC: cap=17.5, cf=0.0, units=1
+    // Rudy Solar, LLC: cap=1.5, cf=0.0, units=1
+    // SCE-Snowline-Duncan Road (North): cap=1.5, cf=0.0, units=1
+    // SCE-Snowline-Duncan Road (South): cap=1.0, cf=0.0, units=1
+    // SCE-Snowline-White Rd (Central): cap=1.5, cf=0.0, units=1
+    // SCE-Snowline-White Road (North): cap=1.5, cf=0.0, units=1
+    // SCE-Snowline-White Road (South): cap=1.5, cf=0.0, units=1
+    // SEPV 2: cap=2.0, cf=0.0, units=1
+    // SEPV 8: cap=12.0, cf=0.0, units=1
+    // SEPV9 Power Plant: cap=8.5, cf=0.0, units=1
+    // Sheep Creek Community Solar Farm: cap=3.0, cf=0.0, units=1
+    // Stateline Solar: cap=299.5, cf=0.0, units=1
+    // SunEdison Walmart Apple Valley DC: cap=0.9, cf=0.0, units=1
+    // Sunray 2: cap=20.0, cf=0.0, units=1
+    // Sunray 3: cap=13.8, cf=0.0, units=1
+    // Target Shafter: cap=3.0, cf=0.0, units=1
+    // Victor Dry Farm Ranch A: cap=5.0, cf=0.0, units=1
+    // Victor Dry Farm Ranch B: cap=5.0, cf=0.0, units=1
+    // Victor Mesa Linda B2: cap=1.6, cf=0.0, units=1
+    // Victor Mesa Linda C2: cap=1.6, cf=0.0, units=1
+    // Victor Mesa Linda D2: cap=1.6, cf=0.0, units=1
+    // Victor Valley CC CPV Solar: cap=1.0, cf=0.0, units=1
+    // Watts 3115: cap=2.0, cf=0.0, units=1
     name "wecc240_psse_G_2610_PV";
     parent "wecc240_psse_G_2610";
     latitude 33.7;
@@ -427,11 +427,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Barstow Marine Logistics Base: cap=1.5, cf=0.001, units=1
-    // Cemex Black Mountain Quarry: cap=3.0, cf=0.002, units=2
-    // Cemex River Plant: cap=3.2, cf=0.002, units=2
-    // Inland Empire Utility Agency: cap=1.0, cf=0.001, units=1
-    // Victorville Wind Project: cap=0.75, cf=0.001, units=1
+    // Barstow Marine Logistics Base: cap=1.5, cf=0.0, units=1
+    // Cemex Black Mountain Quarry: cap=3.0, cf=0.0, units=2
+    // Cemex River Plant: cap=3.2, cf=0.0, units=2
+    // Inland Empire Utility Agency: cap=1.0, cf=0.0, units=1
+    // Victorville Wind Project: cap=0.75, cf=0.0, units=1
     name "wecc240_psse_G_2610_WT";
     parent "wecc240_psse_G_2610";
     latitude 33.7;
@@ -599,46 +599,46 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Agua Caliente Solar Project: cap=290.0, cf=0.071, units=1
-    // Arizona Western College PV: cap=5.7, cf=0.001, units=1
-    // Calipatria Solar Farm: cap=20.0, cf=0.005, units=1
-    // Calipatria State Prison: cap=6.0, cf=0.001, units=1
-    // Campo Verde Solar: cap=147.4, cf=0.036, units=1
-    // Centinela Solar Energy: cap=170.0, cf=0.042, units=1
-    // Centinela State Prison: cap=6.0, cf=0.001, units=1
-    // Citizens Imperial Solar: cap=30.0, cf=0.007, units=1
-    // Community Solar 1: cap=6.0, cf=0.001, units=1
+    // Agua Caliente Solar Project: cap=290.0, cf=0.0, units=1
+    // Arizona Western College PV: cap=5.7, cf=0.0, units=1
+    // Calipatria Solar Farm: cap=20.0, cf=0.0, units=1
+    // Calipatria State Prison: cap=6.0, cf=0.0, units=1
+    // Campo Verde Solar: cap=147.4, cf=0.0, units=1
+    // Centinela Solar Energy: cap=170.0, cf=0.0, units=1
+    // Centinela State Prison: cap=6.0, cf=0.0, units=1
+    // Citizens Imperial Solar: cap=30.0, cf=0.0, units=1
+    // Community Solar 1: cap=6.0, cf=0.0, units=1
     // Crown Cooling Facility: cap=1.0, cf=0.0, units=1
-    // Drew Solar LLC: cap=100.0, cf=0.025, units=1
-    // Foothills Solar Plant Hybrid: cap=37.44, cf=0.009, units=1
-    // Heber Solar: cap=10.0, cf=0.002, units=1
-    // Hyder II Hybrid: cap=14.0, cf=0.003, units=1
-    // Hyder Solar Hybrid: cap=16.0, cf=0.004, units=1
-    // IVC Solar: cap=3.0, cf=0.001, units=1
-    // Imperial Solar Energy Center South: cap=130.0, cf=0.032, units=1
-    // Imperial Solar Energy Center West: cap=148.7, cf=0.037, units=1
-    // Imperial Valley Solar Co (IVSC) 2, LLC: cap=20.01, cf=0.005, units=1
-    // Imperial Valley Solar Company 1, LLC: cap=23.0, cf=0.006, units=1
-    // Imperial Valley Solar, LLC: cap=206.72, cf=0.051, units=1
-    // Midway Solar Farm I: cap=50.0, cf=0.012, units=1
-    // Midway Solar Farm II: cap=30.0, cf=0.007, units=1
-    // Midway Solar Farm III: cap=20.0, cf=0.005, units=1
-    // Mount Signal Solar Farm II: cap=153.5, cf=0.038, units=1
-    // Mount Signal Solar Farm V: cap=252.3, cf=0.062, units=1
+    // Drew Solar LLC: cap=100.0, cf=0.0, units=1
+    // Foothills Solar Plant Hybrid: cap=37.44, cf=0.0, units=1
+    // Heber Solar: cap=10.0, cf=0.0, units=1
+    // Hyder II Hybrid: cap=14.0, cf=0.0, units=1
+    // Hyder Solar Hybrid: cap=16.0, cf=0.0, units=1
+    // IVC Solar: cap=3.0, cf=0.0, units=1
+    // Imperial Solar Energy Center South: cap=130.0, cf=0.0, units=1
+    // Imperial Solar Energy Center West: cap=148.7, cf=0.0, units=1
+    // Imperial Valley Solar Co (IVSC) 2, LLC: cap=20.01, cf=0.0, units=1
+    // Imperial Valley Solar Company 1, LLC: cap=23.0, cf=0.0, units=1
+    // Imperial Valley Solar, LLC: cap=206.72, cf=0.0, units=1
+    // Midway Solar Farm I: cap=50.0, cf=0.0, units=1
+    // Midway Solar Farm II: cap=30.0, cf=0.0, units=1
+    // Midway Solar Farm III: cap=20.0, cf=0.0, units=1
+    // Mount Signal Solar Farm II: cap=153.5, cf=0.0, units=1
+    // Mount Signal Solar Farm V: cap=252.3, cf=0.0, units=1
     // SEPV Imperial Dixieland East: cap=1.9, cf=0.0, units=1
-    // SEPV Imperial Dixieland West: cap=2.9, cf=0.001, units=1
-    // Seville 1: cap=20.0, cf=0.005, units=1
-    // Seville 2: cap=30.0, cf=0.007, units=1
-    // Sol Orchard El Centro PV: cap=20.0, cf=0.005, units=1
-    // Solar Gen 2 Solar Facility: cap=155.1, cf=0.038, units=1
-    // Titan Solar 1 (CA): cap=75.0, cf=0.018, units=1
+    // SEPV Imperial Dixieland West: cap=2.9, cf=0.0, units=1
+    // Seville 1: cap=20.0, cf=0.0, units=1
+    // Seville 2: cap=30.0, cf=0.0, units=1
+    // Sol Orchard El Centro PV: cap=20.0, cf=0.0, units=1
+    // Solar Gen 2 Solar Facility: cap=155.1, cf=0.0, units=1
+    // Titan Solar 1 (CA): cap=75.0, cf=0.0, units=1
     // USG 1: cap=1.0, cf=0.0, units=1
     // USG 2: cap=1.0, cf=0.0, units=1
-    // Valencia 1 Solar CA: cap=3.0, cf=0.001, units=1
-    // Valencia 2: cap=3.0, cf=0.001, units=1
-    // Valencia 3: cap=3.0, cf=0.001, units=1
-    // Wistaria Ranch Solar: cap=100.0, cf=0.025, units=1
-    // Wister Solar: cap=20.0, cf=0.005, units=1
+    // Valencia 1 Solar CA: cap=3.0, cf=0.0, units=1
+    // Valencia 2: cap=3.0, cf=0.0, units=1
+    // Valencia 3: cap=3.0, cf=0.0, units=1
+    // Wistaria Ranch Solar: cap=100.0, cf=0.0, units=1
+    // Wister Solar: cap=20.0, cf=0.0, units=1
     name "wecc240_psse_G_2100_PV";
     parent "wecc240_psse_G_2100";
     latitude 32.97;
@@ -684,7 +684,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Ocotillo Wind I: cap=264.18, cf=0.112, units=112
+    // Ocotillo Wind I: cap=264.18, cf=0.0, units=112
     name "wecc240_psse_G_2100_WT";
     parent "wecc240_psse_G_2100";
     latitude 32.97;
@@ -804,7 +804,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Redwood Coast Airport Microgrid: cap=1.8, cf=0.009, units=1
+    // Redwood Coast Airport Microgrid: cap=1.8, cf=0.0, units=1
     name "wecc240_psse_G_3601_PV";
     parent "wecc240_psse_G_3601";
     latitude 40.8;
@@ -1334,84 +1334,84 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // AV Solar Ranch One: cap=241.5, cf=0.134, units=1
-    // AVS Lancaster 1: cap=3.7, cf=0.002, units=1
-    // Alpine Solar: cap=66.0, cf=0.037, units=1
-    // Antelope Big Sky Ranch: cap=20.0, cf=0.011, units=1
-    // Antelope DSR 1: cap=50.0, cf=0.028, units=1
-    // Antelope DSR 2: cap=5.0, cf=0.003, units=1
-    // Antelope DSR 3: cap=20.0, cf=0.011, units=1
-    // Antelope Expansion 1B: cap=17.0, cf=0.009, units=1
-    // Antelope Expansion 2: cap=105.0, cf=0.058, units=1
-    // Antelope Expansion 3A: cap=15.0, cf=0.008, units=1
-    // Antelope Expansion 3B: cap=5.0, cf=0.003, units=1
-    // Arrache 4006: cap=2.0, cf=0.001, units=1
-    // Arrache 4013: cap=1.5, cf=0.001, units=1
-    // Arrache 8083: cap=4.0, cf=0.002, units=1
-    // Bayshore Solar A, LLC: cap=20.0, cf=0.011, units=1
-    // Bayshore Solar B, LLC: cap=20.0, cf=0.011, units=1
-    // Bayshore Solar C, LLC: cap=20.0, cf=0.011, units=1
-    // Bolthouse S&P and Rowen Farms Solar: cap=1.2, cf=0.001, units=1
-    // CSP Los Angeles: cap=2.3, cf=0.001, units=1
-    // Castaic Lake Phase II: cap=3.5, cf=0.002, units=1
-    // Central Antelope Dry Ranch B, LLC: cap=3.0, cf=0.002, units=1
-    // Central Antelope Dry Ranch C: cap=20.0, cf=0.011, units=1
-    // Division 1: cap=1.5, cf=0.001, units=1
-    // Division 2: cap=1.0, cf=0.001, units=1
-    // Elevation Solar C: cap=40.0, cf=0.022, units=1
-    // Green Beanworks B PV: cap=3.0, cf=0.002, units=1
-    // Green Beanworks C PV: cap=3.0, cf=0.002, units=1
-    // Green Beanworks D PV: cap=3.0, cf=0.002, units=1
-    // Heliocentric: cap=1.3, cf=0.001, units=1
-    // Horn: cap=1.5, cf=0.001, units=1
-    // Irwindale Brew Yard, LLC: cap=2.5, cf=0.001, units=1
-    // Kettering Solar 1: cap=1.0, cf=0.001, units=1
-    // Kettering Solar 2: cap=1.0, cf=0.001, units=1
-    // L-8 Solar Project: cap=1.3, cf=0.001, units=1
-    // Lancaster: cap=3.0, cf=0.002, units=1
-    // Lancaster Baptist Church: cap=1.0, cf=0.001, units=1
-    // Lancaster Dry Farm Ranch B: cap=5.0, cf=0.003, units=1
-    // Lancaster Little Rock: cap=5.0, cf=0.003, units=1
-    // Lancaster WAD B: cap=3.0, cf=0.002, units=1
-    // Las Virgenes: cap=3.0, cf=0.002, units=1
-    // Las Virgenes Municipal Water District: cap=1.0, cf=0.001, units=1
-    // Little Rock Pham Solar: cap=3.0, cf=0.002, units=1
-    // Ma: cap=1.5, cf=0.001, units=1
-    // Maclay Solar Project: cap=2.2, cf=0.001, units=1
-    // Morgan Lancaster 1: cap=1.5, cf=0.001, units=1
-    // North Lancaster Ranch: cap=20.0, cf=0.011, units=1
-    // Occidental College Solar Project: cap=1.0, cf=0.001, units=1
-    // One Ten Partners PV: cap=2.0, cf=0.001, units=1
-    // Portal Ridge Solar B, LLC: cap=20.0, cf=0.011, units=1
-    // Portal Ridge Solar C, LLC: cap=11.4, cf=0.006, units=1
-    // Radiance Solar 4: cap=1.5, cf=0.001, units=1
-    // Radiance Solar 5: cap=1.5, cf=0.001, units=1
-    // Rodeo Solar C2: cap=1.5, cf=0.001, units=1
-    // Rodeo Solar D2: cap=1.5, cf=0.001, units=1
-    // Rutan: cap=4.0, cf=0.002, units=1
-    // SEPV 1: cap=2.0, cf=0.001, units=1
-    // SEPV 18: cap=2.0, cf=0.001, units=1
-    // SEPV Palmdale East: cap=9.98, cf=0.006, units=1
-    // San Pablo Raceway: cap=100.0, cf=0.056, units=1
-    // Sierra Solar Greenworks: cap=20.0, cf=0.011, units=1
-    // Solar Oasis, LLC: cap=20.0, cf=0.011, units=1
-    // Solar Star 1: cap=314.4, cf=0.175, units=1
-    // Solar Star California, XLIV, LLC: cap=9.5, cf=0.005, units=1
-    // Solverde 1: cap=85.0, cf=0.047, units=1
-    // Summer North Solar: cap=6.49, cf=0.004, units=1
-    // Summer Solar A2: cap=1.5, cf=0.001, units=1
-    // Summer Solar B2: cap=1.5, cf=0.001, units=1
-    // Summer Solar C2: cap=1.5, cf=0.001, units=1
-    // Summer Solar D2: cap=1.0, cf=0.001, units=1
-    // Summer Solar, LLC: cap=20.0, cf=0.011, units=1
-    // TA-Acacia, LLC: cap=19.7, cf=0.011, units=1
-    // TA-High Desert, LLC: cap=20.0, cf=0.011, units=1
-    // US-TOPCO (Soccer Center): cap=3.0, cf=0.002, units=1
-    // Vinam: cap=1.5, cf=0.001, units=1
-    // Western Antelope Blue Sky B: cap=20.0, cf=0.011, units=1
-    // Western Antelope Blue Sky Ranch A: cap=19.95, cf=0.011, units=1
-    // Western Antelope Dry Ranch: cap=10.0, cf=0.006, units=1
-    // Weymouth Solar Plant: cap=3.0, cf=0.002, units=1
+    // AV Solar Ranch One: cap=241.5, cf=0.0, units=1
+    // AVS Lancaster 1: cap=3.7, cf=0.0, units=1
+    // Alpine Solar: cap=66.0, cf=0.0, units=1
+    // Antelope Big Sky Ranch: cap=20.0, cf=0.0, units=1
+    // Antelope DSR 1: cap=50.0, cf=0.0, units=1
+    // Antelope DSR 2: cap=5.0, cf=0.0, units=1
+    // Antelope DSR 3: cap=20.0, cf=0.0, units=1
+    // Antelope Expansion 1B: cap=17.0, cf=0.0, units=1
+    // Antelope Expansion 2: cap=105.0, cf=0.0, units=1
+    // Antelope Expansion 3A: cap=15.0, cf=0.0, units=1
+    // Antelope Expansion 3B: cap=5.0, cf=0.0, units=1
+    // Arrache 4006: cap=2.0, cf=0.0, units=1
+    // Arrache 4013: cap=1.5, cf=0.0, units=1
+    // Arrache 8083: cap=4.0, cf=0.0, units=1
+    // Bayshore Solar A, LLC: cap=20.0, cf=0.0, units=1
+    // Bayshore Solar B, LLC: cap=20.0, cf=0.0, units=1
+    // Bayshore Solar C, LLC: cap=20.0, cf=0.0, units=1
+    // Bolthouse S&P and Rowen Farms Solar: cap=1.2, cf=0.0, units=1
+    // CSP Los Angeles: cap=2.3, cf=0.0, units=1
+    // Castaic Lake Phase II: cap=3.5, cf=0.0, units=1
+    // Central Antelope Dry Ranch B, LLC: cap=3.0, cf=0.0, units=1
+    // Central Antelope Dry Ranch C: cap=20.0, cf=0.0, units=1
+    // Division 1: cap=1.5, cf=0.0, units=1
+    // Division 2: cap=1.0, cf=0.0, units=1
+    // Elevation Solar C: cap=40.0, cf=0.0, units=1
+    // Green Beanworks B PV: cap=3.0, cf=0.0, units=1
+    // Green Beanworks C PV: cap=3.0, cf=0.0, units=1
+    // Green Beanworks D PV: cap=3.0, cf=0.0, units=1
+    // Heliocentric: cap=1.3, cf=0.0, units=1
+    // Horn: cap=1.5, cf=0.0, units=1
+    // Irwindale Brew Yard, LLC: cap=2.5, cf=0.0, units=1
+    // Kettering Solar 1: cap=1.0, cf=0.0, units=1
+    // Kettering Solar 2: cap=1.0, cf=0.0, units=1
+    // L-8 Solar Project: cap=1.3, cf=0.0, units=1
+    // Lancaster: cap=3.0, cf=0.0, units=1
+    // Lancaster Baptist Church: cap=1.0, cf=0.0, units=1
+    // Lancaster Dry Farm Ranch B: cap=5.0, cf=0.0, units=1
+    // Lancaster Little Rock: cap=5.0, cf=0.0, units=1
+    // Lancaster WAD B: cap=3.0, cf=0.0, units=1
+    // Las Virgenes: cap=3.0, cf=0.0, units=1
+    // Las Virgenes Municipal Water District: cap=1.0, cf=0.0, units=1
+    // Little Rock Pham Solar: cap=3.0, cf=0.0, units=1
+    // Ma: cap=1.5, cf=0.0, units=1
+    // Maclay Solar Project: cap=2.2, cf=0.0, units=1
+    // Morgan Lancaster 1: cap=1.5, cf=0.0, units=1
+    // North Lancaster Ranch: cap=20.0, cf=0.0, units=1
+    // Occidental College Solar Project: cap=1.0, cf=0.0, units=1
+    // One Ten Partners PV: cap=2.0, cf=0.0, units=1
+    // Portal Ridge Solar B, LLC: cap=20.0, cf=0.0, units=1
+    // Portal Ridge Solar C, LLC: cap=11.4, cf=0.0, units=1
+    // Radiance Solar 4: cap=1.5, cf=0.0, units=1
+    // Radiance Solar 5: cap=1.5, cf=0.0, units=1
+    // Rodeo Solar C2: cap=1.5, cf=0.0, units=1
+    // Rodeo Solar D2: cap=1.5, cf=0.0, units=1
+    // Rutan: cap=4.0, cf=0.0, units=1
+    // SEPV 1: cap=2.0, cf=0.0, units=1
+    // SEPV 18: cap=2.0, cf=0.0, units=1
+    // SEPV Palmdale East: cap=9.98, cf=0.0, units=1
+    // San Pablo Raceway: cap=100.0, cf=0.0, units=1
+    // Sierra Solar Greenworks: cap=20.0, cf=0.0, units=1
+    // Solar Oasis, LLC: cap=20.0, cf=0.0, units=1
+    // Solar Star 1: cap=314.4, cf=0.0, units=1
+    // Solar Star California, XLIV, LLC: cap=9.5, cf=0.0, units=1
+    // Solverde 1: cap=85.0, cf=0.0, units=1
+    // Summer North Solar: cap=6.49, cf=0.0, units=1
+    // Summer Solar A2: cap=1.5, cf=0.0, units=1
+    // Summer Solar B2: cap=1.5, cf=0.0, units=1
+    // Summer Solar C2: cap=1.5, cf=0.0, units=1
+    // Summer Solar D2: cap=1.0, cf=0.0, units=1
+    // Summer Solar, LLC: cap=20.0, cf=0.0, units=1
+    // TA-Acacia, LLC: cap=19.7, cf=0.0, units=1
+    // TA-High Desert, LLC: cap=20.0, cf=0.0, units=1
+    // US-TOPCO (Soccer Center): cap=3.0, cf=0.0, units=1
+    // Vinam: cap=1.5, cf=0.0, units=1
+    // Western Antelope Blue Sky B: cap=20.0, cf=0.0, units=1
+    // Western Antelope Blue Sky Ranch A: cap=19.95, cf=0.0, units=1
+    // Western Antelope Dry Ranch: cap=10.0, cf=0.0, units=1
+    // Weymouth Solar Plant: cap=3.0, cf=0.0, units=1
     name "wecc240_psse_G_2609_PV";
     parent "wecc240_psse_G_2609";
     latitude 34.15;
@@ -1443,8 +1443,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // California State Prison Los Angeles County: cap=1.85, cf=0.001, units=1
-    // Lake Palmdale: cap=0.95, cf=0.001, units=1
+    // California State Prison Los Angeles County: cap=1.85, cf=0.0, units=1
+    // Lake Palmdale: cap=0.95, cf=0.0, units=1
     // San Clemente Island: cap=0.675, cf=0.0, units=3
     name "wecc240_psse_G_2609_WT";
     parent "wecc240_psse_G_2609";
@@ -1560,7 +1560,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // California State Univ at Channel Islands: cap=3.7, cf=0.001, units=1
+    // California State Univ at Channel Islands: cap=3.7, cf=0.0, units=1
     name "wecc240_psse_G_2608_PV";
     parent "wecc240_psse_G_2608";
     latitude 34.59;
@@ -1708,13 +1708,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Atascadero State Hospital: cap=1.1, cf=0.001, units=1
-    // CA-DGS-California Men's Colony: cap=2.2, cf=0.002, units=1
-    // California Valley Solar Ranch: cap=250.0, cf=0.282, units=1
-    // Firestone Walker Brewery-Phase 1: cap=1.6, cf=0.002, units=1
-    // Stenner Creek Solar: cap=4.5, cf=0.005, units=1
-    // Topaz Solar Farm: cap=585.9, cf=0.662, units=1
-    // Vintner Solar: cap=1.5, cf=0.002, units=1
+    // Atascadero State Hospital: cap=1.1, cf=0.0, units=1
+    // CA-DGS-California Men's Colony: cap=2.2, cf=0.0, units=1
+    // California Valley Solar Ranch: cap=250.0, cf=0.0, units=1
+    // Firestone Walker Brewery-Phase 1: cap=1.6, cf=0.0, units=1
+    // Stenner Creek Solar: cap=4.5, cf=0.0, units=1
+    // Topaz Solar Farm: cap=585.9, cf=0.0, units=1
+    // Vintner Solar: cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_3806_PV";
     parent "wecc240_psse_G_3806";
     latitude 35.38;
@@ -1852,102 +1852,102 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Adobe Solar: cap=19.57, cf=0.002, units=1
-    // Algonquin SKIC 10 Solar, LLC: cap=10.0, cf=0.001, units=1
-    // Algonquin SKIC 20 Solar, LLC: cap=22.0, cf=0.002, units=1
+    // Adobe Solar: cap=19.57, cf=0.0, units=1
+    // Algonquin SKIC 10 Solar, LLC: cap=10.0, cf=0.0, units=1
+    // Algonquin SKIC 20 Solar, LLC: cap=22.0, cf=0.0, units=1
     // Bakersfield 111: cap=1.4, cf=0.0, units=1
     // Bakersfield Industrial PV 1: cap=1.0, cf=0.0, units=1
     // Bakersfield PV 1: cap=5.25, cf=0.0, units=1
-    // Beacon Solar Plant Site 2: cap=45.0, cf=0.004, units=1
-    // Beacon Solar Plant Site 5: cap=36.0, cf=0.003, units=1
-    // Berrenda Mesa Water District: cap=6.4, cf=0.001, units=1
-    // BigBeau Solar, LLC: cap=128.0, cf=0.011, units=1
-    // Blackwell Solar Park: cap=20.0, cf=0.002, units=1
+    // Beacon Solar Plant Site 2: cap=45.0, cf=0.0, units=1
+    // Beacon Solar Plant Site 5: cap=36.0, cf=0.0, units=1
+    // Berrenda Mesa Water District: cap=6.4, cf=0.0, units=1
+    // BigBeau Solar, LLC: cap=128.0, cf=0.0, units=1
+    // Blackwell Solar Park: cap=20.0, cf=0.0, units=1
     // CDCR (CA)-Wasco State Prison: cap=1.5, cf=0.0, units=1
     // Cal City Solar 1: cap=3.0, cf=0.0, units=1
     // Calibrant Bakersfield, LLC: cap=1.3, cf=0.0, units=1
     // California City: cap=1.9, cf=0.0, units=1
     // Castor Solar: cap=1.5, cf=0.0, units=1
-    // Catalina Solar 2, LLC: cap=18.4, cf=0.002, units=1
-    // Catalina Solar, LLC: cap=110.0, cf=0.01, units=1
-    // Chevron-Lost Hills Hybrid: cap=29.0, cf=0.003, units=1
+    // Catalina Solar 2, LLC: cap=18.4, cf=0.0, units=1
+    // Catalina Solar, LLC: cap=110.0, cf=0.0, units=1
+    // Chevron-Lost Hills Hybrid: cap=29.0, cf=0.0, units=1
     // City of Rosamond (CA): cap=1.0, cf=0.0, units=1
-    // Coronal Lost Hills: cap=20.0, cf=0.002, units=1
-    // Cottonwood Solar, LLC (Goose Lake): cap=12.0, cf=0.001, units=1
-    // Cuyama Solar, LLC: cap=40.0, cf=0.004, units=1
+    // Coronal Lost Hills: cap=20.0, cf=0.0, units=1
+    // Cottonwood Solar, LLC (Goose Lake): cap=12.0, cf=0.0, units=1
+    // Cuyama Solar, LLC: cap=40.0, cf=0.0, units=1
     // Delano Land 1: cap=1.0, cf=0.0, units=1
     // EAFB-North Base: cap=1.1, cf=0.0, units=1
     // Eagle Creek: cap=3.0, cf=0.0, units=1
     // Edwards Air Force Base: cap=3.0, cf=0.0, units=1
-    // Edwards Sanborn E1A: cap=149.3, cf=0.013, units=1
-    // Edwards Sanborn E2: cap=137.8, cf=0.012, units=1
-    // Edwards Sanborn E3: cap=27.4, cf=0.002, units=1
-    // Edwards Sanborn S1: cap=44.6, cf=0.004, units=1
-    // Edwards Sanborn S3: cap=37.7, cf=0.003, units=1
-    // Edwards Sanborn S4: cap=41.2, cf=0.004, units=1
-    // Gaskell West 1 Solar Facility: cap=20.0, cf=0.002, units=1
-    // Golden Field Solar III, LLC: cap=192.0, cf=0.017, units=1
-    // Golden Fields Solar I, LLC: cap=54.0, cf=0.005, units=1
-    // Hayworth Solar: cap=26.66, cf=0.002, units=1
-    // Hecate Energy Beacon Solar 1: cap=56.0, cf=0.005, units=1
-    // Hecate Energy Beacon Solar 3: cap=56.0, cf=0.005, units=1
-    // Hecate Energy Beacon Solar 4: cap=50.0, cf=0.004, units=1
+    // Edwards Sanborn E1A: cap=149.3, cf=0.0, units=1
+    // Edwards Sanborn E2: cap=137.8, cf=0.0, units=1
+    // Edwards Sanborn E3: cap=27.4, cf=0.0, units=1
+    // Edwards Sanborn S1: cap=44.6, cf=0.0, units=1
+    // Edwards Sanborn S3: cap=37.7, cf=0.0, units=1
+    // Edwards Sanborn S4: cap=41.2, cf=0.0, units=1
+    // Gaskell West 1 Solar Facility: cap=20.0, cf=0.0, units=1
+    // Golden Field Solar III, LLC: cap=192.0, cf=0.0, units=1
+    // Golden Fields Solar I, LLC: cap=54.0, cf=0.0, units=1
+    // Hayworth Solar: cap=26.66, cf=0.0, units=1
+    // Hecate Energy Beacon Solar 1: cap=56.0, cf=0.0, units=1
+    // Hecate Energy Beacon Solar 3: cap=56.0, cf=0.0, units=1
+    // Hecate Energy Beacon Solar 4: cap=50.0, cf=0.0, units=1
     // Improvement Dst No. 4: cap=1.1, cf=0.0, units=1
     // Kern Valley SP: cap=3.0, cf=0.0, units=1
-    // Kingbird A Solar, LLC: cap=20.0, cf=0.002, units=1
-    // Kingbird B Solar, LLC: cap=20.0, cf=0.002, units=1
-    // Lost Hills/Blackwell: cap=32.0, cf=0.003, units=1
-    // Maricopa West Solar PV, LLC: cap=20.0, cf=0.002, units=1
-    // Morelos del Sol: cap=15.0, cf=0.001, units=1
-    // Naval Air Weapons Station China Lake: cap=11.12, cf=0.001, units=1
+    // Kingbird A Solar, LLC: cap=20.0, cf=0.0, units=1
+    // Kingbird B Solar, LLC: cap=20.0, cf=0.0, units=1
+    // Lost Hills/Blackwell: cap=32.0, cf=0.0, units=1
+    // Maricopa West Solar PV, LLC: cap=20.0, cf=0.0, units=1
+    // Morelos del Sol: cap=15.0, cf=0.0, units=1
+    // Naval Air Weapons Station China Lake: cap=11.12, cf=0.0, units=1
     // Nickel 1 Solar Facility: cap=1.5, cf=0.0, units=1
     // North Kern State Prison Phase II: cap=4.0, cf=0.0, units=1
-    // North Rosamond Solar, LLC: cap=150.0, cf=0.013, units=1
-    // Orion Solar I: cap=12.0, cf=0.001, units=1
-    // Orion Solar II: cap=8.0, cf=0.001, units=1
-    // Pine Tree Solar Project: cap=8.5, cf=0.001, units=1
-    // Pumpjack Solar I: cap=20.0, cf=0.002, units=1
-    // RE Astoria: cap=100.0, cf=0.009, units=1
-    // RE Astoria 2: cap=75.0, cf=0.007, units=1
-    // RE Barren Ridge 1: cap=62.0, cf=0.006, units=1
-    // RE Camelot, LLC: cap=45.0, cf=0.004, units=1
-    // RE Columbia 3, LLC: cap=10.0, cf=0.001, units=1
-    // RE Columbia Two, LLC: cap=15.0, cf=0.001, units=1
-    // RE Garland: cap=180.0, cf=0.016, units=1
-    // RE Garland A: cap=20.0, cf=0.002, units=1
-    // RE Gaskell West 2, LLC: cap=45.0, cf=0.004, units=1
-    // RE Gaskell West 3, LLC: cap=20.0, cf=0.002, units=1
-    // RE Gaskell West 4, LLC: cap=20.0, cf=0.002, units=1
-    // RE Gaskell West 5, LLC: cap=20.0, cf=0.002, units=1
-    // RE Old River One, LLC: cap=19.65, cf=0.002, units=1
+    // North Rosamond Solar, LLC: cap=150.0, cf=0.0, units=1
+    // Orion Solar I: cap=12.0, cf=0.0, units=1
+    // Orion Solar II: cap=8.0, cf=0.0, units=1
+    // Pine Tree Solar Project: cap=8.5, cf=0.0, units=1
+    // Pumpjack Solar I: cap=20.0, cf=0.0, units=1
+    // RE Astoria: cap=100.0, cf=0.0, units=1
+    // RE Astoria 2: cap=75.0, cf=0.0, units=1
+    // RE Barren Ridge 1: cap=62.0, cf=0.0, units=1
+    // RE Camelot, LLC: cap=45.0, cf=0.0, units=1
+    // RE Columbia 3, LLC: cap=10.0, cf=0.0, units=1
+    // RE Columbia Two, LLC: cap=15.0, cf=0.0, units=1
+    // RE Garland: cap=180.0, cf=0.0, units=1
+    // RE Garland A: cap=20.0, cf=0.0, units=1
+    // RE Gaskell West 2, LLC: cap=45.0, cf=0.0, units=1
+    // RE Gaskell West 3, LLC: cap=20.0, cf=0.0, units=1
+    // RE Gaskell West 4, LLC: cap=20.0, cf=0.0, units=1
+    // RE Gaskell West 5, LLC: cap=20.0, cf=0.0, units=1
+    // RE Old River One, LLC: cap=19.65, cf=0.0, units=1
     // RE Rio Grande Solar, LLC: cap=5.0, cf=0.0, units=1
-    // RE Rosamond One, LLC: cap=20.0, cf=0.002, units=1
-    // RE Rosamond Two, LLC: cap=20.0, cf=0.002, units=1
-    // Rabbitbrush Solar, LLC: cap=100.0, cf=0.009, units=1
-    // Redcrest Solar Farm: cap=16.66, cf=0.001, units=1
-    // Redwood 4 Solar Farm: cap=20.0, cf=0.002, units=1
-    // Regulus Solar Project: cap=60.0, cf=0.005, units=1
-    // Rio Bravo Solar 1, LLC: cap=19.5, cf=0.002, units=1
-    // Rio Bravo Solar II, LLC: cap=19.5, cf=0.002, units=1
-    // SEPV Mojave West: cap=20.0, cf=0.002, units=1
-    // Shafter Solar, LLC: cap=20.0, cf=0.002, units=1
-    // Solar Star 2: cap=279.5, cf=0.025, units=1
-    // Solar Star California, XLI, LLC: cap=54.0, cf=0.005, units=1
-    // Springbok 3 Solar Farm Hybrid: cap=90.0, cf=0.008, units=1
-    // Springbok Solar Farm 1: cap=105.0, cf=0.009, units=1
-    // Springbok Solar Farm 2: cap=155.0, cf=0.014, units=1
-    // Valentine Solar, LLC: cap=111.2, cf=0.01, units=1
-    // Vandenberg Solar Project: cap=20.6, cf=0.002, units=1
+    // RE Rosamond One, LLC: cap=20.0, cf=0.0, units=1
+    // RE Rosamond Two, LLC: cap=20.0, cf=0.0, units=1
+    // Rabbitbrush Solar, LLC: cap=100.0, cf=0.0, units=1
+    // Redcrest Solar Farm: cap=16.66, cf=0.0, units=1
+    // Redwood 4 Solar Farm: cap=20.0, cf=0.0, units=1
+    // Regulus Solar Project: cap=60.0, cf=0.0, units=1
+    // Rio Bravo Solar 1, LLC: cap=19.5, cf=0.0, units=1
+    // Rio Bravo Solar II, LLC: cap=19.5, cf=0.0, units=1
+    // SEPV Mojave West: cap=20.0, cf=0.0, units=1
+    // Shafter Solar, LLC: cap=20.0, cf=0.0, units=1
+    // Solar Star 2: cap=279.5, cf=0.0, units=1
+    // Solar Star California, XLI, LLC: cap=54.0, cf=0.0, units=1
+    // Springbok 3 Solar Farm Hybrid: cap=90.0, cf=0.0, units=1
+    // Springbok Solar Farm 1: cap=105.0, cf=0.0, units=1
+    // Springbok Solar Farm 2: cap=155.0, cf=0.0, units=1
+    // Valentine Solar, LLC: cap=111.2, cf=0.0, units=1
+    // Vandenberg Solar Project: cap=20.6, cf=0.0, units=1
     // Wheeler Ridge: cap=4.5, cf=0.0, units=1
-    // Wildwood Solar I, LLC: cap=20.0, cf=0.002, units=1
-    // Wildwood Solar II: cap=14.7, cf=0.001, units=1
-    // Willow Spring Solar, LLC: cap=100.0, cf=0.009, units=1
-    // Windhub Solar A, LLC: cap=20.0, cf=0.002, units=1
+    // Wildwood Solar I, LLC: cap=20.0, cf=0.0, units=1
+    // Wildwood Solar II: cap=14.7, cf=0.0, units=1
+    // Willow Spring Solar, LLC: cap=100.0, cf=0.0, units=1
+    // Windhub Solar A, LLC: cap=20.0, cf=0.0, units=1
     // Wonderful Huller & Shellling: cap=1.5, cf=0.0, units=1
-    // Wonderful Lost Hills: cap=16.7, cf=0.001, units=1
+    // Wonderful Lost Hills: cap=16.7, cf=0.0, units=1
     // Wonderful Orchards-Belridge: cap=5.0, cf=0.0, units=1
     // Wonderful Orchards-Westside: cap=5.0, cf=0.0, units=1
-    // Woodmere Solar Farm: cap=14.99, cf=0.001, units=1
+    // Woodmere Solar Farm: cap=14.99, cf=0.0, units=1
     name "wecc240_psse_G_3803_PV";
     parent "wecc240_psse_G_3803";
     latitude 35.41;
@@ -2071,7 +2071,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Sunset Reservoir North Basin: cap=4.5, cf=0.251, units=1
+    // Sunset Reservoir North Basin: cap=4.5, cf=0.0, units=1
     name "wecc240_psse_G_3105_PV";
     parent "wecc240_psse_G_3105";
     latitude 37.76;
@@ -2135,7 +2135,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Silveira Ranch Road Solar: cap=3.0, cf=0.007, units=1
+    // Silveira Ranch Road Solar: cap=3.0, cf=0.0, units=1
     name "wecc240_psse_G_3101_PV";
     parent "wecc240_psse_G_3101";
     latitude 37.79;
@@ -2168,7 +2168,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // McEvoy Ranch: cap=0.225, cf=0.001, units=1
+    // McEvoy Ranch: cap=0.225, cf=0.0, units=1
     name "wecc240_psse_G_3101_WT";
     parent "wecc240_psse_G_3101";
     latitude 37.79;
@@ -2233,14 +2233,14 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // CA Flats Solar 130, LLC: cap=130.0, cf=0.064, units=1
-    // CA Flats Solar 150, LLC: cap=150.0, cf=0.074, units=1
-    // D'Arrigo Brothers-Phase 4: cap=1.7, cf=0.001, units=1
-    // Enerparc CA1, LLC: cap=1.5, cf=0.001, units=1
-    // Graniterock Quarry: cap=4.4, cf=0.002, units=1
-    // Hollister Solar, LLC: cap=1.5, cf=0.001, units=1
+    // CA Flats Solar 130, LLC: cap=130.0, cf=0.0, units=1
+    // CA Flats Solar 150, LLC: cap=150.0, cf=0.0, units=1
+    // D'Arrigo Brothers-Phase 4: cap=1.7, cf=0.0, units=1
+    // Enerparc CA1, LLC: cap=1.5, cf=0.0, units=1
+    // Graniterock Quarry: cap=4.4, cf=0.0, units=1
+    // Hollister Solar, LLC: cap=1.5, cf=0.0, units=1
     // Monterey Regional Water Pollution Control Agency: cap=1.0, cf=0.0, units=1
-    // Panoche Valley Solar Farm: cap=140.0, cf=0.069, units=1
+    // Panoche Valley Solar Farm: cap=140.0, cf=0.0, units=1
     name "wecc240_psse_G_3902_PV";
     parent "wecc240_psse_G_3902";
     latitude 36.74;
@@ -2272,13 +2272,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // City of Soledad Water Reclamation Facility: cap=1.85, cf=0.001, units=1
-    // Correctional Training Facility: cap=1.7, cf=0.001, units=1
-    // Dole Fresh Vegetables: cap=5.64, cf=0.002, units=2
-    // Mann Packing: cap=1.7, cf=0.001, units=1
-    // Salinas Valley State Prison: cap=1.7, cf=0.001, units=1
-    // Scheid Vineyards: cap=1.85, cf=0.001, units=1
-    // Taylor Farms: cap=1.85, cf=0.001, units=1
+    // City of Soledad Water Reclamation Facility: cap=1.85, cf=0.0, units=1
+    // Correctional Training Facility: cap=1.7, cf=0.0, units=1
+    // Dole Fresh Vegetables: cap=5.64, cf=0.0, units=2
+    // Mann Packing: cap=1.7, cf=0.0, units=1
+    // Salinas Valley State Prison: cap=1.7, cf=0.0, units=1
+    // Scheid Vineyards: cap=1.85, cf=0.0, units=1
+    // Taylor Farms: cap=1.85, cf=0.0, units=1
     name "wecc240_psse_G_3902_WT";
     parent "wecc240_psse_G_3902";
     latitude 36.74;
@@ -2409,14 +2409,14 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // 2097 Helton Solar Project: cap=1.5, cf=0.001, units=1
-    // Merced 1 PV: cap=3.0, cf=0.003, units=1
-    // Merced Solar, LLC: cap=1.5, cf=0.001, units=1
-    // Mission Solar, LLC: cap=1.5, cf=0.001, units=1
-    // Quinto Solar PV Project: cap=105.1, cf=0.089, units=1
-    // Sun Harvest Solar NDP1: cap=1.5, cf=0.001, units=1
-    // Vega Solar: cap=20.0, cf=0.017, units=1
-    // Wright Solar Park: cap=200.0, cf=0.17, units=1
+    // 2097 Helton Solar Project: cap=1.5, cf=0.0, units=1
+    // Merced 1 PV: cap=3.0, cf=0.0, units=1
+    // Merced Solar, LLC: cap=1.5, cf=0.0, units=1
+    // Mission Solar, LLC: cap=1.5, cf=0.0, units=1
+    // Quinto Solar PV Project: cap=105.1, cf=0.0, units=1
+    // Sun Harvest Solar NDP1: cap=1.5, cf=0.0, units=1
+    // Vega Solar: cap=20.0, cf=0.0, units=1
+    // Wright Solar Park: cap=200.0, cf=0.0, units=1
     name "wecc240_psse_G_3901_PV";
     parent "wecc240_psse_G_3901";
     latitude 37.05;
@@ -2480,9 +2480,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Guadalupe Solar Farm: cap=1.7, cf=0.05, units=1
-    // Hellyer Solar Farm: cap=2.2, cf=0.065, units=1
-    // Malech Solar Farm: cap=3.1, cf=0.091, units=1
+    // Guadalupe Solar Farm: cap=1.7, cf=0.0, units=1
+    // Hellyer Solar Farm: cap=2.2, cf=0.0, units=1
+    // Malech Solar Farm: cap=3.1, cf=0.0, units=1
     name "wecc240_psse_G_3304_PV";
     parent "wecc240_psse_G_3304";
     latitude 37.32;
@@ -2628,8 +2628,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // City of Hayward WWTP: cap=1.6, cf=0.002, units=1
-    // Whitethorn Solar, LLC: cap=3.3, cf=0.004, units=1
+    // City of Hayward WWTP: cap=1.6, cf=0.0, units=1
+    // Whitethorn Solar, LLC: cap=3.3, cf=0.0, units=1
     name "wecc240_psse_G_3203_PV";
     parent "wecc240_psse_G_3203";
     latitude 37.5;
@@ -2661,13 +2661,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Diablo Winds: cap=20.46, cf=0.031, units=31
-    // Golden Hills: cap=81.6, cf=0.096, units=48
-    // Golden Hills North: cap=46.0, cf=0.06, units=20
+    // Diablo Winds: cap=20.46, cf=0.0, units=31
+    // Golden Hills: cap=81.6, cf=0.0, units=48
+    // Golden Hills North: cap=46.0, cf=0.0, units=20
     // Patterson Pass: cap=8.58, cf=0.0, units=132
     // Patterson Wind: cap=4.745, cf=0.0, units=73
-    // Summit Wind Repowering: cap=62.1, cf=0.069, units=23
-    // Vasco (repower): cap=2.3, cf=0.003, units=1
+    // Summit Wind Repowering: cap=62.1, cf=0.0, units=23
+    // Vasco (repower): cap=2.3, cf=0.0, units=1
     name "wecc240_psse_G_3203_WT";
     parent "wecc240_psse_G_3203";
     latitude 37.5;
@@ -2831,10 +2831,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Bear Creek Solar: cap=1.5, cf=0.003, units=1
-    // Foothill Sanitary Landfill-Solar Array: cap=3.5, cf=0.006, units=1
-    // Kettleman Solar Project: cap=1.0, cf=0.002, units=1
-    // Manteca Land PV: cap=1.0, cf=0.002, units=1
+    // Bear Creek Solar: cap=1.5, cf=0.0, units=1
+    // Foothill Sanitary Landfill-Solar Array: cap=3.5, cf=0.0, units=1
+    // Kettleman Solar Project: cap=1.0, cf=0.0, units=1
+    // Manteca Land PV: cap=1.0, cf=0.0, units=1
     name "wecc240_psse_G_8002_PV";
     parent "wecc240_psse_G_8002";
     latitude 37.75;
@@ -2866,8 +2866,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Safeway Tracy: cap=2.0, cf=0.004, units=2
-    // Teichert Aggregates: cap=1.5, cf=0.003, units=1
+    // Safeway Tracy: cap=2.0, cf=0.0, units=2
+    // Teichert Aggregates: cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_8002_WT";
     parent "wecc240_psse_G_8002";
     latitude 37.75;
@@ -2899,14 +2899,14 @@ object pypower.gen
 }
 object pypower.powerplant
 {
-    // American Canyon Solar: cap=3.0, cf=0.002, units=1
-    // Cloverdale Solar Center: cap=1.0, cf=0.001, units=1
-    // Cloverdale Solar I: cap=1.5, cf=0.001, units=1
-    // Dissigno Healdsburg FPV, LLC: cap=3.0, cf=0.002, units=1
-    // Lavio Solar: cap=1.0, cf=0.001, units=1
-    // Soscol Ferry Solar: cap=2.0, cf=0.001, units=1
+    // American Canyon Solar: cap=3.0, cf=0.0, units=1
+    // Cloverdale Solar Center: cap=1.0, cf=0.0, units=1
+    // Cloverdale Solar I: cap=1.5, cf=0.0, units=1
+    // Dissigno Healdsburg FPV, LLC: cap=3.0, cf=0.0, units=1
+    // Lavio Solar: cap=1.0, cf=0.0, units=1
+    // Soscol Ferry Solar: cap=2.0, cf=0.0, units=1
     // Stage Gulch Solar: cap=0.8, cf=0.0, units=1
-    // Windsor Floating Solar: cap=1.5, cf=0.001, units=1
+    // Windsor Floating Solar: cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_3501_PV";
     parent "wecc240_psse_G_3501";
     latitude 38.5;
@@ -2992,13 +2992,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Bio-Rad: cap=2.4, cf=0.006, units=1
-    // Byron Highway Solar: cap=5.0, cf=0.012, units=1
-    // CSD 2-Freedom High: cap=1.1, cf=0.003, units=1
-    // CSD 2-Heritage High: cap=1.3, cf=0.003, units=1
-    // California PV Energy at ISD WWTP: cap=1.0, cf=0.002, units=1
-    // Columbia Solar Energy, LLC: cap=19.2, cf=0.046, units=1
-    // Marin Clean Energy Solar One: cap=10.5, cf=0.025, units=1
+    // Bio-Rad: cap=2.4, cf=0.0, units=1
+    // Byron Highway Solar: cap=5.0, cf=0.0, units=1
+    // CSD 2-Freedom High: cap=1.1, cf=0.0, units=1
+    // CSD 2-Heritage High: cap=1.3, cf=0.0, units=1
+    // California PV Energy at ISD WWTP: cap=1.0, cf=0.0, units=1
+    // Columbia Solar Energy, LLC: cap=19.2, cf=0.0, units=1
+    // Marin Clean Energy Solar One: cap=10.5, cf=0.0, units=1
     name "wecc240_psse_G_3201_PV";
     parent "wecc240_psse_G_3201";
     latitude 37.98;
@@ -3030,8 +3030,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Buena Vista: cap=38.0, cf=0.076, units=38
-    // Vasco (repower): cap=75.89999999999999, cf=0.165, units=33
+    // Buena Vista: cap=38.0, cf=0.0, units=38
+    // Vasco (repower): cap=75.89999999999999, cf=0.0, units=33
     name "wecc240_psse_G_3201_WT";
     parent "wecc240_psse_G_3201";
     latitude 37.98;
@@ -3150,19 +3150,19 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // CDCR (CA)-Solano State Prison: cap=1.1, cf=0.001, units=1
-    // Genentech Vacaville Meter #1: cap=6.1, cf=0.005, units=1
-    // Grassland 1&2 Solar Project: cap=2.5, cf=0.002, units=1
-    // Grassland 3&4 Solar Project: cap=2.5, cf=0.002, units=1
-    // Lake Herman: cap=5.0, cf=0.004, units=1
-    // Mariani Packing Vacaville Solar: cap=0.9, cf=0.001, units=1
-    // North Bay Solar 1: cap=1.0, cf=0.001, units=1
-    // Putah Creek Solar Farm: cap=2.0, cf=0.001, units=1
-    // SunEdison Anheuser Busch Fairfield: cap=0.9, cf=0.001, units=1
-    // UC Davis South Campus: cap=13.0, cf=0.01, units=1
-    // Vaca Dixon Solar Station: cap=2.0, cf=0.001, units=1
-    // Vacaville: cap=1.0, cf=0.001, units=1
-    // Yolo County Solar Project: cap=1.0, cf=0.001, units=1
+    // CDCR (CA)-Solano State Prison: cap=1.1, cf=0.0, units=1
+    // Genentech Vacaville Meter #1: cap=6.1, cf=0.0, units=1
+    // Grassland 1&2 Solar Project: cap=2.5, cf=0.0, units=1
+    // Grassland 3&4 Solar Project: cap=2.5, cf=0.0, units=1
+    // Lake Herman: cap=5.0, cf=0.0, units=1
+    // Mariani Packing Vacaville Solar: cap=0.9, cf=0.0, units=1
+    // North Bay Solar 1: cap=1.0, cf=0.0, units=1
+    // Putah Creek Solar Farm: cap=2.0, cf=0.0, units=1
+    // SunEdison Anheuser Busch Fairfield: cap=0.9, cf=0.0, units=1
+    // UC Davis South Campus: cap=13.0, cf=0.0, units=1
+    // Vaca Dixon Solar Station: cap=2.0, cf=0.0, units=1
+    // Vacaville: cap=1.0, cf=0.0, units=1
+    // Yolo County Solar Project: cap=1.0, cf=0.0, units=1
     name "wecc240_psse_G_3904_PV";
     parent "wecc240_psse_G_3904";
     latitude 38.41;
@@ -3178,20 +3178,20 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Anheuser-Busch Fairfield: cap=3.35, cf=0.002, units=2
-    // Cemex Madison: cap=1.5, cf=0.001, units=1
-    // High Winds: cap=162.0, cf=0.09, units=90
-    // Montezuma: cap=36.8, cf=0.032, units=16
-    // Montezuma Winds II: cap=78.19999999999999, cf=0.068, units=34
-    // Shiloh II: cap=150.0, cf=0.075, units=75
-    // Shiloh III: cap=102.49999999999999, cf=0.1, units=50
-    // Shiloh IV: cap=102.49999999999999, cf=0.1, units=50
-    // Shiloh Wind Project: cap=159.0, cf=0.106, units=106
-    // Solano IV Repower: cap=85.5, cf=0.057, units=19
-    // Solano Phase 3: cap=127.8, cf=0.079, units=55
-    // Solano Phase IIA: cap=24.0, cf=0.016, units=8
-    // Solano Wind Project: cap=63.0, cf=0.042, units=21
-    // Superior Farms: cap=1.0, cf=0.001, units=1
+    // Anheuser-Busch Fairfield: cap=3.35, cf=0.0, units=2
+    // Cemex Madison: cap=1.5, cf=0.0, units=1
+    // High Winds: cap=162.0, cf=0.0, units=90
+    // Montezuma: cap=36.8, cf=0.0, units=16
+    // Montezuma Winds II: cap=78.19999999999999, cf=0.0, units=34
+    // Shiloh II: cap=150.0, cf=0.0, units=75
+    // Shiloh III: cap=102.49999999999999, cf=0.0, units=50
+    // Shiloh IV: cap=102.49999999999999, cf=0.0, units=50
+    // Shiloh Wind Project: cap=159.0, cf=0.0, units=106
+    // Solano IV Repower: cap=85.5, cf=0.0, units=19
+    // Solano Phase 3: cap=127.8, cf=0.0, units=55
+    // Solano Phase IIA: cap=24.0, cf=0.0, units=8
+    // Solano Wind Project: cap=63.0, cf=0.0, units=21
+    // Superior Farms: cap=1.0, cf=0.0, units=1
     name "wecc240_psse_G_3904_WT";
     parent "wecc240_psse_G_3904";
     latitude 38.41;
@@ -3297,12 +3297,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Axium Modesto Solar: cap=25.8, cf=0.015, units=1
-    // Central 40: cap=40.0, cf=0.023, units=1
-    // Frontier Solar, LLC: cap=20.0, cf=0.012, units=1
-    // Robert O Schulz Solar Farm: cap=1.3, cf=0.001, units=1
-    // Sierra Pacific Chinese Camp: cap=3.6, cf=0.002, units=1
-    // Sonora 1: cap=1.5, cf=0.001, units=1
+    // Axium Modesto Solar: cap=25.8, cf=0.0, units=1
+    // Central 40: cap=40.0, cf=0.0, units=1
+    // Frontier Solar, LLC: cap=20.0, cf=0.0, units=1
+    // Robert O Schulz Solar Farm: cap=1.3, cf=0.0, units=1
+    // Sierra Pacific Chinese Camp: cap=3.6, cf=0.0, units=1
+    // Sonora 1: cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_3907_PV";
     parent "wecc240_psse_G_3907";
     latitude 38.02;
@@ -3387,37 +3387,37 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Aerojet I: cap=3.0, cf=0.003, units=1
-    // Aerojet II: cap=2.7, cf=0.003, units=1
-    // Depot Park Solar System: cap=3.0, cf=0.003, units=1
-    // FAA NorCal TRACON: cap=1.0, cf=0.001, units=1
-    // Green Acres Solar Facility 1: cap=2.8, cf=0.003, units=1
-    // Green Acres Solar Facility 2: cap=0.9, cf=0.001, units=1
-    // Intel Folsom: cap=1.0, cf=0.001, units=1
-    // RE Bruceville 1, LLC: cap=5.0, cf=0.006, units=1
-    // RE Dillard 1, LLC: cap=3.0, cf=0.003, units=1
-    // RE Dillard 2, LLC: cap=3.0, cf=0.003, units=1
-    // RE Dillard 3, LLC: cap=3.0, cf=0.003, units=1
-    // RE Kammerer 1, LLC: cap=5.0, cf=0.006, units=1
-    // RE McKenzie 1, LLC: cap=30.0, cf=0.034, units=1
-    // RE McKenzie 2, LLC: cap=5.0, cf=0.006, units=1
-    // RE McKenzie 3, LLC: cap=5.0, cf=0.006, units=1
-    // RE McKenzie 4, LLC: cap=5.0, cf=0.006, units=1
-    // RE McKenzie 5, LLC: cap=5.0, cf=0.006, units=1
-    // RE McKenzie 6, LLC: cap=5.0, cf=0.006, units=1
-    // Rancho Seco Solar II, LLC: cap=160.0, cf=0.181, units=1
-    // Rancho Seco Solar, LLC: cap=10.88, cf=0.012, units=1
-    // SCDA Solar 1: cap=6.8, cf=0.008, units=1
-    // SMUD at Fleshman: cap=2.9, cf=0.003, units=1
-    // SMUD at Grundman: cap=18.0, cf=0.02, units=1
-    // SMUD at Lawrence: cap=1.0, cf=0.001, units=1
-    // SMUD at Van Conett: cap=2.9, cf=0.003, units=1
-    // Sacramento (SMUD): cap=1.5, cf=0.002, units=1
-    // Sacramento Fairbain Water Treatment Plant: cap=1.0, cf=0.001, units=1
-    // Sacramento Regional County Sanitation PV: cap=3.5, cf=0.004, units=1
-    // Sacramento Soleil, LLC: cap=1.0, cf=0.001, units=1
-    // Solar Star California II, LLC: cap=2.0, cf=0.002, units=1
-    // Wildflower Solar 1: cap=13.7, cf=0.016, units=1
+    // Aerojet I: cap=3.0, cf=0.0, units=1
+    // Aerojet II: cap=2.7, cf=0.0, units=1
+    // Depot Park Solar System: cap=3.0, cf=0.0, units=1
+    // FAA NorCal TRACON: cap=1.0, cf=0.0, units=1
+    // Green Acres Solar Facility 1: cap=2.8, cf=0.0, units=1
+    // Green Acres Solar Facility 2: cap=0.9, cf=0.0, units=1
+    // Intel Folsom: cap=1.0, cf=0.0, units=1
+    // RE Bruceville 1, LLC: cap=5.0, cf=0.0, units=1
+    // RE Dillard 1, LLC: cap=3.0, cf=0.0, units=1
+    // RE Dillard 2, LLC: cap=3.0, cf=0.0, units=1
+    // RE Dillard 3, LLC: cap=3.0, cf=0.0, units=1
+    // RE Kammerer 1, LLC: cap=5.0, cf=0.0, units=1
+    // RE McKenzie 1, LLC: cap=30.0, cf=0.0, units=1
+    // RE McKenzie 2, LLC: cap=5.0, cf=0.0, units=1
+    // RE McKenzie 3, LLC: cap=5.0, cf=0.0, units=1
+    // RE McKenzie 4, LLC: cap=5.0, cf=0.0, units=1
+    // RE McKenzie 5, LLC: cap=5.0, cf=0.0, units=1
+    // RE McKenzie 6, LLC: cap=5.0, cf=0.0, units=1
+    // Rancho Seco Solar II, LLC: cap=160.0, cf=0.0, units=1
+    // Rancho Seco Solar, LLC: cap=10.88, cf=0.0, units=1
+    // SCDA Solar 1: cap=6.8, cf=0.0, units=1
+    // SMUD at Fleshman: cap=2.9, cf=0.0, units=1
+    // SMUD at Grundman: cap=18.0, cf=0.0, units=1
+    // SMUD at Lawrence: cap=1.0, cf=0.0, units=1
+    // SMUD at Van Conett: cap=2.9, cf=0.0, units=1
+    // Sacramento (SMUD): cap=1.5, cf=0.0, units=1
+    // Sacramento Fairbain Water Treatment Plant: cap=1.0, cf=0.0, units=1
+    // Sacramento Regional County Sanitation PV: cap=3.5, cf=0.0, units=1
+    // Sacramento Soleil, LLC: cap=1.0, cf=0.0, units=1
+    // Solar Star California II, LLC: cap=2.0, cf=0.0, units=1
+    // Wildflower Solar 1: cap=13.7, cf=0.0, units=1
     name "wecc240_psse_G_3908_PV";
     parent "wecc240_psse_G_3908";
     latitude 38.55;
@@ -3531,9 +3531,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Deer Creek 2: cap=1.3, cf=0.001, units=1
-    // El Dorado County: cap=1.5, cf=0.001, units=1
-    // El Dorado Solar, LLC: cap=1.5, cf=0.001, units=1
+    // Deer Creek 2: cap=1.3, cf=0.0, units=1
+    // El Dorado County: cap=1.5, cf=0.0, units=1
+    // El Dorado Solar, LLC: cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_3913_PV";
     parent "wecc240_psse_G_3913";
     latitude 38.66;
@@ -3631,7 +3631,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // 2127 Harris Solar Project: cap=1.3, cf=0.002, units=1
+    // 2127 Harris Solar Project: cap=1.3, cf=0.0, units=1
     name "wecc240_psse_G_3405_PV";
     parent "wecc240_psse_G_3405";
     latitude 38.98;
@@ -3907,55 +3907,55 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // 2081 Terzian Solar Project: cap=1.2, cf=0.001, units=1
-    // Adera Solar: cap=20.0, cf=0.01, units=1
-    // Aspiration G: cap=9.0, cf=0.004, units=1
-    // Borden Solar Farm: cap=50.0, cf=0.025, units=1
-    // CA - Fresno County - Juvenile Hall: cap=2.8, cf=0.001, units=1
-    // CA - Madera USD - Madera South HS: cap=1.2, cf=0.001, units=1
-    // CDCR (CA)-Pleasant Valley State Prison: cap=1.2, cf=0.001, units=1
-    // CalRenew-1: cap=5.0, cf=0.002, units=1
-    // Cantua Solar Station: cap=20.0, cf=0.01, units=1
-    // Citizen B: cap=5.0, cf=0.002, units=1
+    // 2081 Terzian Solar Project: cap=1.2, cf=0.0, units=1
+    // Adera Solar: cap=20.0, cf=0.0, units=1
+    // Aspiration G: cap=9.0, cf=0.0, units=1
+    // Borden Solar Farm: cap=50.0, cf=0.0, units=1
+    // CA - Fresno County - Juvenile Hall: cap=2.8, cf=0.0, units=1
+    // CA - Madera USD - Madera South HS: cap=1.2, cf=0.0, units=1
+    // CDCR (CA)-Pleasant Valley State Prison: cap=1.2, cf=0.0, units=1
+    // CalRenew-1: cap=5.0, cf=0.0, units=1
+    // Cantua Solar Station: cap=20.0, cf=0.0, units=1
+    // Citizen B: cap=5.0, cf=0.0, units=1
     // City of Madera WWTP: cap=1.0, cf=0.0, units=1
-    // DGS Valley State Prison: cap=2.3, cf=0.001, units=1
-    // DSH (CA)-Coalinga State Hospital: cap=2.6, cf=0.001, units=1
-    // Fifth Standard Solar PV, LLC (Hybrid): cap=150.0, cf=0.074, units=1
+    // DGS Valley State Prison: cap=2.3, cf=0.0, units=1
+    // DSH (CA)-Coalinga State Hospital: cap=2.6, cf=0.0, units=1
+    // Fifth Standard Solar PV, LLC (Hybrid): cap=150.0, cf=0.0, units=1
     // Firebaugh-CCS-PV-1: cap=1.0, cf=0.0, units=1
-    // Five H Farms Solar Array: cap=1.1, cf=0.001, units=1
-    // Five Points Solar Park: cap=60.0, cf=0.03, units=1
-    // Five Points Solar Station: cap=15.0, cf=0.007, units=1
-    // Fresno Solar: cap=3.0, cf=0.001, units=1
-    // Gap Pacific Distribution Center: cap=1.2, cf=0.001, units=1
-    // Gates Solar Station: cap=20.0, cf=0.01, units=1
-    // Giffen: cap=10.0, cf=0.005, units=1
-    // Giffen Solar Park: cap=20.0, cf=0.01, units=1
-    // Great Valley Solar Portfolio Holdings, LLC: cap=200.0, cf=0.099, units=1
-    // Huron Solar Station: cap=20.0, cf=0.01, units=1
-    // La Joya Del Sol: cap=1.5, cf=0.001, units=1
-    // Little Bear 3: cap=20.0, cf=0.01, units=1
-    // Little Bear 4: cap=50.0, cf=0.025, units=1
-    // Little Bear 5: cap=50.0, cf=0.025, units=1
-    // Little Bear Solar 1, LLC: cap=40.0, cf=0.02, units=1
-    // Madera 1 PV: cap=1.5, cf=0.001, units=1
+    // Five H Farms Solar Array: cap=1.1, cf=0.0, units=1
+    // Five Points Solar Park: cap=60.0, cf=0.0, units=1
+    // Five Points Solar Station: cap=15.0, cf=0.0, units=1
+    // Fresno Solar: cap=3.0, cf=0.0, units=1
+    // Gap Pacific Distribution Center: cap=1.2, cf=0.0, units=1
+    // Gates Solar Station: cap=20.0, cf=0.0, units=1
+    // Giffen: cap=10.0, cf=0.0, units=1
+    // Giffen Solar Park: cap=20.0, cf=0.0, units=1
+    // Great Valley Solar Portfolio Holdings, LLC: cap=200.0, cf=0.0, units=1
+    // Huron Solar Station: cap=20.0, cf=0.0, units=1
+    // La Joya Del Sol: cap=1.5, cf=0.0, units=1
+    // Little Bear 3: cap=20.0, cf=0.0, units=1
+    // Little Bear 4: cap=50.0, cf=0.0, units=1
+    // Little Bear 5: cap=50.0, cf=0.0, units=1
+    // Little Bear Solar 1, LLC: cap=40.0, cf=0.0, units=1
+    // Madera 1 PV: cap=1.5, cf=0.0, units=1
     // Madera Community Hospital: cap=1.0, cf=0.0, units=1
-    // Moonlight Packing-Phase 2: cap=1.4, cf=0.001, units=1
-    // National Raisin: cap=2.5, cf=0.001, units=1
-    // NextEra Westside PV: cap=20.0, cf=0.01, units=1
-    // North Star Solar: cap=62.5, cf=0.031, units=1
-    // Oro Loma: cap=20.0, cf=0.01, units=1
-    // Pacific Ethanol Madera Solar Array: cap=3.9, cf=0.002, units=1
-    // RE Adams East, LLC: cap=19.0, cf=0.009, units=1
-    // RE Tranquillity: cap=205.3, cf=0.101, units=1
-    // San Joaquin Solar: cap=18.5, cf=0.009, units=1
-    // Sealed Air Madera Solar Project: cap=3.0, cf=0.001, units=1
-    // Stroud Solar Station: cap=20.0, cf=0.01, units=1
-    // Tranquillity ID: cap=1.3, cf=0.001, units=1
-    // West Gates Solar Station: cap=10.0, cf=0.005, units=1
-    // Westlands Solar PV Farm: cap=18.0, cf=0.009, units=1
-    // Westside Solar Station: cap=15.0, cf=0.007, units=1
-    // Whitney Point Solar: cap=20.0, cf=0.01, units=1
-    // Wonderful Orchards-New Columbia: cap=5.0, cf=0.002, units=1
+    // Moonlight Packing-Phase 2: cap=1.4, cf=0.0, units=1
+    // National Raisin: cap=2.5, cf=0.0, units=1
+    // NextEra Westside PV: cap=20.0, cf=0.0, units=1
+    // North Star Solar: cap=62.5, cf=0.0, units=1
+    // Oro Loma: cap=20.0, cf=0.0, units=1
+    // Pacific Ethanol Madera Solar Array: cap=3.9, cf=0.0, units=1
+    // RE Adams East, LLC: cap=19.0, cf=0.0, units=1
+    // RE Tranquillity: cap=205.3, cf=0.0, units=1
+    // San Joaquin Solar: cap=18.5, cf=0.0, units=1
+    // Sealed Air Madera Solar Project: cap=3.0, cf=0.0, units=1
+    // Stroud Solar Station: cap=20.0, cf=0.0, units=1
+    // Tranquillity ID: cap=1.3, cf=0.0, units=1
+    // West Gates Solar Station: cap=10.0, cf=0.0, units=1
+    // Westlands Solar PV Farm: cap=18.0, cf=0.0, units=1
+    // Westside Solar Station: cap=15.0, cf=0.0, units=1
+    // Whitney Point Solar: cap=20.0, cf=0.0, units=1
+    // Wonderful Orchards-New Columbia: cap=5.0, cf=0.0, units=1
     name "wecc240_psse_G_3401_PV";
     parent "wecc240_psse_G_3401";
     latitude 36.85;
@@ -4053,61 +4053,61 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Almond: cap=19.9, cf=0.01, units=1
-    // Alpaugh 50: cap=50.0, cf=0.026, units=1
-    // Alpaugh North: cap=20.0, cf=0.01, units=1
-    // American Kings Solar, LLC: cap=128.0, cf=0.066, units=1
-    // Aquamarine: cap=250.0, cf=0.129, units=1
-    // Atwell Island: cap=20.2, cf=0.01, units=1
-    // Atwell Island West Solar: cap=20.02, cf=0.01, units=1
-    // Avenal Park: cap=6.0, cf=0.003, units=1
-    // CDCR (CA)-Corcoran State Prison: cap=5.0, cf=0.003, units=1
-    // CED Avenal: cap=15.8, cf=0.008, units=1
-    // CED Ducor 1: cap=20.0, cf=0.01, units=1
-    // CED Ducor 2: cap=20.0, cf=0.01, units=1
-    // CED Ducor 3: cap=15.0, cf=0.008, units=1
-    // CED Ducor 4: cap=20.0, cf=0.01, units=1
-    // CID Solar (CA): cap=2.0, cf=0.001, units=1
-    // CID Solar, LLC: cap=19.76, cf=0.01, units=1
-    // Castle Rock Vineyards: cap=1.0, cf=0.001, units=1
-    // City of Tulare Water Facility: cap=1.1, cf=0.001, units=1
-    // Corcoran Solar: cap=20.0, cf=0.01, units=1
-    // Corcoran Solar 2: cap=19.75, cf=0.01, units=1
-    // Corcoran Solar 3: cap=21.19, cf=0.011, units=1
-    // Cottonwood Solar, LLC (City of Corcoran): cap=12.0, cf=0.006, units=1
-    // Dinuba Wastewater Treatment Plant: cap=1.0, cf=0.001, units=1
-    // Dover Dairy: cap=1.1, cf=0.001, units=1
-    // Exeter Solar: cap=3.5, cf=0.002, units=1
-    // FTF-PackingShed: cap=1.0, cf=0.001, units=1
-    // Farmersville: cap=4.5, cf=0.002, units=1
-    // Guernsey Solar Station: cap=20.0, cf=0.01, units=1
-    // Hanford 1 and 2: cap=3.0, cf=0.002, units=1
-    // Henrietta Solar Project: cap=102.0, cf=0.053, units=1
-    // Ivanhoe Solar: cap=3.5, cf=0.002, units=1
-    // Java Solar, LLC: cap=13.5, cf=0.007, units=1
-    // Kettleman Solar-Centaurus: cap=20.0, cf=0.01, units=1
-    // Kingsburg Solar: cap=3.7, cf=0.002, units=1
-    // Lemoore 1: cap=1.5, cf=0.001, units=1
-    // Lindsay Solar: cap=4.0, cf=0.002, units=1
-    // Luciana: cap=55.8, cf=0.029, units=1
-    // Mustang Two: cap=150.0, cf=0.077, units=1
-    // Nicolis Solar PV Plant: cap=20.0, cf=0.01, units=1
-    // Porterville 6 and 7: cap=3.0, cf=0.002, units=1
-    // Porterville Solar: cap=3.5, cf=0.002, units=1
-    // RE Kansas Solar, LLC: cap=20.0, cf=0.01, units=1
-    // RE Kansas South, LLC: cap=20.0, cf=0.01, units=1
-    // RE Kent South, LLC: cap=19.41, cf=0.01, units=1
-    // RE Mustang, LLC: cap=100.0, cf=0.052, units=1
-    // RE-VFO, LLC: cap=1.0, cf=0.001, units=1
-    // Sand Drag, LLC: cap=19.0, cf=0.01, units=1
-    // Slate Hybrid: cap=50.5, cf=0.026, units=1
-    // Solar Photovoltaic Project #42: cap=5.0, cf=0.003, units=1
-    // Sun City Project, LLC: cap=20.0, cf=0.01, units=1
-    // Tropico Solar PV Plant: cap=14.0, cf=0.007, units=1
-    // Tulare 1 and 2: cap=3.0, cf=0.002, units=1
-    // Westside Solar Power PV1: cap=2.0, cf=0.001, units=1
-    // White River Solar: cap=20.0, cf=0.01, units=1
-    // White River Solar 2: cap=20.0, cf=0.01, units=1
+    // Almond: cap=19.9, cf=0.0, units=1
+    // Alpaugh 50: cap=50.0, cf=0.0, units=1
+    // Alpaugh North: cap=20.0, cf=0.0, units=1
+    // American Kings Solar, LLC: cap=128.0, cf=0.0, units=1
+    // Aquamarine: cap=250.0, cf=0.0, units=1
+    // Atwell Island: cap=20.2, cf=0.0, units=1
+    // Atwell Island West Solar: cap=20.02, cf=0.0, units=1
+    // Avenal Park: cap=6.0, cf=0.0, units=1
+    // CDCR (CA)-Corcoran State Prison: cap=5.0, cf=0.0, units=1
+    // CED Avenal: cap=15.8, cf=0.0, units=1
+    // CED Ducor 1: cap=20.0, cf=0.0, units=1
+    // CED Ducor 2: cap=20.0, cf=0.0, units=1
+    // CED Ducor 3: cap=15.0, cf=0.0, units=1
+    // CED Ducor 4: cap=20.0, cf=0.0, units=1
+    // CID Solar (CA): cap=2.0, cf=0.0, units=1
+    // CID Solar, LLC: cap=19.76, cf=0.0, units=1
+    // Castle Rock Vineyards: cap=1.0, cf=0.0, units=1
+    // City of Tulare Water Facility: cap=1.1, cf=0.0, units=1
+    // Corcoran Solar: cap=20.0, cf=0.0, units=1
+    // Corcoran Solar 2: cap=19.75, cf=0.0, units=1
+    // Corcoran Solar 3: cap=21.19, cf=0.0, units=1
+    // Cottonwood Solar, LLC (City of Corcoran): cap=12.0, cf=0.0, units=1
+    // Dinuba Wastewater Treatment Plant: cap=1.0, cf=0.0, units=1
+    // Dover Dairy: cap=1.1, cf=0.0, units=1
+    // Exeter Solar: cap=3.5, cf=0.0, units=1
+    // FTF-PackingShed: cap=1.0, cf=0.0, units=1
+    // Farmersville: cap=4.5, cf=0.0, units=1
+    // Guernsey Solar Station: cap=20.0, cf=0.0, units=1
+    // Hanford 1 and 2: cap=3.0, cf=0.0, units=1
+    // Henrietta Solar Project: cap=102.0, cf=0.0, units=1
+    // Ivanhoe Solar: cap=3.5, cf=0.0, units=1
+    // Java Solar, LLC: cap=13.5, cf=0.0, units=1
+    // Kettleman Solar-Centaurus: cap=20.0, cf=0.0, units=1
+    // Kingsburg Solar: cap=3.7, cf=0.0, units=1
+    // Lemoore 1: cap=1.5, cf=0.0, units=1
+    // Lindsay Solar: cap=4.0, cf=0.0, units=1
+    // Luciana: cap=55.8, cf=0.0, units=1
+    // Mustang Two: cap=150.0, cf=0.0, units=1
+    // Nicolis Solar PV Plant: cap=20.0, cf=0.0, units=1
+    // Porterville 6 and 7: cap=3.0, cf=0.0, units=1
+    // Porterville Solar: cap=3.5, cf=0.0, units=1
+    // RE Kansas Solar, LLC: cap=20.0, cf=0.0, units=1
+    // RE Kansas South, LLC: cap=20.0, cf=0.0, units=1
+    // RE Kent South, LLC: cap=19.41, cf=0.0, units=1
+    // RE Mustang, LLC: cap=100.0, cf=0.0, units=1
+    // RE-VFO, LLC: cap=1.0, cf=0.0, units=1
+    // Sand Drag, LLC: cap=19.0, cf=0.0, units=1
+    // Slate Hybrid: cap=50.5, cf=0.0, units=1
+    // Solar Photovoltaic Project #42: cap=5.0, cf=0.0, units=1
+    // Sun City Project, LLC: cap=20.0, cf=0.0, units=1
+    // Tropico Solar PV Plant: cap=14.0, cf=0.0, units=1
+    // Tulare 1 and 2: cap=3.0, cf=0.0, units=1
+    // Westside Solar Power PV1: cap=2.0, cf=0.0, units=1
+    // White River Solar: cap=20.0, cf=0.0, units=1
+    // White River Solar 2: cap=20.0, cf=0.0, units=1
     name "wecc240_psse_G_3403_PV";
     parent "wecc240_psse_G_3403";
     latitude 36.61;
@@ -4183,9 +4183,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Munro Valley Solar: cap=4.0, cf=0.002, units=1
-    // Owens Valley Solar Project 11: cap=1.0, cf=0.001, units=1
-    // Trona Solar III: cap=2.0, cf=0.001, units=1
+    // Munro Valley Solar: cap=4.0, cf=0.0, units=1
+    // Owens Valley Solar Project 11: cap=1.0, cf=0.0, units=1
+    // Trona Solar III: cap=2.0, cf=0.0, units=1
     name "wecc240_psse_G_3402_PV";
     parent "wecc240_psse_G_3402";
     latitude 37.04;
@@ -4595,45 +4595,45 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // AP North Lake I, LP: cap=20.0, cf=0.004, units=1
-    // Arlington Energy Center II: cap=233.0, cf=0.05, units=1
-    // Athos Solar Project: cap=250.0, cf=0.053, units=1
-    // Blythe Mesa Solar II: cap=223.6, cf=0.048, units=1
-    // Blythe Solar 110, LLC: cap=109.8, cf=0.023, units=1
-    // Blythe Solar II, LLC: cap=131.2, cf=0.028, units=1
-    // Blythe Solar III, LLC Hybrid: cap=137.4, cf=0.029, units=1
-    // Blythe Solar IV, LLC: cap=137.4, cf=0.029, units=1
-    // Chuckawalla Solar: cap=4.0, cf=0.001, units=1
+    // AP North Lake I, LP: cap=20.0, cf=0.0, units=1
+    // Arlington Energy Center II: cap=233.0, cf=0.0, units=1
+    // Athos Solar Project: cap=250.0, cf=0.0, units=1
+    // Blythe Mesa Solar II: cap=223.6, cf=0.0, units=1
+    // Blythe Solar 110, LLC: cap=109.8, cf=0.0, units=1
+    // Blythe Solar II, LLC: cap=131.2, cf=0.0, units=1
+    // Blythe Solar III, LLC Hybrid: cap=137.4, cf=0.0, units=1
+    // Blythe Solar IV, LLC: cap=137.4, cf=0.0, units=1
+    // Chuckawalla Solar: cap=4.0, cf=0.0, units=1
     // Chuckawalla Valley State Prison: cap=0.9, cf=0.0, units=1
-    // Colgreen North Shore Solar Farm: cap=74.8, cf=0.016, units=1
-    // Desert Harvest II, LLC: cap=70.0, cf=0.015, units=1
-    // Desert Harvest, LLC: cap=80.0, cf=0.017, units=1
+    // Colgreen North Shore Solar Farm: cap=74.8, cf=0.0, units=1
+    // Desert Harvest II, LLC: cap=70.0, cf=0.0, units=1
+    // Desert Harvest, LLC: cap=80.0, cf=0.0, units=1
     // Desert Hot Springs Solar: cap=2.2, cf=0.0, units=1
-    // Desert Sunlight 300, LLC: cap=313.7, cf=0.067, units=1
+    // Desert Sunlight 300, LLC: cap=313.7, cf=0.0, units=1
     // Diamond Valley Solar Project: cap=1.3, cf=0.0, units=1
-    // EMWD - San Jacinto RES BCT: cap=4.2, cf=0.001, units=1
-    // EMWD-Moreno Valley RWRF: cap=2.4, cf=0.001, units=1
-    // EMWD-Perris Valley RWRF: cap=3.4, cf=0.001, units=1
+    // EMWD - San Jacinto RES BCT: cap=4.2, cf=0.0, units=1
+    // EMWD-Moreno Valley RWRF: cap=2.4, cf=0.0, units=1
+    // EMWD-Perris Valley RWRF: cap=3.4, cf=0.0, units=1
     // EMWD-San Jacinto RWRF NEM: cap=1.3, cf=0.0, units=1
     // EMWD-Sun City RWRF: cap=1.6, cf=0.0, units=1
-    // Garnet Solar Generation Station I, LLC: cap=4.0, cf=0.001, units=1
-    // Ironwood Solar, LLC: cap=4.0, cf=0.001, units=1
-    // Maverick Solar 4, LLC: cap=100.0, cf=0.021, units=1
-    // Maverick Solar 6, LLC: cap=100.0, cf=0.021, units=1
-    // Maverick Solar, LLC: cap=125.0, cf=0.027, units=1
-    // McCoy Solar Energy Project Hybrid: cap=270.6, cf=0.058, units=1
-    // North Palm Springs 1A: cap=2.4, cf=0.001, units=1
-    // North Palm Springs 4A: cap=4.0, cf=0.001, units=1
-    // Oberon Solar Project: cap=250.0, cf=0.053, units=1
+    // Garnet Solar Generation Station I, LLC: cap=4.0, cf=0.0, units=1
+    // Ironwood Solar, LLC: cap=4.0, cf=0.0, units=1
+    // Maverick Solar 4, LLC: cap=100.0, cf=0.0, units=1
+    // Maverick Solar 6, LLC: cap=100.0, cf=0.0, units=1
+    // Maverick Solar, LLC: cap=125.0, cf=0.0, units=1
+    // McCoy Solar Energy Project Hybrid: cap=270.6, cf=0.0, units=1
+    // North Palm Springs 1A: cap=2.4, cf=0.0, units=1
+    // North Palm Springs 4A: cap=4.0, cf=0.0, units=1
+    // Oberon Solar Project: cap=250.0, cf=0.0, units=1
     // Palo Verde College: cap=1.2, cf=0.0, units=1
-    // RCWD PV Project: cap=3.9, cf=0.001, units=1
-    // SE Athos II, LLC: cap=200.0, cf=0.043, units=1
+    // RCWD PV Project: cap=3.9, cf=0.0, units=1
+    // SE Athos II, LLC: cap=200.0, cf=0.0, units=1
     // Soboba Community Solar Project: cap=1.7, cf=0.0, units=1
-    // Solar Blythe 2: cap=21.04, cf=0.004, units=1
-    // Solar Blythe, LLC: cap=21.0, cf=0.004, units=1
-    // SunAnza: cap=3.4, cf=0.001, units=1
+    // Solar Blythe 2: cap=21.04, cf=0.0, units=1
+    // Solar Blythe, LLC: cap=21.0, cf=0.0, units=1
+    // SunAnza: cap=3.4, cf=0.0, units=1
     // SunEdison Ironwood State Prison: cap=0.9, cf=0.0, units=1
-    // Tequesquite Landfill Solar PV Project: cap=7.5, cf=0.002, units=1
+    // Tequesquite Landfill Solar PV Project: cap=7.5, cf=0.0, units=1
     // Valley Sanitary District WTP Solar: cap=1.0, cf=0.0, units=1
     // Venable Solar 1: cap=1.5, cf=0.0, units=1
     // Venable Solar 2: cap=1.5, cf=0.0, units=1
@@ -4670,30 +4670,30 @@ object pypower.powerplant
 {
     // Cabazon: cap=76.44, cf=0.0, units=109
     // Cabazon-Shell: cap=1.98, cf=0.0, units=3
-    // Coachella Hills: cap=57.15, cf=0.016, units=16
+    // Coachella Hills: cap=57.15, cf=0.0, units=16
     // Dillon: cap=45.0, cf=0.0, units=45
     // East Winds: cap=4.165, cf=0.0, units=7
-    // Edom Hills (repower): cap=20.0, cf=0.008, units=8
+    // Edom Hills (repower): cap=20.0, cf=0.0, units=8
     // Enron Earth Smart/Green Power: cap=14.25, cf=0.0, units=19
     // Garnet Wind Project: cap=6.5, cf=0.0, units=13
     // Karen Avenue Windfarm: cap=11.7, cf=0.0, units=12
-    // Mesa Wind Repowering: cap=28.0, cf=0.007, units=7
+    // Mesa Wind Repowering: cap=28.0, cf=0.0, units=7
     // Mountain View IV: cap=49.0, cf=0.0, units=49
     // Mountain View Power Partners I & II: cap=11.4, cf=0.0, units=19
     // Mountain View Power Partners III: cap=22.44, cf=0.0, units=34
-    // Mountain View Power Partners Repower: cap=66.7, cf=0.016, units=16
+    // Mountain View Power Partners Repower: cap=66.7, cf=0.0, units=16
     // Nestle Waters: cap=3.0, cf=0.0, units=2
     // Nestle Waters II: cap=1.85, cf=0.0, units=1
-    // Painted Hills Repower: cap=27.0, cf=0.009000000000000001, units=9
+    // Painted Hills Repower: cap=27.0, cf=0.0, units=9
     // Palm Springs (repower): cap=49.5, cf=0.0, units=33
     // Robertsons Ready Mix: cap=3.2, cf=0.0, units=2
-    // San Gorgonio Farms Wind Farm: cap=31.375, cf=0.002, units=114
+    // San Gorgonio Farms Wind Farm: cap=31.375, cf=0.0, units=114
     // San Gorgonio Westwinds II LLC: cap=43.4, cf=0.0, units=62
     // San Gorgonio Wind Associates 7: cap=2.0, cf=0.0, units=2
-    // Wagner: cap=6.0, cf=0.002, units=2
+    // Wagner: cap=6.0, cf=0.0, units=2
     // Whitewater Hill: cap=61.5, cf=0.0, units=41
     // Wintec Palm: cap=1.4300000000000002, cf=0.0, units=22
-    // unknown Riverside County: cap=10.65, cf=0.003, units=3
+    // unknown Riverside County: cap=10.65, cf=0.0, units=3
     name "wecc240_psse_G_2400_WT";
     parent "wecc240_psse_G_2400";
     latitude 33.93;
@@ -4776,13 +4776,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Black Mountain Solar, LLC: cap=9.0, cf=0.003, units=1
-    // Gray Hawk Solar: cap=46.0, cf=0.017, units=1
-    // Jacobson 5 MW Solar: cap=4.4, cf=0.002, units=1
+    // Black Mountain Solar, LLC: cap=9.0, cf=0.0, units=1
+    // Gray Hawk Solar: cap=46.0, cf=0.0, units=1
+    // Jacobson 5 MW Solar: cap=4.4, cf=0.0, units=1
     // La Senita: cap=1.0, cf=0.0, units=1
-    // Mohave Electric Cooperative at Joy Lane: cap=10.0, cf=0.004, units=1
-    // Mohave Electric at Fort Mohave: cap=4.4, cf=0.002, units=1
-    // OE_AZ1: cap=32.5, cf=0.012, units=1
+    // Mohave Electric Cooperative at Joy Lane: cap=10.0, cf=0.0, units=1
+    // Mohave Electric at Fort Mohave: cap=4.4, cf=0.0, units=1
+    // OE_AZ1: cap=32.5, cf=0.0, units=1
     name "wecc240_psse_G_1403_PV";
     parent "wecc240_psse_G_1403";
     latitude 34.14;
@@ -4798,8 +4798,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Kingman: cap=10.0, cf=0.005, units=5
-    // White Hills: cap=349.59999999999997, cf=0.126, units=126
+    // Kingman: cap=10.0, cf=0.0, units=5
+    // White Hills: cap=349.59999999999997, cf=0.0, units=126
     name "wecc240_psse_G_1403_WT";
     parent "wecc240_psse_G_1403";
     latitude 34.14;
@@ -4897,35 +4897,35 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Apex Solar PV Power Project: cap=20.0, cf=0.006, units=1
-    // Boulder Solar II, LLC: cap=50.0, cf=0.014, units=1
-    // Boulder Solar Power, LLC: cap=100.0, cf=0.028, units=1
-    // CM10: cap=10.0, cf=0.003, units=1
-    // CM48: cap=48.0, cf=0.013, units=1
-    // Copper Mountain Solar 2: cap=154.0, cf=0.043, units=1
-    // Copper Mountain Solar 3: cap=255.0, cf=0.07, units=1
-    // Copper Mountain Solar 4, LLC: cap=93.6, cf=0.026, units=1
-    // Copper Mountain Solar 5, LLC: cap=250.0, cf=0.069, units=1
-    // Harry Allen Solar Energy, LLC: cap=100.0, cf=0.028, units=1
-    // Las Vegas WPCF Solar Plant: cap=3.3, cf=0.001, units=1
-    // Moapa Southern Paiute: cap=250.0, cf=0.069, units=1
-    // Mountain View Solar: cap=20.0, cf=0.006, units=1
-    // Nellis Air Force Base Solar Array: cap=12.0, cf=0.003, units=1
-    // Nellis Solar PV II: cap=15.5, cf=0.004, units=1
-    // Playa Solar 1, LLC: cap=79.0, cf=0.022, units=1
-    // Playa Solar 2: cap=100.0, cf=0.028, units=1
-    // River Mountains Solar: cap=14.4, cf=0.004, units=1
-    // Searchlight Solar: cap=17.49, cf=0.005, units=1
-    // Silver State Solar Power North: cap=52.0, cf=0.014, units=1
-    // Silver State Solar Power South: cap=250.0, cf=0.069, units=1
-    // Spectrum Solar PV Power Project: cap=30.0, cf=0.008, units=1
-    // Techren Solar I, LLC: cap=100.0, cf=0.028, units=1
-    // Techren Solar II, LLC: cap=200.0, cf=0.055, units=1
-    // Techren Solar III, LLC: cap=25.0, cf=0.007, units=1
-    // Techren Solar IV, LLC: cap=25.0, cf=0.007, units=1
-    // Techren Solar V: cap=50.0, cf=0.014, units=1
-    // Townsite Solar Project Hybrid: cap=160.0, cf=0.044, units=1
-    // Yellow Pine Solar: cap=93.8, cf=0.026, units=1
+    // Apex Solar PV Power Project: cap=20.0, cf=0.0, units=1
+    // Boulder Solar II, LLC: cap=50.0, cf=0.0, units=1
+    // Boulder Solar Power, LLC: cap=100.0, cf=0.0, units=1
+    // CM10: cap=10.0, cf=0.0, units=1
+    // CM48: cap=48.0, cf=0.0, units=1
+    // Copper Mountain Solar 2: cap=154.0, cf=0.0, units=1
+    // Copper Mountain Solar 3: cap=255.0, cf=0.0, units=1
+    // Copper Mountain Solar 4, LLC: cap=93.6, cf=0.0, units=1
+    // Copper Mountain Solar 5, LLC: cap=250.0, cf=0.0, units=1
+    // Harry Allen Solar Energy, LLC: cap=100.0, cf=0.0, units=1
+    // Las Vegas WPCF Solar Plant: cap=3.3, cf=0.0, units=1
+    // Moapa Southern Paiute: cap=250.0, cf=0.0, units=1
+    // Mountain View Solar: cap=20.0, cf=0.0, units=1
+    // Nellis Air Force Base Solar Array: cap=12.0, cf=0.0, units=1
+    // Nellis Solar PV II: cap=15.5, cf=0.0, units=1
+    // Playa Solar 1, LLC: cap=79.0, cf=0.0, units=1
+    // Playa Solar 2: cap=100.0, cf=0.0, units=1
+    // River Mountains Solar: cap=14.4, cf=0.0, units=1
+    // Searchlight Solar: cap=17.49, cf=0.0, units=1
+    // Silver State Solar Power North: cap=52.0, cf=0.0, units=1
+    // Silver State Solar Power South: cap=250.0, cf=0.0, units=1
+    // Spectrum Solar PV Power Project: cap=30.0, cf=0.0, units=1
+    // Techren Solar I, LLC: cap=100.0, cf=0.0, units=1
+    // Techren Solar II, LLC: cap=200.0, cf=0.0, units=1
+    // Techren Solar III, LLC: cap=25.0, cf=0.0, units=1
+    // Techren Solar IV, LLC: cap=25.0, cf=0.0, units=1
+    // Techren Solar V: cap=50.0, cf=0.0, units=1
+    // Townsite Solar Project Hybrid: cap=160.0, cf=0.0, units=1
+    // Yellow Pine Solar: cap=93.8, cf=0.0, units=1
     name "wecc240_psse_G_1301_PV";
     parent "wecc240_psse_G_1301";
     latitude 35.93;
@@ -4989,9 +4989,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Bloomington Solar I: cap=2.0, cf=0.009, units=1
-    // NVSS-II: cap=14.0, cf=0.063, units=1
-    // Sunshine Valley Solar: cap=100.0, cf=0.452, units=1
+    // Bloomington Solar I: cap=2.0, cf=0.0, units=1
+    // NVSS-II: cap=14.0, cf=0.0, units=1
+    // Sunshine Valley Solar: cap=100.0, cf=0.0, units=1
     name "wecc240_psse_G_1302_PV";
     parent "wecc240_psse_G_1302";
     latitude 36.65;
@@ -5124,7 +5124,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Enerparc CA2, LLC: cap=1.5, cf=0.002, units=1
+    // Enerparc CA2, LLC: cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_3916_PV";
     parent "wecc240_psse_G_3916";
     latitude 39.44;
@@ -5183,9 +5183,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Butte College Main Campus Solar: cap=3.6, cf=0.004, units=1
-    // Gridley Main: cap=1.0, cf=0.001, units=1
-    // Gridley Main Two: cap=2.5, cf=0.003, units=1
+    // Butte College Main Campus Solar: cap=3.6, cf=0.0, units=1
+    // Gridley Main: cap=1.0, cf=0.0, units=1
+    // Gridley Main Two: cap=2.5, cf=0.0, units=1
     name "wecc240_psse_G_3905_PV";
     parent "wecc240_psse_G_3905";
     latitude 39.55;
@@ -5283,8 +5283,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Shasta Solar Farm: cap=3.0, cf=0.012, units=1
-    // Sierra Pacific Industries (2042-RD): cap=8.4, cf=0.033, units=1
+    // Shasta Solar Farm: cap=3.0, cf=0.0, units=1
+    // Sierra Pacific Industries (2042-RD): cap=8.4, cf=0.0, units=1
     name "wecc240_psse_G_3911_PV";
     parent "wecc240_psse_G_3911";
     latitude 40.4;
@@ -5317,8 +5317,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Hatchett Ridge: cap=101.19999999999999, cf=0.39599999999999996, units=44
-    // Walmart Red Bluff: cap=1.5, cf=0.006, units=1
+    // Hatchett Ridge: cap=101.19999999999999, cf=0.0, units=44
+    // Walmart Red Bluff: cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_3911_WT";
     parent "wecc240_psse_G_3911";
     latitude 40.4;
@@ -5441,26 +5441,26 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Airport Solar: cap=47.3, cf=0.058, units=1
-    // Alkali Solar, LLC: cap=10.0, cf=0.012, units=1
-    // BC Solar: cap=8.0, cf=0.01, units=1
-    // Black Cap Solar Plant: cap=2.0, cf=0.002, units=1
-    // Bly Solar Center: cap=8.0, cf=0.01, units=1
-    // Chiloquin Solar, LLC: cap=9.9, cf=0.012, units=1
-    // Fort Rock I: cap=9.9, cf=0.012, units=1
-    // Fort Rock IV: cap=10.0, cf=0.012, units=1
-    // Garrett Solar: cap=10.0, cf=0.012, units=1
-    // Klamath Falls Solar 2 (CSG): cap=2.9, cf=0.004, units=1
-    // NorWest Energy 4, LLC: cap=5.6, cf=0.007, units=1
-    // OR Solar 3, LLC: cap=10.0, cf=0.012, units=1
-    // OR Solar 5, LLC: cap=8.0, cf=0.01, units=1
-    // OR Solar 6, LLC: cap=10.0, cf=0.012, units=1
-    // OR Solar 8, LLC: cap=10.0, cf=0.012, units=1
-    // Old Mill Solar: cap=5.0, cf=0.006, units=1
-    // Oregon University System OIT Klamath Falls: cap=2.0, cf=0.002, units=1
-    // Outback Solar at Christmas Valley: cap=4.4, cf=0.005, units=1
-    // Rock Garden Solar, LLC: cap=10.0, cf=0.012, units=1
-    // Woodline Solar: cap=8.0, cf=0.01, units=1
+    // Airport Solar: cap=47.3, cf=0.0, units=1
+    // Alkali Solar, LLC: cap=10.0, cf=0.0, units=1
+    // BC Solar: cap=8.0, cf=0.0, units=1
+    // Black Cap Solar Plant: cap=2.0, cf=0.0, units=1
+    // Bly Solar Center: cap=8.0, cf=0.0, units=1
+    // Chiloquin Solar, LLC: cap=9.9, cf=0.0, units=1
+    // Fort Rock I: cap=9.9, cf=0.0, units=1
+    // Fort Rock IV: cap=10.0, cf=0.0, units=1
+    // Garrett Solar: cap=10.0, cf=0.0, units=1
+    // Klamath Falls Solar 2 (CSG): cap=2.9, cf=0.0, units=1
+    // NorWest Energy 4, LLC: cap=5.6, cf=0.0, units=1
+    // OR Solar 3, LLC: cap=10.0, cf=0.0, units=1
+    // OR Solar 5, LLC: cap=8.0, cf=0.0, units=1
+    // OR Solar 6, LLC: cap=10.0, cf=0.0, units=1
+    // OR Solar 8, LLC: cap=10.0, cf=0.0, units=1
+    // Old Mill Solar: cap=5.0, cf=0.0, units=1
+    // Oregon University System OIT Klamath Falls: cap=2.0, cf=0.0, units=1
+    // Outback Solar at Christmas Valley: cap=4.4, cf=0.0, units=1
+    // Rock Garden Solar, LLC: cap=10.0, cf=0.0, units=1
+    // Woodline Solar: cap=8.0, cf=0.0, units=1
     name "wecc240_psse_G_4001_PV";
     parent "wecc240_psse_G_4001";
     latitude 42.0;
@@ -5510,18 +5510,18 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // EGP Stillwater Solar PV II, LLC: cap=20.0, cf=0.044, units=1
-    // Fish Springs: cap=100.0, cf=0.22, units=1
-    // Ft. Churchill PV: cap=18.0, cf=0.04, units=1
-    // HL Solar: cap=7.6, cf=0.017, units=1
-    // Luning Energy: cap=50.0, cf=0.11, units=1
-    // PSREC/SIAD Solar: cap=2.4, cf=0.005, units=1
-    // Patua Acquisition Project, LLC: cap=10.64, cf=0.023, units=1
-    // Stillwater Facility: cap=21.8, cf=0.048, units=1
-    // Tungsten Mountain: cap=7.3, cf=0.016, units=1
-    // Turquoise Liberty Solar: cap=10.0, cf=0.022, units=1
-    // Turquoise Nevada, LLC: cap=54.6, cf=0.12, units=1
-    // Western 102 Power Plant: cap=1.0, cf=0.002, units=1
+    // EGP Stillwater Solar PV II, LLC: cap=20.0, cf=0.0, units=1
+    // Fish Springs: cap=100.0, cf=0.0, units=1
+    // Ft. Churchill PV: cap=18.0, cf=0.0, units=1
+    // HL Solar: cap=7.6, cf=0.0, units=1
+    // Luning Energy: cap=50.0, cf=0.0, units=1
+    // PSREC/SIAD Solar: cap=2.4, cf=0.0, units=1
+    // Patua Acquisition Project, LLC: cap=10.64, cf=0.0, units=1
+    // Stillwater Facility: cap=21.8, cf=0.0, units=1
+    // Tungsten Mountain: cap=7.3, cf=0.0, units=1
+    // Turquoise Liberty Solar: cap=10.0, cf=0.0, units=1
+    // Turquoise Nevada, LLC: cap=54.6, cf=0.0, units=1
+    // Western 102 Power Plant: cap=1.0, cf=0.0, units=1
     name "wecc240_psse_G_3701_PV";
     parent "wecc240_psse_G_3701";
     latitude 39.53;
@@ -5597,8 +5597,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Eagle Point Solar: cap=9.9, cf=0.019, units=1
-    // OR Solar 2, LLC: cap=10.0, cf=0.019, units=1
+    // Eagle Point Solar: cap=9.9, cf=0.0, units=1
+    // OR Solar 2, LLC: cap=10.0, cf=0.0, units=1
     name "wecc240_psse_G_4204_PV";
     parent "wecc240_psse_G_4204";
     latitude 42.36;
@@ -5706,68 +5706,68 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Baldock Solar Highway: cap=1.7, cf=0.002, units=1
-    // Ballston Solar, LLC: cap=2.2, cf=0.003, units=1
-    // Bellevue Solar Project: cap=1.6, cf=0.002, units=1
-    // Bighorn Solar: cap=2.2, cf=0.003, units=1
-    // Boring Solar, LLC: cap=2.2, cf=0.003, units=1
-    // Brightwood Solar, LLC: cap=10.0, cf=0.012, units=1
-    // Bristol Solar: cap=3.0, cf=0.004, units=1
-    // Brush Creek Solar: cap=2.2, cf=0.003, units=1
-    // Butler Solar, LLC: cap=4.0, cf=0.005, units=1
-    // Carnes Creek Solar (CSG): cap=2.5, cf=0.003, units=1
-    // Case Creek Solar: cap=2.2, cf=0.003, units=1
-    // Colton Solar: cap=2.2, cf=0.003, units=1
-    // Cosper Creek Solar (CSG): cap=2.5, cf=0.003, units=1
-    // Day Hill Solar, LLC: cap=2.3, cf=0.003, units=1
-    // Dayton Cutoff Solar: cap=2.2, cf=0.003, units=1
-    // Drift Creek Solar: cap=2.2, cf=0.003, units=1
-    // Dunn Road Solar: cap=1.8, cf=0.002, units=1
-    // Duus Solar, LLC: cap=10.0, cf=0.012, units=1
-    // Firwood Solar, LLC: cap=10.0, cf=0.012, units=1
-    // Fruitland Creek Solar (CSG): cap=1.8, cf=0.002, units=1
-    // Grand Ronde Solar: cap=2.2, cf=0.003, units=1
-    // Greenpark Solar: cap=1.3, cf=0.002, units=1
-    // Interstate Solar: cap=2.2, cf=0.003, units=1
-    // Kaiser Creek Solar (CSG): cap=2.0, cf=0.002, units=1
-    // Kale Patch Solar: cap=2.2, cf=0.003, units=1
-    // Labish Solar, LLC: cap=2.2, cf=0.003, units=1
-    // Milford Solar OR: cap=3.0, cf=0.004, units=1
-    // Mill Creek Solar (OR): cap=2.2, cf=0.003, units=1
-    // Minke Solar: cap=2.2, cf=0.003, units=1
-    // Mt. Hope Solar: cap=2.5, cf=0.003, units=1
-    // O'Neill Creek Solar: cap=2.2, cf=0.003, units=1
-    // Oregon University System Rabbit Field: cap=1.2, cf=0.001, units=1
-    // Palmer Creek Solar, LLC: cap=2.3, cf=0.003, units=1
-    // Pika Solar: cap=2.2, cf=0.003, units=1
-    // Rafael Solar: cap=2.2, cf=0.003, units=1
-    // Red Prairie Solar: cap=2.2, cf=0.003, units=1
-    // River Valley Solar: cap=1.9, cf=0.002, units=1
-    // SSD Clackamas 1, LLC: cap=4.0, cf=0.005, units=1
-    // SSD Clackamas 4, LLC: cap=2.0, cf=0.002, units=1
-    // SSD Clackamas 7, LLC: cap=2.0, cf=0.002, units=1
-    // SSD Marion 1, LLC: cap=2.0, cf=0.002, units=1
-    // SSD Marion 3, LLC: cap=2.0, cf=0.002, units=1
-    // SSD Marion 5, LLC: cap=2.0, cf=0.002, units=1
-    // SSD Marion 6, LLC: cap=2.0, cf=0.002, units=1
-    // Sandy River Solar (CSG): cap=1.9, cf=0.002, units=1
-    // Sesqui-C Solar (CSG): cap=2.5, cf=0.003, units=1
-    // Sheep Solar: cap=2.2, cf=0.003, units=1
-    // Silverton Solar: cap=2.2, cf=0.003, units=1
-    // St Louis Solar: cap=2.2, cf=0.003, units=1
-    // Steel Bridge Solar, LLC: cap=2.3, cf=0.003, units=1
-    // Sulus Solar 17: cap=3.1, cf=0.004, units=1
-    // Sulus Solar 22: cap=3.0, cf=0.004, units=1
-    // Sulus Solar 25: cap=2.2, cf=0.003, units=1
-    // Sulus Solar 28: cap=3.0, cf=0.004, units=1
-    // Sulus Solar 29: cap=2.6, cf=0.003, units=1
-    // Sulus Solar 33: cap=3.0, cf=0.004, units=1
-    // Sulus Solar 35: cap=3.0, cf=0.004, units=1
-    // Thomas Creek Solar: cap=2.2, cf=0.003, units=1
-    // Tickle Creek Solar: cap=1.9, cf=0.002, units=1
-    // Valley Creek Solar: cap=2.2, cf=0.003, units=1
-    // Williams Acres Solar: cap=2.5, cf=0.003, units=1
-    // Yamhill Solar, LLC: cap=1.0, cf=0.001, units=1
+    // Baldock Solar Highway: cap=1.7, cf=0.0, units=1
+    // Ballston Solar, LLC: cap=2.2, cf=0.0, units=1
+    // Bellevue Solar Project: cap=1.6, cf=0.0, units=1
+    // Bighorn Solar: cap=2.2, cf=0.0, units=1
+    // Boring Solar, LLC: cap=2.2, cf=0.0, units=1
+    // Brightwood Solar, LLC: cap=10.0, cf=0.0, units=1
+    // Bristol Solar: cap=3.0, cf=0.0, units=1
+    // Brush Creek Solar: cap=2.2, cf=0.0, units=1
+    // Butler Solar, LLC: cap=4.0, cf=0.0, units=1
+    // Carnes Creek Solar (CSG): cap=2.5, cf=0.0, units=1
+    // Case Creek Solar: cap=2.2, cf=0.0, units=1
+    // Colton Solar: cap=2.2, cf=0.0, units=1
+    // Cosper Creek Solar (CSG): cap=2.5, cf=0.0, units=1
+    // Day Hill Solar, LLC: cap=2.3, cf=0.0, units=1
+    // Dayton Cutoff Solar: cap=2.2, cf=0.0, units=1
+    // Drift Creek Solar: cap=2.2, cf=0.0, units=1
+    // Dunn Road Solar: cap=1.8, cf=0.0, units=1
+    // Duus Solar, LLC: cap=10.0, cf=0.0, units=1
+    // Firwood Solar, LLC: cap=10.0, cf=0.0, units=1
+    // Fruitland Creek Solar (CSG): cap=1.8, cf=0.0, units=1
+    // Grand Ronde Solar: cap=2.2, cf=0.0, units=1
+    // Greenpark Solar: cap=1.3, cf=0.0, units=1
+    // Interstate Solar: cap=2.2, cf=0.0, units=1
+    // Kaiser Creek Solar (CSG): cap=2.0, cf=0.0, units=1
+    // Kale Patch Solar: cap=2.2, cf=0.0, units=1
+    // Labish Solar, LLC: cap=2.2, cf=0.0, units=1
+    // Milford Solar OR: cap=3.0, cf=0.0, units=1
+    // Mill Creek Solar (OR): cap=2.2, cf=0.0, units=1
+    // Minke Solar: cap=2.2, cf=0.0, units=1
+    // Mt. Hope Solar: cap=2.5, cf=0.0, units=1
+    // O'Neill Creek Solar: cap=2.2, cf=0.0, units=1
+    // Oregon University System Rabbit Field: cap=1.2, cf=0.0, units=1
+    // Palmer Creek Solar, LLC: cap=2.3, cf=0.0, units=1
+    // Pika Solar: cap=2.2, cf=0.0, units=1
+    // Rafael Solar: cap=2.2, cf=0.0, units=1
+    // Red Prairie Solar: cap=2.2, cf=0.0, units=1
+    // River Valley Solar: cap=1.9, cf=0.0, units=1
+    // SSD Clackamas 1, LLC: cap=4.0, cf=0.0, units=1
+    // SSD Clackamas 4, LLC: cap=2.0, cf=0.0, units=1
+    // SSD Clackamas 7, LLC: cap=2.0, cf=0.0, units=1
+    // SSD Marion 1, LLC: cap=2.0, cf=0.0, units=1
+    // SSD Marion 3, LLC: cap=2.0, cf=0.0, units=1
+    // SSD Marion 5, LLC: cap=2.0, cf=0.0, units=1
+    // SSD Marion 6, LLC: cap=2.0, cf=0.0, units=1
+    // Sandy River Solar (CSG): cap=1.9, cf=0.0, units=1
+    // Sesqui-C Solar (CSG): cap=2.5, cf=0.0, units=1
+    // Sheep Solar: cap=2.2, cf=0.0, units=1
+    // Silverton Solar: cap=2.2, cf=0.0, units=1
+    // St Louis Solar: cap=2.2, cf=0.0, units=1
+    // Steel Bridge Solar, LLC: cap=2.3, cf=0.0, units=1
+    // Sulus Solar 17: cap=3.1, cf=0.0, units=1
+    // Sulus Solar 22: cap=3.0, cf=0.0, units=1
+    // Sulus Solar 25: cap=2.2, cf=0.0, units=1
+    // Sulus Solar 28: cap=3.0, cf=0.0, units=1
+    // Sulus Solar 29: cap=2.6, cf=0.0, units=1
+    // Sulus Solar 33: cap=3.0, cf=0.0, units=1
+    // Sulus Solar 35: cap=3.0, cf=0.0, units=1
+    // Thomas Creek Solar: cap=2.2, cf=0.0, units=1
+    // Tickle Creek Solar: cap=1.9, cf=0.0, units=1
+    // Valley Creek Solar: cap=2.2, cf=0.0, units=1
+    // Williams Acres Solar: cap=2.5, cf=0.0, units=1
+    // Yamhill Solar, LLC: cap=1.0, cf=0.0, units=1
     name "wecc240_psse_G_4203_PV";
     parent "wecc240_psse_G_4203";
     latitude 44.05;
@@ -5853,13 +5853,13 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Adams Solar Center: cap=10.0, cf=0.014, units=1
-    // Bear Creek Solar Center: cap=10.0, cf=0.014, units=1
-    // Elbe Solar Center: cap=10.0, cf=0.014, units=1
-    // NorWest Energy 2, LLC: cap=9.9, cf=0.014, units=1
-    // OSLH, LLC: cap=9.9, cf=0.014, units=1
-    // Solar Star Oregon II: cap=56.0, cf=0.077, units=1
-    // Tumbleweed Solar, LLC: cap=9.9, cf=0.014, units=1
+    // Adams Solar Center: cap=10.0, cf=0.0, units=1
+    // Bear Creek Solar Center: cap=10.0, cf=0.0, units=1
+    // Elbe Solar Center: cap=10.0, cf=0.0, units=1
+    // NorWest Energy 2, LLC: cap=9.9, cf=0.0, units=1
+    // OSLH, LLC: cap=9.9, cf=0.0, units=1
+    // Solar Star Oregon II: cap=56.0, cf=0.0, units=1
+    // Tumbleweed Solar, LLC: cap=9.9, cf=0.0, units=1
     name "wecc240_psse_G_4004_PV";
     parent "wecc240_psse_G_4004";
     latitude 44.48;
@@ -5926,22 +5926,22 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Baker City Solar: cap=15.0, cf=0.008, units=1
-    // Brush Solar Center: cap=2.8, cf=0.001, units=1
-    // Grove Solar Center, LLC: cap=6.0, cf=0.003, units=1
-    // Hyline Solar Center, LLC: cap=9.0, cf=0.005, units=1
-    // Morgan Solar Center: cap=3.0, cf=0.002, units=1
-    // Murphy Flat Solar: cap=20.0, cf=0.01, units=1
-    // Ontario Solar Center: cap=3.0, cf=0.002, units=1
-    // Open Range Solar Center, LLC: cap=10.0, cf=0.005, units=1
-    // Railroad Solar Center, LLC: cap=4.5, cf=0.002, units=1
-    // Riley: cap=10.0, cf=0.005, units=1
-    // Starvation: cap=9.9, cf=0.005, units=1
-    // Suntex Solar, LLC: cap=10.0, cf=0.005, units=1
-    // Thunderegg Solar Center, LLC: cap=10.0, cf=0.005, units=1
-    // Vale Air Solar Center, LLC: cap=10.0, cf=0.005, units=1
-    // Vale Solar Center: cap=3.0, cf=0.002, units=1
-    // West Hines Solar I, LLC: cap=10.0, cf=0.005, units=1
+    // Baker City Solar: cap=15.0, cf=0.0, units=1
+    // Brush Solar Center: cap=2.8, cf=0.0, units=1
+    // Grove Solar Center, LLC: cap=6.0, cf=0.0, units=1
+    // Hyline Solar Center, LLC: cap=9.0, cf=0.0, units=1
+    // Morgan Solar Center: cap=3.0, cf=0.0, units=1
+    // Murphy Flat Solar: cap=20.0, cf=0.0, units=1
+    // Ontario Solar Center: cap=3.0, cf=0.0, units=1
+    // Open Range Solar Center, LLC: cap=10.0, cf=0.0, units=1
+    // Railroad Solar Center, LLC: cap=4.5, cf=0.0, units=1
+    // Riley: cap=10.0, cf=0.0, units=1
+    // Starvation: cap=9.9, cf=0.0, units=1
+    // Suntex Solar, LLC: cap=10.0, cf=0.0, units=1
+    // Thunderegg Solar Center, LLC: cap=10.0, cf=0.0, units=1
+    // Vale Air Solar Center, LLC: cap=10.0, cf=0.0, units=1
+    // Vale Solar Center: cap=3.0, cf=0.0, units=1
+    // West Hines Solar I, LLC: cap=10.0, cf=0.0, units=1
     name "wecc240_psse_G_4003_PV";
     parent "wecc240_psse_G_4003";
     latitude 43.77;
@@ -5973,14 +5973,14 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Benson Creek: cap=10.0, cf=0.005, units=5
-    // Durbin Creek: cap=10.0, cf=0.005, units=5
-    // Elkhorn Valley (08): cap=3.3, cf=0.002, units=2
-    // Elkhorn Valley (La Grande): cap=97.35, cf=0.059000000000000004, units=59
-    // Jett Creek: cap=10.0, cf=0.005, units=5
+    // Benson Creek: cap=10.0, cf=0.0, units=5
+    // Durbin Creek: cap=10.0, cf=0.0, units=5
+    // Elkhorn Valley (08): cap=3.3, cf=0.0, units=2
+    // Elkhorn Valley (La Grande): cap=97.35, cf=0.0, units=59
+    // Jett Creek: cap=10.0, cf=0.0, units=5
     // Lime Wind: cap=3.0, cf=0.0, units=6
-    // Prospector: cap=10.0, cf=0.005, units=5
-    // Willow Spring: cap=10.0, cf=0.005, units=5
+    // Prospector: cap=10.0, cf=0.0, units=5
+    // Willow Spring: cap=10.0, cf=0.0, units=5
     name "wecc240_psse_G_4003_WT";
     parent "wecc240_psse_G_4003";
     latitude 43.77;
@@ -6028,7 +6028,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Battle Mountain Solar Project: cap=101.0, cf=0.802, units=1
+    // Battle Mountain Solar Project: cap=101.0, cf=0.0, units=1
     name "wecc240_psse_G_6403_PV";
     parent "wecc240_psse_G_6403";
     latitude 41.18;
@@ -6076,9 +6076,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Pavant Solar II, LLC: cap=50.0, cf=0.025, units=1
-    // Pavant Solar III: cap=20.0, cf=0.01, units=1
-    // Pavant Solar, LLC: cap=50.0, cf=0.025, units=1
+    // Pavant Solar II, LLC: cap=50.0, cf=0.0, units=1
+    // Pavant Solar III: cap=20.0, cf=0.0, units=1
+    // Pavant Solar, LLC: cap=50.0, cf=0.0, units=1
     name "wecc240_psse_G_2604_PV";
     parent "wecc240_psse_G_2604";
     latitude 39.5;
@@ -6110,8 +6110,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Milford Phase II: cap=88.5, cf=0.059000000000000004, units=59
-    // Spring Valley: cap=151.79999999999998, cf=0.066, units=66
+    // Milford Phase II: cap=88.5, cf=0.0, units=59
+    // Spring Valley: cap=151.79999999999998, cf=0.0, units=66
     name "wecc240_psse_G_2604_WT";
     parent "wecc240_psse_G_2604";
     latitude 39.5;
@@ -6188,14 +6188,14 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Black Mesa Solar, LLC: cap=40.0, cf=0.022, units=1
-    // Clif Bar Bakery of Twin Falls: cap=2.0, cf=0.001, units=1
-    // Grand View Solar Two: cap=80.0, cf=0.045, units=1
-    // ID Solar: cap=40.0, cf=0.022, units=1
-    // Jackpot Solar, LLC: cap=120.0, cf=0.067, units=1
-    // Mt. Home Solar 1, LLC: cap=20.0, cf=0.011, units=1
-    // Orchard Ranch Solar: cap=20.0, cf=0.011, units=1
-    // Simcoe Solar: cap=20.0, cf=0.011, units=1
+    // Black Mesa Solar, LLC: cap=40.0, cf=0.0, units=1
+    // Clif Bar Bakery of Twin Falls: cap=2.0, cf=0.0, units=1
+    // Grand View Solar Two: cap=80.0, cf=0.0, units=1
+    // ID Solar: cap=40.0, cf=0.0, units=1
+    // Jackpot Solar, LLC: cap=120.0, cf=0.0, units=1
+    // Mt. Home Solar 1, LLC: cap=20.0, cf=0.0, units=1
+    // Orchard Ranch Solar: cap=20.0, cf=0.0, units=1
+    // Simcoe Solar: cap=20.0, cf=0.0, units=1
     name "wecc240_psse_G_6101_PV";
     parent "wecc240_psse_G_6101";
     latitude 42.89;
@@ -6227,21 +6227,21 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Camp Reed: cap=22.5, cf=0.015, units=15
-    // Cassia: cap=29.400000000000002, cf=0.014, units=14
-    // Cold Springs: cap=138.0, cf=0.06, units=60
-    // Fossil Gulch: cap=10.5, cf=0.007, units=7
-    // High Mesa: cap=39.9, cf=0.019, units=19
-    // Mountain Home: cap=42.0, cf=0.02, units=20
-    // Oregon Trail: cap=13.5, cf=0.009000000000000001, units=9
-    // Payne's Ferry: cap=21.0, cf=0.014, units=14
-    // Pilgrim Stage Station: cap=10.5, cf=0.007, units=7
-    // Salmon Falls: cap=21.0, cf=0.014, units=14
-    // Sawtooth: cap=22.400000000000002, cf=0.014, units=14
-    // Thousand Springs: cap=12.0, cf=0.008, units=8
-    // Tuana Gulch: cap=10.5, cf=0.007, units=7
-    // Tuana Springs: cap=16.8, cf=0.008, units=8
-    // Yahoo Creek: cap=21.0, cf=0.014, units=14
+    // Camp Reed: cap=22.5, cf=0.0, units=15
+    // Cassia: cap=29.400000000000002, cf=0.0, units=14
+    // Cold Springs: cap=138.0, cf=0.0, units=60
+    // Fossil Gulch: cap=10.5, cf=0.0, units=7
+    // High Mesa: cap=39.9, cf=0.0, units=19
+    // Mountain Home: cap=42.0, cf=0.0, units=20
+    // Oregon Trail: cap=13.5, cf=0.0, units=9
+    // Payne's Ferry: cap=21.0, cf=0.0, units=14
+    // Pilgrim Stage Station: cap=10.5, cf=0.0, units=7
+    // Salmon Falls: cap=21.0, cf=0.0, units=14
+    // Sawtooth: cap=22.400000000000002, cf=0.0, units=14
+    // Thousand Springs: cap=12.0, cf=0.0, units=8
+    // Tuana Gulch: cap=10.5, cf=0.0, units=7
+    // Tuana Springs: cap=16.8, cf=0.0, units=8
+    // Yahoo Creek: cap=21.0, cf=0.0, units=14
     name "wecc240_psse_G_6101_WT";
     parent "wecc240_psse_G_6101";
     latitude 42.89;
@@ -6307,8 +6307,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // American Falls Solar: cap=20.0, cf=0.022, units=1
-    // American Falls Solar II: cap=20.0, cf=0.022, units=1
+    // American Falls Solar: cap=20.0, cf=0.0, units=1
+    // American Falls Solar II: cap=20.0, cf=0.0, units=1
     name "wecc240_psse_G_6103_PV";
     parent "wecc240_psse_G_6103";
     latitude 42.83;
@@ -6340,16 +6340,16 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Burley Butte: cap=19.5, cf=0.026000000000000002, units=13
-    // Cedar Creek Wind: cap=159.79999999999998, cf=0.188, units=47
-    // Golden Valley: cap=12.0, cf=0.016, units=8
-    // Goshen North: cap=124.5, cf=0.166, units=83
-    // Horse Butte: cap=57.6, cf=0.064, units=32
-    // Meadow Creek: cap=119.7, cf=0.114, units=57
-    // Milner Dam: cap=19.5, cf=0.026000000000000002, units=13
-    // Power County: cap=45.0, cf=0.054, units=18
-    // Rockland: cap=79.2, cf=0.088, units=44
-    // Wolverine Creek: cap=64.5, cf=0.08600000000000001, units=43
+    // Burley Butte: cap=19.5, cf=0.0, units=13
+    // Cedar Creek Wind: cap=159.79999999999998, cf=0.0, units=47
+    // Golden Valley: cap=12.0, cf=0.0, units=8
+    // Goshen North: cap=124.5, cf=0.0, units=83
+    // Horse Butte: cap=57.6, cf=0.0, units=32
+    // Meadow Creek: cap=119.7, cf=0.0, units=57
+    // Milner Dam: cap=19.5, cf=0.0, units=13
+    // Power County: cap=45.0, cf=0.0, units=18
+    // Rockland: cap=79.2, cf=0.0, units=44
+    // Wolverine Creek: cap=64.5, cf=0.0, units=43
     name "wecc240_psse_G_6103_WT";
     parent "wecc240_psse_G_6103";
     latitude 42.83;
@@ -6462,56 +6462,56 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Arlington Valley Solar Energy II: cap=129.0, cf=0.014, units=1
-    // Avalon Solar: cap=29.0, cf=0.003, units=1
-    // Avalon Solar II: cap=16.0, cf=0.002, units=1
-    // Avra Valley Solar: cap=26.46, cf=0.003, units=1
-    // Badger 1: cap=14.8, cf=0.002, units=1
-    // Bonnybrooke PV: cap=50.0, cf=0.006, units=1
+    // Arlington Valley Solar Energy II: cap=129.0, cf=0.0, units=1
+    // Avalon Solar: cap=29.0, cf=0.0, units=1
+    // Avalon Solar II: cap=16.0, cf=0.0, units=1
+    // Avra Valley Solar: cap=26.46, cf=0.0, units=1
+    // Badger 1: cap=14.8, cf=0.0, units=1
+    // Bonnybrooke PV: cap=50.0, cf=0.0, units=1
     // Broadway 2 - Tucson Phase II: cap=3.0, cf=0.0, units=1
     // Buckeye Union HS District 201: cap=3.3, cf=0.0, units=1
-    // Chino Solar Valley: cap=19.0, cf=0.002, units=1
+    // Chino Solar Valley: cap=19.0, cf=0.0, units=1
     // Cogenra-TEP: cap=1.0, cf=0.0, units=1
-    // Cotton Center Solar Hybrid: cap=17.0, cf=0.002, units=1
-    // Davis Monthan AFB (AZ) West Airfield: cap=12.6, cf=0.001, units=1
-    // Desert Star Hybrid: cap=11.2, cf=0.001, units=1
-    // East Line Solar: cap=100.0, cf=0.011, units=1
+    // Cotton Center Solar Hybrid: cap=17.0, cf=0.0, units=1
+    // Davis Monthan AFB (AZ) West Airfield: cap=12.6, cf=0.0, units=1
+    // Desert Star Hybrid: cap=11.2, cf=0.0, units=1
+    // East Line Solar: cap=100.0, cf=0.0, units=1
     // FRB Solar Farm: cap=1.9, cf=0.0, units=1
-    // Gato Montes Solar, LLC: cap=5.0, cf=0.001, units=1
-    // Gila Bend Hybrid: cap=37.12, cf=0.004, units=1
+    // Gato Montes Solar, LLC: cap=5.0, cf=0.0, units=1
+    // Gila Bend Hybrid: cap=37.12, cf=0.0, units=1
     // Gilbert Solar Facility I, LLC: cap=2.5, cf=0.0, units=1
     // Iron Horse Battery Storage Hybrid: cap=2.0, cf=0.0, units=1
-    // Lake Pleasant WTP: cap=6.0, cf=0.001, units=1
-    // Luke Solar: cap=11.2, cf=0.001, units=1
+    // Lake Pleasant WTP: cap=6.0, cf=0.0, units=1
+    // Luke Solar: cap=11.2, cf=0.0, units=1
     // Mesa Solar Array: cap=4.0, cf=0.0, units=1
-    // Mesquite Solar 1: cap=170.0, cf=0.019, units=1
-    // Mesquite Solar 2, LLC: cap=100.8, cf=0.011, units=1
-    // Mesquite Solar 3, LLC: cap=154.0, cf=0.017, units=1
-    // Mesquite Solar 5, LLC: cap=60.0, cf=0.007, units=1
-    // Paloma Solar Hybrid: cap=17.6, cf=0.002, units=1
-    // Picture Rocks Solar, LLC: cap=20.0, cf=0.002, units=1
-    // Pinal Central Energy Center Hybrid: cap=20.0, cf=0.002, units=1
-    // Poseidon Solar, LLC: cap=20.0, cf=0.002, units=1
+    // Mesquite Solar 1: cap=170.0, cf=0.0, units=1
+    // Mesquite Solar 2, LLC: cap=100.8, cf=0.0, units=1
+    // Mesquite Solar 3, LLC: cap=154.0, cf=0.0, units=1
+    // Mesquite Solar 5, LLC: cap=60.0, cf=0.0, units=1
+    // Paloma Solar Hybrid: cap=17.6, cf=0.0, units=1
+    // Picture Rocks Solar, LLC: cap=20.0, cf=0.0, units=1
+    // Pinal Central Energy Center Hybrid: cap=20.0, cf=0.0, units=1
+    // Poseidon Solar, LLC: cap=20.0, cf=0.0, units=1
     // Prairie Fire: cap=4.5, cf=0.0, units=1
     // Prescott Airport: cap=3.0, cf=0.0, units=1
-    // Prescott Solar Plant: cap=10.4, cf=0.001, units=1
-    // Queen Creek Solar Farm: cap=19.0, cf=0.002, units=1
+    // Prescott Solar Plant: cap=10.4, cf=0.0, units=1
+    // Queen Creek Solar Farm: cap=19.0, cf=0.0, units=1
     // RE Ajo 1, LLC: cap=4.5, cf=0.0, units=1
-    // RE Bagdad Solar I, LLC: cap=15.0, cf=0.002, units=1
-    // Raptor Ridge: cap=12.5, cf=0.001, units=1
-    // Red Rock: cap=40.0, cf=0.004, units=1
-    // Rio Rico Solar: cap=6.0, cf=0.001, units=1
+    // RE Bagdad Solar I, LLC: cap=15.0, cf=0.0, units=1
+    // Raptor Ridge: cap=12.5, cf=0.0, units=1
+    // Red Rock: cap=40.0, cf=0.0, units=1
+    // Rio Rico Solar: cap=6.0, cf=0.0, units=1
     // Roger Road WWTP: cap=0.9, cf=0.0, units=1
-    // Saddle Mountain Solar I: cap=15.0, cf=0.002, units=1
-    // Saint Solar: cap=100.0, cf=0.011, units=1
-    // Sandstone Solar: cap=45.0, cf=0.005, units=1
-    // Sun Streams 2: cap=150.0, cf=0.017, units=1
-    // Sun Streams, LLC: cap=158.0, cf=0.017, units=1
-    // Tech Park Solar: cap=5.1, cf=0.001, units=1
+    // Saddle Mountain Solar I: cap=15.0, cf=0.0, units=1
+    // Saint Solar: cap=100.0, cf=0.0, units=1
+    // Sandstone Solar: cap=45.0, cf=0.0, units=1
+    // Sun Streams 2: cap=150.0, cf=0.0, units=1
+    // Sun Streams, LLC: cap=158.0, cf=0.0, units=1
+    // Tech Park Solar: cap=5.1, cf=0.0, units=1
     // UASTP I: cap=1.2, cf=0.0, units=1
-    // Valencia Solar: cap=9.0, cf=0.001, units=1
+    // Valencia Solar: cap=9.0, cf=0.0, units=1
     // Walmart Casa Grande: cap=2.0, cf=0.0, units=1
-    // Wilmot Energy Center, LLC: cap=130.0, cf=0.014, units=1
+    // Wilmot Energy Center, LLC: cap=130.0, cf=0.0, units=1
     name "wecc240_psse_G_1402_PV";
     parent "wecc240_psse_G_1402";
     latitude 34.07;
@@ -6580,12 +6580,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Apache Solar 1: cap=20.0, cf=0.01, units=1
-    // Fort Huachuca Solar PV Project: cap=17.7, cf=0.009, units=1
-    // Kayenta Solar Project: cap=55.3, cf=0.029, units=1
-    // Red Horse 2: cap=55.0, cf=0.029, units=1
-    // Red Horse III: cap=30.0, cf=0.016, units=1
-    // Sulphur Springs: cap=20.5, cf=0.011, units=1
+    // Apache Solar 1: cap=20.0, cf=0.0, units=1
+    // Fort Huachuca Solar PV Project: cap=17.7, cf=0.0, units=1
+    // Kayenta Solar Project: cap=55.3, cf=0.0, units=1
+    // Red Horse 2: cap=55.0, cf=0.0, units=1
+    // Red Horse III: cap=30.0, cf=0.0, units=1
+    // Sulphur Springs: cap=20.5, cf=0.0, units=1
     name "wecc240_psse_G_1102_PV";
     parent "wecc240_psse_G_1102";
     latitude 34.94;
@@ -6620,10 +6620,10 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Chevelon Butte Wind Phase I: cap=18.0, cf=0.008, units=4
-    // Dry Lake: cap=63.0, cf=0.03, units=30
-    // Dry Lake II: cap=65.10000000000001, cf=0.031, units=31
-    // Red Horse 2: cap=30.0, cf=0.015, units=15
+    // Chevelon Butte Wind Phase I: cap=18.0, cf=0.0, units=4
+    // Dry Lake: cap=63.0, cf=0.0, units=30
+    // Dry Lake II: cap=65.10000000000001, cf=0.0, units=31
+    // Red Horse 2: cap=30.0, cf=0.0, units=15
     name "wecc240_psse_G_1102_WT";
     parent "wecc240_psse_G_1102";
     latitude 34.94;
@@ -6706,25 +6706,25 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Alamogordo Solar Energy Center: cap=4.9, cf=0.001, units=1
-    // Alta Luna: cap=28.1, cf=0.006, units=1
-    // Buena Vista Energy Center: cap=120.0, cf=0.026, units=1
+    // Alamogordo Solar Energy Center: cap=4.9, cf=0.0, units=1
+    // Alta Luna: cap=28.1, cf=0.0, units=1
+    // Buena Vista Energy Center: cap=120.0, cf=0.0, units=1
     // City of Truth or Consequences PV: cap=1.9, cf=0.0, units=1
     // Columbus Solar Project: cap=1.9, cf=0.0, units=1
-    // Deming Solar Energy Center: cap=9.0, cf=0.002, units=1
+    // Deming Solar Energy Center: cap=9.0, cf=0.0, units=1
     // Fort Bliss (DEA EPIC): cap=2.0, cf=0.0, units=1
-    // Hatch Solar Energy Center I, LLC: cap=5.04, cf=0.001, units=1
-    // Holloman Solar Facility: cap=5.0, cf=0.001, units=1
-    // Macho Springs: cap=52.2, cf=0.011, units=1
-    // Montana Solar Facility: cap=3.0, cf=0.001, units=1
-    // Newman Solar: cap=10.42, cf=0.002, units=1
-    // Otero Solar: cap=7.5, cf=0.002, units=1
-    // Roadrunner Solar: cap=20.16, cf=0.004, units=1
+    // Hatch Solar Energy Center I, LLC: cap=5.04, cf=0.0, units=1
+    // Holloman Solar Facility: cap=5.0, cf=0.0, units=1
+    // Macho Springs: cap=52.2, cf=0.0, units=1
+    // Montana Solar Facility: cap=3.0, cf=0.0, units=1
+    // Newman Solar: cap=10.42, cf=0.0, units=1
+    // Otero Solar: cap=7.5, cf=0.0, units=1
+    // Roadrunner Solar: cap=20.16, cf=0.0, units=1
     // Silver City WWTP PV Project: cap=1.0, cf=0.0, units=1
-    // Springerville: cap=13.62, cf=0.003, units=1
-    // SunE EPE1, LLC: cap=10.0, cf=0.002, units=1
-    // SunE EPE2, LLC: cap=12.0, cf=0.003, units=1
-    // WSMR I: cap=4.6, cf=0.001, units=1
+    // Springerville: cap=13.62, cf=0.0, units=1
+    // SunE EPE1, LLC: cap=10.0, cf=0.0, units=1
+    // SunE EPE2, LLC: cap=12.0, cf=0.0, units=1
+    // WSMR I: cap=4.6, cf=0.0, units=1
     name "wecc240_psse_G_1101_PV";
     parent "wecc240_psse_G_1101";
     latitude 35.13;
@@ -6758,7 +6758,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Borderlands: cap=99.8, cf=0.03, units=34
+    // Borderlands: cap=99.8, cf=0.0, units=34
     // Macho Springs Wind Farm I: cap=50.4, cf=0.0, units=28
     name "wecc240_psse_G_1101_WT";
     parent "wecc240_psse_G_1101";
@@ -6791,10 +6791,10 @@ object pypower.gen
 }
 object pypower.powerplant
 {
-    // Babbitt Ranch Wind: cap=162.96, cf=0.242, units=50
-    // Chevelon Butte Wind Phase I: cap=221.0, cf=0.3, units=53
-    // Chevelon Butte Wind Phase II: cap=216.0, cf=0.28800000000000003, units=48
-    // Perrin Ranch: cap=99.2, cf=0.124, units=62
+    // Babbitt Ranch Wind: cap=162.96, cf=0.0, units=50
+    // Chevelon Butte Wind Phase I: cap=221.0, cf=0.0, units=53
+    // Chevelon Butte Wind Phase II: cap=216.0, cf=0.0, units=48
+    // Perrin Ranch: cap=99.2, cf=0.0, units=62
     name "wecc240_psse_G_1201_WT";
     parent "wecc240_psse_G_1201";
     latitude 35.98;
@@ -6858,34 +6858,34 @@ object pypower.gen
 }
 object pypower.powerplant
 {
-    // Beryl Solar Plant: cap=3.0, cf=0.001, units=1
-    // Buckhorn Solar Plant: cap=3.0, cf=0.001, units=1
-    // Cedar Valley Solar Plant: cap=3.0, cf=0.001, units=1
-    // Cove Mountain Solar: cap=58.0, cf=0.019, units=1
-    // Cove Mountain Solar 2: cap=122.0, cf=0.041, units=1
-    // Enterprise Solar, LLC: cap=80.0, cf=0.027, units=1
-    // Escalante Solar I, LLC: cap=80.02, cf=0.027, units=1
-    // Escalante Solar II, LLC: cap=80.02, cf=0.027, units=1
-    // Escalante Solar III, LLC: cap=80.02, cf=0.027, units=1
-    // Fiddler's Canyon #1: cap=3.0, cf=0.001, units=1
-    // Fiddler's Canyon #2: cap=6.0, cf=0.002, units=2
-    // Fiddler's Canyon #3: cap=3.0, cf=0.001, units=1
-    // Granite Mountain Solar East, LLC: cap=80.0, cf=0.027, units=1
-    // Granite Mountain Solar West, LLC: cap=50.4, cf=0.017, units=1
-    // Granite Peak Solar Plant: cap=3.0, cf=0.001, units=1
-    // Greenville Solar Plant: cap=2.2, cf=0.001, units=1
-    // Iron Springs Solar, LLC: cap=80.02, cf=0.027, units=1
-    // Laho Solar Plant: cap=3.0, cf=0.001, units=1
-    // Milford 2: cap=3.0, cf=0.001, units=1
-    // Milford Flat Solar Plant: cap=3.0, cf=0.001, units=1
-    // Milford Solar 1: cap=99.0, cf=0.033, units=1
-    // Quichapa 1: cap=3.0, cf=0.001, units=1
-    // Quichapa 2: cap=3.0, cf=0.001, units=1
-    // Quichapa 3: cap=3.0, cf=0.001, units=1
-    // Sigurd Solar LLC: cap=80.0, cf=0.027, units=1
-    // South Milford Solar Plant: cap=2.9, cf=0.001, units=1
-    // Three Peaks Power: cap=80.0, cf=0.027, units=1
-    // Utah Red Hills Renewable Energy Park: cap=80.0, cf=0.027, units=1
+    // Beryl Solar Plant: cap=3.0, cf=0.0, units=1
+    // Buckhorn Solar Plant: cap=3.0, cf=0.0, units=1
+    // Cedar Valley Solar Plant: cap=3.0, cf=0.0, units=1
+    // Cove Mountain Solar: cap=58.0, cf=0.0, units=1
+    // Cove Mountain Solar 2: cap=122.0, cf=0.0, units=1
+    // Enterprise Solar, LLC: cap=80.0, cf=0.0, units=1
+    // Escalante Solar I, LLC: cap=80.02, cf=0.0, units=1
+    // Escalante Solar II, LLC: cap=80.02, cf=0.0, units=1
+    // Escalante Solar III, LLC: cap=80.02, cf=0.0, units=1
+    // Fiddler's Canyon #1: cap=3.0, cf=0.0, units=1
+    // Fiddler's Canyon #2: cap=6.0, cf=0.0, units=2
+    // Fiddler's Canyon #3: cap=3.0, cf=0.0, units=1
+    // Granite Mountain Solar East, LLC: cap=80.0, cf=0.0, units=1
+    // Granite Mountain Solar West, LLC: cap=50.4, cf=0.0, units=1
+    // Granite Peak Solar Plant: cap=3.0, cf=0.0, units=1
+    // Greenville Solar Plant: cap=2.2, cf=0.0, units=1
+    // Iron Springs Solar, LLC: cap=80.02, cf=0.0, units=1
+    // Laho Solar Plant: cap=3.0, cf=0.0, units=1
+    // Milford 2: cap=3.0, cf=0.0, units=1
+    // Milford Flat Solar Plant: cap=3.0, cf=0.0, units=1
+    // Milford Solar 1: cap=99.0, cf=0.0, units=1
+    // Quichapa 1: cap=3.0, cf=0.0, units=1
+    // Quichapa 2: cap=3.0, cf=0.0, units=1
+    // Quichapa 3: cap=3.0, cf=0.0, units=1
+    // Sigurd Solar LLC: cap=80.0, cf=0.0, units=1
+    // South Milford Solar Plant: cap=2.9, cf=0.0, units=1
+    // Three Peaks Power: cap=80.0, cf=0.0, units=1
+    // Utah Red Hills Renewable Energy Park: cap=80.0, cf=0.0, units=1
     name "wecc240_psse_G_6507_PV";
     parent "wecc240_psse_G_6507";
     latitude 38.89;
@@ -6920,8 +6920,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Milford Phase I: cap=203.5, cf=0.097, units=97
-    // Milford Phase II: cap=13.5, cf=0.009000000000000001, units=9
+    // Milford Phase I: cap=203.5, cf=0.0, units=97
+    // Milford Phase II: cap=13.5, cf=0.0, units=9
     name "wecc240_psse_G_6507_WT";
     parent "wecc240_psse_G_6507";
     latitude 38.89;
@@ -6986,11 +6986,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Bluewater CDEC 1: cap=2.4, cf=0.001, units=1
-    // Cibola: cap=7.6, cf=0.002, units=1
-    // City of Gallup Solar: cap=8.0, cf=0.002, units=1
-    // Grants CDEC 2: cap=4.5, cf=0.001, units=1
-    // Route 66 Energy Center, LLC: cap=49.5, cf=0.013, units=1
+    // Bluewater CDEC 1: cap=2.4, cf=0.0, units=1
+    // Cibola: cap=7.6, cf=0.0, units=1
+    // City of Gallup Solar: cap=8.0, cf=0.0, units=1
+    // Grants CDEC 2: cap=4.5, cf=0.0, units=1
+    // Route 66 Energy Center, LLC: cap=49.5, cf=0.0, units=1
     name "wecc240_psse_G_1001_PV";
     parent "wecc240_psse_G_1001";
     latitude 36.67;
@@ -7109,40 +7109,40 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Albuquerque Solar Energy Center: cap=2.0, cf=0.001, units=1
-    // Alcalde Solar Array: cap=2.4, cf=0.001, units=1
-    // Britton Solar Energy Center: cap=50.0, cf=0.018, units=1
-    // CNMEC Solar Energy Center: cap=2.0, cf=0.001, units=1
-    // Carrizozo Solar: cap=3.0, cf=0.001, units=1
+    // Albuquerque Solar Energy Center: cap=2.0, cf=0.0, units=1
+    // Alcalde Solar Array: cap=2.4, cf=0.0, units=1
+    // Britton Solar Energy Center: cap=50.0, cf=0.0, units=1
+    // CNMEC Solar Energy Center: cap=2.0, cf=0.0, units=1
+    // Carrizozo Solar: cap=3.0, cf=0.0, units=1
     // City of Rio Rancho WWTP: cap=1.2, cf=0.0, units=1
-    // Cortez Solar 1, LLC: cap=2.2, cf=0.001, units=1
-    // Cortez Solar 2, LLC: cap=5.0, cf=0.002, units=1
-    // Cortez Solar 3, LLC: cap=2.0, cf=0.001, units=1
-    // Cuba 2.5ac, LLC: cap=2.5, cf=0.001, units=1
-    // Encino Solar Energy Center: cap=55.0, cf=0.019, units=1
-    // Eubank Landfill Solar Array: cap=2.0, cf=0.001, units=1
-    // Facebook 1 Solar Energy Center: cap=10.0, cf=0.004, units=1
-    // Facebook 2 Solar Energy Center: cap=10.0, cf=0.004, units=1
-    // Facebook 3 Solar Energy Center: cap=10.0, cf=0.004, units=1
-    // Hayhurst New Mexico Solar: cap=20.0, cf=0.007, units=1
+    // Cortez Solar 1, LLC: cap=2.2, cf=0.0, units=1
+    // Cortez Solar 2, LLC: cap=5.0, cf=0.0, units=1
+    // Cortez Solar 3, LLC: cap=2.0, cf=0.0, units=1
+    // Cuba 2.5ac, LLC: cap=2.5, cf=0.0, units=1
+    // Encino Solar Energy Center: cap=55.0, cf=0.0, units=1
+    // Eubank Landfill Solar Array: cap=2.0, cf=0.0, units=1
+    // Facebook 1 Solar Energy Center: cap=10.0, cf=0.0, units=1
+    // Facebook 2 Solar Energy Center: cap=10.0, cf=0.0, units=1
+    // Facebook 3 Solar Energy Center: cap=10.0, cf=0.0, units=1
+    // Hayhurst New Mexico Solar: cap=20.0, cf=0.0, units=1
     // Los Alamos PV Site: cap=1.0, cf=0.0, units=1
-    // Los Lunas Solar Energy Center: cap=7.0, cf=0.002, units=1
-    // Manzano Solar: cap=8.0, cf=0.003, units=1
-    // Meadow Lake Solar Energy Center: cap=9.12, cf=0.003, units=1
+    // Los Lunas Solar Energy Center: cap=7.0, cf=0.0, units=1
+    // Manzano Solar: cap=8.0, cf=0.0, units=1
+    // Meadow Lake Solar Energy Center: cap=9.12, cf=0.0, units=1
     // RC Energy AA, LLC Solar Facility: cap=1.0, cf=0.0, units=1
-    // Red Mesa Solar Project: cap=72.0, cf=0.025, units=1
-    // Rio Communities Solar Energy Center: cap=10.0, cf=0.004, units=1
-    // Rio De Oro Solar Energy Center: cap=10.0, cf=0.004, units=1
+    // Red Mesa Solar Project: cap=72.0, cf=0.0, units=1
+    // Rio Communities Solar Energy Center: cap=10.0, cf=0.0, units=1
+    // Rio De Oro Solar Energy Center: cap=10.0, cf=0.0, units=1
     // Rio Rancho High School: cap=1.0, cf=0.0, units=1
     // SMPA Solar 1 Community Solar: cap=1.0, cf=0.0, units=1
-    // SPS5 Hopi: cap=9.9, cf=0.003, units=1
-    // Sandoval Solar Energy Center: cap=6.08, cf=0.002, units=1
-    // Santa Fe Solar Energy Center: cap=9.5, cf=0.003, units=1
-    // Santolina Solar Energy Center: cap=10.5, cf=0.004, units=1
-    // South Valley Solar Energy Center: cap=10.0, cf=0.004, units=1
+    // SPS5 Hopi: cap=9.9, cf=0.0, units=1
+    // Sandoval Solar Energy Center: cap=6.08, cf=0.0, units=1
+    // Santa Fe Solar Energy Center: cap=9.5, cf=0.0, units=1
+    // Santolina Solar Energy Center: cap=10.5, cf=0.0, units=1
+    // South Valley Solar Energy Center: cap=10.0, cf=0.0, units=1
     // Sue Cleveland High School: cap=1.0, cf=0.0, units=1
-    // Syncarpha El Rito: cap=1.6, cf=0.001, units=1
-    // Vista Solar Energy Center: cap=10.0, cf=0.004, units=1
+    // Syncarpha El Rito: cap=1.6, cf=0.0, units=1
+    // Vista Solar Energy Center: cap=10.0, cf=0.0, units=1
     name "wecc240_psse_G_1004_PV";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -7175,12 +7175,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // El Cabo: cap=298.2, cf=0.14200000000000002, units=142
-    // High Lonesome: cap=99.4, cf=0.04, units=40
-    // La Joya: cap=212.79999999999998, cf=0.076, units=76
-    // La Joya II: cap=91.875, cf=0.035, units=35
-    // Latigo: cap=62.099999999999994, cf=0.027, units=27
-    // Western Spirit: cap=979.9999999999999, cf=0.35000000000000003, units=350
+    // El Cabo: cap=298.2, cf=0.0, units=142
+    // High Lonesome: cap=99.4, cf=0.0, units=40
+    // La Joya: cap=212.79999999999998, cf=0.0, units=76
+    // La Joya II: cap=91.875, cf=0.0, units=35
+    // Latigo: cap=62.099999999999994, cf=0.0, units=27
+    // Western Spirit: cap=979.9999999999999, cf=0.0, units=350
     name "wecc240_psse_G_1004_WT";
     parent "wecc240_psse_G_1004";
     latitude 36.91;
@@ -7303,20 +7303,20 @@ object pypower.powerplant
     // Adams Community Solar Garden, LLC: cap=1.2, cf=0.0, units=1
     // Airport 1 Solar (DIA): cap=1.5, cf=0.0, units=1
     // Alamosa Solar South (CSG): cap=1.6, cf=0.0, units=1
-    // Angel Fire Energy Facility: cap=9.8, cf=0.001, units=1
+    // Angel Fire Energy Facility: cap=9.8, cf=0.0, units=1
     // Arapahoe 3 Community Solar Array: cap=1.8, cf=0.0, units=1
-    // Bighorn Solar 1: cap=240.0, cf=0.016, units=1
+    // Bighorn Solar 1: cap=240.0, cf=0.0, units=1
     // Brighton PV Solar Plant: cap=1.8, cf=0.0, units=1
     // CO LI (CSG) 1-Kamerra: cap=1.5, cf=0.0, units=1
     // CSU Pueblo: cap=1.0, cf=0.0, units=1
     // Carson Solar I: cap=1.5, cf=0.0, units=1
-    // Chaves County Solar II: cap=30.0, cf=0.002, units=1
-    // Chaves Solar, LLC: cap=70.0, cf=0.005, units=1
-    // Cimarron Solar Facility: cap=30.64, cf=0.002, units=1
+    // Chaves County Solar II: cap=30.0, cf=0.0, units=1
+    // Chaves Solar, LLC: cap=70.0, cf=0.0, units=1
+    // Cimarron Solar Facility: cap=30.64, cf=0.0, units=1
     // City & County of Denver at Denver Int'l: cap=3.4, cf=0.0, units=1
-    // Clear Spring Ranch PV Project: cap=10.0, cf=0.001, units=1
-    // Cogentrix of Alamosa: cap=30.0, cf=0.002, units=1
-    // Comanche Solar: cap=120.0, cf=0.008, units=1
+    // Clear Spring Ranch PV Project: cap=10.0, cf=0.0, units=1
+    // Cogentrix of Alamosa: cap=30.0, cf=0.0, units=1
+    // Comanche Solar: cap=120.0, cf=0.0, units=1
     // Conejos 1 Community Solar Array: cap=1.5, cf=0.0, units=1
     // DIA 8: cap=4.5, cf=0.0, units=1
     // Denver Int Airport: cap=1.9, cf=0.0, units=1
@@ -7324,9 +7324,9 @@ object pypower.powerplant
     // Denver Metro Solar: cap=1.6, cf=0.0, units=1
     // Fremont CO 1, LLC: cap=1.8, cf=0.0, units=1
     // GSE NM1: cap=1.7, cf=0.0, units=1
-    // Grazing Yak Solar: cap=39.5, cf=0.003, units=1
-    // Greater Sandhill I: cap=19.0, cf=0.001, units=1
-    // Hooper Solar: cap=52.0, cf=0.003, units=1
+    // Grazing Yak Solar: cap=39.5, cf=0.0, units=1
+    // Greater Sandhill I: cap=19.0, cf=0.0, units=1
+    // Hooper Solar: cap=52.0, cf=0.0, units=1
     // Imboden Solar Garden: cap=3.0, cf=0.0, units=1
     // Jeffco Community Solar Gardens, LLC: cap=1.2, cf=0.0, units=1
     // Kit Carson: cap=1.3, cf=0.0, units=1
@@ -7337,8 +7337,8 @@ object pypower.powerplant
     // Mtn. Solar 3 (CSG): cap=1.5, cf=0.0, units=1
     // Mtn. Solar 4 (CSG): cap=1.5, cf=0.0, units=1
     // NSE Camber BH (CSG) 2, LLC: cap=2.0, cf=0.0, units=1
-    // Neptune Energy Center Hybrid: cap=325.0, cf=0.021, units=1
-    // Oak Leaf Solar XVIII, LLC: cap=9.0, cf=0.001, units=1
+    // Neptune Energy Center Hybrid: cap=325.0, cf=0.0, units=1
+    // Oak Leaf Solar XVIII, LLC: cap=9.0, cf=0.0, units=1
     // Oak Leaf Solar XXI (CSG): cap=1.5, cf=0.0, units=1
     // Oak Leaf Solar XXII, LLC (CSG): cap=1.5, cf=0.0, units=1
     // Oak Leaf Solar XXIII, LLC (CSG): cap=1.5, cf=0.0, units=1
@@ -7347,9 +7347,9 @@ object pypower.powerplant
     // Oak Leaf Solar XXVI, LLC: cap=1.5, cf=0.0, units=1
     // Oak Leaf Solar XXX, LLC (CSG): cap=1.5, cf=0.0, units=1
     // Oak Leaf Solar XXXIII, LLC (Lantz): cap=3.0, cf=0.0, units=1
-    // Palmer Solar: cap=60.0, cf=0.004, units=1
+    // Palmer Solar: cap=60.0, cf=0.0, units=1
     // Pikes Peak Solar Garden 1, LLC (CSG): cap=2.0, cf=0.0, units=1
-    // Pioneer Solar (CO), LLC: cap=80.0, cf=0.005, units=1
+    // Pioneer Solar (CO), LLC: cap=80.0, cf=0.0, units=1
     // Pivot Solar 14, LLC (CSG): cap=2.0, cf=0.0, units=1
     // Pivot Solar 15, LLC (CSG): cap=1.0, cf=0.0, units=1
     // Pivot Solar 2, LLC (CSG): cap=2.0, cf=0.0, units=1
@@ -7357,29 +7357,29 @@ object pypower.powerplant
     // Quincy II Solar Garden: cap=1.5, cf=0.0, units=1
     // Quincy Solar: cap=1.5, cf=0.0, units=1
     // Rock Creek 2 (CSG): cap=1.6, cf=0.0, units=1
-    // Roswell Solar, LLC: cap=70.0, cf=0.005, units=1
+    // Roswell Solar, LLC: cap=70.0, cf=0.0, units=1
     // SEV NM Phase 2: cap=1.4, cf=0.0, units=1
-    // San Isabel Solar, LLC: cap=30.0, cf=0.002, units=1
+    // San Isabel Solar, LLC: cap=30.0, cf=0.0, units=1
     // San Luis Solar Garden: cap=1.2, cf=0.0, units=1
     // San Luis Valley Solar Array: cap=2.7, cf=0.0, units=1
-    // San Luis Valley Solar Ranch: cap=30.4, cf=0.002, units=1
-    // San Miguel I Solar Energy Center: cap=10.0, cf=0.001, units=1
+    // San Luis Valley Solar Ranch: cap=30.4, cf=0.0, units=1
+    // San Miguel I Solar Energy Center: cap=10.0, cf=0.0, units=1
     // Springer Solar 1: cap=0.9, cf=0.0, units=1
     // Storrie Lake Solar Project: cap=1.5, cf=0.0, units=1
-    // Sun Mountain Solar 1: cap=200.0, cf=0.013, units=1
+    // Sun Mountain Solar 1: cap=200.0, cf=0.0, units=1
     // SunE Alamosa: cap=6.9, cf=0.0, units=1
     // Syncarpha Eagle Nest: cap=1.0, cf=0.0, units=1
     // Syncarpha Questa: cap=1.6, cf=0.0, units=1
     // Syncarpha Taos: cap=3.1, cf=0.0, units=1
-    // Taos Mesa Energy Facility Hybrid: cap=15.0, cf=0.001, units=1
-    // Thunder Wolf Energy Center Hybrid: cap=248.0, cf=0.016, units=1
-    // Titan Solar: cap=50.0, cf=0.003, units=1
+    // Taos Mesa Energy Facility Hybrid: cap=15.0, cf=0.0, units=1
+    // Thunder Wolf Energy Center Hybrid: cap=248.0, cf=0.0, units=1
+    // Titan Solar: cap=50.0, cf=0.0, units=1
     // Trout Creek Solar: cap=2.0, cf=0.0, units=1
     // Venture 1-1A (CSG): cap=1.5, cf=0.0, units=1
     // Venture 2: cap=1.5, cf=0.0, units=1
     // Venture 3-1C: cap=1.5, cf=0.0, units=1
     // Venture 4-1D: cap=1.5, cf=0.0, units=1
-    // Victory Solar, LLC: cap=12.83, cf=0.001, units=1
+    // Victory Solar, LLC: cap=12.83, cf=0.0, units=1
     // Vilas Solar Array: cap=4.0, cf=0.0, units=1
     // Xcel Adams 1 Community Solar Array: cap=1.8, cf=0.0, units=1
     // Xcel Adams 2 Community Solar Array: cap=1.5, cf=0.0, units=1
@@ -7558,8 +7558,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Graphite Solar I: cap=80.0, cf=0.058, units=1
-    // Hunter Solar, LLC (UT): cap=100.0, cf=0.073, units=1
+    // Graphite Solar I: cap=80.0, cf=0.0, units=1
+    // Hunter Solar, LLC (UT): cap=100.0, cf=0.0, units=1
     name "wecc240_psse_G_6508_PV";
     parent "wecc240_psse_G_6508";
     latitude 40.05;
@@ -7594,7 +7594,7 @@ object pypower.powerplant
 object pypower.powerplant
 {
     // Camp Williams: cap=0.885, cf=0.0, units=2
-    // Spanish Fork: cap=18.900000000000002, cf=0.018000000000000002, units=9
+    // Spanish Fork: cap=18.900000000000002, cf=0.0, units=9
     name "wecc240_psse_G_6508_WT";
     parent "wecc240_psse_G_6508";
     latitude 40.05;
@@ -7727,7 +7727,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Weber State University-Davis Campus PV: cap=1.3, cf=0.002, units=1
+    // Weber State University-Davis Campus PV: cap=1.3, cf=0.0, units=1
     name "wecc240_psse_G_6509_PV";
     parent "wecc240_psse_G_6509";
     latitude 40.77;
@@ -7761,8 +7761,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Shakopee Mdewakanton Sioux: cap=1.5, cf=0.002, units=1
-    // Tooele Army Depot II: cap=1.79, cf=0.002, units=1
+    // Shakopee Mdewakanton Sioux: cap=1.5, cf=0.0, units=1
+    // Tooele Army Depot II: cap=1.79, cf=0.0, units=1
     name "wecc240_psse_G_6509_WT";
     parent "wecc240_psse_G_6509";
     latitude 40.77;
@@ -7894,7 +7894,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Sage Solar I-III: cap=57.6, cf=0.037, units=1
+    // Sage Solar I-III: cap=57.6, cf=0.0, units=1
     name "wecc240_psse_G_6305_PV";
     parent "wecc240_psse_G_6305";
     latitude 41.83;
@@ -7928,9 +7928,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Evanston (Wyoming Wind Energy Center): cap=144.0, cf=0.08, units=80
-    // Mountain Wind I: cap=60.900000000000006, cf=0.029, units=29
-    // Mountain Wind II: cap=79.8, cf=0.038, units=38
+    // Evanston (Wyoming Wind Energy Center): cap=144.0, cf=0.0, units=80
+    // Mountain Wind I: cap=60.900000000000006, cf=0.0, units=29
+    // Mountain Wind II: cap=79.8, cf=0.0, units=38
     name "wecc240_psse_G_6305_WT";
     parent "wecc240_psse_G_6305";
     latitude 41.83;
@@ -7994,11 +7994,11 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Bonanza: cap=12.5, cf=0.018, units=1
-    // Mesa (CSG) 1 Murdock: cap=1.5, cf=0.002, units=1
-    // Mesa (CSG) 2 Massicotte: cap=1.5, cf=0.002, units=1
-    // Mesa PV1: cap=1.6, cf=0.002, units=1
-    // Oak Leaf Solar XXXI, LLC (CSG): cap=1.5, cf=0.002, units=1
+    // Bonanza: cap=12.5, cf=0.0, units=1
+    // Mesa (CSG) 1 Murdock: cap=1.5, cf=0.0, units=1
+    // Mesa (CSG) 2 Massicotte: cap=1.5, cf=0.0, units=1
+    // Mesa PV1: cap=1.6, cf=0.0, units=1
+    // Oak Leaf Solar XXXI, LLC (CSG): cap=1.5, cf=0.0, units=1
     name "wecc240_psse_G_6503_PV";
     parent "wecc240_psse_G_6503";
     latitude 40.03;
@@ -8079,12 +8079,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Ameresco HCE Solar, LLC: cap=4.5, cf=0.001, units=1
+    // Ameresco HCE Solar, LLC: cap=4.5, cf=0.0, units=1
     // Eagle Springs Solar, LLC: cap=1.0, cf=0.0, units=1
     // Oak Leaf Solar XXXII (CSG): cap=1.5, cf=0.0, units=1
-    // Pitkin County Solar: cap=5.0, cf=0.002, units=1
-    // Pivot Solar 3, LLC (CSG): cap=2.0, cf=0.001, units=1
-    // Pivot Solar 7, LLC (CSG): cap=2.0, cf=0.001, units=1
+    // Pitkin County Solar: cap=5.0, cf=0.0, units=1
+    // Pivot Solar 3, LLC (CSG): cap=2.0, cf=0.0, units=1
+    // Pivot Solar 7, LLC (CSG): cap=2.0, cf=0.0, units=1
     // Sunnyside Ranch Community Solar Array: cap=1.5, cf=0.0, units=1
     // WWRF Solar Plant: cap=1.3, cf=0.0, units=1
     name "wecc240_psse_G_7002_PV";
@@ -8121,12 +8121,12 @@ object pypower.powerplant
 object pypower.powerplant
 {
     // BLM-JCI: cap=0.1, cf=0.0, units=1
-    // Dunlap: cap=136.9, cf=0.074, units=74
-    // Ekola Flats: cap=199.29999999999998, cf=0.051000000000000004, units=51
-    // Foote Creek II, III, IV Repowering: cap=46.2, cf=0.011, units=11
+    // Dunlap: cap=136.9, cf=0.0, units=74
+    // Ekola Flats: cap=199.29999999999998, cf=0.0, units=51
+    // Foote Creek II, III, IV Repowering: cap=46.2, cf=0.0, units=11
     // Medicine Bow: cap=6.27, cf=0.0, units=9
-    // Seven Mile Hill I & II: cap=145.1, cf=0.076, units=79
-    // TB Flats I & II: cap=503.2, cf=0.132, units=132
+    // Seven Mile Hill I & II: cap=145.1, cf=0.0, units=79
+    // TB Flats I & II: cap=503.2, cf=0.0, units=132
     name "wecc240_psse_G_7002_WT";
     parent "wecc240_psse_G_7002";
     latitude 40.52;
@@ -8191,7 +8191,7 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Sweetwater Solar: cap=80.0, cf=0.031, units=1
+    // Sweetwater Solar: cap=80.0, cf=0.0, units=1
     name "wecc240_psse_G_6301_PV";
     parent "wecc240_psse_G_6301";
     latitude 42.09;
@@ -8304,12 +8304,12 @@ object pypower.powerplant
 object pypower.powerplant
 {
     // Alden Solar (CSG), LLC: cap=1.6, cf=0.0, units=1
-    // Bison Solar, LLC: cap=32.4, cf=0.003, units=1
+    // Bison Solar, LLC: cap=32.4, cf=0.0, units=1
     // City of Boulder WWTP: cap=0.9, cf=0.0, units=1
     // Coyote Ridge Community Solar: cap=1.5, cf=0.0, units=1
     // Gilcrest Solar: cap=1.5, cf=0.0, units=1
     // Gilcrest V (CSG): cap=4.8, cf=0.0, units=1
-    // IBM Solar: cap=8.1, cf=0.001, units=1
+    // IBM Solar: cap=8.1, cf=0.0, units=1
     // Jack's Solar Garden: cap=1.0, cf=0.0, units=1
     // Lafayette Horizon Solar (CSG), LLC: cap=1.6, cf=0.0, units=1
     // Logan 1 Community Solar Array: cap=1.7, cf=0.0, units=1
@@ -8326,14 +8326,14 @@ object pypower.powerplant
     // Platteville Solar (CSG), LLC: cap=1.3, cf=0.0, units=1
     // RV CSU Power II, LLC: cap=3.0, cf=0.0, units=1
     // RV CSU Power, LLC: cap=1.9, cf=0.0, units=1
-    // Rawhide Prairie Solar Hybrid: cap=22.0, cf=0.002, units=1
+    // Rawhide Prairie Solar Hybrid: cap=22.0, cf=0.0, units=1
     // Riverview Solar: cap=1.5, cf=0.0, units=1
-    // SR Jenkins Ft Lupton: cap=13.0, cf=0.001, units=1
+    // SR Jenkins Ft Lupton: cap=13.0, cf=0.0, units=1
     // SR Kersey: cap=3.5, cf=0.0, units=1
     // SR Kersey II: cap=1.0, cf=0.0, units=1
-    // SR Mavericks: cap=6.5, cf=0.001, units=1
-    // SR Platte Solar Farm: cap=16.0, cf=0.002, units=1
-    // SR Rattlesnake: cap=6.0, cf=0.001, units=1
+    // SR Mavericks: cap=6.5, cf=0.0, units=1
+    // SR Platte Solar Farm: cap=16.0, cf=0.0, units=1
+    // SR Rattlesnake: cap=6.0, cf=0.0, units=1
     // SR Skylark B: cap=2.0, cf=0.0, units=1
     // SR Skylark C: cap=1.1, cf=0.0, units=1
     // Skylark: cap=4.0, cf=0.0, units=1
@@ -8527,14 +8527,14 @@ object pypower.powerplant
     // Big Horn: cap=199.5, cf=0.0, units=133
     // Big Horn 2: cap=50.0, cf=0.0, units=25
     // Goodnoe Hills: cap=103.4, cf=0.0, units=47
-    // Harvest Wind Farm: cap=98.89999999999999, cf=0.043000000000000003, units=43
-    // Juniper Canyon: cap=151.2, cf=0.063, units=63
+    // Harvest Wind Farm: cap=98.89999999999999, cf=0.0, units=43
+    // Juniper Canyon: cap=151.2, cf=0.0, units=63
     // Linden: cap=50.0, cf=0.0, units=25
-    // White Creek: cap=204.7, cf=0.089, units=89
-    // Windy Point I (Tuolomne Wind Project): cap=136.6, cf=0.042, units=62
-    // Windy Point II: cap=197.79999999999998, cf=0.08600000000000001, units=86
-    // Windy Point II (Windy Flats): cap=6.8999999999999995, cf=0.003, units=3
-    // Windy Point IIa (Windy Flats Extension): cap=57.49999999999999, cf=0.025, units=25
+    // White Creek: cap=204.7, cf=0.0, units=89
+    // Windy Point I (Tuolomne Wind Project): cap=136.6, cf=0.0, units=62
+    // Windy Point II: cap=197.79999999999998, cf=0.0, units=86
+    // Windy Point II (Windy Flats): cap=6.8999999999999995, cf=0.0, units=3
+    // Windy Point IIa (Windy Flats Extension): cap=57.49999999999999, cf=0.0, units=25
     name "wecc240_psse_G_4006_WT";
     parent "wecc240_psse_G_4006";
     latitude 45.61;
@@ -8678,7 +8678,7 @@ object pypower.powerplant
 object pypower.powerplant
 {
     // Coastal Energy: cap=6.0, cf=0.0, units=4
-    // Skookumchuck: cap=136.8, cf=0.038, units=38
+    // Skookumchuck: cap=136.8, cf=0.0, units=38
     name "wecc240_psse_G_4202_WT";
     parent "wecc240_psse_G_4202";
     latitude 47.06;
@@ -8759,8 +8759,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Montague Solar: cap=162.0, cf=0.029, units=1
-    // WyEast Solar: cap=10.0, cf=0.002, units=1
+    // Montague Solar: cap=162.0, cf=0.0, units=1
+    // WyEast Solar: cap=10.0, cf=0.0, units=1
     name "wecc240_psse_G_4005_PV";
     parent "wecc240_psse_G_4005";
     latitude 45.68;
@@ -8781,7 +8781,7 @@ object pypower.powerplant
     // Biglow Canyon III: cap=174.79999999999998, cf=0.0, units=76
     // Condon Wind Project, phase I: cap=24.599999999999998, cf=0.0, units=41
     // Condon Wind Project, phase II: cap=25.2, cf=0.0, units=42
-    // Golden Hills (Oregon): cap=197.0, cf=0.04, units=50
+    // Golden Hills (Oregon): cap=197.0, cf=0.0, units=50
     // Hay Canyon: cap=100.80000000000001, cf=0.0, units=48
     // Horseshoe Bend: cap=167.75, cf=0.0, units=61
     // Klondike I: cap=24.0, cf=0.0, units=16
@@ -8790,13 +8790,13 @@ object pypower.powerplant
     // Klondike IIIA: cap=78.0, cf=0.0, units=52
     // Leaning Juniper: cap=109.2, cf=0.0, units=67
     // Leaning Juniper II: cap=201.3, cf=0.0, units=117
-    // Montague: cap=200.85, cf=0.056, units=56
-    // North Hurlburt: cap=68.25, cf=0.001, units=24
+    // Montague: cap=200.85, cf=0.0, units=56
+    // North Hurlburt: cap=68.25, cf=0.0, units=24
     // PaTu Wind Farm: cap=9.0, cf=0.0, units=6
     // Pebble Springs: cap=98.7, cf=0.0, units=47
     // Rattlesnake Road: cap=102.9, cf=0.0, units=49
-    // Shepherds Flat: cap=249.75, cf=0.011, units=82
-    // South Hurlburt: cap=240.0, cf=0.003, units=85
+    // Shepherds Flat: cap=249.75, cf=0.0, units=82
+    // South Hurlburt: cap=240.0, cf=0.0, units=85
     // Star Point: cap=98.7, cf=0.0, units=47
     // Wheatfield: cap=96.60000000000001, cf=0.0, units=46
     // Willow Creek: cap=27.0, cf=0.0, units=18
@@ -8876,12 +8876,12 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Adams Nielson Solar: cap=19.2, cf=0.002, units=1
+    // Adams Nielson Solar: cap=19.2, cf=0.0, units=1
     // Camas Solar Project: cap=5.0, cf=0.0, units=1
     // Horn Rapids Solar, Storage and Training: cap=3.2, cf=0.0, units=1
     // NorWest Energy 9, LLC: cap=6.0, cf=0.0, units=1
     // Penstemon Solar Project: cap=5.0, cf=0.0, units=1
-    // Wheatridge Hybrid: cap=50.0, cf=0.004, units=1
+    // Wheatridge Hybrid: cap=50.0, cf=0.0, units=1
     name "wecc240_psse_G_4102_PV";
     parent "wecc240_psse_G_4102";
     latitude 46.67;
@@ -9358,9 +9358,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Apex Solar: cap=80.0, cf=0.082, units=1
-    // Great Divide Solar, LLC: cap=3.0, cf=0.003, units=1
-    // Green Meadow Solar, LLC: cap=3.0, cf=0.003, units=1
+    // Apex Solar: cap=80.0, cf=0.0, units=1
+    // Great Divide Solar, LLC: cap=3.0, cf=0.0, units=1
+    // Green Meadow Solar, LLC: cap=3.0, cf=0.0, units=1
     name "wecc240_psse_G_6202_PV";
     parent "wecc240_psse_G_6202";
     latitude 46.51;
@@ -9451,9 +9451,9 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Black Eagle Solar, LLC: cap=3.0, cf=0.003, units=1
-    // Magpie Solar, LLC: cap=3.0, cf=0.003, units=1
-    // River Bend Solar, LLC: cap=2.0, cf=0.002, units=1
+    // Black Eagle Solar, LLC: cap=3.0, cf=0.0, units=1
+    // Magpie Solar, LLC: cap=3.0, cf=0.0, units=1
+    // River Bend Solar, LLC: cap=2.0, cf=0.0, units=1
     name "wecc240_psse_G_6205_PV";
     parent "wecc240_psse_G_6205";
     latitude 47.43;
@@ -9469,22 +9469,22 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // Big Timber: cap=25.060000000000002, cf=0.028, units=14
-    // Fairfield Wind Farm: cap=10.0, cf=0.006, units=6
-    // Glacier I: cap=106.5, cf=0.07100000000000001, units=71
-    // Glacier Wind II: cap=103.5, cf=0.069, units=69
-    // Gordon Butte: cap=9.0, cf=0.006, units=6
-    // Greenfield Wind Farm: cap=29.9, cf=0.026000000000000002, units=13
-    // Horseshoe Bend/ranch pit: cap=9.0, cf=0.006, units=6
-    // Judith Gap: cap=135.0, cf=0.09, units=90
+    // Big Timber: cap=25.060000000000002, cf=0.0, units=14
+    // Fairfield Wind Farm: cap=10.0, cf=0.0, units=6
+    // Glacier I: cap=106.5, cf=0.0, units=71
+    // Glacier Wind II: cap=103.5, cf=0.0, units=69
+    // Gordon Butte: cap=9.0, cf=0.0, units=6
+    // Greenfield Wind Farm: cap=29.9, cf=0.0, units=13
+    // Horseshoe Bend/ranch pit: cap=9.0, cf=0.0, units=6
+    // Judith Gap: cap=135.0, cf=0.0, units=90
     // Martinsdale Colony South: cap=2.0, cf=0.0, units=8
     // Martinsdale Wind Farm: cap=0.7150000000000001, cf=0.0, units=11
-    // Musselshell I: cap=10.5, cf=0.007, units=7
-    // Musselshell II: cap=10.5, cf=0.007, units=7
-    // Rim Rock: cap=189.0, cf=0.126, units=126
-    // South Peak: cap=79.89999999999999, cf=0.058, units=29
-    // Spion Kop: cap=40.0, cf=0.025, units=25
-    // Two Dot: cap=9.72, cf=0.006, units=6
+    // Musselshell I: cap=10.5, cf=0.0, units=7
+    // Musselshell II: cap=10.5, cf=0.0, units=7
+    // Rim Rock: cap=189.0, cf=0.0, units=126
+    // South Peak: cap=79.89999999999999, cf=0.0, units=29
+    // Spion Kop: cap=40.0, cf=0.0, units=25
+    // Two Dot: cap=9.72, cf=0.0, units=6
     // Two Dot Wind Farm: cap=0.455, cf=0.0, units=7
     name "wecc240_psse_G_6205_WT";
     parent "wecc240_psse_G_6205";
@@ -9575,8 +9575,8 @@ object pypower.powerplant
 
 object pypower.powerplant
 {
-    // MTSUN: cap=80.0, cf=0.013, units=1
-    // South Mills Solar, LLC: cap=3.0, cf=0.001, units=1
+    // MTSUN: cap=80.0, cf=0.0, units=1
+    // South Mills Solar, LLC: cap=3.0, cf=0.0, units=1
     name "wecc240_psse_G_6201_PV";
     parent "wecc240_psse_G_6201";
     latitude 45.69;

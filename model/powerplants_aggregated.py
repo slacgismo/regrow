@@ -99,6 +99,8 @@ with open("powerplants_split.csv","w") as fh:
         if not plant[2] in totals:
             totals[bus] = 0
         totals[bus] += cap
+
+    # compute contribution factors for non-renewables
     for plant in [x for x in plants if x[3] not in ["PV","WT"]]:
         bus = plant[2]
         plant[5] = round(float(plant[4])/float(totals[bus]),3)

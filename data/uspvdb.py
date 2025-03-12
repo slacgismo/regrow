@@ -81,9 +81,10 @@ COUNTIES.drop(["latitude","longitude"],inplace=True,axis=1)
 
 zipdata = zipfile.ZipFile(io.BytesIO(requests.get("https://energy.usgs.gov/uspvdb/assets/data/uspvdbCSV.zip").content))
 DATA = pd.read_csv(zipdata.open([x for x in zipdata.namelist() if x.endswith(".csv")][0],"r"),
-    usecols = ["p_state","p_county","ylat","xlong","p_area","p_name","p_year","p_tech_pri","p_axis","p_azimuth","p_battery","p_cap_ac"],
+    usecols = ["p_state","p_county","ylat","xlong","p_area","p_name","p_year","p_tech_pri","p_axis","p_tilt","p_azimuth","p_battery","p_cap_ac"],
     )
-DATA.columns =  ["state","county","latitude","longitude","area[m^2]","name","year","gentype","axis[deg]","azimuth[deg]","battery","capacity[MW]"]
+DATA.columns =  ["state","county","latitude","longitude","area[m^2]","name","year","gentype","axis","azimuth[deg]","tilt[deg]","battery","capacity[MW]"]
+DATA["axis"] = [x.replace("-","_").upper() for x in DATA["axis"]]
 DATA.set_index(["state","county"],inplace=True)
 DATA.sort_index(inplace=True)
 

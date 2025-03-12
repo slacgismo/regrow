@@ -5,6 +5,16 @@ app = marimo.App(width="medium")
 
 
 @app.cell
+def _(aggregate_by, aggregates, fig, gendata, gentype, mo):
+    mo.ui.tabs({
+        "Raw data" : gendata,
+        "Map" : mo.vstack([gentype,fig]),
+        "Aggregations" : mo.vstack([mo.hstack([gentype,aggregate_by],justify='start'),aggregates]),
+    },lazy=True)
+    return
+
+
+@app.cell
 def _(census, pd, utils):
     COUNTY = {}
     for _state in ["CA", "WA", "OR", "ID", "MT", "WY", "NV", "UT", "AZ", "NM", "CO","TX","SD"]:
@@ -65,24 +75,6 @@ def _(COUNTY, pd, utils):
 
 @app.cell
 def _(mo):
-    mo.md(r"""## Powerplant Data""")
-    return
-
-
-@app.cell
-def _(gendata):
-    gendata
-    return
-
-
-@app.cell
-def _(mo):
-    mo.md(r"""## Powerplant Location""")
-    return
-
-
-@app.cell
-def _(mo):
     types = {
         "Hydroelectric": "HT",
         "Photovoltaic": "PV",
@@ -95,7 +87,6 @@ def _(mo):
         "Tieline": "TL",
     }
     gentype = mo.ui.multiselect(label="Show generator types:",options=types,value=list(types))
-    gentype
     return gentype, types
 
 
@@ -120,43 +111,19 @@ def _(gendata, gentype, px):
         width = 800,height = 800,
         center = {"lat":41,"lon":-114},
     )
-    fig
     return (fig,)
 
 
 @app.cell
 def _(mo):
-    by = mo.ui.dropdown(options={"bus":"bus","generator type":"gen","county":["county","state"]},value="bus")
-    return (by,)
+    aggregate_by = mo.ui.dropdown(label="Aggregate by",options={"bus":"bus","generator type":"gen","county":["county","state"]},value="bus")
+    return (aggregate_by,)
 
 
 @app.cell
-def _(mo):
-    mo.md(r"""## Powerplant aggregation""")
-    return
-
-
-@app.cell
-def _(by, mo):
-    mo.md(f"""Powerplants by {by}""")
-    return
-
-
-@app.cell
-def _(by, gendata, gentype):
-    gendata[gendata.gen.isin(gentype.value)].groupby(by.value).sum().round(1)[["cap","cf","units"]]
-    return
-
-
-@app.cell
-def _(by, gentype, mo, types):
-    if by.value == "gen":
-        _NL = '\n\n'
-        _legend = mo.md(f"*Generator type legend*:{_NL}{_NL.join([f'* {x}: {y}' for x,y in types.items() if y in gentype.value])}")
-    else:
-        _legend = None
-    _legend
-    return
+def _(aggregate_by, gendata, gentype):
+    aggregates = gendata[gendata.gen.isin(gentype.value)].groupby(aggregate_by.value).sum().round(1)[["cap","cf","units"]]
+    return (aggregates,)
 
 
 @app.cell
@@ -172,11 +139,6 @@ def _():
     sys.path.append("../data")
     import utils
     return census, mo, os, pd, plt, px, sys, utils
-
-
-@app.cell
-def _():
-    return
 
 
 if __name__ == "__main__":

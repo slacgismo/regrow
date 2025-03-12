@@ -75,19 +75,22 @@ for state in STATES + list(INCLUDE):
     # Save for concat
     COUNTIES.append(df)
 
-COUNTIES = pd.concat(COUNTIES).drop(EXCLUDE,axis=0).reset_index().set_index(["state","county"]).drop("fips",axis=1).sort_index()
+COUNTIES = pd.concat(COUNTIES).drop(EXCLUDE,axis=0).sort_index()
 COUNTIES["bus"] = [utils.nearest(utils.geohash(x,y),BUSLIST) for x,y in COUNTIES[["latitude","longitude"]].values]
 COUNTIES.drop(["latitude","longitude"],inplace=True,axis=1)
 
-zipdata = zipfile.ZipFile(io.BytesIO(requests.get("https://energy.usgs.gov/uspvdb/assets/data/uspvdbCSV.zip").content))
+zipdata = zipfile.ZipFile(io.BytesIO(requests.get("https://energy.usgs.gov/uswtdb/assets/data/uswtdbCSV.zip").content))
 DATA = pd.read_csv(zipdata.open([x for x in zipdata.namelist() if x.endswith(".csv")][0],"r"),
-    usecols = ["p_state","p_county","ylat","xlong","p_area","p_name","p_year","p_tech_pri","p_axis","p_azimuth","p_battery","p_cap_ac"],
+    usecols = ["t_fips","ylat","xlong","p_name","p_year","t_model","t_cap","t_hh","t_rd"],
     )
-DATA.columns =  ["state","county","latitude","longitude","area[m^2]","name","year","gentype","axis[deg]","azimuth[deg]","battery","capacity[MW]"]
-DATA.set_index(["state","county"],inplace=True)
+DATA.dropna(subset=["t_cap"],inplace=True)
+DATA["t_cap"] /= 1000
+DATA.columns =  ["fips","name","year","gentype","capacity[MW]","hub_height[m]","rotor_diameter[m]","longitude","latitude"]
+DATA["fips"] = [f"{x:05.0f}" for x in DATA["fips"]]
+DATA.set_index(["fips"],inplace=True)
 DATA.sort_index(inplace=True)
 
 DATA = DATA.join(COUNTIES,how="inner").reset_index().set_index("bus").sort_index()
 DATA["county"] = [f"{x} {y}" for x,y in DATA[["county","state"]].values]
 DATA.drop("state",inplace=True,axis=1)
-DATA.to_csv("uspvdb.csv",index=True,header=True)
+DATA.to_csv("uswtdb.csv",index=True,header=True)

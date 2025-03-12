@@ -68,7 +68,7 @@ with open("powerplants_split.csv","w") as fh:
             lon = float(objects[node]["longitude"])
             geo = utils.geohash(lat,lon)
             nodelist[geo] = node
-            types = [x for x in gen.split("|") if x not in ["PV"]] # ignore PV and WT facilities (add later)
+            types = [x for x in gen.split("|") if x not in ["PV","WT"]] # ignore PV and WT facilities (add later)
             for gentype in types:
                 if gentype == "UNKNOWN":
                     gentype = unknowns.loc[name].gentype
@@ -84,6 +84,13 @@ with open("powerplants_split.csv","w") as fh:
     for name,row in pvgens.iterrows():
         geo = utils.nearest(row["bus"],nodelist)
         plants.append([name,nodelist[geo],geo,"PV",row["capacity[MW]"],0,1])
+
+    # add WT facilities from USWTDB
+    wtgens = pd.read_csv("../data/uswtdb.csv").set_index("name")
+    print("INFO:",len(wtgens),"wind facilities added")
+    for name,row in wtgens.iterrows():
+        geo = utils.nearest(row["bus"],nodelist)
+        plants.append([name,nodelist[geo],geo,"WT",row["capacity[MW]"],0,1])
 
     # compute total capacities
     totals = {}

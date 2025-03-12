@@ -1,4 +1,7 @@
-"""Download DATA data for WECC"""
+"""Download PV data for WECC
+
+Source: https://energy.usgs.gov/uspvdb/data/
+"""
 
 import os
 import sys

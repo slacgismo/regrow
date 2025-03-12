@@ -1,4 +1,7 @@
-"""Download DATA data for WECC"""
+"""Download WT data for WECC
+
+Source: https://energy.usgs.gov/uswtdb/data/
+"""
 
 import os
 import sys

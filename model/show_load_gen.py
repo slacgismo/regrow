@@ -23,19 +23,22 @@ def _(pd):
 @app.cell
 def _(counties, gens, load, utils):
     data = load.join(gens)
+    data.rename({"power[MVA]":"demand[MW]"},axis=1,inplace=True)
     data["generation[MW]"] = data["cap"].round(1)
     data["dispatchable[MW]"] = (data["cap"] * data["cf"]).round(1)
-    data["imports[MW]"] = (data["power[MVA]"] - data["dispatchable[MW]"]).round(1)
+    data["renewable[MW]"] = (data["generation[MW]"] - data["dispatchable[MW]"]).round(1)
+    data["imports[MW]"] = (data["demand[MW]"] - data["dispatchable[MW]"]).round(1)
     data.drop(["cap","cf"],inplace=True,axis=1)
-    data.rename({"power[MVA]":"demand[MW]"},axis=1,inplace=True)
     data["county"] = [counties.loc[utils.nearest(x,counties.index)].county for x in data.index]
     data.dropna(inplace=True)
+    data["state"] = [x[-2:] for x in data["county"]]
     return (data,)
 
 
 @app.cell
 def _(data, px):
-    px.scatter(data,x="demand[MW]",y="dispatchable[MW]",hover_name=data.index,hover_data=["county","demand[MW]","dispatchable[MW]","generation[MW]","imports[MW]"])
+    _data = data.loc[data["state"]=="CA"]
+    px.scatter(_data,x="renewable[MW]",y="demand[MW]",hover_name=_data.index,hover_data=["county","demand[MW]","dispatchable[MW]","generation[MW]","imports[MW]"])
     return
 
 

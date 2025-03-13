@@ -76,18 +76,18 @@ with open("powerplants_split.csv","w") as fh:
         except:
             e_type,e_value,e_trace = sys.exc_info()
             print(f"ERROR [{name}]: {e_type.__name__} {e_value}",file=sys.stderr)
-    print("INFO:",f"{n} powerplants found with status {'|'.join(STATUS_TO_INCLUDE)}")
+    print("INFO:",f"{n} powerplants found with status {'|'.join(STATUS_TO_INCLUDE)}",file=sys.stderr)
 
     # add PV facilities from USPVDB
     pvgens = pd.read_csv("../data/uspvdb.csv").set_index("name")
-    print("INFO:",len(pvgens),"photovoltaic facilities added")
+    print("INFO:",len(pvgens),"photovoltaic facilities added",file=sys.stderr)
     for name,row in pvgens.iterrows():
         geo = utils.nearest(row["bus"],nodelist)
         plants.append([name,nodelist[geo],geo,"PV",row["capacity[MW]"],0,1])
 
     # add WT facilities from USWTDB
     wtgens = pd.read_csv("../data/uswtdb.csv").set_index("name")
-    print("INFO:",len(wtgens),"wind facilities added")
+    print("INFO:",len(wtgens),"wind facilities added",file=sys.stderr)
     for name,row in wtgens.iterrows():
         geo = utils.nearest(row["bus"],nodelist)
         plants.append([name,nodelist[geo],geo,"WT",row["capacity[MW]"],0,1])
@@ -130,14 +130,17 @@ for bus in buslist:
             gentypes[gen] = []
             gensizes[gen] = 0
         gentypes[gen].append(bus)
-        gensizes[gen] += data.loc[bus].cap.sum()
+        gensizes[gen] += (data.loc[bus].cap * data.loc[bus].cf).sum()
         if gen in ["WT","PV"] and bus not in weather.columns:
             n+=1
             print(f"WARNING: bus {bus} not found in weather data for gen type {'|'.join([x for x in gens if x in ['PV','WT']])}",file=sys.stderr)
             break
 print(f"WARNING: {n} of {len(buslist)} powerplant busses not found in weather data",file=sys.stderr)
+total = 0
 for gt,bus in gentypes.items():
-    print("INFO:",gt,"located at",len(bus),"busses,",round(gensizes[gt]/1000,2),"GW installed capacity")
+    print(f"INFO {gt} located at {len(bus)} busses, {gensizes[gt]/1000:.2f} GW installed capacity",file=sys.stderr)
+    total += gensizes[gt]
+print(f"INFO: total {total/1000:.2f} GW generation installed capacity",file=sys.stderr)
 
 # generate aggregate powerplant GLM model
 n,m = 0,0
@@ -191,5 +194,5 @@ with open("powerplants_aggregated.glm","w") as fh:
 }}
 """,file=fh)
 
-print("INFO:",f"{n} powerplant objects generated to GLM")
-print("INFO:",f"{m} gen object added to GLM")
+print("INFO:",f"{n} powerplant objects generated to GLM",file=sys.stderr)
+print("INFO:",f"{m} gen object added to GLM",file=sys.stderr)

@@ -36,8 +36,15 @@ def _(counties, gens, load, utils):
 
 
 @app.cell
-def _(data, px):
-    _data = data.loc[data["state"]=="CA"]
+def _(mo):
+    ca_only = mo.ui.checkbox(label="California only")
+    ca_only
+    return (ca_only,)
+
+
+@app.cell
+def _(ca_only, data, px):
+    _data = data.loc[data["state"]=="CA"] if ca_only.value else data
     px.scatter(_data,x="renewable[MW]",y="demand[MW]",hover_name=_data.index,hover_data=["county","demand[MW]","dispatchable[MW]","generation[MW]","imports[MW]"])
     return
 

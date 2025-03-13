@@ -1,0 +1,9 @@
+module pypower;
+
+// BC
+#for BUS in ${RANGE 0,14}
+object bus
+{
+    name "BC_${BUS}";
+}
+#done

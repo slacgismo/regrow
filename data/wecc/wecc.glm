@@ -1,0 +1,406 @@
+module pypower;
+object branch
+{
+    name "AB01_BC16";
+    from "AB01";
+    to "BC16";
+    
+}
+
+object branch
+{
+    name "AB02_AB01";
+    from "LANGDON_2";
+    to "AB01";
+    
+}
+
+object branch
+{
+    name "AB02_AB05";
+    from "LANGDON_2";
+    to "AB05";
+    
+}
+
+object branch
+{
+    name "AB03_AB02";
+    from "LANGDON_1";
+    to "LANGDON_2";
+    
+}
+
+object branch
+{
+    name "AB03_AB06";
+    from "LANGDON_1";
+    to "AB06";
+    
+}
+
+object branch
+{
+    name "AB03_AB07";
+    from "LANGDON_1";
+    to "AB07";
+    
+}
+
+object branch
+{
+    name "AB04_AB03";
+    from "SUNDANCE";
+    to "LANGDON_1";
+    
+}
+
+object branch
+{
+    name "AB08_AB04";
+    from "AB08";
+    to "SUNDANCE";
+    
+}
+
+object branch
+{
+    name "AB09_AB04";
+    from "AB09";
+    to "SUNDANCE";
+    
+}
+
+object branch
+{
+    name "AB10_AB04";
+    from "AB10";
+    to "SUNDANCE";
+    
+}
+
+object branch
+{
+    name "AB10_AB09";
+    from "AB10";
+    to "AB09";
+    
+}
+
+object branch
+{
+    name "BC02_BC01";
+    from "SKEENA";
+    to "PRINCE_RUPERT";
+    
+}
+
+object branch
+{
+    name "BC02_BC03";
+    from "SKEENA";
+    to "RONPOL";
+    
+}
+
+object branch
+{
+    name "BC03_BC04";
+    from "RONPOL";
+    to "KEMANO";
+    
+}
+
+object branch
+{
+    name "BC07_BC02";
+    from "BC07";
+    to "SKEENA";
+    
+}
+
+object branch
+{
+    name "BC05_BC07";
+    from "BC05";
+    to "BC07";
+    
+}
+
+object branch
+{
+    name "BC05_BC06";
+    from "BC05";
+    to "PEACE_CANYON";
+    
+}
+
+object branch
+{
+    name "BC06_BC07";
+    from "PEACE_CANYON";
+    to "BC07";
+    
+}
+
+object branch
+{
+    name "BC07_BC08";
+    from "BC07";
+    to "BC08";
+    
+}
+
+object branch
+{
+    name "BC08_BC09";
+    from "BC08";
+    to "BC09";
+    
+}
+
+object branch
+{
+    name "BC08_BC10";
+    from "BC08";
+    to "VANCOUVER";
+    
+}
+
+object branch
+{
+    name "BC09_BC10";
+    from "BC09";
+    to "VANCOUVER";
+    
+}
+
+object branch
+{
+    name "BC12_BC09";
+    from "BC12";
+    to "BC09";
+    
+}
+
+object branch
+{
+    name "BC11_BC10";
+    from "BC11";
+    to "VANCOUVER";
+    
+}
+
+object branch
+{
+    name "BC13_BC11";
+    from "BC13";
+    to "BC11";
+    
+}
+
+object branch
+{
+    name "BC13_BC12";
+    from "BC13";
+    to "BC12";
+    
+}
+
+object branch
+{
+    name "BC14_BC13";
+    from "BC14";
+    to "BC13";
+    
+}
+
+object branch
+{
+    name "BC15_BC14";
+    from "BC15";
+    to "BC14";
+    
+}
+
+object branch
+{
+    name "BC16_BC15";
+    from "BC16";
+    to "BC15";
+    
+}
+
+object branch
+{
+    name "BC17_BC11";
+    from "MICA";
+    to "BC11";
+    
+}
+
+object branch
+{
+    name "BC10_WA01";
+    from "VANCOUVER";
+    to "WA01";
+    
+}
+
+object branch
+{
+    name "BC14_WA04";
+    from "BC14";
+    to "WA04";
+    
+}
+
+object bus
+{
+    name "SUNDANCE";
+    
+}
+object bus
+{
+    name "LANGDON_1";
+    
+}
+object bus
+{
+    name "LANGDON_2";
+    
+}
+object bus
+{
+    name "PRINCE_RUPERT";
+    latitude 54.257563;
+    longitude -130.227462;
+}
+object bus
+{
+    name "SKEENA";
+    latitude 54.451683;
+    longitude -128.632296;
+}
+object bus
+{
+    name "RONPOL";
+    latitude 54.015197;
+    longitude -128.707099;
+}
+object bus
+{
+    name "KEMANO";
+    latitude 53.563061;
+    longitude -127.942791;
+}
+object bus
+{
+    name "PEACE_CANYON";
+    
+}
+object bus
+{
+    name "VANCOUVER";
+    
+}
+object bus
+{
+    name "MICA";
+    
+}
+object bus
+{
+    name "AB01";
+    
+}
+object bus
+{
+    name "BC16";
+    
+}
+object bus
+{
+    name "AB05";
+    
+}
+object bus
+{
+    name "AB06";
+    
+}
+object bus
+{
+    name "AB07";
+    
+}
+object bus
+{
+    name "AB08";
+    
+}
+object bus
+{
+    name "AB09";
+    
+}
+object bus
+{
+    name "AB10";
+    
+}
+object bus
+{
+    name "BC07";
+    
+}
+object bus
+{
+    name "BC05";
+    
+}
+object bus
+{
+    name "BC08";
+    
+}
+object bus
+{
+    name "BC09";
+    
+}
+object bus
+{
+    name "BC12";
+    
+}
+object bus
+{
+    name "BC11";
+    
+}
+object bus
+{
+    name "BC13";
+    
+}
+object bus
+{
+    name "BC14";
+    
+}
+object bus
+{
+    name "BC15";
+    
+}
+object bus
+{
+    name "WA01";
+    
+}
+object bus
+{
+    name "WA04";
+    
+}

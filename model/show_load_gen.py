@@ -43,15 +43,28 @@ def _(mo):
 
 
 @app.cell
-def _(ca_only, data, px):
-    _data = data.loc[data["state"]=="CA"] if ca_only.value else data
-    px.scatter(_data,x="renewable[MW]",y="demand[MW]",hover_name=_data.index,hover_data=["county","demand[MW]","dispatchable[MW]","generation[MW]","imports[MW]"])
-    return
+def _(mo):
+    net_importer = mo.ui.checkbox(label="Selection criteria enabled")
+    net_importer
+    return (net_importer,)
 
 
 @app.cell
-def _(data):
-    data
+def _(ca_only, data, net_importer, np, px):
+    new_data = (data.loc[data["state"]=="CA"] if ca_only.value else data).copy()
+    new_data["imports[%]"] = (new_data["imports[MW]"] * 100 / new_data["demand[MW]"]).round(2)
+    new_data = new_data.loc[np.logical_and(
+     new_data["demand[MW]"]>new_data["dispatchable[MW]"],
+        new_data["demand[MW]"]<new_data["generation[MW]"]
+    )] if net_importer.value else new_data
+    fig = px.scatter(new_data,x="renewable[MW]",y="demand[MW]",hover_name=new_data.index,hover_data=["county","demand[MW]","dispatchable[MW]","generation[MW]","imports[MW]","imports[%]"])
+    fig
+    return fig, new_data
+
+
+@app.cell
+def _(new_data):
+    new_data
     return
 
 
@@ -62,8 +75,10 @@ def _():
     import utils
     import marimo as mo
     import pandas as pd
+    import numpy as np
     import plotly.express as px
-    return mo, pd, px, sys, utils
+    import matplotlib.pyplot as plt
+    return mo, np, pd, plt, px, sys, utils
 
 
 if __name__ == "__main__":

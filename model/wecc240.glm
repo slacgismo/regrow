@@ -8,6 +8,10 @@
 
 //#version "${VERSION}"
 
+//#option verbose
+//#option debug
+//#set output_message_context=NONE
+
 clock {
     timezone ${TIMEZONE};
     starttime ${STARTTIME};
@@ -20,6 +24,12 @@ module pypower
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
     controllers "wecc240_controllers";
+    enable_opf TRUE;
+    maximum_iterations_opf 20;
+    opf_feasibility_tolerance 1.3;
+    opf_gradient_tolerance 3.0;
+    opf_condition_tolerance 1000;
+    opf_cost_tolerance 0.01;
 }
 
 //
@@ -37,14 +47,28 @@ module pypower
 //
 // Load powerplant data
 //
+#for GEN in ${FIND class=gen}
+object gencost
+{
+    parent ${GEN};
+    model POLYNOMIAL;
+    costs "${RANDOM triangle(0.001,0.01)},${RANDOM triangle(0,100)},0";
+}
+modify ${GEN}.Pmax 200;
+#done
+#for BRANCH in ${FIND class=branch}
+modify ${BRANCH}.rateA 250;
+modify ${BRANCH}.rateB 500;
+modify ${BRANCH}.rateC 750;
+#done
 
-#system python3 powerplants_aggregated.py
-#include "powerplants_aggregated.glm"
+//#system python3 powerplants_aggregated.py
+//#include "powerplants_aggregated.glm"
 
 //
 // Load loads data
 //
-#include "../data/loads.glm"
+//#include "../data/loads.glm"
 
 //
 // Save the final result to JSON
@@ -53,7 +77,7 @@ module pypower
 //
 // Setup georecorders
 //
-module recorders;
+//module recorders;
 
 #set savefile="wecc240.json"
 

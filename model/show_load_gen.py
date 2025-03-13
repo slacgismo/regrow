@@ -11,17 +11,24 @@ def _(mo):
 
 
 @app.cell
-def _(pd):
+def _(pd, utils):
     load = pd.read_csv("loads.csv",index_col=["geocode"],usecols=["geocode","power[MVA]"]).groupby(level=0).max()
     gens = pd.read_csv("powerplants_aggregated.csv",index_col=["bus"],usecols=["bus","cap","cf"]).groupby(level=0)[["cap","cf"]].sum().round(3)
-    counties = pd.read_csv("../data/counties.csv",index_col=["geocode"],usecols=["geocode","usps","county"])
-    counties["county"] = [f"{x.replace(' County','').strip()} {y}" for x,y in counties[["county","usps"]].values]
-    counties.drop("usps",axis=1,inplace=True)
-    return counties, gens, load
+    _counties = pd.read_csv("../data/counties.csv",index_col=["geocode"],usecols=["geocode","usps","county"])
+    _counties["county"] = [f"{x.replace(' County','').strip()} {y}" for x,y in _counties[["county","usps"]].values]
+    nodes = pd.read_csv("../data/nodes.csv",index_col=["geocode"],usecols=["geocode","state","county"])
+    nodes["county"] = [_counties.loc[utils.nearest(x,_counties.index)].county for x in nodes.index]
+    return gens, load, nodes
 
 
 @app.cell
-def _(counties, gens, load, utils):
+def _(nodes):
+    nodes
+    return
+
+
+@app.cell
+def _(gens, load, nodes, utils):
     data = load.join(gens)
     data.rename({"power[MVA]":"demand[MW]"},axis=1,inplace=True)
     data["generation[MW]"] = data["cap"].round(1)
@@ -29,7 +36,7 @@ def _(counties, gens, load, utils):
     data["renewable[MW]"] = (data["generation[MW]"] - data["dispatchable[MW]"]).round(1)
     data["imports[MW]"] = (data["demand[MW]"] - data["dispatchable[MW]"]).round(1)
     data.drop(["cap","cf"],inplace=True,axis=1)
-    data["county"] = [counties.loc[utils.nearest(x,counties.index)].county for x in data.index]
+    data["county"] = [nodes.loc[utils.nearest(x,nodes.index)].county for x in data.index]
     data.dropna(inplace=True)
     data["state"] = [x[-2:] for x in data["county"]]
     return (data,)

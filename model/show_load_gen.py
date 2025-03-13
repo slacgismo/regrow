@@ -22,12 +22,6 @@ def _(pd, utils):
 
 
 @app.cell
-def _(nodes):
-    nodes
-    return
-
-
-@app.cell
 def _(gens, load, nodes, utils):
     data = load.join(gens)
     data.rename({"power[MVA]":"demand[MW]"},axis=1,inplace=True)

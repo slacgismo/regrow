@@ -5,10 +5,10 @@ app = marimo.App(width="medium")
 
 
 @app.cell
-def _(aggregate_by, aggregates, fig, gendata, gentype, mo):
+def _(aggregate_by, aggregates, fig, gendata, gentype, map_by_bus, mo):
     mo.ui.tabs({
         "Raw data" : gendata,
-        "Map" : mo.vstack([gentype,fig]),
+        "Map" : mo.vstack([mo.hstack([gentype,map_by_bus],justify='start'),fig]),
         "Aggregations" : mo.vstack([mo.hstack([gentype,aggregate_by],justify='start'),aggregates]),
     },lazy=True)
     return
@@ -91,27 +91,56 @@ def _(mo):
 
 
 @app.cell
-def _(gendata, gentype, px):
-    _data = (
-        gendata[gendata.gen.isin(gentype.value)]
-        .groupby(["latitude", "longitude", "county","state"])
-        .sum()[["cap", "cf", "units"]]
-        .round(1)
-        .reset_index()
-    )
-    fig = px.scatter_map(
-        _data,
-        lat="latitude",
-        lon="longitude",
-        size="cap",
-        color="units",
-        zoom=4.2,
-        hover_name=[f"{x} {y}" for x,y in _data[["county","state"]].values],
-        hover_data={"latitude":False,"longitude":False,"cap":True,"units":True},
-        width = 800,height = 800,
-        center = {"lat":41,"lon":-114},
-    )
+def _(gendata, gentype, map_by_bus, px, utils):
+    if map_by_bus.value:
+        _data = (
+            gendata[gendata.gen.isin(gentype.value)]
+            .groupby(["latitude", "longitude", "bus"])
+            .sum()[["cap", "cf", "units"]]
+            .round(1)
+            .reset_index()
+        )
+        _data[["latitude","longitude"]] = [[lat,lon] for lat,lon in [utils.geocode(x) for x in _data.bus]]
+        fig = px.scatter_map(
+            _data,
+            lat="latitude",
+            lon="longitude",
+            size="cap",
+            color="units",
+            zoom=4.2,
+            hover_name="bus",
+            hover_data={"latitude":False,"longitude":False,"cap":True,"units":True},
+            width = 800,height = 800,
+            center = {"lat":41,"lon":-114},
+        )
+    else:
+        _data = (
+            gendata[gendata.gen.isin(gentype.value)]
+            .groupby(["latitude", "longitude", "county","state"])
+            .sum()[["cap", "cf", "units"]]
+            .round(1)
+            .reset_index()
+        )
+        fig = px.scatter_map(
+            _data,
+            lat="latitude",
+            lon="longitude",
+            size="cap",
+            color="units",
+            zoom=4.2,
+            hover_name=[f"{x} {y}" for x,y in _data[["county","state"]].values],
+            hover_data={"latitude":False,"longitude":False,"cap":True,"units":True},
+            width = 800,height = 800,
+            center = {"lat":41,"lon":-114},
+        )
+
     return (fig,)
+
+
+@app.cell
+def _(mo):
+    map_by_bus = mo.ui.checkbox(label="Show busses")
+    return (map_by_bus,)
 
 
 @app.cell

@@ -92,6 +92,10 @@ if __name__ == "__main__":
                 tilt = 0
             else: 
                 tilt = 20
+        # Skip the system if it went online after 2022 
+        if int(row['year']) > 2022:
+            continue
+        # Otherwise, start at 2018 or, if later, when the system came online
         if int(row['year']) > 2018:    
             min_measured_date = pd.to_datetime(str(int(row['year'])) + "-01-01 00:00:00")
         else:

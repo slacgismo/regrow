@@ -64,53 +64,40 @@ def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
 if __name__ == "__main__":
     # Point towards the particular local folder that contains the data
     data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_powerplants"
-    metadata = pd.read_csv("nodes_pvwatts_sim.csv") 
+    metadata = pd.read_csv("uspvdb.csv") 
     # Identify type of capacity we want to aggregate on (plant level, wecc node
     # level)
-    capacity_type = "powerplant"
-    if capacity_type == "wecc_node":
-        metadata = metadata[['system_id', 'geocode', 'Bus  Number',
-                             'Bus  Name', 'bus_latitude', 'bus_longitude', 
-                             'aggregated_bus_fractional_capacity_MW', 
-                             'azimuth','tilt', 'tracking', 'module_type',
-                             'min_measured_date',
-                             'max_measured_date', 'backtracking', 
-                             'mount_type']].drop_duplicates()
-        metadata = metadata.rename(columns={
-            "bus_latitude": "latitude", 
-            "bus_longitude": "longitude",
-            'aggregated_bus_fractional_capacity_MW': "power"})
-        metadata = metadata.dropna(subset=['latitude', 'longitude'])
-    else:
-        metadata = metadata[['system_id', 'geocode', 'county', 
-                             'state', 'tzoffset', 'plant_latitude',
-                             'plant_longitude', 'plant_fractional_capacity_MW', 
-                             'generator',
-                             'plant_capacity_MW', 'azimuth',
-                             'tilt', 'tracking', 'module_type',
-                             'min_measured_date',
-                             'max_measured_date', 'backtracking',
-                             'mount_type']].drop_duplicates()
-        metadata = metadata.rename(columns={
-            "plant_latitude": "latitude", 
-            "plant_longitude": "longitude",
-            'plant_fractional_capacity_MW': "power"})
-        metadata = metadata.dropna(subset=['latitude', 'longitude'])
     # Loop through the metadata and generate the associated estimates
     for idx, row in metadata.iterrows():
         lat = row['latitude']
         long = row['longitude']
+        name = row['name']
+        bus = row['bus']
         # Get the geohash associated with the site
+        system_identifier = (bus + "_" + name + "_" +
+                             str(lat) + "_" + str(long)).replace(" ", "_")
         geohash_val = geohash(lat, long, precision=6)
-        power = row['power']
-        tilt = row['tilt']
-        azimuth = row['azimuth']
-        min_measured_date = pd.to_datetime(row['min_measured_date'])
-        max_measured_date = pd.to_datetime(row['max_measured_date'])
-        tracking = row['tracking']
-        backtracking = row['backtracking']
-        mount_type = row['mount_type']
-        module_type = row['module_type']
+        # convert to KW
+        power = row['capacity[MW]'] * 1000
+        tilt = row['tilt[deg]']
+        azimuth = row['azimuth[deg]']
+        if row['axis'] == "FIXED_TILT":
+            tracking = False
+        else:
+            tracking = True
+        backtracking = False
+        # Default tilt 0 for single-axis tracking if missing, 20 for fixed-tilt
+        if str(tilt) == "nan":
+            if tracking:
+                tilt = 0
+            else: 
+                tilt = 20
+        if int(row['year']) > 2018:    
+            min_measured_date = pd.to_datetime(str(int(row['year'])) + "-01-01 00:00:00")
+        else:
+            min_measured_date = pd.to_datetime("2018-01-01 00:00:00")
+        max_measured_date = pd.to_datetime("2022-12-31 00:00:00")
+        print(min_measured_date, max_measured_date)
         # Pull the site's associated NSRDB data 
         master_weather_df = pd.DataFrame()
         for year in range(min_measured_date.year, max_measured_date.year):
@@ -155,9 +142,10 @@ if __name__ == "__main__":
         # Plot real
         plt.show()
         plt.close()
+        pdc.name = "output_kW"
         # Write the results to the associated S3 bucket.
         pdc.to_csv(os.path.join(data_path,
-            str(geohash_val) + ".csv"))
+                                str(system_identifier) + ".csv"))
         
         
         

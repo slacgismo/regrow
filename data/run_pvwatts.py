@@ -1,75 +1,107 @@
-"""
-Generate PVWatts models for each of the particular sites for the CA heatwave.
-"""
-
-import math
+from pvlib.modelchain import ModelChain
+from pvlib.pvsystem import PVSystem
+from pvlib.location import Location
 import pandas as pd
+import math
 import requests
 import json
 import os
+import pvlib
+from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
+from matplotlib import pyplot as plt
+from utils import geohash, nsrdb_weather
 
-array_type_dict = {'Fixed - Open Rack': 0,
-                   'Fixed - Roof Mounted': 1,
-                   '1-Axis': 2,
-                   '1-Axis Backtracking': 3,
-                   '2-Axis': 4}
-
-module_type_dict = {'Standard': 0,
-                    'Premium': 1,
-                    'Thin film': 2}
-
-# Set regular losses at 14. this is changeable!
-losses = 14
-
-def geohash(latitude, longitude, precision=6):
-    """Encode a position given in float arguments latitude, longitude to
-    a geohash which will have the character count precision.
+def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
+                      solar_zenith, solar_azimuth, dni, dhi, ghi, dni_extra,
+                      relative_airmass, temperature, wind_speed,
+                      temperature_model_parameters,
+                      temperature_coefficient, tracking):
     """
-    from math import log10
-    __base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
-    __decodemap = { }
-    for i in range(len(__base32)):
-        __decodemap[__base32[i]] = i
-    del i
-    lat_interval, lon_interval = (-90.0, 90.0), (-180.0, 180.0)
-    geohash = []
-    bits = [ 16, 8, 4, 2, 1 ]
-    bit = 0
-    ch = 0
-    even = True
-    while len(geohash) < precision:
-        if even:
-            mid = (lon_interval[0] + lon_interval[1]) / 2
-            if longitude > mid:
-                ch |= bits[bit]
-                lon_interval = (mid, lon_interval[1])
-            else:
-                lon_interval = (lon_interval[0], mid)
-        else:
-            mid = (lat_interval[0] + lat_interval[1]) / 2
-            if latitude > mid:
-                ch |= bits[bit]
-                lat_interval = (mid, lat_interval[1])
-            else:
-                lat_interval = (lat_interval[0], mid)
-        even = not even
-        if bit < 4:
-            bit += 1
-        else:
-            geohash += __base32[ch]
-            bit = 0
-            ch = 0
-    return ''.join(geohash)
+    Run the PVWatts model using NSRDB data across the time period as inputs.
+    """
+    if tracking:
+        tracker_angles = pvlib.tracking.singleaxis(solar_zenith, solar_azimuth,
+                                                   axis_tilt=tilt, axis_azimuth=azimuth,
+                                                   backtrack=True, gcr=0.4, max_angle=60)
+        surface_tilt = tracker_angles['surface_tilt']
+        surface_azimuth = tracker_angles['surface_azimuth']
+    else:
+        surface_tilt = tilt
+        surface_azimuth = azimuth
+    
+    poa = pvlib.irradiance.get_total_irradiance(
+        surface_tilt, surface_azimuth,
+        solar_zenith,
+        solar_azimuth,
+        dni, ghi, dhi,
+        dni_extra=dni_extra,
+        airmass=relative_airmass,
+        albedo=0.2,
+        model='perez'
+    )
+    
+    aoi = pvlib.irradiance.aoi(surface_tilt, surface_azimuth,
+                               solar_zenith, solar_azimuth)
+    # Run IAM model
+    iam = pvlib.iam.physical(aoi, n=1.5)
+    # Apply IAM to direct POA component only
+    poa_transmitted = poa['poa_direct'] * iam + poa['poa_diffuse']
+    temp_cell = pvlib.temperature.sapm_cell(
+        poa['poa_global'],
+        temperature,
+        wind_speed,
+        **temperature_model_parameters
+    )
+    pdc = pvlib.pvsystem.pvwatts_dc(
+        poa_transmitted,
+        temp_cell,
+        dc_capacity,
+        temperature_coefficient
+    )
+    return pdc
 
 
 if __name__ == "__main__":
-    # Point towards the particular local folder that contains the data  
-    time_series_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave"
-    metadata = pd.read_csv(os.path.join(time_series_path,
-                                        "all_states_heatwave_target_sites.csv"))
+    # Point towards the particular local folder that contains the data
+    data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_powerplants"
+    metadata = pd.read_csv("nodes_pvwatts_sim.csv") 
+    # Identify type of capacity we want to aggregate on (plant level, wecc node
+    # level)
+    capacity_type = "powerplant"
+    if capacity_type == "wecc_node":
+        metadata = metadata[['system_id', 'geocode', 'Bus  Number',
+                             'Bus  Name', 'bus_latitude', 'bus_longitude', 
+                             'aggregated_bus_fractional_capacity_MW', 
+                             'azimuth','tilt', 'tracking', 'module_type',
+                             'min_measured_date',
+                             'max_measured_date', 'backtracking', 
+                             'mount_type']].drop_duplicates()
+        metadata = metadata.rename(columns={
+            "bus_latitude": "latitude", 
+            "bus_longitude": "longitude",
+            'aggregated_bus_fractional_capacity_MW': "power"})
+        metadata = metadata.dropna(subset=['latitude', 'longitude'])
+    else:
+        metadata = metadata[['system_id', 'geocode', 'county', 
+                             'state', 'tzoffset', 'plant_latitude',
+                             'plant_longitude', 'plant_fractional_capacity_MW', 
+                             'generator',
+                             'plant_capacity_MW', 'azimuth',
+                             'tilt', 'tracking', 'module_type',
+                             'min_measured_date',
+                             'max_measured_date', 'backtracking',
+                             'mount_type']].drop_duplicates()
+        metadata = metadata.rename(columns={
+            "plant_latitude": "latitude", 
+            "plant_longitude": "longitude",
+            'plant_fractional_capacity_MW': "power"})
+        metadata = metadata.dropna(subset=['latitude', 'longitude'])
+    # Loop through the metadata and generate the associated estimates
     for idx, row in metadata.iterrows():
         lat = row['latitude']
         long = row['longitude']
+        # Get the geohash associated with the site
+        geohash_val = geohash(lat, long, precision=6)
         power = row['power']
         tilt = row['tilt']
         azimuth = row['azimuth']
@@ -79,40 +111,53 @@ if __name__ == "__main__":
         backtracking = row['backtracking']
         mount_type = row['mount_type']
         module_type = row['module_type']
-        # Set nan values as False
-        if math.isnan(backtracking):
-            backtracking = False
-        if math.isnan(tracking):
-            tracking = False
-        # Get the array type
-        if tracking and backtracking:
-            array_type = 3
-        elif tracking:
-            array_type = 2
-        elif 'roof' in mount_type.lower():
-            array_type = 1
-        else: 
-            array_type = 0
-        if module_type == 'CdTe':
-            module_type = 2
-        else:
-            module_type = 0
-        # Build out the payload to pass to the API
-        payload = {'api_key': '4z5fRAXbGB3qldVVd3c6WH5CuhtY5mhgC2DyD952',
-                   'system_capacity': power,
-                   'module_type': module_type,
-                   'losses': losses,
-                   'array_type': array_type,
-                   'tilt': tilt,
-                   'azimuth': azimuth,
-                   'lat': lat,
-                   'lon': long,
-                   'timeframe': 'hourly'}
-        r = requests.get('https://developer.nrel.gov/api/pvwatts/v8.json?',
-                         params = payload)
-        model_outputs = json.loads(r.content.decode('utf-8'))
-        hourly_outputs = model_outputs['outputs']['ac']
-        # Write the model results to a JSON
-        geohash_val = geohash(lat, long, precision=6)
-        with open(str(geohash_val) + ".json", "w") as outfile:
-            outfile.write(str(model_outputs))
+        # Pull the site's associated NSRDB data 
+        master_weather_df = pd.DataFrame()
+        for year in range(min_measured_date.year, max_measured_date.year):
+            for run in range(0,3):
+                try:
+                    df = nsrdb_weather(geohash_val,
+                                       year,
+                                       interval=30,
+                                       attributes={'Temperature': 'temp_air',
+                                                   'DHI': 'dhi',
+                                                   'DNI': 'dni',
+                                                   'GHI': 'ghi',
+                                                   'Wind Speed': 'wind_speed'})
+                    master_weather_df = pd.concat([master_weather_df, df])
+                    break
+                except:
+                    pass
+        # Build out the PVWatts model
+        solpos = pvlib.solarposition.get_solarposition(master_weather_df.index,
+                                                       lat, long)
+        dni_extra = pvlib.irradiance.get_extra_radiation(master_weather_df.index)
+        relative_airmass = pvlib.atmosphere.get_relative_airmass(solpos.zenith)
+        temp_params = TEMPERATURE_MODEL_PARAMETERS['sapm']['open_rack_glass_glass']
+        pdc = run_pvwatts_model(tilt=tilt,
+                                azimuth=azimuth,
+                                dc_capacity=power,
+                                dc_inverter_limit=power * 1.5,
+                                solar_zenith=solpos.zenith,
+                                solar_azimuth=solpos.azimuth, 
+                                dni=master_weather_df['DNI'], 
+                                dhi=master_weather_df['DHI'], 
+                                ghi=master_weather_df['GHI'], 
+                                dni_extra=dni_extra,
+                                relative_airmass=relative_airmass, 
+                                temperature=master_weather_df['Temperature'], 
+                                wind_speed=master_weather_df['Wind Speed'],
+                                temperature_model_parameters=temp_params,
+                                temperature_coefficient=-0.0047,
+                                tracking=tracking)
+        # Plot PDC against real
+        pdc.plot()
+        # Plot real
+        plt.show()
+        plt.close()
+        # Write the results to the associated S3 bucket.
+        pdc.to_csv(os.path.join(data_path,
+            str(geohash_val) + ".csv"))
+        
+        
+        

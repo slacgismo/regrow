@@ -1,0 +1,34 @@
+//
+// Requires Arras Energy version 4.3.9 or later
+//
+#define VERSION "-ge 4.3.14"
+
+//
+// Work in Pacific timezone (even though some parts of the system are in MT and CT)
+//
+#define TIMEZONE "PST+8PDT"
+
+//
+// Start simulation on 1-Jan-2018
+//
+#define STARTTIME "2020-08-01 00:00:00 PST"
+
+//
+// Stop simulation on 21-Dec-2022
+//
+#define STOPTIME "2020-09-01 00:00:00 PST"
+
+//
+// Maximum iterations allowed for any single solution
+//
+#define MAXIMUM_ITERATIONS 50
+
+//
+// Maximum timestep allowed during simulation
+//
+#define MAXIMUM_TIMESTEP 3600
+
+//
+// Stop on solver failure flag
+//
+#define STOP_ON_FAILURE TRUE

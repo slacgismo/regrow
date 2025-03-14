@@ -1,0 +1,58 @@
+{
+    "CC" : {
+        "startup_cost": 35.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 500.0,
+        "variable_cost": 50.0,
+        "scarcity_cost" : 0.001
+    },
+    "CT" : {
+        "startup_cost": 25.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 350.0,
+        "variable_cost": 75.0,
+        "scarcity_cost" : 0.001
+    },
+    "WT" : {
+        "startup_cost": 0.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 0.0,
+        "variable_cost": 0.0,
+        "scarcity_cost" : 0.0
+    },
+    "ES" : {
+        "startup_cost": 0.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 0.0,
+        "variable_cost": 5.0,
+        "scarcity_cost" : 0.0
+    },
+    "HT" : {
+        "startup_cost": 0.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 200.0,
+        "variable_cost": 0.0,
+        "scarcity_cost" : 0.001
+    },
+    "IC" : {
+        "startup_cost": 0.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 0.0,
+        "variable_cost": 50.0,
+        "scarcity_cost" : 0.001
+    },
+    "PV" : {
+        "startup_cost": 0.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 0.0,
+        "variable_cost": 0.0,
+        "scarcity_cost" : 0.0
+    },
+    "ST" : {
+        "startup_cost": 6500.0,
+        "shutdown_cost": 0.0,
+        "fixed_cost": 1000.0,
+        "variable_cost": 5.0,
+        "scarcity_cost" : 0.001
+    }
+}

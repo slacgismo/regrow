@@ -10,6 +10,7 @@ import pvlib
 from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
 from matplotlib import pyplot as plt
 from utils import geohash, nsrdb_weather
+import glob
 
 def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
                       solar_zenith, solar_azimuth, dni, dhi, ghi, dni_extra,
@@ -65,8 +66,8 @@ if __name__ == "__main__":
     # Point towards the particular local folder that contains the data
     data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_powerplants"
     metadata = pd.read_csv("uspvdb.csv") 
-    # Identify type of capacity we want to aggregate on (plant level, wecc node
-    # level)
+    already_run = glob.glob(data_path +"/*.csv")
+    already_run = [os.path.basename(x) for x in already_run]
     # Loop through the metadata and generate the associated estimates
     for idx, row in metadata.iterrows():
         lat = row['latitude']
@@ -75,7 +76,10 @@ if __name__ == "__main__":
         bus = row['bus']
         # Get the geohash associated with the site
         system_identifier = (bus + "_" + name + "_" +
-                             str(lat) + "_" + str(long)).replace(" ", "_")
+                             str(lat) + "_" + str(long)).replace(" ", "_").replace("/", "_")
+        if system_identifier + ".csv" in already_run:
+            print("already run!!")
+            continue
         geohash_val = geohash(lat, long, precision=6)
         # convert to KW
         power = row['capacity[MW]'] * 1000
@@ -100,21 +104,21 @@ if __name__ == "__main__":
             min_measured_date = pd.to_datetime(str(int(row['year'])) + "-01-01 00:00:00")
         else:
             min_measured_date = pd.to_datetime("2018-01-01 00:00:00")
-        max_measured_date = pd.to_datetime("2022-12-31 00:00:00")
+        max_measured_date = pd.to_datetime("2023-01-01 00:00:00")
         print(min_measured_date, max_measured_date)
         # Pull the site's associated NSRDB data 
         master_weather_df = pd.DataFrame()
         for year in range(min_measured_date.year, max_measured_date.year):
-            for run in range(0,3):
+            for try_time in range(0,3):
                 try:
                     df = nsrdb_weather(geohash_val,
-                                       year,
-                                       interval=30,
-                                       attributes={'Temperature': 'temp_air',
-                                                   'DHI': 'dhi',
-                                                   'DNI': 'dni',
-                                                   'GHI': 'ghi',
-                                                   'Wind Speed': 'wind_speed'})
+                                           year,
+                                           interval=30,
+                                           attributes={'Temperature': 'temp_air',
+                                                       'DHI': 'dhi',
+                                                       'DNI': 'dni',
+                                                       'GHI': 'ghi',
+                                                       'Wind Speed': 'wind_speed'})
                     master_weather_df = pd.concat([master_weather_df, df])
                     break
                 except:

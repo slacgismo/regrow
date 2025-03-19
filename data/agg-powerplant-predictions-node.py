@@ -58,7 +58,9 @@ master_geopanel_df = pd.DataFrame()
 for file in aggregated_wecc_node_files:
     wecc_node_value = os.path.basename(file).split(".")[0]
     df = pd.read_csv(file, index_col=0, parse_dates=True)
-    master_geopanel_df = pd.concat([master_geopanel_df, df[[wecc_node_value]]], axis=1)
+    bus = os.path.basename(file).replace(".csv", "")
+    df[bus] = df['sum_pp']
+    master_geopanel_df = pd.concat([master_geopanel_df, df[[bus]]], axis=1)
     
 # Write the geopanel to a csv in REGROW /data/ folder
 master_geopanel_df.to_csv(geopanel_file_path)

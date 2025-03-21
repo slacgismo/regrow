@@ -197,7 +197,7 @@ def nsrdb_credentials(path=os.path.join("C:/users/kperry",".nsrdb","credentials.
         error(E_INVAL,f"~/.nsrdb/credentials.json read failed - {err}")
         
         
-def nsrdb_weather(email, api_key, location,year,
+def nsrdb_weather(location,year,
                   interval=30,
                   attributes={"solar[W/m^2]" : "ghi",
                               "temperature[degC]" : "air_temperature",
@@ -233,9 +233,7 @@ def nsrdb_weather(email, api_key, location,year,
     """
     lat,lon = geocode(location)
     leap = (year%4 == 0)
-    # email, api_key = nsrdb_credentials()
-    # email, api_key = "qnguyen@nrel.gov", "gIrZme0WGXbZQl6uPE3R3aehydAspclbtL9fXiFO"
-    # email, api_key = "qnguyen731@yahoo.com", "cSULxhhWNRwz44JC1ztuEdBWHcjV06RZsU6QhecR"
+    email, api_key = nsrdb_credentials()
     # Pull from API and save locally
     psm3, _ = pvlib_psm3.get_psm3(lat, lon,
                                   api_key,

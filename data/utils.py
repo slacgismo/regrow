@@ -2,9 +2,9 @@ import os, sys
 import json
 import pandas as pd
 import math
-import psm3 as pvlib_psm3
 import datetime as dt
 import psm3 as pvlib_psm3
+import requests
 
 #
 # Command args
@@ -197,7 +197,7 @@ def nsrdb_credentials(path=os.path.join("C:/users/kperry",".nsrdb","credentials.
         error(E_INVAL,f"~/.nsrdb/credentials.json read failed - {err}")
         
         
-def nsrdb_weather(location,year,
+def nsrdb_weather(email, api_key, location,year,
                   interval=30,
                   attributes={"solar[W/m^2]" : "ghi",
                               "temperature[degC]" : "air_temperature",
@@ -233,7 +233,9 @@ def nsrdb_weather(location,year,
     """
     lat,lon = geocode(location)
     leap = (year%4 == 0)
-    email, api_key = nsrdb_credentials()
+    # email, api_key = nsrdb_credentials()
+    # email, api_key = "qnguyen@nrel.gov", "gIrZme0WGXbZQl6uPE3R3aehydAspclbtL9fXiFO"
+    # email, api_key = "qnguyen731@yahoo.com", "cSULxhhWNRwz44JC1ztuEdBWHcjV06RZsU6QhecR"
     # Pull from API and save locally
     psm3, _ = pvlib_psm3.get_psm3(lat, lon,
                                   api_key,
@@ -251,3 +253,17 @@ def nsrdb_weather(location,year,
                 inplace=True)
     psm3 = psm3.round(3)  
     return psm3.sort_index()
+
+def get_elevation(lat, lon, api_key):
+    """
+    Gets elevation from Google API elevation.
+    """
+    # request url
+    r = requests.get(
+        "https://maps.googleapis.com/maps/api/elevation/json?locations=" +
+        f"{lat},{lon}&key={api_key}",
+        verify=False)
+    data = r.json()
+    if data["status"] == "OK":
+        elevation = data["results"][0]["elevation"]
+    return elevation

@@ -46,9 +46,8 @@ def filter_uswtdb_metadata(uswtdb_df):
             start_year_list.append("1/1/" + str(year)) 
         end_year_list.append("12/30/2022")
         
-    uswtdb_df.loc[:,["min_measured_date", "max_measured_date"]] = pd.DataFrame({
-        "min_measured_date": start_year_list,
-        "max_measured_date": end_year_list})
+    uswtdb_df["min_measured_date"] = start_year_list
+    uswtdb_df["max_measured_date"] = end_year_list
     
     return uswtdb_df
     
@@ -123,6 +122,7 @@ def pull_nsrdb_data(min_measured_date, max_measured_date):
         storage_options={"key": s3_creds.aws_aki,
                          "secret": s3_creds.aws_sak})
     return all_nsrdb_data
+
 
 
 def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
@@ -225,6 +225,7 @@ if __name__ == "__main__":
         drivetrain_design = row["drivetrain_design"]
         min_measured_date = pd.to_datetime(row['min_measured_date'])
         max_measured_date = pd.to_datetime(row['max_measured_date'])
+ 
         max_cp = 0.47 #average max cp
         shear_exponent = 0.143 #average shear exponent
         
@@ -255,6 +256,8 @@ if __name__ == "__main__":
         # If site is already ran, then skip
         if filename in ran_files_list:
             print("Modeled:", filename)
+            pass
+        elif filename =="9q713t_35.108196_-118.359886":
             pass
         else:
             print("Modeling:", filename)
@@ -330,7 +333,7 @@ if __name__ == "__main__":
             all_power_output.to_csv((regrow_folder + filename + ".csv"),
                 index=False,
                 storage_options={"key": s3_creds.aws_aki,
-                                 "secret": s3_creds.aws_sak})
+                                  "secret": s3_creds.aws_sak})
         
 
      

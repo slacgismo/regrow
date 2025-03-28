@@ -78,6 +78,18 @@ modify ${BRANCH}.rateC 750;
 // Setup georecorders
 //
 //module recorders;
+module tape
+{
+    csv_header_type NAME;
+}
+
+object recorder 
+{
+    parent "wecc240_psse_N_1001";
+    file "node_1001.csv";
+    property "Pd,Qd,Va,Vm";
+    interval 1h;
+}
 
 #set savefile="wecc240.json"
 

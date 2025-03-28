@@ -1,0 +1,6031 @@
+{	"application": "gridlabd",
+	"version" : "4.3.14",
+	"modules" : {
+		"pypower" : {
+			"major" : "4",
+			"minor" : "3"
+		}
+	},
+	"types" : {
+		"double" : {
+			"xsdtype" : "decimal",
+			"default" : "0.0",
+			"memsize" : "8",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"complex" : {
+			"xsdtype" : "string",
+			"default" : "0+0i",
+			"memsize" : "24",
+			"strsize" : "48",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"enumeration" : {
+			"xsdtype" : "string",
+			"default" : "0",
+			"memsize" : "4",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"set" : {
+			"xsdtype" : "string",
+			"default" : "0",
+			"memsize" : "8",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"int16" : {
+			"xsdtype" : "integer",
+			"default" : "0",
+			"memsize" : "2",
+			"strsize" : "6",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"int32" : {
+			"xsdtype" : "integer",
+			"default" : "0",
+			"memsize" : "4",
+			"strsize" : "12",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"int64" : {
+			"xsdtype" : "integer",
+			"default" : "0",
+			"memsize" : "8",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char8" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "9",
+			"strsize" : "8",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char32" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "33",
+			"strsize" : "32",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char256" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "257",
+			"strsize" : "256",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"char1024" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "1025",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"object" : {
+			"xsdtype" : "string",
+			"memsize" : "8",
+			"strsize" : "64",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"!=" : {"nargs": "2"}
+			}
+		},
+		"delegated" : {
+			"xsdtype" : "string",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"bool" : {
+			"xsdtype" : "string",
+			"default" : "FALSE",
+			"memsize" : "1",
+			"strsize" : "6",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"!=" : {"nargs": "2"}
+			}
+		},
+		"timestamp" : {
+			"xsdtype" : "string",
+			"default" : "0",
+			"memsize" : "8",
+			"strsize" : "32",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"double_array" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "56",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"complex_array" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "40",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"real" : {
+			"xsdtype" : "decimal",
+			"default" : "0.0",
+			"memsize" : "8",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"float" : {
+			"xsdtype" : "decimal",
+			"default" : "0.0",
+			"memsize" : "4",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"loadshape" : {
+			"xsdtype" : "string",
+			"memsize" : "208",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"enduse" : {
+			"xsdtype" : "string",
+			"memsize" : "728",
+			"strsize" : "1024",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"randomvar" : {
+			"xsdtype" : "string",
+			"memsize" : "72",
+			"strsize" : "24",
+			"has_tostr" : "True",
+			"has_fromstr" : "True",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"method" : {
+			"xsdtype" : "string",
+			"has_create" : "False",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		},
+		"string" : {
+			"xsdtype" : "string",
+			"default" : "",
+			"memsize" : "8",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+				"==" : {"nargs": "2"},
+				"<=" : {"nargs": "2"},
+				">=" : {"nargs": "2"},
+				"!=" : {"nargs": "2"},
+				"<" : {"nargs": "2"},
+				">" : {"nargs": "2"},
+				"inside" : {"nargs": "3"},
+				"outside" : {"nargs": "3"}
+			}
+		},
+		"python" : {
+			"xsdtype" : "string",
+			"default" : "None",
+			"memsize" : "8",
+			"has_create" : "True",
+			"has_stream" : "False",
+			"compareops" : {
+			}
+		}
+	},
+	"header" : {
+		"id" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"class" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"groupid" : {
+			"type" : "char32",
+			"access" : "PROTECTED"
+		},
+		"name" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"next" : {
+			"type" : "object",
+			"access" : "PROTECTED"
+		},
+		"parent" : {
+			"type" : "object",
+			"access" : "PROTECTED"
+		},
+		"child_count" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"rank" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"clock" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"valid_to" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"schedule_skew" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		},
+		"latitude" : {
+			"type" : "double",
+			"access" : "PROTECTED"
+		},
+		"longitude" : {
+			"type" : "double",
+			"access" : "PROTECTED"
+		},
+		"in_svc" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"out_svc" : {
+			"type" : "timestamp",
+			"access" : "PROTECTED"
+		},
+		"rng_state" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"heartbeat" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		},
+		"guid" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		},
+		"profiler.presync" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.sync" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.postsync" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.init" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.heartbeat" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.precommit" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.commit" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"profiler.finalize" : {
+			"type" : "int32",
+			"access" : "PROTECTED"
+		},
+		"event.init" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.precommit" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.presync" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.sync" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.postsync" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.commit" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"event.finalize" : {
+			"type" : "string",
+			"access" : "PROTECTED"
+		},
+		"flags" : {
+			"type" : "int64",
+			"access" : "PROTECTED"
+		}
+	},
+	"classes" : {
+		"bus" : {
+			"object_size" : "3464",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "39",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"bus_i" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "bus number (1 to 29997)"
+			},
+			"S" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "base load demand not counting child objects, including weather sensitivities, copied to Pd,Qd by default (MVA)"
+			},
+			"type" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"PQREF" : "0x1",
+					"NONE" : "0x4",
+					"REF" : "0x3",
+					"PV" : "0x2",
+					"PQ" : "0x1",
+					"UNKNOWN" : "0x0"
+				},
+				"description" : "bus type (1 = PQ, 2 = PV, 3 = ref, 4 = isolated)"
+			},
+			"Pd" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"flags" : "OUTPUT",
+				"unit" : "MW",
+				"description" : "real power demand (MW)"
+			},
+			"Qd" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"flags" : "OUTPUT",
+				"unit" : "MVAr",
+				"description" : "reactive power demand (MVAr)"
+			},
+			"Gs" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "shunt conductance (MW at V = 1.0 p.u.)"
+			},
+			"Bs" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "shunt susceptance (MVAr at V = 1.0 p.u.)"
+			},
+			"area" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "area number, 1-100"
+			},
+			"baseKV" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "kV",
+				"description" : "voltage magnitude (p.u.)"
+			},
+			"Vm" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"description" : "voltage angle (degrees)"
+			},
+			"Va" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "base voltage (kV)"
+			},
+			"zone" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "loss zone (1-999)"
+			},
+			"Vmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"default" : "1.2 pu*V",
+				"description" : "maximum voltage magnitude (p.u.)"
+			},
+			"Vmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"default" : "0.8 pu*V",
+				"description" : "minimum voltage magnitude (p.u.)"
+			},
+			"lam_P" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Lagrange multiplier on real power mismatch (u/MW)"
+			},
+			"lam_Q" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Lagrange multiplier on reactive power mismatch (u/MVAr)"
+			},
+			"mu_Vmax" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Kuhn-Tucker multiplier on upper voltage limit (u/p.u.)"
+			},
+			"mu_Vmin" : {
+				"type" : "double",
+				"access" : "REFERENCE",
+				"description" : "Kuhn-Tucker multiplier on lower voltage limit (u/p.u.)"
+			},
+			"weather_file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "Source object for weather data"
+			},
+			"weather_variables" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "Weather variable column names (col1,col2,...)"
+			},
+			"weather_resolution" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"default" : "3600 s",
+				"description" : "Weather time downsampling resolution (s)"
+			},
+			"Sn" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "W/m^2",
+				"description" : "Solar direct normal irradiance (W/m^2)"
+			},
+			"Sh" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "W/m^2",
+				"description" : "Solar horizontal irradiance (W/m^2)"
+			},
+			"Sg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "W/m^2",
+				"description" : "Solar global irradiance (W/m^2)"
+			},
+			"Wd" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "Wind direction (deg)"
+			},
+			"Ws" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "m/2",
+				"description" : "Wind speed (m/2)"
+			},
+			"Td" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "degC",
+				"description" : "Dry-bulb air temperature (degC)"
+			},
+			"Tw" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "degC",
+				"description" : "Wet-bulb air temperature (degC)"
+			},
+			"RH" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "%",
+				"description" : "Relative humidity (%)"
+			},
+			"PW" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "in",
+				"description" : "Precipitable_water (in)"
+			},
+			"HI" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "degF",
+				"description" : "Heat index (degF)"
+			},
+			"weather_sensitivity" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "Weather sensitivities {PROP: VAR[ REL VAL],SLOPE[; ...]}"
+			}
+		},
+		"branch" : {
+			"object_size" : "152",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "46",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"from" : {
+				"type" : "object",
+				"access" : "PUBLIC",
+				"description" : "from bus name"
+			},
+			"to" : {
+				"type" : "object",
+				"access" : "PUBLIC",
+				"description" : "to bus name"
+			},
+			"fbus" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "from bus number"
+			},
+			"tbus" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "to bus number"
+			},
+			"r" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*Ohm",
+				"description" : "resistance (p.u.)"
+			},
+			"x" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*Ohm",
+				"description" : "reactance (p.u.)"
+			},
+			"b" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/Ohm",
+				"description" : "total line charging susceptance (p.u.)"
+			},
+			"rateA" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "MVA rating A (long term rating)"
+			},
+			"rateB" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "MVA rating B (short term rating)"
+			},
+			"rateC" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "MVA rating C (emergency term rating)"
+			},
+			"ratio" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "transformer off nominal turns ratio"
+			},
+			"angle" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "transformer phase shift angle (degrees)"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"IN" : "0x1",
+					"OUT" : "0x0"
+				},
+				"description" : "initial branch status, 1 - in service, 0 - out of service"
+			},
+			"angmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "minimum angle difference, angle(Vf) - angle(Vt) (degrees)"
+			},
+			"angmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "maximum angle difference, angle(Vf) - angle(Vt) (degrees)"
+			},
+			"current" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "A",
+				"description" : "line current (A)"
+			},
+			"loss" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "line loss (MW)"
+			}
+		},
+		"gen" : {
+			"object_size" : "216",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "10",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"bus" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "bus number"
+			},
+			"Pg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "real power output (MW)"
+			},
+			"Qg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "reactive power output (MVAr)"
+			},
+			"Qmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "maximum reactive power output (MVAr)"
+			},
+			"Qmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "minimum reactive power output (MVAr)"
+			},
+			"Vg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"description" : "voltage magnitude setpoint (p.u.)"
+			},
+			"mBase" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"default" : "100 MVA",
+				"description" : "total MVA base of machine, defaults to baseMVA"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OUT_OF_SERVICE" : "0x0",
+					"IN_SERVICE" : "0x1"
+				},
+				"description" : "1 - in service, 0 - out of service"
+			},
+			"Pmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "maximum real power output (MW)"
+			},
+			"Pmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "minimum real power output (MW)"
+			},
+			"Pc1" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "lower real power output of PQ capability curve (MW)"
+			},
+			"Pc2" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "upper real power output of PQ capability curve (MW)"
+			},
+			"Qc1min" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "minimum reactive power output at Pc1 (MVAr)"
+			},
+			"Qc1max" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "maximum reactive power output at Pc1 (MVAr)"
+			},
+			"Qc2min" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "minimum reactive power output at Pc2 (MVAr)"
+			},
+			"Qc2max" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "maximum reactive power output at Pc2 (MVAr)"
+			},
+			"ramp_agc" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW/min",
+				"description" : "ramp rate for load following/AGC (MW/min)"
+			},
+			"ramp_10" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "ramp rate for 10 minute reserves (MW)"
+			},
+			"ramp_30" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "ramp rate for 30 minute reserves (MW)"
+			},
+			"ramp_q" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr/min",
+				"description" : "ramp rate for reactive power (2 sec timescale) (MVAr/min)"
+			},
+			"apf" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"description" : "area participation factor"
+			},
+			"mu_Pmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MW",
+				"description" : "Kuhn-Tucker multiplier on upper Pg limit (p.u./MW)"
+			},
+			"mu_Pmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MW",
+				"description" : "Kuhn-Tucker multiplier on lower Pg limit (p.u./MW)"
+			},
+			"mu_Qmax" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MVAr",
+				"description" : "Kuhn-Tucker multiplier on upper Qg limit (p.u./MVAr)"
+			},
+			"mu_Qmin" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu/MVAr",
+				"description" : "Kuhn-Tucker multiplier on lower Qg limit (p.u./MVAr)"
+			}
+		},
+		"gencost" : {
+			"object_size" : "1056",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "10",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"model" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"POLYNOMIAL" : "0x2",
+					"PIECEWISE" : "0x1",
+					"UNKNOWN" : "0x0"
+				},
+				"description" : "cost model (1=piecewise linear, 2=polynomial)"
+			},
+			"startup" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$",
+				"description" : "startup cost ($)"
+			},
+			"shutdown" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$",
+				"description" : "shutdown cost($)"
+			},
+			"costs" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "cost model (comma-separate values)"
+			}
+		},
+		"geodata" : {
+			"object_size" : "2104",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "geodata file name"
+			},
+			"target" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "geodata target class and property, e.g., CLASS::PROPERTY or OBJECT.PROPERTY"
+			},
+			"scale" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"default" : "1 pu",
+				"description" : "scale to apply to geodata values in file before writing to target"
+			}
+		},
+		"load" : {
+			"object_size" : "432",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"S" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "power demand (MVA)"
+			},
+			"Z" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "Ohm",
+				"description" : "constant impedance load (Ohm)"
+			},
+			"I" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "A",
+				"description" : "constant current load (A)"
+			},
+			"P" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "constant power load (MVA)"
+			},
+			"V" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "pu*V",
+				"description" : "bus voltage (V)"
+			},
+			"Vn" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "kV",
+				"description" : "nominal voltage (kV)"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"CURTAILED" : "0x2",
+					"ONLINE" : "0x1",
+					"OFFLINE" : "0x0"
+				},
+				"description" : "load status"
+			},
+			"response" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "curtailment response as fractional load reduction"
+			},
+			"controller" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "controller python function name"
+			}
+		},
+		"powerplant" : {
+			"object_size" : "1480",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"city" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "City in which powerplant is located"
+			},
+			"state" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "State in which powerplant is located"
+			},
+			"zipcode" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Zipcode in which powerplant is located"
+			},
+			"country" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Country in which powerplant is located"
+			},
+			"naics_code" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Powerplant NAICS code"
+			},
+			"naics_description" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "Powerplant NAICS description"
+			},
+			"plant_code" : {
+				"type" : "char32",
+				"access" : "PUBLIC",
+				"description" : "Generator plant code number"
+			},
+			"generator" : {
+				"type" : "set",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"CC" : "0x400",
+					"PV" : "0x200",
+					"CT" : "0x100",
+					"ES" : "0x80",
+					"WT" : "0x40",
+					"FW" : "0x20",
+					"IC" : "0x10",
+					"AT" : "0x8",
+					"ST" : "0x4",
+					"HT" : "0x2",
+					"UNKNOWN" : "0x1"
+				},
+				"description" : "Generator type"
+			},
+			"fuel" : {
+				"type" : "set",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"NG" : "0x8000",
+					"COAL" : "0x4000",
+					"WATER" : "0x2000",
+					"NUC" : "0x1000",
+					"GAS" : "0x800",
+					"OTHER" : "0x400",
+					"WOOD" : "0x200",
+					"UNKNOWN" : "0x100",
+					"OIL" : "0x80",
+					"BIO" : "0x40",
+					"WASTE" : "0x20",
+					"COKE" : "0x10",
+					"GEO" : "0x8",
+					"SUN" : "0x4",
+					"WIND" : "0x2",
+					"ELEC" : "0x1"
+				},
+				"description" : "Generator fuel type"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"ONLINE" : "0x1",
+					"OFFLINE" : "0x0"
+				},
+				"description" : "Generator status"
+			},
+			"operating_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "Generator normal operating capacity (MW)"
+			},
+			"summer_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "Generator summer operating capacity (MW)"
+			},
+			"winter_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "Generator winter operating capacity (MW)"
+			},
+			"capacity_factor" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "Generator capacity factor (pu)"
+			},
+			"substation_1" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "Substation 1 id"
+			},
+			"substation_2" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "Substation 2 id"
+			},
+			"storage_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MWh",
+				"description" : "Energy storage capacity (MWh)"
+			},
+			"charging_capacity" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MW",
+				"description" : "Energy storage charging capacity (MW)"
+			},
+			"storage_efficiency" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"default" : "1 pu",
+				"description" : "Energy storage round-trip efficiency (pu)"
+			},
+			"state_of_charge" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"description" : "Energy storage state of charge (pu)"
+			},
+			"S" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"unit" : "MVA",
+				"description" : "power generation (MVA)"
+			},
+			"controller" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "controller python function name"
+			},
+			"startup_cost" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$/MW",
+				"description" : "generator startup cost ($/MW)"
+			},
+			"shutdown_cost" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$/MW",
+				"description" : "generator shutdown cost ($/MW)"
+			},
+			"fixed_cost" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$/h",
+				"description" : "generator fixed cost ($/h)"
+			},
+			"variable_cost" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$/MWh",
+				"description" : "generator variable cost ($/MWh)"
+			},
+			"scarcity_cost" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$/MW^2/h",
+				"description" : "generator scarcity cost ($/MW^2h)"
+			},
+			"energy_rate" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MWh/unit",
+				"description" : "generator heat rate/fuel efficiency (MWh/unit)"
+			},
+			"total_cost" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "$",
+				"description" : "generator total operating cost ($)"
+			},
+			"emissions_rate" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "tonne/MWh",
+				"description" : "generator heat rate/fuel efficiency (tonne/MWh)"
+			},
+			"total_emissions" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "tonne",
+				"description" : "generator total operating cost (tonne)"
+			}
+		},
+		"powerline" : {
+			"object_size" : "144",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"length" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "mile",
+				"description" : "length (miles)"
+			},
+			"impedance" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "Ohm/mile",
+				"description" : "line impedance (Ohm/mile)"
+			},
+			"susceptance" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "S/mile",
+				"description" : "line susceptance (S/mile)"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OUT" : "0x0",
+					"IN" : "0x1"
+				},
+				"default" : "IN",
+				"description" : "line status (IN or OUT)"
+			},
+			"composition" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"PARALLEL" : "0x2",
+					"SERIES" : "0x1",
+					"NONE" : "0x0"
+				},
+				"description" : "parent line composition (SERIES or PARALLEL)"
+			}
+		},
+		"relay" : {
+			"object_size" : "288",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OPEN" : "0x1",
+					"CLOSED" : "0x0"
+				},
+				"default" : "CLOSED",
+				"description" : "relay status (OPEN or CLOSED)"
+			},
+			"controller" : {
+				"type" : "char256",
+				"access" : "PUBLIC",
+				"description" : "controller python function name"
+			}
+		},
+		"scada" : {
+			"object_size" : "72",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"point" : {
+				"type" : "method",
+				"access" : "PUBLIC",
+				"description" : "Enable access to point specified as object <name>:<property>"
+			},
+			"write" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "Enable write to point"
+			},
+			"record" : {
+				"type" : "bool",
+				"access" : "PUBLIC",
+				"description" : "Enable recording of point to historian"
+			}
+		},
+		"shunt" : {
+			"object_size" : "184",
+			"trl" : "7",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"control_mode" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"DISCRETE_Y" : "0x5",
+					"DISCRETE_VSC" : "0x4",
+					"DISCRETE_VAR" : "0x3",
+					"CONTINUOUS_V" : "0x2",
+					"DISCRETE_V" : "0x1",
+					"FIXED" : "0x0"
+				},
+				"description" : "shunt control mode"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"ONLINE" : "0x1",
+					"OFFLINE" : "0x0"
+				},
+				"description" : "shunt status"
+			},
+			"voltage_high" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"default" : "1 pu",
+				"description" : "controlled voltage upper limit"
+			},
+			"voltage_low" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"default" : "1 pu",
+				"description" : "controlled voltage lower limit"
+			},
+			"remote_bus" : {
+				"type" : "object",
+				"access" : "PUBLIC",
+				"description" : "remote bus name"
+			},
+			"admittance" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "shunt admittance at unity voltage"
+			},
+			"steps_1" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "numbers of steps in control block 1"
+			},
+			"admittance_1" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 1 shunt admittance step at unity voltage"
+			},
+			"steps_2" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "number of steps in control block 2"
+			},
+			"admittance_2" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 2 shunt admittance step at unity voltage"
+			},
+			"steps_3" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "number of steps in control block 3"
+			},
+			"admittance_3" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 3 shunt admittance step at unity voltage"
+			},
+			"steps_4" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "number of steps in control block 4"
+			},
+			"admittance_4" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 4 shunt admittance step at unity voltage"
+			},
+			"steps_5" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "number of steps in control block 5"
+			},
+			"admittance_5" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 5 shunt admittance step at unity voltage"
+			},
+			"steps_6" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "number of steps in control block 6"
+			},
+			"admittance_6" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 6 shunt admittance step at unity voltage"
+			},
+			"steps_7" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "number of steps in control block 7"
+			},
+			"admittance_7" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 7 shunt admittance step at unity voltage"
+			},
+			"steps_8" : {
+				"type" : "int32",
+				"access" : "PUBLIC",
+				"description" : "number of steps in control block 8"
+			},
+			"admittance_8" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "MVAr",
+				"description" : "control block 8 shunt admittance step at unity voltage"
+			}
+		},
+		"transformer" : {
+			"object_size" : "64",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"impedance" : {
+				"type" : "complex",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "Ohm",
+				"description" : "transformer impedance (Ohm)"
+			},
+			"susceptance" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "S",
+				"default" : "0 S"
+			},
+			"rated_power" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"flags" : "REQUIRED",
+				"unit" : "MVA",
+				"description" : "transformer power rating (MVA)"
+			},
+			"tap_ratio" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "pu",
+				"default" : "1 pu",
+				"description" : "off-nominal turns ratio"
+			},
+			"phase_shift" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "transformer phase shift (deg) - use 30 for DY or YD transformers"
+			},
+			"status" : {
+				"type" : "enumeration",
+				"access" : "PUBLIC",
+				"keywords" : {
+					"OUT" : "0x0",
+					"IN" : "0x1"
+				},
+				"default" : "IN",
+				"description" : "transformer status (IN or OUT)"
+			}
+		},
+		"weather" : {
+			"object_size" : "2248",
+			"trl" : "9",
+			"module" : "pypower",
+			"profiler.numobjs" : "0",
+			"profiler.clocks" : "0",
+			"profiler.count" : "0",
+			"file" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "Source object for weather data"
+			},
+			"variables" : {
+				"type" : "char1024",
+				"access" : "PUBLIC",
+				"description" : "Weather variable column names (col1,col2,...)"
+			},
+			"resolution" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "s",
+				"default" : "3600 s",
+				"description" : "Weather time downsampling resolution (s)"
+			},
+			"Sn" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "W/m^2",
+				"description" : "Solar direct normal irradiance (W/m^2)"
+			},
+			"Sh" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "W/m^2",
+				"description" : "Solar horizontal irradiance (W/m^2)"
+			},
+			"Sg" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "W/m^2",
+				"description" : "Solar global irradiance (W/m^2)"
+			},
+			"Wd" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "deg",
+				"description" : "Wind direction (deg)"
+			},
+			"Ws" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "m/2",
+				"description" : "Wind speed (m/2)"
+			},
+			"Td" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "degC",
+				"description" : "Dry-bulb air temperature (degC)"
+			},
+			"Tw" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "degC",
+				"description" : "Wet-bulb air temperature (degC)"
+			},
+			"RH" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "%",
+				"description" : "Relative humidity (%)"
+			},
+			"PW" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "in",
+				"description" : "Precipitable_water (in)"
+			},
+			"HI" : {
+				"type" : "double",
+				"access" : "PUBLIC",
+				"unit" : "degF",
+				"description" : "Heat index (degF)"
+			}
+		}
+	},
+	"globals" : {
+		"version.major" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "4"
+		},
+		"version.minor" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "3"
+		},
+		"version.patch" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "14"
+		},
+		"version.build" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "250315"
+		},
+		"version.branch" : {
+			"type" : "char256",
+			"access" : "REFERENCE",
+			"value" : "develop"
+		},
+		"version" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "4.3.14-250315-develop"
+		},
+		"command_line" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin/gridlabd.bin -W /Users/david/GitHub/arras-energy/gridlabd/module/pypower/autotest/test_case39 --redirect all test_case39.glm"
+		},
+		"environment" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "batch"
+		},
+		"quiet" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"warn" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"debugger" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"gdb" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"debug" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"test" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"verbose" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"iteration_limit" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "100"
+		},
+		"workdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/Users/david/GitHub/arras-energy/gridlabd/module/pypower/autotest/test_case39"
+		},
+		"dumpfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "gridlabd.json"
+		},
+		"savefile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "case39.json"
+		},
+		"dumpall" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"runchecks" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"threadcount" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "1"
+		},
+		"profiler" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pauseatexit" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"testoutputfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "test.txt"
+		},
+		"xml_encoding" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "8"
+		},
+		"clock" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "2020-01-01 00:00:00 PST"
+		},
+		"starttime" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "2020-01-01 00:00:00 PST"
+		},
+		"stoptime" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "2020-02-01 00:00:00 PST"
+		},
+		"double_format" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "%+lg"
+		},
+		"complex_format" : {
+			"type" : "char256",
+			"access" : "PUBLIC",
+			"value" : "%+lg%+lg%c"
+		},
+		"complex_output_format" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"DEFAULT" : "0x0",
+				"RECT" : "0x1",
+				"POLAR_DEG" : "0x2",
+				"POLAR_RAD" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "DEFAULT"
+		},
+		"object_format" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "%s:%d"
+		},
+		"object_scan" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "%[^:]:%d"
+		},
+		"object_tree_balance" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"kmlfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"kmlhost" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "https://code.arras.energy/develop/runtime"
+		},
+		"modelname" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "test_case39.glm"
+		},
+		"execdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin"
+		},
+		"strictnames" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"website" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "http://www.gridlabd.org/"
+		},
+		"urlbase" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "http://www.gridlabd.org/"
+		},
+		"randomstate" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "161721954"
+		},
+		"randomseed" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "161721954"
+		},
+		"include" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : ""
+		},
+		"trace" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"gdb_window" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"tmp" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "/Users/david/.gridlabd/tmp"
+		},
+		"force_compile" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"nolocks" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"skipsafe" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"dateformat" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"ISO" : "0x0",
+				"US" : "0x1",
+				"EURO" : "0x2",
+				"ISO8601" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "ISO"
+		},
+		"init_sequence" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"CREATION" : "0x0",
+				"DEFERRED" : "0x1",
+				"BOTTOMUP" : "0x2",
+				"TOPDOWN" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "DEFERRED"
+		},
+		"minimum_timestep" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "1"
+		},
+		"platform" : {
+			"type" : "char8",
+			"access" : "REFERENCE",
+			"value" : "MACOSX"
+		},
+		"suppress_repeat_messages" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"maximum_synctime" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "60"
+		},
+		"run_realtime" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"enter_realtime" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "NEVER"
+		},
+		"realtime_metric" : {
+			"type" : "double",
+			"access" : "REFERENCE",
+			"value" : "+0"
+		},
+		"no_deprecate" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"streaming_io" : {
+			"type" : "bool",
+			"access" : "PROTECTED",
+			"value" : "FALSE"
+		},
+		"compileonly" : {
+			"type" : "bool",
+			"access" : "PROTECTED",
+			"value" : "FALSE"
+		},
+		"initializeonly" : {
+			"type" : "bool",
+			"access" : "PROTECTED",
+			"value" : "FALSE"
+		},
+		"relax_naming_rules" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"browser" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "safari"
+		},
+		"server_portnum" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"server_quit_on_close" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"client_allowed" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"autoclean" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"technology_readiness_level" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"PRINCIPLE" : "0x1",
+				"CONCEPT" : "0x2",
+				"PROOF" : "0x3",
+				"STANDALONE" : "0x4",
+				"INTEGRATED" : "0x5",
+				"DEMONSTRATED" : "0x6",
+				"PROTOTYPE" : "0x7",
+				"QUALIFIED" : "0x8",
+				"PROVEN" : "0x9",
+				"UNKNOWN" : "0x0"
+			},
+			"access" : "PUBLIC",
+			"value" : "UNKNOWN"
+		},
+		"show_progress" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"checkpoint_type" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"NONE" : "0x0",
+				"WALL" : "0x1",
+				"SIM" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "NONE"
+		},
+		"checkpoint_file" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"checkpoint_seqnum" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"checkpoint_interval" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"checkpoint_keepall" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"check_version" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"random_number_generator" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"RNG2" : "0x2",
+				"RNG3" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "RNG3"
+		},
+		"mainloop_state" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"INIT" : "0x0",
+				"RUNNING" : "0x1",
+				"PAUSED" : "0x2",
+				"DONE" : "0x3",
+				"LOCKED" : "0x4"
+			},
+			"access" : "PUBLIC",
+			"value" : "DONE"
+		},
+		"pauseat" : {
+			"type" : "timestamp",
+			"access" : "PUBLIC",
+			"value" : "NEVER"
+		},
+		"infourl" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "http://docs.arras.energy/index.html?owner=arras-energy&project=gridlabd&search="
+		},
+		"hostname" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "localhost"
+		},
+		"hostaddr" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "127.0.0.1"
+		},
+		"autostart_gui" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"master" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"master_port" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"multirun_mode" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"STANDALONE" : "0x0",
+				"MASTER" : "0x1",
+				"SLAVE" : "0x2",
+				"LIBRARY" : "0x3"
+			},
+			"access" : "PUBLIC",
+			"value" : "STANDALONE"
+		},
+		"multirun_conn" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"NONE" : "0x0",
+				"MEMORY" : "0x1",
+				"SOCKET" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "NONE"
+		},
+		"signal_timeout" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "5000"
+		},
+		"slave_port" : {
+			"type" : "int16",
+			"access" : "PUBLIC",
+			"value" : "6267"
+		},
+		"slave_id" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"return_code" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "0"
+		},
+		"exit_code" : {
+			"type" : "int16",
+			"access" : "REFERENCE",
+			"value" : "0"
+		},
+		"module_compiler_flags" : {
+			"type" : "set",
+			"keywords" : {
+				"NONE" : "0x0",
+				"CLEAN" : "0x1",
+				"KEEPWORK" : "0x2",
+				"DEBUG" : "0x4",
+				"VERBOSE" : "0x8"
+			},
+			"access" : "PUBLIC",
+			"value" : "NONE"
+		},
+		"init_max_defer" : {
+			"type" : "int32",
+			"access" : "REFERENCE",
+			"value" : "64"
+		},
+		"mt_analysis" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"inline_block_size" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "1048576"
+		},
+		"validate" : {
+			"type" : "set",
+			"keywords" : {
+				"NONE" : "0x0",
+				"TSTD" : "0x7",
+				"TALL" : "0xf",
+				"TRUN" : "0x1",
+				"TERR" : "0x2",
+				"TEXC" : "0x4",
+				"TOPT" : "0x8",
+				"RALL" : "0x300",
+				"RDIR" : "0x100",
+				"RGLM" : "0x200"
+			},
+			"access" : "PUBLIC",
+			"value" : "TSTD|RALL"
+		},
+		"sanitize" : {
+			"type" : "set",
+			"keywords" : {
+				"NAMES" : "0x10",
+				"POSITIONS" : "0x60"
+			},
+			"access" : "PUBLIC",
+			"value" : "NAMES|POSITIONS"
+		},
+		"sanitize_prefix" : {
+			"type" : "char8",
+			"access" : "PUBLIC",
+			"value" : "GLD_"
+		},
+		"sanitize_index" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ".txt"
+		},
+		"sanitize_offset" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"simulation_mode" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"INIT" : "0x0",
+				"EVENT" : "0x1",
+				"DELTA" : "0x2",
+				"DELTA_ITER" : "0x3",
+				"ERROR" : "0xff"
+			},
+			"access" : "PUBLIC",
+			"value" : "EVENT"
+		},
+		"deltamode_allowed" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"deltamode_timestep" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "10000000"
+		},
+		"deltamode_maximumtime" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "3600000000000"
+		},
+		"deltaclock" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"delta_current_clock" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0"
+		},
+		"deltamode_updateorder" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : ""
+		},
+		"deltamode_iteration_limit" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "10"
+		},
+		"deltamode_forced_extra_timesteps" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"deltamode_forced_always" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"run_powerworld" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"bigranks" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"exename" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin/gridlabd.bin"
+		},
+		"wget_options" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "maxsize:100MB;update:newer"
+		},
+		"curl_options" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "maxsize:100MB;update:newer"
+		},
+		"svnroot" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "https://github.com/arras-energy/gridlabd"
+		},
+		"github" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "https://github.com/arras-energy/gridlabd"
+		},
+		"gitraw" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "https://raw.githubusercontent.com/arras-energy/gridlabd"
+		},
+		"allow_reinclude" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"output_message_context" : {
+			"type" : "set",
+			"keywords" : {
+				"NONE" : "0x0",
+				"ALL" : "0xffffffff",
+				"LOAD" : "0x4",
+				"CREATE" : "0x8",
+				"EXEC" : "0x10",
+				"TIME" : "0x20",
+				"FIND" : "0x40",
+				"CLASS" : "0x80",
+				"OBJECT" : "0x100",
+				"MODULE" : "0x200",
+				"INDEX" : "0x400",
+				"GLOBALS" : "0x800",
+				"EXCEPTION" : "0x1000",
+				"AGGREGATE" : "0x2000",
+				"COMPARE" : "0x4000",
+				"CONVERT" : "0x8000",
+				"DELTAMODE" : "0x10000",
+				"ENDUSE" : "0x20000",
+				"ENVIRONMENT" : "0x40000",
+				"GUI" : "0x80000",
+				"HTTPCLIENT" : "0x100000",
+				"INSTANCE" : "0x200000",
+				"INTERPOLATE" : "0x400000",
+				"JOB" : "0x800000",
+				"KML" : "0x1000000",
+				"LEGAL" : "0x2000000",
+				"LINK" : "0x4000000",
+				"LIST" : "0x8000000",
+				"XML" : "0x10000000",
+				"LOADSHAPE" : "0x20000000",
+				"LOCALE" : "0x40000000",
+				"LOCK" : "0x80000000",
+				"MATCH" : "0x0",
+				"MATLAB" : "0x0",
+				"PROPERTY" : "0x0",
+				"RANDOM" : "0x0",
+				"REALTIME" : "0x0",
+				"SANITIZE" : "0x0",
+				"SAVE" : "0x0",
+				"SCHEDULE" : "0x0",
+				"SERVER" : "0x0",
+				"SETUP" : "0x0",
+				"STREAM" : "0x0",
+				"TEST" : "0x0",
+				"THREADPOOL" : "0x0",
+				"TRANSFORM" : "0x0",
+				"HTTP" : "0x0",
+				"UNIT" : "0x0",
+				"VALIDATE" : "0x0",
+				"VERSION" : "0x0",
+				"XCORE" : "0x0",
+				"MAIN" : "0x1",
+				"PYTHON" : "0x0",
+				"CMDARG" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "ALL"
+		},
+		"permissive_access" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"relax_undefined_if" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"literal_if" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "TRUE"
+		},
+		"validto_context" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"SYNC" : "0x0",
+				"PRECOMMIT" : "0x1",
+				"COMMIT" : "0x2"
+			},
+			"access" : "PUBLIC",
+			"value" : "1414746112"
+		},
+		"daemon_configfile" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "gridlabd.cnf"
+		},
+		"timezone_locale" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "PST8PDT"
+		},
+		"glm_save_options" : {
+			"type" : "set",
+			"keywords" : {
+				"LEGACY" : "0x0",
+				"MINIMAL" : "0xf",
+				"NOGLOBALS" : "0x4",
+				"NODEFAULTS" : "0x8",
+				"NOMACROS" : "0x2",
+				"NOINTERNALS" : "0x1",
+				"ORIGINAL" : "0x10"
+			},
+			"access" : "PUBLIC",
+			"value" : "MINIMAL"
+		},
+		"filesave_options" : {
+			"type" : "set",
+			"keywords" : {
+				"ALLINITIAL" : "0xc1ff",
+				"ALLMINIMAL" : "0x81ff",
+				"ALL" : "0x1ff",
+				"MODULES" : "0x1",
+				"PROPERTIES" : "0x2",
+				"CLASSES" : "0x4",
+				"GLOBALS" : "0x8",
+				"OBJECTS" : "0x10",
+				"SCHEDULES" : "0x20",
+				"FILTERS" : "0x40",
+				"SCRIPTS" : "0x80",
+				"CLOCK" : "0x100",
+				"INITIAL" : "0x4000",
+				"MINIMAL" : "0x8000"
+			},
+			"access" : "PUBLIC",
+			"value" : "ALL"
+		},
+		"ignore_errors" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"keep_progress" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"allow_variant_aggregates" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"progress" : {
+			"type" : "double",
+			"access" : "REFERENCE",
+			"value" : "+0"
+		},
+		"server_keepalive" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pythonpath" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ".:/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/share:/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/lib/gridlabd/python3.10/site-packages"
+		},
+		"pythonexec" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin/python3"
+		},
+		"datadir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/share/gridlabd"
+		},
+		"bindir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin"
+		},
+		"vardir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/var/gridlabd"
+		},
+		"libdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/lib/gridlabd"
+		},
+		"incdir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/include"
+		},
+		"logfile" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/tmp/gridlabd-log"
+		},
+		"pidfile_dir" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/tmp/gridlabd-pid"
+		},
+		"configpath" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/share/gridlabd/solver_py.conf"
+		},
+		"json_complex_format" : {
+			"type" : "set",
+			"keywords" : {
+				"STRING" : "0x0",
+				"LIST" : "0x1",
+				"DICT" : "0x2",
+				"DEGREES" : "0x10",
+				"RADIANS" : "0x20"
+			},
+			"access" : "PUBLIC",
+			"value" : "STRING"
+		},
+		"rusage_file" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "gridlabd-rusage.csv"
+		},
+		"rusage_rate" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"rusage" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "{\"utime\" : 1.260679, \"stime\" : 0.637503, \"maxrss\" : 40439808, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 13416, \"majflt\" : 7, \"nswap\" : 0, \"inblock\" : 0, \"oublock\" : 0, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 0, \"nivcsw\" : 4430}"
+		},
+		"echo" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"filename" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "test_case39.glm"
+		},
+		"country" : {
+			"type" : "char8",
+			"access" : "PUBLIC",
+			"value" : "US"
+		},
+		"region" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"organization" : {
+			"type" : "char32",
+			"access" : "PUBLIC",
+			"value" : "arras-energy"
+		},
+		"profile_output_format" : {
+			"type" : "set",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"maximum_runtime" : {
+			"type" : "int64",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"flush_output" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"origin" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "arras-energy/gridlabd"
+		},
+		"gitbranch" : {
+			"type" : "char1024",
+			"access" : "REFERENCE",
+			"value" : "develop"
+		},
+		"CASE" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "39"
+		},
+		"DIR" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ".."
+		},
+		"py_load_options" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : "-t pypower"
+		},
+		"pypower::message_flags" : {
+			"type" : "set",
+			"keywords" : {
+				"QUIET" : "0x10000",
+				"WARNING" : "0x20000",
+				"DEBUG" : "0x40000",
+				"VERBOSE" : "0x80000"
+			},
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"pypower::default_reactive_power_fraction" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0.2 pu"
+		},
+		"pypower::minimum_voltage_deadband" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0.002 pu"
+		},
+		"pypower::timestamp_format" : {
+			"type" : "char256",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"pypower::version" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "2"
+		},
+		"pypower::solver_method" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"NR" : "0x1",
+				"FD_XB" : "0x2",
+				"FD_BX" : "0x3",
+				"GS" : "0x4"
+			},
+			"access" : "PUBLIC",
+			"value" : "FD_BX"
+		},
+		"pypower::maximum_timestep" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0 s"
+		},
+		"pypower::baseMVA" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+100 MVA"
+		},
+		"pypower::enable_opf" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::stop_on_failure" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::save_case" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::controllers_path" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"pypower::controllers" : {
+			"type" : "char1024",
+			"access" : "PUBLIC",
+			"value" : ""
+		},
+		"pypower::solver_update_resolution" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+1e-08"
+		},
+		"pypower::maximum_iterations" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "0"
+		},
+		"pypower::solution_tolerance" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0"
+		},
+		"pypower::solver_status" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"FAILED" : "0x2",
+				"SUCCESS" : "0x1",
+				"INIT" : "0x0"
+			},
+			"access" : "PUBLIC",
+			"value" : "SUCCESS"
+		},
+		"pypower::enforce_q_limits" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::use_dc_powerflow" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::save_format" : {
+			"type" : "enumeration",
+			"keywords" : {
+				"PY" : "0x2",
+				"JSON" : "0x1",
+				"CSV" : "0x0"
+			},
+			"access" : "PUBLIC",
+			"value" : "CSV"
+		},
+		"pypower::total_loss" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+103.909 MW"
+		},
+		"pypower::generation_shortfall" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+31.8711 MW"
+		},
+		"pypower::with_emissions" : {
+			"type" : "bool",
+			"access" : "PUBLIC",
+			"value" : "FALSE"
+		},
+		"pypower::maximum_iterations_opf" : {
+			"type" : "int32",
+			"access" : "PUBLIC",
+			"value" : "10"
+		},
+		"pypower::opf_feasibility_tolerance" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+1.3"
+		},
+		"pypower::opf_gradient_tolerance" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+3"
+		},
+		"pypower::opf_condition_tolerance" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+1000"
+		},
+		"pypower::opf_cost_tolerance" : {
+			"type" : "double",
+			"access" : "PUBLIC",
+			"value" : "+0.01"
+		}
+	},
+	"schedules" : {
+	},
+	"objects" : {
+		"pp_bus_1" : {
+			"id" : "0",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "16807",
+			"guid" : "160594393624E4E03ED493A776D6AE15",
+			"flags" : "0x100",
+			"bus_i": "1",
+			"S": "97.6+44.2j MVA",
+			"type": "PQREF",
+			"Pd": "97.6 MW",
+			"Qd": "44.2 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.03938 pu*V",
+			"Va": "-13.5366 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_2" : {
+			"id" : "1",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "282475249",
+			"guid" : "690A35EEDD48E8B34C2AA180738C3C4A",
+			"flags" : "0x100",
+			"bus_i": "2",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.04849 pu*V",
+			"Va": "-9.78527 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_3" : {
+			"id" : "2",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1622650073",
+			"guid" : "1FD0E17C58FCEEF49E38E936B07E5CB",
+			"flags" : "0x100",
+			"bus_i": "3",
+			"S": "322+2.4j MVA",
+			"type": "PQREF",
+			"Pd": "322 MW",
+			"Qd": "2.4 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.03071 pu*V",
+			"Va": "-12.2764 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_4" : {
+			"id" : "3",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "984943658",
+			"guid" : "443B2AA48177788579F32714AE157E02",
+			"flags" : "0x100",
+			"bus_i": "4",
+			"S": "500+184j MVA",
+			"type": "PQREF",
+			"Pd": "500 MW",
+			"Qd": "184 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.00446 pu*V",
+			"Va": "-12.6267 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_5" : {
+			"id" : "4",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1144108930",
+			"guid" : "547C487751B80E3443F4CACFA211FB01",
+			"flags" : "0x100",
+			"bus_i": "5",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.00601 pu*V",
+			"Va": "-11.1923 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_6" : {
+			"id" : "5",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "470211272",
+			"guid" : "67C60FA88EDBB3957A9E79D839D62A7A",
+			"flags" : "0x100",
+			"bus_i": "6",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.00823 pu*V",
+			"Va": "-10.4083 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_7" : {
+			"id" : "6",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "101027544",
+			"guid" : "5C39F8AADB622D695AA8AA74575DD6D4",
+			"flags" : "0x100",
+			"bus_i": "7",
+			"S": "233.8+84j MVA",
+			"type": "PQREF",
+			"Pd": "233.8 MW",
+			"Qd": "84 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "0.998397 pu*V",
+			"Va": "-12.7556 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_8" : {
+			"id" : "7",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1457850878",
+			"guid" : "7AE11913D1E8208A6AC93D763CF46CC8",
+			"flags" : "0x100",
+			"bus_i": "8",
+			"S": "522+176.6j MVA",
+			"type": "PQREF",
+			"Pd": "522 MW",
+			"Qd": "176.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "0.997872 pu*V",
+			"Va": "-13.3358 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_9" : {
+			"id" : "8",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1458777923",
+			"guid" : "78CBEB89BDE2372EAE8ABB1D2CC395",
+			"flags" : "0x100",
+			"bus_i": "9",
+			"S": "6.5-66.6j MVA",
+			"type": "PQREF",
+			"Pd": "6.5 MW",
+			"Qd": "-66.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.03833 pu*V",
+			"Va": "-14.1784 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_10" : {
+			"id" : "9",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "2007237709",
+			"guid" : "2BB2782A70AB6CCD588A83248042A2ED",
+			"flags" : "0x100",
+			"bus_i": "10",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.01784 pu*V",
+			"Va": "-8.17088 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_11" : {
+			"id" : "10",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "823564440",
+			"guid" : "53CE7925ACE0E98CF1C49C09E3A5E75",
+			"flags" : "0x100",
+			"bus_i": "11",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.01339 pu*V",
+			"Va": "-8.93697 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_12" : {
+			"id" : "11",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1115438165",
+			"guid" : "1C32A02C421CAE0077D1695AF4AC6452",
+			"flags" : "0x100",
+			"bus_i": "12",
+			"S": "8.53+88j MVA",
+			"type": "PQREF",
+			"Pd": "8.53 MW",
+			"Qd": "88 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.00082 pu*V",
+			"Va": "-8.99882 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_13" : {
+			"id" : "12",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1784484492",
+			"guid" : "1BCF1B19FCAD2D773ED4F047471AC7F6",
+			"flags" : "0x100",
+			"bus_i": "13",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.01492 pu*V",
+			"Va": "-8.92993 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_14" : {
+			"id" : "13",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "74243042",
+			"guid" : "410CBF0AADDAC70950C83F95E0D8028D",
+			"flags" : "0x100",
+			"bus_i": "14",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.01232 pu*V",
+			"Va": "-10.7153 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_15" : {
+			"id" : "14",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "114807987",
+			"guid" : "5CF5CB168C40FA1B63E23F7457C91A57",
+			"flags" : "0x100",
+			"bus_i": "15",
+			"S": "320+153j MVA",
+			"type": "PQREF",
+			"Pd": "320 MW",
+			"Qd": "153 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.01619 pu*V",
+			"Va": "-11.3454 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_16" : {
+			"id" : "15",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1137522503",
+			"guid" : "127D2A299373A0F54834EE12368730E4",
+			"flags" : "0x100",
+			"bus_i": "16",
+			"S": "329+32.3j MVA",
+			"type": "PQREF",
+			"Pd": "329 MW",
+			"Qd": "32.3 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.03252 pu*V",
+			"Va": "-10.0333 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_17" : {
+			"id" : "16",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1441282327",
+			"guid" : "68790FC7858ACFA340DAE292DD3FBAFE",
+			"flags" : "0x100",
+			"bus_i": "17",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.03424 pu*V",
+			"Va": "-11.1164 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_18" : {
+			"id" : "17",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "16531729",
+			"guid" : "6F337F1EBA07D5BF61D3619790296137",
+			"flags" : "0x100",
+			"bus_i": "18",
+			"S": "158+30j MVA",
+			"type": "PQREF",
+			"Pd": "158 MW",
+			"Qd": "30 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.03157 pu*V",
+			"Va": "-11.9862 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_19" : {
+			"id" : "18",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "823378840",
+			"guid" : "4C37DFE32CB57725183D04CE12BE7475",
+			"flags" : "0x100",
+			"bus_i": "19",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.05011 pu*V",
+			"Va": "-5.41007 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_20" : {
+			"id" : "19",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "143542612",
+			"guid" : "1130387B47C1C9701CBEBB2956539C60",
+			"flags" : "0x100",
+			"bus_i": "20",
+			"S": "680+103j MVA",
+			"type": "PQREF",
+			"Pd": "680 MW",
+			"Qd": "103 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "0.991011 pu*V",
+			"Va": "-6.82118 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_21" : {
+			"id" : "20",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "896544303",
+			"guid" : "48DF8FAABCB8A5A19D30AFCAB86E750",
+			"flags" : "0x100",
+			"bus_i": "21",
+			"S": "274+115j MVA",
+			"type": "PQREF",
+			"Pd": "274 MW",
+			"Qd": "115 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.03232 pu*V",
+			"Va": "-7.62875 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_22" : {
+			"id" : "21",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1474833169",
+			"guid" : "74A7767AC14D4E4F49C703D68D3E104C",
+			"flags" : "0x100",
+			"bus_i": "22",
+			"S": "0+0j MVA",
+			"type": "PQREF",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.05014 pu*V",
+			"Va": "-3.18312 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_23" : {
+			"id" : "22",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1264817709",
+			"guid" : "503A4A312600FCD23A10314E8439BA0C",
+			"flags" : "0x100",
+			"bus_i": "23",
+			"S": "247.5+84.6j MVA",
+			"type": "PQREF",
+			"Pd": "247.5 MW",
+			"Qd": "84.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.04515 pu*V",
+			"Va": "-3.38128 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_24" : {
+			"id" : "23",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1998097157",
+			"guid" : "10DCBBD9116150393BDA246FCA551FD1",
+			"flags" : "0x100",
+			"bus_i": "24",
+			"S": "308.6-92.2j MVA",
+			"type": "PQREF",
+			"Pd": "308.6 MW",
+			"Qd": "-92.2 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.038 pu*V",
+			"Va": "-9.91376 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_25" : {
+			"id" : "24",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1817129560",
+			"guid" : "64032FA93691F6B5371CD203C61F7E0",
+			"flags" : "0x100",
+			"bus_i": "25",
+			"S": "224+47.2j MVA",
+			"type": "PQREF",
+			"Pd": "224 MW",
+			"Qd": "47.2 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.05768 pu*V",
+			"Va": "-8.36924 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_26" : {
+			"id" : "25",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1131570933",
+			"guid" : "43065E7918447DF7325EE144D1A09338",
+			"flags" : "0x100",
+			"bus_i": "26",
+			"S": "139+17j MVA",
+			"type": "PQREF",
+			"Pd": "139 MW",
+			"Qd": "17 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.05256 pu*V",
+			"Va": "-9.43877 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_27" : {
+			"id" : "26",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "197493099",
+			"guid" : "4DC455E5E45AC4D171DEF2B037EF8515",
+			"flags" : "0x100",
+			"bus_i": "27",
+			"S": "281+75.5j MVA",
+			"type": "PQREF",
+			"Pd": "281 MW",
+			"Qd": "75.5 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.03834 pu*V",
+			"Va": "-11.3622 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_28" : {
+			"id" : "27",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1404280278",
+			"guid" : "4B2E6C39433BA57E5D9399EF5B5EC57B",
+			"flags" : "0x100",
+			"bus_i": "28",
+			"S": "206+27.6j MVA",
+			"type": "PQREF",
+			"Pd": "206 MW",
+			"Qd": "27.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.05037 pu*V",
+			"Va": "-5.92836 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_29" : {
+			"id" : "28",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "893351816",
+			"guid" : "17ECBF4FECE4ABCD28083EE088BAAE7F",
+			"flags" : "0x100",
+			"bus_i": "29",
+			"S": "283.5+26.9j MVA",
+			"type": "PQREF",
+			"Pd": "283.5 MW",
+			"Qd": "26.9 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.05011 pu*V",
+			"Va": "-3.16987 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_30" : {
+			"id" : "29",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1505795335",
+			"guid" : "3B0FC3ABAC0CC7485CF38D0C8166466F",
+			"flags" : "0x100",
+			"bus_i": "30",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.0499 pu*V",
+			"Va": "-7.37047 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_31" : {
+			"id" : "30",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1954899097",
+			"guid" : "3BBE20289879A8B84ECB84F540051DAB",
+			"flags" : "0x100",
+			"bus_i": "31",
+			"S": "9.2+4.6j MVA",
+			"type": "REF",
+			"Pd": "9.2 MW",
+			"Qd": "4.6 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "0.982 pu*V",
+			"Va": "0 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_32" : {
+			"id" : "31",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1636807826",
+			"guid" : "36F620D3409E746617935FFA54B936A1",
+			"flags" : "0x100",
+			"bus_i": "32",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "0.9841 pu*V",
+			"Va": "-0.188437 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_33" : {
+			"id" : "32",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "563613512",
+			"guid" : "1406DCB9E53D4C6FE8B2056A7F8A562",
+			"flags" : "0x100",
+			"bus_i": "33",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "0.9972 pu*V",
+			"Va": "-0.193174 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_34" : {
+			"id" : "33",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "101929267",
+			"guid" : "68A1DDEB7244A8974E82AA9F1B0DC1CA",
+			"flags" : "0x100",
+			"bus_i": "34",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.0123 pu*V",
+			"Va": "-1.63112 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_35" : {
+			"id" : "34",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1580723810",
+			"guid" : "7F2EAF5C27A4B38F1298AA56E52CB8E3",
+			"flags" : "0x100",
+			"bus_i": "35",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.0494 pu*V",
+			"Va": "1.77651 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_36" : {
+			"id" : "35",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "704877633",
+			"guid" : "422281DED6BD5584927471FB437A65C",
+			"flags" : "0x100",
+			"bus_i": "36",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.0636 pu*V",
+			"Va": "4.46844 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_37" : {
+			"id" : "36",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1358580979",
+			"guid" : "21259F4315E8BB70468CD3E2801367E2",
+			"flags" : "0x100",
+			"bus_i": "37",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "2",
+			"baseKV": "345 kV",
+			"Vm": "1.0275 pu*V",
+			"Va": "-1.5829 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_38" : {
+			"id" : "37",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1624379149",
+			"guid" : "3EBC684BD901375D7BA525A6A7AE88F5",
+			"flags" : "0x100",
+			"bus_i": "38",
+			"S": "0+0j MVA",
+			"type": "PV",
+			"Pd": "0 MW",
+			"Qd": "0 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "3",
+			"baseKV": "345 kV",
+			"Vm": "1.0265 pu*V",
+			"Va": "3.89282 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_bus_39" : {
+			"id" : "38",
+			"class" : "bus",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "2128236579",
+			"guid" : "473B0B2D1B93EEEC7DAA235556903C86",
+			"flags" : "0x100",
+			"bus_i": "39",
+			"S": "1104+250j MVA",
+			"type": "PV",
+			"Pd": "1104 MW",
+			"Qd": "250 MVAr",
+			"Gs": "0 MW",
+			"Bs": "0 MVAr",
+			"area": "1",
+			"baseKV": "345 kV",
+			"Vm": "1.03 pu*V",
+			"Va": "-14.5353 deg",
+			"zone": "1",
+			"Vmax": "1.06 pu*V",
+			"Vmin": "0.94 pu*V",
+			"weather_file": "",
+			"weather_variables": "",
+			"weather_resolution": "3600 s",
+			"Sn": "0 W/m^2",
+			"Sh": "0 W/m^2",
+			"Sg": "0 W/m^2",
+			"Wd": "0 deg",
+			"Ws": "0 m/2",
+			"Td": "0 degC",
+			"Tw": "0 degC",
+			"RH": "0 %",
+			"PW": "0 in",
+			"HI": "0 degF",
+			"weather_sensitivity": ""
+		},
+		"pp_gen_1" : {
+			"id" : "39",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "784558821",
+			"guid" : "17C39FCA1E0151B473964275A1EC089",
+			"flags" : "0x100",
+			"bus": "30",
+			"Pg": "250 MW",
+			"Qg": "161.762 MVAr",
+			"Qmax": "400 MVAr",
+			"Qmin": "140 MVAr",
+			"Vg": "1.0499 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "1040 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_2" : {
+			"id" : "40",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "530511967",
+			"guid" : "4E01883074E6C62F643F5623756E2C3C",
+			"flags" : "0x100",
+			"bus": "31",
+			"Pg": "677.871 MW",
+			"Qg": "221.574 MVAr",
+			"Qmax": "300 MVAr",
+			"Qmin": "-100 MVAr",
+			"Vg": "0.982 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "646 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_3" : {
+			"id" : "41",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "2110010672",
+			"guid" : "537E792236E74F2E74986A14EACCCF1B",
+			"flags" : "0x100",
+			"bus": "32",
+			"Pg": "650 MW",
+			"Qg": "206.965 MVAr",
+			"Qmax": "300 MVAr",
+			"Qmin": "150 MVAr",
+			"Vg": "0.9841 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "725 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_4" : {
+			"id" : "42",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1551901393",
+			"guid" : "692C547B927C98361B0326AD59DBD1E7",
+			"flags" : "0x100",
+			"bus": "33",
+			"Pg": "632 MW",
+			"Qg": "108.293 MVAr",
+			"Qmax": "250 MVAr",
+			"Qmin": "0 MVAr",
+			"Vg": "0.9972 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "652 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_5" : {
+			"id" : "43",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1617819336",
+			"guid" : "806CCD30735C800853C824393A68FB",
+			"flags" : "0x100",
+			"bus": "34",
+			"Pg": "508 MW",
+			"Qg": "166.688 MVAr",
+			"Qmax": "167 MVAr",
+			"Qmin": "0 MVAr",
+			"Vg": "1.0123 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "508 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_6" : {
+			"id" : "44",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1399125485",
+			"guid" : "2D711E0844B29CCB5C7735F31AF40772",
+			"flags" : "0x100",
+			"bus": "35",
+			"Pg": "650 MW",
+			"Qg": "210.661 MVAr",
+			"Qmax": "300 MVAr",
+			"Qmin": "-100 MVAr",
+			"Vg": "1.0494 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "687 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_7" : {
+			"id" : "45",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "156091745",
+			"guid" : "1C265A093B07A68C11359C1492784A07",
+			"flags" : "0x100",
+			"bus": "36",
+			"Pg": "560 MW",
+			"Qg": "100.165 MVAr",
+			"Qmax": "240 MVAr",
+			"Qmin": "0 MVAr",
+			"Vg": "1.0636 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "580 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_8" : {
+			"id" : "46",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1356425228",
+			"guid" : "3C68DD6F2F26D6BEC46D95DFB39D803",
+			"flags" : "0x100",
+			"bus": "37",
+			"Pg": "540 MW",
+			"Qg": "-1.36945 MVAr",
+			"Qmax": "250 MVAr",
+			"Qmin": "0 MVAr",
+			"Vg": "1.0275 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "564 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_9" : {
+			"id" : "47",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1899894091",
+			"guid" : "183B736CAE6ACE6310A2386486DADFA4",
+			"flags" : "0x100",
+			"bus": "38",
+			"Pg": "830 MW",
+			"Qg": "21.7327 MVAr",
+			"Qmax": "300 MVAr",
+			"Qmin": "-150 MVAr",
+			"Vg": "1.0265 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "865 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_gen_10" : {
+			"id" : "48",
+			"class" : "gen",
+			"rank" : "1",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "585640194",
+			"guid" : "726B849104465A9B10A78C75E217DD50",
+			"flags" : "0x100",
+			"bus": "39",
+			"Pg": "1000 MW",
+			"Qg": "78.4674 MVAr",
+			"Qmax": "300 MVAr",
+			"Qmin": "-100 MVAr",
+			"Vg": "1.03 pu*V",
+			"mBase": "100 MVA",
+			"status": "IN_SERVICE",
+			"Pmax": "1100 MW",
+			"Pmin": "0 MW",
+			"Pc1": "0 MW",
+			"Pc2": "0 MW",
+			"Qc1min": "0 MVAr",
+			"Qc1max": "0 MVAr",
+			"Qc2min": "0 MVAr",
+			"Qc2max": "0 MVAr",
+			"ramp_agc": "0 MW/min",
+			"ramp_10": "0 MW",
+			"ramp_30": "0 MW",
+			"ramp_q": "0 MVAr/min",
+			"apf": "0",
+			"mu_Pmax": "0 pu/MW",
+			"mu_Pmin": "0 pu/MW",
+			"mu_Qmax": "0 pu/MVAr",
+			"mu_Qmin": "0 pu/MVAr"
+		},
+		"pp_branch_1" : {
+			"id" : "49",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "937186357",
+			"guid" : "29135FD25D07A53D1CF7D016673D23BB",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "1",
+			"tbus": "2",
+			"r": "0.0035 pu*Ohm",
+			"x": "0.0411 pu*Ohm",
+			"b": "0.6987 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-2642.1-4041.22j A",
+			"loss": "0.961596 MW"
+		},
+		"pp_branch_2" : {
+			"id" : "50",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1646035001",
+			"guid" : "7676416D08C678D855B7C6A43D54BABB",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "1",
+			"tbus": "39",
+			"r": "0.001 pu*Ohm",
+			"x": "0.025 pu*Ohm",
+			"b": "0.75 pu/Ohm",
+			"rateA": "1000 MVA",
+			"rateB": "1000 MVA",
+			"rateC": "1000 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "524.821-3925.62j A",
+			"loss": "0.392461 MW"
+		},
+		"pp_branch_3" : {
+			"id" : "51",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1025921153",
+			"guid" : "34D12F0C5978EC645DEFE673EAC6B82F",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "2",
+			"tbus": "3",
+			"r": "0.0013 pu*Ohm",
+			"x": "0.0151 pu*Ohm",
+			"b": "0.2572 pu/Ohm",
+			"rateA": "500 MVA",
+			"rateB": "500 MVA",
+			"rateC": "500 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-620.438+12984.8j A",
+			"loss": "2.5612 MW"
+		},
+		"pp_branch_4" : {
+			"id" : "52",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "510616708",
+			"guid" : "C0614D05F1CED7E5AE1F503CAB9A2AF",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "2",
+			"tbus": "25",
+			"r": "0.007 pu*Ohm",
+			"x": "0.0086 pu*Ohm",
+			"b": "0.146 pu/Ohm",
+			"rateA": "500 MVA",
+			"rateB": "500 MVA",
+			"rateC": "500 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "6405.54+10561.7j A",
+			"loss": "1.69193 MW"
+		},
+		"pp_branch_5" : {
+			"id" : "53",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "590357944",
+			"guid" : "61C5C2974CF8E3E72FA42C67C28892C",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "2",
+			"tbus": "30",
+			"r": "0 pu*Ohm",
+			"x": "0.0181 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.025 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "7178.93+8117.05j A",
+			"loss": "2.12537 MW"
+		},
+		"pp_branch_6" : {
+			"id" : "54",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "771515668",
+			"guid" : "6FD7D1D9B15D42E2A375800C961C2AA",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "3",
+			"tbus": "4",
+			"r": "0.0013 pu*Ohm",
+			"x": "0.0213 pu*Ohm",
+			"b": "0.2214 pu/Ohm",
+			"rateA": "500 MVA",
+			"rateB": "500 MVA",
+			"rateC": "500 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "1657.69+171.396j A",
+			"loss": "0.059267 MW"
+		},
+		"pp_branch_7" : {
+			"id" : "55",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "357571490",
+			"guid" : "6F56CA68FEBF8C0313A62821AF4D0618",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "3",
+			"tbus": "18",
+			"r": "0.0011 pu*Ohm",
+			"x": "0.0133 pu*Ohm",
+			"b": "0.2138 pu/Ohm",
+			"rateA": "500 MVA",
+			"rateB": "500 MVA",
+			"rateC": "500 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-1944.96-1100.08j A",
+			"loss": "0.0666344 MW"
+		},
+		"pp_branch_8" : {
+			"id" : "56",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1044788124",
+			"guid" : "417AF50A1D35F50319D8853D13504814",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "4",
+			"tbus": "5",
+			"r": "0.0008 pu*Ohm",
+			"x": "0.0128 pu*Ohm",
+			"b": "0.1342 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-7757.34-6781.39j A",
+			"loss": "1.36155 MW"
+		},
+		"pp_branch_9" : {
+			"id" : "57",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1927702196",
+			"guid" : "40DA75AB6385872A79F991155EC2EA4B",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "4",
+			"tbus": "14",
+			"r": "0.0008 pu*Ohm",
+			"x": "0.0129 pu*Ohm",
+			"b": "0.1382 pu/Ohm",
+			"rateA": "500 MVA",
+			"rateB": "500 MVA",
+			"rateC": "500 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-7365.99-10399.9j A",
+			"loss": "2.0992 MW"
+		},
+		"pp_branch_10" : {
+			"id" : "58",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1952509530",
+			"guid" : "73C40664B65497ED374B4D319F00253C",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "5",
+			"tbus": "6",
+			"r": "0.0002 pu*Ohm",
+			"x": "0.0026 pu*Ohm",
+			"b": "0.0434 pu/Ohm",
+			"rateA": "1200 MVA",
+			"rateB": "1200 MVA",
+			"rateC": "1200 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "7852.62-28445.9j A",
+			"loss": "2.27085 MW"
+		},
+		"pp_branch_11" : {
+			"id" : "59",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "130060903",
+			"guid" : "7A7A9779B5179BEE26D22F7AF13D7381",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "5",
+			"tbus": "8",
+			"r": "0.0008 pu*Ohm",
+			"x": "0.0112 pu*Ohm",
+			"b": "0.1476 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "900 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "14601.6+5686.52j A",
+			"loss": "2.75709 MW"
+		},
+		"pp_branch_12" : {
+			"id" : "60",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1942727722",
+			"guid" : "4E1EB0C9130F0D193CE1C4FEE8C89298",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "6",
+			"tbus": "7",
+			"r": "0.0006 pu*Ohm",
+			"x": "0.0092 pu*Ohm",
+			"b": "0.113 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "900 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "10030.8+17384.6j A",
+			"loss": "3.71401 MW"
+		},
+		"pp_branch_13" : {
+			"id" : "61",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1083454666",
+			"guid" : "1012FFA511BEBCB5304DF02D47184E05",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "6",
+			"tbus": "11",
+			"r": "0.0007 pu*Ohm",
+			"x": "0.0082 pu*Ohm",
+			"b": "0.1389 pu/Ohm",
+			"rateA": "480 MVA",
+			"rateB": "480 MVA",
+			"rateC": "480 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "16259.8-2716.35j A",
+			"loss": "2.23652 MW"
+		},
+		"pp_branch_14" : {
+			"id" : "62",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1108728549",
+			"guid" : "34B2E4696F40A08C7115342FC465302C",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "6",
+			"tbus": "31",
+			"r": "0 pu*Ohm",
+			"x": "0.025 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "1800 MVA",
+			"rateB": "1800 MVA",
+			"rateC": "1800 MVA",
+			"ratio": "1.07 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "3357.27+6162.51j A",
+			"loss": "1.23119 MW"
+		},
+		"pp_branch_15" : {
+			"id" : "63",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "685118024",
+			"guid" : "260DC77023DBE0944A1EC2CECFDCF23E",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "7",
+			"tbus": "8",
+			"r": "0.0004 pu*Ohm",
+			"x": "0.0046 pu*Ohm",
+			"b": "0.078 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "900 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "11422.1-4742.02j A",
+			"loss": "0.706235 MW"
+		},
+		"pp_branch_16" : {
+			"id" : "64",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "2118797801",
+			"guid" : "7D68D0CE119C75704FECA66A16883BE0",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "8",
+			"tbus": "9",
+			"r": "0.0023 pu*Ohm",
+			"x": "0.0363 pu*Ohm",
+			"b": "0.3804 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "900 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "1073.65-2024.52j A",
+			"loss": "0.191008 MW"
+		},
+		"pp_branch_17" : {
+			"id" : "65",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1060806853",
+			"guid" : "244A5259514558A677F3657F47B8DBAB",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "9",
+			"tbus": "39",
+			"r": "0.001 pu*Ohm",
+			"x": "0.025 pu*Ohm",
+			"b": "1.2 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "900 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-294.459-1437.55j A",
+			"loss": "0.0538744 MW"
+		},
+		"pp_branch_18" : {
+			"id" : "66",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "571540977",
+			"guid" : "FCEC7900F14F5DB5E58E13CF63C56ED",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "10",
+			"tbus": "11",
+			"r": "0.0004 pu*Ohm",
+			"x": "0.0043 pu*Ohm",
+			"b": "0.0729 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-10108.5-14382.4j A",
+			"loss": "1.33459 MW"
+		},
+		"pp_branch_19" : {
+			"id" : "67",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "194847408",
+			"guid" : "5AFCC2C8F2E8BA5D59D5F4AA9D03A779",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "10",
+			"tbus": "13",
+			"r": "0.0004 pu*Ohm",
+			"x": "0.0043 pu*Ohm",
+			"b": "0.0729 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-9950.97-14320.9j A",
+			"loss": "1.31332 MW"
+		},
+		"pp_branch_20" : {
+			"id" : "68",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "2035308228",
+			"guid" : "46F07322D661B0D578F7DDBB67D3406",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "10",
+			"tbus": "32",
+			"r": "0 pu*Ohm",
+			"x": "0.02 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.07 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-3914.09+6419.28j A",
+			"loss": "1.13054 MW"
+		},
+		"pp_branch_21" : {
+			"id" : "69",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "158374933",
+			"guid" : "1983A2E1143580267286FEB87DAF9BBA",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "12",
+			"tbus": "11",
+			"r": "0.0016 pu*Ohm",
+			"x": "0.0435 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "500 MVA",
+			"rateB": "500 MVA",
+			"rateC": "500 MVA",
+			"ratio": "1.006 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "139.685+42.3836j A",
+			"loss": "0.000927532 MW"
+		},
+		"pp_branch_22" : {
+			"id" : "70",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1075260298",
+			"guid" : "753F2182038944106477E6D757AD1691",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "12",
+			"tbus": "13",
+			"r": "0.0016 pu*Ohm",
+			"x": "0.0435 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "500 MVA",
+			"rateB": "500 MVA",
+			"rateC": "500 MVA",
+			"ratio": "1.006 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "155.63+47.5971j A",
+			"loss": "0.00115292 MW"
+		},
+		"pp_branch_23" : {
+			"id" : "71",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "824938981",
+			"guid" : "175681343A9EF42747E2DBDA0CEA34F5",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "13",
+			"tbus": "14",
+			"r": "0.0009 pu*Ohm",
+			"x": "0.0101 pu*Ohm",
+			"b": "0.1723 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-14827.2+4749.46j A",
+			"loss": "2.45798 MW"
+		},
+		"pp_branch_24" : {
+			"id" : "72",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "595028635",
+			"guid" : "6A6CE30AFB58D6804CFBF9EFE1172DB5",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "14",
+			"tbus": "15",
+			"r": "0.0018 pu*Ohm",
+			"x": "0.0217 pu*Ohm",
+			"b": "0.366 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-155.334+2882.57j A",
+			"loss": "0.181454 MW"
+		},
+		"pp_branch_25" : {
+			"id" : "73",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1962408013",
+			"guid" : "EDB418EB526C9A23D4009C74080B2B3",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "15",
+			"tbus": "16",
+			"r": "0.0009 pu*Ohm",
+			"x": "0.0094 pu*Ohm",
+			"b": "0.171 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "5047.42-12234.1j A",
+			"loss": "1.65393 MW"
+		},
+		"pp_branch_26" : {
+			"id" : "74",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1137623865",
+			"guid" : "5B4C3D23CEE09FCB13750DBD2267E2B4",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "16",
+			"tbus": "17",
+			"r": "0.0007 pu*Ohm",
+			"x": "0.0089 pu*Ohm",
+			"b": "0.1342 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-5726.85+10469.2j A",
+			"loss": "1.27128 MW"
+		},
+		"pp_branch_27" : {
+			"id" : "75",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "997389814",
+			"guid" : "6A4CE1ABF3D485817D04B71666F50B6",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "16",
+			"tbus": "19",
+			"r": "0.0016 pu*Ohm",
+			"x": "0.0195 pu*Ohm",
+			"b": "0.304 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-1728.41+7662.2j A",
+			"loss": "1.20713 MW"
+		},
+		"pp_branch_28" : {
+			"id" : "76",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "2020739063",
+			"guid" : "BB4310CE6FE3A114A041B845D385031",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "16",
+			"tbus": "21",
+			"r": "0.0008 pu*Ohm",
+			"x": "0.0135 pu*Ohm",
+			"b": "0.2548 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "11313.4+8653.4j A",
+			"loss": "2.7436 MW"
+		},
+		"pp_branch_29" : {
+			"id" : "77",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "107554536",
+			"guid" : "629271FB67393F7A1CFC4CD852461352",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "16",
+			"tbus": "24",
+			"r": "0.0003 pu*Ohm",
+			"x": "0.0059 pu*Ohm",
+			"b": "0.068 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "1795.86-1081.77j A",
+			"loss": "0.025966 MW"
+		},
+		"pp_branch_30" : {
+			"id" : "78",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1635339425",
+			"guid" : "1A5C5698F7D0754B71F5CCEA5691A0C1",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "17",
+			"tbus": "18",
+			"r": "0.0007 pu*Ohm",
+			"x": "0.0082 pu*Ohm",
+			"b": "0.1319 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "4820.79+9412.28j A",
+			"loss": "0.92035 MW"
+		},
+		"pp_branch_31" : {
+			"id" : "79",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1654001669",
+			"guid" : "702B026267EA55137AC98AB9B2D08A16",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "17",
+			"tbus": "27",
+			"r": "0.0013 pu*Ohm",
+			"x": "0.0173 pu*Ohm",
+			"b": "0.3216 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "222.668+1447.2j A",
+			"loss": "0.0371952 MW"
+		},
+		"pp_branch_32" : {
+			"id" : "80",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1777724115",
+			"guid" : "4EBECAEEBC4B3685751D2DB95055C2B3",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "19",
+			"tbus": "20",
+			"r": "0.0007 pu*Ohm",
+			"x": "0.0138 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.06 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "9422.07+1756.08j A",
+			"loss": "1.26929 MW"
+		},
+		"pp_branch_33" : {
+			"id" : "81",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "269220094",
+			"guid" : "6E0642FCA60ACA742A363E5A0F7DF032",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "19",
+			"tbus": "33",
+			"r": "0.0007 pu*Ohm",
+			"x": "0.0142 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.07 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "6892.98+2480.76j A",
+			"loss": "0.763001 MW"
+		},
+		"pp_branch_34" : {
+			"id" : "82",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "34075629",
+			"guid" : "48F6B34BF998ED06493BC19E6ADAEAEA",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "20",
+			"tbus": "34",
+			"r": "0.0009 pu*Ohm",
+			"x": "0.018 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.009 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "3038.26-4915.01j A",
+			"loss": "0.601742 MW"
+		},
+		"pp_branch_35" : {
+			"id" : "83",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1478446501",
+			"guid" : "4E6398D2A0B8B2F25B9A0D40EDE6F030",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "21",
+			"tbus": "22",
+			"r": "0.0008 pu*Ohm",
+			"x": "0.014 pu*Ohm",
+			"b": "0.2565 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "900 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-6953.8-9538.73j A",
+			"loss": "1.95398 MW"
+		},
+		"pp_branch_36" : {
+			"id" : "84",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1864546517",
+			"guid" : "73A213B94ABAB6FC1D58BDEDEE5A3398",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "22",
+			"tbus": "23",
+			"r": "0.0006 pu*Ohm",
+			"x": "0.0096 pu*Ohm",
+			"b": "0.1846 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-2144.11+219.844j A",
+			"loss": "0.0446842 MW"
+		},
+		"pp_branch_37" : {
+			"id" : "85",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1351934195",
+			"guid" : "41B666A7A5B2D7E17D083CFB9F3FEA76",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "22",
+			"tbus": "35",
+			"r": "0 pu*Ohm",
+			"x": "0.0143 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.025 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-6878.86+5838.35j A",
+			"loss": "1.16409 MW"
+		},
+		"pp_branch_38" : {
+			"id" : "86",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1581030105",
+			"guid" : "17C1B9DC33F257FB71282757FC71DB63",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "23",
+			"tbus": "24",
+			"r": "0.0022 pu*Ohm",
+			"x": "0.035 pu*Ohm",
+			"b": "0.361 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-699.183+238.645j A",
+			"loss": "0.019141 MW"
+		},
+		"pp_branch_39" : {
+			"id" : "87",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1557810404",
+			"guid" : "2F8349ACD8A0CD572AAC2AD635F3A9B8",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "23",
+			"tbus": "36",
+			"r": "0.0005 pu*Ohm",
+			"x": "0.0272 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "4653.87+2873.66j A",
+			"loss": "0.813864 MW"
+		},
+		"pp_branch_40" : {
+			"id" : "88",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "2146319451",
+			"guid" : "7296FBAEFE4D41B6766993BB29AFFE42",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "25",
+			"tbus": "26",
+			"r": "0.0032 pu*Ohm",
+			"x": "0.0323 pu*Ohm",
+			"b": "0.531 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-2705.5-1912.86j A",
+			"loss": "0.35635 MW"
+		},
+		"pp_branch_41" : {
+			"id" : "89",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1908194298",
+			"guid" : "61410A50C2CE170E592EC7A8230CA1E9",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "25",
+			"tbus": "37",
+			"r": "0.0006 pu*Ohm",
+			"x": "0.0232 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "900 MVA",
+			"rateB": "900 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.025 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "404.498+2203.32j A",
+			"loss": "0.116462 MW"
+		},
+		"pp_branch_42" : {
+			"id" : "90",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "500782188",
+			"guid" : "2D850A37DB1F93B21C414FD27F024A26",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "26",
+			"tbus": "27",
+			"r": "0.0014 pu*Ohm",
+			"x": "0.0147 pu*Ohm",
+			"b": "0.2396 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-7350.4+8991.29j A",
+			"loss": "1.99158 MW"
+		},
+		"pp_branch_43" : {
+			"id" : "91",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "657821123",
+			"guid" : "3F3900EAEA786DB91A0CD789FBC4DD01",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "26",
+			"tbus": "28",
+			"r": "0.0043 pu*Ohm",
+			"x": "0.0474 pu*Ohm",
+			"b": "0.7802 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-1119.54+4196.75j A",
+			"loss": "0.897925 MW"
+		},
+		"pp_branch_44" : {
+			"id" : "92",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "753799505",
+			"guid" : "17F29856CF7E331824A3A9026343ED64",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "26",
+			"tbus": "29",
+			"r": "0.0057 pu*Ohm",
+			"x": "0.0625 pu*Ohm",
+			"b": "1.029 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "-24.1516+2.21867j A",
+			"loss": "3.69164e-05 MW"
+		},
+		"pp_branch_45" : {
+			"id" : "93",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1102246882",
+			"guid" : "7F67AE90F275ACBB5A01B593E6FAFDFD",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "28",
+			"tbus": "29",
+			"r": "0.0014 pu*Ohm",
+			"x": "0.0151 pu*Ohm",
+			"b": "0.249 pu/Ohm",
+			"rateA": "600 MVA",
+			"rateB": "600 MVA",
+			"rateC": "600 MVA",
+			"ratio": "0 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "3439.81-13155.5j A",
+			"loss": "2.80396 MW"
+		},
+		"pp_branch_46" : {
+			"id" : "94",
+			"class" : "branch",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1269406752",
+			"guid" : "327957FE7D3E69A23A81B0FECB314A7",
+			"flags" : "0x100",
+			"from": "",
+			"to": "",
+			"fbus": "29",
+			"tbus": "38",
+			"r": "0.0008 pu*Ohm",
+			"x": "0.0156 pu*Ohm",
+			"b": "0 pu/Ohm",
+			"rateA": "1200 MVA",
+			"rateB": "1200 MVA",
+			"rateC": "2500 MVA",
+			"ratio": "1.025 pu",
+			"angle": "0 pu",
+			"status": "IN",
+			"angmin": "-360 deg",
+			"angmax": "360 deg",
+			"current": "4571.05+2154.12j A",
+			"loss": "0.398865 MW"
+		},
+		"pp_gencost_0" : {
+			"id" : "95",
+			"class" : "gencost",
+			"parent" : "pp_gen_1",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1816731566",
+			"guid" : "265649C2C19E7A8579635BA632AE5CFD",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_1" : {
+			"id" : "96",
+			"class" : "gencost",
+			"parent" : "pp_gen_2",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "884936716",
+			"guid" : "202DBC773344EFF348F821E01A7E1AE9",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_2" : {
+			"id" : "97",
+			"class" : "gencost",
+			"parent" : "pp_gen_3",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1807130337",
+			"guid" : "3A06FF3B324ECE4F1E7F6E25918F2F3F",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_3" : {
+			"id" : "98",
+			"class" : "gencost",
+			"parent" : "pp_gen_4",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "578354438",
+			"guid" : "3FAFB618074C07C153216F4876305DD9",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_4" : {
+			"id" : "99",
+			"class" : "gencost",
+			"parent" : "pp_gen_5",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "892053144",
+			"guid" : "6C7A6A8C9EF348C21FD0BBA80708B27",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_5" : {
+			"id" : "100",
+			"class" : "gencost",
+			"parent" : "pp_gen_6",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1153851501",
+			"guid" : "53DC90150B2417F4CFC44B69D4E34AC",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_6" : {
+			"id" : "101",
+			"class" : "gencost",
+			"parent" : "pp_gen_7",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "1004844897",
+			"guid" : "561DAB69F86F99297541210F53D65730",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_7" : {
+			"id" : "102",
+			"class" : "gencost",
+			"parent" : "pp_gen_8",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "616783871",
+			"guid" : "144447AC8B4DCE87350DB0FE32B04917",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_8" : {
+			"id" : "103",
+			"class" : "gencost",
+			"parent" : "pp_gen_9",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "382955828",
+			"guid" : "779CE9525FC4FDD462C500946D60CF8A",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		},
+		"pp_gencost_9" : {
+			"id" : "104",
+			"class" : "gencost",
+			"parent" : "pp_gen_10",
+			"rank" : "0",
+			"clock" : "2020-01-01 00:00:00 PST",
+			"rng_state" : "330111137",
+			"guid" : "23B928769513BFCC2EE1721EB8205720",
+			"flags" : "0x100",
+			"model": "POLYNOMIAL",
+			"startup": "0 $",
+			"shutdown": "0 $",
+			"costs": "0.01,0.3,0.2"
+		}
+	}
+}

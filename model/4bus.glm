@@ -1,6 +1,6 @@
 module pypower;
 
-// OBJECTS
+// nodes
 object bus
 {
 	name "bus_0";
@@ -33,6 +33,8 @@ object bus
 	Qd "1 MVAr";
 	baseKV "12.5 kV";
 }
+
+// lines
 object branch
 {
 	name "branch:4";
@@ -64,6 +66,9 @@ object branch
 	rateA "15 MVA";
 	status "IN";
 }
+
+
+// generators
 object gen
 {
 	name "gen:7";
@@ -88,6 +93,8 @@ object gencost
 	shutdown "0 $";
 	costs "0.01,100,0";
 }
+
+// capacitors
 object shunt
 {
 	name "shunt:9";
@@ -98,6 +105,32 @@ object shunt
 	voltage_low "0.95 pu";
 	remote_bus "bus_3";
 	admittance "0 MVAr";
+}
+
+// capacity expansion data
+class capacity {
+	complex generator[$/MW];
+	double capacitor[$/MW];
+}
+object capacity {
+	parent "bus_0";
+	generator 100+10j;
+	capacitor 1000;
+}
+object capacity {
+	parent "bus_1";
+	generator 500+500j;
+	capacitor 100;
+}
+object capacity {
+	parent "bus_2";
+	generator 1000+1000j;
+	capacitor 10;
+}
+object capacity {
+	parent "bus_3";
+	generator 1000+1000j;
+	capacitor 10;
 }
 
 #set savefile="4bus.json"

@@ -25,12 +25,19 @@ import subprocess
 import numpy as np
 import numpy.linalg as la
 import cvxpy as cp
-from typing import Union, Any
+from typing import Union, Any, TypeVar
 
 np.set_printoptions(linewidth=np.inf,formatter={float:lambda x:f"{x:8.4f}"})
 
 class Model:
     """GridLAB-D model handler"""
+
+    # format rules
+    formatter = {
+        float: lambda x: f"{x:8.2f}",
+        complex: lambda x: f"{x.real:8.2f}{x.imag:+8.2f}",
+        int: lambda x: f"{x:8.0f}",
+    }
 
     def __init__(self,data):
         if isinstance(data,str):
@@ -87,7 +94,16 @@ class Model:
             astype(self.data["classes"])
         return astype(self.data["classes"][module])
 
-    def property(self,object,property):
+    def property(self,object:str,property:str) -> Any:
+        """Get an object property and convert to Python type
+
+        Arguments:
+        * object: name of object
+        * property: name of property
+
+        Returns:
+        * varies: value of object property
+        """
         object_data = self.data["objects"][object]
         if property in self.data["header"]:
             return object_data[property]
@@ -95,6 +111,22 @@ class Model:
         if ptype in dir(self):
             return getattr(self,ptype)(object_data[property])
         return object_data[property]
+
+    def format(self,value:Any) -> str:
+        """Apply formatting rules
+
+        Arguments:
+        * value: value to format
+
+        Returns:
+        * str: formatted value
+
+        See `formatter`.
+        """
+        try:
+            return self.formatter[type(value)](value)
+        except:
+            return str(value)
 
     @staticmethod
     def double(x:str) -> float:
@@ -707,7 +739,7 @@ class Model:
         * dict: solution results
         """
         try:
-            if not refresh:
+            if not refresh and not self.modified:
                 return self.get_result("optimal_powerflow")
         except:
             pass
@@ -762,6 +794,10 @@ class Model:
             ]
         problem = cp.Problem(objective, constraints)
         problem.solve(**kwargs)
+
+        if x.value is None:
+            raise RuntimeError(problem.status)
+        
         puV = self.perunit("V")
         puS = self.perunit("S")
         result = {
@@ -778,24 +814,31 @@ class Model:
 
         return self.set_result("optimal_sizing",result)
 
-    def optimal_sizing(self,
-            gen_cost:float|list|dict=None,
-            cap_cost:float|list|dict=None,
+    def optimal_sizing(self,            
             refresh:bool=False,
+            verbose:bool|TypeVar('io.TextIOWrapper')=False,
             with_solver_data:bool=False,
             update_model:bool=False,
             margin:float=0.2,
-            verbose:bool=False,
+            gen_cost:float|list|dict=None,
+            cap_cost:float|list|dict=None,
+            min_power_ratio:float|list|dict=0.1,
+            voltage_high:float|list|dict=1.05,
+            voltage_low:float|list|dict=0.95,
+            steps:float|list|dict=20,
+            admittance:float|list|dict=0.1,
             **kwargs) -> dict:
         """Solve optimal sizing/placement problem
 
         Arguments:
-        * gen_cost: generation addition cost data
-        * cap_cost: capacitor addition cost data
         * refresh: force recalculation of all values
+        * verbose: output solver data and results
         * with_solver_data: include solver data
         * update_model: update model with new generation and capacitors
         * margin: load safety margin (default is +0.2)
+        * gen_cost: generation addition cost data
+        * cap_cost: capacitor addition cost data
+        * min_power_ratio: new generation minimum reactive power ratio relative to real power
         * kwargs: arguments passed to solver
 
         Returns:
@@ -815,6 +858,10 @@ class Model:
         if self.graphSpectral()[2] == 0:
             raise RuntimeError(f"cannot optimize on invalid network models (no zero eigenvalues found)")
         
+        # setup verbose output
+        if verbose is True:
+            verbose = sys.stderr
+
         # extract model data
         G = self.graphLaplacian(refresh)
         D = self.demand('actual',refresh)
@@ -827,7 +874,7 @@ class Model:
         # normalize generation cost argument
         if gen_cost is None:
             gen_cost = np.zeros(N)
-        elif isinstance(gen_cost,float):
+        elif isinstance(gen_cost,float) or isinstance(gen_cost,int):
             gen_cost = np.full(N,gen_cost)
         elif isinstance(gen_cost,dict):
             gen_cost = np.array([gen_cost[n] if n in gen_cost else 0 for n in range(N)])
@@ -844,15 +891,23 @@ class Model:
         elif isinstance(gen_cost,list):
             cap_cost = np.array(cap_cost)
 
+        # normalize minimum reactive power argument
+        if isinstance(min_power_ratio,float):
+            min_power_ratio = np.full(N,min_power_ratio)
+        elif isinstance(min_power_ratio,dict):
+            min_power_ratio = np.array([min_power_ratio[n] if n in min_power_ratio else 0 for n in range(N)])
+        elif isinstance(min_power_ratio,list):
+            min_power_ratio = np.array(min_power_ratio)
+
         if verbose:
-            print(f"\ngld('{self.name}').optimal_sizing(gen_cost={repr(gen_cost)},cap_cost={repr(cap_cost)},refresh={repr(refresh)},with_solver_data={repr(with_solver_data)},update_model={repr(update_model)},margin={repr(margin)},verbose={repr(verbose)}{',' if kwargs else ''}{','.join([f'{x}={repr(y)}' for x,y in kwargs.items()])}):",file=sys.stderr)
-            print("\nN:",N,sep="\n",file=sys.stderr)
-            print("\nG:",G,sep="\n",file=sys.stderr)
-            print("\nD:",D,sep="\n",file=sys.stderr)
-            print("\nI:",I,sep="\n",file=sys.stderr)
-            print("\nF:",F,sep="\n",file=sys.stderr)
-            print("\nS:",S,sep="\n",file=sys.stderr)
-            print("\nC:",C,sep="\n",file=sys.stderr)
+            print(f"\ngld('{self.name}').optimal_sizing(gen_cost={repr(gen_cost)},cap_cost={repr(cap_cost)},refresh={repr(refresh)},with_solver_data={repr(with_solver_data)},update_model={repr(update_model)},margin={repr(margin)},verbose={repr(verbose)}{',' if kwargs else ''}{','.join([f'{x}={repr(y)}' for x,y in kwargs.items()])}):",file=verbose)
+            print("\nN:",N,sep="\n",file=verbose)
+            print("\nG:",G,sep="\n",file=verbose)
+            print("\nD:",D,sep="\n",file=verbose)
+            print("\nI:",I,sep="\n",file=verbose)
+            print("\nF:",F,sep="\n",file=verbose)
+            print("\nS:",S,sep="\n",file=verbose)
+            print("\nC:",C,sep="\n",file=verbose)
 
         # setup problem
         x = cp.Variable(N)  # nodal voltage angles
@@ -886,36 +941,56 @@ class Model:
         new_caps = [round(max(round(x,3)*puS,0),9) for x in (c.value - C)]
         if update_model:
 
+            if verbose:
+                print("\nOSP results:",file=verbose)
+                print("-----------",file=verbose)
+
             # add generators
+            if verbose:
+                print("\nNew generation:",file=verbose)
+                print(f"  Node{' '*(max([len(x) for x in self.find('bus',list)])-4)}    Bus       Pg       Qg      Pmax     Qmax     Qmin  ",file=verbose,)
+                print(f"  {'-'*(max([len(x) for x in self.find('bus',list)]))} -------- -------- -------- -------- -------- --------",file=verbose)
             for bus,spec in {self.get_name("bus",n):(n,x) for n,x in enumerate(new_gens) if abs(x)>0}.items():
                 gen = f"gen_{len(self.find('gen'))}"
-                self.add_object("gen",gen,
+                n = int(self.data['objects'][bus]['bus_i'])-1
+                obj = self.add_object("gen",gen,
                     parent=bus,
                     bus=str(self.data['objects'][bus]['bus_i']),
                     Pg = spec[1].real,
                     Qg = spec[1].imag,
                     Pmax=spec[1].real,
-                    Qmax=max(spec[1].imag,spec[1].real/10),
-                    Qmin=-max(spec[1].imag,spec[1].real/10),
+                    Qmax=max(spec[1].imag,spec[1].real*min_power_ratio[n]),
+                    Qmin=-max(spec[1].imag,spec[1].real*min_power_ratio[n]),
                     status="IN_SERVICE",
                     )
+                if verbose:
+                    print(' ',' '.join([self.format(self.property(gen,x)) for x in ['parent','bus','Pg','Qg','Pmax','Qmax','Qmin']]),file=verbose)
                 self.add_object("gencost",f"gencost_{len(self.find('gencost'))}",
                     parent=gen,
                     model="POLYNOMIAL",
-                    costs="0.01,100,0",
+                    costs="0.01,100,0", # TODO: where to get this data from (maybe from the lowest cost unit already present if any)
                     )
             
             # add capacitors
+            if verbose:
+                print("\nNew capacitors:",file=verbose)
+                print(f"  Node{' '*(max([len(x) for x in self.find('bus',list)])-4)}   Vhigh    Vlow      Y       Steps    Yc",file=verbose,)
+                print(f"  {'-'*(max([len(x) for x in self.find('bus',list)]))} -------- -------- -------- -------- --------",file=verbose)
             for bus,spec in {self.get_name("bus",n):(n,x) for n,x in enumerate(new_caps) if abs(x)>0}.items():
                 shunt = f"shunt_{len(self.find('shunt'))}"
                 self.add_object("shunt",shunt,
                     parent=bus,
-                    voltage_high=1.05,
-                    voltage_low=0.95,
+                    voltage_high=voltage_high,
+                    voltage_low=voltage_low,
                     admittance=spec[1],
-                    steps_1 = 20,
-                    admittance_1=spec[1]/20,
+                    steps_1=steps,
+                    admittance_1=admittance,
                     )
+                if verbose:
+                    print(' ',' '.join([self.format(self.property(shunt,x)) for x in ['parent','voltage_high','voltage_low','admittance','steps_1','admittance_1']]),file=verbose)
+
+        if verbose:
+            print(f"Cost: {problem.value:.2f}",file=verbose)
 
         # generate result data
         puV = self.perunit("V")
@@ -1027,7 +1102,7 @@ if __name__ == "__main__":
     testEq(test.optimal_powerflow()["curtailment"].tolist(),[0,0,5,5],"optimal powerflow failed")
     testEq(test.optimal_sizing(refresh=True,gen_cost=np.array([100,500,1000,1000])+1000j,cap_cost={0:1000,1:500})["generation"].round(1).tolist() , [24.8+0j, 1.6+0j, 0j, 0j], "optimal sizing failed")
     testEq(test.optimal_sizing(refresh=True,gen_cost=np.array([100,500,1000,1000])+1000j,cap_cost={0:1000,1:500})["capacitors"].round(1).tolist() , [0,0,1.2,1.2], "optimal sizing failed")
-    testEq(test.optimal_sizing(refresh=True,gen_cost=np.array([100,500,1000,1000])+1000j,cap_cost={0:1000,1:500},update_model=True)["additions"] , {'generation': {0: (14.8+0j), 1: (1.6+0j)}, 'capacitors': {2: 1.2}} , "optimal sizing failed")
+    testEq(test.optimal_sizing(refresh=True,verbose=True,gen_cost=np.array([100,500,1000,1000])+1000j,cap_cost={0:1000,1:500},update_model=True)["additions"] , {'generation': {0: (14.8+0j), 1: (1.6+0j)}, 'capacitors': {2: 1.2}} , "optimal sizing failed")
     testEq(test.optimal_powerflow(refresh=True)["curtailment"].tolist(),[0,0,0,0],"optimal powerflow failed")
 
     if runtime:
@@ -1035,6 +1110,17 @@ if __name__ == "__main__":
         test.save("4bus_test.json",indent=4)
         rc,out,err = test.run("4bus_test.json",exception=False)
         testEq(out,[''],'run test failed')
+
+    for case in os.listdir("."):
+        if case.startswith("case") and case.endswith(".json"):
+            test = Model(case)
+            test.optimal_sizing(gen_cost=100,cap_cost=10,update_model=True)
+            test.optimal_powerflow(refresh=True)
+
+    test = Model("wecc240.json")
+    test.optimal_sizing(gen_cost=100,cap_cost=10,update_model=True,verbose=True)
+    print(test.optimal_powerflow(refresh=True))
+
 
     print("\nTEST: completed tests",end="",file=sys.stderr,flush=True)
     print("\nTEST:",tested,"tested,",failed,"failed",file=sys.stderr)

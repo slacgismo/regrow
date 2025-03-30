@@ -1780,7 +1780,7 @@
 		"command_line" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "gridlabd.bin 4bus.json"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin/gridlabd.bin /Users/david/GitHub/dchassin/regrow/model/4bus.glm"
 		},
 		"environment" : {
 			"type" : "char1024",
@@ -1941,12 +1941,12 @@
 		"modelname" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "4bus.json"
+			"value" : "/Users/david/GitHub/dchassin/regrow/model/4bus.glm"
 		},
 		"execdir" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "gridlabd.bin"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin"
 		},
 		"strictnames" : {
 			"type" : "bool",
@@ -1966,12 +1966,12 @@
 		"randomstate" : {
 			"type" : "int32",
 			"access" : "PUBLIC",
-			"value" : "1101306236"
+			"value" : "722658750"
 		},
 		"randomseed" : {
 			"type" : "int32",
 			"access" : "PUBLIC",
-			"value" : "-789306597"
+			"value" : "722658750"
 		},
 		"include" : {
 			"type" : "char1024",
@@ -2412,7 +2412,7 @@
 		"exename" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "gridlabd.bin"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250315-develop-darwin_23-x86_64/bin/gridlabd.bin"
 		},
 		"wget_options" : {
 			"type" : "char1024",
@@ -2675,7 +2675,7 @@
 		"rusage" : {
 			"type" : "char1024",
 			"access" : "PUBLIC",
-			"value" : "{\"utime\" : 1.187045, \"stime\" : 0.272070, \"maxrss\" : 38985728, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 12439, \"majflt\" : 13, \"nswap\" : 0, \"inblock\" : 0, \"oublock\" : 0, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 0, \"nivcsw\" : 2801}"
+			"value" : "{\"utime\" : 1.176130, \"stime\" : 0.248304, \"maxrss\" : 38887424, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 11617, \"majflt\" : 0, \"nswap\" : 0, \"inblock\" : 0, \"oublock\" : 0, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 0, \"nivcsw\" : 2553}"
 		},
 		"echo" : {
 			"type" : "bool",
@@ -2685,7 +2685,7 @@
 		"filename" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "4bus.glm"
+			"value" : "/Users/david/GitHub/dchassin/regrow/model/4bus.glm"
 		},
 		"country" : {
 			"type" : "char8",
@@ -2899,7 +2899,7 @@
 			"rank" : "2",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "16807",
-			"guid" : "5AE5DC4882A30F17",
+			"guid" : "46E903A4ECE7F99724634A6F9CB5D155",
 			"flags" : "0x100",
 			"bus_i": "1",
 			"S": "0+0j MVA",
@@ -2936,7 +2936,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "282475249",
-			"guid" : "73344DEA4691742E",
+			"guid" : "408E2279E018261AC8609A92D4A7325",
 			"flags" : "0x100",
 			"bus_i": "2",
 			"S": "0+0j MVA",
@@ -2973,7 +2973,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1622650073",
-			"guid" : "5BF8F4D322D00A8B",
+			"guid" : "37B42E0F07B2D64067018A7F728A4ACD",
 			"flags" : "0x100",
 			"bus_i": "3",
 			"S": "10+1j MVA",
@@ -3010,7 +3010,7 @@
 			"rank" : "1",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "984943658",
-			"guid" : "6DCE2F02206287B4",
+			"guid" : "5C3BF14033DE1FAB71B1C78D1D971C2",
 			"flags" : "0x100",
 			"bus_i": "4",
 			"S": "10+1j MVA",
@@ -3047,21 +3047,21 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1144108930",
-			"guid" : "2EAD9A63E30CAB00",
+			"guid" : "40B6425487B2B70F2CA4188840F8D186",
 			"flags" : "0x100",
 			"from": "bus_0",
 			"to": "bus_1",
 			"fbus": "1",
 			"tbus": "2",
-			"r": "1 pu*Ohm",
-			"x": "0.1 pu*Ohm",
+			"r": "0.01 pu*Ohm",
+			"x": "0.05 pu*Ohm",
 			"b": "0 pu/Ohm",
 			"rateA": "25 MVA",
 			"rateB": "0 MVA",
 			"rateC": "0 MVA",
 			"ratio": "0 pu",
 			"angle": "0 pu",
-			"status": "OUT",
+			"status": "IN",
 			"angmin": "0 deg",
 			"angmax": "0 deg",
 			"current": "0+0j A",
@@ -3073,21 +3073,21 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "470211272",
-			"guid" : "25EC429B69975D03",
+			"guid" : "14623007EF515F75B2555D35AA43BBD",
 			"flags" : "0x100",
 			"from": "bus_1",
 			"to": "bus_2",
 			"fbus": "2",
 			"tbus": "3",
-			"r": "1 pu*Ohm",
-			"x": "0.1 pu*Ohm",
+			"r": "0.01 pu*Ohm",
+			"x": "0.05 pu*Ohm",
 			"b": "0 pu/Ohm",
 			"rateA": "15 MVA",
 			"rateB": "0 MVA",
 			"rateC": "0 MVA",
 			"ratio": "0 pu",
 			"angle": "0 pu",
-			"status": "OUT",
+			"status": "IN",
 			"angmin": "0 deg",
 			"angmax": "0 deg",
 			"current": "0+0j A",
@@ -3099,21 +3099,21 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "101027544",
-			"guid" : "91A28B36EAA4AD34",
+			"guid" : "73EC7817FAEE63CE1D6A56E3E98B21D6",
 			"flags" : "0x100",
 			"from": "bus_1",
 			"to": "bus_3",
 			"fbus": "2",
 			"tbus": "4",
-			"r": "1 pu*Ohm",
-			"x": "0.1 pu*Ohm",
+			"r": "0.01 pu*Ohm",
+			"x": "0.05 pu*Ohm",
 			"b": "0 pu/Ohm",
 			"rateA": "15 MVA",
 			"rateB": "0 MVA",
 			"rateC": "0 MVA",
 			"ratio": "0 pu",
 			"angle": "0 pu",
-			"status": "OUT",
+			"status": "IN",
 			"angmin": "0 deg",
 			"angmax": "0 deg",
 			"current": "0+0j A",
@@ -3126,16 +3126,16 @@
 			"rank" : "1",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1457850878",
-			"guid" : "50947D45A3A2CF9",
+			"guid" : "79DE573C2DEF4FC67A29DDEEAC99478",
 			"flags" : "0x100",
 			"bus": "1",
-			"Pg": "0 MW",
-			"Qg": "0 MVAr",
+			"Pg": "10 MW",
+			"Qg": "1 MVAr",
 			"Qmax": "1 MVAr",
 			"Qmin": "-1 MVAr",
 			"Vg": "0 pu*V",
 			"mBase": "100 MVA",
-			"status": "OUT_OF_SERVICE",
+			"status": "IN_SERVICE",
 			"Pmax": "10 MW",
 			"Pmin": "0 MW",
 			"Pc1": "0 MW",
@@ -3175,16 +3175,16 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "2007237709",
-			"guid" : "111308A950BB9973",
+			"guid" : "63F068026042E26FE83BDA7667F2853",
 			"flags" : "0x100",
 			"control_mode": "FIXED",
-			"status": "OFFLINE",
+			"status": "ONLINE",
 			"voltage_high": "1.05 pu",
 			"voltage_low": "0.95 pu",
 			"remote_bus": "bus_3",
 			"admittance": "0 MVAr",
-			"steps_1": "10",
-			"admittance_1": "1 MVAr",
+			"steps_1": "0",
+			"admittance_1": "0 MVAr",
 			"steps_2": "0",
 			"admittance_2": "0 MVAr",
 			"steps_3": "0",

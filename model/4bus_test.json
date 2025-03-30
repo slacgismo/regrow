@@ -2220,7 +2220,7 @@
         "randomstate": {
             "type": "int32",
             "access": "PUBLIC",
-            "value": "-1429483710"
+            "value": "558895681"
         },
         "randomseed": {
             "type": "int32",
@@ -2929,7 +2929,7 @@
         "rusage": {
             "type": "char1024",
             "access": "PUBLIC",
-            "value": "{\"utime\" : 1.174250, \"stime\" : 0.294105, \"maxrss\" : 39088128, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 12542, \"majflt\" : 22, \"nswap\" : 0, \"inblock\" : 0, \"oublock\" : 0, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 0, \"nivcsw\" : 3745}"
+            "value": "{\"utime\" : 1.179257, \"stime\" : 0.262211, \"maxrss\" : 38977536, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 12533, \"majflt\" : 0, \"nswap\" : 0, \"inblock\" : 0, \"oublock\" : 0, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 0, \"nivcsw\" : 4922}"
         },
         "echo": {
             "type": "bool",
@@ -3461,8 +3461,8 @@
             "Pg": "14.8 MW",
             "Qg": "0.0 MVAr",
             "Pmax": "14.8 MW",
-            "Qmax": "1.48 MVAr",
-            "Qmin": "-1.48 MVAr",
+            "Qmax": "1.4800000000000002 MVAr",
+            "Qmin": "-1.4800000000000002 MVAr",
             "status": "IN_SERVICE",
             "mBase": "100 MVA"
         },
@@ -3481,8 +3481,8 @@
             "Pg": "1.6 MW",
             "Qg": "0.0 MVAr",
             "Pmax": "1.6 MW",
-            "Qmax": "0.16 MVAr",
-            "Qmin": "-0.16 MVAr",
+            "Qmax": "0.16000000000000003 MVAr",
+            "Qmin": "-0.16000000000000003 MVAr",
             "status": "IN_SERVICE",
             "mBase": "100 MVA"
         },
@@ -3501,7 +3501,7 @@
             "voltage_low": "0.95 pu",
             "admittance": "1.2 MVAr",
             "steps_1": "20",
-            "admittance_1": "0.06 MVAr"
+            "admittance_1": "0.1 MVAr"
         }
     }
 }

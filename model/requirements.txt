@@ -1,0 +1,3 @@
+marimo
+numpy
+cvxpy

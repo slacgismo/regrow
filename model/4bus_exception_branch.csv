@@ -1,4 +1,0 @@
-fbus,tbus,r,x,b,rateA,rateB,rateC,ratio,angle,status,angmin,angmax,Pfrom,Qfrom,Pto,Qto,mu_Sfrom,mu_Sto,mu_angmin,mu_angmax
-1.0,2.0,1.0,0.1,0.0,25.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-2.0,3.0,1.0,0.1,0.0,15.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
-2.0,4.0,1.0,0.1,0.0,15.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0

@@ -109,8 +109,8 @@ object shunt
 
 // capacity expansion data
 class capacity {
-	complex generator[$/MW];
-	double capacitor[$/MW];
+	complex generator[$/MVA];
+	double capacitor[$/MVAr];
 }
 object capacity {
 	parent "bus_0";

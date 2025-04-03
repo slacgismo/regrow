@@ -5,7 +5,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import dates as mdates
 from utils import geohash, nsrdb_weather
-import s3_creds
 import glob as glob
 import time
 from requests.exceptions import HTTPError
@@ -90,7 +89,8 @@ def csv_to_srw(csv, site_id, site_year, site_lat, site_lon,
     return out
 
 
-def pull_nsrdb_data(min_measured_date, max_measured_date):
+def pull_nsrdb_data(min_measured_date, max_measured_date, geohash_val,
+                    aws_profile):
     """
     Pulls the nsrdb weather data between the min and max measured date
     in 30 mins interval.
@@ -117,10 +117,10 @@ def pull_nsrdb_data(min_measured_date, max_measured_date):
         except Exception as e:
             print(e)
     # Save nsrdb pull
-    all_nsrdb_data.to_csv(regrow_folder + "nsrdb/" + str(geohash_val) + "_nsrdb.csv",
+    all_nsrdb_data.to_csv(regrow_folder + "turbine_location_geohash_nsrdb/" +
+                          str(geohash_val) + "_nsrdb.csv",
         index=False,
-        storage_options={"key": s3_creds.aws_aki,
-                         "secret": s3_creds.aws_sak})
+        storage_options={"profile": aws_profile})
     return all_nsrdb_data
 
 
@@ -199,7 +199,9 @@ if __name__ == "__main__":
     uswtdb_df = pd.read_csv("uswtdb_metadata.csv")
     master_df = filter_uswtdb_metadata(uswtdb_df)
     master_df.to_csv("uswtdb_pysam_sim.csv", index=False)
-    regrow_folder = "s3://pvdrdb-analysis/REGROW_Wind_Data/pysam_powerplants/"
+    regrow_folder = "s3://pvdrdb-transfer/REGROW/pysam_wind_powerplants/"
+    # aws profile with crediantial to directly save to s3 bucket
+    aws_profile = "aws-service-creds-pvdrdb"
     filename_list = [] 
     ran_geohash_nsrdb = []
     
@@ -257,11 +259,11 @@ if __name__ == "__main__":
         if filename in ran_files_list:
             print("Modeled:", filename)
             pass
-        elif filename =="9q713t_35.108196_-118.359886":
-            pass
         else:
             print("Modeling:", filename)
-            all_nsrdb_data = pull_nsrdb_data(min_measured_date, max_measured_date)
+            all_nsrdb_data = pull_nsrdb_data(min_measured_date,
+                                             max_measured_date,
+                                             geohash_val, aws_profile)
             all_power_output = pd.DataFrame()
                 
             # Pysam takes exactly 8760 (hourly data for 365days) data points
@@ -274,9 +276,11 @@ if __name__ == "__main__":
                 if len(temp_df) == limit:
                     year = pd.to_datetime(temp_df["datetime"].iloc[1000]).year
                     srw_file_path = os.path.join(data_path, "srw_files",
-                                                  str(geohash_val) + f"_{i}.srw")
+                                                  str(geohash_val) +
+                                                  f"_{i}.srw")
                     temp_file_path = os.path.join(data_path, "srw_files",
-                                                  str(geohash_val) + f"_{i}.csv")
+                                                  str(geohash_val) +
+                                                  f"_{i}.csv")
                     temp_df.to_csv(temp_file_path, index=False)
     
                     # Convert csv to srw file to use in PySAM
@@ -326,14 +330,16 @@ if __name__ == "__main__":
             plt.xlabel("Year")
             plt.xticks(rotation=45)
             plt.tight_layout()
-            plt.savefig(os.path.join("pysam_wecc_nodes", "plots", filename + ".png"))
+            plt.savefig(os.path.join("pysam_wecc_nodes", "plots", filename +
+                                     ".png"))
             plt.show()
     
-            # Save results
-            all_power_output.to_csv((regrow_folder + filename + ".csv"),
-                index=False,
-                storage_options={"key": s3_creds.aws_aki,
-                                  "secret": s3_creds.aws_sak})
+            # Save results directly to s3
+            all_power_output.to_csv((regrow_folder +
+                                     "single_turbine_power_timeseries/" +
+                                     filename + ".csv"),
+                                    index=False,
+                                    storage_options={"profile": aws_profile})
         
 
      

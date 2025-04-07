@@ -24,7 +24,7 @@ module pypower
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
     controllers "wecc240_controllers";
-    enable_opf TRUE;
+    //enable_opf TRUE;
     maximum_iterations_opf 20;
     opf_feasibility_tolerance 1.3;
     opf_gradient_tolerance 3.0;
@@ -62,8 +62,8 @@ modify ${BRANCH}.rateB 500;
 modify ${BRANCH}.rateC 750;
 #done
 
-//#system python3 powerplants_aggregated.py
-//#include "powerplants_aggregated.glm"
+#system python3 powerplants_aggregated.py
+#include "powerplants_aggregated.glm"
 
 //
 // Load loads data

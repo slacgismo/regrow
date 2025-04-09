@@ -5,6 +5,7 @@ import os
 import json
 sys.path.append("../data")
 import utils
+import pandas as pd
 
 geodata = "../data/geodata"
 model = json.load(open("wecc240.json","r"))
@@ -59,8 +60,8 @@ for oclass in ["load","gen","powerplant"]:
             print("ERROR [check_geodata.py]:",obj,"has no bus associated with it",file=sys.stderr)
         if "latitude" in data and "longitude" in data:
             geohash = utils.geohash(float(data["latitude"]),float(data["longitude"]))
-            for file,columns in [(x,y) for x,y in geofile.items() if x in needed[oclass]]:
-                if geohash not in columns:
+            for file,hashes in [(x,y) for x,y in geofile.items() if x in needed[oclass]]:
+                if geohash not in hashes:
                     print("ERROR [check_geodata.py]:",oclass,obj,geohash,"not found in",file,file=sys.stderr)
                     errors += 1
                     if file not in missing:
@@ -72,6 +73,43 @@ for oclass in ["load","gen","powerplant"]:
 print(checks,"checks completed")
 print(errors,"errors found")
 if errors > 0:
-    print("Summary of missing geohashes")
+    print("Potentially missing geohashes")
     for file,data in missing.items():
         print(file," ".join(data),sep=": ")
+
+buslist = []
+for bus,data in find("class","bus").items():
+    if "latitude" in data and "longitude" in data:
+        geohash = utils.geohash(float(data["latitude"]),float(data["longitude"]))
+        
+        load = [abs(complex(y["S"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus]
+        load = sum(load) if len(load) > 0 else float('nan')
+        
+        gen = [x for x,y in find("class","gen").items() if y["bus"] == data["bus_i"]]
+        wind = solar = generation = storage = float('nan')
+        if len(gen) > 0:
+            wind = solar = generation = storage = 0
+            for plant,data in [(x,y) for x,y in find("class","powerplant").items() if y["parent"] in gen]:
+                capacity = float(data["operating_capacity"].split()[0])
+                if data["generator"] == "PV":
+                    solar += capacity
+                elif data["generator"] == "WT":
+                    wind += capacity
+                elif data["generator"] == "ES":
+                    storage += capacity
+                else:
+                    generation += capacity
+
+        buslist.append(pd.DataFrame(data={
+            "bus": [bus.split("_")[-1]],
+            "geocode": [geohash],
+            "wind[MVA]": [wind],
+            "solar[MVA]": [solar],
+            "generation[MVA]":[generation],
+            "load[MVA]":[load],
+            "storage[MVA]":[storage],
+            "total.csv": ["OK" if geohash in geofile["total.csv"] else ""],
+            "pv.csv": ["OK" if geohash in geofile["pv.csv"] else ""],
+            "wt.csv": ["OK" if geohash in geofile["wt.csv"] else ""],
+            }))
+pd.concat(buslist).round(1).to_csv("check_geodata.csv",index=False,header=True)

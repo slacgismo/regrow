@@ -3,6 +3,7 @@
 import sys
 import os
 import json
+import math
 sys.path.append("../data")
 import utils
 import pandas as pd
@@ -77,10 +78,18 @@ if errors > 0:
     for file,data in missing.items():
         print(file," ".join(data),sep=": ")
 
+geolist = []
+for x in geofile.values():
+    geolist += x
+geolist = list(set(geolist))
 buslist = []
 for bus,data in find("class","bus").items():
     if "latitude" in data and "longitude" in data:
-        geohash = utils.geohash(float(data["latitude"]),float(data["longitude"]))
+        lat = float(data["latitude"])
+        lon = float(data["longitude"])
+        geohash = utils.geohash(lat,lon)
+        nearest = utils.nearest(geohash,geolist)
+        distance = utils.distance(geohash,nearest)*40000*math.cos(lat*math.pi/180)/360 # very rough conversion to km
         
         load = [abs(complex(y["S"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus]
         load = sum(load) if len(load) > 0 else float('nan')
@@ -108,8 +117,10 @@ for bus,data in find("class","bus").items():
             "generation[MVA]":[generation],
             "load[MVA]":[load],
             "storage[MVA]":[storage],
-            "total.csv": ["OK" if geohash in geofile["total.csv"] else ""],
-            "pv.csv": ["OK" if geohash in geofile["pv.csv"] else ""],
-            "wt.csv": ["OK" if geohash in geofile["wt.csv"] else ""],
+            "nearest":[nearest if nearest != geohash else ""],
+            "distance[km]":[round(distance,1) if nearest != geohash else ""],
+            "total.csv": ["OK" if nearest in geofile["total.csv"] else ""],
+            "pv.csv": ["OK" if nearest in geofile["pv.csv"] else ""],
+            "wt.csv": ["OK" if nearest in geofile["wt.csv"] else ""],
             }))
 pd.concat(buslist).round(1).to_csv("check_geodata.csv",index=False,header=True)

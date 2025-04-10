@@ -4,6 +4,7 @@ import sys
 import os
 import json
 import math
+import numpy as np
 sys.path.append("../data")
 import utils
 import pandas as pd
@@ -83,7 +84,10 @@ for x in geofile.values():
     geolist += x
 geolist = list(set(geolist))
 buslist = []
+baseMVA = float(model["globals"]["pypower::baseMVA"]["value"].split()[0])
 for bus,data in find("class","bus").items():
+    baseKV = float(data["baseKV"].split()[0])*1000
+    baseZ = baseKV**2/baseMVA
     if "latitude" in data and "longitude" in data:
         lat = float(data["latitude"])
         lon = float(data["longitude"])
@@ -91,9 +95,13 @@ for bus,data in find("class","bus").items():
         nearest = utils.nearest(geohash,geolist)
         distance = utils.distance(geohash,nearest)*40000*math.cos(lat*math.pi/180)/360 # very rough conversion to km
         
-        load = [abs(complex(y["S"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus]
-        load = sum(load) if len(load) > 0 else float('nan')
-        
+        load = np.array([abs(complex(y["S"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus]).sum()
+        if load == 0:
+            P = np.array([abs(complex(y["P"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus])
+            I = np.array([abs(complex(y["I"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus])
+            Z = np.array([abs(complex(y["Z"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus])
+            load = (Z + I + P).sum()
+    
         gen = [x for x,y in find("class","gen").items() if y["bus"] == data["bus_i"]]
         wind = solar = generation = storage = float('nan')
         if len(gen) > 0:
@@ -116,11 +124,13 @@ for bus,data in find("class","bus").items():
             "solar[MVA]": [solar],
             "generation[MVA]":[generation],
             "load[MVA]":[load],
+            "max_import[%]":[load-generation]/load*100 if load>0 else float('nan'),
+            "min_import[%]":[load-generation-wind-solar]/load*100 if load>0 else float('nan'),
             "storage[MVA]":[storage],
             "nearest":[nearest if nearest != geohash else ""],
             "distance[km]":[round(distance,1) if nearest != geohash else ""],
-            "total.csv": ["OK" if nearest in geofile["total.csv"] else ""],
-            "pv.csv": ["OK" if nearest in geofile["pv.csv"] else ""],
-            "wt.csv": ["OK" if nearest in geofile["wt.csv"] else ""],
+            "total.csv": ["MISSING" if not nearest in geofile["total.csv"] and load>0 else "OK"],
+            "pv.csv": ["MISSING" if not nearest in geofile["pv.csv"] and solar>0 else "OK"],
+            "wt.csv": ["MISSING" if not nearest in geofile["wt.csv"] and wind>0 else "OK"],
             }))
 pd.concat(buslist).round(1).to_csv("check_geodata.csv",index=False,header=True)

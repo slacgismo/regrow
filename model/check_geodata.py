@@ -85,6 +85,7 @@ for x in geofile.values():
 geolist = list(set(geolist))
 buslist = []
 baseMVA = float(model["globals"]["pypower::baseMVA"]["value"].split()[0])
+totalcsv = pd.read_csv(os.path.join(geodata,"total.csv"),index_col=0,dtype=float,parse_dates=True)
 for bus,data in find("class","bus").items():
     baseKV = float(data["baseKV"].split()[0])*1000
     baseZ = baseKV**2/baseMVA
@@ -95,12 +96,11 @@ for bus,data in find("class","bus").items():
         nearest = utils.nearest(geohash,geolist)
         distance = utils.distance(geohash,nearest)*40000*math.cos(lat*math.pi/180)/360 # very rough conversion to km
         
-        load = np.array([abs(complex(y["S"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus]).sum()
-        if load == 0:
-            P = np.array([abs(complex(y["P"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus])
-            I = np.array([abs(complex(y["I"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus])
-            Z = np.array([abs(complex(y["Z"].split()[0])) for x,y in find("class","load").items() if y["parent"] == bus])
-            load = (Z + I + P).sum()
+        if nearest in totalcsv.columns:
+            nbus = len(totalcsv)
+            load = totalcsv[nearest].max()
+        else:
+            load = float('nan')
     
         gen = [x for x,y in find("class","gen").items() if y["bus"] == data["bus_i"]]
         wind = solar = generation = storage = float('nan')
@@ -133,4 +133,7 @@ for bus,data in find("class","bus").items():
             "pv.csv": ["MISSING" if not nearest in geofile["pv.csv"] and solar>0 else "OK"],
             "wt.csv": ["MISSING" if not nearest in geofile["wt.csv"] and wind>0 else "OK"],
             }))
-pd.concat(buslist).round(1).to_csv("check_geodata.csv",index=False,header=True)
+checklist = pd.concat(buslist)
+count = checklist.groupby("geocode").count()["bus"].to_dict()
+checklist["load[MVA]"] = [x["load[MVA]"]/count[x["geocode"]] for n,x in checklist.iterrows()]
+checklist.round(1).to_csv("check_geodata.csv",index=False,header=True)

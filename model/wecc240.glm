@@ -5,6 +5,7 @@
 //#option verbose
 //#option debug
 //#set output_message_context=NONE
+#set suppress_repeat_messages=FALSE
 
 clock {
     timezone "PST+8PDT";
@@ -25,7 +26,11 @@ module pypower
 //
 //#input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
 // TODO: exclude gen once the model solves ok with all loads and powerplants included below
+#ifmissing "wecc240_psse.glm"
 #input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
+#else
+#include "wecc240_psse.glm"
+#endif
 
 //
 // Load the GIS data
@@ -50,7 +55,9 @@ modify ${BRANCH}.rateB 500;
 modify ${BRANCH}.rateC 750;
 #done
 
+#ifmissing "powerplants_aggregated.glm"
 #system python3 powerplants_aggregated.py
+#endif
 #include "powerplants_aggregated.glm"
 
 //

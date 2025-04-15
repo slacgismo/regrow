@@ -12,9 +12,13 @@ def on_init(t0):
 
     print(f"{__name__}.on_init(t0='{dt.datetime.fromtimestamp(t0)}')",file=sys.stderr)
     global model
-    model = gld_pypower.Model("wecc240.json")
+    try:
+        model = gld_pypower.Model("wecc240.json")
+        print(model.optimal_sizing(),file=sys.stderr)
+    except:
+        gldcore.error("optimal sizing failed")
+        model = None
 
-    print(model.optimal_sizing(),file=sys.stderr)
 
     return True
 
@@ -23,7 +27,11 @@ def on_precommit(t0):
     print(f"{__name__}.on_precommit(t0='{dt.datetime.fromtimestamp(t0)}')",file=sys.stderr)
 
     global model
-    print(model.optimal_powerflow(),file=sys.stderr)
+    try:
+        print(model.optimal_powerflow(update_model=True),file=sys.stderr)
+    except:
+        gldcore.error("optimal powerflow failed")
+        model = None
 
     return True
 

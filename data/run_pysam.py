@@ -1,15 +1,20 @@
 """Performs wind modeling with uswtdb metadata using PySAM wind model."""
 import pandas as pd
 import os
+
+os.environ["HOME"] = "C:/Users/kperry"
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import dates as mdates
-from utils import geohash, nsrdb_weather
+from utils import geohash, nsrdb_weather, nsrdb_credentials
 import glob as glob
 import time
 from requests.exceptions import HTTPError
 import PySAM.Windpower as wp
 import PySAM.ResourceTools as tools
+import requests
+import io
+
 
 def filter_uswtdb_metadata(uswtdb_df):
     """
@@ -50,9 +55,32 @@ def filter_uswtdb_metadata(uswtdb_df):
     
     return uswtdb_df
     
- 
+def pull_CONUS_data(latitude, longitude, hub_height,
+                    year):
+    available_hub_heights = [10] +[*range(20,200, 20)]
+    # Get the closest hub height to the existing turbine
+    closest_hub_height = int(min(available_hub_heights, 
+                                 key=lambda x:abs(x-hub_height)))
+    payload_attributes = ("temperature_" + str(int(closest_hub_height))+ 
+                          "m,pressure_0m,windspeed_" + 
+                          str(int(closest_hub_height))+ "m,winddirection_" +
+                          str(int(closest_hub_height))+ "m")
+    email, api_key = nsrdb_credentials()
+    url = (
+        "http://developer.nrel.gov/api/wind-toolkit/v2/"+
+        "wind/wtk-bchrrr-v1-0-0-download.csv?wkt=POINT("
+           + str(longitude) + " " + str(latitude) +
+           ")&attributes=" + payload_attributes +
+           "&names=" +str(year) +
+           "&utc=true&leap_day=true&email=" + str(email) + "&api_key=" + 
+           str(api_key))
+    x = requests.get(url)
+    # Process the data into CSV format
+    weather_data = pd.read_csv(io.StringIO(x.content.decode('utf-8')))
+    return weather_data
+
 def csv_to_srw(csv, site_id, site_year, site_lat, site_lon,
-               site_elevation, hub_height, site_county):
+               site_elevation, hub_height, site_city, site_county):
     """
     Converts a csv file to srw format to be used as a resource file in 
     PySAM model.
@@ -60,70 +88,32 @@ def csv_to_srw(csv, site_id, site_year, site_lat, site_lon,
         https://sam.nrel.gov/images/web_page_files/sam-help-2020-2-29-r2_weather_file_formats.pdf
     """
     df = pd.read_csv(csv)
-    
     # Get header title
     header = pd.read_csv(csv, nrows=1, header=None).values
-    
     # Convert mbar to atm
-    df['pressure'] = df['pressure'] / 1013.25
-
+    df['Pressure'] = df['Surface Air Pressure (Pa)'] /101325
+    # give the columns generic column names
+    df['Temperature'] = df[df.columns[5]]
+    df['Speed'] = df[df.columns[7]]
+    df['Direction'] = df[df.columns[8]]
     # Create header lines
-    h1 = np.array([site_id, 'city??', site_county, 'USA', site_year,
-                   site_lat, site_lon, site_elevation, 'tz???', 8760])  # meta info
+    h1 = np.array([site_id, site_city, site_county, 'USA', site_year,
+                   site_lat, site_lon, site_elevation, 0, 8760])  # meta info
     h2 = np.array(["WTK .csv converted to .srw for SAM", None, None,
                    None, None, None, None, None, None, None])  # descriptive text
-    h3 = np.array(['temperature', 'pressure', 'direction',
-                   'speed', None, None, None, None, None, None])  # variables
-    h4 = np.array(['C', 'atm', 'degrees', 'm/s', None,
+    h3 = np.array(['Temperature', 'Pressure', 'Speed',
+                   'Direction', None, None, None, None, None, None])  # variables
+    h4 = np.array(['C', 'atm', 'm/s', 'Degrees', None,
                    None, None, None, None, None])  # units
     h5 = np.array([hub_height, hub_height, hub_height, hub_height, None, None,
                    None, None, None, None])  # hubheight
     header = pd.DataFrame(np.vstack([h1, h2, h3, h4, h5]))
-
     # Clean up
-    df = df[['temperature', 'pressure', 'direction', 'speed']]
+    df = df[['Temperature', 'Pressure', 'Speed', 'Direction']]
     df.columns = [0, 1, 2, 3]
-
     out = pd.concat([header, df], axis='rows')
     out.reset_index(drop=True, inplace=True)
     return out
-
-
-def pull_nsrdb_data(min_measured_date, max_measured_date, geohash_val,
-                    aws_profile):
-    """
-    Pulls the nsrdb weather data between the min and max measured date
-    in 30 mins interval.
-    """
-    all_nsrdb_data = pd.DataFrame()
-    # Get nsdrdb data if not already gotten
-    for year in range(min_measured_date.year, max_measured_date.year+1):
-        try:
-            # Pull the site's associated NSRDB data
-            weather_df = nsrdb_weather(geohash_val,
-                                        year,
-                                        interval=30,
-                                        attributes={'speed': 'wind_speed',  # m/s
-                                                    "direction": 'wind_direction',  # deg
-                                                    "temperature": 'temp_air',  # C
-                                                    "pressure": "pressure"})  # mbar
-            weather_df.reset_index(names=['datetime'], inplace=True)
-            all_nsrdb_data = pd.concat(
-                [all_nsrdb_data, weather_df], ignore_index=True)
-        # If exceed nsrdb hourly pull rates, wait an hour for refresh
-        except HTTPError as e:
-            print("Exceeded API pull limit. Pulling NSRDB in an hour: ",e)
-            time.sleep(3600)
-        except Exception as e:
-            print(e)
-    # Save nsrdb pull
-    all_nsrdb_data.to_csv(regrow_folder + "turbine_location_geohash_nsrdb/" +
-                          str(geohash_val) + "_nsrdb.csv",
-        index=False,
-        storage_options={"profile": aws_profile})
-    return all_nsrdb_data
-
-
 
 def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
                                    srw_file_path, cut_in_speed, cut_out_speed,
@@ -145,14 +135,14 @@ def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
     # Make a single wind turbine
     wm.value("wind_farm_wake_model", 0)
     wm.value('wind_resource_model_choice', 0)  # Hourly output
-    # Generate a row of wind turbine coordinates sapaced 500m apart
+    # Generate a row of wind turbine coordinates spaced 500m apart
     x_coords = [i*500 for i in range(num_turbines)]
     y_coords = [0] * num_turbines
     wm.value("wind_farm_xCoordinates", x_coords)
     wm.value("wind_farm_yCoordinates", y_coords)
     wm.value("system_capacity", system_capacity)
     # Calculate turbulence coefficient
-    turbulence_coeff = (wind_speed.std()/wind_speed.mean()) * 100
+    turbulence_coeff = 0.1
     wm.value("wind_resource_turbulence_coeff", turbulence_coeff)
     
     # Get SRW data and put it in wind_resource_data
@@ -218,7 +208,8 @@ if __name__ == "__main__":
         rotor_diameter = int(row["rotor_diameter[m]"])
         lat = row['latitude']
         lon = row['longitude']
-        county = row["county"]
+        county = row["county"][-2:]
+        city = row['county'][:-3]
         elevation = float(row["elevation[m]"] + hub_height)
         cut_in = float(row["cut_in_wind_speed[m/s]"])
         rated_wind_spd = float(row["rated_wind_speed[m/s]"])
@@ -261,20 +252,24 @@ if __name__ == "__main__":
             pass
         else:
             print("Modeling:", filename)
-            all_nsrdb_data = pull_nsrdb_data(min_measured_date,
-                                             max_measured_date,
-                                             geohash_val, aws_profile)
+            years = [*range(min_measured_date.year, max_measured_date.year + 1)]
+            master_weather_df = pd.DataFrame()
+            for year in years: 
+                weather_df = pull_CONUS_data(lat, lon, hub_height, year)
+                master_weather_df = pd.concat([master_weather_df, weather_df])
+            # Make the 1st row the main header row
+            master_weather_df.columns = master_weather_df.iloc[0]
+            master_weather_df = master_weather_df.drop(master_weather_df.index[0])
             all_power_output = pd.DataFrame()
-                
             # Pysam takes exactly 8760 (hourly data for 365days) data points
             # for a wind model run
             limit = 8760
-            for i in range(0, len(all_nsrdb_data), limit):
-                end = min(i + limit, len(all_nsrdb_data))
-                temp_df = all_nsrdb_data[i:end]
+            for i in range(0, len(master_weather_df), limit):
+                end = min(i + limit, len(master_weather_df))
+                temp_df = master_weather_df[i:end]
                 
                 if len(temp_df) == limit:
-                    year = pd.to_datetime(temp_df["datetime"].iloc[1000]).year
+                    year = pd.to_datetime(temp_df["Year"].iloc[0]).year
                     srw_file_path = os.path.join(data_path, "srw_files",
                                                   str(geohash_val) +
                                                   f"_{i}.srw")
@@ -284,12 +279,18 @@ if __name__ == "__main__":
                     temp_df.to_csv(temp_file_path, index=False)
     
                     # Convert csv to srw file to use in PySAM
-                    srw = csv_to_srw(temp_file_path, str(geohash_val), year,
-                                      lat, lon, elevation, hub_height,
-                                      county)
+                    srw = csv_to_srw(csv = temp_file_path, 
+                                     site_id = str(geohash_val), 
+                                     site_year = year,
+                                     site_lat = lat, 
+                                     site_lon = lon, 
+                                     site_elevation = elevation, 
+                                     hub_height = hub_height,
+                                     site_city = city,
+                                     site_county = county)
                     srw.to_csv(srw_file_path, index=False, header=False)
     
-                    wind_speed = temp_df["speed"]
+                    wind_speed = temp_df[temp_df.columns[7]]
                     # Run the PySAM model for one turbine
                     power_output = run_single_turbine_pysam_model(
                         wind_speed=wind_speed,
@@ -307,7 +308,12 @@ if __name__ == "__main__":
                         drive_train=drivetrain_int,
                         system_capacity=turbine_capacity,
                         num_turbines=1)
-    
+                    temp_df['datetime'] = pd.to_datetime(
+                        temp_df['Month'].astype(str) + "/" + 
+                        temp_df['Day'].astype(str) + "/" + 
+                        temp_df['Year'].astype(str) + " " +
+                        temp_df['Hour'].astype(str) + ":" + 
+                        temp_df['Minute'].astype(str) + ":00")
                     power_output_df = pd.DataFrame({
                         "datetime": pd.to_datetime(temp_df["datetime"]),
                         "power[kW]": power_output})
@@ -331,13 +337,13 @@ if __name__ == "__main__":
             plt.xticks(rotation=45)
             plt.tight_layout()
             plt.savefig(os.path.join("pysam_wecc_nodes", "plots", filename +
-                                     ".png"))
+                                      ".png"))
             plt.show()
     
             # Save results directly to s3
             all_power_output.to_csv((regrow_folder +
-                                     "single_turbine_power_timeseries/" +
-                                     filename + ".csv"),
+                                      "single_turbine_power_timeseries/" +
+                                      filename + ".csv"),
                                     index=False,
                                     storage_options={"profile": aws_profile})
         

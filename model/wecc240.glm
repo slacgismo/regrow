@@ -1,43 +1,31 @@
-// Main WECC 240 bus model
-//
-// Most specifications in this file should be provided by the config.glm file
-// unless they are considered invariant across the scenarios being considered.
-//
-
 #include "config.glm"
 
-//#version "${VERSION}"
+#version "-ge 4.3.14"
 
 //#option verbose
 //#option debug
 //#set output_message_context=NONE
 
 clock {
-    timezone ${TIMEZONE};
-    starttime ${STARTTIME};
-    stoptime ${STOPTIME};
+    timezone "PST+8PDT";
+    starttime "2020-08-01 00:00:00 PDT";
+    stoptime "2020-09-01 00:00:00 PDT";
 }
 
 module pypower
 {
-    maximum_iterations ${MAXIMUM_ITERATIONS};
-    maximum_timestep ${MAXIMUM_TIMESTEP};
-    stop_on_failure ${STOP_ON_FAILURE};
+    maximum_iterations 10;
+    maximum_timestep 3600;
+    stop_on_failure FALSE;
     controllers "wecc240_controllers";
-    enable_opf TRUE;
-    maximum_iterations_opf 20;
-    opf_feasibility_tolerance 1.3;
-    opf_gradient_tolerance 3.0;
-    opf_condition_tolerance 1000;
-    opf_cost_tolerance 0.01;
 }
 
 //
 // Load the PSS/E model
 //
-#input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
+//#input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
 // TODO: exclude gen once the model solves ok with all loads and powerplants included below
-//#input "wecc240_psse.raw" --exclude gen,psse_owner,psse_area,psse_zone
+#input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
 
 //
 // Load the GIS data
@@ -62,22 +50,21 @@ modify ${BRANCH}.rateB 500;
 modify ${BRANCH}.rateC 750;
 #done
 
-//#system python3 powerplants_aggregated.py
-//#include "powerplants_aggregated.glm"
+#system python3 powerplants_aggregated.py
+#include "powerplants_aggregated.glm"
 
 //
 // Load loads data
 //
 //#include "../data/loads.glm"
 
-//
-// Save the final result to JSON
-//
 
 //
-// Setup georecorders
+// Setup python modules
 //
-//module recorders;
+module wecc240;
 
-#set savefile="wecc240.json"
-
+//
+// Save the preliminary model to JSON
+//
+#save "wecc240.json"

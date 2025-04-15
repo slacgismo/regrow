@@ -4,6 +4,9 @@ import os
 import sys
 import datetime as dt
 import math
+import gldcore
+
+print("Loading",__name__,file=sys.stderr,end="...")
 
 import geotape
 
@@ -75,3 +78,5 @@ def on_commit(t0):
     loads_recorder.sample(t0)
     powerplants_recorder.sample(t0)
     return True
+
+print("ok",file=sys.stderr)

@@ -122,7 +122,7 @@ def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
                                    max_tip_sp_ratio, drive_train, system_capacity,
                                    num_turbines, plot_powercurve=False):
     """
-    Runs the PySAM model using NSRDB wind data across the time period
+    Runs the PySAM model using wind data across the time period
     and the common wind metadata for a single turbine.
     """
     # Create a new windpower turbine model
@@ -192,8 +192,7 @@ if __name__ == "__main__":
     regrow_folder = "s3://pvdrdb-transfer/REGROW/pysam_wind_powerplants/"
     # aws profile with crediantial to directly save to s3 bucket
     aws_profile = "aws-service-creds-pvdrdb"
-    filename_list = [] 
-    ran_geohash_nsrdb = []
+    filename_list = []
     
     # Get a list of sites already ran
     ran_files_list = [file.replace(".png", "").split("\\")[-1]
@@ -339,13 +338,19 @@ if __name__ == "__main__":
             plt.savefig(os.path.join("pysam_wecc_nodes", "plots", filename +
                                       ".png"))
             plt.show()
-    
+            
             # Save results directly to s3
+            # Power outputs
             all_power_output.to_csv((regrow_folder +
                                       "single_turbine_power_timeseries/" +
                                       filename + ".csv"),
                                     index=False,
                                     storage_options={"profile": aws_profile})
-        
+            # CONUS weather outputs
+            master_weather_df.to_csv((regrow_folder +
+                                      "single_turbine_weather_data/" +
+                                      filename + ".csv"),
+                                    index=False,
+                                    storage_options={"profile": aws_profile})
 
      

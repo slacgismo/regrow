@@ -62,13 +62,13 @@ modify ${BRANCH}.rateB 500;
 modify ${BRANCH}.rateC 750;
 #done
 
-#system python3 powerplants_aggregated.py
-#include "powerplants_aggregated.glm"
+//#system python3 powerplants_aggregated.py
+//#include "powerplants_aggregated.glm"
 
 //
 // Load loads data
 //
-#include "../data/loads.glm"
+//#include "../data/loads.glm"
 
 //
 // Save the final result to JSON

@@ -31,6 +31,7 @@ except:
 import numpy.linalg as la
 import cvxpy as cp
 from typing import Union, Any, TypeVar
+import random
 import warnings
 try:
     from pypower.api import runpf, runopf, ppoption, printpf
@@ -40,6 +41,9 @@ except ModuleNotFoundError as err:
     runpf = runopf = ppoption = printpf = pypower_api
 
 np.set_printoptions(linewidth=np.inf,formatter={float:lambda x:f"{x:8.4f}"})
+
+def guid():
+    return hex(random.randint(0,2**64-1))[2:]
 
 class Model:
     """GridLAB-D model handler"""
@@ -854,7 +858,7 @@ class Model:
         # update model
         for name,angle in result.items():
             n = int(abs(angle)//angle_limit) + 1
-            print("\nsplitting line",name,"in",n,"parts",file=sys.stderr)
+            # print("\nsplitting line",name,"in",n,"parts",file=sys.stderr)
             fbus,tbus = self.get_property(name,["fbus","tbus"])
             data = self.get_object(name)
             values = {
@@ -867,11 +871,98 @@ class Model:
             }
             # print("before",data,file=sys.stderr)
             self.set_property(name,**values)
-            print("after",data,file=sys.stderr)
+            # print("after",data,file=sys.stderr)
             # self.mod_object(name,data)
             
 
         return result
+
+    def update_model(self,
+            min_power_ratio:list,
+            voltage_high:list,
+            voltage_low:list,
+            new_gens:list=[],
+            new_caps:list=[],
+            verbose:bool=False,
+            ):
+        """Add generation and capacitors to model
+
+        """
+        # print(f"\n*** {self.name} ***\n{new_gens=}\n{new_caps=}")
+
+        if verbose:
+            print("\nOSP results:",file=verbose)
+            print("-----------",file=verbose)
+
+        # add generators
+        if verbose:
+            print("\nNew generation:",file=verbose)
+            print(f"  Node{' '*(max([len(x) for x in self.find('bus',list)])-4)}    Bus       Pg       Qg      Pmax     Qmax     Qmin  ",file=verbose,)
+            print(f"  {'-'*(max([len(x) for x in self.find('bus',list)]))} -------- -------- -------- -------- -------- --------",file=verbose)
+        for bus,spec in {self.get_name("bus",n):(n,x) for n,x in enumerate(new_gens) if abs(x)>0}.items():
+            gen = f"G_{guid()}"
+            n = int(self.data['objects'][bus]['bus_i'])-1
+            obj = self.add_object("gen",gen,
+                parent=bus,
+                bus=str(self.data['objects'][bus]['bus_i']),
+                Pg = spec[1].real,
+                Qg = spec[1].imag,
+                Pmax=spec[1].real,
+                Qmax=max(spec[1].imag,spec[1].real*min_power_ratio[n]),
+                Qmin=-max(spec[1].imag,spec[1].real*min_power_ratio[n]),
+                Vg=self.get_property(bus,"Vm"),
+                status="IN_SERVICE",
+                )
+            # print("New gen:",gen,self.data["objects"][gen])
+            if verbose:
+                print(' ',' '.join([self.format(self.get_property(gen,x)) for x in ['parent','bus','Pg','Qg','Pmax','Qmax','Qmin']]),file=verbose)
+            gencost = f"GC_{guid()}"
+            self.add_object("gencost",gencost,
+                parent=gen,
+                model="POLYNOMIAL",
+                costs="0.01,100,0", # TODO: where to get this data from (maybe from the lowest cost unit already present if any)
+                )
+            # print("New gencost:",gencost,self.data["objects"][gencost])
+        
+        # add capacitors
+        if verbose:
+            print("\nNew capacitors:",file=verbose)
+            print(f"  Node{' '*(max([len(x) for x in self.find('bus',list)])-4)}   Vhigh    Vlow      Y       Steps    Yc",file=verbose,)
+            print(f"  {'-'*(max([len(x) for x in self.find('bus',list)]))} -------- -------- -------- -------- --------",file=verbose)
+        for bus,spec in {self.get_name("bus",n):(n,x) for n,x in enumerate(new_caps) if x>0}.items():
+            shunt = f"S_{guid()}"
+            self.add_object("shunt",shunt,
+                parent=bus,
+                voltage_high=voltage_high,
+                voltage_low=voltage_low,
+                admittance=spec[1],
+                steps_1=10,
+                admittance_1=spec[1]/10,
+                )
+            self.set_property(bus,Bs=self.get_property(bus,"Bs")+spec[1])
+            # print("New shunt:",shunt,self.data["objects"][shunt])
+            if verbose:
+                print(' ',' '.join([self.format(self.get_property(shunt,x)) for x in ['parent','voltage_high','voltage_low','admittance','steps_1','admittance_1']]),file=verbose)
+
+        # add condensers
+        if verbose:
+            print("\nNew condensers:",file=verbose)
+            print(f"  Node{' '*(max([len(x) for x in self.find('bus',list)])-4)}   Vhigh    Vlow      Y       Steps    Yc",file=verbose,)
+            print(f"  {'-'*(max([len(x) for x in self.find('bus',list)]))} -------- -------- -------- -------- --------",file=verbose)
+        for bus,spec in {self.get_name("bus",n):(n,x) for n,x in enumerate(new_caps) if x<0}.items():
+            shunt = f"S_{guid()}"
+            self.add_object("shunt",shunt,
+                parent=bus,
+                voltage_high=voltage_high,
+                voltage_low=voltage_low,
+                admittance=spec[1],
+                steps_1=0,
+                admittance_1=spec[1]
+                )
+            self.set_property(bus,Bs=self.get_property(bus,"Bs")+spec[1])
+            # print("New shunt:",shunt,self.data["objects"][shunt])
+            if verbose:
+                print(' ',' '.join([self.format(self.get_property(shunt,x)) for x in ['parent','voltage_high','voltage_low','admittance','steps_1','admittance_1']]),file=verbose)
 
     #
     # Optimizations
@@ -950,7 +1041,17 @@ class Model:
             return on_invalid(err)
 
         if verbose:
-            print(f"\ngld('{self.name}').optimal_powerflow(refresh={repr(refresh)},verbose={repr(verbose)}{',' if kwargs else ''}{','.join([f'{x}={repr(y)}' for x,y in kwargs.items()])}):",file=sys.stderr)
+            print(f"\ngld('{self.name}').optimal_powerflow("
+                f"{refresh=},"
+                f"{verbose=},"
+                f"{curtailment_price=},"
+                f"{ref=},"
+                f"{angle_limit=},"
+                f"{voltage_limit=},"
+                f"{on_invalid=},"
+                f"{on_fail=},"
+                f"{',' if kwargs else ''}{','.join([f'{x}={repr(y)}' for x,y in kwargs.items()])}):",
+                file=sys.stderr)
             print("\nN:",N,sep="\n",file=verbose)
             print("\nG:",G,sep="\n",file=verbose)
             print("\nD:",D,sep="\n",file=verbose)
@@ -974,8 +1075,8 @@ class Model:
         try:
             cost = P @ cp.abs(g + h * 1j)
             if curtailment_price is None:
-                curtailment_price = 100*max(P)
-            shed = np.ones(N)*curtailment_price @ cp.abs(d+e*1j) # load shedding 100x maximum generator price
+                curtailment_price = 100*max(P) # default load shedding 100x maximum generator price
+            shed = np.ones(N)*curtailment_price @ cp.abs(d+e*1j) 
             objective = cp.Minimize(cost + shed)  # minimum cost (generation + demand response)
             constraints = [
                 G.real @ x - g + c + D.real - d == 0,  # KCL/KVL real power laws
@@ -987,7 +1088,7 @@ class Model:
                 g >= 0,  # generation real power limits
                 cp.abs(h) <= S.imag,  # generation reactive power limits
                 cp.abs(g+h*1j) <= S.real, # generation apparent power limit
-                c >= 0, c <= C,  # capacitor bank settings
+                cp.abs(c) <= C,  # capacitor bank settings
                 d >= 0, cp.abs(d+e*1j) <= cp.abs(D),  # demand curtailment constraint with flexible reactive power
                 ]
             problem = cp.Problem(objective, constraints)
@@ -1008,8 +1109,9 @@ class Model:
         puV = self.perunit("V")
         puS = self.perunit("S")
         result = {
-                "voltage": np.array([y.value.round(3)*puV,(x.value*57.3).round(2)]).transpose(),
-                "angles": self.linevoltage('Va'),
+                "voltage": np.array([y.value.round(3),(x.value*57.3).round(2)]).transpose(),
+                "magnitude": self.linevoltage('Vm'),
+                "angle": self.linevoltage("Va"),
                 "generation": np.array((g+h*1j).value).round(3)*puS,
                 "capacitors": np.array(c.value).round(3)*puS,
                 "flows": cp.abs(I @ x).value.round(3)*puS,
@@ -1027,6 +1129,7 @@ class Model:
             margin:float=0.2,
             gen_cost:float|list|dict=None,
             cap_cost:float|list|dict=None,
+            con_cost:float|list|dict=None,
             min_power_ratio:float|list|dict=0.1,
             voltage_high:float|list|dict=1.05,
             voltage_low:float|list|dict=0.95,
@@ -1047,6 +1150,7 @@ class Model:
         * margin: load capacity margin
         * gen_cost: generation addition cost data
         * cap_cost: capacitor addition cost data
+        * con_cost: condenser addition cost data
         * min_power_ratio: new generation minimum reactive power ratio relative to real power
         * voltage_high: upper voltage constraint
         * voltage_low: lower voltage constraint
@@ -1122,6 +1226,16 @@ class Model:
             elif isinstance(gen_cost,list):
                 cap_cost = np.array(cap_cost)
 
+            # normalize condenser cost argument
+            if con_cost is None:
+                con_cost = cap_cost*10
+            elif isinstance(con_cost,float) or isinstance(con_cost,int):
+                con_cost = np.full(N,con_cost)
+            elif isinstance(con_cost,dict):
+                con_cost = np.array([con_cost[n] if n in con_cost else cap_cost[n]*10 for n in range(N)])
+            elif isinstance(gen_cost,list):
+                con_cost = np.array(con_cost)
+
             # normalize minimum reactive power argument
             if isinstance(min_power_ratio,float):
                 min_power_ratio = np.full(N,min_power_ratio)
@@ -1135,7 +1249,26 @@ class Model:
             return on_invalid(err)
 
         if verbose:
-            print(f"\ngld('{self.name}').optimal_sizing(gen_cost={repr(gen_cost)},cap_cost={repr(cap_cost)},refresh={repr(refresh)},update_model={repr(update_model)},margin={repr(margin)},verbose={repr(verbose)}{',' if kwargs else ''}{','.join([f'{x}={repr(y)}' for x,y in kwargs.items()])}):",file=verbose)
+            print(f"\ngld('{self.name}').optimal_sizing("
+                f"{gen_cost=},"
+                f"{cap_cost=},"
+                f"{con_cost=},"
+                f"{refresh=},"
+                f"{update_model=},"
+                f"{margin=},"
+                f"{min_power_ratio=},"
+                f"{voltage_high=},"
+                f"{voltage_low=},"
+                f"{steps=},"
+                f"{admittance=},"
+                f"{ref=},"
+                f"{angle_limit=},"
+                f"{voltage_limit=},"
+                f"{on_invalid=},"
+                f"{on_fail=},"
+                f"verbose={repr(verbose)}"
+                f"{',' if kwargs else ''}{','.join([f'{x}={repr(y)}' for x,y in kwargs.items()])}):",
+                file=verbose)
             print("\nN:",N,sep="\n",file=verbose)
             print("\nG:",G,sep="\n",file=verbose)
             print("\nD:",D,sep="\n",file=verbose)
@@ -1158,7 +1291,7 @@ class Model:
 
             # construct problem
             puS = self.perunit("S")
-            costs = gen_cost.real @ cp.abs(g) + gen_cost.imag @ cp.abs(h) + cap_cost @ cp.abs(c)
+            costs = cp.abs(gen_cost) @ cp.abs(g) + cp.abs(gen_cost.imag) @ cp.abs(h) + (cap_cost+con_cost)/2 @ cp.abs(c) + (cap_cost-con_cost)/2 @ c
             objective = cp.Minimize(costs)  # minimum cost (generation + demand response)
             constraints = [
                 g - G.real @ x - c - D.real*(1+margin) == 0,  # KCL/KVL real power laws
@@ -1168,7 +1301,6 @@ class Model:
                 cp.abs(y - 1) <= voltage_limit,  # limit voltage magnitude to 5% deviation
                 cp.abs(I @ x) <= F,  # line flow limits
                 g >= 0, # generation must be positive
-                c >= 0, # capacitor values must be positive
                 ]
             problem = cp.Problem(objective, constraints)
             problem.solve(verbose=(verbose!=False),**kwargs)
@@ -1183,57 +1315,10 @@ class Model:
             return on_fail(problem.status)
 
         # update model with new values
-        new_gens = [complex(round(max(round(x.real,3)*puS,0),9),round(max(round(x.imag,3)*puS,0),9)) if x.real>0 else 0 for x in (g.value.round(3) + cp.abs(h).value.round(3)*1j - S) ]
+        new_gens = [complex(round(max(round(x.real,3)*puS,0),9),round(max(round(x.imag,3)*puS,0),9)) if x.real>0 else 0 for x in (g.value + cp.abs(h).value*1j - S) ]
         new_caps = [round(max(round(x,3)*puS,0),9) for x in (c.value - C)]
         if update_model:
-
-            if verbose:
-                print("\nOSP results:",file=verbose)
-                print("-----------",file=verbose)
-
-            # add generators
-            if verbose:
-                print("\nNew generation:",file=verbose)
-                print(f"  Node{' '*(max([len(x) for x in self.find('bus',list)])-4)}    Bus       Pg       Qg      Pmax     Qmax     Qmin  ",file=verbose,)
-                print(f"  {'-'*(max([len(x) for x in self.find('bus',list)]))} -------- -------- -------- -------- -------- --------",file=verbose)
-            for bus,spec in {self.get_name("bus",n):(n,x) for n,x in enumerate(new_gens) if abs(x)>0}.items():
-                gen = f"gen:{len(self.data['objects'])}"
-                n = int(self.data['objects'][bus]['bus_i'])-1
-                obj = self.add_object("gen",gen,
-                    parent=bus,
-                    bus=str(self.data['objects'][bus]['bus_i']),
-                    Pg = spec[1].real,
-                    Qg = spec[1].imag,
-                    Pmax=spec[1].real,
-                    Qmax=max(spec[1].imag,spec[1].real*min_power_ratio[n]),
-                    Qmin=-max(spec[1].imag,spec[1].real*min_power_ratio[n]),
-                    status="IN_SERVICE",
-                    )
-                if verbose:
-                    print(' ',' '.join([self.format(self.get_property(gen,x)) for x in ['parent','bus','Pg','Qg','Pmax','Qmax','Qmin']]),file=verbose)
-                self.add_object("gencost",f"gencost_{len(self.find('gencost'))}",
-                    parent=gen,
-                    model="POLYNOMIAL",
-                    costs="0.01,100,0", # TODO: where to get this data from (maybe from the lowest cost unit already present if any)
-                    )
-            
-            # add capacitors
-            if verbose:
-                print("\nNew capacitors:",file=verbose)
-                print(f"  Node{' '*(max([len(x) for x in self.find('bus',list)])-4)}   Vhigh    Vlow      Y       Steps    Yc",file=verbose,)
-                print(f"  {'-'*(max([len(x) for x in self.find('bus',list)]))} -------- -------- -------- -------- --------",file=verbose)
-            for bus,spec in {self.get_name("bus",n):(n,x) for n,x in enumerate(new_caps) if abs(x)>0}.items():
-                shunt = f"shunt:{len(self.data['objects'])}"
-                self.add_object("shunt",shunt,
-                    parent=bus,
-                    voltage_high=voltage_high,
-                    voltage_low=voltage_low,
-                    admittance=spec[1],
-                    steps_1=steps,
-                    admittance_1=admittance,
-                    )
-                if verbose:
-                    print(' ',' '.join([self.format(self.get_property(shunt,x)) for x in ['parent','voltage_high','voltage_low','admittance','steps_1','admittance_1']]),file=verbose)
+            self.update_model(min_power_ratio,voltage_high,voltage_low,new_gens,new_caps,verbose)
 
         status = "inaccurate/approximation" if self.linesplit(angle_limit) else problem.status
         if verbose:
@@ -1242,8 +1327,9 @@ class Model:
         # generate result data
         puV = self.perunit("V")
         result = {
-                "voltage": np.array([y.value.round(3)*puV,(x.value*57.3).round(2)]).transpose(),
-                "angles": self.linevoltage('Va'),
+                "voltage": np.array([y.value.round(3),(x.value*57.3).round(2)]).transpose(),
+                "magnitude": self.linevoltage('Vm'),
+                "angle": self.linevoltage("Va"),
                 "generation": np.array((g+h*1j).value).round(3)*puS,
                 "capacitors": np.array(c.value).round(3)*puS,
                 "flows": cp.abs(I @ x).value.round(3)*puS,
@@ -1323,6 +1409,7 @@ def {os.path.splitext(os.path.basename(self.name))[0]}():
         showpopup:Union[bool,list]=False,
         showloads:bool=True,
         showgens:bool=True,
+        showcaps:bool=True,
         ) -> str:
         """Generate network diagram in Mermaid
 
@@ -1337,6 +1424,7 @@ def {os.path.splitext(os.path.basename(self.name))[0]}():
         * showpopup: include popup data
         * showloads: include loads
         * showgens: include generators
+        * showcaps: include capacitors and condensers
 
         Returns:
         * str: Mermaid diagram string
@@ -1365,6 +1453,9 @@ def {os.path.splitext(os.path.basename(self.name))[0]}():
             loads = self.select({"class":"load","parent":bus})
             Pg = sum([self.get_property(x,"Pg") for x in gens])
             Qg = sum([self.get_property(x,"Qg") for x in gens])
+            caps = self.select({"class":"shunt","parent":bus})
+            Gs = self.get_property(bus,"Gs")
+            Bs = self.get_property(bus,"Bs")
             shape = "rect" if showbusdata else "fork"
             busdata = "".join([f"<div><b><u>{name}</u></b></div>"]+[f"<div><b>{x}</b>: {y}</div>" for x,y in spec.items() if x in showbusdata])
             busdata = "".join([f"<table><caption><b>{name}</b><hr/></caption>"]+[f"<tr><th align=left>{x}</th><td align=center>:</td><td align=right>{y.split()[0]}</td><td align=right>{y.split(' ',1)[1] if ' ' in y else ''}</td></tr>" for x,y in spec.items() if x in showbusdata]) + "</table>"
@@ -1386,6 +1477,9 @@ def {os.path.splitext(os.path.basename(self.name))[0]}():
             if ( abs(complex(Pd,Qd)) > 0 or len(loads) > 0 ) and showloads:
                 result.append(f"""    {node} --{Pd:.1f}{Qd:+.1f}j MVA--> L{node}@{{shape: tri, label: "<div>{name}</div>"}}""")
                 result.append(f"""    class L{node} white""")
+            if ( abs(complex(Gs,Bs)) > 0 or len(caps) > 0 ) and showcaps:
+                result.append(f"""    C{node}@{{shape: cyl, label: "<div>{name}</div>"}} --{Gs:.1f}{Bs:+.1f}j MVA--> {node}""")
+                result.append(f"""    class C{node} white""")
 
             return "\n".join(result)
 
@@ -1445,11 +1539,7 @@ def {os.path.splitext(os.path.basename(self.name))[0]}():
 
 if __name__ == "__main__":
 
-    if not os.path.exists("example.json"):
-        print("TEST: example.json not found, testing not done",file=sys.stderr)
-        quit()
-
-    test = Model("example.json")
+    test = Model("../examples/example.json")
 
     try:
         test.run("--version")
@@ -1556,10 +1646,10 @@ if __name__ == "__main__":
 
     # case tests
     print("TEST: testing pypower cases",file=sys.stderr,flush=True)
-    for file in sorted(os.listdir("test")):
+    for file in sorted(os.listdir("../examples/pypower")):
         if file.startswith("case") and file.endswith(".json"):
 
-            test = Model(os.path.join("test",file))
+            test = Model(os.path.join("../examples/pypower",file))
 
             # pypower PF test
             try:
@@ -1583,9 +1673,10 @@ if __name__ == "__main__":
                 test.optimal_powerflow(verbose=True,on_fail=lambda x: print(test.problem,file=sys.stderr))
                 failed += 1
             tested += 1
-            split = test.linesplit()
-            if split:
-                print(file,test.linesplit(update_model=True),file=sys.stderr)
+
+            # split = test.linesplit()
+            # if split:
+            #     print(file,test.linesplit(update_model=True),file=sys.stderr)
 
             # OSP test
             testIn(test.optimal_sizing(refresh=True,angle_limit=10,update_model=True)["status"],["optimal","inaccurate/approximation"],f"{file} sizing failed")

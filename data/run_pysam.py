@@ -189,6 +189,9 @@ if __name__ == "__main__":
     uswtdb_df = pd.read_csv("uswtdb_metadata.csv")
     master_df = filter_uswtdb_metadata(uswtdb_df)
     master_df.to_csv("uswtdb_pysam_sim.csv", index=False)
+    counts = master_df['bus'].value_counts().sort_values(ascending=True)
+    master_df = pd.merge(master_df, counts, on='bus')
+    master_df = master_df.sort_values(by='count')
     regrow_folder = "s3://pvdrdb-transfer/REGROW/pysam_wind_powerplants/"
     # aws profile with crediantial to directly save to s3 bucket
     aws_profile = "aws-service-creds-pvdrdb"
@@ -256,6 +259,8 @@ if __name__ == "__main__":
             for year in years: 
                 weather_df = pull_CONUS_data(lat, lon, hub_height, year)
                 master_weather_df = pd.concat([master_weather_df, weather_df])
+            # Get the associated timezone of the data
+            tz = master_weather_df.index.time_zone
             # Make the 1st row the main header row
             master_weather_df.columns = master_weather_df.iloc[0]
             master_weather_df = master_weather_df.drop(master_weather_df.index[0])

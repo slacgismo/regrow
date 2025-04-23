@@ -17,7 +17,7 @@ module pypower
 {
     maximum_iterations 10;
     maximum_timestep 3600;
-    stop_on_failure FALSE;
+    stop_on_failure TRUE;
     controllers "wecc240_controllers";
 }
 
@@ -26,11 +26,7 @@ module pypower
 //
 //#input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
 // TODO: exclude gen once the model solves ok with all loads and powerplants included below
-#ifmissing "wecc240_psse.glm"
 #input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
-#else
-#include "wecc240_psse.glm"
-#endif
 
 //
 // Load the GIS data
@@ -40,25 +36,20 @@ module pypower
 //
 // Load powerplant data
 //
-#for GEN in ${FIND class=gen}
-object gencost
-{
-    parent ${GEN};
-    model POLYNOMIAL;
-    costs "${RANDOM triangle(0.001,0.01)},${RANDOM triangle(0,100)},0";
-}
-modify ${GEN}.Pmax 200;
-#done
+
+//#system python3 powerplants_aggregated.py
+//#include "powerplants_aggregated.glm"
+#input "powerplants_aggregated.py" -t python
+
+
+//
+// Fix line ratings
+//
 #for BRANCH in ${FIND class=branch}
 modify ${BRANCH}.rateA 250;
 modify ${BRANCH}.rateB 500;
 modify ${BRANCH}.rateC 750;
 #done
-
-#ifmissing "powerplants_aggregated.glm"
-#system python3 powerplants_aggregated.py
-#endif
-#include "powerplants_aggregated.glm"
 
 //
 // Load loads data

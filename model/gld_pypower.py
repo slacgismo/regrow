@@ -45,6 +45,9 @@ np.set_printoptions(linewidth=np.inf,formatter={float:lambda x:f"{x:8.4f}"})
 def guid():
     return hex(random.randint(0,2**64-1))[2:]
 
+class ModelError(Exception):
+    """Model error exception handler"""
+
 class Model:
     """GridLAB-D model handler"""
 
@@ -55,7 +58,16 @@ class Model:
         int: lambda x: f"{x:8.0f}",
     }
 
-    def __init__(self,data):
+    def __init__(self,
+            data:str|dict|TypeVar('io.StringIO'),
+            validate:list[str]=["pypower"],
+            ):
+        """Create a model
+
+        Arguments:
+        * data: filename, JSON data, stream, or dict
+        * validate: modules to validate
+        """
         if isinstance(data,str):
             if data[0] == '{':
                 data = json.loads(data)
@@ -67,6 +79,7 @@ class Model:
             raise TypeError("data is not a dict, filename, or JSON string")
         self.name = data["globals"]["modelname"]["value"]
         self.data = data
+        self.validate(validate,on_error=ModelError)
         self.results = {}
         self.modified = False
         self._last_name = None
@@ -75,7 +88,7 @@ class Model:
     def __repr__(self):
         return f"Model({repr(self.name)})"
 
-    def validate(self,modules:str=[]):
+    def validate(self,modules:str=[],on_error=None):
         """Validate a GridLAB-D model
 
         Arguments:
@@ -86,13 +99,33 @@ class Model:
         * None: model contain no errors
         * str: model contains an error
         """
+        result = []
         if "application" not in self.data:
-            return "model does not contain application name"
-        if self.data["application"] != "gridlabd":
-            return "model is not from a gridlabd application"
-        for module in modules:
-            if module not in self.data["modules"]:
-                return f"model does not contain module {module}"
+            result.append("model does not contain application name")
+        elif self.data["application"] != "gridlabd":
+            result.append("model is not from a gridlabd application")
+        else:
+            for module in modules:
+                if module not in self.data["modules"]:
+                    result.append(f"model does not contain module {module}")
+        for oclass in self.data["classes"]:
+            classdata = self.data["classes"][oclass]
+            for name,data in self.find(oclass,astype=dict).items():
+                for key,value in data.items():
+                    if key not in classdata and key not in self.data["header"]:
+                        result.append(f"{oclass}.{key} is not a valid property name")
+        if "pypower" in self.data["modules"]:
+            result.extend(self.validate_pypower(on_error))
+
+        if not result or not on_error:
+            return result
+        if isinstance(on_error,Exception):
+            raise on_error(result)
+        elif callable(on_error):
+            on_error(result)
+
+        print(f"VALIDATION ERRORS for {self.name}:",*sorted(result),sep="\n  - ",file=sys.stderr)
+        return result
 
     def modules(self) -> list[str]:
         """Return list of active modules"""
@@ -463,6 +496,24 @@ class Model:
     #
     # PyPOWER support
     #
+    def validate_pypower(self,on_error=None):
+        """Validate pypower model"""
+        result = []
+        checklist = {
+            "gen":{"parent":"bus"},
+            "gencost":{"parent":"gen"},
+        }
+        for oclass,checks in checklist.items():
+            for prop,pclass in checks.items():
+                objlist = self.find(pclass)
+                for name,data in self.find(oclass,astype=dict).items():
+                    if prop not in data:
+                        result.append(f"'{prop}' not found in {oclass} '{name}'")
+                    elif data[prop] not in objlist:
+                        result.append(f"'{name}.{prop}' = {data[prop]} not found in {pclass} list")
+
+        return result
+
     def assert_module(self,name:str):
         """Assert that pypower module is found"""
         assert name in self.data["modules"], f"{name} module not found"
@@ -592,8 +643,6 @@ class Model:
         if "costs" in self.results and not refresh:
             return self.results["costs"]
         self.assert_module("pypower")
-        if "costs" in self.results:
-            return self.results["costs"]
         self.results["costs"] = self.find("gencost")
         return self.results["costs"]
 
@@ -1538,6 +1587,8 @@ def {os.path.splitext(os.path.basename(self.name))[0]}():
         return "\n".join(diagram)
 
 if __name__ == "__main__":
+
+    Model("wecc240.json")
 
     test = Model("../examples/example.json")
 

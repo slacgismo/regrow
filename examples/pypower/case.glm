@@ -1,0 +1,5 @@
+#set suppress_repeat_messages=FALSE
+
+#input "case${CASE}.py" -t pypower
+
+#set savefile=case${CASE}.json

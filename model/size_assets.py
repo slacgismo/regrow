@@ -16,10 +16,12 @@ print(f"Curtailment before optimal sizing = {curtailment/1000:.1f} GW")
 print("\n*** Optimal sizing ***")
 osp_options = {
     "margin": 0.20,
-    "gen_cost": 100,
+    "gen_cost": 1000,
     "cap_cost": 50,
     "con_cost": 500,
     "verbose": False,
+    "generator_expansion_limit": None,
+    "reactive_power_constraint": 0.2,
 }
 print("OSP options:")
 for key,value in osp_options.items():

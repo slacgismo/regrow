@@ -1122,7 +1122,7 @@ class Model:
         e = cp.Variable(N)  # demand reactive power curtailment
 
         try:
-            cost = P @ cp.abs(g + h * 1j)
+            cost = P @ ( cp.abs(g + h * 1j) + c )
             if curtailment_price is None:
                 curtailment_price = 100*max(P) # default load shedding 100x maximum generator price
             shed = np.ones(N)*curtailment_price @ cp.abs(d+e*1j) 
@@ -1158,11 +1158,12 @@ class Model:
         puV = self.perunit("V")
         puS = self.perunit("S")
         result = {
-                "voltage": np.array([y.value.round(3),(x.value*57.3).round(2)]).transpose(),
-                "magnitude": self.linevoltage('Vm'),
-                "angle": self.linevoltage("Va"),
+                "voltage": np.array([y.value.round(3)*puV,(x.value*57.3).round(2)]).transpose(),
+                "magnitude": y.value.round(3),
+                "angle": (x.value*57.3).round(2),
                 "generation": np.array((g+h*1j).value).round(3)*puS,
-                "capacitors": np.array(c.value).round(3)*puS,
+                "capacitors": np.array([max(x,0) for x in c.value]).round(3)*puS,
+                "condensers": np.array([max(-x,0) for x in c.value]).round(3)*puS,
                 "flows": cp.abs(I @ x).value.round(3)*puS,
                 "cost" : problem.value.round(2),
                 "status": status,
@@ -1187,6 +1188,8 @@ class Model:
             ref:int|str=None,
             angle_limit:float=10.0,
             voltage_limit:float=0.05,
+            generator_expansion_limit=None,
+            reactive_power_constraint=0.2,
             on_invalid=_problem_invalid,
             on_fail=_solver_failed,
             **kwargs) -> dict:
@@ -1208,6 +1211,8 @@ class Model:
         * ref: reference bus id or name
         * angle_limit: voltage angle accuracy limit
         * voltage_limit: voltage magnitude violation limit
+        * generator_expansion_limit: limits generation addition to bus where generation is already present
+        * reactive_power_constraint: limits generation reactive power to fraction of real power
         * on_invalid: invalid problem handler
         * on_fail: failed solution handler
         * kwargs: arguments passed to solver
@@ -1343,14 +1348,19 @@ class Model:
             costs = cp.abs(gen_cost) @ cp.abs(g) + cp.abs(gen_cost.imag) @ cp.abs(h) + (cap_cost+con_cost)/2 @ cp.abs(c) + (cap_cost-con_cost)/2 @ c
             objective = cp.Minimize(costs)  # minimum cost (generation + demand response)
             constraints = [
-                g - G.real @ x - c - D.real*(1+margin) == 0,  # KCL/KVL real power laws
-                h - G.imag @ y + c - D.imag*(1+margin) == 0,  # KCL/KVL reactive power laws
+                g - G.real @ x + c - D.real*(1+margin) == 0,  # KCL/KVL real power laws
+                h - G.imag @ y - c - D.imag*(1+margin) == 0,  # KCL/KVL reactive power laws
                 x[ref] == 0,  # swing bus voltage angle always 0
                 y[ref] == 1,  # swing bus voltage magnitude is always 1
                 cp.abs(y - 1) <= voltage_limit,  # limit voltage magnitude to 5% deviation
                 cp.abs(I @ x) <= F,  # line flow limits
                 g >= 0, # generation must be positive
+                cp.abs(h) <= reactive_power_constraint*g # limit how much reactive power a generator can produce
                 ]
+            if not generator_expansion_limit is None:
+                # limit where and how much generation can be added
+                constraints.append(cp.abs(g+h*1j) <= generator_expansion_limit*cp.abs(S))
+
             problem = cp.Problem(objective, constraints)
             problem.solve(verbose=(verbose!=False),**kwargs)
             self.problem = problem.get_problem_data(solver=problem.solver_stats.solver_name)
@@ -1376,11 +1386,12 @@ class Model:
         # generate result data
         puV = self.perunit("V")
         result = {
-                "voltage": np.array([y.value.round(3),(x.value*57.3).round(2)]).transpose(),
-                "magnitude": self.linevoltage('Vm'),
-                "angle": self.linevoltage("Va"),
+                "voltage": np.array([y.value.round(3)*puV,(x.value*57.3).round(2)]).transpose(),
+                "magnitude": y.value.round(3),
+                "angle": (x.value*57.3).round(2),
                 "generation": np.array((g+h*1j).value).round(3)*puS,
-                "capacitors": np.array(c.value).round(3)*puS,
+                "capacitors": np.array([max(x,0) for x in c.value]).round(3)*puS,
+                "condensers": np.array([max(-x,0) for x in c.value]).round(3)*puS,
                 "flows": cp.abs(I @ x).value.round(3)*puS,
                 "cost" : problem.value.round(2),
                 "status": status,
@@ -1651,7 +1662,7 @@ if __name__ == "__main__":
     # content tests
     print("TEST: testing model contents",file=sys.stderr,flush=True)
     testEq("pypower" in test.modules(),True,"module failed")
-    testEq(test.validate(["pypower"]),None, "validate failed")
+    testEq(test.validate(["pypower"]),[], "validate failed")
     testEq("version" in test.globals(list),True,"globals list failed")
     testEq(test.globals(dict)["country"],"US", "globals dict failed" )
     testEq(test.globals("country"),"US", "globals get failed")

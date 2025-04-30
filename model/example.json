@@ -1676,7 +1676,7 @@
 			"control_gain" : {
 				"type" : "double",
 				"access" : "PUBLIC",
-				"unit" : "MW/V",
+				"unit" : "MVAr/pu.V",
 				"description" : "proportional feedback control gain"
 			}
 		},
@@ -1861,7 +1861,7 @@
 		"version.build" : {
 			"type" : "int32",
 			"access" : "REFERENCE",
-			"value" : "250422"
+			"value" : "250423"
 		},
 		"version.branch" : {
 			"type" : "char256",
@@ -1871,7 +1871,7 @@
 		"version" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "4.3.14-250422-develop_fix_pypower_shunt"
+			"value" : "4.3.14-250423-develop_fix_pypower_shunt"
 		},
 		"command_line" : {
 			"type" : "char1024",
@@ -2062,12 +2062,12 @@
 		"randomstate" : {
 			"type" : "int32",
 			"access" : "PUBLIC",
-			"value" : "-1085144488"
+			"value" : "576687272"
 		},
 		"randomseed" : {
 			"type" : "int32",
 			"access" : "PUBLIC",
-			"value" : "-1085144488"
+			"value" : "576687272"
 		},
 		"include" : {
 			"type" : "char1024",
@@ -2699,37 +2699,37 @@
 		"pythonpath" : {
 			"type" : "char1024",
 			"access" : "PUBLIC",
-			"value" : ".:/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/share:/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/lib/gridlabd/python3.10/site-packages"
+			"value" : ".:/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/share:/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/lib/gridlabd/python3.10/site-packages"
 		},
 		"pythonexec" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/bin/python3"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/bin/python3"
 		},
 		"datadir" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/share/gridlabd"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/share/gridlabd"
 		},
 		"bindir" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/bin"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/bin"
 		},
 		"vardir" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/var/gridlabd"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/var/gridlabd"
 		},
 		"libdir" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/lib/gridlabd"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/lib/gridlabd"
 		},
 		"incdir" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/include"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/include"
 		},
 		"logfile" : {
 			"type" : "char1024",
@@ -2744,7 +2744,7 @@
 		"configpath" : {
 			"type" : "char1024",
 			"access" : "REFERENCE",
-			"value" : "/usr/local/opt/gridlabd/4.3.14-250422-develop_fix_pypower_shunt-darwin_23-x86_64/share/gridlabd/solver_py.conf"
+			"value" : "/usr/local/opt/gridlabd/4.3.14-250423-develop_fix_pypower_shunt-darwin_23-x86_64/share/gridlabd/solver_py.conf"
 		},
 		"json_complex_format" : {
 			"type" : "set",
@@ -2771,7 +2771,7 @@
 		"rusage" : {
 			"type" : "char1024",
 			"access" : "PUBLIC",
-			"value" : "{\"utime\" : 1.186284, \"stime\" : 0.246444, \"maxrss\" : 39116800, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 11767, \"majflt\" : 19, \"nswap\" : 0, \"inblock\" : 0, \"oublock\" : 0, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 0, \"nivcsw\" : 2524}"
+			"value" : "{\"utime\" : 1.191148, \"stime\" : 0.241959, \"maxrss\" : 38944768, \"ixrss\" : 0, \"idrss\" : 0, \"isrss\" : 0, \"minflt\" : 11755, \"majflt\" : 0, \"nswap\" : 0, \"inblock\" : 0, \"oublock\" : 0, \"msgsnd\" : 0, \"msgrcv\" : 0, \"nsignals\" : 0, \"nvcsw\" : 0, \"nivcsw\" : 2218}"
 		},
 		"echo" : {
 			"type" : "bool",
@@ -3006,7 +3006,7 @@
 			"rank" : "1",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "16807",
-			"guid" : "79BA2AE4F6547B47520B8F2744AEB11",
+			"guid" : "43EC50C332BA42C9491F7F271BA02CDA",
 			"flags" : "0x100",
 			"bus": "1",
 			"Pg": "20.0711 MW",
@@ -3041,7 +3041,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "282475249",
-			"guid" : "7264DED37F37F8611B7DBE9D1E7BB3FE",
+			"guid" : "385CEDD615D3E8764E45071572950E0C",
 			"flags" : "0x100",
 			"model": "POLYNOMIAL",
 			"startup": "0 $",
@@ -3054,7 +3054,7 @@
 			"rank" : "2",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1622650073",
-			"guid" : "712846C2156E647B1D29DB469FF6F4B0",
+			"guid" : "718B4B3E7B92AB4025DD76D3C25B2A4",
 			"flags" : "0x100",
 			"bus_i": "1",
 			"S": "0+0j MVA",
@@ -3091,7 +3091,7 @@
 			"rank" : "1",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "984943658",
-			"guid" : "1C9EE0C85B51A5D3611A31A0182832E",
+			"guid" : "75D295E637FA1F0018FC1A24C26A6EB0",
 			"flags" : "0x100",
 			"bus_i": "2",
 			"S": "0+0j MVA",
@@ -3128,7 +3128,7 @@
 			"rank" : "1",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1144108930",
-			"guid" : "20608BED4C8F7F1E423773D81F5709A5",
+			"guid" : "3B853B1C28F57AF922FDAED7CE8853D1",
 			"flags" : "0x100",
 			"bus_i": "3",
 			"S": "10+1j MVA",
@@ -3165,7 +3165,7 @@
 			"rank" : "1",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "470211272",
-			"guid" : "F9A7D39E532BF554FE4DD69C57DBA00",
+			"guid" : "5D70A85F81CA892C663CDD449DA23FCA",
 			"flags" : "0x100",
 			"bus_i": "4",
 			"S": "10+1j MVA",
@@ -3202,7 +3202,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "101027544",
-			"guid" : "512FF211104C480B3DE599D16B75AD11",
+			"guid" : "604F3D7B2EEFAA85251159FA0E67F81",
 			"flags" : "0x100",
 			"from": "bus_0",
 			"to": "bus_1",
@@ -3228,7 +3228,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1457850878",
-			"guid" : "5AFD8D1E9E232E14748E6FED31D28AE0",
+			"guid" : "751C780441AE688A39B57C12FB0AE93A",
 			"flags" : "0x100",
 			"from": "bus_1",
 			"to": "bus_2",
@@ -3254,7 +3254,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1458777923",
-			"guid" : "3E0C773B9110E9C87A4310844CFCC1C4",
+			"guid" : "6935BF7AD70B1F934FA5579CF01DB02C",
 			"flags" : "0x100",
 			"from": "bus_1",
 			"to": "bus_3",
@@ -3281,7 +3281,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "2007237709",
-			"guid" : "3F6561FFB80ADD42464C91205034D9DD",
+			"guid" : "51F99F62A17505865C2AC5B021840025",
 			"flags" : "0x100",
 			"generator": "100+10j $/MW",
 			"capacitor": "1000 $/MVAr",
@@ -3294,7 +3294,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "823564440",
-			"guid" : "6354ED57F5AD36EF46B19C40D38E4419",
+			"guid" : "46FE9189D8F8004160ACCE9A738E273B",
 			"flags" : "0x100",
 			"generator": "500+500j $/MW",
 			"capacitor": "100 $/MVAr",
@@ -3307,7 +3307,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1115438165",
-			"guid" : "6ACBB5A3BB00B8607FDCC254B823D886",
+			"guid" : "A98C0A9C8FAB281485EA032DDEB59BC",
 			"flags" : "0x100",
 			"generator": "1000+1000j $/MW",
 			"capacitor": "10 $/MVAr",
@@ -3320,7 +3320,7 @@
 			"rank" : "0",
 			"clock" : "1999-12-31 16:00:00 PST",
 			"rng_state" : "1784484492",
-			"guid" : "4CB273F524DA21541EC38B09D55FCCD5",
+			"guid" : "25A64BCE376CD35A78F6CEC42CE46A02",
 			"flags" : "0x100",
 			"generator": "1000+1000j $/MW",
 			"capacitor": "10 $/MVAr",

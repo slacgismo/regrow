@@ -1,6 +1,6 @@
 #include "config.glm"
 
-#version "-ge 4.3.14"
+#version -ge 4.3.14
 
 //#option verbose
 //#option debug
@@ -15,17 +15,12 @@ clock {
 
 module pypower
 {
-    maximum_iterations 10;
-    maximum_timestep 3600;
-    stop_on_failure TRUE;
     controllers "wecc240_controllers";
 }
 
 //
 // Load the PSS/E model
 //
-//#input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
-// TODO: exclude gen once the model solves ok with all loads and powerplants included below
 #input "wecc240_psse.raw" --exclude psse_owner,psse_area,psse_zone
 
 //
@@ -36,20 +31,17 @@ module pypower
 //
 // Load powerplant data
 //
-
-//#system python3 powerplants_aggregated.py
-//#include "powerplants_aggregated.glm"
 #input "powerplants_aggregated.py" -t python
 
 
 //
 // Fix line ratings
 //
-#for BRANCH in ${FIND class=branch}
-modify ${BRANCH}.rateA 250;
-modify ${BRANCH}.rateB 500;
-modify ${BRANCH}.rateC 750;
-#done
+//#for BRANCH in ${FIND class=branch}
+//modify ${BRANCH}.rateA 250;
+//modify ${BRANCH}.rateB 500;
+//modify ${BRANCH}.rateC 750;
+//#done
 
 //
 // Load loads data

@@ -2,7 +2,7 @@ module pypower;
 object pypower.gen
 {
     name "wecc240_psse_G_2201";
-    parent wecc240_psse_N_2201;
+    parent "wecc240_psse_N_2201";
     Pmax 2011.9 MW;
     Qmax 402.4 MW;
     Qmin -402.4 MW;
@@ -56,7 +56,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2203";
-    parent wecc240_psse_N_2203;
+    parent "wecc240_psse_N_2203";
     Pmax 1422.6 MW;
     Qmax 284.5 MW;
     Qmin -284.5 MW;
@@ -226,7 +226,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2503";
-    parent wecc240_psse_N_2503;
+    parent "wecc240_psse_N_2503";
     Pmax 1117.6 MW;
     Qmax 223.5 MW;
     Qmin -223.5 MW;
@@ -275,7 +275,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2610";
-    parent wecc240_psse_N_2610;
+    parent "wecc240_psse_N_2610";
     Pmax 1327.9 MW;
     Qmax 265.6 MW;
     Qmin -265.6 MW;
@@ -448,7 +448,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2301";
-    parent wecc240_psse_N_2301;
+    parent "wecc240_psse_N_2301";
     Pmax 610.5 MW;
     Qmax 122.1 MW;
     Qmin -122.1 MW;
@@ -533,7 +533,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2100";
-    parent wecc240_psse_N_2100;
+    parent "wecc240_psse_N_2100";
     Pmax 4064.3 MW;
     Qmax 812.9 MW;
     Qmin -812.9 MW;
@@ -701,7 +701,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1401";
-    parent wecc240_psse_N_1401;
+    parent "wecc240_psse_N_1401";
     Pmax 11527.2 MW;
     Qmax 2305.4 MW;
     Qmin -2305.4 MW;
@@ -773,7 +773,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3601";
-    parent wecc240_psse_N_3601;
+    parent "wecc240_psse_N_3601";
     Pmax 201.3 MW;
     Qmax 40.3 MW;
     Qmin -40.3 MW;
@@ -838,7 +838,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2407";
-    parent wecc240_psse_N_2407;
+    parent "wecc240_psse_N_2407";
     Pmax 6834.4 MW;
     Qmax 1366.9 MW;
     Qmin -1366.9 MW;
@@ -938,7 +938,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2613";
-    parent wecc240_psse_N_2613;
+    parent "wecc240_psse_N_2613";
     Pmax 1661.0 MW;
     Qmax 332.2 MW;
     Qmin -332.2 MW;
@@ -1006,7 +1006,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2605";
-    parent wecc240_psse_N_2605;
+    parent "wecc240_psse_N_2605";
     Pmax 141.8 MW;
     Qmax 28.4 MW;
     Qmin -28.4 MW;
@@ -1054,7 +1054,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2618";
-    parent wecc240_psse_N_2618;
+    parent "wecc240_psse_N_2618";
     Pmax 1866.1 MW;
     Qmax 373.2 MW;
     Qmin -373.2 MW;
@@ -1138,7 +1138,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2405";
-    parent wecc240_psse_N_2405;
+    parent "wecc240_psse_N_2405";
     Pmax 76.8 MW;
     Qmax 15.4 MW;
     Qmin -15.4 MW;
@@ -1187,7 +1187,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2410";
-    parent wecc240_psse_N_2410;
+    parent "wecc240_psse_N_2410";
     Pmax 111.3 MW;
     Qmax 22.3 MW;
     Qmin -22.3 MW;
@@ -1220,7 +1220,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2602";
-    parent wecc240_psse_N_2602;
+    parent "wecc240_psse_N_2602";
     Pmax 1181.7 MW;
     Qmax 236.3 MW;
     Qmin -236.3 MW;
@@ -1287,7 +1287,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2609";
-    parent wecc240_psse_N_2609;
+    parent "wecc240_psse_N_2609";
     Pmax 1795.8 MW;
     Qmax 359.2 MW;
     Qmin -359.2 MW;
@@ -1462,7 +1462,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2406";
-    parent wecc240_psse_N_2406;
+    parent "wecc240_psse_N_2406";
     Pmax 278.6 MW;
     Qmax 55.7 MW;
     Qmin -55.7 MW;
@@ -1511,7 +1511,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2608";
-    parent wecc240_psse_N_2608;
+    parent "wecc240_psse_N_2608";
     Pmax 2558.5 MW;
     Qmax 511.7 MW;
     Qmin -511.7 MW;
@@ -1577,7 +1577,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2902";
-    parent wecc240_psse_N_2902;
+    parent "wecc240_psse_N_2902";
     Pmax 434.8 MW;
     Qmax 87.0 MW;
     Qmin -87.0 MW;
@@ -1645,7 +1645,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3801";
-    parent wecc240_psse_N_3801;
+    parent "wecc240_psse_N_3801";
     Pmax 2323.0 MW;
     Qmax 464.6 MW;
     Qmin -464.6 MW;
@@ -1677,7 +1677,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3806";
-    parent wecc240_psse_N_3806;
+    parent "wecc240_psse_N_3806";
     Pmax 885.7 MW;
     Qmax 177.1 MW;
     Qmin -177.1 MW;
@@ -1731,7 +1731,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3802";
-    parent wecc240_psse_N_3802;
+    parent "wecc240_psse_N_3802";
     Pmax 111.6 MW;
     Qmax 22.3 MW;
     Qmin -22.3 MW;
@@ -1764,7 +1764,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3803";
-    parent wecc240_psse_N_3803;
+    parent "wecc240_psse_N_3803";
     Pmax 11226.1 MW;
     Qmax 2245.2 MW;
     Qmin -2245.2 MW;
@@ -2040,7 +2040,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3105";
-    parent wecc240_psse_N_3105;
+    parent "wecc240_psse_N_3105";
     Pmax 17.9 MW;
     Qmax 3.6 MW;
     Qmin -3.6 MW;
@@ -2088,7 +2088,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3101";
-    parent wecc240_psse_N_3101;
+    parent "wecc240_psse_N_3101";
     Pmax 437.1 MW;
     Qmax 87.4 MW;
     Qmin -87.4 MW;
@@ -2185,7 +2185,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3902";
-    parent wecc240_psse_N_3902;
+    parent "wecc240_psse_N_3902";
     Pmax 2024.9 MW;
     Qmax 405.0 MW;
     Qmin -405.0 MW;
@@ -2295,7 +2295,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3301";
-    parent wecc240_psse_N_3301;
+    parent "wecc240_psse_N_3301";
     Pmax 900.0 MW;
     Qmax 180.0 MW;
     Qmin -180.0 MW;
@@ -2344,7 +2344,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3901";
-    parent wecc240_psse_N_3901;
+    parent "wecc240_psse_N_3901";
     Pmax 1174.7 MW;
     Qmax 234.9 MW;
     Qmin -234.9 MW;
@@ -2449,7 +2449,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3304";
-    parent wecc240_psse_N_3304;
+    parent "wecc240_psse_N_3304";
     Pmax 34.0 MW;
     Qmax 6.8 MW;
     Qmin -6.8 MW;
@@ -2499,7 +2499,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3103";
-    parent wecc240_psse_N_3103;
+    parent "wecc240_psse_N_3103";
     Pmax 11.4 MW;
     Qmax 2.3 MW;
     Qmin -2.3 MW;
@@ -2531,7 +2531,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3305";
-    parent wecc240_psse_N_3305;
+    parent "wecc240_psse_N_3305";
     Pmax 655.0 MW;
     Qmax 131.0 MW;
     Qmin -131.0 MW;
@@ -2563,7 +2563,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3203";
-    parent wecc240_psse_N_3203;
+    parent "wecc240_psse_N_3203";
     Pmax 798.4 MW;
     Qmax 159.7 MW;
     Qmin -159.7 MW;
@@ -2684,7 +2684,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3205";
-    parent wecc240_psse_N_3205;
+    parent "wecc240_psse_N_3205";
     Pmax 358.1 MW;
     Qmax 71.6 MW;
     Qmin -71.6 MW;
@@ -2734,7 +2734,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3903";
-    parent wecc240_psse_N_3903;
+    parent "wecc240_psse_N_3903";
     Pmax 535.7 MW;
     Qmax 107.1 MW;
     Qmin -107.1 MW;
@@ -2782,7 +2782,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_8002";
-    parent wecc240_psse_N_8002;
+    parent "wecc240_psse_N_8002";
     Pmax 573.9 MW;
     Qmax 114.8 MW;
     Qmin -114.8 MW;
@@ -2884,7 +2884,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3501";
-    parent wecc240_psse_N_3501;
+    parent "wecc240_psse_N_3501";
     Pmax 1786.2 MW;
     Qmax 357.2 MW;
     Qmin -357.2 MW;
@@ -2944,7 +2944,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3201";
-    parent wecc240_psse_N_3201;
+    parent "wecc240_psse_N_3201";
     Pmax 418.9 MW;
     Qmax 83.8 MW;
     Qmin -83.8 MW;
@@ -3048,7 +3048,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3204";
-    parent wecc240_psse_N_3204;
+    parent "wecc240_psse_N_3204";
     Pmax 3163.5 MW;
     Qmax 632.7 MW;
     Qmin -632.7 MW;
@@ -3100,7 +3100,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3904";
-    parent wecc240_psse_N_3904;
+    parent "wecc240_psse_N_3904";
     Pmax 1349.1 MW;
     Qmax 269.8 MW;
     Qmin -269.8 MW;
@@ -3208,7 +3208,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3907";
-    parent wecc240_psse_N_3907;
+    parent "wecc240_psse_N_3907";
     Pmax 1710.1 MW;
     Qmax 342.0 MW;
     Qmin -342.0 MW;
@@ -3336,7 +3336,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3908";
-    parent wecc240_psse_N_3908;
+    parent "wecc240_psse_N_3908";
     Pmax 883.5 MW;
     Qmax 176.7 MW;
     Qmin -176.7 MW;
@@ -3434,7 +3434,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_8004";
-    parent wecc240_psse_N_8004;
+    parent "wecc240_psse_N_8004";
     Pmax 774.7 MW;
     Qmax 154.9 MW;
     Qmin -154.9 MW;
@@ -3487,7 +3487,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3913";
-    parent wecc240_psse_N_3913;
+    parent "wecc240_psse_N_3913";
     Pmax 1140.6 MW;
     Qmax 228.1 MW;
     Qmin -228.1 MW;
@@ -3550,7 +3550,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3910";
-    parent wecc240_psse_N_3910;
+    parent "wecc240_psse_N_3910";
     Pmax 28.6 MW;
     Qmax 5.7 MW;
     Qmin -5.7 MW;
@@ -3582,7 +3582,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3405";
-    parent wecc240_psse_N_3405;
+    parent "wecc240_psse_N_3405";
     Pmax 808.6 MW;
     Qmax 161.7 MW;
     Qmin -161.7 MW;
@@ -3664,7 +3664,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3920";
-    parent wecc240_psse_N_3920;
+    parent "wecc240_psse_N_3920";
     Pmax 211.1 MW;
     Qmax 42.2 MW;
     Qmin -42.2 MW;
@@ -3713,7 +3713,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3909";
-    parent wecc240_psse_N_3909;
+    parent "wecc240_psse_N_3909";
     Pmax 678.2 MW;
     Qmax 135.6 MW;
     Qmin -135.6 MW;
@@ -3771,7 +3771,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3404";
-    parent wecc240_psse_N_3404;
+    parent "wecc240_psse_N_3404";
     Pmax 694.7 MW;
     Qmax 138.9 MW;
     Qmin -138.9 MW;
@@ -3822,7 +3822,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3401";
-    parent wecc240_psse_N_3401;
+    parent "wecc240_psse_N_3401";
     Pmax 2026.4 MW;
     Qmax 405.3 MW;
     Qmin -405.3 MW;
@@ -3988,7 +3988,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3403";
-    parent wecc240_psse_N_3403;
+    parent "wecc240_psse_N_3403";
     Pmax 1939.1 MW;
     Qmax 387.8 MW;
     Qmin -387.8 MW;
@@ -4140,7 +4140,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3402";
-    parent wecc240_psse_N_3402;
+    parent "wecc240_psse_N_3402";
     Pmax 1846.7 MW;
     Qmax 369.3 MW;
     Qmin -369.3 MW;
@@ -4220,7 +4220,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2501";
-    parent wecc240_psse_N_2501;
+    parent "wecc240_psse_N_2501";
     Pmax 259.5 MW;
     Qmax 51.9 MW;
     Qmin -51.9 MW;
@@ -4254,7 +4254,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2408";
-    parent wecc240_psse_N_2408;
+    parent "wecc240_psse_N_2408";
     Pmax 575.7 MW;
     Qmax 115.1 MW;
     Qmin -115.1 MW;
@@ -4305,7 +4305,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2402";
-    parent wecc240_psse_N_2402;
+    parent "wecc240_psse_N_2402";
     Pmax 679.4 MW;
     Qmax 135.9 MW;
     Qmin -135.9 MW;
@@ -4395,7 +4395,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2403";
-    parent wecc240_psse_N_2403;
+    parent "wecc240_psse_N_2403";
     Pmax 1118.5 MW;
     Qmax 223.7 MW;
     Qmin -223.7 MW;
@@ -4478,7 +4478,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2401";
-    parent wecc240_psse_N_2401;
+    parent "wecc240_psse_N_2401";
     Pmax 308.9 MW;
     Qmax 61.8 MW;
     Qmin -61.8 MW;
@@ -4511,7 +4511,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2603";
-    parent wecc240_psse_N_2603;
+    parent "wecc240_psse_N_2603";
     Pmax 1316.0 MW;
     Qmax 263.2 MW;
     Qmin -263.2 MW;
@@ -4561,7 +4561,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2400";
-    parent wecc240_psse_N_2400;
+    parent "wecc240_psse_N_2400";
     Pmax 4696.5 MW;
     Qmax 939.3 MW;
     Qmin -939.3 MW;
@@ -4710,7 +4710,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1403";
-    parent wecc240_psse_N_1403;
+    parent "wecc240_psse_N_1403";
     Pmax 2681.4 MW;
     Qmax 536.3 MW;
     Qmin -536.3 MW;
@@ -4816,7 +4816,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2901";
-    parent wecc240_psse_N_2901;
+    parent "wecc240_psse_N_2901";
     Pmax 654.6 MW;
     Qmax 130.9 MW;
     Qmin -130.9 MW;
@@ -4866,7 +4866,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1301";
-    parent wecc240_psse_N_1301;
+    parent "wecc240_psse_N_1301";
     Pmax 3617.5 MW;
     Qmax 723.5 MW;
     Qmin -723.5 MW;
@@ -4942,7 +4942,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1302";
-    parent wecc240_psse_N_1302;
+    parent "wecc240_psse_N_1302";
     Pmax 221.2 MW;
     Qmax 44.2 MW;
     Qmin -44.2 MW;
@@ -5025,7 +5025,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_8001";
-    parent wecc240_psse_N_8001;
+    parent "wecc240_psse_N_8001";
     Pmax 1488.4 MW;
     Qmax 297.7 MW;
     Qmin -297.7 MW;
@@ -5093,7 +5093,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3916";
-    parent wecc240_psse_N_3916;
+    parent "wecc240_psse_N_3916";
     Pmax 713.9 MW;
     Qmax 142.8 MW;
     Qmin -142.8 MW;
@@ -5141,7 +5141,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3905";
-    parent wecc240_psse_N_3905;
+    parent "wecc240_psse_N_3905";
     Pmax 935.3 MW;
     Qmax 187.1 MW;
     Qmin -187.1 MW;
@@ -5202,7 +5202,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3919";
-    parent wecc240_psse_N_3919;
+    parent "wecc240_psse_N_3919";
     Pmax 696.0 MW;
     Qmax 139.2 MW;
     Qmin -139.2 MW;
@@ -5236,7 +5236,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3911";
-    parent wecc240_psse_N_3911;
+    parent "wecc240_psse_N_3911";
     Pmax 257.7 MW;
     Qmax 51.5 MW;
     Qmin -51.5 MW;
@@ -5335,7 +5335,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3906";
-    parent wecc240_psse_N_3906;
+    parent "wecc240_psse_N_3906";
     Pmax 865.8 MW;
     Qmax 173.2 MW;
     Qmin -173.2 MW;
@@ -5394,7 +5394,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4001";
-    parent wecc240_psse_N_4001;
+    parent "wecc240_psse_N_4001";
     Pmax 810.1 MW;
     Qmax 162.0 MW;
     Qmin -162.0 MW;
@@ -5477,7 +5477,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_3701";
-    parent wecc240_psse_N_3701;
+    parent "wecc240_psse_N_3701";
     Pmax 453.9 MW;
     Qmax 90.8 MW;
     Qmin -90.8 MW;
@@ -5555,7 +5555,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4204";
-    parent wecc240_psse_N_4204;
+    parent "wecc240_psse_N_4204";
     Pmax 522.4 MW;
     Qmax 104.5 MW;
     Qmin -104.5 MW;
@@ -5632,7 +5632,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4203";
-    parent wecc240_psse_N_4203;
+    parent "wecc240_psse_N_4203";
     Pmax 816.9 MW;
     Qmax 163.4 MW;
     Qmin -163.4 MW;
@@ -5819,7 +5819,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4004";
-    parent wecc240_psse_N_4004;
+    parent "wecc240_psse_N_4004";
     Pmax 731.9 MW;
     Qmax 146.4 MW;
     Qmin -146.4 MW;
@@ -5876,7 +5876,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4003";
-    parent wecc240_psse_N_4003;
+    parent "wecc240_psse_N_4003";
     Pmax 1908.1 MW;
     Qmax 381.6 MW;
     Qmin -381.6 MW;
@@ -5997,7 +5997,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6403";
-    parent wecc240_psse_N_6403;
+    parent "wecc240_psse_N_6403";
     Pmax 126.0 MW;
     Qmax 25.2 MW;
     Qmin -25.2 MW;
@@ -6045,7 +6045,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_2604";
-    parent wecc240_psse_N_2604;
+    parent "wecc240_psse_N_2604";
     Pmax 2000.3 MW;
     Qmax 400.1 MW;
     Qmin -400.1 MW;
@@ -6128,7 +6128,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6101";
-    parent wecc240_psse_N_6101;
+    parent "wecc240_psse_N_6101";
     Pmax 1785.0 MW;
     Qmax 357.0 MW;
     Qmin -357.0 MW;
@@ -6258,7 +6258,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6103";
-    parent wecc240_psse_N_6103;
+    parent "wecc240_psse_N_6103";
     Pmax 918.7 MW;
     Qmax 183.7 MW;
     Qmin -183.7 MW;
@@ -6366,7 +6366,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1402";
-    parent wecc240_psse_N_1402;
+    parent "wecc240_psse_N_1402";
     Pmax 9066.4 MW;
     Qmax 1813.3 MW;
     Qmin -1813.3 MW;
@@ -6549,7 +6549,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1102";
-    parent wecc240_psse_N_1102;
+    parent "wecc240_psse_N_1102";
     Pmax 1928.6 MW;
     Qmax 385.7 MW;
     Qmin -385.7 MW;
@@ -6640,7 +6640,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1101";
-    parent wecc240_psse_N_1101;
+    parent "wecc240_psse_N_1101";
     Pmax 4674.8 MW;
     Qmax 935.0 MW;
     Qmin -935.0 MW;
@@ -6776,7 +6776,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1201";
-    parent wecc240_psse_N_1201;
+    parent "wecc240_psse_N_1201";
     Pmax 699.2 MW;
     Qmax 139.8 MW;
     Qmin -139.8 MW;
@@ -6811,7 +6811,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1202";
-    parent wecc240_psse_N_1202;
+    parent "wecc240_psse_N_1202";
     Pmax 1312.0 MW;
     Qmax 262.4 MW;
     Qmin -262.4 MW;
@@ -6843,7 +6843,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6507";
-    parent wecc240_psse_N_6507;
+    parent "wecc240_psse_N_6507";
     Pmax 2974.6 MW;
     Qmax 594.9 MW;
     Qmin -594.9 MW;
@@ -6938,7 +6938,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1001";
-    parent wecc240_psse_N_1001;
+    parent "wecc240_psse_N_1001";
     Pmax 3860.5 MW;
     Qmax 772.1 MW;
     Qmin -772.1 MW;
@@ -7040,7 +7040,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_1004";
-    parent wecc240_psse_N_1004;
+    parent "wecc240_psse_N_1004";
     Pmax 2832.8 MW;
     Qmax 566.6 MW;
     Qmin -566.6 MW;
@@ -7197,7 +7197,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_7001";
-    parent wecc240_psse_N_7001;
+    parent "wecc240_psse_N_7001";
     Pmax 15455.5 MW;
     Qmax 3091.1 MW;
     Qmin -3091.1 MW;
@@ -7476,7 +7476,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6504";
-    parent wecc240_psse_N_6504;
+    parent "wecc240_psse_N_6504";
     Pmax 789.0 MW;
     Qmax 157.8 MW;
     Qmin -157.8 MW;
@@ -7509,7 +7509,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6508";
-    parent wecc240_psse_N_6508;
+    parent "wecc240_psse_N_6508";
     Pmax 1368.7 MW;
     Qmax 273.7 MW;
     Qmin -273.7 MW;
@@ -7611,7 +7611,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6502";
-    parent wecc240_psse_N_6502;
+    parent "wecc240_psse_N_6502";
     Pmax 1433.0 MW;
     Qmax 286.6 MW;
     Qmin -286.6 MW;
@@ -7659,7 +7659,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6509";
-    parent wecc240_psse_N_6509;
+    parent "wecc240_psse_N_6509";
     Pmax 854.9 MW;
     Qmax 171.0 MW;
     Qmin -171.0 MW;
@@ -7779,7 +7779,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6501";
-    parent wecc240_psse_N_6501;
+    parent "wecc240_psse_N_6501";
     Pmax 123.5 MW;
     Qmax 24.7 MW;
     Qmin -24.7 MW;
@@ -7846,7 +7846,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6305";
-    parent wecc240_psse_N_6305;
+    parent "wecc240_psse_N_6305";
     Pmax 1575.7 MW;
     Qmax 315.1 MW;
     Qmin -315.1 MW;
@@ -7947,7 +7947,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6503";
-    parent wecc240_psse_N_6503;
+    parent "wecc240_psse_N_6503";
     Pmax 696.5 MW;
     Qmax 139.3 MW;
     Qmin -139.3 MW;
@@ -8031,7 +8031,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_7002";
-    parent wecc240_psse_N_7002;
+    parent "wecc240_psse_N_7002";
     Pmax 3085.9 MW;
     Qmax 617.2 MW;
     Qmin -617.2 MW;
@@ -8143,7 +8143,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6301";
-    parent wecc240_psse_N_6301;
+    parent "wecc240_psse_N_6301";
     Pmax 2566.4 MW;
     Qmax 513.3 MW;
     Qmin -513.3 MW;
@@ -8224,7 +8224,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6302";
-    parent wecc240_psse_N_6302;
+    parent "wecc240_psse_N_6302";
     Pmax 10173.2 MW;
     Qmax 2034.6 MW;
     Qmin -2034.6 MW;
@@ -8422,7 +8422,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4007";
-    parent wecc240_psse_N_4007;
+    parent "wecc240_psse_N_4007";
     Pmax 141.8 MW;
     Qmax 28.4 MW;
     Qmin -28.4 MW;
@@ -8458,7 +8458,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4006";
-    parent wecc240_psse_N_4006;
+    parent "wecc240_psse_N_4006";
     Pmax 4531.7 MW;
     Qmax 906.3 MW;
     Qmin -906.3 MW;
@@ -8551,7 +8551,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4202";
-    parent wecc240_psse_N_4202;
+    parent "wecc240_psse_N_4202";
     Pmax 6836.5 MW;
     Qmax 1367.3 MW;
     Qmin -1367.3 MW;
@@ -8695,7 +8695,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4005";
-    parent wecc240_psse_N_4005;
+    parent "wecc240_psse_N_4005";
     Pmax 5536.1 MW;
     Qmax 1107.2 MW;
     Qmin -1107.2 MW;
@@ -8816,7 +8816,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4102";
-    parent wecc240_psse_N_4102;
+    parent "wecc240_psse_N_4102";
     Pmax 12069.4 MW;
     Qmax 2413.9 MW;
     Qmin -2413.9 MW;
@@ -8953,7 +8953,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4201";
-    parent wecc240_psse_N_4201;
+    parent "wecc240_psse_N_4201";
     Pmax 1379.1 MW;
     Qmax 275.8 MW;
     Qmin -275.8 MW;
@@ -9041,7 +9041,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_5001";
-    parent wecc240_psse_N_5001;
+    parent "wecc240_psse_N_5001";
     Pmax 756.6 MW;
     Qmax 151.3 MW;
     Qmin -151.3 MW;
@@ -9091,7 +9091,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4101";
-    parent wecc240_psse_N_4101;
+    parent "wecc240_psse_N_4101";
     Pmax 10275.0 MW;
     Qmax 2055.0 MW;
     Qmin -2055.0 MW;
@@ -9160,7 +9160,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_4103";
-    parent wecc240_psse_N_4103;
+    parent "wecc240_psse_N_4103";
     Pmax 5591.1 MW;
     Qmax 1118.2 MW;
     Qmin -1118.2 MW;
@@ -9294,7 +9294,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6202";
-    parent wecc240_psse_N_6202;
+    parent "wecc240_psse_N_6202";
     Pmax 979.6 MW;
     Qmax 195.9 MW;
     Qmin -195.9 MW;
@@ -9377,7 +9377,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_5003";
-    parent wecc240_psse_N_5003;
+    parent "wecc240_psse_N_5003";
     Pmax 1246.7 MW;
     Qmax 249.3 MW;
     Qmin -249.3 MW;
@@ -9411,7 +9411,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6205";
-    parent wecc240_psse_N_6205;
+    parent "wecc240_psse_N_6205";
     Pmax 1168.9 MW;
     Qmax 233.8 MW;
     Qmin -233.8 MW;
@@ -9502,7 +9502,7 @@ object pypower.powerplant
 object pypower.gen
 {
     name "wecc240_psse_G_6201";
-    parent wecc240_psse_N_6201;
+    parent "wecc240_psse_N_6201";
     Pmax 5970.1 MW;
     Qmax 1194.0 MW;
     Qmin -1194.0 MW;

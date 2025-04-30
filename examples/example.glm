@@ -1,0 +1,128 @@
+//#set verbose=TRUE
+
+module pypower
+{
+    // enable_opf TRUE;
+}
+
+// generators
+object gen
+{
+    name "gen_0";
+    parent "bus_0";
+    Pmax "10 MW";
+    Pmin "0 MW";
+    Pg "10 MW";
+    Qg "1 MVAr";
+    Qmax "5 MVAr";
+    Qmin "-5 MVAr";
+    mBase "100 MVA";
+    status "IN_SERVICE";
+}
+object gencost
+{
+    parent "gen_0";
+    model "POLYNOMIAL";
+    startup "0 $";
+    shutdown "0 $";
+    costs "100,0";
+}
+
+// nodes
+object bus
+{
+    name "bus_0";
+    type "REF";
+    Pd "0 MW";
+    Qd "0 MVAr";
+    baseKV "12.5 kV";
+}
+object bus
+{
+    name "bus_1";
+    type "PQREF";
+    Pd "0 MW";
+    Qd "0 MVAr";
+    baseKV "12.5 kV";
+}
+object bus
+{
+    name "bus_2";
+    type "PQREF";
+    Pd "10 MW";
+    Qd "1 MVAr";
+    baseKV "12.5 kV";
+}
+object bus
+{
+    name "bus_3";
+    type "PQREF";
+    Pd "10 MW";
+    Qd "1 MVAr";
+    baseKV "12.5 kV";
+}
+
+// lines
+object branch
+{
+    from "bus_0";
+    to "bus_1";
+    r "0.01 pu.Ohm";
+    x "0.05 pu.Ohm";
+    b "0.05 pu./Ohm";
+    rateA "25 MVA";
+    status "IN";
+}
+object branch
+{
+    from "bus_1";
+    to "bus_2";
+    r "0.01 pu.Ohm";
+    x "0.05 pu.Ohm";
+    b "0.05 pu./Ohm";
+    rateA "15 MVA";
+    status "IN";
+}
+object branch
+{
+    from "bus_1";
+    to "bus_3";
+    r "0.01 pu.Ohm";
+    x "0.05 pu.Ohm";
+    b "0.05 pu./Ohm";
+    rateA "15 MVA";
+    status "IN";
+}
+
+// capacity expansion data
+class capacity {
+    complex generator[$/MW];
+    double capacitor[$/MVAr];
+    double condenser[$/MVAr];
+}
+object capacity {
+    parent "bus_0";
+    generator 100+10j;
+    capacitor 1000;
+    condenser 500;
+}
+object capacity {
+    parent "bus_1";
+    generator 500+500j;
+    capacitor 100;
+    condenser 500;
+}
+object capacity {
+    parent "bus_2";
+    generator 1000+1000j;
+    capacitor 10;
+    condenser 500;
+}
+object capacity {
+    parent "bus_3";
+    generator 1000+1000j;
+    capacitor 10;
+    condenser 500;
+}
+
+#set savefile=example.json

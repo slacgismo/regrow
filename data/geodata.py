@@ -57,6 +57,9 @@ options.context = "geodata.py"
 pd.options.display.max_columns = None
 pd.options.display.width = None
 
+if len(sys.argv) == 1:
+    sys.argv.append("--update")
+    
 for arg in read_args(sys.argv,__doc__):
     if arg.startswith("--freq"):
         FREQ = arg.split("=")[1]

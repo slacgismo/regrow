@@ -117,7 +117,7 @@ def _(
     count_loaded = 0
     count_processed = 0
     for _geocode in baseload.columns:
-        _file = os.path.join(_dir,f"{_geocode}.csv")
+        _file = os.path.join(_dir,f"{_geocode}.csv.gz")
         if os.path.exists(_file): # do not reprocess previously obtained results
             if _geocode not in baseload_fit: # reload only if not already in memory
                 print(
@@ -194,7 +194,7 @@ def _(
             # report progress
             print(f"done in {_spq.fit_time:.1f} seconds")
             count_processed += 1
-            
+
     print(f"{count_found} already loaded")
     print(f"{count_loaded} reloaded from file")
     print(f"{count_processed} processed in {total_time:.1f} seconds")

@@ -24,6 +24,7 @@ import pandas as pd
 import config
 import states
 import urllib
+import datetime as dt
 
 INPUTS = {
     "NODES" : "wecc240_gis.csv",
@@ -52,14 +53,23 @@ REFRESH = False
 FREQ = "1h"
 
 from utils import *
+from zoneinfo import ZoneInfo
+from tzinfo import *
+
+TZINFO={
+    "EST" : TZ("EST",-5,0),
+    "CST" : TZ("CST",-6,0),
+    "MST" : TZ("MST",-7,0),
+    "PST" : TZ("PST",-8,0),
+}
 
 options.context = "geodata.py"
 pd.options.display.max_columns = None
 pd.options.display.width = None
 
 if len(sys.argv) == 1:
-    sys.argv.append("--update")
-    
+    sys.argv.extend(["--update","--refresh","--verbose"])
+
 for arg in read_args(sys.argv,__doc__):
     if arg.startswith("--freq"):
         FREQ = arg.split("=")[1]
@@ -140,9 +150,10 @@ if __name__ == "__main__":
                 geodata[table].append(pd.DataFrame(data=data[column].values,index=data.index,columns=[column]))
         except:
             geodata[table] = []
-    verbose("ok")
+    verbose(f"found {len(geodata)} tables ok")
 
     for state_usps,state_fips in [(states.state_codes_byname[x]["usps"],states.state_codes_byname[x]["fips"]) for x in config.state_list if x in states.state_codes_byname]:
+        os.makedirs(f"geodata/rawdata/{state_usps}",exist_ok=True)
         for puma in [x for x in counties.index.values if x.startswith(state_fips)]:
 
             geocode = counties.loc[puma]['geocode']
@@ -155,22 +166,36 @@ if __name__ == "__main__":
             if found == len(geodata):
                 continue # data is up-to-date
 
-            verbose(f"Processing {counties.loc[puma]['county']} {counties.loc[puma]['usps']}",end="...")
+            if puma[:2] in TIMEZONES:
+                tz = TIMEZONES[puma[:2]][:3]
+            elif puma in TIMEZONES:
+                tz = TIMEZONES[puma][:3]
+            else:
+                raise Exception(f"unable to find timezone for {counties.loc[puma]['county']} (puma={puma})")
+            timezone = TZINFO[tz]
+
+            verbose(f"Processing {counties.loc[puma]['county']} {counties.loc[puma]['usps']} ({puma} -> {geocode})",end="...")
 
             # weather data
-            url = weather_data.format(repo=weather_server,fips=state_fips,puma=puma[2:])
-            data = pd.read_csv(url,
-                index_col = [0],
-                usecols = [0,1,3,5],
-                parse_dates = [0],
-                dtype = float,
-                low_memory = True,
-                header=None,
-                skiprows=1,
-                )
-            data.columns = ["temperature[degC]","wind[m/s]","solar[W/m^2]"]
-            data.index.name = "timestamp"
-            weather = data.resample(FREQ).mean()
+            rawfile = f"geodata/rawdata/{state_usps}/g{state_fips}0{puma[2:]}0-weather.csv"
+            if not os.path.exists(rawfile) or REFRESH:
+                url = weather_data.format(repo=weather_server,fips=state_fips,puma=puma[2:])
+                data = pd.read_csv(url,
+                    index_col = [0],
+                    usecols = [0,1,3,5],
+                    parse_dates = [0],
+                    dtype = float,
+                    low_memory = True,
+                    header=None,
+                    skiprows=1,
+                    )
+                data.columns = ["temperature[degC]","wind[m/s]","solar[W/m^2]"]
+                data.index = data.index.tz_localize(timezone).tz_convert("UTC").tz_localize(None)-dt.timedelta(hours=1) # localize and change to leading timestamp
+                data.index.name = "timestamp"
+                weather = data.resample(FREQ).mean().round(1)
+                weather.to_csv(rawfile,header=True,index=True)
+            else:
+                weather = pd.read_csv(rawfile,index_col=[0],parse_dates=[0],low_memory=True)
 
             # residential buildings
             buildings = []
@@ -178,28 +203,36 @@ if __name__ == "__main__":
                 url = resstock_data.format(repo=resstock_server,usps=state_usps,fips=state_fips,puma=puma[2:],type=building_type)
                 try:
 
-                    data = pd.read_csv(url,
-                        index_col=["timestamp"],
-                        usecols = ["timestamp",
-                            "in.geometry_building_type_recs",
-                            "out.electricity.cooling.energy_consumption",
-                            "out.electricity.heating.energy_consumption",
-                            "out.electricity.heating_supplement.energy_consumption",
-                            "out.electricity.total.energy_consumption",
-                            ],
-                        parse_dates = ["timestamp"],
-                        converters = {
-                            "out.electricity.cooling.energy_consumption" : lambda x: float(x)/1000,
-                            "out.electricity.heating.energy_consumption" : lambda x: float(x)/1000,
-                            "out.electricity.heating_supplement.energy_consumption" : lambda x: float(x)/1000,
-                            "out.electricity.total.energy_consumption" : lambda x: float(x)/1000,
-                        },
-                        low_memory=True)
-                    verbose(".",end="")
-                    data.columns = ["building_type","cooling[MW]","heating[MW]","auxheat[MW]","total[MW]"]
-                    data["heating[MW]"] += data["auxheat[MW]"]
-                    data.drop("auxheat[MW]",axis=1,inplace=True)
-                    data = pd.DataFrame(data.resample(FREQ).sum())
+                    rawfile = f"geodata/rawdata/{state_usps}/g{state_fips}0{puma[2:]}0-{building_type}.csv"
+                    if not os.path.exists(rawfile) or REFRESH:
+                        data = pd.read_csv(url,
+                            index_col=["timestamp"],
+                            usecols = ["timestamp",
+                                "in.geometry_building_type_recs",
+                                "out.electricity.cooling.energy_consumption",
+                                "out.electricity.heating.energy_consumption",
+                                "out.electricity.heating_supplement.energy_consumption",
+                                "out.electricity.total.energy_consumption",
+                                ],
+                            parse_dates = ["timestamp"],
+                            converters = {
+                                "out.electricity.cooling.energy_consumption" : lambda x: float(x)/1000,
+                                "out.electricity.heating.energy_consumption" : lambda x: float(x)/1000,
+                                "out.electricity.heating_supplement.energy_consumption" : lambda x: float(x)/1000,
+                                "out.electricity.total.energy_consumption" : lambda x: float(x)/1000,
+                            },
+                            low_memory=True)
+                        verbose(".",end="")
+                        data.columns = ["building_type","cooling[MW]","heating[MW]","auxheat[MW]","total[MW]"]
+                        data["heating[MW]"] += data["auxheat[MW]"]
+                        data.drop("auxheat[MW]",axis=1,inplace=True)
+                        data.index = data.index.tz_localize(timezone).tz_convert("UTC").tz_localize(None)
+                        data.index = data.index - dt.timedelta(minutes=15) # change lagging timestamps to leading timestamp
+                        data = pd.DataFrame(data.resample(FREQ).sum())
+                        data["building_type"] = building_type
+                        data.round(6).to_csv(rawfile,header=True,index=True)
+                    else:
+                        data = pd.read_csv(rawfile,index_col=[0],parse_dates=[0],low_memory=True)
                     buildings.append(data.reset_index())
 
                 except urllib.error.HTTPError as err:
@@ -210,25 +243,32 @@ if __name__ == "__main__":
             for building_type in commercial_buildings:
                 url = comstock_data.format(repo=comstock_server,usps=state_usps,fips=state_fips,puma=puma[2:],type=building_type)
                 try:
-
-                    data = pd.read_csv(url,
-                        index_col=["timestamp"],
-                        usecols = ["timestamp",
-                            "in.building_type",
-                            "out.electricity.cooling.energy_consumption",
-                            "out.electricity.heating.energy_consumption",
-                            "out.electricity.total.energy_consumption",
-                            ],
-                        parse_dates = ["timestamp"],
-                        converters = {
-                            "out.electricity.cooling.energy_consumption" : lambda x: float(x)/1000,
-                            "out.electricity.heating.energy_consumption" : lambda x: float(x)/1000,
-                            "out.electricity.total.energy_consumption" : lambda x: float(x)/1000,
-                        },
-                        low_memory=True)
-                    verbose(".",end="")
-                    data.columns = ["building_type","cooling[MW]","heating[MW]","total[MW]"]
-                    data = pd.DataFrame(data.resample(FREQ).sum())
+                    rawfile = f"geodata/rawdata/{state_usps}/g{state_fips}0{puma[2:]}0-{building_type}.csv"
+                    if not os.path.exists(rawfile) or REFRESH:
+                        data = pd.read_csv(url,
+                            index_col=["timestamp"],
+                            usecols = ["timestamp",
+                                "in.building_type",
+                                "out.electricity.cooling.energy_consumption",
+                                "out.electricity.heating.energy_consumption",
+                                "out.electricity.total.energy_consumption",
+                                ],
+                            parse_dates = ["timestamp"],
+                            converters = {
+                                "out.electricity.cooling.energy_consumption" : lambda x: float(x)/1000,
+                                "out.electricity.heating.energy_consumption" : lambda x: float(x)/1000,
+                                "out.electricity.total.energy_consumption" : lambda x: float(x)/1000,
+                            },
+                            low_memory=True)
+                        verbose(".",end="")
+                        data.columns = ["building_type","cooling[MW]","heating[MW]","total[MW]"]
+                        data.index = data.index.tz_localize("EST").tz_convert("UTC").tz_localize(None)
+                        data.index = data.index - dt.timedelta(minutes=15) # change lagging timestamps to leading timestamp
+                        data = pd.DataFrame(data.resample(FREQ).sum())
+                        data["building_type"] = building_type
+                        data.round(6).to_csv(rawfile,header=True,index=True)
+                    else:
+                        data = pd.read_csv(rawfile,index_col=[0],parse_dates=[0],low_memory=True)
                     buildings.append(data.reset_index())
 
                 except urllib.error.HTTPError as err:

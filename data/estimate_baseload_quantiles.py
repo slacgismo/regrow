@@ -116,10 +116,23 @@ def _(
     count_found = 0
     count_loaded = 0
     count_processed = 0
+    baseloads = dict(
+        zip(
+            [
+                f"geodata/counties/baseload_q{x * 100:.0f}.csv"
+                for x in _spq.quantiles
+            ],
+            [[]] * 2,
+        )
+    )
+    baseloads["geodata/counties/baseload_data.csv"] = baseload.round(3)
+
     for _geocode in baseload.columns:
-        _file = os.path.join(_dir,f"{_geocode}.csv.gz")
-        if os.path.exists(_file): # do not reprocess previously obtained results
-            if _geocode not in baseload_fit: # reload only if not already in memory
+        _file = os.path.join(_dir, f"{_geocode}.csv.gz")
+        if os.path.exists(_file):  # do not reprocess previously obtained results
+            if (
+                _geocode not in baseload_fit
+            ):  # reload only if not already in memory
                 print(
                     f"Loading {counties.loc[_geocode].county} {counties.loc[_geocode].usps} ({_geocode})",
                     flush=True,
@@ -149,15 +162,18 @@ def _(
             )
 
             # prepare full data range (include prediction range)
-            _data = np.full(max(_hours) + 1, float('nan'))
+            _data = np.full(max(_hours) + 1, float("nan"))
             _data[: len(baseload_data[_geocode])] = baseload_data[_geocode]
 
             # generate data holdout for testing
-            _holdout = random.sample(range(len(baseload_data[_geocode])),int(len(baseload_data[_geocode])*holdout_fraction))
+            _holdout = random.sample(
+                range(len(baseload_data[_geocode])),
+                int(len(baseload_data[_geocode]) * holdout_fraction),
+            )
 
             # isolate training data
             _train = np.copy(_data)
-            _train[_holdout] = float('nan')
+            _train[_holdout] = float("nan")
 
             # train
             _spq.fit(_train)
@@ -173,7 +189,7 @@ def _(
             _df["data"] = _data.round(3)
 
             # name index
-            _df.index.name="timestamp"
+            _df.index.name = "timestamp"
 
             # save to file
             _df.to_csv(_file, header=True, index=True)
@@ -186,19 +202,47 @@ def _(
 
             # test performance using holdout data
             _test = _df.iloc[_holdout].dropna()
-            print(f"Testing on {len(_test)} holdouts ({holdout_fraction*100:.0f})")
-            for _column,_quantile in [(f"q{x*100:.0f}",x) for x in _spq.quantiles]:
-                _frac = len(_test[_test["data"]<_test[_column]]) / len(_test)
-                print(f"  {_quantile*100:.0f}% quantile test: {_frac*100:.1f}%")
+            print(
+                f"Testing on {len(_test)} holdouts ({holdout_fraction * 100:.0f})"
+            )
+            for _column, _quantile in [
+                (f"q{x * 100:.0f}", x) for x in _spq.quantiles
+            ]:
+                _frac = len(_test[_test["data"] < _test[_column]]) / len(_test)
+                print(
+                    f"  {_quantile * 100:.0f}% quantile test: {_frac * 100:.1f}%"
+                )
 
             # report progress
             print(f"done in {_spq.fit_time:.1f} seconds")
             count_processed += 1
 
+        # collate baseloads
+        for _n, _geodata, _quantile in [
+            (n, f"q{x * 100:.0f}", f"geodata/counties/baseload_q{x * 100:.0f}.csv")
+            for n, x in enumerate(_spq.quantiles)
+        ]:
+            baseloads[_quantile].append(
+                pd.DataFrame(
+                    data=baseload_fit[_geocode][_geodata].values,
+                    index=baseload_fit[_geocode][_geodata].index,
+                    columns=[_geocode],
+                )
+            )
+
+    for _file, _data in baseloads.items():
+        if not os.path.exists(_file):
+            print(f"Collating {_file}", end="...", flush=True)
+            if isinstance(_data,list):
+                _data = pd.concat(_data, axis=1).dropna()
+            _data.to_csv(_file, header=True, index=True)
+            print("ok")
+
     print(f"{count_found} already loaded")
     print(f"{count_loaded} reloaded from file")
     print(f"{count_processed} processed in {total_time:.1f} seconds")
     return (
+        baseloads,
         count_found,
         count_loaded,
         count_processed,
@@ -259,6 +303,11 @@ def _(baseload_fit, county_ui, days_ui, np, week_ui):
         color=["b", "r", "k"],
     )
     return (plt,)
+
+
+@app.cell
+def _():
+    return
 
 
 @app.cell

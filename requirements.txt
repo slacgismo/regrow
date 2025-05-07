@@ -6,3 +6,4 @@ pvlib
 geojson
 scipy
 matplotlib
+spcqe

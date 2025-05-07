@@ -1,26 +1,26 @@
 import marimo
 
-__generated_with = "0.4.7"
+__generated_with = "0.12.8"
 app = marimo.App(width="full")
 
 
 @app.cell
-def __(mo):
-    mo.md("# Load model validation")
+def _(mo):
+    mo.md("""# Load model validation""")
     return
 
 
 @app.cell
-def __(mo, os):
+def _(mo, os):
     #
     # Switch to select network vs county data (if any)
     #
     set_ui = mo.ui.switch() if os.path.exists("geodata/counties") else None
-    return set_ui,
+    return (set_ui,)
 
 
 @app.cell
-def __(
+def _(
     geocode_ui,
     heatmap_plot,
     local_plot,
@@ -53,7 +53,7 @@ def __(
 
 
 @app.cell
-def __(mo):
+def _(mo):
     #
     # Zoom level state
     #
@@ -63,7 +63,7 @@ def __(mo):
 
 
 @app.cell
-def __(os, pd, set_ui):
+def _(os, pd, set_ui):
     #
     # Data sources
     #
@@ -89,7 +89,7 @@ def __(os, pd, set_ui):
 
 
 @app.cell
-def __(data, panel_ui, pd, set_ui, utils):
+def _(data, panel_ui, pd, set_ui, utils):
     #
     # Network bus list (nodes)
     #
@@ -107,11 +107,11 @@ def __(data, panel_ui, pd, set_ui, utils):
         buslist = dict([(f"{y.title()} ({_county(x)})",x) for x,y in _locations.sort_values("Bus  Name").to_dict()["Bus  Name"].items() if x in data[panel_ui.value].columns])
         # buslist = list(data[panel_ui.value].columns)
     # buslist
-    return buslist,
+    return (buslist,)
 
 
 @app.cell
-def __(data, mo):
+def _(data, mo):
     #
     # Data panel dropdown
     #
@@ -120,11 +120,11 @@ def __(data, mo):
                               allow_select_none = False,
                               value = list(data.keys())[0].title(),
                              )
-    return panel_ui,
+    return (panel_ui,)
 
 
 @app.cell
-def __(data, label, panel_ui):
+def _(data, label, panel_ui):
     #
     # System-level plot
     #
@@ -137,11 +137,11 @@ def __(data, label, panel_ui):
                                                 ylabel = label[panel_ui.value],
                                                 title = "System-wide " + panel_ui.value.title(),)
     system_plot.figure.tight_layout()
-    return system_plot,
+    return (system_plot,)
 
 
 @app.cell
-def __(buslist, mo):
+def _(buslist, mo):
     #
     # Local level dataset dropdown
     #
@@ -150,11 +150,11 @@ def __(buslist, mo):
                                 allow_select_none = False,
                                 value = list(buslist)[0],
                                )
-    return geocode_ui,
+    return (geocode_ui,)
 
 
 @app.cell
-def __(data, geocode_ui, label, panel_ui):
+def _(data, geocode_ui, label, panel_ui):
     #
     # Local level plot
     #
@@ -167,11 +167,11 @@ def __(data, geocode_ui, label, panel_ui):
                                                 title = geocode_ui.selected_key + " " + panel_ui.value.title(),
                                                )
     local_plot.figure.tight_layout()
-    return local_plot,
+    return (local_plot,)
 
 
 @app.cell
-def __(
+def _(
     data,
     geocode_ui,
     get_duration,
@@ -191,7 +191,7 @@ def __(
 
 
 @app.cell
-def __(data, geocode_ui, label, num_days, panel_ui, start_day):
+def _(data, geocode_ui, label, num_days, panel_ui, start_day):
     #
     # Zoom level plot
     #
@@ -205,11 +205,11 @@ def __(data, geocode_ui, label, num_days, panel_ui, start_day):
         title = geocode_ui.selected_key + " " + panel_ui.value.title(),
        )
     zoom_plot.figure.tight_layout()
-    return zoom_plot,
+    return (zoom_plot,)
 
 
 @app.cell
-def __(data, geocode_ui, label, panel_ui, plt, sns):
+def _(data, geocode_ui, label, panel_ui, plt, sns):
     #
     # Heatmap plot
     #
@@ -223,7 +223,7 @@ def __(data, geocode_ui, label, panel_ui, plt, sns):
 
 
 @app.cell
-def __():
+def _():
     #
     # Requirements and options
     #

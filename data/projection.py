@@ -9,6 +9,8 @@ import config
 import states
 from utils import *
 
+options.verbose = True
+
 INPUTS = {
 	"COUNTIES" : "counties.csv",
 	"NETWORK" : "wecc240_gis.csv",
@@ -17,7 +19,7 @@ INPUTS = {
 	"WEATHER" : " ".join([os.path.join("weather",x) for x in os.listdir("weather") if x.endswith(".csv")]),
 }
 
-YEAR = 2020
+YEAR = 2018
 ROUND = 1
 
 OUTPUTS = {
@@ -50,7 +52,7 @@ if __name__ == "__main__":
 	source = {}
 	for file in os.listdir("geodata"):
 		
-		if not file.endswith(".csv"):
+		if not file.endswith("_2018.csv"):
 			continue
 
 		name = os.path.splitext(file)[0]
@@ -95,14 +97,14 @@ if __name__ == "__main__":
 	#
 	# Project target data
 	#
-	target = source["baseload"].copy()
+	target = source["baseload_2018"].copy()
 	fromindex = weather["temperature"].index.values
 	tolen = len(target.index)
 	fromlen = len(fromindex)
 	if tolen == fromlen: # exact copy
 		target.index = fromindex
 	elif tolen < fromlen: # clip
-		target.index = fromindex[:tolen]
+		target.index = fromindex[:tolen+1]
 	elif fromlen > tolen: # repeat last day
 		target.index[:fromlen] = fromindex
 		target.index[fromlen:] = fromindex[fromlen:] + dt.timedelta(days=1)
@@ -113,6 +115,6 @@ if __name__ == "__main__":
 		+ cooling * sensitivity.loc["cooling[MW/degC]"] \
 		+ weather["solar"] * sensitivity.loc["solar[MW/W/m^2]"]
 
-	target.round(ROUND).to_csv(OUTPUTS["LOADYEAR"],index=True,header=True)
+	target.round(ROUND).dropna().to_csv(OUTPUTS["LOADYEAR"],index=True,header=True)
 
 

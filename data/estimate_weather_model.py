@@ -1,191 +1,192 @@
-
-
 import marimo
 
-__generated_with = "0.13.3"
+__generated_with = "0.10.17"
 app = marimo.App(width="medium")
 
 
 @app.cell
 def _(mo):
-    mo.md(r"""This notebook reas the county level geodata for heating and cooling loads from the files in `geodata/counties` and estimate the response of heating and cooling loads to weather.""")
+    mo.md(r"""This notebook reads the county-level geodata for baseloads, heating, and cooling loads from the files in `geodata/counties` and creates a weather model to estimate total load based on weather for any year.""")
+    return
+
+
+@app.cell(hide_code=True)
+def _(pd):
+    temperature = pd.read_csv(
+        "geodata/counties/temperature.csv",
+        index_col=["timestamp"],
+        parse_dates=True,
+        low_memory=True,
+    )
+    geocodes = temperature.columns
+    loads = {
+        "baseload": pd.read_csv("geodata/counties/baseload_data.csv",index_col=["timestamp"],parse_dates=["timestamp"]),
+        "heating": pd.read_csv("geodata/counties/heating.csv",index_col=["timestamp"],parse_dates=["timestamp"]),
+        "cooling": pd.read_csv("geodata/counties/cooling.csv",index_col=["timestamp"],parse_dates=["timestamp"]),
+    }
+    return geocodes, loads, temperature
+
+
+@app.cell
+def _(tempe):
+    tempe
+    return
+
+
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+        The building weather response model is developed as follows:
+
+        $\begin{array}{rll}
+            \underset{\alpha,\beta,\gamma,u,c}\min & \alpha Q + \beta H + \gamma C & \textrm{minimize total energy use}
+        \\
+            \textrm{subject to} & u (T_S-T) + \alpha Q + \beta H - \gamma C + c \Delta T = 0 & \textrm{building energy balance}
+        \\
+            & u \ge 0 &  \textrm{heat transfer coefficient must be positive}
+        \\
+            & 0 \le \alpha \le 1 & \textrm{fractional heatgain between 0 and 1}
+        \\
+            & 0 \le \beta \le \gamma & \textrm{heating efficiency constraint}
+        \\
+            & 0 \le \gamma \le 1 & \textrm{cooling efficiency constraint}
+        \\
+            & c \ge 0 &  \textrm{heat capacity must be positive}
+        \end{array}$
+
+        where
+
+        * $u \in \mathbb{R}$ is the lumped estimate heat transfer coefficient of the building population
+        * $T_S \in \mathbb{R}$ is the lumped indoor air temperature
+        * $T \in \mathbb{R}^N$ is the $N$ time-varying outdoor air temperatures
+        * $\alpha \in \mathbb{R}$ is the fraction of baseload that goes to indoor air heat gain
+        * $Q \in \mathbb{R}^N$ is the baseload powers
+        * $\beta \in \mathbb{R}$ is the lumped heating efficiency
+        * $H \in \mathbb{R}^N$ is the heating energy demand
+        * $\gamma \in \mathbb{R}$ is the lumped cooling efficiency
+        * $C \in \mathbb{R}^N$ is the cooling energy demand
+        * $c \in \mathbb{R}$ is the lumped heat capacity of the buildings
+        * $\Delta T \in \mathbb{R}$ is the change in building indoor temperature resulting from curtailment, if any
+        """
+    )
     return
 
 
 @app.cell
-def _(pd, tzinfo):
-    # load data
-    UTC = tzinfo.TZ("UTC",0,0)
-    timezones = {x:tzinfo.TZ(x,*y) for x,y in {"EST":(-5,0),"CST":(-6,0),"MST":(-7,0),"PST":(-8,0)}.items()}
-
-    _T = pd.read_csv("geodata/counties/temperature.csv",
-        index_col=["timestamp"],
-        parse_dates=True,
-        low_memory=True)
-    geocodes = _T.columns
-
-    _C = pd.read_csv("geodata/counties/cooling.csv",
-        index_col=["timestamp"],
-        parse_dates=True,
-        low_memory=True).join(_T,lsuffix="_P",rsuffix="_T").dropna()
-
-    _H = pd.read_csv("geodata/counties/heating.csv",
-        index_col=["timestamp"],
-        parse_dates=True,
-        low_memory=True).join(_T,lsuffix="_P",rsuffix="_T").dropna()
-
-    power = {"heating":_H,"cooling":_C}
-    counties = pd.read_csv("counties.csv",index_col=["geocode"])
-    return counties, geocodes, power, timezones
-
-
-@app.cell
-def _():
-    K = 25 # model order
-    return (K,)
-
-
-@app.cell
-def _(K, counties, geocodes, mo, np, power, timezones, tzinfo):
-    # processing data
-    weather_tf={"heating":{},"cooling":{}}
-    with mo.status.progress_bar(title="Processing county heating/cooling data...",
-                                remove_on_exit=True,
-                                collection = geocodes,
-                                ) as _bar:
-        for _geocode in geocodes:
-            for table,data in power.items():
-                _fips = f"{counties.loc[_geocode].fips:05.0f}"
-                try:
-                    _tz = timezones[tzinfo.TIMEZONES[_fips][:3]]
-                except:
-                    _tz = timezones[tzinfo.TIMEZONES[_fips[:2]][:3]]
-                _X = np.matrix(data[f"{_geocode}_T"]).transpose()
-                _Y = np.matrix(data[f"{_geocode}_P"]).transpose()
-                _L = len(_Y)
-                _M = np.hstack([np.hstack([_Y[n+1:_L-K+n] for n in range(K)]),
-                               np.hstack([_X[n+1:_L-K+n] for n in range(K+1)])])
-                _Mt = _M.transpose()
-                try:
-                    weather_tf[table][_geocode] = np.linalg.solve(_Mt*_M,_Mt*_Y[K+1:])
-                except np.linalg.LinAlgError as err:
-                    print(f"ERROR [{counties.loc[_geocode].county},{counties.loc[_geocode].usps},{_geocode},{_tz.name}]: {err} ({table} energy={data[f"{_geocode}_P"].sum()/1000:.1f} GWh) --> x=[[0]*{2*K+1}]'",flush=True)
-                    weather_tf[table][_geocode] = np.matrix(np.zeros((2*K+1,1)))
-            _bar.update()
-    return (weather_tf,)
+def _(county_ui, cp, data, mo, np, pd, temperature):
+    alpha = cp.Variable(1)
+    beta = cp.Variable(1)
+    gamma = cp.Variable(1)
+    u = cp.Variable(1)
+    c = cp.Variable(1)
+    _T = temperature[county_ui.value].resample("1d").mean()
+    _data = data.join(pd.DataFrame(_T.values,_T.index,columns=["temperature"])).dropna()
+    Q = np.array(_data["baseload"].values)
+    H = np.array(_data["heating"].values)
+    C = np.array(_data["cooling"].values)
+    T = np.array(_data["temperature"].values)
+    Ts = 20.0
+    objective = cp.Minimize(cp.sum(alpha*Q+beta*H+gamma*C))
+    constraints = [
+        u*(Ts-T)+alpha*Q+beta*H-gamma*C == 0,
+        # u*(Ts-T)+alpha*Q+beta*H-gamma*C == 0,
+        u >= 0,
+        alpha >= 0.0, alpha <= 1,
+        # beta >= 0, beta <= gamma, 
+        # gamma >= 0, gamma <= 1,
+        c >= 0,
+    ]
+    problem = cp.Problem(objective,constraints)
+    cost = problem.solve()
+    mo.md(f"$cost={cost:.3f}, \\alpha={alpha.value[0]:.3f}, \\beta={beta.value[0]:.3f}, \\gamma={gamma.value[0]:.3f}, u={u.value[0]:.3f}, c={c.value[0]:.3f}$" if problem.status != "infeasible" else "Infeasible")
+    return (
+        C,
+        H,
+        Q,
+        T,
+        Ts,
+        alpha,
+        beta,
+        c,
+        constraints,
+        cost,
+        gamma,
+        objective,
+        problem,
+        u,
+    )
 
 
-@app.cell
-def _(counties, mo):
+@app.cell(hide_code=True)
+def _(mo, pd):
+    counties = pd.read_csv("counties.csv", index_col=["geocode"])
     state_ui = mo.ui.dropdown(label="State:",options=counties.usps.unique(),value=counties.usps.unique()[0])
-    return (state_ui,)
+    return counties, state_ui
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(counties, mo, state_ui):
-    _counties = counties[counties.usps==state_ui.value]
-    _options = dict(zip(_counties.county,_counties.index))
-    county_ui = mo.ui.dropdown(label="County:",options=_options,value=_counties.county.iloc[0])
+    _counties = counties[counties.usps == state_ui.value]
+    _options = dict(zip(_counties.county, _counties.index))
+    county_ui = mo.ui.dropdown(
+        label="County:", options=_options, value=_counties.county.iloc[0]
+    )
     return (county_ui,)
 
 
-@app.cell
-def _(mo, power):
-    weather_ui = mo.ui.dropdown(label="Weather:",options=power.keys(),value=list(power.keys())[0])
-    return (weather_ui,)
+@app.cell(hide_code=True)
+def _(mo):
+    fraction_ui = mo.ui.checkbox(label="Fractional load")
+    return (fraction_ui,)
 
 
-@app.cell
-def _(county_ui, mo, state_ui, weather_ui):
-    mo.hstack([state_ui,county_ui,weather_ui],justify='start')
+@app.cell(hide_code=True)
+def _(county_ui, fraction_ui, mo, state_ui):
+    mo.hstack([state_ui,county_ui,fraction_ui],justify='start')
     return
 
 
-@app.cell
-def _(county_ui, mo, power, state_ui, weather_ui):
-    _data = power[weather_ui.value]
-    mo.stop(not county_ui.value+"_T" in _data,f"Data for {county_ui.selected_key} {state_ui.value} ({county_ui.value}) not in weather_tf results")
-    week_ui = mo.ui.slider(label="Week:",start=0,stop=int(len(_data[county_ui.value+"_T"])/7/24),value=0,show_value=True)
-    days_ui = mo.ui.slider(label="Days:",steps=[7,14,21,28,92,184,365],value=7,show_value=True)
-    mo.hstack([week_ui,days_ui],justify='start')
-    return days_ui, week_ui
-
-
-@app.cell
-def _(
-    K,
-    counties,
-    county_ui,
-    days_ui,
-    mo,
-    np,
-    plt,
-    power,
-    weather_tf,
-    weather_ui,
-    week_ui,
-):
-    _geocode = county_ui.value
-    _data = power[weather_ui.value]
+@app.cell(hide_code=True)
+def _(county_ui, fraction_ui, geocodes, loads, mo, pd, state_ui):
     mo.stop(
-        _geocode + "_T" not in _data.columns,
-        mo.md("ERROR: county not found in heating/cooling data"),
+        not county_ui.value in geocodes,
+        f"Data for {county_ui.selected_key} {state_ui.value} ({county_ui.value}) not in data",
     )
-    _X = np.matrix(_data[f"{_geocode}_T"]).transpose()
-    _Y = np.matrix(_data[f"{_geocode}_P"]).transpose()
-    _L = len(_Y)
-    _M = np.hstack(
-        [
-            np.hstack([_Y[n : _L - K + n - 1] for n in range(K)]),
-            np.hstack([_X[n : _L - K + n - 1] for n in range(K + 1)]),
-        ]
-    )
-    _x = weather_tf[weather_ui.value][_geocode]
+    data = [
+        pd.DataFrame(
+            data=loads[x][county_ui.value].values,
+            index=loads[x][county_ui.value].index,
+            columns=[x],
+        )
+        for x in ["baseload", "cooling", "heating"]
+    ]
+    data = pd.DataFrame(pd.concat(data, axis=1).resample(rule="1d").mean())
+    if fraction_ui.value:
+        _total = data.sum(axis=1,skipna=True)
+        for _column in _data.columns:
+            data[_column] /= _total/100
 
-    _week = week_ui.value
-    _days = days_ui.value
-    _start = 24 * 7 * _week
-    _stop = min(24 * (7 * _week + _days), len(_data[_geocode + "_T"]))
-    _window = np.s_[_start:_stop]
-    _y = np.full((_L,1),float('nan'))
-    _y[K:-1] = _M @ _x
-
-    plt.figure(figsize=(15, 7))
-    plt.plot(
-        _data[f"{_geocode}_T"].index[_window],
-        _y[_window],
-        "b",
-        label="Model",
+    data.plot.area(
+        figsize=(15, 8),
+        grid=True,
+        color=["g", "b", "r"],
+        xlabel="Date",
+        ylabel="Daily average load [% total]" if fraction_ui.value else "Daily average load [MW]",
+        title=f"{state_ui.value} {county_ui.selected_key} ({county_ui.value})",
+        ylim=[0,100] if fraction_ui.value else None,
     )
-    plt.plot(
-        _data[f"{_geocode}_T"].index[_window],
-        _Y[_window],
-        "--k",
-        label="Data",
-    )
-    plt.grid()
-    plt.ylabel(f"{weather_ui.value.title()} power [MW]")
-    plt.legend()
-    _err = _y - _Y
-    plt.title(
-        f"{counties.loc[_geocode].county} {counties.loc[_geocode].usps} ({_geocode}): $\\sigma^2$ = {np.nanstd(_err):.2f} MW ({np.nanstd(_err) / np.nanmean(_Y) * 100:.1f}%)"
-    )
-    plt.gca()
-    return
+    return (data,)
 
 
 @app.cell
 def _():
     import marimo as mo
-    import os
-    import sys
-    import datetime as dt
     import pandas as pd
     import numpy as np
-    import scipy as sp
-    import tzinfo
     import matplotlib.pyplot as plt
-    return mo, np, pd, plt, tzinfo
+    import cvxpy as cp
+    return cp, mo, np, pd, plt
 
 
 if __name__ == "__main__":

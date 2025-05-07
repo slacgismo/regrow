@@ -1,3 +1,2 @@
 *_err.csv
-geodata/counties/
-geodata/rawdata/
+geodata/*/

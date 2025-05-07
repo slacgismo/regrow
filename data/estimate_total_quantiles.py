@@ -8,11 +8,11 @@ app = marimo.App(width="medium")
 def _(mo):
     mo.md(
         r"""
-        This notebook reads the county-level geodata for total, heating, and cooling loads from the files in `geodata/counties`. It then computes the baseload as $baseload = total - heating - cooling$. The baseload data is then used to fit a smooth multi-periodic consistent quantile estimate for annual, weekly, and daily component of the load for the 50% and 98% quantiles. The resulting quantiles estimates for each county are stored with the actual data in `geodata/baseload`.
+        This notebook reads the county-level geodata for total loads from the files in `geodata/counties`. The total load data is then used to fit a smooth multi-periodic consistent quantile estimate for annual, weekly, and daily component of the load for the 50% and 98% quantiles. The resulting quantiles estimates for each county are stored with the actual data in `geodata/total`.
 
         Notes:
 
-        1. If a quantile estimate file already exists in `geodata/baseload`, the results are simply loaded and the original county-level load data is not reprocessed.
+        1. If a quantile estimate file already exists in `geodata/total`, the results are simply loaded and the original county-level load data is not reprocessed.
 
         2. If a quantile estimate is already resident in memory, nothing is done.
 
@@ -30,32 +30,22 @@ def _(pd, tzinfo):
     UTC = tzinfo.TZ("UTC",0,0)
     timezones = {x:tzinfo.TZ(x,*y) for x,y in {"EST":(-5,0),"CST":(-6,0),"MST":(-7,0),"PST":(-8,0)}.items()}
 
-    cooling = pd.read_csv("geodata/counties/cooling.csv",
+    total = (pd.read_csv("geodata/counties/total.csv",
         index_col=["timestamp"],
         parse_dates=True,
-        low_memory=True).dropna()
-
-    heating = pd.read_csv("geodata/counties/heating.csv",
-        index_col=["timestamp"],
-        parse_dates=True,
-        low_memory=True).dropna()
-
-    baseload = (pd.read_csv("geodata/counties/total.csv",
-        index_col=["timestamp"],
-        parse_dates=True,
-        low_memory=True) - heating - cooling).dropna()
+        low_memory=True)).dropna()
 
     counties = pd.read_csv("counties.csv",index_col=["geocode"])
-    return UTC, baseload, cooling, counties, heating, timezones
+    return UTC, counties, timezones, total
 
 
 @app.cell
-def _(UTC, baseload, counties, dt, np, timezones, tzinfo):
+def _(UTC, counties, dt, np, timezones, total, tzinfo):
     #
-    # Baseload model using truncated fourier
+    # total model using truncated fourier
     #
-    baseload_data = {}
-    for _geocode in baseload.columns:
+    total_data = {}
+    for _geocode in total.columns:
 
         # get hours
         _fips = f"{counties.loc[_geocode].fips:05.0f}"
@@ -63,34 +53,31 @@ def _(UTC, baseload, counties, dt, np, timezones, tzinfo):
             _tz = timezones[tzinfo.TIMEZONES[_fips][:3]]
         except:
             _tz = timezones[tzinfo.TIMEZONES[_fips[:2]][:3]]
-        _year = dt.datetime(baseload.index[0].year,1,1,0,0,0,tzinfo=_tz).timestamp()
-        baseload_hour = [int((x.timestamp()-_year)/3600) for x in baseload.index.tz_localize(_tz).tz_convert(UTC)]
+        _year = dt.datetime(total.index[0].year,1,1,0,0,0,tzinfo=_tz).timestamp()
+        total_hour = [int((x.timestamp()-_year)/3600) for x in total.index.tz_localize(_tz).tz_convert(UTC)]
 
         # get values
-        _data = np.full(max(baseload_hour)+1,float('nan'))
-        _data[baseload_hour] = baseload[_geocode].values
+        _data = np.full(max(total_hour)+1,float('nan'))
+        _data[total_hour] = total[_geocode].values
 
-        baseload_data[_geocode] = _data
-    return baseload_data, baseload_hour
+        total_data[_geocode] = _data
+    return total_data, total_hour
 
 
 @app.cell
-def _(baseload_data, mo):
-    mo.md(f"{len(baseload_data)} baseloads found")
+def _(mo, total_data):
+    mo.md(f"{len(total_data)} totals found")
     return
 
 
 @app.cell
 def _():
-    baseload_fit = {}
-    return (baseload_fit,)
+    total_fit = {}
+    return (total_fit,)
 
 
 @app.cell
 def _(
-    baseload,
-    baseload_data,
-    baseload_fit,
     counties,
     np,
     os,
@@ -98,6 +85,9 @@ def _(
     qe,
     random,
     timezones,
+    total,
+    total_data,
+    total_fit,
     tzinfo,
 ):
     holdout_fraction = 0.05
@@ -111,33 +101,33 @@ def _(
         quantiles=[0.5, 0.98],
     )
     total_time = 0
-    _dir = os.path.join(*"geodata/baseload".split("/"))
+    _dir = os.path.join(*"geodata/total".split("/"))
     os.makedirs(_dir, exist_ok=True)
     count_found = 0
     count_loaded = 0
     count_processed = 0
-    baseloads = dict(
+    totals = dict(
         zip(
             [
-                f"geodata/counties/baseload_q{x * 100:.0f}.csv"
+                f"geodata/counties/total_q{x * 100:.0f}.csv"
                 for x in _spq.quantiles
             ],
             [[]] * 2,
         )
     )
-    baseloads["geodata/counties/baseload_data.csv"] = baseload.round(3)
+    totals["geodata/counties/total_data.csv"] = total.round(3)
 
-    for _geocode in baseload.columns:
+    for _geocode in total.columns:
         _file = os.path.join(_dir, f"{_geocode}.csv.gz")
         if os.path.exists(_file):  # do not reprocess previously obtained results
             if (
-                _geocode not in baseload_fit
+                _geocode not in total_fit
             ):  # reload only if not already in memory
                 print(
                     f"Loading {counties.loc[_geocode].county} {counties.loc[_geocode].usps} ({_geocode})",
                     flush=True,
                 )
-                baseload_fit[_geocode] = pd.read_csv(
+                total_fit[_geocode] = pd.read_csv(
                     _file, index_col=[0], parse_dates=[0], low_memory=True
                 )
                 count_loaded += 1
@@ -163,12 +153,12 @@ def _(
 
             # prepare full data range (include prediction range)
             _data = np.full(max(_hours) + 1, float("nan"))
-            _data[: len(baseload_data[_geocode])] = baseload_data[_geocode]
+            _data[: len(total_data[_geocode])] = total_data[_geocode]
 
             # generate data holdout for testing
             _holdout = random.sample(
-                range(len(baseload_data[_geocode])),
-                int(len(baseload_data[_geocode]) * holdout_fraction),
+                range(len(total_data[_geocode])),
+                int(len(total_data[_geocode]) * holdout_fraction),
             )
 
             # isolate training data
@@ -195,7 +185,7 @@ def _(
             _df.to_csv(_file, header=True, index=True)
 
             # save to memory
-            baseload_fit[_geocode] = _df
+            total_fit[_geocode] = _df
 
             # record time required
             total_time += _spq.fit_time
@@ -217,20 +207,20 @@ def _(
             print(f"done in {_spq.fit_time:.1f} seconds")
             count_processed += 1
 
-        # collate baseloads
+        # collate totals
         for _n, _geodata, _quantile in [
-            (n, f"q{x * 100:.0f}", f"geodata/counties/baseload_q{x * 100:.0f}.csv")
+            (n, f"q{x * 100:.0f}", f"geodata/counties/total_q{x * 100:.0f}.csv")
             for n, x in enumerate(_spq.quantiles)
         ]:
-            baseloads[_quantile].append(
+            totals[_quantile].append(
                 pd.DataFrame(
-                    data=baseload_fit[_geocode][_geodata].values,
-                    index=baseload_fit[_geocode][_geodata].index,
+                    data=total_fit[_geocode][_geodata].values,
+                    index=total_fit[_geocode][_geodata].index,
                     columns=[_geocode],
                 )
             )
 
-    for _file, _data in baseloads.items():
+    for _file, _data in totals.items():
         if not os.path.exists(_file):
             print(f"Collating {_file}", end="...", flush=True)
             if isinstance(_data,list):
@@ -242,12 +232,12 @@ def _(
     print(f"{count_loaded} reloaded from file")
     print(f"{count_processed} processed in {total_time:.1f} seconds")
     return (
-        baseloads,
         count_found,
         count_loaded,
         count_processed,
         holdout_fraction,
         total_time,
+        totals,
     )
 
 
@@ -272,17 +262,17 @@ def _(county_ui, mo, state_ui):
 
 
 @app.cell
-def _(baseload_fit, county_ui, mo, state_ui, total_time):
+def _(county_ui, mo, state_ui, total_fit, total_time):
     total_time # wait for processing to complete
-    mo.stop(not county_ui.value in baseload_fit,f"Data for {county_ui.selected_key} {state_ui.value} ({county_ui.value}) not in baseload_fit results")
-    week_ui = mo.ui.slider(label="Week:",start=0,stop=int(len(baseload_fit[county_ui.value])/7/24),value=0,show_value=True)
+    mo.stop(not county_ui.value in total_fit,f"Data for {county_ui.selected_key} {state_ui.value} ({county_ui.value}) not in total_fit results")
+    week_ui = mo.ui.slider(label="Week:",start=0,stop=int(len(total_fit[county_ui.value])/7/24),value=0,show_value=True)
     days_ui = mo.ui.slider(label="Days:",steps=[7,14,21,28,92,184,365],value=7,show_value=True)
     mo.hstack([week_ui,days_ui],justify='start')
     return days_ui, week_ui
 
 
 @app.cell
-def _(baseload_fit, county_ui, days_ui, np, week_ui):
+def _(county_ui, days_ui, np, total_fit, week_ui):
     import matplotlib.pyplot as plt
 
     _geocode = county_ui.value
@@ -290,15 +280,15 @@ def _(baseload_fit, county_ui, days_ui, np, week_ui):
     _days = days_ui.value
     _index = np.s_[
         24 * 7 * _week : min(
-            24 * (7 * _week + _days), len(baseload_fit[_geocode])
+            24 * (7 * _week + _days), len(total_fit[_geocode])
         )
     ]
 
-    baseload_fit[_geocode][_index].plot(
+    total_fit[_geocode][_index].plot(
         figsize=(15, 7),
         alpha=0.5,
         style=["-", "-", ":"],
-        label=baseload_fit[_geocode].columns,
+        label=total_fit[_geocode].columns,
         grid=True,
         color=["b", "r", "k"],
     )

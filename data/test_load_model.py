@@ -10,11 +10,16 @@ def _(mo):
         r"""
     This notebook tests different load models relative to a simple "bathtub" load model.
 
-    1. Read load and weather data
-    2. Hold out 5-7 (consecutive/random) days each month (or 60-100 consecutive or random hours?)
-    3. Run the original county-level project method
-    4. Benchmark the bathtub model for the selected county (RMSE and % error tests) on hold out data
-    5. Implement scaling for load growth, upgrades, and electrification.
+    - [x] Read load and weather data
+    - [ ] Hold out 5-7 (consecutive/random) days each month (or 60-100 consecutive or random hours?)
+    - [ ] Run the original county-level project method
+    - [ ] Benchmark the bathtub model for the selected county (RMSE and % error tests) on hold out data
+    - [ ] Implement scaling for load growth, upgrades, and electrification.
+    - [ ] Implement experimental models
+
+    ## Todo list
+    - [ ] Zoom controls on plots to see hourly behavior
+    - [ ] NERC model balance temperatures slider
     """
     )
     return
@@ -63,13 +68,14 @@ def _(counties, mo, state_ui):
 
 @app.cell
 def _(mo):
-    graph_ui = mo.ui.checkbox(label="Show graph")
-    return (graph_ui,)
+    graph_ui = mo.ui.checkbox(label="Show graph",value=True)
+    fraction_ui = mo.ui.checkbox(label="Show fractional load")
+    return fraction_ui, graph_ui
 
 
 @app.cell
-def _(county_ui, graph_ui, mo, state_ui):
-    mo.hstack([state_ui,county_ui,graph_ui],justify='start')
+def _(county_ui, fraction_ui, graph_ui, mo, state_ui):
+    mo.hstack([state_ui,county_ui,graph_ui,fraction_ui],justify='start')
     return
 
 
@@ -90,7 +96,8 @@ def _(
         "Totals" : totals_ui,
         "Models" : models_ui,
         "Logs": errors_ui,
-    })
+        },
+        lazy=True)
     return
 
 
@@ -228,6 +235,9 @@ def _(add_error, dt, fips, mo, os, pd, state_ui, timezone):
                     - _data["heating[MW]"]
                     - _data["cooling[MW]"]
                 )
+                _data["baseload[%]"] = _data["baseload[MW]"] / _data["total[MW]"] * 100
+                _data["heating[%]"] = _data["heating[MW]"] / _data["total[MW]"] * 100
+                _data["cooling[%]"] = _data["cooling[MW]"] / _data["total[MW]"] * 100
             resstock[_building] = (
                 mo.md(str(_data))
                 if isinstance(_data,Exception)
@@ -337,6 +347,9 @@ def _(add_error, dt, fips, mo, os, pd, state_ui):
                     - _data["heating[MW]"]
                     - _data["cooling[MW]"]
                 )
+                _data["baseload[%]"] = _data["baseload[MW]"] / _data["total[MW]"] * 100
+                _data["heating[%]"] = _data["heating[MW]"] / _data["total[MW]"] * 100
+                _data["cooling[%]"] = _data["cooling[MW]"] / _data["total[MW]"] * 100
             comstock[_building] = (
                 mo.md(str(_data))
                 if isinstance(_data,Exception)
@@ -349,12 +362,14 @@ def _(add_error, dt, fips, mo, os, pd, state_ui):
 def _(
     com_buildings,
     comstock,
+    fraction_ui,
     graph_ui,
     mo,
     pd,
     res_buildings,
     resstock,
     timezone,
+    weather,
 ):
     # Generate tab contents
     with mo.status.spinner(
@@ -365,9 +380,9 @@ def _(
             resstock_ui = mo.ui.tabs(
                 {
                     res_buildings[x]: (
-                        y[["baseload[MW]", "heating[MW]", "cooling[MW]"]]
+                        y[[f"{z}[{'%' if fraction_ui.value else 'MW'}]" for z in ["baseload", "heating", "cooling"]]]
                         .resample("1d")
-                        .sum()
+                        .mean()
                         .plot.area(
                             figsize=(15, 10),
                             color=["g", "r", "b"],
@@ -376,10 +391,11 @@ def _(
                             xlabel=f"Date/Time ({timezone.name})"
                         )
                         if graph_ui.value
-                        else y
+                        else y.round(1)
                     )
                     for x, y in resstock.items() if isinstance(y,pd.DataFrame)
-                }
+                },
+                lazy=True,
             )
         except Exception as err:
             resstock_ui = str(err)
@@ -387,9 +403,9 @@ def _(
             comstock_ui = mo.ui.tabs(
                 {
                     com_buildings[x]: (
-                        y[["baseload[MW]", "heating[MW]", "cooling[MW]"]]
+                        y[[f"{z}[{'%' if fraction_ui.value else 'MW'}]" for z in ["baseload", "heating", "cooling"]]]
                         .resample("1d")
-                        .sum()
+                        .mean()
                         .plot.area(
                             figsize=(15, 10),
                             color=["g", "r", "b"],
@@ -398,59 +414,74 @@ def _(
                             xlabel=f"Date/Time ({timezone.name})"
                         )
                         if graph_ui.value
-                        else y
+                        else y.round(1)
                     )
                     for x, y in comstock.items() if isinstance(y,pd.DataFrame)
-                }
+                },
+                lazy=True,
             )
         except Exception as err:
             comstock_ui = str(err)
 
-    return comstock_ui, resstock_ui
+        _daily = weather["temperature[degC]"].resample("1d")
+        _data = pd.DataFrame(
+            {"Min": _daily.min(), "Mean": _daily.mean(), "Max": _daily.max()}
+        )
+        weather_ui = (
+            _data.plot(figsize=(15, 10), ylabel="Daily temperature [$^\circ$C]", grid=True, xlabel=f"Date/Time ({timezone.name})")
+            if graph_ui.value
+            else weather
+        )
+    return comstock_ui, resstock_ui, weather_ui
 
 
 @app.cell
-def _(graph_ui, pd, timezone, weather):
-    _daily = weather["temperature[degC]"].resample("1d")
-    _data = pd.DataFrame(
-        {"Min": _daily.min(), "Mean": _daily.mean(), "Max": _daily.max()}
-    )
-    weather_ui = (
-        _data.plot(figsize=(15, 10), ylabel="Daily temperature [$^\circ$C]", grid=True, xlabel=f"Date/Time ({timezone.name})")
-        if graph_ui.value
-        else weather
-    )
-    return (weather_ui,)
+def _(graph_ui, totals, weather):
+    _data = weather.join(totals)
+    _data["total[MW]"] = _data["baseload[MW]"] + _data["heating[MW]"] + _data["cooling[MW]"]
+    nerc_model = _data.plot.scatter("temperature[degC]","total[MW]",1,figsize=(15,10),xlabel="Temperature [$^\circ$C]",ylabel="Total load [MW]",grid=True) if graph_ui.value else _data.round(1)
+    return (nerc_model,)
 
 
 @app.cell
-def _():
-    models_ui = {"NERC": None, "Quantile": None, "Linear": None}
+def _(mo, nerc_model):
+    models_ui = mo.ui.tabs(
+        {"NERC": nerc_model, "Quantile": "TODO", "Linear": "TODO"}, lazy=True
+    )
     return (models_ui,)
 
 
 @app.cell
-def _(comstock, graph_ui, pd, resstock, timezone):
-    _totals = pd.concat(
-        [
-            sum(
-                [
-                    sum([x[f"{z}[MW]"] for x in y.values()])
-                    for y in [resstock, comstock]
-                ]
+def _(comstock, graph_ui, mo, pd, resstock, timezone):
+    try:
+        totals = pd.concat(
+            [
+                sum(
+                    [
+                        sum([x[f"{z}[MW]"] for x in y.values() if isinstance(x,pd.DataFrame)])
+                        for y in [resstock, comstock]
+                    ]
+                )
+                for z in ["baseload", "heating", "cooling"]
+            ],
+            axis=1,
+        )
+        totals_ui = (
+            totals.resample("1d")
+            .mean()
+            .plot.area(
+                figsize=(15, 10),
+                grid=True,
+                color=["g", "r", "b"],
+                xlabel=f"Date/Time ({timezone.name})",
+                ylabel="Total load [MW]",
             )
-            for z in ["baseload", "heating", "cooling"]
-        ],
-        axis=1,
-    )
-    totals_ui = (
-        _totals.resample("1d")
-        .mean()
-        .plot.area(figsize=(15, 10), grid=True, color=["g", "r", "b"],xlabel=f"Date/Time ({timezone.name})",ylabel="Total load [MW]")
-        if graph_ui.value
-        else _totals
-    )
-    return (totals_ui,)
+            if graph_ui.value
+            else totals.round(1)
+        )
+    except Exception as err:
+        tutals_ui = mo.md(err)
+    return totals, totals_ui
 
 
 @app.cell

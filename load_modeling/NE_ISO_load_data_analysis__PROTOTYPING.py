@@ -29,7 +29,7 @@ def _(Path, mo, pd):
         # years = [2020]
         df_list = []
         for _yr in years:
-            fp = Path('.') / 'RI_Data' / f'{_yr}_smd_hourly.xlsx' 
+            fp = Path('.') / 'NE_ISO_Data' / f'{_yr}_smd_hourly.xlsx' 
             df = pd.read_excel(fp, sheet_name=sheet)
             df['year'] = _yr
             df.index = pd.to_datetime(df['Date'].astype(str) + ' ' + df['Hr_End'].map(lambda x: f"{x-1}:00:00")) + pd.Timedelta(hours=1)
@@ -328,7 +328,7 @@ def _(ar_model, baseline_residuals, plt, sm, stats, use_set):
 
 @app.cell
 def _(mo):
-    mo.md("## Generate data for third year")
+    mo.md("""## Generate data for third year""")
     return
 
 
@@ -345,7 +345,7 @@ def _(make_H, make_basis_matrix, np, stats):
             new_window[-1] = new_val
             window = new_window
         return gen_data[-length:]
- 
+
     def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots):
         F = make_basis_matrix(
             num_harmonics=[6, 4, 3],

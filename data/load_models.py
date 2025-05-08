@@ -87,7 +87,7 @@ class Weather:
         name = f"G{county.fips[:2]}0{county.fips[2:]}0"
         file = f"{county.cache}/weather.csv"
         if not os.path.exists(file):
-            url = self._server.format(fips=county.name)
+            url = self._server.format(fips=name)
             try:
                 data = pd.read_csv(url,
                     index_col = [0],
@@ -272,7 +272,7 @@ class Load:
 
         if not self.data is None:
             self.index = np.array([int((float(x)-float(self.data.index.values[0]))/3600e9) for x in self.data.index.values])
-            self.timestamp = self.self.data.index.tz_localize("UTC").tz_convert(county.timezone)
+            self.timestamp = self.data.index.tz_localize("UTC").tz_convert(county.timezone)
             self.units = {}
             for column in [x for x in self.data.columns if "[" in x]:
                 cname,cunit = column.split("[")

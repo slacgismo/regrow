@@ -281,13 +281,6 @@ def _(ar_model, baseline_residuals, np, plt, stats, use_set):
 
 
 @app.cell
-def _():
-    import scipy.stats as stats
-    import statsmodels.api as sm
-    return sm, stats
-
-
-@app.cell
 def _(ar_model, baseline_residuals, plt, sm, stats, use_set):
     _pplot = sm.ProbPlot(baseline_residuals[use_set] - ar_model, stats.laplace, fit=True)
     _fig1 = _pplot.ppplot(line="45")
@@ -514,6 +507,8 @@ def _():
     from pathlib import Path
     import matplotlib.pyplot as plt
     import seaborn as sns
+    import scipy.stats as stats
+    import statsmodels.api as sm
     from spcqe import make_basis_matrix, make_regularization_matrix
     return (
         Path,
@@ -524,7 +519,9 @@ def _():
         np,
         pd,
         plt,
+        sm,
         sns,
+        stats,
     )
 
 

@@ -6,6 +6,12 @@ app = marimo.App(width="medium")
 
 @app.cell
 def _(mo):
+    mo.md('In this version, we take the log of the load data before model fitting. This performs slightly better, suggesting the components are multiplicative rather than additive.')
+    return
+
+
+@app.cell
+def _(mo):
     SHEETS = [
         "ISO NE CA",
         "ME",
@@ -63,8 +69,8 @@ def _(tabs):
 
 
 @app.cell
-def _(df):
-    y = df.loc["2020":"2021"]["RT_Demand"]
+def _(df, np):
+    y = np.log(df.loc["2020":"2021"]["RT_Demand"])
     x = df.loc["2020":"2021"]["Dry_Bulb"]
     return x, y
 
@@ -76,15 +82,7 @@ def _(mo):
 
 
 @app.cell
-def _(
-    make_H,
-    make_basis_matrix,
-    make_regularization_matrix,
-    np,
-    running_view,
-    x,
-    y,
-):
+def _(make_H, make_basis_matrix, make_regularization_matrix, np, x, y):
     # mult-Fourier basis matrix with cross terms
     nharmon = [6, 4, 3]
     F = make_basis_matrix(
@@ -98,13 +96,11 @@ def _(
         weight=1,
         periods=[365.2425 * 24, 7 * 24, 24]
     )
-    # Auto-regressive terms NOT PART OF BASELINE MODEL
-    A = running_view(y, window=72)
     # Temperature terms
     nK = 10
     knots = np.linspace(np.min(x), np.max(x), nK)
     H = make_H(x, knots, include_offset=False)
-    return A, F, H, Wf, knots
+    return F, H, Wf, knots
 
 
 @app.cell
@@ -114,44 +110,47 @@ def _(mo):
 
 
 @app.cell
-def _(A, F, H, Wf, cvx, y):
-    a = cvx.Variable(F.shape[1])
-    b = cvx.Variable(A.shape[1])
-    c = cvx.Variable(H.shape[1]) 
-    # error = cvx.sum_squares(y.values[use_set] - F[use_set] @ a - A[use_set] @ b - H[use_set] @ c) / np.sum(use_set)
+def _(F, H, Wf, cvx, y):
+    a = cvx.Variable(F.shape[1]) # coefficients for time features
+    c = cvx.Variable(H.shape[1]) # coefficients for temperature features
     error = cvx.sum_squares(y.values - F @ a - H @ c) / F.shape[0]
-    # error = cvx.sum_squares(y.values[use_set] - F[use_set,0] * a[0] - H[use_set] @ c) / np.sum(use_set)
-    regularization = 1e-4 * cvx.sum_squares(Wf @ a) + cvx.norm1(b) + 1e-4 * cvx.sum_squares(c)
+    regularization = 1e-4 * cvx.sum_squares(Wf @ a) + 1e-4 * cvx.sum_squares(c)
     problem = cvx.Problem(cvx.Minimize(error + regularization))
     problem.solve(verbose=False)
     model = (F @ a + H @ c).value
-    return a, b, c, model
+    return a, c, model
 
 
 @app.cell
 def _(mo, model, np, y):
-    rmse = np.sqrt(np.average(np.power(y.values - model, 2)))
-    mo.md(f"RMS error of model fit: {rmse:.2f}, or {rmse * 100 / np.nanmean(y):.2f}% of average")
+    rmse = np.sqrt(np.average(np.power(np.exp(y.values) - np.exp(model), 2)))
+    mo.md(f"RMS error of model fit: {rmse:.2f}, or {rmse * 100 / np.nanmean(np.exp(y)):.2f}% of average")
     return
 
 
 @app.cell
-def _(a, b, c, plt):
-    _fig, _ax = plt.subplots(nrows=3, sharey=True)
+def _(a, c, mo, model, np, r2_score, y):
+    r2 = r2_score(np.exp(y.values), np.exp(model))
+    r2_adj = 1 - (1 - r2) * (len(y) - 1) / (len(y) + len(a[1:].value) + len(c.value) - 1)
+    mo.vstack([f"R2: {r2:.3f}", f"R2-adj: {r2_adj:.3f}"])
+    return
+
+
+@app.cell
+def _(a, c, plt):
+    _fig, _ax = plt.subplots(nrows=2, sharey=False)
     _ax[0].stem(a[1:].value)
-    _ax[1].stem(b.value)
-    _ax[2].stem(c.value)
+    _ax[1].stem(c.value)
     plt.gcf()
     return
 
 
 @app.cell
-def _(a, mo, model, np, plt, y):
-    plt.plot(y.values, label='actual', ls='--')
-    plt.plot(model, label='predicted')
-    plt.axhline(a[0].value, label='model intercept', linewidth=1, color='gray')
-    plt.axhline(np.average(y), ls=':', label='average', linewidth=1, color='gray')
-    plt.axhline(np.median(y), ls='--', label='median', linewidth=1, color='gray')
+def _(F, H, a, c, mo, model, np, plt, y):
+    plt.plot(np.exp(F @ a.value) - np.average(np.exp(F @ a.value)) + np.average(np.exp(y)), linewidth=1, color='grey', label='time only')
+    plt.plot(np.exp(H @ c.value + a[0].value), linewidth=1, color='grey', label='temp only', ls=':')
+    plt.plot(np.exp(y.values), label='actual', ls='--')
+    plt.plot(np.exp(model), label='predicted')
     plt.legend()
     mo.mpl.interactive(plt.gcf())
     return
@@ -181,12 +180,17 @@ def _(model, plt, y):
 
 
 @app.cell
-def _(a, c, df, knots, make_H, np, plt, x):
+def _(y):
+    y.shape
+    return
+
+
+@app.cell
+def _(a, c, df, knots, make_H, np, plt, x, y):
     x_sort = np.sort(x.values)
-    for _yr in [2020, 2021]:
-        plt.scatter(df[df['year'] == _yr]['Dry_Bulb'], df[df['year'] == _yr]['RT_Demand'], marker='.',
-                    label=_yr, s=10, alpha=.5)
-    plt.plot(x_sort, (make_H(x_sort, knots) @ c).value + a[0].value, label='temperature response')
+    plt.scatter(df.loc["2020":"2021"]['Dry_Bulb'].values, np.exp(y), marker='.',
+                label='data', s=10, alpha=.5, color='orange')
+    plt.plot(x_sort, np.exp((make_H(x_sort, knots) @ c).value + a[0].value), label='temperature response')
     plt.title('Inferred temperature dependence')
     plt.legend()
     return
@@ -200,15 +204,13 @@ def _(mo):
 
 @app.cell
 def _(baseline_residuals, cvx, np, running_view):
-    weight_ar = 0
     B = running_view(baseline_residuals, 36)
     # usable records with AR lags
     use_set = np.all(~np.isnan(B), axis=1)
     theta = cvx.Variable(B.shape[1])
     constant = cvx.Variable()
     problem2 = cvx.Problem(
-        cvx.Minimize(cvx.norm1(baseline_residuals[use_set] - B[use_set] @ theta - constant)
-                     + weight_ar * cvx.norm1(theta)),
+        cvx.Minimize(cvx.sum_squares(baseline_residuals[use_set] - B[use_set] @ theta - constant)),
         [cvx.norm1(theta) <= 0.95]
     )
     problem2.solve(solver='CLARABEL')
@@ -236,6 +238,15 @@ def _(ar_model, baseline_residuals, mo, np, use_set, y):
 def _(plt, theta):
     plt.stem(theta.value[::-1])
     plt.title('AR coefficients')
+    plt.gcf()
+    return
+
+
+@app.cell
+def _(np, plt, theta):
+    plt.stem(np.abs(theta.value[::-1]))
+    plt.yscale('log')
+    plt.title('magnitude of AR coefficients')
     plt.gcf()
     return
 
@@ -337,7 +348,7 @@ def _(make_H, make_basis_matrix, np, stats):
             new_window = np.roll(window, -1)
             new_window[-1] = new_val
             window = new_window
-        return gen_data[-length:]
+        return np.exp(gen_data[-length:])
 
     def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots):
         F = make_basis_matrix(
@@ -348,7 +359,7 @@ def _(make_H, make_basis_matrix, np, stats):
         F = F[time_idxs]
         H = make_H(temp_data, knots, include_offset=False)
         baseline = F @ time_coeff + H @ temp_coeff
-        return baseline
+        return np.exp(baseline)
     return predict_baseline, roll_out_ar_noise
 
 
@@ -360,6 +371,28 @@ def _(a, c, df, knots, np, predict_baseline):
 
 
 @app.cell
+def _(
+    constant,
+    df,
+    lap_loc,
+    lap_scale,
+    loc_sldr,
+    np,
+    roll_out_ar_noise,
+    scale_sldr,
+    theta,
+):
+    new_noise = roll_out_ar_noise(np.sum(df['year'] == 2022), theta.value, constant.value, lap_loc+loc_sldr.value, lap_scale*scale_sldr.value)
+    return (new_noise,)
+
+
+@app.cell
+def _(new_baseline, new_noise):
+    new_residuals = new_baseline * new_noise - new_baseline
+    return (new_residuals,)
+
+
+@app.cell
 def _(df, mo, new_baseline, np):
     test_mae = np.nanmean(np.abs(df.loc["2022"]["RT_Demand"].values - new_baseline))
     mo.md(f"test MAE: {test_mae:.2f}, or {100*test_mae / np.nanmean(df.loc["2022"]["RT_Demand"].values):.2f}% of average")
@@ -367,12 +400,12 @@ def _(df, mo, new_baseline, np):
 
 
 @app.cell
-def _(df, new_baseline, new_residuals, np, pd):
+def _(df, new_baseline, new_noise, np, pd):
     ppower_actual = np.max(df.loc["2022"]["RT_Demand"].values)
-    ppower_predict = np.max(new_baseline + new_residuals)
+    ppower_predict = np.max(new_baseline * new_noise)
     ppower_predict_noar = np.max(new_baseline)
     ppower_time_actual = np.argmax(df.loc["2022"]["RT_Demand"].values)
-    ppower_time_predict =  np.argmax(new_baseline + new_residuals)
+    ppower_time_predict =  np.argmax(new_baseline * new_noise)
     ppower_time_predict_noar =  np.argmax(new_baseline)
     _index = ["actual", 'predicted', 'predicted no AR model']
     _data = {
@@ -384,11 +417,11 @@ def _(df, new_baseline, new_residuals, np, pd):
 
 
 @app.cell
-def _(df, new_baseline, new_residuals, plt):
+def _(df, new_baseline, new_noise, plt):
     plt.plot(df.loc["2022"]["RT_Demand"].values, new_baseline, marker='.', linewidth=1, alpha=.4, label='true')
-    plt.plot(new_baseline+new_residuals, new_baseline, marker='.', linewidth=1, alpha=.4, label='sampled')
-    plt.xlabel('actual')
-    plt.ylabel('predicted')
+    plt.plot(new_baseline*new_noise, new_baseline, marker='.', linewidth=1, alpha=.4, label='sampled')
+    plt.xlabel('realization')
+    plt.ylabel('baseline')
     _xlim = plt.xlim()
     _ylim = plt.ylim()
     plt.plot([-1e6, 1e6], [-1e6, 1e6], color='yellow', ls='--', linewidth=1)
@@ -408,9 +441,15 @@ def _(mo):
 
 
 @app.cell
+def _(df, new_baseline):
+    df.loc["2022"]["RT_Demand"].values - new_baseline
+    return
+
+
+@app.cell
 def _(df, new_baseline, new_residuals, np, plt):
-    plt.hist(df.loc["2022"]["RT_Demand"].values - new_baseline, bins=100, label='true residuals', alpha=0.75)
-    plt.hist(new_residuals, bins=100, label='sampled residuals', alpha=0.75)
+    plt.hist(df.loc["2022"]["RT_Demand"].values - new_baseline, bins=100, label='true residuals', alpha=0.75, density=True)
+    plt.hist(new_residuals, bins=100, label='sampled residuals', alpha=0.75, density=True)
     plt.axvline(np.median(df.loc["2022"]["RT_Demand"].values - new_baseline), ls='--')
     plt.axvline(np.median(new_residuals), ls='--', color='orange')
     plt.axvline(np.quantile(df.loc["2022"]["RT_Demand"].values - new_baseline, 0.95), ls=':')
@@ -427,31 +466,15 @@ def _(loc_sldr, mo, scale_sldr):
 
 
 @app.cell
-def _(df, mo, new_baseline, new_residuals, plt):
+def _(df, mo, new_baseline, new_noise, plt):
     plt.plot(new_baseline, label='predicted baseline', linewidth=1, color='red', ls=':')
     plt.plot(df.loc["2022"]["RT_Demand"].values, label='actual', ls='--')
-    plt.plot(new_baseline+new_residuals, label='sampled')
+    plt.plot(new_baseline*new_noise, label='sampled')
 
     plt.legend()
     plt.title("Holdout year (2022)")
     mo.mpl.interactive(plt.gcf())
     return
-
-
-@app.cell
-def _(
-    constant,
-    df,
-    lap_loc,
-    lap_scale,
-    loc_sldr,
-    np,
-    roll_out_ar_noise,
-    scale_sldr,
-    theta,
-):
-    new_residuals = roll_out_ar_noise(np.sum(df['year'] == 2022), theta.value, constant.value, lap_loc+loc_sldr.value, lap_scale*scale_sldr.value)
-    return (new_residuals,)
 
 
 @app.cell
@@ -500,13 +523,6 @@ def _(np):
 
 
 @app.cell
-def _(A, plt, sns):
-    sns.heatmap(A[:100])
-    plt.gcf()
-    return
-
-
-@app.cell
 def _(df, mo, scatter_fig, ts_fig):
     tabs = mo.ui.tabs({
         'table': df,
@@ -550,6 +566,7 @@ def _():
     import matplotlib.pyplot as plt
     import seaborn as sns
     import scipy.stats as stats
+    from sklearn.metrics import r2_score
     import statsmodels.api as sm
     from spcqe import make_basis_matrix, make_regularization_matrix
     return (
@@ -561,8 +578,8 @@ def _():
         np,
         pd,
         plt,
+        r2_score,
         sm,
-        sns,
         stats,
     )
 

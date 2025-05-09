@@ -26,56 +26,8 @@ def _(mo):
 
 
 @app.cell
-def _(counties, mo):
-    # select state
-    _options = counties.usps.unique()
-    state_ui = mo.ui.dropdown(
-        label="State:", options=_options, value=list(_options)[0]
-    )
-    return (state_ui,)
-
-
-@app.cell
-def _(pd):
-    counties = pd.read_csv("counties.csv",index_col="geocode")
-    return (counties,)
-
-
-@app.cell
-def _(counties, mo, state_ui):
-    _options = {
-        y.county: x for x, y in counties.iterrows() if y.usps == state_ui.value
-    }
-    get_errors, set_errors = mo.state({})
-
-
-    def add_error(group,message):
-        errors = get_errors()
-        if group not in errors:
-            errors[group] = []
-        errors[group].append(message)
-        set_errors(errors)
-
-
-    county_ui = mo.ui.dropdown(
-        label="County:",
-        options=_options,
-        value=list(_options)[0],
-        on_change=lambda x: set_errors({}),
-    )
-    return add_error, county_ui, get_errors
-
-
-@app.cell
-def _(mo):
-    graph_ui = mo.ui.checkbox(label="Show graph",value=True)
-    fraction_ui = mo.ui.checkbox(label="Show fractional load")
-    return fraction_ui, graph_ui
-
-
-@app.cell
-def _(county_ui, fraction_ui, graph_ui, mo, state_ui):
-    mo.hstack([state_ui,county_ui,graph_ui,fraction_ui],justify='start')
+def _(county_ui, fraction_ui, graph_ui, mo, state_ui, wecc_ui):
+    mo.hstack([wecc_ui,state_ui,county_ui,graph_ui,fraction_ui],justify='start')
     return
 
 
@@ -89,6 +41,7 @@ def _(
     totals_ui,
     weather_ui,
 ):
+    # main UI
     mo.ui.tabs({
         "Residential" : resstock_ui,
         "Commercial" : comstock_ui,
@@ -102,6 +55,81 @@ def _(
 
 
 @app.cell
+def _(mo):
+    # keep track of state selection when selecting WECC region
+    get_state,set_state = mo.state("CA")
+    return get_state, set_state
+
+
+@app.cell
+def _(load_models):
+    counties = load_models.County._counties
+    return (counties,)
+
+
+@app.cell
+def _(counties, get_state, load_models, mo, set_state, wecc_ui):
+    # select state
+    _options = load_models.County._regions["WECC"] if wecc_ui.value else counties.usps.unique()
+    state_ui = mo.ui.dropdown(
+        label="State:", options=_options, value=get_state(), on_change=set_state
+    )
+    return (state_ui,)
+
+
+@app.cell
+def _(mo):
+    def add_error(group, message):
+        errors = get_errors()
+        if group not in errors:
+            errors[group] = []
+        errors[group].append(message)
+        set_errors(errors)
+
+    get_errors, set_errors = mo.state({})
+    return get_errors, set_errors
+
+
+@app.cell
+def _(counties, mo, set_errors, state_ui):
+    _options = {
+        y.county: x for x, y in counties.iterrows() if y.usps == state_ui.value
+    }
+
+    county_ui = mo.ui.dropdown(
+        label="County:",
+        options=_options,
+        value=list(_options)[0],
+        on_change=lambda x: set_errors({}),
+    )
+    return (county_ui,)
+
+
+@app.cell
+def _(mo):
+    wecc_ui = mo.ui.checkbox(label="WECC",value=True)
+    graph_ui = mo.ui.checkbox(label="Show graph",value=True)
+    fraction_ui = mo.ui.checkbox(label="Show fractional load")
+    return fraction_ui, graph_ui, wecc_ui
+
+
+@app.cell
+def _(county_ui, load_models):
+    county = load_models.County(county_ui.value)
+    weather = load_models.Weather(county).data
+    return county, weather
+
+
+@app.cell
+def _(county, load_models):
+    building_loads = {sector:{building:
+        load_models.Loads(county=county,sectors=[sector],buildings=[building])
+        for building in load_models.Loads._buildings[sector]}
+        for sector in load_models.Loads._sectors}
+    return (building_loads,)
+
+
+@app.cell
 def _(TIMEZONES, TZINFO, counties, county_ui, puma):
     # Generate FIPS code and timezone info
     fips = f"{counties.loc[county_ui.value]['fips']:05.0f}"
@@ -112,249 +140,34 @@ def _(TIMEZONES, TZINFO, counties, county_ui, puma):
     else:
         raise Exception(f"unable to find timezone for {fips=})")
     timezone = TZINFO[tz]
-    return fips, timezone
+    return (timezone,)
 
 
 @app.cell
-def _(dt, fips, os, pd, state_ui, timezone):
-    # weather data
-    _server = "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/resstock_amy2018_release_1/weather/amy2018/{fips}.csv"
-    _name = f"g{fips[:2]}0{fips[2:]}0-weather"
-    _file = f"geodata/rawdata/{state_ui.value}/{_name}.csv"
-    if not os.path.exists(_file):
-        _url = _server.format(fips=f"G{fips[:2]}0{fips[2:]}0_2018")
-        _data = pd.read_csv(_url,
-            index_col = [0],
-            usecols = [0,1,3,5],
-            parse_dates = [0],
-            dtype = float,
-            low_memory = True,
-            header=None,
-            skiprows=1,
-            )
-        _data.columns = ["temperature[degC]","wind[m/s]","solar[W/m^2]"]
-        _data.index = _data.index.tz_localize(timezone).tz_convert("UTC").tz_localize(None)-dt.timedelta(hours=1) # localize and change to leading timestamp
-        _data.index.name = "timestamp"
-        weather = _data.resample("1h").mean().round(1)
-        weather.to_csv(_file,header=True,index=True)
-    else:
-        weather = pd.read_csv(_file,index_col=[0],parse_dates=[0],low_memory=True)
-
-    return (weather,)
-
-
-@app.cell
-def _(add_error, dt, fips, mo, os, pd, state_ui, timezone):
+def _(building_loads, load_models):
     # residential building data
-    _server = "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/resstock_amy2018_release_1/timeseries_aggregates/by_county/state={usps}/{fips}.csv"
-    res_buildings = {
-        "single-family_detached" : "House",
-        "single-family_attached" : "Townhouse",
-        "multi-family_with_2_-_4_units" : "Small apartment/condo",
-        "multi-family_with_5plus_units" : "Large apartment/condo",
-        "mobile_home" : "Mobile home",
-    }
     resstock = {}
-    with mo.status.progress_bar(
-        collection=res_buildings,
-        title="Loading residential building data...",
-        remove_on_exit=True,
-    ) as _bar:
-        for _building in res_buildings:
-            _name = f"g{fips[:2]}0{fips[2:]}0-{_building}"
-            _file = f"geodata/rawdata/{state_ui.value}/{_name}.csv"
-            if os.path.exists(_file):
-                _bar.update(subtitle=f"Reading {_name}...")
-                _data = pd.read_csv(
-                    _file, index_col=[0], parse_dates=[0], low_memory=True
-                )
-            else:
-                _repo = _server.format(usps=state_ui.value, fips=_name)
-                _bar.update(subtitle=f"Downloading {_name}...")
-
-                try:
-                    _data = pd.read_csv(
-                        _repo,
-                        index_col=["timestamp"],
-                        usecols=[
-                            "timestamp",
-                            "in.geometry_building_type_recs",
-                            "out.electricity.cooling.energy_consumption",
-                            "out.electricity.heating.energy_consumption",
-                            "out.electricity.heating_supplement.energy_consumption",
-                            "out.electricity.total.energy_consumption",
-                        ],
-                        parse_dates=["timestamp"],
-                        converters={
-                            "out.electricity.cooling.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.heating.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.heating_supplement.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.total.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                        },
-                        low_memory=True,
-                    )
-                    _data.columns = [
-                        "building_type",
-                        "cooling[MW]",
-                        "heating[MW]",
-                        "auxheat[MW]",
-                        "total[MW]",
-                    ]
-                    _data["heating[MW]"] += _data["auxheat[MW]"]
-                    _data.drop("auxheat[MW]", axis=1, inplace=True)
-                    _data.index = (
-                        _data.index.tz_localize(timezone)
-                        .tz_convert("UTC")
-                        .tz_localize(None)
-                    )
-                    _data.index = _data.index - dt.timedelta(
-                        minutes=15
-                    )  # change lagging timestamps to leading timestamp
-                    _data = pd.DataFrame(_data.resample("1h").sum())
-                    _data["building_type"] = _building
-                    os.makedirs(f"geodata/rawdata/{state_ui.value}", exist_ok=True)
-                    _data.round(6).to_csv(_file, header=True, index=True)
-                except Exception as err:
-                    add_error("residential",f"unable to download {_name} from {_repo} failed ({err})")
-                    _data = err
-            if isinstance(_data, pd.DataFrame):
-                _data["baseload[MW]"] = (
-                    _data["total[MW]"]
-                    - _data["heating[MW]"]
-                    - _data["cooling[MW]"]
-                )
-                _data["baseload[%]"] = _data["baseload[MW]"] / _data["total[MW]"] * 100
-                _data["heating[%]"] = _data["heating[MW]"] / _data["total[MW]"] * 100
-                _data["cooling[%]"] = _data["cooling[MW]"] / _data["total[MW]"] * 100
-            resstock[_building] = (
-                mo.md(str(_data))
-                if isinstance(_data,Exception)
-                else _data.drop(["total[MW]", "building_type"], axis=1)
-            )
+    res_buildings = load_models.Loads._buildings["residential"]
+    for _building, _data in building_loads["residential"].items():
+        _data.data["baseload[%]"] = _data.data["baseload[MW]"] / _data.data["total[MW]"] * 100
+        _data.data["auxheat[%]"] = _data.data["auxheat[MW]"] / _data.data["total[MW]"] * 100
+        _data.data["heating[%]"] = _data.data["heating[MW]"] / _data.data["total[MW]"] * 100
+        _data.data["cooling[%]"] = _data.data["cooling[MW]"] / _data.data["total[MW]"] * 100
+        resstock[_building] = _data.data
     return res_buildings, resstock
 
 
 @app.cell
-def _(add_error, dt, fips, mo, os, pd, state_ui):
+def _(building_loads, load_models):
     # commercial building data
-    _server = "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/comstock_amy2018_release_1/timeseries_aggregates/by_county/state={usps}/{fips}.csv"
-    com_buildings = {
-        "largeoffice": "Large office",
-        "secondaryschool" : "Large school",
-        "largehotel" : "Large hotel",
-        "hospital" : "Hospital",
-        "mediumoffice" : "Medium Office",
-        "retailstripmall" : "Medium retail",
-        "outpatient" : "Healthcare",
-        "smalloffice" : "Small office",
-        "retailstandalone" : "Small retail",
-        "primaryschool" : "Small school",
-        "smallhotel" : "Small hotel",
-        "fullservicerestaurant" : "Restaurant",
-        "quickservicerestaurant" : "Fast food",
-        "warehouse" : "Warehouse",
-    }
     comstock = {}
-    with mo.status.progress_bar(
-        collection=com_buildings,
-        title="Loading commercial building data...",
-        remove_on_exit=True,
-    ) as _bar:
-        for _building in com_buildings:
-            _name = f"g{fips[:2]}0{fips[2:]}0-{_building}"
-            _file = f"geodata/rawdata/{state_ui.value}/{_name}.csv"
-            if os.path.exists(_file):
-                _bar.update(subtitle=f"Reading {_name}...")
-                _data = pd.read_csv(
-                    _file, index_col=[0], parse_dates=[0], low_memory=True
-                )
-            else:
-                _repo = _server.format(usps=state_ui.value, fips=_name)
-                _bar.update(subtitle=f"Downloading {_name}...")
-
-                try:
-                    _data = pd.read_csv(
-                        _repo,
-                        index_col=["timestamp"],
-                        usecols=[
-                            "timestamp",
-                            "in.geometry_building_type_recs",
-                            "out.electricity.cooling.energy_consumption",
-                            "out.electricity.heating.energy_consumption",
-                            "out.electricity.heating_supplement.energy_consumption",
-                            "out.electricity.total.energy_consumption",
-                        ],
-                        parse_dates=["timestamp"],
-                        converters={
-                            "out.electricity.cooling.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.heating.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.heating_supplement.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.total.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                        },
-                        low_memory=True,
-                    )
-                    _data.columns = [
-                        "building_type",
-                        "cooling[MW]",
-                        "heating[MW]",
-                        "auxheat[MW]",
-                        "total[MW]",
-                    ]
-                    _data["heating[MW]"] += _data["auxheat[MW]"]
-                    _data.drop("auxheat[MW]", axis=1, inplace=True)
-                    _data.index = (
-                        _data.index.tz_localize("EST")
-                        .tz_convert("UTC")
-                        .tz_localize(None)
-                    )
-                    _data.index = _data.index - dt.timedelta(
-                        minutes=15
-                    )  # change lagging timestamps to leading timestamp
-                    _data = pd.DataFrame(_data.resample("1h").sum())
-                    _data["building_type"] = _building
-                    os.makedirs(f"geodata/rawdata/{state_ui.value}", exist_ok=True)
-                    _data.round(6).to_csv(_file, header=True, index=True)
-                except Exception as err:
-                    add_error("commercial",f"unable to download {_name} from {_repo} failed ({err})")
-                    _data = err
-            if isinstance(_data, pd.DataFrame):
-                _data["baseload[MW]"] = (
-                    _data["total[MW]"]
-                    - _data["heating[MW]"]
-                    - _data["cooling[MW]"]
-                )
-                _data["baseload[%]"] = _data["baseload[MW]"] / _data["total[MW]"] * 100
-                _data["heating[%]"] = _data["heating[MW]"] / _data["total[MW]"] * 100
-                _data["cooling[%]"] = _data["cooling[MW]"] / _data["total[MW]"] * 100
-            comstock[_building] = (
-                mo.md(str(_data))
-                if isinstance(_data,Exception)
-                else _data.drop(["total[MW]", "building_type"], axis=1)
-            )
+    com_buildings = load_models.Loads._buildings["commercial"]
+    for _building, _data in building_loads["commercial"].items():
+        _data.data["baseload[%]"] = _data.data["baseload[MW]"] / _data.data["total[MW]"] * 100
+        _data.data["auxheat[%]"] = _data.data["auxheat[MW]"] / _data.data["total[MW]"] * 100
+        _data.data["heating[%]"] = _data.data["heating[MW]"] / _data.data["total[MW]"] * 100
+        _data.data["cooling[%]"] = _data.data["cooling[MW]"] / _data.data["total[MW]"] * 100
+        comstock[_building] = _data.data
     return com_buildings, comstock
 
 
@@ -399,6 +212,7 @@ def _(
             )
         except Exception as err:
             resstock_ui = str(err)
+    
         try:
             comstock_ui = mo.ui.tabs(
                 {
@@ -437,6 +251,7 @@ def _(
 
 @app.cell
 def _(graph_ui, totals, weather):
+    # NERC model
     _data = weather.join(totals)
     _data["total[MW]"] = _data["baseload[MW]"] + _data["heating[MW]"] + _data["cooling[MW]"]
     nerc_model = _data.plot.scatter("temperature[degC]","total[MW]",1,figsize=(15,10),xlabel="Temperature [$^\circ$C]",ylabel="Total load [MW]",grid=True) if graph_ui.value else _data.round(1)
@@ -445,6 +260,7 @@ def _(graph_ui, totals, weather):
 
 @app.cell
 def _(mo, nerc_model):
+    # Models UI
     models_ui = mo.ui.tabs(
         {"NERC": nerc_model, "Quantile": "TODO", "Linear": "TODO"}, lazy=True
     )
@@ -453,6 +269,7 @@ def _(mo, nerc_model):
 
 @app.cell
 def _(comstock, graph_ui, mo, pd, resstock, timezone):
+    # Totals UI
     try:
         totals = pd.concat(
             [
@@ -486,6 +303,7 @@ def _(comstock, graph_ui, mo, pd, resstock, timezone):
 
 @app.cell
 def _(get_errors, mo):
+    # Error logs
     errors_ui = mo.vstack(
         [
             mo.md("## Processing results"),
@@ -517,7 +335,7 @@ def _():
         "MST" : TZ("MST",-7,0),
         "PST" : TZ("PST",-8,0),
     }
-    return TIMEZONES, TZINFO, dt, mo, os, pd
+    return TIMEZONES, TZINFO, load_models, mo, pd
 
 
 if __name__ == "__main__":

@@ -160,21 +160,18 @@ class Load:
         "residential": "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/resstock_amy2018_release_1/timeseries_aggregates/by_county/state={usps}/{fips}-{building}.csv",
         "commercial": "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/comstock_amy2018_release_1/timeseries_aggregates/by_county/state={usps}/{fips}-{building}.csv",
     }
-    _usecols = {
-        "residential": [
-            "timestamp",
-            "out.electricity.cooling.energy_consumption",
-            "out.electricity.heating.energy_consumption",
-            "out.electricity.heating_supplement.energy_consumption",
-            "out.electricity.total.energy_consumption",
-        ],
-        "commercial": [
+    _usecols = [
             "timestamp",
             "out.electricity.cooling.energy_consumption",
             "out.electricity.heating.energy_consumption",
             "out.electricity.heating_supplement.energy_consumption",
             "out.electricity.total.energy_consumption",
         ]
+    _converters = {
+        "out.electricity.cooling.energy_consumption": lambda x: float(x) / 1000,
+        "out.electricity.heating.energy_consumption": lambda x: float(x) / 1000,
+        "out.electricity.heating_supplement.energy_consumption": lambda x: float(x) / 1000,
+        "out.electricity.total.energy_consumption": lambda x: float(x) / 1000,
     }
 
     def __init__(self,county:County,
@@ -217,28 +214,14 @@ class Load:
                 try:
                     data = pd.read_csv(url,
                         index_col=["timestamp"],
-                        usecols=self._usecols[sector],
+                        usecols=lambda x: x in self._usecols,
                         parse_dates=["timestamp"],
-                        converters={
-                            "out.electricity.cooling.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.heating.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.heating_supplement.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                            "out.electricity.total.energy_consumption": lambda x: float(
-                                x
-                            )
-                            / 1000,
-                        },
+                        converters=self._converters,
                         low_memory=True,
                         )
+                    for column in self._converters:
+                        if column not in data.columns:
+                            data[column] = 0.0
                     data.columns = [
                         "cooling[MW]",
                         "heating[MW]",

@@ -9,6 +9,7 @@ import numpy as np
 import re
 from tzinfo import TIMEZONES, TZ
 import states
+import matplotlib.pyplot as plt
 
 NAME = os.path.splitext(os.path.split(__file__)[1])[0]
 
@@ -19,11 +20,17 @@ TZINFO={
     "PST" : TZ("PST",-8,0),
 }
 CACHEDIR="./geodata/buildings"
-VERBOSE = True
+VERBOSE = True # enable verbose output
+WARNING = True # enable warning output
+DEBUG = True # enable traceback on exception handlers
 
 def verbose(msg):
-    print(f"VERBOSE [{NAME}]: {msg}",file=sys.stderr)
+    if VERBOSE:
+        print(f"VERBOSE [{NAME}]: {msg}",file=sys.stderr)
 
+def warning(msg):
+    if WARNING:
+        print(f"WARNING [{NAME}]: {msg}",file=sys.stderr)
 
 class County:
     """County data"""
@@ -126,7 +133,7 @@ class Weather:
     def __getitem__(self,name:str):
         return self.data[name]
 
-class Load:
+class LoadData:
     """Load data"""
 
     _loads = ["total","baseline","heating","cooling"]
@@ -160,13 +167,13 @@ class Load:
         "residential": "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/resstock_amy2018_release_1/timeseries_aggregates/by_county/state={usps}/{fips}-{building}.csv",
         "commercial": "https://oedi-data-lake.s3.amazonaws.com/nrel-pds-building-stock/end-use-load-profiles-for-us-building-stock/2021/comstock_amy2018_release_1/timeseries_aggregates/by_county/state={usps}/{fips}-{building}.csv",
     }
-    _usecols = [
-            "timestamp",
-            "out.electricity.cooling.energy_consumption",
-            "out.electricity.heating.energy_consumption",
-            "out.electricity.heating_supplement.energy_consumption",
-            "out.electricity.total.energy_consumption",
-        ]
+    _columns = {
+            "timestamp": "timestamp",
+            "out.electricity.cooling.energy_consumption": "cooling[MW]",
+            "out.electricity.heating.energy_consumption": "heating[MW]",
+            "out.electricity.heating_supplement.energy_consumption": "auxheat[MW]",
+            "out.electricity.total.energy_consumption": "total[MW]",
+        }
     _converters = {
         "out.electricity.cooling.energy_consumption": lambda x: float(x) / 1000,
         "out.electricity.heating.energy_consumption": lambda x: float(x) / 1000,
@@ -214,22 +221,18 @@ class Load:
                 try:
                     data = pd.read_csv(url,
                         index_col=["timestamp"],
-                        usecols=lambda x: x in self._usecols,
+                        usecols=lambda x: x in self._columns,
                         parse_dates=["timestamp"],
                         converters=self._converters,
                         low_memory=True,
                         )
                     for column in self._converters:
                         if column not in data.columns:
+                            warning(f"{repr(column)} not found in {repr(building)} data for {repr(name)}")
                             data[column] = 0.0
-                    data.columns = [
-                        "cooling[MW]",
-                        "heating[MW]",
-                        "auxheat[MW]",
-                        "total[MW]",
-                    ]
-                    data["heating[MW]"] += data["auxheat[MW]"]
-                    data.drop("auxheat[MW]", axis=1, inplace=True)
+                    data.rename(self._columns,axis=1,inplace=True)
+                    data["heating[MW]"] += data["altheat[MW]"]
+                    data["baseload[MW]"] = data["total[MW]"] - data["cooling[MW]"] - data["heating[MW]"]
                     data.index = (
                         data.index.tz_localize("EST" if sector == "commercial" else county.timezone)
                         .tz_convert("UTC")
@@ -243,6 +246,8 @@ class Load:
                 except Exception as err:
                     print(f"ERROR [{repr(url)}]: {err}",file=sys.stderr)
                     data = None
+                    if DEBUG:
+                        raise
             else:
                 verbose(f"Reloading {building}...")
                 data = pd.read_csv(file,index_col=[0],parse_dates=[0],low_memory=True)
@@ -261,6 +266,7 @@ class Load:
                 cname,cunit = column.split("[")
                 setattr(self,cname,np.array(self.data[column].values))
                 self.units[cname] = cunit.strip("]")
+
         self.county = county
 
     def __str__(self):
@@ -313,6 +319,8 @@ if __name__ == "__main__":
     # test load data access
     # print(Load.building("largeoffice"))
     # print(Load.building(["largeoffice","smalloffice"]))
-    load = Load(county)
+    load = LoadData(county)
     # print(load)
     # print(repr(load))
+    # load.data.plot(figsize=(30,10))
+    # plt.show()

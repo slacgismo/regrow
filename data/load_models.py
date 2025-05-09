@@ -20,9 +20,9 @@ TZINFO={
     "PST" : TZ("PST",-8,0),
 }
 CACHEDIR="./geodata/buildings"
-VERBOSE = True # enable verbose output
+VERBOSE = False # enable verbose output
 WARNING = True # enable warning output
-DEBUG = True # enable traceback on exception handlers
+DEBUG = False # enable traceback on exception handlers
 
 def verbose(msg):
     if VERBOSE:
@@ -94,6 +94,7 @@ class Weather:
         name = f"G{county.fips[:2]}0{county.fips[2:]}0"
         file = f"{county.cache}/weather.csv"
         if not os.path.exists(file):
+            verbose(f"Downloading {county} weather...")
             url = self._server.format(fips=name)
             try:
                 data = pd.read_csv(url,
@@ -114,6 +115,7 @@ class Weather:
                 print(f"ERROR [{repr(url)}]: {err}",file=sys.stderr)
                 raise
         else:
+            verbose(f"Reloading {county} weather...")
             self.data = pd.read_csv(file,index_col=[0],parse_dates=[0],low_memory=True)
         self.index = np.array([int((float(x)-float(self.data.index.values[0]))/3600e9) for x in self.data.index.values])
         self.timestamp = self.data.index.tz_localize("UTC").tz_convert(county.timezone)
@@ -125,7 +127,7 @@ class Weather:
         self.county = county
 
     def __str__(self):
-        return f"{self.county} weather"
+        return f"<{self.county} weather>"
 
     def __repr__(self):
         return f"{NAME}.{__class__.__name__}({repr(self.county.geocode)})"
@@ -133,7 +135,7 @@ class Weather:
     def __getitem__(self,name:str):
         return self.data[name]
 
-class LoadData:
+class Loads:
     """Load data"""
 
     _loads = ["total","baseline","heating","cooling"]
@@ -216,7 +218,7 @@ class LoadData:
             name = f"G{county.fips[:2]}0{county.fips[2:]}0"
             file = f"{county.cache}/{building}.csv"
             if not os.path.exists(file):
-                verbose(f"Downloading {building}...")
+                verbose(f"Downloading {county} {building}...")
                 url = self._servers[sector].format(usps=county.usps,fips=county.name,building=building)
                 try:
                     data = pd.read_csv(url,
@@ -231,7 +233,7 @@ class LoadData:
                             warning(f"{repr(column)} not found in {repr(building)} data for {repr(name)}")
                             data[column] = 0.0
                     data.rename(self._columns,axis=1,inplace=True)
-                    data["heating[MW]"] += data["altheat[MW]"]
+                    data["heating[MW]"] += data["auxheat[MW]"]
                     data["baseload[MW]"] = data["total[MW]"] - data["cooling[MW]"] - data["heating[MW]"]
                     data.index = (
                         data.index.tz_localize("EST" if sector == "commercial" else county.timezone)
@@ -244,12 +246,12 @@ class LoadData:
                     data = pd.DataFrame(data.resample("1h").sum()).round(6)
                     data.to_csv(file, header=True, index=True)
                 except Exception as err:
-                    print(f"ERROR [{repr(url)}]: {err}",file=sys.stderr)
+                    warning(f"no {repr(building)} data ({url=}, {err=})")
                     data = None
                     if DEBUG:
                         raise
             else:
-                verbose(f"Reloading {building}...")
+                verbose(f"Reloading {county} {building}...")
                 data = pd.read_csv(file,index_col=[0],parse_dates=[0],low_memory=True)
 
             if not data is None:
@@ -270,7 +272,7 @@ class LoadData:
         self.county = county
 
     def __str__(self):
-        return f"{self.county} {'/'.join(self.sectors)} loads"
+        return f"<{self.county} loads>"
 
     def __repr__(self):
         return f"Load.{self.county}(county={repr(self.county)},sectors={repr(self.sectors)},loads={repr(self.loads)},buildings={repr(self.buildings)})"
@@ -319,8 +321,8 @@ if __name__ == "__main__":
     # test load data access
     # print(Load.building("largeoffice"))
     # print(Load.building(["largeoffice","smalloffice"]))
-    load = LoadData(county)
+    load = Loads(county)
     # print(load)
     # print(repr(load))
-    # load.data.plot(figsize=(30,10))
+    # load.data.plot(figsize=(30,10),title=load.county)
     # plt.show()

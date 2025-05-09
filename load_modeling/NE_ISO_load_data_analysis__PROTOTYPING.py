@@ -353,12 +353,6 @@ def _(make_H, make_basis_matrix, np, stats):
 
 
 @app.cell
-def _(constant, df, lap_loc, lap_scale, np, roll_out_ar_noise, theta):
-    new_residuals = roll_out_ar_noise(np.sum(df['year'] == 2022), theta.value, constant.value, lap_loc, lap_scale)
-    return (new_residuals,)
-
-
-@app.cell
 def _(a, c, df, knots, np, predict_baseline):
     new_idx = np.arange(np.sum(df['year'] == 2022)) + np.sum(df['year'] != 2022) - 1
     new_baseline = predict_baseline(new_idx, df.loc["2022"]["Dry_Bulb"].values, a.value, c.value, knots)
@@ -366,19 +360,9 @@ def _(a, c, df, knots, np, predict_baseline):
 
 
 @app.cell
-def _(df, mo, new_baseline, new_residuals, np):
-    test_mae = np.nanmean(np.abs(df.loc["2022"]["RT_Demand"].values - new_baseline - new_residuals))
+def _(df, mo, new_baseline, np):
+    test_mae = np.nanmean(np.abs(df.loc["2022"]["RT_Demand"].values - new_baseline))
     mo.md(f"test MAE: {test_mae:.2f}, or {100*test_mae / np.nanmean(df.loc["2022"]["RT_Demand"].values):.2f}% of average")
-    return
-
-
-@app.cell
-def _(df, mo, new_baseline, new_residuals, plt):
-    plt.plot(df.loc["2022"]["RT_Demand"].values, label='actual', ls='--')
-    plt.plot(new_baseline+new_residuals, label='predicted')
-    plt.legend()
-    plt.title("Holdout year (2022)")
-    mo.mpl.interactive(plt.gcf())
     return
 
 
@@ -386,20 +370,23 @@ def _(df, mo, new_baseline, new_residuals, plt):
 def _(df, new_baseline, new_residuals, np, pd):
     ppower_actual = np.max(df.loc["2022"]["RT_Demand"].values)
     ppower_predict = np.max(new_baseline + new_residuals)
+    ppower_predict_noar = np.max(new_baseline)
     ppower_time_actual = np.argmax(df.loc["2022"]["RT_Demand"].values)
     ppower_time_predict =  np.argmax(new_baseline + new_residuals)
-    _index = ["peak power", 'index of peak']
+    ppower_time_predict_noar =  np.argmax(new_baseline)
+    _index = ["actual", 'predicted', 'predicted no AR model']
     _data = {
-        "actual": [ppower_actual, ppower_time_actual],
-        "predicted": [ppower_predict, ppower_time_predict]
+        "peak power": [ppower_actual, ppower_predict, ppower_predict_noar],
+        "index of peak": [ppower_time_actual, ppower_time_predict, ppower_time_predict_noar]
     }
-    pd.DataFrame(data=_data, index=_index).T
+    pd.DataFrame(data=_data, index=_index)
     return
 
 
 @app.cell
 def _(df, new_baseline, new_residuals, plt):
-    plt.plot(df.loc["2022"]["RT_Demand"].values, new_baseline+new_residuals, marker='.', linewidth=1, alpha=.4)
+    plt.plot(df.loc["2022"]["RT_Demand"].values, new_baseline, marker='.', linewidth=1, alpha=.4, label='true')
+    plt.plot(new_baseline+new_residuals, new_baseline, marker='.', linewidth=1, alpha=.4, label='sampled')
     plt.xlabel('actual')
     plt.ylabel('predicted')
     _xlim = plt.xlim()
@@ -408,8 +395,63 @@ def _(df, new_baseline, new_residuals, plt):
     plt.xlim(_xlim)
     plt.ylim(_ylim)
     plt.title("Holdout year (2022)")
+    plt.legend()
     plt.gcf()
     return
+
+
+@app.cell
+def _(mo):
+    loc_sldr = mo.ui.slider(-10, 10, 0.1, value=0, label='location adjustment')
+    scale_sldr = mo.ui.slider(.1, 3, 0.1, value=1, label='scale adjustment')
+    return loc_sldr, scale_sldr
+
+
+@app.cell
+def _(df, new_baseline, new_residuals, np, plt):
+    plt.hist(df.loc["2022"]["RT_Demand"].values - new_baseline, bins=100, label='true residuals', alpha=0.75)
+    plt.hist(new_residuals, bins=100, label='sampled residuals', alpha=0.75)
+    plt.axvline(np.median(df.loc["2022"]["RT_Demand"].values - new_baseline), ls='--')
+    plt.axvline(np.median(new_residuals), ls='--', color='orange')
+    plt.axvline(np.quantile(df.loc["2022"]["RT_Demand"].values - new_baseline, 0.95), ls=':')
+    plt.axvline(np.quantile(new_residuals, 0.95), ls=':', color='orange')
+    plt.legend()
+    plt.gcf()
+    return
+
+
+@app.cell
+def _(loc_sldr, mo, scale_sldr):
+    mo.vstack([loc_sldr, scale_sldr])
+    return
+
+
+@app.cell
+def _(df, mo, new_baseline, new_residuals, plt):
+    plt.plot(new_baseline, label='predicted baseline', linewidth=1, color='red', ls=':')
+    plt.plot(df.loc["2022"]["RT_Demand"].values, label='actual', ls='--')
+    plt.plot(new_baseline+new_residuals, label='sampled')
+
+    plt.legend()
+    plt.title("Holdout year (2022)")
+    mo.mpl.interactive(plt.gcf())
+    return
+
+
+@app.cell
+def _(
+    constant,
+    df,
+    lap_loc,
+    lap_scale,
+    loc_sldr,
+    np,
+    roll_out_ar_noise,
+    scale_sldr,
+    theta,
+):
+    new_residuals = roll_out_ar_noise(np.sum(df['year'] == 2022), theta.value, constant.value, lap_loc+loc_sldr.value, lap_scale*scale_sldr.value)
+    return (new_residuals,)
 
 
 @app.cell

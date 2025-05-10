@@ -35,22 +35,29 @@ def _(county_ui, fraction_ui, graph_ui, mo, state_ui, wecc_ui):
 def _(
     comstock_ui,
     errors_ui,
+    get_errors,
     mo,
     models_ui,
     resstock_ui,
+    sys,
     totals_ui,
     weather_ui,
 ):
     # main UI
-    mo.ui.tabs({
-        "Residential" : resstock_ui,
-        "Commercial" : comstock_ui,
-        "Weather" : weather_ui,
-        "Totals" : totals_ui,
-        "Models" : models_ui,
-        "Logs": errors_ui,
-        },
-        lazy=True)
+    try:
+        result = mo.ui.tabs({
+            "Residential" : resstock_ui,
+            "Commercial" : comstock_ui,
+            "Weather" : weather_ui,
+            "Totals" : totals_ui,
+            "Models" : models_ui,
+            f"Errors ({len(get_errors())})" if get_errors() else "Errors": errors_ui,
+            },
+            lazy=True)
+    except Exception as err:
+        e_type,e_value,e_trace = sys.exc_info()
+        result = mo.md(f"**EXCEPTION**: {err}")
+    result
     return
 
 
@@ -80,6 +87,8 @@ def _(counties, get_state, load_models, mo, set_state, wecc_ui):
 @app.cell
 def _(mo):
     def add_error(group, message):
+        if not message:
+            return
         errors = get_errors()
         if group not in errors:
             errors[group] = []
@@ -87,7 +96,7 @@ def _(mo):
         set_errors(errors)
 
     get_errors, set_errors = mo.state({})
-    return get_errors, set_errors
+    return add_error, get_errors, set_errors
 
 
 @app.cell
@@ -99,7 +108,6 @@ def _(counties, mo, set_errors, state_ui):
     county_ui = mo.ui.dropdown(
         label="County:",
         options=_options,
-        value=list(_options)[0],
         on_change=lambda x: set_errors({}),
     )
     return (county_ui,)
@@ -107,25 +115,42 @@ def _(counties, mo, set_errors, state_ui):
 
 @app.cell
 def _(mo):
-    wecc_ui = mo.ui.checkbox(label="WECC",value=True)
-    graph_ui = mo.ui.checkbox(label="Show graph",value=True)
+    wecc_ui = mo.ui.checkbox(label="WECC",value=False)
+    graph_ui = mo.ui.checkbox(label="Show graph",value=False)
     fraction_ui = mo.ui.checkbox(label="Show fractional load")
     return fraction_ui, graph_ui, wecc_ui
 
 
 @app.cell
-def _(county_ui, load_models):
+def _(county_ui, load_models, mo):
+    mo.stop(county_ui.value==None,mo.md("**HINT**: Select a county"))
     county = load_models.County(county_ui.value)
     weather = load_models.Weather(county).data
     return county, weather
 
 
 @app.cell
-def _(county, load_models):
-    building_loads = {sector:{building:
-        load_models.Loads(county=county,sectors=[sector],buildings=[building])
-        for building in load_models.Loads._buildings[sector]}
-        for sector in load_models.Loads._sectors}
+def _(add_error, county, load_models, mo):
+    with mo.capture_stderr() as _errors:
+        building_loads = {x: {} for x in load_models.Loads._buildings}
+        with mo.status.progress_bar(
+            title=f"Processing {county}...",
+            total=sum([len(x) for x in load_models.Loads._buildings]),
+            remove_on_exit=True
+        ) as _bar:
+            for sector in load_models.Loads._buildings:
+                _bar.title = f"Loading {sector} buildings..."
+                for building in load_models.Loads._buildings[sector]:
+                    _bar.subtitle = f"Reading {building} building data..."
+                    try:
+                        building_loads[sector][building] = load_models.Loads(
+                            county=county, sectors=[sector], buildings=[building]
+                        )
+                    except Exception as err:
+                        add_error(sector,err)
+                    _bar.update()
+                for _error in _errors.getvalue().split("\n"):
+                    add_error(sector, _error)
     return (building_loads,)
 
 
@@ -163,6 +188,7 @@ def _(building_loads, load_models):
     comstock = {}
     com_buildings = load_models.Loads._buildings["commercial"]
     for _building, _data in building_loads["commercial"].items():
+        print(_building,_data)
         _data.data["baseload[%]"] = _data.data["baseload[MW]"] / _data.data["total[MW]"] * 100
         _data.data["auxheat[%]"] = _data.data["auxheat[MW]"] / _data.data["total[MW]"] * 100
         _data.data["heating[%]"] = _data.data["heating[MW]"] / _data.data["total[MW]"] * 100
@@ -302,11 +328,19 @@ def _(comstock, graph_ui, mo, pd, resstock, timezone):
 
 
 @app.cell
-def _(get_errors, mo):
+def _(mo, set_errors):
+    def clear_errors(x):
+        set_errors({})
+    clear_ui = mo.ui.button(label="Clear",on_change=clear_errors)
+    return (clear_ui,)
+
+
+@app.cell
+def _(clear_ui, get_errors, mo):
     # Error logs
     errors_ui = mo.vstack(
         [
-            mo.md("## Processing results"),
+            mo.hstack([mo.md("## Processing results"),clear_ui]),
             mo.accordion(
                 {
                     f"{x.title()} ({len(y)} reports)": mo.md(
@@ -314,7 +348,7 @@ def _(get_errors, mo):
                     )
                     for x, y in get_errors().items()
                 }
-            ),
+            ) if get_errors() else mo.md("No reports"),
         ]
     )
     return (errors_ui,)
@@ -335,7 +369,7 @@ def _():
         "MST" : TZ("MST",-7,0),
         "PST" : TZ("PST",-8,0),
     }
-    return TIMEZONES, TZINFO, load_models, mo, pd
+    return TIMEZONES, TZINFO, load_models, mo, pd, sys
 
 
 if __name__ == "__main__":

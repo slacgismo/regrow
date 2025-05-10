@@ -1,4 +1,66 @@
-"""Load model testing"""
+"""Load models from NREL ResStock/ComStock data
+
+~~~
+>>> import load_models
+~~~
+
+Here are some frequently used data/methods:
+
+* List of counties
+
+~~~
+>>> load_models.County._counties
+        usps   fips               county   latitude  longitude
+geocode                                                       
+djf3h6    AL   1001       Autauga County  32.532237 -86.646440
+dj3w7m    AL   1003       Baldwin County  30.659218 -87.746067
+djem29    AL   1005       Barbour County  31.870253 -85.405104
+djf5c6    AL   1007          Bibb County  33.015893 -87.127148
+dn43q1    AL   1009        Blount County  33.977358 -86.566440
+...      ...    ...                  ...        ...        ...
+de2bcp    PR  72145  Vega Baja Municipio  18.455128 -66.397883
+de1rp5    PR  72147    Vieques Municipio  18.125418 -65.432474
+de0xpk    PR  72149   Villalba Municipio  18.130718 -66.472244
+de1ntr    PR  72151    Yabucoa Municipio  18.059858 -65.859871
+de0qys    PR  72153      Yauco Municipio  18.085669 -66.857901
+
+[3220 rows x 5 columns]
+~~~
+
+* List of states
+
+~~~
+>>> load_models.County._counties.usps.unique()
+array(['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA',
+       'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA',
+       'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY',
+       'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX',
+       'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'PR'], dtype=object)
+~~~
+
+* List of states in a region
+
+~~~
+>>> load_models.County._regions["WECC"]
+['AZ', 'CA', 'CO', 'ID', 'MT', 'NM', 'NV', 'OR', 'UT', 'WA', 'WY']
+~~~
+
+* County geocodes for a state:
+
+~~~{y.county:x for x,y in load_models.County._counties.iterrows() if y.usps
+== "NV"}
+{'Churchill County': '9r5buv', 'Clark County': '9qqnnb', 'Douglas
+County': '9qfvq4', 'Elko County': '9rmfp1', 'Esmeralda
+County': '9qsqgj', 'Eureka County': '9rj76j', 'Humboldt
+County': '9r7gxf', 'Lander County': '9rhfbx', 'Lincoln
+County': '9qwq45', 'Lyon County': '9qgjzx', 'Mineral County': '9qgg17', 'Nye
+County': '9qtpvz', 'Pershing County': '9r5y19', 'Storey
+County': '9r5025', 'Washoe County': '9r4zsy', 'White Pine
+County': '9rn21r', 'Carson City': '9qfyep'}
+~~~
+
+
+"""
 
 import marimo as mo
 import os
@@ -255,24 +317,23 @@ class Loads:
                 data = pd.read_csv(file,index_col=[0],parse_dates=[0],low_memory=True)
 
             if not data is None:
-                if self.data is None:
-                    self.data = data
-                else:
-                    self.data = self.data + data
+                self.data = data if self.data is None else (self.data + data)
 
-        if not self.data is None:
-            self.index = np.array([int((float(x)-float(self.data.index.values[0]))/3600e9) for x in self.data.index.values])
-            self.timestamp = self.data.index.tz_localize("UTC").tz_convert(county.timezone)
-            self.units = {}
-            for column in [x for x in self.data.columns if "[" in x]:
-                cname,cunit = column.split("[")
-                setattr(self,cname,np.array(self.data[column].values))
-                self.units[cname] = cunit.strip("]")
+        if self.data is None:
+            raise Exception(f"{county} {building} has no data")
+            
+        self.index = np.array([int((float(x)-float(self.data.index.values[0]))/3600e9) for x in self.data.index.values])
+        self.timestamp = self.data.index.tz_localize("UTC").tz_convert(county.timezone)
+        self.units = {}
+        for column in [x for x in self.data.columns if "[" in x]:
+            cname,cunit = column.split("[")
+            setattr(self,cname,np.array(self.data[column].values))
+            self.units[cname] = cunit.strip("]")
 
         self.county = county
 
     def __str__(self):
-        return f"<{self.county} loads>"
+        return f"<{self.county} {'/'.join(self.sectors)} {'/'.join(self.buildings)} loads>"
 
     def __repr__(self):
         return f"Load.{self.county}(county={repr(self.county)},sectors={repr(self.sectors)},loads={repr(self.loads)},buildings={repr(self.buildings)})"

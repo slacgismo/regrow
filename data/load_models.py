@@ -340,20 +340,39 @@ class Loads:
         return f"Load.{self.county}(county={repr(self.county)},sectors={repr(self.sectors)},loads={repr(self.loads)},buildings={repr(self.buildings)})"
 
     @classmethod
-    def building(self,names:list|str) -> str|dict:
-        """Get building name(s)"""
-        if isinstance(names,list):
+    def building(self,buildings:list|str) -> str|dict:
+        """Get building name(s)
+
+        Arguments:
+        
+        * `buildings`: building type name(s)
+
+        Returns:
+
+        * `str`: readable name of building type
+
+        * `dict`: readable names of building types 
+        """
+        if isinstance(buildings,list):
             result = {}
-            for name in names:
-                result[name] = self.building(name)
+            for building in buildings:
+                result[building] = self.building(building)
             return result
         for sector in self._sectors:
-            if names in self._buildings[sector]:
-                return self._buildings[sector][names]
-        raise ValueError(f"{repr(names)} is not a valid building type")
+            if buildings in self._buildings[sector]:
+                return self._buildings[sector][buildings]
+        raise ValueError(f"{repr(buildings)} is not a valid building type")
 
+    @classmethod
     def sector(self,building:str) -> str:
-        """Get building's sector"""
+        """Get building's sector
+
+        Arguments:
+
+        * `building`: get sector of a building type
+
+        Returns:
+        """
         for sector,buildings in self._buildings.items():
             if building in buildings:
                 return sector
@@ -385,6 +404,7 @@ class Model:
         self.county = None
         self.weather = None
         self.loads = None
+        self.holdout = []
         self.growth = {} # annual load growth
         self.electrification = {} # end-use electrification rates
         self.upgrades = {} # end-use technology upgrades
@@ -442,11 +462,17 @@ class Model:
 
 class NERCModel(Model):
     """Implement the simple NERC load forecasting model"""
-    def fit(self,cutoff=0):
+    def fit(self,cutoff:float=0):
+        """Fit model
 
+        Arguments:
+
+        * `cutoff`: heating/cooling load cutoff value below which load is ignored
+        """
         totals = self.loads.data
-        data = self.weather.data.join(totals[totals["baseload[MW]"]>cutoff])
 
+
+        # heating and cooling fit
         for load in ["heating","cooling"]:
 
             data = self.weather.data.join(totals[totals[f"{load}[MW]"]>cutoff]).dropna()
@@ -457,15 +483,19 @@ class NERCModel(Model):
             self.results[f"{load.title()}Model"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
             self.results[f"{load.title()}Model"].fit(2)
 
-        X = data["temperature[degC]"].values
-
+        # baseload fit
+        data = self.weather.data.join(totals).dropna()
         Y = data["baseload[MW]"].values
+        X = data["temperature[degC]"].values
         weights = 1/Y.std()
         test = np.arange(min(X),max(X))
         self.results["BaseloadModel"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
         self.results["BaseloadModel"].fit(1)
 
+        # holdout test (use all training data if no holdout)
         Y = data["total[MW]"].values
+        if self.holdout:
+            X,Y = X[self.holdout],Y[self.holdout]
         baseload = self.results["BaseloadModel"].predict(X)
         heating = self.results["HeatingModel"].predict(X)
         cooling = self.results["CoolingModel"].predict(X)
@@ -478,39 +508,53 @@ class NERCModel(Model):
         self.results["Cooling temperature"] = f"""{self.results["CoolingModel"].fit_breaks[1]:.1f} degC"""
         self.results["Cooling sensitivity"] = f"""{self.results["CoolingModel"].beta[1]:.1f} MW/degC"""
 
-    def predict(self,temperatures,loads=["baseload","cooling","heating"]):
+    def predict(self,
+        temperatures:list[float],
+        loads:list[str]=["baseload","cooling","heating"],
+        ) -> list[float]:
+        """Predict loads
 
+        Arguments:
+
+        * `temperatures`: temperatures at which to predict load
+
+        * `loads`: load to include in prediction (must be among models in results)
+
+        Returns:
+
+        * `list[float]`: predictions for temperatures given
+        """
         return sum([self.results[f"{x.title()}Model"].predict(temperatures) for x in loads])
 
 if __name__ == "__main__":
 
-    VERBOSE = True
     # test global county data access
-    # print(County.states("C"))
-    # print(County.counties(County.states("WECC")))
-    # print(County.counties(County.states("WECC"),asdict=True))
+    assert list(County.states("C").keys()) == ["CA","CO","CT"], "County.states(str) failed"
+    assert County.counties(County.states("WECC"))[0] == "9w61k3", "County.counties(str) failed"
+    assert County.counties(County.states("WECC"),asdict=True)["AZ"][0] == "9w61k3", "County.counties(str,asdict) failed"
 
     # test local county data access
     county = County("9q9q1v")
-    # print(county)
-    # print(repr(county))
+    assert str(county) == "Alameda County CA (9q9q1v)", "County.__str__() failed"
+    assert repr(county) == "load_models.County('9q9q1v')", "County.__repr__() failed"
     # print(county.to_dict())
 
     # test weather data access
     weather = Weather(county)
-    # print(Weather(county))
-    # print(repr(Weather(county)))
-    # print(weather.units)
-    # print(weather.timestamp)
-    # print(weather.temperature)
+    assert str(Weather(county)) == "<Alameda County CA (9q9q1v) weather>", "Weather.__str__()"
+    assert repr(Weather(county)) == "load_models.Weather('9q9q1v')", "Weather.__repr__() failed"
+    assert weather.units["temperature"] == "degC", "weather.units() failed"
+    assert str(weather.timestamp[0]) == "2018-01-01 00:00:00-08:00", "weather.timestamp failed"
+    assert weather.temperature[0] == 8.9, "weather.temperature failed"
 
     # test load data access
-    # print(Load.building("largeoffice"))
-    # print(Load.building(["largeoffice","smalloffice"]))
+    assert Loads.building("largeoffice") == "Large office", "Loads.building(str) failed"
+    assert Loads.building(["largeoffice","smalloffice"]) == {'largeoffice': 'Large office', 'smalloffice': 'Small office'}, "Loads.building(list[str]) failed"
+    assert Loads.sector("largeoffice") == "commercial", "Loads.sector(str) failed"
     load = Loads(county)
-    # print(load)
-    # print(repr(load))
-    # load.data.plot(figsize=(30,10),title=load.county)
+    assert str(load) == "<Alameda County CA (9q9q1v) residential/commercial single-family_detached/single-family_attached/multi-family_with_2_-_4_units/multi-family_with_5plus_units/mobile_home/largeoffice/secondaryschool/largehotel/hospital/mediumoffice/retailstripmall/outpatient/smalloffice/retailstandalone/primaryschool/smallhotel/fullservicerestaurant/quickservicerestaurant/warehouse loads>", "Loads.__str__() failed"
+    assert repr(load) == "Load.Alameda County CA (9q9q1v)(county=load_models.County('9q9q1v'),sectors=['residential', 'commercial'],loads=['total', 'baseline', 'heating', 'cooling'],buildings=['single-family_detached', 'single-family_attached', 'multi-family_with_2_-_4_units', 'multi-family_with_5plus_units', 'mobile_home', 'largeoffice', 'secondaryschool', 'largehotel', 'hospital', 'mediumoffice', 'retailstripmall', 'outpatient', 'smalloffice', 'retailstandalone', 'primaryschool', 'smallhotel', 'fullservicerestaurant', 'quickservicerestaurant', 'warehouse'])", "Loads.__repr__() failed"
+    load.data.plot(figsize=(30,10),title=load.county)
     # plt.show()
 
     model = Model(county)
@@ -518,4 +562,4 @@ if __name__ == "__main__":
     model = Model(load)
     model = NERCModel(load)
     model.fit()
-    # print(model.predict(np.arange(-20,40)))
+    assert round(model.predict(np.arange(-20,40))[0],1) == 867.0, "Model.predict() failed"

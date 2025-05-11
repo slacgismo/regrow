@@ -11,23 +11,20 @@ def _(mo):
     This notebook tests different load models relative to a simple "bathtub" load model.
 
     - [x] Read load and weather data
-    - [ ] Hold out 5-7 (consecutive/random) days each month (or 60-100 consecutive or random hours?)
-    - [ ] Run the original county-level project method
+    - [x] Hold out 7 days each month
+    - [x] Run the original county-level project method
     - [ ] Benchmark the bathtub model for the selected county (RMSE and % error tests) on hold out data
     - [ ] Implement scaling for load growth, upgrades, and electrification.
     - [ ] Implement experimental models
-
-    ## Todo list
-    - [ ] Zoom controls on plots to see hourly behavior
-    - [ ] NERC model balance temperatures slider
+    - [ ] Zoom controls on plots to see hourly behavior (change plot module?)
     """
     )
     return
 
 
 @app.cell
-def _(county_ui, fraction_ui, graph_ui, mo, state_ui, wecc_ui):
-    mo.hstack([wecc_ui,state_ui,county_ui,graph_ui,fraction_ui],justify='start')
+def _(county_ui, fraction_ui, graph_ui, holdout_ui, mo, state_ui, wecc_ui):
+    mo.hstack([wecc_ui,state_ui,county_ui,graph_ui,fraction_ui,holdout_ui],justify='start')
     return
 
 
@@ -86,6 +83,7 @@ def _(counties, get_state, load_models, mo, set_state, wecc_ui):
 
 @app.cell
 def _(mo):
+    # error log handling
     def add_error(group, message):
         if not message:
             return
@@ -101,6 +99,7 @@ def _(mo):
 
 @app.cell
 def _(counties, mo, set_errors, state_ui):
+    # county selection
     _options = {
         y.county: x for x, y in counties.iterrows() if y.usps == state_ui.value
     }
@@ -115,14 +114,17 @@ def _(counties, mo, set_errors, state_ui):
 
 @app.cell
 def _(mo):
+    # county/graphing options
     wecc_ui = mo.ui.checkbox(label="WECC",value=False)
     graph_ui = mo.ui.checkbox(label="Show graph",value=False)
     fraction_ui = mo.ui.checkbox(label="Show fractional load")
-    return fraction_ui, graph_ui, wecc_ui
+    holdout_ui = mo.ui.checkbox(label="No holdout test")
+    return fraction_ui, graph_ui, holdout_ui, wecc_ui
 
 
 @app.cell
 def _(county_ui, load_models, mo):
+    # county selection check
     mo.stop(county_ui.value==None,mo.md("**HINT**: Select a county"))
     county = load_models.County(county_ui.value)
     weather = load_models.Weather(county).data
@@ -131,6 +133,7 @@ def _(county_ui, load_models, mo):
 
 @app.cell
 def _(add_error, county, load_models, mo):
+    # data loads
     with mo.capture_stderr() as _errors:
         building_loads = {x: {} for x in load_models.Loads._buildings}
         with mo.status.progress_bar(
@@ -152,20 +155,6 @@ def _(add_error, county, load_models, mo):
                 for _error in _errors.getvalue().split("\n"):
                     add_error(sector, _error)
     return (building_loads,)
-
-
-@app.cell
-def _(TIMEZONES, TZINFO, counties, county_ui, puma):
-    # Generate FIPS code and timezone info
-    fips = f"{counties.loc[county_ui.value]['fips']:05.0f}"
-    if fips[:2] in TIMEZONES:
-        tz = TIMEZONES[fips[:2]][:3]
-    elif puma in TIMEZONES:
-        tz = TIMEZONES[fips][:3]
-    else:
-        raise Exception(f"unable to find timezone for {fips=})")
-    timezone = TZINFO[tz]
-    return (timezone,)
 
 
 @app.cell
@@ -200,13 +189,13 @@ def _(building_loads, load_models):
 def _(
     com_buildings,
     comstock,
+    county,
     fraction_ui,
     graph_ui,
     mo,
     pd,
     res_buildings,
     resstock,
-    timezone,
     weather,
 ):
     # Generate tab contents
@@ -227,7 +216,7 @@ def _(
                             color=["g", "r", "b"],
                             grid=True,
                             ylabel=f"Load [{_units}]",
-                            xlabel=f"Date/Time ({timezone.name})",
+                            xlabel=f"Date/Time ({county.timezone.name})",
                             ylim=[0,100] if fraction_ui.value else None,
                         )
                         if graph_ui.value
@@ -252,7 +241,7 @@ def _(
                             color=["g", "r", "b"],
                             grid=True,
                             ylabel=f"Load [{_units}]",
-                            xlabel=f"Date/Time ({timezone.name})",
+                            xlabel=f"Date/Time ({county.timezone.name})",
                             ylim=[0,100] if fraction_ui.value else None,
                         )
                         if graph_ui.value
@@ -270,7 +259,7 @@ def _(
             {"Min": _daily.min(), "Mean": _daily.mean(), "Max": _daily.max()}
         )
         weather_ui = (
-            _data.plot(figsize=(15, 10), ylabel="Daily temperature [$^\circ$C]", grid=True, xlabel=f"Date/Time ({timezone.name})")
+            _data.plot(figsize=(15, 10), ylabel="Daily temperature [$^\circ$C]", grid=True, xlabel=f"Date/Time ({county.timezone.name})")
             if graph_ui.value
             else weather
         )
@@ -278,14 +267,23 @@ def _(
 
 
 @app.cell
-def _(county, load_models, mo):
+def _(holdout_ui):
+    # hold out data (7 days out of 30 days)
+    holdout = []
+    if not holdout_ui.value:
+        for month in range(12):
+            holdout.extend(range(month*30,month*30+7))
+    return (holdout,)
+
+
+@app.cell
+def _(county, holdout, load_models, mo, np, plt):
     # NERC model
-    import matplotlib.pyplot as plt
-    import numpy as np
     _model = load_models.NERCModel(county)
     _weather = _model.weather.data
     _loads = _model.loads.data
     _data = _weather.join(_loads)
+    _model.holdout = holdout
     _model.fit()
     _x = np.arange(_data["temperature[degC]"].min(),_data["temperature[degC]"].max())
     _y = _model.predict(_x)
@@ -302,6 +300,7 @@ def _(county, load_models, mo):
 
 @app.cell
 def _(graph_ui, nerc_model_plot, nerc_model_text):
+    # NERC model UI
     nerc_model = nerc_model_plot if graph_ui.value else nerc_model_text
     return (nerc_model,)
 
@@ -318,7 +317,7 @@ def _(mo, nerc_model):
 
 
 @app.cell
-def _(comstock, graph_ui, mo, pd, resstock, timezone):
+def _(comstock, county, graph_ui, mo, pd, resstock):
     # Totals UI
     try:
         totals = pd.concat(
@@ -340,14 +339,14 @@ def _(comstock, graph_ui, mo, pd, resstock, timezone):
                 figsize=(15, 10),
                 grid=True,
                 color=["g", "r", "b"],
-                xlabel=f"Date/Time ({timezone.name})",
+                xlabel=f"Date/Time ({county.timezone.name})",
                 ylabel="Total load [MW]",
             )
             if graph_ui.value
             else totals.round(1)
         )
     except Exception as err:
-        tutals_ui = mo.md(err)
+        totals_ui = mo.md(err)
     return (totals_ui,)
 
 
@@ -386,14 +385,9 @@ def _():
     import datetime as dt
     import pandas as pd
     import load_models
-    from tzinfo import TIMEZONES, TZ
-    TZINFO={
-        "EST" : TZ("EST",-5,0),
-        "CST" : TZ("CST",-6,0),
-        "MST" : TZ("MST",-7,0),
-        "PST" : TZ("PST",-8,0),
-    }
-    return TIMEZONES, TZINFO, load_models, mo, pd, sys
+    import matplotlib.pyplot as plt
+    import numpy as np
+    return load_models, mo, np, pd, plt, sys
 
 
 if __name__ == "__main__":

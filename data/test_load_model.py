@@ -43,7 +43,7 @@ def _(
 ):
     # main UI
     try:
-        _nerrors = len(get_errors()["residential"]) + len(get_errors()["commercial"]) if get_errors() else 0
+        _nerrors = sum([len(y) for x,y in get_errors().items()])
         result = mo.ui.tabs(
             {
                 "Residential": resstock_ui,
@@ -294,8 +294,9 @@ def _(holdout_ui):
 
 
 @app.cell
-def _(county, holdout, load_models, mo, np, plt):
+def _(building_loads, county, holdout, load_models, mo, np, plt):
     # NERC model
+    building_loads
     _model = load_models.NERCModel(county)
     _weather = _model.weather.data
     _loads = _model.loads.data

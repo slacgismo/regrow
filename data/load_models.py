@@ -470,7 +470,9 @@ class NERCModel(Model):
         heating = self.results["HeatingModel"].predict(X)
         cooling = self.results["CoolingModel"].predict(X)
         self.results["residuals"] = Y - baseload - heating - cooling
-        self.results["RMSE"] = f"""{np.sqrt(np.linalg.norm(self.results["residuals"])):.1f} MW"""
+        rmse = np.sqrt(np.linalg.norm(self.results["residuals"]))
+        self.results["RMSE [MW]"] = f"""{rmse:.1f} MW"""
+        self.results["RMSE [%]"] = f"""{rmse/data["total[MW]"].mean()*100:.1f} %"""
         self.results["Heating temperature"] = f"""{self.results["HeatingModel"].fit_breaks[1]:.1f} degC"""
         self.results["Heating sensitivity"] = f"""{self.results["HeatingModel"].beta[1]:.1f} MW/degC"""
         self.results["Cooling temperature"] = f"""{self.results["CoolingModel"].fit_breaks[1]:.1f} degC"""
@@ -482,6 +484,7 @@ class NERCModel(Model):
 
 if __name__ == "__main__":
 
+    VERBOSE = True
     # test global county data access
     # print(County.states("C"))
     # print(County.counties(County.states("WECC")))

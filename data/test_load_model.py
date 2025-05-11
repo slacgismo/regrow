@@ -12,7 +12,8 @@ def _(mo):
 
     - [x] Read load and weather data
     - [x] Hold out 7 days each month
-    - [x] Run the original county-level project method
+    - [x] Run the simple NERC county-level project method
+    - [x] Predict for date range (requires weather download for date range)
     - [ ] Implement full NERC season/daytype/hour-of-day model
     - [ ] Implement scaling for load growth, upgrades, and electrification.
     - [ ] Implement experimental models
@@ -36,6 +37,7 @@ def _(
     help_ui,
     mo,
     models_ui,
+    predict_ui,
     resstock_ui,
     sys,
     totals_ui,
@@ -51,6 +53,7 @@ def _(
                 "Weather": weather_ui,
                 "Totals": totals_ui,
                 "Models": models_ui,
+                "Predict": predict_ui,
                 f"Logs ({_nerrors})"
                 if _nerrors
                 else "Logs": errors_ui,
@@ -294,43 +297,51 @@ def _(holdout_ui):
 
 
 @app.cell
-def _(building_loads, county, holdout, load_models, mo, np, plt):
+def _():
+    model = {}
+    model_plot = {}
+    model_text = {}
+    return model, model_plot, model_text
+
+
+@app.cell
+def _(
+    building_loads,
+    county,
+    holdout,
+    load_models,
+    mo,
+    model,
+    model_plot,
+    model_text,
+    np,
+    plt,
+):
     # NERC model
     building_loads
-    _model = load_models.NERCModel(county)
-    _weather = _model.weather.data
-    _loads = _model.loads.data
+    model['NERC'] = load_models.NERCModel(county)
+    _weather = model['NERC'].weather.data
+    _loads = model['NERC'].loads.data
     _data = _weather.join(_loads)
-    _model.holdout = holdout
-    _model.fit()
+    model['NERC'].holdout = holdout
+    model['NERC'].fit()
     _x = np.arange(_data["temperature[degC]"].min(),_data["temperature[degC]"].max())
-    _y = _model.predict(_x)
-    _model.results
+    _y = model['NERC'].predict(_x)
+    model['NERC'].results
     plt.figure(figsize=(10,5))
     plt.plot(_data["temperature[degC]"],_data["total[MW]"],'.')
     plt.plot(_x,_y,"-k")
     plt.grid()
-    nerc_model_plot = plt.gca()
-    _summaries = [f"<tr><th>{x}</th><td>{y}</td></tr>" for x,y in _model.results.items() if isinstance(y,str)]
-    nerc_model_text = mo.md(f"<table><caption><u>Fit results</u></caption>{''.join(_summaries)}</table>")
-    return nerc_model_plot, nerc_model_text
+    _summaries = [f"<tr><th>{x}</th><td>{y}</td></tr>" for x,y in model['NERC'].results.items() if isinstance(y,str)]
+    model_plot["NERC"] = plt.gca()
+    model_text["NERC"] = mo.md(f"<table><caption><u>Fit results</u></caption>{''.join(_summaries)}</table>")
+    return
 
 
 @app.cell
-def _(graph_ui, nerc_model_plot, nerc_model_text):
-    # NERC model UI
-    nerc_model = nerc_model_plot if graph_ui.value else nerc_model_text
-    return (nerc_model,)
-
-
-@app.cell
-def _(mo, nerc_model):
+def _(graph_ui, mo, model, model_plot, model_text):
     # Models UI
-    models_ui = mo.ui.tabs(
-        {
-            "NERC": nerc_model,
-        }, lazy=True
-    )
+    models_ui = mo.ui.tabs({x: model_plot[x] if graph_ui.value else model_text[x] for x in model}, lazy=True)
     return (models_ui,)
 
 
@@ -366,6 +377,52 @@ def _(comstock, county, graph_ui, mo, pd, resstock):
     except Exception as err:
         totals_ui = mo.md(err)
     return (totals_ui,)
+
+
+@app.cell
+def _(mo):
+    growth_ui = mo.ui.slider(
+        label="Annual load growth rate: [%/yr]",
+        start=0.0,
+        stop=100.0,
+        value=3.0,
+        debounce=True,
+        show_value=True,
+    )
+    range_ui = mo.ui.date_range(label="Predict for:",start="2018-01-01",value=["2018-01-01","2018-12-31"])
+    return growth_ui, range_ui
+
+
+@app.cell
+def _(pd, range_ui):
+    # predict for timerange
+    _dt = pd.date_range(*range_ui.value,freq="1h",tz="UTC")
+    predict_years = set([x.year for x in _dt])
+    return (predict_years,)
+
+
+@app.cell
+def _(county, model, models_ui, pd, predict_years):
+    import subprocess
+    import io
+    _reply = subprocess.run(["gridlabd","nsrdb_weather",f"-y={','.join([str(x) for x in predict_years])}",f"-p={county.latitude},{county.longitude}","--apikey=Ubjn2frXFcg45wakew1iKmRHJCCM0DCsatIEqsUM"],capture_output=True)
+    _csv = _reply.stdout.decode("utf-8")
+    prediction = pd.read_csv(io.StringIO(_csv),parse_dates=["datetime"],index_col="datetime")
+    prediction["temperature[degC]"] = (prediction["temperature[degF]"].values-32)/1.8
+    prediction["total[MW]"] = model[models_ui.value].predict(prediction["temperature[degC]"])
+    return (prediction,)
+
+
+@app.cell
+def _(graph_ui, prediction):
+    prediction_ui = prediction.resample("1d").mean().plot(y="total[MW]",grid=True,figsize=(15,10)) if graph_ui.value else prediction
+    return (prediction_ui,)
+
+
+@app.cell
+def _(growth_ui, mo, prediction_ui, range_ui):
+    predict_ui = mo.vstack([mo.hstack([range_ui,growth_ui]),prediction_ui])
+    return (predict_ui,)
 
 
 @app.cell

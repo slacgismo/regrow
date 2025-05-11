@@ -99,7 +99,15 @@ class County:
     """County data"""
     _counties = pd.read_csv("counties.csv",index_col="geocode")
     _regions = {
-        "WECC" : ["AZ","CA","CO","ID","MT","NM","NV","OR","UT","WA","WY"]
+        "US" : [x[1] for x in states.state_codes],
+        "Alaska": ["AK"],
+        "ERCOT" : ["TX"],
+        "Hawaii": ["HI"],
+        "MRO" : ["AR","KS","LA","MN","MO","ND","NE","NM","OK","SD","TX","WI"],
+        "NPCC" : ["CT","MA","ME","NH","NY","RI","VT"],
+        "RF" : ["DE","IL","WI","IN","KY","MD","MI","OH","PA","VA","WI","WV"],
+        "SERC" : ["AR","AL","FL","IL","GA","KY","LA","MS","MO","NC","OK","SC","TN","VA"],
+        "WECC" : ["AZ","CA","CO","ID","MT","NM","NV","OR","SD","TX","UT","WA","WY"],
     }
 
     def __init__(self,geocode:str):

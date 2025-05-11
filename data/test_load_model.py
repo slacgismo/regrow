@@ -13,7 +13,7 @@ def _(mo):
     - [x] Read load and weather data
     - [x] Hold out 7 days each month
     - [x] Run the original county-level project method
-    - [ ] Benchmark the bathtub model for the selected county (RMSE and % error tests) on hold out data
+    - [ ] Implement full NERC season/daytype/hour-of-day model
     - [ ] Implement scaling for load growth, upgrades, and electrification.
     - [ ] Implement experimental models
     - [ ] Zoom controls on plots to see hourly behavior (change plot module?)
@@ -23,8 +23,8 @@ def _(mo):
 
 
 @app.cell
-def _(county_ui, fraction_ui, graph_ui, holdout_ui, mo, state_ui, wecc_ui):
-    mo.hstack([wecc_ui,state_ui,county_ui,graph_ui,fraction_ui,holdout_ui],justify='start')
+def _(county_ui, fraction_ui, graph_ui, holdout_ui, mo, region_ui, state_ui):
+    mo.hstack([region_ui,state_ui,county_ui,graph_ui,fraction_ui,holdout_ui],justify='start')
     return
 
 
@@ -89,11 +89,11 @@ def _(load_models):
 
 
 @app.cell
-def _(counties, get_state, load_models, mo, set_state, wecc_ui):
+def _(get_state, mo, region_ui, set_state):
     # select state
-    _options = load_models.County._regions["WECC"] if wecc_ui.value else counties.usps.unique()
+    _state = get_state() if get_state() in region_ui.value else region_ui.value[0]
     state_ui = mo.ui.dropdown(
-        label="State:", options=_options, value=get_state(), on_change=set_state
+        label="State:", options=region_ui.value, value=_state, on_change=set_state
     )
     return (state_ui,)
 
@@ -130,13 +130,13 @@ def _(counties, mo, set_errors, state_ui):
 
 
 @app.cell
-def _(mo):
+def _(load_models, mo):
     # county/graphing options
-    wecc_ui = mo.ui.checkbox(label="WECC",value=False)
+    region_ui = mo.ui.dropdown(label="Region",options=load_models.County._regions,value="US")
     graph_ui = mo.ui.checkbox(label="Show graph",value=False)
     fraction_ui = mo.ui.checkbox(label="Show fractional load")
     holdout_ui = mo.ui.checkbox(label="No holdout test")
-    return fraction_ui, graph_ui, holdout_ui, wecc_ui
+    return fraction_ui, graph_ui, holdout_ui, region_ui
 
 
 @app.cell

@@ -33,6 +33,7 @@ def _(
     comstock_ui,
     errors_ui,
     get_errors,
+    help_ui,
     mo,
     models_ui,
     resstock_ui,
@@ -42,20 +43,36 @@ def _(
 ):
     # main UI
     try:
-        result = mo.ui.tabs({
-            "Residential" : resstock_ui,
-            "Commercial" : comstock_ui,
-            "Weather" : weather_ui,
-            "Totals" : totals_ui,
-            "Models" : models_ui,
-            f"Errors ({len(get_errors())})" if get_errors() else "Errors": errors_ui,
+        _nerrors = len(get_errors()["residential"]) + len(get_errors()["commercial"]) if get_errors() else 0
+        result = mo.ui.tabs(
+            {
+                "Residential": resstock_ui,
+                "Commercial": comstock_ui,
+                "Weather": weather_ui,
+                "Totals": totals_ui,
+                "Models": models_ui,
+                f"Logs ({_nerrors})"
+                if _nerrors
+                else "Logs": errors_ui,
+                "Help": help_ui,
             },
-            lazy=True)
+            lazy=True,
+        )
     except Exception as err:
-        e_type,e_value,e_trace = sys.exc_info()
+        e_type, e_value, e_trace = sys.exc_info()
         result = mo.md(f"**EXCEPTION**: {err}")
     result
     return
+
+
+@app.cell
+def _(mo):
+    try:
+        with open("test_load_models.md","r") as fh:
+            help_ui = mo.md(fh.read())
+    except Exception as err:
+        help_ui = mo.md(f"ERROR: {err}")
+    return (help_ui,)
 
 
 @app.cell

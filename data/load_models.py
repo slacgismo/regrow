@@ -72,6 +72,7 @@ import re
 from tzinfo import TIMEZONES, TZ
 import states
 import matplotlib.pyplot as plt
+import pwlf
 
 NAME = os.path.splitext(os.path.split(__file__)[1])[0]
 
@@ -321,7 +322,7 @@ class Loads:
 
         if self.data is None:
             raise Exception(f"{county} {building} has no data")
-            
+
         self.index = np.array([int((float(x)-float(self.data.index.values[0]))/3600e9) for x in self.data.index.values])
         self.timestamp = self.data.index.tz_localize("UTC").tz_convert(county.timezone)
         self.units = {}
@@ -358,6 +359,101 @@ class Loads:
                 return sector
         raise ValueError(f"{repr(building)} is not a valid building type")
 
+class Model:
+
+    def __init__(self,*args):
+        """Create a model from county, weather, or load data"""
+        self.args = args
+        self.county = None
+        self.weather = None
+        self.loads = None
+        for data in args:
+
+            if isinstance(data,County):
+
+                self.county = data
+
+            elif isinstance(data,Weather):
+
+                self.weather = data
+
+            elif isinstance(data,Loads):
+
+                self.loads = data
+
+            else:
+
+                raise TypeError(f"{data=} is not a County, Weather, or Loads object")
+
+        if self.county is None and self.weather is None and self.loads is None:
+
+            raise ValueError("you must provide at least a County, Weather, or Load object")
+
+        if self.county is None:
+            self.county = self.weather.county if self.weather else self.loads.county
+        if self.weather is None:
+            self.weather = Weather(self.county)
+        if self.loads is None:
+            self.loads = Loads(self.county)
+
+        self.results = {
+            "residuals": None,
+            "RMSE": None,
+            "HeatingModel": None,
+            "CoolingModel": None,
+            "BaseloadModel": None,
+        }
+
+    def __str__(self):
+
+        return f"<{self.county} {__class__.__name__}>"
+
+    def __repr__(self):
+
+        return f"{NAME}.{__class__.__name__}({','.join([repr(x) for x in self.args])})"
+
+    def fit(self):
+        raise TypeError(f"cannot fit using the abstract class of Model")
+
+    def predict(self):
+        raise TypeError(f"cannot predict using the abstract class of Model")
+
+class NERCModel(Model):
+
+    def fit(self,cutoff=0):
+
+        totals = self.loads.data
+        data = self.weather.data.join(totals[totals["baseload[MW]"]>cutoff])
+
+        for load in ["heating","cooling"]:
+
+            data = self.weather.data.join(totals[totals[f"{load}[MW]"]>cutoff]).dropna()
+            X = data["temperature[degC]"].values
+            Y = data[f"{load}[MW]"].values
+            weights = 1/Y.std()
+
+            self.results[f"{load.title()}Model"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
+            self.results[f"{load.title()}Model"].fit(2)
+
+        X = data["temperature[degC]"].values
+
+        Y = data["baseload[MW]"].values
+        weights = 1/Y.std()
+        test = np.arange(min(X),max(X))
+        self.results["BaseloadModel"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
+        self.results["BaseloadModel"].fit(1)
+
+        Y = data["total[MW]"].values
+        baseload = self.results["BaseloadModel"].predict(X)
+        heating = self.results["HeatingModel"].predict(X)
+        cooling = self.results["CoolingModel"].predict(X)
+        self.results["residuals"] = Y - baseload - heating - cooling
+        self.results["RMSE"] = np.sqrt(np.linalg.norm(self.results["residuals"]))
+
+    def predict(self,temperatures,loads=["baseload","cooling","heating"]):
+
+        return sum([self.results[f"{x.title()}Model"].predict(temperatures) for x in loads])
+
 if __name__ == "__main__":
 
     # test global county data access
@@ -387,3 +483,10 @@ if __name__ == "__main__":
     # print(repr(load))
     # load.data.plot(figsize=(30,10),title=load.county)
     # plt.show()
+
+    model = Model(county)
+    model = Model(weather)
+    model = Model(load)
+    model = NERCModel(load)
+    model.fit()
+    # print(model.predict(np.arange(-20,40)))

@@ -188,7 +188,6 @@ def _(building_loads, load_models):
     comstock = {}
     com_buildings = load_models.Loads._buildings["commercial"]
     for _building, _data in building_loads["commercial"].items():
-        print(_building,_data)
         _data.data["baseload[%]"] = _data.data["baseload[MW]"] / _data.data["total[MW]"] * 100
         _data.data["auxheat[%]"] = _data.data["auxheat[MW]"] / _data.data["total[MW]"] * 100
         _data.data["heating[%]"] = _data.data["heating[MW]"] / _data.data["total[MW]"] * 100
@@ -238,7 +237,7 @@ def _(
             )
         except Exception as err:
             resstock_ui = str(err)
-    
+
         try:
             comstock_ui = mo.ui.tabs(
                 {
@@ -276,11 +275,31 @@ def _(
 
 
 @app.cell
-def _(graph_ui, totals, weather):
+def _(county, load_models, mo):
     # NERC model
-    _data = weather.join(totals)
-    _data["total[MW]"] = _data["baseload[MW]"] + _data["heating[MW]"] + _data["cooling[MW]"]
-    nerc_model = _data.plot.scatter("temperature[degC]","total[MW]",1,figsize=(15,10),xlabel="Temperature [$^\circ$C]",ylabel="Total load [MW]",grid=True) if graph_ui.value else _data.round(1)
+    import matplotlib.pyplot as plt
+    import numpy as np
+    _model = load_models.NERCModel(county)
+    _weather = _model.weather.data
+    _loads = _model.loads.data
+    _data = _weather.join(_loads)
+    _model.fit()
+    _x = np.arange(_data["temperature[degC]"].min(),_data["temperature[degC]"].max())
+    _y = _model.predict(_x)
+    _model.results
+    plt.figure(figsize=(10,5))
+    plt.plot(_data["temperature[degC]"],_data["total[MW]"],'.')
+    plt.plot(_x,_y,"-k")
+    plt.grid()
+    nerc_model_plot = plt.gca()
+    _summaries = [f"<tr><th>{x}</th><td>{round(y,1)}</td></tr>" for x,y in _model.results.items() if isinstance(y,float)]
+    nerc_model_text = mo.md(f"<table><caption><u>Fit results</u></caption>{''.join(_summaries)}</table>")
+    return nerc_model_plot, nerc_model_text
+
+
+@app.cell
+def _(graph_ui, nerc_model_plot, nerc_model_text):
+    nerc_model = nerc_model_plot if graph_ui.value else nerc_model_text
     return (nerc_model,)
 
 
@@ -288,7 +307,9 @@ def _(graph_ui, totals, weather):
 def _(mo, nerc_model):
     # Models UI
     models_ui = mo.ui.tabs(
-        {"NERC": nerc_model, "Quantile": "TODO", "Linear": "TODO"}, lazy=True
+        {
+            "NERC": nerc_model,
+        }, lazy=True
     )
     return (models_ui,)
 
@@ -305,7 +326,7 @@ def _(comstock, graph_ui, mo, pd, resstock, timezone):
                         for y in [resstock, comstock]
                     ]
                 )
-                for z in ["baseload", "heating", "cooling"]
+                for z in ["baseload", "heating", "cooling","total"]
             ],
             axis=1,
         )
@@ -324,7 +345,7 @@ def _(comstock, graph_ui, mo, pd, resstock, timezone):
         )
     except Exception as err:
         tutals_ui = mo.md(err)
-    return totals, totals_ui
+    return (totals_ui,)
 
 
 @app.cell

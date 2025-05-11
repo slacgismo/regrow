@@ -402,21 +402,24 @@ def _(pd, range_ui):
 
 
 @app.cell
-def _(county, model, models_ui, pd, predict_years):
-    import subprocess
-    import io
-    _reply = subprocess.run(["gridlabd","nsrdb_weather",f"-y={','.join([str(x) for x in predict_years])}",f"-p={county.latitude},{county.longitude}","--apikey=Ubjn2frXFcg45wakew1iKmRHJCCM0DCsatIEqsUM"],capture_output=True)
-    _csv = _reply.stdout.decode("utf-8")
-    prediction = pd.read_csv(io.StringIO(_csv),parse_dates=["datetime"],index_col="datetime")
-    prediction["temperature[degC]"] = (prediction["temperature[degF]"].values-32)/1.8
-    prediction["total[MW]"] = model[models_ui.value].predict(prediction["temperature[degC]"])
-    return (prediction,)
+def _(county, graph_ui, mo, model, models_ui, pd, predict_years):
+    try:
+        import subprocess
+        import io
+        _reply = subprocess.run(["gridlabd","nsrdb_weather",f"-y={','.join([str(x) for x in predict_years])}",f"-p={county.latitude},{county.longitude}","--apikey=Ubjn2frXFcg45wakew1iKmRHJCCM0DCsatIEqsUM"],capture_output=True)
+        _csv = _reply.stdout.decode("utf-8")
+        prediction = pd.read_csv(io.StringIO(_csv),parse_dates=["datetime"],index_col="datetime")
+        prediction["temperature[degC]"] = (prediction["temperature[degF]"].values-32)/1.8
+        prediction["total[MW]"] = model[models_ui.value].predict(prediction["temperature[degC]"])
+        prediction_ui = prediction.resample("1d").mean().plot(y="total[MW]",grid=True,figsize=(15,10)) if graph_ui.value else prediction
+    except Exception as err:
+        prediction_ui = mo.md(f"EXCEPTION: {err}")
+    return (prediction_ui,)
 
 
 @app.cell
-def _(graph_ui, prediction):
-    prediction_ui = prediction.resample("1d").mean().plot(y="total[MW]",grid=True,figsize=(15,10)) if graph_ui.value else prediction
-    return (prediction_ui,)
+def _():
+    return
 
 
 @app.cell

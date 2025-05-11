@@ -360,13 +360,35 @@ class Loads:
         raise ValueError(f"{repr(building)} is not a valid building type")
 
 class Model:
+    """Load model
 
+    Parameters:
+
+    * `growth`: building type load growth rates
+
+    * `eletrification`: fossil end-use electrification rates
+
+    * `upgrades`: electric end-use efficiency improvement rates
+    """
     def __init__(self,*args):
-        """Create a model from county, weather, or load data"""
+        """Create a model from county, weather, and/or load data
+
+        Arguments:
+    
+        * `county`: county object
+    
+        * `weather`: weather object
+    
+        * `loads`: load object
+        """
         self.args = args
         self.county = None
         self.weather = None
         self.loads = None
+        self.growth = {} # annual load growth
+        self.electrification = {} # end-use electrification rates
+        self.upgrades = {} # end-use technology upgrades
+
         for data in args:
 
             if isinstance(data,County):
@@ -419,7 +441,7 @@ class Model:
         raise TypeError(f"cannot predict using the abstract class of Model")
 
 class NERCModel(Model):
-
+    """Implement the simple NERC load forecasting model"""
     def fit(self,cutoff=0):
 
         totals = self.loads.data
@@ -448,7 +470,11 @@ class NERCModel(Model):
         heating = self.results["HeatingModel"].predict(X)
         cooling = self.results["CoolingModel"].predict(X)
         self.results["residuals"] = Y - baseload - heating - cooling
-        self.results["RMSE"] = np.sqrt(np.linalg.norm(self.results["residuals"]))
+        self.results["RMSE"] = f"""{np.sqrt(np.linalg.norm(self.results["residuals"])):.1f} MW"""
+        self.results["Heating temperature"] = f"""{self.results["HeatingModel"].fit_breaks[1]:.1f} degC"""
+        self.results["Heating sensitivity"] = f"""{self.results["HeatingModel"].beta[1]:.1f} MW/degC"""
+        self.results["Cooling temperature"] = f"""{self.results["CoolingModel"].fit_breaks[1]:.1f} degC"""
+        self.results["Cooling sensitivity"] = f"""{self.results["CoolingModel"].beta[1]:.1f} MW/degC"""
 
     def predict(self,temperatures,loads=["baseload","cooling","heating"]):
 

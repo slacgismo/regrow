@@ -210,6 +210,7 @@ def _(
     weather,
 ):
     # Generate tab contents
+    _units = '%' if fraction_ui.value else 'MW'
     with mo.status.spinner(
         title="Generating plots" if graph_ui.value else "Updating tables",
         remove_on_exit=True,
@@ -218,15 +219,16 @@ def _(
             resstock_ui = mo.ui.tabs(
                 {
                     res_buildings[x]: (
-                        y[[f"{z}[{'%' if fraction_ui.value else 'MW'}]" for z in ["baseload", "heating", "cooling"]]]
+                        y[[f"{z}[{_units}]" for z in ["baseload", "heating", "cooling"]]]
                         .resample("1d")
                         .mean()
                         .plot.area(
                             figsize=(15, 10),
                             color=["g", "r", "b"],
                             grid=True,
-                            ylabel="Load [MW]",
-                            xlabel=f"Date/Time ({timezone.name})"
+                            ylabel=f"Load [{_units}]",
+                            xlabel=f"Date/Time ({timezone.name})",
+                            ylim=[0,100] if fraction_ui.value else None,
                         )
                         if graph_ui.value
                         else y.round(1)
@@ -242,15 +244,16 @@ def _(
             comstock_ui = mo.ui.tabs(
                 {
                     com_buildings[x]: (
-                        y[[f"{z}[{'%' if fraction_ui.value else 'MW'}]" for z in ["baseload", "heating", "cooling"]]]
+                        y[[f"{z}[{_units}]" for z in ["baseload", "heating", "cooling"]]]
                         .resample("1d")
                         .mean()
                         .plot.area(
                             figsize=(15, 10),
                             color=["g", "r", "b"],
                             grid=True,
-                            ylabel="Load [MW]",
-                            xlabel=f"Date/Time ({timezone.name})"
+                            ylabel=f"Load [{_units}]",
+                            xlabel=f"Date/Time ({timezone.name})",
+                            ylim=[0,100] if fraction_ui.value else None,
                         )
                         if graph_ui.value
                         else y.round(1)
@@ -292,7 +295,7 @@ def _(county, load_models, mo):
     plt.plot(_x,_y,"-k")
     plt.grid()
     nerc_model_plot = plt.gca()
-    _summaries = [f"<tr><th>{x}</th><td>{round(y,1)}</td></tr>" for x,y in _model.results.items() if isinstance(y,float)]
+    _summaries = [f"<tr><th>{x}</th><td>{y}</td></tr>" for x,y in _model.results.items() if isinstance(y,str)]
     nerc_model_text = mo.md(f"<table><caption><u>Fit results</u></caption>{''.join(_summaries)}</table>")
     return nerc_model_plot, nerc_model_text
 

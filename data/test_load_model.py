@@ -381,16 +381,36 @@ def _(comstock, county, graph_ui, mo, pd, resstock):
 
 @app.cell
 def _(mo):
+    eia_ui = mo.ui.checkbox(label="EIA growth",value=True)
+    range_ui = mo.ui.date_range(label="Predict for:",start="2018-01-01",value=["2018-01-01","2018-12-31"])
+    return eia_ui, range_ui
+
+
+@app.cell
+def _(eia_ui, mo, predict_years, sales):
+    _year = max(predict_years)
+    _elapsed = _year - 2018
+    _growth = (
+        (sales[str(_year)]["Residential"] + sales[str(_year)]["Commercial"])
+        / (sales["2018"]["Residential"] + sales["2018"]["Commercial"])
+    )**(1/_elapsed)
+    _value = round((_growth - 1) * 100, 0)
     growth_ui = mo.ui.slider(
         label="Annual load growth rate: [%/yr]",
-        start=0.0,
-        stop=100.0,
-        value=3.0,
+        start=min(-10.0,_value*2),
+        stop=max(10.0,_value*2),
+        value=_value if eia_ui.value else 0.0,
         debounce=True,
         show_value=True,
     )
-    range_ui = mo.ui.date_range(label="Predict for:",start="2018-01-01",value=["2018-01-01","2018-12-31"])
-    return growth_ui, range_ui
+    return (growth_ui,)
+
+
+@app.cell
+def _(eia, state_ui):
+    # EIA state energy profile data
+    sales = eia.StateEnergyProfile(state_ui.value)["sales[MWh]"]
+    return (sales,)
 
 
 @app.cell
@@ -402,15 +422,22 @@ def _(pd, range_ui):
 
 
 @app.cell
-def _(county, graph_ui, mo, model, models_ui, predict_dates, predict_years):
+def _(
+    county,
+    graph_ui,
+    mo,
+    model,
+    models_ui,
+    nsrdb,
+    predict_dates,
+    predict_years,
+):
     try:
-        import subprocess
-        import io
-        import nsrdb
         prediction = nsrdb.getyears(predict_years,county.latitude,county.longitude)["DataFrame"]
         prediction.index = prediction.index.tz_localize(county.timezone)
         prediction["temperature[degC]"] = (prediction["temperature[degF]"].values-32)/1.8
         prediction["total[MW]"] = model[models_ui.value].predict(prediction["temperature[degC]"])
+        # TODO: add growth rate
         prediction_ui = prediction.loc[predict_dates].plot(y="total[MW]",grid=True,figsize=(15,10)) if graph_ui.value else prediction
     except Exception as err:
         prediction_ui = mo.md(f"EXCEPTION: {err}")
@@ -418,8 +445,8 @@ def _(county, graph_ui, mo, model, models_ui, predict_dates, predict_years):
 
 
 @app.cell
-def _(growth_ui, mo, prediction_ui, range_ui):
-    predict_ui = mo.vstack([mo.hstack([range_ui,growth_ui]),prediction_ui])
+def _(eia_ui, growth_ui, mo, prediction_ui, range_ui):
+    predict_ui = mo.vstack([mo.hstack([range_ui,eia_ui,growth_ui]),prediction_ui])
     return (predict_ui,)
 
 
@@ -460,7 +487,11 @@ def _():
     import load_models
     import matplotlib.pyplot as plt
     import numpy as np
-    return load_models, mo, np, pd, plt, sys
+    import subprocess
+    import io
+    import nsrdb
+    import eia
+    return eia, load_models, mo, np, nsrdb, pd, plt, sys
 
 
 if __name__ == "__main__":

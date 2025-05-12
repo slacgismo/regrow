@@ -396,30 +396,25 @@ def _(mo):
 @app.cell
 def _(pd, range_ui):
     # predict for timerange
-    _dt = pd.date_range(*range_ui.value,freq="1h",tz="UTC")
-    predict_years = set([x.year for x in _dt])
-    return (predict_years,)
+    predict_dates = pd.date_range(*range_ui.value,freq="1h",tz="UTC")
+    predict_years = set([x.year for x in predict_dates])
+    return predict_dates, predict_years
 
 
 @app.cell
-def _(county, graph_ui, mo, model, models_ui, pd, predict_years):
+def _(county, graph_ui, mo, model, models_ui, predict_dates, predict_years):
     try:
         import subprocess
         import io
-        _reply = subprocess.run(["gridlabd","nsrdb_weather",f"-y={','.join([str(x) for x in predict_years])}",f"-p={county.latitude},{county.longitude}","--apikey=Ubjn2frXFcg45wakew1iKmRHJCCM0DCsatIEqsUM"],capture_output=True)
-        _csv = _reply.stdout.decode("utf-8")
-        prediction = pd.read_csv(io.StringIO(_csv),parse_dates=["datetime"],index_col="datetime")
+        import nsrdb
+        prediction = nsrdb.getyears(predict_years,county.latitude,county.longitude)["DataFrame"]
+        prediction.index = prediction.index.tz_localize(county.timezone)
         prediction["temperature[degC]"] = (prediction["temperature[degF]"].values-32)/1.8
         prediction["total[MW]"] = model[models_ui.value].predict(prediction["temperature[degC]"])
-        prediction_ui = prediction.resample("1d").mean().plot(y="total[MW]",grid=True,figsize=(15,10)) if graph_ui.value else prediction
+        prediction_ui = prediction.loc[predict_dates].plot(y="total[MW]",grid=True,figsize=(15,10)) if graph_ui.value else prediction
     except Exception as err:
         prediction_ui = mo.md(f"EXCEPTION: {err}")
     return (prediction_ui,)
-
-
-@app.cell
-def _():
-    return
 
 
 @app.cell

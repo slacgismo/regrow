@@ -82,7 +82,15 @@ def _(mo):
 
 
 @app.cell
-def _(make_H, make_basis_matrix, make_regularization_matrix, np, x, y):
+def _(
+    make_H,
+    make_basis_matrix,
+    make_offset_H,
+    make_regularization_matrix,
+    np,
+    x,
+    y,
+):
     # mult-Fourier basis matrix with cross terms
     nharmon = [6, 4, 3]
     F = make_basis_matrix(
@@ -99,8 +107,16 @@ def _(make_H, make_basis_matrix, make_regularization_matrix, np, x, y):
     # Temperature terms
     nK = 10
     knots = np.linspace(np.min(x), np.max(x), nK)
-    H = make_H(x, knots, include_offset=False)
-    return F, H, Wf, knots
+    H0 = make_H(x, knots, include_offset=False)
+    Hm1 = make_offset_H(H0, -1)
+    Hm2 = make_offset_H(H0, -2)
+    Hm3 = make_offset_H(H0, -3)
+    Hp1 = make_offset_H(H0, 1)
+    Hp2 = make_offset_H(H0, 2)
+    Hp3 = make_offset_H(H0, 3)
+    Hs = [Hm3, Hm2, Hm1, H0, Hp1, Hp2, Hp3]
+    first_use_set = np.all(np.all(~np.isnan(np.asarray(Hs)), axis=-1), axis=0)
+    return F, H0, Hs, Wf, first_use_set, knots
 
 
 @app.cell
@@ -110,48 +126,52 @@ def _(mo):
 
 
 @app.cell
-def _(F, H, Wf, cvx, y):
+def _(F, H0, Hs, Wf, cvx, first_use_set, np, y):
     a = cvx.Variable(F.shape[1]) # coefficients for time features
-    c = cvx.Variable(H.shape[1]) # coefficients for temperature features
-    error = cvx.sum_squares(y.values - F @ a - H @ c) / F.shape[0]
-    regularization = 1e-4 * cvx.sum_squares(Wf @ a) + 1e-4 * cvx.sum_squares(c)
+    c = cvx.Variable((H0.shape[1], len(Hs))) # coefficients for temperature features
+    _s = first_use_set
+    temp = cvx.sum([H[_s] @ c[:, _ix] for _ix, H in enumerate(Hs)])
+    error = cvx.sum_squares(y.values[_s] - F[_s] @ a - temp) / np.sum(_s)
+    regularization = 1e-4 * cvx.sum_squares(Wf @ a) + 1e-4 * cvx.sum_squares(c) + 1e0 * cvx.sum_squares(cvx.diff(c, axis=1))
     problem = cvx.Problem(cvx.Minimize(error + regularization))
-    problem.solve(verbose=False)
-    model = (F @ a + H @ c).value
-    return a, c, model
+    problem.solve(solver='CLARABEL', verbose=False)
+    model = (F[_s] @ a + temp).value
+    return a, c, model, temp
 
 
 @app.cell
-def _(mo, model, np, y):
-    rmse = np.sqrt(np.average(np.power(np.exp(y.values) - np.exp(model), 2)))
+def _(first_use_set, mo, model, np, y):
+    rmse = np.sqrt(np.average(np.power(np.exp(y.values[first_use_set]) - np.exp(model), 2)))
     mo.md(f"RMS error of model fit: {rmse:.2f}, or {rmse * 100 / np.nanmean(np.exp(y)):.2f}% of average")
     return
 
 
 @app.cell
-def _(a, c, mo, model, np, r2_score, y):
-    r2 = r2_score(np.exp(y.values), np.exp(model))
+def _(a, c, first_use_set, mo, model, np, r2_score, y):
+    r2 = r2_score(np.exp(y.values[first_use_set]), np.exp(model))
     r2_adj = 1 - (1 - r2) * (len(y) - 1) / (len(y) + len(a[1:].value) + len(c.value) - 1)
     mo.vstack([f"R2: {r2:.3f}", f"R2-adj: {r2_adj:.3f}"])
     return
 
 
 @app.cell
-def _(a, c, plt):
-    _fig, _ax = plt.subplots(nrows=2, sharey=False)
+def _(Hs, a, c, plt):
+    _fig, _ax = plt.subplots(nrows=len(Hs)+1, sharey=False, figsize=(6, 7))
     _ax[0].stem(a[1:].value)
-    _ax[1].stem(c.value)
+    for _ix in range(len(Hs)):
+        _ax[_ix+1].stem(c[:, _ix].value)
+    plt.tight_layout()
     plt.gcf()
     return
 
 
 @app.cell
-def _(F, H, a, c, df, mo, model, np, plt, y):
+def _(F, a, df, first_use_set, mo, model, np, plt, temp, y):
     _ix = df.loc["2020":"2021"].index
     plt.plot(_ix, np.exp(F @ a.value) - np.average(np.exp(F @ a.value)) + np.average(np.exp(y)), linewidth=1, color='grey', label='time only')
-    plt.plot(_ix, np.exp(H @ c.value + a[0].value), linewidth=1, color='grey', label='temp only', ls=':')
+    plt.plot(_ix[first_use_set], np.exp(temp.value + a[0].value), linewidth=1, color='grey', label='temp only', ls=':')
     plt.plot(_ix, np.exp(y.values), label='actual', ls='--')
-    plt.plot(_ix, np.exp(model), label='predicted')
+    plt.plot(_ix[first_use_set], np.exp(model), label='predicted')
     plt.legend()
     plt.xticks(rotation=45)
     plt.tight_layout()
@@ -160,8 +180,8 @@ def _(F, H, a, c, df, mo, model, np, plt, y):
 
 
 @app.cell
-def _(model, plt, y):
-    plt.plot(y.values, model, marker='.', linewidth=1, alpha=.4)
+def _(first_use_set, model, plt, y):
+    plt.plot(y.values[first_use_set], model, marker='.', linewidth=1, alpha=.4)
     plt.xlabel('actual')
     plt.ylabel('predicted')
     _xlim = plt.xlim()
@@ -174,8 +194,8 @@ def _(model, plt, y):
 
 
 @app.cell
-def _(model, plt, y):
-    baseline_residuals = y.values - model
+def _(first_use_set, model, plt, y):
+    baseline_residuals = y.values[first_use_set] - model
     plt.hist(baseline_residuals, bins=100)
     plt.title('Distribution of baseline residuals')
     plt.gcf()
@@ -183,17 +203,18 @@ def _(model, plt, y):
 
 
 @app.cell
-def _(y):
-    y.shape
+def _(temp):
+    temp.value
     return
 
 
 @app.cell
-def _(a, c, df, knots, make_H, np, plt, x, y):
+def _(a, df, first_use_set, np, plt, temp, x, y):
     x_sort = np.sort(x.values)
     plt.scatter(df.loc["2020":"2021"]['Dry_Bulb'].values, np.exp(y), marker='.',
                 label='data', s=10, alpha=.5, color='orange')
-    plt.plot(x_sort, np.exp((make_H(x_sort, knots) @ c).value + a[0].value), label='temperature response')
+    # plt.plot(x_sort, np.exp((make_H(x_sort, knots) @ c).value + a[0].value), label='temperature response')
+    plt.plot(x.values[first_use_set], np.exp(temp.value + a[0].value), label='temperature response', marker='.', ls='none')
     plt.title('Inferred temperature dependence')
     plt.legend()
     return
@@ -340,7 +361,13 @@ def _(mo):
 
 
 @app.cell
-def _(make_H, make_basis_matrix, np, stats):
+def _(np):
+    np.sum([np.arange(5) + _ix for _ix in range(12)], axis=0)
+    return
+
+
+@app.cell
+def _(make_H, make_basis_matrix, make_offset_H, np, stats):
     def roll_out_ar_noise(length, ar_coeff, intercept, loc, scale, random_state=None):
         window = stats.laplace.rvs(loc=loc, scale=scale, size=len(ar_coeff), random_state=random_state)
         nvals = length+len(ar_coeff) * 2
@@ -360,13 +387,21 @@ def _(make_H, make_basis_matrix, np, stats):
             periods=[365.2425 * 24, 7 * 24, 24]
         )
         F = F[time_idxs]
-        H = make_H(temp_data, knots, include_offset=False)
+        H0 = make_H(temp_data, knots, include_offset=False)
+        Hm1 = make_offset_H(H0, -1)
+        Hm2 = make_offset_H(H0, -2)
+        Hm3 = make_offset_H(H0, -3)
+        Hp1 = make_offset_H(H0, 1)
+        Hp2 = make_offset_H(H0, 2)
+        Hp3 = make_offset_H(H0, 3)
+        Hs = [Hm3, Hm2, Hm1, H0, Hp1, Hp2, Hp3]
+        temp = np.sum([H @ temp_coeff[:, _ix] for _ix, H in enumerate(Hs)], axis=0)
         if model == 'all':
-            baseline = F @ time_coeff + H @ temp_coeff
+            baseline = F @ time_coeff + temp
         elif model == 'time':
             baseline = F @ time_coeff
         elif model == 'temp':
-            baseline = H @ temp_coeff + time_coeff[0]
+            baseline = temp + time_coeff[0]
         return np.exp(baseline)
     return predict_baseline, roll_out_ar_noise
 
@@ -409,12 +444,12 @@ def _(df, mo, new_baseline, np):
 
 @app.cell
 def _(df, new_baseline, new_noise, np, pd):
-    ppower_actual = np.max(df.loc["2022"]["RT_Demand"].values)
-    ppower_predict = np.max(new_baseline * new_noise)
-    ppower_predict_noar = np.max(new_baseline)
-    ppower_time_actual = np.argmax(df.loc["2022"]["RT_Demand"].values)
-    ppower_time_predict =  np.argmax(new_baseline * new_noise)
-    ppower_time_predict_noar =  np.argmax(new_baseline)
+    ppower_actual = np.nanmax(df.loc["2022"]["RT_Demand"].values)
+    ppower_predict = np.nanmax(new_baseline * new_noise)
+    ppower_predict_noar = np.nanmax(new_baseline)
+    ppower_time_actual = np.nanargmax(df.loc["2022"]["RT_Demand"].values)
+    ppower_time_predict =  np.nanargmax(new_baseline * new_noise)
+    ppower_time_predict_noar =  np.nanargmax(new_baseline)
     _index = ["actual", 'predicted', 'predicted no AR model']
     _data = {
         "peak power": [ppower_actual, ppower_predict, ppower_predict_noar],
@@ -449,19 +484,13 @@ def _(mo):
 
 
 @app.cell
-def _(df, new_baseline):
-    df.loc["2022"]["RT_Demand"].values - new_baseline
-    return
-
-
-@app.cell
 def _(df, new_baseline, new_residuals, np, plt):
     plt.hist(df.loc["2022"]["RT_Demand"].values - new_baseline, bins=100, label='true residuals', alpha=0.75, density=True)
     plt.hist(new_residuals, bins=100, label='sampled residuals', alpha=0.75, density=True)
-    plt.axvline(np.median(df.loc["2022"]["RT_Demand"].values - new_baseline), ls='--')
-    plt.axvline(np.median(new_residuals), ls='--', color='orange')
-    plt.axvline(np.quantile(df.loc["2022"]["RT_Demand"].values - new_baseline, 0.95), ls=':')
-    plt.axvline(np.quantile(new_residuals, 0.95), ls=':', color='orange')
+    plt.axvline(np.nanmedian(df.loc["2022"]["RT_Demand"].values - new_baseline), ls='--')
+    plt.axvline(np.nanmedian(new_residuals), ls='--', color='orange')
+    plt.axvline(np.nanquantile(df.loc["2022"]["RT_Demand"].values - new_baseline, 0.95), ls=':')
+    plt.axvline(np.nanquantile(new_residuals, 0.95), ls=':', color='orange')
     plt.legend()
     plt.gcf()
     return
@@ -536,6 +565,19 @@ def _(np):
             shape=shape + [window],
             strides=mod_arr.strides + (mod_arr.strides[axis],))
     return (running_view,)
+
+
+@app.cell
+def _(np):
+    def make_offset_H(H, offset):
+        newH = np.copy(H)
+        newH = np.roll(newH, -offset, axis=0)
+        if offset > 0:
+            newH[-offset:] = np.nan
+        else:
+            newH[:-offset] = np.nan
+        return newH
+    return (make_offset_H,)
 
 
 @app.cell

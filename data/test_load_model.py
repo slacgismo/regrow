@@ -357,10 +357,20 @@ def _(comstock, county, graph_ui, mo, pd, resstock):
                         for y in [resstock, comstock]
                     ]
                 )
-                for z in ["baseload", "heating", "cooling","total"]
+                for z in ["baseload", "heating", "cooling"]
             ],
             axis=1,
         )
+        # need to calibrate by county based on state-level energy use
+        # others = float(sales["Residential"][2018] + sales["Commercial"][2018] - totals.sum().sum())
+        # if others < 0:
+        #     _scale = others/totals.sum().sum()
+        #     totals["baseload[MW]"] *= _scale
+        #     totals["heating[MW]"] *= _scale
+        #     totals["cooling[MW]"] *= _scale
+        #     others = 0
+        # else:
+        #     totals["baseload[MW]"] += others/len(totals)
         totals_ui = (
             totals.resample("1d")
             .mean()
@@ -391,14 +401,14 @@ def _(eia_ui, mo, predict_years, sales):
     _year = max(predict_years)
     _elapsed = _year - 2018
     _growth = (
-        (sales[str(_year)]["Residential"] + sales[str(_year)]["Commercial"])
-        / (sales["2018"]["Residential"] + sales["2018"]["Commercial"])
-    )**(1/_elapsed)
+        (sales["Residential"][_year] + sales["Commercial"][_year])
+        / (sales["Residential"][2018] + sales["Commercial"][2018])
+    ) ** ((1 / _elapsed) if _elapsed != 0 else 1.0)
     _value = round((_growth - 1) * 100, 0)
     growth_ui = mo.ui.slider(
         label="Annual load growth rate: [%/yr]",
-        start=min(-10.0,_value*2),
-        stop=max(10.0,_value*2),
+        start=min(-10.0, _value * 2),
+        stop=max(10.0, _value * 2),
         value=_value if eia_ui.value else 0.0,
         debounce=True,
         show_value=True,

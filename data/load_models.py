@@ -463,7 +463,6 @@ class Model:
 
         self.results = {
             "residuals": None,
-            "RMSE": None,
             "HeatingModel": None,
             "CoolingModel": None,
             "BaseloadModel": None,
@@ -493,14 +492,18 @@ class NERCModel(Model):
         * `cutoff`: heating/cooling load cutoff value below which load is ignored
         """
         totals = self.loads.data
-
+        holdout = set(self.holdout)
 
         # heating and cooling fit
         for load in ["heating","cooling"]:
 
             data = self.weather.data.join(totals[totals[f"{load}[MW]"]>cutoff]).dropna()
-            X = data["temperature[degC]"].values
-            Y = data[f"{load}[MW]"].values
+            if self.holdout:
+                train = [x for x in data.index if x not in holdout]
+            else:
+                train = data.index
+            X = data.loc[train]["temperature[degC]"].values
+            Y = data.loc[train][f"{load}[MW]"].values
             weights = 1/Y.std()
 
             self.results[f"{load.title()}Model"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
@@ -508,28 +511,36 @@ class NERCModel(Model):
 
         # baseload fit
         data = self.weather.data.join(totals).dropna()
-        Y = data["baseload[MW]"].values
-        X = data["temperature[degC]"].values
+        if self.holdout:
+            train = [x for x in data.index if x not in holdout]
+        else:
+            train = data.index
+        Y = data.loc[train]["baseload[MW]"].values
+        X = data.loc[train]["temperature[degC]"].values
         weights = 1/Y.std()
-        test = np.arange(min(X),max(X))
         self.results["BaseloadModel"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
         self.results["BaseloadModel"].fit(1)
 
         # holdout test (use all training data if no holdout)
-        Y = data["total[MW]"].values
         if self.holdout:
-            X,Y = X[self.holdout],Y[self.holdout]
+            test = [x for x in data.index if x in holdout]
+        else:
+            test = data.index
+        Y = data.loc[test]["total[MW]"].values
+        X = data.loc[test]["temperature[degC]"].values
         baseload = self.results["BaseloadModel"].predict(X)
         heating = self.results["HeatingModel"].predict(X)
         cooling = self.results["CoolingModel"].predict(X)
+
         self.results["residuals"] = Y - baseload - heating - cooling
         rmse = np.sqrt(np.linalg.norm(self.results["residuals"]))
         self.results["RMSE [MW]"] = f"""{rmse:.1f} MW"""
         self.results["RMSE [%]"] = f"""{rmse/data["total[MW]"].mean()*100:.1f} %"""
+        self.results["Baseload sensitivity"] = f"""{self.results["BaseloadModel"].beta[1]:.1f} MW/degC""" 
         self.results["Heating temperature"] = f"""{self.results["HeatingModel"].fit_breaks[1]:.1f} degC"""
         self.results["Heating sensitivity"] = f"""{self.results["HeatingModel"].beta[1]:.1f} MW/degC"""
         self.results["Cooling temperature"] = f"""{self.results["CoolingModel"].fit_breaks[1]:.1f} degC"""
-        self.results["Cooling sensitivity"] = f"""{self.results["CoolingModel"].beta[1]:.1f} MW/degC"""
+        self.results["Cooling sensitivity"] = f"""{self.results["CoolingModel"].beta[2]:.1f} MW/degC"""
 
     def predict(self,
         temperatures:list[float],
@@ -576,7 +587,8 @@ if __name__ == "__main__":
     assert Loads.sector("largeoffice") == "commercial", "Loads.sector(str) failed"
     load = Loads(county)
     assert str(load) == "<Alameda County CA (9q9q1v) residential/commercial single-family_detached/single-family_attached/multi-family_with_2_-_4_units/multi-family_with_5plus_units/mobile_home/largeoffice/secondaryschool/largehotel/hospital/mediumoffice/retailstripmall/outpatient/smalloffice/retailstandalone/primaryschool/smallhotel/fullservicerestaurant/quickservicerestaurant/warehouse loads>", "Loads.__str__() failed"
-    assert repr(load) == "Load.Alameda County CA (9q9q1v)(county=load_models.County('9q9q1v'),sectors=['residential', 'commercial'],loads=['total', 'baseline', 'heating', 'cooling'],buildings=['single-family_detached', 'single-family_attached', 'multi-family_with_2_-_4_units', 'multi-family_with_5plus_units', 'mobile_home', 'largeoffice', 'secondaryschool', 'largehotel', 'hospital', 'mediumoffice', 'retailstripmall', 'outpatient', 'smalloffice', 'retailstandalone', 'primaryschool', 'smallhotel', 'fullservicerestaurant', 'quickservicerestaurant', 'warehouse'])", "Loads.__repr__() failed"
+    # print(repr(load))
+    assert repr(load) == "Load.Alameda County CA (9q9q1v)(county=load_models.County('9q9q1v'),sectors=['residential', 'commercial'],loads=['total', 'baseload', 'heating', 'cooling'],buildings=['single-family_detached', 'single-family_attached', 'multi-family_with_2_-_4_units', 'multi-family_with_5plus_units', 'mobile_home', 'largeoffice', 'secondaryschool', 'largehotel', 'hospital', 'mediumoffice', 'retailstripmall', 'outpatient', 'smalloffice', 'retailstandalone', 'primaryschool', 'smallhotel', 'fullservicerestaurant', 'quickservicerestaurant', 'warehouse'])", "Loads.__repr__() failed"
     load.data.plot(figsize=(30,10),title=load.county)
     # plt.show()
 
@@ -584,5 +596,10 @@ if __name__ == "__main__":
     model = Model(weather)
     model = Model(load)
     model = NERCModel(load)
-    model.fit()
-    assert round(model.predict(np.arange(-20,40))[0],1) == 867.0, "Model.predict() failed"
+    model.fit(cutoff=1.0)
+    assert round(model.predict(np.arange(-20,40))[0],1) == 871.0, "Model.predict() failed"
+    model.holdout = [int(x) for x in model.weather.index if x//(24*7)%4==0]
+    assert round((len(model.holdout)/len(model.weather.index)),2)==0.25, "25% holdout failed"
+    model.predict(list(model.weather["temperature[degC]"]))
+    assert round(model.results["residuals"].mean(),3) == -0.375, "mean residual failed"
+

@@ -434,10 +434,16 @@ def _(
 def _(loads, nodes, pd, utils):
     node_data = pd.DataFrame([0.0]*len(nodes),list(nodes)).sort_index()
     node_data.index.name = "node"
-    node_data.columns = ["total"]
+    node_data.columns = ["min"]
+    node_data["max"] = 0.0
+    node_data["mean"] = 0.0
+    node_data["median"] = 0.0
     for _load,_data in loads.items():
         _node = utils.nearest(_load,node_data.index)
-        node_data.loc[_node,"total"] += _data.data["total[MW]"].max().round(1)
+        node_data.loc[_node,"min"] += _data.data["total[MW]"].min().round(1)
+        node_data.loc[_node,"max"] += _data.data["total[MW]"].max().round(1)
+        node_data.loc[_node,"mean"] += _data.data["total[MW]"].mean().round(1)
+        node_data.loc[_node,"median"] += _data.data["total[MW]"].median().round(1)
     return (node_data,)
 
 

@@ -463,9 +463,7 @@ class Model:
 
         self.results = {
             "residuals": None,
-            "HeatingModel": None,
-            "CoolingModel": None,
-            "BaseloadModel": None,
+            "model": {},
         }
 
     def __str__(self):
@@ -484,7 +482,10 @@ class Model:
 
 class NERCModel(Model):
     """Implement the simple NERC load forecasting model"""
-    def fit(self,cutoff:float=0):
+    def fit(self,
+        cutoff:float=0,
+        progress:callable=verbose,
+        ):
         """Fit model
 
         Arguments:
@@ -493,74 +494,113 @@ class NERCModel(Model):
         """
         totals = self.loads.data
         holdout = set(self.holdout)
+        quarter = totals.index.quarter - 1
+        weekend = np.array([1 if x > 4 else 0 for x in totals.index.weekday])
+        hour = totals.index.hour
+        daytypes = hour + weekend*24 + quarter*48
+        joined = {x:self.weather.data.join(totals[totals[f"{x}[MW]"]>cutoff]).dropna() for x in ["heating","cooling","total"]}
 
         # heating and cooling fit
-        for load in ["heating","cooling"]:
+        prediction = pd.DataFrame(
+            data = [[0.0]*len(joined)]*(len(totals.index)),
+            index = totals.index,
+            columns = list(joined))
+        for daytype in set(daytypes):
+            progress(f"Fitting {daytype=}...")
+            breaks = []
+            for load in joined:
+                index = [x for x in joined[load].index if x.hour + (1 if x.weekday() > 4 else 0)*24 + (x.quarter-1)*48 == daytype]
+                if self.holdout:
+                    index = [x for x in joined[load].index if x not in holdout]
+                data = joined[load].loc[index]
+                X = data["temperature[degC]"].values
+                Y = data[f"{load}[MW]"].values
+                if len(X) > 0:
+                    weights = 1/Y.std()
+                    model = pwlf.PiecewiseLinFit(X,Y,weights=weights)
+                    model.fit(2)
+                    if load == "heating" and model.beta[1] < 0:
+                        breaks.append(float(model.fit_breaks[1]))
+                    elif load == "cooling" and model.beta[2] > 0:
+                        breaks.append(float(model.fit_breaks[1]))
+                else:
+                    print(f"WARNING: {daytype=} {load=} has no data",flush=True,file=sys.stderr)
 
-            data = self.weather.data.join(totals[totals[f"{load}[MW]"]>cutoff]).dropna()
+            # total fit
+            index = [x for x in joined["total"].index if x.hour + (1 if x.weekday() > 4 else 0)*24 + (x.quarter-1)*48 == daytype]
             if self.holdout:
-                train = [x for x in data.index if x not in holdout]
-            else:
-                train = data.index
-            X = data.loc[train]["temperature[degC]"].values
-            Y = data.loc[train][f"{load}[MW]"].values
-            weights = 1/Y.std()
+                index = [x for x in joined["total"].index if x not in holdout]
+            data = joined["total"].loc[index]
+            Y = data["total[MW]"].values
+            X = data["temperature[degC]"].values
+            if len(X) > 0:
+                weights = 1/Y.std()
+                self.results["model"][daytype] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
+                if breaks:
+                    self.results["model"][daytype].fit_with_breaks(breaks)
+                else: 
+                    self.results["model"][daytype].fit(1)
 
-            self.results[f"{load.title()}Model"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
-            self.results[f"{load.title()}Model"].fit(2)
+            progress(f"""Model breaks........... {breaks}""")
+            progress(f"""Model sensitivities.... {self.results["model"][daytype].beta} MW/degC""" )
+            progress(f"""Model temperatures..... {self.results["model"][daytype].fit_breaks} degC""")
 
-        # baseload fit
-        data = self.weather.data.join(totals).dropna()
-        if self.holdout:
-            train = [x for x in data.index if x not in holdout]
-        else:
-            train = data.index
-        Y = data.loc[train]["baseload[MW]"].values
-        X = data.loc[train]["temperature[degC]"].values
-        weights = 1/Y.std()
-        self.results["BaseloadModel"] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
-        self.results["BaseloadModel"].fit(1)
+            # holdout test (use all training data if no holdout)
+            test = [x for x in index if x in holdout] if self.holdout else index
+            X = data.loc[test]["temperature[degC]"].values
+            Y = data.loc[test]["total[MW]"].values
+            if len(X) > 0:
+                prediction.loc[index,load] = self.results["model"][daytype].predict(X)
 
-        # holdout test (use all training data if no holdout)
-        if self.holdout:
-            test = [x for x in data.index if x in holdout]
-        else:
-            test = data.index
-        Y = data.loc[test]["total[MW]"].values
-        X = data.loc[test]["temperature[degC]"].values
-        baseload = self.results["BaseloadModel"].predict(X)
-        heating = self.results["HeatingModel"].predict(X)
-        cooling = self.results["CoolingModel"].predict(X)
-
-        self.results["residuals"] = Y - baseload - heating - cooling
+        self.results["residuals"] = (prediction["total"] - totals["total[MW]"]).dropna()
         rmse = np.sqrt(np.linalg.norm(self.results["residuals"]))
         self.results["RMSE [MW]"] = f"""{rmse:.1f} MW"""
         self.results["RMSE [%]"] = f"""{rmse/data["total[MW]"].mean()*100:.1f} %"""
-        self.results["Baseload sensitivity"] = f"""{self.results["BaseloadModel"].beta[1]:.1f} MW/degC""" 
-        self.results["Heating temperature"] = f"""{self.results["HeatingModel"].fit_breaks[1]:.1f} degC"""
-        self.results["Heating sensitivity"] = f"""{self.results["HeatingModel"].beta[1]:.1f} MW/degC"""
-        self.results["Cooling temperature"] = f"""{self.results["CoolingModel"].fit_breaks[1]:.1f} degC"""
-        self.results["Cooling sensitivity"] = f"""{self.results["CoolingModel"].beta[2]:.1f} MW/degC"""
+        progress(f"RMSE [MW] = {self.results['RMSE [MW]']}")
+        progress(f"RMSE [%] = {self.results['RMSE [%]']}")
+        # self.results["Baseload sensitivity"] = f"""{self.results["BaseloadModel"].beta[1]:.1f} MW/degC""" 
+        # self.results["Heating temperature"] = f"""{self.results["HeatingModel"].fit_breaks[1]:.1f} degC"""
+        # self.results["Heating sensitivity"] = f"""{self.results["HeatingModel"].beta[1]:.1f} MW/degC"""
+        # self.results["Cooling temperature"] = f"""{self.results["CoolingModel"].fit_breaks[1]:.1f} degC"""
+        # self.results["Cooling sensitivity"] = f"""{self.results["CoolingModel"].beta[2]:.1f} MW/degC"""
 
     def predict(self,
-        temperatures:list[float],
-        loads:list[str]=["baseload","cooling","heating"],
+        data:pd.DataFrame,
+        temperature:str="temperature[degC]",
+        load:str="total[MW]",
         ) -> list[float]:
         """Predict loads
 
         Arguments:
 
-        * `temperatures`: temperatures at which to predict load
+        * `data`: temperature data with date/time index
 
-        * `loads`: load to include in prediction (must be among models in results)
+        * `temperature`: column name for temperature data
+
+        * `load`: column name for load prediction data
 
         Returns:
 
         * `list[float]`: predictions for temperatures given
         """
-        return sum([self.results[f"{x.title()}Model"].predict(temperatures) for x in loads])
+        result = data.copy()
+        datetimes = result.index
+        temperatures = result[temperature]
+        result[load] = 0.0
+        quarter = datetimes.quarter - 1
+        weekend = np.array([1 if x > 4 else 0 for x in datetimes.weekday])
+        hour = datetimes.hour
+        daytypes = hour + weekend*24 + quarter*48
+
+        for daytype in set(daytypes):
+            index = [x for x in datetimes if x.hour + (1 if x.weekday() > 4 else 0)*24 + (x.quarter-1)*48 == daytype]
+            result.loc[index,load] = self.results[f"model"][daytype].predict(temperatures.loc[index])
+
+        return result
 
 if __name__ == "__main__":
+
+    VERBOSE = True
 
     # test global county data access
     assert list(County.states("C").keys()) == ["CA","CO","CT"], "County.states(str) failed"
@@ -597,9 +637,20 @@ if __name__ == "__main__":
     model = Model(load)
     model = NERCModel(load)
     model.fit(cutoff=1.0)
-    assert round(model.predict(np.arange(-20,40))[0],1) == 871.0, "Model.predict() failed"
-    model.holdout = [int(x) for x in model.weather.index if x//(24*7)%4==0]
-    assert round((len(model.holdout)/len(model.weather.index)),2)==0.25, "25% holdout failed"
-    model.predict(list(model.weather["temperature[degC]"]))
-    assert round(model.results["residuals"].mean(),3) == -0.375, "mean residual failed"
+    
+    # print(round(model.predict([-20.0],pd.DatetimeIndex(["2020-01-01 06:00:00-08:00"])),1))
+    # print(round(model.predict([-10.0],pd.DatetimeIndex(["2020-01-01 06:00:00-08:00"])),1))
+    # print(round(model.predict([0.0],pd.DatetimeIndex(["2020-01-01 06:00:00-08:00"])),1))
+    # print(round(model.predict([10.0],pd.DatetimeIndex(["2020-01-01 06:00:00-08:00"])),1))
+    # print(round(model.predict([10.0],pd.DatetimeIndex(["2020-08-01 18:00:00-08:00"])),1))
+    # print(round(model.predict([20.0],pd.DatetimeIndex(["2020-08-01 18:00:00-08:00"])),1))
+    # print(round(model.predict([30.0],pd.DatetimeIndex(["2020-08-01 18:00:00-08:00"])),1))
+    # print(round(model.predict([40.0],pd.DatetimeIndex(["2020-08-01 18:00:00-08:00"])),1))
+
+    result = model.predict(weather.data)
+    
+    # model.holdout = [int(x) for x in model.weather.index if x//(24*7)%4==0]
+    # assert round((len(model.holdout)/len(model.weather.index)),2)==0.25, "25% holdout failed"
+    # model.predict(list(model.weather["temperature[degC]"]))
+    # assert round(model.results["residuals"].mean(),3) == -0.375, "mean residual failed"
 

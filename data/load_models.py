@@ -498,7 +498,7 @@ class NERCModel(Model):
         weekend = np.array([1 if x > 4 else 0 for x in totals.index.weekday])
         hour = totals.index.hour
         daytypes = hour + weekend*24 + quarter*48
-        joined = {x:self.weather.data.join(totals[totals[f"{x}[MW]"]>cutoff]).dropna() for x in ["heating","cooling","total"]}
+        joined = {x:self.weather.data.join(totals[totals[x]>cutoff]).replace([np.inf, -np.inf],np.nan).dropna() for x in ["heating[MW]","cooling[MW]","total[MW]"]}
 
         # heating and cooling fit
         prediction = pd.DataFrame(
@@ -508,34 +508,28 @@ class NERCModel(Model):
         for daytype in set(daytypes):
             progress(f"Fitting {daytype=}...")
             breaks = []
-            for load in joined:
-                index = [x for x in joined[load].index if x.hour + (1 if x.weekday() > 4 else 0)*24 + (x.quarter-1)*48 == daytype]
-                if self.holdout:
-                    index = [x for x in joined[load].index if x not in holdout]
+            for load in ["heating[MW]","cooling[MW]"]:
+                index = [x for x in joined[load].index if x.hour + (1 if x.weekday() > 4 else 0)*24 + (x.quarter-1)*48 == daytype and x not in holdout]
                 data = joined[load].loc[index]
                 X = data["temperature[degC]"].values
-                Y = data[f"{load}[MW]"].values
+                Y = data[load].values
                 if len(X) > 0:
-                    weights = 1/Y.std()
-                    model = pwlf.PiecewiseLinFit(X,Y,weights=weights)
+                    model = pwlf.PiecewiseLinFit(X,Y)
                     model.fit(2)
-                    if load == "heating" and model.beta[1] < 0:
+                    if load == "heating[MW]" and model.beta[1] < 0:
                         breaks.append(float(model.fit_breaks[1]))
-                    elif load == "cooling" and model.beta[2] > 0:
+                    elif load == "cooling[MW]" and model.beta[2] > 0:
                         breaks.append(float(model.fit_breaks[1]))
                 else:
                     print(f"WARNING: {daytype=} {load=} has no data",flush=True,file=sys.stderr)
 
             # total fit
-            index = [x for x in joined["total"].index if x.hour + (1 if x.weekday() > 4 else 0)*24 + (x.quarter-1)*48 == daytype]
-            if self.holdout:
-                index = [x for x in joined["total"].index if x not in holdout]
-            data = joined["total"].loc[index]
+            index = [x for x in joined["total[MW]"].index if x.hour + (1 if x.weekday() > 4 else 0)*24 + (x.quarter-1)*48 == daytype and x not in holdout]
+            data = joined["total[MW]"].loc[index]
             Y = data["total[MW]"].values
             X = data["temperature[degC]"].values
             if len(X) > 0:
-                weights = 1/Y.std()
-                self.results["model"][daytype] = pwlf.PiecewiseLinFit(X,Y,weights=weights)
+                self.results["model"][daytype] = pwlf.PiecewiseLinFit(X,Y)
                 if breaks:
                     self.results["model"][daytype].fit_with_breaks(breaks)
                 else: 
@@ -546,14 +540,14 @@ class NERCModel(Model):
             progress(f"""Model temperatures..... {self.results["model"][daytype].fit_breaks} degC""")
 
             # holdout test (use all training data if no holdout)
-            test = [x for x in index if x in holdout] if self.holdout else index
-            X = data.loc[test]["temperature[degC]"].values
-            Y = data.loc[test]["total[MW]"].values
+            X = data["temperature[degC]"].values
+            Y = data["total[MW]"].values
             if len(X) > 0:
-                prediction.loc[index,load] = self.results["model"][daytype].predict(X)
+                prediction.loc[index,"total[MW]"] = self.results["model"][daytype].predict(X)
 
-        self.results["residuals"] = (prediction["total"] - totals["total[MW]"]).dropna()
-        rmse = np.sqrt(np.linalg.norm(self.results["residuals"]))
+        self.results["residuals"] = (prediction["total[MW]"] - totals["total[MW]"]).dropna()
+        test = [x for x in joined["total[MW]"].index if x in holdout] if holdout else joined["total[MW]"].index
+        rmse = np.sqrt(np.linalg.norm(self.results["residuals"].loc[test]))
         self.results["RMSE [MW]"] = f"""{rmse:.1f} MW"""
         self.results["RMSE [%]"] = f"""{rmse/data["total[MW]"].mean()*100:.1f} %"""
         progress(f"RMSE [MW] = {self.results['RMSE [MW]']}")
@@ -632,10 +626,8 @@ if __name__ == "__main__":
     load.data.plot(figsize=(30,10),title=load.county)
     # plt.show()
 
-    model = Model(county)
-    model = Model(weather)
-    model = Model(load)
-    model = NERCModel(load)
+    model = NERCModel(County("9q9q1v"))
+    model.holdout = [x for x in weather.data.index if x.timestamp() // (24 * 7) % 4 == 0]
     model.fit(cutoff=1.0)
     
     # print(round(model.predict([-20.0],pd.DatetimeIndex(["2020-01-01 06:00:00-08:00"])),1))

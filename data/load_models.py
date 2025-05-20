@@ -258,7 +258,8 @@ class Loads:
         "out.electricity.total.energy_consumption": lambda x: float(x) / 1000,
     }
 
-    def __init__(self,county:County,
+    def __init__(self,
+        county:County,
         sectors:list[str]=None,
         loads:list[str]=None,
         buildings:list[str]=None,
@@ -296,55 +297,62 @@ class Loads:
         for building in _buildings:
             assert building in _buildings, f"{repr(buildings)} is not a valid building"
 
-        self.data = None
-        for building in self.buildings:
-            data = None
-            sector = self.sector(building)
-            name = f"G{county.fips[:2]}0{county.fips[2:]}0"
-            file = f"{county.cache}/{building}.csv"
-            if download == 'always' or not os.path.exists(file):
-                if download != "never":
-                    verbose(f"Downloading {county} {building}...")
-                    url = self._servers[sector].format(usps=county.usps,fips=county.name,building=building)
-                    try:
-                        data = pd.read_csv(url,
-                            index_col=["timestamp"],
-                            usecols=lambda x: x in self._columns,
-                            parse_dates=["timestamp"],
-                            converters=self._converters,
-                            low_memory=True,
+        cachefile = os.path.join(CACHEDIR,f"{county.geocode}.csv")
+        if os.path.exists(cachefile):
+            self.data = pd.read_csv(cachefile,index_col=[0],parse_dates=[0])
+        else:
+            self.data = None
+            for building in self.buildings:
+                data = None
+                sector = self.sector(building)
+                name = f"G{county.fips[:2]}0{county.fips[2:]}0"
+                file = f"{county.cache}/{building}.csv"
+                if download == 'always' or not os.path.exists(file):
+                    if download != "never":
+                        verbose(f"Downloading {county} {building}...")
+                        url = self._servers[sector].format(usps=county.usps,fips=county.name,building=building)
+                        try:
+                            data = pd.read_csv(url,
+                                index_col=["timestamp"],
+                                usecols=lambda x: x in self._columns,
+                                parse_dates=["timestamp"],
+                                converters=self._converters,
+                                low_memory=True,
+                                )
+                            for column in self._converters:
+                                if column not in data.columns:
+                                    warning(f"{repr(column)} not found in {repr(building)} data for {repr(name)}")
+                                    data[column] = 0.0
+                            data.rename(self._columns,axis=1,inplace=True)
+                            data["heating[MW]"] += data["auxheat[MW]"]
+                            data["baseload[MW]"] = data["total[MW]"] - data["cooling[MW]"] - data["heating[MW]"]
+                            data.index = (
+                                data.index.tz_localize("EST" if sector == "commercial" else county.timezone)
+                                .tz_convert("UTC")
+                                .tz_localize(None)
                             )
-                        for column in self._converters:
-                            if column not in data.columns:
-                                warning(f"{repr(column)} not found in {repr(building)} data for {repr(name)}")
-                                data[column] = 0.0
-                        data.rename(self._columns,axis=1,inplace=True)
-                        data["heating[MW]"] += data["auxheat[MW]"]
-                        data["baseload[MW]"] = data["total[MW]"] - data["cooling[MW]"] - data["heating[MW]"]
-                        data.index = (
-                            data.index.tz_localize("EST" if sector == "commercial" else county.timezone)
-                            .tz_convert("UTC")
-                            .tz_localize(None)
-                        )
-                        data.index = data.index - dt.timedelta(
-                            minutes=15
-                        )  # change lagging timestamps to leading timestamp
-                        data = pd.DataFrame(data.resample("1h").sum()).round(6)
-                        data.to_csv(file, header=True, index=True)
-                    except Exception as err:
-                        warning(f"no {repr(building)} data ({url=}, {err=})")
-                        data = None
-                        if DEBUG:
-                            raise
+                            data.index = data.index - dt.timedelta(
+                                minutes=15
+                            )  # change lagging timestamps to leading timestamp
+                            data = pd.DataFrame(data.resample("1h").sum()).round(6)
+                            data.to_csv(file, header=True, index=True)
+                        except Exception as err:
+                            warning(f"no {repr(building)} data ({url=}, {err=})")
+                            data = None
+                            if DEBUG:
+                                raise
+                else:
+                    verbose(f"Reloading {county} {building}...")
+                    data = pd.read_csv(file,index_col=[0],parse_dates=[0],low_memory=True)
+
+                if not data is None:
+                    self.data = data if self.data is None else (self.data + data)
+
+            if self.data is None:
+                raise RuntimeError(f"{county} has no data")
             else:
-                verbose(f"Reloading {county} {building}...")
-                data = pd.read_csv(file,index_col=[0],parse_dates=[0],low_memory=True)
-
-            if not data is None:
-                self.data = data if self.data is None else (self.data + data)
-
-        if self.data is None:
-            raise RuntimeError(f"{county} has no data")
+                self.data = self.data.dropna().round(3)
+                self.data.to_csv(cachefile,index=True,header=True)
 
         self.index = np.array([int((float(x)-float(self.data.index.values[0]))/3600e9) for x in self.data.index.values])
         self.timestamp = self.data.index.tz_localize("UTC").tz_convert(county.timezone)

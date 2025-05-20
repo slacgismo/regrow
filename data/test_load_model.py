@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.13.6"
+__generated_with = "0.13.10"
 app = marimo.App(width="medium")
 
 
@@ -54,6 +54,9 @@ def _(county, model, result):
         title=f"{county} RMSE={model.results['RMSE [%]']}",
         figsize=(10,4),
     )
+    scatter_plot.set_xlabel("Actual load [MW]")
+    scatter_plot.set_ylabel("Modeled load [MW]")
+    None
     return (scatter_plot,)
 
 
@@ -65,14 +68,42 @@ def _(county, model, result):
         title=f"{county} RMSE={model.results['RMSE [%]']}",
         figsize=(10,4),
     )
+    timeseries_plot.legend(["Actual load","Modeled load"])
+    timeseries_plot.set_xlabel("Date/Time")
+    timeseries_plot.set_ylabel("Load [MW]")
+    None
     return (timeseries_plot,)
 
 
 @app.cell
-def _(mo, result, scatter_plot, timeseries_plot):
+def _(county, model, result):
+    bathtub_plot = result.plot.scatter(
+        "temperature[degC]",
+        "total[MW]_actual",
+        1,
+        grid=True,
+        title=f"{county} RMSE={model.results['RMSE [%]']}",
+        figsize=(10,4),
+    )
+    bathtub_plot.plot(
+        result["temperature[degC]"],
+        result["total[MW]_predicted"],
+        ".r",
+        markersize=1,
+    )
+    bathtub_plot.legend(["Actual load","Modeled load"])
+    bathtub_plot.set_xlabel("Temperature [$^\\circ$C]")
+    bathtub_plot.set_ylabel("Modeled load [MW]")
+    None
+    return (bathtub_plot,)
+
+
+@app.cell
+def _(bathtub_plot, mo, result, scatter_plot, timeseries_plot):
     mo.ui.tabs({
         "Timeseries" : mo.mpl.interactive(timeseries_plot),
         "Scatter" : mo.mpl.interactive(scatter_plot),
+        "Bathtub" : mo.mpl.interactive(bathtub_plot),
         "Data" : result,
     })
     return

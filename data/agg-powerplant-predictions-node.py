@@ -1,5 +1,3 @@
-"""Aggregates the turbine level wind model by bus."""
-
 import pandas as pd
 import glob
 from utils import geohash
@@ -67,7 +65,7 @@ for file in aggregated_wecc_node_files:
     # Round output to 2 sigfigs
     df[bus] = df['sum_pp'].round(2)
     master_geopanel_df = pd.concat([master_geopanel_df, df[[bus]]], axis=1)
-    
+
 
 # Write the geopanel to a csv in REGROW /data/ folder
 master_geopanel_df.to_csv(geopanel_file_path)

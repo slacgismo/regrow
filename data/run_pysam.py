@@ -1,8 +1,6 @@
 """Performs wind modeling with uswtdb metadata using PySAM wind model."""
 import pandas as pd
 import os
-
-os.environ["HOME"] = "C:/Users/kperry"
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import dates as mdates

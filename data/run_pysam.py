@@ -260,7 +260,7 @@ if __name__ == "__main__":
                 weather_df = pull_CONUS_data(lat, lon, hub_height, year)
                 master_weather_df = pd.concat([master_weather_df, weather_df])
             # Get the associated timezone of the data
-            tz = master_weather_df.index.time_zone
+            tz = 'Etc/GMT+' + str(int(master_weather_df.columns[3]) *-1)
             # Make the 1st row the main header row
             master_weather_df.columns = master_weather_df.iloc[0]
             master_weather_df = master_weather_df.drop(master_weather_df.index[0])
@@ -318,6 +318,7 @@ if __name__ == "__main__":
                         temp_df['Year'].astype(str) + " " +
                         temp_df['Hour'].astype(str) + ":" + 
                         temp_df['Minute'].astype(str) + ":00")
+                    temp_df['datetime'] = temp_df['datetime'].dt.tz_localize(tz)
                     power_output_df = pd.DataFrame({
                         "datetime": pd.to_datetime(temp_df["datetime"]),
                         "power[kW]": power_output})

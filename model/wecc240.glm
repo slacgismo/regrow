@@ -24,7 +24,7 @@ module pypower
     maximum_timestep ${MAXIMUM_TIMESTEP};
     stop_on_failure ${STOP_ON_FAILURE};
     controllers "wecc240_controllers";
-    //enable_opf TRUE;
+    enable_opf FALSE;
     maximum_iterations_opf 20;
     opf_feasibility_tolerance 1.3;
     opf_gradient_tolerance 3.0;

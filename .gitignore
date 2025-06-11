@@ -1067,3 +1067,6 @@ pyvenv.cfg
 # Virtual Env
 .venv/
 marimo_env/
+model/wecc240_exception_branch.csv
+model/wecc240_exception_bus.csv
+model/wecc240_exception_gen.csv

@@ -144,7 +144,8 @@ print(f"INFO: total {total/1000:.2f} GW generation installed capacity",file=sys.
 
 # generate aggregate powerplant GLM model
 n,m = 0,0
-with open("powerplants_aggregated.glm","w") as fh:
+print("INFO: writing to",repr(sys.argv[1]),file=sys.stderr)
+with open(sys.argv[1],"w") as fh:
     print("module pypower;",file=fh)
     for bus,plant in data.iterrows():
         n += 1
@@ -154,7 +155,7 @@ with open("powerplants_aggregated.glm","w") as fh:
         if gen not in objects:
             m += 1
             objects[gen] = {
-                "parent":gen.replace("_G_","_N_"),
+                "parent": f'"{gen.replace("_G_","_N_")}"',
                 "Pmax": f"{round(totals[bus],1)} MW",
                 "Qmax": f"{round(totals[bus]*0.2,1)} MW",
                 "Qmin": f"{round(-totals[bus]*0.2,1)} MW",

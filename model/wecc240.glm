@@ -13,9 +13,9 @@
 //#set output_message_context=NONE
 
 clock {
-    timezone ${TIMEZONE};
-    starttime ${STARTTIME};
-    stoptime ${STOPTIME};
+    timezone "${TIMEZONE}";
+    starttime "${STARTTIME}";
+    stoptime "${STOPTIME}";
 }
 
 module pypower

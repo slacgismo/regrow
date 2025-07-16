@@ -14,7 +14,7 @@ import psm3 as pvlib_psm3
 # Command args
 #
 def read_args(argv,docs=__doc__):
-    """Process command line arguments for GridLAB-D run
+    """Process command line arguments for GridLAB-D run"""
     if len(argv) == 1:
         print("\n".join([x for x in docs.split("\n") if x.startswith("Syntax: ")]))
         exit(1)

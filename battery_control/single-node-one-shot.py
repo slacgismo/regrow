@@ -144,8 +144,9 @@ def _(l, mo):
     plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True)
     plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=5*24, full_width=True)
     show_batt_power_bounds = mo.ui.switch(label='show battery power bounds')
-    mo.hstack([plot_start,plot_length, show_batt_power_bounds])
-    return plot_length, plot_start, show_batt_power_bounds
+    show_cap_contrained = mo.ui.switch(label='show times when capacity limit active')
+    mo.hstack([plot_start,plot_length, show_batt_power_bounds, show_cap_contrained])
+    return plot_length, plot_start, show_batt_power_bounds, show_cap_contrained
 
 
 @app.cell
@@ -158,6 +159,7 @@ def _(
     plt,
     problem,
     show_batt_power_bounds,
+    show_cap_contrained,
     tidx,
 ):
     am_solving
@@ -166,8 +168,9 @@ def _(
     _charged = np.isclose(problem.var_dict['q'].value[_s], form.value['Q'], atol=1e-2)
     _discharged = np.isclose(problem.var_dict['q'].value[_s], 0, atol=1e-2)
     _ax[0].plot(tidx[_s], problem.var_dict['q'].value[_s])
-    _ax[0].plot(tidx[_s][_charged], problem.var_dict['q'].value[_s][_charged], ls='none', marker='.', color='blue')
-    _ax[0].plot(tidx[_s][_discharged], problem.var_dict['q'].value[_s][_discharged], ls='none', marker='.', color='orange')
+    if show_cap_contrained.value:
+        _ax[0].plot(tidx[_s][_charged], problem.var_dict['q'].value[_s][_charged], ls='none', marker='.', color='blue')
+        _ax[0].plot(tidx[_s][_discharged], problem.var_dict['q'].value[_s][_discharged], ls='none', marker='.', color='orange')
     _ax[0].axhline(0, color='red', ls='--')
     _ax[0].axhline(form.value['Q'], color='red', ls='--')
     _ax[0].axhline(0.5 * form.value['Q'], color='orange', ls=':')
@@ -179,22 +182,44 @@ def _(
     _ax[1].axhline(0, color='orange', ls=':')
     _ax[1].set_title('battery power')
     _ax[2].plot(tidx[_s], problem.var_dict['u'].value[_s])
-    _ax[2].plot(tidx[_s][_charged], problem.var_dict['u'].value[_s][_charged], ls='none', marker='.', color='blue')
-    _ax[2].plot(tidx[_s][_discharged], problem.var_dict['u'].value[_s][_discharged], ls='none', marker='.', color='orange')
+    if show_cap_contrained.value:
+        _ax[2].plot(tidx[_s][_charged], problem.var_dict['u'].value[_s][_charged], ls='none', marker='.', color='blue')
+        _ax[2].plot(tidx[_s][_discharged], problem.var_dict['u'].value[_s][_discharged], ls='none', marker='.', color='orange')
     _ax[2].set_ylim(-0.1, 1.1)
     _ax[2].set_title('utility power')
     _ax[3].plot(tidx[_s], problem.var_dict['c'].value[_s])
-    _ax[3].plot(tidx[_s][_charged], problem.var_dict['c'].value[_s][_charged], ls='none', marker='.', color='blue')
-    _ax[3].plot(tidx[_s][_discharged], problem.var_dict['c'].value[_s][_discharged], ls='none', marker='.', color='orange')
+    if show_cap_contrained.value:
+        _ax[3].plot(tidx[_s][_charged], problem.var_dict['c'].value[_s][_charged], ls='none', marker='.', color='blue')
+        _ax[3].plot(tidx[_s][_discharged], problem.var_dict['c'].value[_s][_discharged], ls='none', marker='.', color='orange')
     _ax[3].set_ylim(-0.1 * np.max(problem.var_dict['c'].value), 1.1*np.max(problem.var_dict['c'].value))
     _ax[3].set_title('curtailed renewable power')
     _ax[4].plot(tidx[_s], problem.var_dict['s'].value[_s])
-    _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
-    _ax[4].plot(tidx[_s][_discharged], problem.var_dict['s'].value[_s][_discharged], ls='none', marker='.', color='orange')
+    if show_cap_contrained.value:
+        _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
+        _ax[4].plot(tidx[_s][_discharged], problem.var_dict['s'].value[_s][_discharged], ls='none', marker='.', color='orange')
     _ax[4].set_ylim(-0.05, 0.6)
     _ax[4].set_title('curtailed load')
     plt.tight_layout()
     _fig
+    return
+
+
+@app.cell
+def _(form, l, mo, np, problem):
+    charged_times = np.isclose(problem.var_dict['q'].value, form.value['Q'], atol=1e-2)
+    discharged_times = np.isclose(problem.var_dict['q'].value, 0, atol=1e-2)
+    _vc = 1 / ((np.sum(charged_times)) / (len(l) / 24))
+    _vd = 1 / ((np.sum(discharged_times)) / (len(l) / 24))
+    # _va = (_vc + _vd) / 2 / 2
+    _va = _va = 1 / ((np.sum(charged_times) + np.sum(discharged_times)) / (len(l) / 24))
+    _asoc = np.average(problem.var_dict['q'].value) / form.value['Q']
+    mo.md(f"""Average number of days between charged periods: {_vc:.2f}
+
+    Average number of days between discharged periods: {_vd:.2f}
+
+    Average number of days in decoupled problems: {_va:.2f}
+
+    Average SoC: {_asoc:.2f}""")
     return
 
 

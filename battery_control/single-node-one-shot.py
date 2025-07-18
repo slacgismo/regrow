@@ -21,8 +21,8 @@ def _(np, pd):
         df[df.columns] = df.apply(pd.to_numeric, errors='coerce').fillna(0).astype('float64')
         df = df[~df.index.duplicated(keep='first')]
         df['load[MW]'] = df['load[MW]'].mask(df['load[MW]'] < 100).interpolate(limit_direction='both').ffill().bfill()
-        df.index += pd.Timedelta(hours=8)
-        df = df.loc["2018"]
+        # df.index += pd.Timedelta(hours=8)
+        df = df.loc["2018":"2020"]
 
         l = df['load[MW]'].to_numpy() / 1000
         s = df['pv[MW]'].to_numpy() / 1000
@@ -85,16 +85,6 @@ def _(process_single_node_data):
 
 
 @app.cell
-def _(R, l, mo, plt, shortfall, tidx):
-    _fig, _ax = plt.subplots(nrows=3, sharex=True, figsize=(10, 5))
-    _ax[0].plot(tidx, l)
-    _ax[1].plot(tidx, R)
-    _ax[2].plot(tidx, shortfall)
-    mo.mpl.interactive(_fig)
-    return
-
-
-@app.cell
 def _(mo):
     make_problem = mo.ui.run_button(label='make problem')
     make_problem
@@ -115,7 +105,7 @@ def _(mo):
     beta_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label='beta', value=0.5, full_width=True)
     gamma_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label='gamma', value=5.0, full_width=True)
     lambda_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label='lambda', value=20.0, full_width=True)
-    Q_sldr = mo.ui.slider(start=0, stop=100, step=1, label='battery capacity [GWh]', value=4, full_width=True)
+    Q_sldr = mo.ui.slider(start=0, stop=300, step=1, label='battery capacity [GWh]', value=4, full_width=True)
     return Q_sldr, alpha_sldr, beta_sldr, gamma_sldr, lambda_sldr
 
 
@@ -132,40 +122,85 @@ def _(Q_sldr, alpha_sldr, beta_sldr, gamma_sldr, lambda_sldr, mo):
 
 
 @app.cell
-def _(form):
-    form
+def _(R, l, np, plot_length, plot_start, plt, shortfall, tidx):
+    _fig, _ax = plt.subplots(nrows=3, sharex=True, figsize=(10, 5))
+    _s = np.s_[plot_start.value:plot_start.value+plot_length.value]
+    _ax[0].plot(tidx[_s], l[_s])
+    _ax[0].axhline(1, color='orange', ls=':', label='max fossil')
+    _ax[0].legend()
+    _ax[0].set_title('load')
+    _ax[1].plot(tidx[_s], R[_s])
+    _ax[1].set_title('renewables')
+    _ax[2].plot(tidx[_s], shortfall[_s])
+    _ax[2].set_title('shortfall')
+    plt.tight_layout()
+    # mo.mpl.interactive(_fig)
+    _fig
     return
 
 
 @app.cell
-def _(mo):
-    plot_start = mo.ui.slider(start=0, stop=365*24, label='plot start', full_width=True)
-    plot_length = mo.ui.slider(start=0, stop=365*24+1, step=1, label='plot length', value=5*24, full_width=True)
-    mo.hstack([plot_start,plot_length])
-    return plot_length, plot_start
+def _(l, mo):
+    plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True)
+    plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=5*24, full_width=True)
+    show_batt_power_bounds = mo.ui.switch(label='show battery power bounds')
+    mo.hstack([plot_start,plot_length, show_batt_power_bounds])
+    return plot_length, plot_start, show_batt_power_bounds
 
 
 @app.cell
-def _(am_solving, form, np, plot_length, plot_start, plt, problem):
+def _(
+    am_solving,
+    form,
+    np,
+    plot_length,
+    plot_start,
+    plt,
+    problem,
+    show_batt_power_bounds,
+    tidx,
+):
     am_solving
     _s = np.s_[plot_start.value:plot_start.value+plot_length.value]
-    _fig, _ax = plt.subplots(nrows=4, sharex=True, figsize=(10, 6))
-    _ax[0].plot(problem.var_dict['q'].value[_s])
+    _fig, _ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
+    _charged = np.isclose(problem.var_dict['q'].value[_s], form.value['Q'], atol=1e-2)
+    _discharged = np.isclose(problem.var_dict['q'].value[_s], 0, atol=1e-2)
+    _ax[0].plot(tidx[_s], problem.var_dict['q'].value[_s])
+    _ax[0].plot(tidx[_s][_charged], problem.var_dict['q'].value[_s][_charged], ls='none', marker='.', color='blue')
+    _ax[0].plot(tidx[_s][_discharged], problem.var_dict['q'].value[_s][_discharged], ls='none', marker='.', color='orange')
     _ax[0].axhline(0, color='red', ls='--')
     _ax[0].axhline(form.value['Q'], color='red', ls='--')
     _ax[0].axhline(0.5 * form.value['Q'], color='orange', ls=':')
     _ax[0].set_title('battery SOC')
-    _ax[1].plot(problem.var_dict['b'].value[_s])
-    _ax[1].axhline(0, color='red', ls='--')
+    _ax[1].plot(tidx[_s], problem.var_dict['b'].value[_s])
+    if show_batt_power_bounds.value:
+        _ax[1].axhline(problem.var_dict['B'].value, color='red', ls='--')
+        _ax[1].axhline(-problem.var_dict['B'].value, color='red', ls='--')
+    _ax[1].axhline(0, color='orange', ls=':')
     _ax[1].set_title('battery power')
-    _ax[2].plot(problem.var_dict['u'].value[_s])
+    _ax[2].plot(tidx[_s], problem.var_dict['u'].value[_s])
+    _ax[2].plot(tidx[_s][_charged], problem.var_dict['u'].value[_s][_charged], ls='none', marker='.', color='blue')
+    _ax[2].plot(tidx[_s][_discharged], problem.var_dict['u'].value[_s][_discharged], ls='none', marker='.', color='orange')
     _ax[2].set_ylim(-0.1, 1.1)
     _ax[2].set_title('utility power')
-    _ax[3].plot(problem.var_dict['c'].value[_s])
-    _ax[3].set_ylim(-0.1, 3.5)
+    _ax[3].plot(tidx[_s], problem.var_dict['c'].value[_s])
+    _ax[3].plot(tidx[_s][_charged], problem.var_dict['c'].value[_s][_charged], ls='none', marker='.', color='blue')
+    _ax[3].plot(tidx[_s][_discharged], problem.var_dict['c'].value[_s][_discharged], ls='none', marker='.', color='orange')
+    _ax[3].set_ylim(-0.1 * np.max(problem.var_dict['c'].value), 1.1*np.max(problem.var_dict['c'].value))
     _ax[3].set_title('curtailed renewable power')
+    _ax[4].plot(tidx[_s], problem.var_dict['s'].value[_s])
+    _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
+    _ax[4].plot(tidx[_s][_discharged], problem.var_dict['s'].value[_s][_discharged], ls='none', marker='.', color='orange')
+    _ax[4].set_ylim(-0.05, 0.6)
+    _ax[4].set_title('curtailed load')
     plt.tight_layout()
     _fig
+    return
+
+
+@app.cell
+def _(form):
+    form
     return
 
 

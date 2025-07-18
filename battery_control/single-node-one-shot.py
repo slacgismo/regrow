@@ -16,13 +16,18 @@ def _():
 
 @app.cell
 def _(np, pd):
-    def process_single_node_data(G, verbose=False):
+    def process_single_node_data(G, add_event=False, verbose=False):
         df = pd.read_csv('single_node_data.csv', index_col=0, parse_dates=True)
         df[df.columns] = df.apply(pd.to_numeric, errors='coerce').fillna(0).astype('float64')
         df = df[~df.index.duplicated(keep='first')]
         df['load[MW]'] = df['load[MW]'].mask(df['load[MW]'] < 100).interpolate(limit_direction='both').ffill().bfill()
         # df.index += pd.Timedelta(hours=8)
         df = df.loc["2018":"2020"]
+        if add_event:
+            df.loc["2019-08-15":"2019-08-20", 'load[MW]'] *= 1.5
+            df.loc["2019-08-15":"2019-08-20", 'pv[MW]'] *= 0.25
+        daily_df = df.groupby(df.index.date).aggregate('sum') / 1000
+        daily_df.index = pd.to_datetime(daily_df.index)
 
         l = df['load[MW]'].to_numpy() / 1000
         s = df['pv[MW]'].to_numpy() / 1000
@@ -38,7 +43,7 @@ def _(np, pd):
             print(f"average renewable generation = {np.mean(R):.2f} GW")
             print(f"average shortfall = {np.mean(shortfall):.2f} GW")
             print(f"maximum fossil generation = {np.max(G):.2f} GW")
-        return l, R, shortfall, df.index
+        return l, R, shortfall, df.index, daily_df
     return (process_single_node_data,)
 
 
@@ -78,17 +83,33 @@ def _(cp):
 
 
 @app.cell
-def _(process_single_node_data):
+def _(add_abnormal_event, process_single_node_data):
     G = 1
-    l, R, shortfall, tidx = process_single_node_data(G, True)
-    return G, R, l, shortfall, tidx
+    l, R, shortfall, tidx, daily_df = process_single_node_data(G, add_abnormal_event.value, True)
+    return G, R, daily_df, l, shortfall, tidx
+
+
+@app.cell
+def _(daily_df, mo, plt):
+    daily_df.plot(y=['load[MW]', 'pv[MW]', 'wind[MW]'])
+    mo.mpl.interactive(plt.gcf())
+    return
+
+
+@app.cell
+def _(daily_df, plt):
+    daily_df.loc["2019-08-12":"2019-08-23"].plot(y=['load[MW]', 'pv[MW]', 'wind[MW]'], marker='.')
+    plt.legend(['load[GWh]', 'pv[GWh]', 'wind[GWh]'])
+    plt.gcf()
+    return
 
 
 @app.cell
 def _(mo):
     make_problem = mo.ui.run_button(label='make problem')
-    make_problem
-    return (make_problem,)
+    add_abnormal_event = mo.ui.switch(label='add abnormal weather event')
+    mo.vstack([make_problem, add_abnormal_event])
+    return add_abnormal_event, make_problem
 
 
 @app.cell
@@ -141,8 +162,15 @@ def _(R, l, np, plot_length, plot_start, plt, shortfall, tidx):
 
 @app.cell
 def _(l, mo):
-    plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True)
-    plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=5*24, full_width=True)
+    ### original view
+    # plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=14069)
+    # plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=12*24, full_width=True)
+    ### tight vew
+    # plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=14069+24*4+19)
+    # plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=6*24, full_width=True)
+    ## wide view
+    plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=13812)
+    plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=26*24, full_width=True)
     show_batt_power_bounds = mo.ui.switch(label='show battery power bounds')
     show_cap_contrained = mo.ui.switch(label='show times when capacity limit active')
     mo.hstack([plot_start,plot_length, show_batt_power_bounds, show_cap_contrained])
@@ -197,15 +225,16 @@ def _(
     if show_cap_contrained.value:
         _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[4].plot(tidx[_s][_discharged], problem.var_dict['s'].value[_s][_discharged], ls='none', marker='.', color='orange')
-    _ax[4].set_ylim(-0.05, 0.6)
-    _ax[4].set_title('curtailed load')
+    _ax[4].set_ylim(-0.1 * np.max(problem.var_dict['s'].value), 1.1*np.max(problem.var_dict['s'].value))
+    _ax[4].set_title(f'curtailed load, total = {np.sum(problem.var_dict['s'].value[_s]):.2f} GWh')
     plt.tight_layout()
     _fig
     return
 
 
 @app.cell
-def _(form, l, mo, np, problem):
+def _(am_solving, form, l, mo, np, problem):
+    am_solving
     charged_times = np.isclose(problem.var_dict['q'].value, form.value['Q'], atol=1e-2)
     discharged_times = np.isclose(problem.var_dict['q'].value, 0, atol=1e-2)
     _vc = 1 / ((np.sum(charged_times)) / (len(l) / 24))

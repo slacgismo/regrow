@@ -258,7 +258,7 @@ def _(l, mo):
     # plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=14069+24*4.3)
     # plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=3.5*24, full_width=True)
     ## wide view
-    plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=13812)
+    plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=13824)
     plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=26*24, full_width=True)
     show_batt_power_bounds = mo.ui.switch(label='show battery power bounds')
     show_cap_contrained = mo.ui.switch(label='show active capacity limits', value=True)
@@ -323,7 +323,7 @@ def _(
         _ax[3].plot(tidx[_s][_charged], problem.var_dict['c'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[3].plot(tidx[_s][_discharged], problem.var_dict['c'].value[_s][_discharged], ls='none', marker='.', color='orange')
     # _ax[3].set_ylim(-0.1 * np.max(problem.var_dict['c'].value), 1.1*np.max(problem.var_dict['c'].value))
-    _ax[3].set_title('curtailed renewable power')
+    ax3_title = f'curtailed renewable power, total = {np.sum(problem.var_dict['c'].value[_s]):.2f}'
     _ax[4].plot(tidx[_s], problem.var_dict['s'].value[_s])
     if show_cap_contrained.value:
         _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
@@ -331,20 +331,23 @@ def _(
     # _ax[4].set_ylim(-0.1 * np.max(problem.var_dict['s'].value), 1.1*np.max(problem.var_dict['s'].value))
     ax4_title = f'curtailed load, total = {np.sum(problem.var_dict['s'].value[_s]):.2f}'
     if show_battery_priority.value:
-        _ax[0].plot(tidx[_s], naive_bp['q'][_s], linewidth=1, ls=':')
-        _ax[1].plot(tidx[_s], naive_bp['b'][_s], linewidth=1, ls=':')
-        _ax[2].plot(tidx[_s], naive_bp['u'][_s], linewidth=1, ls=':')
-        _ax[3].plot(tidx[_s], naive_bp['c'][_s], linewidth=1, ls=':')
-        _ax[4].plot(tidx[_s], naive_bp['s'][_s], linewidth=1, ls=':')
+        _ax[0].plot(tidx[_s], naive_bp['q'][_s], linewidth=0.75)
+        _ax[1].plot(tidx[_s], naive_bp['b'][_s], linewidth=0.75)
+        _ax[2].plot(tidx[_s], naive_bp['u'][_s], linewidth=0.75)
+        _ax[3].plot(tidx[_s], naive_bp['c'][_s], linewidth=0.75)
+        _ax[4].plot(tidx[_s], naive_bp['s'][_s], linewidth=0.75)
+        ax3_title += f', {np.sum(naive_bp['c'][_s]):.2f}'
         ax4_title += f', {np.sum(naive_bp['s'][_s]):.2f}'
     if show_utility_priority.value:
-        _ax[0].plot(tidx[_s], naive_up['q'][_s], linewidth=1, ls=':')
-        _ax[1].plot(tidx[_s], naive_up['b'][_s], linewidth=1, ls=':')
-        _ax[2].plot(tidx[_s], naive_up['u'][_s], linewidth=1, ls=':')
-        _ax[3].plot(tidx[_s], naive_up['c'][_s], linewidth=1, ls=':')
-        _ax[4].plot(tidx[_s], naive_up['s'][_s], linewidth=1, ls=':')
+        _ax[0].plot(tidx[_s], naive_up['q'][_s], linewidth=0.75)
+        _ax[1].plot(tidx[_s], naive_up['b'][_s], linewidth=0.75)
+        _ax[2].plot(tidx[_s], naive_up['u'][_s], linewidth=0.75)
+        _ax[3].plot(tidx[_s], naive_up['c'][_s], linewidth=0.75)
+        _ax[4].plot(tidx[_s], naive_up['s'][_s], linewidth=0.75)
+        ax3_title += f', {np.sum(naive_up['c'][_s]):.2f}'
         ax4_title += f', {np.sum(naive_up['s'][_s]):.2f}'
-    _ax[4].set_title(ax4_title + ' GW')
+    _ax[3].set_title(ax3_title + ' GWh')
+    _ax[4].set_title(ax4_title + ' GWh')
     plt.tight_layout()
     _fig
     return

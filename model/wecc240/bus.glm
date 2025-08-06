@@ -1,0 +1,3160 @@
+module pypower;
+object pypower.bus:1001
+{
+    area 3;
+    Gs 1.03401;
+    Bs 5.5785;
+    Vmin 1.1;
+    Vmax 0.9;
+    name FOURCORN_0;
+    baseKV 500.0;
+    type 1;
+    latitude 36.670897;
+    longitude -108.581419;
+}
+object pypower.bus:1002
+{
+    area 3;
+    Gs 1.014;
+    Bs 8.3685;
+    Vmin 1.1;
+    Vmax 0.9;
+    name FOURCORN_1;
+    baseKV 345.0;
+    type 1;
+    latitude 36.670897;
+    longitude -108.581419;
+}
+object pypower.bus:1003
+{
+    area 10;
+    Gs 0.97318;
+    Bs -0.292;
+    Vmin 1.1;
+    Vmax 0.9;
+    name FOURCORN_2;
+    baseKV 230.0;
+    type 1;
+    latitude 36.670897;
+    longitude -108.581419;
+}
+object pypower.bus:1004
+{
+    area 10;
+    Gs 1.03;
+    Bs 18.8075;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SAN_JUAN_0;
+    baseKV 345.0;
+    type 1;
+    latitude 36.910483;
+    longitude -108.278462;
+}
+object pypower.bus:1032
+{
+    area 10;
+    Gs 1.0139;
+    Bs 8.9503;
+    Vmin 1.1;
+    Vmax 0.9;
+    name FCNGN4CC_0;
+    baseKV 20.0;
+    type 2;
+    latitude 36.670897;
+    longitude -108.581419;
+}
+object pypower.bus:1034
+{
+    area 10;
+    Gs 1.03341;
+    Bs 20.4253;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SJUAN_G4_0;
+    baseKV 20.0;
+    type 2;
+    latitude 36.910483;
+    longitude -108.278462;
+}
+object pypower.bus:1101
+{
+    area 3;
+    Gs 1.01;
+    Bs -13.5878;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CORONADO_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.131373;
+    longitude -109.690674;
+}
+object pypower.bus:1102
+{
+    area 3;
+    Gs 0.99465;
+    Bs -4.7874;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CHOLLA_0;
+    baseKV 345.0;
+    type 1;
+    latitude 34.940278;
+    longitude -110.300278;
+}
+object pypower.bus:1131
+{
+    area 3;
+    Gs 1.00946;
+    Bs -12.8589;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CORONADO_1;
+    baseKV 20.0;
+    type 2;
+    latitude 35.131373;
+    longitude -109.690674;
+}
+object pypower.bus:1201
+{
+    area 3;
+    Gs 1.09136;
+    Bs -6.6183;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MOENKOPI_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.985019;
+    longitude -111.090655;
+}
+object pypower.bus:1202
+{
+    area 3;
+    Gs 1.08;
+    Bs -3.8673;
+    Vmin 1.1;
+    Vmax 0.9;
+    name NAVAJO_0;
+    baseKV 500.0;
+    type 1;
+    latitude 36.961002;
+    longitude -110.864429;
+}
+object pypower.bus:1232
+{
+    area 3;
+    Gs 1.0799;
+    Bs -3.0358;
+    Vmin 1.1;
+    Vmax 0.9;
+    name NAVAJO 2_0;
+    baseKV 20.0;
+    type 2;
+    latitude 36.961002;
+    longitude -110.864429;
+}
+object pypower.bus:1301
+{
+    area 3;
+    Gs 1.045;
+    Bs -9.8666;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MEAD_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.929472;
+    longitude -114.835922;
+}
+object pypower.bus:1302
+{
+    area 9;
+    Gs 1.02442;
+    Bs -11.6849;
+    Vmin 1.1;
+    Vmax 0.9;
+    name H_ALLEN_0;
+    baseKV 500.0;
+    type 1;
+    latitude 36.649771;
+    longitude -115.134207;
+}
+object pypower.bus:1303
+{
+    area 9;
+    Gs 1.005;
+    Bs -15.2256;
+    Vmin 1.1;
+    Vmax 0.9;
+    name H_ALLEN_1;
+    baseKV 345.0;
+    type 1;
+    latitude 36.649771;
+    longitude -115.134207;
+}
+object pypower.bus:1331
+{
+    area 3;
+    Gs 1.04505;
+    Bs -8.7861;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HOOVER_0;
+    baseKV 20.0;
+    type 2;
+    latitude 35.929472;
+    longitude -114.835922;
+}
+object pypower.bus:1333
+{
+    area 9;
+    Gs 1.00792;
+    Bs -13.7701;
+    Vmin 1.1;
+    Vmax 0.9;
+    name H_ALLEN_2;
+    baseKV 20.0;
+    type 2;
+    latitude 36.649771;
+    longitude -115.134207;
+}
+object pypower.bus:1401
+{
+    area 3;
+    Gs 1.035;
+    Bs -14.7822;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PALOVRDE_0;
+    baseKV 500.0;
+    type 1;
+    latitude 33.513802;
+    longitude -113.239936;
+}
+object pypower.bus:1402
+{
+    area 3;
+    Gs 1.05895;
+    Bs -20.357;
+    Vmin 1.1;
+    Vmax 0.9;
+    name WESTWING_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.067027;
+    longitude -112.396715;
+}
+object pypower.bus:1403
+{
+    area 3;
+    Gs 1.03527;
+    Bs -14.4059;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PARKER_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.144722;
+    longitude -114.289722;
+}
+object pypower.bus:1431
+{
+    area 3;
+    Gs 1.04004;
+    Bs -12.4298;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PALOVRD2_0;
+    baseKV 20.0;
+    type 2;
+    latitude 33.513802;
+    longitude -113.239936;
+}
+object pypower.bus:2000
+{
+    area 7;
+    Gs 1.0;
+    Bs -16.7754;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MEXICO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 32.227887;
+    longitude -115.436076;
+}
+object pypower.bus:2030
+{
+    area 7;
+    Gs 1.00135;
+    Bs -16.0721;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MEXICO_1;
+    baseKV 20.0;
+    type 2;
+    latitude 32.227887;
+    longitude -115.436076;
+}
+object pypower.bus:2100
+{
+    area 2;
+    Gs 1.035;
+    Bs -12.4531;
+    Vmin 1.1;
+    Vmax 0.9;
+    name IMPERIAL_0;
+    baseKV 230.0;
+    type 1;
+    latitude 32.971469;
+    longitude -115.394435;
+}
+object pypower.bus:2130
+{
+    area 2;
+    Gs 1.03554;
+    Bs -12.0979;
+    Vmin 1.1;
+    Vmax 0.9;
+    name IMPERIAL_1;
+    baseKV 20.0;
+    type 2;
+    latitude 32.971469;
+    longitude -115.394435;
+}
+object pypower.bus:2201
+{
+    area 2;
+    Gs 0.99375;
+    Bs -26.5153;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIGUEL_0;
+    baseKV 500.0;
+    type 1;
+    latitude 32.680823;
+    longitude -116.982615;
+}
+object pypower.bus:2202
+{
+    area 2;
+    Gs 0.99067;
+    Bs -27.7043;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIGUEL_1;
+    baseKV 230.0;
+    type 1;
+    latitude 32.680823;
+    longitude -116.982615;
+}
+object pypower.bus:2203
+{
+    area 2;
+    Gs 1.005;
+    Bs -27.9287;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MISSION_0;
+    baseKV 230.0;
+    type 1;
+    latitude 32.784153;
+    longitude -117.137829;
+}
+object pypower.bus:2233
+{
+    area 2;
+    Gs 1.00686;
+    Bs -27.6476;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MISSION_1;
+    baseKV 20.0;
+    type 2;
+    latitude 32.784153;
+    longitude -117.137829;
+}
+object pypower.bus:2301
+{
+    area 2;
+    Gs 1.0356;
+    Bs -14.9787;
+    Vmin 1.1;
+    Vmax 0.9;
+    name IMPRLVLY_0;
+    baseKV 500.0;
+    type 1;
+    latitude 32.856407;
+    longitude -115.56459;
+}
+object pypower.bus:2302
+{
+    area 2;
+    Gs 1.035;
+    Bs -13.8866;
+    Vmin 1.1;
+    Vmax 0.9;
+    name IMPRLVLY_1;
+    baseKV 230.0;
+    type 1;
+    latitude 32.856407;
+    longitude -115.56459;
+}
+object pypower.bus:2332
+{
+    area 2;
+    Gs 1.0352;
+    Bs -13.6518;
+    Vmin 1.1;
+    Vmax 0.9;
+    name IMPRLVLY_2;
+    baseKV 20.0;
+    type 2;
+    latitude 32.856407;
+    longitude -115.56459;
+}
+object pypower.bus:2400
+{
+    area 2;
+    Gs 1.02954;
+    Bs -19.7851;
+    Vmin 1.1;
+    Vmax 0.9;
+    name DEVERS_0;
+    baseKV 500.0;
+    type 1;
+    latitude 33.927377;
+    longitude -116.57522;
+}
+object pypower.bus:2401
+{
+    area 2;
+    Gs 1.05;
+    Bs -13.6953;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LUGO_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.369347;
+    longitude -117.368876;
+}
+object pypower.bus:2402
+{
+    area 2;
+    Gs 1.03174;
+    Bs -18.0034;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIRALOMA_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.008174;
+    longitude -117.564527;
+}
+object pypower.bus:2403
+{
+    area 2;
+    Gs 1.02708;
+    Bs -22.3928;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VALLEY_0;
+    baseKV 500.0;
+    type 1;
+    latitude 33.796667;
+    longitude -117.224444;
+}
+object pypower.bus:2404
+{
+    area 2;
+    Gs 1.03914;
+    Bs -9.929;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VINCENT_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.488498;
+    longitude -118.12147;
+}
+object pypower.bus:2405
+{
+    area 2;
+    Gs 1.01146;
+    Bs -11.0446;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SYLMAR_S_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.317296;
+    longitude -118.495046;
+}
+object pypower.bus:2406
+{
+    area 2;
+    Gs 1.00777;
+    Bs -14.9652;
+    Vmin 1.1;
+    Vmax 0.9;
+    name EAGLROCK_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.150436;
+    longitude -118.184526;
+}
+object pypower.bus:2407
+{
+    area 2;
+    Gs 0.97489;
+    Bs -20.8953;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LITEHIPE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 33.879856;
+    longitude -118.175222;
+}
+object pypower.bus:2408
+{
+    area 2;
+    Gs 1.009;
+    Bs -9.1772;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MESA_CAL_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.037233;
+    longitude -118.11012;
+}
+object pypower.bus:2409
+{
+    area 2;
+    Gs 1.02;
+    Bs -18.7773;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIRALOMA_1;
+    baseKV 230.0;
+    type 1;
+    latitude 34.008174;
+    longitude -117.564527;
+}
+object pypower.bus:2410
+{
+    area 2;
+    Gs 1.0071;
+    Bs -14.6945;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PARDEE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.442694;
+    longitude -118.58844;
+}
+object pypower.bus:2411
+{
+    area 2;
+    Gs 1.02033;
+    Bs -11.4155;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VINCENT_1;
+    baseKV 230.0;
+    type 1;
+    latitude 34.488498;
+    longitude -118.12147;
+}
+object pypower.bus:2431
+{
+    area 2;
+    Gs 1.04996;
+    Bs -13.6693;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LUGO_1;
+    baseKV 20.0;
+    type 2;
+    latitude 34.369347;
+    longitude -117.368876;
+}
+object pypower.bus:2434
+{
+    area 2;
+    Gs 1.02;
+    Bs -11.388;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VINCENT_2;
+    baseKV 20.0;
+    type 2;
+    latitude 34.488498;
+    longitude -118.12147;
+}
+object pypower.bus:2438
+{
+    area 2;
+    Gs 1.00981;
+    Bs -7.7532;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MESA_CAL_1;
+    baseKV 20.0;
+    type 2;
+    latitude 34.037233;
+    longitude -118.11012;
+}
+object pypower.bus:2439
+{
+    area 2;
+    Gs 1.01976;
+    Bs -18.7223;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIRALOMA_2;
+    baseKV 20.0;
+    type 2;
+    latitude 34.008174;
+    longitude -117.564527;
+}
+object pypower.bus:2501
+{
+    area 2;
+    Gs 1.02693;
+    Bs -20.2708;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SERRANO_0;
+    baseKV 500.0;
+    type 1;
+    latitude 33.828436;
+    longitude -117.79013;
+}
+object pypower.bus:2502
+{
+    area 2;
+    Gs 1.0232;
+    Bs -21.6056;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SERRANO_1;
+    baseKV 230.0;
+    type 1;
+    latitude 33.828436;
+    longitude -117.79013;
+}
+object pypower.bus:2503
+{
+    area 2;
+    Gs 1.009;
+    Bs -23.5705;
+    Vmin 1.1;
+    Vmax 0.9;
+    name S_ONOFRE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 33.370212;
+    longitude -117.557619;
+}
+object pypower.bus:2533
+{
+    area 2;
+    Gs 1.00959;
+    Bs -23.0364;
+    Vmin 1.1;
+    Vmax 0.9;
+    name S_ONOFRE_1;
+    baseKV 20.0;
+    type 2;
+    latitude 33.370212;
+    longitude -117.557619;
+}
+object pypower.bus:2600
+{
+    area 2;
+    Gs 1.05578;
+    Bs -9.3695;
+    Vmin 1.1;
+    Vmax 0.9;
+    name ADELANTO_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.552197;
+    longitude -117.437004;
+}
+object pypower.bus:2601
+{
+    area 2;
+    Gs 1.04794;
+    Bs -9.8178;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RINALDI_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.285768;
+    longitude -118.484219;
+}
+object pypower.bus:2602
+{
+    area 2;
+    Gs 1.02251;
+    Bs -9.435;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_E_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.176429;
+    longitude -118.360306;
+}
+object pypower.bus:2603
+{
+    area 2;
+    Gs 1.05656;
+    Bs -10.0289;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VICTORVL_0;
+    baseKV 500.0;
+    type 1;
+    latitude 34.565195;
+    longitude -117.32157;
+}
+object pypower.bus:2604
+{
+    area 2;
+    Gs 1.03;
+    Bs -3.339;
+    Vmin 1.1;
+    Vmax 0.9;
+    name INTERMT_0;
+    baseKV 345.0;
+    type 1;
+    latitude 39.500381;
+    longitude -112.580826;
+}
+object pypower.bus:2605
+{
+    area 2;
+    Gs 1.02096;
+    Bs -7.2426;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_B1_0;
+    baseKV 287.0;
+    type 1;
+    latitude 34.015353;
+    longitude -118.204015;
+}
+object pypower.bus:2606
+{
+    area 2;
+    Gs 1.02096;
+    Bs -7.2426;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_B2_0;
+    baseKV 287.0;
+    type 1;
+    latitude 34.015353;
+    longitude -118.204015;
+}
+object pypower.bus:2607
+{
+    area 2;
+    Gs 1.04732;
+    Bs -9.098;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VICTORVL_1;
+    baseKV 287.0;
+    type 1;
+    latitude 34.565195;
+    longitude -117.32157;
+}
+object pypower.bus:2608
+{
+    area 2;
+    Gs 1.015;
+    Bs -9.4369;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CASTAIC_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.589863;
+    longitude -118.663274;
+}
+object pypower.bus:2609
+{
+    area 2;
+    Gs 0.99971;
+    Bs -7.7201;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GLENDAL_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.146111;
+    longitude -118.255;
+}
+object pypower.bus:2610
+{
+    area 2;
+    Gs 1.004;
+    Bs 6.4589;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HAYNES_0;
+    baseKV 230.0;
+    type 1;
+    latitude 33.697565;
+    longitude -117.911364;
+}
+object pypower.bus:2611
+{
+    area 2;
+    Gs 1.015;
+    Bs -9.6301;
+    Vmin 1.1;
+    Vmax 0.9;
+    name OLIVE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.31131;
+    longitude -118.455696;
+}
+object pypower.bus:2612
+{
+    area 2;
+    Gs 1.01357;
+    Bs -9.996;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RINALDI_1;
+    baseKV 230.0;
+    type 1;
+    latitude 34.285768;
+    longitude -118.484219;
+}
+object pypower.bus:2613
+{
+    area 2;
+    Gs 0.99477;
+    Bs -4.2231;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RIVER_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.037697;
+    longitude -118.230212;
+}
+object pypower.bus:2614
+{
+    area 2;
+    Gs 1.00215;
+    Bs -5.8005;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_BLD_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.015353;
+    longitude -118.204015;
+}
+object pypower.bus:2615
+{
+    area 2;
+    Gs 1.00539;
+    Bs -9.1473;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_E_1;
+    baseKV 230.0;
+    type 1;
+    latitude 34.176429;
+    longitude -118.360306;
+}
+object pypower.bus:2616
+{
+    area 2;
+    Gs 0.9967;
+    Bs -4.5571;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_F_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.015353;
+    longitude -118.204015;
+}
+object pypower.bus:2617
+{
+    area 2;
+    Gs 0.99769;
+    Bs -6.2866;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_G_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.10948;
+    longitude -118.254629;
+}
+object pypower.bus:2618
+{
+    area 2;
+    Gs 1.01112;
+    Bs -10.9936;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_J_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.234263;
+    longitude -118.550256;
+}
+object pypower.bus:2619
+{
+    area 2;
+    Gs 1.01253;
+    Bs -9.6918;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SYLMARLA_0;
+    baseKV 230.0;
+    type 1;
+    latitude 34.317296;
+    longitude -118.495046;
+}
+object pypower.bus:2620
+{
+    area 2;
+    Gs 1.00929;
+    Bs -10.0536;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VALLEY_1;
+    baseKV 230.0;
+    type 1;
+    latitude 33.796667;
+    longitude -117.224444;
+}
+object pypower.bus:2621
+{
+    area 2;
+    Gs 1.01278;
+    Bs -6.9051;
+    Vmin 1.1;
+    Vmax 0.9;
+    name STA_B_0;
+    baseKV 138.0;
+    type 1;
+    latitude 34.015353;
+    longitude -118.204015;
+}
+object pypower.bus:2630
+{
+    area 2;
+    Gs 1.00486;
+    Bs 7.1069;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HAYNES3G_0;
+    baseKV 20.0;
+    type 2;
+    latitude 33.697565;
+    longitude -117.911364;
+}
+object pypower.bus:2631
+{
+    area 2;
+    Gs 1.01516;
+    Bs -9.5656;
+    Vmin 1.1;
+    Vmax 0.9;
+    name OLIVE_1;
+    baseKV 20.0;
+    type 2;
+    latitude 34.31131;
+    longitude -118.455696;
+}
+object pypower.bus:2634
+{
+    area 2;
+    Gs 1.02988;
+    Bs -2.924;
+    Vmin 1.1;
+    Vmax 0.9;
+    name INTERM1G_0;
+    baseKV 20.0;
+    type 2;
+    latitude 39.500381;
+    longitude -112.580826;
+}
+object pypower.bus:2637
+{
+    area 2;
+    Gs 1.01377;
+    Bs -9.9729;
+    Vmin 1.1;
+    Vmax 0.9;
+    name OWENS_G_0;
+    baseKV 20.0;
+    type 2;
+    latitude 34.285768;
+    longitude -118.484219;
+}
+object pypower.bus:2638
+{
+    area 2;
+    Gs 1.01504;
+    Bs -9.3813;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CASTAI4G_0;
+    baseKV 20.0;
+    type 2;
+    latitude 34.589863;
+    longitude -118.663274;
+}
+object pypower.bus:2901
+{
+    area 2;
+    Gs 1.10739;
+    Bs -9.9996;
+    Vmin 1.1;
+    Vmax 0.9;
+    name ELDORADO_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.799967;
+    longitude -115.012448;
+}
+object pypower.bus:2902
+{
+    area 2;
+    Gs 1.1174;
+    Bs -11.1977;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MOHAVE_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.0525;
+    longitude -118.173889;
+}
+object pypower.bus:3101
+{
+    area 2;
+    Gs 0.98132;
+    Bs -7.7767;
+    Vmin 1.1;
+    Vmax 0.9;
+    name EMBRCDRD_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.788555;
+    longitude -122.395045;
+}
+object pypower.bus:3102
+{
+    area 2;
+    Gs 0.98603;
+    Bs -6.6336;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MARTIN_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.704337;
+    longitude -122.410274;
+}
+object pypower.bus:3103
+{
+    area 2;
+    Gs 0.99272;
+    Bs -4.5012;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SANMATEO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.582985;
+    longitude -122.318546;
+}
+object pypower.bus:3104
+{
+    area 2;
+    Gs 0.98581;
+    Bs -11.495;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MARTIN_1;
+    baseKV 115.0;
+    type 1;
+    latitude 37.704337;
+    longitude -122.410274;
+}
+object pypower.bus:3105
+{
+    area 2;
+    Gs 1.0;
+    Bs -11.5056;
+    Vmin 1.1;
+    Vmax 0.9;
+    name POTRERO_0;
+    baseKV 115.0;
+    type 1;
+    latitude 37.75843;
+    longitude -122.398;
+}
+object pypower.bus:3133
+{
+    area 2;
+    Gs 0.99266;
+    Bs -4.4922;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SANMATEO_1;
+    baseKV 20.0;
+    type 2;
+    latitude 37.582985;
+    longitude -122.318546;
+}
+object pypower.bus:3135
+{
+    area 2;
+    Gs 1.00043;
+    Bs -11.4426;
+    Vmin 1.1;
+    Vmax 0.9;
+    name POTRERO_1;
+    baseKV 20.0;
+    type 2;
+    latitude 37.75843;
+    longitude -122.398;
+}
+object pypower.bus:3201
+{
+    area 2;
+    Gs 1.00361;
+    Bs -4.5744;
+    Vmin 1.1;
+    Vmax 0.9;
+    name C_COSTA_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.978056;
+    longitude -122.031111;
+}
+object pypower.bus:3202
+{
+    area 2;
+    Gs 1.00231;
+    Bs -4.1296;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MORAGA_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.848161;
+    longitude -122.16088;
+}
+object pypower.bus:3203
+{
+    area 2;
+    Gs 1.00055;
+    Bs -4.2221;
+    Vmin 1.1;
+    Vmax 0.9;
+    name NEWARK_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.501131;
+    longitude -121.987444;
+}
+object pypower.bus:3204
+{
+    area 2;
+    Gs 1.01;
+    Bs 0.1458;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PITSBURG_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.037129;
+    longitude -121.897096;
+}
+object pypower.bus:3205
+{
+    area 2;
+    Gs 1.00081;
+    Bs -2.5203;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SOBRANTE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.905327;
+    longitude -122.208867;
+}
+object pypower.bus:3234
+{
+    area 2;
+    Gs 1.01207;
+    Bs 1.2652;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PITSBURG_1;
+    baseKV 20.0;
+    type 2;
+    latitude 38.037129;
+    longitude -121.897096;
+}
+object pypower.bus:3301
+{
+    area 2;
+    Gs 1.01131;
+    Bs -4.7303;
+    Vmin 1.1;
+    Vmax 0.9;
+    name METCALF_0;
+    baseKV 500.0;
+    type 1;
+    latitude 37.222363;
+    longitude -121.746496;
+}
+object pypower.bus:3302
+{
+    area 2;
+    Gs 0.9843;
+    Bs -7.6693;
+    Vmin 1.1;
+    Vmax 0.9;
+    name JEFFERSN_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.4198065;
+    longitude -122.2042168;
+}
+object pypower.bus:3303
+{
+    area 2;
+    Gs 1.0;
+    Bs -5.4781;
+    Vmin 1.1;
+    Vmax 0.9;
+    name METCALF_1;
+    baseKV 230.0;
+    type 1;
+    latitude 37.222363;
+    longitude -121.746496;
+}
+object pypower.bus:3304
+{
+    area 2;
+    Gs 0.98986;
+    Bs -7.0451;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MONTAVIS_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.322286;
+    longitude -122.0737899;
+}
+object pypower.bus:3305
+{
+    area 2;
+    Gs 0.99494;
+    Bs -4.7831;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RAVENSWD_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.494231;
+    longitude -122.138182;
+}
+object pypower.bus:3333
+{
+    area 2;
+    Gs 1.00081;
+    Bs -5.246;
+    Vmin 1.1;
+    Vmax 0.9;
+    name METCALF_2;
+    baseKV 20.0;
+    type 2;
+    latitude 37.222363;
+    longitude -121.746496;
+}
+object pypower.bus:3401
+{
+    area 2;
+    Gs 0.96667;
+    Bs -13.8507;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GREGG_0;
+    baseKV 230.0;
+    type 1;
+    latitude 36.850535;
+    longitude -119.92442;
+}
+object pypower.bus:3402
+{
+    area 2;
+    Gs 0.9688;
+    Bs -13.8643;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HELMS_PP_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.039937;
+    longitude -118.946978;
+}
+object pypower.bus:3403
+{
+    area 2;
+    Gs 1.0;
+    Bs -1.5414;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MC_CALL_0;
+    baseKV 230.0;
+    type 1;
+    latitude 36.609214;
+    longitude -119.639632;
+}
+object pypower.bus:3404
+{
+    area 2;
+    Gs 0.98837;
+    Bs -8.6626;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PANOCHE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 36.675814;
+    longitude -120.46628;
+}
+object pypower.bus:3405
+{
+    area 2;
+    Gs 0.9621;
+    Bs -15.576;
+    Vmin 1.1;
+    Vmax 0.9;
+    name WILSON_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.978333;
+    longitude -121.625833;
+}
+object pypower.bus:3432
+{
+    area 2;
+    Gs 0.9688;
+    Bs -13.8643;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HELMS_PP_1;
+    baseKV 20.0;
+    type 2;
+    latitude 37.039937;
+    longitude -118.946978;
+}
+object pypower.bus:3433
+{
+    area 2;
+    Gs 1.00024;
+    Bs -1.1903;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MC_CALL_1;
+    baseKV 20.0;
+    type 2;
+    latitude 36.609214;
+    longitude -119.639632;
+}
+object pypower.bus:3501
+{
+    area 2;
+    Gs 1.0;
+    Bs 1.6159;
+    Vmin 1.1;
+    Vmax 0.9;
+    name FULTON_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.497952;
+    longitude -122.761324;
+}
+object pypower.bus:3531
+{
+    area 2;
+    Gs 1.00036;
+    Bs 1.9278;
+    Vmin 1.1;
+    Vmax 0.9;
+    name FULTON_1;
+    baseKV 20.0;
+    type 2;
+    latitude 38.497952;
+    longitude -122.761324;
+}
+object pypower.bus:3601
+{
+    area 2;
+    Gs 1.015;
+    Bs -3.945;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HUMBOLDT_0;
+    baseKV 115.0;
+    type 1;
+    latitude 40.801944;
+    longitude -124.163611;
+}
+object pypower.bus:3631
+{
+    area 2;
+    Gs 1.01477;
+    Bs -3.918;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HUMBOLDT_1;
+    baseKV 20.0;
+    type 2;
+    latitude 40.801944;
+    longitude -124.163611;
+}
+object pypower.bus:3701
+{
+    area 9;
+    Gs 1.00657;
+    Bs -20.6887;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SUMMIT_0;
+    baseKV 115.0;
+    type 1;
+    latitude 39.527222;
+    longitude -119.821944;
+}
+object pypower.bus:3731
+{
+    area 9;
+    Gs 1.00596;
+    Bs -20.6259;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SUMMIT_1;
+    baseKV 20.0;
+    type 2;
+    latitude 39.527222;
+    longitude -119.821944;
+}
+object pypower.bus:3801
+{
+    area 2;
+    Gs 1.049;
+    Bs 0.2332;
+    Vmin 1.1;
+    Vmax 0.9;
+    name DIABLO_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.230747;
+    longitude -120.855104;
+}
+object pypower.bus:3802
+{
+    area 2;
+    Gs 1.03709;
+    Bs -5.7476;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GATES_0;
+    baseKV 500.0;
+    type 1;
+    latitude 36.144321;
+    longitude -120.124187;
+}
+object pypower.bus:3803
+{
+    area 2;
+    Gs 1.04616;
+    Bs -7.1165;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3804
+{
+    area 2;
+    Gs 1.00233;
+    Bs -7.1239;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GATES_1;
+    baseKV 230.0;
+    type 1;
+    latitude 36.144321;
+    longitude -120.124187;
+}
+object pypower.bus:3805
+{
+    area 2;
+    Gs 1.035;
+    Bs -6.6568;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY_1;
+    baseKV 230.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3806
+{
+    area 2;
+    Gs 1.019;
+    Bs -3.5261;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MORROBAY_0;
+    baseKV 230.0;
+    type 1;
+    latitude 35.38543;
+    longitude -120.858669;
+}
+object pypower.bus:3831
+{
+    area 2;
+    Gs 1.04876;
+    Bs 0.7821;
+    Vmin 1.1;
+    Vmax 0.9;
+    name DIABLO1_0;
+    baseKV 20.0;
+    type 2;
+    latitude 35.230747;
+    longitude -120.855104;
+}
+object pypower.bus:3835
+{
+    area 2;
+    Gs 1.03528;
+    Bs -6.5555;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY_2;
+    baseKV 20.0;
+    type 2;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3836
+{
+    area 2;
+    Gs 1.01896;
+    Bs -3.3388;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MORROBAY_1;
+    baseKV 20.0;
+    type 2;
+    latitude 35.38543;
+    longitude -120.858669;
+}
+object pypower.bus:3891
+{
+    area 2;
+    Gs 1.05217;
+    Bs -9.2502;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GATES1_0;
+    baseKV 500.0;
+    type 1;
+    latitude 36.144321;
+    longitude -120.124187;
+}
+object pypower.bus:3892
+{
+    area 2;
+    Gs 1.03871;
+    Bs -3.908;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY1_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3893
+{
+    area 2;
+    Gs 1.03351;
+    Bs -13.1513;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY2_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3894
+{
+    area 2;
+    Gs 1.03851;
+    Bs -3.8546;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY3_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3895
+{
+    area 2;
+    Gs 1.0337;
+    Bs -13.1723;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY4_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3896
+{
+    area 2;
+    Gs 1.0389;
+    Bs -3.6959;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY5_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3897
+{
+    area 2;
+    Gs 1.03561;
+    Bs -13.0099;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDWAY6_0;
+    baseKV 500.0;
+    type 1;
+    latitude 35.408481;
+    longitude -119.456003;
+}
+object pypower.bus:3901
+{
+    area 2;
+    Gs 1.0299;
+    Bs -6.014;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LOSBANOS_0;
+    baseKV 500.0;
+    type 1;
+    latitude 37.054001;
+    longitude -121.022616;
+}
+object pypower.bus:3902
+{
+    area 2;
+    Gs 1.0;
+    Bs -2.2632;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MOSSLAND_0;
+    baseKV 500.0;
+    type 1;
+    latitude 36.737604;
+    longitude -121.732796;
+}
+object pypower.bus:3903
+{
+    area 2;
+    Gs 1.03465;
+    Bs -5.2887;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TESLA_0;
+    baseKV 500.0;
+    type 1;
+    latitude 37.71247;
+    longitude -121.565283;
+}
+object pypower.bus:3904
+{
+    area 2;
+    Gs 1.03414;
+    Bs -5.4622;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VACA-DIX_0;
+    baseKV 500.0;
+    type 1;
+    latitude 38.40437;
+    longitude -121.918134;
+}
+object pypower.bus:3905
+{
+    area 2;
+    Gs 1.04915;
+    Bs -6.1484;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TABLE_MT_0;
+    baseKV 500.0;
+    type 1;
+    latitude 39.55548;
+    longitude -121.645379;
+}
+object pypower.bus:3906
+{
+    area 2;
+    Gs 1.06991;
+    Bs -5.5014;
+    Vmin 1.1;
+    Vmax 0.9;
+    name ROUND_MT_0;
+    baseKV 500.0;
+    type 1;
+    latitude 40.808138;
+    longitude -121.936762;
+}
+object pypower.bus:3907
+{
+    area 2;
+    Gs 0.96956;
+    Bs -13.7171;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BELLOTA_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.01622;
+    longitude -121.015147;
+}
+object pypower.bus:3908
+{
+    area 2;
+    Gs 0.97516;
+    Bs -16.5874;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BRIGHTON_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.547942;
+    longitude -121.407942;
+}
+object pypower.bus:3909
+{
+    area 2;
+    Gs 0.98747;
+    Bs -17.7611;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COLGATE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 39.2617;
+    longitude -121.337;
+}
+object pypower.bus:3910
+{
+    area 2;
+    Gs 0.97959;
+    Bs -12.9925;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CORTINA_0;
+    baseKV 230.0;
+    type 1;
+    latitude 39.018333;
+    longitude -122.290278;
+}
+object pypower.bus:3911
+{
+    area 2;
+    Gs 1.04304;
+    Bs -4.1388;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COTWDPGE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 40.397712;
+    longitude -122.265115;
+}
+object pypower.bus:3912
+{
+    area 2;
+    Gs 1.02453;
+    Bs -10.2031;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GLENN_0;
+    baseKV 230.0;
+    type 1;
+    latitude 39.521944;
+    longitude -122.013889;
+}
+object pypower.bus:3913
+{
+    area 2;
+    Gs 0.98796;
+    Bs -12.6866;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GOLDHILL_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.657961;
+    longitude -121.137023;
+}
+object pypower.bus:3914
+{
+    area 2;
+    Gs 0.99136;
+    Bs -2.1378;
+    Vmin 1.1;
+    Vmax 0.9;
+    name IGNACIO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.070278;
+    longitude -122.538611;
+}
+object pypower.bus:3915
+{
+    area 2;
+    Gs 0.99702;
+    Bs -3.3855;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LAKEVILE_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.249937;
+    longitude -122.583996;
+}
+object pypower.bus:3916
+{
+    area 2;
+    Gs 1.02219;
+    Bs -9.9548;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LOGAN_CR_0;
+    baseKV 230.0;
+    type 1;
+    latitude 39.435504;
+    longitude -122.23327;
+}
+object pypower.bus:3917
+{
+    area 2;
+    Gs 1.01012;
+    Bs -8.3354;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LOSBANOS_1;
+    baseKV 230.0;
+    type 1;
+    latitude 37.054001;
+    longitude -121.022616;
+}
+object pypower.bus:3918
+{
+    area 2;
+    Gs 0.99384;
+    Bs -6.0267;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MOSSLAND_1;
+    baseKV 230.0;
+    type 1;
+    latitude 36.737604;
+    longitude -121.732796;
+}
+object pypower.bus:3919
+{
+    area 2;
+    Gs 0.99679;
+    Bs -16.618;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PALERMO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 39.435556;
+    longitude -121.538056;
+}
+object pypower.bus:3920
+{
+    area 2;
+    Gs 0.99025;
+    Bs -16.2913;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RIO_OSO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.93608;
+    longitude -121.463992;
+}
+object pypower.bus:3921
+{
+    area 2;
+    Gs 1.07;
+    Bs 1.5011;
+    Vmin 1.1;
+    Vmax 0.9;
+    name ROUND_MT_1;
+    baseKV 230.0;
+    type 1;
+    latitude 40.808138;
+    longitude -121.936762;
+}
+object pypower.bus:3922
+{
+    area 2;
+    Gs 1.01629;
+    Bs -12.7252;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TABLE_MT_1;
+    baseKV 230.0;
+    type 1;
+    latitude 39.55548;
+    longitude -121.645379;
+}
+object pypower.bus:3923
+{
+    area 2;
+    Gs 1.01761;
+    Bs -1.025;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TESLA_1;
+    baseKV 230.0;
+    type 3;
+    latitude 37.71247;
+    longitude -121.565283;
+}
+object pypower.bus:3924
+{
+    area 2;
+    Gs 1.00949;
+    Bs -5.4562;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VACA-DIX_1;
+    baseKV 230.0;
+    type 1;
+    latitude 38.40437;
+    longitude -121.918134;
+}
+object pypower.bus:3925
+{
+    area 2;
+    Gs 1.02989;
+    Bs -4.0766;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COTWDPGE_1;
+    baseKV 115.0;
+    type 1;
+    latitude 40.397712;
+    longitude -122.265115;
+}
+object pypower.bus:3926
+{
+    area 2;
+    Gs 0.99786;
+    Bs -19.5525;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RIO_OSO_1;
+    baseKV 115.0;
+    type 1;
+    latitude 38.93608;
+    longitude -121.463992;
+}
+object pypower.bus:3931
+{
+    area 2;
+    Gs 1.07066;
+    Bs 1.8629;
+    Vmin 1.1;
+    Vmax 0.9;
+    name ROUND_MT_2;
+    baseKV 20.0;
+    type 2;
+    latitude 40.808138;
+    longitude -121.936762;
+}
+object pypower.bus:3932
+{
+    area 2;
+    Gs 0.99876;
+    Bs -1.8746;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MOSSLAND_2;
+    baseKV 20.0;
+    type 2;
+    latitude 36.737604;
+    longitude -121.732796;
+}
+object pypower.bus:3933
+{
+    area 2;
+    Gs 1.02;
+    Bs 0.0;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TESLA_2;
+    baseKV 20.0;
+    type 2;
+    latitude 37.71247;
+    longitude -121.565283;
+}
+object pypower.bus:4001
+{
+    area 11;
+    Gs 1.08;
+    Bs -5.9328;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MALIN_0;
+    baseKV 500.0;
+    type 1;
+    latitude 42.004704;
+    longitude -121.318052;
+}
+object pypower.bus:4002
+{
+    area 11;
+    Gs 1.1141;
+    Bs -3.7122;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SUMMER_L_0;
+    baseKV 500.0;
+    type 1;
+    latitude 43.016085;
+    longitude -120.953695;
+}
+object pypower.bus:4003
+{
+    area 11;
+    Gs 1.12835;
+    Bs 4.1039;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BURNS_0;
+    baseKV 500.0;
+    type 1;
+    latitude 43.767338;
+    longitude -118.797842;
+}
+object pypower.bus:4004
+{
+    area 11;
+    Gs 1.10132;
+    Bs -5.7208;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4005
+{
+    area 11;
+    Gs 1.08;
+    Bs -5.3425;
+    Vmin 1.1;
+    Vmax 0.9;
+    name JOHN_DAY_0;
+    baseKV 500.0;
+    type 1;
+    latitude 45.677819;
+    longitude -120.733553;
+}
+object pypower.bus:4006
+{
+    area 11;
+    Gs 1.07594;
+    Bs -8.9606;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BIG_EDDY_0;
+    baseKV 500.0;
+    type 1;
+    latitude 45.60664;
+    longitude -121.115583;
+}
+object pypower.bus:4007
+{
+    area 11;
+    Gs 1.07595;
+    Bs -9.1337;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CELILOCA_0;
+    baseKV 500.0;
+    type 1;
+    latitude 45.594757;
+    longitude -121.113585;
+}
+object pypower.bus:4008
+{
+    area 11;
+    Gs 1.08013;
+    Bs -8.1151;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MALIN_1;
+    baseKV 345.0;
+    type 1;
+    latitude 42.004704;
+    longitude -121.318052;
+}
+object pypower.bus:4009
+{
+    area 11;
+    Gs 1.08;
+    Bs -11.4341;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BIG_EDDY_1;
+    baseKV 230.0;
+    type 1;
+    latitude 45.60664;
+    longitude -121.115583;
+}
+object pypower.bus:4010
+{
+    area 11;
+    Gs 1.07871;
+    Bs -11.6748;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CELILO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 45.594757;
+    longitude -121.113585;
+}
+object pypower.bus:4031
+{
+    area 11;
+    Gs 1.07685;
+    Bs -5.5496;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MALIN_2;
+    baseKV 20.0;
+    type 2;
+    latitude 42.004704;
+    longitude -121.318052;
+}
+object pypower.bus:4035
+{
+    area 11;
+    Gs 1.07767;
+    Bs -4.7798;
+    Vmin 1.1;
+    Vmax 0.9;
+    name JOHN_DAY_1;
+    baseKV 20.0;
+    type 2;
+    latitude 45.677819;
+    longitude -120.733553;
+}
+object pypower.bus:4039
+{
+    area 13;
+    Gs 1.08393;
+    Bs -10.8846;
+    Vmin 1.1;
+    Vmax 0.9;
+    name DALLES21_0;
+    baseKV 20.0;
+    type 2;
+    latitude 45.60664;
+    longitude -121.115583;
+}
+object pypower.bus:4090
+{
+    area 11;
+    Gs 1.11068;
+    Bs -4.0346;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MALIN1_0;
+    baseKV 500.0;
+    type 1;
+    latitude 42.004704;
+    longitude -121.318052;
+}
+object pypower.bus:4091
+{
+    area 11;
+    Gs 1.11061;
+    Bs -4.8922;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY1_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4092
+{
+    area 11;
+    Gs 1.09408;
+    Bs -5.9281;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY2_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4093
+{
+    area 11;
+    Gs 1.0923;
+    Bs -5.9578;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY3_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4094
+{
+    area 11;
+    Gs 1.10593;
+    Bs -5.7326;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY4_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4095
+{
+    area 11;
+    Gs 1.09241;
+    Bs -5.9401;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY5_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4096
+{
+    area 11;
+    Gs 1.09042;
+    Bs -5.9721;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY6_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4097
+{
+    area 11;
+    Gs 1.10568;
+    Bs -5.7303;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GRIZZLY7_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.481129;
+    longitude -121.01542;
+}
+object pypower.bus:4101
+{
+    area 13;
+    Gs 1.128;
+    Bs 11.2675;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COULEE_0;
+    baseKV 500.0;
+    type 1;
+    latitude 47.947893;
+    longitude -118.996055;
+}
+object pypower.bus:4102
+{
+    area 13;
+    Gs 1.096;
+    Bs 3.9997;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HANFORD_0;
+    baseKV 500.0;
+    type 1;
+    latitude 46.669392;
+    longitude -119.573343;
+}
+object pypower.bus:4103
+{
+    area 13;
+    Gs 1.08083;
+    Bs -3.7392;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BELL_0;
+    baseKV 500.0;
+    type 1;
+    latitude 47.746353;
+    longitude -117.373738;
+}
+object pypower.bus:4104
+{
+    area 13;
+    Gs 1.05179;
+    Bs -14.7065;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BELL_1;
+    baseKV 230.0;
+    type 1;
+    latitude 47.746353;
+    longitude -117.373738;
+}
+object pypower.bus:4131
+{
+    area 13;
+    Gs 1.13099;
+    Bs 13.1595;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COULEE_1;
+    baseKV 20.0;
+    type 2;
+    latitude 47.947893;
+    longitude -118.996055;
+}
+object pypower.bus:4132
+{
+    area 13;
+    Gs 1.09651;
+    Bs 5.6353;
+    Vmin 1.1;
+    Vmax 0.9;
+    name HANFORD_1;
+    baseKV 20.0;
+    type 2;
+    latitude 46.669392;
+    longitude -119.573343;
+}
+object pypower.bus:4201
+{
+    area 13;
+    Gs 1.12;
+    Bs 4.0883;
+    Vmin 1.1;
+    Vmax 0.9;
+    name NORTH_0;
+    baseKV 500.0;
+    type 1;
+    latitude 48.22276;
+    longitude -121.837459;
+}
+object pypower.bus:4202
+{
+    area 13;
+    Gs 1.06;
+    Bs -8.249;
+    Vmin 1.1;
+    Vmax 0.9;
+    name WCASCADE_0;
+    baseKV 500.0;
+    type 1;
+    latitude 47.065363;
+    longitude -121.779859;
+}
+object pypower.bus:4203
+{
+    area 13;
+    Gs 1.02932;
+    Bs -11.4988;
+    Vmin 1.1;
+    Vmax 0.9;
+    name WILLAMET_0;
+    baseKV 500.0;
+    type 1;
+    latitude 44.051652;
+    longitude -123.091142;
+}
+object pypower.bus:4204
+{
+    area 13;
+    Gs 1.06186;
+    Bs -7.7302;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MERIDIAN_0;
+    baseKV 500.0;
+    type 1;
+    latitude 42.358895;
+    longitude -122.760172;
+}
+object pypower.bus:4231
+{
+    area 13;
+    Gs 1.12632;
+    Bs 5.0125;
+    Vmin 1.1;
+    Vmax 0.9;
+    name NORTH_G3_0;
+    baseKV 20.0;
+    type 2;
+    latitude 48.22276;
+    longitude -121.837459;
+}
+object pypower.bus:4232
+{
+    area 13;
+    Gs 1.05994;
+    Bs -8.0228;
+    Vmin 1.1;
+    Vmax 0.9;
+    name WCASCADE_1;
+    baseKV 20.0;
+    type 2;
+    latitude 47.065363;
+    longitude -121.779859;
+}
+object pypower.bus:5001
+{
+    area 4;
+    Gs 1.05;
+    Bs -5.7602;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CANADA_0;
+    baseKV 500.0;
+    type 1;
+    latitude 49.429986;
+    longitude -122.303722;
+}
+object pypower.bus:5002
+{
+    area 1;
+    Gs 1.055;
+    Bs -6.9724;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CANALB_0;
+    baseKV 500.0;
+    type 1;
+    latitude 49.429986;
+    longitude -122.303722;
+}
+object pypower.bus:5003
+{
+    area 1;
+    Gs 1.05368;
+    Bs -10.449;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CA230TO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 49.686968;
+    longitude -117.438199;
+}
+object pypower.bus:5004
+{
+    area 4;
+    Gs 1.08678;
+    Bs -12.6232;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CA230_0;
+    baseKV 230.0;
+    type 1;
+    latitude 49.686968;
+    longitude -117.438199;
+}
+object pypower.bus:5031
+{
+    area 4;
+    Gs 1.05458;
+    Bs -4.0013;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CANAD_G1_0;
+    baseKV 20.0;
+    type 2;
+    latitude 49.429986;
+    longitude -122.303722;
+}
+object pypower.bus:5032
+{
+    area 1;
+    Gs 1.0614;
+    Bs -4.5562;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CMAIN_GM_0;
+    baseKV 20.0;
+    type 2;
+    latitude 49.429986;
+    longitude -122.303722;
+}
+object pypower.bus:6101
+{
+    area 6;
+    Gs 1.0662;
+    Bs 13.9305;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDPOINT_0;
+    baseKV 500.0;
+    type 1;
+    latitude 42.888986;
+    longitude -114.199277;
+}
+object pypower.bus:6102
+{
+    area 6;
+    Gs 1.03;
+    Bs 16.7065;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDPOINT_1;
+    baseKV 345.0;
+    type 1;
+    latitude 42.888986;
+    longitude -114.199277;
+}
+object pypower.bus:6103
+{
+    area 6;
+    Gs 1.01551;
+    Bs 14.8856;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BORAH_0;
+    baseKV 345.0;
+    type 1;
+    latitude 42.835449;
+    longitude -113.348619;
+}
+object pypower.bus:6104
+{
+    area 6;
+    Gs 1.00976;
+    Bs 2.6761;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BORAH_1;
+    baseKV 230.0;
+    type 1;
+    latitude 42.835449;
+    longitude -113.348619;
+}
+object pypower.bus:6132
+{
+    area 6;
+    Gs 1.02575;
+    Bs 17.7272;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MIDPOINT_2;
+    baseKV 20.0;
+    type 2;
+    latitude 42.888986;
+    longitude -114.199277;
+}
+object pypower.bus:6201
+{
+    area 8;
+    Gs 1.06;
+    Bs 7.3626;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COLSTRP_0;
+    baseKV 500.0;
+    type 1;
+    latitude 45.689474;
+    longitude -106.552322;
+}
+object pypower.bus:6202
+{
+    area 8;
+    Gs 1.09477;
+    Bs 2.7322;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GARRISON_0;
+    baseKV 500.0;
+    type 1;
+    latitude 46.515909;
+    longitude -112.878383;
+}
+object pypower.bus:6203
+{
+    area 8;
+    Gs 1.00572;
+    Bs 6.4631;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COLSTRP_1;
+    baseKV 230.0;
+    type 1;
+    latitude 45.689474;
+    longitude -106.552322;
+}
+object pypower.bus:6204
+{
+    area 8;
+    Gs 1.05172;
+    Bs 3.1248;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GARRISON_1;
+    baseKV 230.0;
+    type 1;
+    latitude 46.515909;
+    longitude -112.878383;
+}
+object pypower.bus:6205
+{
+    area 8;
+    Gs 1.05;
+    Bs 13.0019;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MONTANA_0;
+    baseKV 230.0;
+    type 1;
+    latitude 47.432975;
+    longitude -111.260716;
+}
+object pypower.bus:6231
+{
+    area 8;
+    Gs 1.05917;
+    Bs 7.5999;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COLSTRP_2;
+    baseKV 20.0;
+    type 2;
+    latitude 45.689474;
+    longitude -106.552322;
+}
+object pypower.bus:6235
+{
+    area 8;
+    Gs 1.05069;
+    Bs 13.3683;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MONTA_G1_0;
+    baseKV 20.0;
+    type 2;
+    latitude 47.432975;
+    longitude -111.260716;
+}
+object pypower.bus:6301
+{
+    area 14;
+    Gs 1.01772;
+    Bs 16.19;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BRIDGER_0;
+    baseKV 345.0;
+    type 1;
+    latitude 42.083869;
+    longitude -108.529745;
+}
+object pypower.bus:6302
+{
+    area 14;
+    Gs 1.00694;
+    Bs -32.2769;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LARAMIE_0;
+    baseKV 345.0;
+    type 1;
+    latitude 41.383369;
+    longitude -105.567246;
+}
+object pypower.bus:6303
+{
+    area 14;
+    Gs 1.03;
+    Bs 29.5363;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BRIDGER2_0;
+    baseKV 230.0;
+    type 1;
+    latitude 42.083869;
+    longitude -108.529745;
+}
+object pypower.bus:6304
+{
+    area 14;
+    Gs 0.99528;
+    Bs -19.7357;
+    Vmin 1.1;
+    Vmax 0.9;
+    name LARAMIE_1;
+    baseKV 230.0;
+    type 1;
+    latitude 41.383369;
+    longitude -105.567246;
+}
+object pypower.bus:6305
+{
+    area 14;
+    Gs 1.06;
+    Bs 29.9977;
+    Vmin 1.1;
+    Vmax 0.9;
+    name NAUGHTON_0;
+    baseKV 230.0;
+    type 1;
+    latitude 41.826887;
+    longitude -110.64461;
+}
+object pypower.bus:6333
+{
+    area 14;
+    Gs 1.03304;
+    Bs 30.548;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BRIDGER_1;
+    baseKV 20.0;
+    type 2;
+    latitude 42.083869;
+    longitude -108.529745;
+}
+object pypower.bus:6335
+{
+    area 14;
+    Gs 1.06359;
+    Bs 30.7165;
+    Vmin 1.1;
+    Vmax 0.9;
+    name NAUGHT_0;
+    baseKV 20.0;
+    type 2;
+    latitude 41.826887;
+    longitude -110.64461;
+}
+object pypower.bus:6401
+{
+    area 9;
+    Gs 1.07236;
+    Bs -19.1477;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TRACYSPP_0;
+    baseKV 345.0;
+    type 1;
+    latitude 39.499336;
+    longitude -119.188176;
+}
+object pypower.bus:6402
+{
+    area 9;
+    Gs 1.03585;
+    Bs -21.0055;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SUMITSPP_0;
+    baseKV 115.0;
+    type 1;
+    latitude 39.527222;
+    longitude -119.821944;
+}
+object pypower.bus:6403
+{
+    area 9;
+    Gs 1.11;
+    Bs 4.0155;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VALMY_0;
+    baseKV 345.0;
+    type 1;
+    latitude 41.182805;
+    longitude -116.954457;
+}
+object pypower.bus:6404
+{
+    area 9;
+    Gs 1.08194;
+    Bs -4.0766;
+    Vmin 1.1;
+    Vmax 0.9;
+    name GONDER_0;
+    baseKV 345.0;
+    type 1;
+    latitude 39.476861;
+    longitude -114.70735;
+}
+object pypower.bus:6433
+{
+    area 9;
+    Gs 1.11115;
+    Bs 4.3221;
+    Vmin 1.1;
+    Vmax 0.9;
+    name VALMY_1;
+    baseKV 20.0;
+    type 2;
+    latitude 41.182805;
+    longitude -116.954457;
+}
+object pypower.bus:6501
+{
+    area 12;
+    Gs 1.02227;
+    Bs -0.4241;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BENLOMND_0;
+    baseKV 345.0;
+    type 1;
+    latitude 41.439081;
+    longitude -112.006907;
+}
+object pypower.bus:6502
+{
+    area 12;
+    Gs 1.02021;
+    Bs -1.1806;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CAMP_WIL_0;
+    baseKV 345.0;
+    type 1;
+    latitude 40.423164974;
+    longitude -112.007999968;
+}
+object pypower.bus:6503
+{
+    area 12;
+    Gs 1.065;
+    Bs 10.2234;
+    Vmin 1.1;
+    Vmax 0.9;
+    name EMERY_0;
+    baseKV 345.0;
+    type 1;
+    latitude 40.030278;
+    longitude -109.188333;
+}
+object pypower.bus:6504
+{
+    area 12;
+    Gs 1.02275;
+    Bs -1.1804;
+    Vmin 1.1;
+    Vmax 0.9;
+    name MONA_0;
+    baseKV 345.0;
+    type 1;
+    latitude 39.868637;
+    longitude -111.977164;
+}
+object pypower.bus:6505
+{
+    area 12;
+    Gs 1.0714;
+    Bs 8.8513;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PINTO_0;
+    baseKV 345.0;
+    type 1;
+    latitude 37.870747;
+    longitude -109.314458;
+}
+object pypower.bus:6506
+{
+    area 12;
+    Gs 1.05902;
+    Bs 8.6263;
+    Vmin 1.1;
+    Vmax 0.9;
+    name PINTO_PS_0;
+    baseKV 345.0;
+    type 1;
+    latitude 37.870747;
+    longitude -109.314458;
+}
+object pypower.bus:6507
+{
+    area 12;
+    Gs 1.05132;
+    Bs 0.2894;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SIGURD_0;
+    baseKV 345.0;
+    type 1;
+    latitude 38.887109;
+    longitude -111.917677;
+}
+object pypower.bus:6508
+{
+    area 12;
+    Gs 1.02819;
+    Bs 1.5377;
+    Vmin 1.1;
+    Vmax 0.9;
+    name SPAN_FRK_0;
+    baseKV 345.0;
+    type 1;
+    latitude 40.053045;
+    longitude -111.394196;
+}
+object pypower.bus:6509
+{
+    area 12;
+    Gs 1.02095;
+    Bs -1.1618;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TERMINAL_0;
+    baseKV 345.0;
+    type 1;
+    latitude 40.772832;
+    longitude -111.846293;
+}
+object pypower.bus:6510
+{
+    area 12;
+    Gs 0.98849;
+    Bs 0.3377;
+    Vmin 1.1;
+    Vmax 0.9;
+    name BENLOMND_1;
+    baseKV 230.0;
+    type 1;
+    latitude 41.439081;
+    longitude -112.006907;
+}
+object pypower.bus:6533
+{
+    area 12;
+    Gs 1.06644;
+    Bs 11.0672;
+    Vmin 1.1;
+    Vmax 0.9;
+    name EMERY_1;
+    baseKV 20.0;
+    type 2;
+    latitude 40.030278;
+    longitude -109.188333;
+}
+object pypower.bus:7001
+{
+    area 5;
+    Gs 1.02;
+    Bs -33.8246;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COLOEAST_0;
+    baseKV 345.0;
+    type 1;
+    latitude 38.542595;
+    longitude -104.660626;
+}
+object pypower.bus:7002
+{
+    area 5;
+    Gs 1.015;
+    Bs -30.6709;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CRAIG_0;
+    baseKV 345.0;
+    type 1;
+    latitude 40.521809;
+    longitude -107.506652;
+}
+object pypower.bus:7031
+{
+    area 5;
+    Gs 1.02618;
+    Bs -32.574;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COLOEAST_1;
+    baseKV 20.0;
+    type 2;
+    latitude 38.542595;
+    longitude -104.660626;
+}
+object pypower.bus:7032
+{
+    area 5;
+    Gs 1.01535;
+    Bs -29.9099;
+    Vmin 1.1;
+    Vmax 0.9;
+    name CRAIG_1;
+    baseKV 20.0;
+    type 2;
+    latitude 40.521809;
+    longitude -107.506652;
+}
+object pypower.bus:8001
+{
+    area 2;
+    Gs 1.06479;
+    Bs -6.0412;
+    Vmin 1.1;
+    Vmax 0.9;
+    name OLINDA_0;
+    baseKV 500.0;
+    type 1;
+    latitude 40.382027;
+    longitude -122.384572;
+}
+object pypower.bus:8002
+{
+    area 2;
+    Gs 1.04198;
+    Bs -7.7367;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TRACY_0;
+    baseKV 500.0;
+    type 1;
+    latitude 37.74752;
+    longitude -121.416448;
+}
+object pypower.bus:8003
+{
+    area 2;
+    Gs 1.075;
+    Bs -3.4806;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COTWDWAP_0;
+    baseKV 230.0;
+    type 1;
+    latitude 40.397712;
+    longitude -122.265115;
+}
+object pypower.bus:8004
+{
+    area 2;
+    Gs 1.0;
+    Bs -11.7273;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RNCHSECO_0;
+    baseKV 230.0;
+    type 1;
+    latitude 38.344823;
+    longitude -121.123005;
+}
+object pypower.bus:8005
+{
+    area 2;
+    Gs 1.00301;
+    Bs -13.4174;
+    Vmin 1.1;
+    Vmax 0.9;
+    name TRACYPMP_0;
+    baseKV 230.0;
+    type 1;
+    latitude 37.74752;
+    longitude -121.416448;
+}
+object pypower.bus:8033
+{
+    area 2;
+    Gs 1.07619;
+    Bs -3.1879;
+    Vmin 1.1;
+    Vmax 0.9;
+    name COTWDWAP_1;
+    baseKV 20.0;
+    type 2;
+    latitude 40.397712;
+    longitude -122.265115;
+}
+object pypower.bus:8034
+{
+    area 2;
+    Gs 1.00225;
+    Bs -10.7632;
+    Vmin 1.1;
+    Vmax 0.9;
+    name RNCHSECO_1;
+    baseKV 20.0;
+    type 2;
+    latitude 38.344823;
+    longitude -121.123005;
+}

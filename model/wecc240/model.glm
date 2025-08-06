@@ -1,0 +1,15 @@
+// created by 
+// created at 2025-07-28 09:57:42.759631
+#option verbose
+#set output_message_context=NONE
+module pypower
+{
+    autosize_angle 80 deg;
+    message_flags VERBOSE;
+}
+#include "bus.glm"
+#include "gen.glm"
+#include "branch.glm"
+#include "transformer.glm"
+#include "shunt.glm"
+#include "load.glm"

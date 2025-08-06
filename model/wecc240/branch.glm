@@ -1,0 +1,1985 @@
+module pypower;
+object pypower.branch
+{
+    name L_1001_1201;
+    rateA 2642.0;
+    from bus:1001;
+    to bus:1201;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1001_1202;
+    rateA 2642.0;
+    from bus:1001;
+    to bus:1202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1002_1004;
+    rateA 1773.0;
+    from bus:1002;
+    to bus:1004;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1002_1102;
+    rateA 3545.0;
+    from bus:1002;
+    to bus:1102;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1002_6506;
+    rateA 1773.0;
+    from bus:1002;
+    to bus:6506;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1004_7001;
+    rateA 1773.0;
+    from bus:1004;
+    to bus:7001;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1004_7002;
+    rateA 1773.0;
+    from bus:1004;
+    to bus:7002;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1101_1401;
+    rateA 3260.0;
+    from bus:1101;
+    to bus:1401;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1201_1202;
+    rateA 2642.0;
+    from bus:1201;
+    to bus:1202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1201_1402;
+    rateA 2642.0;
+    from bus:1201;
+    to bus:1402;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1201_2901;
+    rateA 2642.0;
+    from bus:1201;
+    to bus:2901;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1202_1302;
+    rateA 1630.0;
+    from bus:1202;
+    to bus:1302;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1202_1402;
+    rateA 2642.0;
+    from bus:1202;
+    to bus:1402;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1301_1302;
+    rateA 1630.0;
+    from bus:1301;
+    to bus:1302;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1301_1402;
+    rateA 4272.0;
+    from bus:1301;
+    to bus:1402;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1301_2603;
+    rateA 2642.0;
+    from bus:1301;
+    to bus:2603;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1301_2901;
+    rateA 2642.0;
+    from bus:1301;
+    to bus:2901;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1303_6507;
+    rateA 1773.0;
+    from bus:1303;
+    to bus:6507;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1401_1402;
+    rateA 5284.0;
+    from bus:1401;
+    to bus:1402;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1401_2301;
+    rateA 1800.0;
+    from bus:1401;
+    to bus:2301;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1401_2400;
+    rateA 1800.0;
+    from bus:1401;
+    to bus:2400;
+    status 1;
+}
+object pypower.branch
+{
+    name L_1403_2100;
+    rateA 1160.0;
+    from bus:1403;
+    to bus:2100;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2000_2202;
+    rateA 888.0;
+    from bus:2000;
+    to bus:2202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2000_2302;
+    rateA 888.0;
+    from bus:2000;
+    to bus:2302;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2100_2302;
+    rateA 1160.0;
+    from bus:2100;
+    to bus:2302;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2201_2301;
+    rateA 1800.0;
+    from bus:2201;
+    to bus:2301;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2202_2203;
+    rateA 1776.0;
+    from bus:2202;
+    to bus:2203;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2202_2503;
+    rateA 888.0;
+    from bus:2202;
+    to bus:2503;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2203_2503;
+    rateA 1776.0;
+    from bus:2203;
+    to bus:2503;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2400_2403;
+    rateA 3600.0;
+    from bus:2400;
+    to bus:2403;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2401_2402;
+    rateA 7200.0;
+    from bus:2401;
+    to bus:2402;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2401_2404;
+    rateA 7200.0;
+    from bus:2401;
+    to bus:2404;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2401_2501;
+    rateA 3600.0;
+    from bus:2401;
+    to bus:2501;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2401_2603;
+    rateA 2642.0;
+    from bus:2401;
+    to bus:2603;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2401_2901;
+    rateA 3600.0;
+    from bus:2401;
+    to bus:2901;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2401_2902;
+    rateA 3600.0;
+    from bus:2401;
+    to bus:2902;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2402_2501;
+    rateA 3600.0;
+    from bus:2402;
+    to bus:2501;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2403_2501;
+    rateA 3600.0;
+    from bus:2403;
+    to bus:2501;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2404_3893;
+    rateA 2134.0;
+    from bus:2404;
+    to bus:3893;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2404_3895;
+    rateA 2134.0;
+    from bus:2404;
+    to bus:3895;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2404_3897;
+    rateA 2100.0;
+    from bus:2404;
+    to bus:3897;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2405_2406;
+    rateA 3070.0;
+    from bus:2405;
+    to bus:2406;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2405_2410;
+    rateA 6140.0;
+    from bus:2405;
+    to bus:2410;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2406_2408;
+    rateA 2320.0;
+    from bus:2406;
+    to bus:2408;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2406_2410;
+    rateA 1160.0;
+    from bus:2406;
+    to bus:2410;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2407_2408;
+    rateA 2320.0;
+    from bus:2407;
+    to bus:2408;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2408_2409;
+    rateA 4640.0;
+    from bus:2408;
+    to bus:2409;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2408_2411;
+    rateA 2320.0;
+    from bus:2408;
+    to bus:2411;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2408_2502;
+    rateA 888.0;
+    from bus:2408;
+    to bus:2502;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2409_2502;
+    rateA 888.0;
+    from bus:2409;
+    to bus:2502;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2409_2503;
+    rateA 888.0;
+    from bus:2409;
+    to bus:2503;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2410_2411;
+    rateA 4640.0;
+    from bus:2410;
+    to bus:2411;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2502_2503;
+    rateA 1776.0;
+    from bus:2502;
+    to bus:2503;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2600_2601;
+    rateA 2642.0;
+    from bus:2600;
+    to bus:2601;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2600_2602;
+    rateA 2642.0;
+    from bus:2600;
+    to bus:2602;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2600_2603;
+    rateA 5284.0;
+    from bus:2600;
+    to bus:2603;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2601_2603;
+    rateA 2642.0;
+    from bus:2601;
+    to bus:2603;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2603_2901;
+    rateA 2642.0;
+    from bus:2603;
+    to bus:2901;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2604_6404;
+    rateA 1773.0;
+    from bus:2604;
+    to bus:6404;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2604_6504;
+    rateA 3545.0;
+    from bus:2604;
+    to bus:6504;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2605_2607;
+    rateA 1447.0;
+    from bus:2605;
+    to bus:2607;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2606_2607;
+    rateA 1447.0;
+    from bus:2606;
+    to bus:2607;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2608_2611;
+    rateA 1128.0;
+    from bus:2608;
+    to bus:2611;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2608_2612;
+    rateA 1128.0;
+    from bus:2608;
+    to bus:2612;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2608_2618;
+    rateA 1128.0;
+    from bus:2608;
+    to bus:2618;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2608_2619;
+    rateA 1128.0;
+    from bus:2608;
+    to bus:2619;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2609_2615;
+    rateA 1128.0;
+    from bus:2609;
+    to bus:2615;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2609_2617;
+    rateA 1128.0;
+    from bus:2609;
+    to bus:2617;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2610_2613;
+    rateA 2255.0;
+    from bus:2610;
+    to bus:2613;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2610_2616;
+    rateA 1128.0;
+    from bus:2610;
+    to bus:2616;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2610_2617;
+    rateA 1128.0;
+    from bus:2610;
+    to bus:2617;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2611_2612;
+    rateA 1128.0;
+    from bus:2611;
+    to bus:2612;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2612_2615;
+    rateA 2255.0;
+    from bus:2612;
+    to bus:2615;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2612_2618;
+    rateA 4510.0;
+    from bus:2612;
+    to bus:2618;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2612_2619;
+    rateA 3383.0;
+    from bus:2612;
+    to bus:2619;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2612_2620;
+    rateA 2255.0;
+    from bus:2612;
+    to bus:2620;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2613_2616;
+    rateA 1128.0;
+    from bus:2613;
+    to bus:2616;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2613_2617;
+    rateA 1128.0;
+    from bus:2613;
+    to bus:2617;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2614_2616;
+    rateA 2255.0;
+    from bus:2614;
+    to bus:2616;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2615_2617;
+    rateA 2255.0;
+    from bus:2615;
+    to bus:2617;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2615_2620;
+    rateA 1128.0;
+    from bus:2615;
+    to bus:2620;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2616_2617;
+    rateA 1128.0;
+    from bus:2616;
+    to bus:2617;
+    status 1;
+}
+object pypower.branch
+{
+    name L_2901_2902;
+    rateA 3600.0;
+    from bus:2901;
+    to bus:2902;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3101_3102;
+    rateA 2240.0;
+    from bus:3101;
+    to bus:3102;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3102_3103;
+    rateA 3360.0;
+    from bus:3102;
+    to bus:3103;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3102_3302;
+    rateA 1120.0;
+    from bus:3102;
+    to bus:3302;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3103_3204;
+    rateA 2240.0;
+    from bus:3103;
+    to bus:3204;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3103_3305;
+    rateA 2240.0;
+    from bus:3103;
+    to bus:3305;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3104_3105;
+    rateA 888.0;
+    from bus:3104;
+    to bus:3105;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3201_3202;
+    rateA 2240.0;
+    from bus:3201;
+    to bus:3202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3201_3203;
+    rateA 2240.0;
+    from bus:3201;
+    to bus:3203;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3201_3923;
+    rateA 1776.0;
+    from bus:3201;
+    to bus:3923;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3201_3924;
+    rateA 2240.0;
+    from bus:3201;
+    to bus:3924;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3202_3203;
+    rateA 2008.0;
+    from bus:3202;
+    to bus:3203;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3202_3204;
+    rateA 1120.0;
+    from bus:3202;
+    to bus:3204;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3202_3205;
+    rateA 1120.0;
+    from bus:3202;
+    to bus:3205;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3202_3924;
+    rateA 1776.0;
+    from bus:3202;
+    to bus:3924;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3203_3204;
+    rateA 1120.0;
+    from bus:3203;
+    to bus:3204;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3203_3303;
+    rateA 2008.0;
+    from bus:3203;
+    to bus:3303;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3203_3305;
+    rateA 1120.0;
+    from bus:3203;
+    to bus:3305;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3203_3923;
+    rateA 1776.0;
+    from bus:3203;
+    to bus:3923;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3204_3205;
+    rateA 2240.0;
+    from bus:3204;
+    to bus:3205;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3204_3923;
+    rateA 1776.0;
+    from bus:3204;
+    to bus:3923;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3205_3914;
+    rateA 888.0;
+    from bus:3205;
+    to bus:3914;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3205_3915;
+    rateA 888.0;
+    from bus:3205;
+    to bus:3915;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3301_3902;
+    rateA 2450.0;
+    from bus:3301;
+    to bus:3902;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3301_3903;
+    rateA 2642.0;
+    from bus:3301;
+    to bus:3903;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3302_3304;
+    rateA 2240.0;
+    from bus:3302;
+    to bus:3304;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3303_3304;
+    rateA 3360.0;
+    from bus:3303;
+    to bus:3304;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3303_3918;
+    rateA 1776.0;
+    from bus:3303;
+    to bus:3918;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3305_3923;
+    rateA 888.0;
+    from bus:3305;
+    to bus:3923;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3401_3402;
+    rateA 1776.0;
+    from bus:3401;
+    to bus:3402;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3401_3404;
+    rateA 888.0;
+    from bus:3401;
+    to bus:3404;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3401_3405;
+    rateA 1776.0;
+    from bus:3401;
+    to bus:3405;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3401_3804;
+    rateA 888.0;
+    from bus:3401;
+    to bus:3804;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3403_3404;
+    rateA 888.0;
+    from bus:3403;
+    to bus:3404;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3403_3804;
+    rateA 888.0;
+    from bus:3403;
+    to bus:3804;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3404_3804;
+    rateA 1776.0;
+    from bus:3404;
+    to bus:3804;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3404_3917;
+    rateA 888.0;
+    from bus:3404;
+    to bus:3917;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3404_3918;
+    rateA 888.0;
+    from bus:3404;
+    to bus:3918;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3405_3907;
+    rateA 1776.0;
+    from bus:3405;
+    to bus:3907;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3501_3914;
+    rateA 888.0;
+    from bus:3501;
+    to bus:3914;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3501_3915;
+    rateA 888.0;
+    from bus:3501;
+    to bus:3915;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3601_3925;
+    rateA 888.0;
+    from bus:3601;
+    to bus:3925;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3701_3926;
+    rateA 1776.0;
+    from bus:3701;
+    to bus:3926;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3801_3802;
+    rateA 2642.0;
+    from bus:3801;
+    to bus:3802;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3801_3803;
+    rateA 5284.0;
+    from bus:3801;
+    to bus:3803;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3802_3891;
+    rateA 2450.0;
+    from bus:3802;
+    to bus:3891;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3802_3901;
+    rateA 2450.0;
+    from bus:3802;
+    to bus:3901;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3803_3891;
+    rateA 2450.0;
+    from bus:3803;
+    to bus:3891;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3803_3892;
+    rateA 2134.0;
+    from bus:3803;
+    to bus:3892;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3803_3894;
+    rateA 2134.0;
+    from bus:3803;
+    to bus:3894;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3803_3896;
+    rateA 2134.0;
+    from bus:3803;
+    to bus:3896;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3803_3901;
+    rateA 1560.0;
+    from bus:3803;
+    to bus:3901;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3804_3806;
+    rateA 888.0;
+    from bus:3804;
+    to bus:3806;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3805_3806;
+    rateA 888.0;
+    from bus:3805;
+    to bus:3806;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3892_3893;
+    rateA 3600.0;
+    from bus:3892;
+    to bus:3893;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3894_3895;
+    rateA 3600.0;
+    from bus:3894;
+    to bus:3895;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3896_3897;
+    rateA 3600.0;
+    from bus:3896;
+    to bus:3897;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3901_3902;
+    rateA 2450.0;
+    from bus:3901;
+    to bus:3902;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3901_3903;
+    rateA 2450.0;
+    from bus:3901;
+    to bus:3903;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3901_8002;
+    rateA 1800.0;
+    from bus:3901;
+    to bus:8002;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3903_3904;
+    rateA 2450.0;
+    from bus:3903;
+    to bus:3904;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3903_3905;
+    rateA 2642.0;
+    from bus:3903;
+    to bus:3905;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3903_8002;
+    rateA 2450.0;
+    from bus:3903;
+    to bus:8002;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3904_3905;
+    rateA 2642.0;
+    from bus:3904;
+    to bus:3905;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3905_3906;
+    rateA 2642.0;
+    from bus:3905;
+    to bus:3906;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3906_4001;
+    rateA 5284.0;
+    from bus:3906;
+    to bus:4001;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3907_3908;
+    rateA 888.0;
+    from bus:3907;
+    to bus:3908;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3907_3923;
+    rateA 888.0;
+    from bus:3907;
+    to bus:3923;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3907_8004;
+    rateA 747.0;
+    from bus:3907;
+    to bus:8004;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3908_3920;
+    rateA 888.0;
+    from bus:3908;
+    to bus:3920;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3909_3919;
+    rateA 888.0;
+    from bus:3909;
+    to bus:3919;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3909_3920;
+    rateA 888.0;
+    from bus:3909;
+    to bus:3920;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3910_3911;
+    rateA 838.0;
+    from bus:3910;
+    to bus:3911;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3910_3924;
+    rateA 838.0;
+    from bus:3910;
+    to bus:3924;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3911_3912;
+    rateA 747.0;
+    from bus:3911;
+    to bus:3912;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3911_3916;
+    rateA 838.0;
+    from bus:3911;
+    to bus:3916;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3911_3921;
+    rateA 2106.0;
+    from bus:3911;
+    to bus:3921;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3911_3924;
+    rateA 747.0;
+    from bus:3911;
+    to bus:3924;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3911_8003;
+    rateA 1494.0;
+    from bus:3911;
+    to bus:8003;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3912_3924;
+    rateA 747.0;
+    from bus:3912;
+    to bus:3924;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3913_3920;
+    rateA 1776.0;
+    from bus:3913;
+    to bus:3920;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3913_3923;
+    rateA 888.0;
+    from bus:3913;
+    to bus:3923;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3913_8004;
+    rateA 747.0;
+    from bus:3913;
+    to bus:8004;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3915_3924;
+    rateA 888.0;
+    from bus:3915;
+    to bus:3924;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3916_3924;
+    rateA 838.0;
+    from bus:3916;
+    to bus:3924;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3919_3922;
+    rateA 888.0;
+    from bus:3919;
+    to bus:3922;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3920_3922;
+    rateA 888.0;
+    from bus:3920;
+    to bus:3922;
+    status 1;
+}
+object pypower.branch
+{
+    name L_3923_8005;
+    rateA 1494.0;
+    from bus:3923;
+    to bus:8005;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4001_4090;
+    rateA 3600.0;
+    from bus:4001;
+    to bus:4090;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4001_4094;
+    rateA 3020.0;
+    from bus:4001;
+    to bus:4094;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4001_4097;
+    rateA 3020.0;
+    from bus:4001;
+    to bus:4097;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4001_4204;
+    rateA 2400.0;
+    from bus:4001;
+    to bus:4204;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4001_8001;
+    rateA 2642.0;
+    from bus:4001;
+    to bus:8001;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4002_4003;
+    rateA 1732.0;
+    from bus:4002;
+    to bus:4003;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4002_4090;
+    rateA 2000.0;
+    from bus:4002;
+    to bus:4090;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4002_4091;
+    rateA 2000.0;
+    from bus:4002;
+    to bus:4091;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4003_6101;
+    rateA 1732.0;
+    from bus:4003;
+    to bus:6101;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4004_4005;
+    rateA 9490.0;
+    from bus:4004;
+    to bus:4005;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4004_4091;
+    rateA 3450.0;
+    from bus:4004;
+    to bus:4091;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4004_4092;
+    rateA 3020.0;
+    from bus:4004;
+    to bus:4092;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4004_4095;
+    rateA 3020.0;
+    from bus:4004;
+    to bus:4095;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4005_4006;
+    rateA 4350.0;
+    from bus:4005;
+    to bus:4006;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4005_4102;
+    rateA 5284.0;
+    from bus:4005;
+    to bus:4102;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4005_4202;
+    rateA 2642.0;
+    from bus:4005;
+    to bus:4202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4005_6202;
+    rateA 2642.0;
+    from bus:4005;
+    to bus:6202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4006_4007;
+    rateA 6900.0;
+    from bus:4006;
+    to bus:4007;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4006_4202;
+    rateA 2642.0;
+    from bus:4006;
+    to bus:4202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4008_6401;
+    rateA 1773.0;
+    from bus:4008;
+    to bus:6401;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4009_4010;
+    rateA 6040.0;
+    from bus:4009;
+    to bus:4010;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4009_4104;
+    rateA 1128.0;
+    from bus:4009;
+    to bus:4104;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4092_4093;
+    rateA 2400.0;
+    from bus:4092;
+    to bus:4093;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4093_4094;
+    rateA 2400.0;
+    from bus:4093;
+    to bus:4094;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4095_4096;
+    rateA 2000.0;
+    from bus:4095;
+    to bus:4096;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4096_4097;
+    rateA 2000.0;
+    from bus:4096;
+    to bus:4097;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4101_4102;
+    rateA 5284.0;
+    from bus:4101;
+    to bus:4102;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4101_4103;
+    rateA 5284.0;
+    from bus:4101;
+    to bus:4103;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4101_4201;
+    rateA 5284.0;
+    from bus:4101;
+    to bus:4201;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4102_4201;
+    rateA 5284.0;
+    from bus:4102;
+    to bus:4201;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4102_4202;
+    rateA 5284.0;
+    from bus:4102;
+    to bus:4202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4102_6202;
+    rateA 2642.0;
+    from bus:4102;
+    to bus:6202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4103_6202;
+    rateA 2642.0;
+    from bus:4103;
+    to bus:6202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4104_5004;
+    rateA 1128.0;
+    from bus:4104;
+    to bus:5004;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4201_4202;
+    rateA 3020.0;
+    from bus:4201;
+    to bus:4202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4201_5001;
+    rateA 2642.0;
+    from bus:4201;
+    to bus:5001;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4202_4203;
+    rateA 3020.0;
+    from bus:4202;
+    to bus:4203;
+    status 1;
+}
+object pypower.branch
+{
+    name L_4203_4204;
+    rateA 2400.0;
+    from bus:4203;
+    to bus:4204;
+    status 1;
+}
+object pypower.branch
+{
+    name L_5001_5002;
+    rateA 2642.0;
+    from bus:5001;
+    to bus:5002;
+    status 1;
+}
+object pypower.branch
+{
+    name L_5003_5004;
+    rateA 1128.0;
+    from bus:5003;
+    to bus:5004;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6102_6103;
+    rateA 1773.0;
+    from bus:6102;
+    to bus:6103;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6102_6301;
+    rateA 2000.0;
+    from bus:6102;
+    to bus:6301;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6102_6403;
+    rateA 1773.0;
+    from bus:6102;
+    to bus:6403;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6103_6301;
+    rateA 4000.0;
+    from bus:6103;
+    to bus:6301;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6103_6501;
+    rateA 3545.0;
+    from bus:6103;
+    to bus:6501;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6104_6204;
+    rateA 1128.0;
+    from bus:6104;
+    to bus:6204;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6104_6305;
+    rateA 1128.0;
+    from bus:6104;
+    to bus:6305;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6201_6202;
+    rateA 2642.0;
+    from bus:6201;
+    to bus:6202;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6203_6205;
+    rateA 1128.0;
+    from bus:6203;
+    to bus:6205;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6203_6303;
+    rateA 2255.0;
+    from bus:6203;
+    to bus:6303;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6203_6304;
+    rateA 1128.0;
+    from bus:6203;
+    to bus:6304;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6204_6205;
+    rateA 1128.0;
+    from bus:6204;
+    to bus:6205;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6302_7001;
+    rateA 2000.0;
+    from bus:6302;
+    to bus:7001;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6303_6304;
+    rateA 1128.0;
+    from bus:6303;
+    to bus:6304;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6303_6305;
+    rateA 2255.0;
+    from bus:6303;
+    to bus:6305;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6305_6510;
+    rateA 2255.0;
+    from bus:6305;
+    to bus:6510;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6401_6403;
+    rateA 3545.0;
+    from bus:6401;
+    to bus:6403;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6401_6404;
+    rateA 1773.0;
+    from bus:6401;
+    to bus:6404;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6403_6404;
+    rateA 1773.0;
+    from bus:6403;
+    to bus:6404;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6404_6507;
+    rateA 1773.0;
+    from bus:6404;
+    to bus:6507;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6501_6502;
+    rateA 1773.0;
+    from bus:6501;
+    to bus:6502;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6501_6504;
+    rateA 1773.0;
+    from bus:6501;
+    to bus:6504;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6501_6509;
+    rateA 3545.0;
+    from bus:6501;
+    to bus:6509;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6502_6503;
+    rateA 3545.0;
+    from bus:6502;
+    to bus:6503;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6502_6504;
+    rateA 7091.0;
+    from bus:6502;
+    to bus:6504;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6502_6508;
+    rateA 1773.0;
+    from bus:6502;
+    to bus:6508;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6502_6509;
+    rateA 3545.0;
+    from bus:6502;
+    to bus:6509;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6503_6504;
+    rateA 1773.0;
+    from bus:6503;
+    to bus:6504;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6503_6505;
+    rateA 1773.0;
+    from bus:6503;
+    to bus:6505;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6503_6507;
+    rateA 3545.0;
+    from bus:6503;
+    to bus:6507;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6503_6508;
+    rateA 1773.0;
+    from bus:6503;
+    to bus:6508;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6504_6507;
+    rateA 3545.0;
+    from bus:6504;
+    to bus:6507;
+    status 1;
+}
+object pypower.branch
+{
+    name L_6504_7002;
+    rateA 1773.0;
+    from bus:6504;
+    to bus:7002;
+    status 1;
+}
+object pypower.branch
+{
+    name L_7001_7002;
+    rateA 2000.0;
+    from bus:7001;
+    to bus:7002;
+    status 1;
+}
+object pypower.branch
+{
+    name L_8001_8002;
+    rateA 2642.0;
+    from bus:8001;
+    to bus:8002;
+    status 1;
+}
+object pypower.branch
+{
+    name L_8003_8004;
+    rateA 747.0;
+    from bus:8003;
+    to bus:8004;
+    status 1;
+}
+object pypower.branch
+{
+    name L_8003_8005;
+    rateA 1494.0;
+    from bus:8003;
+    to bus:8005;
+    status 1;
+}
+object pypower.branch
+{
+    name L_8004_8005;
+    rateA 747.0;
+    from bus:8004;
+    to bus:8005;
+    status 1;
+}

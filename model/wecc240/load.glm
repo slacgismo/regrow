@@ -1,0 +1,1252 @@
+module pypower;
+object pypower.load
+{
+    name LD_1002_0_0;
+    parent bus:1002;
+    status 1;
+    Z 0.0+583.5j;
+    I 223.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1003_1_0;
+    parent bus:1003;
+    status 1;
+    Z 0.0-387.4j;
+    I 2212.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1004_2_0;
+    parent bus:1004;
+    status 1;
+    Z 0.0-5.2j;
+    I 1007.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1101_3_0;
+    parent bus:1101;
+    status 1;
+    Z 0.0+134.3j;
+    I 4482.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1102_4_0;
+    parent bus:1102;
+    status 1;
+    Z 0.0-23.9j;
+    I 179.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1201_5_0;
+    parent bus:1201;
+    status 1;
+    Z 0.0+1.7j;
+    I 154.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1202_6_0;
+    parent bus:1202;
+    status 1;
+    Z 0.0-246.2j;
+    I 810.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1301_7_0;
+    parent bus:1301;
+    status 1;
+    Z 0.0-323.1j;
+    I 2588.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1302_8_0;
+    parent bus:1302;
+    status 1;
+    Z 0.0-2.2j;
+    I 17.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1303_9_0;
+    parent bus:1303;
+    status 1;
+    Z 0.0-805.3j;
+    I 6204.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1401_10_0;
+    parent bus:1401;
+    status 1;
+    Z 0.0-1423.2j;
+    I 6314.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_1402_11_0;
+    parent bus:1402;
+    status 1;
+    Z 0.0+536.5j;
+    I 5074.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2000_12_0;
+    parent bus:2000;
+    status 1;
+    Z 0.0-287.9j;
+    I 2207.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2100_13_0;
+    parent bus:2100;
+    status 1;
+    Z 0.0-46.1j;
+    I 244.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2202_14_0;
+    parent bus:2202;
+    status 1;
+    Z 0.0-249.6j;
+    I 1414.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2203_15_0;
+    parent bus:2203;
+    status 1;
+    Z 0.0-248.0j;
+    I 1530.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2400_16_0;
+    parent bus:2400;
+    status 1;
+    Z 0.0-65.9j;
+    I 741.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2401_17_0;
+    parent bus:2401;
+    status 1;
+    Z 0.0-85.9j;
+    I 756.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2402_18_0;
+    parent bus:2402;
+    status 1;
+    Z 0.0-69.6j;
+    I 944.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2403_19_0;
+    parent bus:2403;
+    status 1;
+    Z 0.0-33.2j;
+    I 924.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2405_20_0;
+    parent bus:2405;
+    status 1;
+    Z 0.0-20.2j;
+    I 734.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2406_21_0;
+    parent bus:2406;
+    status 1;
+    Z 0.0+36.2j;
+    I 659.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2407_22_0;
+    parent bus:2407;
+    status 1;
+    Z 0.0+35.1j;
+    I 1610.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2408_23_0;
+    parent bus:2408;
+    status 1;
+    Z 0.0+64.2j;
+    I 1555.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2409_24_0;
+    parent bus:2409;
+    status 1;
+    Z 0.0+75.0j;
+    I 1413.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2410_25_0;
+    parent bus:2410;
+    status 1;
+    Z 0.0-51.8j;
+    I 1411.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2411_26_0;
+    parent bus:2411;
+    status 1;
+    Z 0.0-65.7j;
+    I 959.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2502_27_0;
+    parent bus:2502;
+    status 1;
+    Z 0.0+79.3j;
+    I 2087.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2503_28_0;
+    parent bus:2503;
+    status 1;
+    Z 0.0-178.6j;
+    I 1646.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2600_29_0;
+    parent bus:2600;
+    status 1;
+    Z 0.0+0.0j;
+    I -1592.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2602_30_0;
+    parent bus:2602;
+    status 1;
+    Z 0.0-11.2j;
+    I 87.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2604_31_0;
+    parent bus:2604;
+    status 1;
+    Z 0.0+0.0j;
+    I 1791.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2608_32_0;
+    parent bus:2608;
+    status 1;
+    Z 0.0-11.3j;
+    I 88.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2609_33_0;
+    parent bus:2609;
+    status 1;
+    Z 0.0-24.2j;
+    I 120.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2610_34_0;
+    parent bus:2610;
+    status 1;
+    Z 0.0-11.6j;
+    I 89.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2611_35_0;
+    parent bus:2611;
+    status 1;
+    Z 0.0-11.3j;
+    I 88.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2612_36_0;
+    parent bus:2612;
+    status 1;
+    Z 0.0-21.7j;
+    I 106.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2613_37_0;
+    parent bus:2613;
+    status 1;
+    Z 0.0-58.8j;
+    I 287.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2614_38_0;
+    parent bus:2614;
+    status 1;
+    Z 0.0-25.0j;
+    I 123.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2615_39_0;
+    parent bus:2615;
+    status 1;
+    Z 0.0-117.0j;
+    I 718.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2616_40_0;
+    parent bus:2616;
+    status 1;
+    Z 0.0-21.6j;
+    I 105.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2617_41_0;
+    parent bus:2617;
+    status 1;
+    Z 0.0-22.5j;
+    I 108.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2618_42_0;
+    parent bus:2618;
+    status 1;
+    Z 0.0+5.4j;
+    I 784.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2619_43_0;
+    parent bus:2619;
+    status 1;
+    Z 0.0+0.0j;
+    I -2466.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2620_44_0;
+    parent bus:2620;
+    status 1;
+    Z 0.0-15.5j;
+    I 181.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_2621_45_0;
+    parent bus:2621;
+    status 1;
+    Z 0.0+55.1j;
+    I 209.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3101_46_0;
+    parent bus:3101;
+    status 1;
+    Z 0.0-49.5j;
+    I 313.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3102_47_0;
+    parent bus:3102;
+    status 1;
+    Z 0.0-23.1j;
+    I 145.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3103_48_0;
+    parent bus:3103;
+    status 1;
+    Z 0.0-54.6j;
+    I 380.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3104_49_0;
+    parent bus:3104;
+    status 1;
+    Z 0.0-37.3j;
+    I 283.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3105_50_0;
+    parent bus:3105;
+    status 1;
+    Z 0.0-44.2j;
+    I 215.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3201_51_0;
+    parent bus:3201;
+    status 1;
+    Z 0.0-88.5j;
+    I 417.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3202_52_0;
+    parent bus:3202;
+    status 1;
+    Z 0.0-75.5j;
+    I 528.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3203_53_0;
+    parent bus:3203;
+    status 1;
+    Z 0.0-143.2j;
+    I 592.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3204_54_0;
+    parent bus:3204;
+    status 1;
+    Z 0.0-84.1j;
+    I 595.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3205_55_0;
+    parent bus:3205;
+    status 1;
+    Z 0.0-70.2j;
+    I 492.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3302_56_0;
+    parent bus:3302;
+    status 1;
+    Z 0.0-80.0j;
+    I 316.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3303_57_0;
+    parent bus:3303;
+    status 1;
+    Z 0.0-135.6j;
+    I 562.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3304_58_0;
+    parent bus:3304;
+    status 1;
+    Z 0.0-113.0j;
+    I 485.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3305_59_0;
+    parent bus:3305;
+    status 1;
+    Z 0.0-55.8j;
+    I 389.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3401_60_0;
+    parent bus:3401;
+    status 1;
+    Z 0.0-132.9j;
+    I 523.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3403_61_0;
+    parent bus:3403;
+    status 1;
+    Z 0.0-66.2j;
+    I 464.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3404_62_0;
+    parent bus:3404;
+    status 1;
+    Z 0.0-57.5j;
+    I 400.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3405_63_0;
+    parent bus:3405;
+    status 1;
+    Z 0.0-62.9j;
+    I 423.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3501_64_0;
+    parent bus:3501;
+    status 1;
+    Z 0.0-80.1j;
+    I 562.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3601_65_0;
+    parent bus:3601;
+    status 1;
+    Z 0.0-13.0j;
+    I 93.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3701_66_0;
+    parent bus:3701;
+    status 1;
+    Z 0.0-15.8j;
+    I 317.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3801_67_0;
+    parent bus:3801;
+    status 1;
+    Z 0.0-38.8j;
+    I 164.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3804_68_0;
+    parent bus:3804;
+    status 1;
+    Z 0.0-50.1j;
+    I 201.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3805_69_0;
+    parent bus:3805;
+    status 1;
+    Z 0.0-137.0j;
+    I 434.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3806_70_0;
+    parent bus:3806;
+    status 1;
+    Z 0.0-35.9j;
+    I 255.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3902_71_0;
+    parent bus:3902;
+    status 1;
+    Z 0.0-34.4j;
+    I 137.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3903_72_0;
+    parent bus:3903;
+    status 1;
+    Z 0.0-26.9j;
+    I 190.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3907_73_0;
+    parent bus:3907;
+    status 1;
+    Z 0.0-61.0j;
+    I 430.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3908_74_0;
+    parent bus:3908;
+    status 1;
+    Z 0.0-23.9j;
+    I 186.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3909_75_0;
+    parent bus:3909;
+    status 1;
+    Z 0.0-38.4j;
+    I 159.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3910_76_0;
+    parent bus:3910;
+    status 1;
+    Z 0.0-34.1j;
+    I 228.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3911_77_0;
+    parent bus:3911;
+    status 1;
+    Z 0.0-40.2j;
+    I 204.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3912_78_0;
+    parent bus:3912;
+    status 1;
+    Z 0.0+0.6j;
+    I 156.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3913_79_0;
+    parent bus:3913;
+    status 1;
+    Z 0.0-40.3j;
+    I 301.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3914_80_0;
+    parent bus:3914;
+    status 1;
+    Z 0.0-48.3j;
+    I 207.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3915_81_0;
+    parent bus:3915;
+    status 1;
+    Z 0.0-48.8j;
+    I 230.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3916_82_0;
+    parent bus:3916;
+    status 1;
+    Z 0.0+0.0j;
+    I 139.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3917_83_0;
+    parent bus:3917;
+    status 1;
+    Z 0.0-39.5j;
+    I 214.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3918_84_0;
+    parent bus:3918;
+    status 1;
+    Z 0.0-69.0j;
+    I 289.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3919_85_0;
+    parent bus:3919;
+    status 1;
+    Z 0.0-23.2j;
+    I 171.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3920_86_0;
+    parent bus:3920;
+    status 1;
+    Z 0.0-22.3j;
+    I 158.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3921_87_0;
+    parent bus:3921;
+    status 1;
+    Z 0.0-27.4j;
+    I 126.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3922_88_0;
+    parent bus:3922;
+    status 1;
+    Z 0.0-29.7j;
+    I 231.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3923_89_0;
+    parent bus:3923;
+    status 1;
+    Z 0.0-58.4j;
+    I 353.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3924_90_0;
+    parent bus:3924;
+    status 1;
+    Z 0.0-42.7j;
+    I 300.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_3926_91_0;
+    parent bus:3926;
+    status 1;
+    Z 0.0-15.5j;
+    I 244.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4002_92_0;
+    parent bus:4002;
+    status 1;
+    Z 0.0-18.5j;
+    I 154.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4004_93_0;
+    parent bus:4004;
+    status 1;
+    Z 0.0-29.7j;
+    I 248.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4005_94_0;
+    parent bus:4005;
+    status 1;
+    Z 0.0-135.0j;
+    I 444.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4008_95_0;
+    parent bus:4008;
+    status 1;
+    Z 0.0-32.2j;
+    I 265.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4009_96_0;
+    parent bus:4009;
+    status 1;
+    Z 0.0-369.9j;
+    I 2045.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4010_97_0;
+    parent bus:4010;
+    status 1;
+    Z 0.0+0.0j;
+    I 2904.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4101_98_0;
+    parent bus:4101;
+    status 1;
+    Z 0.0-102.0j;
+    I 882.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4102_99_0;
+    parent bus:4102;
+    status 1;
+    Z 0.0-57.2j;
+    I 438.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4103_100_0;
+    parent bus:4103;
+    status 1;
+    Z 0.0-1.3j;
+    I 10.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4104_101_0;
+    parent bus:4104;
+    status 1;
+    Z 0.0-303.5j;
+    I 2425.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4201_102_0;
+    parent bus:4201;
+    status 1;
+    Z 0.0-367.5j;
+    I 5145.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4202_103_0;
+    parent bus:4202;
+    status 1;
+    Z 0.0-529.2j;
+    I 4300.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4203_104_0;
+    parent bus:4203;
+    status 1;
+    Z 0.0-552.9j;
+    I 4308.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_4204_105_0;
+    parent bus:4204;
+    status 1;
+    Z 0.0-116.0j;
+    I 949.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_5001_106_0;
+    parent bus:5001;
+    status 1;
+    Z 0.0-1561.3j;
+    I 7213.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_5002_107_0;
+    parent bus:5002;
+    status 1;
+    Z 0.0-1055.1j;
+    I 8534.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_5003_108_0;
+    parent bus:5003;
+    status 1;
+    Z 0.0-73.6j;
+    I 589.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6102_109_0;
+    parent bus:6102;
+    status 1;
+    Z 0.0+325.5j;
+    I 1022.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6103_110_0;
+    parent bus:6103;
+    status 1;
+    Z 0.0-49.7j;
+    I 386.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6104_111_0;
+    parent bus:6104;
+    status 1;
+    Z 0.0-218.1j;
+    I 1683.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6201_112_0;
+    parent bus:6201;
+    status 1;
+    Z 0.0-23.9j;
+    I 194.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6202_113_0;
+    parent bus:6202;
+    status 1;
+    Z 0.0-11.4j;
+    I 81.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6203_114_0;
+    parent bus:6203;
+    status 1;
+    Z 0.0-143.6j;
+    I 609.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6204_115_0;
+    parent bus:6204;
+    status 1;
+    Z 0.0-142.6j;
+    I 667.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6205_116_0;
+    parent bus:6205;
+    status 1;
+    Z 0.0-78.3j;
+    I 466.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6301_117_0;
+    parent bus:6301;
+    status 1;
+    Z 0.0-65.4j;
+    I 508.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6302_118_0;
+    parent bus:6302;
+    status 1;
+    Z 0.0-76.3j;
+    I 588.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6303_119_0;
+    parent bus:6303;
+    status 1;
+    Z 0.0-91.8j;
+    I 724.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6305_120_0;
+    parent bus:6305;
+    status 1;
+    Z 0.0-17.6j;
+    I 56.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6401_121_0;
+    parent bus:6401;
+    status 1;
+    Z 0.0-206.8j;
+    I 1628.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6402_122_0;
+    parent bus:6402;
+    status 1;
+    Z 0.0-35.1j;
+    I 270.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6403_123_0;
+    parent bus:6403;
+    status 1;
+    Z 0.0-0.2j;
+    I 2.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6404_124_0;
+    parent bus:6404;
+    status 1;
+    Z 0.0-3.4j;
+    I 27.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6501_125_0;
+    parent bus:6501;
+    status 1;
+    Z 0.0-62.5j;
+    I 193.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6502_126_0;
+    parent bus:6502;
+    status 1;
+    Z 0.0-271.9j;
+    I 1539.3+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6503_127_0;
+    parent bus:6503;
+    status 1;
+    Z 0.0-127.5j;
+    I 414.2+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6504_128_0;
+    parent bus:6504;
+    status 1;
+    Z 0.0-37.9j;
+    I 293.7+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6505_129_0;
+    parent bus:6505;
+    status 1;
+    Z 0.0-2.1j;
+    I 6.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6507_130_0;
+    parent bus:6507;
+    status 1;
+    Z 0.0+58.5j;
+    I 527.8+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6508_131_0;
+    parent bus:6508;
+    status 1;
+    Z 0.0-41.4j;
+    I 129.0+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6509_132_0;
+    parent bus:6509;
+    status 1;
+    Z 0.0-2.8j;
+    I 8.5+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_6510_133_0;
+    parent bus:6510;
+    status 1;
+    Z 0.0+111.9j;
+    I 1971.9+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_7001_134_0;
+    parent bus:7001;
+    status 1;
+    Z 0.0-742.4j;
+    I 6863.6+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_7002_135_0;
+    parent bus:7002;
+    status 1;
+    Z 0.0+134.0j;
+    I 2517.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_8003_136_0;
+    parent bus:8003;
+    status 1;
+    Z 0.0-66.3j;
+    I 546.4+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_8004_137_0;
+    parent bus:8004;
+    status 1;
+    Z 0.0-444.7j;
+    I 3409.1+0.0j;
+    P 0.0+0.0j;
+}
+object pypower.load
+{
+    name LD_8005_138_0;
+    parent bus:8005;
+    status 1;
+    Z 0.0-161.5j;
+    I 1213.2+0.0j;
+    P 0.0+0.0j;
+}

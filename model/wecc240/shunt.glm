@@ -1,0 +1,121 @@
+module pypower;
+object pypower.shunt
+{
+    name SL_4001_0;
+    parent bus:4001;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:4001;
+    admittance 600.0;
+    steps_1 5;
+    admittance_1 200.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}
+object pypower.shunt
+{
+    name SL_4005_0;
+    parent bus:4005;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:4005;
+    admittance 0.0;
+    steps_1 5;
+    admittance_1 200.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}
+object pypower.shunt
+{
+    name SL_6104_0;
+    parent bus:6104;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:6104;
+    admittance 400.0;
+    steps_1 5;
+    admittance_1 100.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}
+object pypower.shunt
+{
+    name SL_6302_0;
+    parent bus:6302;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:6302;
+    admittance 0.0;
+    steps_1 5;
+    admittance_1 200.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}
+object pypower.shunt
+{
+    name SL_6304_0;
+    parent bus:6304;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:6304;
+    admittance 600.0;
+    steps_1 6;
+    admittance_1 100.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}
+object pypower.shunt
+{
+    name SL_6401_0;
+    parent bus:6401;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:6401;
+    admittance 600.0;
+    steps_1 5;
+    admittance_1 200.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}
+object pypower.shunt
+{
+    name SL_7001_0;
+    parent bus:7001;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:7001;
+    admittance 200.0;
+    steps_1 5;
+    admittance_1 200.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}
+object pypower.shunt
+{
+    name SL_7001_1;
+    parent bus:7001;
+    control_mode 1;
+    status 1;
+    voltage_high 1.5;
+    voltage_low 0.5;
+    remote_bus bus:7001;
+    admittance 200.0;
+    steps_1 5;
+    admittance_1 200.0;
+    dwell_time 3600.0;
+    control_gain 0.0;
+}

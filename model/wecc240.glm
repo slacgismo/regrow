@@ -11,6 +11,7 @@
 //#option verbose
 //#option debug
 //#set output_message_context=NONE
+#set suppress_repeat_messages=FALSE
 
 clock {
     timezone "${TIMEZONE}";
@@ -30,6 +31,7 @@ module pypower
     opf_gradient_tolerance 3.0;
     opf_condition_tolerance 1000;
     opf_cost_tolerance 0.01;
+    autosize_angle 80 deg;
 }
 
 //
@@ -39,6 +41,10 @@ module pypower
 // TODO: exclude gen once the model solves ok with all loads and powerplants included below
 //#input "wecc240_psse.raw" --exclude gen,psse_owner,psse_area,psse_zone
 
+#for BRANCH in ${FIND class=branch}
+modify ${BRANCH}.rateA 100;
+#done
+
 //
 // Load the GIS data
 //
@@ -47,23 +53,24 @@ module pypower
 //
 // Load powerplant data
 //
-#for GEN in ${FIND class=gen}
+//#for GEN in ${FIND class=gen}
 //object gencost
 //{
 //    parent ${GEN};
 //    model POLYNOMIAL;
 //    costs "${RANDOM triangle(0.001,0.01)},${RANDOM triangle(0,100)},0";
 //}
-modify ${GEN}.Pmax 200;
-#done
-#for BRANCH in ${FIND class=branch}
-modify ${BRANCH}.rateA 250;
-modify ${BRANCH}.rateB 500;
-modify ${BRANCH}.rateC 750;
-#done
+//modify ${GEN}.Pmax 200;
+//#done
+//#for BRANCH in ${FIND class=branch}
+//#print ${BRANCH}
+//modify ${BRANCH}.r 0;
+//modify ${BRANCH}.x 0;
+//modify ${BRANCH}.b 0;
+//#done
 
-#system python3 powerplants_aggregated.py
-#include "powerplants_aggregated.glm"
+//#system python3 powerplants_aggregated.py
+//#include "powerplants_aggregated.glm"
 
 //
 // Load loads data

@@ -1,15 +1,15 @@
 import marimo
 
-__generated_with = "0.13.15"
+__generated_with = "0.14.10"
 app = marimo.App(width="medium")
 
 
 @app.cell
 def _():
     import marimo as mo
-    eta_storage, eta_charge, eta_discharge = 1,1,1
+    eta_storage, eta_charge, eta_discharge = .95,.95,.95
     L1_charge_weights = True
-    LABEL = 'SPARSE01eta100'
+    LABEL = 'SPARSE01eta95'
     MARKERS = '*vp.o3'*2
     return (
         L1_charge_weights,
@@ -135,12 +135,10 @@ def _(L1_charge_weights, cp, np):
         param_gamma = cp.Parameter(nonneg=True, name='gamma')
         param_lambda = cp.Parameter(nonneg=True, name='lambda')
         param_sparse = cp.Parameter(nonneg=True, name='sparse')
-    
-    
+
         param_eta_storage = cp.Parameter(nonneg=True, name='eta_storage')
         param_eta_charge = cp.Parameter(nonneg=True, name='eta_charge')
         param_eta_discharge = cp.Parameter(nonneg=True, name='eta_discharge')
-    
 
         B = cp.Variable(nonneg=True, name='B')
         b_charge = cp.Variable(T, nonneg=True, name = 'b_charge')
@@ -165,7 +163,7 @@ def _(L1_charge_weights, cp, np):
         ]
         if L1_charge_weights:
             objective = 1/T*(param_gamma*cp.sum(c)+param_lambda*cp.sum(s)+
-                         param_alpha*cp.sum(u)+param_beta*cp.sum_squares(u)+                  param_sparse*(cp.norm1(b_discharge)+cp.norm1(b_charge)))
+                         param_alpha*cp.sum(u)+param_beta*cp.sum_squares(u)+                  param_sparse*cp.sum(b_discharge+b_charge))
         else:
             objective = 1/T*(param_gamma*cp.sum(c)+param_lambda*cp.sum(s)+
                          param_alpha*cp.sum(u)+param_beta*cp.sum_squares(u)) 
@@ -265,8 +263,7 @@ def _(mo):
         """
     The prescient runs with various efficiencies are run and saved in the 'test_data' folder
 
-    * `perf` is battery with separate charge and discharge variables and efficiency = 1 \n
-    * `L1perf` is as perf, but L1 penalty to charging and discharging \n
+    * `SPARSE{weight}eta{num}` is ran with a L1 weight but
     * `L1eta{num}` will be a run as L1 perf but with the etas of storage, charge and discharge set to num percent
     """
     )
@@ -319,6 +316,12 @@ def _(constants, dropdown, objs, plt):
 
 
 @app.cell
+def _(os):
+    [k.split('_')[0] for k in os.listdir('test_data') if 'discharge' in k]
+    return
+
+
+@app.cell
 def _(mo, os):
     curve_types = [k.split('_')[1][:-4] for k in os.listdir('test_data') if 'eta100' in k][:9]
 
@@ -327,7 +330,7 @@ def _(mo, os):
 
     dropdown_curve = mo.ui.dropdown(options=curve_types, value= 'discharge',label="which variable curve")
 
-    dropdown_runs = mo.ui.dropdown(options=run_types, value= 'L1eta95',label="which run")
+    dropdown_runs = mo.ui.dropdown(options=run_types, value= 'SPARSE01eta95',label="which run")
 
     caps = [0,2,4,8,16,32]
     dropdown_Qs = mo.ui.dropdown(options={str(caps[i]):i for i in range(6)}, value= str(2),label="which battery capacity")
@@ -344,34 +347,51 @@ def _(dropdown_Qs, dropdown_curve, dropdown_runs, mo, slide, slide_len):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(dropdown_Qs, dropdown_curve, dropdown_runs, np, plt, slide, slide_len):
     arr = np.load('test_data/'+
                   dropdown_runs.value+'_'+dropdown_curve.value+'.npy')
 
-    og = np.load('test_data/giray_'+dropdown_curve.value+'.npy')
+    og = np.load('test_data/Giray_'+dropdown_curve.value+'.npy')
     charge = np.load('test_data/'+dropdown_runs.value+'_charge.npy')
 
     net_discharge = arr - charge
 
-    plt.plot(arr[dropdown_Qs.value,slide.value:slide.value+slide_len.value], label = dropdown_curve.value +'_'+dropdown_runs.value, marker = '.')
-    plt.plot(og[dropdown_Qs.value,slide.value:slide.value+slide_len.value], label = 'giray_'+dropdown_curve.value )
-    plt.plot(charge[dropdown_Qs.value,slide.value:slide.value+slide_len.value], label = ' charge' +'_'+dropdown_runs.value, marker = '.')
+    plt.plot(arr[dropdown_Qs.value,slide.value:slide.value+slide_len.value], label = dropdown_curve.value , marker = '.')
+    plt.plot(og[dropdown_Qs.value,slide.value:slide.value+slide_len.value], label = 'united '+dropdown_curve.value )
+    plt.plot(charge[dropdown_Qs.value,slide.value:slide.value+slide_len.value], label = 'charge', marker = '.')
     plt.plot(net_discharge[dropdown_Qs.value,slide.value:slide.value+slide_len.value],
-             label = ' our net discharge' +'_'+dropdown_runs.value, dashes = [2,4])
-
-
+             label = 'net discharge', dashes = [2,4])
+    plt.xlabel('hours')
+    plt.ylabel('MWh')
+    plt.title("united discharge v. to our discharge-charge, $\eta=95$, $\phi=0.01$")
     plt.legend()
-    # error_percent = np.linalg.norm(arr- og,2)/np.norm(og)
 
     return
 
 
 @app.cell
-def _(os):
-    os.listdir('test_data')
-    ### USE NUMPY ALMOST EQUALS ZERO AND XOR/ OR LOIGIC. NP LOGICAL AND/OR etc
+def _(dropdown_runs, np):
+    chrg = np.load('test_data/'+dropdown_runs.value+'_charge.npy')
+    dischrg = np.load('test_data/'+dropdown_runs.value+'_discharge.npy')
+    return chrg, dischrg
+
+
+@app.cell
+def _(chrg, dischrg, np):
+    is_chrg = ~np.isclose(chrg,0, atol = 1e-5)
+    is_dischrg  = ~np.isclose(dischrg,0, atol = 1e-5)
+    both = np.where(np.logical_and(is_chrg, is_dischrg))
+    both
     return
+
+
+app._unparsable_cell(
+    r"""
+    ~np.isclose([.1,1e-bo],[0,0],atol=1e-5)
+    """,
+    name="_"
+)
 
 
 @app.cell

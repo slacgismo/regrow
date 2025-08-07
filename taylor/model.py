@@ -7,6 +7,103 @@ from collections import namedtuple
 
 class Model:
 
+    basecolumns = {
+        "bus": "bus_i type Pd Qd Gs Bs area Vm Va baseKV zone Vmax Vmin lambda_P lambda_Q mu_Vmax mu_Vmin",
+        "gen": "bus Pg Qg Qmax Qmin Vg mBase status Pmax Pmin Pc1 Pc2 Qc1min Qc1max Qc2min Qc2max ramp_agc ramp_10 ramp_30 ramp_q apf mu_Pmax mu_Pmin mu_Qmax mu_Qmin",
+        "branch": "fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax Pf Qf Pt Qt mu_Sf mu_St mu_angmin mu_angmax",    
+        "dcline": "fbus tbus status Pf Pt Qf Qt Vf Vt Pmin Pmax Qminf Qmaxf Qmint Qmaxt loss0 loss1",
+    }
+    column_formats = {
+        "bus" : {
+            "bus_i" : "{:.0f}",
+            "type" : "{:.0f}",
+            "Pd": "{:.1f}",
+            "Qd": "{:.1f}",
+            "Gs": "{:.1f}",
+            "Bs": "{:.1f}",
+            "area": "{:.0f}",
+            "Vm": "{:.3f}",
+            "Va": "{:.3f}",
+            "baseKV": "{:.1f}",
+            "zone": "{:.0f}",
+            "Vmax": "{:.2f}",
+            "Vmin": "{:.2f}",
+            "lambda_P": "{:.3f}",
+            "lambda_Q": "{:.3f}",
+            "mu_Vmax": "{:.3f}",
+            "mu_Vmin": "{:.3f}",
+        },
+        "gen": {
+            "bus": "{:.1f}",
+            "Pg": "{:.1f}",
+            "Qg": "{:.1f}",
+            "Qmax": "{:.1f}",
+            "Qmin": "{:.1f}",
+            "Vg": "{:.2f}",
+            "mBase": "{:.1f}",
+            "status": "{:.0f}",
+            "Pmax": "{:.1f}",
+            "Pmin": "{:.1f}",
+            "Pc1": "{:.1f}",
+            "Pc2": "{:.1f}",
+            "Qc1min": "{:.1f}",
+            "Qc1max": "{:.1f}",
+            "Qc2min": "{:.1f}",
+            "Qc2max": "{:.1f}",
+            "ramp_agc": "{:.1f}",
+            "ramp_10": "{:.1f}",
+            "ramp_30": "{:.1f}",
+            "ramp_q": "{:.1f}",
+            "apf": "{:.2f}",
+            "mu_Pmax": "{:.3f}",
+            "mu_Pmin": "{:.3f}",
+            "mu_Qmax": "{:.3f}",
+            "mu_Qmin": "{:.3f}",
+            },
+        "branch": {
+            "fbus": "{:.0f}",
+            "tbus": "{:.0f}",
+            "r": "{:.5f}",
+            "x": "{:.5f}",
+            "b": "{:.5f}",
+            "rateA": "{:.1f}",
+            "rateB": "{:.1f}",
+            "rateC": "{:.1f}",
+            "ratio": "{:.1f}",
+            "angle": "{:.3f}",
+            "status": "{:.0f}",
+            "angmin": "{:.0f}",
+            "angmax": "{:.0f}",
+            "Pf": "{:.1f}",
+            "Qf": "{:.1f}",
+            "Pt": "{:.1f}",
+            "Qt": "{:.1f}",
+            "mu_Sf": "{:.3f}",
+            "mu_St": "{:.3f}",
+            "mu_angmin": "{:.3f}",
+            "mu_angmax": "{:.3f}",
+            },
+        "dcline": {
+            "fbus": "{:.0f}",
+            "tbus": "{:.0f}",
+            "status": "{:.0f}",
+            "Pf": "{:.1f}",
+            "Pt": "{:.1f}",
+            "Qf": "{:.1f}",
+            "Qt": "{:.1f}",
+            "Vf": "{:.1f}",
+            "Vt": "{:.1f}",
+            "Pmin": "{:.1f}",
+            "Pmax": "{:.1f}",
+            "Qminf": "{:.1f}",
+            "Qmaxf": "{:.1f}",
+            "Qmint": "{:.1f}",
+            "Qmaxt": "{:.1f}",
+            "loss0": "{:.3f}",
+            "loss1": "{:.3f}",
+            },
+    }
+
     def __init__(self,pathname):
         self.path,self.file = os.path.split(pathname)
         self.name = os.path.splitext(self.file)[0]
@@ -18,44 +115,30 @@ class Model:
         self.options = po.ppoption()
         self.result = None
 
-    def graph(self):
+    def graph(self,line=None,node=None):
         graph = ["flowchart LR"]
         aclines = self["branch"]
+        bus = self["bus"]
         for n,f,t,s in list(zip(range(len(aclines.fbus)),aclines.fbus,aclines.tbus,aclines.status)):
+            from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(f)-1]) if node else int(f)
+            to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(t)-1]) if node else int(t)
+            line_label = ('"'+self.column_formats["branch"][line]+'"').format(getattr(aclines,line)[n]) if line else int(n+1)
             if s:
-                graph.append(f"  {f:.0f}(({f:.0f})) == {n+1:.0f} ==> {t:.0f}(({t:.0f}))")
+                graph.append(f"  {f:.0f}(({from_label})) == {line_label} ==> {t:.0f}(({to_label}))")
         dclines = self["dcline"]
         for n,f,t,s in list(zip(range(len(dclines.fbus)),dclines.fbus,dclines.tbus,dclines.status)):
+            from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(f)-1]) if node else int(f)
+            to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(t)-1]) if node else int(t)
+            line_label = ('"'+self.column_formats["branch"][line]+'"').format(getattr(aclines,line)[n]) if line else int(n+1)
             if s:
-                graph.append(f"  {f:.0f}(({f:.0f})) -- {n+1:.0f} --> {t:.0f}(({t:.0f}))")
+                graph.append(f"  {f:.0f}(({from_label})) -- {line_label} -- {t:.0f}(({to_label}))")
         return "\n".join(graph)
 
-    def solve_pf(self,**kwargs):
-        if "VERBOSE" not in kwargs:
-            kwargs["VERBOSE"] = 0
-        if "OUT_ALL" not in kwargs:
-            kwargs["OUT_ALL"] = 0
-        self.options = po.ppoption(**kwargs)
-        self.result = pr.runpf(self.model,self.options)
-        return self.result["success"]
-
-    def solve_opf(self,**kwargs):
-        if "VERBOSE" not in kwargs:
-            kwargs["VERBOSE"] = 0
-        if "OUT_ALL" not in kwargs:
-            kwargs["OUT_ALL"] = 0
-        self.options = po.ppoption(**kwargs)
-        self.result = pr.runopf(self.model,self.options)
-        return self.result["success"]
-
-    def __getitem__(self,x):
-        if self.result is None:
-            return None
+    def set_result(self,result):
+        self.result = result
         _ncost = 2 if min(self.result["gencost"].T[0]) == 1 else 1
-        _columns = {
-            "bus": "bus_i type Pd Qd Gs Bs area Vm Va baseKV zone Vmax Vmin lambda_P lambda_Q mu_Vmax mu_Vmin",
-            "gen": "bus Pg Qg Qmax Qmin Vg mBase status Pmax Pmin Pc1 Pc2 Qc1min Qc1max Qc2min Qc2max ramp_agc ramp_10 ramp_30 ramp_q apf mu_Pmax mu_Pmin mu_Qmax mu_Qmin",
-            "branch": "fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax Pf Qf Pt Qt mu_Sf mu_St mu_angmin mu_angmax",
+        self.columns = dict(self.basecolumns)
+        self.columns.update({
             "gencost": "model startup shutdown n "
             + " ".join(
                 [
@@ -71,7 +154,6 @@ class Model:
                     )
                 ]
             ),
-            "dcline": "fbus tbus status Pf Pt Qf Qt Vf Vt Pmin Pmax Qminf Qmaxf Qmint Qmaxt loss0 loss1",
             "dclinecost": "model startup shutdown n "
             + " ".join(
                 [
@@ -89,9 +171,31 @@ class Model:
                     )
                 ]
             ),
-        }
-        return namedtuple(x, _columns[x].split())(
-            *self.result[x].T if x in self.result else [[]] * len(_columns[x].split())
+        })
+
+    def solve_pf(self,**kwargs):
+        if "VERBOSE" not in kwargs:
+            kwargs["VERBOSE"] = 0
+        if "OUT_ALL" not in kwargs:
+            kwargs["OUT_ALL"] = 0
+        self.options = po.ppoption(**kwargs)
+        self.set_result(pr.runpf(self.model,self.options))
+        return self.result["success"]
+
+    def solve_opf(self,**kwargs):
+        if "VERBOSE" not in kwargs:
+            kwargs["VERBOSE"] = 0
+        if "OUT_ALL" not in kwargs:
+            kwargs["OUT_ALL"] = 0
+        self.options = po.ppoption(**kwargs)
+        self.set_result(pr.runopf(self.model,self.options))
+        return self.result["success"]
+
+    def __getitem__(self,field):
+        if self.result is None:
+            return None
+        return namedtuple(field, self.columns[field].split())(
+            *self.result[field].T if field in self.result else [[]] * len(self.columns[field].split())
         )
 
 if __name__ == "__main__":

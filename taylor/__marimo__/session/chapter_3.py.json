@@ -1,0 +1,229 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.14.16"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "f1a1e4332af25d02f60cca8fac568065",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h1 id=\"chapter-3-optimal-power-flow\">Chapter 3 - Optimal Power Flow</h1>\n<span class=\"paragraph\">We use the test cases from PyPOWER (see <a href=\"https://github.com/rwl/pypower\" rel=\"noopener\" target=\"_blank\">https://github.com/rwl/pypower</a>) to provision the test model.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "32a61a01b731aecb64a98122ddcb3b3c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<div style='display: flex;flex: 1;flex-direction: row;justify-content: space-between;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='MJUe-0' random-id='61b6c399-6fff-8835-d771-89eb3e001293'><marimo-dropdown data-initial-value='[&quot;case118&quot;]' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Choose a test case:&lt;/span&gt;&lt;/span&gt;&quot;' data-options='[&quot;case118&quot;, &quot;case14&quot;, &quot;case30&quot;, &quot;case39&quot;, &quot;case57&quot;, &quot;case9&quot;, &quot;case9dc&quot;]' data-allow-select-none='false' data-searchable='false' data-full-width='false'></marimo-dropdown></marimo-ui-element><marimo-ui-element object-id='MJUe-1' random-id='9ba8db6c-6539-3136-dcf1-d61e2fa6773c'><marimo-checkbox data-initial-value='false' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Verbose output&lt;/span&gt;&lt;/span&gt;&quot;' data-disabled='false'></marimo-checkbox></marimo-ui-element></div>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "d649bcf1ba4360229c722b29b246e959",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">PyPOWER OPF of <code>case9</code> has succeeded. Output message is: <code>Converged</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "9111d21852c51e3b419c65ae39aa898d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "27dc5df0410b1dfe037622aa3d8f5345",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='lEQa-9' random-id='d7770070-14cd-b1fa-0698-ece13bf77241'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Overview&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Busses&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Branches&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Generation&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Generation Costs&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;DC Lines&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;DC Line Costs&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Raw data&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-ui-element object-id='lEQa-0' random-id='375e2c1a-c7f7-1897-62d2-900211d960ee'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-1' random-id='c4ba1c58-2910-4d13-cfac-4159713b6210'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-2' random-id='bb62bfd4-eff8-dcc7-aefb-f48b9e64632b'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-3' random-id='e563e1cc-6c08-785c-25ce-9025177b5338'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-4' random-id='31feb0b3-05b0-b22b-9dd8-fc2d8a3a016b'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-5' random-id='b6759f00-39ed-ac9f-5bfd-5fbbd0b33acb'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-6' random-id='b30ac6df-a08c-12e1-5805-0e9c8a9e5ed5'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-7' random-id='7589f79f-7574-83a1-8030-c3196c26598b'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='lEQa-8' random-id='5da9349c-9ea1-dc8d-cd44-f7b3042075ec'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div></marimo-tabs></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "3187680a53a39b9c3135d5cd92c03f59",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"coding-nomenclature\">Coding Nomenclature</h2>\n<span class=\"paragraph\">The text uses the notation <marimo-tex class=\"arithmatex\">||(x_{ij}||)</marimo-tex> to denote the value at the index <marimo-tex class=\"arithmatex\">||(i,j||)</marimo-tex> in the matrix <marimo-tex class=\"arithmatex\">||(x \\in \\mathbb{R}^{N \\times N}||)</marimo-tex> and the notation <marimo-tex class=\"arithmatex\">||(x_i||)</marimo-tex> to denote the value at the index <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> in the vector <marimo-tex class=\"arithmatex\">||(x \n\\in \\mathbb{R}^N||)</marimo-tex>.  To disambiguate cases where the variable <marimo-tex class=\"arithmatex\">||(x||)</marimo-tex> denotes two different things depending on the dimensions of the variable, the code in this notebook will always use capitalized variables for 2-dimensional arrays and lowercase variable names to 1-dimensional arrays.  Thus <marimo-tex class=\"arithmatex\">||(x_i||)</marimo-tex> will always be coded as <code>x[i]</code>, while <marimo-tex class=\"arithmatex\">||(x_{i,j}||)</marimo-tex> will be coded as <code>X[i,j]</code>. Scalars will be coded as <code>x_&lt;tag&gt;</code> to indicate that they are not arrays. In cases where variables are denoted <marimo-tex class=\"arithmatex\">||(x^Y_{i}||)</marimo-tex> or <marimo-tex class=\"arithmatex\">||(x^Y_{i,j}||)</marimo-tex>, these will be coded as <code>xY[i]</code> and <code>XY[i,j]</code>, respectively. </span>\n<span class=\"paragraph\">Additional variable encodings include the following:</span>\n<ul>\n<li><marimo-tex class=\"arithmatex\">||(\\underline x, \\bar x, \\hat x, \\v x, \\tilde x, \\dot x, \\ddot x \\cdots \\to||)</marimo-tex> <code>xmin</code>, <code>xmax</code>, <code>xhat</code>, <code>xvee</code>, <code>xtilde</code>, <code>xdot</code>,<code>xddot</code>, ...</li>\n<li><marimo-tex class=\"arithmatex\">||(\\alpha,\\beta,\\gamma,\\cdots \\to||)</marimo-tex> <code>alpha</code>, <code>beta</code>, <code>gamma</code>, ...</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "4e28b72cabbc79acf2a62f137acb5748",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"31-basic-formulation\">3.1 - Basic Formulation</h2>\n<span class=\"paragraph\">The voltage <marimo-tex class=\"arithmatex\">||(v_i||)</marimo-tex> at the node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> must satisfy the limits <marimo-tex class=\"arithmatex\">||(\\underline{v}_i \\le |v_i| \\le \\bar{v}_i||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "540e52794ef732011d2423cbb27b10de",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "1bc42f541568cb65e17568313be20d0c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">This is true for <code>case9</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "1f1a3ca38dde14925300bee25def6511",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The real power flow <marimo-tex class=\"arithmatex\">||(p_{ij}||)</marimo-tex> and reactive power flow <marimo-tex class=\"arithmatex\">||(q_{ij}||)</marimo-tex> on the power lines from the nodes <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> to the nodes <marimo-tex class=\"arithmatex\">||(j||)</marimo-tex> must remain below the lines' capacities such that <marimo-tex class=\"arithmatex\">||(p_{ij}^2+q_{ij}^2 \n\\le \\bar s_{ij}^2||)</marimo-tex>. Note that in the <code>pypower</code> cases, the line limit is nominally <code>rateA</code>, with <code>rateB</code> and <code>rateC</code> reserved for emergency line ratings only.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "d482af351cbba283f61e2ad98c5d6459",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "7b8ffffbfed55538d58d79e0ac4eb8be",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">This is true for <code>case9</code>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "FfPS",
+      "code_hash": "925c747fb8366a8d27ac6fd6ae75c6af",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The real and reactive powers into or out of the node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> are the sum of the flows through the transmission lines connected to the node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex>. The real and reactive power at each node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> is the difference of the real generation and demand <marimo-tex class=\"arithmatex\">||(p_i=pg_i-pd_i||)</marimo-tex> and the reactive generation and demand <marimo-tex class=\"arithmatex\">||(q_i=qg_i-qd_i||)</marimo-tex>. </span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "HLkQ",
+      "code_hash": "5660f09a4f73bb43c3f0fdb9f211237c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='HLkQ-0' random-id='11d34662-e3fb-abbe-fc59-90f9e819ff11'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;_marimo_row_id&#92;&quot;:0,&#92;&quot;node&#92;&quot;:1,&#92;&quot;p&#92;&quot;:-89.8,&#92;&quot;q&#92;&quot;:-9.0},{&#92;&quot;_marimo_row_id&#92;&quot;:1,&#92;&quot;node&#92;&quot;:2,&#92;&quot;p&#92;&quot;:-134.3,&#92;&quot;q&#92;&quot;:9.3},{&#92;&quot;_marimo_row_id&#92;&quot;:2,&#92;&quot;node&#92;&quot;:3,&#92;&quot;p&#92;&quot;:-94.2,&#92;&quot;q&#92;&quot;:27.3},{&#92;&quot;_marimo_row_id&#92;&quot;:3,&#92;&quot;node&#92;&quot;:4,&#92;&quot;p&#92;&quot;:0.5,&#92;&quot;q&#92;&quot;:-32.0},{&#92;&quot;_marimo_row_id&#92;&quot;:4,&#92;&quot;node&#92;&quot;:5,&#92;&quot;p&#92;&quot;:91.2,&#92;&quot;q&#92;&quot;:-26.1},{&#92;&quot;_marimo_row_id&#92;&quot;:5,&#92;&quot;node&#92;&quot;:6,&#92;&quot;p&#92;&quot;:1.2,&#92;&quot;q&#92;&quot;:-57.4},{&#92;&quot;_marimo_row_id&#92;&quot;:6,&#92;&quot;node&#92;&quot;:7,&#92;&quot;p&#92;&quot;:100.4,&#92;&quot;q&#92;&quot;:-4.3},{&#92;&quot;_marimo_row_id&#92;&quot;:7,&#92;&quot;node&#92;&quot;:8,&#92;&quot;p&#92;&quot;:1.7,&#92;&quot;q&#92;&quot;:-35.2},{&#92;&quot;_marimo_row_id&#92;&quot;:8,&#92;&quot;node&#92;&quot;:9,&#92;&quot;p&#92;&quot;:126.7,&#92;&quot;q&#92;&quot;:2.8}]&quot;' data-total-rows='9' data-total-columns='3' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;node&quot;, [&quot;integer&quot;, &quot;int64&quot;]], [&quot;p&quot;, [&quot;number&quot;, &quot;float64&quot;]], [&quot;q&quot;, [&quot;number&quot;, &quot;float64&quot;]]]' data-selection='&quot;multi&quot;' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='true' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "0ac93bd49bd9492698d53a0ecf2a8357",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"32-linear-approximations\">3.2 - Linear Approximations</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "6fc631dc5c53277e59f971ce396c66a1",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"321-linearized-power-flow\">3.2.1 - Linearized Power Flow</h3></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "1b40defffb3da4c9eb3e60c1fed7c2ae",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    }
+  ]
+}

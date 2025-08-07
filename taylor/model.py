@@ -120,9 +120,21 @@ class Model:
         aclines = self["branch"]
         bus = self["bus"]
         for n,f,t,s in list(zip(range(len(aclines.fbus)),aclines.fbus,aclines.tbus,aclines.status)):
-            from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(f)-1]) if node else int(f)
-            to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(t)-1]) if node else int(t)
-            line_label = ('"'+self.column_formats["branch"][line]+'"').format(getattr(aclines,line)[n]) if line else int(n+1)
+            if isinstance(node,list):
+                from_label = f'"{node[int(f)-1]}"'
+                to_label = f'"{node[int(t)-1]}"'
+            elif isinstance(node,str):
+                from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(f)-1])
+                to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(t)-1]) if node else int(t)
+            else:
+                from_label = int(f)
+                to_label = int(t)
+            if isinstance(line,list):
+                line_label = f'"{line[n]}"'
+            elif isinstance(line,str):
+                line_label = ('"'+self.column_formats["branch"][line]+'"').format(getattr(aclines,line)[n])
+            else:
+                line_label = int(n+1)
             if s:
                 graph.append(f"  {f:.0f}(({from_label})) == {line_label} ==> {t:.0f}(({to_label}))")
         dclines = self["dcline"]

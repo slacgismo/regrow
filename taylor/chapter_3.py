@@ -209,9 +209,14 @@ def _(mo):
 
 
 @app.cell
-def _(N, P, Q, mo, pd):
+def _(N, P, Q, mo, model, pd):
     p,q = P.sum(axis=1),Q.sum(axis=1)
-    mo.accordion({"Basecase nodal power injections (click to view)":mo.ui.table(pd.DataFrame({"node":range(1,N+1),"p":p,"q":q}).round(1))})
+    mo.accordion({
+        "Basecase nodal power injections (click to view)": mo.ui.tabs({
+            "Graph": mo.mermaid(model.graph(node=abs(p+q*1j).round(1).tolist())),
+            "Table": pd.DataFrame({"node":range(1,N+1),"p":p,"q":q}).round(1),
+        })
+    })
     return
 
 

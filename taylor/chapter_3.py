@@ -21,7 +21,7 @@ def _(Model, mo, os):
     # baseline model UI elements
     _list = sorted([x for x in os.listdir(".") if x.startswith("case") and x.endswith(".py")],key=len)
     _options = {os.path.splitext(x)[0]:x for x in _list}
-    model_ui = mo.ui.dropdown(label="Choose a test case:",options=_options,value=os.path.splitext(_list[0])[0])
+    model_ui = mo.ui.dropdown(options=_options,value=os.path.splitext(_list[0])[0])
     verbose_ui = mo.ui.checkbox(label="Verbose output (code view only)",value=False)
     line_ui = mo.ui.dropdown(label="Line property:",options=Model.basecolumns["branch"].split())
     node_ui = mo.ui.dropdown(label="Node property:",options=Model.basecolumns["bus"].split())
@@ -48,9 +48,9 @@ def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
     N, M = len(bus.bus_i), len(branch.fbus)
     mo.accordion(
         {
-            f"PyPOWER OPF of `{model.name}` has {"succeeded" if model.result["success"] else "failed"}. The output of the solver is \"`{model.result["raw"]["output"]["message"]}`\". (Click here to view results.)": mo.vstack(
+            f"{model_ui}: PyPOWER OPF has {"succeeded" if model.result["success"] else "failed"}. The output of the solver is \"`{model.result["raw"]["output"]["message"]}`\". (Click here to view results.)": mo.vstack(
                 [
-                    mo.hstack([model_ui,verbose_ui]),
+                    mo.hstack([verbose_ui],justify='end'),
                     mo.ui.tabs(
                         {
                             "Overview": pd.DataFrame(
@@ -145,16 +145,22 @@ def _(mo):
 
 
 @app.cell
-def _(bus, mo, model, np, pd):
+def _(bus, mo, model, model_ui, np, pd):
     # bus voltages and voltage limit checks
     v = bus.Vm * (np.cos(bus.Va * np.pi / 180) + np.sin(bus.Va * np.pi / 180) * 1j)
     vmin, vmax = bus.Vmin, bus.Vmax
     v_ok = (vmin <= abs(v)).all() and (abs(v) <= vmax)
     mo.accordion({
-        f"Bus voltages are {'ok' if v_ok.all() else 'not ok'} for all nodes in `{model.name}` (click to view).": mo.ui.tabs({
+        f"{model_ui}: The bus voltages are {'ok' if v_ok.all() else 'not ok'} (click to view).": mo.ui.tabs({
             "Graph": mo.mermaid(model.graph(node=v_ok.tolist())),
-            "Table": pd.DataFrame({"Node":range(1,len(v_ok)+1),"v_ok":v_ok}),
-            })
+            "Table": pd.DataFrame({
+                "Node":range(1,len(v_ok)+1),
+                "vmin": vmin.round(3),
+                "|v|": abs(v).round(3),
+                "vmax": vmax.round(3),
+                "v_ok":v_ok,
+            }),
+        })
     })
     return
 
@@ -171,8 +177,8 @@ def _(mo):
 
 
 @app.cell
-def _(N, branch, mo, model, np, pd):
-    # power injections by lines into nodes and line flow limit check
+def _(N, branch, mo, model, model_ui, np, pd):
+    # power injections by lines into nodes
     Smax, P, Q = np.zeros((N, N)), np.zeros((N, N)), np.zeros((N, N))
     for _i, _j, _pf, _qf, _pt, _qt, _smax in list(
         zip(
@@ -187,20 +193,35 @@ def _(N, branch, mo, model, np, pd):
         Q[_i, _j], Q[_j, _i] = _qt, _qf
         Smax[_i, _j] = Smax[_j, _i] = _smax
     S = P + Q * 1j
-    S_ok = (abs(S) <= Smax)
-    mo.accordion({
-        f"The line flows are {'ok' if S_ok.all() else 'not ok'} for all lines in `{model.name}` (click to view).":mo.ui.tabs({
-            "Graph" : mo.mermaid(model.graph(line=[x.all() for x in S_ok])),
-            "Table" : pd.DataFrame({"Line":range(1,len(S_ok)+1),"S_ok":[x.all() for x in S_ok]}),
-        })
-    })
-    return P, Q, S_ok
 
+    # line flow check
+    smax = branch.rateA
+    sf = branch.Pf + branch.Qf * 1j
+    st = branch.Pt + branch.Qt * 1j
+    sloss = abs(abs(sf) - abs(st))
+    s_ok = abs(sf) <= smax
 
-@app.cell
-def _(S_ok, mo, model):
-    mo.md(rf"""This is {'true' if S_ok.all() else 'false'} for `{model.name}`.""")
-    return
+    # show result
+    mo.accordion(
+        {
+            f"{model_ui}: the line flows are {'ok' if s_ok.all() else 'not ok'} (click to view).": mo.ui.tabs(
+                {
+                    "Graph": mo.mermaid(model.graph(line=s_ok.tolist())),
+                    "Table": pd.DataFrame(
+                        {
+                            "Line": range(1, len(s_ok) + 1),
+                            "|sf|": abs(sf).round(1),
+                            "|st|": abs(st).round(1),
+                            "sloss": [f"{x:.1f} ({(100*x/abs(y)):.1f}%)" for x,y in zip(sloss,sf)],
+                            "smax": smax.round(1),
+                            "s_ok": s_ok,
+                        }
+                    ),
+                }
+            )
+        }
+    )
+    return P, Q
 
 
 @app.cell
@@ -210,10 +231,10 @@ def _(mo):
 
 
 @app.cell
-def _(N, P, Q, mo, model, pd):
+def _(N, P, Q, mo, model, model_ui, pd):
     p,q = P.sum(axis=1),Q.sum(axis=1)
     mo.accordion({
-        "Basecase nodal power injections (click to view)": mo.ui.tabs({
+        f"{model_ui}: The nodal nodal power injections are ok (click to view).": mo.ui.tabs({
             "Graph": mo.mermaid(model.graph(node=abs(p+q*1j).round(1).tolist())),
             "Table": pd.DataFrame({"node":range(1,N+1),"p":p,"q":q}).round(1),
         })
@@ -245,7 +266,7 @@ def _():
     from collections import namedtuple
     from model import Model
 
-    np.set_printoptions(linewidth=999,precision=1,suppress=False,threshold=1000)
+    np.set_printoptions(linewidth=999,precision=4,suppress=False,threshold=1000)
     return Model, mo, np, os, pd
 
 

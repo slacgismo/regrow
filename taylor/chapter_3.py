@@ -17,21 +17,26 @@ def _(mo):
 
 
 @app.cell
-def _(Model, mo, os):
+def _(Model, mo, os, re):
     # baseline model UI elements
-    _list = sorted([x for x in os.listdir(".") if x.startswith("case") and x.endswith(".py")],key=len)
-    _options = {os.path.splitext(x)[0]:x for x in _list}
-    model_ui = mo.ui.dropdown(options=_options,value=os.path.splitext(_list[0])[0])
-    verbose_ui = mo.ui.checkbox(label="Verbose output (code view only)",value=False)
-    line_ui = mo.ui.dropdown(label="Line property:",options=Model.basecolumns["branch"].split())
-    node_ui = mo.ui.dropdown(label="Node property:",options=Model.basecolumns["bus"].split())
+    _list = sorted(
+        [x for x in os.listdir(".") if re.match("case.+.py",x)], # get only "case*.py"
+        key=lambda x: int(re.sub("[^0-9]*([0-9]+)[^0-9]*", r"\1", x, 1)), # sort by numerical order not lexical
+    )
+    _options = {os.path.splitext(x)[0]: x for x in _list}
+    model_ui = mo.ui.dropdown(
+        options=_options, value=os.path.splitext(_list[0])[0]
+    )
+    verbose_ui = mo.ui.checkbox(
+        label="Verbose output (code view only)", value=False
+    )
+    line_ui = mo.ui.dropdown(
+        label="Line property:", options=Model.basecolumns["branch"].split()
+    )
+    node_ui = mo.ui.dropdown(
+        label="Node property:", options=Model.basecolumns["bus"].split()
+    )
     return line_ui, model_ui, node_ui, verbose_ui
-
-
-@app.cell
-def _(Model):
-    Model.basecolumns["bus"]
-    return
 
 
 @app.cell
@@ -256,7 +261,7 @@ def _(mo):
 
 @app.cell
 def _():
-    import os, sys, json, datetime, importlib
+    import os, sys, json, datetime, importlib, re
     import marimo as mo
     import pandas as pd
     import numpy as np
@@ -267,7 +272,7 @@ def _():
     from model import Model
 
     np.set_printoptions(linewidth=999,precision=4,suppress=False,threshold=1000)
-    return Model, mo, np, os, pd
+    return Model, mo, np, os, pd, re
 
 
 if __name__ == "__main__":

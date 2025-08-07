@@ -19,10 +19,10 @@ def _(mo):
 @app.cell
 def _(Model, mo, os):
     # baseline model UI elements
-    _list = sorted([x for x in os.listdir(".") if x.startswith("case") and x.endswith(".py")])
+    _list = sorted([x for x in os.listdir(".") if x.startswith("case") and x.endswith(".py")],key=len)
     _options = {os.path.splitext(x)[0]:x for x in _list}
-    model_ui = mo.ui.dropdown(label="Choose a test case:",options=_options,value="case9")
-    verbose_ui = mo.ui.checkbox(label="Verbose output",value=False)
+    model_ui = mo.ui.dropdown(label="Choose a test case:",options=_options,value=os.path.splitext(_list[0])[0])
+    verbose_ui = mo.ui.checkbox(label="Verbose output (code view only)",value=False)
     line_ui = mo.ui.dropdown(label="Line property:",options=Model.basecolumns["branch"].split())
     node_ui = mo.ui.dropdown(label="Node property:",options=Model.basecolumns["bus"].split())
     return line_ui, model_ui, node_ui, verbose_ui
@@ -35,16 +35,12 @@ def _(Model):
 
 
 @app.cell
-def _(line_ui, model, node_ui):
-    model.graph(line=line_ui.value,node=node_ui.value)
-    return
-
-
-@app.cell
 def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
     # extract model data into named tuples
     model = Model(os.path.join(".",model_ui.value))
-    model.solve_opf(VERBOSE=3 if verbose_ui.value else 0,OUT_ALL=1 if verbose_ui.value else 0)
+    with mo.capture_stdout() as stdout:
+        with mo.capture_stderr() as stderr:
+            model.solve_opf(VERBOSE=3,OUT_ALL=1 if verbose_ui.value else 0)
     bus, gen, branch, gencost, dcline, dclinecost = [
         model[x]
         for x in ["bus", "gen", "branch", "gencost", "dcline", "dclinecost"]
@@ -52,12 +48,9 @@ def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
     N, M = len(bus.bus_i), len(branch.fbus)
     mo.accordion(
         {
-            "Basecase OPF (click to view)": mo.vstack(
+            f"PyPOWER OPF of `{model.name}` has {"succeeded" if model.result["success"] else "failed"}. The output of the solver is \"`{model.result["raw"]["output"]["message"]}`\". (Click here to view results.)": mo.vstack(
                 [
                     mo.hstack([model_ui,verbose_ui]),
-                    mo.md(
-                        f"PyPOWER OPF of `{model.name}` has {"succeeded" if model.result["success"] else "failed"}. Output message is: `{model.result["raw"]["output"]["message"]}`."
-                    ),
                     mo.ui.tabs(
                         {
                             "Overview": pd.DataFrame(
@@ -109,6 +102,8 @@ def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
                                 data=dclinecost._asdict()
                             ).round(3),
                             "Raw data": model.result,
+                            "Output": mo.md(f"~~~\n{stdout.getvalue()}\n~~~"),
+                            "Errors": mo.md(f"~~~\n{stderr.getvalue()}\n~~~"),
                         },
                         lazy=True,
                     ),
@@ -150,17 +145,17 @@ def _(mo):
 
 
 @app.cell
-def _(bus, np):
+def _(bus, mo, model, np, pd):
     # bus voltages and voltage limit checks
     v = bus.Vm * (np.cos(bus.Va * np.pi / 180) + np.sin(bus.Va * np.pi / 180) * 1j)
     vmin, vmax = bus.Vmin, bus.Vmax
-    v_ok = (vmin <= abs(v)).all() and (abs(v) <= vmax).all()
-    return (v_ok,)
-
-
-@app.cell
-def _(mo, model, v_ok):
-    mo.md(f"""This is {'true' if v_ok else 'false'} for `{model.name}`.""")
+    v_ok = (vmin <= abs(v)).all() and (abs(v) <= vmax)
+    mo.accordion({
+        f"Bus voltages are {'ok' if v_ok.all() else 'not ok'} for all nodes in `{model.name}` (click to view).": mo.ui.tabs({
+            "Graph": mo.mermaid(model.graph(node=v_ok.tolist())),
+            "Table": pd.DataFrame({"Node":range(1,len(v_ok)+1),"v_ok":v_ok}),
+            })
+    })
     return
 
 
@@ -176,7 +171,7 @@ def _(mo):
 
 
 @app.cell
-def _(N, branch, np):
+def _(N, branch, mo, model, np, pd):
     # power injections by lines into nodes and line flow limit check
     Smax, P, Q = np.zeros((N, N)), np.zeros((N, N)), np.zeros((N, N))
     for _i, _j, _pf, _qf, _pt, _qt, _smax in list(
@@ -192,13 +187,19 @@ def _(N, branch, np):
         Q[_i, _j], Q[_j, _i] = _qt, _qf
         Smax[_i, _j] = Smax[_j, _i] = _smax
     S = P + Q * 1j
-    S_ok = (abs(S) <= Smax).all()
+    S_ok = (abs(S) <= Smax)
+    mo.accordion({
+        f"The line flows are {'ok' if S_ok.all() else 'not ok'} for all lines in `{model.name}` (click to view).":mo.ui.tabs({
+            "Graph" : mo.mermaid(model.graph(line=[x.all() for x in S_ok])),
+            "Table" : pd.DataFrame({"Line":range(1,len(S_ok)+1),"S_ok":[x.all() for x in S_ok]}),
+        })
+    })
     return P, Q, S_ok
 
 
 @app.cell
 def _(S_ok, mo, model):
-    mo.md(rf"""This is {'true' if S_ok else 'false'} for `{model.name}`.""")
+    mo.md(rf"""This is {'true' if S_ok.all() else 'false'} for `{model.name}`.""")
     return
 
 

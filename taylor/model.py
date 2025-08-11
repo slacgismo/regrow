@@ -1,5 +1,6 @@
 import os
 import sys
+import numpy as np
 import importlib.util 
 import pypower.runopf as pr
 import pypower.ppoption as po
@@ -12,6 +13,36 @@ class Model:
         "gen": "bus Pg Qg Qmax Qmin Vg mBase status Pmax Pmin Pc1 Pc2 Qc1min Qc1max Qc2min Qc2max ramp_agc ramp_10 ramp_30 ramp_q apf mu_Pmax mu_Pmin mu_Qmax mu_Qmin",
         "branch": "fbus tbus r x b rateA rateB rateC ratio angle status angmin angmax Pf Qf Pt Qt mu_Sf mu_St mu_angmin mu_angmax",    
         "dcline": "fbus tbus status Pf Pt Qf Qt Vf Vt Pmin Pmax Qminf Qmaxf Qmint Qmaxt loss0 loss1",
+    }
+    column_types = {
+        "bus": {
+            "bus_i": int,
+            "type": int,
+            "area": int,
+            "zone": int,
+        },
+        "branch": {
+            "fbus": int,
+            "tbus": int,
+            "status": int,
+        },
+        "gen": {
+            "bus": int,
+            "status": int,
+        },
+        "gencost": {
+            "model": int,
+            "n": int,
+        },
+        "dcline": {
+            "fbus": int,
+            "tbus": int,
+            "status": int,
+        },
+        "dclinecost": {
+            "model": int,
+            "n": int,
+        },
     }
     column_formats = {
         "bus" : {
@@ -121,27 +152,27 @@ class Model:
         bus = self["bus"]
         for n,f,t,s in list(zip(range(len(aclines.fbus)),aclines.fbus,aclines.tbus,aclines.status)):
             if isinstance(node,list):
-                from_label = f'"{node[int(f)-1]}"'
-                to_label = f'"{node[int(t)-1]}"'
+                from_label = f'"{node[f-1]}"'
+                to_label = f'"{node[t-1]}"'
             elif isinstance(node,str):
-                from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(f)-1])
-                to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(t)-1]) if node else int(t)
+                from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[f-1]) if node else f
+                to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[t-1]) if node else t
             else:
-                from_label = int(f)
-                to_label = int(t)
+                from_label = f
+                to_label = t
             if isinstance(line,list):
                 line_label = f'"{line[n]}"'
             elif isinstance(line,str):
                 line_label = ('"'+self.column_formats["branch"][line]+'"').format(getattr(aclines,line)[n])
             else:
-                line_label = int(n+1)
+                line_label = n+1
             if s:
                 graph.append(f"  {f:.0f}(({from_label})) == {line_label} ==> {t:.0f}(({to_label}))")
         dclines = self["dcline"]
         for n,f,t,s in list(zip(range(len(dclines.fbus)),dclines.fbus,dclines.tbus,dclines.status)):
-            from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(f)-1]) if node else int(f)
-            to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[int(t)-1]) if node else int(t)
-            line_label = ('"'+self.column_formats["branch"][line]+'"').format(getattr(aclines,line)[n]) if line else int(n+1)
+            from_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[f-1]) if node else f
+            to_label = ('"'+self.column_formats["bus"][node]+'"').format(getattr(bus,node)[t-1]) if node else t
+            line_label = ('"'+self.column_formats["branch"][line]+'"').format(getattr(aclines,line)[n]) if line else (n+1)
             if s:
                 graph.append(f"  {f:.0f}(({from_label})) -- {line_label} -- {t:.0f}(({to_label}))")
         return "\n".join(graph)
@@ -206,9 +237,23 @@ class Model:
     def __getitem__(self,field):
         if self.result is None:
             return None
-        return namedtuple(field, self.columns[field].split())(
-            *self.result[field].T if field in self.result else [[]] * len(self.columns[field].split())
+        result = namedtuple(field, self.columns[field].split())(
+            *self.result[field].T 
+            if field in self.result 
+            else [[]] * len(self.columns[field].split())
         )
+        if field in self.column_types:
+            for name,dtype in self.column_types[field].items():
+                if len(getattr(result,name)) > 0:
+                    result = result._replace(**{name:getattr(result,name).astype(dtype)})
+        return result
+
+    @staticmethod
+    def coarray(shape,n,x):
+        result = np.zeros(shape=shape,dtype=x.dtype)
+        for _n,_x in zip(n,x):
+            result[_n] = _x
+        return result
 
 if __name__ == "__main__":
 

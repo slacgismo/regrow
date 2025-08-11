@@ -116,7 +116,7 @@ def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
             )
         }
     )
-    return N, branch, bus, model
+    return M, N, branch, bus, gen, model
 
 
 @app.cell
@@ -126,7 +126,9 @@ def _(mo):
     ## Coding Nomenclature
 
     The text uses the notation $x_{ij}$ to denote the value at the index $i,j$ in the matrix $x \in \mathbb{R}^{N \times N}$ and the notation $x_i$ to denote the value at the index $i$ in the vector $x 
-    \in \mathbb{R}^N$.  To disambiguate cases where the variable $x$ denotes two different things depending on the dimensions of the variable, the code in this notebook will always use capitalized variables for 2-dimensional arrays and lowercase variable names to 1-dimensional arrays.  Thus $x_i$ will always be coded as `x[i]`, while $x_{i,j}$ will be coded as `X[i,j]`. Scalars will be coded as `x_<tag>` to indicate that they are not arrays. In cases where variables are denoted $x^Y_{i}$ or $x^Y_{i,j}$, these will be coded as `xY[i]` and `XY[i,j]`, respectively. 
+    \in \mathbb{R}^N$.  While this notation is more mathematically clear and rigorous, in code we must disambiguate cases where the variable $x$ denotes two different things depending on the dimensions of the variable. For example the text often use $x_j$ to denote $\sum_j x_{i,j}$.
+
+    Therefore the code in this notebook will always use capitalized variables for 2-dimensional arrays and lowercase variable names to 1-dimensional arrays.  Thus $x_i$ will always be coded as `x[i]`, while $x_{i,j}$ will be coded as `X[i,j]`. Scalars will be coded as `x_<tag>` to indicate that they are not arrays. In cases where variables are denoted $x^Y_{i}$ or $x^Y_{i,j}$, these will be coded as `xY[i]` and `XY[i,j]`, respectively. 
 
     Additional variable encodings include the following:
 
@@ -156,7 +158,7 @@ def _(bus, mo, model, model_ui, np, pd):
     vmin, vmax = bus.Vmin, bus.Vmax
     v_ok = (vmin <= abs(v)).all() and (abs(v) <= vmax)
     mo.accordion({
-        f"{model_ui}: The bus voltages are {'ok' if v_ok.all() else 'not ok'} (click to view).": mo.ui.tabs({
+        f"{model_ui}: Bus voltages are {'ok' if v_ok.all() else 'not ok'} (click to view).": mo.ui.tabs({
             "Graph": mo.mermaid(model.graph(node=v_ok.tolist())),
             "Table": pd.DataFrame({
                 "Node":range(1,len(v_ok)+1),
@@ -165,7 +167,8 @@ def _(bus, mo, model, model_ui, np, pd):
                 "vmax": vmax.round(3),
                 "v_ok":v_ok,
             }),
-        })
+        },
+        lazy=True,)
     })
     return
 
@@ -197,6 +200,7 @@ def _(N, branch, mo, model, model_ui, np, pd):
         P[_i, _j], P[_j, _i] = _pt, _pf
         Q[_i, _j], Q[_j, _i] = _qt, _qf
         Smax[_i, _j] = Smax[_j, _i] = _smax
+    
     S = P + Q * 1j
 
     # line flow check
@@ -209,7 +213,7 @@ def _(N, branch, mo, model, model_ui, np, pd):
     # show result
     mo.accordion(
         {
-            f"{model_ui}: the line flows are {'ok' if s_ok.all() else 'not ok'} (click to view).": mo.ui.tabs(
+            f"{model_ui}: Line flows are {'ok' if s_ok.all() else 'not ok'} (click to view).": mo.ui.tabs(
                 {
                     "Graph": mo.mermaid(model.graph(line=s_ok.tolist())),
                     "Table": pd.DataFrame(
@@ -222,7 +226,8 @@ def _(N, branch, mo, model, model_ui, np, pd):
                             "s_ok": s_ok,
                         }
                     ),
-                }
+                },
+                lazy=True,
             )
         }
     )
@@ -239,9 +244,137 @@ def _(mo):
 def _(N, P, Q, mo, model, model_ui, pd):
     p,q = P.sum(axis=1),Q.sum(axis=1)
     mo.accordion({
-        f"{model_ui}: The nodal nodal power injections are ok (click to view).": mo.ui.tabs({
+        f"{model_ui}: Node power injections are as follows (click to view).": mo.ui.tabs({
             "Graph": mo.mermaid(model.graph(node=abs(p+q*1j).round(1).tolist())),
             "Table": pd.DataFrame({"node":range(1,N+1),"p":p,"q":q}).round(1),
+        },
+        lazy=True,)
+    })
+    return p, q
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""The nodal power injections are subject to the box constraints $\underline p_i \le p_i \le \bar p_i$ and $\underline q_i \le q_i \le \bar q_i$.""")
+    return
+
+
+@app.cell
+def _(M, Model, N, branch, bus, gen, mo, model, model_ui, np, p, pd, q):
+    _fbus = [n-1 for n in branch.fbus]
+    _tbus = [n-1 for n in branch.tbus]
+    _qratio = branch.x / np.sqrt(branch.r**2+branch.x**2) # heuristic for reactive power capacity
+    _pmax = (Model.coarray((N,M),_fbus,branch.rateA)+Model.coarray((N,M),_tbus,branch.rateA)).sum(axis=1)
+    _qmax = (Model.coarray((N,M),_fbus,branch.rateA*_qratio)+Model.coarray((N,M),_tbus,branch.rateA*_qratio)).sum(axis=1)
+    pmin = bus.Pd - _pmax
+    pmax = Model.coarray(N,gen.bus,gen.Pmax) + _pmax
+    qmin = Model.coarray(N,gen.bus,gen.Qmin)+bus.Qd.clip(max=0) - _qmax
+    qmax = Model.coarray(N,gen.bus,gen.Qmax)+bus.Qd.clip(min=0) + _qmax
+    p_ok = (pmin<=p) + (p<=pmax)
+    q_ok = (qmin<=q) + (q<=qmax)
+    mo.accordion({
+        f"{model_ui}: Node power injections are {'ok' if (p_ok+q_ok).all() else 'not ok'} (click to view).": mo.ui.tabs({
+            "Graph": mo.mermaid(model.graph(node=(p_ok + q_ok).tolist())),
+            "Table": pd.DataFrame({
+                "node": range(1,N+1),
+                "pmin": pmin.round(1),
+                "p": p.round(1),
+                "pmax": pmax.round(1),
+                "p_ok": p_ok,
+                "qmin": qmin.round(1),
+                "q": q.round(1),
+                "qmax": qmax.round(1),
+                "q_ok": q_ok,
+            })
+        },
+        lazy=True,)
+    })
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""The complex line impedances are $z_{ij} = p_{ij}+q_{ij}j = v_i(v_i^*-v_j^*)y_{ij}^*$ and the complex line admittance is its inverse $y_{ij} = 1/z_{ij}$.""")
+    return
+
+
+@app.cell
+def _(M, branch, mo, model, model_ui, pd):
+    z = branch.r + branch.x*1j
+    y = 1/z
+    mo.accordion({
+        f"{model_ui}: Line impedances and admittances (click to view)": mo.ui.tabs({
+            "Graph (z)": mo.mermaid(model.graph(line=z.round(4).tolist())),
+            "Graph (y)": mo.mermaid(model.graph(line=y.round(2).tolist())),
+            "Table": pd.DataFrame({
+                "line": range(1,M+1),
+                "z": z.round(4),
+                "y": y.round(2),
+            })
+        },
+        lazy=True,)
+    })
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""The cost of real power generation is $\sum_i f_i(p_i)$.""")
+    return
+
+
+@app.cell
+def _(N, mo, model, model_ui, pd):
+    # TODO
+    mo.accordion({
+        f"{model_ui}: Cost of real power generation (click to view)": mo.ui.tabs({
+            "Graph": mo.mermaid(model.graph()),
+            "Table": pd.DataFrame({
+                "node": range(1,N+1),
+            
+            })
+        })
+    })
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""The total real power generation is $\sum_{i \in \mathcal{G}} p_i$.""")
+    return
+
+
+@app.cell
+def _(Model, N, gen, mo, model, model_ui, pd):
+    pg = Model.coarray(N,gen.bus,gen.Pg).round(1).tolist()
+    mo.accordion({
+        f"{model_ui}: Total real power generation (click to view)": mo.ui.tabs({
+            "Graph": mo.mermaid(model.graph(node=pg)),
+            "Table": pd.DataFrame({
+                "node": range(1,N+1),
+                "pg": pg,
+            })
+        })
+    })
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""The resistive power line losses are $\sum_{ij}r_{ij}I_{ij}^2 = \sum_{ij} p_{ij}+p{ji} = \sum_i p_i$.""")
+    return
+
+
+@app.cell
+def _(M, P, branch, mo, model, model_ui, pd):
+    ploss = [(P[i,j]+P[j,i]).round(3) for i,j in zip(branch.fbus-1,branch.tbus-1)]
+    mo.accordion({
+        f"{model_ui}: Resistive power losses (click to view)": mo.ui.tabs({
+            "Graph": mo.mermaid(model.graph(line=ploss)),
+            "Table": pd.DataFrame({
+                "line": range(1,M+1),
+                "ploss" : ploss,
+            })
         })
     })
     return

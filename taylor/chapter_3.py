@@ -200,7 +200,7 @@ def _(N, branch, mo, model, model_ui, np, pd):
         P[_i, _j], P[_j, _i] = _pt, _pf
         Q[_i, _j], Q[_j, _i] = _qt, _qf
         Smax[_i, _j] = Smax[_j, _i] = _smax
-    
+
     S = P + Q * 1j
 
     # line flow check
@@ -324,14 +324,14 @@ def _(mo):
 
 
 @app.cell
-def _(N, mo, model, model_ui, pd):
-    # TODO
+def _(Model, N, gen, mo, model, model_ui, pd):
+    f = Model.coarray(N,gen.bus,model.cost(gen.Pg))
     mo.accordion({
         f"{model_ui}: Cost of real power generation (click to view)": mo.ui.tabs({
-            "Graph": mo.mermaid(model.graph()),
+            "Graph": mo.mermaid(model.graph(node=(f/1e6).round(3).tolist())),
             "Table": pd.DataFrame({
                 "node": range(1,N+1),
-            
+                "cost[$M]": (f/1e6).round(3),
             })
         })
     })

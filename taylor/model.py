@@ -145,6 +145,7 @@ class Model:
         self.model = getattr(self.module,self.name)()
         self.options = po.ppoption()
         self.result = None
+        self.data = {}
 
     def graph(self,line=None,node=None):
         graph = ["flowchart LR"]
@@ -176,6 +177,29 @@ class Model:
             if s:
                 graph.append(f"  {f:.0f}(({from_label})) -- {line_label} -- {t:.0f}(({to_label}))")
         return "\n".join(graph)
+
+    def cost(self,Pg=None):
+
+        bus = self["bus"]
+        gen = self["gen"]
+        gencost = self["gencost"]
+        result = np.zeros(Pg.shape)
+        for i,p in enumerate(gen.Pg if Pg is None else Pg):
+            bus_i = bus.bus_i[i]
+            model = gencost.model[i]
+            n = gencost.n[i]
+            if model == 1: # PWLF
+                pwlf = self.self.model["gencost"][i,-1:-n-1:-1]
+                # print(f"{pwlf=}")
+                raise NotImplementedError(f"pwlf {model=} not implemented for {bus_i=}")
+            elif model == 2: # polynomial
+                # print(f"{self.model['gencost']=}")
+                poly = self.model["gencost"][i,-1:-n-1:-1]
+                # print(f"{poly=}")
+                result[i] = np.polyval(poly,p)
+            else:
+                raise RuntimeError(f"{model=} is an invalid gencost model on {bus_i=}")
+        return result
 
     def set_result(self,result):
         self.result = result
@@ -215,6 +239,7 @@ class Model:
                 ]
             ),
         })
+        self.data = {}
 
     def solve_pf(self,**kwargs):
         if "VERBOSE" not in kwargs:
@@ -235,6 +260,8 @@ class Model:
         return self.result["success"]
 
     def __getitem__(self,field):
+        if field in self.data:
+            return self.data[field]
         if self.result is None:
             return None
         result = namedtuple(field, self.columns[field].split())(
@@ -246,11 +273,12 @@ class Model:
             for name,dtype in self.column_types[field].items():
                 if len(getattr(result,name)) > 0:
                     result = result._replace(**{name:getattr(result,name).astype(dtype)})
+        self.data[field] = result
         return result
 
     @staticmethod
-    def coarray(shape,n,x):
-        result = np.zeros(shape=shape,dtype=x.dtype)
+    def coarray(shape,n,x,dtype=None):
+        result = np.zeros(shape=shape,dtype=dtype if dtype else x.dtype if hasattr(x,'dtype') else float)
         for _n,_x in zip(n,x):
             result[_n] = _x
         return result

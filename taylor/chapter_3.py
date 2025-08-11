@@ -40,86 +40,6 @@ def _(Model, mo, os, re):
 
 
 @app.cell
-def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
-    # extract model data into named tuples
-    model = Model(os.path.join(".",model_ui.value))
-    with mo.capture_stdout() as stdout:
-        with mo.capture_stderr() as stderr:
-            model.solve_opf(VERBOSE=3,OUT_ALL=1 if verbose_ui.value else 0)
-    bus, gen, branch, gencost, dcline, dclinecost = [
-        model[x]
-        for x in ["bus", "gen", "branch", "gencost", "dcline", "dclinecost"]
-    ]
-    N, M = len(bus.bus_i), len(branch.fbus)
-    mo.accordion(
-        {
-            f"{model_ui}: PyPOWER OPF has {"succeeded" if model.result["success"] else "failed"}. The output of the solver is \"`{model.result["raw"]["output"]["message"]}`\". (Click here to view results.)": mo.vstack(
-                [
-                    mo.hstack([verbose_ui],justify='end'),
-                    mo.ui.tabs(
-                        {
-                            "Overview": pd.DataFrame(
-                                {
-                                    "Bus": {
-                                        "Rows": len(bus.bus_i),
-                                        "Columns": len(bus),
-                                    },
-                                    "Branches": {
-                                        "Rows": len(branch.fbus),
-                                        "Columns": len(branch),
-                                    },
-                                    "Generation": {
-                                        "Rows": len(gen.bus),
-                                        "Columns": len(gen),
-                                    },
-                                    "Generation Costs": {
-                                        "Rows": len(gencost.n),
-                                        "Columns": len(gencost),
-                                    },
-                                    "DC Lines": {
-                                        "Rows": len(dcline.fbus),
-                                        "Columns": len(dcline),
-                                    },
-                                    "DC Line Costs": {
-                                        "Rows": len(dclinecost.n),
-                                        "Columns": len(dclinecost),
-                                    },
-                                }
-                            ).T,
-                            "Graph": mo.vstack([
-                                mo.hstack([line_ui,node_ui],justify='start'),
-                                mo.mermaid(model.graph(line=line_ui.value,node=node_ui.value))
-                            ]),
-                            "Busses": pd.DataFrame(data=bus._asdict()).round(3),
-                            "Branches": pd.DataFrame(data=branch._asdict()).round(
-                                3
-                            ),
-                            "Generation": pd.DataFrame(data=gen._asdict()).round(
-                                3
-                            ),
-                            "Generation Costs": pd.DataFrame(
-                                data=gencost._asdict()
-                            ).round(3),
-                            "DC Lines": pd.DataFrame(data=dcline._asdict()).round(
-                                3
-                            ),
-                            "DC Line Costs": pd.DataFrame(
-                                data=dclinecost._asdict()
-                            ).round(3),
-                            "Raw data": model.result,
-                            "Output": mo.md(f"~~~\n{stdout.getvalue()}\n~~~"),
-                            "Errors": mo.md(f"~~~\n{stderr.getvalue()}\n~~~"),
-                        },
-                        lazy=True,
-                    ),
-                ]
-            )
-        }
-    )
-    return M, N, branch, bus, gen, model
-
-
-@app.cell
 def _(mo):
     mo.md(
         r"""
@@ -361,7 +281,7 @@ def _(Model, N, gen, mo, model, model_ui, pd):
 
 @app.cell
 def _(mo):
-    mo.md(r"""The resistive power line losses are $\sum_{ij}r_{ij}I_{ij}^2 = \sum_{ij} p_{ij}+p{ji} = \sum_i p_i$.""")
+    mo.md(r"""The resistive power line losses are $\sum_{ij}r_{ij}I_{ij}^2 = \sum_{ij} p_{ij}+p_{ji} = \sum_i p_i$.""")
     return
 
 
@@ -378,6 +298,107 @@ def _(M, P, branch, mo, model, model_ui, pd):
         })
     })
     return
+
+
+@app.cell
+def _(mo):
+    mo.md(
+        r"""
+    The optimal power flow is written
+
+    $\begin{array}{rl}
+        \underset{v,p,q}{\min} & f(v,p,q)
+    \\  \mathrm{subject~to} & p_{ij}+q_{ij}=v(v_i^*+v_j^*)y_{ij}^*
+    \\ & \sum_j p_{ij} = p_i
+    \\ & \sum_j q_{ij} = q_i
+    \\ & \underline p_i \le p_i \le \bar p_i
+    \\ & \underline q_i \le q_i \le \bar q_i
+    \\ & p_{ij}^2 + q_{ij}^2 \le \bar s_{ij}^2
+    \\ & \underline v_i \le v_i \le \bar v_i
+    \end{array}$
+    """
+    )
+    return
+
+
+@app.cell
+def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
+    # extract model data into named tuples
+    model = Model(os.path.join(".",model_ui.value))
+    with mo.capture_stdout() as stdout:
+        with mo.capture_stderr() as stderr:
+            model.solve_opf(VERBOSE=3,OUT_ALL=1 if verbose_ui.value else 0)
+    bus, gen, branch, gencost, dcline, dclinecost = [
+        model[x]
+        for x in ["bus", "gen", "branch", "gencost", "dcline", "dclinecost"]
+    ]
+    N, M = len(bus.bus_i), len(branch.fbus)
+    mo.accordion(
+        {
+            f"{model_ui}: PyPOWER OPF has {"succeeded" if model.result["success"] else "failed"}. The output of the solver is \"`{model.result["raw"]["output"]["message"]}`\". (Click here to view results.)": mo.vstack(
+                [
+                    mo.hstack([verbose_ui],justify='end'),
+                    mo.ui.tabs(
+                        {
+                            "Overview": pd.DataFrame(
+                                {
+                                    "Bus": {
+                                        "Rows": len(bus.bus_i),
+                                        "Columns": len(bus),
+                                    },
+                                    "Branches": {
+                                        "Rows": len(branch.fbus),
+                                        "Columns": len(branch),
+                                    },
+                                    "Generation": {
+                                        "Rows": len(gen.bus),
+                                        "Columns": len(gen),
+                                    },
+                                    "Generation Costs": {
+                                        "Rows": len(gencost.n),
+                                        "Columns": len(gencost),
+                                    },
+                                    "DC Lines": {
+                                        "Rows": len(dcline.fbus),
+                                        "Columns": len(dcline),
+                                    },
+                                    "DC Line Costs": {
+                                        "Rows": len(dclinecost.n),
+                                        "Columns": len(dclinecost),
+                                    },
+                                }
+                            ).T,
+                            "Graph": mo.vstack([
+                                mo.hstack([line_ui,node_ui],justify='start'),
+                                mo.mermaid(model.graph(line=line_ui.value,node=node_ui.value))
+                            ]),
+                            "Busses": pd.DataFrame(data=bus._asdict()).round(3),
+                            "Branches": pd.DataFrame(data=branch._asdict()).round(
+                                3
+                            ),
+                            "Generation": pd.DataFrame(data=gen._asdict()).round(
+                                3
+                            ),
+                            "Generation Costs": pd.DataFrame(
+                                data=gencost._asdict()
+                            ).round(3),
+                            "DC Lines": pd.DataFrame(data=dcline._asdict()).round(
+                                3
+                            ),
+                            "DC Line Costs": pd.DataFrame(
+                                data=dclinecost._asdict()
+                            ).round(3),
+                            "Raw data": model.result,
+                            "Output": mo.md(f"~~~\n{stdout.getvalue()}\n~~~"),
+                            "Errors": mo.md(f"~~~\n{stderr.getvalue()}\n~~~"),
+                        },
+                        lazy=True,
+                    ),
+                ]
+            )
+        }
+    )
+    return M, N, branch, bus, gen, model
 
 
 @app.cell

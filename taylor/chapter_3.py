@@ -61,13 +61,13 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    mo.md(
-        r"""
-    ## 3.1 - Basic Formulation
+    mo.md(r"""## 3.1 - Basic Formulation""")
+    return
 
-    The voltage $v_i$ at the node $i$ must satisfy the limits $\underline{v}_i \le |v_i| \le \bar{v}_i$.
-    """
-    )
+
+@app.cell
+def _(mo):
+    mo.md(r"""The voltage $v_i$ at the node $i$ must satisfy the limits $\underline{v}_i \le |v_i| \le \bar{v}_i$.""")
     return
 
 
@@ -308,7 +308,8 @@ def _(mo):
 
     $\begin{array}{rl}
         \underset{v,p,q}{\min} & f(v,p,q)
-    \\  \mathrm{subject~to} & p_{ij}+q_{ij}=v(v_i^*+v_j^*)y_{ij}^*
+    \\  
+        \mathrm{subject~to} & p_{ij}+q_{ij}=v(v_i^*+v_j^*)y_{ij}^*
     \end{array}$
 
     and Feasible Set 3.1

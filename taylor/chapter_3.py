@@ -309,12 +309,17 @@ def _(mo):
     $\begin{array}{rl}
         \underset{v,p,q}{\min} & f(v,p,q)
     \\  \mathrm{subject~to} & p_{ij}+q_{ij}=v(v_i^*+v_j^*)y_{ij}^*
-    \\ & \sum_j p_{ij} = p_i
-    \\ & \sum_j q_{ij} = q_i
-    \\ & \underline p_i \le p_i \le \bar p_i
-    \\ & \underline q_i \le q_i \le \bar q_i
-    \\ & p_{ij}^2 + q_{ij}^2 \le \bar s_{ij}^2
-    \\ & \underline v_i \le v_i \le \bar v_i
+    \end{array}$
+
+    and Feasible Set 3.1
+
+    $\begin{array}{rl}
+    \\ \sum_j p_{ij} = p_i
+    \\ \sum_j q_{ij} = q_i
+    \\ \underline p_i \le p_i \le \bar p_i
+    \\ \underline q_i \le q_i \le \bar q_i
+    \\ p_{ij}^2 + q_{ij}^2 \le \bar s_{ij}^2
+    \\ \underline v_i \le v_i \le \bar v_i
     \end{array}$
     """
     )
@@ -403,13 +408,108 @@ def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
 
 @app.cell
 def _(mo):
-    mo.md(r"""## 3.2 - Linear Approximations""")
+    mo.md(
+        r"""
+    ## 3.2 - Linear Approximations
+
+    In polar coordinates Feasible Set 3.2 is given for the non-convex voltage-polar coordinate powerflow by
+
+    $\begin{array}{l}
+        \textrm{Feasible Set 3.1}
+    \\
+        p_{ij} = g_{ij} |v_i|^2 -|v_i||v_j| ( g_{ij} \cos(\theta_i-\theta_j) - b_{ij} \sin(\theta_i-\theta_j) )
+    \\
+        q_{ij} = b_{ij} |v_i|^2 -|v_i||v_j| ( g_{ij} \sin(\theta_i-\theta_j) + b_{ij} \cos(\theta_i-\theta_j) )
+    \end{array}$
+    """
+    )
     return
 
 
 @app.cell
 def _(mo):
-    mo.md(r"""### 3.2.1 - Linearized Power Flow""")
+    mo.md(
+        r"""
+    ### 3.2.1 - Linearized powerflow
+
+    The linearized power flow Feasible Set 3.3 is
+
+    $\begin{array}{l}
+        p_{ij} = b_{ij} ( \theta_i - \theta_j )
+    \\
+        \sum_j p_{ij} = p_i
+    \\
+        \underline p_i \le p_i \le \bar p_i
+    \\
+        |p_{ij}| \le \bar s_{ij}
+    \end{array}$
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(
+        r"""
+    ### 3.2.2 - Decoupled power flow
+
+    The decoupled power flow Feasible Set 3.4 is
+
+    $\begin{array}{l}
+        \textrm{Feasible Set 3.3}
+    \\
+        q_{ij} = b_{ij} \left( |v_i| - |v_j| \right)
+    \\
+        \sum_j q_{ij}
+    \\
+        \underline q_i \le q_i \le \hat q_i
+    \\
+        \underline v_i \le |v_i| \le \hat v_i
+    \end{array}$
+    """
+    )
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(
+        r"""
+    ### 3.2.3 - Network Flow
+
+    The simplest approximation is the network flow (or transportation model) which is given by the Feasible Set 3.5
+
+    $\begin{array}{l}
+        \textrm{Feasible Set 3.1}
+    \\
+        p_{ij}+p_{ji} = 0
+    \\
+        q_{ij}+q_{ji} = 0
+    \end{array}$
+
+    and additional polyhedral flow capacity constraints such as
+
+    $\begin{array}{l}
+        |p_{ij}| + |q_{ij}| \le \sqrt2 \bar s_{ij}
+    \\
+        |p_{ij}| \le \bar s_{ij}
+    \\
+        |q_{ij}| \le \bar s_{ij}
+    \end{array}$
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""## Relaxations""")
     return
 
 

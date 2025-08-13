@@ -428,6 +428,15 @@ def _(mo):
 
 @app.cell
 def _(mo):
+    mo.accordion(
+        {
+            f"TODO. (Click here to view results.)": mo.md("TODO"),
+        })
+    return
+
+
+@app.cell
+def _(mo):
     mo.md(
         r"""
     ### 3.2.1 - Linearized powerflow
@@ -445,6 +454,15 @@ def _(mo):
     \end{array}$
     """
     )
+    return
+
+
+@app.cell
+def _(mo):
+    mo.accordion(
+        {
+            f"TODO. (Click here to view results.)": mo.md("TODO"),
+        })
     return
 
 
@@ -473,7 +491,11 @@ def _(mo):
 
 
 @app.cell
-def _():
+def _(mo):
+    mo.accordion(
+        {
+            f"TODO. (Click here to view results.)": mo.md("TODO"),
+        })
     return
 
 
@@ -509,7 +531,25 @@ def _(mo):
 
 @app.cell
 def _(mo):
+    mo.accordion(
+        {
+            f"TODO. (Click here to view results.)": mo.md("TODO"),
+        })
+    return
+
+
+@app.cell
+def _(mo):
     mo.md(r"""## Relaxations""")
+    return
+
+
+@app.cell
+def _(mo):
+    mo.accordion(
+        {
+            f"TODO. (Click here to view results.)": mo.md("TODO"),
+        })
     return
 
 

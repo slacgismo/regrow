@@ -359,7 +359,7 @@ def _(mo):
         start=0, stop=50, step=0.25, label='lambda', 
         value=20.0, full_width=True, debounce = True)
     eta_storage_sldr = mo.ui.slider(
-        start=-5, stop=-1, step=0.1, label='x, eta storage = 1-10^x',
+        start=-7, stop=-1, step=0.1, label='x, eta storage = 1-10^x',
         value=-3, full_width=True, debounce = True)
     eta_charge_sldr = mo.ui.slider(
         start=.5, stop=1, step=0.0001, label='eta charge',
@@ -399,18 +399,18 @@ def _(
     mo,
     sparsity_l1_sldr,
 ):
-    form = mo.md('''{alpha}\n{beta}\n{gamma}\n{lambd}\n{eta_storage}\n{eta_charge}\n{eta_discharge}\n{sparse}\n{Q}\n'''
+    form = mo.md('''{eta_storage}\n{eta_charge}\n{eta_discharge}\n{sparse}\n{Q}\n{alpha}\n{beta}\n{gamma}\n{lambd}\n'''
                 ).batch(
-        alpha=alpha_sldr,
-        beta=beta_sldr,
-        gamma=gamma_sldr,
-        lambd=lambda_sldr,
         eta_storage = eta_storage_sldr,
         eta_charge = eta_charge_sldr,
         eta_discharge = eta_discharge_sldr,
         sparse = sparsity_l1_sldr,
-        Q = Q_sldr
-    )
+        Q = Q_sldr,
+        alpha=alpha_sldr,
+        beta=beta_sldr,
+        gamma=gamma_sldr,
+        lambd=lambda_sldr
+    ).form(show_clear_button=True, bordered=False)
     return (form,)
 
 
@@ -460,16 +460,15 @@ def _(l, mo):
 
 
 @app.cell
-def _(eta_charge_sldr, eta_discharge_sldr, eta_storage_sldr, problem):
+def _(form, problem):
     q = problem.var_dict['q'].value 
     b_charge = problem.var_dict['b_charge'].value 
     b_discharge = problem.var_dict['b_discharge'].value
-    eta_storage = problem.param_dict['eta_storage'].value
-    eta_charge = problem.param_dict['eta_charge'].value
+    eta_storage = 1 - 10**form.value['eta_storage']
 
-    lost_store = (q * (1-eta_storage_sldr.value))
-    lost_charge = (b_charge * (1 - eta_charge_sldr.value))
-    lost_discharge = (b_discharge * (1/eta_discharge_sldr.value-1))
+    lost_store = (q * (1-eta_storage))
+    lost_charge = (b_charge * (1 - form.value['eta_charge']))
+    lost_discharge = (b_discharge * (1/form.value['eta_discharge']-1))
 
     return b_charge, b_discharge, lost_charge, lost_discharge, lost_store
 
@@ -608,15 +607,15 @@ def _(
 
 
 @app.cell(hide_code=True)
-def _(am_solving, form, l, mo, np, problem):
+def _(am_solving, l, mo, np, problem):
     am_solving
-    charged_times = np.isclose(problem.var_dict['q'].value, form.value['Q'], atol=1e-2)
+    charged_times = np.isclose(problem.var_dict['q'].value, problem.param_dict['Q'].value, atol=1e-2)
     discharged_times = np.isclose(problem.var_dict['q'].value, 0, atol=1e-2)
     _vc = 1 / ((np.sum(charged_times)) / (len(l) / 24))
     _vd = 1 / ((np.sum(discharged_times)) / (len(l) / 24))
     # _va = (_vc + _vd) / 2 / 2
     _va = _va = 1 / ((np.sum(charged_times) + np.sum(discharged_times)) / (len(l) / 24))
-    _asoc = np.average(problem.var_dict['q'].value) / form.value['Q']
+    _asoc = np.average(problem.var_dict['q'].value) /problem.param_dict['Q'].value
     mo.md(f"""Average number of days between charged periods: {_vc:.2f}
 
     Average number of days between discharged periods: {_vd:.2f}

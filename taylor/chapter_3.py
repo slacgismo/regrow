@@ -480,11 +480,11 @@ def _(mo):
     \\
         q_{ij} = b_{ij} \left( |v_i| - |v_j| \right)
     \\
-        \sum_j q_{ij}
+        \sum_j q_{ij} = q_i
     \\
-        \underline q_i \le q_i \le \hat q_i
+        \underline q_i \le q_i \le \bar q_i
     \\
-        \underline v_i \le |v_i| \le \hat v_i
+        \underline v_i \le |v_i| \le \bar v_i
     \end{array}$
     """
     )

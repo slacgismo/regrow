@@ -113,6 +113,5 @@ if __name__ == "__main__":
         model_outputs = json.loads(r.content.decode('utf-8'))
         hourly_outputs = model_outputs['outputs']['ac']
         # Write the model results to a JSON
-        geohash_val = geohash(lat, long, precision=6)
-        with open(str(geohash_val) + ".json", "w") as outfile:
+        with open(str(row['system_id']) + ".json", "w") as outfile:
             outfile.write(str(model_outputs))

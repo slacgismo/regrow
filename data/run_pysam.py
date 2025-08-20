@@ -63,7 +63,7 @@ def pull_CONUS_data(latitude, longitude, hub_height,
                           "m,pressure_0m,windspeed_" + 
                           str(int(closest_hub_height))+ "m,winddirection_" +
                           str(int(closest_hub_height))+ "m")
-    email, api_key = nsrdb_credentials()
+    email, api_key = nsrdb_credentials()# "kirsten.perry@nrel.gov", "yRzEAagz3HPaIUfm4SeW2Y9tj3X8lAJRr4CVX7uD" #nsrdb_credentials()#
     url = (
         "http://developer.nrel.gov/api/wind-toolkit/v2/"+
         "wind/wtk-bchrrr-v1-0-0-download.csv?wkt=POINT("
@@ -198,7 +198,7 @@ if __name__ == "__main__":
     # Get a list of sites already ran
     ran_files_list = [file.replace(".png", "").split("\\")[-1]
                       for file in glob.glob("./pysam_wecc_nodes/plots/*.png")]
-       
+    #master_df = master_df[14000:]
     for idx, row in master_df.iterrows():
         # Get metadata and make into correct dtype
         bus = row["bus"]
@@ -257,6 +257,7 @@ if __name__ == "__main__":
             for year in years: 
                 weather_df = pull_CONUS_data(lat, lon, hub_height, year)
                 master_weather_df = pd.concat([master_weather_df, weather_df])
+                time.sleep(1)
             # Get the associated timezone of the data
             tz = 'Etc/GMT+' + str(int(master_weather_df.columns[3]) *-1)
             # Make the 1st row the main header row
@@ -356,5 +357,6 @@ if __name__ == "__main__":
                                       filename + ".csv"),
                                     index=False,
                                     storage_options={"profile": aws_profile})
+            
 
      

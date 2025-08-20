@@ -7,9 +7,9 @@ import os
 import s3fs
 
 aws_profile = "aws-service-creds-pvdrdb"
-base_path = r"C:\Users\qnguyen\Documents\GitHub_repos\regrow\data\pysam_wecc_nodes"
+base_path = r"C:\Users\kperry\Documents\source\repos\regrow\data\pysam_wecc_nodes"
 power_plant_path = "pvdrdb-transfer/REGROW/pysam_wind_powerplants/single_turbine_power_timeseries/"
-aggregated_pp_wecc_node_path = "pysam_bus_agg"
+aggregated_pp_wecc_node_path = "pysam_wind_bus_agg"
 geopanel_file_path = "pysam_geopanel.csv"
 metadata_path = "uswtdb.csv"
 
@@ -17,9 +17,9 @@ col_name = "power[kW]"
 metadata = pd.read_csv(metadata_path)
 
 # Pull only CA sites
-pull_ca = True
-if pull_ca:
-    metadata = metadata[metadata["county"].str.contains("CA")]
+# pull_ca = True
+# if pull_ca:
+#     metadata = metadata[metadata["county"].str.contains("CA")]
 unique_wecc_geocodes = list(metadata['bus'].drop_duplicates())
 
 s3_fs = s3fs.S3FileSystem(anon=False, profile=aws_profile)
@@ -47,6 +47,7 @@ for bus in unique_wecc_geocodes:
                                   index_col=0, parse_dates=True)
 
         plant_preds = plant_preds.rename(columns={col_name: plant_geohash})
+        plant_preds = plant_preds.drop_duplicates()
         plant_agg_df = pd.concat([plant_agg_df, plant_preds], axis=1)
 
     # Aggregate all of the rows into a single summed value

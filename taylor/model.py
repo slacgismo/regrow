@@ -5,6 +5,7 @@ import importlib.util
 import pypower.runopf as pr
 import pypower.ppoption as po
 from collections import namedtuple
+import cvxpy as cp
 
 class Model:
 
@@ -251,12 +252,101 @@ class Model:
         return self.result["success"]
 
     def solve_opf(self,**kwargs):
-        if "VERBOSE" not in kwargs:
-            kwargs["VERBOSE"] = 0
-        if "OUT_ALL" not in kwargs:
-            kwargs["OUT_ALL"] = 0
-        self.options = po.ppoption(**kwargs)
-        self.set_result(pr.runopf(self.model,self.options))
+        if "linearize" in kwargs:
+            if kwargs["linearize"] == "powerflow":
+
+                bus = self["bus"]
+                branch = self["branch"]
+                gen = self["gen"]
+                gencost = self["gencost"]
+                N = len(bus.bus_i)
+                M = len(branch.fbus)
+                G = len(gen.bus)
+
+                P, Smax = np.zeros((N, N)), np.zeros((N,N))
+                B = np.zeros((N, N))
+                fbus = [n-1 for n in branch.fbus]
+                tbus = [n-1 for n in branch.tbus]
+                pmax = (Model.coarray((N,M),fbus,branch.rateA)+Model.coarray((N,M),tbus,branch.rateA)).sum(axis=1)
+                pmin = bus.Pd - pmax
+                pmax = Model.coarray(N,gen.bus,gen.Pmax) + pmax
+                for i, j, b, pt, pf, smax in list(
+                    zip(
+                        *[
+                            getattr(branch, x)
+                            for x in ["fbus", "tbus","b", "Pf", "Pt", "rateA"]
+                        ]
+                    )
+                ):
+                    i, j = i - 1, j - 1
+                    B[i, j] =  B[j, i] = b
+                    P[i,j], P[j,i] = pt, pf
+                    Smax[i,j] = Smax[j,i] = smax
+                B = cp.Parameter(shape=(N,N),value=B)
+                P = cp.Parameter(shape=(N,N),value=P)
+                p = P.sum(axis=1)
+
+                v = cp.Variable(N)
+                g = cp.Variable(N)
+                C = gencost.c0*g**2 + gencost.c1*g + gencost.c2
+
+                objective = cp.Minimize(C)
+                
+                self.result = {
+                    "success":False,
+                    "raw" : {
+                        "output" : {
+                            "message" : f"linearize='{kwargs['linearize']}' is not implemented yet"
+                        }
+                    }
+                }
+
+            elif kwargs["linearize"] == "decoupled":
+                
+                self.result = {
+                    "success":False,
+                    "raw" : {
+                        "output" : {
+                            "message" : f"linearize='{kwargs['linearize']}' is not implemented yet"
+                        }
+                    }
+                }
+
+            elif kwargs["linearize"] == "transport":
+                
+                self.result = {
+                    "success":False,
+                    "raw" : {
+                        "output" : {
+                            "message" : f"linearize='{kwargs['linearize']}' is not implemented yet"
+                        }
+                    }
+                }
+
+            else:
+
+                raise ValueError(f"linearize='{kwargs['linearize']}' is not valid")
+
+        elif "relaxation" in kwargs:
+
+                self.result = {
+                    "success":False,
+                    "raw" : {
+                        "output" : {
+                            "message" : f"relaxations is not implemented yet"
+                        }
+                    }
+                }
+
+        else:
+
+            if "VERBOSE" not in kwargs:
+                kwargs["VERBOSE"] = 0
+            if "OUT_ALL" not in kwargs:
+                kwargs["OUT_ALL"] = 0
+            self.options = po.ppoption(**kwargs)
+            self.set_result(pr.runopf(self.model,self.options))
+
         return self.result["success"]
 
     def __getitem__(self,field):
@@ -285,4 +375,18 @@ class Model:
 
 if __name__ == "__main__":
 
-    test = Model(os.path.join(os.getcwd(),"case14.py"))
+    test = Model(os.path.join(os.getcwd(),"case9.py"))
+
+    test.solve_opf()
+    print("baseline OPF",test.result,sep="...\n")
+
+    test.solve_opf(linearize='powerflow')
+    print("Linearized powerflow OPF",test.result,sep="...\n")
+
+    test.solve_opf(linearize='decoupled')
+    print("decoupled powerflow OPF",test.result,sep="...\n")
+
+    test.solve_opf(linearize='transport')
+    print("transport powerflow OPF",test.result,sep="...\n")
+
+

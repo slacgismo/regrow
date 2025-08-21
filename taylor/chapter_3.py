@@ -181,34 +181,48 @@ def _(mo):
 
 @app.cell
 def _(M, Model, N, branch, bus, gen, mo, model, model_ui, np, p, pd, q):
-    _fbus = [n-1 for n in branch.fbus]
-    _tbus = [n-1 for n in branch.tbus]
-    _qratio = branch.x / np.sqrt(branch.r**2+branch.x**2) # heuristic for reactive power capacity
-    _pmax = (Model.coarray((N,M),_fbus,branch.rateA)+Model.coarray((N,M),_tbus,branch.rateA)).sum(axis=1)
-    _qmax = (Model.coarray((N,M),_fbus,branch.rateA*_qratio)+Model.coarray((N,M),_tbus,branch.rateA*_qratio)).sum(axis=1)
+    _fbus = [n - 1 for n in branch.fbus]
+    _tbus = [n - 1 for n in branch.tbus]
+    _qratio = branch.x / np.sqrt(
+        branch.r**2 + branch.x**2
+    )  # heuristic for reactive power capacity
+    _pmax = (
+        Model.coarray((N, M), _fbus, branch.rateA)
+        + Model.coarray((N, M), _tbus, branch.rateA)
+    ).sum(axis=1)
+    _qmax = (
+        Model.coarray((N, M), _fbus, branch.rateA * _qratio)
+        + Model.coarray((N, M), _tbus, branch.rateA * _qratio)
+    ).sum(axis=1)
     pmin = bus.Pd - _pmax
-    pmax = Model.coarray(N,gen.bus,gen.Pmax) + _pmax
-    qmin = Model.coarray(N,gen.bus,gen.Qmin)+bus.Qd.clip(max=0) - _qmax
-    qmax = Model.coarray(N,gen.bus,gen.Qmax)+bus.Qd.clip(min=0) + _qmax
-    p_ok = (pmin<=p) + (p<=pmax)
-    q_ok = (qmin<=q) + (q<=qmax)
-    mo.accordion({
-        f"{model_ui}: Node power injections are {'ok' if (p_ok+q_ok).all() else 'not ok'} (click to view).": mo.ui.tabs({
-            "Graph": mo.mermaid(model.graph(node=(p_ok + q_ok).tolist())),
-            "Table": pd.DataFrame({
-                "node": range(1,N+1),
-                "pmin": pmin.round(1),
-                "p": p.round(1),
-                "pmax": pmax.round(1),
-                "p_ok": p_ok,
-                "qmin": qmin.round(1),
-                "q": q.round(1),
-                "qmax": qmax.round(1),
-                "q_ok": q_ok,
-            })
-        },
-        lazy=True,)
-    })
+    pmax = Model.coarray(N, gen.bus, gen.Pmax) + _pmax
+    qmin = Model.coarray(N, gen.bus, gen.Qmin) + bus.Qd.clip(max=0) - _qmax
+    qmax = Model.coarray(N, gen.bus, gen.Qmax) + bus.Qd.clip(min=0) + _qmax
+    p_ok = (pmin <= p) + (p <= pmax)
+    q_ok = (qmin <= q) + (q <= qmax)
+    mo.accordion(
+        {
+            f"{model_ui}: Node power injections are {'ok' if (p_ok+q_ok).all() else 'not ok'} (click to view).": mo.ui.tabs(
+                {
+                    "Graph": mo.mermaid(model.graph(node=(p_ok + q_ok).tolist())),
+                    "Table": pd.DataFrame(
+                        {
+                            "node": range(1, N + 1),
+                            "pmin": pmin.round(1),
+                            "p": p.round(1),
+                            "pmax": pmax.round(1),
+                            "p_ok": p_ok,
+                            "qmin": qmin.round(1),
+                            "q": q.round(1),
+                            "qmax": qmax.round(1),
+                            "q_ok": q_ok,
+                        }
+                    ),
+                },
+                lazy=True,
+            )
+        }
+    )
     return
 
 
@@ -404,7 +418,7 @@ def _(Model, line_ui, mo, model_ui, node_ui, os, pd, verbose_ui):
             )
         }
     )
-    return M, N, branch, bus, gen, model
+    return M, N, branch, bus, gen, gencost, model
 
 
 @app.cell
@@ -428,12 +442,12 @@ def _(mo):
 
 
 @app.cell
-def _(mo):
-    mo.accordion(
-        {
-            f"TODO. (Click here to view results.)": mo.md("TODO"),
-        })
-    return
+def _(N, cp, gencost, np):
+    # objective function
+    vm,va = cp.Variable(N),cp.Variable(N)
+    gp,gq = cp.Variable(N),cp.Variable(N) 
+    objective = cp.Minimize((np.array([[getattr(gencost,f"c{p}")[n] for p in range(m)]  for n,m in enumerate(gencost.n)])*[[gp[n]**p for p in range(m)][-1::-1] for n,m in enumerate(gencost.n)]).sum())
+    return (objective,)
 
 
 @app.cell
@@ -459,10 +473,39 @@ def _(mo):
 
 
 @app.cell
-def _(mo):
+def _(N, branch, np):
+    B = np.zeros((N, N))
+    # Pl = np.zeros((N,N))
+    for _i, _j, _b in list(
+        zip(
+            *[
+                getattr(branch, x)
+                for x in ["fbus", "tbus","b"]
+            ]
+        )
+    ):
+        _i, _j = int(_i) - 1, int(_j) - 1
+        B[_i, _j] =  B[_j, _i] = _b
+        # Pl[_i,_j] = _b*(theta[_i]-theta[_j])
+        # Pl[_j,_i] = -Pl[_i,_j]
+
+    # Pl
+    return
+
+
+@app.cell
+def _():
+    FeasibleSet33 = []
+    return (FeasibleSet33,)
+
+
+@app.cell
+def _(FeasibleSet33, cp, mo, objective):
+    Problem321 = cp.Problem(objective,FeasibleSet33)
+    cost321 = Problem321.solve()
     mo.accordion(
         {
-            f"TODO. (Click here to view results.)": mo.md("TODO"),
+            f"TODO. (Click here to view results.)": cost321,
         })
     return
 
@@ -567,7 +610,7 @@ def _():
     from model import Model
 
     np.set_printoptions(linewidth=999,precision=4,suppress=False,threshold=1000)
-    return Model, mo, np, os, pd, re
+    return Model, cp, mo, np, os, pd, re
 
 
 if __name__ == "__main__":

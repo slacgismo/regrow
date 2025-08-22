@@ -9,6 +9,12 @@ import sys
 import numpy as np
 import pandas as pd
 
+import pypower.idx_bus as pp_bus
+import pypower.idx_brch as pp_branch
+import pypower.idx_gen as pp_gen
+import pypower.idx_dcline as pp_dcline
+import psse
+    
 class PSSEraw:
 
     def __init__(self,filename):
@@ -41,20 +47,35 @@ class PSSEraw:
                 pass
             return str(x.strip("'").strip())
 
+        self.headings = dict(data)
         for line in psse:
-            if line[0] == '0':
+            if line.startswith("0 / "): # section delimiter
                 if not "BEGIN " in line:
                     break
                 section = line.split("BEGIN ")[1].strip()
                 data[section] = []
-            elif line[0] == '@':
-                pass
-            elif line[0] == ' ':
-                data[section].append([convert(x.strip()) for x in line.split(",")])
+                self.headings[section] = []
+            elif line.startswith("@!"): # section metdata
+                self.headings[section].extend(line[2:].strip().split(','))
+            else:
+                values = [convert(x.strip()) for x in line.split(",")]
+                if len(data[section]) == 0 or len(data[section][-1])+len(values) >= len(self.headings[section]):
+                    data[section].append(values)
+                else:
+                    data[section][-1].extend(values)
         self.section = data
         self.mvabase = self.section["SYSTEM-WIDE DATA"][0][1]
         self.version = self.section["SYSTEM-WIDE DATA"][0][2]
         assert self.version >= 32, "PSS/E versions older than 32 are not supported"
+
+        # check data rows for correct number of items
+        for section,data in self.section.items():
+            p = len(self.headings[section])
+            if p == 0 or section == "SYSTEM-WIDE DATA":
+                continue
+            for n,m in enumerate(data):
+                if len(self.headings[section]) < len(m):
+                    print(f"WARNING [{section}]: row {n} incorrect length (expected {p} items, found {len(m)})")
 
     def to_pypower(self,file=None):
 
@@ -75,52 +96,52 @@ class PSSEraw:
         bus_index = {}
         bus_map = {}
         for n,m in enumerate(self.section["BUS DATA"]):
-            bus_i = m[0]
+            bus_i = m[psse.bus.I]
             bus_index[n] = bus_i
-            bus_map[m[0]] = n
+            bus_map[bus_i] = n
         done["BUS DATA"] = "ok"
 
         # loads
         Pd = {}
         Qd = {}
         for n,m in enumerate(self.section["LOAD DATA"]):
-            bus_i = m[0]
+            bus_i = m[psse.bus.I]
             if bus_i not in Pd:
                 Pd[bus_i] = np.array([0.0,0.0,0.0])
                 Qd[bus_i] = np.array([0.0,0.0,0.0])
-            Pd[bus_i] += [m[5],m[7],m[9]] if m[2] else [0.0,0.0,0.0]
-            Qd[bus_i] += [m[6],m[8],m[10]] if m[2] else [0.0,0.0,0.0]
+            Pd[bus_i] += [m[psse.load.PL],m[psse.load.IP],m[psse.load.YP]] if m[psse.load.STAT] else [0.0,0.0,0.0]
+            Qd[bus_i] += [m[psse.load.QL],m[psse.load.IQ],m[psse.load.YQ]] if m[psse.load.STAT] else [0.0,0.0,0.0]
         done["LOAD DATA"] = "ok"
 
         # fixed shunts
         Gs = {}
         Bs = {}
         for n,m in enumerate(self.section["FIXED SHUNT DATA"]):
-            bus_i = m[0]
+            bus_i = m[psse.bus.I]
             if bus_i not in Gs:
                 Gs[bus_i] = 0.0
                 Bs[bus_i] = 0.0
-            Gs[bus_i] += m[3] if m[2] else 0.0
-            Bs[bus_i] += m[4] if m[2] else 0.0
+            Gs[bus_i] += m[psse.fixed_shunt.GL] if m[psse.fixed_shunt.STATUS] else 0.0
+            Bs[bus_i] += m[psse_fixed_shunt.BL] if m[psse.fixed_shunt.STATUS] else 0.0
         done["FIXED SHUNT DATA"] = "ok"
 
         # switched shunts
         for n,m in enumerate(self.section["SWITCHED SHUNT DATA"]):
-            bus_i = m[0]
+            bus_i = m[psse.bus.I]
             if bus_i not in Gs:
                 Bs[bus_i] = 0.0
-            Bs[bus_i] += m[9] if m[3] else 0.0
+            Bs[bus_i] += m[psse.switched_shunt.BINIT] if m[psse.switched_shunt.ST] else 0.0
         done["SWITCHED SHUNT DATA"] = "ok"
 
         # branches
         for n,m in enumerate(self.section["BRANCH DATA"]):
-            fbus,tbus = bus_map[m[0]],bus_map[abs(m[1])]
-            r,x,b = m[3],m[4],m[5]
-            rateA,rateB,rateC = m[7],m[8],m[9]
-            status = m[14]
+            fbus,tbus = bus_map[m[psse.branch.I]],bus_map[abs(m[psse.branch.J])] # negative J means metered branch
+            r,x,b = m[psse.branch.R],m[psse.branch.X],m[psse.branch.B]
+            rateA,rateB,rateC = m[psse.branch.RATE1],m[psse.branch.RATE2],m[psse.branch.RATE3]
+            status = m[psse.branch.STAT]
             case["branch"].append([fbus,tbus,r,x,b,rateA,rateB,rateC,0.0,0.0,status,-360.0,360.0])
-            if status:
-                gi,bi,gj,bj = m[19],m[20],m[21],m[22]
+            if status: # include branch shunt in from and to busses
+                gi,bi,gj,bj = m[psse.branch.GI],m[psse.branch.BI],m[psse.branch.GJ],m[psse.branch.BJ]
                 if fbus not in Gs:
                     Gs[fbus] = 0.0
                     Bs[fbus] = 0.0
@@ -133,23 +154,32 @@ class PSSEraw:
                 Bs[tbus] += bj * self.mvabase 
         done["BRANCH DATA"] = "ok"
 
+        # transformers
+        print("WARNING: transformers are TODO")
+        case["transformer"] = []
+        for n,m in enumerate(self.section["TRANSFORMER DATA"]):
+            case["transformer"].append(m)
+
         # busses
         for n,m in enumerate(self.section["BUS DATA"]):
-            bus_i = m[0]
-            vm = m[9]
+            bus_i = m[psse.bus.I]
+            vm = m[psse.bus.VM]
             p = Pd[bus_i] if bus_i in Pd else [0.0,0.0,0.0]
             q = Qd[bus_i] if bus_i in Qd else [0.0,0.0,0.0]
             g = Gs[bus_i] if bus_i in Gs else 0.0
             b = Bs[bus_i] if bus_i in Bs else 0.0
-            case["bus"].append([n,m[3],round(p[0]+(p[1]+p[2]*vm)*vm,1),round(q[0]+(q[1]+q[2]*vm)*vm,1),g,b,m[4],m[7],m[8],m[2],m[5],m[9],m[10]])
+            case["bus"].append([n,m[psse.bus.BUSTYPE],round(p[0]+(p[1]+p[2]*vm)*vm,1),round(q[0]+(q[1]+q[2]*vm)*vm,1),g,b,m[4],m[7],m[8],m[2],m[5],m[9],m[10]])
         done["BUS DATA"] = "ok"
 
         # generators
         for n,m in enumerate(self.section["GENERATOR DATA"]):
-            bus_i = bus_map[m[0]]
-            case["gen"].append([bus_i,m[2],m[3],m[4],m[5],m[6],m[8],m[14],m[16],m[17]])
-            busname = self.section["BUS DATA"][bus_i][1]
-            genname = f"{busname}_{m[1]}"
+            bus_i = bus_map[m[psse.gen.I]]
+            case["gen"].append([bus_i,m[psse.gen.PG],m[psse.gen.QG],m[psse.gen.QT],
+                m[psse.gen.QB],m[psse.gen.VS],m[psse.gen.MBASE],m[psse.gen.STAT],
+                m[psse.gen.PT],m[psse.gen.PB]])
+            genname = f"{self.section['BUS DATA'][bus_i][psse.bus.NAME]}_{m[psse.gen.ID]}"
+
+            # gencost
             try:
                 p = [self.gencost[genname][x] for x in ["model","startup","shutdown","cost"]]
             except KeyError:
@@ -158,9 +188,13 @@ class PSSEraw:
             d = [float(x) for x in p[3].split(",")]
             gencost = [p[0],p[1],p[2],len(d)] + d
             case["gencost"].append(gencost)
+
         done["GENERATOR DATA"] = "ok"
 
         # dclines
+        print("WARNING: dclines are TODO")
+        for n,m in enumerate(self.section["TWO-TERMINAL DC DATA"]):
+            case["dcline"].append(m)
 
         # dcline costs
 

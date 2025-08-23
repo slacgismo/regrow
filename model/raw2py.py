@@ -6,6 +6,7 @@
 
 import os
 import sys
+import importlib
 import numpy as np
 import pandas as pd
 
@@ -13,6 +14,9 @@ import pypower.idx_bus as pp_bus
 import pypower.idx_brch as pp_branch
 import pypower.idx_gen as pp_gen
 import pypower.idx_dcline as pp_dcline
+from pypower.runpf import runpf
+from pypower.runopf import runopf
+
 import psse
     
 class PSSEraw:
@@ -139,7 +143,7 @@ class PSSEraw:
             r,x,b = m[psse.branch.R],m[psse.branch.X],m[psse.branch.B]
             rateA,rateB,rateC = m[psse.branch.RATE1],m[psse.branch.RATE2],m[psse.branch.RATE3]
             status = m[psse.branch.STAT]
-            case["branch"].append([fbus,tbus,r,x,b,rateA,rateB,rateC,0.0,0.0,status,-360.0,360.0])
+            case["branch"].append([fbus+1,tbus+1,round(r,6),round(x,6),round(b,6),rateA,rateB,rateC,0.0,0.0,status,-360.0,360.0])
             if status: # include branch shunt in from and to busses
                 gi,bi,gj,bj = m[psse.branch.GI],m[psse.branch.BI],m[psse.branch.GJ],m[psse.branch.BJ]
                 if fbus not in Gs:
@@ -155,10 +159,20 @@ class PSSEraw:
         done["BRANCH DATA"] = "ok"
 
         # transformers
-        print("WARNING: transformers are TODO")
-        case["transformer"] = []
+        Zbase = (np.array([x[psse.bus.BASEKV] for x in self.section["BUS DATA"]])**2 / self.mvabase).tolist()
         for n,m in enumerate(self.section["TRANSFORMER DATA"]):
-            case["transformer"].append(m)
+            if m[psse.transformer.K] > 0:
+                print(f"WARNING: three-winding transformer {n} is not supported")
+                continue
+            fbus = bus_map[m[psse.transformer.I]]
+            tbus = bus_map[m[psse.transformer.J]]
+            Zbf,Zbt = Zbase[fbus],Zbase[tbus]
+            r = m[psse.transformer.R12] / Zbf
+            x = m[psse.transformer.X12] / Zbf
+            rateA,rateB,rateC = m[psse.transformer.RATE11:psse.transformer.RATE14]
+            status = m[psse.transformer.STAT]
+            case["branch"].append([fbus+1,tbus+1,round(r,6),round(x,6),round(b,6),rateA,rateB,rateC,1.0,0.0,status,-360.0,360.0])
+        done["TRANSFORMER DATA"] = "TODO"
 
         # busses
         for n,m in enumerate(self.section["BUS DATA"]):
@@ -168,13 +182,13 @@ class PSSEraw:
             q = Qd[bus_i] if bus_i in Qd else [0.0,0.0,0.0]
             g = Gs[bus_i] if bus_i in Gs else 0.0
             b = Bs[bus_i] if bus_i in Bs else 0.0
-            case["bus"].append([n,m[psse.bus.BUSTYPE],round(p[0]+(p[1]+p[2]*vm)*vm,1),round(q[0]+(q[1]+q[2]*vm)*vm,1),g,b,m[4],m[7],m[8],m[2],m[5],m[9],m[10]])
+            case["bus"].append([n+1,m[psse.bus.BUSTYPE],round(p[0]+(p[1]+p[2]*vm)*vm,1),round(q[0]+(q[1]+q[2]*vm)*vm,1),g,b,m[4],m[7],m[8],m[2],m[5],m[9],m[10]])
         done["BUS DATA"] = "ok"
 
         # generators
         for n,m in enumerate(self.section["GENERATOR DATA"]):
             bus_i = bus_map[m[psse.gen.I]]
-            case["gen"].append([bus_i,m[psse.gen.PG],m[psse.gen.QG],m[psse.gen.QT],
+            case["gen"].append([bus_i+1,m[psse.gen.PG],m[psse.gen.QG],m[psse.gen.QT],
                 m[psse.gen.QB],m[psse.gen.VS],m[psse.gen.MBASE],m[psse.gen.STAT],
                 m[psse.gen.PT],m[psse.gen.PB]])
             genname = f"{self.section['BUS DATA'][bus_i][psse.bus.NAME]}_{m[psse.gen.ID]}"
@@ -192,9 +206,11 @@ class PSSEraw:
         done["GENERATOR DATA"] = "ok"
 
         # dclines
-        print("WARNING: dclines are TODO")
         for n,m in enumerate(self.section["TWO-TERMINAL DC DATA"]):
             case["dcline"].append(m)
+        done["TWO-TERMINAL DC DATA"] = "ok"
+        if len(self.section["TWO-TERMINAL DC DATA"]) > 0:
+            print("WARNING: dclines are TODO")
 
         # dcline costs
 
@@ -222,10 +238,24 @@ class PSSEraw:
 
         return done
 
-model = PSSEraw("wecc240_psse.raw")
-done = model.to_pypower()
-print(f"{model.name} Summary")
-print(f"{'-'*len(model.name)}--------")
-for name,data in model.section.items():
-    if len(data) > 0:
-        print(f"  {name.title()}{'.'*(30-len(name))} {len(data):4d} item{'s' if len(data)>1 else ' '} ({done[name] if name in done else 'not processed'})")
+if __name__ == "__main__":
+    model = PSSEraw("wecc240_psse.raw")
+    done = model.to_pypower()
+    print(f"{model.name} Summary")
+    print(f"{'-'*len(model.name)}--------")
+    for name,data in model.section.items():
+        if len(data) > 0:
+            print(f"  {name.title()}{'.'*(30-len(name))} {len(data):4d} item{'s' if len(data)>1 else ' '} ({done[name] if name in done else 'ignored'})")
+
+    module = importlib.import_module(model.name)
+    case = getattr(module,model.name)()
+    # print(case)
+
+    print(f"\n{model.name} Check runpf")
+    print(f"{'-'*len(model.name)}------------")
+    runpf(case)
+
+    print(f"\n{model.name} Check runopf")
+    print(f"{'-'*len(model.name)}-------------")
+    runopf(case)
+

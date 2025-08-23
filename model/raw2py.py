@@ -6,6 +6,7 @@
 
 import os
 import sys
+import json
 import importlib
 import numpy as np
 import pandas as pd
@@ -99,10 +100,12 @@ class PSSEraw:
         # busses
         bus_index = {}
         bus_map = {}
+        bus_name = {}
         for n,m in enumerate(self.section["BUS DATA"]):
             bus_i = m[psse.bus.I]
             bus_index[n] = bus_i
             bus_map[bus_i] = n
+            bus_name[n] = m[psse.bus.NAME]
         done["BUS DATA"] = "ok"
 
         # loads
@@ -172,7 +175,7 @@ class PSSEraw:
             rateA,rateB,rateC = m[psse.transformer.RATE11:psse.transformer.RATE14]
             status = m[psse.transformer.STAT]
             case["branch"].append([fbus+1,tbus+1,round(r,6),round(x,6),round(b,6),rateA,rateB,rateC,1.0,0.0,status,-360.0,360.0])
-        done["TRANSFORMER DATA"] = "TODO"
+        done["TRANSFORMER DATA"] = "ok"
 
         # busses
         for n,m in enumerate(self.section["BUS DATA"]):
@@ -208,11 +211,10 @@ class PSSEraw:
         # dclines
         for n,m in enumerate(self.section["TWO-TERMINAL DC DATA"]):
             case["dcline"].append(m)
-        done["TWO-TERMINAL DC DATA"] = "ok"
-        if len(self.section["TWO-TERMINAL DC DATA"]) > 0:
-            print("WARNING: dclines are TODO")
+        done["TWO-TERMINAL DC DATA"] = "TODO"
 
         # dcline costs
+        # TODO
 
         # write case file
         with open(file if file else self.name+".py","w") as fh:
@@ -236,6 +238,11 @@ class PSSEraw:
             df.index.name = "id"
             df.to_csv(self.name+"_cost.csv",header=True,index=True)
 
+        # save bus map
+        busndx = pd.DataFrame({ndx:[num,bus_name[ndx]] for num,ndx in bus_map.items()}).T
+        busndx.columns = ["id","name"]
+        busndx.index.name = "bus"
+        busndx.to_csv(model.name+"_bus.csv")
         return done
 
 if __name__ == "__main__":
@@ -249,13 +256,18 @@ if __name__ == "__main__":
 
     module = importlib.import_module(model.name)
     case = getattr(module,model.name)()
-    # print(case)
+
+    if os.path.exists(model.name+"_mods.py"):
+        module = importlib.import_module(model.name+"_mods")
+        print(f"{model.name} mods loaded",end="...",flush=True)
+        case = getattr(module,model.name)(case)
+        print("ok")
 
     print(f"\n{model.name} Check runpf")
-    print(f"{'-'*len(model.name)}------------")
+    print(f"{'-'*len(model.name)}------------",flush=True)
     runpf(case)
 
     print(f"\n{model.name} Check runopf")
-    print(f"{'-'*len(model.name)}-------------")
+    print(f"{'-'*len(model.name)}-------------",flush=True)
     runopf(case)
 

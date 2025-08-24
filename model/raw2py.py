@@ -19,7 +19,7 @@ from pypower.runpf import runpf
 from pypower.runopf import runopf
 
 import psse
-    
+
 class PSSEraw:
 
     def __init__(self,filename):
@@ -91,8 +91,8 @@ class PSSEraw:
             "gen" : [],
             "branch": [],
             "gencost": [],
-            "dcline": [],
-            "dclinecost": [],
+            # "dcline": [],
+            # "dclinecost": [],
         }
 
         done = {"SYSTEM-WIDE DATA":"ok"}
@@ -185,7 +185,7 @@ class PSSEraw:
             q = Qd[bus_i] if bus_i in Qd else [0.0,0.0,0.0]
             g = Gs[bus_i] if bus_i in Gs else 0.0
             b = Bs[bus_i] if bus_i in Bs else 0.0
-            case["bus"].append([n+1,m[psse.bus.BUSTYPE],round(p[0]+(p[1]+p[2]*vm)*vm,1),round(q[0]+(q[1]+q[2]*vm)*vm,1),g,b,m[4],m[7],m[8],m[2],m[5],m[9],m[10]])
+            case["bus"].append([n+1,m[psse.bus.BUSTYPE],float(round(p[0]+(p[1]+p[2]*vm)*vm,1)),float(round(q[0]+(q[1]+q[2]*vm)*vm,1)),g,b,m[4],m[7],m[8],m[2],m[5],m[9],m[10]])
         done["BUS DATA"] = "ok"
 
         # generators
@@ -243,11 +243,50 @@ class PSSEraw:
         busndx.columns = ["id","name"]
         busndx.index.name = "bus"
         busndx.to_csv(model.name+"_bus.csv")
+
+        self.case = case
+
         return done
 
+    def validate(self):
+
+        # check generators and costs
+        assert len(self.case["gen"]) == len(self.case["gencost"]), "gen and gencost lengths differ"
+
+        nodes = self.case["bus"]
+        lines = self.case["branch"]
+        N = len(nodes)
+        M = len(lines)
+
+        # check branches
+        for line in lines:
+            assert 0 < line[0] <= N and 0 < line[1] <= N, "invalid bus reference"
+
+        hits = []
+        def mark(n):
+            if not n in hits:
+                hits.append(n)
+                for line in [x for x in lines if x[0] == n or x[1] == n and x[10] == 1]:
+                    mark(line[0])
+                    mark(line[0])
+
+        # check connectivity
+        for n,node in enumerate(nodes):
+            if node[1] == 3: # swing bus start
+                mark(n+1)
+
+        miss = [n+1 for n,m in enumerate(lines) if n+1 not in hits]
+        assert len(miss) == 0, f"{len(miss)} nodes not connected to swing bus"
+
+
+
 if __name__ == "__main__":
+
     model = PSSEraw("wecc240_psse.raw")
     done = model.to_pypower()
+
+    model.validate()
+
     print(f"{model.name} Summary")
     print(f"{'-'*len(model.name)}--------")
     for name,data in model.section.items():
@@ -257,17 +296,17 @@ if __name__ == "__main__":
     module = importlib.import_module(model.name)
     case = getattr(module,model.name)()
 
-    if os.path.exists(model.name+"_mods.py"):
-        module = importlib.import_module(model.name+"_mods")
-        print(f"{model.name} mods loaded",end="...",flush=True)
-        case = getattr(module,model.name)(case)
-        print("ok")
-
-    print(f"\n{model.name} Check runpf")
-    print(f"{'-'*len(model.name)}------------",flush=True)
-    runpf(case)
+    # if os.path.exists(model.name+"_mods.py"):
+    #     module = importlib.import_module(model.name+"_mods")
+    #     print(f"{model.name} mods loaded",end="...",flush=True)
+    #     case = getattr(module,model.name)(case)
+    #     print("ok")
 
     print(f"\n{model.name} Check runopf")
     print(f"{'-'*len(model.name)}-------------",flush=True)
     runopf(case)
+
+    print(f"\n{model.name} Check runpf")
+    print(f"{'-'*len(model.name)}------------",flush=True)
+    runpf(case)
 

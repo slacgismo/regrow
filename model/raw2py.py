@@ -262,18 +262,18 @@ class PSSEraw:
         for line in lines:
             assert 0 < line[0] <= N and 0 < line[1] <= N, "invalid bus reference"
 
-        hits = []
-        def mark(n):
+        def mark(n,hits=set()):
             if not n in hits:
-                hits.append(n)
+                hits.add(n)
                 for line in [x for x in lines if x[0] == n or x[1] == n and x[10] == 1]:
-                    mark(line[0])
-                    mark(line[0])
+                    mark(line[0],hits)
+                    mark(line[1],hits)
+            return hits
 
         # check connectivity
         for n,node in enumerate(nodes):
             if node[1] == 3: # swing bus start
-                mark(n+1)
+                hits = mark(n+1)
 
         miss = [n+1 for n,m in enumerate(lines) if n+1 not in hits]
         assert len(miss) == 0, f"{len(miss)} nodes not connected to swing bus"

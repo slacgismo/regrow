@@ -260,14 +260,14 @@ class PSSEraw:
 
         # check branches
         for line in lines:
-            assert 0 < line[0] <= N and 0 < line[1] <= N, "invalid bus reference"
+            assert 0 < line[pp_branch.F_BUS] <= N and 0 < line[pp_branch.T_BUS] <= N, "invalid bus reference"
 
         def mark(n,hits=set()):
             if not n in hits:
                 hits.add(n)
-                for line in [x for x in lines if x[0] == n or x[1] == n and x[10] == 1]:
-                    mark(line[0],hits)
-                    mark(line[1],hits)
+                for line in [x for x in lines if x[pp_branch.F_BUS] == n or x[pp_branch.T_BUS] == n and x[pp_branch.BR_STATUS] == 1]:
+                    mark(line[pp_branch.F_BUS],hits)
+                    mark(line[pp_branch.T_BUS],hits)
             return hits
 
         # check connectivity

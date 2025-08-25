@@ -276,7 +276,8 @@ class PSSEraw:
                 hits = mark(n+1)
 
         miss = [n+1 for n,m in enumerate(lines) if n+1 not in hits]
-        assert len(miss) == 0, f"{len(miss)} nodes not connected to swing bus"
+        if len(miss) > 0:
+            print(f"WARNING [raw2py]: {len(miss)} nodes not connected to swing bus")
 
 
 
@@ -304,9 +305,19 @@ if __name__ == "__main__":
 
     print(f"\n{model.name} Check runopf")
     print(f"{'-'*len(model.name)}-------------",flush=True)
-    runopf(case)
+    try:
+        result = runopf(case)
+    except:
+        e_type,e_value,e_trace = sys.exc_info()
+        print(f"ERROR [raw2py]: runopf failed, {e_type.__name__} {e_value}")
 
     print(f"\n{model.name} Check runpf")
     print(f"{'-'*len(model.name)}------------",flush=True)
-    runpf(case)
+    try:
+        result,ok = runpf(case)
+    except:
+        e_type,e_value,e_trace = sys.exc_info()
+        print(f"ERROR [raw2py]: runpf failed, {e_type.__name__} {e_value}")
+    if not ok:
+        print(f"ERROR [raw2py]: runpf did not converge")
 

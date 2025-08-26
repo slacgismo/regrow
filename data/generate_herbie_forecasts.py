@@ -21,7 +21,6 @@ def pull_herbie_hrr_data(date, time_horizon):
                 fxx=time_horizon
             )
     H.download()
-    df = H.inventory()
     # ":TCDC:entire atmosphere:anl": overall cloud cover
     #:UGRD:80 m above ground:anl: u-component wind speed (80 m above ground)
     #:VGRD:80 m above ground:anl: v-component wind speed (80 m above ground)
@@ -78,7 +77,6 @@ def pull_herbie_gefs_data(data, time_horizon):
                member="p01",
             )
     H.download()
-    df = H.inventory()
     tags = ["UGRD:80 m",
             "VGRD:80 m",
             "TCDC",
@@ -146,8 +144,6 @@ def pull_herbie_gefs_data(data, time_horizon):
 
 
 
-
-
 forecast_dir = "C:/Users/kperry/data/"
 if __name__ == "__main__":
     df = pd.read_csv("nodes.csv")
@@ -160,16 +156,17 @@ if __name__ == "__main__":
     # Do HRR up to 18 hours first (2 hour forecasts)
     for date in dates:
         for time_horizon in range(1, 19, 1):
-            hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon)
+            print(time_horizon)
+            hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon).compute()
             hrrr_pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
                                              date.strftime("%Y-%m-%d") + "_" + str(time_horizon) + "hr.csv"
                                              ), index=False)
             # Delete all of the accumulated grib2 files so we don't run out of storage
-            shutil.rmtree(forecast_dir)
+            #shutil.rmtree(forecast_dir)
         gefs_time_horizons = [*range(24,78, 6)]
         for time_horizon in gefs_time_horizons:
-            gefs_pred_df = delayed(pull_herbie_gefs_data)(date, time_horizon)
+            gefs_pred_df = delayed(pull_herbie_gefs_data)(date, time_horizon).compute()
             gefs_pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
                                              date.strftime("%Y-%m-%d") + "_" + str(time_horizon) + "hr.csv"
                                              ), index=False)
-            shutil.rmtree(forecast_dir)
+            #shutil.rmtree(forecast_dir)

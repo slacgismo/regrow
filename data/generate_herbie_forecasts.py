@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 import shutil
 from dask import delayed
 import os
+import dask
 
 @delayed
 def pull_herbie_hrr_data(date, time_horizon):
@@ -20,7 +21,7 @@ def pull_herbie_hrr_data(date, time_horizon):
                 product="prs",
                 fxx=time_horizon
             )
-    H.download()
+    file = H.download()
     # ":TCDC:entire atmosphere:anl": overall cloud cover
     #:UGRD:80 m above ground:anl: u-component wind speed (80 m above ground)
     #:VGRD:80 m above ground:anl: v-component wind speed (80 m above ground)
@@ -63,6 +64,11 @@ def pull_herbie_hrr_data(date, time_horizon):
             pred_df['value'] = list(dsi.sp.values)
         elif "t" in dsi:
             pred_df['value'] = list(dsi.t.values)
+    pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
+                                date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv"), 
+                   index=False)
+    # Delete the file in question (to save storage space)
+    os.remove(file)
     return pred_df
 
 @delayed
@@ -76,7 +82,7 @@ def pull_herbie_gefs_data(data, time_horizon):
                product="atmos.5b",
                member="p01",
             )
-    H.download()
+    file = H.download()
     tags = ["UGRD:80 m",
             "VGRD:80 m",
             "TCDC",
@@ -140,6 +146,11 @@ def pull_herbie_gefs_data(data, time_horizon):
         pred_df['time_horizon_hrs'] = time_horizon
         pred_df['tag'] = tag
         pred_df['value'] = predictions
+    pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
+                                date.strftime("%Y-%m-%d") + "_" + str(time_horizon) + "hr.csv"), 
+                   index=False)
+    # Delete the file in question (to save storage space)
+    os.remove(file)
     return pred_df
 
 
@@ -154,19 +165,16 @@ if __name__ == "__main__":
     dates = pd.date_range("2018-01-01", "2022-12-31", freq="6H")
     master_prediction_df = pd.DataFrame()
     # Do HRR up to 18 hours first (2 hour forecasts)
+    delayed_results = []
     for date in dates:
         for time_horizon in range(1, 19, 1):
             print(time_horizon)
-            hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon).compute()
-            hrrr_pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
-                                             date.strftime("%Y-%m-%d") + "_" + str(time_horizon) + "hr.csv"
-                                             ), index=False)
+            hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon)
+            delayed_results.append(hrrr_pred_df)
+    results = dask.compute(*delayed_results)
             # Delete all of the accumulated grib2 files so we don't run out of storage
             #shutil.rmtree(forecast_dir)
-        gefs_time_horizons = [*range(24,78, 6)]
-        for time_horizon in gefs_time_horizons:
-            gefs_pred_df = delayed(pull_herbie_gefs_data)(date, time_horizon).compute()
-            gefs_pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
-                                             date.strftime("%Y-%m-%d") + "_" + str(time_horizon) + "hr.csv"
-                                             ), index=False)
-            #shutil.rmtree(forecast_dir)
+        # gefs_time_horizons = [*range(24,78, 6)]
+        # for time_horizon in gefs_time_horizons:
+        #     gefs_pred_df = delayed(pull_herbie_gefs_data)(date, time_horizon)
+        #     #shutil.rmtree(forecast_dir)

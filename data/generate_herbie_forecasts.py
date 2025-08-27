@@ -16,7 +16,6 @@ from dask.distributed import Client, wait, as_completed
 import pvdrdb_tools
 import boto3
 
-failed_forecast_runs = list()
 
 @delayed
 def pull_herbie_hrr_data(date, time_horizon, aws_profile):
@@ -77,10 +76,10 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
                     pred_df['value'] = list(dsi.t.values)
                 master_pred_list.append(pred_df)
             master_pred_df = pd.concat(master_pred_list)
-            master_pred_df.to_csv(os.path.join('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw',
-                                        date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv"), 
+            master_pred_df.to_csv('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw/'+
+                                  date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv", 
                            index=False,
-                           storage_options={"profile": aws_profile})
+                           storage_options=aws_profile)
             # Delete the file in question (to save storage space)
             os.remove(file)
             logger.info(f"Finished processing {date} {time_horizon} hr time horizon...")
@@ -90,10 +89,6 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
             logger.info(e)
             time.sleep(5) # backoff
         logger.info("Download failed for {date} {time_horizon} hr time horizon...")
-        failed_forecast_runs.append([date, time_horizon])
-        with open("failed_runs.txt", 'w') as file:
-            for item in failed_forecast_runs:
-                file.write(str(item) + '\n')
         return 
      
 @delayed
@@ -172,10 +167,10 @@ def pull_herbie_gefs_data(data, time_horizon, aws_profile):
         pred_df['time_horizon_hrs'] = time_horizon
         pred_df['tag'] = tag
         pred_df['value'] = predictions
-    pred_df.to_csv(os.path.join('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw',
-                                date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv"), 
+    pred_df.to_csv('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw/' +
+                   date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv", 
                    index=False,
-                   storage_options={"profile": aws_profile})
+                   storage_options=aws_profile)
     # Delete the file in question (to save storage space)
     os.remove(file)
     return pred_df

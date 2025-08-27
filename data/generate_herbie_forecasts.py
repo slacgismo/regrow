@@ -80,9 +80,8 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
                                   date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv", 
                            index=False,
                            storage_options=aws_profile)
-            # Delete the file in question (to save storage space)
-            os.remove(file)
             logger.info(f"Finished processing {date} {time_horizon} hr time horizon...")
+            os.remove(file)
             return master_pred_df
         except Exception as e:
             print(e)
@@ -222,9 +221,3 @@ if __name__ == "__main__":
                 hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon, pvr.aws)
                 delayed_results.append(hrrr_pred_df)
     results = dask.compute(*delayed_results, num_workers=2)
-    # Delete all of the accumulated grib2 files so we don't run out of storage
-    #shutil.rmtree(forecast_dir)
-    # gefs_time_horizons = [*range(24,78, 6)]
-    # for time_horizon in gefs_time_horizons:
-    #     gefs_pred_df = delayed(pull_herbie_gefs_data)(date, time_horizon)
-    #     #shutil.rmtree(forecast_dir)

@@ -14,15 +14,16 @@ import logging
 import time
 from dask.distributed import Client, wait, as_completed
 import pvdrdb_tools
+import boto3
 
 failed_forecast_runs = list()
 
 @delayed
-def pull_herbie_hrr_data(date, time_horizon):
+def pull_herbie_hrr_data(date, time_horizon, aws_profile):
     """
     Function for pulling Herbie data, which we will be parallelizing via Dask.
     """
-    for i in range(20):
+    for i in range(3):
         try:
             logger.info(f"Processing values: {date} {time_horizon} hr time horizon...")
             H = Herbie(date,
@@ -76,9 +77,10 @@ def pull_herbie_hrr_data(date, time_horizon):
                     pred_df['value'] = list(dsi.t.values)
                 master_pred_list.append(pred_df)
             master_pred_df = pd.concat(master_pred_list)
-            master_pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
+            master_pred_df.to_csv(os.path.join('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw',
                                         date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv"), 
-                           index=False)
+                           index=False,
+                           storage_options={"profile": aws_profile})
             # Delete the file in question (to save storage space)
             os.remove(file)
             logger.info(f"Finished processing {date} {time_horizon} hr time horizon...")
@@ -86,7 +88,7 @@ def pull_herbie_hrr_data(date, time_horizon):
         except Exception as e:
             print(e)
             logger.info(e)
-            time.sleep(10 * (i + 1)) # backoff
+            time.sleep(5) # backoff
         logger.info("Download failed for {date} {time_horizon} hr time horizon...")
         failed_forecast_runs.append([date, time_horizon])
         with open("failed_runs.txt", 'w') as file:
@@ -95,7 +97,7 @@ def pull_herbie_hrr_data(date, time_horizon):
         return 
      
 @delayed
-def pull_herbie_gefs_data(data, time_horizon):
+def pull_herbie_gefs_data(data, time_horizon, aws_profile):
     """
     Similar function for Herbie GEFS data.
     """
@@ -170,9 +172,10 @@ def pull_herbie_gefs_data(data, time_horizon):
         pred_df['time_horizon_hrs'] = time_horizon
         pred_df['tag'] = tag
         pred_df['value'] = predictions
-    pred_df.to_csv(os.path.join("C:/Users/kperry/Documents/herbie_forecasts",
-                                date.strftime("%Y-%m-%d") + "_" + str(time_horizon) + "hr.csv"), 
-                   index=False)
+    pred_df.to_csv(os.path.join('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw',
+                                date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv"), 
+                   index=False,
+                   storage_options={"profile": aws_profile})
     # Delete the file in question (to save storage space)
     os.remove(file)
     return pred_df
@@ -181,8 +184,25 @@ def pull_herbie_gefs_data(data, time_horizon):
 
 forecast_dir = "C:/Users/kperry/data/"
 if __name__ == "__main__":
+    # Connect to the db and get the associated AWS creds
+    pvr = pvdrdb_tools.PVDRDBQuery()
+    pvr.connectToDB()
+    # Connect to S3 and get all of the files that have already been inserted.
+    # we want to omit these files from new runs, and only run new cases
+    s3_client = boto3.client('s3',
+                             aws_access_key_id=pvr.aws['key'],
+                             aws_secret_access_key=pvr.aws['secret'])
+    paginator = s3_client.get_paginator('list_objects_v2')
+    pages = paginator.paginate(Bucket="pvdrdb-transfer", Prefix="REGROW/herbie_forecasts/raw/")
+    file_keys = list()
+    for page in pages:
+        if 'Contents' in page:
+            for obj in page['Contents']:
+                if obj['Key'] != "REGROW/herbie_forecasts/raw/":
+                    file_keys.append(obj['Key'])
+    existing_files = [os.path.basename(x) for x in file_keys]
+    # Read in the nodes we want to forecast on
     df = pd.read_csv("nodes.csv")
-    df = df[df['geocode'].isin(['9q9wtp', '9q6tde', '9qcbq0', '9qcf5u', '9q97v8', '9q9hq4'])]
     points = [(y,x) for x,y in zip(df['Lat'], df['Long'])]
     names = list(df['county'])
     # Associated date range for the forecasts
@@ -202,11 +222,10 @@ if __name__ == "__main__":
     # Do HRR up to 18 hours first (2 hour forecasts)
     delayed_results = []
     for date in dates:
-        print(date)
         for time_horizon in range(1, 19, 1):
-            print(time_horizon)
-            hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon)
-            delayed_results.append(hrrr_pred_df)
+            if ( date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
+                hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon, pvr.aws)
+                delayed_results.append(hrrr_pred_df)
     results = dask.compute(*delayed_results, num_workers=2)
     # Delete all of the accumulated grib2 files so we don't run out of storage
     #shutil.rmtree(forecast_dir)

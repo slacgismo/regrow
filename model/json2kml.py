@@ -1,8 +1,29 @@
+"""Convert JSON to KML using mermaid
 
+See https://hub.docker.com/r/jihchi/mermaid.ink to install local Mermaid server
+"""
 import os
+import sys
 import datetime as dt
 import json
 import pandas as pd
+
+os.putenv("MERMAID_INK_SERVER","http://localhost:3000")
+
+import mermaid as md
+import mermaid.graph as mg
+
+# render = md.Mermaid("""
+# stateDiagram-v2
+#     [*] --> Still
+#     Still --> [*]
+ 
+#     Still --> Moving
+#     Moving --> Still
+#     Moving --> Crash
+#     Crash --> [*]
+# """)
+# print(render._repr_html_())
 
 FILE = "wecc240.json"
 
@@ -20,75 +41,220 @@ def getlabel(name):
         return f"{names.loc[label]['name']} ({label})"
     return label
 
+def getname(name):
+    label = name.split("_")[-1]
+    if label in names.index:
+        return names.loc[label]['name']
+    return label
+
+def getid(name):
+    return name.split("_")[-1]
+
+_cache = {}
+
+def _decode(geohash):
+    """
+    Decode the geohash to its exact values, including the error
+    margins of the result.  Returns four float values: latitude,
+    longitude, the plus/minus error for latitude (as a positive
+    number) and the plus/minus error for longitude (as a positive
+    number).
+    """
+    __base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
+    __decodemap = { }
+    for i in range(len(__base32)):
+        __decodemap[__base32[i]] = i
+    del i
+    lat_interval, lon_interval = (-90.0, 90.0), (-180.0, 180.0)
+    lat_err, lon_err = 90.0, 180.0
+    is_even = True
+    for c in geohash:
+        cd = __decodemap[c]
+        for mask in [16, 8, 4, 2, 1]:
+            if is_even: # adds longitude info
+                lon_err /= 2
+                if cd & mask:
+                    lon_interval = ((lon_interval[0]+lon_interval[1])/2, lon_interval[1])
+                else:
+                    lon_interval = (lon_interval[0], (lon_interval[0]+lon_interval[1])/2)
+            else:      # adds latitude info
+                lat_err /= 2
+                if cd & mask:
+                    lat_interval = ((lat_interval[0]+lat_interval[1])/2, lat_interval[1])
+                else:
+                    lat_interval = (lat_interval[0], (lat_interval[0]+lat_interval[1])/2)
+            is_even = not is_even
+    lat = (lat_interval[0] + lat_interval[1]) / 2
+    lon = (lon_interval[0] + lon_interval[1]) / 2
+    return lat, lon, lat_err, lon_err
+
+def geocode(geohash):
+    """
+    Decode geohash, returning two strings with latitude and longitude
+    containing only relevant digits and with trailing zeroes removed.
+    """
+    if geohash in _cache:
+        return _cache[geohash][0],_cache[geohash][1]
+    lat, lon, lat_err, lon_err = _decode(geohash)
+    from math import log10
+    # Format to the number of decimals that are known
+    lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lat)
+    lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, lon)
+    if '.' in lats: lats = lats.rstrip('0')
+    if '.' in lons: lons = lons.rstrip('0')
+    _cache[geohash] = (float(lats), float(lons))
+    return float(lats), float(lons)
+
+def geohash(latitude, longitude, precision=6):
+    """Encode a position given in float arguments latitude, longitude to
+    a geohash which will have the character count precision.
+    """
+    from math import log10
+    __base32 = '0123456789bcdefghjkmnpqrstuvwxyz'
+    __decodemap = { }
+    for i in range(len(__base32)):
+        __decodemap[__base32[i]] = i
+    del i
+    lat_interval, lon_interval = (-90.0, 90.0), (-180.0, 180.0)
+    geohash = []
+    bits = [ 16, 8, 4, 2, 1 ]
+    bit = 0
+    ch = 0
+    even = True
+    while len(geohash) < precision:
+        if even:
+            mid = (lon_interval[0] + lon_interval[1]) / 2
+            if longitude > mid:
+                ch |= bits[bit]
+                lon_interval = (mid, lon_interval[1])
+            else:
+                lon_interval = (lon_interval[0], mid)
+        else:
+            mid = (lat_interval[0] + lat_interval[1]) / 2
+            if latitude > mid:
+                ch |= bits[bit]
+                lat_interval = (mid, lat_interval[1])
+            else:
+                lat_interval = (lat_interval[0], mid)
+        even = not even
+        if bit < 4:
+            bit += 1
+        else:
+            geohash += __base32[ch]
+            bit = 0
+            ch = 0
+    return ''.join(geohash)
+
+network = {}
+def to_network(name,data):
+
+    item = {}
+
+    if data["class"] == "branch": #"from" in data and "to" in data:
+
+        # branch object
+        fbus,tbus = data["from"],data["to"]
+        fkv,tkv = float(objects[fbus]["baseKV"].split()[0]),float(objects[tbus]["baseKV"].split()[0])
+        geofrom = geohash(float(objects[fbus]["latitude"]),float(objects[fbus]["longitude"]))
+        geoto = geohash(float(objects[tbus]["latitude"]),float(objects[tbus]["longitude"]))
+        location = [geofrom,geoto]
+        if geofrom != geoto:
+
+            # powerline
+            item = {
+                geofrom : f"{getid(tbus)}_{tkv:.0f}kV({geoto}) L@-->|{fkv:.0f} kV| {getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV]",
+                geoto : f"{getid(fbus)}_{fkv:.0f}kV({geofrom}) L@-->|{fkv:.0f} kV| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]" 
+            }
+
+        else: # device
+
+            if abs(fkv-tkv) > 1: # transformer, regulator, etc
+
+                if fkv > tkv:
+                    item = {geofrom:f"{getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV] -->|OO| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]"}
+                else:
+                    item = {geofrom:f"{getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV] -->|OO| {getid(fbus)}_{fkv:.0f}kV[{fkv:.0f}]"}
+
+            else: # switch, etc
+
+                item = {geofrom:f"{getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV] -->|X| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]"}
+
+    elif data["class"] == "bus": #"latitude" in data and "longitude" in data:
+
+        # bus/load object
+        location = geohash(float(data["latitude"]),float(data["longitude"]))
+        if "S" in data: # load
+            S = complex(data['S'].split()[0])
+            kv = float(data["baseKV"].split()[0])
+            if abs(S) > 0:
+                item = {location:f"""{getid(name)}_{kv:.0f}kV[{kv:.0f} kV] --> L_{getid(name)}@{{shape: tri, label: "{abs(S):,.1f} MVA"}}"""}
+
+    elif data["class"] == "gen": #"parent" in data:
+
+        pname = data["parent"]
+        pdata = objects[pname]                                      
+        location = geohash(float(pdata["latitude"]),float(pdata["longitude"]))
+        pkv = float(pdata["baseKV"].split()[0])
+        mva = abs(complex(float(data["Pg"].split()[0]),float(data["Qg"].split()[0])))
+        item = {location:f"{getid(pname)}_{pkv:.0f}kV[{pkv:.0f} kV] --> G_{getid(name)}(({mva:,.1f} MVA))"}
+
+    for location,spec in item.items():
+        if not location in network:
+            network[location] = []
+        network[location].append(spec)
+
+def to_graph(graph):
+    html = md.Mermaid(graph)._repr_html_()
+    if html.startswith("Parse error"):
+        print("ERROR [mermaid]:",graph)
+        raise RuntimeError(html)
+    return html
+
 def print_bus(objects,file,container=None):
 
     generators = {x:y for x,y in objects.items() if y["class"] == "gen"}
     if not container is None:
         print(f"  <Folder><name>{container}</name>",file=file)
 
+    print(f"Processing {container if container else 'all'} busses",end="",flush=True)
     for name,data in {x:y for x,y in objects.items() if y["class"] == "bus"}.items():
-        
         label = getlabel(name)
-
         load = complex(data["S"].split()[0])
         if abs(load) > 0 and container in [None,"Loads"]:
-        
-            print(f"""  <Placemark>
-    <name>{label}</name>
-    <styleUrl>#load</styleUrl>
-    <description><table><caption>Load</caption>
-        <tr><th>Voltage</th><td>{data["baseKV"]}</td></tr>
-        <tr><th>Power</th><td>{abs(load):,.1f} MVA</td></tr></table>
-    </description>
-    <Point>
-      <coordinates>{data["longitude"]},{data["latitude"]},0</coordinates>
-    </Point>
-  </Placemark>""",file=file)
+            print(".",end="",flush=True)
+            to_network(name,data)    
 
-        gen = sum([complex(float(y["Pg"].split()[0]),float(y["Qg"].split()[0])) for x,y in generators.items() if y["parent"] == name and y["status"] == "IN_SERVICE"])
+        genlist = {x:y for x,y in generators.items() if y["parent"] == name}
+        gen = sum([complex(float(y["Pg"].split()[0]),float(y["Qg"].split()[0])) for x,y in genlist.items()])
         if abs(gen) > 0 and container in [None,"Generators"]:
+            print(".",end="",flush=True)
+            for g,d in genlist.items():
+                to_network(g,d)
         
-            print(f"""  <Placemark>
-    <name>{label}</name>
-    <styleUrl>#gen</styleUrl>
-    <description><table><caption>Generator</caption>
-        <tr><th>Voltage</th><td>{data["baseKV"]}</td></tr>
-        <tr><th>Power</th><td>{abs(gen):,.1f} MVA</td></tr></table>
-    </description>
-    <Point>
-      <coordinates>{data["longitude"]},{data["latitude"]},0</coordinates>
-    </Point>
-  </Placemark>""",file=file)
-
         if abs(gen) == 0 and abs(load) == 0 and container in [None,"Substations"]:
-            print(f"""  <Placemark>
-    <name>{label}</name>
-    <styleUrl>#bus</styleUrl>
-    <description><table><caption>Bus</caption>
-        <tr><th>Voltage</th><td>{data["baseKV"]}</td></tr>
-        <tr><th>Bustype</th><td>{data["type"]}</td></tr></table>
-    </description>
-    <Point>
-      <coordinates>{data["longitude"]},{data["latitude"]},0</coordinates>
-    </Point>
-  </Placemark>""",file=file)
+            print(".",end="",flush=True)
+            to_network(name,data)
 
     if not container is None:
         print("</Folder>",file=file)
-
+    print("ok",flush=True)
 
 def print_branch(objects,file,container=None):
 
     if not container is None:
         print(f"  <Folder><name>{container}</name>",file=file)
 
+    print(f"Processing {container if container else 'all'} branches",end="",flush=True)
     for name,data in {x:y for x,y in objects.items() if y["class"] == "branch"}.items():
+
         fbus = objects[data["from"]]
         tbus = objects[data["to"]]
         fromkv = float(fbus["baseKV"].split()[0])
         tokv = float(tbus["baseKV"].split()[0])
 
         if fromkv == tokv and container in [None,"Powerlines"]:
+            print(".",end="",flush=True)
+            to_network(name,data)
             print(f"""  <Placemark>
     <styleUrl>#powerline{"_down" if data["status"] != "IN" else int(fromkv/100)}</styleUrl>
     <name>{getlabel(data["from"])} --> {getlabel(data["to"])}</name>
@@ -101,21 +267,54 @@ def print_branch(objects,file,container=None):
   </Placemark>""",file=file)
 
         elif abs(fromkv - tokv) > 0.1 and container in [None,"Transformers"]:
-            print(f"""  <Placemark>
-    <styleUrl>#transformer</styleUrl>
-    <name>{getlabel(data["from"])} --> {getlabel(data["to"])}</name>
-    <description><table><caption>Transformer</caption>
-        <tr><th>From</th><td>{fbus["baseKV"]} ({fbus["class"]} {data["from"].split("_")[-1]})</td></tr>
-        <tr><th>To</th><td>{tbus["baseKV"]} ({tbus["class"]} {data["to"].split("_")[-1]})</td></tr></table>
-    </description>
-    <Point>
-      <coordinates>{fbus["longitude"]},{fbus["latitude"]},0</coordinates>
-    </Point>
-  </Placemark>""",file=file)
+            print(".",end="",flush=True)
+            to_network(name,data)
 
     if not container is None:
         print("</Folder>",file=file)
+    print("ok",flush=True)
 
+def print_network(file,preamble=["graph TD"]):
+    print("Generating bus graphs",end="",flush=True)
+    print("  <Folder><name>Nodes</name>",file=file)
+    for node,graph in [(x,y) for x,y in network.items() if y]:
+        print(".",end="",flush=True)
+        for line in graph:
+            if "L@" in line:
+                graph += ["L@{ curve: linear }"]
+                break
+        lat,lon = geocode(node)
+        svg = ""
+        maxretry = 10
+        retry = 0
+        graph = f"""---
+title: {node}
+---
+""" + "\n  ".join(preamble+graph)
+        while not svg.startswith("<svg "):
+            if retry >= maxretry:
+                print("ERROR:",svg,file=sys.stderr)
+                print("SOURCE:",graph,file=sys.stderr)
+                raise RuntimeError("maximum mermaid graph retries")
+            retry += 1
+            svg = to_graph(graph)
+
+        # print(node,"\n  ".join(graph))
+        print(f"""  <Placemark>
+    <styleUrl>#bus</styleUrl>
+    <name>{node}</name>
+    <description>
+        <!-- Mermaid graph: 
+{graph.replace('---','===').replace('--','==')} 
+        -->
+        {svg.replace('width="100%"','width="640px" height="480px"')}
+    </description>
+    <Point>
+      <coordinates>{lon},{lat},0</coordinates>
+    </Point>
+  </Placemark>""",file=file,flush=True)
+    print("  </Folder>",file=file)
+    print("ok",flush=True)
 
 with open(os.path.splitext(FILE)[0]+".kml","w") as fh:
 
@@ -252,4 +451,7 @@ with open(os.path.splitext(FILE)[0]+".kml","w") as fh:
     print_branch(objects,file=fh,container="Powerlines")
     print_branch(objects,file=fh,container="Transformers")
 
+    print_network(file=fh)
+
     print("</Document></kml>",file=fh)
+

@@ -182,15 +182,6 @@ def pull_herbie_gefs_data(data, time_horizon, aws_profile):
 
 forecast_dir = "C:/Users/kperry/data/"
 if __name__ == "__main__":
-    # Declare SLURM Cluster
-    cluster = SLURMCluster(
-       cores=18,
-       memory='24GB',
-       account='pvfleets24',
-       walltime='00:30:00',
-       processes=17,
-       queue='shared'
-    )
     # Connect to the db and get the associated AWS creds
     pvr = pvdrdb_tools.PVDRDBQuery()
     pvr.connectToDB()
@@ -233,4 +224,4 @@ if __name__ == "__main__":
             if ( date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
                 hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon, pvr.aws)
                 delayed_results.append(hrrr_pred_df)
-    results = dask.compute(*delayed_results, num_workers=2)
+    results = dask.compute(*delayed_results, num_workers=4)

@@ -226,6 +226,7 @@ if __name__ == "__main__":
     ch.setFormatter(formatter)    
     # Add the handler to the logger
     logger.addHandler(ch)
+    # Do HRR up to 18 hours first (2 hour forecasts)
     client = Client(cluster)
     result = []
     cluster.scale(jobs=4)
@@ -233,6 +234,5 @@ if __name__ == "__main__":
         for time_horizon in range(1, 19, 1):
             if ( date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
                 result.append(client.submit(pull_herbie_hrr_data(date, time_horizon, pvr.aws)).result())
-                delayed_results.append(hrrr_pred_df)
     print(Counter(result))
     print(cluster.job_script())

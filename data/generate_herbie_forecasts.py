@@ -13,6 +13,7 @@ import dask
 import logging
 import time
 from dask.distributed import Client, wait, as_completed
+import pvdrdb_tools
 
 failed_forecast_runs = list()
 

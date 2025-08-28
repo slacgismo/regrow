@@ -45,6 +45,23 @@ module pypower
 #include "../data/wecc240_gis.glm"
 
 //
+// Network mods
+//
+
+object dcline
+{
+    from "wecc240_psse_N_4010";
+    to "wecc240_psse_N_2405";
+    Sfrom 2400 MVA;
+    Sto 2300 MVA;
+    Pmax 3100 MW;
+    Qminf -300 MVAr;
+    Qmaxf 300 MVAr;
+    Qmint -300 MVAr;
+    Qmaxt 300 MVAr;
+}
+
+//
 // Load powerplant data
 //
 

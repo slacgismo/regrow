@@ -64,10 +64,11 @@ class PSSEraw:
                 self.headings[section].extend(line[2:].strip().split(','))
             else:
                 values = [convert(x.strip()) for x in line.split(",")]
-                if len(data[section]) == 0 or len(data[section][-1])+len(values) >= len(self.headings[section]):
+                if len(data[section]) == 0 or line[1] == ' ': #len(data[section]) == 0 or len(data[section][-1])+len(values) >= len(self.headings[section]):
                     data[section].append(values)
                 else:
                     data[section][-1].extend(values)
+
         self.section = data
         self.mvabase = self.section["SYSTEM-WIDE DATA"][0][1]
         self.version = self.section["SYSTEM-WIDE DATA"][0][2]
@@ -159,14 +160,16 @@ class PSSEraw:
                 Bs[fbus] += bi * self.mvabase 
                 Gs[tbus] += gj * self.mvabase 
                 Bs[tbus] += bj * self.mvabase 
+            else:
+                print(f"WARNING: branch {n} not in service, shunts not included in busses",file=sys.stderr)
+            # print("Branch",n,f"({m[psse.branch.I]}@{fbus}-->{m[psse.branch.J]}@{tbus})","=",case["branch"][-1],file=sys.stderr)
         done["BRANCH DATA"] = "ok"
 
         # transformers
         Zbase = (np.array([x[psse.bus.BASEKV] for x in self.section["BUS DATA"]])**2 / self.mvabase).tolist()
         for n,m in enumerate(self.section["TRANSFORMER DATA"]):
             if m[psse.transformer.K] > 0:
-                print(f"WARNING: three-winding transformer {n} is not supported")
-                continue
+                print(f"WARNING: three-winding transformer {n} is not supported -- third winding ignored")
             fbus = bus_map[m[psse.transformer.I]]
             tbus = bus_map[m[psse.transformer.J]]
             Zbf,Zbt = Zbase[fbus],Zbase[tbus]
@@ -175,6 +178,7 @@ class PSSEraw:
             rateA,rateB,rateC = m[psse.transformer.RATE11:psse.transformer.RATE14]
             status = m[psse.transformer.STAT]
             case["branch"].append([fbus+1,tbus+1,round(r,6),round(x,6),round(b,6),rateA,rateB,rateC,1.0,0.0,status,-360.0,360.0])
+            # print("Transformer",n,f"({m[psse.transformer.I]}@{fbus}-->{m[psse.transformer.J]}@{tbus})","=",case["branch"][-1],file=sys.stderr)
         done["TRANSFORMER DATA"] = "ok"
 
         # busses
@@ -213,8 +217,13 @@ class PSSEraw:
             case["dcline"].append(m)
         done["TWO-TERMINAL DC DATA"] = "TODO"
 
-        # dcline costs
-        # TODO
+        # load mods
+        module = importlib.import_module(model.name)
+        if os.path.exists(model.name+"_mods.py"):
+            module = importlib.import_module(model.name+"_mods")
+            print(f"{model.name}_mods.py",end="...",flush=True,file=sys.stderr)
+            case = getattr(module,model.name)(case)
+            print("ok",file=sys.stderr)
 
         # write case file
         with open(file if file else self.name+".py","w") as fh:
@@ -230,6 +239,11 @@ class PSSEraw:
                 else:
                     print(f"""    "{tag}": {repr(data)},""",file=fh)
             print(f"}}",file=fh)
+
+        # dcline costs
+        if "dcline" in case and len(case["dcline"]) > 0:
+            print("WARNING: no DC line costs available",file=sys.stderr)
+
 
         # write cost file
         if not os.path.exists(self.name+"_cost.csv"):
@@ -250,6 +264,9 @@ class PSSEraw:
 
     def validate(self):
 
+        print("\n"+self.name,"Validation",file=sys.stderr)
+        print("-"*len(self.name) + "-" + "-"*len("validation"),file=sys.stderr)
+
         # check generators and costs
         assert len(self.case["gen"]) == len(self.case["gencost"]), "gen and gencost lengths differ"
 
@@ -262,47 +279,59 @@ class PSSEraw:
         for line in lines:
             assert 0 < line[pp_branch.F_BUS] <= N and 0 < line[pp_branch.T_BUS] <= N, "invalid bus reference"
 
-        def mark(n,hits=set()):
-            if not n in hits:
-                hits.add(n)
-                for line in [x for x in lines if x[pp_branch.F_BUS] == n or x[pp_branch.T_BUS] == n and x[pp_branch.BR_STATUS] == 1]:
-                    mark(line[pp_branch.F_BUS],hits)
-                    mark(line[pp_branch.T_BUS],hits)
-            return hits
+        # check incidence matrix
+        B = np.zeros((N,M))
+        for m,line in enumerate(lines):
+            B[line[pp_branch.F_BUS]-1,m] = 1
+            B[line[pp_branch.T_BUS]-1,m] = 1
+        unconnected_nodes = [n for n,x in enumerate(B.sum(axis=1).astype(int).tolist()) if x == 0]
+        if unconnected_nodes:
+            print(f"WARNING: {len(unconnected_nodes)} unconnected nodes: {unconnected_nodes}",file=sys.stderr)
+        else:
+            print("No unconnected node -- ok",file=sys.stderr)
 
-        # check connectivity
-        for n,node in enumerate(nodes):
-            if node[1] == 3: # swing bus start
-                hits = mark(n+1)
+        # check islands
+        networks = sum([1 for x in np.linalg.eig(B@B.T)[0].real.round(6) if x==0])-len(unconnected_nodes)
+        if networks > 1:
+            print("WARNING:",networks-1,"isolated networks found (not counting unconnected nodes)",file=sys.stderr)
+        else:
+            print("No network islands found -- ok",file=sys.stderr)
 
-        miss = [n+1 for n,m in enumerate(lines) if n+1 not in hits]
-        if len(miss) > 0:
-            print(f"WARNING [raw2py]: {len(miss)} nodes not connected to swing bus")
+        # check generation
+        total_gen = 0
+        for m in self.case["gen"]:
+            total_gen += complex(m[pp_gen.PG],m[pp_gen.QG])
+        print(f"Total generation: {abs(total_gen):.1f} MVA")
 
+        # check load
+        total_load = 0
+        for m in self.case["bus"]:
+            total_load += complex(m[pp_bus.PD],m[pp_bus.QD])
+        print(f"Total load: {abs(total_load):.1f} MVA")
+
+        if abs(total_gen) < abs(total_load):
+            print("WARNING: insufficient generation",file=sys.stderr)
+        else:
+            print("Power balance is ok",file=sys.stderr)
 
 
 if __name__ == "__main__":
 
     model = PSSEraw("wecc240_psse.raw")
+
     done = model.to_pypower()
 
     model.validate()
 
-    print(f"{model.name} Summary")
+    print(f"\n{model.name} Summary")
     print(f"{'-'*len(model.name)}--------")
     for name,data in model.section.items():
         if len(data) > 0:
             print(f"  {name.title()}{'.'*(30-len(name))} {len(data):4d} item{'s' if len(data)>1 else ' '} ({done[name] if name in done else 'ignored'})")
 
+    # run solvers
     module = importlib.import_module(model.name)
     case = getattr(module,model.name)()
-
-    # if os.path.exists(model.name+"_mods.py"):
-    #     module = importlib.import_module(model.name+"_mods")
-    #     print(f"{model.name} mods loaded",end="...",flush=True)
-    #     case = getattr(module,model.name)(case)
-    #     print("ok")
-
     print(f"\n{model.name} Check runopf")
     print(f"{'-'*len(model.name)}-------------",flush=True)
     try:

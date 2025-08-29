@@ -400,8 +400,10 @@ class PSSEraw:
         else:
             print("Power balance is ok",file=sys.stderr)
 
-        assert len(self.case["gen"]) == len(self.case["gencost"]), "gencost does not match gen size"
-        assert len(self.case["dcline"]) == len(self.case["dclinecost"]), "dclinecost does not match dcline size"
+        if "gencost" in self.case:
+            assert len(self.case["gen"]) == len(self.case["gencost"]), "gencost does not match gen size"
+        if "dcline" in self.case:
+            assert len(self.case["dcline"]) == len(self.case["dclinecost"]), "dclinecost does not match dcline size"
 
 
 if __name__ == "__main__":

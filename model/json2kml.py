@@ -1,6 +1,9 @@
-"""Convert JSON to KML using mermaid
+"""Convert JSON to KML using mermaid"""
 
-"""
+# Copyright (C) 2025, Eudoxys Sciences LLC
+# Author: dchassin@eudoxys.com
+# Project: REGROW (NREL-SUB-2025-10301)
+
 import os
 import sys
 import datetime as dt
@@ -9,7 +12,7 @@ import pandas as pd
 from time import time
 
 FILE = "wecc240.json"
-VERBOSE = False
+VERBOSE = True
 MAXRETRY = None
 
 # Enable local mermaid server. (Actually just a passthru, so why bother. See
@@ -43,6 +46,15 @@ def getname(name):
 
 def getid(name,back=1):
     return "-".join(name.split("_")[-back:])
+
+def getfloat(data,name):
+    return float(data[name].split()[0])
+
+def getcomplex(data,name):
+    return complex(data[name].split()[0])
+
+def getunit(data,name):
+    return data[name].split()[1]
 
 _cache = {}
 
@@ -150,32 +162,53 @@ def to_network(name,data):
 
     item = {}
 
-    if data["class"] == "branch" or data["class"] == "dcline": 
+    if data["class"] in ["branch","dcline"]: 
 
         # branch object
         fbus,tbus = data["from"],data["to"]
-        fkv,tkv = float(objects[fbus]["baseKV"].split()[0]),float(objects[tbus]["baseKV"].split()[0])
-        geofrom = geohash(float(objects[fbus]["latitude"]),float(objects[fbus]["longitude"]))
-        geoto = geohash(float(objects[tbus]["latitude"]),float(objects[tbus]["longitude"]))
+        fkv,tkv = getfloat(objects[fbus],"baseKV"),getfloat(objects[tbus],"baseKV")
+        geofrom = geohash(getfloat(objects[fbus],"latitude"),getfloat(objects[fbus],"longitude"))
+        geoto = geohash(getfloat(objects[tbus],"latitude"),getfloat(objects[tbus],"longitude"))
         location = [geofrom,geoto]
         if geofrom != geoto:
 
             # powerline
             linecount[geofrom] = linecount[geofrom]+1 if geofrom in linecount else 1
             linecount[geoto] = linecount[geoto]+1 if geoto in linecount else 1
-            item = {
-                geofrom : f"{getid(tbus)}_{tkv:.0f}kV({geoto}) L{linecount[geofrom]}@-->|{fkv:.0f} kV| {getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV]",
-                geoto : f"{getid(fbus)}_{fkv:.0f}kV({geofrom}) L{linecount[geoto]}@-->|{fkv:.0f} kV| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]" 
-            }
+
+            if data["class"] == "branch":
+                rate = max(getfloat(data,"rateA"),getfloat(data,"rateB"),getfloat(data,"rateC"))
+                if rate == 0:
+                    if fkv == tkv:
+                        label = f"{fkv:.0f} kV"
+                    else:
+                        label = "OO"
+                else:
+                    label = f"< {rate:.1f} MVA"
+                item = {
+                    geofrom : f"{getid(tbus)}_{tkv:.0f}kV({geoto}) L{linecount[geofrom]}@-->|{label}| {getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV]",
+                    geoto : f"{getid(fbus)}_{fkv:.0f}kV({geofrom}) L{linecount[geoto]}@-->|{label}| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]" 
+                }
+            elif data["class"] == "dcline":
+                sfrom = abs(getcomplex(data,"Sfrom"))
+                sto = abs(getcomplex(data,"Sto"))
+                item = {
+                    geofrom : f"{getid(tbus)}_{tkv:.0f}kV({geoto}) L{linecount[geofrom]}@-->|{sfrom:.1f} MVA| {getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV]",
+                    geoto : f"{getid(fbus)}_{fkv:.0f}kV({geofrom}) L{linecount[geoto]}@-->|{sto:.1f} MVA| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]" 
+                }
 
         else: # device
 
             if abs(fkv-tkv) > 1: # transformer, regulator, etc
-
-                if fkv > tkv:
-                    item = {geofrom:f"{getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV] -->|OO| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]"}
+                rate = max(getfloat(data,"rateA"),getfloat(data,"rateB"),getfloat(data,"rateC"))
+                if rate == 0:
+                    label = f"OO"
                 else:
-                    item = {geofrom:f"{getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV] -->|OO| {getid(fbus)}_{fkv:.0f}kV[{fkv:.0f}]"}
+                    label = f"< {rate:.1f} MVA"
+                if fkv > tkv:
+                    item = {geofrom:f"{getid(fbus)}_{fkv:.0f}kV[{fkv:.0f} kV] -->|{label}| {getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV]"}
+                else:
+                    item = {geofrom:f"{getid(tbus)}_{tkv:.0f}kV[{tkv:.0f} kV] -->|{label}| {getid(fbus)}_{fkv:.0f}kV[{fkv:.0f}]"}
 
             else: # switch, etc
 
@@ -184,43 +217,68 @@ def to_network(name,data):
     elif data["class"] == "bus": 
 
         # bus/load object
-        location = geohash(float(data["latitude"]),float(data["longitude"]))
+        location = geohash(getfloat(data,"latitude"),getfloat(data,"longitude"))
         global nodenames
         if not location in nodenames:
             nodenames[location] = []
         nodenames[location].append(getlabel(name))
         if "S" in data: # load
-            S = complex(data['S'].split()[0])
-            kv = float(data["baseKV"].split()[0])
-            if abs(S) > 0:
-                item = {location:f"""{getid(name)}_{kv:.0f}kV[{kv:.0f} kV] -->|{abs(S):,.1f} MVA| L_{getid(name)}@{{shape: tri, label: "{getid(name)}"}}"""}
+            S = complex(getfloat(data,'Pd'),getfloat(data,'Qd'))
+            kv = getfloat(data,"baseKV")
+            mva = abs(S)
+            if mva > 0:
+                if S.real < 0:
+                    mva = -mva
+                item = {location:f"""{getid(name)}_{kv:.0f}kV[{kv:.0f} kV] -->|= { mva:,.1f} MVA| L_{getid(name)}@{{shape: tri, label: "{getid(name)}"}}"""}
 
     elif data["class"] == "gen": 
 
         pname = data["parent"]
         pdata = objects[pname]                                      
-        location = geohash(float(pdata["latitude"]),float(pdata["longitude"]))
-        pkv = float(pdata["baseKV"].split()[0])
-        mva = abs(complex(float(data["Pg"].split()[0]),float(data["Qg"].split()[0])))
-        item = {location:f"{getid(pname)}_{pkv:.0f}kV[{pkv:.0f} kV] -->|{-mva:,.1f} MVA| G_{getid(name,2)}(({getid(name,2)}))"}
+        location = geohash(getfloat(pdata,"latitude"),getfloat(pdata,"longitude"))
+        pkv = getfloat(pdata,"baseKV")
+        pmax = getfloat(data,"Pmax")
+        item = {location:f"{getid(pname)}_{pkv:.0f}kV[{pkv:.0f} kV] -->|> {-pmax:,.1f} MVA| G_{getid(name,2)}(({getid(name,2)}))"}
 
     for location,spec in item.items():
         if not location in network:
             network[location] = []
         network[location].append(spec)
 
+if os.path.exists("mermaid_graphs.json"):
+    with open("mermaid_graphs.json","r") as fh:
+        _graphs = json.load(fh)
+else:
+    _graphs = {}
+
 def to_graph(graph):
+    global _graphs
+    if graph in _graphs:
+        return _graphs[graph]
     if VERBOSE:
         tic = time()
         print("Mermaid graph:",flush=True,file=sys.stderr)
         print(graph,flush=True,file=sys.stderr)
-    html = md.Mermaid(graph)._repr_html_()
-    if html.startswith("Parse error"):
-        print("ERROR [mermaid]:",graph)
-        raise RuntimeError(html)
+    html = ""
+    retry = 0
+    while not html.startswith("<svg "):
+        html = md.Mermaid(graph)._repr_html_()
+        if html.startswith("Parse error"):
+            print("ERROR [mermaid]:",graph)
+            print("SOURCE:",graph,file=sys.stderr,flush=True)
+            raise RuntimeError(html)
+        if not MAXRETRY is None and retry > MAXRETRY:
+            print("TIMEOUT:",html,file=sys.stderr,flush=True)
+            raise RuntimeError("maximum mermaid graph retries")
+        if retry > 0:
+            print("?",end="",flush=True)
+        retry += 1
     if VERBOSE:
         print(html,flush=True,file=sys.stderr)
         print(f"Result in {time()-tic:.1f} seconds:",file=sys.stderr)
+    _graphs[graph] = html
+    with open("mermaid_graphs.json","w") as fh:
+        json.dump(_graphs,fh,indent=4)
     return html
 
 def print_bus(objects,file,container=None):
@@ -232,7 +290,7 @@ def print_bus(objects,file,container=None):
     print(f"Processing {container if container else 'all'} busses",end="",flush=True)
     for name,data in {x:y for x,y in objects.items() if y["class"] == "bus"}.items():
         label = getlabel(name)
-        load = complex(data["S"].split()[0])
+        load = getcomplex(data,"S")
         if abs(load) > 0 and container in [None,"Loads"]:
             print(".",end="",flush=True)
             to_network(name,data)    
@@ -250,13 +308,13 @@ def print_bus(objects,file,container=None):
   </Placemark>""",file=file)
 
         genlist = {x:y for x,y in generators.items() if y["parent"] == name}
-        gen = sum([complex(float(y["Pg"].split()[0]),float(y["Qg"].split()[0])) for x,y in genlist.items()])
+        gen = sum([complex(getfloat(y,"Pg"),getfloat(y,"Qg")) for x,y in genlist.items()])
         if abs(gen) > 0 and container in [None,"Generators"]:
             print(".",end="",flush=True)
             for g,d in genlist.items():
                 to_network(g,d)
 
-                mva = complex(float(d["Pg"].split()[0]),float(d["Qg"].split()[0]))
+                mva = complex(getfloat(d,"Pg"),getfloat(d,"Qg"))
                 print(f"""  <Placemark>
     <name>{getid(g,2)}</name>
     <styleUrl>#gen</styleUrl>
@@ -286,10 +344,10 @@ def print_branch(objects,file,container=None):
 
         fbus = objects[data["from"]]
         tbus = objects[data["to"]]
-        fromkv = float(fbus["baseKV"].split()[0])
-        tokv = float(tbus["baseKV"].split()[0])
+        fromkv = getfloat(fbus,"baseKV")
+        tokv = getfloat(tbus,"baseKV")
 
-        if fromkv == tokv and container in [None,"Powerlines"]:
+        if fromkv == tokv and container in [None,"Powerlines"] and data["class"] == "branch":
             print(".",end="",flush=True)
             to_network(name,data)
             print(f"""  <Placemark>
@@ -303,7 +361,23 @@ def print_branch(objects,file,container=None):
     </LineString>
   </Placemark>""",file=file)
 
-        elif abs(fromkv - tokv) > 0.1 and container in [None,"Transformers"]:
+        elif container in [None,"Powerlines"] and data["class"] == "dcline":
+
+            print(".",end="",flush=True)
+            to_network(name,data)
+            print(f"""  <Placemark>
+    <styleUrl>#powerline{"_down" if data["status"] != "IN" else int(fromkv/100)}</styleUrl>
+    <name>{getlabel(data["from"])} --> {getlabel(data["to"])}</name>
+    <LineString>
+      <coordinates>
+        {fbus["longitude"]},{fbus["latitude"]},50
+        {tbus["longitude"]},{tbus["latitude"]},50
+      </coordinates>
+    </LineString>
+  </Placemark>""",file=file)
+
+
+        elif abs(fromkv - tokv) > 0.1 and container in [None,"Transformers"] and data["class"] == "branch":
             print(".",end="",flush=True)
             to_network(name,data)
 
@@ -319,23 +393,12 @@ def print_network(file,preamble=["graph TD"]):
         print(".",end="",flush=True)
         graph += [f"L{n+1}@{{ curve: linear }}" for n in range(linecount[node] if node in linecount else 0)]
         lat,lon = geocode(node)
-        svg = ""
-        retry = 0
         graph = f"""---
 title: {" / ".join(nodenames[node])}
 ---
 """ + "\n  ".join(preamble+graph)
-        while not svg.startswith("<svg "):
-            if not MAXRETRY is None and retry >= MAXRETRY:
-                print("ERROR:",svg,file=sys.stderr)
-                print("SOURCE:",graph,file=sys.stderr,flush=True)
-                raise RuntimeError("maximum mermaid graph retries")
-            retry += 1
-            try:
-                svg = to_graph(graph)
-            except Exception as err:
-                print(f"WARNING: {err} (retrying)",file=sys.stderr,flush=True)
 
+        svg = to_graph(graph)
         print(f"""  <Placemark>
     <styleUrl>#bus</styleUrl>
     <name>{node}</name>
@@ -349,142 +412,143 @@ title: {" / ".join(nodenames[node])}
     print("  </Folder>",file=file)
     print("ok",flush=True)
 
-with open(os.path.splitext(FILE)[0]+".kml","w") as fh:
+if __name__ == "__main__":
 
-    loads = sum([abs(complex(y["S"].split()[0])) for x,y in objects.items() if y["class"] == "bus"])
-    generators = sum([abs(complex(float(y["Pg"].split()[0]),float(y["Qg"].split()[0]))) for x,y in objects.items() if y["class"] == "gen" and y["status"] == "IN_SERVICE"])
+    with open(os.path.splitext(FILE)[0]+".kml","w") as fh:
 
-    print(f"""<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2">
-<Document>
+        loads = sum([abs(getcomplex(y,"S")) for x,y in objects.items() if y["class"] == "bus"])
+        generators = sum([abs(complex(getfloat(y,"Pg"),getfloat(y,"Qg"))) for x,y in objects.items() if y["class"] == "gen" and y["status"] == "IN_SERVICE"])
 
-  <name>{FILE} ({dt.datetime.fromtimestamp(os.path.getmtime(FILE)).strftime("%Y-%m-%d %H:%M:%S")})</name>
+        print(f"""<?xml version="1.0" encoding="UTF-8"?>
+    <kml xmlns="http://www.opengis.net/kml/2.2">
+    <Document>
 
-  <description>
-    Total load: {loads:,.1f} MVA
-    Total generation: {generators:,.1f} MVA
-  </description>
+      <name>{FILE} ({dt.datetime.fromtimestamp(os.path.getmtime(FILE)).strftime("%Y-%m-%d %H:%M:%S")})</name>
 
-  <Style id="powerline0">
-    <LineStyle>
-      <color>7f00ffff</color>
-      <width>1</width>
-    </LineStyle>
-    <PolyStyle>
-      <color>7f00ffff</color>
-    </PolyStyle>
-  </Style>
+      <description>
+        Total load: {loads:,.1f} MVA
+        Total generation: {generators:,.1f} MVA
+      </description>
 
-  <Style id="powerline1">
-    <LineStyle>
-      <color>7f00ffff</color>
-      <width>2</width>
-    </LineStyle>
-    <PolyStyle>
-      <color>7f00ffff</color>
-    </PolyStyle>
-  </Style>
+      <Style id="powerline0">
+        <LineStyle>
+          <color>7f00ffff</color>
+          <width>1</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>7f00ffff</color>
+        </PolyStyle>
+      </Style>
 
-  <Style id="powerline2">
-    <LineStyle>
-      <color>7f00ffff</color>
-      <width>3</width>
-    </LineStyle>
-    <PolyStyle>
-      <color>7f00ffff</color>
-    </PolyStyle>
-  </Style>
-  <Style id="powerline3">
-    <LineStyle>
-      <color>7f00ffff</color>
-      <width>4</width>
-    </LineStyle>
-    <PolyStyle>
-      <color>7f00ffff</color>
-    </PolyStyle>
-  </Style>
-  <Style id="powerline4">
-    <LineStyle>
-      <color>7f00ffff</color>
-      <width>5</width>
-    </LineStyle>
-    <PolyStyle>
-      <color>7f00ffff</color>
-    </PolyStyle>
-  </Style>
-  <Style id="powerline5">
-    <LineStyle>
-      <color>7f00ffff</color>
-      <width>6</width>
-    </LineStyle>
-    <PolyStyle>
-      <color>7f00ffff</color>
-    </PolyStyle>
-  </Style>
+      <Style id="powerline1">
+        <LineStyle>
+          <color>7f00ffff</color>
+          <width>2</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>7f00ffff</color>
+        </PolyStyle>
+      </Style>
 
-  <Style id="powerline_down">
-    <LineStyle>
-      <color>7f000000</color>
-      <width>4</width>
-    </LineStyle>
-    <PolyStyle>
-      <color>7f000000</color>
-    </PolyStyle>
-  </Style>
+      <Style id="powerline2">
+        <LineStyle>
+          <color>7f00ffff</color>
+          <width>3</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>7f00ffff</color>
+        </PolyStyle>
+      </Style>
+      <Style id="powerline3">
+        <LineStyle>
+          <color>7f00ffff</color>
+          <width>4</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>7f00ffff</color>
+        </PolyStyle>
+      </Style>
+      <Style id="powerline4">
+        <LineStyle>
+          <color>7f00ffff</color>
+          <width>5</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>7f00ffff</color>
+        </PolyStyle>
+      </Style>
+      <Style id="powerline5">
+        <LineStyle>
+          <color>7f00ffff</color>
+          <width>6</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>7f00ffff</color>
+        </PolyStyle>
+      </Style>
 
-  <Style id="bus">
-    <IconStyle>
-      <scale>1.0</scale>
-      <Icon>
-        <href>https://icons.veryicon.com/png/o/business/project-3/transformer-substation-2.png</href>
-      </Icon>
-    </IconStyle>
-  </Style>
+      <Style id="powerline_down">
+        <LineStyle>
+          <color>7f000000</color>
+          <width>4</width>
+        </LineStyle>
+        <PolyStyle>
+          <color>7f000000</color>
+        </PolyStyle>
+      </Style>
 
-  <Style id="load">
-    <IconStyle>
-      <scale>1.0</scale>
-      <Icon>
-        <href>https://cdn-icons-png.flaticon.com/128/3061/3061341.png</href>
-      </Icon>
-    </IconStyle>
-  </Style>
+      <Style id="bus">
+        <IconStyle>
+          <scale>1.0</scale>
+          <Icon>
+            <href>https://icons.veryicon.com/png/o/business/project-3/transformer-substation-2.png</href>
+          </Icon>
+        </IconStyle>
+      </Style>
 
-  <Style id="gen">
-    <IconStyle>
-      <scale>1.0</scale>
-      <Icon>
-        <href>https://icons.veryicon.com/png/o/commerce-shopping/flat-icons-for-business-and-finance/power-plant.png</href>
-      </Icon>
-    </IconStyle>
-  </Style>
+      <Style id="load">
+        <IconStyle>
+          <scale>1.0</scale>
+          <Icon>
+            <href>https://cdn-icons-png.flaticon.com/128/3061/3061341.png</href>
+          </Icon>
+        </IconStyle>
+      </Style>
 
-  <Style id="transformer">
-    <IconStyle>
-      <scale>1.0</scale>
-      <Icon>
-        <href>https://icons.veryicon.com/png/o/miscellaneous/vertical-menu/transformer-7.png</href>
-      </Icon>
-    </IconStyle>
-  </Style>
+      <Style id="gen">
+        <IconStyle>
+          <scale>1.0</scale>
+          <Icon>
+            <href>https://icons.veryicon.com/png/o/commerce-shopping/flat-icons-for-business-and-finance/power-plant.png</href>
+          </Icon>
+        </IconStyle>
+      </Style>
 
-  <Style id="shunt">
-    <IconStyle>
-      <scale>1.0</scale>
-      <Icon>
-        <href>https://icons.veryicon.com/png/o/education-technology/power-icon-2/shunt-reactor.png</href>
-      </Icon>
-    </IconStyle>
-  </Style>
-""",file=fh)
+      <Style id="transformer">
+        <IconStyle>
+          <scale>1.0</scale>
+          <Icon>
+            <href>https://icons.veryicon.com/png/o/miscellaneous/vertical-menu/transformer-7.png</href>
+          </Icon>
+        </IconStyle>
+      </Style>
 
-    print_bus(objects,file=fh,container="Substations")
-    print_bus(objects,file=fh,container="Generators")
-    print_bus(objects,file=fh,container="Loads")
-    print_branch(objects,file=fh,container="Powerlines")
-    print_branch(objects,file=fh,container="Transformers")
+      <Style id="shunt">
+        <IconStyle>
+          <scale>1.0</scale>
+          <Icon>
+            <href>https://icons.veryicon.com/png/o/education-technology/power-icon-2/shunt-reactor.png</href>
+          </Icon>
+        </IconStyle>
+      </Style>
+    """,file=fh)
 
-    print_network(file=fh)
+        print_bus(objects,file=fh,container="Substations")
+        print_bus(objects,file=fh,container="Generators")
+        print_bus(objects,file=fh,container="Loads")
+        print_branch(objects,file=fh,container="Powerlines")
+        print_branch(objects,file=fh,container="Transformers")
 
-    print("</Document></kml>",file=fh)
+        print_network(file=fh)
 
+        print("</Document></kml>",file=fh)

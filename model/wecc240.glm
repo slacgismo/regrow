@@ -50,10 +50,10 @@ module pypower
 
 object dcline
 {
-    from "wecc240_psse_N_4010";
+    from "wecc240_psse_N_4007";
     to "wecc240_psse_N_2405";
-    Sfrom 2400 MVA;
-    Sto 2300 MVA;
+    Sfrom 0 MVA; // TODO: currently added as load to 4007 in PSS/E
+    Sto 0 MVA; // TODO: currently added as negative load to 2405 in PSS/E
     Pmax 3100 MW;
     Qminf -300 MVAr;
     Qmaxf 300 MVAr;

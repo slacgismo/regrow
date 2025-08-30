@@ -4,7 +4,8 @@
 # Author: dchassin@eudoxys.com
 # Project: REGROW (NREL-SUB-2025-10301)
 
-DEBUG=True # raise all exceptions in pypower instead of just printing error message
+DEBUG = True # raise pypower exceptions instead of just printing error message
+NOCHECK = False # skip value checks on pypower case data
 
 import os
 import sys
@@ -28,7 +29,7 @@ import psse
 pp_index = {
         "bus" : ['BUS_I','BUS_TYPE','PD','QD','GS','BS','BUS_AREA','VM','VA','BASE_KV','ZONE','VMAX','VMIN','LAM_P','LAM_Q','MU_VMAX','MU_VMIN'],
         "branch": ['F_BUS','T_BUS','BR_R','BR_X','BR_B','RATE_A','RATE_B','RATE_C','TAP','SHIFT','BR_STATUS','ANGMIN','ANGMAX','PF','QF','PT','QT','MU_SF','MU_ST','MU_ANGMIN','MU_ANGMAX'],
-        "gen": ['GEN_BUS','PG','QG','QMAX','QMIN','VG','MBASE','GEN_STATUS','PMAX','MIN','PC1','PC2','QC1MIN','QC1MAX','QC2MIN','QC2MAX','RAMP_AGC','RAMP_10','RAMP_30','RAMP_Q','APF','MU_PMAX','MU_PMIN','MU_QMAX','MU_QMIN'],
+        "gen": ['GEN_BUS','PG','QG','QMAX','QMIN','VG','MBASE','GEN_STATUS','PMAX','PMIN','PC1','PC2','QC1MIN','QC1MAX','QC2MIN','QC2MAX','RAMP_AGC','RAMP_10','RAMP_30','RAMP_Q','APF','MU_PMAX','MU_PMIN','MU_QMAX','MU_QMIN'],
         "gencost": ['MODEL','STARTUP','SHUTDOWN','NCOST','COST'],
         "dcline": ['F_BUS','T_BUS','BR_STATUS','PF','PT','QF','QT','VF','VT','PMIN','PMAX','QMINF','QMAXF','QMINT','QMAXT','LOSS0','LOSS1'],
         "dclinecost": ['MODEL','STARTUP','SHUTDOWN','NCOST','COST'],
@@ -121,6 +122,7 @@ class PSSEraw:
             bus_index[n] = bus_i
             bus_map[bus_i] = n
             bus_name[n] = m[psse.bus.NAME]
+        N = len(bus_index)
         done["BUS DATA"] = "ok"
 
         # loads
@@ -165,21 +167,34 @@ class PSSEraw:
 
         # branches
         for n,m in enumerate(self.section["BRANCH DATA"]):
-            fbus,tbus = bus_map[m[psse.branch.I]],bus_map[abs(m[psse.branch.J])] # negative J means metered branch
+            fbus = bus_map[m[psse.branch.I]]
+            tbus = bus_map[abs(m[psse.branch.J])] # negative J means metered branch
 
-            FBUS = fbus + 1
-            TBUS = tbus + 1
+            FBUS = round(fbus + 1)
+            TBUS = round(tbus + 1)
             BR_R = round(m[psse.branch.R],9)
             BR_X = round(m[psse.branch.X],9)
             BR_B = round(m[psse.branch.B],9)
-            RATE_A = m[psse.branch.RATE1]
-            RATE_B = m[psse.branch.RATE2]
-            RATE_C = m[psse.branch.RATE3]
+            RATE_A,RATE_B,RATE_C = sorted(m[psse.branch.RATE1:psse.branch.RATE3+1])
             TAP = 0
             SHIFT = 0.0
-            BR_STATUS = m[psse.branch.STAT]
+            BR_STATUS = round(m[psse.branch.STAT])
             ANGMIN = -360
             ANGMAX = +360
+
+            if not NOCHECK:
+                assert 0 < FBUS <= N, f"branch {n=} refers to invalid bus {FBUS=}"
+                assert 0 < TBUS <= N, f"branch {n=} refers to invalid bus {TBUS=}"
+                assert BR_R > 0, f"branch {n=} value {BR_R=} is not positive"
+                # negative BR_X is ok
+                assert BR_B >= 0, f"branch {n=} value {BR_B=} is not positive"
+                assert 0 <= RATE_A <= RATE_B <= RATE_C, f"branch {n=} rates {RATE_A=}, {RATE_B=}, {RATE_C=} are not ordered correctly"
+                assert 0 <= TAP <= 2, f"branch {n=} value {TAP=} is outside normal range 0.0 to 2.0"
+                assert -180 <= SHIFT <= +180, f"branch {n=} value {SHIFT=} is outside range -180 to +180"
+                assert BR_STATUS in [0,1], f"branch {n=} value {BR_STATUS=} is not 0 or 1"
+                assert -360 <= ANGMIN <= +360, f"branch {n=} value {ANGMIN=} is outside range -360 to +360"
+                assert -360 <= ANGMAX <= +360, f"branch {n=} value {ANGMAX=} is outside range -360 to +360"
+                assert ANGMIN <= ANGMAX, f"branch {n=} value {ANGMIN=} is greater than {ANGMAX=}"
 
             case["branch"].append([FBUS,TBUS,BR_R,BR_X,BR_B,RATE_A,RATE_B,RATE_C,TAP,SHIFT,BR_STATUS,ANGMIN,ANGMAX])
 
@@ -207,11 +222,11 @@ class PSSEraw:
                 print(f"WARNING: three-winding transformer {n} is not supported -- third winding ignored")
 
             fbus = bus_map[m[psse.transformer.I]]
-            tbus = bus_map[m[psse.transformer.J]]
+            tbus = bus_map[abs(m[psse.transformer.J])]
             Zbf = Zbase[fbus]
 
-            FBUS = fbus + 1
-            TBUS = tbus + 1
+            FBUS = round(fbus + 1)
+            TBUS = round(tbus + 1)
             BR_R = round(m[psse.transformer.R12] / Zbf,9)
             BR_X = round(m[psse.transformer.X12] / Zbf,9)
             BR_B = 0.0
@@ -220,9 +235,23 @@ class PSSEraw:
             RATE_C = m[psse.transformer.RATE13]
             RATIO = 0
             SHIFT = 0.0
-            BR_STATUS = m[psse.branch.STAT]
+            BR_STATUS = round(m[psse.transformer.STAT])
             ANGMIN = -360
             ANGMAX = +360
+
+            if not NOCHECK:
+                assert 0 < FBUS <= N, f"branch {n=} refers to invalid bus {FBUS=}"
+                assert 0 < TBUS <= N, f"branch {n=} refers to invalid bus {TBUS=}"
+                assert BR_R > 0, f"branch {n=} value {BR_R=} is not positive"
+                # negative BR_X is ok
+                assert BR_B >= 0, f"branch {n=} value {BR_B=} is not positive"
+                assert 0 <= RATE_A <= RATE_B <= RATE_C, f"branch {n=} rates {RATE_A=}, {RATE_B=}, {RATE_C=} are not ordered correctly"
+                assert 0 <= TAP <= 2, f"branch {n=} value {TAP=} is outside normal range 0.0 to 2.0"
+                assert -180 <= SHIFT <= +180, f"branch {n=} value {SHIFT=} is outside range -180 to +180"
+                assert BR_STATUS in [0,1], f"branch {n=} value {BR_STATUS=} is not 0 or 1"
+                assert -360 <= ANGMIN <= +360, f"branch {n=} value {ANGMIN=} is outside range -360 to +360"
+                assert -360 <= ANGMAX <= +360, f"branch {n=} value {ANGMAX=} is outside range -360 to +360"
+                assert ANGMIN <= ANGMAX, f"branch {n=} value {ANGMIN=} is greater than {ANGMAX=}"
 
             status = m[psse.transformer.STAT]
             case["branch"].append([FBUS,TBUS,BR_R,BR_X,BR_B,RATE_A,RATE_B,RATE_C,RATIO,SHIFT,BR_STATUS,ANGMIN,ANGMAX])
@@ -239,19 +268,28 @@ class PSSEraw:
             b = Bs[bus_i] if bus_i in Bs else 0.0
             vm = m[psse.bus.VM]
 
-            BUS_I = bus_map[bus_i] + 1
+            BUS_I = round(bus_map[bus_i] + 1)
             BUS_TYPE = m[psse.bus.BUSTYPE]
             PD = float(round(p[0]+(p[1]+p[2]*vm)*vm,1))
             QD = float(round(q[0]+(q[1]+q[2]*vm)*vm,1))
             GS = g
             BS = b
-            BUS_AREA = m[psse.bus.AREA]
+            BUS_AREA = round(m[psse.bus.AREA])
             VM = vm
             VA = m[psse.bus.VA]
             BASE_KV = m[psse.bus.BASEKV]
-            ZONE = m[psse.bus.ZONE]
+            ZONE = round(m[psse.bus.ZONE])
             VMAX = m[psse.bus.VMAX]
             VMIN = m[psse.bus.VMIN]
+
+            if not NOCHECK:
+                assert 0 < BUS_I <= N, f"bus {n=} value {BUS_I=} is invalid"
+                assert BUS_TYPE in [pp_bus.PQ,pp_bus.PV,pp_bus.REF,pp_bus.NONE], f"bus {n=} value {BUS_TYPE=} in invalid"
+                assert 0 <= GS, f"bus {n=} value {GS=} is negative"
+                assert 0 <= BS, f"bus {n=} value {BS=} is negative"
+                assert 0 < BUS_AREA, f"bus {n=} value {BUS_AREA=} is not positive"
+                assert 0.5 <= VM <= 1.5, f"bus {n=} value {VM=} is not between 0.5 and 1.5"
+                assert -90 < VA < 90, f"bus {n=} value {VA=} is not between -90 and 90"
 
             case["bus"].append([BUS_I,BUS_TYPE,PD,QD,GS,BS,BUS_AREA,VM,VA,BASE_KV,ZONE,VMAX,VMIN])
         
@@ -268,7 +306,7 @@ class PSSEraw:
 
             bus_i = bus_map[m[psse.gen.I]]
 
-            GEN_BUS = bus_i + 1
+            GEN_BUS = round(bus_i + 1)
             PG = m[psse.gen.PG]
             QG = m[psse.gen.QG]
             QMAX = m[psse.gen.QT]
@@ -290,6 +328,28 @@ class PSSEraw:
             RAMP_Q = 0.0
             APF = 0.0
 
+            if not NOCHECK:
+                assert 0 < GEN_BUS <= N, f"gen {n=} value {GEN_BUS=} is invalid"
+                assert QMIN <= QMAX, f"gen {n=} value {QMIN=} greater than {QMAX=}"
+                assert 0.5 <= VG <= 1.5, f"gen {n=} value {VG=} is not between 0.5 and 1.5"
+                assert 0 <= MBASE, f"gen {n=} value {MBASE=} is negative"
+                assert GEN_STATUS in [0,1], f"gen {n=} is not 0 or 1"
+                assert 0 <= PC1, f"gen {n=} value {PC1=} is invalid"
+                assert 0 <= PC2, f"gen {n=} value {PC2=} is invalid"
+                assert PC1 <= PC2, f"gen {n=} value {PC1=} greater than {PC2=}"
+                assert 0 <= QC1MIN, f"gen {n=} value {QC1MIN=} is invalid"
+                assert 0 <= QC1MAX, f"gen {n=} value {QC1MAX=} is invalid"
+                assert QC1MIN <= QC1MAX, f"gen {n=} value {QC1MIN=} greater than {QC1MAX=}"
+                assert 0 <= QC2MIN, f"gen {n=} value {QC2MIN=} is invalid"
+                assert 0 <= QC2MAX, f"gen {n=} value {QC2MAX=} is invalid"
+                assert QC2MIN <= QC2MAX, f"gen {n=} value {QC2MIN=} greater than {QC2MAX=}"
+                assert 0 <= RAMP_AGC, f"gen {n=} value {RAMP_AGC=} is invalid"
+                assert 0 <= RAMP_10, f"gen {n=} value {RAMP_10=} is invalid"
+                assert 0 <= RAMP_30, f"gen {n=} value {RAMP_30=} is invalid"
+                assert 0 <= RAMP_Q, f"gen {n=} value {RAMP_Q=} is invalid"
+                assert 0 <= APF, f"gen {n=} value {APF=} is invalid"
+
+
             case["gen"].append([GEN_BUS,PG,QG,QMAX,QMIN,VG,MBASE,GEN_STATUS,PMAX,PMIN,PC1,PC2,QC1MIN,QC1MAX,QC2MIN,QC2MAX,RAMP_AGC,RAMP_10,RAMP_30,RAMP_Q,APF])
             genname = f"{self.section['BUS DATA'][bus_i][psse.bus.NAME]}_{m[psse.gen.ID]}"
 
@@ -301,7 +361,6 @@ class PSSEraw:
                 self.gencost[genname] = p                
             d = [float(x) for x in p[3].split(",")]
             gencost = [p[0],p[1],p[2],len(d)] + d
-            print(gencost)
             case["gencost"].append(gencost)
 
             if PG < 0 :
@@ -313,7 +372,7 @@ class PSSEraw:
         # dclines
         for n,m in enumerate(self.section["TWO-TERMINAL DC DATA"]):
 
-            raise RuntimeError("DC line imports not supported")
+            raise RuntimeError("DC line imports not supported yet")
 
             # case["dcline"].append(TODO)
             # case["dclinecost"].append([2,0,0,2,0,0,0])

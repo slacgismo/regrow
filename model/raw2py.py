@@ -16,12 +16,23 @@ import pandas as pd
 import pypower.idx_bus as pp_bus
 import pypower.idx_brch as pp_branch
 import pypower.idx_gen as pp_gen
+import pypower.idx_gen as pp_gencost
 import pypower.idx_dcline as pp_dcline
+import pypower.idx_dcline as pp_dclinecost
 from pypower.runpf import runpf
 from pypower.runopf import runopf
 
 import psse
 
+pp_index = {
+        "bus" : ['BUS_I','BUS_TYPE','PD','QD','GS','BS','BUS_AREA','VM','VA','BASE_KV','ZONE','VMAX','VMIN','LAM_P','LAM_Q','MU_VMAX','MU_VMIN'],
+        "branch": ['F_BUS','T_BUS','BR_R','BR_X','BR_B','RATE_A','RATE_B','RATE_C','TAP','SHIFT','BR_STATUS','ANGMIN','ANGMAX','PF','QF','PT','QT','MU_SF','MU_ST','MU_ANGMIN','MU_ANGMAX'],
+        "gen": ['GEN_BUS','PG','QG','QMAX','QMIN','VG','MBASE','GEN_STATUS','PMAX','MIN','PC1','PC2','QC1MIN','QC1MAX','QC2MIN','QC2MAX','RAMP_AGC','RAMP_10','RAMP_30','RAMP_Q','APF','MU_PMAX','MU_PMIN','MU_QMAX','MU_QMIN'],
+        "gencost": ['MODEL','STARTUP','SHUTDOWN','NCOST','COST'],
+        "dcline": ['F_BUS','T_BUS','BR_STATUS','PF','PT','QF','QT','VF','VT','PMIN','PMAX','QMINF','QMAXF','QMINT','QMAXT','LOSS0','LOSS1'],
+        "dclinecost": ['MODEL','STARTUP','SHUTDOWN','NCOST','COST'],
+    }
+ 
 class PSSEraw:
 
     def __init__(self,filename):
@@ -128,7 +139,7 @@ class PSSEraw:
             if sum(Pd[bus_i]) < 0:
                 print(f"WARNING: load {bus_map[bus_i]+1} ({m[psse.bus.I]}) power is negative {Pd[bus_i]=}",flush=True,file=sys.stderr)
 
-        print("LOAD:",round(sum([abs(complex(sum(x),sum(y))) for x,y in zip(Pd.values(),Qd.values())]),1),"MVA")
+        # print("LOAD:",round(sum([abs(complex(sum(x),sum(y))) for x,y in zip(Pd.values(),Qd.values())]),1),"MVA")
         done["LOAD DATA"] = "ok"
 
         # fixed shunts
@@ -288,7 +299,7 @@ class PSSEraw:
             if PG < 0 :
                 print(f"WARNING: generator {GEN_BUS} ({m[psse.gen.I]}) power is negative",flush=True,file=sys.stderr)
 
-        print("GENS:",sum([abs(complex(x[2],x[3])) for x in case["gen"]]),"MVA")
+        # print("GENS:",sum([abs(complex(x[2],x[3])) for x in case["gen"]]),"MVA")
         done["GENERATOR DATA"] = "ok"
 
         # dclines
@@ -318,8 +329,10 @@ class PSSEraw:
                     data = data.tolist() # change np.array to list
                 if isinstance(data,list):
                     print(f"""    "{tag}": array([""",file=fh)
+                    if tag in pp_index:
+                        print("      #",",".join([f"{x:>10.10s}" for x in pp_index[tag]]),file=fh)
                     for row in data:
-                        print(f"""        {row},""",file=fh)
+                        print(f"""      [ {','.join([f'{x:10g}' for x in row])}],""",file=fh)
                     print("    ]),",file=fh)
                 else:
                     print(f"""    "{tag}": {repr(data)},""",file=fh)
@@ -353,9 +366,7 @@ class PSSEraw:
         print("\n"+self.name,"Validation",file=sys.stderr)
         print("-"*len(self.name) + "-" + "-"*len("validation"),file=sys.stderr)
 
-        # check generators and costs
-        assert len(self.case["gen"]) == len(self.case["gencost"]), "gen and gencost lengths differ"
-
+        # get network data
         nodes = self.case["bus"]
         lines = self.case["branch"]
         N = len(nodes)
@@ -385,25 +396,36 @@ class PSSEraw:
 
         # check generation
         total_gen = 0
-        for m in self.case["gen"]:
+        for n,m in enumerate(self.case["gen"]):
             total_gen += complex(m[pp_gen.PG],m[pp_gen.QG])
-        print(f"Total generation: {abs(total_gen):.1f} MVA")
+            assert m[pp_gen.PMIN] <= m[pp_gen.PG] <= m[pp_gen.PMAX], f"generator {n} real power out of range"
+            assert m[pp_gen.QMIN] <= m[pp_gen.QG] <= m[pp_gen.QMAX], f"generator {n} reactive power out of range"
+        print(f"Total generation: {abs(total_gen):.1f} MVA",file=sys.stderr)
 
         # check load
         total_load = 0
         for m in self.case["bus"]:
             total_load += complex(m[pp_bus.PD],m[pp_bus.QD])
-        print(f"Total load: {abs(total_load):.1f} MVA")
+        print(f"Total load: {abs(total_load):.1f} MVA",file=sys.stderr)
 
         if abs(total_gen) < abs(total_load):
             print("WARNING: insufficient generation",file=sys.stderr)
         else:
             print("Power balance is ok",file=sys.stderr)
 
+        # check costs
         if "gencost" in self.case:
             assert len(self.case["gen"]) == len(self.case["gencost"]), "gencost does not match gen size"
         if "dcline" in self.case:
             assert len(self.case["dcline"]) == len(self.case["dclinecost"]), "dclinecost does not match dcline size"
+
+        # verify that case file saved correctly
+        module = importlib.import_module(model.name)
+        case = getattr(module,model.name)()
+        for tag,data in case.items():
+            if type(data) is np.array:
+                assert (case[tag] == self.case[tag]).all(), "case file does not match model"
+    
 
 
 if __name__ == "__main__":
@@ -412,6 +434,10 @@ if __name__ == "__main__":
 
     done = model.to_pypower()
 
+    # module = importlib.import_module(model.name)
+    # case = getattr(module,model.name)()
+    # assert case == self.case, "case file does not match model"
+    
     model.validate()
 
     print(f"\n{model.name} Summary")
@@ -421,12 +447,10 @@ if __name__ == "__main__":
             print(f"  {name.title()}{'.'*(30-len(name))} {len(data):4d} item{'s' if len(data)>1 else ' '} ({done[name] if name in done else 'ignored'})")
 
     # run solvers
-    module = importlib.import_module(model.name)
-    case = getattr(module,model.name)()
     print(f"\n{model.name} Check runopf")
     print(f"{'-'*len(model.name)}-------------",flush=True)
     try:
-        result = runopf(case)
+        result = runopf(model.case)
     except:
         e_type,e_value,e_trace = sys.exc_info()
         print(f"ERROR [raw2py]: runopf failed, {e_type.__name__} {e_value}")
@@ -436,7 +460,7 @@ if __name__ == "__main__":
     print(f"\n{model.name} Check runpf")
     print(f"{'-'*len(model.name)}------------",flush=True)
     try:
-        result,ok = runpf(case)
+        result,ok = runpf(model.case)
     except:
         e_type,e_value,e_trace = sys.exc_info()
         print(f"ERROR [raw2py]: runpf failed, {e_type.__name__} {e_value}")

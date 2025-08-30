@@ -446,12 +446,15 @@ if __name__ == "__main__":
         if len(data) > 0:
             print(f"  {name.title()}{'.'*(30-len(name))} {len(data):4d} item{'s' if len(data)>1 else ' '} ({done[name] if name in done else 'ignored'})")
 
-    # run solvers
+    failed = 0
+
+    # test solvers
     print(f"\n{model.name} Check runopf")
     print(f"{'-'*len(model.name)}-------------",flush=True)
     try:
         result = runopf(model.case)
     except:
+        failed += 1
         e_type,e_value,e_trace = sys.exc_info()
         print(f"ERROR [raw2py]: runopf failed, {e_type.__name__} {e_value}")
         if DEBUG:
@@ -463,9 +466,11 @@ if __name__ == "__main__":
         result,ok = runpf(model.case)
     except:
         e_type,e_value,e_trace = sys.exc_info()
+        failed += 1
         print(f"ERROR [raw2py]: runpf failed, {e_type.__name__} {e_value}")
         if DEBUG:
             raise
     if not ok:
         print(f"ERROR [raw2py]: runpf did not converge")
 
+    exit(failed)

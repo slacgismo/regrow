@@ -143,7 +143,49 @@ def _(R, cp, l, np):
 
         problem = cp.Problem(cp.Minimize(objective), constraints)
         return problem
-    return (make_one_shot,)
+
+    def make_ideal_shot(l, R, G):
+        T = R.shape[0]
+        param_Q = cp.Parameter(nonneg=True, name='Q')
+        param_alpha = cp.Parameter(nonneg=True, name='alpha')
+        param_beta = cp.Parameter(nonneg=True, name='beta')
+        param_gamma = cp.Parameter(nonneg=True, name='gamma')
+        param_lambda = cp.Parameter(nonneg=True, name='lambda')
+        param_sparse = cp.Parameter(nonneg=True, name='sparse')
+
+        # param_eta_storage = cp.Parameter(nonneg=True, name='eta_storage')
+        # param_eta_charge = cp.Parameter(nonneg=True, name='eta_charge')
+        # param_eta_discharge = cp.Parameter(nonneg=True, name='eta_discharge')
+
+        B = cp.Variable(nonneg=True, name='B')
+        # b_charge = cp.Variable(T, nonneg=True, name = 'b_charge')
+        # b_discharge = cp.Variable(T, nonneg=True, name = 'b_discharge')
+        b = cp.Variable(T, nonneg=False, name='b')
+        q = cp.Variable(T+1, nonneg=True, name='q')
+        r = cp.Variable(T, nonneg=True, name='r')
+        u = cp.Variable(T, nonneg=True, name='u')
+        s = cp.Variable(T, nonneg=True, name='s')
+        c = cp.Variable(T, nonneg=True, name='c')
+        constraints = [
+            c == R - r,
+            r <= R,
+            q <= param_Q,
+            u <= G,
+            b <= B,
+            -b <= B,
+            q[1:]== q[:-1] -b,
+            s <= l,
+            b + r + u == l - s,
+            B == 0.33*param_Q,
+            q[0] == 1.0*param_Q,
+
+        ]
+        objective = 1/T*(param_gamma*cp.sum(c)+param_lambda*cp.sum(s)+
+                param_alpha*cp.sum(u)+param_beta*cp.sum_squares(u))
+
+        problem = cp.Problem(cp.Minimize(objective), constraints)
+        return problem
+    return make_ideal_shot, make_one_shot
 
 
 @app.cell
@@ -214,10 +256,12 @@ def _(cp, np, one_shot):
 
 @app.cell
 def _(np):
-    def naive_control_utility_priority(l, R, G, Q):
+    def naive_control_utility_priority(l, R, G, Q, eta_storage, eta_charge, eta_discharge):
         T = R.shape[0]
         B = Q / 3
         b = np.zeros(T)
+        b_charge = np.zeros(T)
+        b_discharge= np.zeros(T)
         q = np.zeros(T+1)
         q[0] = 0.5 * Q
         u = np.zeros(T)
@@ -237,14 +281,19 @@ def _(np):
                 s[_ix] = 0
                 u[_ix] = 0
                 b[_ix] = max(max(net_load, -(Q - q[_ix])), -B)
+                b_charge[_ix] = - b[_ix]
                 c[_ix] = b[_ix] - net_load
             else:
                 # less renewable than load
                 c[_ix] = 0
                 u[_ix] = min(net_load, G)
-                b[_ix] = min(min(net_load - u[_ix], q[_ix]), B)
+                b[_ix]  = min(min(net_load - u[_ix], q[_ix]), B)
+                b_discharge[_ix] = b[_ix]
                 s[_ix] = net_load - u[_ix] - b[_ix]
-            q[_ix+1] = q[_ix] - b[_ix]
+            # q[_ix+1] = q[_ix] - b[_ix]
+            q[_ix+1] = (q[_ix]*eta_storage - 
+                        b_discharge[_ix]*eta_discharge +
+                        b_charge[_ix]/eta_charge)
         return_dict = {
             'q': q,
             'b': b,
@@ -253,15 +302,17 @@ def _(np):
             's': s
         }
         return return_dict
-    return
+    return (naive_control_utility_priority,)
 
 
 @app.cell
 def _(np):
-    def naive_control_battery_priority(l, R, G, Q):
+    def naive_control_battery_priority(l, R, G, Q, eta_storage, eta_charge, eta_discharge):
         T = R.shape[0]
         B = Q / 3
         b = np.zeros(T)
+        b_charge = np.zeros(T)
+        b_discharge= np.zeros(T)
         q = np.zeros(T+1)
         q[0] = 0.5 * Q
         u = np.zeros(T)
@@ -281,14 +332,18 @@ def _(np):
                 s[_ix] = 0
                 u[_ix] = 0
                 b[_ix] = max(max(net_load, -(Q - q[_ix])), -B)
+                b_charge[_ix] = -b[_ix]
                 c[_ix] = b[_ix] - net_load
             else:
                 # less renewable than load
                 c[_ix] = 0
                 b[_ix] = min(min(net_load, q[_ix]), B)
+                b_discharge[_ix] = b[_ix]
                 u[_ix] = min(net_load - b[_ix], G)
                 s[_ix] = net_load - u[_ix] - b[_ix]
-            q[_ix+1] = q[_ix] - b[_ix]
+            q[_ix+1] = (q[_ix]*eta_storage - 
+                b_discharge[_ix]*eta_discharge +
+                b_charge[_ix]/eta_charge)
         return_dict = {
             'q': q,
             'b': b,
@@ -297,14 +352,7 @@ def _(np):
             's': s
         }
         return return_dict
-    return
-
-
-@app.cell
-def _(np):
-    car = np.array([-2,3,4,0])
-    car* (car >= 1e-5)
-    return
+    return (naive_control_battery_priority,)
 
 
 @app.cell
@@ -338,10 +386,11 @@ def _(mo):
 
 
 @app.cell
-def _(G, R, l, make_one_shot, make_problem, mo):
+def _(G, R, l, make_ideal_shot, make_one_shot, make_problem, mo):
     mo.stop(not make_problem.value)
 
     problem = make_one_shot(l, R, G)
+    ideal_problem = make_ideal_shot(l, R, G)
     # naive_problem = make_naive_control(l, R, G)
     return (problem,)
 
@@ -422,7 +471,7 @@ def _(
     return (form,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(R, l, np, plot_length, plot_start, plt, shortfall, tidx):
     _fig, _ax = plt.subplots(nrows=3, sharex=True, figsize=(10, 5))
     _s = np.s_[int(plot_start.value):int(plot_start.value+plot_length.value)]
@@ -440,7 +489,7 @@ def _(R, l, np, plot_length, plot_start, plt, shortfall, tidx):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(l, mo):
     ### original view
     # plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=14069)
@@ -451,23 +500,25 @@ def _(l, mo):
     ## wide view
     plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=13824)
     plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=26*24, full_width=True)
-    show_batt_power_bounds = mo.ui.switch(label='show battery power bounds')
-    show_cap_contrained = mo.ui.switch(label='show active capacity limits', value=True)
-    show_battery_priority = mo.ui.switch(label='show battery priority controller')
-    show_utility_priority = mo.ui.switch(label='show utility priority controller')
+    show_batt_power_bounds = mo.ui.switch(label='battery power bounds')
+    show_cap_contrained = mo.ui.switch(label='capacity limits', value=True)
+    show_battery_priority = mo.ui.switch(label='battery priority')
+    show_utility_priority = mo.ui.switch(label='utility priority')
+    show_ideal = mo.ui.switch(label = 'ideal')
     mo.output.append(mo.hstack([plot_start,plot_length]))
-    mo.output.append(mo.hstack([show_batt_power_bounds, show_cap_contrained, show_battery_priority, show_utility_priority]))
+    mo.output.append(mo.hstack([show_batt_power_bounds, show_cap_contrained, show_battery_priority, show_utility_priority, show_ideal]))
     return (
         plot_length,
         plot_start,
         show_batt_power_bounds,
         show_battery_priority,
         show_cap_contrained,
+        show_ideal,
         show_utility_priority,
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(form, problem):
     q = problem.var_dict['q'].value 
     b_charge = problem.var_dict['b_charge'].value 
@@ -505,6 +556,7 @@ def _(
     both,
     form,
     naive_bp,
+    naive_ideal,
     naive_up,
     np,
     plot_length,
@@ -514,6 +566,7 @@ def _(
     show_batt_power_bounds,
     show_battery_priority,
     show_cap_contrained,
+    show_ideal,
     show_utility_priority,
     tidx,
 ):
@@ -579,6 +632,18 @@ def _(
         ax4_title += f', {np.sum(naive_up['s'][_s]):.2f}'
     _ax[3].set_title(ax3_title + ' GWh')
     _ax[4].set_title(ax4_title + ' GWh')
+
+    if show_ideal.value: 
+        _ax[0].plot(tidx[_s], naive_ideal.var_dict['q'].value[_s], linewidth=0.75)
+        _ax[1].plot(tidx[_s], naive_ideal.var_dict['b'].value[_s], linewidth=0.75)
+        _ax[2].plot(tidx[_s], naive_ideal.var_dict['u'].value[_s], linewidth=0.75)
+        _ax[3].plot(tidx[_s], naive_ideal.var_dict['c'].value[_s], linewidth=0.75)
+        _ax[4].plot(tidx[_s], naive_ideal.var_dict['s'].value[_s], linewidth=0.75)
+        ax3_title += f', {np.sum(naive_ideal.var_dict['c'].value[_s]):.2f}'
+        ax4_title += f', {np.sum(naive_ideal.var_dict['s'].value[_s]):.2f}'
+    _ax[3].set_title(ax3_title + ' GWh')
+    _ax[4].set_title(ax4_title + ' GWh')
+
 
     plt.tight_layout()
     _fig
@@ -650,52 +715,66 @@ def _(form):
 
 
 @app.cell
-def _(form, problem):
+def _(
+    G,
+    R,
+    form,
+    l,
+    make_ideal_shot,
+    naive_control_battery_priority,
+    naive_control_utility_priority,
+    problem,
+):
+    naive_ideal = make_ideal_shot(l,R,G)
+    naive_ideal.param_dict['alpha'].value = form.value['alpha']
+    naive_ideal.param_dict['beta'].value = form.value['beta']
+    naive_ideal.param_dict['gamma'].value = form.value['gamma']
+    naive_ideal.param_dict['lambda'].value = form.value['lambd']
+    naive_ideal.param_dict['Q'].value = form.value['Q']
+
     problem.param_dict['alpha'].value = form.value['alpha']
     problem.param_dict['beta'].value = form.value['beta']
     problem.param_dict['gamma'].value = form.value['gamma']
     problem.param_dict['lambda'].value = form.value['lambd']
-    problem.param_dict['eta_storage'].value = 1 - 10**form.value['eta_storage']
+    problem.param_dict['eta_storage'].value = (
+        1 - 10**form.value['eta_storage'])
     problem.param_dict['eta_charge'].value = form.value['eta_charge']
-    problem.param_dict['eta_discharge'].value = form.value['eta_discharge']
+    problem.param_dict['eta_discharge'].value =(
+        form.value['eta_discharge'])
     problem.param_dict['sparse'].value = 10**form.value['sparse']
     problem.param_dict['Q'].value = form.value['Q']
+
     am_solving = True
+
     problem.solve(verbose=False, solver='CLARABEL')
-    # naive_up = naive_control_utility_priority(l, R, G, form.value['Q'])
-    # naive_bp = naive_control_battery_priority(l, R, G, form.value['Q'])
+    naive_ideal.solve(verbose=False, solver='CLARABEL')
+
+    naive_up = naive_control_utility_priority(l, R, G, form.value['Q'], 
+                problem.param_dict['eta_storage'].value, 
+                problem.param_dict['eta_charge'].value,
+                problem.param_dict['eta_discharge'].value )
+    naive_bp = naive_control_battery_priority(l, R, G, form.value['Q'], 
+                problem.param_dict['eta_storage'].value, 
+                problem.param_dict['eta_charge'].value,
+                problem.param_dict['eta_discharge'].value )
     print(' ')
-    return (am_solving,)
+    return am_solving, naive_bp, naive_ideal, naive_up
 
 
 @app.cell
-def _():
-    .85 /(.98*.95)
+def _(naive_bp):
+    naive_bp
+    return
+
+
+@app.cell
+def _(cp, naive_ideal):
+    naive_ideal.solve(solver=cp.CLARABEL, verbose=False)
     return
 
 
 @app.cell
 def _():
-    #.99 = x^24*30
-    .98**(1/720)
-    return
-
-
-@app.cell
-def _():
-    1-3e-5
-    return
-
-
-@app.cell
-def _():
-    .85/(.98*.97)
-    return
-
-
-@app.cell
-def _():
-    #.99997 eta store, .9 discharge, .97 charge
     return
 
 

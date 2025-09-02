@@ -140,7 +140,8 @@ class PSSEraw:
             Qd[bus_i] += [m[psse.load.QL],m[psse.load.IQ],m[psse.load.YQ]] if m[psse.load.STAT] else [0.0,0.0,0.0]
 
             if sum(Pd[bus_i]) < 0:
-                print(f"WARNING: load {bus_map[bus_i]+1} ({m[psse.bus.I]}) power is negative {Pd[bus_i]=}",flush=True,file=sys.stderr)
+                BUS_I = bus_map[bus_i]+1
+                print(f"WARNING: load {n=} ({bus_name[BUS_I]}#{bus_i}) power is negative Pd={dict(zip('ZIP',Pd[bus_i]))}",flush=True,file=sys.stderr)
 
         # print("LOAD:",round(sum([abs(complex(sum(x),sum(y))) for x,y in zip(Pd.values(),Qd.values())]),1),"MVA")
         done["LOAD DATA"] = "ok"
@@ -211,7 +212,7 @@ class PSSEraw:
                 Gs[tbus] += gj * self.mvabase 
                 Bs[tbus] += bj * self.mvabase 
             else:
-                print(f"WARNING: branch {n} not in service, shunts not included in busses {fbus} and {tbus}",file=sys.stderr)
+                print(f"WARNING: branch {n} (from {bus_name[FBUS]}#{m[psse.branch.I]} to {bus_name[TBUS]}#{m[psse.branch.J]}) not in service ({BR_STATUS=}), shunts not included in busses {fbus} and {tbus}",file=sys.stderr)
         done["BRANCH DATA"] = "ok"
 
         # transformers
@@ -349,6 +350,11 @@ class PSSEraw:
                 assert 0 <= RAMP_Q, f"gen {n=} value {RAMP_Q=} is invalid"
                 assert 0 <= APF, f"gen {n=} value {APF=} is invalid"
 
+            if PG < 0 :
+                print(f"WARNING: generator {n=} ({bus_name[GEN_BUS]}#{m[psse.gen.I]}) value {PG=} is negative",flush=True,file=sys.stderr)
+
+            if PMIN < 0:
+                print(f"WARNING: generator {n=} ({bus_name[GEN_BUS]}#{m[psse.gen.I]}) value {PMIN=} is negative",file=sys.stderr)
 
             case["gen"].append([GEN_BUS,PG,QG,QMAX,QMIN,VG,MBASE,GEN_STATUS,PMAX,PMIN,PC1,PC2,QC1MIN,QC1MAX,QC2MIN,QC2MAX,RAMP_AGC,RAMP_10,RAMP_30,RAMP_Q,APF])
             genname = f"{self.section['BUS DATA'][bus_i][psse.bus.NAME]}_{m[psse.gen.ID]}"
@@ -362,9 +368,6 @@ class PSSEraw:
             d = [float(x) for x in p[3].split(",")]
             gencost = [p[0],p[1],p[2],len(d)] + d
             case["gencost"].append(gencost)
-
-            if PG < 0 :
-                print(f"WARNING: generator {GEN_BUS} ({m[psse.gen.I]}) power is negative",flush=True,file=sys.stderr)
 
         # print("GENS:",sum([abs(complex(x[2],x[3])) for x in case["gen"]]),"MVA")
         done["GENERATOR DATA"] = "ok"
@@ -494,6 +497,7 @@ class PSSEraw:
             if type(data) is np.array:
                 assert (case[tag] == self.case[tag]).all(), "case file does not match model"
     
+        print("Validation ok",file=sys.stderr,flush=True)
 
 
 if __name__ == "__main__":

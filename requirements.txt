@@ -1,8 +1,12 @@
-pandas
-marimo
 cvxpy
-seaborn
-pvlib
 geojson
-scipy
+marimo
 matplotlib
+numpy
+openpyxl
+pandas
+pvlib
+scipy
+seaborn
+spcqe
+statsmodels

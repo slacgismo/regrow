@@ -498,28 +498,29 @@ def _(l, mo):
     # plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=14069+24*4.3)
     # plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=3.5*24, full_width=True)
     ## wide view
-    plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start', full_width=True, value=13824)
-    plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label='plot length', value=26*24, full_width=True)
+    plot_start = mo.ui.slider(start=0, stop=len(l), label='plot start',full_width=True, value=13824)
+    plot_length = mo.ui.number(start=0, stop=len(l), step=1, label='plot length', value=26*24)
     show_batt_power_bounds = mo.ui.switch(label='battery power bounds')
-    show_cap_contrained = mo.ui.switch(label='capacity limits', value=True)
+    show_cap_constrained = mo.ui.switch(label='capacity limits', value=True)
     show_battery_priority = mo.ui.switch(label='battery priority')
     show_utility_priority = mo.ui.switch(label='utility priority')
     show_ideal = mo.ui.switch(label = 'ideal')
     mo.output.append(mo.hstack([plot_start,plot_length]))
-    mo.output.append(mo.hstack([show_batt_power_bounds, show_cap_contrained, show_battery_priority, show_utility_priority, show_ideal]))
+    mo.output.append(mo.hstack([show_batt_power_bounds, show_cap_constrained, show_battery_priority, show_utility_priority, show_ideal]))
     return (
         plot_length,
         plot_start,
         show_batt_power_bounds,
         show_battery_priority,
-        show_cap_contrained,
+        show_cap_constrained,
         show_ideal,
         show_utility_priority,
     )
 
 
 @app.cell(hide_code=True)
-def _(form, problem):
+def _(am_solving, form, problem):
+    am_solving
     q = problem.var_dict['q'].value 
     b_charge = problem.var_dict['b_charge'].value 
     b_discharge = problem.var_dict['b_discharge'].value
@@ -533,24 +534,54 @@ def _(form, problem):
 
 
 @app.cell(hide_code=True)
-def _(b_charge, b_discharge, np, plt, problem):
-    is_chrg = ~np.isclose(b_charge,0, atol = 1e-5)
-    is_dischrg  = ~np.isclose(b_discharge,0, atol = 1e-5)
-    both = np.where(np.logical_and(is_chrg, is_dischrg))
+def _(
+    b_charge,
+    b_discharge,
+    form,
+    np,
+    plot_length,
+    plot_start,
+    plt,
+    problem,
+    show_cap_constrained,
+    tidx,
+):
+    _s = np.s_[int(plot_start.value):int(plot_start.value+plot_length.value)]
+    _charged = np.isclose(
+        problem.var_dict['q'].value[_s], form.value['Q'], atol=1e-2)
+    _discharged = np.isclose(
+        problem.var_dict['q'].value[_s], 0, atol=1e-2)
+    charging = ~np.isclose(b_charge,0, atol = 1e-5)
+    discharging  = ~np.isclose(b_discharge,0, atol = 1e-5)
+    both = np.where(np.logical_and(charging, discharging))
     print(f'charge interference locations: \n{both}')
-    # print(f'simultaneous charge and discharge times (6 simulated years, one per battery size): {len(both[0])}')
-    # arr_both = np.array([both[0], both[1]])
-    # both_qs = {}
-    # for nq in range(6):
-    #    both_qs[caps[nq]]= np.sum(arr_both[0,:]==nq)
+    disp_start, disp_end = ( plot_start.value,
+        plot_start.value+plot_length.value)
     plt.figure(figsize=(12,1))
-    plt.vlines(both,0,1)
-    plt.title(f'Simultaneous Charging/Discharging ({len(both[0])}) sparsity weight = {problem.param_dict['sparse'].value}')
-    plt.xlabel('hour')
+    both_sub = np.array(
+        [i for i in both[0] if i<disp_end and i>=disp_start])
+    if len(both_sub)>0:
+        plt.scatter(tidx.values[both_sub],
+                    np.zeros_like(tidx[both_sub]).astype(int), 
+                    color='green')
+    if show_cap_constrained.value:
+        plt.plot(
+            tidx[_s][_charged].values, 
+            np.ones_like(tidx[_s][_charged]).astype(int), 
+            ls='none', marker='.', color='blue')
+        plt.plot(
+            tidx[_s][_discharged].values, 
+            -np.ones_like(tidx[_s][_discharged]).astype(int), 
+            ls='none', marker='.', color='orange')
+    plt.title(f'''Charging Interference ({len(both[0])}
+        /{len(tidx)} events, log10 sparsity weight ={
+        np.log10(problem.param_dict['sparse'].value):.2f} )''')
+    plt.yticks(labels=['SOC = 0', 'interfere', 'SOC = Q'], ticks=[-1,0,1])
+    plt.show()
     return (both,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(
     am_solving,
     both,
@@ -565,49 +596,63 @@ def _(
     problem,
     show_batt_power_bounds,
     show_battery_priority,
-    show_cap_contrained,
+    show_cap_constrained,
     show_ideal,
     show_utility_priority,
     tidx,
 ):
     am_solving
-    _s = np.s_[int(plot_start.value):int(plot_start.value+plot_length.value)]
+    _s = np.s_[int(plot_start.value):
+        int(plot_start.value+plot_length.value)]
     _fig, _ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
-    _charged = np.isclose(problem.var_dict['q'].value[_s], form.value['Q'], atol=1e-2)
-    _discharged = np.isclose(problem.var_dict['q'].value[_s], 0, atol=1e-2)
+    _charged = np.isclose(
+        problem.var_dict['q'].value[_s], form.value['Q'], atol=1e-2)
+    _discharged = np.isclose(
+        problem.var_dict['q'].value[_s], 0, atol=1e-2)
     _ax[0].plot(tidx[_s], problem.var_dict['q'].value[_s])
 
-    if show_cap_contrained.value:
-        _ax[0].plot(tidx[_s][_charged], problem.var_dict['q'].value[_s][_charged], ls='none', marker='.', color='blue')
-        _ax[0].plot(tidx[_s][_discharged], problem.var_dict['q'].value[_s][_discharged], ls='none', marker='.', color='orange')
-    _ax[0].axhline(0, color='red', ls='--', linewidth=0.5)
-    _ax[0].axhline(form.value['Q'], color='red', ls='--', linewidth=0.5)
-    _ax[0].axhline(0.5 * form.value['Q'], color='orange', ls=':', linewidth=0.5)
-    _ax[0].set_title(f'battery SOC,  max={problem.param_dict['Q'].value},  ')
+    if show_cap_constrained.value:
+        _ax[0].plot(
+            tidx[_s][_charged], 
+            problem.var_dict['q'].value[_s][_charged], 
+            ls='none', marker='.', color='blue')
+        _ax[0].plot(tidx[_s][_discharged], 
+            problem.var_dict['q'].value[_s][_discharged],
+            ls='none', marker='.', color='orange')
+
+    _ax[0].axhline(0.5 * form.value['Q'], 
+            color='orange', ls=':', linewidth=0.5)
+    _ax[0].set_title(
+        f'battery SOC,  max={problem.param_dict['Q'].value},  ')
     _ax[1].plot(tidx[_s], problem.var_dict['b'].value[_s])
 
     if show_batt_power_bounds.value:
-        _ax[1].axhline(problem.var_dict['B'].value, color='red', ls='--', linewidth=0.5)
-        _ax[1].axhline(-problem.var_dict['B'].value, color='red', ls='--', linewidth=0.5)
+        _ax[0].axhline(0, color='red', ls='--', linewidth=0.5)
+        _ax[0].axhline(form.value['Q'], color='red', ls='--', linewidth=0.5)
+        _ax[1].axhline(problem.var_dict['B'].value, 
+                       color='red', ls='--', linewidth=0.5)
+        _ax[1].axhline(-problem.var_dict['B'].value,
+                       color='red', ls='--', linewidth=0.5)
     _ax[1].axhline(0, color='orange', ls=':', linewidth=0.5)
-    _ax[1].set_title(f'battery power,  charging interferences ={len(both[0])},  sparsity weight = {problem.param_dict['sparse'].value}')
+    _ax[1].set_title(
+        f'battery power,  charging interferences ={len(both[0])},  log10 sparsity weight = {np.log10(problem.param_dict['sparse'].value):.2f}')
     _ax[2].plot(tidx[_s], problem.var_dict['u'].value[_s])
 
-    if show_cap_contrained.value:
+    if show_cap_constrained.value:
         _ax[2].plot(tidx[_s][_charged], problem.var_dict['u'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[2].plot(tidx[_s][_discharged], problem.var_dict['u'].value[_s][_discharged], ls='none', marker='.', color='orange')
     _ax[2].set_ylim(-0.1, 1.1)
     _ax[2].set_title('utility power')
     _ax[3].plot(tidx[_s], problem.var_dict['c'].value[_s])
 
-    if show_cap_contrained.value:
+    if show_cap_constrained.value:
         _ax[3].plot(tidx[_s][_charged], problem.var_dict['c'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[3].plot(tidx[_s][_discharged], problem.var_dict['c'].value[_s][_discharged], ls='none', marker='.', color='orange')
     # _ax[3].set_ylim(-0.1 * np.max(problem.var_dict['c'].value), 1.1*np.max(problem.var_dict['c'].value))
     ax3_title = f'curtailed renewable power, total = {np.sum(problem.var_dict['c'].value[_s]):.2f}'
     _ax[4].plot(tidx[_s], problem.var_dict['s'].value[_s])
 
-    if show_cap_contrained.value:
+    if show_cap_constrained.value:
         _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[4].plot(tidx[_s][_discharged], problem.var_dict['s'].value[_s][_discharged], ls='none', marker='.', color='orange')
     # _ax[4].set_ylim(-0.1 * np.max(problem.var_dict['s'].value), 1.1*np.max(problem.var_dict['s'].value))
@@ -639,8 +684,8 @@ def _(
         _ax[2].plot(tidx[_s], naive_ideal.var_dict['u'].value[_s], linewidth=0.75)
         _ax[3].plot(tidx[_s], naive_ideal.var_dict['c'].value[_s], linewidth=0.75)
         _ax[4].plot(tidx[_s], naive_ideal.var_dict['s'].value[_s], linewidth=0.75)
-        ax3_title += f', {np.sum(naive_ideal.var_dict['c'].value[_s]):.2f}'
-        ax4_title += f', {np.sum(naive_ideal.var_dict['s'].value[_s]):.2f}'
+        ax3_title += f', ideal = {np.sum(naive_ideal.var_dict['c'].value[_s]):.2f}'
+        ax4_title += f', ideal = {np.sum(naive_ideal.var_dict['s'].value[_s]):.2f}'
     _ax[3].set_title(ax3_title + ' GWh')
     _ax[4].set_title(ax4_title + ' GWh')
 
@@ -662,7 +707,7 @@ def _(
     plot_start,
     plt,
     problem,
-    show_cap_contrained,
+    show_cap_constrained,
     tidx,
 ):
     am_solving
@@ -673,12 +718,12 @@ def _(
     _fig, _ax = plt.subplots(nrows=2, sharex=True, figsize=(10, 3))
     _ax[0].plot(tidx[_s], lost_store[_s], linewidth=0.75)
     _ax[0].set_title(f'Lost Storage {np.sum(lost_store[_s] ):.2f} GWh,  '+    
-                     f'eta_store={problem.param_dict['eta_storage'].value}')
+                     f'log10(1-eta_store)={np.log10(1-problem.param_dict['eta_storage'].value):.2f}')
     _ax[1].plot(tidx[_s], lost_charge[_s]+lost_discharge[_s], linewidth=0.75)
     _ax[1].set_title(f'Lost Charge / Discharge {np.sum(lost_charge[_s]+lost_discharge[_s]):.2f} GWh,  '+
                     f'eta_charge={problem.param_dict['eta_charge'].value},  '+
                     f'eta_discharge={problem.param_dict['eta_discharge'].value}')
-    if show_cap_contrained.value:
+    if show_cap_constrained.value:
         _ax[0].plot(tidx[_s][_charged], lost_store[_s][_charged], ls='none', marker='.', color='blue')
         _ax[0].plot(tidx[_s][_discharged],lost_store[_s][_discharged], ls='none', marker='.', color='orange')
         _ax[1].plot(tidx[_s][_charged], (lost_charge[_s]+lost_discharge[_s])[_charged], ls='none', marker='.', color='blue')

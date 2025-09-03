@@ -185,7 +185,64 @@ def _(R, cp, l, np):
 
         problem = cp.Problem(cp.Minimize(objective), constraints)
         return problem
-    return make_ideal_shot, make_one_shot
+
+
+    def make_scheduled_shot(l, R, G, prev_b_charge, prev_b_discharge, ideal = False):
+        #prev charge and discharge should come from sparse solutions
+        T = R.shape[0]
+        param_Q = cp.Parameter(nonneg=True, name='Q')
+        param_alpha = cp.Parameter(nonneg=True, name='alpha')
+        param_beta = cp.Parameter(nonneg=True, name='beta')
+        param_gamma = cp.Parameter(nonneg=True, name='gamma')
+        param_lambda = cp.Parameter(nonneg=True, name='lambda')
+
+        param_eta_storage = cp.Parameter(nonneg=True, name='eta_storage')
+        param_eta_charge = cp.Parameter(nonneg=True, name='eta_charge')
+        param_eta_discharge = cp.Parameter(nonneg=True, name='eta_discharge')
+
+        # schedule for charge and discharge 
+        # charge_off = np.isclose(prev_b_charge,0, atol = 1e-5)
+        # discharge_off = np.isclose(prev_b_discharge,0, atol = 1e-5)
+        if ideal:
+            charge_on = (prev_b_discharge <= 0)
+            discharge_on = (prev_b_discharge > 0)
+        else: 
+            charge_on = (prev_b_discharge-prev_b_charge <= 0)
+            discharge_on = (prev_b_discharge-prev_b_charge > 0)
+        B = cp.Variable(nonneg=True, name='B')
+        b_charge = cp.Variable(T, nonneg=True, name = 'b_charge')
+        b_discharge = cp.Variable(T, nonneg=True, name = 'b_discharge')
+        b = cp.Variable(T, nonneg=False, name='b')
+        q = cp.Variable(T+1, nonneg=True, name='q')
+        r = cp.Variable(T, nonneg=True, name='r')
+        u = cp.Variable(T, nonneg=True, name='u')
+        s = cp.Variable(T, nonneg=True, name='s')
+        c = cp.Variable(T, nonneg=True, name='c')
+        constraints = [
+            c == R - r,
+            r <= R,
+            q <= param_Q,
+            u <= G,
+            b_charge <= B,
+            b_discharge <= B,
+            q[1:]== (param_eta_storage*q[:-1]+ 
+                -b_discharge/param_eta_discharge 
+                +b_charge*param_eta_charge),
+            s <= l,
+            b_discharge - b_charge + r + u == l - s,
+            B == 0.33*param_Q,
+            b == b_discharge - b_charge,
+            b_discharge[charge_on] == 0,
+            b_charge[discharge_on] ==0,
+            q[0] == 1.0*param_Q,
+
+        ]
+        objective = 1/T*(param_gamma*cp.sum(c)+param_lambda*cp.sum(s)+
+                         param_alpha*cp.sum(u)+param_beta*cp.sum_squares(u))
+
+        problem = cp.Problem(cp.Minimize(objective), constraints)
+        return problem
+    return make_ideal_shot, make_one_shot, make_scheduled_shot
 
 
 @app.cell
@@ -386,11 +443,11 @@ def _(mo):
 
 
 @app.cell
-def _(G, R, l, make_ideal_shot, make_one_shot, make_problem, mo):
+def _(G, R, l, make_one_shot, make_problem, mo):
     mo.stop(not make_problem.value)
 
     problem = make_one_shot(l, R, G)
-    ideal_problem = make_ideal_shot(l, R, G)
+    # ideal_problem = make_ideal_shot(l, R, G)
     # naive_problem = make_naive_control(l, R, G)
     return (problem,)
 
@@ -502,11 +559,15 @@ def _(l, mo):
     plot_length = mo.ui.number(start=0, stop=len(l), step=1, label='plot length', value=26*24)
     show_batt_power_bounds = mo.ui.switch(label='battery power bounds')
     show_cap_constrained = mo.ui.switch(label='capacity limits', value=True)
-    show_battery_priority = mo.ui.switch(label='battery priority')
-    show_utility_priority = mo.ui.switch(label='utility priority')
-    show_ideal = mo.ui.switch(label = 'ideal')
+    show_battery_priority = mo.ui.switch(label='show battery priority')
+    show_utility_priority = mo.ui.switch(label='show utility priority')
+    show_ideal = mo.ui.switch(label = 'show ideal')
+    show_scheduled = mo.ui.switch(label = 'show fixed schedule')
+
     mo.output.append(mo.hstack([plot_start,plot_length]))
-    mo.output.append(mo.hstack([show_batt_power_bounds, show_cap_constrained, show_battery_priority, show_utility_priority, show_ideal]))
+    mo.output.append(mo.hstack([show_batt_power_bounds, show_cap_constrained, show_battery_priority]))
+    mo.output.append(mo.hstack([show_utility_priority, show_ideal, show_scheduled]))
+
     return (
         plot_length,
         plot_start,
@@ -514,6 +575,7 @@ def _(l, mo):
         show_battery_priority,
         show_cap_constrained,
         show_ideal,
+        show_scheduled,
         show_utility_priority,
     )
 
@@ -543,6 +605,7 @@ def _(
     plot_start,
     plt,
     problem,
+    schedule_problem,
     show_cap_constrained,
     tidx,
 ):
@@ -555,6 +618,15 @@ def _(
     discharging  = ~np.isclose(b_discharge,0, atol = 1e-5)
     both = np.where(np.logical_and(charging, discharging))
     print(f'charge interference locations: \n{both}')
+
+    schedule_charging = ~np.isclose(
+        schedule_problem.var_dict['b_charge'].value,0, atol = 1e-5)
+    schedule_discharging = ~np.isclose(
+        schedule_problem.var_dict['b_discharge'].value,0, atol = 1e-5)
+    schedule_both = np.where(
+        np.logical_and(schedule_charging, schedule_discharging))
+    print(f'scheduled charge interference locations: \n{schedule_both}')
+
     disp_start, disp_end = ( plot_start.value,
         plot_start.value+plot_length.value)
     plt.figure(figsize=(12,1))
@@ -594,10 +666,12 @@ def _(
     plot_start,
     plt,
     problem,
+    schedule_problem,
     show_batt_power_bounds,
     show_battery_priority,
     show_cap_constrained,
     show_ideal,
+    show_scheduled,
     show_utility_priority,
     tidx,
 ):
@@ -649,14 +723,14 @@ def _(
         _ax[3].plot(tidx[_s][_charged], problem.var_dict['c'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[3].plot(tidx[_s][_discharged], problem.var_dict['c'].value[_s][_discharged], ls='none', marker='.', color='orange')
     # _ax[3].set_ylim(-0.1 * np.max(problem.var_dict['c'].value), 1.1*np.max(problem.var_dict['c'].value))
-    ax3_title = f'curtailed renewable power, total = {np.sum(problem.var_dict['c'].value[_s]):.2f}'
+    ax3_title = f'curtailed renewable power = {np.sum(problem.var_dict['c'].value[_s]):.2f}'
     _ax[4].plot(tidx[_s], problem.var_dict['s'].value[_s])
 
     if show_cap_constrained.value:
         _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[4].plot(tidx[_s][_discharged], problem.var_dict['s'].value[_s][_discharged], ls='none', marker='.', color='orange')
     # _ax[4].set_ylim(-0.1 * np.max(problem.var_dict['s'].value), 1.1*np.max(problem.var_dict['s'].value))
-    ax4_title = f'curtailed load, total = {np.sum(problem.var_dict['s'].value[_s]):.2f}'
+    ax4_title = f'curtailed load = {np.sum(problem.var_dict['s'].value[_s]):.2f}'
 
     if show_battery_priority.value:
         _ax[0].plot(tidx[_s], naive_bp['q'][_s], linewidth=0.75)
@@ -684,8 +758,19 @@ def _(
         _ax[2].plot(tidx[_s], naive_ideal.var_dict['u'].value[_s], linewidth=0.75)
         _ax[3].plot(tidx[_s], naive_ideal.var_dict['c'].value[_s], linewidth=0.75)
         _ax[4].plot(tidx[_s], naive_ideal.var_dict['s'].value[_s], linewidth=0.75)
-        ax3_title += f', ideal = {np.sum(naive_ideal.var_dict['c'].value[_s]):.2f}'
-        ax4_title += f', ideal = {np.sum(naive_ideal.var_dict['s'].value[_s]):.2f}'
+        ax3_title += f',   ideal = {np.sum(naive_ideal.var_dict['c'].value[_s]):.2f}'
+        ax4_title += f',   ideal = {np.sum(naive_ideal.var_dict['s'].value[_s]):.2f}'
+    _ax[3].set_title(ax3_title + ' GWh')
+    _ax[4].set_title(ax4_title + ' GWh')
+
+    if show_scheduled.value: 
+        _ax[0].plot(tidx[_s], schedule_problem.var_dict['q'].value[_s], linewidth=0.75)
+        _ax[1].plot(tidx[_s], schedule_problem.var_dict['b'].value[_s], linewidth=0.75)
+        _ax[2].plot(tidx[_s], schedule_problem.var_dict['u'].value[_s], linewidth=0.75)
+        _ax[3].plot(tidx[_s], schedule_problem.var_dict['c'].value[_s], linewidth=0.75)
+        _ax[4].plot(tidx[_s], schedule_problem.var_dict['s'].value[_s], linewidth=0.75)
+        ax3_title += f',   scheduled = {np.sum(schedule_problem.var_dict['c'].value[_s]):.2f}'
+        ax4_title += f',   scheduled = {np.sum(schedule_problem.var_dict['s'].value[_s]):.2f}'
     _ax[3].set_title(ax3_title + ' GWh')
     _ax[4].set_title(ax4_title + ' GWh')
 
@@ -766,6 +851,7 @@ def _(
     form,
     l,
     make_ideal_shot,
+    make_scheduled_shot,
     naive_control_battery_priority,
     naive_control_utility_priority,
     problem,
@@ -781,13 +867,14 @@ def _(
     problem.param_dict['beta'].value = form.value['beta']
     problem.param_dict['gamma'].value = form.value['gamma']
     problem.param_dict['lambda'].value = form.value['lambd']
+    problem.param_dict['Q'].value = form.value['Q']
     problem.param_dict['eta_storage'].value = (
         1 - 10**form.value['eta_storage'])
     problem.param_dict['eta_charge'].value = form.value['eta_charge']
     problem.param_dict['eta_discharge'].value =(
         form.value['eta_discharge'])
     problem.param_dict['sparse'].value = 10**form.value['sparse']
-    problem.param_dict['Q'].value = form.value['Q']
+
 
     am_solving = True
 
@@ -802,8 +889,25 @@ def _(
                 problem.param_dict['eta_storage'].value, 
                 problem.param_dict['eta_charge'].value,
                 problem.param_dict['eta_discharge'].value )
-    print(' ')
-    return am_solving, naive_bp, naive_ideal, naive_up
+    # print(' ')
+
+    schedule_problem = make_scheduled_shot(l,R,G, 
+                naive_ideal.var_dict['b'].value, 
+                naive_ideal.var_dict['b'].value, True)
+    schedule_problem .param_dict['alpha'].value = form.value['alpha']
+    schedule_problem .param_dict['beta'].value = form.value['beta']
+    schedule_problem .param_dict['gamma'].value = form.value['gamma']
+    schedule_problem .param_dict['lambda'].value = form.value['lambd']
+    schedule_problem .param_dict['Q'].value = form.value['Q']
+    schedule_problem.param_dict['eta_storage'].value = (
+        1 - 10**form.value['eta_storage'])
+    schedule_problem.param_dict['eta_charge'].value = form.value['eta_charge']
+    schedule_problem.param_dict['eta_discharge'].value =(
+        form.value['eta_discharge'])
+
+    schedule_problem.solve(verbose=False, solver='CLARABEL')
+
+    return am_solving, naive_bp, naive_ideal, naive_up, schedule_problem
 
 
 @app.cell

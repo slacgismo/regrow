@@ -557,27 +557,29 @@ def _(
     print(f'charge interference locations: \n{both}')
     disp_start, disp_end = ( plot_start.value,
         plot_start.value+plot_length.value)
-    plt.figure(figsize=(12,1))
+    # plt.figure(figsize=(12,1))
+    _fig, _ax = plt.subplots(nrows=1, sharex=True, figsize=(12, 1))
+
     both_sub = np.array(
         [i for i in both[0] if i<disp_end and i>=disp_start])
     if len(both_sub)>0:
-        plt.scatter(tidx.values[both_sub],
+        _ax.scatter(tidx.values[both_sub],
                     np.zeros_like(tidx[both_sub]).astype(int), 
-                    color='green')
+                    marker='.',color='green')
     if show_cap_constrained.value:
-        plt.plot(
+        _ax.plot(
             tidx[_s][_charged].values, 
             np.ones_like(tidx[_s][_charged]).astype(int), 
             ls='none', marker='.', color='blue')
-        plt.plot(
+        _ax.plot(
             tidx[_s][_discharged].values, 
             -np.ones_like(tidx[_s][_discharged]).astype(int), 
             ls='none', marker='.', color='orange')
-    plt.title(f'''Charging Interference ({len(both[0])}
+    _ax.set_title(f'''Charging Interference ({len(both[0])}
         /{len(tidx)} events, log10 sparsity weight ={
         np.log10(problem.param_dict['sparse'].value):.2f} )''')
-    plt.yticks(labels=['SOC = 0', 'interfere', 'SOC = Q'], ticks=[-1,0,1])
-    plt.show()
+    _ax.set_yticks(labels=['SOC = 0', 'interfere', 'SOC = Q'], ticks=[-1,0,1])
+    _fig
     return (both,)
 
 

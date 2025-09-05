@@ -147,7 +147,21 @@ def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots, model=
     return np.exp(baseline)
 
 class LinearRegressor:
-    """LinearRegressor data"""
+    """LinearRegressor implementation
+
+    Parameters
+    ----------
+
+        F: the basis matrix
+
+        Wf: the regularization matrix
+
+        knots: the list of knots
+
+        H0: the H matrix
+
+        Hs: the H matrix with windowed averages
+    """
     def __init__(self,
             x:list[float|np.float64]|np.ndarray,
             y:list[float|np.float64]|np.ndarray,
@@ -158,7 +172,7 @@ class LinearRegressor:
         ):
         """Construct a linear regressor from data
 
-        Parameters
+        Arguments
         ----------
 
             x: x values (array of floats)
@@ -172,18 +186,6 @@ class LinearRegressor:
             nK: number of knots (positive integer)
 
             window: the forward/backward window size (non-negative integer)
-
-        The following LR parameters are generated:
-
-            F: the basis matrix
-
-            Wf: the regularization matrix
-
-            knots: the list of knots
-
-            H0: the H matrix
-
-            Hs: the H matrix with windowed averages
         """
         self.F = make_basis_matrix(
             num_harmonics=nharmon,
@@ -217,6 +219,44 @@ class LinearRegressor:
         ):
         """Export model data to target dict
 
+        Arguments
+        ----------
+
+            target: dictionary to update, e.g., globals()
+
+            mapping: mapping of names to target, e.g., {'F':'basis_matrix'}
+        """
+        for name,value in self.todict().items():
+            target[mapping[name] if name in mapping else name] = value
+
+class BaselineModel:
+    """Baseline model implementation
+
+    Parameters:
+
+        model: the baseline model (F*a+temp)
+    """
+    def __init__(self,a,c,LR,first_use_set):
+        _s = first_use_set
+        temp = cvx.sum([H[_s] @ c[:, _ix] for _ix, H in enumerate(Hs)])
+        error = cvx.sum_squares(y.values[_s] - LR.F[_s] @ a - temp) / np.sum(_s)
+        regularization = 1e-4 * cvx.sum_squares(LR.Wf @ a) + 1e-4 * cvx.sum_squares(c) + 1e0 * cvx.sum_squares(cvx.diff(c, axis=1))
+        problem = cvx.Problem(cvx.Minimize(error + regularization))
+        problem.solve(solver='CLARABEL', verbose=False)
+        self.model,self.temp = (LR.F[_s] @ a + temp).value,temp
+
+    def __str__(self):
+        return ", ".join([f"{x}={y}" for x,y in self.todict().items()])
+
+    def todict(self):
+        return {x:getattr(self,x) for x in dir(self) if not x.startswith("_")}
+
+    def export(self,
+        target:dict=globals(),
+        mapping:dict={},
+        ):
+        """Export model data to target dict
+
         Parameters
         ----------
 
@@ -227,21 +267,36 @@ class LinearRegressor:
         for name,value in self.todict().items():
             target[mapping[name] if name in mapping else name] = value
 
-class BaselineModel:
-
-    def __init__(self,a,c):
-        _s = first_use_set
-        temp = cvx.sum([H[_s] @ c[:, _ix] for _ix, H in enumerate(Hs)])
-        error = cvx.sum_squares(y.values[_s] - F[_s] @ a - temp) / np.sum(_s)
-        regularization = 1e-4 * cvx.sum_squares(Wf @ a) + 1e-4 * cvx.sum_squares(c) + 1e0 * cvx.sum_squares(cvx.diff(c, axis=1))
-        problem = cvx.Problem(cvx.Minimize(error + regularization))
-        problem.solve(solver='CLARABEL', verbose=False)
-        self.model,self.temp = (F[_s] @ a + temp).value,temp
-
 class AutoregressorModel:
+    """Autoregressive model implementation
 
+    Parameters:
+
+        baseline_residuals: residuals from the baseline model
+
+        theta:
+
+        constant:
+
+        lap_loc:
+
+        lap_scale:
+
+        use_set:
+
+        ar_model:
+
+    """
     def __init__(self,y,model):
+        """Construct the AR model
 
+        Arguments
+        ----------
+
+            y: y-values
+
+            model: baseline model
+        """
         baseline_residuals = y.values[first_use_set] - model
         B = running_view(baseline_residuals, 36)
         # usable records with AR lags
@@ -313,6 +368,7 @@ if __name__ == "__main__":
         nK=10,
         )
     LR.export(globals())
+    # QUESTION: does it make sense to move first_use_set into LR?
     first_use_set = np.all(np.all(~np.isnan(np.asarray(Hs)), axis=-1), axis=0)
 
     #
@@ -323,8 +379,9 @@ if __name__ == "__main__":
     print("------------------")
     a = cvx.Variable(F.shape[1]) # coefficients for time features
     c = cvx.Variable((H0.shape[1], len(Hs))) # coefficients for temperature features
-    BM = BaselineModel(a,c)
-    model,temp = BM.model,BM.temp
+    BM = BaselineModel(a,c,LR,first_use_set)
+    # model,temp = BM.model,BM.temp
+    BM.export(globals())
 
     #
     # RMSE
@@ -361,19 +418,6 @@ if __name__ == "__main__":
     AR = AutoregressorModel(y,model)
     AR.export(globals())
 
-    # baseline_residuals = y.values[first_use_set] - model
-    # B = running_view(baseline_residuals, 36)
-    # # usable records with AR lags
-    # use_set = np.all(~np.isnan(B), axis=1)
-    # theta = cvx.Variable(B.shape[1])
-    # constant = cvx.Variable()
-    # problem2 = cvx.Problem(
-    #     cvx.Minimize(cvx.sum_squares(baseline_residuals[use_set] - B[use_set] @ theta - constant)),
-    #     [cvx.norm1(theta) <= 0.95]
-    # )
-    # problem2.solve(solver='CLARABEL')
-    # ar_model = (B[use_set] @ theta + constant).value
-    # lap_loc, lap_scale = stats.laplace.fit(baseline_residuals[use_set] - ar_model)
     print(f"""sum-abs of AR coefficients: {cvx.norm1(theta).value:.2f}""")
     print(f"""Baseline MAE: {np.average(np.abs(baseline_residuals)):.2f}, or {np.average(np.abs(baseline_residuals)) * 100 / np.nanmean(y):.2f}% of average""")
     print(f"""Autoregressive MAE: {np.average(np.abs(baseline_residuals[use_set] - ar_model)):.2f}, or {np.average(np.abs(baseline_residuals[use_set] - ar_model)) * 100 / np.nanmean(y):.2f}% of average""")

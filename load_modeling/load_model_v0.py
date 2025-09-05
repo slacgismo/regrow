@@ -30,7 +30,7 @@ from spcqe import make_basis_matrix, make_regularization_matrix
 pd.options.display.max_columns=None
 pd.options.display.width=None
 
-
+# 
 SHEETS = [
     "ISO NE CA",
     "ME",
@@ -42,12 +42,13 @@ SHEETS = [
     "WCMA",
     "NEMA"
 ]
+
+# experimental AR stuff
 LOCATION_ADJ = 0.0
 SCALE_ADJ = 0.0
 
 def make_data(sheet=SHEETS[0]):
     years = [2020, 2021, 2022]
-    # years = [2020]
     model = LoadModel()
     for _yr in years:
         model.read_xlsx(f"NE_ISO_Data/{_yr}_smd_hourly.xlsx",sheet,
@@ -214,7 +215,7 @@ class LinearRegressor:
         target:dict=globals(),
         mapping:dict={},
         ):
-        """Export regressor data to target dict
+        """Export model data to target dict
 
         Parameters
         ----------
@@ -236,6 +237,54 @@ class BaselineModel:
         problem = cvx.Problem(cvx.Minimize(error + regularization))
         problem.solve(solver='CLARABEL', verbose=False)
         self.model,self.temp = (F[_s] @ a + temp).value,temp
+
+class AutoregressorModel:
+
+    def __init__(self,y,model):
+
+        baseline_residuals = y.values[first_use_set] - model
+        B = running_view(baseline_residuals, 36)
+        # usable records with AR lags
+        use_set = np.all(~np.isnan(B), axis=1)
+        theta = cvx.Variable(B.shape[1])
+        constant = cvx.Variable()
+        problem2 = cvx.Problem(
+            cvx.Minimize(cvx.sum_squares(baseline_residuals[use_set] - B[use_set] @ theta - constant)),
+            [cvx.norm1(theta) <= 0.95]
+        )
+        problem2.solve(solver='CLARABEL')
+        ar_model = (B[use_set] @ theta + constant).value
+        lap_loc, lap_scale = stats.laplace.fit(baseline_residuals[use_set] - ar_model)
+
+        self.baseline_residuals = baseline_residuals
+        self.theta = theta
+        self.constant = constant
+        self.lap_loc = lap_loc
+        self.lap_scale = lap_scale
+        self.use_set = use_set
+        self.ar_model = ar_model
+
+    def __str__(self):
+        return ", ".join([f"{x}={y}" for x,y in self.todict().items()])
+
+    def todict(self):
+        return {x:getattr(self,x) for x in dir(self) if not x.startswith("_")}
+
+    def export(self,
+        target:dict=globals(),
+        mapping:dict={},
+        ):
+        """Export model data to target dict
+
+        Parameters
+        ----------
+
+        target: dictionary to update, e.g., globals()
+
+        mapping: mapping of names to target, e.g., {'F':'basis_matrix'}
+        """
+        for name,value in self.todict().items():
+            target[mapping[name] if name in mapping else name] = value
 
 if __name__ == "__main__":
 
@@ -309,22 +358,25 @@ if __name__ == "__main__":
     print("\n")
     print("AR residual model fit")
     print("---------------------")
-    baseline_residuals = y.values[first_use_set] - model
-    B = running_view(baseline_residuals, 36)
-    # usable records with AR lags
-    use_set = np.all(~np.isnan(B), axis=1)
-    theta = cvx.Variable(B.shape[1])
-    constant = cvx.Variable()
-    problem2 = cvx.Problem(
-        cvx.Minimize(cvx.sum_squares(baseline_residuals[use_set] - B[use_set] @ theta - constant)),
-        [cvx.norm1(theta) <= 0.95]
-    )
-    problem2.solve(solver='CLARABEL')
-    ar_model = (B[use_set] @ theta + constant).value
-    lap_loc, lap_scale = stats.laplace.fit(baseline_residuals[use_set] - ar_model)
+    AR = AutoregressorModel(y,model)
+    AR.export(globals())
+
+    # baseline_residuals = y.values[first_use_set] - model
+    # B = running_view(baseline_residuals, 36)
+    # # usable records with AR lags
+    # use_set = np.all(~np.isnan(B), axis=1)
+    # theta = cvx.Variable(B.shape[1])
+    # constant = cvx.Variable()
+    # problem2 = cvx.Problem(
+    #     cvx.Minimize(cvx.sum_squares(baseline_residuals[use_set] - B[use_set] @ theta - constant)),
+    #     [cvx.norm1(theta) <= 0.95]
+    # )
+    # problem2.solve(solver='CLARABEL')
+    # ar_model = (B[use_set] @ theta + constant).value
+    # lap_loc, lap_scale = stats.laplace.fit(baseline_residuals[use_set] - ar_model)
     print(f"""sum-abs of AR coefficients: {cvx.norm1(theta).value:.2f}""")
     print(f"""Baseline MAE: {np.average(np.abs(baseline_residuals)):.2f}, or {np.average(np.abs(baseline_residuals)) * 100 / np.nanmean(y):.2f}% of average""")
-    print("""Autoregressive MAE: {np.average(np.abs(baseline_residuals[use_set] - ar_model)):.2f}, or {np.average(np.abs(baseline_residuals[use_set] - ar_model)) * 100 / np.nanmean(y):.2f}% of average""")
+    print(f"""Autoregressive MAE: {np.average(np.abs(baseline_residuals[use_set] - ar_model)):.2f}, or {np.average(np.abs(baseline_residuals[use_set] - ar_model)) * 100 / np.nanmean(y):.2f}% of average""")
 
     #
     # Generate test data

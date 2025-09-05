@@ -48,6 +48,13 @@ LOCATION_ADJ = 0.0
 SCALE_ADJ = 0.0
 
 def make_data(sheet=SHEETS[0]):
+    """Collate data from Excel sheets
+
+    Arguments
+    ---------
+
+    TODO
+    """
     years = [2020, 2021, 2022]
     df_list = []
     for _yr in years:
@@ -59,6 +66,13 @@ def make_data(sheet=SHEETS[0]):
     return pd.concat(df_list, axis=0)
 
 def d_func(x, k, k_max):
+    """d_func
+
+    Arguments
+    ---------
+
+    TODO
+    """
     n1 = np.clip(np.power(x - k, 3), 0, np.inf)
     n2 = np.clip(np.power(x - k_max, 3), 0, np.inf)
     d1 = k_max - k
@@ -67,6 +81,13 @@ def d_func(x, k, k_max):
 
 
 def make_H(x, knots, include_offset=False):
+    """make_H
+
+    Arguments
+    ---------
+
+    TODO
+    """
     nK = len(knots)
     H = np.ones((len(x), nK), dtype=float)
     H[:, 1] = x
@@ -81,6 +102,13 @@ def make_H(x, knots, include_offset=False):
         return H[:, 1:]
 
 def make_offset_H(H, offset):
+    """make_offset_H
+
+    Arguments
+    ---------
+
+    TODO
+    """
     newH = np.copy(H)
     newH = np.roll(newH, -offset, axis=0)
     if offset > 0:
@@ -90,10 +118,15 @@ def make_offset_H(H, offset):
     return newH
 
 def running_view(arr, window, axis=-1):
-    """
-    return a running view of length 'window' over 'axis', nan-padding the start to get the same
-    first dimension as the input
-    the returned array has an extra last dimension, which spans the window
+    """Return a running view of length 'window' over 'axis'
+
+    Nan-pads the start to get the same first dimension as the input the
+    returned array has an extra last dimension, which spans the window
+    
+    Arguments
+    ---------
+
+    TODO
     """
     mod_arr = np.r_[np.ones(window) * np.nan, arr[:-1]]
     shape = list(mod_arr.shape)
@@ -105,6 +138,13 @@ def running_view(arr, window, axis=-1):
         strides=mod_arr.strides + (mod_arr.strides[axis],))
 
 def roll_out_ar_noise(length, ar_coeff, intercept, loc, scale, random_state=None):
+    """roll_out_ar_noise
+
+    Arguments
+    ---------
+
+    TODO
+    """
     window = stats.laplace.rvs(loc=loc, scale=scale, size=len(ar_coeff), random_state=random_state)
     nvals = length+len(ar_coeff) * 2
     gen_data = np.empty(nvals, dtype=float)
@@ -122,6 +162,13 @@ def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots, model=
         length=max(time_idxs) +1,
         periods=[365.2425 * 24, 7 * 24, 24]
     )
+    """Predict baseline
+
+    Arguments
+    ---------
+
+    TODO
+    """
     F = F[time_idxs]
     H0 = make_H(temp_data, knots, include_offset=False)
     Hm1 = make_offset_H(H0, -1)

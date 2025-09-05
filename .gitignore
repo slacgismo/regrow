@@ -1068,3 +1068,8 @@ pyvenv.cfg
 # Virtual Env
 .venv/
 marimo_env/
+load_modeling/ME.csv.gz
+load_modeling/RI.csv.gz
+load_modeling/RI_1.png
+load_modeling/RI_2.png
+load_modeling/ME.csv.gz

@@ -49,20 +49,14 @@ SCALE_ADJ = 0.0
 
 def make_data(sheet=SHEETS[0]):
     years = [2020, 2021, 2022]
-    model = LoadModel()
+    df_list = []
     for _yr in years:
-        model.read_xlsx(f"NE_ISO_Data/{_yr}_smd_hourly.xlsx",sheet,
-            time_col=["Date","Hr_End"],
-            load_col="RT_Demand",
-            temperature_col="Dry_Bulb",
-            temperature=None,
-            load=None,
-            ordinal_hours=True,
-            index=None,
-            keep_columns=True,
-            index_split=["year"]
-            )
-    return model.data
+        fp = Path('.') / 'NE_ISO_Data' / f'{_yr}_smd_hourly.xlsx' 
+        df = pd.read_excel(fp, sheet_name=sheet)
+        df['year'] = _yr
+        df.index = pd.to_datetime(df['Date'].astype(str) + ' ' + df['Hr_End'].map(lambda x: f"{x-1}:00:00")) + pd.Timedelta(hours=1)
+        df_list.append(df)
+    return pd.concat(df_list, axis=0)
 
 def d_func(x, k, k_max):
     n1 = np.clip(np.power(x - k, 3), 0, np.inf)
@@ -278,9 +272,9 @@ class AutoregressorModel:
 
         constant:
 
-        lap_loc:
+        lap_loc: (experimental)
 
-        lap_scale:
+        lap_scale: (experimental)
 
         use_set:
 

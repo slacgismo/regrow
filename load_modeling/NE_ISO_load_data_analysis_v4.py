@@ -504,7 +504,7 @@ def _():
     from sklearn.metrics import r2_score
     import statsmodels.api as sm
     from spcqe import make_basis_matrix, make_regularization_matrix
-    import load_model as lm
+    import load_model_v1 as lm
     return (
         cvx,
         lm,

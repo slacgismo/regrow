@@ -156,7 +156,7 @@ def roll_out_ar_noise(length, ar_coeff, intercept, loc, scale, random_state=None
         window = new_window
     return np.exp(gen_data[-length:])
 
-def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots, model='all'):
+def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots, model='all',window=3):
     F = make_basis_matrix(
         num_harmonics=[6, 4, 3],
         length=max(time_idxs) +1,
@@ -171,13 +171,9 @@ def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots, model=
     """
     F = F[time_idxs]
     H0 = make_H(temp_data, knots, include_offset=False)
-    Hm1 = make_offset_H(H0, -1)
-    Hm2 = make_offset_H(H0, -2)
-    Hm3 = make_offset_H(H0, -3)
-    Hp1 = make_offset_H(H0, 1)
-    Hp2 = make_offset_H(H0, 2)
-    Hp3 = make_offset_H(H0, 3)
-    Hs = [Hm3, Hm2, Hm1, H0, Hp1, Hp2, Hp3]
+    Hs = [H0]
+    for n in range(window):
+        Hs = [make_offset_H(H0,-n-1)] + Hs + [make_offset_H(H0,n+1)]
     temp = np.sum([H @ temp_coeff[:, _ix] for _ix, H in enumerate(Hs)], axis=0)
     if model == 'all':
         baseline = F @ time_coeff + temp

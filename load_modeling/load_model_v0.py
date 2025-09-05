@@ -18,6 +18,7 @@ import numpy as np
 import cvxpy as cvx
 import datetime as dt
 import re
+import json
 from pathlib import Path
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -25,10 +26,10 @@ import scipy.stats as stats
 from sklearn.metrics import r2_score
 import statsmodels.api as sm
 from spcqe import make_basis_matrix, make_regularization_matrix
-from load_model import LoadModel
 
 pd.options.display.max_columns=None
 pd.options.display.width=None
+
 
 SHEETS = [
     "ISO NE CA",
@@ -42,10 +43,11 @@ SHEETS = [
     "NEMA"
 ]
 LOCATION_ADJ = 0.0
-SCALE_ADJ = 1.0
+SCALE_ADJ = 0.0
 
-def make_data(sheet):
-    years = range(2020,2023)
+def make_data(sheet=SHEETS[0]):
+    years = [2020, 2021, 2022]
+    # years = [2020]
     model = LoadModel()
     for _yr in years:
         model.read_xlsx(f"NE_ISO_Data/{_yr}_smd_hourly.xlsx",sheet,
@@ -55,10 +57,9 @@ def make_data(sheet):
             temperature=None,
             load=None,
             ordinal_hours=True,
-            index="dt",
+            index=None,
             keep_columns=True,
-            index_split=["year"],
-            inplace='append',
+            index_split=["year"]
             )
     return model.data
 
@@ -144,9 +145,101 @@ def predict_baseline(time_idxs, temp_data, time_coeff, temp_coeff, knots, model=
         baseline = temp + time_coeff[0]
     return np.exp(baseline)
 
+class LinearRegressor:
+    """LinearRegressor data"""
+    def __init__(self,
+            x:list[float|np.float64]|np.ndarray,
+            y:list[float|np.float64]|np.ndarray,
+            nharmon:int,
+            periods:list[float|np.float64],
+            nK:int,
+            window:int=3,
+        ):
+        """Construct a linear regressor from data
+
+        Parameters
+        ----------
+
+            x: x values (array of floats)
+
+            y: y values (array of floats)
+            
+            nharmon: number of harmonics for each period
+            
+            periods: values of periods (list of positive floats)
+            
+            nK: number of knots (positive integer)
+
+            window: the forward/backward window size (non-negative integer)
+
+        The following LR parameters are generated:
+
+            F: the basis matrix
+
+            Wf: the regularization matrix
+
+            knots: the list of knots
+
+            H0: the H matrix
+
+            Hs: the H matrix with windowed averages
+        """
+        self.F = make_basis_matrix(
+            num_harmonics=nharmon,
+            length=len(y),
+            periods=periods
+        )
+        # weight matrix for regularized Fourier parameters
+        self.Wf = make_regularization_matrix(
+            num_harmonics=nharmon,
+            weight=1,
+            periods=[365.2425 * 24, 7 * 24, 24]
+        )
+        # Temperature terms
+        self.knots = np.linspace(np.min(x), np.max(x), nK)
+        self.H0 = make_H(x, self.knots, include_offset=False)
+        self.Hs = [self.H0]
+        for n in range(window):
+            hn = make_offset_H(self.H0,-n-1)
+            hp = make_offset_H(self.H0,n+1)
+            self.Hs = [hn] + self.Hs + [hp]
+
+    def __str__(self):
+        return ", ".join([f"{x}={y}" for x,y in self.todict().items()])
+
+    def todict(self):
+        return {x:getattr(self,x) for x in dir(self) if not x.startswith("_")}
+
+    def export(self,
+        target:dict=globals(),
+        mapping:dict={},
+        ):
+        """Export regressor data to target dict
+
+        Parameters
+        ----------
+
+        target: dictionary to update, e.g., globals()
+
+        mapping: mapping of names to target, e.g., {'F':'basis_matrix'}
+        """
+        for name,value in self.todict().items():
+            target[mapping[name] if name in mapping else name] = value
+
+class BaselineModel:
+
+    def __init__(self,a,c):
+        _s = first_use_set
+        temp = cvx.sum([H[_s] @ c[:, _ix] for _ix, H in enumerate(Hs)])
+        error = cvx.sum_squares(y.values[_s] - F[_s] @ a - temp) / np.sum(_s)
+        regularization = 1e-4 * cvx.sum_squares(Wf @ a) + 1e-4 * cvx.sum_squares(c) + 1e0 * cvx.sum_squares(cvx.diff(c, axis=1))
+        problem = cvx.Problem(cvx.Minimize(error + regularization))
+        problem.solve(solver='CLARABEL', verbose=False)
+        self.model,self.temp = (F[_s] @ a + temp).value,temp
+
 if __name__ == "__main__":
 
-    sheet = "RI"
+    sheet = "ME"
     cache = sheet + ".csv.gz"
 
     if os.path.exists(cache):
@@ -154,8 +247,6 @@ if __name__ == "__main__":
     else:
         df = make_data(sheet=SHEETS[1])
         df.to_csv(cache,compression="gzip")
-
-    print(df)
 
     #
     # Extract data
@@ -166,29 +257,13 @@ if __name__ == "__main__":
     # 
     # Setup linear regressors
     #
-    nharmon = [6, 4, 3]
-    F = make_basis_matrix(
-        num_harmonics=nharmon,
-        length=len(y),
-        periods=[365.2425 * 24, 7 * 24, 24]
-    )
-    # weight matrix for regularized Fourier parameters
-    Wf = make_regularization_matrix(
-        num_harmonics=nharmon,
-        weight=1,
-        periods=[365.2425 * 24, 7 * 24, 24]
-    )
-    # Temperature terms
-    nK = 10
-    knots = np.linspace(np.min(x), np.max(x), nK)
-    H0 = make_H(x, knots, include_offset=False)
-    Hm1 = make_offset_H(H0, -1)
-    Hm2 = make_offset_H(H0, -2)
-    Hm3 = make_offset_H(H0, -3)
-    Hp1 = make_offset_H(H0, 1)
-    Hp2 = make_offset_H(H0, 2)
-    Hp3 = make_offset_H(H0, 3)
-    Hs = [Hm3, Hm2, Hm1, H0, Hp1, Hp2, Hp3]
+    LR = LinearRegressor(
+        x,y,
+        nharmon=[6,4,3],
+        periods=[365.2425 * 24, 7 * 24, 24],
+        nK=10,
+        )
+    LR.export(globals())
     first_use_set = np.all(np.all(~np.isnan(np.asarray(Hs)), axis=-1), axis=0)
 
     #
@@ -199,13 +274,8 @@ if __name__ == "__main__":
     print("------------------")
     a = cvx.Variable(F.shape[1]) # coefficients for time features
     c = cvx.Variable((H0.shape[1], len(Hs))) # coefficients for temperature features
-    _s = first_use_set
-    temp = cvx.sum([H[_s] @ c[:, _ix] for _ix, H in enumerate(Hs)])
-    error = cvx.sum_squares(y.values[_s] - F[_s] @ a - temp) / np.sum(_s)
-    regularization = 1e-4 * cvx.sum_squares(Wf @ a) + 1e-4 * cvx.sum_squares(c) + 1e0 * cvx.sum_squares(cvx.diff(c, axis=1))
-    problem = cvx.Problem(cvx.Minimize(error + regularization))
-    problem.solve(solver='CLARABEL', verbose=False)
-    model = (F[_s] @ a + temp).value
+    BM = BaselineModel(a,c)
+    model,temp = BM.model,BM.temp
 
     #
     # RMSE

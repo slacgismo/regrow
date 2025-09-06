@@ -30,25 +30,11 @@ from spcqe import make_basis_matrix, make_regularization_matrix
 pd.options.display.max_columns=None
 pd.options.display.width=None
 
-# 
-SHEETS = [
-    "ISO NE CA",
-    "ME",
-    "NH",
-    "VT",
-    "CT",
-    "RI",
-    "SEMA",
-    "WCMA",
-    "NEMA"
-]
+CACHE=True # generate and use cache
+CACHE=False # don't use cache
 
-# experimental AR stuff
-LOCATION_ADJ = 0.0
-SCALE_ADJ = 0.0
-
-def make_data(sheet=SHEETS[0]):
-    """Collate data from Excel sheets
+def read_NEISO_data(sheet):
+    """Collate data from NE ISO Excel sheets
 
     Arguments
     ---------
@@ -63,7 +49,8 @@ def make_data(sheet=SHEETS[0]):
         df['year'] = _yr
         df.index = pd.to_datetime(df['Date'].astype(str) + ' ' + df['Hr_End'].map(lambda x: f"{x-1}:00:00"))
         df_list.append(df)
-    return pd.concat(df_list, axis=0)
+    df = pd.concat(df_list, axis=0)
+    return df
 
 def d_func(x, k, k_max):
     """d_func
@@ -380,14 +367,32 @@ class AutoregressorModel:
 
 if __name__ == "__main__":
 
+    # input data
+    # SHEETS = [
+    #     "ISO NE CA",
+    #     "ME",
+    #     "NH",
+    #     "VT",
+    #     "CT",
+    #     "RI",
+    #     "SEMA",
+    #     "WCMA",
+    #     "NEMA"
+    # ]
     sheet = "ME"
     cache = sheet + ".csv.gz"
 
-    if os.path.exists(cache):
+
+    # experimental AR stuff
+    LOCATION_ADJ = 0.0
+    SCALE_ADJ = 0.0
+
+    if os.path.exists(cache) and cache == True:
         df = pd.read_csv(cache,index_col=0)
     else:
-        df = make_data(sheet=SHEETS[1])
-        df.to_csv(cache,compression="gzip")
+        df = read_NEISO_data(sheet)
+        if cache == True:
+            df.to_csv(cache,compression="gzip")
 
     #
     # Extract data

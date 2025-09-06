@@ -29,7 +29,7 @@ def _(mo):
 
 @app.cell
 def _(lm, sheet_slct):
-    df = lm.make_data(sheet=sheet_slct.value)
+    df = lm.read_NEISO_data(sheet_slct.value)
     return (df,)
 
 

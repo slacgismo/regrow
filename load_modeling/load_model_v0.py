@@ -61,7 +61,7 @@ def make_data(sheet=SHEETS[0]):
         fp = Path('.') / 'NE_ISO_Data' / f'{_yr}_smd_hourly.xlsx' 
         df = pd.read_excel(fp, sheet_name=sheet)
         df['year'] = _yr
-        df.index = pd.to_datetime(df['Date'].astype(str) + ' ' + df['Hr_End'].map(lambda x: f"{x-1}:00:00")) + pd.Timedelta(hours=1)
+        df.index = pd.to_datetime(df['Date'].astype(str) + ' ' + df['Hr_End'].map(lambda x: f"{x-1}:00:00"))
         df_list.append(df)
     return pd.concat(df_list, axis=0)
 

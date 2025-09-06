@@ -387,11 +387,11 @@ if __name__ == "__main__":
     LOCATION_ADJ = 0.0
     SCALE_ADJ = 0.0
 
-    if os.path.exists(cache) and cache == True:
+    if os.path.exists(cache) and CACHE == True:
         df = pd.read_csv(cache,index_col=0)
     else:
         df = read_NEISO_data(sheet)
-        if cache == True:
+        if CACHE == True:
             df.to_csv(cache,compression="gzip")
 
     #

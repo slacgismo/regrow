@@ -251,6 +251,8 @@ class BaselineModel:
     def __init__(self,a,c,LR):
         _s = LR.first_use_set
         self.LR = LR
+        self.a = a
+        self.c = c
         temp = cvx.sum([H[_s] @ c[:, _ix] for _ix, H in enumerate(LR.Hs)])
         error = cvx.sum_squares(LR.y.values[_s] - LR.F[_s] @ a - temp) / np.sum(_s)
         regularization = 1e-4 * cvx.sum_squares(LR.Wf @ a) + 1e-4 * cvx.sum_squares(c) + 1e0 * cvx.sum_squares(cvx.diff(c, axis=1))
@@ -294,6 +296,7 @@ class AutoregressorModel:
 
             BM: baseline model
         """
+        self.BM = BM
         baseline_residuals = y.values[BM.LR.first_use_set] - BM.model
         B = running_view(baseline_residuals, 36)
         # usable records with AR lags
@@ -328,9 +331,11 @@ class LoadModel:
         df,
         LOCATION_ADJ=0.0,
         SCALE_ADJ=1.0,
+        verbose = lambda x: None,
         # t0:int = 0, # data index origin 
         ):
 
+        self.df = df
         #
         # Extract data
         #
@@ -346,55 +351,44 @@ class LoadModel:
             periods=[365.2425 * 24, 7 * 24, 24],
             nK=10,
             )
+        self.LR = LR
 
         #
         # Fit baseline model with time and temperature features
         #
-        print("\n")
-        print("Baseline model fit")
-        print("------------------")
+        verbose("\n")
+        verbose("Baseline model fit")
+        verbose("------------------")
         a = cvx.Variable(LR.F.shape[1]) # coefficients for time features
         c = cvx.Variable((LR.H0.shape[1], len(LR.Hs))) # coefficients for temperature features
         BM = BaselineModel(a,c,LR)
-        # model,temp = BM.model,BM.temp
+        self.BM = BM
 
         #
         # RMSE
         #
         rmse = np.sqrt(np.average(np.power(np.exp(y.values[LR.first_use_set]) - np.exp(BM.model), 2)))
-        print(f"RMS error of model fit: {rmse:.2f}, or {rmse * 100 / np.nanmean(np.exp(y)):.2f}% of average")
+        verbose(f"RMS error of model fit: {rmse:.2f}, or {rmse * 100 / np.nanmean(np.exp(y)):.2f}% of average")
 
         #
         # R2
         #
         r2 = r2_score(np.exp(y.values[LR.first_use_set]), np.exp(BM.model))
         r2_adj = 1 - (1 - r2) * (len(y) - 1) / (len(y) + len(a[1:].value) + len(c.value) - 1)
-        print("\n".join([f"R2: {r2:.3f}", f"R2-adj: {r2_adj:.3f}"]))
-
-        #
-        # Plot linear model
-        #
-        x_sort = np.sort(x.values)
-        plt.figure(figsize=(15,10))
-        plt.scatter(df.loc["2020":"2021"]['Dry_Bulb'].values, np.exp(y), marker='.',
-                    label='data', s=10, alpha=.5, color='orange')
-        plt.plot(x.values[LR.first_use_set], np.exp(BM.temp.value + a[0].value), label='temperature response', marker='.', ls='none')
-        plt.title('Inferred temperature dependence')
-        plt.legend()
-        plt.grid()
-        plt.savefig(sheet+"_1.png")
+        verbose("\n".join([f"R2: {r2:.3f}", f"R2-adj: {r2_adj:.3f}"]))
 
         # 
         # Fit AR model to residuals
         #
-        print("\n")
-        print("AR residual model fit")
-        print("---------------------")
+        verbose("\n")
+        verbose("AR residual model fit")
+        verbose("---------------------")
         AR = AutoregressorModel(y,BM)
+        self.AR = AR
 
-        print(f"""sum-abs of AR coefficients: {cvx.norm1(AR.theta).value:.2f}""")
-        print(f"""Baseline MAE: {np.average(np.abs(AR.baseline_residuals)):.2f}, or {np.average(np.abs(AR.baseline_residuals)) * 100 / np.nanmean(y):.2f}% of average""")
-        print(f"""Autoregressive MAE: {np.average(np.abs(AR.baseline_residuals[AR.use_set] - AR.model)):.2f}, or {np.average(np.abs(AR.baseline_residuals[AR.use_set] - AR.model)) * 100 / np.nanmean(y):.2f}% of average""")
+        verbose(f"""sum-abs of AR coefficients: {cvx.norm1(AR.theta).value:.2f}""")
+        verbose(f"""Baseline MAE: {np.average(np.abs(AR.baseline_residuals)):.2f}, or {np.average(np.abs(AR.baseline_residuals)) * 100 / np.nanmean(y):.2f}% of average""")
+        verbose(f"""Autoregressive MAE: {np.average(np.abs(AR.baseline_residuals[AR.use_set] - AR.model)):.2f}, or {np.average(np.abs(AR.baseline_residuals[AR.use_set] - AR.model)) * 100 / np.nanmean(y):.2f}% of average""")
 
         #
         # Generate test data
@@ -405,7 +399,11 @@ class LoadModel:
         new_noise = roll_out_ar_noise(np.sum(df['year'] == 2022), AR.theta.value, AR.constant.value, AR.lap_loc+LOCATION_ADJ, AR.lap_scale*SCALE_ADJ)
         new_residuals = new_baseline * new_noise - new_baseline
         test_mae = np.nanmean(np.abs(test_data["RT_Demand"].values - new_baseline))
-        print(f"test MAE: {test_mae:.2f}, or {100*test_mae / np.nanmean(test_data["RT_Demand"].values):.2f}% of average")
+        verbose(f"test MAE: {test_mae:.2f}, or {100*test_mae / np.nanmean(test_data["RT_Demand"].values):.2f}% of average")
+        self.test_data = df.loc["2022":]
+        self.new_baseline = new_baseline
+        self.new_noise = new_noise
+        self.new_residuals = new_residuals
 
         # 
         # Predict AR residuals
@@ -416,19 +414,58 @@ class LoadModel:
         ppower_time_actual = np.nanargmax(df.loc["2022":]["RT_Demand"].values)
         ppower_time_predict =  np.nanargmax(new_baseline * new_noise)
         ppower_time_predict_noar =  np.nanargmax(new_baseline)
-        _index = ["actual", 'predicted', 'predicted no AR model']
-        _data = {
+        self.index = ["actual", 'predicted', 'predicted no AR model']
+        self.data = {
             "peak power": [ppower_actual, ppower_predict, ppower_predict_noar],
             "index of peak": [ppower_time_actual, ppower_time_predict, ppower_time_predict_noar]
         }
-        print(pd.DataFrame(data=_data, index=_index))
+        verbose(pd.DataFrame(data=self.data, index=self.index))
 
+
+    def plot_LR(self):
         #
-        # Plot final model
+        # Plot linear model
+        #
+        x_sort = np.sort(self.LR.x.values)
+        plt.figure(figsize=(15,10))
+        plt.scatter(self.df.loc["2020":"2021"]['Dry_Bulb'].values, 
+            np.exp(self.LR.y), 
+            marker='.',
+            label='data', 
+            s=10, 
+            alpha=.5, 
+            color='orange',
+            )
+        plt.plot(self.LR.x.values[self.LR.first_use_set], 
+            np.exp(self.BM.temp.value + self.BM.a[0].value), 
+            label='temperature response', 
+            marker='.', 
+            ls='none',
+            )
+        plt.title('Inferred temperature dependence')
+        plt.legend()
+        plt.grid()
+        return plt
+
+    def plot_LM(self):
+        #
+        # Plot final load model
         #
         plt.figure(figsize=(15,10))
-        plt.plot(test_data["RT_Demand"].values, new_baseline, marker='.', linewidth=1, alpha=.4, label='true')
-        plt.plot(new_baseline*new_noise, new_baseline, marker='.', linewidth=1, alpha=.4, label='sampled')
+        plt.plot(self.test_data["RT_Demand"].values, 
+            self.new_baseline, 
+            marker='.', 
+            linewidth=1, 
+            alpha=.4, 
+            label='true',
+            )
+        plt.plot(self.new_baseline * self.new_noise, 
+            self.new_baseline, 
+            marker='.', 
+            linewidth=1, 
+            alpha=.4, 
+            label='sampled',
+            )
         plt.xlabel('realization')
         plt.ylabel('baseline')
         _xlim = plt.xlim()
@@ -439,7 +476,8 @@ class LoadModel:
         plt.title("Holdout year (2022)")
         plt.grid()
         plt.legend()
-        plt.savefig(sheet+"_2.png")
+        return plt
+
 
 if __name__ == "__main__":
 
@@ -470,4 +508,6 @@ if __name__ == "__main__":
     #
     # Generate load model
     #
-    LM = LoadModel(_df)
+    LM = LoadModel(_df,verbose=print)
+    LM.plot_LR().savefig(sheet+"_1.png")
+    LM.plot_LM().savefig(sheet+"_2.png")

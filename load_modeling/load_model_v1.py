@@ -1,15 +1,16 @@
 """Load modeling library"""
 
-# TODO: parameterization
+# TODO: 
+# - [ ] eliminate use of input DF in LoadModel in far of data vectors
 
-
-# mods
-# 1. gridlabd uses hour beginning instead of hour-ending (remove +1hr)
+# Modifications from original v3 notebook
+# 1. removed +1h from input timestamps (sampling of NEISO is trailing)
 
 # suggestions
 # 1. calculate HI from DB & RH and use that for temperature
 # 2. add slope to Hs array in both fit and predict
 # 3. convert to sklearn fit_predict() implementation
+# 4. make hour-ending an option (depends on whether data source is measured or simulated)
 
 import os
 import marimo as mo
@@ -32,7 +33,7 @@ pd.options.display.max_columns=None
 pd.options.display.width=None
 
 CACHE=True # generate and use cache
-CACHE=False # don't use cache
+# CACHE=False # don't use cache
 
 def read_NEISO_data(sheet):
     """Collate data from NE ISO Excel sheets
@@ -266,7 +267,7 @@ class BaselineModel:
     def todict(self):
         return {x:getattr(self,x) for x in dir(self) if not x.startswith("_")}
 
-class AutoregressorModel:
+class AutoregressionModel:
     """Autoregressive model implementation
 
     Parameters:
@@ -326,7 +327,22 @@ class AutoregressorModel:
         return {x:getattr(self,x) for x in dir(self) if not x.startswith("_")}
 
 class LoadModel:
+    """Generate a load model given load data
 
+    Parameters:
+
+    LR: the linear regressor (see LinearRegressor)
+
+    BM: the baseline model (see BaselineModel)
+
+    AR: the autoregression model (see AutoregressionModel)
+
+    test_data: the test data used to compute new data
+    new_baseline: the new baseline data
+    new_noise: the new noise generated
+    new_residuals: the new residuals
+    results: analysis of the new data
+    """
     def __init__(self,
         df,
         LOCATION_ADJ=0.0,
@@ -383,7 +399,7 @@ class LoadModel:
         verbose("\n")
         verbose("AR residual model fit")
         verbose("---------------------")
-        AR = AutoregressorModel(y,BM)
+        AR = AutoregressionModel(y,BM)
         self.AR = AR
 
         verbose(f"""sum-abs of AR coefficients: {cvx.norm1(AR.theta).value:.2f}""")
@@ -414,12 +430,13 @@ class LoadModel:
         ppower_time_actual = np.nanargmax(df.loc["2022":]["RT_Demand"].values)
         ppower_time_predict =  np.nanargmax(new_baseline * new_noise)
         ppower_time_predict_noar =  np.nanargmax(new_baseline)
-        self.index = ["actual", 'predicted', 'predicted no AR model']
-        self.data = {
+        index = ["actual", 'predicted', 'predicted no AR model']
+        data = {
             "peak power": [ppower_actual, ppower_predict, ppower_predict_noar],
             "index of peak": [ppower_time_actual, ppower_time_predict, ppower_time_predict_noar]
         }
-        verbose(pd.DataFrame(data=self.data, index=self.index))
+        self.results = pd.DataFrame(data=data, index=index)
+        verbose(self.results)
 
 
     def plot_LR(self):

@@ -385,7 +385,7 @@ if __name__ == "__main__":
 
     # experimental AR stuff
     LOCATION_ADJ = 0.0
-    SCALE_ADJ = 0.0
+    SCALE_ADJ = 1.0
 
     if os.path.exists(cache) and CACHE == True:
         df = pd.read_csv(cache,index_col=0)

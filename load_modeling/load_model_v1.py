@@ -520,7 +520,7 @@ if __name__ == "__main__":
     else:
         _df = read_NEISO_data(sheet)
         if CACHE == True:
-            _df.to_csv(cache,compression="gzip")
+            _df.to_csv(cache,compression="gzip",index=True,header=True)
 
     #
     # Generate load model

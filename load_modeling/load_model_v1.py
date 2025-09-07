@@ -432,7 +432,7 @@ class LoadModel:
         ppower_time_predict_noar =  np.nanargmax(new_baseline)
         index = ["actual", 'predicted', 'predicted no AR model']
         data = {
-            "peak power": [ppower_actual, ppower_predict, ppower_predict_noar],
+            "peak power": [ppower_actual.round(1), ppower_predict.round(1), ppower_predict_noar.round(1)],
             "index of peak": [ppower_time_actual, ppower_time_predict, ppower_time_predict_noar]
         }
         self.results = pd.DataFrame(data=data, index=index)

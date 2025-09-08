@@ -339,14 +339,25 @@ class LoadModel:
     AR: the autoregression model (see AutoregressionModel)
 
     test_data: the test data used to compute new data
+
     new_baseline: the new baseline data
+
     new_noise: the new noise generated
+
     new_residuals: the new residuals
+
     results: analysis of the new data
     """
     def __init__(self,
         data, # (t,x,y)
-        holdout, # index into t
+        holdout, # index at which test data begins
+        *,
+        period_harmonics = {
+            365.2425*24: 6,
+            7*24: 4,
+            24: 3,
+        },
+        knots=10,
         LOCATION_ADJ=0.0, # experimental
         SCALE_ADJ=1.0, # experimental
         verbose = lambda x: None,
@@ -359,7 +370,7 @@ class LoadModel:
 
         data: tuple of (t,x,y) of dates, temperatures, and loads
 
-        holdout: value from t for holdout cutoff
+        holdout: value from t for start of holdout test data
 
         verbose: callable for verbose progress output
         """
@@ -377,9 +388,9 @@ class LoadModel:
         #
         LR = LinearRegressor(
             x,y,
-            nharmon=[6,4,3],
-            periods=[365.2425 * 24, 7 * 24, 24],
-            nK=10,
+            nharmon=list(period_harmonics.values()),
+            periods=list(period_harmonics.keys()),
+            nK=knots,
             )
         self.LR = LR
 
@@ -453,60 +464,88 @@ class LoadModel:
         verbose(self.results)
 
 
-    def plot_LR(self):
-        #
-        # Plot linear model
-        #
-        x_sort = np.sort(self.LR.x.values)
-        plt.figure(figsize=(15,10))
-        plt.scatter(self.LR.x, 
-            np.exp(self.LR.y), 
+    def plot_LR(self,*,
+        figsize=(15,10),
+        scatter=dict(
             marker='.',
             label='data', 
             s=10, 
             alpha=.5, 
             color='orange',
-            )
-        plt.plot(self.LR.x.values[self.LR.first_use_set], 
-            np.exp(self.BM.temp.value + self.BM.a[0].value), 
+            ),
+        plot=dict(
             label='temperature response', 
             marker='.', 
             ls='none',
-            )
-        plt.title('Inferred temperature dependence')
-        plt.legend()
-        plt.grid()
+            ),
+        title="Inferred temperature dependence",
+        xlabel=r"Temperature (\deg{C})",
+        ylabel="Demand (MW)",
+        legend=True,
+        grid=True,
+        ):
+        #
+        # Plot linear model
+        #
+        x_sort = np.sort(self.LR.x.values)
+        plt.figure(figsize=figsize)
+        plt.scatter(self.LR.x,np.exp(self.LR.y),**scatter)
+        plt.plot(self.LR.x.values[self.LR.first_use_set], 
+            np.exp(self.BM.temp.value + self.BM.a[0].value),**plot)
+        if title:
+            plt.title(title)
+        if isinstance(legend,list):
+            plt.legend(*legend)
+        elif legend == True:
+            plt.legend()
+        if grid:
+            plt.grid()
+        if xlabel:
+            plt.xlabel(xlabel)
+        if ylabel:
+            plt.ylabel(ylabel)
         return plt
 
-    def plot_LM(self):
+    def plot_LM(self,*,
+        figsize=(15,10),
+        old=dict(marker='.', 
+            linewidth=1, 
+            alpha=.4, 
+            label='true',),
+        new=dict(marker='.', 
+            linewidth=1, 
+            alpha=.4, 
+            label='sampled',),
+        equal=dict(color='yellow', ls='--', linewidth=1),
+        title="Holdout samples",
+        xlabel="Realization",
+        ylabel="Baseline",
+        legend=True,
+        grid=True,
+        ):
         #
         # Plot final load model
         #
-        plt.figure(figsize=(15,10))
-        plt.plot(self.test_data["y"].values, 
-            self.new_baseline, 
-            marker='.', 
-            linewidth=1, 
-            alpha=.4, 
-            label='true',
-            )
-        plt.plot(self.new_baseline * self.new_noise, 
-            self.new_baseline, 
-            marker='.', 
-            linewidth=1, 
-            alpha=.4, 
-            label='sampled',
-            )
-        plt.xlabel('realization')
-        plt.ylabel('baseline')
+        plt.figure(figsize=figsize)
+        plt.plot(self.test_data["y"].values,self.new_baseline,**old)
+        plt.plot(self.new_baseline * self.new_noise,self.new_baseline,**new)
+        if xlabel:
+            plt.xlabel(xlabel)
+        if ylabel:
+            plt.ylabel(ylabel)
         _xlim = plt.xlim()
         _ylim = plt.ylim()
-        plt.plot([-1e6, 1e6], [-1e6, 1e6], color='yellow', ls='--', linewidth=1)
+        plt.plot([-1e6, 1e6], [-1e6, 1e6], **equal)
         plt.xlim(_xlim)
         plt.ylim(_ylim)
-        plt.title("Holdout samples")
-        plt.grid()
-        plt.legend()
+        if title:
+            plt.title(title)
+        if grid:
+            plt.grid()
+        if isinstance(legend,list):
+            plt.legend(*legend)
+        elif legend == True:
+            plt.legend()
         return plt
 
 
@@ -544,5 +583,5 @@ if __name__ == "__main__":
     # Generate load model
     #
     LM = LoadModel((t,x,y),"2022",verbose=print)
-    LM.plot_LR().savefig(sheet+"_1.png")
-    LM.plot_LM().savefig(sheet+"_2.png")
+    LM.plot_LR().savefig(sheet+"_LR.png")
+    LM.plot_LM().savefig(sheet+"_LM.png")

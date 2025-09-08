@@ -25,7 +25,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(os, sys):
     script_dir = os.path.dirname(__file__) # Path of the current Marimo notebook
     print (script_dir)
@@ -81,7 +81,7 @@ def _():
     return (mo,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo, sp):
     df_config = sp.read_config('C:/Projects/python/regrow_forecast_explorer/regrow_forecast_explorer/config/nodes.csv')
     node_table = mo.ui.table(df_config)
@@ -215,9 +215,9 @@ def _(analysis_dropdown, df, dt_dropdown, fp_dropdown, mo):
     selected_forecast_period = fp_dropdown.value
     selected_analysis = analysis_dropdown.value
     checkbox_forecast_scatter = mo.ui.checkbox(label="Prediction Forecast Data")
-    checkbox_forecast_median = mo.ui.checkbox(label="Median Forecast Data")
-    checkbox_noaa = mo.ui.checkbox(label="NOAA Actual Data")
-    checkbox_nsrdb = mo.ui.checkbox(label="NSRDB Model Data")
+    checkbox_forecast_median = mo.ui.checkbox(label="Median Forecast Data", value = True)
+    checkbox_noaa = mo.ui.checkbox(label="NOAA Actual Data", value = True)
+    checkbox_nsrdb = mo.ui.checkbox(label="NSRDB Model Data", value = True)
     checkbox_conus = mo.ui.checkbox(label="Conus Model Data", value = True)
 
     # Wrap each dropdown with a label in a vertical stack
@@ -251,7 +251,7 @@ def _(mo):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(
     checkbox_conus,
     checkbox_forecast_median,
@@ -272,16 +272,6 @@ def _(
     if df.empty:
         print ("Waiting...")
     else:
-    #    if checkbox_conus.value:
-    #        processed_df = fe.compare_linear_ground_vs_hub(node_id, 
-    #                                        df, 
-    #                                        selected_forecast_period,
-    #                                        start_timestamp = start_timestamp,
-    #                                        end_timestamp = end_timestamp,
-    #                                        data_type=selected_data_type,
-    #                                        show_scatter = checkbox_forecast_scatter.value
-    #                                       )        
-    #    else:
         processed_df = fe.compare_linear_forecast_model_actual(node_id, 
                                 df, 
                                 selected_forecast_period, 
@@ -300,7 +290,7 @@ def _(
 
 @app.cell(hide_code=True)
 def _(mo):
-    mo.md(r"""### Normalize""")
+    mo.md(r"""### Normalize and Compare Ground to Hub Height""")
     return
 
 

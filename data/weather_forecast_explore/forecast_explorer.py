@@ -751,9 +751,10 @@ def compare_linear_forecast_model_actual(node_id,
             .resample(str(forecast_period) + 'h')  # resampling by forecast_period hours
             .agg({
                 'predict_time': 'first',
-                forecast: 'mean',
-                actual: 'mean',    # or 'first' depending on what you want
-                model: 'mean'
+                forecast : 'mean',
+                actual : 'mean',    # or 'first' depending on what you want
+                model : 'mean',
+                hub: 'mean'
             })
             .dropna()
             .reset_index()
@@ -833,12 +834,12 @@ def compare_linear_forecast_model_actual(node_id,
     
         # Line plot: Conus Modeled (resampled)
         if show_conus and data_type != 'clouds':
-            plt.plot(first_forecast_resampled['forecast_time'], first_forecast_resampled[hub],
+            plt.plot(first_forecast_df.index, first_forecast_df[hub],
                      color='#800000', label='Conus (modeled, hub height)', linewidth=2)
             
         # Median trend line for forecast values
         if show_forecast_median:
-            plt.plot(median_forecast['forecast_time'], median_forecast[data_type],
+            plt.plot(first_forecast_df.index, median_forecast[data_type],
                  color='#CC79A7', linestyle='--', linewidth=2, label='Forecast Median')   
            
     if show_forecast_scatter:

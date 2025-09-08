@@ -329,7 +329,8 @@ class AutoregressionModel:
 class LoadModel:
     """Generate a load model given load data
 
-    Parameters:
+    Parameters
+    ----------
 
     LR: the linear regressor (see LinearRegressor)
 
@@ -344,19 +345,32 @@ class LoadModel:
     results: analysis of the new data
     """
     def __init__(self,
-        df,
-        LOCATION_ADJ=0.0,
-        SCALE_ADJ=1.0,
+        data, # (t,x,y)
+        holdout, # index into t
+        LOCATION_ADJ=0.0, # experimental
+        SCALE_ADJ=1.0, # experimental
         verbose = lambda x: None,
         # t0:int = 0, # data index origin 
         ):
+        """Construct a load model from data
 
-        self.df = df
+        Arguments
+        ---------
+
+        data: tuple of (t,x,y) of dates, temperatures, and loads
+
+        holdout: value from t for holdout cutoff
+
+        verbose: callable for verbose progress output
+        """
+        self.data = pd.DataFrame(index=data[0],data={"x":data[1],"y":data[2]})
+        self.holdout = holdout
+
         #
         # Extract data
         #
-        y = np.log(df.loc["2020":"2021"]["RT_Demand"])
-        x = df.loc["2020":"2021"]["Dry_Bulb"]
+        x = self.data.loc[:holdout]["x"] 
+        y = np.log(self.data.loc[:holdout]["y"])
 
         # 
         # Setup linear regressors
@@ -409,14 +423,14 @@ class LoadModel:
         #
         # Generate test data
         #
-        test_data = df.loc["2022":]
-        new_idx = np.arange(np.sum(df['year'] == 2022)) + np.sum(df['year'] != 2022) - 1
-        new_baseline = predict_baseline(new_idx, test_data["Dry_Bulb"].values, a.value, c.value, LR.knots)
-        new_noise = roll_out_ar_noise(np.sum(df['year'] == 2022), AR.theta.value, AR.constant.value, AR.lap_loc+LOCATION_ADJ, AR.lap_scale*SCALE_ADJ)
+        test_data = self.data[holdout:]
+        new_idx = np.arange(len(self.data[:holdout]),len(self.data)) - 1
+        new_baseline = predict_baseline(new_idx, test_data["x"].values, a.value, c.value, LR.knots)
+        new_noise = roll_out_ar_noise(new_idx[-1]-new_idx[0]+1, AR.theta.value, AR.constant.value, AR.lap_loc+LOCATION_ADJ, AR.lap_scale*SCALE_ADJ)
         new_residuals = new_baseline * new_noise - new_baseline
-        test_mae = np.nanmean(np.abs(test_data["RT_Demand"].values - new_baseline))
-        verbose(f"test MAE: {test_mae:.2f}, or {100*test_mae / np.nanmean(test_data["RT_Demand"].values):.2f}% of average")
-        self.test_data = df.loc["2022":]
+        test_mae = np.nanmean(np.abs(test_data["y"].values - new_baseline))
+        verbose(f"test MAE: {test_mae:.2f}, or {100*test_mae / np.nanmean(test_data["y"].values):.2f}% of average")
+        self.test_data = test_data
         self.new_baseline = new_baseline
         self.new_noise = new_noise
         self.new_residuals = new_residuals
@@ -424,10 +438,10 @@ class LoadModel:
         # 
         # Predict AR residuals
         #
-        ppower_actual = np.nanmax(test_data["RT_Demand"].values)
+        ppower_actual = np.nanmax(test_data["y"].values)
         ppower_predict = np.nanmax(new_baseline * new_noise)
         ppower_predict_noar = np.nanmax(new_baseline)
-        ppower_time_actual = np.nanargmax(df.loc["2022":]["RT_Demand"].values)
+        ppower_time_actual = np.nanargmax(test_data["y"].values)
         ppower_time_predict =  np.nanargmax(new_baseline * new_noise)
         ppower_time_predict_noar =  np.nanargmax(new_baseline)
         index = ["actual", 'predicted', 'predicted no AR model']
@@ -445,7 +459,7 @@ class LoadModel:
         #
         x_sort = np.sort(self.LR.x.values)
         plt.figure(figsize=(15,10))
-        plt.scatter(self.df.loc["2020":"2021"]['Dry_Bulb'].values, 
+        plt.scatter(self.LR.x, 
             np.exp(self.LR.y), 
             marker='.',
             label='data', 
@@ -469,7 +483,7 @@ class LoadModel:
         # Plot final load model
         #
         plt.figure(figsize=(15,10))
-        plt.plot(self.test_data["RT_Demand"].values, 
+        plt.plot(self.test_data["y"].values, 
             self.new_baseline, 
             marker='.', 
             linewidth=1, 
@@ -490,7 +504,7 @@ class LoadModel:
         plt.plot([-1e6, 1e6], [-1e6, 1e6], color='yellow', ls='--', linewidth=1)
         plt.xlim(_xlim)
         plt.ylim(_ylim)
-        plt.title("Holdout year (2022)")
+        plt.title("Holdout samples")
         plt.grid()
         plt.legend()
         return plt
@@ -522,9 +536,13 @@ if __name__ == "__main__":
         if CACHE == True:
             _df.to_csv(cache,compression="gzip",index=True,header=True)
 
+    t = _df.index
+    x = _df["Dry_Bulb"].values
+    y = _df["RT_Demand"].values
+
     #
     # Generate load model
     #
-    LM = LoadModel(_df,verbose=print)
+    LM = LoadModel((t,x,y),"2022",verbose=print)
     LM.plot_LR().savefig(sheet+"_1.png")
     LM.plot_LM().savefig(sheet+"_2.png")

@@ -53,8 +53,8 @@ def _(tabs):
 
 @app.cell
 def _(df, np):
-    y = np.log(df.loc["2020":"2021"]["RT_Demand"])
-    x = df.loc["2020":"2021"]["Dry_Bulb"]
+    y = np.log(df.loc["2020":"2022"]["RT_Demand"])
+    x = df.loc["2020":"2022"]["Dry_Bulb"]
     return x, y
 
 
@@ -142,7 +142,7 @@ def _(Hs, a, c, plt):
 
 @app.cell
 def _(F, a, df, first_use_set, mo, model, np, plt, temp, y):
-    _ix = df.loc["2020":"2021"].index
+    _ix = df.loc["2020":"2022"].index
     plt.plot(_ix, np.exp(F @ a.value) - np.average(np.exp(F @ a.value)) + np.average(np.exp(y)), linewidth=1, color='grey', label='time only')
     plt.plot(_ix[first_use_set], np.exp(temp.value + a[0].value), linewidth=1, color='grey', label='temp only', ls=':')
     plt.plot(_ix, np.exp(y.values), label='actual', ls='--')
@@ -186,7 +186,7 @@ def _(temp):
 @app.cell
 def _(a, df, first_use_set, np, plt, temp, x, y):
     x_sort = np.sort(x.values)
-    plt.scatter(df.loc["2020":"2021"]['Dry_Bulb'].values, np.exp(y), marker='.',
+    plt.scatter(df.loc["2020":"2022"]['Dry_Bulb'].values, np.exp(y), marker='.',
                 label='data', s=10, alpha=.5, color='orange')
     # plt.plot(x_sort, np.exp((lm.make_H(x_sort, knots) @ c).value + a[0].value), label='temperature response')
     plt.plot(x.values[first_use_set], np.exp(temp.value + a[0].value), label='temperature response', marker='.', ls='none')

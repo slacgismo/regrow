@@ -470,6 +470,7 @@ if __name__ == "__main__":
     test_data = df.loc["2022":]
     new_idx = np.arange(np.sum(df['year'] == 2022)) + np.sum(df['year'] != 2022) - 1
     new_baseline = predict_baseline(new_idx, test_data["Dry_Bulb"].values, a.value, c.value, knots)
+    print(np.sum(df['year'] == 2022))
     new_noise = roll_out_ar_noise(np.sum(df['year'] == 2022), theta.value, constant.value, lap_loc+LOCATION_ADJ, lap_scale*SCALE_ADJ)
     new_residuals = new_baseline * new_noise - new_baseline
     test_mae = np.nanmean(np.abs(test_data["RT_Demand"].values - new_baseline))

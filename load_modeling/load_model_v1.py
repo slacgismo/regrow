@@ -1,12 +1,15 @@
 """Load modeling library"""
-
+#
 # Modifications from original v3 notebook
 # 1. removed +1h from input timestamps (sampling of NEISO is trailing)
-
-# suggestions
-# 1. calculate HI from DB & RH and use that for temperature
-# 2. add slope to Hs array in both fit and predict
-# 3. convert to sklearn fit_predict() implementation
+#
+# To do:
+# 1. Fix window
+#
+# Suggestions
+# 2. Add slope to Hs array in both fit and predict
+# 3. Convert to sklearn fit_predict() implementation
+#
 
 import os
 import marimo as mo

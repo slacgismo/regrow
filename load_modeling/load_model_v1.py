@@ -1,8 +1,5 @@
 """Load modeling library"""
 
-# TODO: 
-# - [ ] eliminate use of input DF in LoadModel in far of data vectors
-
 # Modifications from original v3 notebook
 # 1. removed +1h from input timestamps (sampling of NEISO is trailing)
 
@@ -10,7 +7,6 @@
 # 1. calculate HI from DB & RH and use that for temperature
 # 2. add slope to Hs array in both fit and predict
 # 3. convert to sklearn fit_predict() implementation
-# 4. make hour-ending an option (depends on whether data source is measured or simulated)
 
 import os
 import marimo as mo
@@ -303,6 +299,7 @@ class AutoregressionModel:
         # usable records with AR lags
         use_set = np.all(~np.isnan(B), axis=1)
         theta = cvx.Variable(B.shape[1])
+        # TODO: add labels to variables
         constant = cvx.Variable()
         problem2 = cvx.Problem(
             cvx.Minimize(cvx.sum_squares(baseline_residuals[use_set] - B[use_set] @ theta - constant)),
@@ -319,6 +316,8 @@ class AutoregressionModel:
         self.lap_scale = lap_scale
         self.use_set = use_set
         self.model = model
+
+        # TODO add problem and problem data to attributes
 
     def __str__(self):
         return ", ".join([f"{x}={y}" for x,y in self.todict().items()])
@@ -361,6 +360,7 @@ class LoadModel:
         LOCATION_ADJ=0.0, # experimental
         SCALE_ADJ=1.0, # experimental
         verbose = lambda x: None,
+        window=3,
         # t0:int = 0, # data index origin 
         ):
         """Construct a load model from data
@@ -381,7 +381,7 @@ class LoadModel:
         # Extract data
         #
         x = self.data.loc[:holdout]["x"] 
-        y = np.log(self.data.loc[:holdout]["y"])
+        y = np.log(self.data.loc[:holdout]["y"]) # TODO: preprocessing to be done by sklearn API
 
         # 
         # Setup linear regressors
@@ -391,6 +391,7 @@ class LoadModel:
             nharmon=list(period_harmonics.values()),
             periods=list(period_harmonics.keys()),
             nK=knots,
+            window=window,
             )
         self.LR = LR
 
@@ -417,6 +418,11 @@ class LoadModel:
         r2 = r2_score(np.exp(y.values[LR.first_use_set]), np.exp(BM.model))
         r2_adj = 1 - (1 - r2) * (len(y) - 1) / (len(y) + len(a[1:].value) + len(c.value) - 1)
         verbose("\n".join([f"R2: {r2:.3f}", f"R2-adj: {r2_adj:.3f}"]))
+        self.scores = { # TODO: use sklearn API
+            "rmse" :rmse,
+            "r2": r2,
+            "r2_adj" : r2_adj,
+        }
 
         # 
         # Fit AR model to residuals
@@ -468,18 +474,18 @@ class LoadModel:
         figsize=(15,10),
         scatter=dict(
             marker='.',
-            label='data', 
+            label='Data', 
             s=10, 
             alpha=.5, 
             color='orange',
             ),
         plot=dict(
-            label='temperature response', 
+            label='Temperature response', 
             marker='.', 
             ls='none',
             ),
         title="Inferred temperature dependence",
-        xlabel=r"Temperature (\deg{C})",
+        xlabel=r"Nominal temperature (\\deg{C})",
         ylabel="Demand (MW)",
         legend=True,
         grid=True,
@@ -548,6 +554,7 @@ class LoadModel:
             plt.legend()
         return plt
 
+    # TODO: implement MC trials to get probability of within nhours of peak
 
 if __name__ == "__main__":
 
@@ -566,7 +573,7 @@ if __name__ == "__main__":
     sheet = "ME"
     cache = sheet + ".csv.gz"
 
-    random.seed(1)
+    np.random.seed(42) # what do you get when you multiply 9 by 6?
 
     if os.path.exists(cache) and CACHE == True:
         _df = pd.read_csv(cache,index_col=0)
@@ -582,6 +589,6 @@ if __name__ == "__main__":
     #
     # Generate load model
     #
-    LM = LoadModel((t,x,y),"2022",verbose=print)
+    LM = LoadModel((t,x,y),"2022",window=3,verbose=print)
     LM.plot_LR().savefig(sheet+"_LR.png")
     LM.plot_LM().savefig(sheet+"_LM.png")

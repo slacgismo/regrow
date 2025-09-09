@@ -419,29 +419,34 @@ def _(df, new_baseline, new_residuals, np, plt):
 
 
 @app.cell
-def _(loc_sldr, mo, scale_sldr):
+def _(loc_sldr, mo, plt, scale_sldr):
+    plt.figure(figsize=(15,10))
     mo.vstack([loc_sldr, scale_sldr])
     return
 
 
 @app.cell
-def _(df, mo, new_baseline, new_noise, plt):
+def _(df, new_baseline, new_noise, plt):
+    plt.figure(figsize=(15,10))
+
     plt.plot(new_baseline, label='predicted baseline', linewidth=1, color='red', ls=':')
     plt.plot(df.loc["2022"]["RT_Demand"].values, label='actual', ls='--')
     plt.plot(new_baseline*new_noise, label='sampled')
 
     plt.legend()
     plt.title("Holdout year (2022)")
-    mo.mpl.interactive(plt.gcf())
+    plt.grid()
+    plt.gcf()
     return
 
 
 @app.cell
-def _(a, c, df, knots, lm, mo, new_baseline, new_idx, new_noise, np, plt, y):
+def _(a, c, df, knots, lm, new_baseline, new_idx, new_noise, np, plt, y):
     _ix = df.loc["2022"].index
     time_only = lm.predict_baseline(
         new_idx, df.loc["2022"]["Dry_Bulb"].values, a.value, c.value, knots, model='time'
     )
+    plt.figure(figsize=(15,10))
     plt.plot(_ix, time_only - np.average(time_only) + np.average(np.exp(y)), linewidth=1, color='grey', label='time only')
     temp_only = lm.predict_baseline(
         new_idx, df.loc["2022"]["Dry_Bulb"].values, a.value, c.value, knots, model='temp'
@@ -450,10 +455,11 @@ def _(a, c, df, knots, lm, mo, new_baseline, new_idx, new_noise, np, plt, y):
     plt.plot(_ix, df.loc["2022"]["RT_Demand"].values, label='actual', ls='--')
     plt.plot(_ix, new_baseline, label='full model')
     plt.plot(_ix, new_baseline*new_noise, label='noisy sample', marker='.', linewidth=.7, markersize=2, alpha=0.5)
+    plt.grid()
     plt.legend()
     plt.xticks(rotation=45)
     plt.tight_layout()
-    mo.mpl.interactive(plt.gcf())
+    plt.gcf()
     return
 
 

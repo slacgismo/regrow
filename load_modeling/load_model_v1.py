@@ -576,7 +576,7 @@ if __name__ == "__main__":
     sheet = "ME"
     cache = sheet + ".csv.gz"
 
-    np.random.seed(42) # what do you get when you multiply 9 by 6?
+    np.random.seed(42) # what do you get when you multiply nine by six?
 
     if os.path.exists(cache) and CACHE == True:
         _df = pd.read_csv(cache,index_col=0)

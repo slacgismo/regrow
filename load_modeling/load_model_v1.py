@@ -488,7 +488,7 @@ class LoadModel:
             ls='none',
             ),
         title="Inferred temperature dependence",
-        xlabel=r"Nominal temperature (\\deg{C})",
+        xlabel=r"Nominal temperature ($^o$C)",
         ylabel="Demand (MW)",
         legend=True,
         grid=True,

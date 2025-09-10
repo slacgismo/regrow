@@ -27,6 +27,8 @@ from sklearn.metrics import r2_score
 import statsmodels.api as sm
 from spcqe import make_basis_matrix, make_regularization_matrix
 import random
+import time
+import traceback
 
 pd.options.display.max_columns=None
 pd.options.display.width=None
@@ -470,8 +472,12 @@ class LoadModel:
             "index of peak": [ppower_time_actual, ppower_time_predict, ppower_time_predict_noar]
         }
         self.results = pd.DataFrame(data=data, index=index)
+        self.figures = []
         verbose(self.results)
 
+    def __del__(self):
+        for figure in self.figures:
+            figure.close()
 
     def plot_LR(self,*,
         figsize=(15,10),
@@ -513,6 +519,7 @@ class LoadModel:
             plt.xlabel(xlabel)
         if ylabel:
             plt.ylabel(ylabel)
+        self.figures.append(plt)
         return plt
 
     def plot_LM(self,*,
@@ -555,6 +562,7 @@ class LoadModel:
             plt.legend(*legend)
         elif legend == True:
             plt.legend()
+        self.figures.append(plt)
         return plt
 
     # TODO: implement MC trials to get probability of within nhours of peak
@@ -562,36 +570,52 @@ class LoadModel:
 if __name__ == "__main__":
 
     # input data
-    # SHEETS = [
-    #     "ISO NE CA",
-    #     "ME",
-    #     "NH",
-    #     "VT",
-    #     "CT",
-    #     "RI",
-    #     "SEMA",
-    #     "WCMA",
-    #     "NEMA"
-    # ]
-    sheet = "ME"
-    cache = sheet + ".csv.gz"
+    for sheet in  [
+        "ISO NE CA",
+        "ME",
+        "NH",
+        "VT",
+        "CT",
+        "RI",
+        "SEMA",
+        "WCMA",
+        "NEMA"
+    ]:
+        RESULTS = "NE_ISO_Data/results"
+        os.makedirs(RESULTS,exist_ok=True)
 
-    np.random.seed(42) # what do you get when you multiply nine by six?
+        print("Processing",sheet,end="...",flush=True)
+        tic = time.time()
+        cache = os.path.join(RESULTS,sheet + ".csv.gz")
 
-    if os.path.exists(cache) and CACHE == True:
+        np.random.seed(42) # what do you get when you multiply nine by six?
+
+        #
+        # Read load data
+        #
+        if not os.path.exists(cache) or CACHE == False:
+            _df = read_NEISO_data(sheet)
+            if CACHE == True:
+                _df.to_csv(cache,compression="gzip",index=True,header=True)
         _df = pd.read_csv(cache,index_col=0)
-    else:
-        _df = read_NEISO_data(sheet)
-        if CACHE == True:
-            _df.to_csv(cache,compression="gzip",index=True,header=True)
 
-    t = _df.index
-    x = _df["Dry_Bulb"].values
-    y = _df["RT_Demand"].values
+        t = _df.index
+        x = _df["Dry_Bulb"].values
+        y = _df["RT_Demand"].values
 
-    #
-    # Generate load model
-    #
-    LM = LoadModel((t,x,y),"2022",window=1,verbose=print)
-    LM.plot_LR().savefig(sheet+"_LR.png")
-    LM.plot_LM().savefig(sheet+"_LM.png")
+        #
+        # Generate load model
+        #
+        try:
+
+            with open(os.path.join(RESULTS,sheet+".txt"),"w") as fh:
+                LM = LoadModel((t,x,y),"2022",window=3,verbose=lambda x:print(x,file=fh))
+            LM.plot_LR().savefig(os.path.join(RESULTS,sheet+"_LR.png"))
+            LM.plot_LM().savefig(os.path.join(RESULTS,sheet+"_LM.png"))
+            toc = time.time()
+            print(f"Done {toc-tic:.1f} seconds")
+
+        except Exception as err:
+            print(f"ERROR: {err}")
+            print(traceback.format_exc())
+

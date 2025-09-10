@@ -105,7 +105,7 @@ def make_offset_H(H, offset):
         newH[:-offset] = np.nan
     return newH
 
-def running_view(arr, window, axis=-1):
+def running_view(arr, window=3, axis=-1):
     """Return a running view of length 'window' over 'axis'
 
     Nan-pads the start to get the same first dimension as the input the
@@ -445,7 +445,7 @@ class LoadModel:
         #
         test_data = self.data[holdout:]
         new_idx = np.arange(len(self.data[:holdout]),len(self.data)) - 1
-        new_baseline = predict_baseline(new_idx, test_data["x"].values, a.value, c.value, LR.knots)
+        new_baseline = predict_baseline(new_idx, test_data["x"].values, a.value, c.value, LR.knots,window=window)
         new_noise = roll_out_ar_noise(new_idx[-1]-new_idx[0]+1, AR.theta.value, AR.constant.value, AR.lap_loc+LOCATION_ADJ, AR.lap_scale*SCALE_ADJ)
         new_residuals = new_baseline * new_noise - new_baseline
         test_mae = np.nanmean(np.abs(test_data["y"].values - new_baseline))
@@ -592,6 +592,6 @@ if __name__ == "__main__":
     #
     # Generate load model
     #
-    LM = LoadModel((t,x,y),"2022",window=3,verbose=print)
+    LM = LoadModel((t,x,y),"2022",window=1,verbose=print)
     LM.plot_LR().savefig(sheet+"_LR.png")
     LM.plot_LM().savefig(sheet+"_LM.png")

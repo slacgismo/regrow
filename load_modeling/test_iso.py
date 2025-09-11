@@ -3,6 +3,7 @@ import time
 import numpy as np
 import pandas as pd
 import load_model_v1 as lm
+import traceback
 
 pd.options.display.max_columns=None
 pd.options.display.width=None

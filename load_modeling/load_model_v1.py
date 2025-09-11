@@ -210,6 +210,7 @@ class LinearRegressor:
         """
         self.x = x
         self.y = y
+        self.window = window
         self.F = make_basis_matrix(
             num_harmonics=nharmon,
             length=len(y),
@@ -323,6 +324,44 @@ class AutoregressionModel:
 
     def todict(self):
         return {x:getattr(self,x) for x in dir(self) if not x.startswith("_")}
+
+class Prediction:
+
+    def __init__(self,LM,t,x,mean=0.0,stdev=1.0):
+        baseline = predict_baseline(t, x, LM.AR.BM.a.value, LM.AR.BM.c.value, LM.AR.BM.LR.knots,window=LM.AR.BM.LR.window)
+        noise = roll_out_ar_noise(t[-1]-t[0]+1, LM.AR.theta.value, LM.AR.constant.value, LM.AR.lap_loc+mean, LM.AR.lap_scale*stdev)
+
+        self.y = baseline + noise
+        self.baseline = baseline
+        self.noise = noise
+        self.figures = []
+
+    def __del__(self):
+        for figure in self.figures:
+            figure.close()
+
+    def plot(self,
+            datetime,
+            *,
+            figsize=(15,10),
+            grid=True,
+            legend=True,
+            xlabel=None,
+            ylabel="Predicted load [MW]",
+            **kwargs):
+        plt.figure(figsize=figsize)
+        plt.plot(datetime,self.y,**kwargs)
+        plt.xlabel(xlabel if not xlabel is None else f"Date/Time [{datetime.tz}]")
+        plt.ylabel(ylabel if not ylabel is None else None)
+        if legend == True:
+            if "label" in kwargs:
+                plt.legend()
+        elif legend:
+            plt.legend(legend)
+        if grid == True:
+            plt.grid()
+        self.figures.append(plt)
+        return plt
 
 class LoadModel:
     """Generate a load model given load data
@@ -440,6 +479,7 @@ class LoadModel:
         #
         # Generate test data
         #
+        new_idx = np.arange(len(self.data[:holdout]),len(self.data)) - 1
         test_data = self.data[holdout:]
         new_idx = np.arange(len(self.data[:holdout]),len(self.data)) - 1
         new_baseline = predict_baseline(new_idx, test_data["x"].values, a.value, c.value, LR.knots,window=window)

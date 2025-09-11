@@ -1,0 +1,19 @@
+
+
+Baseline model fit
+------------------
+RMS error of model fit: 33.06, or 7.18% of average
+R2: 0.902
+R2-adj: 0.903
+
+
+AR residual model fit
+---------------------
+sum-abs of AR coefficients: 0.95
+Baseline MAE: 0.05, or 0.86% of average
+Autoregressive MAE: 0.02, or 0.32% of average
+test MAE: 56.85, or 12.05% of average
+                       peak power  index of peak
+actual                      908.4           4294
+predicted                   834.5           5377
+predicted no AR model       815.2           4295

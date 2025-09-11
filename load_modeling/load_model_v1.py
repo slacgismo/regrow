@@ -30,12 +30,6 @@ import random
 import time
 import traceback
 
-pd.options.display.max_columns=None
-pd.options.display.width=None
-
-CACHE=True # generate and use cache
-# CACHE=False # don't use cache
-
 def read_NEISO_data(sheet):
     """Collate data from NE ISO Excel sheets
 
@@ -47,7 +41,7 @@ def read_NEISO_data(sheet):
     years = [2020, 2021, 2022]
     df_list = []
     for _yr in years:
-        fp = Path('.') / 'NE_ISO_Data' / f'{_yr}_smd_hourly.xlsx' 
+        fp = Path('.') / 'ISO_Data' / f'{_yr}_smd_hourly.xlsx' 
         df = pd.read_excel(fp, sheet_name=sheet)
         df['year'] = _yr
         df.index = pd.to_datetime(df['Date'].astype(str) + ' ' + df['Hr_End'].map(lambda x: f"{x-1}:00:00"))
@@ -566,56 +560,4 @@ class LoadModel:
         return plt
 
     # TODO: implement MC trials to get probability of within nhours of peak
-
-if __name__ == "__main__":
-
-    # input data
-    for sheet in  [
-        "ISO NE CA",
-        "ME",
-        "NH",
-        "VT",
-        "CT",
-        "RI",
-        "SEMA",
-        "WCMA",
-        "NEMA"
-    ]:
-        RESULTS = "NE_ISO_Data/results"
-        os.makedirs(RESULTS,exist_ok=True)
-
-        print("Processing",sheet,end="...",flush=True)
-        tic = time.time()
-        cache = os.path.join(RESULTS,sheet + ".csv.gz")
-
-        np.random.seed(42) # what do you get when you multiply nine by six?
-
-        #
-        # Read load data
-        #
-        if not os.path.exists(cache) or CACHE == False:
-            _df = read_NEISO_data(sheet)
-            if CACHE == True:
-                _df.to_csv(cache,compression="gzip",index=True,header=True)
-        _df = pd.read_csv(cache,index_col=0)
-
-        t = _df.index
-        x = _df["Dry_Bulb"].values
-        y = _df["RT_Demand"].values
-
-        #
-        # Generate load model
-        #
-        try:
-
-            with open(os.path.join(RESULTS,sheet+".txt"),"w") as fh:
-                LM = LoadModel((t,x,y),"2022",window=3,verbose=lambda x:print(x,file=fh))
-            LM.plot_LR().savefig(os.path.join(RESULTS,sheet+"_LR.png"))
-            LM.plot_LM().savefig(os.path.join(RESULTS,sheet+"_LM.png"))
-            toc = time.time()
-            print(f"Done {toc-tic:.1f} seconds")
-
-        except Exception as err:
-            print(f"ERROR: {err}")
-            print(traceback.format_exc())
 

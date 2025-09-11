@@ -7,10 +7,13 @@ import pandas as pd
 import numpy as np
 
 
-CACHE = "test_scada_data.csv.gz"
+CACHE = "SCADA_data/test_scada.csv.gz"
 if CACHE and not os.path.exists(CACHE):
+    
+    #
+    # Read load data
+    #
     P=[]
-
     for year in [2019,2020,2021]:
         file = f"SCADA_data/load_{year}.csv"
         P.append(pd.read_csv(file,
@@ -25,6 +28,9 @@ if CACHE and not os.path.exists(CACHE):
     P.index = P.index.tz_localize("America/Los_Angeles",ambiguous=[False]*len(P.index))
     P.index = P.index - dt.timedelta(hours=1)
 
+    #
+    # Read temperature data
+    #
     T = []
     for year in [2019,2020,2021]:
         T.append(pd.read_csv(f"SCADA_data/temp_{year}.csv",
@@ -49,7 +55,8 @@ else:
 
 np.random.seed(42) # what do you get when you multiply nine by six?
 
-LM = lm.LoadModel((data.index,data["T"],data["P"]),holdout="2021",verbose=print)
+with open("SCADA_data/test_scada.txt","w") as fh:
+    LM = lm.LoadModel((data.index,data["T"],data["P"]),holdout="2021",verbose=lambda x:print(x,file=fh))
 
-LM.plot_LR().savefig("test_scada_LR.png")
-LM.plot_LM().savefig("test_scada_LM.png")
+LM.plot_LR().savefig("SCADA_data/test_scada_LR.png")
+LM.plot_LM().savefig("SCADA_data/test_scada_LM.png")

@@ -375,6 +375,7 @@ class LoadModel:
         """
         self.data = pd.DataFrame(index=data[0],data={"x":data[1],"y":data[2]})
         self.holdout = holdout
+        self.figures = []
 
         #
         # Extract data

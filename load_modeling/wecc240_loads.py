@@ -5,10 +5,40 @@ app = marimo.App(width="medium")
 
 
 @app.cell
+def _(errors_ui, graph_prediction, graph_ui, loads_ui, mo, timezone_ui):
+    mo.vstack([
+        mo.hstack([loads_ui,timezone_ui]),
+        mo.ui.tabs({
+            "Prediction": mo.vstack([
+                graph_ui,
+                graph_prediction,
+            ]),
+            "Errors": errors_ui,
+            "Data": mo.md("TODO"),
+            "Validation": mo.md("TODO"),
+        })])
+    return
+
+
+@app.cell
 def _(pd):
     errors = pd.read_csv("wecc240_errors.csv", index_col=[0]).sort_index()
-    errors
+    errors["Delta_MAPE"] = errors["old_MAPE"] - errors["new_MAPE"]
+    errors["Delta_MPED"] = errors["old_MPED"] - errors["new_MPED"]
     return (errors,)
+
+
+@app.cell
+def _(errors, loads_ui, mo):
+    errors_ui = mo.ui.table(
+        errors,
+        initial_selection=[
+            n for n, x in enumerate(errors.index) if x == loads_ui.value
+        ],
+        selection="single",
+        pagination=False,
+    )
+    return (errors_ui,)
 
 
 @app.cell
@@ -40,19 +70,28 @@ def _(errors, mo, pd, timezone_ui):
 
 
 @app.cell
-def _(loads, loads_ui, mo, px, timezone_ui):
-    _plot = px.line(
+def _(mo):
+    graph_ui = mo.ui.checkbox(label="August 2020 only")
+    return (graph_ui,)
+
+
+@app.cell
+def _(graph_ui, loads, loads_ui, px):
+    graph_prediction = px.line(
         loads[loads_ui.value], 
         labels={
             "index": f"Date/Time [{loads.index.tz}]",
             "value": "Load [MW]"},
-    )
-    _plot.update_layout(showlegend=False)
-    mo.vstack(
-        [
-            mo.hstack([loads_ui,timezone_ui]),
-            mo.ui.plotly(_plot),
-        ]
+        title = loads_ui.selected_key,
+        range_x = ["2020-08-01","2020-09-01"] if graph_ui.value else None,
+    ).update_layout(showlegend=False);
+    return (graph_prediction,)
+
+
+@app.cell
+def _(px):
+    graph_data = px.line(
+    
     )
     return
 

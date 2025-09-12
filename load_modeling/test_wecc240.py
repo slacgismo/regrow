@@ -7,6 +7,7 @@ import numpy as np
 import time
 import datetime as dt
 import matplotlib.pyplot as plt
+import json
 
 OUTPUT = "WECC240/results" # folder in which results are stored
 DATERANGE = pd.date_range("2020-08-01 00:00:00+07:00","2020-09-01 00:00:00+07:00",freq="1h")
@@ -35,7 +36,7 @@ weather = pd.read_csv("../data/geodata/temperature.csv",index_col=0,parse_dates=
 wecc240 = pd.read_csv("../data/geodata/total.csv",index_col=0,parse_dates=[0])
 nodes = pd.read_csv("../data/nodes.csv",index_col=0)
 wecc240_model = []
-
+wecc240_errors = {}
 for n,column in enumerate(columns):
     
     LM_output = f"{OUTPUT}/{column}.txt" # file for results
@@ -69,8 +70,12 @@ for n,column in enumerate(columns):
 
         yp = PM.y
         pe = (yp/ya-1)*100
-        MAPE = np.average(np.ma.MaskedArray(pe,mask=np.isnan(pe)))
-        MAPD = np.std(np.ma.MaskedArray(pe,mask=np.isnan(pe)))
+        MAPE = np.average(np.ma.MaskedArray(np.abs(pe),mask=np.isnan(pe)))
+        MPED = np.std(np.ma.MaskedArray(pe,mask=np.isnan(pe)))
+        wecc240_errors[column] = {
+            "location":title,
+            "new_MAPE":MAPE.round(1),
+            "new_MPED":MPED.round(1)}
 
         fig = PM.plot(t,label="New model prediction")
         fig.plot(t,ya,label="Actual power data")
@@ -79,7 +84,13 @@ for n,column in enumerate(columns):
         fig.title(title)
         fig.savefig(os.path.join(OUTPUT,f"{column}_HT.png"))
 
-        label = f"{MAPE=:.1f}% ($3\\sigma={3*MAPD:.1f}$%)"
+        label = f"{MAPE=:.1f}% ($3\\sigma={3*MPED:.1f}$%)"
+
+        pe = (wecc240.loc[test_data.index,column].iloc[:-LM.LR.window]/ya-1)*100
+        MAPE = np.average(np.ma.MaskedArray(np.abs(pe),mask=np.isnan(pe)))
+        MPED = np.std(np.ma.MaskedArray(pe,mask=np.isnan(pe)))
+        wecc240_errors[column]["old_MAPE"] = MAPE.round(1)
+        wecc240_errors[column]["old_MPED"] = MPED.round(1)
 
         plt.figure(figsize=(15,10))
         plt.plot(t,pe,label=label)
@@ -106,6 +117,10 @@ for n,column in enumerate(columns):
         pd.concat(wecc240_model,axis=1).to_csv("wecc240_load.csv",index=True,header=True)
 
         toc = time.time()
+
+        errors = pd.DataFrame(wecc240_errors).T
+        errors.index.name = "node"
+        errors.to_csv("wecc240_errors.csv",index=True,header=True)
 
         print("ok",f"(ETA in {dt.timedelta(seconds=round((N/(n+1)-1)*(toc-tic),0))})",flush=True)
 

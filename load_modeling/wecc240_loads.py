@@ -5,17 +5,29 @@ app = marimo.App(width="medium")
 
 
 @app.cell
-def _(errors_ui, graph_prediction, graph_ui, loads_ui, mo, timezone_ui):
+def _(
+    errors,
+    errors_ui,
+    graph_holdout,
+    graph_prediction,
+    graph_training,
+    graph_ui,
+    loads_ui,
+    mo,
+    pd,
+    timezone_ui,
+):
     mo.vstack([
         mo.hstack([loads_ui,timezone_ui]),
         mo.ui.tabs({
             "Prediction": mo.vstack([
                 graph_ui,
                 graph_prediction,
+                pd.DataFrame(errors.loc[loads_ui.value]).T,
             ]),
             "Errors": errors_ui,
-            "Data": mo.md("TODO"),
-            "Validation": mo.md("TODO"),
+            "Training": graph_training,
+            "Holdout": graph_holdout,
         })])
     return
 
@@ -57,6 +69,13 @@ def _(mo):
 
 
 @app.cell
+def _(pd):
+    training = (pd.read_csv("../data/geodata/total.csv",index_col=[0],parse_dates=[0])/1000).round(3)
+    weather = (pd.read_csv("../data/geodata/temperature.csv",index_col=[0],parse_dates=[0])*9/5+32).round(1)
+    return training, weather
+
+
+@app.cell
 def _(errors, mo, pd, timezone_ui):
     loads = pd.read_csv("wecc240_loads.csv", index_col=[0],parse_dates=[0]).sort_index()/1000
     loads.index = loads.index.tz_localize("UTC").tz_convert(timezone_ui.value)
@@ -89,11 +108,34 @@ def _(graph_ui, loads, loads_ui, px):
 
 
 @app.cell
-def _(px):
-    graph_data = px.line(
-    
-    )
-    return
+def _(loads, loads_ui, px, training):
+    graph_training = px.line(
+        training.loc[:"2018-12",loads_ui.value],
+        labels={
+            "index": f"Date/Time [{loads.index.tz}]",
+            "value": "Load [MW]"},
+        title = loads_ui.selected_key,
+    ).update_layout(showlegend=False);
+    return (graph_training,)
+
+
+@app.cell
+def _(loads, loads_ui, pd, px, training, weather):
+    _training = pd.DataFrame(training.loc["2018-12",loads_ui.value])
+    _training.columns = ["P"]
+    _loads = pd.DataFrame(loads.loc["2018-12":"2019-01",loads_ui.value])
+    _loads.columns = ["Q"]
+    _weather = pd.DataFrame(weather.loc["2018-12",loads_ui.value])
+    _weather.columns = ["T"]
+    _data = _training.join(_loads)#.join(_weather)
+    graph_holdout = px.line(
+        _data,
+        labels={
+            "index": f"Date/Time [{loads.index.tz}]",
+            "value": "Load [MW]"},
+        title = loads_ui.selected_key,
+    ).update_layout(showlegend=False);
+    return (graph_holdout,)
 
 
 @app.cell

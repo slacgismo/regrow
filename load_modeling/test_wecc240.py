@@ -114,7 +114,7 @@ for n,column in enumerate(columns):
         TP = weather[column]
         PW = lm.Prediction(LM,t=range(len(weather.index)),x=TP.values)
         wecc240_model.append(pd.DataFrame(index=weather.index.values,data={column:PW.y}).dropna().round(1))
-        pd.concat(wecc240_model,axis=1).to_csv("wecc240_load.csv",index=True,header=True)
+        pd.concat(wecc240_model,axis=1).to_csv("wecc240_loads.csv",index=True,header=True)
 
         toc = time.time()
 

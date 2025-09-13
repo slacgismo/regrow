@@ -71,21 +71,28 @@ def _(mo):
 @app.cell
 def _(pd):
     training = (pd.read_csv("../data/geodata/total.csv",index_col=[0],parse_dates=[0])/1000).round(3)
+    print(training["9wdb95"])
     weather = (pd.read_csv("../data/geodata/temperature.csv",index_col=[0],parse_dates=[0])*9/5+32).round(1)
     return training, weather
 
 
 @app.cell
 def _(errors, mo, pd, timezone_ui):
-    loads = pd.read_csv("wecc240_loads.csv", index_col=[0],parse_dates=[0]).sort_index()/1000
-    loads.index = loads.index.tz_localize("UTC").tz_convert(timezone_ui.value)
+    prediction = pd.read_csv("wecc240_loads.csv", index_col=[0],parse_dates=[0]).sort_index()/1000
+    prediction.index = prediction.index.tz_localize("UTC").tz_convert(timezone_ui.value)
     nodes = pd.read_csv("../data/nodes.csv", index_col=[0]).sort_index()
-    _nodes = nodes.join(loads)[["Bus  Name","Bus  Number"]].dropna()
+    _nodes = nodes.join(prediction)[["Bus  Name","Bus  Number"]].dropna()
     _nodes["name"] = [f"{x['Bus  Name']} ({x['Bus  Number']} @ {n})" for n,x in _nodes.iterrows()]
     _nodes = _nodes.drop(["Bus  Name","Bus  Number"],axis=1).sort_values("name").to_dict('index')
     _options = {y["name"]:x for x,y in _nodes.items() if x in errors.index.values}
     loads_ui = mo.ui.dropdown(label="Node:",options=_options, value=list(_options)[0])
-    return loads, loads_ui
+    return loads_ui, prediction
+
+
+@app.cell
+def _(loads_ui, prediction):
+    print(prediction.loc["2018-12",loads_ui.value])
+    return
 
 
 @app.cell
@@ -95,24 +102,24 @@ def _(mo):
 
 
 @app.cell
-def _(graph_ui, loads, loads_ui, px):
+def _(graph_ui, loads_ui, prediction, px):
     graph_prediction = px.line(
-        loads[loads_ui.value], 
+        prediction.loc["2020-08",loads_ui.value] if graph_ui.value else prediction[loads_ui.value], 
         labels={
-            "index": f"Date/Time [{loads.index.tz}]",
+            "index": f"Date/Time [{prediction.index.tz}]",
             "value": "Load [MW]"},
         title = loads_ui.selected_key,
-        range_x = ["2020-08-01","2020-09-01"] if graph_ui.value else None,
+        # range_x = ["2020-08-01","2020-09-01"] if graph_ui.value else None,
     ).update_layout(showlegend=False);
     return (graph_prediction,)
 
 
 @app.cell
-def _(loads, loads_ui, px, training):
+def _(loads_ui, prediction, px, training):
     graph_training = px.line(
         training.loc[:"2018-12",loads_ui.value],
         labels={
-            "index": f"Date/Time [{loads.index.tz}]",
+            "index": f"Date/Time [{prediction.index.tz}]",
             "value": "Load [MW]"},
         title = loads_ui.selected_key,
     ).update_layout(showlegend=False);
@@ -120,21 +127,23 @@ def _(loads, loads_ui, px, training):
 
 
 @app.cell
-def _(loads, loads_ui, pd, px, training, weather):
+def _(loads_ui, pd, prediction, px, training, weather):
     _training = pd.DataFrame(training.loc["2018-12",loads_ui.value])
-    _training.columns = ["P"]
-    _loads = pd.DataFrame(loads.loc["2018-12":"2019-01",loads_ui.value])
-    _loads.columns = ["Q"]
+    _training.columns = ["Training"]
+    print(_training)
+    _prediction = pd.DataFrame(prediction.loc["2018-12",loads_ui.value])
+    _prediction.columns = ["Prediction"]
+    print(_prediction)
     _weather = pd.DataFrame(weather.loc["2018-12",loads_ui.value])
-    _weather.columns = ["T"]
-    _data = _training.join(_loads)#.join(_weather)
+    _weather.columns = ["Temperature"]
+    _data = _training.join(_prediction)#.join(_weather)
     graph_holdout = px.line(
         _data,
         labels={
-            "index": f"Date/Time [{loads.index.tz}]",
+            "index": f"Date/Time [{prediction.index.tz}]",
             "value": "Load [MW]"},
         title = loads_ui.selected_key,
-    ).update_layout(showlegend=False);
+    ).update_layout();
     return (graph_holdout,)
 
 

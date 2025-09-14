@@ -94,7 +94,7 @@ for n,column in enumerate(columns):
 
         plt.figure(figsize=(15,10))
         plt.plot(t,pe,label=label)
-        plt.xlabel("Date/Time [PST/PDT]")
+        plt.xlabel(f"Date/Time [{t.tz}]")
         plt.ylabel("Holdout error [%]")
         plt.grid()
         plt.legend()

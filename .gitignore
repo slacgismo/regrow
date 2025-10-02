@@ -1067,3 +1067,4 @@ pyvenv.cfg
 # Virtual Env
 .venv/
 marimo_env/
+load_modeling/

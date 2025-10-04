@@ -55,6 +55,14 @@ def _(costs, genname_ui):
 
 
 @app.cell
+def _(data, genname_ui, mo):
+    _rows = [f"<td>{data[x].values[0]}</td>" for x in data.columns]
+    _hdrs = [f"<th>{x}</th>" for x in data.columns]
+    mo.md(f"<table><caption>{genname_ui.value}</caption><tr>{''.join(_hdrs)}</tr><tr>{''.join(_rows)}</tr></table>")
+    return
+
+
+@app.cell
 def _(data, np):
     price = np.array(
         [
@@ -76,13 +84,49 @@ def _(data, np, price):
         _y.append(_x[-1]*_p)
     y = np.cumsum(np.hstack(_y)) + data.No_Load_Cost.values[0]
     x = np.hstack(_x)
-    fit = [np.polyfit(x, y, n) for n in range(8)]
+    fit = [np.polyfit(x, y, n) for n in range(9)]
     e = {len(p)-1:np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit}
     return e, fit, n, x, y
 
 
 @app.cell
-def _(busname_ui, e, fit, genname_ui, np, order_ui, plt, x, y):
+def _(fit, mo, order_ui, re):
+    _p = fit[order_ui.value]
+    _t = ' '.join([f"{x:+.3g}~p^{{{len(_p)-n-1}}}" for n,x in enumerate(_p)])
+    _t = re.sub("e([+-][0-9]+)",r"\\times10^{\1}",_t).replace("{+0","{").replace("{-0","-{").replace("p^{0}","").replace("p^{1}","p")
+    mo.md(f"Fit order {order_ui.value}: $C(p) = {_t}$")
+
+    return
+
+
+@app.cell
+def _(data, fit, np, order_ui):
+    pmin,pmax = data.Pmin.values[0],data.Pmax.values[0]
+    p = np.polynomial.Polynomial(fit[order_ui.value][-1::-1],symbol='p')
+    p1 = p.deriv()
+    p2 = p1.deriv()
+    prr = [x for x in p.roots() if isinstance(x,float) and pmin<=x<=pmax]
+    p1rr = [x for x in p1.roots() if isinstance(x,float) and pmin<=x<=pmax]
+    p2rr = [x for x in p2.roots() if isinstance(x,float) and pmin<=x<=pmax]
+    # prr,p1rr,p2rr
+    return p, p1, p1rr, p2, p2rr, pmax, pmin, prr
+
+
+@app.cell
+def _(
+    busname_ui,
+    e,
+    fit,
+    genname_ui,
+    np,
+    order_ui,
+    p1rr,
+    p2rr,
+    plt,
+    prr,
+    x,
+    y,
+):
     plt.figure(figsize=(16,6))
 
     plt.subplot(1,2,1)
@@ -98,9 +142,15 @@ def _(busname_ui, e, fit, genname_ui, np, order_ui, plt, x, y):
     plt.xlabel("Power (MW)")
     plt.ylabel("Cost ($M/h)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
-    plt.plot(x,y/1e6)
-    plt.plot(x,np.polyval(fit[order_ui.value],x)/1e6)
-
+    plt.plot(x,y/1e6,label="Data")
+    plt.plot(x,np.polyval(fit[order_ui.value],x)/1e6,label=f"Fit order {order_ui.value}")
+    if prr:
+        plt.plot(prr,np.zeros(len(prr)),'ok',label='Fit zero')
+    if p1rr:
+        plt.plot(p1rr,np.zeros(len(p1rr)),'^k',label='Fit minimum')
+    if p2rr:
+        plt.plot(p1rr,np.zeros(len(p2rr)),'xk',label='Fit non-convexity')
+    plt.legend()
     plt.gca()
     return
 
@@ -112,7 +162,13 @@ def _():
     import numpy as np
     import matplotlib.pyplot as plt
     import cvxpy as cp
-    return cp, mo, np, pd, plt
+    import re
+    return cp, mo, np, pd, plt, re
+
+
+@app.cell
+def _():
+    return
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.11.0"
+__generated_with = "0.16.5"
 app = marimo.App(width="full")
 
 
@@ -44,13 +44,19 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    constraint_ui = mo.ui.checkbox(label="Constrained fit")
+    constraint_ui = mo.ui.checkbox(label="Constrained fit",disabled=True)
     return (constraint_ui,)
 
 
 @app.cell
-def _(busname_ui, constraint_ui, mo, order_ui):
-    mo.hstack([busname_ui, order_ui,constraint_ui], justify="start")
+def _(mo):
+    withnlc_ui = mo.ui.checkbox(label="Include standby cost")
+    return (withnlc_ui,)
+
+
+@app.cell
+def _(busname_ui, constraint_ui, mo, order_ui, withnlc_ui):
+    mo.hstack([busname_ui, order_ui,constraint_ui,withnlc_ui])
     return
 
 
@@ -81,21 +87,25 @@ def _(data, np):
 
 
 @app.cell
-def _(constraint_ui, data, np, price):
+def _(constraint_ui, data, np, price, withnlc_ui):
     _x = []
     _y = []
     for n in range(len(price[0])):
         _q0,_q1,_p = [price[0][n-1] if n > 0 else 0,price[0][n],price[1][n]]
         _x.append(np.arange(_q0,_q1,1).round(0))
         _y.append(np.ones(len(_x[-1]))*_p)
-    y = np.cumsum(np.hstack(_y)) + data.No_Load_Cost.values[0]
+    y = np.cumsum(np.hstack(_y)) + (data.No_Load_Cost.values[0] if withnlc_ui.value else 0)
     x = np.hstack(_x)
     if constraint_ui.value:
+        # fit = [np.polyfit(x, y, 0)]
+        # for _n in range(1,9):
+        #     p = cp.Variable(_n)
+        #     prob = cp.Problem(cp.Minimize(cp.sum_squares(p)))
         fit = [np.polyfit(x, y, n) for n in range(9)]
     else:
         fit = [np.polyfit(x, y, n) for n in range(9)]    
     e = {len(p)-1:np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit}
-    return e, fit, n, x, y
+    return e, fit, x, y
 
 
 @app.cell
@@ -104,21 +114,20 @@ def _(fit, mo, order_ui, re):
     _t = ' '.join([f"{x:+.3g}~p^{{{len(_p)-n-1}}}" for n,x in enumerate(_p)])
     _t = re.sub("e([+-][0-9]+)",r"\\times10^{\1}",_t).replace("{+0","{").replace("{-0","-{").replace("p^{0}","").replace("p^{1}","p")
     mo.md(f"Fit order {order_ui.value}: $C(p) = {_t}$")
-
     return
 
 
 @app.cell
 def _(data, fit, np, order_ui):
     pmin,pmax = data.Pmin.values[0],data.Pmax.values[0]
-    p = np.polynomial.Polynomial(fit[order_ui.value][-1::-1],symbol='p')
-    p1 = p.deriv()
+    p0 = np.polynomial.Polynomial(fit[order_ui.value][-1::-1],symbol='p')
+    p1 = p0.deriv()
     p2 = p1.deriv()
-    prr = [x for x in p.roots() if isinstance(x,float) and pmin<=x<=pmax]
+    p0rr = [x for x in p0.roots() if isinstance(x,float) and pmin<=x<=pmax]
     p1rr = [x for x in p1.roots() if isinstance(x,float) and pmin<=x<=pmax]
     p2rr = [x for x in p2.roots() if isinstance(x,float) and pmin<=x<=pmax]
     # prr,p1rr,p2rr
-    return p, p1, p1rr, p2, p2rr, pmax, pmin, prr
+    return p0rr, p1rr, p2rr
 
 
 @app.cell
@@ -129,11 +138,11 @@ def _(
     genname_ui,
     np,
     order_ui,
+    p0rr,
     p1rr,
     p2rr,
     plt,
     price,
-    prr,
     x,
     y,
 ):
@@ -164,12 +173,12 @@ def _(
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
     plt.plot(x,y,label="Data")
     plt.plot(x,np.polyval(fit[order_ui.value],x),label=f"Fit order {order_ui.value}")
-    if prr:
-        plt.plot(prr,np.polyval(fit[order_ui.value],prr),'ok',label='Fit zero')
+    if p0rr:
+        plt.plot(p0rr,np.polyval(fit[order_ui.value],p0rr),'ok',label='Fit zero')
     if p1rr:
-        plt.plot(p1rr,np.polyval(fit[order_ui.value],p1rr),'^k',label='Fit minimum')
+        plt.plot(p1rr,np.polyval(fit[order_ui.value],p1rr),'^k',label='Fit extreme')
     if p2rr:
-        plt.plot(p2rr,np.polyval(fit[order_ui.value],p2rr),'xk',label='Fit non-convexity')
+        plt.plot(p2rr,np.polyval(fit[order_ui.value],p2rr),'xk',label='Fit inflexion')
     plt.legend()
     plt.gca()
     return
@@ -183,12 +192,7 @@ def _():
     import matplotlib.pyplot as plt
     import cvxpy as cp
     import re
-    return cp, mo, np, pd, plt, re
-
-
-@app.cell
-def _():
-    return
+    return mo, np, pd, plt, re
 
 
 if __name__ == "__main__":

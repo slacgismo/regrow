@@ -50,14 +50,8 @@ def _(busname_ui, mo, order_ui):
 
 @app.cell
 def _(costs, genname_ui):
-    data = costs[costs.genname==genname_ui.value].set_index("genname")[["Pmin","MW1","Cost1","MW2","Cost2","MW3","Cost3","Pmax"]].round(2)
+    data = costs[costs.genname==genname_ui.value].set_index("genname")[["Pmin","MW1","Cost1","MW2","Cost2","MW3","Cost3","Pmax","No_Load_Cost"]].round(2)
     return (data,)
-
-
-@app.cell
-def _(data):
-    data
-    return
 
 
 @app.cell
@@ -73,16 +67,16 @@ def _(data, np):
 
 
 @app.cell
-def _(np, price):
+def _(data, np, price):
     _x = []
     _y = []
     for n in range(len(price[0])):
         _q0,_q1,_p = [price[0][n-1] if n > 0 else 0,price[0][n],price[1][n]]
         _x.append(np.arange(_q0,_q1,1).round(0))
         _y.append(_x[-1]*_p)
-    y = np.cumsum(np.hstack(_y))
+    y = np.cumsum(np.hstack(_y)) + data.No_Load_Cost.values[0]
     x = np.hstack(_x)
-    fit = [np.polyfit(x, y, n + 1) for n in range(8)]
+    fit = [np.polyfit(x, y, n) for n in range(8)]
     e = [np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit]
     return e, fit, n, x, y
 

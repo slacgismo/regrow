@@ -63,44 +63,46 @@ def _(data):
 @app.cell
 def _(data, np):
     price = np.array(
-        [[0, data[f"Cost1"].values[0]]]
-        + [
+        [
             [data[f"MW{n+1}"].values[0], data[f"Cost{n+1}"].values[0]]
             for n in range(3)
             if n == 0 or data[f"Cost{n+1}"].values[0] > 0
         ]
     ).T
-    cost = np.vstack([price[0],price[0]*price[1]])
-    X = cost[0]
-    Y = cost[1]
-    return X, Y, cost, price
+    return (price,)
 
 
 @app.cell
-def _(X, Y, np):
-    x = np.arange(X[0],X[-1],1)
-    y = np.interp(x,X,Y,X[-1]/100)
-    fit = [np.polyfit(x,y,n+1) for n in range(8)]
-    e = [np.sqrt(np.linalg.norm(np.polyval(p,x)-y,2)) for p in fit]
-    return e, fit, x, y
+def _(np, price):
+    _x = []
+    _y = []
+    for n in range(len(price[0])):
+        _q0,_q1,_p = [price[0][n-1] if n > 0 else 0,price[0][n],price[1][n]]
+        _x.append(np.arange(_q0,_q1,1).round(0))
+        _y.append(_x[-1]*_p)
+    y = np.cumsum(np.hstack(_y))
+    x = np.hstack(_x)
+    fit = [np.polyfit(x, y, n + 1) for n in range(8)]
+    e = [np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit]
+    return e, fit, n, x, y
 
 
 @app.cell
-def _(busname_ui, cost, e, fit, genname_ui, np, order_ui, plt, x, y):
-    plt.figure(figsize=(20,10))
+def _(busname_ui, e, fit, genname_ui, np, order_ui, plt, x, y):
+    plt.figure(figsize=(16,6))
+
     plt.subplot(1,2,1)
     plt.grid()
     plt.xlabel("Fit order")
-    plt.ylabel("RMSE (MW)")
+    plt.ylabel("RMSE")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost Fit Errors")
     plt.plot(np.round(e,2))
 
     plt.subplot(1,2,2)
     plt.grid()
     plt.xlabel("Power (MW)")
-    plt.ylabel("Cost ($/MWh)")
+    plt.ylabel("Cost ($/h)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
-    plt.scatter(cost[0],cost[1],marker='x')
     plt.plot(x,y)
     plt.plot(x,np.polyval(fit[order_ui.value-1],x))
 

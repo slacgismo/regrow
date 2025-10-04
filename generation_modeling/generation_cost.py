@@ -77,7 +77,7 @@ def _(data, np, price):
     y = np.cumsum(np.hstack(_y)) + data.No_Load_Cost.values[0]
     x = np.hstack(_x)
     fit = [np.polyfit(x, y, n) for n in range(8)]
-    e = [np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit]
+    e = {len(p)-1:np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit}
     return e, fit, n, x, y
 
 
@@ -90,15 +90,16 @@ def _(busname_ui, e, fit, genname_ui, np, order_ui, plt, x, y):
     plt.xlabel("Fit order")
     plt.ylabel("RMSE")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost Fit Errors")
-    plt.plot(np.round(e,2))
+    plt.plot(e.keys(),e.values())
+    plt.plot(order_ui.value,e[order_ui.value],'o')
 
     plt.subplot(1,2,2)
     plt.grid()
     plt.xlabel("Power (MW)")
-    plt.ylabel("Cost ($/h)")
+    plt.ylabel("Cost ($M/h)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
-    plt.plot(x,y)
-    plt.plot(x,np.polyval(fit[order_ui.value-1],x))
+    plt.plot(x,y/1e6)
+    plt.plot(x,np.polyval(fit[order_ui.value],x)/1e6)
 
     plt.gca()
     return

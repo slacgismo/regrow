@@ -43,8 +43,14 @@ def _(mo):
 
 
 @app.cell
-def _(busname_ui, mo, order_ui):
-    mo.hstack([busname_ui, order_ui], justify="start")
+def _(mo):
+    constraint_ui = mo.ui.checkbox(label="Constrained fit")
+    return (constraint_ui,)
+
+
+@app.cell
+def _(busname_ui, constraint_ui, mo, order_ui):
+    mo.hstack([busname_ui, order_ui,constraint_ui], justify="start")
     return
 
 
@@ -75,16 +81,19 @@ def _(data, np):
 
 
 @app.cell
-def _(data, np, price):
+def _(constraint_ui, data, np, price):
     _x = []
     _y = []
     for n in range(len(price[0])):
         _q0,_q1,_p = [price[0][n-1] if n > 0 else 0,price[0][n],price[1][n]]
         _x.append(np.arange(_q0,_q1,1).round(0))
-        _y.append(_x[-1]*_p)
+        _y.append(np.ones(len(_x[-1]))*_p)
     y = np.cumsum(np.hstack(_y)) + data.No_Load_Cost.values[0]
     x = np.hstack(_x)
-    fit = [np.polyfit(x, y, n) for n in range(9)]
+    if constraint_ui.value:
+        fit = [np.polyfit(x, y, n) for n in range(9)]
+    else:
+        fit = [np.polyfit(x, y, n) for n in range(9)]    
     e = {len(p)-1:np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit}
     return e, fit, n, x, y
 
@@ -123,13 +132,24 @@ def _(
     p1rr,
     p2rr,
     plt,
+    price,
     prr,
     x,
     y,
 ):
-    plt.figure(figsize=(16,6))
+    plt.figure(figsize=(20,6))
 
-    plt.subplot(1,2,1)
+    plt.subplot(1,3,1)
+    print(price[0].tolist())
+    plt.step([0]+price[0].tolist(),[price[1].tolist()[0]] + price[1].tolist())
+    plt.grid()
+    plt.xlim([0,price[0][-1]+10])
+    plt.ylim([0,price[1][-1]+10])
+    plt.xlabel("Power (MW)")
+    plt.ylabel("Price ($/MWh)")
+    plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Prices")
+
+    plt.subplot(1,3,2)
     plt.grid()
     plt.xlabel("Fit order")
     plt.ylabel("RMSE")
@@ -137,19 +157,19 @@ def _(
     plt.plot(e.keys(),e.values())
     plt.plot(order_ui.value,e[order_ui.value],'o')
 
-    plt.subplot(1,2,2)
+    plt.subplot(1,3,3)
     plt.grid()
     plt.xlabel("Power (MW)")
-    plt.ylabel("Cost ($M/h)")
+    plt.ylabel("Cost ($/h)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
-    plt.plot(x,y/1e6,label="Data")
-    plt.plot(x,np.polyval(fit[order_ui.value],x)/1e6,label=f"Fit order {order_ui.value}")
+    plt.plot(x,y,label="Data")
+    plt.plot(x,np.polyval(fit[order_ui.value],x),label=f"Fit order {order_ui.value}")
     if prr:
-        plt.plot(prr,np.zeros(len(prr)),'ok',label='Fit zero')
+        plt.plot(prr,np.polyval(fit[order_ui.value],prr),'ok',label='Fit zero')
     if p1rr:
-        plt.plot(p1rr,np.zeros(len(p1rr)),'^k',label='Fit minimum')
+        plt.plot(p1rr,np.polyval(fit[order_ui.value],p1rr),'^k',label='Fit minimum')
     if p2rr:
-        plt.plot(p1rr,np.zeros(len(p2rr)),'xk',label='Fit non-convexity')
+        plt.plot(p2rr,np.polyval(fit[order_ui.value],p2rr),'xk',label='Fit non-convexity')
     plt.legend()
     plt.gca()
     return

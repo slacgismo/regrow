@@ -44,7 +44,7 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    constraint_ui = mo.ui.checkbox(label="Constrained fit",disabled=True)
+    constraint_ui = mo.ui.checkbox(label="Constrained fit")
     return (constraint_ui,)
 
 
@@ -87,24 +87,40 @@ def _(data, np):
 
 
 @app.cell
-def _(constraint_ui, data, np, price, withnlc_ui):
+def _(constraint_ui, cp, data, np, price, withnlc_ui):
     _x = []
     _y = []
     for n in range(len(price[0])):
-        _q0,_q1,_p = [price[0][n-1] if n > 0 else 0,price[0][n],price[1][n]]
-        _x.append(np.arange(_q0,_q1,1).round(0))
-        _y.append(np.ones(len(_x[-1]))*_p)
-    y = np.cumsum(np.hstack(_y)) + (data.No_Load_Cost.values[0] if withnlc_ui.value else 0)
+        _q0, _q1, _p = [price[0][n - 1] if n > 0 else 0, price[0][n], price[1][n]]
+        _x.append(np.arange(_q0, _q1, 1).round(0))
+        _y.append(np.ones(len(_x[-1])) * _p)
+    y = np.cumsum(np.hstack(_y)) + (
+        data.No_Load_Cost.values[0] if withnlc_ui.value else 0
+    )
     x = np.hstack(_x)
     if constraint_ui.value:
-        # fit = [np.polyfit(x, y, 0)]
-        # for _n in range(1,9):
-        #     p = cp.Variable(_n)
-        #     prob = cp.Problem(cp.Minimize(cp.sum_squares(p)))
-        fit = [np.polyfit(x, y, n) for n in range(9)]
+        fit = [np.polyfit(x, y, 0)]
+        A = np.ones((len(y),1))
+        for _n in range(1, 9):
+            A = np.hstack([A,np.array([A[:,_n-1]*x]).T])
+            p = cp.Variable(_n+1)
+            prob = cp.Problem(
+                cp.Minimize(cp.sum_squares(A@p - y)), 
+                [cp.diff(A@p,k=2) >= 0]
+            )
+            try:
+                prob.solve(solver="Clarabel")
+            except Exception as err:
+                print("order:",_n,"--> exception",err)
+                pass
+            if p.value is None:
+                print("order:",_n,"-->",prob.status)
+                print("order:",_n,"-->",prob.status)
+            fit.append(p.value[-1::-1] if p.value is not None else [])
     else:
-        fit = [np.polyfit(x, y, n) for n in range(9)]    
-    e = {len(p)-1:np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2)) for p in fit}
+        fit = [np.polyfit(x, y, n) for n in range(9)]
+    e = {n: round(float(np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2))),1) for n,p in enumerate(fit) if len(p) > 0 }
+
     return e, fit, x, y
 
 
@@ -119,14 +135,16 @@ def _(fit, mo, order_ui, re):
 
 @app.cell
 def _(data, fit, np, order_ui):
-    pmin,pmax = data.Pmin.values[0],data.Pmax.values[0]
-    p0 = np.polynomial.Polynomial(fit[order_ui.value][-1::-1],symbol='p')
-    p1 = p0.deriv()
-    p2 = p1.deriv()
-    p0rr = [x for x in p0.roots() if isinstance(x,float) and pmin<=x<=pmax]
-    p1rr = [x for x in p1.roots() if isinstance(x,float) and pmin<=x<=pmax]
-    p2rr = [x for x in p2.roots() if isinstance(x,float) and pmin<=x<=pmax]
-    # prr,p1rr,p2rr
+    pmin, pmax = data.Pmin.values[0], data.Pmax.values[0]
+    if len(fit[order_ui.value]) > 0:
+        p0 = np.polynomial.Polynomial(fit[order_ui.value][-1::-1], symbol="p")
+        p1 = p0.deriv()
+        p2 = p1.deriv()
+    else:
+        p0 = p1 = p2 = []
+    p0rr = [x for x in p0.roots() if isinstance(x, float) and pmin <= x <= pmax] if len(p0)>0 else []
+    p1rr = [x for x in p1.roots() if isinstance(x, float) and pmin <= x <= pmax] if len(p1)>0 else []
+    p2rr = [x for x in p2.roots() if isinstance(x, float) and pmin <= x <= pmax] if len(p2)>0 else []
     return p0rr, p1rr, p2rr
 
 
@@ -149,7 +167,6 @@ def _(
     plt.figure(figsize=(20,6))
 
     plt.subplot(1,3,1)
-    print(price[0].tolist())
     plt.step([0]+price[0].tolist(),[price[1].tolist()[0]] + price[1].tolist())
     plt.grid()
     plt.xlim([0,price[0][-1]+10])
@@ -164,7 +181,8 @@ def _(
     plt.ylabel("RMSE")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost Fit Errors")
     plt.plot(e.keys(),e.values())
-    plt.plot(order_ui.value,e[order_ui.value],'o')
+    if order_ui.value in e:
+        plt.plot(order_ui.value,e[order_ui.value],'o')
 
     plt.subplot(1,3,3)
     plt.grid()
@@ -172,13 +190,14 @@ def _(
     plt.ylabel("Cost ($/h)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
     plt.plot(x,y,label="Data")
-    plt.plot(x,np.polyval(fit[order_ui.value],x),label=f"Fit order {order_ui.value}")
-    if p0rr:
-        plt.plot(p0rr,np.polyval(fit[order_ui.value],p0rr),'ok',label='Fit zero')
-    if p1rr:
-        plt.plot(p1rr,np.polyval(fit[order_ui.value],p1rr),'^k',label='Fit extreme')
-    if p2rr:
-        plt.plot(p2rr,np.polyval(fit[order_ui.value],p2rr),'xk',label='Fit inflexion')
+    if order_ui.value in e:
+        plt.plot(x,np.polyval(fit[order_ui.value],x),label=f"Fit order {order_ui.value}")
+        if p0rr:
+            plt.plot(p0rr,np.polyval(fit[order_ui.value],p0rr),'ok',label='Fit zero')
+        if p1rr:
+            plt.plot(p1rr,np.polyval(fit[order_ui.value],p1rr),'^k',label='Fit extreme')
+        if p2rr:
+            plt.plot(p2rr,np.polyval(fit[order_ui.value],p2rr),'xk',label='Fit inflexion')
     plt.legend()
     plt.gca()
     return
@@ -192,7 +211,7 @@ def _():
     import matplotlib.pyplot as plt
     import cvxpy as cp
     import re
-    return mo, np, pd, plt, re
+    return cp, mo, np, pd, plt, re
 
 
 if __name__ == "__main__":

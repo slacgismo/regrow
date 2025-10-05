@@ -133,10 +133,9 @@ def model(
 
 if __name__ == "__main__":
 
-    with open("gendata.csv","w") as fh:
-        for key,data in model("generation_data.csv").items():
+    for key,data in model("generation_data.csv").items():
+        with open(f"{key}.csv","w") as fh:
             if key in pp_index:
-                print(key,len(data),sep=",",file=fh)
                 print(",".join([pp_index[key][n] for n in range(len(pp_index[key]))]),file=fh)
                 print(*[",".join([f"{y:g}" for y in x]) for x in data.tolist()],sep="\n",file=fh)
                 print(file=fh)

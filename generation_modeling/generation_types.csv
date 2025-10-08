@@ -15,9 +15,9 @@ MG,gas
 CF,gas
 CE,geothermal
 NE,geothermal
-P,pumpstorage
-NP,pumpstorage
-S,solar,
+P,storage
+NP,storage
+S,solar
 DP,solar
 W,wind
 NW,wind
@@ -26,3 +26,7 @@ SH,hydro
 NH,hydro
 N,nuclear
 NN,nuclear
+SW,wind
+CG,gas
+R,wind
+DC,dcline

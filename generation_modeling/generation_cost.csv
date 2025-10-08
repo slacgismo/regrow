@@ -1,0 +1,14 @@
+fuel,generator,operating_capacity,construction_time,construction_cost,variable_cost,fixed_cost,emissions,technology,source
+COAL,ST,600,4,2223,46.9,28.15,1681,Scrubbed pulverized supercritical coal new,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+GAS,CC,400,3,968,20.4,11.96,783,Adv gas/oil combined cycle,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+GAS,CT,230,2,648,32.4,10.77,217.7,Advanced combustion turbine,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+NUC,ST,1350,6,3820,5.1,92.04,0,Advanced nuclear,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+BIO,ST,80,4,3849,6.86,65.89,0,Biomass,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+GEO,ST,50,4,1749,0,168.33,0,Geothermal,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+WASTE,ST,30,3,2599,0.01,116.7,0,Landfill gas,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+WATER,HT,500,4,2291,2.49,13.93,0,Conventional hydropower,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+WIND,WT,50,3,1966,0,30.98,0,Wind,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+SUN,CS,100,3,5132,0,58.05,0,Concentrated solar power,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+SUN,PV,5,2,6171,0,11.94,0,Photovoltaic,https://home.engineering.iastate.edu/~jdm/ee552/GenerationCosts.pdf
+ELEC,ES,100,2,500,50,150,0,Battery storage,https://docs.nrel.gov/docs/fy23osti/85332.pdf
+ELEC,HT,1000,4,3750,51,18,0,Pumped storage,"https://www.renewableenergyworld.com/energy-storage/pumped-storage/nrel-includes-pumped-storage-in-2022-electricity-technology-baseline-report/#:~:text=Pumped%20storage%20hydropower%20has%20CAPEX,O%26M%20costs%20of%20%240.51%2FMWh."

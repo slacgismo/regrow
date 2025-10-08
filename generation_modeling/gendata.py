@@ -52,7 +52,6 @@ def gencost(
             y.append(np.ones(len(x[-1]))*P[m])
         x = np.hstack(x)
         y = np.cumsum(np.hstack(y)) + data.No_Load_Cost
-        # print(P,Q,x,y)
 
         model = 2 # polynomial
         startup = data["SUCost"]
@@ -133,11 +132,24 @@ def model(
 
 if __name__ == "__main__":
 
+    def fix(a,n=0):
+        """Fill blank trailing columns names with numbered columns based on
+        last named column
+        """
+        if not a[-1]:
+            m,p,n = fix(a[:-1],n)
+            return m + [f"{p}{n}"],p,n+1
+        else:
+            return a[:-1] + [f"{a[-1]}{n}"],a[-1],n+1
+
     for key,data in model("generation_data.csv").items():
         with open(f"{key}.csv","w") as fh:
             if key in pp_index:
-                print(",".join([pp_index[key][n]  if n < len(pp_index[key]) else "" for n in range(len(data[0]))]),file=fh)
-                print(*[",".join([f"{y:g}" for y in x]) for x in data.tolist() + [0.0]*(len(pp_index[key])-len(data))],sep="\n",file=fh)
+                header = fix([pp_index[key][n]  if n < len(pp_index[key]) else "" for n in range(len(data[0]))])[0]
+                print(header)
+                print(",".join(header),file=fh)
+                values = [",".join([f"{y:g}" for y in x]) for x in data.tolist() + [0.0]*(len(pp_index[key])-len(data))]
+                print(*values,sep="\n",file=fh)
                 print(file=fh)
 
 

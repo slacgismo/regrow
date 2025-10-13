@@ -154,6 +154,3 @@ if __name__ == "__main__":
                 values = [",".join([f"{y:g}" for y in x]) for x in data.tolist() + [0.0]*(len(pp_index[key])-len(data))]
                 print(*values,sep="\n",file=fh)
                 print(file=fh)
-
-
-

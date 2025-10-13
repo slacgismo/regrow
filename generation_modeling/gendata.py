@@ -48,7 +48,7 @@ def gencost(
         x = []
         y = []
         for m in range(len(P)):
-            x.append(np.arange(Q[m-1] if m>0 else 0,Q[m],1).round(0))
+            x.append(np.arange(Q[m-1] if m>0 else 0,Q[m]+1,1).round(0))
             y.append(np.ones(len(x[-1]))*P[m])
         x = np.hstack(x)
         y = np.cumsum(np.hstack(y)) + data.No_Load_Cost

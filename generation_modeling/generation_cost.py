@@ -75,7 +75,7 @@ def _(data, genname_ui, mo):
 
 
 @app.cell
-def _(data, np):
+def _(data, mo, np):
     price = np.array(
         [
             [data[f"MW{n+1}"].values[0], data[f"Cost{n+1}"].values[0]]
@@ -83,7 +83,9 @@ def _(data, np):
             if n == 0 or data[f"Cost{n+1}"].values[0] > 0
         ]
     ).T
-    price[0][-1] = max(price[0][-1],data.Pmax.values[0])
+    if price[0][-1] < data.Pmax.values[0]:
+        mo.output.append(mo.md(f"**<font color=red>WARNING**: price curve extended from {price[0][-1]:.1f} MW to Pmax={data.Pmax.values[0]:.1f} MW</font>"))
+        price[0][-1] = data.Pmax.values[0]
     return (price,)
 
 
@@ -154,6 +156,7 @@ def _(
     e,
     fit,
     genname_ui,
+    mo,
     np,
     order_ui,
     p0rr,
@@ -190,16 +193,27 @@ def _(
     plt.ylabel("Cost ($/h)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
     plt.plot(x,y,label="Data")
+
+    _output = []
     if order_ui.value in e:
         plt.plot(x,np.polyval(fit[order_ui.value],x),label=f"Fit order {order_ui.value}")
         if p0rr:
             plt.plot(p0rr,np.polyval(fit[order_ui.value],p0rr),'ok',label='Fit zero')
+            _output.append(mo.md(f"**<font color=red>WARNING**: negative costs found"))
         if p1rr:
             plt.plot(p1rr,np.polyval(fit[order_ui.value],p1rr),'^k',label='Fit extreme')
+            _output.append(mo.md(f"**<font color=red>WARNING**: declining costs found"))
         if p2rr:
             plt.plot(p2rr,np.polyval(fit[order_ui.value],p2rr),'xk',label='Fit inflexion')
+            _output.append(mo.md(f"**<font color=red>WARNING**: non-convex costs found"))
     plt.legend()
-    plt.gca()
+    _output.insert(0,plt.gca())
+    mo.vstack(_output)
+    return
+
+
+@app.cell
+def _():
     return
 
 

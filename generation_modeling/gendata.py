@@ -52,6 +52,9 @@ def gencost(
             y.append(np.ones(len(x[-1]))*P[m])
         x = np.hstack(x)
         y = np.cumsum(np.hstack(y)) + data.No_Load_Cost
+        if x[-1] < data["Pmax"]:
+            print(f"WARNING [{data['genname']}@{n}]: price curve stopping at {x[-1]} MW is extended to Pmax={data['Pmax']:.1f} MW")
+            x[-1] = data["Pmax"]
 
         model = 2 # polynomial
         startup = data["SUCost"]
@@ -146,7 +149,7 @@ if __name__ == "__main__":
         with open(f"{key}.csv","w") as fh:
             if key in pp_index:
                 header = fix([pp_index[key][n]  if n < len(pp_index[key]) else "" for n in range(len(data[0]))])[0]
-                print(header)
+                print(header,file=fh)
                 print(",".join(header),file=fh)
                 values = [",".join([f"{y:g}" for y in x]) for x in data.tolist() + [0.0]*(len(pp_index[key])-len(data))]
                 print(*values,sep="\n",file=fh)

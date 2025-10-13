@@ -15,5 +15,11 @@ To obtain the pypower `gen` and `gencost` data arrays, do the following:
     import gendata
     pp = gendata.model("generation_data.csv")
 
+# Review
+
+To review the results run the following marimo notebook
+
+    marimo run generation_cost.py
+
 Source: Jin Tan (NREL)
 

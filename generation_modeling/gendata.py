@@ -53,7 +53,7 @@ def gencost(
         x = np.hstack(x)
         y = np.cumsum(np.hstack(y)) + data.No_Load_Cost
         if x[-1] < data["Pmax"]:
-            print(f"WARNING [{data['genname']}@{n}]: price curve stopping at {x[-1]} MW is extended to Pmax={data['Pmax']:.1f} MW")
+            print(f"WARNING [{data['genname']}@{n}]: non-convex prices from {x[-1]:.1f} to {data['Pmax']:.1f} MW relaxed from $0.00/MWh to ${prices[-1][1]:.2f}/MWh")
             x[-1] = data["Pmax"]
 
         model = 2 # polynomial

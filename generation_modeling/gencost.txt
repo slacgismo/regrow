@@ -1,5 +1,5 @@
-WARNING [1034C@3]: price curve stopping at 1682.0 MW is extended to Pmax=1944.0 MW
-WARNING [2030E@18]: price curve stopping at 520.0 MW is extended to Pmax=699.0 MW
-WARNING [2130E@20]: price curve stopping at 407.0 MW is extended to Pmax=831.0 MW
-WARNING [3831NN@62]: price curve stopping at 1489.0 MW is extended to Pmax=2323.0 MW
-WARNING [5031G@99]: price curve stopping at 1210.0 MW is extended to Pmax=2650.0 MW
+WARNING [1034C@3]: non-convex prices from 1682.0 to 1944.0 MW relaxed from $0.00/MWh to $2.76/MWh
+WARNING [2030E@18]: non-convex prices from 520.0 to 699.0 MW relaxed from $0.00/MWh to $3.66/MWh
+WARNING [2130E@20]: non-convex prices from 407.0 to 831.0 MW relaxed from $0.00/MWh to $3.66/MWh
+WARNING [3831NN@62]: non-convex prices from 1489.0 to 2323.0 MW relaxed from $0.00/MWh to $0.00/MWh
+WARNING [5031G@99]: non-convex prices from 1210.0 to 2650.0 MW relaxed from $0.00/MWh to $63.22/MWh

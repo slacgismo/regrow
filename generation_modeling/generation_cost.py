@@ -55,8 +55,8 @@ def _(mo):
 
 
 @app.cell
-def _(busname_ui, constraint_ui, mo, order_ui, withnlc_ui):
-    mo.hstack([busname_ui, order_ui,constraint_ui,withnlc_ui])
+def _(busname_ui, constraint_ui, genname_ui, mo, order_ui, withnlc_ui):
+    mo.hstack([busname_ui, genname_ui, order_ui,constraint_ui,withnlc_ui])
     return
 
 
@@ -83,6 +83,7 @@ def _(data, np):
             if n == 0 or data[f"Cost{n+1}"].values[0] > 0
         ]
     ).T
+    price[0][-1] = max(price[0][-1],data.Pmax.values[0])
     return (price,)
 
 
@@ -99,7 +100,7 @@ def _(constraint_ui, cp, data, np, price, withnlc_ui):
     )
     x = np.hstack(_x)
     if constraint_ui.value:
-        fit = [np.polyfit(x, y, 0)]
+        fit = np.round([np.polyfit(x, y, 0)],6)
         A = np.ones((len(y),1))
         for _n in range(1, 9):
             A = np.hstack([A,np.array([A[:,_n-1]*x]).T])
@@ -118,16 +119,15 @@ def _(constraint_ui, cp, data, np, price, withnlc_ui):
                 print("order:",_n,"-->",prob.status)
             fit.append(p.value[-1::-1] if p.value is not None else [])
     else:
-        fit = [np.polyfit(x, y, n) for n in range(9)]
+        fit = [np.round(np.polyfit(x, y, n),6) for n in range(9)]
     e = {n: round(float(np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2))),1) for n,p in enumerate(fit) if len(p) > 0 }
-
     return e, fit, x, y
 
 
 @app.cell
 def _(fit, mo, order_ui, re):
     _p = fit[order_ui.value]
-    _t = ' '.join([f"{x:+.3g}~p^{{{len(_p)-n-1}}}" for n,x in enumerate(_p)])
+    _t = ' '.join([f"{x:+.3g}~p^{{{len(_p)-n-1}}}" for n,x in enumerate(_p) if x!=0])
     _t = re.sub("e([+-][0-9]+)",r"\\times10^{\1}",_t).replace("{+0","{").replace("{-0","-{").replace("p^{0}","").replace("p^{1}","p")
     mo.md(f"Fit order {order_ui.value}: $C(p) = {_t}$")
     return

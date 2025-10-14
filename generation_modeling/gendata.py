@@ -1,6 +1,6 @@
 """Convert generation data to PyPOWER gen and gencost arrays
 
-Run this script to generate the gencost.csv file.
+Run this script to generate the gen.csv and gencost.csv files.
 
 Call model("generation_cost) to obtain the pypower gen and gencost data.
 """

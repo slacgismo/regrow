@@ -55,7 +55,7 @@ There are cases where the generation cost curve obtained os not monotonically in
 
 ## Validation
 
-$\color{red} \textrm TODO: implement a script to run the WECC240 OPF in pypower using the generation data and costs obtained.$
+$\color{red}\textrm{TODO: implement a script to run the WECC240 OPF in pypower using the generation data and costs obtained.}$
 
 # Files
 

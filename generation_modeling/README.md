@@ -61,6 +61,41 @@ The data provided includes a list of generation facilities and their respective 
 
 There are cases where the generation cost curve obtained os not monotonically increasing and the resulting fit yields a negative value of $R$. Any non-convex cost function is relaxed by increasing the offending components of the price curve to ensure a monotonically increasing cost function.
 
+## Data Flow
+
+```mermaid
+graph LR
+    bus_data.csv --> validate.py
+    gen.csv --> gendata.model
+    gen.csv --> review.py
+    gencost.csv --> gendata.model
+    gencost.csv --> review.py
+    gendata.py --> gen.csv
+    gendata.py --> gencost.csv
+    generation_cost.csv --> powerplants.py
+    generation_data.csv --> gendata.py
+    generation_data.csv --> review.py
+    generation_data.csv --> validate.py
+    generation_data.csv --> powerplants.py
+    powerplants.csv.zip --> summary.py
+    powerplants.py --> powerplants.glm
+    WECC240_2018_Generation_scheduling.xlsx --> bus_data.csv
+    WECC240_2018_Generation_scheduling.xlsx --> generation_data.csv
+    WECC240_2018_Generation_scheduling.xlsx --> storage_data.csv
+    WECC240_2018_Generation_scheduling.xlsx --> line_data.csv
+    egrid2022_data.xlsx --> powerplants.py
+    wecc240_gis.csv --> powerplants.py
+    HFLD --> powerplants.csv.zip
+    EPA --> egrid2022_data.xlsx
+    NREL --> WECC240_2018_Generation_scheduling.xlsx
+    ISU --> generation_cost.csv
+    NREL --> generation_cost.csv
+    REW --> generation_cost.csv
+    validate.py --> pypower
+    powerplants.glm --> gridlabd
+    review.py --> marimo
+```
+
 # Files
 
 ## Input Data

@@ -176,9 +176,9 @@ def _(data, fit, np, order_ui):
 
 
 @app.cell
-def _(busname_ui, genname_ui, mo, order_ui, withnlc_ui):
+def _(busname_ui, genname_ui, mo, withnlc_ui):
     # Show UI controls
-    cost_ui = mo.hstack([busname_ui, genname_ui, order_ui,withnlc_ui])
+    cost_ui = mo.hstack([busname_ui, genname_ui, withnlc_ui])
     return (cost_ui,)
 
 
@@ -215,7 +215,7 @@ def _(fit, mo, order_ui, re):
     _p = fit[order_ui.value]
     _t = ' '.join([f"{x:+.3g}~p^{{{len(_p)-n-1}}}" for n,x in enumerate(_p) if x!=0])
     _t = re.sub("e([+-][0-9]+)",r"\\times10^{\1}",_t).replace("{+0","{").replace("{-0","-{").replace("p^{0}","").replace("p^{1}","p")
-    fit_ui = mo.md(f"Fit order {order_ui.value}: $C(p) = {_t}$")
+    fit_ui = mo.md(f"Fit order {order_ui.value}: $C(p) = {_t if _t else "0.00"}$")
     return (fit_ui,)
 
 
@@ -253,7 +253,7 @@ def _(
     plt.xlabel("Fit order")
     plt.ylabel("RMSE")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost Fit Errors")
-    plt.plot(e.keys(),e.values())
+    plt.bar(list(e.keys())[0:3],list(e.values())[0:3])
     if order_ui.value in e:
         plt.plot(order_ui.value,e[order_ui.value],'o')
 

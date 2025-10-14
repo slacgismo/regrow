@@ -15,7 +15,6 @@ import pypower.idx_gen as gen
 import pypower.idx_cost as cost
 
 pp_index = {
-
     "bus": {getattr(bus,x):x for x in dir(bus) if x[0] != "_" and x not in {"PQ","PV","REF","NONE"}},
     "branch": {getattr(branch,x):x for x in dir(branch) if x[0] != "_"},
     "gen": {getattr(gen,x):x for x in dir(gen) if x[0] != "_"},
@@ -99,7 +98,6 @@ def gen(
         gen.Pmin, # PMIN
         np.zeros(N), # PC1
         np.zeros(N), # PC2
-        np.zeros(N), # PC1
         np.zeros(N), # QC1MIN
         np.zeros(N), # QC1MAX
         np.zeros(N), # QC2MIN
@@ -109,6 +107,10 @@ def gen(
         np.zeros(N), # RAMP_30
         np.zeros(N), # RAMP_Q
         np.zeros(N), # APF
+        np.zeros(N), # MU_PMAX
+        np.zeros(N), # MU_PMIN
+        np.zeros(N), # MU_QMAX
+        np.zeros(N), # MU_QMIN
         ]).T
 
 def model(
@@ -141,15 +143,16 @@ if __name__ == "__main__":
         """
         if not a[-1]:
             m,p,n = fix(a[:-1],n)
-            return m + [f"{p}{n}"],p,n+1
+            result = m + [f"{p}{n}"],p,n+1
         else:
-            return a[:-1] + [f"{a[-1]}{n}"],a[-1],n+1
+            result = a[:-1] + [f"{a[-1]}{n}"],a[-1],n+1
+        # print(f"fix({a=},{n=}) --> {result}")
+        return result
 
     for key,data in model("generation_data.csv").items():
         with open(f"{key}.csv","w") as fh:
             if key in pp_index:
-                header = fix([pp_index[key][n]  if n < len(pp_index[key]) else "" for n in range(len(data[0]))])[0]
-                print(header,file=fh)
+                header = (fix if key=="gencost" else lambda x:(x,x[-1],0))([pp_index[key][n] if n < len(pp_index[key]) else "" for n in range(len(data[0]))])[0]
                 print(",".join(header),file=fh)
                 values = [",".join([f"{y:g}" for y in x]) for x in data.tolist() + [0.0]*(len(pp_index[key])-len(data))]
                 print(*values,sep="\n",file=fh)

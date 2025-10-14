@@ -70,7 +70,7 @@ The input data files are
 - `WECC240_2018_Generation_scheduling.xlsx`: This file contains the NREL WECC240 generation fleet data. This file's sheets are broken up into CSV files as follows:
 
     - `Bus`: -> `bus_data.csv`
-    - `Generator`: -> `generator_data.csv`
+    - `Generator`: -> `generation_data.csv`
     - `ESS`: -> `storage_data.csv`
     - `Line`: -> `line_data.csv`
 

@@ -83,7 +83,7 @@ graph LR
     WECC240_2018_Generation_scheduling.xlsx --> line_data.csv
     egrid2022_data.xlsx --> powerplants.py
     wecc240_gis.csv --> powerplants.py
-    HFLD --> powerplants.csv.zip
+    HIFLD --> powerplants.csv.zip
     EPA --> egrid2022_data.xlsx
     NREL --> WECC240_2018_Generation_scheduling.xlsx
     ISU --> generation_cost.csv

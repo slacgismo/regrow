@@ -1,7 +1,5 @@
 This folder contains the code to process price data from NREL's WECC 240 bus model and generate the cost data used for generation dispatch. 
 
-*Source*: Jin Tan (jin.tan@nrel.gov)
-
 # How To
 
 ## Setup
@@ -102,14 +100,14 @@ graph LR
 
 The input data files are
 
-- `WECC240_2018_Generation_scheduling.xlsx`: This file contains the NREL WECC240 generation fleet data. This file's sheets are broken up into CSV files as follows:
+- `WECC240_2018_Generation_scheduling.xlsx`: This file contains the NREL WECC240 generation fleet data. *Source*: Jin Tan (jin.tan@nrel.gov). This file's sheets are broken up into CSV files as follows:
 
     - `Bus`: -> `bus_data.csv`
     - `Generator`: -> `generation_data.csv`
     - `ESS`: -> `storage_data.csv`
     - `Line`: -> `line_data.csv`
 
-- `egrid2022_data.xlsx`: This file contains the EPA generation fleet data. The `PLNT22` sheet is used to provide the following information about powerplants:
+- `egrid2022_data.xlsx`: This file contains the EPA generation fleet data. *Source*: [EPA Historical eGRID Data](https://www.epa.gov/egrid/historical-egrid-data). The `PLNT22` sheet is used to provide the following information about powerplants:
 
     - Facility name
     - County name
@@ -117,15 +115,15 @@ The input data files are
     - Primary fuel type and category
     - Nameplate capacity
 
-- `generation_cost.csv`: This file contains the generation costs by fuel and generator type. The file include a reference to the source of the cost data, which varies according to the generation type.
+- `generation_cost.csv`: This file contains the generation costs by fuel and generator type. The file include a reference to the source of the cost data, which varies according to the generation type. This data is compiled from multiple sources, as specified in the `source` column of the file.
 
-- `generation_types.csv`: This file contains the generation types corresponding to the `genname` suffixes. (Generators are named using the bus id and a generation type suffix, which can be used to determine what is the type of generator.) The following generator types are recognized: `steam`, `biomass`, `gas`, `geothermal`, `storage` (discharge), `solar`, `wind`, `hydro`, `nuclear`, and `dcline` (output).
+- `generation_types.csv`: This file contains the generation types corresponding to the `genname` suffixes. (Generators are named using the bus id and a generation type suffix, which can be used to determine what is the type of generator.) The following generator types are recognized: `steam`, `biomass`, `gas`, `geothermal`, `storage` (discharge), `solar`, `wind`, `hydro`, `nuclear`, and `dcline` (output). *Source*: Jin Tan (jin.tan@nrel.gov).
 
-- `counties.csv`: This file contains the county-level data used to identify where powerplants are and to which WECC240 node they should be connected.
+- `counties.csv`: This file contains the county-level data used to identify where powerplants are and to which WECC240 node they should be connected. *Source*: US Department of Commerce Census Bureau FIPS data.
 
-- `powerplants.csv.zip`: This file contains the HFLD powerplant data used to generation the `powerplants.glm` file.
+- `powerplants.csv.zip`: This file contains the HFLD powerplant data used to generation the `powerplants.glm` file. *Source*: HFLD Powerplant Data.
 
-- `wecc240_gis.csv`: This file contains the WECC240 node data, including GIS data needed to locate nodes geographically.
+- `wecc240_gis.csv`: This file contains the WECC240 node data, including GIS data needed to locate nodes geographically. *Source*: Jin Tan (jin.tan@nrel.gov).
 
 ## Intermediate Data
 

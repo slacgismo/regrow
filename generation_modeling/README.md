@@ -62,7 +62,10 @@ There are cases where the generation cost curve obtained is not monotonically in
 ## Data Flow
 
 ```mermaid
-graph LR
+---
+title: Generation Cost Model Data Flow
+---
+flowchart LR
     bus_data.csv --> validate.py
     gen.csv --> gendata.model
     gen.csv --> review.py
@@ -75,6 +78,7 @@ graph LR
     generation_data.csv --> review.py
     generation_data.csv --> validate.py
     generation_data.csv --> powerplants.py
+    powerplants.csv.zip --> powerplants.py
     powerplants.csv.zip --> summary.py
     powerplants.py --> powerplants.glm
     WECC240_2018_Generation_scheduling.xlsx --> bus_data.csv
@@ -85,13 +89,34 @@ graph LR
     wecc240_gis.csv --> powerplants.py
     HIFLD --> powerplants.csv.zip
     EPA --> egrid2022_data.xlsx
-    NREL --> WECC240_2018_Generation_scheduling.xlsx
     ISU --> generation_cost.csv
-    NREL --> generation_cost.csv
     REW --> generation_cost.csv
+    NREL --> WECC240_2018_Generation_scheduling.xlsx
+    NREL --> generation_cost.csv
     validate.py --> pypower
     powerplants.glm --> gridlabd
     review.py --> marimo
+
+    review.py[[review.py]]
+    powerplants.py[[powerplants.py]]
+    validate.py[[validate.py]]
+    summary.py[[summary.py]]
+    WECC240_2018_Generation_scheduling.xlsx[(WECC240_2018_Generation_scheduling.xlsx)]
+    egrid2022_data.xlsx[(egrid2022_data.xlsx)]
+    powerplants.csv.zip[(powerplants.csv.zip)]
+    subgraph Sources
+        NREL(NREL)
+        HIFLD(HIFLD)
+        EPA(EPA)
+        ISU(ISU)
+        REW(REW)
+    end
+    subgraph Tools
+        pypower(PyPOWER)
+        marimo(Marimo)
+        gridlabd(GridLAB-D)
+        gendata.model("gendata.model()")
+    end
 ```
 
 # Files

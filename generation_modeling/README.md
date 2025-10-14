@@ -121,7 +121,7 @@ The input data files are
 
 - `counties.csv`: This file contains the county-level data used to identify where powerplants are and to which WECC240 node they should be connected. *Source*: US Department of Commerce Census Bureau FIPS data.
 
-- `powerplants.csv.zip`: This file contains the HFLD powerplant data used to generation the `powerplants.glm` file. *Source*: HFLD Powerplant Data.
+- `powerplants.csv.zip`: This file contains the HIFLD powerplant data used to generate the `powerplants.glm` file. *Source*: [HIFLD Powerplant Data](https://hifld-geoplatform.hub.arcgis.com/datasets/9dd630378fcf439999094a56c352670d_0/explore).
 
 - `wecc240_gis.csv`: This file contains the WECC240 node data, including GIS data needed to locate nodes geographically. *Source*: Jin Tan (jin.tan@nrel.gov).
 

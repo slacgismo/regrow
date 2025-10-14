@@ -32,6 +32,14 @@ To review the results run the following marimo notebook
 
     marimo run review.py
 
+## Validation
+
+To validate the resulting generation data and cost model, run the following
+
+    python3 validate.py
+
+The output of this script is the result of the full AC OPF run in `pypower`.
+
 ## Python
 
 To obtain the pypower `gen` and `gencost` data arrays in `python`, do the following:
@@ -52,14 +60,6 @@ The data provided includes a list of generation facilities and their respective 
 3. A quadratic non-negative cost curve, e.g., $C(q) = R ~ q^2 + P ~ q + constant$, where $R$ is the scarcity rent of the facility.
 
 There are cases where the generation cost curve obtained os not monotonically increasing and the resulting fit yields a negative value of $R$. Any non-convex cost function is relaxed by increasing the offending components of the price curve to ensure a monotonically increasing cost function.
-
-## Validation
-
-To validate the resulting generation data and cost model, run the following
-
-    python3 validate.py
-
-The output of this script is the result of the full AC OPF run in `pypower`.
 
 # Files
 

@@ -240,10 +240,12 @@ def _(
     plt.figure(figsize=(20,6))
 
     plt.subplot(1,3,1)
-    plt.step([0]+price[0].tolist(),[price[1].tolist()[0]] + price[1].tolist())
+    _q = price[0].tolist()
+    _p = price[1].tolist()
+    plt.step([0]+_q,[_p[0]]+_p)
     plt.grid()
-    plt.xlim([0,price[0][-1]+10])
-    plt.ylim([0,price[1][-1]+10])
+    plt.xlim([0,_q[-1]])
+    plt.ylim([0,_p[-1]*1.1])
     plt.xlabel("Power (MW)")
     plt.ylabel("Price ($/MWh)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Prices")
@@ -280,6 +282,12 @@ def _(
     _output.insert(0,plt.gca())
     cost_plot_ui = mo.vstack(_output)
     return (cost_plot_ui,)
+
+
+@app.cell
+def _(cost_plot_ui):
+    cost_plot_ui
+    return
 
 
 @app.cell

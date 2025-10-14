@@ -51,7 +51,7 @@ To obtain the pypower `gen` and `gencost` data arrays in `python`, do the follow
 
 The goal of the files in the folder is to obtain the generator data and costs needed to run a WECC 240 simulation with an arbitrary load. To achieve this goal, an optimal power flow (OPF) must be solved to select which generators are dispatched and to what power level such that the production cost is minimized while (a) remaining with the generation fleet's operating limits, (b) remaining within the transmission network's capacity limits, (c) avoiding curtailment of loads, and (d) providing sufficient operating margin to ensure reliable system operation should a powerplant or transmission contingency occur.
 
-The data provided includes a list of generation facilities and their respective price curves. A price curve is a series of prices and quantities at which they take effect. Normally price curves are monotonically increasing, and represent the increasing cost of producing higher amount of energy per unit time. However, not all generators have strictly monotonically increasing price curves, and some generators have zero cost for all production levels within their capability. Consequently when integrating a price curve to obtain a cost function one expects to obtain one of the following costs $C(q)$ for a given power dispatch $q$:
+The data provided includes a list of generation facilities and their respective price curves. A price curve is a series of prices and quantities at which they take effect. Normally price curves are monotonically increasing and represent the increasing cost of producing higher amounts of energy per unit time. However, not all generators have strictly monotonically increasing price curves. Some generators have zero costs for all production levels within their capability. Consequently when integrating a price curve to obtain a cost function one expects to obtain one of the following costs $C(q)$ for a given power dispatch $q$:
 
 1. A constant non-negative cost curve, e.g., $C(q) = constant$.
 
@@ -59,7 +59,7 @@ The data provided includes a list of generation facilities and their respective 
 
 3. A quadratic non-negative cost curve, e.g., $C(q) = R ~ q^2 + P ~ q + constant$, where $R$ is the scarcity rent of the facility.
 
-There are cases where the generation cost curve obtained os not monotonically increasing and the resulting fit yields a negative value of $R$. Any non-convex cost function is relaxed by increasing the offending components of the price curve to ensure a monotonically increasing cost function.
+There are cases where the generation cost curve obtained is not monotonically increasing and the resulting quadratic cost curve fit yields a negative value of $R$. Such non-convex cost function fits are relaxed by increasing the offending components of the price curve to ensure a monotonically increasing cost function.
 
 ## Data Flow
 

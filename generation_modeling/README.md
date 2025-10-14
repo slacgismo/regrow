@@ -55,7 +55,11 @@ There are cases where the generation cost curve obtained os not monotonically in
 
 ## Validation
 
-$\color{red}\textrm{TODO: implement a script to run the WECC240 OPF in pypower using the generation data and costs obtained.}$
+To validate the resulting generation data and cost model, run the following
+
+    python3 validate.py
+
+The output of this script is the result of the full AC OPF run in `pypower`.
 
 # Files
 
@@ -121,6 +125,8 @@ The input data files are
 - `powerplants.py`: This file generates the `powerplants.glm` file that contains the generation model for GridLAB-D based on the HFLD database.
 
 - `summary.py`: This file outputs a summary of the powerplant data from the HFLD database used to generate the `powerplants.glm` file
+
+- `validate.py`: This file outputs the result of running the full AC OPF in `pypower` using the new generation data and cost model.
 
 ## Marimo Notebooks
 

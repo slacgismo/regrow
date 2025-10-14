@@ -18,15 +18,23 @@ To update the `gen.csv` and `gencost.csv` files for `pypower`, run the following
 
     python3 gendata.py
 
+To update the GridLAB-D `powerplants.glm` file, run the following script:
+
+    python3 powerplants.py
+
+To obtain a summary of the powerplant data processed, run the following script:
+
+    python3 summary.py
+
 ## Review
 
 To review the results run the following marimo notebook
 
-    marimo run generation_cost.py
+    marimo run review.py
 
-## Results
+## Python
 
-To obtain the pypower `gen` and `gencost` data arrays, do the following:
+To obtain the pypower `gen` and `gencost` data arrays in `python`, do the following:
 
     import gendata
     pp = gendata.model("generation_data.csv")
@@ -44,6 +52,10 @@ The data provided includes a list of generation facilities and their respective 
 3. A quadratic non-negative cost curve, e.g., $C(q) = R ~ q^2 + P ~ q + constant$, where $R$ is the scarcity rent of the facility.
 
 There are cases where the generation cost curve obtained os not monotonically increasing and the resulting fit yields a negative value of $R$. Any non-convex cost function is relaxed by increasing the offending components of the price curve to ensure a monotonically increasing cost function.
+
+## Validation
+
+<font color=red>TODO: implement a script to run the WECC240 OPF in pypower using the generation data and costs obtained.</font>
 
 # Files
 
@@ -104,12 +116,14 @@ The input data files are
 
 ## Python Scripts
 
+- `gendata.py`: This script updates the `gen.csv` and `gencost.csv` data files for `pypower`.
+
 - `powerplants.py`: This file generates the `powerplants.glm` file that contains the generation model for GridLAB-D based on the HFLD database.
 
-- `powerplants_summary.py`: This file outputs a summary of the powerplant data from the HFLD database used to generate the `powerplants.glm` file
+- `summary.py`: This file outputs a summary of the powerplant data from the HFLD database used to generate the `powerplants.glm` file
 
 ## Marimo Notebooks
 
-- `generation_cost.py`: This marimo notebook is used to review the results of the cost function fit to the generator cost data.
+- `review.py`: This marimo notebook is used to review the results of the cost function fit to the generator cost data.
 
 

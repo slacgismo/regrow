@@ -47,7 +47,7 @@ def _(pd):
 
 @app.cell
 def _(mo):
-    price_order_ui = mo.ui.radio(options=["a ($/kW².h)","b ($/MWh)","c ($k/h)"],inline=True,value="b ($/MWh)")
+    price_order_ui = mo.ui.radio(options=["a ($k/kW².h)","b ($/MWh)","c ($k/h)"],inline=True,value="b ($/MWh)")
     return (price_order_ui,)
 
 
@@ -61,12 +61,13 @@ def _(costs, gendata, np, plt, price_order_ui):
         _costs = list(zip(_data.NCOST,_data.COST0,_data.COST1,_data.COST2,_data.PMAX))
         match price_order_ui.value:
             case "c ($k/h)":
-                qp = np.array([(x[4],x[x[0]]/1000) for x in _costs]).T
+                _qp = np.array([(x[4],x[x[0]]/1000) for x in _costs]).T
             case "b ($/MWh)":
-                qp = np.array([(x[4],0 if x[0] == 1 else x[x[0]-1]) for x in _costs]).T
-            case "a ($/kW².h)":
-                qp = np.array([(x[4],0 if x[0] <= 2 else x[x[0]-2]*1e6) for x in _costs]).T
-        plt.scatter(qp[0],qp[1],label=_type)
+                _qp = np.array([(x[4],0 if x[0] == 1 else x[x[0]-1]) for x in _costs]).T
+                print(_type,_costs,_qp)
+            case "a ($k/kW².h)":
+                _qp = np.array([(x[4],0 if x[0] <= 2 else x[x[0]-2]*1e3) for x in _costs]).T
+        plt.scatter(_qp[0],_qp[1],label=_type)
     plt.grid()
     plt.xlabel("Capacity (MW)")
     plt.ylabel(price_order_ui.value)
@@ -140,6 +141,7 @@ def _(constraint_ui, cp, data, np, price, withnlc_ui):
     )
     x = np.hstack(_x)
     if constraint_ui.value:
+        raise "constrained fits are disabled"
         fit = np.round([np.polyfit(x, y, 0)],6)
         A = np.ones((len(y),1))
         for _n in range(1, 9):
@@ -159,14 +161,14 @@ def _(constraint_ui, cp, data, np, price, withnlc_ui):
                 print("order:",_n,"-->",prob.status)
             fit.append(p.value[-1::-1] if p.value is not None else [])
     else:
-        fit = [np.round(np.polyfit(x, y, n),6) for n in range(9)]
+        fit = [np.round(np.polyfit(x, y, 2),6) for n in range(9)]
     e = {n: round(float(np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2))),1) for n,p in enumerate(fit) if len(p) > 0 }
     return e, fit, x, y
 
 
 @app.cell
 def _(data, fit, np, order_ui):
-    # Identify polynonial critical points, if any
+    # Identify polynomial critical points, if any
     pmin, pmax = data.Pmin.values[0], data.Pmax.values[0]
     if len(fit[order_ui.value]) > 0:
         p0 = np.polynomial.Polynomial(fit[order_ui.value][-1::-1], symbol="p")

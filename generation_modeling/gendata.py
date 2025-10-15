@@ -47,7 +47,7 @@ def gencost(
         P = list(P)
         if Q[-1] < data["Pmax"]:
             print(f"WARNING [{data['genname']}@{n}]: non-convex prices from {Q[-1]:.1f} to {data['Pmax']:.1f} MW relaxed from $0.00/MWh to ${prices[-1][1]:.2f}/MWh")
-            Q[-1] = data["Pmax"]
+            Q[-1] = round(data["Pmax"],1)
 
         x = []
         y = []
@@ -62,6 +62,7 @@ def gencost(
         shutdown = data["SDCost"]
         k = len(P)
         p = np.polyfit(x,y,min(k-1,maxorder)).tolist()
+        print(n,round(data["Pmax"],1),Q,P,k,"-->",p)
         assert p[0] >= 0.0, f"{n},{data},{Q},{P}: non-convex cost function"
         p[-1] += data.No_Load_Cost
         gencost.append([model,float(startup),float(shutdown),len(p)] + p + [0]*(maxorder-k+1))

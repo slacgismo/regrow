@@ -6,15 +6,17 @@ import numpy as np
 import pandas as pd
 import json
 
-glm = json.load(open("../model/wecc240.json","r"))["objects"]
-
-busids = pd.read_csv("bus_data.csv",index_col=[0],dtype=int)
-def busid(n:int|float|str):
-    return busids.loc[int(n)].busID
-
 pd.options.display.width = None
 pd.options.display.max_columns = None
 np.set_printoptions(formatter={'float_kind':"{:12g}".format},linewidth=10000,edgeitems=1000)
+
+# Get loads gridlabd model
+glm = json.load(open("../model/wecc240.json","r"))["objects"]
+
+# get busname to busid conversion table
+busids = pd.read_csv("bus_data.csv",index_col=[0],dtype=int)
+def busid(n:int|float|str):
+    return busids.loc[int(n)].busID
 
 # load gen data and gen cost files
 gen = pd.read_csv("gen.csv")
@@ -32,6 +34,8 @@ bus = {}
 branch = []
 ref = None
 for n,line in lines.iterrows():
+
+    # check line data
     if line.FBUS in bus and line.TBUS in bus:
         if line.RATE_A == 99999:
             print(f"WARNING [line_data.csv]: line {n} from {line.FBUS:.0f} to {line.TBUS:.0f} already provided with a usable rating")
@@ -41,6 +45,8 @@ for n,line in lines.iterrows():
     elif line.RATE_A == 99999:
         print(f"WARNING [line_data.csv]: line {n} rating 99999 is set to zero for pypower default")
         line.RATE_A = 0.0
+
+    # construct bus data
     for BUS_I in [line.FBUS,line.TBUS]:
         if not BUS_I in bus:
             obj = glm[f"wecc240_psse_N_{BUS_I:.0f}"]
@@ -60,17 +66,18 @@ for n,line in lines.iterrows():
             VMAX = float(obj["Vmax"].split()[0])
             VMIN = float(obj["Vmin"].split()[0])
             bus[BUS_I] = [busid(BUS_I),BUS_TYPE,PD,QD,GS,BS,BUS_AREA,VM,VA,BASE_KV,ZONE,VMAX,VMIN]
-    branch.append([busid(line.FBUS),busid(line.TBUS),0,line.BR_X,0,line.RATE_A,0,0,0,0,line.BR_STATUS,-360,+360])
-bus = np.array(sorted(list(bus.values())))
-branch = np.array(sorted(branch))
 
+    # construct branch data
+    branch.append([busid(line.FBUS),busid(line.TBUS),0,line.BR_X,0,line.RATE_A,0,0,0,0,line.BR_STATUS,-360,+360])
+
+# convert gen busname to busid
 gen.GEN_BUS = [busid(x) for x in gen.GEN_BUS]
 
 model = {
     "version" : 2,
     "baseMVA" : 100.0,
-    "bus" : bus,
-    "branch" : branch,
+    "bus" : np.array(sorted(list(bus.values()))),
+    "branch" : np.array(sorted(branch)),
     "gen" : gen.to_numpy(),
     "gencost" : gencost.to_numpy(),
 }

@@ -20,11 +20,12 @@ def _(
     plant_ui,
     price_order_ui,
     price_plot_ui,
+    warning_ui,
 ):
     mo.ui.tabs(
         {
             "Cost data": mo.vstack(
-                [plant_ui, data_ui, fit_ui, cost_plot_ui],heights='equal'
+                [plant_ui, data_ui, fit_ui, warning_ui,cost_plot_ui],heights='equal'
             ),
             "Gen data": gendata,
             "Price data": mo.vstack(
@@ -143,7 +144,7 @@ def _(costs, gendata, genname_ui):
 
 
 @app.cell
-def _(costdata, costs, data):
+def _(costdata, costs, data, mo):
     # read price data and generate cost data
     prices = [
         [data[f"MW{n+1}"], data[f"Cost{n+1}"]]
@@ -156,8 +157,8 @@ def _(costdata, costs, data):
         )
     ]
     x,y,warning = costdata(prices,data.Pmax,data.No_Load_Cost)
-    prices,warning
-    return prices, x, y
+    warning_ui = mo.md(f"**<font color=red>WARNING**: {warning}</font>") if warning else None
+    return prices, warning_ui, x, y
 
 
 @app.cell

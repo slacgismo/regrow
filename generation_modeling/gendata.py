@@ -24,9 +24,9 @@ pp_index = {
 def costdata(prices:list[list[float]],
     Pmax:float,
     no_load_cost:float=0.0,
-    pstep=1.0,
-    pround=0,
-    ):
+    pstep:float=1.0,
+    pround:int=0,
+    ) -> [np.array,np.array,str]:
     """Convert price curve to cost data
 
     Arguments:

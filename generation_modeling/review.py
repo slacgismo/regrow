@@ -20,12 +20,11 @@ def _(
     plant_ui,
     price_order_ui,
     price_plot_ui,
-    price_ui,
 ):
     mo.ui.tabs(
         {
             "Cost data": mo.vstack(
-                [plant_ui, data_ui, price_ui, fit_ui, cost_plot_ui],heights='equal'
+                [plant_ui, data_ui, fit_ui, cost_plot_ui],heights='equal'
             ),
             "Gen data": gendata,
             "Price data": mo.vstack(
@@ -130,7 +129,7 @@ def _():
 @app.cell
 def _(costs, genname_ui):
     # Get selected data
-    data = costs[costs.genname==genname_ui.value].set_index("genname")[["Pmin","MW1","Cost1","MW2","Cost2","MW3","Cost3","MW4","Cost4","Pmax","No_Load_Cost"]].round(2)
+    data = costs[costs.genname==genname_ui.value].set_index("genname")[["Pmin","MW1","Cost1","MW2","Cost2","MW3","Cost3","MW4","Cost4","Pmax","No_Load_Cost"]].round(2).iloc[0]
     return (data,)
 
 
@@ -138,41 +137,41 @@ def _(costs, genname_ui):
 def _(costs, gendata, genname_ui):
     # get fit
     _n = costs[costs.genname==genname_ui.value].number.values[0]
-    _data = gendata.iloc[_n-1:_n]
-    fit = [_data[f"COST{n}"].values[0] for n in range(_data.NCOST.values[0])]
+    _data = gendata.iloc[_n-1]
+    fit = [_data[f"COST{n}"] for n in range(int(_data.NCOST))]
     return (fit,)
 
 
 @app.cell
 def _(costdata, costs, data):
     # read price data and generate cost data
-    _prices = [
-        [data[f"MW{n+1}"].values[0], data[f"Cost{n+1}"].values[0]]
+    prices = [
+        [data[f"MW{n+1}"], data[f"Cost{n+1}"]]
         for n in range(4)
         if n == 0
         or (
             f"Cost{n+1}" in costs.columns
-            and data[f"Cost{n+1}"].values[0] > 0
-            and data[f"Cost{n}"].values[0] < data[f"Cost{n+1}"].values[0]
+            and data[f"Cost{n+1}"] > 0
+            and data[f"Cost{n}"] < data[f"Cost{n+1}"]
         )
     ]
-    x,y,warning = costdata(_prices,data.Pmax.values[0],data.No_Load_Cost.values[0])
-    return x, y
+    x,y,warning = costdata(prices,data.Pmax,data.No_Load_Cost)
+    prices,warning
+    return prices, x, y
 
 
 @app.cell
 def _(data, fit, np):
     # Identify polynomial critical points, if any
-    pmin, pmax = data.Pmin.values[0], data.Pmax.values[0]
     if len(fit) > 0:
         p0 = np.polynomial.Polynomial(fit[-1::-1], symbol="p")
         p1 = p0.deriv()
         p2 = p1.deriv()
     else:
         p0 = p1 = p2 = []
-    p0rr = [x for x in p0.roots() if isinstance(x, float) and pmin <= x <= pmax] if len(p0)>0 else []
-    p1rr = [x for x in p1.roots() if isinstance(x, float) and pmin <= x <= pmax] if len(p1)>0 else []
-    p2rr = [x for x in p2.roots() if isinstance(x, float) and pmin <= x <= pmax] if len(p2)>0 else []
+    p0rr = [x for x in p0.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p0)>0 else []
+    p1rr = [x for x in p1.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p1)>0 else []
+    p2rr = [x for x in p2.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p2)>0 else []
     return p0rr, p1rr, p2rr
 
 
@@ -186,28 +185,10 @@ def _(busname_ui, genname_ui, mo):
 @app.cell
 def _(busname_ui, data, genname_ui, mo):
     # Show selected data
-    _rows = [f"<td>{data[x].values[0]}</td>" for x in data.columns]
-    _hdrs = [f"<th>{x}</th>" for x in data.columns]
+    _rows = [f"<td>{data[x]}</td>" for x in data.index]
+    _hdrs = [f"<th>{x}</th>" for x in data.index]
     data_ui = mo.md(f"<table><caption>Bus {busname_ui.value} {genname_ui.selected_key}</caption><tr>{''.join(_hdrs)}</tr><tr>{''.join(_rows)}</tr></table>")
     return (data_ui,)
-
-
-@app.cell
-def _(data, mo, np):
-    # Construct price curve
-    price = np.array(
-        [
-            [data[f"MW{n+1}"].values[0], data[f"Cost{n+1}"].values[0]]
-            for n in range(3)
-            if n == 0 or data[f"Cost{n+1}"].values[0] > 0
-        ]
-    ).T
-    if price[0][-1] < data.Pmax.values[0]:
-        price_ui = mo.md(f"**<font color=red>WARNING**: non-convex prices from {price[0][-1]:.1f} to {data['Pmax'].values[0]:.1f} MW relaxed from $0.00/MWh to ${price[1][-1]:.2f}/MWh</font>")
-        price[0][-1] = data.Pmax.values[0]
-    else:
-        price_ui = mo.md("")
-    return price, price_ui
 
 
 @app.cell
@@ -232,7 +213,7 @@ def _(
     p1rr,
     p2rr,
     plt,
-    price,
+    prices,
     x,
     y,
 ):
@@ -240,8 +221,7 @@ def _(
     plt.figure(figsize=(20,8))
 
     plt.subplot(1,2,1)
-    _q = price[0].tolist()
-    _p = price[1].tolist()
+    _q,_p = [list(x) for x in zip(*prices)]
     plt.step([0]+_q,[_p[0]]+_p)
     plt.grid()
     plt.xlim([0,_q[-1]])

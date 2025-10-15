@@ -161,9 +161,16 @@ def _(constraint_ui, cp, data, np, price, withnlc_ui):
                 print("order:",_n,"-->",prob.status)
             fit.append(p.value[-1::-1] if p.value is not None else [])
     else:
-        fit = [np.round(np.polyfit(x, y, 2),6) for n in range(9)]
+        fit = [np.round(np.polyfit(x, y, n),6) for n in range(3)]
     e = {n: round(float(np.sqrt(np.linalg.norm(np.polyval(p, x) - y, 2))),1) for n,p in enumerate(fit) if len(p) > 0 }
     return e, fit, x, y
+
+
+@app.cell
+def _(data, fit):
+    print(data)
+    print(fit)
+    return
 
 
 @app.cell

@@ -21,6 +21,40 @@ pp_index = {
     "gencost": {getattr(cost,x):x for x in dir(cost) if x[0] != "_"},
 }
 
+def costdata(prices:list[list[float]],
+    Pmax:float,
+    no_load_cost:float=0.0,
+    pstep=1.0,
+    pround=0,
+    ):
+    """Convert price curve to cost data
+
+    Arguments:
+        prices: price curve [[MW1,MW2,...],[COST1,COST2,...]]
+        Pmax: maximum power
+        no_load_cost: standby (zero load) cost
+        pstep: power step value
+        pround: power value rounding
+
+    Returns:
+        x: power values
+        y: cost values
+        warning: non-convexity fix warning
+    """
+    warning = None
+    Q,P = [list(x) for x in zip(*prices)]
+    if Q[-1] < Pmax:
+        warning = f"non-convex prices from {Q[-1]:.1f} to {Pmax:.1f} MW relaxed from $0.00/MWh to ${prices[-1][1]:.2f}/MWh"
+        Q[-1] = round(Pmax,1)
+    x = []
+    y = []
+    for m in range(len(P)):
+        x.append(np.arange(Q[m-1] if m>0 else 0,Q[m]+1,pstep).round(pround))
+        y.append(np.ones(len(x[-1]))*P[m])
+    x = np.hstack(x)
+    y = np.cumsum(np.hstack(y)) + no_load_cost
+    return x,y,warning
+
 def gencost(
         csvfile:str,
         *,
@@ -42,27 +76,15 @@ def gencost(
                 for n in range(4)
                 if n == 0 or ( f"Cost{n+1}" in gen.columns and data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"] )
             ]
-        Q,P = list(zip(*prices))
-        Q = list(Q)
-        P = list(P)
-        if Q[-1] < data["Pmax"]:
-            print(f"WARNING [{data['genname']}@{n}]: non-convex prices from {Q[-1]:.1f} to {data['Pmax']:.1f} MW relaxed from $0.00/MWh to ${prices[-1][1]:.2f}/MWh")
-            Q[-1] = round(data["Pmax"],1)
-
-        x = []
-        y = []
-        for m in range(len(P)):
-            x.append(np.arange(Q[m-1] if m>0 else 0,Q[m]+1,1).round(0))
-            y.append(np.ones(len(x[-1]))*P[m])
-        x = np.hstack(x)
-        y = np.cumsum(np.hstack(y)) + data.No_Load_Cost
+        x,y,warning = costdata(prices,data['Pmax'],data.No_Load_Cost)
+        if warning:
+            print(f"WARNING [{data['genname']}@{n}]: {warning}")
 
         model = 2 # polynomial
         startup = data["SUCost"]
         shutdown = data["SDCost"]
-        k = len(P)
+        k = len(prices)
         p = np.polyfit(x,y,min(k-1,maxorder)).tolist()
-        print(n,round(data["Pmax"],1),Q,P,k,"-->",p)
         assert p[0] >= 0.0, f"{n},{data},{Q},{P}: non-convex cost function"
         p[-1] += data.No_Load_Cost
         gencost.append([model,float(startup),float(shutdown),len(p)] + p + [0]*(maxorder-k+1))

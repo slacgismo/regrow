@@ -38,11 +38,16 @@ def gencost(
     for n,data in gen.iterrows():
 
         # read price data
-        prices = [(data[f"MW{n+1}"], data[f"Cost{n+1}"])
+        prices = [[data[f"MW{n+1}"], data[f"Cost{n+1}"]]
                 for n in range(4)
                 if n == 0 or ( f"Cost{n+1}" in gen.columns and data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"] )
             ]
-        Q,P = zip(*prices)
+        Q,P = list(zip(*prices))
+        Q = list(Q)
+        P = list(P)
+        if Q[-1] < data["Pmax"]:
+            print(f"WARNING [{data['genname']}@{n}]: non-convex prices from {Q[-1]:.1f} to {data['Pmax']:.1f} MW relaxed from $0.00/MWh to ${prices[-1][1]:.2f}/MWh")
+            Q[-1] = data["Pmax"]
 
         x = []
         y = []
@@ -51,15 +56,13 @@ def gencost(
             y.append(np.ones(len(x[-1]))*P[m])
         x = np.hstack(x)
         y = np.cumsum(np.hstack(y)) + data.No_Load_Cost
-        if x[-1] < data["Pmax"]:
-            print(f"WARNING [{data['genname']}@{n}]: non-convex prices from {x[-1]:.1f} to {data['Pmax']:.1f} MW relaxed from $0.00/MWh to ${prices[-1][1]:.2f}/MWh")
-            x[-1] = data["Pmax"]
 
         model = 2 # polynomial
         startup = data["SUCost"]
         shutdown = data["SDCost"]
         k = len(P)
         p = np.polyfit(x,y,min(k-1,maxorder)).tolist()
+        assert p[0] >= 0.0, f"{n},{data},{Q},{P}: non-convex cost function"
         p[-1] += data.No_Load_Cost
         gencost.append([model,float(startup),float(shutdown),len(p)] + p + [0]*(maxorder-k+1))
     

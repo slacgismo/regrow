@@ -285,12 +285,6 @@ def _(
 
 
 @app.cell
-def _(cost_plot_ui):
-    cost_plot_ui
-    return
-
-
-@app.cell
 def _():
     # Load modules and setup
     import marimo as mo

@@ -22,11 +22,16 @@ def _(
     price_plot_ui,
     price_ui,
 ):
-    mo.ui.tabs({
-        "Cost data" : mo.vstack([cost_ui,data_ui,price_ui,fit_ui,cost_plot_ui]),
-        "Gen data" : gendata,
-        "Price data" : mo.vstack([price_order_ui,price_plot_ui]),
-    },lazy=True)
+    mo.ui.tabs(
+        {
+            "Cost data": mo.vstack(
+                [cost_ui, data_ui, price_ui, fit_ui, cost_plot_ui]
+            ),
+            "Gen data": gendata,
+            "Price data": mo.vstack([mo.hstack([mo.md("Show terms of $C(p)=ap^2+bp+c$:"),price_order_ui],justify='start'), price_plot_ui]),
+        },
+        lazy=True,
+    )
     return
 
 
@@ -42,7 +47,7 @@ def _(pd):
 
 @app.cell
 def _(mo):
-    price_order_ui = mo.ui.radio(options=["Standby cost ($k/h)","Energy price ($/MWh)","Scarcity rent ($/kW².h)"],inline=True,value="Energy price ($/MWh)")
+    price_order_ui = mo.ui.radio(options=["a ($/kW².h)","b ($/MWh)","c ($k/h)"],inline=True,value="b ($/MWh)")
     return (price_order_ui,)
 
 
@@ -55,11 +60,11 @@ def _(costs, gendata, np, plt, price_order_ui):
         _data = gendata.iloc[_n]
         _costs = list(zip(_data.NCOST,_data.COST0,_data.COST1,_data.COST2,_data.PMAX))
         match price_order_ui.value:
-            case "Standby cost ($k/h)":
+            case "c ($k/h)":
                 qp = np.array([(x[4],x[x[0]]/1000) for x in _costs]).T
-            case "Energy price ($/MWh)":
+            case "b ($/MWh)":
                 qp = np.array([(x[4],0 if x[0] == 1 else x[x[0]-1]) for x in _costs]).T
-            case "Scarcity rent ($/kW².h)":
+            case "a ($/kW².h)":
                 qp = np.array([(x[4],0 if x[0] <= 2 else x[x[0]-2]*1e6) for x in _costs]).T
         plt.scatter(qp[0],qp[1],label=_type)
     plt.grid()

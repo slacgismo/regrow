@@ -75,8 +75,8 @@ for n,line in lines.iterrows():
 # bus.to_csv("bus.csv")
 # branch.to_csv("branch.csv")
 
-pd.DataFrame(bus,index=["BUS_I","BUS_TYPE","PD","QD","GS","BS","BUS_AREA","VM","VA","BASE_KV","ZONE","VMAX","VMIN"]).T.to_csv("bus.csv")
-pd.DataFrame(branch,columns=["F_BUS","T_BUS","BR_R","BR_X","BR_B","RATE_A","RATE_B","RATE_C","TAP","SHIFT","BR_STATUS","ANGMIN","ANGMAX"]).to_csv("branch.csv")
+pd.DataFrame(bus,index=["BUS_I","BUS_TYPE","PD","QD","GS","BS","BUS_AREA","VM","VA","BASE_KV","ZONE","VMAX","VMIN"]).T.reset_index(drop=True).sort_values("BUS_I").to_csv("bus.csv",index=False,header=True,float_format="%g")
+pd.DataFrame(branch,columns=["F_BUS","T_BUS","BR_R","BR_X","BR_B","RATE_A","RATE_B","RATE_C","TAP","SHIFT","BR_STATUS","ANGMIN","ANGMAX"]).to_csv("branch.csv",index=False,header=True,float_format="%g")
 
 # convert gen busname to busid
 gen.GEN_BUS = [busid(x) for x in gen.GEN_BUS]

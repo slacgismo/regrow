@@ -72,9 +72,7 @@ for n,line in lines.iterrows():
     # assert line.RATE_A > 0, f"LINE {n} [{line.FBUS:.0f}-{line.TBUS:.0f}]: zero line ratings"
     branch.append([busid(line.FBUS),busid(line.TBUS),line.BR_X/20,line.BR_X,0.0,line.RATE_A,line.RATE_A,line.RATE_A,0.0,0.0,line.BR_STATUS,-360,+360])
 
-# bus.to_csv("bus.csv")
-# branch.to_csv("branch.csv")
-
+# output pypower bus and branch data
 pd.DataFrame(bus,index=["BUS_I","BUS_TYPE","PD","QD","GS","BS","BUS_AREA","VM","VA","BASE_KV","ZONE","VMAX","VMIN"]).T.reset_index(drop=True).sort_values("BUS_I").to_csv("bus.csv",index=False,header=True,float_format="%g")
 pd.DataFrame(branch,columns=["F_BUS","T_BUS","BR_R","BR_X","BR_B","RATE_A","RATE_B","RATE_C","TAP","SHIFT","BR_STATUS","ANGMIN","ANGMAX"]).to_csv("branch.csv",index=False,header=True,float_format="%g")
 

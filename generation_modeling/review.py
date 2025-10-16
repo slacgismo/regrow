@@ -16,7 +16,7 @@ def _(mo):
         "More information (click here)":mo.md("""The `Inputs` tab displays the input generation data used to develop the cost function for each generator type at each WECC bus.
 
     The `Results` tab displays the fit terms for all the generation plant types at every bus of the WECC 240 model. The terms $a$, $b$, and $c$ refer to the second-order, first-order, and constant terms of the cost function fit, respectively.
-    
+
     The `Review` tab is used to review the individual cost curve fit for each generator type at each bus in the WECC 240 model. The generation data and the cost function fit are shown. If a relaxation is performance it is noted. The left-hand plot shows the original price curve and the right-hand plot shows the cost data and the cost function fit.
     """)})
     return
@@ -228,12 +228,12 @@ def _(
     plt.subplot(1, 2, 2)
     plt.grid()
     plt.xlabel("Power (MW)")
-    plt.ylabel("Cost ($/h)")
+    plt.ylabel("Cost ($k/h)")
     plt.title(f"{county.county} {county.usps} {genname_options[genname_ui.value]} Generation Cost")
-    plt.plot(x, y, ":b", linewidth=3,label="Data")
+    plt.plot(x, y/1000, ":b", linewidth=3,label="Data")
     _output = []
     plt.plot(
-        x, np.polyval(fit, x), "-k", label=f"Fit order {order_ui.value}"
+        x, np.polyval(fit, x)/1000, "-k", label=f"Fit order {order_ui.value}"
     )
     if p0rr:
         plt.plot(p0rr, np.polyval(fit, p0rr), "ok", label="Fit zero")
@@ -249,7 +249,7 @@ def _(
             mo.md(f"**<font color=red>WARNING**: non-convex costs found")
         )
     plt.xlim([0, x[-1]])
-    plt.ylim([0, max(y[-1] * 1.1,1)])
+    plt.ylim([0, max(y[-1]/1000 * 1.1,1)])
     plt.legend()
 
     _output.insert(0, plt.gca())

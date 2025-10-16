@@ -94,6 +94,8 @@ flowchart LR
     NREL --> WECC240_2018_Generation_scheduling.xlsx
     NREL --> generation_cost.csv
     validate.py --> pypower
+    validate.py --> bus.csv
+    validate.py --> branch.csv
     powerplants.glm --> gridlabd
     review.py --> marimo
 
@@ -161,6 +163,10 @@ The input data files are
 - `storage_data.csv`: This file comes from the `WECC240_2018_Generation_scheduling.xlsx` file and contains the energy storage resources in the WECC 240 model.
 
 ## Output Data
+
+- `bus.csv`: This file contains the `pypower` bus data used to validate the generation cost model
+
+- `branch.csv`: This file contains the `pypower` branch data used to validate the generation cost model
 
 - `gen.csv`: This file contains the `pypower` generator data for each type of generator at each bus of the WECC 240 model. The file is updated by the `gendata.py` script.
 

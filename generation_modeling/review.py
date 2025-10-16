@@ -6,7 +6,7 @@ app = marimo.App(width="full")
 
 @app.cell
 def _(mo):
-    mo.md(r"""This notebook is used to review the generation cost data in the original NREL WECC240 model. The cost data is provided as monotonic increasing prices for various power levels. If a decreasing price is observed, the price is lifted to the previous price to avoid non-convex cost curves.""")
+    mo.md(r"""This notebook is used to review the generation cost function fit output by the `gendata.py` script, which is based on the price curves in the original NREL WECC240 model. The input data is provided as monotonic increasing prices for various power levels. If a decreasing price is observed, the price is lifted to avoid non-convex cost curves.""")
     return
 
 

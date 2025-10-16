@@ -11,6 +11,14 @@ def _(mo):
 
 
 @app.cell
+def _():
+    #
+    # UI Components
+    #
+    return
+
+
+@app.cell
 def _(
     cost_plot_ui,
     data_ui,
@@ -22,6 +30,7 @@ def _(
     price_plot_ui,
     warning_ui,
 ):
+    # Show consolidated UI
     mo.ui.tabs(
         {
             "Cost data": mo.vstack(
@@ -44,17 +53,8 @@ def _(
 
 
 @app.cell
-def _(pd):
-    # Load generation data
-    costs = pd.read_csv("generation_data.csv")
-    gencost = pd.read_csv("gencost.csv")
-    gen = pd.read_csv("gen.csv")
-    gendata = pd.concat([gen,gencost],axis=1)
-    return costs, gendata
-
-
-@app.cell
 def _(mo):
+    # Create price data radio button selector
     price_order_ui = mo.ui.radio(options=["a ($k/kW².h)","b ($/MWh)","c ($k/h)"],inline=True,value="b ($/MWh)")
     return (price_order_ui,)
 
@@ -114,17 +114,10 @@ def _(mo):
 
 
 @app.cell
-def _(mo):
-    # Create constrained fit switch
-    constraint_ui = mo.ui.switch(label="Constrained fit")
-    return
-
-
-@app.cell
-def _():
-    # Create standby cost w
-    # withnlc_ui = mo.ui.switch(label="Include standby cost")
-    return
+def _(mo, warning):
+    # Create warning UI
+    warning_ui = mo.md(f"**<font color=red>WARNING**: {warning}</font>") if warning else None
+    return (warning_ui,)
 
 
 @app.cell
@@ -132,48 +125,6 @@ def _(costs, genname_ui):
     # Get selected data
     data = costs[costs.genname==genname_ui.value].set_index("genname")[["Pmin","MW1","Cost1","MW2","Cost2","MW3","Cost3","MW4","Cost4","Pmax","No_Load_Cost"]].round(2).iloc[0]
     return (data,)
-
-
-@app.cell
-def _(costs, gendata, genname_ui):
-    # get fit
-    _n = costs[costs.genname==genname_ui.value].number.values[0]
-    _data = gendata.iloc[_n-1]
-    fit = [_data[f"COST{n}"] for n in range(int(_data.NCOST))]
-    return (fit,)
-
-
-@app.cell
-def _(costdata, costs, data, mo):
-    # read price data and generate cost data
-    prices = [
-        [data[f"MW{n+1}"], data[f"Cost{n+1}"]]
-        for n in range(4)
-        if n == 0
-        or (
-            f"Cost{n+1}" in costs.columns
-            and data[f"Cost{n+1}"] > 0
-            and data[f"Cost{n}"] < data[f"Cost{n+1}"]
-        )
-    ]
-    x,y,warning = costdata(prices,data.Pmax,data.No_Load_Cost)
-    warning_ui = mo.md(f"**<font color=red>WARNING**: {warning}</font>") if warning else None
-    return prices, warning_ui, x, y
-
-
-@app.cell
-def _(data, fit, np):
-    # Identify polynomial critical points, if any
-    if len(fit) > 0:
-        p0 = np.polynomial.Polynomial(fit[-1::-1], symbol="p")
-        p1 = p0.deriv()
-        p2 = p1.deriv()
-    else:
-        p0 = p1 = p2 = []
-    p0rr = [x for x in p0.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p0)>0 else []
-    p1rr = [x for x in p1.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p1)>0 else []
-    p2rr = [x for x in p2.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p2)>0 else []
-    return p0rr, p1rr, p2rr
 
 
 @app.cell
@@ -185,7 +136,7 @@ def _(busname_ui, genname_ui, mo):
 
 @app.cell
 def _(busname_ui, data, genname_ui, mo):
-    # Show selected data
+    # Create data table UI
     _rows = [f"<td>{data[x]}</td>" for x in data.index]
     _hdrs = [f"<th>{x}</th>" for x in data.index]
     data_ui = mo.md(f"<table><caption>Bus {busname_ui.value} {genname_ui.selected_key}</caption><tr>{''.join(_hdrs)}</tr><tr>{''.join(_rows)}</tr></table>")
@@ -253,6 +204,75 @@ def _(
     _output.insert(0,plt.gca())
     cost_plot_ui = mo.vstack(_output)
     return (cost_plot_ui,)
+
+
+@app.cell
+def _():
+    #
+    # Analysis
+    #
+    return
+
+
+@app.cell
+def _(pd):
+    # Load generation data
+    costs = pd.read_csv("generation_data.csv")
+    gencost = pd.read_csv("gencost.csv")
+    gen = pd.read_csv("gen.csv")
+    gendata = pd.concat([gen,gencost],axis=1)
+    return costs, gendata
+
+
+@app.cell
+def _(costs, gendata, genname_ui):
+    # get fit
+    _n = costs[costs.genname==genname_ui.value].number.values[0]
+    _data = gendata.iloc[_n-1]
+    print(_data)
+    fit = [_data[f"COST{n}"] for n in range(int(_data.NCOST))]
+    return (fit,)
+
+
+@app.cell
+def _(costdata, data, fit, np):
+    # read price data and generate cost data
+    prices = [
+        [float(data[f"MW{n+1}"]), float(data[f"Cost{n+1}"])]
+        for n in range(4)
+        if n == 0
+        or (data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"])
+    ]
+    x, y, warning = costdata(prices, data.Pmax, data.No_Load_Cost)
+    print(f"{prices=}")
+    print(f"{x=}")
+    print(f"{y=}")
+    print(f"{fit=}")
+    print(f"{np.polyval(fit, x)=}")
+    return prices, warning, x, y
+
+
+@app.cell
+def _(data, fit, np):
+    # Identify polynomial critical points, if any
+    if len(fit) > 0:
+        p0 = np.polynomial.Polynomial(fit[-1::-1], symbol="p")
+        p1 = p0.deriv()
+        p2 = p1.deriv()
+    else:
+        p0 = p1 = p2 = []
+    p0rr = [x for x in p0.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p0)>0 else []
+    p1rr = [x for x in p1.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p1)>0 else []
+    p2rr = [x for x in p2.roots() if isinstance(x, float) and data.Pmin <= x <= data.Pmax] if len(p2)>0 else []
+    return p0rr, p1rr, p2rr
+
+
+@app.cell
+def _():
+    #
+    # Notebook setup
+    #
+    return
 
 
 @app.cell

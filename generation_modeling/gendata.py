@@ -57,14 +57,10 @@ def costdata(prices:list[list[float]],
 
 def gencost(
         csvfile:str,
-        *,
-        maxorder:int=2,
         ) -> np.ndarray:
     """Generation cost data
 
     csvfile: name of CSV file from which to read generation data
-
-    maxorder: maximum polynomial model order to generate (default 2)
     """
     gen = pd.read_csv(csvfile)
 
@@ -74,21 +70,20 @@ def gencost(
         # read price data
         prices = [[data[f"MW{n+1}"], data[f"Cost{n+1}"]]
                 for n in range(4)
-                if n == 0 or ( f"Cost{n+1}" in gen.columns and data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"] )
+                if n == 0 or ( data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"] )
             ]
-        x,y,warning = costdata(prices,data['Pmax'],data.No_Load_Cost)
+        x,y,warning = costdata(prices,data.Pmax,data.No_Load_Cost)
         if warning:
             print(f"WARNING [{data['genname']}@{n}]: {warning}")
 
         model = 2 # polynomial
         startup = data["SUCost"]
         shutdown = data["SDCost"]
-        k = len(prices)
-        p = np.polyfit(x,y,min(k-1,maxorder)).tolist()
-        assert p[0] >= 0.0, f"{n},{data},{Q},{P}: non-convex cost function"
-        p[-1] += data.No_Load_Cost
-        gencost.append([model,float(startup),float(shutdown),len(p)] + p + [0]*(maxorder-k+1))
-    
+        k = 2 if len(prices) > 1 else 1
+        p = np.polyfit(x,y,k).tolist()
+        assert p[0] >= 0.0, f"{n=},{prices=}: non-convex cost function"
+        gencost.append([model,float(startup),float(shutdown),len(p)] + p + [0]*(3-len(p)))
+        print(gencost[-1])
     return np.array(gencost)
 
 def gen(
@@ -142,7 +137,6 @@ def gen(
 def model(
         csvfile:str,
         *,
-        maxorder:int=2,
         bus:np.array=None,
         fail=lambda x: print(f"bus {x} not found",file=sys.stderr)
         ) -> dict:
@@ -153,7 +147,7 @@ def model(
     maxorder: maximum polynomial model order to generate (default 2)
 
     """
-    result = {"gen":gen(csvfile),"gencost":gencost(csvfile,maxorder=maxorder)}
+    result = {"gen":gen(csvfile),"gencost":gencost(csvfile)}
     if not bus is None:
         bus_i = set(bus[0,:])
         for gen_bus in result["gen"][1,:]:

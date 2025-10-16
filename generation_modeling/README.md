@@ -74,7 +74,6 @@ flowchart LR
     gencost.csv --> review.py
     gencost.csv --> gendata.model
     generation_cost.csv --> powerplants.py
-    generation_data.csv --> review.py
     generation_data.csv --> validate.py
     generation_data.csv --> gendata.py
     generation_data.csv --> powerplants.py
@@ -101,6 +100,10 @@ flowchart LR
     validate.py --> branch.csv
     powerplants.glm --> gridlabd
     review.py --> marimo
+    bus.csv --> pypower
+    branch.csv --> pypower
+    gencost.csv --> pypower
+    gen.csv --> pypower
 
     gendata.py[[gendata.py]]
     review.py[[review.py]]

@@ -1,6 +1,7 @@
 """Validate the generation data and cost model"""
 
 from pypower.runopf import runopf
+from pypower.ppoption import ppoption
 from wecc240 import wecc240
 import numpy as np
 import pandas as pd
@@ -93,6 +94,6 @@ model = {
 # print("}")
 
 # run full AC OPF
-result = runopf(model,VERBOSE=False)
+result = runopf(model,ppoption(VERBOSE=1,OUTALL=3))
 print(f"""{result["success"]=}""")
 exit(0 if result["success"] else 1)

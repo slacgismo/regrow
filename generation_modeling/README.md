@@ -120,6 +120,12 @@ flowchart LR
         gridlabd(GridLAB-D)
         gendata.model("gendata.model()")
     end
+    subgraph Scripts
+        validate.py
+        powerplants.py
+        gendata.py
+        summary.py
+    end
 ```
 
 # Files

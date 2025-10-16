@@ -29,7 +29,7 @@ lines = pd.read_csv("line_data.csv",
     names=['FBUS','TBUS','BR_X','RATE_A','BR_STATUS'],
     )
 
-# construct bus and branch data
+# assemble bus and branch data
 genlist = set([int(x) for x in gen.GEN_BUS])
 bus = {}
 branch = []
@@ -47,7 +47,7 @@ for n,line in lines.iterrows():
         print(f"WARNING [line_data.csv]: line {n} rating 99999 is set to zero for pypower default")
         line.RATE_A = 0.0
 
-    # construct bus data
+    # build bus data
     for BUS_I in [line.FBUS,line.TBUS]:
         if not BUS_I in bus:
             obj = glm[f"wecc240_psse_N_{BUS_I:.0f}"]
@@ -68,8 +68,15 @@ for n,line in lines.iterrows():
             VMIN = float(obj["Vmin"].split()[0])
             bus[BUS_I] = [busid(BUS_I),BUS_TYPE,PD,QD,GS,BS,BUS_AREA,VM,VA,BASE_KV,ZONE,VMAX,VMIN]
 
-    # construct branch data
-    branch.append([busid(line.FBUS),busid(line.TBUS),0,line.BR_X,0,line.RATE_A,0,0,0,0,line.BR_STATUS,-360,+360])
+    # build branch data
+    # assert line.RATE_A > 0, f"LINE {n} [{line.FBUS:.0f}-{line.TBUS:.0f}]: zero line ratings"
+    branch.append([busid(line.FBUS),busid(line.TBUS),line.BR_X/20,line.BR_X,0.0,line.RATE_A,line.RATE_A,line.RATE_A,0.0,0.0,line.BR_STATUS,-360,+360])
+
+# bus.to_csv("bus.csv")
+# branch.to_csv("branch.csv")
+
+pd.DataFrame(bus,index=["BUS_I","BUS_TYPE","PD","QD","GS","BS","BUS_AREA","VM","VA","BASE_KV","ZONE","VMAX","VMIN"]).T.to_csv("bus.csv")
+pd.DataFrame(branch,columns=["F_BUS","T_BUS","BR_R","BR_X","BR_B","RATE_A","RATE_B","RATE_C","TAP","SHIFT","BR_STATUS","ANGMIN","ANGMAX"]).to_csv("branch.csv")
 
 # convert gen busname to busid
 gen.GEN_BUS = [busid(x) for x in gen.GEN_BUS]

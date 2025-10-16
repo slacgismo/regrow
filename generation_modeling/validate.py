@@ -93,4 +93,6 @@ model = {
 # print("}")
 
 # run full AC OPF
-runopf(model)
+result = runopf(model,VERBOSE=False)
+print(f"""{result["success"]=}""")
+exit(0 if result["success"] else 1)

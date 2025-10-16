@@ -184,9 +184,9 @@ def _(fit, mo, order_ui):
         case 1:
             _poly = f"{fit[0]:,.2f}"
         case 2:
-            _poly = f"{fit[0]:.2f}~p + {fit[1]:,.2f}"
+            _poly = f"{fit[0]:.2f}~p {fit[1]:+,.2f}"
         case 3:
-            _poly = f"{fit[0]:.6f}~p^2 + {fit[1]:.2f}~p + {fit[2]:,.2f}"
+            _poly = f"{fit[0]:.6f}~p^2 {fit[1]:+.2f}~p {fit[2]:+,.2f}"
         case 4:
             _poly = "(error)"
     fit_ui = mo.md(f"Fit order {order_ui.value}: $C(p) = {_poly}$")

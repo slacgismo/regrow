@@ -63,7 +63,7 @@ def gencost(
 
     csvfile: name of CSV file from which to read generation data
     """
-    gen = pd.read_csv(csvfile)
+    gen = pd.read_csv(csvfile) if isinstance(csvfile,str) else csvfile
 
     gencost = []
     for n,data in gen.iterrows():
@@ -104,7 +104,7 @@ def gen(
 
     MBASE: total MVA base of machine (default 100)
     """
-    gen = pd.read_csv(csvfile)
+    gen = pd.read_csv(csvfile) if isinstance(csvfile,str) else csvfile
     N = len(gen)
     return np.array([
         gen.busname, # GEN_BUS
@@ -135,19 +135,54 @@ def gen(
         ]).T
 
 def model(
-        csvfile:str,
+        gencsv:str,
+        esscsv:str=None,
         *,
         bus:np.array=None,
         fail=lambda x: print(f"bus {x} not found",file=sys.stderr)
         ) -> dict:
     """Generation cost data
 
-    csvfile: name of CSV file from which to read generation data
+    gencsv: name of CSV file from which to read generation data
 
-    maxorder: maximum polynomial model order to generate (default 2)
+    esscsv: name of CSV file from which to read energy storage data
 
+    bus: list of valid busses, if any
+
+    fail: callable error function if bus is not found
     """
-    result = {"gen":gen(csvfile),"gencost":gencost(csvfile)}
+    gendata = pd.read_csv(gencsv, usecols = [
+            "genname","busname",
+            "InitPow","InitStatus",
+            "Pmin","Pmax","Ramp_Rate",
+            "SUCost","SDCost","No_Load_Cost",
+            "MW1","MW2","MW3","MW4",
+            "Cost1","Cost2","Cost3","Cost4",
+            ])
+    if esscsv:
+        essdata = pd.read_csv(esscsv,usecols=[
+            "busname",
+            "ESS_Pow0","Initial_Ch_Status",
+            "DIS_Max","ESS_RR","ESS_Bid",
+            ])
+        essdata.rename({
+            "ESS_Pow0":"InitPow",
+            "Initial_Ch_Status":"InitStatus",
+            "DIS_Max":"Pmax",
+            "ESS_RR":"Ramp_Rate",
+            "ESS_Bid":"Cost1",
+            },inplace=True,axis=1)
+        essdata["genname"] = [f"{x.busname:.0f}ES" for _,x in essdata.iterrows()]
+        essdata["Pmin"] = -essdata["Pmax"]
+        essdata["SUCost"] = essdata["SDCost"] = essdata["No_Load_Cost"] = 0.0
+        essdata["MW1"] = essdata["Pmax"]
+        essdata["MW2"] = essdata["MW3"] = essdata["MW4"] = 0.0
+        essdata["Cost2"] = essdata["Cost3"] = essdata["Cost4"] = 0.0
+        gendata = pd.concat([gendata,essdata]).reset_index(drop=True)
+
+        # raise NotImplementedError(f"cannot merge {esscsv}")
+
+    result = {"gen":gen(gendata),"gencost":gencost(gendata)}
     if not bus is None:
         bus_i = set(bus[0,:])
         for gen_bus in result["gen"][1,:]:
@@ -169,7 +204,7 @@ if __name__ == "__main__":
         # print(f"fix({a=},{n=}) --> {result}")
         return result
 
-    for key,data in model("generation_data.csv").items():
+    for key,data in model("generation_data.csv","storage_data.csv").items():
         with open(f"{key}.csv","w") as fh:
             if key in pp_index:
                 header = (fix if key=="gencost" else lambda x:(x,x[-1],0))([pp_index[key][n] if n < len(pp_index[key]) else "" for n in range(len(data[0]))])[0]

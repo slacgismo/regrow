@@ -67,20 +67,21 @@ title: Generation Cost Model Data Flow
 ---
 flowchart LR
     bus_data.csv --> validate.py
-    gen.csv --> gendata.model
-    gen.csv --> review.py
-    gencost.csv --> gendata.model
-    gencost.csv --> review.py
     gendata.py --> gen.csv
     gendata.py --> gencost.csv
+    gen.csv --> review.py
+    gen.csv --> gendata.model
+    gencost.csv --> review.py
+    gencost.csv --> gendata.model
     generation_cost.csv --> powerplants.py
-    generation_data.csv --> gendata.py
     generation_data.csv --> review.py
     generation_data.csv --> validate.py
+    generation_data.csv --> gendata.py
     generation_data.csv --> powerplants.py
     powerplants.csv.zip --> powerplants.py
     powerplants.csv.zip --> summary.py
     powerplants.py --> powerplants.glm
+    storage_data.csv --> gendata.py
     WECC240_2018_Generation_scheduling.xlsx --> bus_data.csv
     WECC240_2018_Generation_scheduling.xlsx --> generation_data.csv
     WECC240_2018_Generation_scheduling.xlsx --> storage_data.csv
@@ -92,7 +93,9 @@ flowchart LR
     ISU --> generation_cost.csv
     REW --> generation_cost.csv
     NREL --> WECC240_2018_Generation_scheduling.xlsx
+    NREL --> wecc240_gis.csv
     NREL --> generation_cost.csv
+    line_data.csv --> validate.py
     validate.py --> pypower
     validate.py --> bus.csv
     validate.py --> branch.csv
@@ -116,9 +119,9 @@ flowchart LR
     end
     subgraph Tools
         pypower(PyPOWER)
-        marimo(Marimo)
         gridlabd(GridLAB-D)
         gendata.model("gendata.model()")
+        marimo(Marimo)
     end
     subgraph Scripts
         validate.py

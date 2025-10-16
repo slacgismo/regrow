@@ -229,13 +229,12 @@ def _(costs, gendata, genname_ui):
     # get fit
     _n = costs[costs.genname==genname_ui.value].number.values[0]
     _data = gendata.iloc[_n-1]
-    print(_data)
     fit = [_data[f"COST{n}"] for n in range(int(_data.NCOST))]
     return (fit,)
 
 
 @app.cell
-def _(costdata, data, fit, np):
+def _(costdata, data):
     # read price data and generate cost data
     prices = [
         [float(data[f"MW{n+1}"]), float(data[f"Cost{n+1}"])]
@@ -244,11 +243,6 @@ def _(costdata, data, fit, np):
         or (data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"])
     ]
     x, y, warning = costdata(prices, data.Pmax, data.No_Load_Cost)
-    print(f"{prices=}")
-    print(f"{x=}")
-    print(f"{y=}")
-    print(f"{fit=}")
-    print(f"{np.polyval(fit, x)=}")
     return prices, warning, x, y
 
 

@@ -6,7 +6,7 @@ app = marimo.App(width="full")
 
 @app.cell
 def _(mo):
-    mo.md(r"""This notebook is used to review the generation cost function fit output by the `gendata.py` script, which is based on the price curves in the original NREL WECC240 model. The input data is provided as monotonic increasing prices for various power levels. If a decreasing price is observed, the price is lifted to avoid non-convex cost curves.""")
+    mo.md(r"""This notebook is used to review the generation cost function fit output by the `gendata.py` script. The cost function fits are based on the price curves in the original NREL WECC240 model. The input data is provided as monotonic increasing prices for various power levels. If a non-monotonically increasing price is input, the decreasing price is relaxed so as to avoid non-convex cost curves.""")
     return
 
 
@@ -17,7 +17,7 @@ def _(mo):
 
     The `Results` tab displays the fit terms for all the generation plant types at every bus of the WECC 240 model. The terms $a$, $b$, and $c$ refer to the second-order, first-order, and constant terms of the cost function fit, respectively.
     
-    The `Review` tab is used to review individual cost curve fit for each generator type at each bus in the WECC 240 model. The generation data is shown for that generation type and the cost function fit is shown. The left-hand plot shows the original price curve and the right-hand plot shows the cost data and the cost function fit.
+    The `Review` tab is used to review the individual cost curve fit for each generator type at each bus in the WECC 240 model. The generation data and the cost function fit are shown. The left-hand plot shows the price curve (with any required relaxations) and the right-hand plot shows the cost data and the cost function fit.
     """)})
     return
 
@@ -128,7 +128,7 @@ def _(mo):
 @app.cell
 def _(mo, warning):
     # Create warning UI
-    warning_ui = mo.md(f"**<font color=red>WARNING**: {warning}</font>") if warning else None
+    warning_ui = mo.md(f"**<font color=red>WARNING**: {warning}</font>" if warning else "")
     return (warning_ui,)
 
 

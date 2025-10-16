@@ -100,7 +100,7 @@ def _(costs, mo):
     # Create bus name dropdown
     _options = [str(x["busname"]) for n,x in costs.iterrows()]
     busname_ui = mo.ui.dropdown(
-        options=_options, value=_options[0], label="Bus name:"
+        options=_options, value=_options[0], label="Bus id:"
     )
     return (busname_ui,)
 
@@ -132,9 +132,9 @@ def _(busname_ui, counties, gisdata, mo, utils):
     _businfo = gisdata.loc[int(busname_ui.value)]
     _geohash = utils.geohash(_businfo["Lat"],_businfo["Long"])
     _nearest = utils.nearest(_geohash,counties.index)
-    _county = counties.loc[_nearest]
-    info_ui = mo.md(f"Substation: **{_businfo['Bus  Name']}** (**{_county.county} {_county.usps}**)")
-    return (info_ui,)
+    county = counties.loc[_nearest]
+    info_ui = mo.md(f"Substation: **{_businfo['Bus  Name']}** (**{county.county} {county.usps}**)")
+    return county, info_ui
 
 
 @app.cell
@@ -186,7 +186,7 @@ def _(fit, mo, order_ui, re):
 
 @app.cell
 def _(
-    busname_ui,
+    county,
     fit,
     genname_options,
     genname_ui,
@@ -213,14 +213,14 @@ def _(
     plt.xlabel("Power (MW)")
     plt.ylabel("Price ($/MWh)")
     plt.title(
-        f"Bus {busname_ui.value} {genname_options[genname_ui.value]} Generation Prices"
+        f"{county.county} {county.usps} {genname_options[genname_ui.value]} Generation Prices"
     )
 
     plt.subplot(1, 2, 2)
     plt.grid()
     plt.xlabel("Power (MW)")
     plt.ylabel("Cost ($/h)")
-    plt.title(f"Bus {busname_ui.value} {genname_options[genname_ui.value]} Generation Cost")
+    plt.title(f"{county.county} {county.usps} {genname_options[genname_ui.value]} Generation Cost")
     plt.plot(x, y, ":b", linewidth=3,label="Data")
     _output = []
     plt.plot(

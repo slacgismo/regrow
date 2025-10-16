@@ -99,6 +99,7 @@ flowchart LR
     powerplants.glm --> gridlabd
     review.py --> marimo
 
+    gendata.py[[gendata.py]]
     review.py[[review.py]]
     powerplants.py[[powerplants.py]]
     validate.py[[validate.py]]

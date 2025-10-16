@@ -121,6 +121,23 @@ def _(busname_ui, costs, mo):
 
 
 @app.cell
+def _(pd):
+    gisdata = pd.read_csv("wecc240_gis.csv",index_col=[0])
+    counties = pd.read_csv("counties.csv",index_col=["geocode"])
+    return counties, gisdata
+
+
+@app.cell
+def _(busname_ui, counties, gisdata, mo, utils):
+    _businfo = gisdata.loc[int(busname_ui.value)]
+    _geohash = utils.geohash(_businfo["Lat"],_businfo["Long"])
+    _nearest = utils.nearest(_geohash,counties.index)
+    _county = counties.loc[_nearest]
+    info_ui = mo.md(f"Substation: **{_businfo['Bus  Name']}** (**{_county.county} {_county.usps}**)")
+    return (info_ui,)
+
+
+@app.cell
 def _(mo):
     # Create model fit order slider
     order_ui = mo.ui.slider(start=0, stop=10, value=2, label="Fit order:",show_value=True,debounce=True)
@@ -142,9 +159,9 @@ def _(costs, genname_ui):
 
 
 @app.cell
-def _(busname_ui, genname_ui, mo):
+def _(busname_ui, genname_ui, info_ui, mo):
     # Show UI controls
-    plant_ui = mo.hstack([busname_ui, genname_ui],justify='start')
+    plant_ui = mo.hstack([busname_ui, info_ui, genname_ui])
     return (plant_ui,)
 
 
@@ -304,7 +321,8 @@ def _():
     import cvxpy as cp
     import re
     from gendata import costdata
-    return costdata, mo, np, pd, plt, re
+    import utils
+    return costdata, mo, np, pd, plt, re, utils
 
 
 if __name__ == "__main__":

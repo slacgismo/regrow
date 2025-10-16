@@ -83,7 +83,6 @@ def gencost(
         p = np.polyfit(x,y,k).tolist()
         assert p[0] >= 0.0, f"{n=},{prices=}: non-convex cost function"
         gencost.append([model,float(startup),float(shutdown),len(p)] + p + [0]*(3-len(p)))
-        print(gencost[-1])
     return np.array(gencost)
 
 def gen(

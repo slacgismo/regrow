@@ -23,6 +23,7 @@ pp_index = {
 
 def costdata(prices:list[list[float]],
     Pmax:float,
+    *,
     no_load_cost:float=0.0,
     pstep:float=1.0,
     pround:int=0,
@@ -49,7 +50,7 @@ def costdata(prices:list[list[float]],
     x = []
     y = []
     for m in range(len(P)):
-        x.append(np.arange(Q[m-1] if m>0 else 0,Q[m]+1,pstep).round(pround))
+        x.append(np.arange(Q[m-1] if m>0 else 0.0,Q[m]+1,pstep).round(pround))
         y.append(np.ones(len(x[-1]))*P[m])
     x = np.hstack(x)
     y = np.cumsum(np.hstack(y)) + no_load_cost
@@ -72,7 +73,7 @@ def gencost(
                 for n in range(4)
                 if n == 0 or ( data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"] )
             ]
-        x,y,warning = costdata(prices,data.Pmax,data.No_Load_Cost)
+        x,y,warning = costdata(prices,data.Pmax,no_load_cost=data.No_Load_Cost)
         if warning:
             print(f"WARNING [{data['genname']}@{n}]: {warning}")
 

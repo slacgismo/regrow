@@ -182,38 +182,48 @@ def _(
     y,
 ):
     # Show plots and warnings
-    plt.figure(figsize=(20,8))
+    plt.figure(figsize=(20, 8))
 
-    plt.subplot(1,2,1)
-    _q,_p = [list(x) for x in zip(*prices)]
-    plt.step([0]+_q,[_p[0]]+_p)
+    plt.subplot(1, 2, 1)
+    _q, _p = [list(x) for x in zip(*prices)]
+    plt.step([0] + _q, [_p[0]] + _p)
     plt.grid()
-    plt.xlim([0,_q[-1]])
-    plt.ylim([0,_p[-1]*1.1])
+    plt.xlim([0, _q[-1]])
+    plt.ylim([0, max(_p[-1] * 1.1,1)])
     plt.xlabel("Power (MW)")
     plt.ylabel("Price ($/MWh)")
-    plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Prices")
+    plt.title(
+        f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Prices"
+    )
 
-    plt.subplot(1,2,2)
+    plt.subplot(1, 2, 2)
     plt.grid()
     plt.xlabel("Power (MW)")
     plt.ylabel("Cost ($/h)")
     plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
-    plt.plot(x,y,label="Data")
+    plt.plot(x, y, ":b", linewidth=3,label="Data")
     _output = []
-    plt.plot(x,np.polyval(fit,x),label=f"Fit order {order_ui.value}")
+    plt.plot(
+        x, np.polyval(fit, x), "-k", label=f"Fit order {order_ui.value}"
+    )
     if p0rr:
-        plt.plot(p0rr,np.polyval(fit,p0rr),'ok',label='Fit zero')
+        plt.plot(p0rr, np.polyval(fit, p0rr), "ok", label="Fit zero")
         _output.append(mo.md(f"**<font color=red>WARNING**: negative costs found"))
     if p1rr:
-        plt.plot(p1rr,np.polyval(fit,p1rr),'^k',label='Fit extreme')
-        _output.append(mo.md(f"**<font color=red>WARNING**: declining costs found"))
+        plt.plot(p1rr, np.polyval(fit, p1rr), "^k", label="Fit extreme")
+        _output.append(
+            mo.md(f"**<font color=red>WARNING**: declining costs found")
+        )
     if p2rr:
-        plt.plot(p2rr,np.polyval(fit,p2rr),'xk',label='Fit inflexion')
-        _output.append(mo.md(f"**<font color=red>WARNING**: non-convex costs found"))
+        plt.plot(p2rr, np.polyval(fit, p2rr), "xk", label="Fit inflexion")
+        _output.append(
+            mo.md(f"**<font color=red>WARNING**: non-convex costs found")
+        )
+    plt.xlim([0, x[-1]])
+    plt.ylim([0, max(y[-1] * 1.1,1)])
     plt.legend()
 
-    _output.insert(0,plt.gca())
+    _output.insert(0, plt.gca())
     cost_plot_ui = mo.vstack(_output)
     return (cost_plot_ui,)
 
@@ -254,7 +264,7 @@ def _(costdata, data):
         if n == 0
         or (data[f"Cost{n+1}"] > 0 and data[f"Cost{n}"] < data[f"Cost{n+1}"])
     ]
-    x, y, warning = costdata(prices, data.Pmax, data.No_Load_Cost)
+    x, y, warning = costdata(prices, data.Pmax, no_load_cost=data.No_Load_Cost)
     return prices, warning, x, y
 
 

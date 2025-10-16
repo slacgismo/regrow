@@ -89,7 +89,7 @@ def gencost(
 def gen(
         csvfile:str,
         *,
-        Qfactor:float=0.2,
+        Qfactor:float=1.0,
         VG:float=1.0,
         MBASE:float=100.0,
     ) -> np.ndarray:

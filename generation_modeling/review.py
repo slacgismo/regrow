@@ -15,7 +15,7 @@ def _(mo):
     mo.accordion({
         "More information (click here)":mo.md("""The `Inputs` tab displays the input generation data used to develop the cost function for each generator type at each WECC bus.
 
-    The `Results` tab display the fit terms for all the generation plant types at every bus of the WECC 240 model. The terms $a$, $b$, and $c$ refer to the second-order, first-order, and constant terms of the cost function fit, respectively.
+    The `Results` tab displays the fit terms for all the generation plant types at every bus of the WECC 240 model. The terms $a$, $b$, and $c$ refer to the second-order, first-order, and constant terms of the cost function fit, respectively.
     
     The `Review` tab is used to review individual cost curve fit for each generator type at each bus in the WECC 240 model. The generation data is shown for that generation type and the cost function fit is shown. The left-hand plot shows the original price curve and the right-hand plot shows the cost data and the cost function fit.
     """)})

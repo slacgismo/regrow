@@ -175,12 +175,21 @@ def _(busname_ui, data, genname_options, genname_ui, mo):
 
 
 @app.cell
-def _(fit, mo, order_ui, re):
+def _(fit, mo, order_ui):
     # Show cost curve polynomial
     # _p = fit[order_ui.value]
-    _t = ' '.join([f"{x:+.3g}~p^{{{len(fit)-n-1}}}" for n,x in enumerate(fit) if x!=0])
-    _t = re.sub("e([+-][0-9]+)",r"\\times10^{\1}",_t).replace("{+0","{").replace("{-0","-{").replace("p^{0}","").replace("p^{1}","p")
-    fit_ui = mo.md(f"Fit order {order_ui.value}: $C(p) = {_t if _t else "0.00"}$")
+    match len(fit):
+        case 0:
+            _poly = "0.00"
+        case 1:
+            _poly = f"{fit[0]:,.2f}"
+        case 2:
+            _poly = f"{fit[0]:.2f}~p + {fit[1]:,.2f}"
+        case 3:
+            _poly = f"{fit[0]:.6f}~p^2 + {fit[1]:.2f}~p + {fit[2]:,.2f}"
+        case 4:
+            _poly = "(error)"
+    fit_ui = mo.md(f"Fit order {order_ui.value}: $C(p) = {_poly}$")
     return (fit_ui,)
 
 
@@ -322,7 +331,7 @@ def _():
     import re
     from gendata import costdata
     import utils
-    return costdata, mo, np, pd, plt, re, utils
+    return costdata, mo, np, pd, plt, utils
 
 
 if __name__ == "__main__":

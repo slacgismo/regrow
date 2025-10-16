@@ -17,7 +17,7 @@ def _(mo):
 
     The `Results` tab displays the fit terms for all the generation plant types at every bus of the WECC 240 model. The terms $a$, $b$, and $c$ refer to the second-order, first-order, and constant terms of the cost function fit, respectively.
     
-    The `Review` tab is used to review the individual cost curve fit for each generator type at each bus in the WECC 240 model. The generation data and the cost function fit are shown. The left-hand plot shows the price curve (with any required relaxations) and the right-hand plot shows the cost data and the cost function fit.
+    The `Review` tab is used to review the individual cost curve fit for each generator type at each bus in the WECC 240 model. The generation data and the cost function fit are shown. If a relaxation is performance it is noted. The left-hand plot shows the original price curve and the right-hand plot shows the cost data and the cost function fit.
     """)})
     return
 
@@ -110,12 +110,14 @@ def _(busname_ui, costs, mo):
     # Create generator type dropdown
     _options = costs[costs.busname.astype(str) == busname_ui.value]
     _options = dict(zip(_options.Gen_Type, _options.genname))
-    genname_ui = mo.ui.dropdown(
+    genname_ui = mo.ui.radio(
         options=_options,
         value=list(_options)[0],
         label="Generator type:",
+        inline=True
     )
-    return (genname_ui,)
+    genname_options = {y:x for x,y in _options.items()}
+    return genname_options, genname_ui
 
 
 @app.cell
@@ -147,11 +149,11 @@ def _(busname_ui, genname_ui, mo):
 
 
 @app.cell
-def _(busname_ui, data, genname_ui, mo):
+def _(busname_ui, data, genname_options, genname_ui, mo):
     # Create data table UI
     _rows = [f"<td>{data[x]}</td>" for x in data.index]
     _hdrs = [f"<th>{x}</th>" for x in data.index]
-    data_ui = mo.md(f"<table><caption>Bus {busname_ui.value} {genname_ui.selected_key}</caption><tr>{''.join(_hdrs)}</tr><tr>{''.join(_rows)}</tr></table>")
+    data_ui = mo.md(f"<table><caption>Bus {busname_ui.value} {genname_options[genname_ui.value]}</caption><tr>{''.join(_hdrs)}</tr><tr>{''.join(_rows)}</tr></table>")
     return (data_ui,)
 
 
@@ -169,6 +171,7 @@ def _(fit, mo, order_ui, re):
 def _(
     busname_ui,
     fit,
+    genname_options,
     genname_ui,
     mo,
     np,
@@ -193,14 +196,14 @@ def _(
     plt.xlabel("Power (MW)")
     plt.ylabel("Price ($/MWh)")
     plt.title(
-        f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Prices"
+        f"Bus {busname_ui.value} {genname_options[genname_ui.value]} Generation Prices"
     )
 
     plt.subplot(1, 2, 2)
     plt.grid()
     plt.xlabel("Power (MW)")
     plt.ylabel("Cost ($/h)")
-    plt.title(f"Bus {busname_ui.value} {genname_ui.selected_key} Generation Cost")
+    plt.title(f"Bus {busname_ui.value} {genname_options[genname_ui.value]} Generation Cost")
     plt.plot(x, y, ":b", linewidth=3,label="Data")
     _output = []
     plt.plot(

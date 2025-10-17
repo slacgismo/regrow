@@ -120,9 +120,16 @@ def get_nearest(latitude,longitude):
 
 egrid = get_powerplants("EIA")
 
-# gendata = pd.concat([pd.read_csv("generation_data.csv")],axis=1)
-# counties = pd.read_csv("counties.csv")
-# gentypes = {x:y["type"].upper() for x,y in pd.read_csv("generation_types.csv",index_col=["id"]).to_dict("index").items()}
+gendata = pd.concat([pd.read_csv("gen.csv"),pd.read_csv("gencost.csv")],axis=1).set_index("GEN_BUS").join(weccgis.reset_index().set_index("Bus  Number")).reset_index()
+
+pd.options.display.width = None
+pd.options.display.max_columns = None
+# print(gendata)
+
+counties = pd.read_csv("counties.csv")
+gentypes = {x:y["type"].upper() for x,y in pd.read_csv("generation_types.csv",index_col=["id"]).to_dict("index").items()}
+
+# TODO: update costs of powerplants based on gendata
 
 def get_glm(id,state,name,code,fips,county,latitude,longitude,fuel,generator,capacity):
 

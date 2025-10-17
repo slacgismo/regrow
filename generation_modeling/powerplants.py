@@ -49,17 +49,19 @@ GENERATOR = {
 }
 
 COST = {
-    'SOLAR': [0,0,0],
-    'OTHF': [0,0,0],
-    'GAS': [0,0,0],
-    'COAL': [0,0,],
-    'HYDRO': [0,0,0],
-    'OIL': [0,0,0],
-    'WIND': [0,0,0],
-    'BIOMASS': [0,0,0],
-    'NUCLEAR': [0,0,0],
-    'GEOTHERMAL': [0,0,0],
-    'OFSL': [0,0,0],
+    "*": { # default costs
+        'SOLAR': [0,0,0],
+        'OTHF': [0,0,0],
+        'GAS': [0,0,0],
+        'COAL': [0,0,0],
+        'HYDRO': [0,0,0],
+        'OIL': [0,0,0],
+        'WIND': [0,0,0],
+        'BIOMASS': [0,0,0],
+        'NUCLEAR': [0,0,0],
+        'GEOTHERMAL': [0,0,0],
+        'OFSL': [0,0,0],
+    },
 }
 
 
@@ -124,7 +126,8 @@ gendata = pd.concat([pd.read_csv("gen.csv"),pd.read_csv("gencost.csv")],axis=1).
 
 pd.options.display.width = None
 pd.options.display.max_columns = None
-# print(gendata)
+print(gendata)
+# TODO: fill in COSTS data from gendata (issue: missing gentype)
 
 counties = pd.read_csv("counties.csv")
 gentypes = {x:y["type"].upper() for x,y in pd.read_csv("generation_types.csv",index_col=["id"]).to_dict("index").items()}

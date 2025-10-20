@@ -5,6 +5,9 @@ import datetime as dt
 import pandas as pd
 import utils
 
+pd.options.display.width = None
+pd.options.display.max_columns = None
+
 WECC = ["CA","WA","OR","ID","UT","NV","AZ","NM","WY","CO","MT"]
 
 FUEL = {
@@ -64,15 +67,36 @@ COST = {
     },
 }
 
+GENTYPE = {
+    'SOLAR': "PV-2",
+    'OTHF': "Steam",
+    'GAS': "Gas",
+    'COAL': "Steam",
+    'HYDRO': "Hydro-3",
+    'OIL': "Steam",
+    'WIND': "Wind-2",
+    'BIOMASS': "Biomass",
+    'NUCLEAR': "Nuclear",
+    'GEOTHERMAL': "Geothermal",
+    'OFSL': "Steam",
+    }
 
 def get_costs(refresh=True):
-    """Load new powerplant construction/production costs"""
+    """Load new powerplant construction/production costs
+
+    Arguments:
+
+    - refresh: force download from google sheets
+    """
     docid,sheet = "1dLvUglBP2ojGRXTCQGKJ4BlkiJQfcrGxZNu9kLjZpKI","Sheet1"
-    options = dict(index_col=[0,1],header=0)
+    options = dict()
     if os.path.exists("generation_cost.csv") and not refresh:
-        return pd.read_csv("generation_cost.csv",**options)
+        return pd.read_csv("generation_cost.csv",index_col=[0,1],header=0)
     else:
-        return pd.read_csv(f"https://docs.google.com/spreadsheets/d/{docid}/gviz/tq?tqx=out:csv&sheet={sheet}",**options)
+        data = pd.read_csv(f"https://docs.google.com/spreadsheets/d/{docid}/gviz/tq?tqx=out:csv&sheet={sheet}",
+            index_col=[0,1],header=0)
+        data.to_csv("generation_cost.csv",index=True,header=True)
+        return data
 
 def get_powerplants(source="EIA",states=WECC):
     """Load powerplant database"""
@@ -106,37 +130,34 @@ def get_powerplants(source="EIA",states=WECC):
 
     return egrid
 
-costs = get_costs(refresh=True)
+# read cost data
+costs = get_costs()
 
+# read GIS data from NREL
 weccgis = pd.read_csv("wecc240_gis.csv")
 weccgis["geocode"] = [utils.geohash(x["Lat"],x["Long"]) for _,x in weccgis.iterrows()]
 weccgis.set_index("geocode",inplace=True)
 
-def get_nearest(latitude,longitude):
+def get_nearest(latitude,longitude,gentype):
     """Find the nearest bus to a lat/lon"""
     geohash = utils.geohash(latitude,longitude)
-    closest = utils.nearest(geohash,weccgis.index)
+    closest = utils.nearest(geohash,gendata.loc[gentype].index)
     assert closest in weccgis.index, f"{closest=} not found in weccgis.index"
 
     return closest
 
 egrid = get_powerplants("EIA")
 
-gendata = pd.concat([pd.read_csv("gen.csv"),pd.read_csv("gencost.csv")],axis=1).set_index("GEN_BUS").join(weccgis.reset_index().set_index("Bus  Number")).reset_index()
-
-pd.options.display.width = None
-pd.options.display.max_columns = None
-print(gendata)
-# TODO: fill in COSTS data from gendata (issue: missing gentype)
+gencost = pd.concat([pd.read_csv("gen.csv"),pd.read_csv("gencost.csv")],axis=1).set_index("GEN_BUS").join(weccgis.reset_index().set_index("Bus  Number")).reset_index()
+gendata = pd.read_csv("generation_data.csv",header=0,usecols=["genname","Gen_Type"]).join(gencost).set_index(["Gen_Type","geocode"]).sort_index()
 
 counties = pd.read_csv("counties.csv")
 gentypes = {x:y["type"].upper() for x,y in pd.read_csv("generation_types.csv",index_col=["id"]).to_dict("index").items()}
 
-# TODO: update costs of powerplants based on gendata
-
 def get_glm(id,state,name,code,fips,county,latitude,longitude,fuel,generator,capacity):
 
-    geohash = get_nearest(latitude,longitude)
+    gentype = GENTYPE[generator if isinstance(generator,str) else "OTHF"]
+    geohash = get_nearest(latitude,longitude,gentype)
     location = weccgis.loc[geohash]
     if "Bus  Number" in location.index:
         bus_number = location['Bus  Number']
@@ -145,12 +166,22 @@ def get_glm(id,state,name,code,fips,county,latitude,longitude,fuel,generator,cap
         bus_number = location.iloc[0]['Bus  Number']
         bus_name = location.iloc[0]['Bus  Name']
 
-    if fuel in FUEL and generator in GENERATOR and (FUEL[fuel],GENERATOR[generator]) in costs.index:
-        fixed_cost = round(costs.loc[FUEL[fuel],GENERATOR[generator]]["fixed_cost"] * 1000 / 8760,2)
-        variable_cost = costs.loc[FUEL[fuel],GENERATOR[generator]]["variable_cost"]
-    else:
-        fixed_cost = 0
-        variable_cost = 0
+    data = gendata.loc[gentype,geohash].iloc[0]
+    match data.NCOST:
+        case 1:
+            fixed_cost = data.COST0
+            variable_cost = data.COST1
+            scarcity_cost = data.COST0
+        case 2:
+            fixed_cost = data.COST1
+            variable_cost = data.COST0
+            scarcity_cost = data.COST0
+        case 3:
+            fixed_cost = data.COST2
+            variable_cost = data.COST1
+            scarcity_cost = data.COST0
+        case _:
+            fixed_cost = variable_cost = scarcity_cost = 0.0
 
     return f"""object powerplant
 {{

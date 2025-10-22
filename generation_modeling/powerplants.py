@@ -227,8 +227,3 @@ if __name__ == '__main__':
             names.add(name)
             plant_data["name"] = name
             print(get_glm(**plant_data.to_dict()),file=fh)
-
-    # quit()
-    # gisdata = gendata.set_index("busname").join(weccgis.set_index("Bus  Number")).reset_index()
-    # gisdata["gentype"] = [gentypes[x["genname"].replace(str(x["busname"]),"")] for n,x in gisdata.iterrows()]
-    # print(sorted(gisdata.gentype.unique()))

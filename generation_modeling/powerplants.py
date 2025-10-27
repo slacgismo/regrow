@@ -205,6 +205,43 @@ def get_glm(id,state,name,code,fips,county,latitude,longitude,fuel,generator,cap
 }}
 """
 
+def get_kml(id,state,name,code,fips,county,latitude,longitude,fuel,generator,capacity):
+
+    gentype = GENTYPE[generator if isinstance(generator,str) else "OTHF"]
+    gencode = GENERATOR[generator if isinstance(generator,str) else "OTHF"]
+    geohash = get_nearest(latitude,longitude,gentype)
+    location = weccgis.loc[geohash]
+    if "Bus  Number" in location.index:
+        bus_number = location['Bus  Number']
+        bus_name = location['Bus  Name']
+    else: # multiple busses found
+        bus_number = location.iloc[0]['Bus  Number']
+        bus_name = location.iloc[0]['Bus  Name']
+
+    data = gendata.loc[gentype,geohash].iloc[0]
+    match data.NCOST:
+        case 1:
+            fixed_cost = data.COST0
+            variable_cost = data.COST1
+            scarcity_cost = data.COST0
+        case 2:
+            fixed_cost = data.COST1
+            variable_cost = data.COST0
+            scarcity_cost = data.COST0
+        case 3:
+            fixed_cost = data.COST2
+            variable_cost = data.COST1
+            scarcity_cost = data.COST0
+        case _:
+            fixed_cost = variable_cost = scarcity_cost = 0.0
+
+    return f"""    <Placemark>
+      <name>{bus_number}-{gencode}</name>
+      <description>{name.replace("&","&amp;")} ({capacity} MW)</description>
+      <styleUrl>#{gentype}</styleUrl>
+      <Point><coordinates>{longitude},{latitude},0</coordinates></Point>
+    </Placemark>"""
+
 if __name__ == '__main__':
 
     pd.options.display.width=None
@@ -227,3 +264,33 @@ if __name__ == '__main__':
             names.add(name)
             plant_data["name"] = name
             print(get_glm(**plant_data.to_dict()),file=fh)
+
+    ICONSTYLES = {
+        "PV-2" : "yellow",
+        "Steam" : "black",
+        "Gas" : "red",
+        "Hydro-3" : "blue",
+        "Wind-2" : "green",
+        "Biomass" : "brown",
+        "Nuclear" : "purple",
+        "Geothermal" : "white",
+    }
+    with open("powerplants.kml","w") as fh:
+        print(f"""<?xml version="1.0" encoding="UTF-8"?>""",file=fh)
+        print(f"""<kml xmlns="http://www.opengis.net/kml/2.2">""",file=fh)
+        print(f"""<Document>""",file=fh)
+        for key,value in ICONSTYLES.items():
+            print(f"""  <Style id="{key}">""",file=fh)
+            print(f"""    <IconStyle>""",file=fh)
+            print(f"""      <Icon><href>http://maps.gstatic.com/mapfiles/ridefinder-images/mm_20_{value}.png</href><scale>1.0</scale></Icon>""",file=fh)
+            print(f"""    </IconStyle>""",file=fh)
+            print(f"""  </Style>""",file=fh)
+        for folder in sorted(GENTYPE):
+            print(f"""  <Folder>""",file=fh)
+            print(f"""    <name>{folder.title()}</name>""",file=fh)
+            for plant_id,plant_data in egrid.iterrows():
+                if plant_data["generator"] == folder:
+                   print(get_kml(**plant_data.to_dict()),file=fh)
+            print(f"""  </Folder>""",file=fh)
+        print(f"""</Document>""",file=fh)
+        print(f"""</kml>""",file=fh)

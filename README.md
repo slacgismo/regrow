@@ -2,7 +2,7 @@
 
 # REGROW: Renewable Energy Generation Risk from Outlier Weather
 
-This private repository is for team members of the REGROW project, funded by the U.S. Departement of Energy's Office of Electricity. Please use this to share important documents, notes, data, and code. 
+This repository contains notes, data, and development code for the REGROW project, funded by the U.S. Departement of Energy's Office of Electricity. Its primary purpose is for project members to share and collaborate, while documenting progress on the research. The code contained here is presented "as-is" and is not intended to be an installable package. Please reach out to `bennetm [at] nrel [dot] gov` for additional questions. 
 
 The Technical Work Plan for the project is available in the top-level directory. Sub-directories are:
 
@@ -50,3 +50,11 @@ gridlabd wecc240.glm
 ~~~
 
 For more information on running or building `gridlabd` see https://github.com/arras-energy/gridlabd/blob/master/README.md.
+
+## Copyright Notice:
+            
+COPYRIGHT © SLAC National Accelerator Laboratory. All rights reserved. This work is supported in part by the U.S. Department of Energy, Office of Electricity.
+
+## Usage Restrictions:
+
+Neither the name of the Leland Stanford Junior University, SLAC National Accelerator Laboratory, U.S. Department of Energy nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.

@@ -4,155 +4,178 @@ __generated_with = "0.15.2"
 app = marimo.App(width="medium")
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(
+        r"""
+    This notebook rescales the county level loads from 2018 based on the state-level energy consumption growth as reported by EIA (source?).
+
+    The EIA annual energy use by state and year is available for all sectors. However, the NREL load model only applies to the RES and COM sector. Consequently, the EIA energy data for the other sectors (most notably IND) will be assumed to arise from constant power over each year. Only the RES and COM sectors will be scaled based on the time-varying NREL load model.
+    """
+    )
+    return
+
+
 @app.cell
-def _(
-    errors,
-    errors_ui,
-    graph_holdout,
-    graph_prediction,
-    graph_training,
-    graph_ui,
-    loads_ui,
-    mo,
-    pd,
-    timezone_ui,
-):
-    mo.vstack([
-        mo.hstack([loads_ui,timezone_ui]),
-        mo.ui.tabs({
-            "Prediction": mo.vstack([
-                graph_ui,
-                graph_prediction,
-                pd.DataFrame(errors.loc[loads_ui.value]).T,
-            ]),
-            "Errors": errors_ui,
-            "Training": graph_training,
-            "Holdout": graph_holdout,
-        })])
+def _(eia_ui, mo, projection_ui):
+    mo.accordion({
+        "EIA Energy Use Data":eia_ui,
+        "Load Model Projection":projection_ui,
+    }, multiple=True)
     return
 
 
 @app.cell
 def _(pd):
-    errors = pd.read_csv("wecc240_errors.csv", index_col=[0]).sort_index()
-    errors["Delta_MAPE"] = errors["old_MAPE"] - errors["new_MAPE"]
-    errors["Delta_MPED"] = errors["old_MPED"] - errors["new_MPED"]
-    return (errors,)
+    new = pd.read_csv("wecc240_loads.csv",index_col=[0])
+    new.index.name="datetime"
+    return (new,)
 
 
 @app.cell
-def _(errors, loads_ui, mo):
-    errors_ui = mo.ui.table(
-        errors,
-        initial_selection=[
-            n for n, x in enumerate(errors.index) if x == loads_ui.value
-        ],
-        selection="single",
-        pagination=False,
+def _(new, node_state, pd):
+    _data = pd.DataFrame(new.stack().reset_index())
+    _data.columns = ["datetime", "geocode", "model"]
+    _data["datetime"] = pd.DatetimeIndex(_data["datetime"])
+    _data["state"] = [node_state[x] for x in _data["geocode"]]
+    _data["year"] = [x.year for x in _data["datetime"]]
+    _data.set_index(["year", "state"], inplace=True)
+    model_data = pd.DataFrame(
+        (_data["model"].groupby(["year", "state"]).sum() / 1e6).round(1) # kWh->GWh
     )
-    return (errors_ui,)
+    return (model_data,)
 
 
 @app.cell
-def _(mo):
-    timezone_ui = mo.ui.dropdown(
-        label="Timezone:",
-        options=[
-            "UTC",
-            "America/Los_Angeles",
-            "America/Phoenix",
-            "America/Denver",
-        ],
-        value="UTC",
+def _(mo, model_data, states):
+    model_ui = mo.ui.table(model_data,page_size=len(states),selection=None)
+    return (model_ui,)
+
+
+@app.cell
+def _(eia_data, mo, model_data, pd, states):
+    # Compute the projection of building and industry loads
+    _buildings = model_data.join(
+        (
+            eia_data.loc[states, :, ["COM", "RES"]]
+            .groupby(["year", "state"])
+            .sum()
+            / 1000 # MWh->GWh
+        ).round(1)
     )
-    return (timezone_ui,)
+    _buildings.columns = ["model", "eia"]
+    _buildings["scalar"] = (_buildings.eia / _buildings.model).round(3)
+    _buildings
+    _industry = eia_data.loc[states,:,["IND","TRA","OTH"]].groupby(["year","state"]).sum() / 1000
+    _industry.columns=["constant"]
+    _industry["constant"] = (_industry["constant"] / _buildings["scalar"]).round(1)
+    projection = pd.DataFrame(_buildings.join(_industry))[["scalar","constant"]]
+    scaling_ui = mo.ui.table(projection,page_size=len(states),selection=None)
+    return (scaling_ui,)
+
+
+@app.cell
+def _(mo, model_ui, scaling_ui):
+    projection_ui = mo.ui.tabs({
+        "Building model" : model_ui,
+        "Projection model": scaling_ui,
+    })
+    return (projection_ui,)
 
 
 @app.cell
 def _(pd):
-    training = (pd.read_csv("../data/geodata/total.csv",index_col=[0],parse_dates=[0])/1000).round(3)
-    print(training["9wdb95"])
-    weather = (pd.read_csv("../data/geodata/temperature.csv",index_col=[0],parse_dates=[0])*9/5+32).round(1)
-    return training, weather
+    counties = pd.read_csv("../data/counties.csv",index_col=["geocode"])
+    # counties
+    return (counties,)
 
 
 @app.cell
-def _(errors, mo, pd, timezone_ui):
-    prediction = pd.read_csv("wecc240_loads.csv", index_col=[0],parse_dates=[0]).sort_index()/1000
-    prediction.index = prediction.index.tz_localize("UTC").tz_convert(timezone_ui.value)
-    nodes = pd.read_csv("../data/nodes.csv", index_col=[0]).sort_index()
-    _nodes = nodes.join(prediction)[["Bus  Name","Bus  Number"]].dropna()
-    _nodes["name"] = [f"{x['Bus  Name']} ({x['Bus  Number']} @ {n})" for n,x in _nodes.iterrows()]
-    _nodes = _nodes.drop(["Bus  Name","Bus  Number"],axis=1).sort_values("name").to_dict('index')
-    _options = {y["name"]:x for x,y in _nodes.items() if x in errors.index.values}
-    loads_ui = mo.ui.dropdown(label="Node:",options=_options, value=list(_options)[0])
-    return loads_ui, prediction
+def _(counties, new, utils):
+    node_state = {x:counties.loc[utils.nearest(x,counties.index)].usps for x in new.columns}
+    states = [x for x in counties.usps.unique() if x in node_state.values()]
+    # states,node_state
+    return node_state, states
 
 
-@app.cell
-def _(loads_ui, prediction):
-    print(prediction.loc["2018-12",loads_ui.value])
-    return
+@app.cell(hide_code=True)
+def _(mo, pd, states):
+    # Load EIA energy use data by state and year
+    eia_data = pd.read_csv(
+        "../data/EIA/eia_all_sectors.csv", index_col=["state", "year", "sector"]
+    )
+    years = eia_data.loc[states, :, :].reset_index().year.unique().tolist()
+    state_ui = mo.ui.dropdown(label="State:",options=states,value=states[0])
+    year_ui = mo.ui.dropdown(label="Year:",options=years,value=years[0])
+    return eia_data, state_ui, year_ui
 
 
-@app.cell
-def _(mo):
-    graph_ui = mo.ui.checkbox(label="August 2020 only")
-    return (graph_ui,)
+@app.cell(hide_code=True)
+def _(eia_data, mo, state_ui, states, year_ui):
+    # Show EIA energy use data for selected state and year
+    _eiadata = (
+        (eia_data.loc[states, :, :] / 1000)
+        .groupby(["year", "sector"])
+        .sum()
+        .unstack()
+    )
+    _eiadata.columns = [x[1] for x in _eiadata.columns.tolist()]
+    _statedata = eia_data.loc[state_ui.value, year_ui.value, :] / 1000
+    _statedata.loc["TOTAL"] = _statedata.sum()
+    _statedata.columns=["Energy [TWh/y]"]
 
-
-@app.cell
-def _(graph_ui, loads_ui, prediction, px):
-    graph_prediction = px.line(
-        prediction.loc["2020-08",loads_ui.value] if graph_ui.value else prediction[loads_ui.value], 
-        labels={
-            "index": f"Date/Time [{prediction.index.tz}]",
-            "value": "Load [MW]"},
-        title = loads_ui.selected_key,
-        # range_x = ["2020-08-01","2020-09-01"] if graph_ui.value else None,
-    ).update_layout(showlegend=False);
-    return (graph_prediction,)
-
-
-@app.cell
-def _(loads_ui, prediction, px, training):
-    graph_training = px.line(
-        training.loc[:"2018-12",loads_ui.value],
-        labels={
-            "index": f"Date/Time [{prediction.index.tz}]",
-            "value": "Load [MW]"},
-        title = loads_ui.selected_key,
-    ).update_layout(showlegend=False);
-    return (graph_training,)
-
-
-@app.cell
-def _(loads_ui, pd, prediction, px, training, weather):
-    _training = pd.DataFrame(training.loc["2018-12",loads_ui.value])
-    _training.columns = ["Training"]
-    print(_training)
-    _prediction = pd.DataFrame(prediction.loc["2018-12",loads_ui.value])
-    _prediction.columns = ["Prediction"]
-    print(_prediction)
-    _weather = pd.DataFrame(weather.loc["2018-12",loads_ui.value])
-    _weather.columns = ["Temperature"]
-    _data = _training.join(_prediction)#.join(_weather)
-    graph_holdout = px.line(
-        _data,
-        labels={
-            "index": f"Date/Time [{prediction.index.tz}]",
-            "value": "Load [MW]"},
-        title = loads_ui.selected_key,
-    ).update_layout();
-    return (graph_holdout,)
+    eia_ui = mo.vstack(
+        [
+            mo.hstack([state_ui, year_ui], justify="start"),
+            mo.ui.tabs(
+                {
+                    "WECC Totals": _eiadata.plot(
+                        kind="area",
+                        ylabel="Energy [TWh/y]",
+                        xlabel="Year",
+                        grid=True,
+                        title=f"WECC",
+                        legend=eia_data.index.get_level_values(2)
+                        .unique()
+                        .tolist(),
+                    ),
+                    f"WECC {year_ui.value} Totals": eia_data.loc[
+                        states, year_ui.value, :
+                    ]
+                    .groupby("sector")
+                    .sum()
+                    .plot(
+                        kind="pie",
+                        subplots=True,
+                        title=f"WECC {year_ui.value}",
+                        ylabel="",
+                        xlabel="",
+                    )[0],
+                    f"{state_ui.value} {year_ui.value} Plot": eia_data.loc[
+                        state_ui.value, year_ui.value, :
+                    ].plot(
+                        kind="pie",
+                        subplots=True,
+                        title=f"{state_ui.value} {year_ui.value}",
+                        ylabel="",
+                        xlabel="",
+                    )[0],
+                    f"{state_ui.value} {year_ui.value} Data": _statedata.round(1),
+                }
+            ),
+        ]
+    )
+    return (eia_ui,)
 
 
 @app.cell
 def _():
     import marimo as mo
     import pandas as pd
-    import plotly.express as px
-    return mo, pd, px
+    import sys
+    sys.path.append("../data")
+    import utils
+    return mo, pd, utils
 
 
 if __name__ == "__main__":

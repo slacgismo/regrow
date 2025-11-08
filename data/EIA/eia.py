@@ -7,6 +7,10 @@ import json
 pd.options.display.max_columns = None
 pd.options.display.width = None
 
+START=2018
+STOP=2023
+MAXLINES=100000
+
 class NoApiKey(FileNotFoundError):
     pass
 
@@ -21,7 +25,7 @@ def main():
     except FileNotFoundError as err:
         print(f"ERROR [eia.py]: You have not stored an API key from https://www.eia.gov/opendata/register.php in {apikey_file}",file=sys.stderr)
         raise
-    api_url = "https://api.eia.gov/v2/electricity/retail-sales/data/?frequency=annual&data[0]=sales&facets[sectorid][]=COM&facets[sectorid][]=IND&facets[sectorid][]=OTH&facets[sectorid][]=RES&facets[sectorid][]=TRA&start=2018&end=2023&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=5000"
+    api_url = f"https://api.eia.gov/v2/electricity/retail-sales/data/?frequency=annual&data[0]=sales&facets[sectorid][]=COM&facets[sectorid][]=IND&facets[sectorid][]=OTH&facets[sectorid][]=RES&facets[sectorid][]=TRA&start={START}&end={STOP}&sort[0][column]=period&sort[0][direction]=desc&offset=0&length={MAXLINES}"
     response = requests.get(f"{api_url}&api_key={api_key}")
 
     df = pd.DataFrame(response.json()["response"]["data"])

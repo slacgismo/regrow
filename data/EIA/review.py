@@ -25,10 +25,36 @@ def _(mo):
 
 
 @app.cell
-def _(pd):
-    data = (pd.read_csv("eia_f861.csv", index_col=[1, 0]) / 1000000).round(4).sort_index()
+def _(mo):
+    mo.md(
+        r"""
+    Notes:
+    1. The 2019 demand data is anomalous insofar as it appears to be too small by a factor of 10. 
+    2. The Washington state transportation data from 2019 onward appears to be too large by a factor of 10. 
+    """
+    )
+    return
+
+
+@app.cell
+def _(mo):
+    fix_2019_ui = mo.ui.checkbox(label="Fix 2019 data:",value=True)
+    fix_WATRA_ui = mo.ui.checkbox(label="Fix Washington state transportation data:",value=True)
+    mo.hstack([fix_2019_ui,fix_WATRA_ui],justify="start")
+    return fix_2019_ui, fix_WATRA_ui
+
+
+@app.cell
+def _(fix_2019_ui, fix_WATRA_ui, mo, pd):
+    data = (pd.read_csv("eia_f861.csv", index_col=[1, 0],converters={"year":str}) / 1000000).round(4).sort_index()
     data.columns = [x[0:3].upper() for x in data.columns]
-    # mo.ui.table(data,page_size=len(data.index.get_level_values(1).unique()),selection=None)
+    if fix_2019_ui.value:
+        for _x in data.index.get_level_values(0).unique():
+            data.loc[_x,"2019"] *= 10
+    if fix_WATRA_ui.value:
+        for _x in data.index.get_level_values(1).unique()[1:]:
+            data.loc["WA",_x].TRA /= 10
+    mo.ui.table(data,page_size=len(data.index.get_level_values(1).unique()),selection=None)
     return (data,)
 
 
@@ -45,7 +71,7 @@ def _(data, state_ui):
     # print(data)
     growth = (
         data.loc[state_ui.value,:]
-        / data.loc[state_ui.value,2018]
+        / data.loc[state_ui.value,"2018"]
     )
     # print(growth)
     growth.plot(
@@ -53,9 +79,25 @@ def _(data, state_ui):
         grid=True,
         xlabel="Year",
         ylabel="Load growth (%/y)",
-        xticks=data.index.get_level_values(1).unique().to_list(),
         legend="outside",
     )
+    return
+
+
+@app.cell
+def _(data, mo):
+    _options = data.index.get_level_values(1).unique()
+    year_ui = mo.ui.radio(label="Year:",options=[x for x in _options],value="2020",inline=True)
+    year_ui
+    return (year_ui,)
+
+
+@app.cell
+def _(data, year_ui):
+    (
+        data.reset_index().set_index(["year", "state"]).loc[year_ui.value, :]
+        / data.reset_index().set_index(["year", "state"]).loc["2018", :]
+    ).plot(kind="bar", grid=True,title=f"Load growth from 2018 to {year_ui.value}")
     return
 
 
@@ -105,6 +147,7 @@ def _():
     import os
     import marimo as mo
     import pandas as pd
+    import numpy as np
     return mo, pd
 
 

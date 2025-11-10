@@ -155,21 +155,21 @@ def _(demand, region_ui, utility_ui):
 
 
 @app.cell
-def _(demand, dt, np, plt, region_ui, utility_ui):
-    _data = (demand.loc[region_ui.value,utility_ui.value,:dt.datetime(2024,12,31,23,59,59)]/1e3)
-    # print(_data)
-    # _data.plot(figsize=(10,5),grid=True,xlabel="Date",ylabel="GW",legend=False)
-    _data["year"] = _data.index.get_level_values(2).year
-    _groupyear = _data.groupby("year")
-    _mean = _groupyear.mean()
-    _fit0 = np.polyfit(_mean.index-2018,_mean.values,0).flatten()
-    _fit1 = np.polyfit(_mean.index-2018,_mean.values,1).flatten()
-    print(f"{_fit0=},{_fit1=}")
+def _(demand, dt, np, plt):
+    _data = demand.loc[:,:,dt.datetime(2019,1,1,0,0,0):dt.datetime(2024,12,31,23,59,59)].groupby("datetime_utc").sum().sort_index()/1000
+    _data.drop(_data.loc[_data["demand_reported_mwh"]<1].index,inplace=True,axis=0)
+    # _data.plot()
+    _index = (_data.index-dt.datetime(2018,1,1,0,0,0)).total_seconds()/86400/365.2425
+    _x = [_index[0],_index[-1]]
+    _fit0 = np.polyfit(_index,_data.demand_reported_mwh,0)
+    _fit1 = np.polyfit(_index,_data.demand_reported_mwh,1)
+    # print([_data.index[0],_data.index[-1]],_fit1,np.polyval(_fit1,_x))
     plt.figure()
-    plt.plot(_mean,label="Annual mean (GW)")
-    plt.plot(range(2018,2025),np.polyval(_fit0,np.arange(2018,2025)-2018),label="Mean value (GW)")
-    plt.plot(range(2018,2025),np.polyval(_fit1,np.arange(2018,2025)-2018),label=f"Growth relative to 2018 ({_fit1[1]:.1f}GW{_fit1[0]*100:+.1f}%/y)")
+    plt.plot(_data,".",markersize=0.2,label="Total IOU Demand (GW)")
+    plt.plot([_data.index[0],_data.index[-1]],np.polyval(_fit0,_x),label=f"Mean ({_fit0[0]:.1f} GW)")
+    plt.plot([_data.index[0],_data.index[-1]],np.polyval(_fit1,_x),label=f"Trend ({_fit1[0]/_fit1[1]*100:.1f}%/y)")
     plt.title("EIA Form 930 Data for California IOUs")
+    plt.xlabel("Demand (GW)")
     plt.legend()
     plt.grid()
     plt.gca()

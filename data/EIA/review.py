@@ -38,8 +38,8 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    fix_2019_ui = mo.ui.checkbox(label="Fix 2019 data:",value=True)
-    fix_WATRA_ui = mo.ui.checkbox(label="Fix Washington state transportation data:",value=True)
+    fix_2019_ui = mo.ui.checkbox(label="Remove 2019 data:",value=True)
+    fix_WATRA_ui = mo.ui.checkbox(label="Remove Washington state transportation data:",value=True)
     mo.hstack([fix_2019_ui,fix_WATRA_ui],justify="start")
     return fix_2019_ui, fix_WATRA_ui
 
@@ -164,7 +164,7 @@ def _(demand, dt, np, plt):
     _fit0 = np.polyfit(_index,_data.demand_reported_mwh,0)
     _fit1 = np.polyfit(_index,_data.demand_reported_mwh,1)
     # print([_data.index[0],_data.index[-1]],_fit1,np.polyval(_fit1,_x))
-    plt.figure()
+    plt.figure(figsize=(15,7))
     plt.plot(_data,".",markersize=0.2,label="Total IOU Demand (GW)")
     plt.plot([_data.index[0],_data.index[-1]],np.polyval(_fit0,_x),label=f"Mean ({_fit0[0]:.1f} GW)")
     plt.plot([_data.index[0],_data.index[-1]],np.polyval(_fit1,_x),label=f"Trend ({_fit1[0]/_fit1[1]*100:.1f}%/y)")

@@ -30,7 +30,7 @@ def _(mo):
         r"""
     Notes:
     1. The 2019 demand data is anomalous insofar as it appears to be too small by a factor of 10. 
-    2. The Washington state transportation data from 2019 onward appears to be too large by a factor of 10. 
+    2. The Washington state transportation data from 2019 onward appears to be too large by a factor of 10.
     """
     )
     return
@@ -50,10 +50,10 @@ def _(fix_2019_ui, fix_WATRA_ui, mo, pd):
     data.columns = [x[0:3].upper() for x in data.columns]
     if fix_2019_ui.value:
         for _x in data.index.get_level_values(0).unique():
-            data.loc[_x,"2019"] *= 10
+            data.loc[_x,"2019"] = 0.5*data.loc[_x,"2018"] + 0.5* data.loc[_x,"2020"] #*= 10
     if fix_WATRA_ui.value:
         for _x in data.index.get_level_values(1).unique()[1:]:
-            data.loc["WA",_x].TRA /= 10
+            data.loc["WA",_x].TRA = float('NAN')#/= 10
     mo.ui.table(data,page_size=len(data.index.get_level_values(1).unique()),selection=None)
     return (data,)
 
@@ -69,12 +69,12 @@ def _(data, mo):
 @app.cell
 def _(data, state_ui):
     # print(data)
-    growth = (
+    growth_by_year = (
         data.loc[state_ui.value,:]
         / data.loc[state_ui.value,"2018"]
     )
     # print(growth)
-    growth.plot(
+    growth_by_year.plot(
         title=f"EIA Form 861 Data for {state_ui.value}",
         grid=True,
         xlabel="Year",
@@ -94,10 +94,23 @@ def _(data, mo):
 
 @app.cell
 def _(data, year_ui):
-    (
+    growth_by_state = (
         data.reset_index().set_index(["year", "state"]).loc[year_ui.value, :]
         / data.reset_index().set_index(["year", "state"]).loc["2018", :]
-    ).plot(kind="bar", grid=True,title=f"Load growth from 2018 to {year_ui.value}")
+    )
+    growth_by_state.plot(figsize=(15,7),kind="bar", grid=True,title=f"Load growth from 2018 to {year_ui.value}")
+    return (growth_by_state,)
+
+
+@app.cell
+def _(mo):
+    mo.md(r"""## Results""")
+    return
+
+
+@app.cell
+def _(growth_by_state):
+    growth_by_state.round(3)
     return
 
 
@@ -137,8 +150,29 @@ def _(demand, mo, region_ui):
 
 @app.cell
 def _(demand, region_ui, utility_ui):
-    _data = demand.loc[region_ui.value,utility_ui.value]/1e3
-    _data.plot(figsize=(10,5),grid=True,xlabel="Date",ylabel="GW",legend=False)
+    (demand.loc[region_ui.value,utility_ui.value]/1e3).plot(grid=True,figsize=(15,7),legend=None)
+    return
+
+
+@app.cell
+def _(demand, dt, np, plt, region_ui, utility_ui):
+    _data = (demand.loc[region_ui.value,utility_ui.value,:dt.datetime(2024,12,31,23,59,59)]/1e3)
+    # print(_data)
+    # _data.plot(figsize=(10,5),grid=True,xlabel="Date",ylabel="GW",legend=False)
+    _data["year"] = _data.index.get_level_values(2).year
+    _groupyear = _data.groupby("year")
+    _mean = _groupyear.mean()
+    _fit0 = np.polyfit(_mean.index-2018,_mean.values,0).flatten()
+    _fit1 = np.polyfit(_mean.index-2018,_mean.values,1).flatten()
+    print(f"{_fit0=},{_fit1=}")
+    plt.figure()
+    plt.plot(_mean,label="Annual mean (GW)")
+    plt.plot(range(2018,2025),np.polyval(_fit0,np.arange(2018,2025)-2018),label="Mean value (GW)")
+    plt.plot(range(2018,2025),np.polyval(_fit1,np.arange(2018,2025)-2018),label=f"Growth relative to 2018 ({_fit1[1]:.1f}GW{_fit1[0]*100:+.1f}%/y)")
+    plt.title("EIA Form 930 Data for California IOUs")
+    plt.legend()
+    plt.grid()
+    plt.gca()
     return
 
 
@@ -148,7 +182,9 @@ def _():
     import marimo as mo
     import pandas as pd
     import numpy as np
-    return mo, pd
+    import matplotlib.pyplot as plt
+    import datetime as dt
+    return dt, mo, np, pd, plt
 
 
 if __name__ == "__main__":

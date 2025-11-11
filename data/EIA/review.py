@@ -217,26 +217,28 @@ def _(data, demand, dt):
     )
     form930["year"] = form930.index.year
     form930 = form930.groupby("year").sum() / 8766
-    iou_fraction = form930.demand_reported_mwh.mean()/1000/(data.loc["CA"].TOT/8766*1000).mean()*100
+    iou_fraction = form930.demand_reported_mwh.mean()/1000/(data.loc["CA"].TOT/8766*1000).mean()
     return form930, iou_fraction
 
 
 @app.cell
 def _(iou_fraction, mo):
-    mo.md(rf"""The EIA Form 930 data provides the demand for IOUs in California, which represent {iou_fraction:.1f}% of the total energy demand in California reported by Form 861 data. The different growth rates for Form 861 data for the entire state and Form 960 data are shown in Figure 4.""")
+    mo.md(rf"""The EIA Form 930 data provides the demand for IOUs in California, which represent {iou_fraction*100:.1f}% of the total energy demand in California reported by Form 861 data. The different growth rates for Form 861 data for the entire state and Form 960 data are shown in Figure 4.""")
     return
 
 
 @app.cell
-def _(data, form930, mo, np):
+def _(data, form930, iou_fraction, mo, np):
     _fit = np.polyfit(form930.index - 2018, form930.demand_reported_mwh, 1)[1]
     _data = form930.copy()
     _data.loc[2018] = _fit
     _data.sort_index(inplace=True)
-    _data["Form 930"] = _data.demand_reported_mwh / _fit
-    _data["Form 861"] = (data.loc["CA", :] / data.loc["CA", "2018"]).TOT.tolist()
-    mo.vstack([
-        (_data[["Form 861", "Form 930"]] * 100 - 100).sort_index().plot(
+    _data["California (IOU)"] = _data.demand_reported_mwh / _fit
+    _data["California (all)"] = (data.loc["CA", :] / data.loc["CA", "2018"]).TOT.tolist()
+    _data.drop("demand_reported_mwh",inplace=True,axis=1)
+    _data["California (non-IOU)"] = (_data["California (all)"] - _data["California (IOU)"]*(1-iou_fraction))/iou_fraction
+    result = mo.vstack([
+        (_data * 100 - 100).sort_index().plot(
             figsize=(15,6),
             grid=True,
             ylabel="Load growth (% w.r.t 2018)",
@@ -244,6 +246,8 @@ def _(data, form930, mo, np):
         ),
         mo.md("**Figure 4: California IOU and state-wide load growth as reported by EIA.**")
         ])
+    _data.round(4).to_csv("load_growth.csv",header=True,index=True)
+    result
     return
 
 
@@ -253,7 +257,7 @@ def _(mo):
         r"""
     # Conclusion
 
-    The load growth state wide from 2018 to 2020 is 6%. In IOUs it is 4% and in non-IOU areas it is 7%.
+    The load growth state-wide in California from 2018 to 2020 is 6%. In IOUs it is 4% and in non-IOU areas it is 7%.
     """
     )
     return

@@ -248,6 +248,18 @@ def _(data, form930, mo, np):
 
 
 @app.cell
+def _(mo):
+    mo.md(
+        r"""
+    # Conclusion
+
+    The load growth state wide from 2018 to 2020 is 6%. In IOUs it is 4% and in non-IOU areas it is 7%.
+    """
+    )
+    return
+
+
+@app.cell
 def _():
     import os
     import marimo as mo

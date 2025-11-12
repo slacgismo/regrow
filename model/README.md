@@ -52,6 +52,7 @@ graph LR
   data/wecc240_gis.glm --> wecc240.glm
   powerplants_aggregated.glm --> wecc240.glm
   data/loads.glm --> wecc240.glm
-  wecc240.glm --> wecc240.json
-  wecc240.glm --> recorders/*
+  wecc240.glm --> gridlabd
+  gridlabd --> wecc240.json
+  gridlabd --> recorders/*
 ```

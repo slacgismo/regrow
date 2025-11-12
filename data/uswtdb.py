@@ -44,7 +44,9 @@ INCLUDE = {
         '081', # Lawrence
     ]} # counties to add in from other states
 
-BUSLIST = pd.read_csv("../data/geodata/solar.csv",index_col=[0]).columns.tolist()
+# BUSLIST = pd.read_csv("../data/geodata/solar.csv",index_col=[0]).columns.tolist()
+BUSDATA = pd.read_csv("wecc240_gis.csv")
+BUSLIST = [utils.geohash(x,y) for x,y in zip(BUSDATA.Lat,BUSDATA.Long)]
 
 # Assemble county data
 COUNTIES = []

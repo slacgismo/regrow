@@ -44,7 +44,9 @@ INCLUDE = {
         '081', # Lawrence
     ]} # counties to add in from other states
 
-BUSLIST = pd.read_csv("../data/geodata/solar.csv",index_col=[0]).columns.tolist()
+# BUSLIST = pd.read_csv("../data/geodata/solar.csv",index_col=[0]).columns.tolist()
+BUSDATA = pd.read_csv("wecc240_gis.csv")
+BUSLIST = [utils.geohash(x,y) for x,y in zip(BUSDATA.Lat,BUSDATA.Long)]
 
 # Assemble county data
 COUNTIES = []
@@ -94,4 +96,7 @@ DATA.sort_index(inplace=True)
 DATA = DATA.join(COUNTIES,how="inner").reset_index().set_index("bus").sort_index()
 DATA["county"] = [f"{x} {y}" for x,y in DATA[["county","state"]].values]
 DATA.drop("state",inplace=True,axis=1)
+DATA.index = [utils.nearest(utils.geohash(x,y),BUSLIST) for x,y in zip(DATA.latitude,DATA.longitude)]
+DATA.index.name = "bus"
+DATA.sort_index(inplace=True)
 DATA.to_csv("uspvdb.csv",index=True,header=True)

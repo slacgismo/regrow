@@ -96,4 +96,7 @@ DATA.sort_index(inplace=True)
 DATA = DATA.join(COUNTIES,how="inner").reset_index().set_index("bus").sort_index()
 DATA["county"] = [f"{x} {y}" for x,y in DATA[["county","state"]].values]
 DATA.drop("state",inplace=True,axis=1)
+DATA.index = [utils.nearest(utils.geohash(x,y),BUSLIST) for x,y in zip(DATA.latitude,DATA.longitude)]
+DATA.index.name = "bus"
+DATA.sort_index(inplace=True)
 DATA.to_csv("uswtdb.csv",index=True,header=True)

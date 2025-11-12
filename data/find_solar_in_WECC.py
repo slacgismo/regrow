@@ -124,5 +124,11 @@ def _(wecc_pv_systems):
     return
 
 
+@app.cell
+def _(wecc_pv_systems):
+    wecc_pv_systems.to_csv('wecc_pv_systems.csv')
+    return
+
+
 if __name__ == "__main__":
     app.run()

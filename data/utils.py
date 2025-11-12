@@ -101,14 +101,14 @@ def geocode(geohash):
     if geohash in _cache:
         return _cache[geohash][0],_cache[geohash][1]
     lat, lon, lat_err, lon_err = _decode(geohash)
-    from math import log10
-    # Format to the number of decimals that are known
-    lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lat)
-    lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, lon)
-    if '.' in lats: lats = lats.rstrip('0')
-    if '.' in lons: lons = lons.rstrip('0')
-    _cache[geohash] = (float(lats), float(lons))
-    return float(lats), float(lons)
+    # from math import log10
+    # # Format to the number of decimals that are known
+    # lats = "%.*f" % (max(1, int(round(-log10(lat_err)))) - 1, lat)
+    # lons = "%.*f" % (max(1, int(round(-log10(lon_err)))) - 1, lon)
+    # if '.' in lats: lats = lats.rstrip('0')
+    # if '.' in lons: lons = lons.rstrip('0')
+    _cache[geohash] = (float(lat), float(lon))
+    return float(lat), float(lon)
 
 def geohash(latitude, longitude, precision=6):
     """Encode a position given in float arguments latitude, longitude to
@@ -168,6 +168,7 @@ def nearest(hash,hashlist,withdist=False):
         return (dist[0][0],distance(hash,dist[0][0])) if withdist else dist[0][0]
     else:
         return (None,float('nan')) if withdist else None
+
 
 #
 # Calendar data

@@ -19,6 +19,10 @@ title: Data Flowa (Compilation)
 ---
 graph LR
 
+    HIFLD --> data/powerplants.csv.zip
+    data/powerplants.csv.zip --> data/powerplants.py
+    data/powerplants.py --> data/powerplants.glm
+
     wecc240_psse.raw --> gridlabd0[gridlabd]
     gridlabd0 --> wecc240_psse.glm
     wecc240_psse.glm --> gridlabd1[gridlabd]

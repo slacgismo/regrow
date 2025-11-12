@@ -2,7 +2,74 @@ To update the GLM file, run the Makefile.
 
     make
 
-# Description
+# Data Flows
+
+## Temperature Data
+
+```mermaid
+---
+title: Temperature Data Flow
+---
+graph TD
+
+    NREL_amy2018 --> data/geodata.py
+    data/geodata.py --> data/geodata/temperature_2018.csv
+
+    NREL_amy2018 --> data/weather.py
+    data/weather.py --> data/weather/temperature.csv
+    data/weather/temperature.csv --> data/geodata_project_years.py
+    
+    data/geodata/temperature_2018.csv --> data/geodata_project_years.py
+    data/geodata_project_years.py --> data/geodata/temperature.csv
+    data/geodata/temperature.csv --> data/sensitivity.py
+	data/sensitivity.py --> data/sensitivity.csv
+	data/geodata/total.csv --> data/sensitivity.py
+	data/sensitivity.py --> data/geodata/baseload.csv
+```
+
+## Solar Data
+
+```mermaid
+---
+title: Solar Data Flow
+---
+graph TD
+
+    NREL_amy2018 --> data/geodata.py
+    data/geodata.py --> data/geodata/solar_2018.csv
+
+    NREL_amy2018 --> data/weather.py
+    data/weather.py --> data/weather/solar.csv
+    data/weather/solar.csv --> data/geodata_project_years.py
+    
+    data/geodata/solar_2018.csv --> data/geodata_project_years.py
+    data/geodata_project_years.py --> data/geodata/solar.csv
+    data/geodata/solar.csv --> data/geodata/uspvdb.py
+	data/geodata/uspvdb.py --> data/geodata/uspvdb.csv
+```
+## Wind Data
+
+```mermaid
+---
+title: Wind Data Flow
+---
+graph TD
+
+    NREL_amy2018 --> data/geodata.py
+    data/geodata.py --> data/geodata/wind_2018.csv
+
+    NREL_amy2018 --> data/weather.py
+    data/weather.py --> data/weather/wind.csv
+    data/weather/wind.csv --> data/geodata_project_years.py
+    
+    data/geodata/wind_2018.csv --> data/geodata_project_years.py
+    data/geodata_project_years.py --> data/geodata/wind.csv
+    data/geodata/wind.csv --> data/geodata/uswtdb.py
+	data/geodata/uswtdb.py --> data/geodata/uswtdb.csv
+```
+
+
+
 
 # Validation
 

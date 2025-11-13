@@ -81,16 +81,22 @@ with open("powerplants_split.csv","w") as fh:
     # add PV facilities from USPVDB
     pvgens = pd.read_csv("../data/uspvdb.csv").set_index("name")
     print("INFO:",len(pvgens),"photovoltaic facilities added",file=sys.stderr)
-    for name,row in pvgens.iterrows():
-        geo = utils.nearest(row["bus"],nodelist)
-        plants.append([name,nodelist[geo],geo,"PV",row["capacity[MW]"],0,1])
+    with open("powerplants_mapping_PV.csv","w") as mapfile:
+        print("name,type,latitude,longitude,node",file=mapfile)
+        for name,row in pvgens.iterrows():
+            geo = utils.nearest(row["bus"],nodelist)
+            plants.append([name,nodelist[geo],geo,"PV",row["capacity[MW]"],0,1])
+            print(f'"{name}"',"PV",row["latitude"],row["longitude"],geo,sep=",",file=mapfile)
 
     # add WT facilities from USWTDB
     wtgens = pd.read_csv("../data/uswtdb.csv").set_index("name")
     print("INFO:",len(wtgens),"wind facilities added",file=sys.stderr)
-    for name,row in wtgens.iterrows():
-        geo = utils.nearest(row["bus"],nodelist)
-        plants.append([name,nodelist[geo],geo,"WT",row["capacity[MW]"],0,1])
+    with open("powerplants_mapping_WT.csv","w") as mapfile:
+        print("name,type,latitude,longitude,node",file=mapfile)
+        for name,row in wtgens.iterrows():
+            geo = utils.nearest(row["bus"],nodelist)
+            plants.append([name,nodelist[geo],geo,"WT",row["capacity[MW]"],0,1])
+            print(f'"{name}"',"WT",row["latitude"],row["longitude"],geo,sep=",",file=mapfile)
 
     # compute total capacities
     totals = {}

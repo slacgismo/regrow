@@ -5,10 +5,13 @@ Syntax: (no CLI available)
 import os, sys
 import json
 import pandas as pd
+import numpy as np
 import math
 import psm3 as pvlib_psm3
 import datetime as dt
 import psm3 as pvlib_psm3
+import io, requests, zipfile
+import marimo as mo
 
 #
 # Command args
@@ -157,7 +160,9 @@ def geohash(latitude, longitude, precision=6):
 
 def distance(a,b):
     """Get the distance between to geohashes"""
-    return math.sqrt(distance2(a,b))
+    lat1,lon1 = geocode(a)
+    lat2,lon2 = geocode(b)
+    return haversine_distance(lat1, lon1, lat2, lon2)
 
 def distance2(a,b):
     """Get the distance squared between two geohashes"""
@@ -173,6 +178,18 @@ def nearest(hash,hashlist,withdist=False):
         return (dist[0][0],distance(hash,dist[0][0])) if withdist else dist[0][0]
     else:
         return (None,float('nan')) if withdist else None
+
+def nearest2(test_latlon, latlonlist):
+    test_lat, test_lon = test_latlon
+    best_ix = 0
+    best_dist = np.inf
+    for _ix in range(len(latlonlist)):
+        _lat, _lon = latlonlist[_ix]
+        _new_dist = haversine_distance(_lat, _lon, test_lat, test_lon)
+        if _new_dist < best_dist:
+            best_dist = _new_dist
+            best_ix = _ix
+    return best_ix, latlonlist[best_ix], best_dist
 
 #
 # Calendar data
@@ -256,3 +273,137 @@ def nsrdb_weather(location,year,
                 inplace=True)
     psm3 = psm3.round(3)  
     return psm3.sort_index()
+
+NONASCII = {
+    "\xe1" : "a",
+    "\xe9" : "e",
+    "\xed" : "i",
+    "\xf1" : "n",
+    "\xf3" : "o",
+    "\xfc" : "u",
+    # may need to add other someday
+}
+
+def strict_ascii(text):
+    return ''.join([NONASCII[x] if x in NONASCII else x for x in text])
+
+def haversine_distance(lat1, lon1, lat2, lon2):
+    '''
+    Returns the great-circle distance between two point in meters
+    '''
+    R = 6378.1e3 # radius of the earth in meters
+    phi1 = lat1 * math.pi/180
+    phi2 = lat2 * math.pi/180
+    delta_phi = phi2 - phi1
+    delta_lam = (lon2 - lon1) * math.pi/180
+    a = (math.sin(delta_phi/2) * math.sin(delta_phi/2) 
+         + math.cos(phi1) * math.cos(phi2) 
+         * math.sin(delta_lam/2) * math.sin(delta_lam/2))
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
+    return R * c
+
+def load_reduced_network():
+    network = pd.read_csv("wecc240_gis.csv", 
+                      usecols=["Bus  Number","Bus  Name","Lat","Long"])
+    network['geohash'] = network.apply(lambda row: geohash(row['Lat'], row['Long']), axis=1)
+    grouped = network.groupby('geohash')
+    reduced_network = grouped.first()
+    reduced_network['node count'] = grouped.count()['Bus  Number'].values
+    return reduced_network
+
+
+def load_uspvdb():
+    zipdata = zipfile.ZipFile(io.BytesIO(requests.get("https://energy.usgs.gov/uspvdb/assets/data/uspvdbCSV.zip").content))
+    uspvdb = pd.read_csv(
+        zipdata.open([x for x in zipdata.namelist() if x.endswith(".csv")][0],"r"),
+        usecols = [
+            "p_state", "p_county", "ylat", "xlong", "p_area", "p_name",
+            "p_year", "p_tech_pri", "p_axis", "p_azimuth", "p_tilt",
+            "p_battery", "p_cap_ac"
+        ],
+        
+    )
+    uspvdb.columns = [
+        "state", "county", "latitude", "longitude", "area[m^2]", "name",
+        "year", "gentype", "axis", "azimuth[deg]", "tilt[deg]", 
+        "battery", "capacity[MW]"
+    ]
+    return uspvdb
+
+def load_wecc_counties(fn='wecc_counties.csv'):
+    if os.path.exists(fn):
+        return pd.read_csv(fn, index_col=[0], header=0)
+    print('Constructing county list from census.gov county info. This could take a couple minutes depending on webiste response...')
+    census_url = "https://www2.census.gov/geo/docs/reference/state.txt"
+    FIPS_STATES = pd.read_csv(
+        census_url,
+        delimiter="|",
+        index_col=[1],
+        usecols=[0,1,2],
+        header=0,
+        names=["fips","state","name"]
+    ).to_dict('index')
+    # Counties in WECC
+    STATES = ["CA","WA","OR","ID","MT","WY","NV","UT","AZ","NM","CO"] 
+    EXCLUDE = [ # Counties to leave out
+        # MT
+        '30019', # Daniels
+        '30021', # Dawson
+        '30025', # Fallon
+        '30083', # Richland
+        '30085', # Roosevelt
+        '30091', # Sheridan
+        '30109', # Wibaux
+        # NM
+        '35009', # Curry
+        '35025', # Lea
+        '35037', # Quay
+        '35041', # Roosevelt
+        ] 
+    INCLUDE = {
+        "TX": [
+            '141', # El Paso
+        ],
+        "SD": [
+            '033', # Custer
+            '047', # Fall River
+            '081', # Lawrence
+        ]} # counties to add in from other states
+
+    # Assemble county data
+    counties_list = []
+    for state in mo.status.progress_bar(STATES + list(INCLUDE)):
+        fips = f"{FIPS_STATES[state]['fips']:02.0f}"
+
+        # County population centroid data
+        URL = "https://www2.census.gov/geo/docs/reference/cenpop2020/county/"
+        URL += f"CenPop2020_Mean_CO{fips}.txt"
+        df = pd.read_csv(URL,
+            converters = {
+                "COUNAME": strict_ascii,
+                "STATEFP": lambda x: f"{float(x):02.0f}",
+                "COUNTYFP": lambda x: f"{float(x):03.0f}",
+            },
+            usecols = ["STATEFP","COUNTYFP","STNAME","COUNAME","POPULATION","LATITUDE","LONGITUDE"],
+            )
+        statename = df.STNAME.unique()[0].replace(' ','')
+        df.columns = [x.lower() for x in df.columns]
+        if state in INCLUDE:
+            df.drop(
+                df.loc[~df['countyfp'].isin(INCLUDE[state])].index,
+                inplace=True,
+                axis=0
+            )
+        rename = {"couname":"name"}
+        df.columns = [rename[x] if x in rename else x for x in df.columns]
+        df["fips"] = df["statefp"] + df["countyfp"]
+        df["state"] = state
+        df.drop(["statefp","countyfp"],axis=1,inplace=True)
+        df.set_index("fips",inplace=True)
+        # df["county"] = df.name + " " + df.state
+        df.rename({"name":"county"},axis=1,inplace=True)
+        df.drop(["stname","population"],axis=1,inplace=True)
+        counties_list.append(df)
+    wecc_counties = pd.concat(counties_list).drop(EXCLUDE,axis=0)
+    wecc_counties.to_csv(fn)
+    return wecc_counties

@@ -92,19 +92,6 @@ def _(wecc_counties):
 
 
 @app.cell
-def _(uspvdb):
-    _ix = 0
-    latlon = (uspvdb.iloc[_ix]['latitude'], uspvdb.iloc[_ix]['longitude'])
-    return (latlon,)
-
-
-@app.cell
-def _(latlon, latlon_list, utils):
-    utils.nearest2(latlon, latlon_list)
-    return
-
-
-@app.cell
 def _(mo):
     mo.md(r"""
     ## Find PV systems that are in WECC counties
@@ -127,6 +114,18 @@ def _(wecc_pv_systems):
 @app.cell
 def _(wecc_pv_systems):
     wecc_pv_systems.to_csv('wecc_pv_systems.csv')
+    return
+
+
+@app.cell
+def _(latlon_list, utils):
+    utils.nearest2((37.633717, -122.098766), latlon_list)
+    return
+
+
+@app.cell
+def _(nodes):
+    nodes.iloc[36]
     return
 
 

@@ -22,11 +22,23 @@ def _(pd, utils):
 
 
 @app.cell
+def _(grouped):
+    grouped['Bus  Number'].apply(list)
+    return
+
+
+@app.cell
+def _(grouped):
+    grouped['Bus  Name'].apply(list)
+    return
+
+
+@app.cell
 def _(network):
     grouped = network.groupby('geohash')
     reduced_network = grouped.first()
     reduced_network['node count'] = grouped.count()['Bus  Number'].values
-    return (reduced_network,)
+    return grouped, reduced_network
 
 
 @app.cell

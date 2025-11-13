@@ -309,7 +309,15 @@ def load_reduced_network():
     grouped = network.groupby('geohash')
     reduced_network = grouped.first()
     reduced_network['node count'] = grouped.count()['Bus  Number'].values
+    reduced_network['Bus  Number'] = grouped['Bus  Number'].apply(list)
+    reduced_network['Bus  Name'] = grouped['Bus  Name'].apply(list)
     return reduced_network
+
+def load_full_network():
+    network = pd.read_csv("wecc240_gis.csv", 
+                      usecols=["Bus  Number","Bus  Name","Lat","Long"])
+    network['geohash'] = network.apply(lambda row: geohash(row['Lat'], row['Long']), axis=1)
+    return network
 
 
 def load_uspvdb():

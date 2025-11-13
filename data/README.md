@@ -44,6 +44,8 @@ graph TD
     
     data/geodata/solar_2018.csv --> data/geodata_project_years.py
     data/geodata_project_years.py --> data/geodata/solar.csv
+	USGS --> data/geodata/uspvdb.py
+	USCB --> data/geodata/uspvdb.py
     data/geodata/solar.csv --> data/geodata/uspvdb.py
 	data/geodata/uspvdb.py --> data/geodata/uspvdb.csv
 ```
@@ -64,6 +66,8 @@ graph TD
     
     data/geodata/wind_2018.csv --> data/geodata_project_years.py
     data/geodata_project_years.py --> data/geodata/wind.csv
+	USGS --> data/geodata/uswtdb.py
+	USCB --> data/geodata/uswtdb.py
     data/geodata/wind.csv --> data/geodata/uswtdb.py
 	data/geodata/uswtdb.py --> data/geodata/uswtdb.csv
 ```

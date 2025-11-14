@@ -3,6 +3,7 @@ import pandas as pd
 
 class PSSE:
     """PSSE model accessor"""
+    
     VERBOSE=False
     DEBUG=False
 
@@ -44,8 +45,19 @@ class PSSE:
 
     # read the PSSE data tables
     @classmethod
-    def read(cls,filename,**kwargs):
-        """Read PSSE data segment from file"""
+    def read(cls,filename:str,**kwargs) -> pd.DataFrame:
+        """Read PSSE data segment from file
+
+        Arguments:
+
+        filename: PSSE segment file name
+
+        kwargs: pd.read_csv(options)
+
+        Returns:
+
+        pd.DataFrame: data frame containing PSSE segment data
+        """
         
         # load segment
         data = pd.read_csv(filename,quotechar="'",**kwargs).fillna(0)

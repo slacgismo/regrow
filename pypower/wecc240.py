@@ -19,8 +19,7 @@ def wecc240():
     """Load and convert the WECC 240 PSSE model to a PyPOWER case"""
 
     psse = PSSE("wecc240")
-    model = PSSE2PP(psse)
-    return model.data.case
+    return PSSE2PP(psse).model.case
 
 if __name__ == "__main__":
 

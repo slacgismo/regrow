@@ -1,10 +1,23 @@
-"""PyPower model accessor"""
+"""PyPower model accessor
+
+This module defined the PyPower model accessor. Use the bus, branch, gen, gencost, dcline, and dclinecost methods to set the data arrays in the case.
+Use the 'case' member to access the case data.
+
+Example:
+
+The following example constructs a new PyPower model and prints the case data.
+
+    model = PPModel()
+    print(model.case)
+"""
 
 import numpy as np
+import pandas as pd
 
 from pypower import idx_bus
 from pypower import idx_brch
 from pypower import idx_gen
+from pypower import idx_cost
 
 from typing import TypeVar
 
@@ -63,12 +76,49 @@ class PPModel:
             "dclinecost": [],
         }
 
+    def with_case(self,case):
+        self.case = case
+        return self
+
+    def print(self,items=None,file=None):
+        """Pretty print case data"""
+        if items is None or "bus" in items:
+            bus_cols = get_header(idx_bus,ignore=["PQ","PV","REF","NONE"])
+            bus = pd.DataFrame(data=self.case["bus"],
+                columns=bus_cols[:self.case["bus"].shape[1]])
+            bus.index.name="BUS"
+            print(bus,file=file)
+
+        if items is None or "branch" in items:
+            branch_cols = get_header(idx_brch)
+            branch = pd.DataFrame(data=self.case["branch"],
+                columns=branch_cols[:self.case["branch"].shape[1]])
+            branch.index.name="BRANCH"
+            print(branch,file=file)
+
+        if items is None or "gen" in items:
+            gen_cols = get_header(idx_gen)
+            gen = pd.DataFrame(data=self.case["gen"],
+                columns=gen_cols[:self.case["gen"].shape[1]])
+            gen.index.name="GEN"
+            print(gen,file=file)
+
+        if items is None or "gencost" in items:
+            cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
+            ncost = self.case["gencost"][idx_cost.NCOST].max()
+            cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
+            gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
+            gencost.index.name="GENCOST"
+            print(gencost,file=file)
+
+
     def bus(self,**kwargs):
         """Create bus data
 
         Arguments:
 
-        kwargs: merged bus, load, and shunt data (see pypower.idx_bus for details)
+        kwargs: merged bus, load, and shunt data (see pypower.idx_bus for
+                details)
 
         Returns:
 
@@ -88,7 +138,17 @@ class PPModel:
         return np.array(result)
 
     def branch(self,**kwargs):
-        """Create branch data"""
+        """Create branch data
+
+        Arguments:
+
+        kwargs: merged branch and transformer data (see pypower.idx_brch for
+                details)
+
+        Returns:
+
+        np.array: bus data
+        """
         result = []
         for item in get_header(idx_brch):
             if item in kwargs:
@@ -99,7 +159,16 @@ class PPModel:
         return np.array(result)
 
     def gen(self,**kwargs):
-        """Create gen data"""
+        """Create gen data
+
+        Arguments:
+
+        kwargs: generation data (see pypower.idx_gen for details)
+
+        Returns:
+
+        np.array: bus data
+        """
 
         if self.DEBUG:
             print(f"DEBUG [PPModel]: create gen data={kwargs}")
@@ -114,11 +183,39 @@ class PPModel:
         return np.array(result)
 
     def gencost(self,**kwargs):
-        """Create gencost data"""
-        raise NotImplementedError("PPModel.gencost() is not done")
+        """Create gencost data
+
+        Arguments:
+
+        kwargs: generation data (see pypower.idx_gen for details)
+
+        Returns:
+
+        np.array: bus data
+        """
+        if self.DEBUG:
+            print(f"DEBUG [PPModel]: create gencost data={kwargs}")
+
+        result = []
+        for item in get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL"]):
+            if item in kwargs:
+                if kwargs[item].ndim == 1:
+                    result.append(kwargs[item])
+                else:
+                    for col in range(kwargs[item].shape[1]):
+                        result.append(kwargs[item][:,col])
+            else:
+                raise ValueError(f"missing {item} data")
+
+        return np.array(result)
 
     def dcline(self,**kwargs):
-        """Create dcline data"""
+        """Create dcline data
+    
+        Arguments:
+
+
+        """
         raise NotImplementedError("PPModel.dcline() is not done")
 
     def dclinecost(self,**kwargs):

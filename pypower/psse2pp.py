@@ -1,4 +1,16 @@
-"""PSSE to PyPower converter"""
+"""PSSE to PyPower converter
+
+This module defines the class PSSE2PP used to convert a PSSE model to a
+PyPower model.
+
+Example:
+
+    from psse import PSSE
+    from psse2pp import PSSE2PP
+    raw = PSSE("wecc240")
+    ppcase = PSSE2PP(raw).model.case
+
+"""
 
 from ppmodel import PPModel
 import pandas as pd
@@ -8,6 +20,14 @@ import defaults
 from typing import TypeVar
 
 class PSSE2PP:
+    """PSSE to PyPower converter
+
+    Globals:
+
+    DEBUG: enable debug output (default False)
+    LOADSCALE: global load scaling factor (default 1.0)
+    VERBOSE: enable verbose output (default False)
+    """
 
     VERBOSE=False
     DEBUG=False
@@ -17,7 +37,7 @@ class PSSE2PP:
     def __init__(self,psse:TypeVar('PPModel')):
         """Create PSSE to PyPower converter
 
-        Argument:
+        Arguments:
 
         psse: PSSE data accessor
         """
@@ -60,7 +80,6 @@ class PSSE2PP:
 
         PD = raw["PL"] + raw["IP"] + raw["YP"]
         QD = raw["QL"] + raw["IQ"] - raw["YQ"]
-        print(PD)
         busdata = self.model.bus(
             BUS_I = raw["ID"],
             BUS_TYPE = raw["BUSTYPE"],
@@ -127,9 +146,16 @@ class PSSE2PP:
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: gen({gen=})")
 
-        gencost = [defaults.gencost[x] for x in gen["ID"]]
+        costs = np.array([defaults.gencost[x] for x in gen["ID"]]).T
+        costdata = self.model.gencost(
+            MODEL = costs[0],
+            STARTUP = costs[1],
+            SHUTDOWN = costs[2],
+            NCOST = costs[3],
+            COST = costs[4:].T,
+            )
 
-        return np.array(gencost)
+        return np.array(costdata).T
 
     def branch(self,
         branch:pd.DataFrame,

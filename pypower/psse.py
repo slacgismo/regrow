@@ -1,8 +1,23 @@
-"""PSSE model accessor"""
+"""PSSE model accessor
+
+This module defines the PSSE model access class. Note that you must manually
+extract the segments from the PSSE RAW file, cleanup the header line, and
+remove extraneous whitespaces from inside strings. The convention is that the
+segment files share the same prefix as the original RAW file, but they are CSV
+files with the "psse", replaced by "area", "branch", "bus", "gen", "load", "shunt",
+"xform", and "zone", which are all required. Fortunately, this is a one-time
+ task and it can be automated (someday) if necessary.
+
+Example:
+
+    from psse import PSSE
+    raw = PSSE("wecc240")
+    print(raw.bus)
+"""
 import pandas as pd
 
 class PSSE:
-    """PSSE model accessor"""
+    """PSSE model accessor constructor"""
     
     VERBOSE=False
     DEBUG=False

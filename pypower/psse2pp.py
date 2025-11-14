@@ -5,20 +5,27 @@ import pandas as pd
 import numpy as np
 import defaults
 
+from typing import TypeVar
+
 class PSSE2PP:
 
     VERBOSE=False
     DEBUG=False
 
     """PSSE to PyPower converter class"""
-    def __init__(self,psse,pp_init={}):
-        """Create PSSE to PyPower converter"""
+    def __init__(self,psse:TypeVar('PPModel')):
+        """Create PSSE to PyPower converter
 
-        self.model = PPModel(name=psse.name,**pp_init)
+        Argument:
+
+        psse: PSSE data accessor
+        """
+
+        self.model = PPModel(name=psse.name,mvabase=psse.config["mvabase"])
         self.model.case["bus"] = self.bus(psse.bus,psse.load,psse.shunt)
         self.model.case["gen"] = self.gen(psse.gen)
         self.model.case["gencost"] = self.gencost(psse.gen)
-        # self.model.case["branch"] = self.branch(psse.branch,psse.xform)
+        self.model.case["branch"] = self.branch(psse.branch,psse.xform)
         # self.model.case["dcline"] = self.dcline(psse.load,psse.gen)
         # self.model.case["dclinecost"] = self.dclinecost(psse.load,psse.gen)
 
@@ -53,9 +60,9 @@ class PSSE2PP:
             BUS_I = raw["ID"],
             BUS_TYPE = raw["BUSTYPE"],
             PD = raw["PL"] + ( raw["IP"] + raw["YP"] * raw["BASEKV"]) * raw["BASEKV"],
-            QD = raw["QL"] + ( raw["IQ"] + raw["YQ"] * raw["BASEKV"] ) * raw["BASEKV"],
+            QD = raw["QL"] + ( raw["IQ"] - raw["YQ"] * raw["BASEKV"] ) * raw["BASEKV"],
             GS = np.zeros(len(raw)),
-            BS = raw["BINIT"],
+            BS = raw["BINIT"] * raw["ST"] * raw["N1"],
             BUS_AREA = raw["AREA"],
             VM = raw["VM"],
             VA = raw["VA"],
@@ -64,9 +71,11 @@ class PSSE2PP:
             VMAX = raw["VMAX0"],
             VMIN = raw["VMIN0"],
         )
-        return busdata
+        return np.array(busdata).T
 
-    def gen(self,gen):
+    def gen(self,
+        gen:pd.DataFrame,
+        ) -> np.array:
         """Convert PSSE gen data to PyPower bus data
 
         Arguments:
@@ -104,9 +113,11 @@ class PSSE2PP:
             RAMP_Q = np.zeros(len(gen)),
             APF = np.zeros(len(gen)),
             )
-        return np.array(gendata)
+        return np.array(gendata).T
 
-    def gencost(self,gen):
+    def gencost(self,
+        gen:pd.DataFrame,
+        ) -> np.array:
         """Convert PSSE gencost data to PyPower bus data"""
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: gen({gen=})")
@@ -115,18 +126,59 @@ class PSSE2PP:
 
         return np.array(gencost)
 
-    def branch(self,branch,xform):
+    def branch(self,
+        branch:pd.DataFrame,
+        xform:pd.DataFrame,
+        ) -> np.array:
         """Convert PSSE branch data to PyPower bus data"""
 
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: branch({branch=},{xform=})")
 
-        raise NotImplementedError("TODO")
+        linedata = self.model.branch(
+            F_BUS = branch["I"],
+            T_BUS = branch["J"].abs(), # negative means metered bus (we don't care)
+            BR_R = branch["R"],
+            BR_X = branch["X"],
+            BR_B = branch["B"],
+            RATE_A = branch["RATE1"],
+            RATE_B = branch["RATE2"],
+            RATE_C = branch["RATE3"],
+            TAP = np.zeros(len(branch)),
+            SHIFT = np.zeros(len(branch)),
+            BR_STATUS = branch["STAT"],
+            ANGMIN = np.full(len(branch),-360),
+            ANGMAX = np.full(len(branch),+360),
+        )
 
-    def dcline(self,load,gen):
+        assert (xform["K"]==0).all(), "three-winding transformers not supported"
+        xformdata = self.model.branch(
+            F_BUS = xform["I"],
+            T_BUS = xform["J"],
+            BR_R = xform["R12"],
+            BR_X = xform["X12"],
+            BR_B = xform["MAG2"],
+            RATE_A = xform["RATE1_1"],
+            RATE_B = xform["RATE1_2"],
+            RATE_C = xform["RATE1_3"],
+            TAP = xform["WINDV1"],
+            SHIFT = xform["ANG1"],
+            BR_STATUS = xform["STAT"],
+            ANGMIN = np.full(len(xform),-360),
+            ANGMAX = np.full(len(xform),+360),
+            )
+
+        return np.array(np.hstack([linedata,xformdata])).T
+
+    def dcline(self,
+        load:pd.DataFrame,
+        gen:pd.DataFrame) -> np.array:
         """Convert PSSE dcline data to PyPower bus data"""
         raise NotImplementedError("TODO")
 
-    def dclinecost(self,load,gen):
+    def dclinecost(self,
+        load:pd.DataFrame,
+        gen:pd.DataFrame,
+        ) -> np.array:
         """Convert PSSE dcline data to PyPower bus data"""
         raise NotImplementedError("TODO")

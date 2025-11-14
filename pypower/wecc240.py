@@ -10,8 +10,6 @@ in PyPOWER, i.e.,
     runpf(case)
 """
 
-import pandas as pd
-
 from psse import PSSE
 from psse2pp import PSSE2PP
 
@@ -23,13 +21,32 @@ def wecc240():
 
 if __name__ == "__main__":
 
-    from pypower.printpf import printpf
-    from pypower.runpf import runpf
+    #
+    # Verify the WECC 240 model solves correctly
+    #
 
-    pd.options.display.max_columns = None
-    pd.options.display.width = None
-    pd.options.display.max_rows = None
-
+    # load the model
     case = wecc240()
-    result = runpf(case)
+
+    # print case data
+    # import numpy as np
+    # np.set_printoptions(
+    #     precision=4,
+    #     threshold=10000,
+    #     edgeitems=5,
+    #     linewidth=10000,
+    #     formatter={"float":lambda x:f"{x:10.4g}"})
+    # print(case)
+
+    # solve the model
+    from pypower.runpf import runpf
+    from pypower.ppoption import ppoption
+    result,status = runpf(case,ppoption(VERBOSE=0,OUT_ALL=0))
+    if status == 0:
+        print("ERROR [wecc240]: solver failed")
+        runpf(case,ppoption(VERBOSE=3)) # redo with lots of output
+        exit(1)
+
+    # output results
+    from pypower.printpf import printpf
     printpf(result)

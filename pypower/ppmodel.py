@@ -84,11 +84,19 @@ class PPModel:
                 result.append(kwargs[item])
             elif item not in ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]:
                 raise ValueError(f"missing {item} data")
+
         return np.array(result)
 
     def branch(self,**kwargs):
         """Create branch data"""
-        raise NotImplementedError("PPModel.branch() is not done")
+        result = []
+        for item in get_header(idx_brch):
+            if item in kwargs:
+                result.append(kwargs[item])
+            elif item not in ["PF","PT","QF","QT","MU_SF","MU_ST","MU_ANGMIN","MU_ANGMAX"]:
+                raise ValueError(f"missing {item} data")
+
+        return np.array(result)
 
     def gen(self,**kwargs):
         """Create gen data"""

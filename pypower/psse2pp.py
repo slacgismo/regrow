@@ -11,6 +11,7 @@ class PSSE2PP:
 
     VERBOSE=False
     DEBUG=False
+    LOADSCALE=1.0 # global load scaling
 
     """PSSE to PyPower converter class"""
     def __init__(self,psse:TypeVar('PPModel')):
@@ -21,7 +22,8 @@ class PSSE2PP:
         psse: PSSE data accessor
         """
 
-        self.model = PPModel(name=psse.name,mvabase=psse.config["mvabase"])
+        self.mvabase = psse.config["mvabase"]
+        self.model = PPModel(name=psse.name,mvabase=self.mvabase)
         self.model.case["bus"] = self.bus(psse.bus,psse.load,psse.shunt)
         self.model.case["gen"] = self.gen(psse.gen)
         self.model.case["gencost"] = self.gencost(psse.gen)
@@ -55,14 +57,17 @@ class PSSE2PP:
         load_columns = ["I","PL","QL","IP","IQ","YP","YQ","SCALE","INTRPT","DGENP","DGENQ","DGENF"]
         raw = pd.merge(bus,load[load_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
         raw = pd.merge(raw,shunt,how='left',left_on="ID",right_on="I").fillna(0.0)
-        raw.drop([x for x in raw.columns if x.endswith("_x") or x.endswith("_y")],axis=1)
+
+        PD = raw["PL"] + raw["IP"] + raw["YP"]
+        QD = raw["QL"] + raw["IQ"] - raw["YQ"]
+        print(PD)
         busdata = self.model.bus(
             BUS_I = raw["ID"],
             BUS_TYPE = raw["BUSTYPE"],
-            PD = raw["PL"] + ( raw["IP"] + raw["YP"] * raw["BASEKV"]) * raw["BASEKV"],
-            QD = raw["QL"] + ( raw["IQ"] - raw["YQ"] * raw["BASEKV"] ) * raw["BASEKV"],
+            PD = ( PD * raw["SCALE"] - raw["DGENP"] ) * self.LOADSCALE / self.mvabase,
+            QD = ( QD * raw["SCALE"] - raw["DGENQ"] ) * self.LOADSCALE / self.mvabase,
             GS = np.zeros(len(raw)),
-            BS = raw["BINIT"] * raw["ST"] * raw["N1"],
+            BS = ( raw["BINIT"] * raw["ST"] * raw["N1"] ) / self.mvabase,
             BUS_AREA = raw["AREA"],
             VM = raw["VM"],
             VA = raw["VA"],
@@ -92,15 +97,15 @@ class PSSE2PP:
 
         gendata = self.model.gen(
             GEN_BUS = gen["I"],
-            PG = gen["PG"],
-            QG = gen["QG"],
-            QMAX = gen["QT"],
-            QMIN = gen["QB"],
+            PG = gen["PG"] / self.mvabase,
+            QG = gen["QG"] / self.mvabase,
+            QMAX = gen["QT"] / self.mvabase,
+            QMIN = gen["QB"] / self.mvabase,
             VG = gen["VS"],
             MBASE = gen["MBASE"],
             GEN_STATUS = gen["STAT"],
-            PMIN = gen["PB"],
-            PMAX = gen["PT"],
+            PMIN = gen["PB"] / self.mvabase,
+            PMAX = gen["PT"] / self.mvabase,
             PC1 = np.zeros(len(gen)),
             PC2 = np.zeros(len(gen)),
             QC1MIN = np.zeros(len(gen)),

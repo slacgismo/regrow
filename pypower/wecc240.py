@@ -26,6 +26,7 @@ if __name__ == "__main__":
     #
 
     # load the model
+    # PSSE2PP.LOADSCALE = 1.0 # global scaling of loads
     case = wecc240()
 
     # print case data
@@ -44,7 +45,7 @@ if __name__ == "__main__":
     result,status = runpf(case,ppoption(VERBOSE=0,OUT_ALL=0))
     if status == 0:
         print("ERROR [wecc240]: solver failed")
-        runpf(case,ppoption(VERBOSE=3)) # redo with lots of output
+        runpf(case,ppoption(VERBOSE=3,OUT_ALL=-1)) # redo with lots of output
         exit(1)
 
     # output results

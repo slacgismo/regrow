@@ -21,7 +21,7 @@ def get_header(idx:TypeVar('module'),*,ignore:list[str]=[]) -> list[str]:
 
     list[str]: ordered list of data array column header names
     """
-    mapping = {getattr(idx,x):x for x in dir(idx_bus) if not x.startswith("_") and x not in ignore}
+    mapping = {getattr(idx,x):x for x in dir(idx) if not x.startswith("_") and x not in ignore}
     indexes = sorted(mapping)
     assert max(indexes) - min(indexes) + 1 == len(indexes), "indexes are not strictly sequential"
     return [mapping[n] for n in indexes]
@@ -47,12 +47,14 @@ class PPModel:
 
         mvabase: MVA base value
         """
-        if self.VERBOSE:
-            print(f"VERBOSE [PPModel]: creating model {name=} {version=} {mvabase=}")
+
+        if self.DEBUG:
+            print(f"DEBUG [PPModel]: creating model {name=} {version=} {mvabase=}")
+
         self.name = name
         self.case = {
             "version": version,
-            "mvabase": mvabase,
+            "baseMVA": mvabase,
             "bus": [],
             "branch": [],
             "gen" : [],
@@ -72,30 +74,45 @@ class PPModel:
 
         np.array: bus data
         """
+
         if self.DEBUG:
-            print(f"DEBUG [PPModel]: add bus data={kwargs}")
+            print(f"DEBUG [PPModel]: create bus data={kwargs}")
+
         result = []
         for item in get_header(idx_bus,ignore=["PQ","PV","REF","NONE"]):
             if item in kwargs:
                 result.append(kwargs[item])
+            elif item not in ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]:
+                raise ValueError(f"missing {item} data")
         return np.array(result)
 
     def branch(self,**kwargs):
         """Create branch data"""
-        raise NotImplementedError("TODO")
+        raise NotImplementedError("PPModel.branch() is not done")
 
     def gen(self,**kwargs):
         """Create gen data"""
-        raise NotImplementedError("TODO")
+
+        if self.DEBUG:
+            print(f"DEBUG [PPModel]: create gen data={kwargs}")
+
+        result = []
+        for item in get_header(idx_gen):
+            if item in kwargs:
+                result.append(kwargs[item])
+            elif item not in ["MU_PMAX","MU_PMIN","MU_QMAX","MU_QMIN"]:
+                raise ValueError(f"missing {item} data")
+
+        return np.array(result)
 
     def gencost(self,**kwargs):
         """Create gencost data"""
-        raise NotImplementedError("TODO")
+        raise NotImplementedError("PPModel.gencost() is not done")
 
     def dcline(self,**kwargs):
         """Create dcline data"""
-        raise NotImplementedError("TODO")
+        raise NotImplementedError("PPModel.dcline() is not done")
 
     def dclinecost(self,**kwargs):
         """Create dclinecost data"""
-        raise NotImplementedError("TODO")
+        raise NotImplementedError("PPModel.dclinecost() is not done")

@@ -13,6 +13,9 @@ flowchart LR
 
     wecc240_bus.csv --> wecc240.py
     wecc240_branch.csv --> wecc240.py
+    wecc240_xform.csv --> wecc240.py
+    wecc240_load.csv --> wecc240.py
+    wecc240_shunt.csv --> wecc240.py
     wecc240_gen.csv --> wecc240.py
 
     wecc240.py --> pypower

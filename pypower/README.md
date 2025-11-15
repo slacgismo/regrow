@@ -36,20 +36,7 @@ flowchart LR
         psse2pp --> ppmodel
     end
 
-    ppmodel --> case
-    case --> runpf
-    case --> rundcopf
-    case --> runopf
-
-    subgraph pypower
-        runpf
-        rundcopf
-        runopf
-    end
-
-    runpf --> results
-    rundcopf --> results
-    runopf --> results
+    ppmodel --> wecc240.case
 ```
 
 ## Methodology
@@ -149,7 +136,18 @@ Note that it is not certain whether the PSS/E are the solution, but it seems lik
 
 ```mermaid
 flowchart LR
-    results --> test.py
-    test.py --> voltage.png
-    test.py --> voltage_errors.png
+
+    wecc240.case --> runpf
+    wecc240.case --> rundcopf
+    wecc240.case --> runopf
+
+    subgraph test.py
+        
+        runpf --> results
+        rundcopf --> results
+        runopf --> results
+
+    end
+    results --> voltage.png
+    results --> voltage_errors.png
 ```

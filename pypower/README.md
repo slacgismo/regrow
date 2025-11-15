@@ -143,11 +143,11 @@ flowchart LR
 
     subgraph test.py
         
-        runpf --> results
-        rundcopf --> results
-        runopf --> results
+        runpf
+        rundcopf
+        runopf
 
     end
-    results --> voltage.png
-    results --> voltage_errors.png
+    runpf --> voltage.png
+    runpf --> voltage_errors.png
 ```

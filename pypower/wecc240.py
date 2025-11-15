@@ -51,6 +51,8 @@ if __name__ == "__main__":
         print("ERROR [wecc240]: solver failed")
         runpf(case,ppoption(VERBOSE=3,OUT_ALL=-1)) # redo with lots of output
         exit(1)
+    else:
+        print("WECC240 powerflow solved ok")
 
     # print results
     # from pypower.printpf import printpf

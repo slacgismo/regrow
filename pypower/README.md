@@ -146,3 +146,9 @@ Three solver tests are performed on the resulting model:
 The results of the powerflow solver as compared to the original input from PSS/E using the `voltage.png` and `voltage_errors.png`.  The former does a side-by-side comparison of each bus and the latter sorts the bus voltage and angle errors in descending order.
 
 Note that it is not certain whether the PSS/E are the solution, but it seems likely is it.
+
+```mermaid
+    results --> test.py
+    test.py --> voltage.png
+    test.py --> voltage_errors.png
+```

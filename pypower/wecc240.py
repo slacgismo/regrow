@@ -37,11 +37,11 @@ if __name__ == "__main__":
     case = wecc240()
 
     # print the case data
-    import pandas as pd
-    pd.options.display.max_columns = None
-    pd.options.display.width = None
-    pd.options.display.max_rows = None
-    PPModel("wecc240").with_case(case).print(["dcline"])
+    # import pandas as pd
+    # pd.options.display.max_columns = None
+    # pd.options.display.width = None
+    # pd.options.display.max_rows = None
+    # PPModel("wecc240").with_case(case).print(["gencost","dclinecost"])
 
     # solve the model
     from pypower.runpf import runpf

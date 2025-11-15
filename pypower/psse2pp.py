@@ -15,9 +15,10 @@ Example:
 from ppmodel import PPModel
 import pandas as pd
 import numpy as np
-import defaults
 
 from typing import TypeVar
+
+costs = pd.read_csv("costs.csv",index_col=0)
 
 class PSSE2PP:
     """PSSE to PyPower converter
@@ -48,8 +49,8 @@ class PSSE2PP:
         self.model.case["gen"] = self.gen(psse.gen)
         self.model.case["gencost"] = self.gencost(psse.gen)
         self.model.case["branch"] = self.branch(psse.branch,psse.xform)
-        self.model.case["dcline"] = self.dcline(psse.load,psse.gen)
-        # self.model.case["dclinecost"] = self.dclinecost(psse.load,psse.gen)
+        self.model.case["dcline"] = self.dcline(psse.dcline)
+        self.model.case["dclinecost"] = self.dclinecost(psse.dcline)
 
     def bus(self,
         bus:pd.DataFrame,
@@ -155,13 +156,16 @@ class PSSE2PP:
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: gen({gen=})")
 
-        costs = np.array([defaults.gencost[x] for x in gen["ID"]]).T
         costdata = self.model.gencost(
-            MODEL = costs[0],
-            STARTUP = costs[1],
-            SHUTDOWN = costs[2],
-            NCOST = costs[3],
-            COST = costs[4:].T,
+            MODEL = np.array([costs.loc[x].MODEL for x in gen.ID]),
+            STARTUP = np.array([costs.loc[x].STARTUP for x in gen.ID]),
+            SHUTDOWN = np.array([costs.loc[x].SHUTDOWN for x in gen.ID]),
+            NCOST = np.array([costs.loc[x].NCOST for x in gen.ID]),
+            COST = np.array([
+                [costs.loc[x].COST0 for x in gen.ID],
+                [costs.loc[x].COST1 for x in gen.ID],
+                [costs.loc[x].COST2 for x in gen.ID],
+                ]).T,
             )
 
         return np.array(costdata).T
@@ -238,19 +242,23 @@ class PSSE2PP:
             print(f"DEBUG [PSSE2PP]: branch({branch=},{xform=})")
 
         linedata = self.model.dcline(
-            F_BUS = branch["I"],
-            T_BUS = branch["J"].abs(), # negative means metered bus (we don't care)
-            BR_R = branch["R"],
-            BR_X = branch["X"],
-            BR_B = branch["B"],
-            RATE_A = branch["RATE1"],
-            RATE_B = branch["RATE2"],
-            RATE_C = branch["RATE3"],
-            TAP = np.zeros(len(branch)),
-            SHIFT = np.zeros(len(branch)),
-            BR_STATUS = branch["STAT"],
-            ANGMIN = np.full(len(branch),-360),
-            ANGMAX = np.full(len(branch),+360),
+            F_BUS = dcline["F_BUS"],
+            T_BUS = dcline["T_BUS"],
+            BR_STATUS = dcline["BR_STATUS"],
+            PF = dcline["PF"],
+            PT = dcline["PT"],
+            QF = dcline["QF"],
+            QT = dcline["QT"],
+            VF = dcline["VF"],
+            VT = dcline["VT"],
+            PMIN = dcline["PMIN"],
+            PMAX = dcline["PMAX"],
+            QMINF = dcline["QMINF"],
+            QMAXF = dcline["QMAXF"],
+            QMINT = dcline["QMINT"],
+            QMAXT = dcline["QMAXT"],
+            LOSS0 = dcline["LOSS0"],
+            LOSS1 = dcline["LOSS1"],
         )
 
         return np.array(linedata).T
@@ -271,11 +279,16 @@ class PSSE2PP:
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: gen({gen=})")
 
-        costs = np.array([defaults.gencost[x] for x in gen["ID"]]).T
-        costdata = self.model.gencost(
-            MODEL = costs[0],
-            STARTUP = costs[1],
-            SHUTDOWN = costs[2],
-            NCOST = costs[3],
-            COST = costs[4:].T,
+        costdata = self.model.dclinecost(
+            MODEL = np.array([costs.loc[x].MODEL for x in dcline.NAME]),
+            STARTUP = np.array([costs.loc[x].STARTUP for x in dcline.NAME]),
+            SHUTDOWN = np.array([costs.loc[x].SHUTDOWN for x in dcline.NAME]),
+            NCOST = np.array([costs.loc[x].NCOST for x in dcline.NAME]),
+            COST = np.array([
+                [costs.loc[x].COST0 for x in dcline.NAME],
+                [costs.loc[x].COST1 for x in dcline.NAME],
+                [costs.loc[x].COST2 for x in dcline.NAME],
+                ]).T,
             )
+
+        return np.array(costdata).T

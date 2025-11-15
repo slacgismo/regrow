@@ -14,7 +14,11 @@ Example:
     raw = PSSE("wecc240")
     print(raw.bus)
 """
+
+import sys
 import pandas as pd
+sys.path.append("../data")
+from utils import geohash
 
 class PSSE:
     """PSSE model accessor constructor"""
@@ -70,6 +74,11 @@ class PSSE:
             converters={
                 "ZONAME": str,
             })
+        self.dcline = self.read(f"{prefix}_dcline.csv",
+            converters={"NAME":str})
+
+        self.gis = self.read(f"{prefix}_gis.csv")
+        self.gis["GEOHASH"] = [geohash(x,y) for x,y in zip(self.gis.LAT,self.gis.LON)]
 
     # read the PSSE data tables
     @classmethod

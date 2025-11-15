@@ -18,7 +18,32 @@ from pypower import idx_bus
 from pypower import idx_brch
 from pypower import idx_gen
 from pypower import idx_cost
-from pypower import idx_dcline
+
+# pypower.idx_dcline does not provide column index values so we provide them
+class idx_dcline:
+    F_BUS = 0
+    T_BUS = 1
+    BR_STATUS = 2
+    PF = 3
+    PT = 4
+    QF = 5
+    QT = 6
+    VF = 7
+    VT = 8
+    PMIN = 9
+    PMAX = 10
+    QMINF = 11
+    QMAXF = 12
+    QMINT = 13
+    QMAXT = 14
+    LOSS0 = 15
+    LOSS1 = 16
+    MU_PMIN = 17
+    MU_PMAX = 18
+    MU_QMINF = 19
+    MU_QMAXF = 20
+    MU_QMINT = 21
+    MU_QMAXT = 22
 
 from typing import TypeVar
 
@@ -82,7 +107,7 @@ class PPModel:
         return self
 
     def print(self,items=None,file=None):
-        """Pretty print case data"""
+        """Print case data"""
         if items is None:
             items = ["bus","branch","gen","gencost","dcline","dclinecost"]
 
@@ -109,22 +134,22 @@ class PPModel:
 
         if "gencost" in items:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = self.case["gencost"][idx_cost.NCOST].max()
+            ncost = self.case["gencost"][:,idx_cost.NCOST].max()
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
             gencost.index.name="GENCOST"
             print(gencost,file=file)
 
-        if "dcline" in items and "dcline" in self.case and self.case["dcline"]:
+        if "dcline" in items and "dcline" in self.case and len(self.case["dcline"]) > 0:
             dcline_cols = get_header(idx_brch)
             dcline = pd.DataFrame(data=self.case["dcline"],
                 columns=dcline_cols[:self.case["dcline"].shape[1]])
             dcline.index.name="DCLINE"
             print(dcline,file=file)
 
-        if "dclinecost" in items and "dclinecost" in self.case and self.case["dclinecpst"]:
+        if "dclinecost" in items and "dclinecost" in self.case and len(self.case["dclinecost"]) > 0:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = self.case["dclinecost"][idx_cost.NCOST].max()
+            ncost = self.case["dclinecost"][:,idx_cost.NCOST].max()
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
             dclinecost.index.name="DCLINECOST"

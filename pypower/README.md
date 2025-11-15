@@ -17,17 +17,18 @@ flowchart LR
     manual_copy --> wecc240_zone.csv
 
     manual_create --> wecc240_dcline.csv
-    manual_create --> defaults.csv
+    manual_create --> costs.csv
 
     wecc240_area.csv --> psse
     wecc240_branch.csv --> psse
-    wecc240_bus.csv --> pssex
+    wecc240_bus.csv --> psse
     wecc240_gen.csv --> psse
+    wecc240_gis.csv --> psse
     wecc240_load.csv --> psse
     wecc240_shunt.csv --> psse
     wecc240_xform.csv --> psse
     wecc240_zone.csv --> psse
-    defaults.csv --> psse2pp
+    costs.csv --> psse2pp
 
     wecc240_dcline.csv --> psse
     subgraph wecc240.py

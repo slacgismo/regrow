@@ -115,14 +115,21 @@ flowchart LR
 
 In the original PSS/E model, the DC line are modeled as the following loads. 
 
-| Bus Number | Bus Name | Load MW | DC Line Name |
-| ---: | ---- | ----: | ------- |
-| 4010 | CELILO | 2,904.493 | PDCI |
-| 2619 | SYMLARLA | -2,466.528 | PDCI |
-| 2600 | ADELANTO | -1,591.978 | IMSST |
-| 2604 | INTERMT | 1,791.945 | IMSST |
+| Bus Number | Bus Name | Load MW    | DC Line Name | Terminal |
+| ---------: | -------- | ------:    | ------------ | -------- |
+|       4010 | CELILO   |  2,904.493 | PDCI         | North    |
+|       2619 | SYMLARLA | -2,466.528 | PDCI         | South    |
+|       2600 | ADELANTO | -1,591.978 | IMSST        | South    |
+|       2604 | INTERMT  |  1,791.945 | IMSST        | North    |
 
-These have be replace with DC lines in the PyPower model, as described in the `wecc240_dcline.csv`. The constraintsWe for the DC lines are obtained from the corresponding references (see Eriksson 2014 and Wu 1988).
+These have been replaced with DC lines in the PyPower model, as described in the `wecc240_dcline.csv`. The constraints and losses for the DC lines are obtained from the corresponding references (see [Eriksson 2014](https://publisher.hitachienergy.com/download?DocumentID=9AKK106103A8918&LanguageCode=en&DocumentPartId=&Action=download&DocumentRevisionId=-&parentURL=68747470733a2f2f7075626c69736865722e68697461636869656e657267792e636f6d2f646f63756d656e74733f646f63547970653d416c6c25323046696c657326713d70616369666963253230696e746572746965) and [Wu 1988](https://ieeexplore.ieee.org/document/193910)).
+
+| DC Line Name | Converter Loss | Line Loss | Voltage From | Voltage To | Minimum Power | Maximum Power | Minimum Reactive North | Maximum Reactive North | Minimum Reactive South | Maximum Reactive South |
+| ------------ | -------------: | --------: | -----------: | ---------: | ------------: | ------------: | ---------------------: | ---------------------: | ----------------------: | ---------------------: |
+| PDCI         |          20.77 |     1.38% |        1.075 |      1.012 |         -3100 |          3100 |                  -2000 |                   2000 |                  -2000 |                   2000 |
+| IMSST        |             25 |     0.86% |        1.030 |      1.056 |             0 |          2400 |                   -100 |                    100 |                   -100 |                    100 |
+
+The IMSST power ratings are based on the upgrade reported in the [Hitachi Project Summary](https://www.hitachienergy.com/us/en/news-and-events/customer-stories/intermountain-power-project). The voltage settings are imported from the PSS/E model. IMSST converter station losses are not described and were estimated based on PDCI converter station losses.
 
 The DC line costs are listed in the `costs.csv`.
 

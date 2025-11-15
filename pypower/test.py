@@ -61,6 +61,9 @@ import matplotlib.pyplot as plt
 
 # plt.savefig("voltage_error.png")
 
+#
+# Plot voltage errors by bus
+#
 plt.figure(figsize=(40,20))
 
 plt.subplot(2,1,1)
@@ -81,3 +84,36 @@ plt.xticks(rotation=90)
 plt.legend()
 
 plt.savefig("voltage.png")
+
+plt.close()
+
+#
+# Plot voltage errors in order
+#
+import pandas as pd
+errors = pd.DataFrame({
+    "vm_err":np.abs(vm_err),
+    "va_err":np.abs(va_err),
+    "bus_i":bus_i}).set_index("bus_i")
+
+plt.figure(figsize=(20,10))
+
+ax = plt.subplot(1,2,1)
+(errors[["vm_err"]]*100)\
+    .sort_values("vm_err",ascending=False)\
+    .plot(grid=True,
+        ylabel="Voltage Magnitude Error (%)",
+        ax=ax,
+        legend=False,
+        xlabel="Bus rank")
+
+ax = plt.subplot(1,2,2)
+errors[["va_err"]]\
+    .sort_values("va_err",ascending=False)\
+    .plot(grid=True,
+        ylabel="Voltage Angle Error (deg)",
+        ax=ax,
+        legend=False,
+        xlabel="Bus rank")
+
+plt.savefig("voltage_errors.png")

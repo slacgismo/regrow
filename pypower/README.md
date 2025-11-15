@@ -58,12 +58,12 @@ flowchart LR
 The PSSE data segments are extract manually as follows:
 
 - **AREA** $\to$ `wecc240_area.csv`
-- **BRANCH** $\to$ `wecc240_branch.csv`
-- **BUS** $\to$ `wecc240_bus.csv`
-- **GEN** $\to$ `wecc240_gen.csv`
-- **LOAD** $\to$ `wecc240_load.csv`
-- **SHUNT** $\to$ `wecc240_shunt.csv`
-- **XFORM** $\to$ `wecc240_xform.csv`
+- **BRANCH** $\to$ `wecc240_branch.csv` $\to$ `psse.branch`
+- **BUS** $\to$ `wecc240_bus.csv` $\to$ `psse.bus`
+- **GEN** $\to$ `wecc240_gen.csv` $\to$ `psse.gen`
+- **LOAD** $\to$ `wecc240_load.csv` $\to$ `psse.load`
+- **SHUNT** $\to$ `wecc240_shunt.csv` $\to$ `psse.shunt`
+- **XFORM** $\to$ `wecc240_xform.csv` $\to$ `psse.xform`
 - **ZONE** $\to$ `wecc240_zone.csv`
 
 The segment files must be edited manually to clean the header names and remove extra whitespaces in strings. In addition, the transformer segment (`XFORM`) must be edited to merge the multiline entries and remove the extra columns that are not included in the data segment.

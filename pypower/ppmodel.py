@@ -18,6 +18,7 @@ from pypower import idx_bus
 from pypower import idx_brch
 from pypower import idx_gen
 from pypower import idx_cost
+from pypower import idx_dcline
 
 from typing import TypeVar
 
@@ -82,34 +83,52 @@ class PPModel:
 
     def print(self,items=None,file=None):
         """Pretty print case data"""
-        if items is None or "bus" in items:
+        if items is None:
+            items = ["bus","branch","gen","gencost","dcline","dclinecost"]
+
+        if "bus" in items:
             bus_cols = get_header(idx_bus,ignore=["PQ","PV","REF","NONE"])
             bus = pd.DataFrame(data=self.case["bus"],
                 columns=bus_cols[:self.case["bus"].shape[1]])
             bus.index.name="BUS"
             print(bus,file=file)
 
-        if items is None or "branch" in items:
+        if "branch" in items:
             branch_cols = get_header(idx_brch)
             branch = pd.DataFrame(data=self.case["branch"],
                 columns=branch_cols[:self.case["branch"].shape[1]])
             branch.index.name="BRANCH"
             print(branch,file=file)
 
-        if items is None or "gen" in items:
+        if "gen" in items:
             gen_cols = get_header(idx_gen)
             gen = pd.DataFrame(data=self.case["gen"],
                 columns=gen_cols[:self.case["gen"].shape[1]])
             gen.index.name="GEN"
             print(gen,file=file)
 
-        if items is None or "gencost" in items:
+        if "gencost" in items:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
             ncost = self.case["gencost"][idx_cost.NCOST].max()
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
             gencost.index.name="GENCOST"
             print(gencost,file=file)
+
+        if "dcline" in items and "dcline" in self.case and self.case["dcline"]:
+            dcline_cols = get_header(idx_brch)
+            dcline = pd.DataFrame(data=self.case["dcline"],
+                columns=dcline_cols[:self.case["dcline"].shape[1]])
+            dcline.index.name="DCLINE"
+            print(dcline,file=file)
+
+        if "dclinecost" in items and "dclinecost" in self.case and self.case["dclinecpst"]:
+            cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
+            ncost = self.case["dclinecost"][idx_cost.NCOST].max()
+            cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
+            dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
+            dclinecost.index.name="DCLINECOST"
+            print(dclinecost,file=file)
 
 
     def bus(self,**kwargs):
@@ -216,8 +235,38 @@ class PPModel:
 
 
         """
-        raise NotImplementedError("PPModel.dcline() is not done")
+        result = []
+        for item in get_header(idx_dcline):
+            if item in kwargs:
+                result.append(kwargs[item])
+            elif item not in ["MU_PMIN","MU_PMAX","MU_QMINF","MU_QMAXF","MU_QMINT","MU_QMAXT"]:
+                raise ValueError(f"missing {item} data")
+
+        return np.array(result)
 
     def dclinecost(self,**kwargs):
-        """Create dclinecost data"""
-        raise NotImplementedError("PPModel.dclinecost() is not done")
+        """Create dclinecost data
+
+        Arguments:
+
+        kwargs: generation data (see pypower.idx_gen for details)
+
+        Returns:
+
+        np.array: bus data
+        """
+        if self.DEBUG:
+            print(f"DEBUG [PPModel]: create dclinecost data={kwargs}")
+
+        result = []
+        for item in get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL"]):
+            if item in kwargs:
+                if kwargs[item].ndim == 1:
+                    result.append(kwargs[item])
+                else:
+                    for col in range(kwargs[item].shape[1]):
+                        result.append(kwargs[item][:,col])
+            else:
+                raise ValueError(f"missing {item} data")
+
+        return np.array(result)

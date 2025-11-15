@@ -48,7 +48,7 @@ class PSSE2PP:
         self.model.case["gen"] = self.gen(psse.gen)
         self.model.case["gencost"] = self.gencost(psse.gen)
         self.model.case["branch"] = self.branch(psse.branch,psse.xform)
-        # self.model.case["dcline"] = self.dcline(psse.load,psse.gen)
+        self.model.case["dcline"] = self.dcline(psse.load,psse.gen)
         # self.model.case["dclinecost"] = self.dclinecost(psse.load,psse.gen)
 
     def bus(self,
@@ -142,7 +142,16 @@ class PSSE2PP:
     def gencost(self,
         gen:pd.DataFrame,
         ) -> np.array:
-        """Convert PSSE gencost data to PyPower bus data"""
+        """Convert PSSE gencost data to PyPower bus data
+
+        Arguments:
+
+        gen: gen dataframe from PSSE
+
+        Returns:
+
+        np.array: PyPower gen data array
+        """
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: gen({gen=})")
 
@@ -161,7 +170,18 @@ class PSSE2PP:
         branch:pd.DataFrame,
         xform:pd.DataFrame,
         ) -> np.array:
-        """Convert PSSE branch data to PyPower bus data"""
+        """Convert PSSE branch data to PyPower bus data
+
+        Arguments:
+
+        branch: branch dataframe from PSSE
+
+        xform: tranformer dataframe from PSSE
+
+        Returns:
+
+        np.array: PyPower branch data array
+        """
 
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: branch({branch=},{xform=})")
@@ -202,14 +222,60 @@ class PSSE2PP:
         return np.array(np.hstack([linedata,xformdata])).T
 
     def dcline(self,
-        load:pd.DataFrame,
-        gen:pd.DataFrame) -> np.array:
-        """Convert PSSE dcline data to PyPower bus data"""
-        raise NotImplementedError("TODO")
+        dcline:pd.DataFrame,
+        ) -> np.array:
+        """Convert PSSE dcline data to PyPower bus data
+
+        Arguments:
+
+        dcline: dcline dataframe from PSSE
+
+        Returns:
+
+        np.array: PyPower dcline data array
+        """
+        if self.DEBUG:
+            print(f"DEBUG [PSSE2PP]: branch({branch=},{xform=})")
+
+        linedata = self.model.dcline(
+            F_BUS = branch["I"],
+            T_BUS = branch["J"].abs(), # negative means metered bus (we don't care)
+            BR_R = branch["R"],
+            BR_X = branch["X"],
+            BR_B = branch["B"],
+            RATE_A = branch["RATE1"],
+            RATE_B = branch["RATE2"],
+            RATE_C = branch["RATE3"],
+            TAP = np.zeros(len(branch)),
+            SHIFT = np.zeros(len(branch)),
+            BR_STATUS = branch["STAT"],
+            ANGMIN = np.full(len(branch),-360),
+            ANGMAX = np.full(len(branch),+360),
+        )
+
+        return np.array(linedata).T
 
     def dclinecost(self,
-        load:pd.DataFrame,
-        gen:pd.DataFrame,
+        dcline:pd.DataFrame,
         ) -> np.array:
-        """Convert PSSE dcline data to PyPower bus data"""
-        raise NotImplementedError("TODO")
+        """Convert PSSE dcline data to PyPower bus data
+
+        Arguments:
+
+        dcline: dcline dataframe from PSSE
+
+        Returns:
+
+        np.array: PyPower dclinecost data array
+        """
+        if self.DEBUG:
+            print(f"DEBUG [PSSE2PP]: gen({gen=})")
+
+        costs = np.array([defaults.gencost[x] for x in gen["ID"]]).T
+        costdata = self.model.gencost(
+            MODEL = costs[0],
+            STARTUP = costs[1],
+            SHUTDOWN = costs[2],
+            NCOST = costs[3],
+            COST = costs[4:].T,
+            )

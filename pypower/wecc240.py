@@ -35,11 +35,13 @@ if __name__ == "__main__":
     # load the model
     # PSSE2PP.LOADSCALE = 1.0 # global scaling of loads
     case = wecc240()
+
+    # print the case data
     import pandas as pd
     pd.options.display.max_columns = None
     pd.options.display.width = None
     pd.options.display.max_rows = None
-    PPModel("wecc240").with_case(case).print(["bus","branch","gen"])
+    PPModel("wecc240").with_case(case).print(["dcline"])
 
     # solve the model
     from pypower.runpf import runpf

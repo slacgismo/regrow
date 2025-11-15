@@ -81,25 +81,24 @@ flowchart LR
     psse.load --> pypower.bus
     psse.shunt --> pypower.bus
     
-    psse.gen --> pypower.gen
-    psse.gen --> pypower.gencost
-
     psse.branch --> pypower.branch
     psse.xform --> pypower.branch
 
+    psse.gen --> pypower.gen
+    psse.gen --> pypower.gencost
+
     subgraph psse
+        psse.branch
+        psse.xform
         psse.bus
         psse.load
         psse.shunt
         psse.gen
-        psse.branch
-        psse.xform
-        psse.dcline
     end
 
     subgraph pypower
-        pypower.bus
         pypower.branch
+        pypower.bus
         pypower.gen
         pypower.gencost
         pypower.dcline

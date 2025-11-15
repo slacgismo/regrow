@@ -148,6 +148,7 @@ The results of the powerflow solver as compared to the original input from PSS/E
 Note that it is not certain whether the PSS/E are the solution, but it seems likely is it.
 
 ```mermaid
+flowchart LR
     results --> test.py
     test.py --> voltage.png
     test.py --> voltage_errors.png

@@ -103,7 +103,10 @@ class PSSE:
             print(f"VERBOSE [PSSE]: {filename} is {' rows x '.join([str(x) for x in data.shape])} columns")
 
         # load segment and clean up quotes and NaNs
-        data = pd.read_csv(filename,quotechar="'",**kwargs).fillna(0)
+        data = pd.read_csv(filename,
+            quotechar="'",
+            comment="#",
+            **kwargs).fillna(0)
 
         if cls.DEBUG:
             print(f"DEBUG [PSSE]: {filename=}, data=\n{data}")

@@ -111,6 +111,21 @@ flowchart LR
     wecc240_dcline.csv --> pypower.dcline
 ```
 
+#### DC Lines
+
+In the original PSS/E model, the DC line are modeled as the following loads. 
+
+| Bus Number | Bus Name | Load MW | DC Line Name |
+| ---: | ---- | ----: | ------- |
+| 4010 | CELILO | 2,904.493 | PDCI |
+| 2619 | SYMLARLA | -2,466.528 | PDCI |
+| 2600 | ADELANTO | -1,591.978 | IMSST |
+| 2604 | INTERMT | 1,791.945 | IMSST |
+
+These have be replace with DC lines in the PyPower model, as described in the `wecc240_dcline.csv`. The constraintsWe for the DC lines are obtained from the corresponding references (see Eriksson 2014 and Wu 1988).
+
+The DC line costs are listed in the `costs.csv`.
+
 ### PyPower Solvers
 
 Three solver tests are performed on the resulting model:

@@ -105,9 +105,10 @@ flowchart LR
         pypower.dcline
         pypower.dclinecost
     end
-    defaults.csv --> pypower.gencost
-    wecc240_dcline.csv --> pypower.dcline
+    costs.csv --> pypower.gencost
+    costs.csv --> pypower.dclinecost
     wecc240_dcline.csv --> pypower.dclinecost
+    wecc240_dcline.csv --> pypower.dcline
 ```
 
 ### PyPower Solvers

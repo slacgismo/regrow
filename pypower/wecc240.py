@@ -12,7 +12,6 @@ in PyPOWER, i.e.,
 
 from psse import PSSE
 from psse2pp import PSSE2PP
-from ppmodel import PPModel
 
 def wecc240() -> dict:
     """Load and convert the WECC 240 PSSE RAW model to a PyPOWER case
@@ -33,14 +32,15 @@ if __name__ == "__main__":
     #
 
     # load the model
-    # PSSE2PP.LOADSCALE = 1.0 # global scaling of loads
+    PSSE2PP.LOADSCALE = 1.0 # global scaling of loads
     case = wecc240()
 
-    # print the case data
+    # # print the case data
     # import pandas as pd
     # pd.options.display.max_columns = None
     # pd.options.display.width = None
     # pd.options.display.max_rows = None
+    # from ppmodel import PPModel
     # PPModel("wecc240").with_case(case).print(["gencost","dclinecost"])
 
     # solve the model
@@ -48,12 +48,14 @@ if __name__ == "__main__":
     from pypower.ppoption import ppoption
     result,status = runpf(case,ppoption(VERBOSE=0,OUT_ALL=0))
     if status == 0:
+
+        # rerun with verbose output enabled to diagnose failure
         print("ERROR [wecc240]: solver failed")
         runpf(case,ppoption(VERBOSE=3,OUT_ALL=-1)) # redo with lots of output
         exit(1)
     else:
-        print("WECC240 powerflow solved ok")
+        print("WECC240 powerflow solved ok.")
 
-    # print results
-    # from pypower.printpf import printpf
-    # printpf(result)
+        # # print results
+        # from pypower.printpf import printpf
+        # printpf(result)

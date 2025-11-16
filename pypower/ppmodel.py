@@ -11,6 +11,9 @@ The following example constructs a new PyPower model and prints the case data.
     print(model.case)
 """
 
+import sys
+import datetime as dt
+import io
 import numpy as np
 import pandas as pd
 
@@ -18,6 +21,8 @@ from pypower import idx_bus
 from pypower import idx_brch
 from pypower import idx_gen
 from pypower import idx_cost
+
+from typing import Self
 
 # pypower.idx_dcline does not provide column index values so we provide them
 class idx_dcline:
@@ -68,9 +73,6 @@ def get_header(idx:TypeVar('module'),*,ignore:list[str]=[]) -> list[str]:
 class PPModel:
     """PyPower Model Access"""
 
-    VERBOSE=False
-    DEBUG=False
-
     def __init__(self,
         name:str,
         version:int=2,
@@ -87,9 +89,6 @@ class PPModel:
         mvabase: MVA base value
         """
 
-        if self.DEBUG:
-            print(f"DEBUG [PPModel]: creating model {name=} {version=} {mvabase=}")
-
         self.name = name
         self.case = {
             "version": version,
@@ -102,11 +101,63 @@ class PPModel:
             "dclinecost": [],
         }
 
-    def with_case(self,case):
+    def set_case(self,
+        case:dict,
+        ) -> Self:
+        """Set the case data
+
+        Arguments:
+
+        case: case data to use
+
+        Returns:
+
+        self: the model with the newly set case data
+        """
         self.case = case
         return self
 
-    def print(self,items=None,file=None):
+    def save_case(self,
+        file:io.StringIO=sys.stdout,
+        precision=9,
+        ):
+        """Save the case data to a file
+
+        Arguments:
+        
+        file: file handle to which case data is saved
+
+        precision: float rounding precision
+        """
+        print(f"""# pypower case '{self.name}' saved on {dt.datetime.now()}
+from numpy import array
+def {self.name}(): 
+    return {{""",file=file)
+        header_map = {
+            "bus": idx_bus,
+            "branch": idx_brch,
+            "gen": idx_gen,
+            "gencost": idx_cost,
+            "dcline": idx_dcline,
+            "dclinecost": idx_cost,
+        }
+        valid_keys = ["version","baseMVA"] + list(header_map.keys())
+        for key,value in [(x,y) for x,y in self.case.items() if x in valid_keys]:
+            if isinstance(value,np.ndarray):
+                print(f"""      '{key}': array([""",file=file)
+                header = ",".join([f"{{0:>{precision+3}s}}".format(x) for x in get_header(header_map[key])])
+                print(f"         #{header}",file=file)
+                for row in value.tolist():
+                    print(f"         [{','.join([f'{{0:{precision+3}g}}'.format(round(x,precision)) for x in row])}],",file=file)
+                print("        ]),",file=file)
+            else:
+                print(f"""      '{key}': {value},""",file=file)
+        print("}",file=file)
+
+    def print(self,
+        items=None,
+        file=sys.stdout,
+        ):
         """Print case data"""
         if items is None:
             items = ["bus","branch","gen","gencost","dcline","dclinecost"]
@@ -169,11 +220,13 @@ class PPModel:
         np.array: bus data
         """
 
-        if self.DEBUG:
-            print(f"DEBUG [PPModel]: create bus data={kwargs}")
+        header = get_header(idx_bus,ignore=["PQ","PV","REF","NONE"])
+        for key,value in kwargs.items():
+            if key not in header:
+                raise KeyError(f"{key}={value} is not a valid bus item")
 
         result = []
-        for item in get_header(idx_bus,ignore=["PQ","PV","REF","NONE"]):
+        for item in header:
             if item in kwargs:
                 result.append(kwargs[item])
             elif item not in ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]:
@@ -193,8 +246,13 @@ class PPModel:
 
         np.array: bus data
         """
+        header = get_header(idx_brch)
+        for key,value in kwargs.items():
+            if key not in header:
+                raise KeyError(f"{key}={value} is not a valid branch item")
+
         result = []
-        for item in get_header(idx_brch):
+        for item in header:
             if item in kwargs:
                 result.append(kwargs[item])
             elif item not in ["PF","PT","QF","QT","MU_SF","MU_ST","MU_ANGMIN","MU_ANGMAX"]:
@@ -213,9 +271,6 @@ class PPModel:
 
         np.array: bus data
         """
-
-        if self.DEBUG:
-            print(f"DEBUG [PPModel]: create gen data={kwargs}")
 
         result = []
         for item in get_header(idx_gen):
@@ -237,8 +292,6 @@ class PPModel:
 
         np.array: bus data
         """
-        if self.DEBUG:
-            print(f"DEBUG [PPModel]: create gencost data={kwargs}")
 
         result = []
         for item in get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL"]):
@@ -280,8 +333,6 @@ class PPModel:
 
         np.array: bus data
         """
-        if self.DEBUG:
-            print(f"DEBUG [PPModel]: create dclinecost data={kwargs}")
 
         result = []
         for item in get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL"]):

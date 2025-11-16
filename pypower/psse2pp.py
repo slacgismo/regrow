@@ -79,7 +79,6 @@ class PSSE2PP:
         raw = pd.merge(bus,load[load_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
         raw = pd.merge(raw,shunt,how='left',left_on="ID",right_on="I").fillna(0.0)
 
-        print(raw)
         PD = ( raw["PL"] + raw["IP"] + raw["YP"] ) * raw["STAT"]
         QD = ( raw["QL"] + raw["IQ"] - raw["YQ"] ) * raw["STAT"]
         busdata = self.model.bus(

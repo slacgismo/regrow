@@ -12,12 +12,13 @@ Example:
 
 """
 
-from ppmodel import PPModel
+from typing import TypeVar
 import pandas as pd
 import numpy as np
 
-from typing import TypeVar
+from ppmodel import PPModel
 
+# read default costs data
 costs = pd.read_csv("costs.csv",index_col=0)
 
 class PSSE2PP:
@@ -25,13 +26,9 @@ class PSSE2PP:
 
     Globals:
 
-    DEBUG: enable debug output (default False)
     LOADSCALE: global load scaling factor (default 1.0)
-    VERBOSE: enable verbose output (default False)
     """
 
-    VERBOSE=False
-    DEBUG=False
     LOADSCALE=1.0 # global load scaling
 
     """PSSE to PyPower converter class"""
@@ -72,20 +69,20 @@ class PSSE2PP:
         np.array: PyPower bus data array
         """
 
-        if self.DEBUG:
-            print(f"DEBUG [PSSE2PP]: bus({bus=},{load=},{shunt=})")
-
-        load_columns = ["I","STAT","PL","QL","IP","IQ","YP","YQ","SCALE","INTRPT","DGENP","DGENQ","DGENF"]
+        load_columns = ["I","STAT",
+            "PL","QL","IP","IQ","YP","YQ","SCALE",
+            "INTRPT","DGENP","DGENQ","DGENF",
+            ]
         raw = pd.merge(bus,load[load_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
         raw = pd.merge(raw,shunt,how='left',left_on="ID",right_on="I").fillna(0.0)
 
-        PD = ( raw["PL"] + raw["IP"] + raw["YP"] ) * raw["STAT"]
-        QD = ( raw["QL"] + raw["IQ"] - raw["YQ"] ) * raw["STAT"]
+        p = ( raw["PL"] + raw["IP"] + raw["YP"] ) * raw["STAT"]
+        q = ( raw["QL"] + raw["IQ"] - raw["YQ"] ) * raw["STAT"]
         busdata = self.model.bus(
             BUS_I = raw["ID"],
             BUS_TYPE = raw["BUSTYPE"],
-            PD = ( PD * raw["SCALE"] - raw["DGENP"] ) * self.LOADSCALE / self.mvabase,
-            QD = ( QD * raw["SCALE"] - raw["DGENQ"] ) * self.LOADSCALE / self.mvabase,
+            PD = ( p * raw["SCALE"] - raw["DGENP"] ) * self.LOADSCALE / self.mvabase,
+            QD = ( q * raw["SCALE"] - raw["DGENQ"] ) * self.LOADSCALE / self.mvabase,
             GS = np.zeros(len(raw)),
             BS = ( raw["BINIT"] * raw["ST"] * raw["N1"] ) / self.mvabase,
             BUS_AREA = raw["AREA"],
@@ -111,9 +108,6 @@ class PSSE2PP:
 
         np.array: PyPower gen data array
         """
-
-        if self.DEBUG:
-            print(f"DEBUG [PSSE2PP]: gen({gen=})")
 
         gendata = self.model.gen(
             GEN_BUS = gen["I"],
@@ -153,9 +147,6 @@ class PSSE2PP:
 
         np.array: PyPower gen data array
         """
-        if self.DEBUG:
-            print(f"DEBUG [PSSE2PP]: gen({gen=})")
-
         costdata = self.model.gencost(
             MODEL = np.array([costs.loc[x].MODEL for x in gen.ID]),
             STARTUP = np.array([costs.loc[x].STARTUP for x in gen.ID]),
@@ -186,9 +177,6 @@ class PSSE2PP:
 
         np.array: PyPower branch data array
         """
-
-        if self.DEBUG:
-            print(f"DEBUG [PSSE2PP]: branch({branch=},{xform=})")
 
         linedata = self.model.branch(
             F_BUS = branch["I"],
@@ -238,8 +226,6 @@ class PSSE2PP:
 
         np.array: PyPower dcline data array
         """
-        if self.DEBUG:
-            print(f"DEBUG [PSSE2PP]: branch({branch=},{xform=})")
 
         linedata = self.model.dcline(
             F_BUS = dcline["F_BUS"],
@@ -276,8 +262,6 @@ class PSSE2PP:
 
         np.array: PyPower dclinecost data array
         """
-        if self.DEBUG:
-            print(f"DEBUG [PSSE2PP]: gen({gen=})")
 
         costdata = self.model.dclinecost(
             MODEL = np.array([costs.loc[x].MODEL for x in dcline.NAME]),

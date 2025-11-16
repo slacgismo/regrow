@@ -1,3 +1,20 @@
+This folder contains the code and data needed to create the various PyPower models for the REGROW project.
+
+# Quick Start
+
+To create and run the `pypower` powerflow solution of a case, do the following:
+
+    python3 -m venv .venv
+    . .venv/bin/activate
+    pip install --upgrade pip -r requirements.txt
+    python3
+    from wecc240 import wecc240
+    case = wecc240()
+    from pypower.runpf import runpf
+    runpf(case)
+
+See [rwl/PYPOWER on GitHub](https://github.com/rwl/PYPOWER) for details on running PyPower cases.
+
 # WECC240 Model Preparation
 
 The WECC240 model in PyPower is prepared using the following high-level data flow:
@@ -11,6 +28,7 @@ flowchart LR
         powerplants.csv.zip --> hifld.py
         ResStock --> loads.py
         ComStock --> loads.py
+        NREL --> renewables.py
     end
 
     subgraph modules
@@ -219,3 +237,9 @@ flowchart LR
     runpf --> *_voltage.png
     runpf --> *_voltage_errors.png
 ```
+
+# Code Checking
+
+You can check the code using the `pylint` target of the `Makefile`, e.g.,
+
+    make pylint

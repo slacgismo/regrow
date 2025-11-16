@@ -1,13 +1,16 @@
 """Test the wecc240() model conversion from PSS/E to PyPower"""
 
 import os
+import sys
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+
 from psse2pp import PSSE2PP
 from wecc240 import wecc240
+from ppmodel import PPModel
 from pypower.runpf import runpf
 from pypower.rundcopf import rundcopf
-from pypower.runopf import runopf as runacopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 
@@ -18,7 +21,7 @@ errors = 0
 def plot(basecase:dict,
     testcase:dict,
     prefix:str="",
-    legend=None):
+    ):
     """Generate test result plots
 
     Arguments:
@@ -29,6 +32,8 @@ def plot(basecase:dict,
 
     prefix: plot file prefix to use for saving plots
     """
+
+    # pylint: disable=too-many-instance-attributes
 
     bus_i = basecase["bus"][:,bus.BUS_I].astype(int).astype(str)
     vm_err = np.array(1-testcase["bus"][:,bus.VM])/np.array(basecase["bus"][:,bus.VM])
@@ -64,8 +69,7 @@ def plot(basecase:dict,
     #
     # Plot voltage errors in order
     #
-    import pandas as pd
-    errors = pd.DataFrame({
+    data = pd.DataFrame({
         "vm_err":np.abs(vm_err),
         "va_err":np.abs(va_err),
         "bus_i":bus_i}).set_index("bus_i")
@@ -73,7 +77,7 @@ def plot(basecase:dict,
     plt.figure(figsize=(20,10))
 
     ax = plt.subplot(1,2,1)
-    (errors[["vm_err"]]*100)\
+    (data[["vm_err"]]*100)\
         .sort_values("vm_err",ascending=False)\
         .plot(grid=True,
             ylabel="Voltage Magnitude Error (%)",
@@ -82,7 +86,7 @@ def plot(basecase:dict,
             xlabel="Bus rank")
 
     ax = plt.subplot(1,2,2)
-    errors[["va_err"]]\
+    data[["va_err"]]\
         .sort_values("va_err",ascending=False)\
         .plot(grid=True,
             ylabel="Voltage Angle Error (deg)",
@@ -93,6 +97,7 @@ def plot(basecase:dict,
     plt.suptitle(f"{os.path.basename(prefix).replace('_',' ').title()} Voltage Errors")
     plt.savefig(f"{prefix}voltage_errors.png")
 
+    plt.close()
 
 
 #
@@ -104,9 +109,9 @@ PSSE2PP.LOADSCALE = 1.0 # global scaling of loads
 original = wecc240()
 
 # save the case data
-from ppmodel import PPModel
 # PPModel("wecc240").set_case(case).print(["gencost","dclinecost"])
-PPModel("wecc240").set_case(original).save_case(open("tests/wecc240_original.py","w"))
+with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
+    PPModel("wecc240").set_case(original).save_case(fh)
 
 # solve the original powerflow from PSSE
 original_solution,status = runpf(original,ppoption(VERBOSE=0,OUT_ALL=0))
@@ -125,7 +130,8 @@ else:
     print("Original WECC240 DC OPF solved ok.",flush=True)
 
 # solve the DCOPF powerflow
-PPModel("wecc240").set_case(dcopf).save_case(open("tests/wecc240_original_dcopf.py","w"))
+with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
+    PPModel("wecc240").set_case(dcopf).save_case(fh)
 dcopf_solution,status = runpf(dcopf,ppoption(VERBOSE=0,OUT_ALL=0))
 if status == 0:
     print("ERROR [wecc240]: original case dcopf powerflow failed (see wecc240_original_dcopf.py)")
@@ -139,7 +145,8 @@ else:
 # Verify the scheduling WECC 240 model
 #
 scheduling = wecc240(options=["SCHEDULING"])
-PPModel("wecc240").set_case(original).save_case(open("tests/wecc240_scheduling.py","w"))
+with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
+    PPModel("wecc240").set_case(original).save_case(fh)
 
 # solve the schedulig powerflow from PSSE
 scheduling_solution,status = runpf(scheduling,ppoption(VERBOSE=0,OUT_ALL=0))
@@ -177,4 +184,4 @@ print("done")
 if errors > 0:
     print(f"WECC240 failed {errors} test.")
 
-exit(errors)
+sys.exit(errors)

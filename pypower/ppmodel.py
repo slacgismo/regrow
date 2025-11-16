@@ -1,6 +1,7 @@
 """PyPower model accessor
 
-This module defined the PyPower model accessor. Use the bus, branch, gen, gencost, dcline, and dclinecost methods to set the data arrays in the case.
+This module defined the PyPower model accessor. Use the bus, branch, gen,
+gencost, dcline, and dclinecost methods to set the data arrays in the case.
 Use the 'case' member to access the case data.
 
 Example:
@@ -14,6 +15,8 @@ The following example constructs a new PyPower model and prints the case data.
 import sys
 import datetime as dt
 import io
+from typing import Self, TypeVar
+
 import numpy as np
 import pandas as pd
 
@@ -22,10 +25,11 @@ from pypower import idx_brch
 from pypower import idx_gen
 from pypower import idx_cost
 
-from typing import Self
-
-# pypower.idx_dcline does not provide column index values so we provide them
 class idx_dcline:
+    """Provide missing column index values that should be in pypower.idx_dcline"""
+
+    # pylint: disable=invalid-name,too-few-public-methods
+
     F_BUS = 0
     T_BUS = 1
     BR_STATUS = 2
@@ -50,9 +54,7 @@ class idx_dcline:
     MU_QMINT = 21
     MU_QMAXT = 22
 
-from typing import TypeVar
-
-def get_header(idx:TypeVar('module'),*,ignore:list[str]=[]) -> list[str]:
+def get_header(idx:TypeVar('module'),*,ignore:list[str]=None) -> list[str]:
     """Convert idx data to a header list
 
     Arguments:
@@ -65,6 +67,8 @@ def get_header(idx:TypeVar('module'),*,ignore:list[str]=[]) -> list[str]:
 
     list[str]: ordered list of data array column header names
     """
+    if ignore is None:
+        ignore = []
     mapping = {getattr(idx,x):x for x in dir(idx) if not x.startswith("_") and x not in ignore}
     indexes = sorted(mapping)
     assert max(indexes) - min(indexes) + 1 == len(indexes), "indexes are not strictly sequential"
@@ -124,14 +128,14 @@ class PPModel:
         """Save the case data to a file
 
         Arguments:
-        
+
         file: file handle to which case data is saved
 
         precision: float rounding precision
         """
         print(f"""# pypower case '{self.name}' saved on {dt.datetime.now()}
 from numpy import array
-def {self.name}(): 
+def {self.name}():
     return {{""",file=file)
         header_map = {
             "bus": idx_bus,
@@ -145,10 +149,12 @@ def {self.name}():
         for key,value in [(x,y) for x,y in self.case.items() if x in valid_keys]:
             if isinstance(value,np.ndarray):
                 print(f"""      '{key}': array([""",file=file)
-                header = ",".join([f"{{0:>{precision+3}s}}".format(x) for x in get_header(header_map[key])])
+                header = ",".join([f"{{0:>{precision+3}s}}".format(x)
+                    for x in get_header(header_map[key])])
                 print(f"         #{header}",file=file)
                 for row in value.tolist():
-                    print(f"         [{','.join([f'{{0:{precision+3}g}}'.format(round(x,precision)) for x in row])}],",file=file)
+                    print(f"         [{','.join([f'{{0:{precision+3}g}}'\
+                        .format(round(x,precision)) for x in row])}],",file=file)
                 print("        ]),",file=file)
             else:
                 print(f"""      '{key}': {value},""",file=file)
@@ -185,7 +191,7 @@ def {self.name}():
 
         if "gencost" in items:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = (self.case["gencost"][:,idx_cost.NCOST] * (1-idx_cost.model)).max()
+            ncost = (self.case["gencost"][:,idx_cost.NCOST] * (1-idx_cost.MODEL)).max()
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
             gencost.index.name="GENCOST"
@@ -200,7 +206,7 @@ def {self.name}():
 
         if "dclinecost" in items and "dclinecost" in self.case and len(self.case["dclinecost"]) > 0:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = (self.case["dclinecost"][:,idx_cost.NCOST] * (1-idx_cost.model)).max()
+            ncost = (self.case["dclinecost"][:,idx_cost.NCOST] * (1-idx_cost.MODEL)).max()
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
             dclinecost.index.name="DCLINECOST"
@@ -316,7 +322,7 @@ def {self.name}():
     @classmethod
     def dcline(cls,**kwargs):
         """Create dcline data
-    
+
         Arguments:
 
         kwargs: dcline data (see pypower.idx_dcline for details)

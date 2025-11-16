@@ -15,16 +15,13 @@ Example:
     print(raw.bus)
 """
 
-import sys
 import pandas as pd
-sys.path.append("../data")
-from utils import geohash
+from geohash import geohash
 
 class PSSE:
-    """PSSE model accessor constructor"""
-    
-    VERBOSE=False
-    DEBUG=False
+    """PSSE model accessor class"""
+
+    # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
     def __init__(self,prefix:str):
         """Create PSSE model accessor
@@ -40,8 +37,8 @@ class PSSE:
             pd.read_csv(f"{prefix}_psse.raw",nrows=1,usecols=range(1,3),header=None).loc[0].tolist()
             ))
         assert self.config["version"] == 34, f"PSS/E version {self.config['version']} not"
-        assert self.config["mvabase"] > 0, f"PSS/E MVA base must be positive"
-        
+        assert self.config["mvabase"] > 0, "PSS/E MVA base must be positive"
+
         # save the prefix as the default model name (changing it later is ok)
         self.name = prefix
 
@@ -98,17 +95,11 @@ class PSSE:
 
         pd.DataFrame: data frame containing PSSE segment data
         """
-        
-        if cls.VERBOSE:
-            print(f"VERBOSE [PSSE]: {filename} is {' rows x '.join([str(x) for x in data.shape])} columns")
 
         # load segment and clean up quotes and NaNs
         data = pd.read_csv(filename,
             quotechar="'",
             comment="#",
             **kwargs).fillna(0)
-
-        if cls.DEBUG:
-            print(f"DEBUG [PSSE]: {filename=}, data=\n{data}")
 
         return data

@@ -10,13 +10,13 @@ in PyPOWER, i.e.,
     runpf(case)
 """
 
+from datetime import datetime as dt
 from psse import PSSE
 from psse2pp import PSSE2PP
 from scheduling import Schedule
-from datetime import datetime as dt
 
 def wecc240(
-    options:list[str]=[],
+    options:list[str]=None,
     datetime:dt=None,
     ) -> dict:
     """Load and convert the WECC 240 PSSE RAW model to a PyPOWER case
@@ -36,9 +36,19 @@ def wecc240(
     dict: pypower case (see PyPower documentation)
     """
 
-    raw = PSSE("wecc240")
-    model = PSSE2PP(raw).model
+    # load the model from PSSE
+    model = PSSE2PP(PSSE("wecc240")).model
 
+    # default is no options
+    if options is None:
+        options = []
+
+    # check for improperly specified options
+    for option in options:
+        if not option in ["SCHEDULING","HIFLD","LOADS","RENEWABLES"]:
+            raise ValueError(f"{option=} in options is not valid")
+
+    # process options
     if "SCHEDULING" in options:
 
         schedule = Schedule("wecc240_scheduling_")
@@ -46,19 +56,14 @@ def wecc240(
 
     if "HIFLD" in options:
 
-        TODO # (future work)
+        raise NotImplementedError("future work")
 
     if "LOADS" in options:
 
-        TODO # (future work)
+        raise NotImplementedError("future work")
 
     if "RENEWABLES" in options:
 
-        TODO # (future work)
-
-    for option in options:
-        if not option in ["SCHEDULING","HIFLD","LOADS","RENEWABLES"]:
-            raise ValueError(f"{option=} in options is not valid")
+        raise NotImplementedError("future work")
 
     return model.case
-

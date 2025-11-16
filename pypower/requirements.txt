@@ -1,0 +1,4 @@
+pandas
+matplotlib
+pypower
+git+https://github.com/eudoxys/geohash

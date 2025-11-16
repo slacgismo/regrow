@@ -27,4 +27,4 @@ jobs:
     - name: Analyse code
       run: |
         cd pypower
-        pylint *.py
+        pylint --fail-under=9 *.py

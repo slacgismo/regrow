@@ -19,7 +19,7 @@ There are four options available to the case builder `wecc240()` to modify the o
 
 - `wecc240(options=["HIFLD"])` imports the generation fleet in the `powerflow.csv.zip` file.
 
-- `wecc240(options=["LOADS"])` imports the load model from NREL ResSTOCK and ComSTOCK.
+- `wecc240(options=["LOADS"])` imports the load model from NREL [ResStock](https://resstock.nrel.gov/) and [ComStock](https://comstock.nrel.gov/).
 
 - `wecc240(options=["RENEWABLES"])` imports the renewables generation from the NREL REGROW S3 bucket.
 

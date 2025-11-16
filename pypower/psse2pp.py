@@ -75,12 +75,13 @@ class PSSE2PP:
         if self.DEBUG:
             print(f"DEBUG [PSSE2PP]: bus({bus=},{load=},{shunt=})")
 
-        load_columns = ["I","PL","QL","IP","IQ","YP","YQ","SCALE","INTRPT","DGENP","DGENQ","DGENF"]
+        load_columns = ["I","STAT","PL","QL","IP","IQ","YP","YQ","SCALE","INTRPT","DGENP","DGENQ","DGENF"]
         raw = pd.merge(bus,load[load_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
         raw = pd.merge(raw,shunt,how='left',left_on="ID",right_on="I").fillna(0.0)
 
-        PD = raw["PL"] + raw["IP"] + raw["YP"]
-        QD = raw["QL"] + raw["IQ"] - raw["YQ"]
+        print(raw)
+        PD = ( raw["PL"] + raw["IP"] + raw["YP"] ) * raw["STAT"]
+        QD = ( raw["QL"] + raw["IQ"] - raw["YQ"] ) * raw["STAT"]
         busdata = self.model.bus(
             BUS_I = raw["ID"],
             BUS_TYPE = raw["BUSTYPE"],

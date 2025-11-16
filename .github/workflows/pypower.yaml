@@ -28,3 +28,14 @@ jobs:
       run: |
         cd pypower
         pylint --fail-under=9 *.py
+
+    - name: Run tests
+      run: |
+        cd pypower
+        python3 tests.py
+
+    - name: Test results
+      uses: actions/download-artifacts@v4
+      with:
+        name: PyPOWER test results
+        path: pypower/tests

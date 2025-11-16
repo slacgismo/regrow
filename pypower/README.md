@@ -13,6 +13,18 @@ To create and run the `pypower` powerflow solution of a case, do the following:
     from pypower.runpf import runpf
     runpf(case)
 
+There are four options available to the case builder `wecc240()` to modify the original PSS/E model loaded by default:
+
+- `wecc240(options=["SCHEDULING"])` imports the scheduling data in `WECC240_2018_Generation_schedule.xlsx`.
+
+- `wecc240(options=["HIFLD"])` imports the generation fleet in the `powerflow.csv.zip` file.
+
+- `wecc240(options=["LOADS"])` imports the load model from NREL ResSTOCK and ComSTOCK.
+
+- `wecc240(options=["RENEWABLES"])` imports the renewables generation from the NREL REGROW S3 bucket.
+
+Note that using the `HIFLD` option will overwrite any generation data imported from the `SCHEDULING` option.
+
 See [rwl/PYPOWER on GitHub](https://github.com/rwl/PYPOWER) for details on running PyPower cases.
 
 # WECC240 Model Preparation

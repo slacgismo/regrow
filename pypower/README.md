@@ -23,7 +23,11 @@ There are four options available to the case builder `wecc240()` to modify the o
 
 - `wecc240(options=["RENEWABLES"])` imports the renewables generation from the NREL REGROW S3 bucket.
 
-Note that using the `HIFLD` option will overwrite any generation data imported from the `SCHEDULING` option.
+To load the comprehensive REGROW model, use the following:
+
+    case = wecc240(options=[HIFLD","LOADS","RENEWABLES"])
+
+Note that using the `HIFLD` option overwrites all generation data imported from the `SCHEDULING` option.
 
 See [rwl/PYPOWER on GitHub](https://github.com/rwl/PYPOWER) for details on running PyPower cases.
 

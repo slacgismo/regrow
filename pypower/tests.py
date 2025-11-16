@@ -37,7 +37,7 @@ def plot(basecase:dict,
     #
     # Plot voltage errors by bus
     #
-    plt.figure(figsize=(40,20))
+    plt.figure(figsize=(44,28))
 
     plt.subplot(2,1,1)
     plt.plot(bus_i,basecase["bus"][:,bus.VM],label="Base case")
@@ -56,6 +56,7 @@ def plot(basecase:dict,
     plt.xticks(rotation=90)
     plt.legend()
 
+    plt.suptitle(f"{os.path.basename(prefix).replace('_',' ').title()} Voltage")
     plt.savefig(f"{prefix}voltage.png")
 
     plt.close()
@@ -89,10 +90,13 @@ def plot(basecase:dict,
             legend=False,
             xlabel="Bus rank")
 
+    plt.suptitle(f"{os.path.basename(prefix).replace('_',' ').title()} Voltage Errors")
     plt.savefig(f"{prefix}voltage_errors.png")
 
+
+
 #
-# Verify the WECC 240 model solves correctly
+# Verify the original WECC 240 model
 #
 
 # load the model
@@ -109,12 +113,16 @@ original_solution,status = runpf(original,ppoption(VERBOSE=0,OUT_ALL=0))
 if status == 0:
     print("ERROR [wecc240]: original case powerflow failed (see wecc240_original.py)")
     errors += 1
+else:
+    print("Original WECC240 powerflow solved ok.",flush=True)
 
 # solve the original model DCOPF
 dcopf = rundcopf(original,ppoption(VERBOSE=0,OUT_ALL=0))
 if not dcopf["success"]:
     print("ERROR [wecc240]: original case dcopf failed (see wecc240_original.py)")
     errors += 1
+else:
+    print("Original WECC240 DC OPF solved ok.",flush=True)
 
 # solve the DCOPF powerflow
 PPModel("wecc240").set_case(dcopf).save_case(open("tests/wecc240_original_dcopf.py","w"))
@@ -122,16 +130,51 @@ dcopf_solution,status = runpf(dcopf,ppoption(VERBOSE=0,OUT_ALL=0))
 if status == 0:
     print("ERROR [wecc240]: original case dcopf powerflow failed (see wecc240_original_dcopf.py)")
     errors += 1
-
-if errors == 0:
-    print("WECC240 powerflow solved ok.")
 else:
+    print("WECC240 DC OPF powerflow solved ok.",flush=True)
+
+
+
+#
+# Verify the scheduling WECC 240 model
+#
+scheduling = wecc240(options=["SCHEDULING"])
+PPModel("wecc240").set_case(original).save_case(open("tests/wecc240_scheduling.py","w"))
+
+# solve the schedulig powerflow from PSSE
+scheduling_solution,status = runpf(scheduling,ppoption(VERBOSE=0,OUT_ALL=0))
+if status == 0:
+    print("ERROR [wecc240]: scheduling case powerflow failed (see wecc240_original.py)")
+    errors += 1
+else:
+    print("Scheduling WECC240 powerflow solved ok.",flush=True)
+
+# solve the schedule model DCOPF
+dcopf = rundcopf(scheduling,ppoption(VERBOSE=0,OUT_ALL=0))
+if not dcopf["success"]:
+    print("ERROR [wecc240]: scheduling case dcopf failed (see wecc240_original.py)")
+    errors += 1
+else:
+    print("Schedule WECC240 DC OPF solved ok.",flush=True)
+
+
+#
+# Plot results
+#
+print("Saving comparison plots to tests folder",end="...",flush=True)
+
+plot(basecase=original,testcase=original_solution,prefix="tests/original_")
+plot(basecase=original,testcase=original_solution,prefix="tests/original_")
+
+plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
+plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
+
+print("done")
+
+
+
+
+if errors > 0:
     print(f"WECC240 failed {errors} test.")
-
-plot(basecase=original,testcase=original_solution,prefix="tests/original_")
-plot(basecase=original,testcase=original_solution,prefix="tests/original_")
-
-plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
-plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
 
 exit(errors)

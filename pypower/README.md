@@ -1,3 +1,31 @@
+# WECC240 Model Preparation
+
+The WECC240 model in PyPower is prepared using the following high-level data flow:
+
+```mermaid
+flowchart LR
+
+    subgraph sources
+        wecc249_psse.raw --> psse.py
+        WECC240_2018_Generation_schedule.xlsx --> scheduling.py
+        powerplants.csv.zip --> hifld.py
+        ResStock --> loads.py
+        ComStock --> loads.py
+    end
+
+    subgraph modules
+        direction TB
+        psse.py --> psse2pp.py
+        psse2pp.py --> ppmodel.py
+        scheduling.py  --> ppmodel.py
+        hifld.py --> ppmodel.py
+        loads.py --> ppmodel.py
+        renewables.py --> ppmodel.py
+        ppmodel.py
+    end
+
+    ppmodel.py --> wecc240.py
+```
 # PSS/E to PyPower Model Conversion
 
 The data flow is as follows:
@@ -128,26 +156,66 @@ Three solver tests are performed on the resulting model:
 - DC Optimal Powerflow (rundcopf)
 - AC Optimal Powerflow (runopf)
 
+## Modeling Options
+
+External data can be included in the WECC240 model using the `options:list` keyword when calling the `wecc240()` method.  The following options are available:
+
+#### `SCHEDULING`
+
+Include the `SCHEDULING` option to update the case using the generation cost data from `WECC240_1018_Generation_schedule.xlsx` file extracted manually into the `wecc240_schedule_*.csv` files, which provide generator, line, and storage scheduling data.
+
+The scheduling data is prepared and used to update cases as follows:
+
+```mermaid
+flowchart TD
+
+    WECC240_1018_Generation_schedule.xlsx --> manual_copy
+    manual_copy --> wecc240_scheduling_generator.csv
+    manual_copy --> wecc240_scheduling_line.csv
+    manual_copy --> wecc240_scheduling_storage.csv
+
+    wecc240_scheduling_generator.csv --> Schedule
+    wecc240_scheduling_line.csv --> Schedule
+    wecc240_scheduling_storage.csv --> Schedule
+
+    subgraph scheduling.py
+        Schedule --> Schedule.update_case
+        Schedule.update_case
+    end
+
+    Schedule.update_case --> wecc240.case
+```
+
+Note that this option is mutually exclusive with the `HIFLD` option.
+
+#### `HILFD` (future work)
+
+Include the `HIFLD` option to replace the generation fleet with the generators in the `powerplants.csv.zip` file.
+
+#### `LOADS` (future work)
+
+Include the `LOADS` option to replace the loads with the load model from NREL RESSTOCK and COMSTOCK loads. Note that using the load model requires the `datetime` option be specified.
+
+#### `RENEWABLES` (future work)
+
+Include the `RENEWABLES` optio to replace the renewable generation fleet with the NREL REGROW generation fleet.
+
 ## Result Check
 
-The results of the powerflow solver as compared to the original input from PSS/E using the `voltage.png` and `voltage_errors.png`.  The former does a side-by-side comparison of each bus and the latter sorts the bus voltage and angle errors in descending order.
-
-Note that it is not certain whether the PSS/E are the solution, but it seems likely is it.
+The results of the powerflow solver as compared to the original input from PSS/E using the `voltage.png` and `voltage_errors.png`.  The former does a side-by-side comparison of each bus and the latter sorts the bus voltage and angle errors in descending order. This comparison is done for the AC powerflow of the original model compared to the original model (`tests/original_voltage_*.png`) and AC powerflow solution of the DC OPF solution compared to the original model (`tests/original_dcopf_voltage_*.png)`.
 
 ```mermaid
 flowchart LR
 
     wecc240.case --> runpf
     wecc240.case --> rundcopf
-    wecc240.case --> runopf
 
     subgraph test.py
         
         runpf
-        rundcopf
-        runopf
+        rundcopf --> runpf
 
     end
-    runpf --> voltage.png
-    runpf --> voltage_errors.png
+    runpf --> *_voltage.png
+    runpf --> *_voltage_errors.png
 ```

@@ -185,7 +185,7 @@ def {self.name}():
 
         if "gencost" in items:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = self.case["gencost"][:,idx_cost.NCOST].max()
+            ncost = (self.case["gencost"][:,idx_cost.NCOST] * (1-idx_cost.model)).max()
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
             gencost.index.name="GENCOST"
@@ -200,14 +200,15 @@ def {self.name}():
 
         if "dclinecost" in items and "dclinecost" in self.case and len(self.case["dclinecost"]) > 0:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = self.case["dclinecost"][:,idx_cost.NCOST].max()
+            ncost = (self.case["dclinecost"][:,idx_cost.NCOST] * (1-idx_cost.model)).max()
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
             dclinecost.index.name="DCLINECOST"
             print(dclinecost,file=file)
 
-
-    def bus(self,**kwargs):
+    bus_optional = ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]
+    @classmethod
+    def bus(cls,**kwargs):
         """Create bus data
 
         Arguments:
@@ -229,12 +230,14 @@ def {self.name}():
         for item in header:
             if item in kwargs:
                 result.append(kwargs[item])
-            elif item not in ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]:
+            elif item not in cls.bus_optional:
                 raise ValueError(f"missing {item} data")
 
         return np.array(result)
 
-    def branch(self,**kwargs):
+    branch_optional = ["PF","PT","QF","QT","MU_SF","MU_ST","MU_ANGMIN","MU_ANGMAX"]
+    @classmethod
+    def branch(cls,**kwargs):
         """Create branch data
 
         Arguments:
@@ -255,12 +258,14 @@ def {self.name}():
         for item in header:
             if item in kwargs:
                 result.append(kwargs[item])
-            elif item not in ["PF","PT","QF","QT","MU_SF","MU_ST","MU_ANGMIN","MU_ANGMAX"]:
+            elif item not in cls.branch_optional:
                 raise ValueError(f"missing {item} data")
 
         return np.array(result)
 
-    def gen(self,**kwargs):
+    gen_optional = ["MU_PMAX","MU_PMIN","MU_QMAX","MU_QMIN"]
+    @classmethod
+    def gen(cls,**kwargs):
         """Create gen data
 
         Arguments:
@@ -269,19 +274,20 @@ def {self.name}():
 
         Returns:
 
-        np.array: bus data
+        np.array: gen data
         """
 
         result = []
         for item in get_header(idx_gen):
             if item in kwargs:
                 result.append(kwargs[item])
-            elif item not in ["MU_PMAX","MU_PMIN","MU_QMAX","MU_QMIN"]:
+            elif item not in cls.gen_optional:
                 raise ValueError(f"missing {item} data")
 
         return np.array(result)
 
-    def gencost(self,**kwargs):
+    @classmethod
+    def gencost(cls,**kwargs):
         """Create gencost data
 
         Arguments:
@@ -290,7 +296,7 @@ def {self.name}():
 
         Returns:
 
-        np.array: bus data
+        np.array: cost data
         """
 
         result = []
@@ -306,32 +312,39 @@ def {self.name}():
 
         return np.array(result)
 
-    def dcline(self,**kwargs):
+    dcline_optional = ["MU_PMIN","MU_PMAX","MU_QMINF","MU_QMAXF","MU_QMINT","MU_QMAXT"]
+    @classmethod
+    def dcline(cls,**kwargs):
         """Create dcline data
     
         Arguments:
 
+        kwargs: dcline data (see pypower.idx_dcline for details)
 
+        Returns:
+
+        np.array: dcline data
         """
         result = []
         for item in get_header(idx_dcline):
             if item in kwargs:
                 result.append(kwargs[item])
-            elif item not in ["MU_PMIN","MU_PMAX","MU_QMINF","MU_QMAXF","MU_QMINT","MU_QMAXT"]:
+            elif item not in cls.dcline_optional:
                 raise ValueError(f"missing {item} data")
 
         return np.array(result)
 
-    def dclinecost(self,**kwargs):
+    @classmethod
+    def dclinecost(cls,**kwargs):
         """Create dclinecost data
 
         Arguments:
 
-        kwargs: generation data (see pypower.idx_gen for details)
+        kwargs: dclinecost data (see pypower.idx_cost for details)
 
         Returns:
 
-        np.array: bus data
+        np.array: cost data
         """
 
         result = []

@@ -35,7 +35,7 @@ jobs:
         python3 tests.py
 
     - name: Test results
-      uses: actions/download-artifacts@v4
+      uses: actions/download-artifact@v4
       with:
         name: PyPOWER test results
         path: pypower/tests

@@ -35,6 +35,7 @@ jobs:
         python3 tests.py
 
     - name: Test results
+      if: always
       uses: actions/download-artifact@v4
       with:
         name: PyPOWER test results

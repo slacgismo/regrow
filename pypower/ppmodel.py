@@ -189,14 +189,6 @@ def {self.name}():
             gen.index.name="GEN"
             print(gen,file=file)
 
-        if "gencost" in items:
-            cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = (self.case["gencost"][:,idx_cost.NCOST] * (1-idx_cost.MODEL)).max()
-            cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
-            gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
-            gencost.index.name="GENCOST"
-            print(gencost,file=file)
-
         if "dcline" in items and "dcline" in self.case and len(self.case["dcline"]) > 0:
             dcline_cols = get_header(idx_brch)
             dcline = pd.DataFrame(data=self.case["dcline"],
@@ -204,9 +196,18 @@ def {self.name}():
             dcline.index.name="DCLINE"
             print(dcline,file=file)
 
+        if "gencost" in items:
+            cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
+            ncost = self.case["gencost"].shape[1] - len(cost_cols)
+            print(ncost)
+            cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
+            gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
+            gencost.index.name="GENCOST"
+            print(gencost,file=file)
+
         if "dclinecost" in items and "dclinecost" in self.case and len(self.case["dclinecost"]) > 0:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
-            ncost = (self.case["dclinecost"][:,idx_cost.NCOST] * (1-idx_cost.MODEL)).max()
+            ncost = self.case["dclinecost"].shape[1] - len(cost_cols)
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
             dclinecost.index.name="DCLINECOST"

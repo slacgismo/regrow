@@ -43,6 +43,8 @@ class Schedule:
         """
         data = self.generator
         mvabase = case["baseMVA"]
+
+        # update the gen data
         case["gen"] = PPModel.gen(
             GEN_BUS = data.busname,
             PG = data.InitPow / mvabase,
@@ -66,11 +68,13 @@ class Schedule:
             RAMP_Q = np.zeros(len(data)),
             APF = np.zeros(len(data)),
             ).T
+
+        # update the gencost data
         case["gencost"] = PPModel.gencost(
             MODEL = np.ones(len(data)),
             STARTUP = data.SUCost,
             SHUTDOWN = data.SDCost,
-            NCOST = np.full(len(data),8),
+            NCOST = np.full(len(data),4),
             COST = np.array([
                 data.MW1.tolist(),
                 data.Cost1.tolist(),
@@ -83,6 +87,28 @@ class Schedule:
                 ]).T
             ).T
 
+        # # fix cost data so arrays are the same size (required by pypower)
+        # if "dclinecost" in case:
+
+        #     # dclinecost is too short
+        #     diff = case["gencost"].shape[1] - case["dclinecost"].shape[1]
+        #     if diff > 0:
+
+        #         # add columns to dclinecost
+        #         case["dclinecost"] = np.hstack([
+        #             case["dclinecost"],
+        #             np.zeros((case["dclinecost"].shape[0],case["dclinecost"].shape[1]-diff)),
+        #             ])
+
+        #     # gencost is too short
+        #     elif diff < 0:
+
+        #         # need to extend gencost
+        #         case["gencost"] = np.hstack([
+        #             case["gencost"],
+        #             np.zeros((case["gencost"].shape[0],case["gencost"].shape[1]+diff)),
+        #             ])
+
         return case
 
 if __name__ == "__main__":
@@ -90,6 +116,7 @@ if __name__ == "__main__":
     # pylint: disable=cyclic-import
     from wecc240 import wecc240
     from pypower.runpf import runpf
+    from pypower.rundcopf import rundcopf
 
     casedata = wecc240(options=["SCHEDULING"])
 
@@ -97,6 +124,5 @@ if __name__ == "__main__":
     pd.options.display.max_rows = None
     pd.options.display.max_columns = None
 
-    runpf(casedata)
-
-    PPModel("wecc240").set_case(casedata).print()
+    assert runpf(casedata)[0]["success"], "runpf failed"
+    assert rundcopf(casedata)["success"], "runopf failed"

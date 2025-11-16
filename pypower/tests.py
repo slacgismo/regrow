@@ -116,7 +116,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
 # solve the original powerflow from PSSE
 original_solution,status = runpf(original,ppoption(VERBOSE=0,OUT_ALL=0))
 if status == 0:
-    print("ERROR [wecc240]: original case powerflow failed (see wecc240_original.py)")
+    print("ERROR [wecc240]: original case powerflow failed (see tests/wecc240_original.py)")
     errors += 1
 else:
     print("Original WECC240 powerflow solved ok.",flush=True)
@@ -124,7 +124,7 @@ else:
 # solve the original model DCOPF
 dcopf = rundcopf(original,ppoption(VERBOSE=0,OUT_ALL=0))
 if not dcopf["success"]:
-    print("ERROR [wecc240]: original case dcopf failed (see wecc240_original.py)")
+    print("ERROR [wecc240]: original case dcopf failed (see tests/wecc240_original.py)")
     errors += 1
 else:
     print("Original WECC240 DC OPF solved ok.",flush=True)
@@ -134,7 +134,7 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(dcopf).save_case(fh)
 dcopf_solution,status = runpf(dcopf,ppoption(VERBOSE=0,OUT_ALL=0))
 if status == 0:
-    print("ERROR [wecc240]: original case dcopf powerflow failed (see wecc240_original_dcopf.py)")
+    print("ERROR [wecc240]: original case dcopf powerflow failed (see tests/wecc240_original_dcopf.py)")
     errors += 1
 else:
     print("WECC240 DC OPF powerflow solved ok.",flush=True)
@@ -151,7 +151,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
 # solve the schedulig powerflow from PSSE
 scheduling_solution,status = runpf(scheduling,ppoption(VERBOSE=0,OUT_ALL=0))
 if status == 0:
-    print("ERROR [wecc240]: scheduling case powerflow failed (see wecc240_original.py)")
+    print("ERROR [wecc240]: scheduling case powerflow failed (see tests/wecc240_scheduling.py)")
     errors += 1
 else:
     print("Scheduling WECC240 powerflow solved ok.",flush=True)

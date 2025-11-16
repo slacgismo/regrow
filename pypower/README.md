@@ -259,3 +259,7 @@ flowchart LR
 You can check the code using the `pylint` target of the `Makefile`, e.g.,
 
     make pylint
+
+## GitHub Actions
+
+When a code update is pushed, GitHub actions workflow `pypower.yaml` will perform the `pylint` code check with a failure threshold of 9.0.

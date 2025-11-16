@@ -36,20 +36,7 @@ flowchart LR
         psse2pp --> ppmodel
     end
 
-    ppmodel --> case
-    case --> runpf
-    case --> rundcopf
-    case --> runopf
-
-    subgraph pypower
-        runpf
-        rundcopf
-        runopf
-    end
-
-    runpf --> results
-    rundcopf --> results
-    runopf --> results
+    ppmodel --> wecc240.case
 ```
 
 ## Methodology
@@ -140,3 +127,27 @@ Three solver tests are performed on the resulting model:
 - Powerflow (runpf)
 - DC Optimal Powerflow (rundcopf)
 - AC Optimal Powerflow (runopf)
+
+## Result Check
+
+The results of the powerflow solver as compared to the original input from PSS/E using the `voltage.png` and `voltage_errors.png`.  The former does a side-by-side comparison of each bus and the latter sorts the bus voltage and angle errors in descending order.
+
+Note that it is not certain whether the PSS/E are the solution, but it seems likely is it.
+
+```mermaid
+flowchart LR
+
+    wecc240.case --> runpf
+    wecc240.case --> rundcopf
+    wecc240.case --> runopf
+
+    subgraph test.py
+        
+        runpf
+        rundcopf
+        runopf
+
+    end
+    runpf --> voltage.png
+    runpf --> voltage_errors.png
+```

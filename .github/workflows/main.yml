@@ -24,3 +24,22 @@ jobs:
       with:
         name: Results
         path: model/
+
+  pypower:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup python
+      uses: actions/setup-python@v4
+    
+    - name: Install requirements
+      run: |
+        cd pypower
+        python3 -m pip install --upgrade pip -r requirements.txt
+
+    - name: Analyse code
+      run: |
+        cd pypower
+        pylint *.py

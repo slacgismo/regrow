@@ -28,7 +28,7 @@ flowchart LR
         powerplants.csv.zip --> hifld.py
         ResStock --> loads.py
         ComStock --> loads.py
-        NREL --> renewables.py
+        s3:REGROW --> renewables.py
     end
 
     subgraph modules

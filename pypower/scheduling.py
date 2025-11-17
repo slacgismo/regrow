@@ -93,16 +93,18 @@ class Schedule:
             MODEL = np.ones(len(data),dtype=int),
             STARTUP = data.SUCost,
             SHUTDOWN = data.SDCost,
-            NCOST = np.array(ncost).astype(int),
+            NCOST = np.array(ncost).astype(int) + 1,
             COST = np.array([
-                data.Cost1.tolist(),
+                np.zeros(len(data)),
+                np.zeros(len(data)),
                 data.MW1.tolist(),
-                data.Cost2.tolist(),
+                data.Cost1.tolist(),
                 data.MW2.tolist(),
-                data.Cost3.tolist(),
+                data.Cost2.tolist(),
                 data.MW3.tolist(),
-                data.Cost4.tolist(),
+                data.Cost3.tolist(),
                 data.MW4.tolist(),
+                data.Cost4.tolist(),
                 ]).T
             ).T
 
@@ -126,13 +128,16 @@ if __name__ == "__main__":
     from wecc240 import wecc240
     from pypower.runpf import runpf
     from pypower.rundcopf import rundcopf
+    from pypower.ppoption import ppoption
 
     casedata = wecc240(options=["SCHEDULING"])
 
     pd.options.display.width = None
     pd.options.display.max_rows = None
     pd.options.display.max_columns = None
-    PPModel("wecc240").set_case(casedata).print()
+    with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
+        PPModel("wecc240").set_case(casedata).save_case(fh)
 
-    assert runpf(casedata)[0]["success"], "runpf failed"
-    assert rundcopf(casedata)["success"], "runopf failed"
+    options = ppoption(VERBOSE=0,OUT_ALL=0)
+    assert runpf(casedata,options)[0]["success"], "runpf failed"
+    assert rundcopf(casedata,options)["success"], "runopf failed"

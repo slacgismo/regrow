@@ -1,5 +1,5 @@
 pandas
 matplotlib
-pypower
+pypower>=5.1.20
 scipy
 git+https://github.com/eudoxys/geohash

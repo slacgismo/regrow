@@ -183,7 +183,7 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
 #
 scheduling = wecc240(options=["SCHEDULING"])
 with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
-    PPModel("wecc240").set_case(original).save_case(fh)
+    PPModel("wecc240").set_case(scheduling).save_case(fh)
 
     # solve the schedulig powerflow from PSSE
     scheduling_solution,status,xtime = time_call(runpf,scheduling,options)

@@ -76,7 +76,7 @@ class PSSE2PP:
             ]
         raw = pd.merge(bus,load[load_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
 
-        shunt_columns = ["I","BINIT","ST","N1"]
+        shunt_columns = ["I","BINIT","ST"]
         raw = pd.merge(raw,shunt[shunt_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
 
         p = ( raw["PL"] + raw["IP"] + raw["YP"] ) * raw["STAT"]

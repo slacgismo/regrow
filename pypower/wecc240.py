@@ -47,7 +47,7 @@ def wecc240(
     """
 
     # load the model from PSSE
-    model = PSSE2PP(PSSE("wecc240")).model
+    model = PSSE2PP(PSSE("wecc240/","wecc240_psse.raw")).model
 
     # default is no options
     if options is None:
@@ -61,7 +61,7 @@ def wecc240(
     # process options
     if "SCHEDULING" in options:
 
-        schedule = Schedule("wecc240_scheduling_")
+        schedule = Schedule("wecc240/scheduling_")
         schedule.update_case(model.case)
 
     if "HIFLD" in options:

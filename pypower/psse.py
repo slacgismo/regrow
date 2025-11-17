@@ -28,18 +28,21 @@ class PSSE:
 
     def __init__(self,
         prefix:str,
+        raw:str,
         ):
         """Create PSSE model accessor
 
         Arguments:
 
-        prefix: segment filename prefix, e.g. "wecc240"
+        prefix: segment filename prefix, e.g. "wecc240/"
+
+        raw: PSS/E raw filename
         """
 
         # read and check the model config data (first row, second and third columns)
         self.config = dict(zip(
             ["mvabase","version"],
-            pd.read_csv(f"{prefix}_psse.raw",nrows=1,usecols=range(1,3),header=None).loc[0].tolist()
+            pd.read_csv(raw,nrows=1,usecols=range(1,3),header=None).loc[0].tolist()
             ))
         assert self.config["version"] == 34, f"PSS/E version {self.config['version']} not"
         assert self.config["mvabase"] > 0, "PSS/E MVA base must be positive"
@@ -48,41 +51,41 @@ class PSSE:
         self.name = prefix
 
         # load the segment files
-        self.area = self.read(f"{prefix}_area.csv",
+        self.area = self.read(f"{prefix}area.csv",
             converters={
                 "ARNAME": str,
             })
-        self.bus = self.read(f"{prefix}_bus.csv",
+        self.bus = self.read(f"{prefix}bus.csv",
             converters={
                 "NAME": str,
                 "BUSTYPE": float,
             })
-        self.branch = self.read(f"{prefix}_branch.csv",
+        self.branch = self.read(f"{prefix}branch.csv",
             converters={
                 "NAME": str,
             })
-        self.gen = self.read(f"{prefix}_gen.csv")
-        self.load = self.read(f"{prefix}_load.csv")
-        self.shunt = self.read(f"{prefix}_shunt.csv",
+        self.gen = self.read(f"{prefix}gen.csv")
+        self.load = self.read(f"{prefix}load.csv")
+        self.shunt = self.read(f"{prefix}shunt.csv",
             converters={
                 "RMIDNT": str,
             })
-        self.xform = self.read(f"{prefix}_xform.csv",
+        self.xform = self.read(f"{prefix}xform.csv",
             converters={
                 "NAME": str,
                 "VECGRP": str,
             })
-        self.zone = self.read(f"{prefix}_zone.csv",
+        self.zone = self.read(f"{prefix}zone.csv",
             converters={
                 "ZONAME": str,
             })
-        self.dcline = self.read(f"{prefix}_dcline.csv",
+        self.dcline = self.read(f"{prefix}dcline.csv",
             converters={"NAME":str})
 
-        self.gis = self.read(f"{prefix}_gis.csv")
+        self.gis = self.read(f"{prefix}gis.csv")
         self.gis["GEOHASH"] = [geohash(x,y) for x,y in zip(self.gis.LAT,self.gis.LON)]
 
-        self.scheduling = {x:self.read(f"{prefix}_scheduling_{x}.csv")
+        self.scheduling = {x:self.read(f"{prefix}scheduling_{x}.csv")
             for x in ["generator","line","storage"]}
 
     # read the PSSE data tables
@@ -114,4 +117,4 @@ class PSSE:
 
 if __name__ == "__main__":
 
-    PSSE("wecc240")
+    PSSE("wecc240/","wecc240_psse.raw")

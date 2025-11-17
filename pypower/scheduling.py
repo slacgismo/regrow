@@ -27,17 +27,14 @@ class Schedule:
 
     # pylint: disable=too-few-public-methods
 
-    def __init__(self,prefix:str):
+    def __init__(self,
+        prefix:str,
+        ):
 
         # create default scheduling data
-        self.generator = None
-        self.line = None
-        self.storage = None
-
-        # read scheduling data from CSV files
-        for file in [x for x in os.listdir() if x.startswith(prefix) and x.endswith(".csv")]:
-            name = file[len(prefix):-len(".csv")]
-            setattr(self,name,pd.read_csv(file))
+        self.generator = pd.read_csv(f"{prefix}generator.csv")
+        self.line = pd.read_csv(f"{prefix}line.csv")
+        self.storage  = pd.read_csv(f"{prefix}storage.csv")
 
     def update_case(self,
         case:dict,

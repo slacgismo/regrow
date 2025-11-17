@@ -32,7 +32,7 @@ jobs:
     - name: Run tests
       run: |
         cd pypower
-        python3 tests.py
+        python3 tests.py || ( tar cfz test-results.tarz tests ; false )
         tar cfz test-results.tarz tests
 
     - name: Test results

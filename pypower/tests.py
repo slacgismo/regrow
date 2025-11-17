@@ -2,6 +2,7 @@
 
 import os
 import sys
+from time import time
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -17,7 +18,34 @@ from pypower import idx_bus as bus
 os.makedirs("tests",exist_ok=True)
 
 errors = 0
-options = ppoption(VERBOSE=0,OUT_ALL=1)
+options = ppoption(VERBOSE=0,OUT_ALL=0)
+
+def time_call(call,*args,**kwargs):
+    """Times a call with arguments
+
+    Arguments:
+
+    call: function or method to call
+
+    *args: position arguments to call
+
+    **kwargs: keyword arguments to call
+
+    Returns:
+
+    The return value depends on whether the call returns a singleton
+    value or a tuple.
+
+    *tuple, float: return values and execution time in seconds
+
+    value, float: return value and execution time in seconds
+    """
+    tic = time()
+    result = call(*args,**kwargs)
+    toc = time()
+    if isinstance(result,(tuple,list)):
+        return *result,toc-tic
+    return result,toc-tic
 
 def plot(basecase:dict,
     testcase:dict,
@@ -114,12 +142,12 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(original).save_case(fh)
 
     # solve the original powerflow from PSSE
-    original_solution,status = runpf(original,options)
+    original_solution,status,xtime = time_call(runpf,original,options)
     if status == 0:
         print(f"ERROR [wecc240]: original case powerflow failed (see {fh.name})")
         errors += 1
     else:
-        print("Original WECC240 powerflow solved ok.",flush=True)
+        print(f"Original WECC240 powerflow solved in {xtime:.3f} seconds.",flush=True)
 
     print("Saving comparison plots to tests folder",end="...",flush=True)
     plot(basecase=original,testcase=original_solution,prefix="tests/original_")
@@ -127,22 +155,22 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
     print("done")
 
     # solve the original model DCOPF
-    dcopf = rundcopf(original,options)
+    dcopf,xtime = time_call(rundcopf,original,options)
     if not dcopf["success"]:
         print(f"ERROR [wecc240]: original case dcopf failed (see {fh.name})")
         errors += 1
     else:
-        print("Original WECC240 DC OPF solved ok.",flush=True)
+        print(f"Original WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
 
 # solve the DCOPF powerflow
 with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(dcopf).save_case(fh)
-    dcopf_solution,status = runpf(dcopf,options)
+    dcopf_solution,status,xtime = time_call(runpf,dcopf,options)
     if status == 0:
         print(f"ERROR [wecc240]: original case dcopf powerflow failed (see {fh.name})")
         errors += 1
     else:
-        print("WECC240 DC OPF powerflow solved ok.",flush=True)
+        print(f"WECC240 DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
 
     print("Saving comparison plots to tests folder",end="...",flush=True)
     plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
@@ -158,12 +186,12 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(original).save_case(fh)
 
     # solve the schedulig powerflow from PSSE
-    scheduling_solution,status = runpf(scheduling,options)
+    scheduling_solution,status,xtime = time_call(runpf,scheduling,options)
     if status == 0:
         print(f"ERROR [wecc240]: scheduling case powerflow failed (see {fh.name})")
         errors += 1
     else:
-        print("Scheduling WECC240 powerflow solved ok.",flush=True)
+        print(f"Scheduling WECC240 powerflow solved in {xtime:.3f} seconds",flush=True)
 
     # solve the schedule model DCOPF
     dcopf = rundcopf(scheduling,options)

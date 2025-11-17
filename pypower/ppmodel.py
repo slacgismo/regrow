@@ -2,7 +2,14 @@
 
 This module defined the PyPower model accessor. Use the bus, branch, gen,
 gencost, dcline, and dclinecost methods to set the data arrays in the case.
-Use the 'case' member to access the case data.
+Use the 'case' member to access the pypower case data.
+
+The `save_case()` method is used to export a PyPower case file. 
+
+The `save_kml()` method is used to export a Google Earth KML file. 
+
+The `print()` method is used to output the case data in human readable form
+using a Pandas data frame.
 
 Example:
 
@@ -214,7 +221,7 @@ def {self.name}():
             dclinecost.index.name="DCLINECOST"
             print(dclinecost,file=file)
 
-    def to_kml(self,filename:str):
+    def save_kml(self,filename:str):
         """Generate KML output
 
         Arguments:

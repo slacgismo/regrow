@@ -8,6 +8,9 @@ files with the "psse", replaced by "area", "branch", "bus", "gen", "load", "shun
 "xform", and "zone", which are all required. Fortunately, this is a one-time
  task and it can be automated (someday) if necessary.
 
+The class also reads all the auxiliary data for GIS, scheduling, HIFLD, load
+modeling, and renewables that can be used to assemble a PyPower case.
+
 Example:
 
     from psse import PSSE
@@ -82,7 +85,6 @@ class PSSE:
         self.scheduling = {x:self.read(f"{prefix}_scheduling_{x}.csv")
             for x in ["generator","line","storage"]}
 
-
     # read the PSSE data tables
     @classmethod
     def read(cls,
@@ -109,3 +111,7 @@ class PSSE:
             **kwargs).fillna(0)
 
         return data
+
+if __name__ == "__main__":
+
+    PSSE("wecc240")

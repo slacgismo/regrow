@@ -1,4 +1,20 @@
-"""Scheduling data accessor"""
+"""Scheduling data accessor
+
+This class reads data from the three scheduling data files
+
+- wecc240_scheduling_generator.csv
+- wecc240_scheduling_line.csv
+- wecc240_scheduling_storage.csv
+
+These files are manually copied from WECC240_2018_Generation_scheduling.xlsx
+and may be edited.
+
+The update_case() method is used to modify a PyPower can to include the data
+loaded from scheduling files. Existing generation data is overwritten.
+Existing branch status, reactance, and flow limit data is modified using the
+line scheduling data. Bus loads are increased using the storage scheduling
+data when storage is charging. Otherwise storage is added to generation.
+"""
 
 import os
 import pandas as pd
@@ -71,7 +87,7 @@ class Schedule:
             ).T
 
         # update the gencost data
-        ncost = [sum([1 if n==0 or x[f"Cost{n+1}"] > 0 else 0 for n in range(4)])
+        ncost = [sum(1 if n==0 or x[f"Cost{n+1}"] > 0 else 0 for n in range(4))
             for _,x in data.iterrows()]
         case["gencost"] = PPModel.gencost(
             MODEL = np.ones(len(data),dtype=int),
@@ -98,11 +114,15 @@ class Schedule:
             elif row[idx_cost.MODEL] == idx_cost.POLYNOMIAL:
                 row[int(idx_cost.COST+ncost):] = 0
 
+        # update the branch data
+
+        # update the bus data
+
         return case
 
 if __name__ == "__main__":
 
-    # pylint: disable=cyclic-import
+    # pylint: disable=cyclic-import,ungrouped-imports
     from wecc240 import wecc240
     from pypower.runpf import runpf
     from pypower.rundcopf import rundcopf

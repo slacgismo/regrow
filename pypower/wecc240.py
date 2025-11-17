@@ -8,6 +8,16 @@ in PyPOWER, i.e.,
 
     from pypower.runpf import runpf
     runpf(case)
+
+Note that although the return value of the `wecc240()` method is a PyPower
+case, this script is not a PyPower case file.  Use the `save_case()` method
+of the PPModel class to save the case file, e.g.,
+
+    from ppmodel import PPModel
+    PPModel("wecc240").set_case(case).save_case("my_cases/wecc240.py")
+
+WARNING: Be careful not to overwrite this file when saving the case data
+returned by this module.
 """
 
 from datetime import datetime as dt

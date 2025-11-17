@@ -262,4 +262,4 @@ You can check the code using the `pylint` target of the `Makefile`, e.g.,
 
 ## GitHub Actions
 
-When a code update is pushed, GitHub actions workflow `pypower.yaml` will perform the `pylint` code check with a failure threshold of 9.0.
+When a code update is pushed, GitHub actions workflow `pypower.yaml` will perform the `pylint` code check with a failure threshold of 9.0. In addition, the `tests` folder is available as a downloadable artifact.

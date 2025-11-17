@@ -32,12 +32,12 @@ jobs:
     - name: Run tests
       run: |
         cd pypower
-        python3 tests.py || ( tar cfz test-results.tarz tests ; false )
-        tar cfz test-results.tarz tests
+        python3 tests.py || ( tar cfz ../pypower-tests.tarz tests ; false )
+        tar cfz ../pypower-tests.tarz tests
 
     - name: Test results
       if: always()
       uses: actions/download-artifact@v5
       with:
         name: pypower-tests
-        path: pypower/test-results.tarz
+        path: pypower-tests.tarz

@@ -38,5 +38,5 @@ jobs:
       if: always()
       uses: actions/download-artifact@v4
       with:
-        name: PyPOWER test results
+        name: pypower-tests
         path: pypower/tests

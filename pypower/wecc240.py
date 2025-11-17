@@ -61,7 +61,7 @@ def wecc240(
     # process options
     if "SCHEDULING" in options:
 
-        schedule = Schedule("wecc240/scheduling_")
+        schedule = Schedule("wecc240/scheduling/")
         schedule.update_case(model.case)
 
     if "HIFLD" in options:

@@ -45,12 +45,12 @@ The WECC240 model in PyPower is prepared using the following high-level data flo
 flowchart LR
 
     subgraph sources
-        wecc249_psse.raw --> psse.py
+        wecc240_psse.raw --> psse.py
         WECC240_2018_Generation_schedule.xlsx --> scheduling.py
         powerplants.csv.zip --> hifld.py
-        ResStock --> loads.py
-        ComStock --> loads.py
-        s3:REGROW --> renewables.py
+        NREL/ResStock --> loads.py
+        NREL/ComStock --> loads.py
+        aws/s3:REGROW --> renewables.py
     end
 
     subgraph modules
@@ -66,6 +66,7 @@ flowchart LR
 
     ppmodel.py --> wecc240.py
 ```
+
 # PSS/E to PyPower Model Conversion
 
 The data flow is as follows:
@@ -75,29 +76,30 @@ flowchart LR
     wecc240_psse.raw --> manual_copy
     wecc240_psse.raw --> psse
     
-    manual_copy --> wecc240_area.csv
-    manual_copy --> wecc240_branch.csv
-    manual_copy --> wecc240_bus.csv
-    manual_copy --> wecc240_gen.csv
-    manual_copy --> wecc240_load.csv
-    manual_copy --> wecc240_shunt.csv
-    manual_copy --> wecc240_xform.csv
-    manual_copy --> wecc240_zone.csv
+    manual_copy --> wecc240/area.csv
+    manual_copy --> wecc240/branch.csv
+    manual_copy --> wecc240/bus.csv
+    manual_copy --> wecc240/gen.csv
+    manual_copy --> wecc240/load.csv
+    manual_copy --> wecc240/shunt.csv
+    manual_copy --> wecc240/xform.csv
+    manual_copy --> wecc240/zone.csv
 
-    manual_create --> wecc240_dcline.csv
-    manual_create --> costs.csv
-
-    wecc240_area.csv --> psse
-    wecc240_branch.csv --> psse
-    wecc240_bus.csv --> psse
-    wecc240_gen.csv --> psse
-    wecc240_gis.csv --> psse
-    wecc240_load.csv --> psse
-    wecc240_shunt.csv --> psse
-    wecc240_xform.csv --> psse
-    wecc240_zone.csv --> psse
-    costs.csv --> psse2pp
-
+    manual_create --> wecc240/dcline.csv
+    manual_create --> wecc240/dclinecost.csv
+    
+    wecc240/area.csv --> psse
+    wecc240/branch.csv --> psse
+    wecc240/bus.csv --> psse
+    wecc240/dcline.csv --> psse
+    wecc240/dclinecost.csv --> psse
+    wecc240/gen.csv --> psse
+    wecc240/gis.csv --> psse
+    wecc240/load.csv --> psse
+    wecc240/shunt.csv --> psse
+    wecc240/xform.csv --> psse
+    wecc240/zone.csv --> psse
+    
     wecc240_dcline.csv --> psse
     subgraph wecc240.py
         psse --> psse2pp
@@ -161,9 +163,8 @@ flowchart LR
         pypower.dclinecost
     end
     costs.csv --> pypower.gencost
-    costs.csv --> pypower.dclinecost
-    wecc240_dcline.csv --> pypower.dclinecost
-    wecc240_dcline.csv --> pypower.dcline
+    wecc240/dcline.csv --> pypower.dclinecost
+    wecc240/dcline.csv --> pypower.dcline
 ```
 
 #### DC Lines
@@ -210,13 +211,13 @@ The scheduling data is prepared and used to update cases as follows:
 flowchart TD
 
     WECC240_1018_Generation_schedule.xlsx --> manual_copy
-    manual_copy --> wecc240_scheduling_generator.csv
-    manual_copy --> wecc240_scheduling_line.csv
-    manual_copy --> wecc240_scheduling_storage.csv
+    manual_copy --> wecc240/scheduling/generator.csv
+    manual_copy --> wecc240/scheduling/line.csv
+    manual_copy --> wecc240/scheduling/storage.csv
 
-    wecc240_scheduling_generator.csv --> Schedule
-    wecc240_scheduling_line.csv --> Schedule
-    wecc240_scheduling_storage.csv --> Schedule
+    wecc240/scheduling/generator.csv --> Schedule
+    wecc240/scheduling/line.csv --> Schedule
+    wecc240/scheduling/storage.csv --> Schedule
 
     subgraph scheduling.py
         Schedule --> Schedule.update_case

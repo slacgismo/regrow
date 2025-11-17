@@ -172,7 +172,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         errors += 1
     else:
         print("Schedule WECC240 DC OPF solved ok.",flush=True)
-        
+
 
 if errors > 0:
     print(f"WECC240 failed {errors} test.")

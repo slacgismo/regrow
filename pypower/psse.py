@@ -23,7 +23,9 @@ class PSSE:
 
     # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
-    def __init__(self,prefix:str):
+    def __init__(self,
+        prefix:str,
+        ):
         """Create PSSE model accessor
 
         Arguments:

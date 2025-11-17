@@ -18,7 +18,7 @@ import numpy as np
 
 from ppmodel import PPModel
 
-# read default costs data
+# read default costs data (used when no cost data is provided, e.g., from HIFLD)
 costs = pd.read_csv("costs.csv",index_col=0)
 
 class PSSE2PP:
@@ -48,6 +48,7 @@ class PSSE2PP:
         self.model.case["branch"] = self.branch(psse.branch,psse.xform)
         self.model.case["dcline"] = self.dcline(psse.dcline)
         self.model.case["dclinecost"] = self.dclinecost(psse.dcline)
+        self.model.case["gis"] = self.gis(psse.gis)
 
     def bus(self,
         bus:pd.DataFrame,
@@ -69,12 +70,14 @@ class PSSE2PP:
         np.array: PyPower bus data array
         """
 
-        load_columns = ["I","STAT",
-            "PL","QL","IP","IQ","YP","YQ","SCALE",
+        load_columns = ["I","STAT","SCALE",
+            "PL","QL","IP","IQ","YP","YQ",
             "INTRPT","DGENP","DGENQ","DGENF",
             ]
         raw = pd.merge(bus,load[load_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
-        raw = pd.merge(raw,shunt,how='left',left_on="ID",right_on="I").fillna(0.0)
+
+        shunt_columns = ["I","BINIT","ST","N1"]
+        raw = pd.merge(raw,shunt[shunt_columns],how='left',left_on="ID",right_on="I").fillna(0.0)
 
         p = ( raw["PL"] + raw["IP"] + raw["YP"] ) * raw["STAT"]
         q = ( raw["QL"] + raw["IQ"] - raw["YQ"] ) * raw["STAT"]
@@ -84,7 +87,7 @@ class PSSE2PP:
             PD = ( p * raw["SCALE"] - raw["DGENP"] ) * self.LOADSCALE / self.mvabase,
             QD = ( q * raw["SCALE"] - raw["DGENQ"] ) * self.LOADSCALE / self.mvabase,
             GS = np.zeros(len(raw)),
-            BS = ( raw["BINIT"] * raw["ST"] * raw["N1"] ) / self.mvabase,
+            BS = ( raw["BINIT"] * raw["ST"] ) / self.mvabase,
             BUS_AREA = raw["AREA"],
             VM = raw["VM"],
             VA = raw["VA"],
@@ -276,3 +279,20 @@ class PSSE2PP:
             )
 
         return np.array(costdata).T
+
+    def gis(self,
+        gis:pd.DataFrame,
+        ) -> list:
+        """Convert PSSE gis data to PyPower gis data
+
+        Arguments:
+
+        gis: gis dataframe from PSSE
+
+        Returns:
+
+        list: PyPower gis data
+        """
+
+        return gis.values
+

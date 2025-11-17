@@ -25,6 +25,8 @@ from pypower import idx_brch
 from pypower import idx_gen
 from pypower import idx_cost
 
+from kml import KML
+
 class idx_dcline:
     """Provide missing column index values that should be in pypower.idx_dcline"""
 
@@ -212,6 +214,11 @@ def {self.name}():
             dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
             dclinecost.index.name="DCLINECOST"
             print(dclinecost,file=file)
+
+    def to_kml(self,filename):
+
+        kml = KML(filename)
+        print(self.case["gis"])
 
     bus_optional = ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]
     @classmethod

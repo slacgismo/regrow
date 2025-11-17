@@ -4,6 +4,7 @@ import os
 import pandas as pd
 import numpy as np
 from ppmodel import PPModel
+from pypower import idx_cost
 
 class Schedule:
     """Scheduling data accessor class"""
@@ -70,44 +71,32 @@ class Schedule:
             ).T
 
         # update the gencost data
+        ncost = [sum([1 if n==0 or x[f"Cost{n+1}"] > 0 else 0 for n in range(4)])
+            for _,x in data.iterrows()]
         case["gencost"] = PPModel.gencost(
-            MODEL = np.ones(len(data)),
+            MODEL = np.ones(len(data),dtype=int),
             STARTUP = data.SUCost,
             SHUTDOWN = data.SDCost,
-            NCOST = np.full(len(data),4),
+            NCOST = np.array(ncost).astype(int),
             COST = np.array([
-                data.MW1.tolist(),
                 data.Cost1.tolist(),
-                data.MW2.tolist(),
+                data.MW1.tolist(),
                 data.Cost2.tolist(),
-                data.MW3.tolist(),
+                data.MW2.tolist(),
                 data.Cost3.tolist(),
-                data.MW4.tolist(),
+                data.MW3.tolist(),
                 data.Cost4.tolist(),
+                data.MW4.tolist(),
                 ]).T
             ).T
 
-        # # fix cost data so arrays are the same size (required by pypower)
-        # if "dclinecost" in case:
-
-        #     # dclinecost is too short
-        #     diff = case["gencost"].shape[1] - case["dclinecost"].shape[1]
-        #     if diff > 0:
-
-        #         # add columns to dclinecost
-        #         case["dclinecost"] = np.hstack([
-        #             case["dclinecost"],
-        #             np.zeros((case["dclinecost"].shape[0],case["dclinecost"].shape[1]-diff)),
-        #             ])
-
-        #     # gencost is too short
-        #     elif diff < 0:
-
-        #         # need to extend gencost
-        #         case["gencost"] = np.hstack([
-        #             case["gencost"],
-        #             np.zeros((case["gencost"].shape[0],case["gencost"].shape[1]+diff)),
-        #             ])
+        # clear the unused cost columns
+        for row in case["gencost"]:
+            ncost = row[idx_cost.NCOST]
+            if row[idx_cost.MODEL] == idx_cost.PW_LINEAR:
+                row[int(idx_cost.COST+ncost*2):] = 0
+            elif row[idx_cost.MODEL] == idx_cost.POLYNOMIAL:
+                row[int(idx_cost.COST+ncost):] = 0
 
         return case
 
@@ -123,6 +112,7 @@ if __name__ == "__main__":
     pd.options.display.width = None
     pd.options.display.max_rows = None
     pd.options.display.max_columns = None
+    PPModel("wecc240").set_case(casedata).print()
 
     assert runpf(casedata)[0]["success"], "runpf failed"
     assert rundcopf(casedata)["success"], "runopf failed"

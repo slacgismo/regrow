@@ -16,20 +16,16 @@ class KML:
             self.close()
 
     def set_linestyle(self,**kwargs):
-
-        pass
+        """Future work"""
 
     def set_markerstyle(self,**kwargs):
-
-        pass
+        """Future work"""
 
     def add_line(self,**kwargs):
-
-        pass
+        """Future work"""
 
     def add_marker(self,**kwargs):
-
-        pass
+        """Future work"""
 
     def close(self):
         """Close KML file"""
@@ -44,8 +40,8 @@ class KML:
 
             self.kmlfile = None
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    from ppmodel import PPModel
-    from wecc240 import wecc240
-    PPModel("wecc240").set_case(wecc240()).to_kml("tests/wecc240.kml")
+#     from ppmodel import PPModel
+#     from wecc240 import wecc240
+#     PPModel("wecc240").set_case(wecc240()).to_kml("tests/wecc240.kml")

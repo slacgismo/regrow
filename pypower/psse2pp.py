@@ -49,6 +49,7 @@ class PSSE2PP:
         self.model.case["dcline"] = self.dcline(psse.dcline)
         self.model.case["dclinecost"] = self.dclinecost(psse.dcline)
         self.model.case["gis"] = self.gis(psse.gis)
+        self.model.case["scheduling"] = self.scheduling(psse.scheduling)
 
     def bus(self,
         bus:pd.DataFrame,
@@ -296,3 +297,9 @@ class PSSE2PP:
 
         return gis.values
 
+    def scheduling(self,
+        schedule:dict,
+        ) -> list:
+        """Convert PSSE scheduling data to PyPower scheduling data"""
+
+        return {"future work"}

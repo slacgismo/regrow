@@ -79,6 +79,10 @@ class PSSE:
         self.gis = self.read(f"{prefix}_gis.csv")
         self.gis["GEOHASH"] = [geohash(x,y) for x,y in zip(self.gis.LAT,self.gis.LON)]
 
+        self.scheduling = {x:self.read(f"{prefix}_scheduling_{x}.csv")
+            for x in ["generator","line","storage"]}
+
+
     # read the PSSE data tables
     @classmethod
     def read(cls,

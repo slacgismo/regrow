@@ -201,7 +201,6 @@ def {self.name}():
         if "gencost" in items:
             cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
             ncost = self.case["gencost"].shape[1] - len(cost_cols)
-            print(ncost)
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
             gencost.index.name="GENCOST"
@@ -215,10 +214,16 @@ def {self.name}():
             dclinecost.index.name="DCLINECOST"
             print(dclinecost,file=file)
 
-    def to_kml(self,filename):
+    def to_kml(self,filename:str):
+        """Generate KML output
 
+        Arguments:
+
+        filename: KML filename of output
+        """
         kml = KML(filename)
         print(self.case["gis"])
+        raise NotImplementedError("future work")
 
     bus_optional = ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]
     @classmethod

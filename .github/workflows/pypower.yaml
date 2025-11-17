@@ -41,7 +41,7 @@ jobs:
 
     - name: Save test results
       if: always()
-      uses: actions/download-artifact@v5
+      uses: actions/upload-artifact@v5
       with:
         name: pypower-tests
         path: pypower-tests.tarz

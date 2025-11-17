@@ -15,19 +15,25 @@ To create and run the `pypower` powerflow solution of a case, do the following:
 
 There are four options available to the case builder `wecc240()` to modify the original PSS/E model loaded by default:
 
-- `wecc240(options=["SCHEDULING"])` imports the scheduling data in `WECC240_2018_Generation_schedule.xlsx`.
+- `wecc240(options=["SCHEDULING"])` imports the scheduling data in `WECC240_2018_Generation_schedule.xlsx`. Scheduling data overwrites the generation data and updates the branch and bus load data.
 
-- `wecc240(options=["HIFLD"])` imports the generation fleet in the `powerflow.csv.zip` file.
+- `wecc240(options=["HIFLD"])` imports the generation fleet in the `powerflow.csv.zip` file. HIFLD data overwrite the generation data.
 
-- `wecc240(options=["LOADS"])` imports the load model from NREL [ResStock](https://resstock.nrel.gov/) and [ComStock](https://comstock.nrel.gov/).
+- `wecc240(options=["LOADS"])` imports the load model from NREL [ResStock](https://resstock.nrel.gov/) and [ComStock](https://comstock.nrel.gov/). Load data overwrite the bus load data.
 
-- `wecc240(options=["RENEWABLES"])` imports the renewables generation from the NREL REGROW S3 bucket.
+- `wecc240(options=["RENEWABLES"])` imports the renewables generation from the NREL REGROW S3 bucket. Renewables overwrites the renewable generation data.
 
-To load the comprehensive REGROW model, use the following:
+To load the original PSS/E model, use the following
 
-    case = wecc240(options=[HIFLD","LOADS","RENEWABLES"])
+    case = wecc240()
 
-Note that using the `HIFLD` option overwrites all generation data imported from the `SCHEDULING` option.
+To load the PSS/E with the scheduling data, use the following:
+
+    case = wecc240(options["SCHEDULING"]
+
+To load the REGROW model at 20:00 UTC on August 15, 2020, use the following:
+
+    case = wecc240(options=[HIFLD","LOADS","RENEWABLES"],datetime="2020-08-15 20:00:00+00:00")
 
 See [rwl/PYPOWER on GitHub](https://github.com/rwl/PYPOWER) for details on running PyPower cases.
 

@@ -88,6 +88,9 @@ flowchart LR
 
     manual_create --> wecc240/dcline.csv
     manual_create --> wecc240/dclinecost.csv
+
+    NREL --> manual_edit
+    manual_edit --> wecc240/gis.csv
     
     wecc240/area.csv --> psse
     wecc240/branch.csv --> psse

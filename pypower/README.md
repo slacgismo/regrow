@@ -44,12 +44,24 @@ The WECC240 model in PyPower is prepared using the following high-level data flo
 ```mermaid
 flowchart LR
 
+    NREL --> wecc240_psse.raw
+    NREL --> wecc240_gis.csv
+    NREL --> WECC240_2018_Generation_schedule.xlsx
+    NREL --> ResStock
+    NREL --> ComStock
+    NREL --> aws/s3:REGROW
+
+    HIFLD --> powerplants.csv.zip
+
+
+
     subgraph sources
         wecc240_psse.raw --> psse.py
+        wecc240_gis.csv --> psse.py
         WECC240_2018_Generation_schedule.xlsx --> scheduling.py
         powerplants.csv.zip --> hifld.py
-        NREL/ResStock --> loads.py
-        NREL/ComStock --> loads.py
+        ResStock --> loads.py
+        ComStock --> loads.py
         aws/s3:REGROW --> renewables.py
     end
 
@@ -76,7 +88,10 @@ The data flow is as follows:
 flowchart LR
     wecc240_psse.raw --> manual_copy
     wecc240_psse.raw --> psse
-    
+
+    manual_create --> wecc240/dcline.csv
+    manual_create --> wecc240/dclinecost.csv
+
     manual_copy --> wecc240/area.csv
     manual_copy --> wecc240/branch.csv
     manual_copy --> wecc240/bus.csv
@@ -86,17 +101,16 @@ flowchart LR
     manual_copy --> wecc240/xform.csv
     manual_copy --> wecc240/zone.csv
 
-    manual_create --> wecc240/dcline.csv
-    manual_create --> wecc240/dclinecost.csv
-
-    NREL --> manual_edit
+    Hitachi2025 --> manual_create
+    Erickson2014 --> manual_create
+    Wu1988 --> manual_create
+    
+    wecc240_gis.csv --> manual_edit
     manual_edit --> wecc240/gis.csv
     
     wecc240/area.csv --> psse
     wecc240/branch.csv --> psse
     wecc240/bus.csv --> psse
-    wecc240/dcline.csv --> psse
-    wecc240/dclinecost.csv --> psse
     wecc240/gen.csv --> psse
     wecc240/gis.csv --> psse
     wecc240/load.csv --> psse
@@ -104,6 +118,8 @@ flowchart LR
     wecc240/xform.csv --> psse
     wecc240/zone.csv --> psse
     
+    wecc240/dcline.csv --> psse
+    wecc240/dclinecost.csv --> psse
     subgraph wecc240.py
         psse --> psse2pp
         psse2pp --> ppmodel

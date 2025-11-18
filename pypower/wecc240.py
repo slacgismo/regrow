@@ -21,9 +21,11 @@ returned by this module.
 """
 
 from datetime import datetime as dt
+import pandas as pd
 from psse import PSSE
 from psse2pp import PSSE2PP
 from scheduling import Schedule
+from hifld import HIFLD, WECC
 
 def wecc240(
     options:list[str]=None,
@@ -47,7 +49,8 @@ def wecc240(
     """
 
     # load the model from PSSE
-    model = PSSE2PP(PSSE("wecc240/","wecc240_psse.raw")).model
+    psse = PSSE("wecc240/","wecc240_psse.raw")
+    model = PSSE2PP(psse).model
 
     # default is no options
     if options is None:
@@ -66,14 +69,32 @@ def wecc240(
 
     if "HIFLD" in options:
 
-        raise NotImplementedError("future work")
+        # select only busses with 20 kV powerplant substations
+        busses = pd.merge(psse.gis,psse.bus,left_on="BUS_I",right_on="ID")
+        busses.drop("ID",axis=1,inplace=True)
+        busses.drop(busses[busses.BASEKV>20.0].index,inplace=True)
+
+        # load HIFLD operating non-renewable WECC powerplants summed by bus and type
+        powerplants = HIFLD(
+            drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
+            drop_types=["PV","WT","UNKNOWN"],
+            drop_fuels=["SUN","WIND"],
+            busdata=busses[busses["BASEKV"]==20],
+            groupby=["BUSCODE","TYPE"],
+            )
+
+        raise NotImplementedError("TODO")
 
     if "LOADS" in options:
 
-        raise NotImplementedError("future work")
+        raise NotImplementedError("TODO")
 
     if "RENEWABLES" in options:
 
-        raise NotImplementedError("future work")
+        raise NotImplementedError("TODO")
 
     return model.case
+
+if __name__ == "__main__":
+
+    case = wecc240(["HIFLD"])

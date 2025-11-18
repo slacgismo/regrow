@@ -47,7 +47,6 @@ group the plants by bus:
 """
 
 import pandas as pd
-from pypower import idx_bus
 from geohash import geohash, nearest2
 
 PLANT_TYPES = {
@@ -91,7 +90,7 @@ class HIFLD:
 
     def __init__(self,
         # pylint: disable=too-many-arguments,too-many-positional-arguments
-        # pylint: disable=too-many-branches
+        # pylint: disable=too-many-branches,too-many-locals
         drop_test:callable=None,
         drop_na:bool=True,
         drop_types:list[str]=None,
@@ -175,9 +174,12 @@ class HIFLD:
 
             # add bus geohash for plants
             if not busdata is None:
-                buslist = {(x,y):g for x,y,g in zip(busdata["LAT"],busdata["LON"],busdata["GEOHASH"])}
-                nearest = list(zip(*(nearest2((x,y),buslist.keys()) for x,y in zip(self.powerplants["LATITUDE"],self.powerplants["LONGITUDE"]))))
-                self.powerplants["BUSCODE"] = [geohash(x,y) for x,y in nearest[1]]
+                buslist = {(x,y):g
+                    for x,y,g in zip(busdata["LAT"],busdata["LON"],busdata["GEOHASH"])}
+                nearest = list(zip(*(nearest2((x,y),buslist.keys())
+                    for x,y in zip(self.powerplants["LATITUDE"],self.powerplants["LONGITUDE"]))))
+                self.powerplants["BUSCODE"] = [geohash(x,y)
+                    for x,y in nearest[1]]
                 self.powerplants["BUSDIST"] = nearest[2]
 
         # no longer need "hard" index
@@ -186,7 +188,8 @@ class HIFLD:
         # apply requested group and total capacities
         if groupby:
 
-            self.powerplants = self.powerplants[groupby+["OPER_CAP","SUMMER_CAP","WINTER_CAP"]].groupby(groupby).sum().sort_index().reset_index()
+            self.powerplants = self.powerplants[groupby+["OPER_CAP","SUMMER_CAP","WINTER_CAP"]]\
+                .groupby(groupby).sum().sort_index().reset_index()
 
         else:
 
@@ -210,8 +213,8 @@ if __name__ == "__main__":
     loads = pd.read_csv("wecc240/load.csv")[["PL","IP","YP"]].sum(axis=0).sum()
 
     # load HIFLD data
-    print("All powerplant types") 
-    print("--------------------") 
+    print("All powerplant types")
+    print("--------------------")
     data = HIFLD(
         drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
         # drop_types=["PV","WT","UNKNOWN"],
@@ -221,15 +224,17 @@ if __name__ == "__main__":
         )
 
     data.powerplants.set_index(["BUSCODE","TYPE"],inplace=True)
-    print(f"{len(data.powerplants)} powerplants aggregated to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
-    print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index.get_level_values(1).unique())]).split("|"))))
+    print(f"{len(data.powerplants)} powerplants aggregated"
+        " to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
+    print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index\
+        .get_level_values(1).unique())]).split("|"))))
     capacity = data.powerplants.sum().to_dict()
     print(capacity)
     for name,value in capacity.items():
         print(f"{name} margin: {(1-loads/value)*100:.1f}%")
 
-    print("\nNon-renewable/unknown plant types:") 
-    print("----------------------------------") 
+    print("\nNon-renewable/unknown plant types:")
+    print("----------------------------------")
     data = HIFLD(
         drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
         drop_types=["PV","WT","UNKNOWN"],
@@ -239,8 +244,10 @@ if __name__ == "__main__":
         )
 
     data.powerplants.set_index(["BUSCODE","TYPE"],inplace=True)
-    print(f"{len(data.powerplants)} powerplants aggregated to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
-    print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index.get_level_values(1).unique())]).split("|"))))
+    print(f"{len(data.powerplants)} powerplants aggregated"
+        " to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
+    print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index\
+        .get_level_values(1).unique())]).split("|"))))
     capacity = data.powerplants.sum().to_dict()
     print(capacity)
     for name,value in capacity.items():

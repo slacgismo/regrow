@@ -12,7 +12,7 @@ from wecc240 import wecc240
 from ppmodel import PPModel
 from pypower.runpf import runpf
 from pypower.rundcopf import rundcopf
-from pypower.runopf import runopf as runacopf
+# from pypower.runopf import runopf as runacopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 

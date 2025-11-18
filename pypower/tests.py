@@ -129,6 +129,13 @@ def plot(basecase:dict,
 
     plt.close()
 
+save_plots = False
+test_results = pd.DataFrame(data={
+    "Model":["Original","Scheduling"],
+    "Pre-OPF Powerflow":[float('nan')]*2,
+    "DC OPF Solution":[float('nan')]*2,
+    "Post-OPF Powerflow":[float('nan')]*2,
+    }).set_index("Model")
 
 #
 # Verify the original WECC 240 model
@@ -148,12 +155,14 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
         print(f"ERROR [wecc240]: original case powerflow failed (see {fh.name})")
         errors += 1
     else:
-        print(f"Original WECC240 powerflow solved in {xtime:.3f} seconds.",flush=True)
+        # print(f"Original WECC240 powerflow solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Original","Pre-OPF Powerflow"] = xtime
 
-    print("Saving comparison plots to tests folder",end="...",flush=True)
-    plot(basecase=original,testcase=original_solution,prefix="tests/original_")
-    plot(basecase=original,testcase=original_solution,prefix="tests/original_")
-    print("done")
+    if save_plots:
+        print("Saving comparison plots to tests folder",end="...",flush=True)
+        plot(basecase=original,testcase=original_solution,prefix="tests/original_")
+        plot(basecase=original,testcase=original_solution,prefix="tests/original_")
+        print("done")
 
     # solve the original model DCOPF
     dcopf,xtime = time_call(rundcopf,original,options)
@@ -161,7 +170,8 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
         print(f"ERROR [wecc240]: original case dcopf failed (see {fh.name})")
         errors += 1
     else:
-        print(f"Original WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
+        # print(f"Original WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Original","DC OPF Solution"] = xtime
 
 # solve the DCOPF powerflow
 with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
@@ -171,12 +181,14 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
         print(f"ERROR [wecc240]: original case dcopf powerflow failed (see {fh.name})")
         errors += 1
     else:
-        print(f"WECC240 DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+        # print(f"WECC240 DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Original","Post-OPF Powerflow"] = xtime
 
-    print("Saving comparison plots to tests folder",end="...",flush=True)
-    plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
-    plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
-    print("done")
+    if save_plots:
+        print("Saving comparison plots to tests folder",end="...",flush=True)
+        plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
+        plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
+        print("done")
 
 
 #
@@ -192,7 +204,8 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         print(f"ERROR [wecc240]: scheduling case powerflow failed (see {fh.name})")
         errors += 1
     else:
-        print(f"Scheduling WECC240 powerflow solved in {xtime:.3f} seconds",flush=True)
+        # print(f"Scheduling WECC240 powerflow solved in {xtime:.3f} seconds",flush=True)
+        test_results.loc["Scheduling","Pre-OPF Powerflow"] = xtime
 
     # solve the schedule model DCOPF
     scheduling_dcopf,xtime = time_call(rundcopf,scheduling,options)
@@ -200,7 +213,8 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         print(f"ERROR [wecc240]: scheduling case dcopf failed (see {fh.name})")
         errors += 1
     else:
-        print(f"Schedule WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
+        # print(f"Scheduling WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Scheduling","DC OPF Solution"] = xtime
 
     # scheduling_acopf,xtime = time_call(runacopf,scheduling,options)
     # if not scheduling_acopf["success"]:
@@ -217,23 +231,30 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
         print(f"ERROR [wecc240]: scheduling case dcopf powerflow failed (see {fh.name})")
         errors += 1
     else:
-        print(f"WECC240 scheduling DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+        # print(f"WECC240 scheduling DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Scheduling","Post-OPF Powerflow"] = xtime
 
-    print("Saving comparison plots to tests folder",end="...",flush=True)
-    plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
-    plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
-    print("done")
+    if save_plots:
+        print("Saving comparison plots to tests folder",end="...",flush=True)
+        plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
+        plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
+        print("done")
 
 
 #
 # Save kml files
 #
-print("Saving KML files to tests folder",end="...")
-PPModel("wecc240").set_case(original).save_kml("tests/wecc240_original.kml")
-PPModel("wecc240").set_case(scheduling).save_kml("tests/wecc240_scheduling.kml")
-print("done")
+if save_plots:
+    print("Saving KML files to tests folder",end="...")
+    PPModel("wecc240").set_case(original).save_kml("tests/wecc240_original.kml")
+    PPModel("wecc240").set_case(scheduling).save_kml("tests/wecc240_scheduling.kml")
+    print("done")
 
 if errors > 0:
     print(f"WECC240 failed {errors} test.")
+else:
+    print("Test solution time (ms)")
+    print("-----------------------")
+    print((test_results.round(3)*1000).astype(int))
 
 sys.exit(errors)

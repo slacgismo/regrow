@@ -194,18 +194,20 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         print(f"Scheduling WECC240 powerflow solved in {xtime:.3f} seconds",flush=True)
 
     # solve the schedule model DCOPF
-    dcopf = rundcopf(scheduling,options)
+    dcopf,xtime = time_call(rundcopf,scheduling,options)
     if not dcopf["success"]:
         print(f"ERROR [wecc240]: scheduling case dcopf failed (see {fh.name})")
         errors += 1
     else:
-        print("Schedule WECC240 DC OPF solved ok.",flush=True)
+        print(f"Schedule WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
 
 #
 # Save kml files
 #
+print("Saving KML files to tests folder",end="...")
 PPModel("wecc240").set_case(original).save_kml("tests/wecc240_original.kml")
 PPModel("wecc240").set_case(scheduling).save_kml("tests/wecc240_scheduling.kml")
+print("done")
 
 if errors > 0:
     print(f"WECC240 failed {errors} test.")

@@ -65,6 +65,7 @@ flowchart LR
     end
 
     ppmodel.py --> wecc240.py
+    ppmodel.py --> kml.py
 ```
 
 # PSS/E to PyPower Model Conversion

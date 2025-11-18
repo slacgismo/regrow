@@ -248,13 +248,45 @@ flowchart TD
 
 Note that this option is mutually exclusive with the `HIFLD` option.
 
-#### `HILFD` (future work)
+#### `HILFD`
 
-Include the `HIFLD` option to replace the generation fleet with the generators in the `powerplants.csv.zip` file.
+Includes the `HIFLD` option to replace the generation fleet with the generators in the `powerplants.csv.zip` file using the following data flow:
+
+```mermaid
+flowchart LR
+
+    HIFLD --> powerplants.csv.zip
+    PSSE --> wecc240/bus.csv
+    NREL --> wecc240/gis.csv
+
+    powerplants.csv.zip --> HIFLD.powerplants
+    wecc240/bus.csv --> HIFLD.powerplants
+    wecc240/gis.csv --> HIFLD.powerplants
+
+    subgraph hifld.py
+        HIFLD.powerplants
+    end
+
+    HIFLD.powerplants --> wecc240.case
+ ```
+
+Testing of the HIFLD powerplant import process yields the following results:
+
+| Test case | All HIFLD Plants | No PV, WT, UNKNOWN |
+| :-------- | ---------------: | -----------------: |
+| Operating Capacity | 213.8 GW | 176.6 GW |
+| Winter Capacity | 203.0 GW | 166.4 GW |
+| Summer Capacity | 199.4 GW | 162.6 GW |
+| Aggregated Plants | 369 | 272 |
+| Connected Busses | 53 | 53 |
+| Operating Margin | 37.1% | 23.8% |
+| Winter Margin | 33.7% | 19.1% |
+| Summer Margin | 32.5% | 17.2% |
+
 
 #### `LOADS` (future work)
 
-Include the `LOADS` option to replace the loads with the load model from NREL RESSTOCK and COMSTOCK loads. Note that using the load model requires the `datetime` option be specified.
+Includes the `LOADS` option to replace the loads with the load model from NREL RESSTOCK and COMSTOCK loads. Note that using the load model requires the `datetime` option be specified.
 
 #### `RENEWABLES` (future work)
 

@@ -221,16 +221,55 @@ def {self.name}():
             dclinecost.index.name="DCLINECOST"
             print(dclinecost,file=file)
 
-    def save_kml(self,filename:str):
+    def save_kml(self,
+        filename:str,
+        use_geocode:bool=False,
+        ):
         """Generate KML output
 
         Arguments:
 
         filename: KML filename of output
+
+        use_geocode: marker names are geocode instead of bus id
         """
         kml = KML(filename)
-        print(self.case["gis"])
-        raise NotImplementedError("future work")
+
+        # bus style
+        kml.add_markerstyle(
+            name="node",
+            url="https://maps.google.com/mapfiles/kml/pal3/icon49.png",
+            )
+
+        # bus markers
+        for bus_i,latitude,longitude,geocode in self.case["gis"]:
+            kml.add_marker(
+                name=geocode if use_geocode else f"{bus_i}",
+                style="node",
+                position=[longitude,latitude,0.0],
+                )
+
+        # line style
+        kml.add_linestyle(
+            name="line",
+            color="7f00ffff",
+            width=4,
+            )
+
+        # line paths
+        gis = {n:(y,x,0,c) for n,x,y,c in self.case["gis"][:,:4]}
+        for data in self.case["branch"]:
+            fbus = int(data[idx_brch.F_BUS])
+            tbus = int(data[idx_brch.T_BUS])
+            kml.add_line(
+                name=f"{fbus}-{tbus}",
+                style="line",
+                from_position=gis[fbus][0:3],
+                to_position=gis[tbus][0:3],
+                )
+        kml.close()
+        # print(self.case["gis"])
+        # raise NotImplementedError("future work")
 
     bus_optional = ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]
     @classmethod

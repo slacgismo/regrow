@@ -16,7 +16,6 @@ line scheduling data. Bus loads are increased using the storage scheduling
 data when storage is charging. Otherwise storage is added to generation.
 """
 
-import os
 import pandas as pd
 import numpy as np
 from ppmodel import PPModel

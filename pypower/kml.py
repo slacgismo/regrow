@@ -22,15 +22,17 @@ class KML:
 
     def __init__(self,
         kmlfile:str,
+        name:str=None
         ):
         """Start KML file"""
 
         self.kmlfile = kmlfile
-        self.lines = {}
+        self.name = self.kmlfile if name is None else f"{name}"
+        self.line = {}
         self.linestyle = {}
         self.marker = {}
         self.markerstyle = {}
-        self.folders = {}
+        # self.folders = {}
 
     def add_linestyle(self,name:str,**kwargs):
         """Add a line style
@@ -60,16 +62,16 @@ class KML:
         """
         self.markerstyle[name] = kwargs
 
-    def add_folder(self,name:str,**kwargs):
-        """Add a folder
+    # def add_folder(self,name:str,**kwargs):
+    #     """Add a folder
 
-        Arguments:
+    #     Arguments:
 
-        name: folder name
+    #     name: folder name
 
-        parent: parent folder name
-        """
-        self.folder[name] = kwargs
+    #     parent: parent folder name
+    #     """
+    #     self.folder[name] = kwargs
 
     def add_line(self,name:str,**kwargs):
         """Add a line entity
@@ -108,18 +110,71 @@ class KML:
         if self.kmlfile:
             with open(self.kmlfile,"w",encoding="utf-8") as fh:
 
-                print("""<?xml version="1.0" encoding="UTF-8"?>
-<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" />
-<Document>""",file=fh)
+                print('<?xml version="1.0" encoding="UTF-8"?>',file=fh)
+                print('<kml xmlns="http://www.opengis.net/kml/2.2"'
+                    ' xmlns:gx="http://www.google.com/kml/ext/2.2">',file=fh)
+                print("<Document>",file=fh)
+                print(f"  <name>{self.name}</name>",file=fh)
 
-                # TODO: output entities
+                # output marker styles
+                for name,data in self.markerstyle.items():
+                    print(f'  <Style id="{name}">',file=fh)
+                    print("    <IconStyle>",file=fh)
+                    if "scale" in data:
+                        print(f"      <scale>{data['scale']}</scale>",file=fh)
+                    print("      <Icon>",file=fh)
+                    print(f"        <href>{data['url']}</href>",file=fh)
+                    print("      </Icon>",file=fh)
+                    print("    </IconStyle>",file=fh)
+                    print("  </Style>",file=fh)
 
-                print("""</Document>""",file=fh)
+
+                # output line styles
+                for name,data in self.linestyle.items():
+                    print(f'  <Style id="{name}">',file=fh)
+                    print("    <PolyStyle>",file=fh)
+                    print(f"      <color>{data['color']}</color>",file=fh)
+                    print("    </PolyStyle>",file=fh)
+                    print("    <LineStyle>",file=fh)
+                    print(f"      <color>{data['color']}</color>",file=fh)
+                    print(f"      <width>{data['width']}</width>",file=fh)
+                    print("    </LineStyle>",file=fh)
+                    print("  </Style>",file=fh)
+
+                # output markers
+                for name,data in self.marker.items():
+                    print("  <Placemark>",file=fh)
+                    print(f"    <name>{name}</name>""",file=fh)
+                    if "style" in data:
+                        print(f"    <styleUrl>#{data['style']}</styleUrl>",file=fh)
+                    print(f"    <Point><coordinates>{','.join(f'{x}'
+                        for x in data['position'])}</coordinates></Point>",file=fh)
+                    print("  </Placemark>",file=fh)
+
+                # output lines
+                for name,data in self.line.items():
+                    print("  <Placemark>",file=fh)
+                    print(f"    <name>{name}</name>",file=fh)
+                    if "style" in data:
+                        print(f"    <styleUrl>#{data['style']}</styleUrl>",file=fh)
+                    print("    <LineString>",file=fh)
+                    print("      <tesselate>1</tesselate>",file=fh)
+                    print("      <coordinates>",file=fh)
+                    print(f"      {','.join(f'{x}'
+                        for x in data['from_position'])}",file=fh)
+                    print(f"      {','.join(f'{x}'
+                        for x in data['to_position'])}",file=fh)
+                    print("      </coordinates>",file=fh)
+                    print("    </LineString>",file=fh)
+                    print("  </Placemark>",file=fh)
+                print("</Document>",file=fh)
+                print("</kml>""",file=fh)
 
             self.kmlfile = None
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
 
-#     from ppmodel import PPModel
-#     from wecc240 import wecc240
-#     PPModel("wecc240").set_case(wecc240()).save_kml("tests/wecc240.kml")
+    # pylint: disable=cyclic-import
+    from ppmodel import PPModel
+    from wecc240 import wecc240
+    PPModel("wecc240").set_case(wecc240()).save_kml("tests/wecc240.kml")

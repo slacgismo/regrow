@@ -14,17 +14,41 @@ The `drop_na` option removes all records that have NA plant capacity values
 The `drop_types` and `drop_fuels` options remove all powerplants that have the
 specified plant type and fuel codes, respectively.  See the `PLANT_TYPES`.
 
+The `busdata` dataframe is used to restrict the list of busses from which location
+are chosen if `geohash_precision` is specified.
+
+The `groupby` list is used to group capacities by the specified column groups. For
+example `["BUSCODE","TYPE"]` will group the plants by bus geocode and generation type
+and return the total operating, winter, and summer capacities.
+
 Example:
+
+The following loads all operational units in WECC except PV and WT units.
+
     data = HIFLD(
         drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
         drop_types=["PV","WT"],
         drop_fuels=["SUN","WIND"],
         )
-    print(data.powerplants)
+
+The following example limits the buslist to only those with 20kV substations and 
+group the plants by bus:
+
+    gis = pd.read_csv("wecc240/gis.csv")
+    bus = pd.read_csv("wecc240/bus.csv")
+    busses = pd.merge(gis,bus,left_on="BUS_I",right_on="ID").drop("ID",axis=1)
+    busses.drop(busses[busses.BASEKV>30.0].index,inplace=True)
+    data = HIFLD(
+        drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
+        busdata=busses,
+        groupby=["BUSCODE"]
+        )
+
 """
 
 import pandas as pd
-from geohash import geohash
+from pypower import idx_bus
+from geohash import geohash, nearest2
 
 PLANT_TYPES = {
     # energy source and power generator
@@ -73,6 +97,8 @@ class HIFLD:
         drop_types:list[str]=None,
         drop_fuels:list[str]=None,
         geohash_precision:int=6,
+        busdata:pd.DataFrame=None,
+        groupby:list[str]=None,
         ):
         """Load HIFLD powerplant data
 
@@ -140,16 +166,33 @@ class HIFLD:
                         row.TYPE = nfuel
                         self.powerplants.loc[n,"FUEL"] = nfuel
 
-        # add plant geohashes
+        # geohashing is enabled
         if not geohash_precision is None:
+
+            # add plant geohashes
             self.powerplants["GEOCODE"] = [geohash(x,y,int(geohash_precision))
                 for x,y in zip(self.powerplants.LATITUDE,self.powerplants.LONGITUDE)]
 
-        # sort by state, county, and name
-        self.powerplants.sort_values(["STATE","COUNTY","NAME"],inplace=True)
+            # add bus geohash for plants
+            if not busdata is None:
+                buslist = {(x,y):g for x,y,g in zip(busdata["LAT"],busdata["LON"],busdata["GEOHASH"])}
+                nearest = list(zip(*(nearest2((x,y),buslist.keys()) for x,y in zip(self.powerplants["LATITUDE"],self.powerplants["LONGITUDE"]))))
+                self.powerplants["BUSCODE"] = [geohash(x,y) for x,y in nearest[1]]
+                self.powerplants["BUSDIST"] = nearest[2]
 
         # no longer need "hard" index
         self.powerplants.reset_index(drop=True,inplace=True)
+
+        # apply requested group and total capacities
+        if groupby:
+
+            self.powerplants = self.powerplants[groupby+["OPER_CAP","SUMMER_CAP","WINTER_CAP"]].groupby(groupby).sum().sort_index().reset_index()
+
+        else:
+
+            # sort by state, county, and name
+            self.powerplants.sort_values(["STATE","COUNTY","NAME"],inplace=True)
+
 
 if __name__ == "__main__":
 
@@ -157,11 +200,48 @@ if __name__ == "__main__":
     pd.options.display.max_columns = None
     pd.options.display.max_rows = None
 
+    # create list of allowed connection busses (e.g., only 20kV busses)
+    gis = pd.read_csv("wecc240/gis.csv")
+    bus = pd.read_csv("wecc240/bus.csv")
+    busses = pd.merge(gis,bus,left_on="BUS_I",right_on="ID").drop("ID",axis=1)
+    busses.drop(busses[busses.BASEKV>20.0].index,inplace=True)
+
+    # get total load
+    loads = pd.read_csv("wecc240/load.csv")[["PL","IP","YP"]].sum(axis=0).sum()
+
+    # load HIFLD data
+    print("All powerplant types") 
+    print("--------------------") 
+    data = HIFLD(
+        drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
+        # drop_types=["PV","WT","UNKNOWN"],
+        # drop_fuels=["SUN","WIND"],
+        busdata=busses[busses["BASEKV"]==20],
+        groupby=["BUSCODE","TYPE"],
+        )
+
+    data.powerplants.set_index(["BUSCODE","TYPE"],inplace=True)
+    print(f"{len(data.powerplants)} powerplants aggregated to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
+    print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index.get_level_values(1).unique())]).split("|"))))
+    capacity = data.powerplants.sum().to_dict()
+    print(capacity)
+    for name,value in capacity.items():
+        print(f"{name} margin: {(1-loads/value)*100:.1f}%")
+
+    print("\nNon-renewable/unknown plant types:") 
+    print("----------------------------------") 
     data = HIFLD(
         drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
         drop_types=["PV","WT","UNKNOWN"],
         drop_fuels=["SUN","WIND"],
+        busdata=busses[busses["BASEKV"]==20],
+        groupby=["BUSCODE","TYPE"],
         )
-    print(len(data.powerplants),"powerplants selected for WECC")
-    print("types:",", ".join(set("|".join(["|".join(data.powerplants.TYPE.unique())]).split("|"))))
-    print("fuels:",", ".join(set("|".join(["|".join(data.powerplants.FUEL.unique())]).split("|"))))
+
+    data.powerplants.set_index(["BUSCODE","TYPE"],inplace=True)
+    print(f"{len(data.powerplants)} powerplants aggregated to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
+    print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index.get_level_values(1).unique())]).split("|"))))
+    capacity = data.powerplants.sum().to_dict()
+    print(capacity)
+    for name,value in capacity.items():
+        print(f"{name} margin: {(1-loads/value)*100:.1f}%")

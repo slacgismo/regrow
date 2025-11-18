@@ -12,6 +12,7 @@ from wecc240 import wecc240
 from ppmodel import PPModel
 from pypower.runpf import runpf
 from pypower.rundcopf import rundcopf
+from pypower.runopf import runopf as runacopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 
@@ -185,7 +186,7 @@ scheduling = wecc240(options=["SCHEDULING"])
 with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(scheduling).save_case(fh)
 
-    # solve the schedulig powerflow from PSSE
+    # solve the scheduling powerflow from PSSE
     scheduling_solution,status,xtime = time_call(runpf,scheduling,options)
     if status == 0:
         print(f"ERROR [wecc240]: scheduling case powerflow failed (see {fh.name})")
@@ -194,12 +195,35 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         print(f"Scheduling WECC240 powerflow solved in {xtime:.3f} seconds",flush=True)
 
     # solve the schedule model DCOPF
-    dcopf,xtime = time_call(rundcopf,scheduling,options)
-    if not dcopf["success"]:
+    scheduling_dcopf,xtime = time_call(rundcopf,scheduling,options)
+    if not scheduling_dcopf["success"]:
         print(f"ERROR [wecc240]: scheduling case dcopf failed (see {fh.name})")
         errors += 1
     else:
         print(f"Schedule WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
+
+    # scheduling_acopf,xtime = time_call(runacopf,scheduling,options)
+    # if not scheduling_acopf["success"]:
+    #     print(f"ERROR [wecc240]: scheduling case acopf failed (see {fh.name})")
+    #     errors += 1
+    # else:
+    #     print(f"Schedule WECC240 AC OPF solved in {xtime:.3f} seconds.",flush=True)
+
+# solve the DCOPF powerflow
+with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
+    PPModel("wecc240").set_case(scheduling_dcopf).save_case(fh)
+    scheduling_dcopf_solution,status,xtime = time_call(runpf,scheduling_dcopf,options)
+    if status == 0:
+        print(f"ERROR [wecc240]: scheduling case dcopf powerflow failed (see {fh.name})")
+        errors += 1
+    else:
+        print(f"WECC240 scheduling DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+
+    print("Saving comparison plots to tests folder",end="...",flush=True)
+    plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
+    plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
+    print("done")
+
 
 #
 # Save kml files

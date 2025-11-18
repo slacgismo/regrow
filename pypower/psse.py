@@ -83,7 +83,15 @@ class PSSE:
             converters={"NAME":str})
 
         self.gis = self.read(f"{prefix}gis.csv")
-        self.gis["GEOHASH"] = [geohash(x,y) for x,y in zip(self.gis.LAT,self.gis.LON)]
+
+        # geohash missing?
+        if "GEOHASH" not in self.gis.columns:
+
+            # add geohash
+            self.gis["GEOHASH"] = [geohash(x,y) for x,y in zip(self.gis.LAT,self.gis.LON)]
+
+            # save back to original file for others to use
+            self.gis.to_csv(f"{prefix}gis.csv",index=False,header=True)
 
         self.scheduling = {x:self.read(f"{prefix}scheduling/{x}.csv")
             for x in ["generator","line","storage"]}

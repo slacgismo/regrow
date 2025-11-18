@@ -251,8 +251,13 @@ def {self.name}():
 
         # line style
         kml.add_linestyle(
-            name="line",
+            name="line-in",
             color="7f00ffff",
+            width=4,
+            )
+        kml.add_linestyle(
+            name="line-out",
+            color="7f000000",
             width=4,
             )
 
@@ -261,15 +266,25 @@ def {self.name}():
         for data in self.case["branch"]:
             fbus = int(data[idx_brch.F_BUS])
             tbus = int(data[idx_brch.T_BUS])
+            status = int(data[idx_brch.BR_STATUS])
             kml.add_line(
                 name=f"{fbus}-{tbus}",
-                style="line",
+                style="line-in" if status else "line-out",
                 from_position=gis[fbus][0:3],
                 to_position=gis[tbus][0:3],
                 )
+        for data in self.case["dcline"]:
+            fbus = int(data[idx_brch.F_BUS])
+            tbus = int(data[idx_brch.T_BUS])
+            status = int(data[idx_brch.BR_STATUS])
+            kml.add_line(
+                name=f"{fbus}-{tbus}",
+                style="line-in" if status else "line-out",
+                from_position=gis[fbus][0:3],
+                to_position=gis[tbus][0:3],
+                )
+
         kml.close()
-        # print(self.case["gis"])
-        # raise NotImplementedError("future work")
 
     bus_optional = ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]
     @classmethod

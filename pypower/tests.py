@@ -201,6 +201,11 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
     else:
         print("Schedule WECC240 DC OPF solved ok.",flush=True)
 
+#
+# Save kml files
+#
+PPModel("wecc240").set_case(original).save_kml("tests/wecc240_original.kml")
+PPModel("wecc240").set_case(scheduling).save_kml("tests/wecc240_scheduling.kml")
 
 if errors > 0:
     print(f"WECC240 failed {errors} test.")

@@ -101,7 +101,6 @@ flowchart LR
     wecc240/xform.csv --> psse
     wecc240/zone.csv --> psse
     
-    wecc240_dcline.csv --> psse
     subgraph wecc240.py
         psse --> psse2pp
         psse2pp --> ppmodel

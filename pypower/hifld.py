@@ -130,10 +130,10 @@ class HIFLD:
             self.powerplants.dropna(inplace=True)
 
         # replace plant types with plant type codes
-        self.powerplants["FUEL"] = ["|".join({PLANT_TYPES[y][0]
-                for y in x.split("; ")}) for x in self.powerplants.TYPE]
-        self.powerplants["TYPE"] = ["|".join({PLANT_TYPES[y][1]
-                for y in x.split("; ")}) for x in self.powerplants.TYPE]
+        self.powerplants["FUEL"] = ["|".join(sorted({PLANT_TYPES[y][0]
+                for y in x.split("; ")})) for x in self.powerplants.TYPE]
+        self.powerplants["TYPE"] = ["|".join(sorted({PLANT_TYPES[y][1]
+                for y in x.split("; ")})) for x in self.powerplants.TYPE]
 
         # drop specified types
         self.powerplants["ID"] = self.powerplants.index
@@ -228,7 +228,7 @@ if __name__ == "__main__":
         " to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
     print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index\
         .get_level_values(1).unique())]).split("|"))))
-    capacity = data.powerplants.sum().to_dict()
+    capacity = data.powerplants.sum().round(1).to_dict()
     print(capacity)
     for name,value in capacity.items():
         print(f"{name} margin: {(1-loads/value)*100:.1f}%")
@@ -248,7 +248,59 @@ if __name__ == "__main__":
         " to {len(data.powerplants.index.get_level_values(0).unique())} 20kV busses")
     print("Plant types:",", ".join(set("|".join(["|".join(data.powerplants.index\
         .get_level_values(1).unique())]).split("|"))))
-    capacity = data.powerplants.sum().to_dict()
+    capacity = data.powerplants.sum().round(1).to_dict()
     print(capacity)
     for name,value in capacity.items():
         print(f"{name} margin: {(1-loads/value)*100:.1f}%")
+
+    print()
+    print("Table 1 Comparison for HIFLD Powerplants")
+    print("----------------------------------------")
+    data = HIFLD(
+        drop_test=lambda x: x[(~x["STATE"].isin(WECC))|(x["STATUS"]!="OP")].index,
+        )
+    data.powerplants.set_index(["STATE","FUEL"],inplace=True)
+    data = data.powerplants["OPER_CAP"].groupby(["STATE","FUEL"]).sum().unstack("FUEL").fillna(0.0)
+    mapping = { # map multiple to single
+        'BIO|GAS': 'GAS', 
+        'COAL|GAS': 'GAS', 
+        'COAL|GAS|OIL': 'GAS', 
+        'COAL|GAS|OTHER': 'GAS', 
+        'COAL|SUN': 'SUN', 
+        'COAL|GAS|OIL|WIND': 'WIND', 
+        'ELEC|GAS': 'GAS', 
+        'ELEC|OIL': 'PUMP', 
+        'ELEC|WATER': 'PUMP', 
+        'GAS|WOOD': 'GAS', 
+        'GAS|OIL': 'GAS', 
+        'GAS|OTHER': 'GAS', 
+        'BIO|SUN': 'SUN', 
+        'BIO|GAS|SUN': 'SUN', 
+        'ELEC|SUN': 'SUN', 
+        'ELEC|GAS|SUN': 'SUN', 
+        'GAS|SUN': 'SUN', 
+        'SUN|WIND': 'WIND', 
+        'GAS|WASTE': 'GAS', 
+        'BIO|WATER': 'WATER', 
+        'OIL|WATER': 'WATER', 
+        'WATER|WOOD': 'WATER',
+        'WOOD' : 'BIO',
+        'ELEC' : 'PUMP',
+        'COKE' : 'COAL',
+        'OIL' : 'COAL',
+        'OTHER': 'GAS',
+        'WASTE': 'BIO',
+        }
+    data["PUMP"] = 0.0
+    data["DPV"] = 0.0
+    for group,gtype in mapping.items():
+        data[gtype] += data[group]
+        data.drop(group,axis=1,inplace=True)
+    reduced = ["BIO","COAL","GEO","GAS","WATER","NUC","ELEC","PUMP","SUN","WIND"]
+    data["TOTAL"] = data.sum(axis=1)
+    total = data.sum(axis=0)
+    total.name = "TOTAL"
+    data = pd.concat([data,pd.DataFrame(total).T])
+    reorder = ["BIO","COAL","GEO","GAS","WATER","NUC","PUMP","SUN","WIND","DPV","TOTAL"]
+    data.replace({0.0:""},inplace=True)
+    print(data[reorder])

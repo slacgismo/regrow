@@ -137,3 +137,6 @@ if __name__ == "__main__":
     options = ppoption(VERBOSE=0,OUT_ALL=0)
     assert runpf(casedata,options)[0]["success"], "runpf failed"
     assert rundcopf(casedata,options)["success"], "runopf failed"
+
+    data = Schedule("wecc240/scheduling/").generator
+    # print(data)

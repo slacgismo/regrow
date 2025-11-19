@@ -7,7 +7,7 @@ Example:
 
     from psse import PSSE
     from psse2pp import PSSE2PP
-    raw = PSSE("wecc240")
+    raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
     ppcase = PSSE2PP(raw).model.case
 
 """

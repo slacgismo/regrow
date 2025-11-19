@@ -14,7 +14,7 @@ modeling, and renewables that can be used to assemble a PyPower case.
 Example:
 
     from psse import PSSE
-    raw = PSSE("wecc240")
+    raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
     print(raw.bus)
 """
 
@@ -116,13 +116,13 @@ class PSSE:
         """
 
         # load segment and clean up quotes and NaNs
-        data = pd.read_csv(filename,
+        return pd.read_csv(filename,
             quotechar="'",
             comment="#",
             **kwargs).fillna(0)
 
-        return data
-
 if __name__ == "__main__":
 
-    PSSE("wecc240/","wecc240_psse.raw")
+    data = PSSE("wecc240/","wecc240_psse.raw")
+    print(data.bus.groupby("BASEKV").count()["ID"])
+    print(data.bus[data.bus.BASEKV==20]["ID"].tolist())

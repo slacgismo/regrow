@@ -28,9 +28,10 @@ import numpy as np
 import pandas as pd
 
 from pypower import idx_bus
-from pypower import idx_brch
+from pypower import idx_brch as idx_branch
 from pypower import idx_gen
-from pypower import idx_cost
+from pypower import idx_cost as idx_gencost
+from pypower import idx_cost as idx_dclinecost
 
 from kml import KML
 
@@ -63,7 +64,28 @@ class idx_dcline:
     MU_QMINT = 21
     MU_QMAXT = 22
 
-def get_header(idx:TypeVar('module'),*,ignore:list[str]=None) -> list[str]:
+class idx_gis:
+    """Provide column index values for GIS data"""
+
+    # pylint: disable=invalid-name,too-few-public-methods
+
+    BUS_I = 0
+    LAT = 1
+    LON = 2
+    GEOHASH = 3
+
+ignore_idx = {
+    "bus": ["PQ","PV","REF","NONE"],
+    "branch": [],
+    "gen": [],
+    "gencost": ["PW_LINEAR","POLYNOMIAL"],
+    "dcline": [],
+    "dclinecost": ["PW_LINEAR","POLYNOMIAL"],
+    "gis": [],
+}
+
+
+def get_header(name:str,*,ignore:list[str]=None) -> list[str]:
     """Convert idx data to a header list
 
     Arguments:
@@ -76,8 +98,9 @@ def get_header(idx:TypeVar('module'),*,ignore:list[str]=None) -> list[str]:
 
     list[str]: ordered list of data array column header names
     """
+    idx = globals()[f"idx_{name}"]
     if ignore is None:
-        ignore = []
+        ignore = ignore_idx[name]
     mapping = {getattr(idx,x):x for x in dir(idx) if not x.startswith("_") and x not in ignore}
     indexes = sorted(mapping)
     assert max(indexes) - min(indexes) + 1 == len(indexes), "indexes are not strictly sequential"
@@ -146,20 +169,12 @@ class PPModel:
 from numpy import array
 def {self.name}():
     return {{""",file=file)
-        header_map = {
-            "bus": idx_bus,
-            "branch": idx_brch,
-            "gen": idx_gen,
-            "gencost": idx_cost,
-            "dcline": idx_dcline,
-            "dclinecost": idx_cost,
-        }
-        valid_keys = ["version","baseMVA"] + list(header_map.keys())
+        valid_keys = ["version","baseMVA","bus","branch","gen","gencost","dcline","dclinecost"]
         for key,value in [(x,y) for x,y in self.case.items() if x in valid_keys]:
             if isinstance(value,np.ndarray):
                 print(f"""      '{key}': array([""",file=file)
                 header = ",".join([f"{{0:>{precision+3}s}}".format(x)
-                    for x in get_header(header_map[key])])
+                    for x in get_header(key)])
                 print(f"         #{header}",file=file)
                 for row in value.tolist():
                     print(f"         [{','.join([f'{{0:{precision+3}g}}'\
@@ -178,35 +193,35 @@ def {self.name}():
             items = ["bus","branch","gen","gencost","dcline","dclinecost"]
 
         if "bus" in items:
-            bus_cols = get_header(idx_bus,ignore=["PQ","PV","REF","NONE"])
+            bus_cols = get_header("bus")
             bus = pd.DataFrame(data=self.case["bus"],
                 columns=bus_cols[:self.case["bus"].shape[1]])
             bus.index.name="BUS"
             print(bus,file=file)
 
         if "branch" in items:
-            branch_cols = get_header(idx_brch)
+            branch_cols = get_header("branch")
             branch = pd.DataFrame(data=self.case["branch"],
                 columns=branch_cols[:self.case["branch"].shape[1]])
             branch.index.name="BRANCH"
             print(branch,file=file)
 
         if "gen" in items:
-            gen_cols = get_header(idx_gen)
+            gen_cols = get_header("gen")
             gen = pd.DataFrame(data=self.case["gen"],
                 columns=gen_cols[:self.case["gen"].shape[1]])
             gen.index.name="GEN"
             print(gen,file=file)
 
         if "dcline" in items and "dcline" in self.case and len(self.case["dcline"]) > 0:
-            dcline_cols = get_header(idx_brch)
+            dcline_cols = get_header("dcline")
             dcline = pd.DataFrame(data=self.case["dcline"],
                 columns=dcline_cols[:self.case["dcline"].shape[1]])
             dcline.index.name="DCLINE"
             print(dcline,file=file)
 
         if "gencost" in items:
-            cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
+            cost_cols = get_header("gencost")
             ncost = self.case["gencost"].shape[1] - len(cost_cols)
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
@@ -214,7 +229,7 @@ def {self.name}():
             print(gencost,file=file)
 
         if "dclinecost" in items and "dclinecost" in self.case and len(self.case["dclinecost"]) > 0:
-            cost_cols = get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL","COST"])
+            cost_cols = get_header("dclinecost")
             ncost = self.case["dclinecost"].shape[1] - len(cost_cols)
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
@@ -264,9 +279,9 @@ def {self.name}():
         # line paths
         gis = {n:(y,x,0,c) for n,x,y,c in self.case["gis"][:,:4]}
         for data in self.case["branch"]:
-            fbus = int(data[idx_brch.F_BUS])
-            tbus = int(data[idx_brch.T_BUS])
-            status = int(data[idx_brch.BR_STATUS])
+            fbus = int(data[idx_branch.F_BUS])
+            tbus = int(data[idx_branch.T_BUS])
+            status = int(data[idx_branch.BR_STATUS])
             kml.add_line(
                 name=f"{fbus}-{tbus}",
                 style="line-in" if status else "line-out",
@@ -274,9 +289,9 @@ def {self.name}():
                 to_position=gis[tbus][0:3],
                 )
         for data in self.case["dcline"]:
-            fbus = int(data[idx_brch.F_BUS])
-            tbus = int(data[idx_brch.T_BUS])
-            status = int(data[idx_brch.BR_STATUS])
+            fbus = int(data[idx_branch.F_BUS])
+            tbus = int(data[idx_branch.T_BUS])
+            status = int(data[idx_branch.BR_STATUS])
             kml.add_line(
                 name=f"{fbus}-{tbus}",
                 style="line-in" if status else "line-out",
@@ -301,7 +316,7 @@ def {self.name}():
         np.array: bus data
         """
 
-        header = get_header(idx_bus,ignore=["PQ","PV","REF","NONE"])
+        header = get_header("bus")
         for key,value in kwargs.items():
             if key not in header:
                 raise KeyError(f"{key}={value} is not a valid bus item")
@@ -329,7 +344,7 @@ def {self.name}():
 
         np.array: bus data
         """
-        header = get_header(idx_brch)
+        header = get_header("branch")
         for key,value in kwargs.items():
             if key not in header:
                 raise KeyError(f"{key}={value} is not a valid branch item")
@@ -358,7 +373,7 @@ def {self.name}():
         """
 
         result = []
-        for item in get_header(idx_gen):
+        for item in get_header("gen"):
             if item in kwargs:
                 result.append(kwargs[item])
             elif item not in cls.gen_optional:
@@ -380,7 +395,7 @@ def {self.name}():
         """
 
         result = []
-        for item in get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL"]):
+        for item in get_header("gencost"):
             if item in kwargs:
                 if kwargs[item].ndim == 1:
                     result.append(kwargs[item])
@@ -406,7 +421,7 @@ def {self.name}():
         np.array: dcline data
         """
         result = []
-        for item in get_header(idx_dcline):
+        for item in get_header("dcline"):
             if item in kwargs:
                 result.append(kwargs[item])
             elif item not in cls.dcline_optional:
@@ -428,7 +443,7 @@ def {self.name}():
         """
 
         result = []
-        for item in get_header(idx_cost,ignore=["PW_LINEAR","POLYNOMIAL"]):
+        for item in get_header("dclinecost"):
             if item in kwargs:
                 if kwargs[item].ndim == 1:
                     result.append(kwargs[item])
@@ -439,3 +454,57 @@ def {self.name}():
                 raise ValueError(f"missing {item} data")
 
         return np.array(result)
+
+    def get_info(self):
+        """Get model information"""
+        bus = self.get_data("bus")
+        gengis = pd.merge(
+                self.get_gis(),
+                self.get_data("gen"),
+                left_on="BUS_I",
+                right_on="GEN_BUS")
+        loadgis = pd.merge(
+                self.get_gis(),
+                self.get_data("bus"),
+                left_on="BUS_I",
+                right_on="BUS_I")
+        return {
+            "Model name": self.name,
+            "Bus count": len(bus),
+            "Branch count": len(self.get_data("branch")),
+            "Generator count": len(self.get_data("gen")),
+            "DC line count": len(self.get_data("dcline")),
+            "Node count": len(self.get_nodes()),
+            "LV substations": len(bus[bus.BASE_KV==20]),
+            "MV substations": len(bus[(bus.BASE_KV>20)&(bus.BASE_KV<200)]),
+            "HV substations": len(bus[bus.BASE_KV>200]),
+            "Generation substations": len(gengis.GEOHASH.unique()),
+            "Load substations": len(loadgis[loadgis.PD>0].GEOHASH.unique()),
+            }
+
+    def get_data(self,name) -> pd.DataFrame:
+        """Get data table"""
+        assert name in ignore_idx, f"'{name}' is not a valid data item name"
+        width = self.case[name].shape[1]
+        header = get_header(name)
+        n = 1
+        last = header[-1]
+        header[-1] = f"{last}_0"
+        while len(header) < width:
+            header.append(f"{last}_{n}")
+            n += 1
+        return pd.DataFrame(self.case[name].T,header[:width]).T
+
+    def get_gis(self) -> pd.DataFrame:
+        """Get complete GIS data"""
+        return pd.DataFrame(self.case["gis"].T,get_header("gis")).T
+
+    def get_nodes(self) -> dict:
+        """Get a dictionary of node and their busses"""
+        nodes = {}
+        for i,j in dict(self.case["gis"][:,[0,3]]).items():
+            if j in nodes:
+                nodes[j].append(i)
+            else:
+                nodes[j] = [i]
+        return nodes

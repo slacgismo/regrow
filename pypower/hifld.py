@@ -48,6 +48,7 @@ group the plants by bus:
 
 import pandas as pd
 from geohash import geohash, nearest2
+from psse import PSSE
 
 PLANT_TYPES = {
     # energy source and power generator
@@ -232,6 +233,22 @@ if __name__ == "__main__":
     print(capacity)
     for name,value in capacity.items():
         print(f"{name} margin: {(1-loads/value)*100:.1f}%")
+
+    print("")
+    print("Substation/node mapping")
+    print("-----------------------")
+    psse = PSSE("wecc240/","wecc240_psse.raw")
+    substations = psse.bus[psse.bus.BASEKV==20]
+    print("Substations:",len(substations))
+    print("Nodes:",len(busses.GEOHASH.unique()))
+
+    # print(len(busses.GEOHASH.unique()))
+    # print(len(data.powerplants.index.get_level_values(0).unique()))
+    print("No powerplants:",set(busses.GEOHASH) - set(data.powerplants.index.get_level_values(0)))
+
+    count = busses[["BUS_I","GEOHASH"]].groupby("GEOHASH")\
+        .count().sort_values(by="BUS_I",ascending=False)
+    print("Multiple substations:",count[count>1].dropna().astype(int).to_dict()["BUS_I"])
 
     print("\nNon-renewable/unknown plant types:")
     print("----------------------------------")

@@ -10,9 +10,9 @@ def _(mo):
     This notebook contained the process for finding which solar PV generators in the [USGS USPVDB](https://energy.usgs.gov/uspvdb/) are in the WECC service area. The general process is:
 
     1. Load WECC node GIS data
-    2. Load USPVDB system data
+    2. Load USWTDB system data
     3. Load WECC county information
-    4. Find PV systems in WECC counties, by joining on county
+    4. Find WT systems in WECC counties, by joining on county
     """)
     return
 
@@ -57,20 +57,20 @@ def _(nodes):
 @app.cell
 def _(mo):
     mo.md(r"""
-    ## Load USPVDB
+    ## Load USWTDB
     """)
     return
 
 
 @app.cell
 def _(utils):
-    uspvdb = utils.load_uspvdb()
-    return (uspvdb,)
+    uswtdb = utils.load_uswtdb()
+    return (uswtdb,)
 
 
 @app.cell
-def _(uspvdb):
-    uspvdb
+def _(uswtdb):
+    uswtdb
     return
 
 
@@ -97,20 +97,20 @@ def _(wecc_counties):
 @app.cell
 def _(mo):
     mo.md(r"""
-    ## Find PV systems that are in WECC counties
+    ## Find WT systems that are in WECC counties
     """)
     return
 
 
 @app.cell
-def _(pd, uspvdb, wecc_counties):
-    wecc_pv_systems = pd.merge(uspvdb, wecc_counties, how='inner', on=['county', 'state'], suffixes=('_gen', '_county'))
-    return (wecc_pv_systems,)
+def _(pd, uswtdb, wecc_counties):
+    wecc_wt_systems = pd.merge(uswtdb, wecc_counties, how='inner', on=['county', 'state'], suffixes=('_gen', '_county'))
+    return (wecc_wt_systems,)
 
 
 @app.cell
-def _(wecc_pv_systems):
-    wecc_pv_systems
+def _(wecc_wt_systems):
+    wecc_wt_systems
     return
 
 
@@ -121,13 +121,13 @@ def _(np):
 
 
 @app.cell
-def _(np, wecc_pv_systems):
+def _(np, wecc_wt_systems):
     counts = []
     capacities = []
     years = np.arange(5) + 2018
     for _yr in years:
-        _count = len(wecc_pv_systems[wecc_pv_systems['year'] <= _yr])
-        _cap = np.sum(wecc_pv_systems[wecc_pv_systems['year'] <= _yr]['capacity[MW]']) / 1e3
+        _count = len(wecc_wt_systems[wecc_wt_systems['year'] <= _yr])
+        _cap = np.sum(wecc_wt_systems[wecc_wt_systems['year'] <= _yr]['capacity[MW]']) / 1e3
         counts.append(_count)
         capacities.append(_cap)
     return capacities, counts, years
@@ -138,16 +138,16 @@ def _(capacities, counts, plt, years):
     _fig, _ax = plt.subplots(nrows=2, sharex=True, figsize=(9, 6))
     _ax[0].plot(years, counts, marker='.')
     _ax[1].plot(years, capacities, marker='.')
-    _ax[0].set_title('system count, PV')
-    _ax[1].set_title('total capacity, PV [GW]')
+    _ax[0].set_title('system count, WT')
+    _ax[1].set_title('total capacity, WT [GW]')
     _ax[1].set_xticks(years)
     _fig
     return
 
 
 @app.cell
-def _(wecc_pv_systems):
-    wecc_pv_systems.to_csv('wecc_pv_systems.csv')
+def _(wecc_wt_systems):
+    wecc_wt_systems.to_csv('wecc_wt_systems.csv')
     return
 
 
@@ -160,9 +160,9 @@ def _(mo):
 
 
 @app.cell
-def _(latlon_list, nodes, select_year, utils, wecc_pv_systems):
+def _(latlon_list, nodes, select_year, utils, wecc_wt_systems):
     assigned_node_hashes = []
-    for _ix,_row in wecc_pv_systems[wecc_pv_systems['year'] <= select_year.value].iterrows():
+    for _ix,_row in wecc_wt_systems[wecc_wt_systems['year'] <= select_year.value].iterrows():
         _best_ix, _latlon, _dist = utils.nearest2((_row['latitude_gen'], _row['longitude_gen']), latlon_list)
         assigned_node_hashes.append(nodes.iloc[_best_ix].name)
     return (assigned_node_hashes,)
@@ -175,10 +175,10 @@ def _(assigned_node_hashes):
 
 
 @app.cell
-def _(assigned_node_hashes, select_year, wecc_pv_systems):
-    wecc_pv_assigned = wecc_pv_systems[wecc_pv_systems['year'] <= select_year.value].copy()
-    wecc_pv_assigned['node geohash'] = assigned_node_hashes
-    return (wecc_pv_assigned,)
+def _(assigned_node_hashes, select_year, wecc_wt_systems):
+    wecc_wt_assigned = wecc_wt_systems[wecc_wt_systems['year'] <= select_year.value].copy()
+    wecc_wt_assigned['node geohash'] = assigned_node_hashes
+    return (wecc_wt_assigned,)
 
 
 @app.cell
@@ -188,7 +188,7 @@ def _(utils):
 
 
 @app.cell
-def _(folium, reduced_network, wecc_pv_assigned):
+def _(folium, reduced_network, wecc_wt_assigned):
     m = folium.Map(location=[37.166, -119.449], zoom_start=5, tiles="OpenStreetMap")
     folium.TileLayer("Esri.WorldImagery").add_to(m)
     for _id in reduced_network.index:
@@ -198,7 +198,7 @@ def _(folium, reduced_network, wecc_pv_assigned):
             location=[_lat, _lon], popup=f"<b>{_id}, “node: {_bn}”</b>", radius=4, fill_color="gray", 
             fill_opacity=0.9, color="black", weight=1
         ).add_to(m)
-    for _id in set(wecc_pv_assigned['node geohash']):
+    for _id in set(wecc_wt_assigned['node geohash']):
         _lat, _lon = reduced_network.loc[_id][["Lat", "Long"]].values
         _bn = reduced_network.loc[_id]["Bus  Name"][0]
         folium.CircleMarker(
@@ -240,18 +240,18 @@ def _(pd, utils):
     network = utils.load_full_network()
     joined_2011 = pd.merge(wecc_gen_2011, network, how='inner', left_on='   I', right_on='Bus  Number')
     joined_2018 = pd.merge(wecc_gen_2018, network, how='inner', left_on='busname', right_on='Bus  Number')
-    _grouped = joined_2011[joined_2011['ID'].isin(['DP', 'S'])]\
+    _grouped = joined_2011[joined_2011['ID'].isin(['W', 'NW', 'SW'])]\
         .groupby('geohash')
-    pv_nodes_2011 = _grouped.first()
-    _grouped = joined_2018[joined_2018['Gen_Type'].isin(['PV-1', 'PV-2'])]\
+    wt_nodes_2011 = _grouped.first()
+    _grouped = joined_2018[joined_2018['Gen_Type'].isin(['Wind-1', 'Wind-2'])]\
         .groupby('geohash')
-    pv_nodes_2018 = _grouped.first()
-    return pv_nodes_2011, pv_nodes_2018
+    wt_nodes_2018 = _grouped.first()
+    return wt_nodes_2011, wt_nodes_2018
 
 
 @app.cell
-def _(pv_nodes_2011):
-    pv_nodes_2011
+def _(wt_nodes_2011):
+    wt_nodes_2011
     return
 
 
@@ -260,17 +260,17 @@ def _(
     latlon_list,
     nodes,
     np,
-    pv_nodes_2011,
-    pv_nodes_2018,
     utils,
-    wecc_pv_systems,
+    wecc_wt_systems,
+    wt_nodes_2011,
+    wt_nodes_2018,
 ):
     node_sets = {}
-    node_sets['2011m'] = set(pv_nodes_2011.index)
-    node_sets['2018m'] = set(pv_nodes_2018.index)
+    node_sets['2011m'] = set(wt_nodes_2011.index)
+    node_sets['2018m'] = set(wt_nodes_2018.index)
     for _yr in np.arange(5) + 2018:
         _assigned_node_hashes = []
-        for _ix,_row in wecc_pv_systems[wecc_pv_systems['year'] <= _yr].iterrows():
+        for _ix,_row in wecc_wt_systems[wecc_wt_systems['year'] <= _yr].iterrows():
             _best_ix, _latlon, _dist = utils.nearest2((_row['latitude_gen'], _row['longitude_gen']), latlon_list)
             _assigned_node_hashes.append(nodes.iloc[_best_ix].name)
         node_sets[str(_yr)+'d'] = set(_assigned_node_hashes)

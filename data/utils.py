@@ -13,6 +13,51 @@ import psm3 as pvlib_psm3
 import io, requests, zipfile
 import marimo as mo
 
+WECC_GEN_TYPES = {
+    
+    "B": "Biomass",
+    "NB": "Biomass",
+
+    "G": "Gas",
+    "DG": "Gas",
+    "EG": "Gas",
+    "TG": "Gas",
+    "RG": "Gas",
+    "SG": "Gas",
+    "WG": "Gas",
+    "NG": "Gas",
+    "MG": "Gas",
+    "CG": "Gas",
+    
+    "CE": "Geothermal",
+    "NE": "Geothermal",
+    
+    "H": "Hydro",
+    "NH": "Hydro",
+    
+    "N": "Nuclear",
+    "NN": "Nuclear",
+    
+    "DP": "Solar",
+    "S": "Solar",
+    
+    "C": "Steam",
+    "E": "Steam",
+
+    "W": "Wind",
+    "NW": "Wind",
+    "SW": "Wind",
+
+    "R": "Renewable",
+
+    "BA": "Battery",
+    "BESS": "Battery",
+
+    "PSH": "Pumphydro",
+
+    "DC": "HVDC",
+}
+
 #
 # Command args
 #
@@ -337,6 +382,24 @@ def load_uspvdb():
         "battery", "capacity[MW]"
     ]
     return uspvdb
+
+def load_uswtdb():
+    zipdata = zipfile.ZipFile(io.BytesIO(requests.get("https://energy.usgs.gov/uswtdb/assets/data/uswtdbCSV.zip").content))
+    uswtdb = pd.read_csv(
+        zipdata.open([x for x in zipdata.namelist() if x.endswith(".csv")][0],"r"),
+        usecols = [
+            't_state', 't_county', 'p_name', 'p_year', 't_model', 't_cap', 
+            't_hh', 't_rd', 'xlong', 'ylat'
+        ],
+        
+    )
+    uswtdb.columns = [
+       "state", "county", "name", "year", "model", "capacity[MW]", "hub_height[m]", 
+       "rotor_diameter[m]", "longitude", "latitude"
+    ]
+    uswtdb['county'] = uswtdb['county'].apply(lambda x: str(x)[:-7]) # remove " County" ending from each line
+    uswtdb['capacity[MW]'] /= 1e3 # units in file are actually [kW], unlike uspvdb
+    return uswtdb
 
 def load_wecc_counties(fn='wecc_counties.csv'):
     if os.path.exists(fn):

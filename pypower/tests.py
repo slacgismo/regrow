@@ -150,6 +150,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(original).save_case(fh)
 
     # solve the original powerflow from PSSE
+    print(f"Running runpf of {fh.name}...")
     original_solution,status,xtime = time_call(runpf,original,options)
     if status == 0:
         print(f"ERROR [wecc240]: original case powerflow failed (see {fh.name})")
@@ -165,6 +166,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
         print("done")
 
     # solve the original model DCOPF
+    print(f"Running rundcopf of {fh.name}...")
     dcopf,xtime = time_call(rundcopf,original,options)
     if not dcopf["success"]:
         print(f"ERROR [wecc240]: original case dcopf failed (see {fh.name})")
@@ -176,6 +178,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
 # solve the DCOPF powerflow
 with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(dcopf).save_case(fh)
+    print(f"Running runpf of {fh.name}...")
     dcopf_solution,status,xtime = time_call(runpf,dcopf,options)
     if status == 0:
         print(f"ERROR [wecc240]: original case dcopf powerflow failed (see {fh.name})")
@@ -199,6 +202,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(scheduling).save_case(fh)
 
     # solve the scheduling powerflow from PSSE
+    print(f"Running runpf of {fh.name}...")
     scheduling_solution,status,xtime = time_call(runpf,scheduling,options)
     if status == 0:
         print(f"ERROR [wecc240]: scheduling case powerflow failed (see {fh.name})")
@@ -208,6 +212,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         test_results.loc["Scheduling","Pre-OPF Powerflow"] = xtime
 
     # solve the schedule model DCOPF
+    print(f"Running rundcopf of {fh.name}...")
     scheduling_dcopf,xtime = time_call(rundcopf,scheduling,options)
     if not scheduling_dcopf["success"]:
         print(f"ERROR [wecc240]: scheduling case dcopf failed (see {fh.name})")
@@ -226,6 +231,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
 # solve the DCOPF powerflow
 with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240").set_case(scheduling_dcopf).save_case(fh)
+    print(f"Running runpf of {fh.name}...")
     scheduling_dcopf_solution,status,xtime = time_call(runpf,scheduling_dcopf,options)
     if status == 0:
         print(f"ERROR [wecc240]: scheduling case dcopf powerflow failed (see {fh.name})")

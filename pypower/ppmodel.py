@@ -112,9 +112,10 @@ class PPModel:
     """PyPower Model Access"""
 
     def __init__(self,
-        name:str,
+        name:str="unnamed",
         version:int=2,
         mvabase:float=100.0,
+        case:dict=None,
         ):
         """Create PyPower case data
 
@@ -125,6 +126,8 @@ class PPModel:
         version: case version number
 
         mvabase: MVA base value
+
+        case: case data
         """
 
         self.name = name
@@ -137,7 +140,7 @@ class PPModel:
             "gencost": [],
             "dcline": [],
             "dclinecost": [],
-        }
+        } if case is None else case
 
     def set_case(self,
         case:dict,

@@ -21,7 +21,6 @@ import numpy as np
 from ppmodel import PPModel, idx_gis
 from pypower import idx_cost, idx_bus
 
-
 class Schedule:
     """Scheduling data accessor class"""
 
@@ -32,9 +31,9 @@ class Schedule:
         ):
 
         # create default scheduling data
-        self.generator = pd.read_csv(f"{prefix}generator.csv")
-        self.line = pd.read_csv(f"{prefix}line.csv")
-        self.storage  = pd.read_csv(f"{prefix}storage.csv")
+        self.generator = pd.read_csv(f"{prefix}generator.csv").sort_values("genname")
+        self.line = pd.read_csv(f"{prefix}line.csv").sort_values(["StartBusName","EndBusName"])
+        self.storage  = pd.read_csv(f"{prefix}storage.csv").sort_values("busname")
 
     def update_case(self,
         case:dict,
@@ -105,7 +104,7 @@ class Schedule:
                 ]).T
             ).T
 
-        # clear the unused cost columns
+        # clear the unused cost gencost columns
         for row in case["gencost"]:
             ncost = row[idx_cost.NCOST]
             if row[idx_cost.MODEL] == idx_cost.PW_LINEAR:
@@ -114,21 +113,32 @@ class Schedule:
                 row[int(idx_cost.COST+ncost):] = 0
 
         # update the branch data
+        # TODO: update line data
+
+        # update storage data
+        # TODO: not sure how to do that yet
 
         # update the bus data
-
-        # update the gis data
         tmp = PPModel("").set_case(case)
-        gis = tmp.get_data("gis")
         bus = tmp.get_data("bus")
         gen = tmp.get_data("gen")
+        ref = bus[bus.BUS_TYPE==idx_bus.REF].index.values # save the reference bus(ses)
+        bus.BUS_TYPE = idx_bus.PQ # change all busses back to PQ
+        bus.set_index("BUS_I",inplace=True)
+        bus.loc[gen.GEN_BUS,"BUS_TYPE"] = idx_bus.PV # set the gen busses to PV
+        bus.reset_index(inplace=True)
+        bus.loc[ref,"BUS_TYPE"] = idx_bus.REF # restore the reference bus(ses)
+        case["bus"][:,idx_bus.BUS_TYPE] = bus.BUS_TYPE # copy back to case bus data
+
+        # update the gis data
+        gis = tmp.get_data("gis")
         gisdata = gis.copy().set_index("BUS_I")
 
         # # add generator count (NaN -> not allowed)
         gisdata["GEN"] = float('nan') # by default no generation is allowed
         gisdata.loc[bus[bus.BUS_TYPE!=idx_bus.PQ].
             BUS_I,"GEN"] = 0 # all ~PQ busses can have generation
-        gisdata.loc[gen.GEN_BUS,"GEN"] = 1 # all gen busses have 1 generator
+        gisdata.loc[gen.GEN_BUS,"GEN"] = gen.groupby("GEN_BUS")["GEN_STATUS"].count() # 1 for each gen listed
 
         # # add load count (NaN -> load not allowed)
         gisdata["LOAD"] = float('nan') # default no load is allowed
@@ -137,10 +147,13 @@ class Schedule:
 
         case["gis"] = gisdata.reset_index().values
 
-
         return case
 
 if __name__ == "__main__":
+
+    pd.options.display.width = None
+    pd.options.display.max_rows = None
+    pd.options.display.max_columns = None
 
     # pylint: disable=cyclic-import,ungrouped-imports
     from wecc240 import wecc240
@@ -150,11 +163,8 @@ if __name__ == "__main__":
 
     casedata = wecc240(options=["SCHEDULING"])
 
-    pd.options.display.width = None
-    pd.options.display.max_rows = None
-    pd.options.display.max_columns = None
     with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
-        PPModel("wecc240").set_case(casedata).save_case(fh)
+        PPModel("wecc240",case=casedata).save_case(fh)
 
     options = ppoption(VERBOSE=0,OUT_ALL=0)
     assert runpf(casedata,options)[0]["success"], "runpf failed"

@@ -308,7 +308,8 @@ class PSSE2PP:
         # add generator count (NaN -> not allowed)
         gisdata["GEN"] = float('nan') # by default no generation is allowed
         gisdata.loc[bus[bus.BUSTYPE!=idx_bus.PQ].ID,"GEN"] = 0 # all ~PQ busses can have generation
-        gisdata.loc[gen.I,"GEN"] = 1 # all gen busses have 1 generator
+        counts = gen.groupby("I").I.count().astype(int)
+        gisdata.loc[counts.index,"GEN"] = counts # all gen busses have 1 generator
 
         # add load count (NaN -> load not allowed)
         gisdata["LOAD"] = float('nan') # default no load is allowed

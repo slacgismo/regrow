@@ -23,6 +23,7 @@ import sys
 import datetime as dt
 import io
 from typing import Self, TypeVar, Callable
+import warnings
 
 import numpy as np
 import pandas as pd
@@ -488,9 +489,9 @@ def {self.name}():
             "Generator count": len(self.get_data("gen")),
             "DC line count": len(self.get_data("dcline")),
             "Node count": len(self.get_nodes()),
-            "LV substations": len(bus[bus.BASE_KV==20]),
-            "MV substations": len(bus[(bus.BASE_KV>20)&(bus.BASE_KV<250)]),
-            "HV substations": len(bus[bus.BASE_KV>250]),
+            "LV busses": len(bus[bus.BASE_KV==20]),
+            "MV busses": len(bus[(bus.BASE_KV>20)&(bus.BASE_KV<250)]),
+            "HV busses": len(bus[bus.BASE_KV>250]),
             "Generation substations": len(gengis.GEOHASH.unique()),
             "Load substations": len(loadgis[loadgis.PD>0].GEOHASH.unique()),
             }
@@ -522,3 +523,83 @@ def {self.name}():
             else:
                 nodes[j] = [i]
         return nodes
+
+    def get_graph(self,
+        level:str="BUS",
+        nodes:str=None
+        ) -> tuple[pd.DataFrame,pd.DataFrame]:
+        """Get network graphs
+
+        Arguments:
+
+        level: "BUS","NODE","ZONE","AREA"
+
+        nodes: return node type (None, "nearest", "centroid")
+
+        Returns:
+
+        links: list of link tuples indexes into bus data in order of branch
+        data
+        """
+        nodes = pd.merge(self.get_data("bus"),
+            self.get_data("gis"),
+            left_on="BUS_I",
+            right_on="BUS_I",
+            )
+
+        match level:
+
+            case "BUS":
+
+                # no node aggregation
+                nodes["BUS"] = nodes.index # save row indexing for linklist
+                nodes.set_index("BUS_I",inplace=True) # index on bus id
+
+                # process branches
+                branch = self.get_data("branch").copy()
+                branch["FROM"] = nodes.loc[branch.F_BUS.astype(int)].BUS.values
+                branch["TO"] = nodes.loc[branch.T_BUS.astype(int)].BUS.values
+                branch.set_index(["FROM","TO"],inplace=True)
+
+                # process dclines
+                dcline = self.get_data("dcline").copy()
+                dcline["FROM"] = nodes.loc[dcline.F_BUS.astype(int)].BUS.values
+                dcline["TO"] = nodes.loc[dcline.T_BUS.astype(int)].BUS.values
+                dcline.set_index(["FROM","TO"],inplace=True)
+
+                links = branch.index.tolist() + dcline.index.tolist()
+
+            case "GEOHASH":
+                
+                warnings.warn(f"{level=} not implemented yet")
+                links = pd.DataFrame() # TODO
+            
+            case "ZONE":
+            
+                warnings.warn(f"{level=} not implemented yet")
+                links = pd.DataFrame() # TODO
+            
+            case "AREA":
+            
+                warnings.warn(f"{level=} not implemented yet")
+                links = pd.DataFrame() # TODO
+            
+            case "_":
+            
+                raise ValueError(f"{level=} is invalid")
+
+        linklist = [[int(y) for y in x] for x in links]
+        return linklist
+
+if __name__ == "__main__":
+
+    pd.options.display.width = None
+    pd.options.display.max_columns = None
+    pd.options.display.max_rows = None
+
+    from wecc240 import wecc240
+    model = PPModel(case=wecc240)
+    linklist = model.get_graph()
+    for graph in ["BUS","GEOHASH","ZONE","AREA"]:
+        print(f"{graph}:",model.get_graph(graph))
+

@@ -126,7 +126,8 @@ class Schedule:
 
         # # add generator count (NaN -> not allowed)
         gisdata["GEN"] = float('nan') # by default no generation is allowed
-        gisdata.loc[bus[bus.BUS_TYPE!=idx_bus.PQ].BUS_I,"GEN"] = 0 # all ~PQ busses can have generation
+        gisdata.loc[bus[bus.BUS_TYPE!=idx_bus.PQ].
+            BUS_I,"GEN"] = 0 # all ~PQ busses can have generation
         gisdata.loc[gen.GEN_BUS,"GEN"] = 1 # all gen busses have 1 generator
 
         # # add load count (NaN -> load not allowed)
@@ -159,5 +160,5 @@ if __name__ == "__main__":
     assert runpf(casedata,options)[0]["success"], "runpf failed"
     assert rundcopf(casedata,options)["success"], "runopf failed"
 
-    data = Schedule("wecc240/scheduling/").generator
-    # print(data)
+    result = Schedule("wecc240/scheduling/").generator
+    print(result)

@@ -147,7 +147,7 @@ original = wecc240()
 
 # save the case data
 with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
-    PPModel("wecc240").set_case(original).save_case(fh)
+    PPModel("wecc240",case=original).save_case(fh)
 
     # solve the original powerflow from PSSE
     print(f"Running runpf of {fh.name}...")
@@ -177,7 +177,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
 
 # solve the DCOPF powerflow
 with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
-    PPModel("wecc240").set_case(dcopf).save_case(fh)
+    PPModel("wecc240",case=dcopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
     dcopf_solution,status,xtime = time_call(runpf,dcopf,options)
     if status == 0:
@@ -199,7 +199,7 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
 #
 scheduling = wecc240(options=["SCHEDULING"])
 with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
-    PPModel("wecc240").set_case(scheduling).save_case(fh)
+    PPModel("wecc240",case=scheduling).save_case(fh)
 
     # solve the scheduling powerflow from PSSE
     print(f"Running runpf of {fh.name}...")
@@ -230,7 +230,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
 
 # solve the DCOPF powerflow
 with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
-    PPModel("wecc240").set_case(scheduling_dcopf).save_case(fh)
+    PPModel("wecc240",case=scheduling_dcopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
     scheduling_dcopf_solution,status,xtime = time_call(runpf,scheduling_dcopf,options)
     if status == 0:
@@ -252,8 +252,8 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
 #
 if save_plots:
     print("Saving KML files to tests folder",end="...")
-    PPModel("wecc240").set_case(original).save_kml("tests/wecc240_original.kml")
-    PPModel("wecc240").set_case(scheduling).save_kml("tests/wecc240_scheduling.kml")
+    PPModel("wecc240",case=original).save_kml("tests/wecc240_original.kml")
+    PPModel("wecc240",case=scheduling).save_kml("tests/wecc240_scheduling.kml")
     print("done")
 
 if errors > 0:

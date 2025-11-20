@@ -16,10 +16,6 @@ from typing import TypeVar
 import pandas as pd
 import numpy as np
 
-pd.options.display.width=None
-pd.options.display.max_columns = None
-pd.options.display.max_rows = None
-
 from ppmodel import PPModel, idx_bus
 
 # read default costs data (used when no cost data is provided, e.g., from HIFLD)
@@ -307,6 +303,7 @@ class PSSE2PP:
         """
 
         gisdata = gis.copy().set_index("BUS_I")
+        gisdata.loc[bus.ID,"NAME"] = bus.set_index("ID").NAME
 
         # add generator count (NaN -> not allowed)
         gisdata["GEN"] = float('nan') # by default no generation is allowed
@@ -326,3 +323,13 @@ class PSSE2PP:
         """Convert PSSE scheduling data to PyPower scheduling data"""
 
         return {"future work"}
+
+if __name__ == "__main__":
+
+    pd.options.display.width = None
+    pd.options.display.max_columns = None
+    pd.options.display.max_rows = None
+
+    from psse import PSSE
+    raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
+    print(raw.bus)

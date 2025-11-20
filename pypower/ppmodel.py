@@ -22,7 +22,7 @@ The following example constructs a new PyPower model and prints the case data.
 import sys
 import datetime as dt
 import io
-from typing import Self, TypeVar
+from typing import Self, TypeVar, Callable
 
 import numpy as np
 import pandas as pd
@@ -73,8 +73,9 @@ class idx_gis:
     LAT = 1 # bus latitude
     LON = 2 # bus longitude
     GEOHASH = 3 # bus node id
-    GEN = 4 # generator count (nan: no gen allowed)
-    LOAD = 5 # load count (nan: no load allowed)
+    NAME = 4 # bus name
+    GEN = 5 # generator count (nan: no gen allowed)
+    LOAD = 6 # load count (nan: no load allowed)
 
 ignore_idx = {
     "bus": ["PQ","PV","REF","NONE"],
@@ -115,7 +116,7 @@ class PPModel:
         name:str="unnamed",
         version:int=2,
         mvabase:float=100.0,
-        case:dict=None,
+        case:dict|Callable=None,
         ):
         """Create PyPower case data
 
@@ -140,7 +141,14 @@ class PPModel:
             "gencost": [],
             "dcline": [],
             "dclinecost": [],
-        } if case is None else case
+        } if case is None else (case() if callable(case) else case)
+        assert "version" in self.case, "version missing in case"
+        assert self.case["version"] == 2, f"version={self.case['version']} is not valid"
+        assert "baseMVA" in self.case, "baseMVA missing in case"
+        assert self.case["baseMVA"] > 0.0, f"baseMVA={self.case['baseMVA']} is not valid"
+        assert "bus" in self.case, "bus missing in case"
+        assert "branch" in self.case, "branch missing in case"
+        assert "gen" in self.case, "gen missing in case"
 
     def set_case(self,
         case:dict,

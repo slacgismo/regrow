@@ -18,8 +18,9 @@ data when storage is charging. Otherwise storage is added to generation.
 
 import pandas as pd
 import numpy as np
-from ppmodel import PPModel
-from pypower import idx_cost
+from ppmodel import PPModel, idx_gis
+from pypower import idx_cost, idx_bus
+
 
 class Schedule:
     """Scheduling data accessor class"""
@@ -115,6 +116,26 @@ class Schedule:
         # update the branch data
 
         # update the bus data
+
+        # update the gis data
+        tmp = PPModel("").set_case(case)
+        gis = tmp.get_data("gis")
+        bus = tmp.get_data("bus")
+        gen = tmp.get_data("gen")
+        gisdata = gis.copy().set_index("BUS_I")
+
+        # # add generator count (NaN -> not allowed)
+        gisdata["GEN"] = float('nan') # by default no generation is allowed
+        gisdata.loc[bus[bus.BUS_TYPE!=idx_bus.PQ].BUS_I,"GEN"] = 0 # all ~PQ busses can have generation
+        gisdata.loc[gen.GEN_BUS,"GEN"] = 1 # all gen busses have 1 generator
+
+        # # add load count (NaN -> load not allowed)
+        gisdata["LOAD"] = float('nan') # default no load is allowed
+        gisdata.loc[bus[bus.BUS_TYPE==idx_bus.PQ].BUS_I,"LOAD"] = 0 # all PQ busses can have loads
+        gisdata.loc[bus[bus.PD>0].BUS_I,"LOAD"] = 1 # all load busses have 1 load
+
+        case["gis"] = gisdata.reset_index().values
+
 
         return case
 

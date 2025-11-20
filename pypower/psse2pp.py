@@ -16,7 +16,11 @@ from typing import TypeVar
 import pandas as pd
 import numpy as np
 
-from ppmodel import PPModel
+pd.options.display.width=None
+pd.options.display.max_columns = None
+pd.options.display.max_rows = None
+
+from ppmodel import PPModel, idx_bus
 
 # read default costs data (used when no cost data is provided, e.g., from HIFLD)
 costs = pd.read_csv("costs.csv",index_col=0)
@@ -42,13 +46,15 @@ class PSSE2PP:
 
         self.mvabase = psse.config["mvabase"]
         self.model = PPModel(name=psse.name,mvabase=self.mvabase)
+
+        # raw PSSE data
         self.model.case["bus"] = self.bus(psse.bus,psse.load,psse.shunt)
         self.model.case["gen"] = self.gen(psse.gen)
         self.model.case["gencost"] = self.gencost(psse.gen)
         self.model.case["branch"] = self.branch(psse.branch,psse.xform)
         self.model.case["dcline"] = self.dcline(psse.dcline)
         self.model.case["dclinecost"] = self.dclinecost(psse.dcline)
-        self.model.case["gis"] = self.gis(psse.gis)
+        self.model.case["gis"] = self.gis(psse.gis,psse.bus,psse.gen,psse.load)
         self.model.case["scheduling"] = self.scheduling(psse.scheduling)
 
     def bus(self,
@@ -283,6 +289,9 @@ class PSSE2PP:
 
     def gis(self,
         gis:pd.DataFrame,
+        bus:pd.DataFrame,
+        gen:pd.DataFrame,
+        load:pd.DataFrame,
         ) -> list:
         """Convert PSSE gis data to PyPower gis data
 
@@ -290,12 +299,26 @@ class PSSE2PP:
 
         gis: gis dataframe from PSSE
 
+        bus: bus dataframe from PSSE
+
         Returns:
 
         list: PyPower gis data
         """
 
-        return gis.values
+        gisdata = gis.copy().set_index("BUS_I")
+
+        # add generator count (NaN -> not allowed)
+        gisdata["GEN"] = float('nan') # by default no generation is allowed
+        gisdata.loc[bus[bus.BUSTYPE!=idx_bus.PQ].ID,"GEN"] = 0 # all ~PQ busses can have generation
+        gisdata.loc[gen.I,"GEN"] = 1 # all gen busses have 1 generator
+
+        # add load count (NaN -> load not allowed)
+        gisdata["LOAD"] = float('nan') # default no load is allowed
+        gisdata.loc[bus[bus.BUSTYPE==idx_bus.PQ].ID,"LOAD"] = 0 # all PQ busses can have loads
+        gisdata.loc[load[(load.PL+load.IP+load.YP)>0].I,"LOAD"] = 1 # all load busses have 1 load
+
+        return gisdata.reset_index().values
 
     def scheduling(self,
         schedule:dict,

@@ -69,10 +69,12 @@ class idx_gis:
 
     # pylint: disable=invalid-name,too-few-public-methods
 
-    BUS_I = 0
-    LAT = 1
-    LON = 2
-    GEOHASH = 3
+    BUS_I = 0 # bus index
+    LAT = 1 # bus latitude
+    LON = 2 # bus longitude
+    GEOHASH = 3 # bus node id
+    GEN = 4 # generator count (nan: no gen allowed)
+    LOAD = 5 # load count (nan: no load allowed)
 
 ignore_idx = {
     "bus": ["PQ","PV","REF","NONE"],
@@ -476,8 +478,8 @@ def {self.name}():
             "DC line count": len(self.get_data("dcline")),
             "Node count": len(self.get_nodes()),
             "LV substations": len(bus[bus.BASE_KV==20]),
-            "MV substations": len(bus[(bus.BASE_KV>20)&(bus.BASE_KV<200)]),
-            "HV substations": len(bus[bus.BASE_KV>200]),
+            "MV substations": len(bus[(bus.BASE_KV>20)&(bus.BASE_KV<250)]),
+            "HV substations": len(bus[bus.BASE_KV>250]),
             "Generation substations": len(gengis.GEOHASH.unique()),
             "Load substations": len(loadgis[loadgis.PD>0].GEOHASH.unique()),
             }
@@ -489,9 +491,10 @@ def {self.name}():
         header = get_header(name)
         n = 1
         last = header[-1]
-        header[-1] = f"{last}_0"
+        if len(header) < width:
+            header[-1] = f"{last}0"
         while len(header) < width:
-            header.append(f"{last}_{n}")
+            header.append(f"{last}{n}")
             n += 1
         return pd.DataFrame(self.case[name].T,header[:width]).T
 

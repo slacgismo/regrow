@@ -35,9 +35,22 @@ jobs:
         python3 tests.py || ( tar cfz ../pypower-tests.tarz tests ; false )
         tar cfz ../pypower-tests.tarz tests
 
+    - name: Update summaries
+      run: |
+        cd pypower
+        python3 summaries.py
+        tar cfz ../pypower-summaries.tarz summaries
+
     - name: Save test results
       if: always()
       uses: actions/upload-artifact@v5
       with:
         name: pypower-tests
         path: pypower-tests.tarz
+
+    - name: Save summary output
+      if: always()
+      uses: actions/upload-artifact@v5
+      with:
+        name: pypower-summaries
+        path: pypower-summaries.tarz

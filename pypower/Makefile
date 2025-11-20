@@ -9,7 +9,7 @@ FILES+=scheduling.py
 all: pylint summaries
 
 pylint:
-	pylint $(FILES)
+	pylint --fail-under=9 $(FILES)
 
 summaries: summaries.py
-	python summaries.py
+	python3 summaries.py

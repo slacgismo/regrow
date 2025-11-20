@@ -271,7 +271,7 @@ def {self.name}():
             )
 
         # bus markers
-        for bus_i,latitude,longitude,geocode in self.case["gis"]:
+        for bus_i,latitude,longitude,geocode in self.case["gis"][:,0:4]:
             kml.add_marker(
                 name=geocode if use_geocode else f"{bus_i}",
                 style="node",
@@ -572,17 +572,17 @@ def {self.name}():
             case "GEOHASH":
                 
                 warnings.warn(f"{level=} not implemented yet")
-                links = pd.DataFrame() # TODO
+                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]}).set_index(["FROM","TO"]).index # TODO
             
             case "ZONE":
             
                 warnings.warn(f"{level=} not implemented yet")
-                links = pd.DataFrame() # TODO
+                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]}).set_index(["FROM","TO"]).index # TODO
             
             case "AREA":
             
                 warnings.warn(f"{level=} not implemented yet")
-                links = pd.DataFrame() # TODO
+                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]}).set_index(["FROM","TO"]).index # TODO
             
             case "_":
             

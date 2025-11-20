@@ -23,7 +23,7 @@ def gis_2011(options) -> pd.DataFrame:
 
 def gis_2020(options) -> pd.DataFrame:
     """Get the GIS data for 2020 model"""
-    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    model = PPModel(case=wecc240(options=options))
     return model.get_data("gis").set_index("GEOHASH")
 
 def node_gencount(options) -> pd.DataFrame:
@@ -53,24 +53,35 @@ def bus_nogen(options) -> pd.DataFrame:
 
 def network_bus_graph(options):
     """Get network bus graph"""
-    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    model = PPModel(case=wecc240(options=options))
     return pd.DataFrame(model.get_graph("BUS")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
 
 def network_node_graph(options):
     """Get network bus graph"""
-    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    model = PPModel(case=wecc240(options=options))
     return pd.DataFrame(model.get_graph("GEOHASH")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
 
 def network_zone_graph(options):
     """Get network bus graph"""
-    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    model = PPModel(case=wecc240(options=options))
     return pd.DataFrame(model.get_graph("ZONE")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
 
 def network_area_graph(options):
     """Get network bus graph"""
-    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    model = PPModel(case=wecc240(options=options))
     return pd.DataFrame(model.get_graph("AREA")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
 
+def bus_generator_histogram(options):
+    """Generate histogram of generation according to bus voltage"""
+    model = PPModel(case=wecc240(options=options))
+    data = pd.merge(model.get_data("bus"),model.get_data("gen"),left_on="BUS_I",right_on="GEN_BUS")
+    grouper = data.groupby(["BUS_I","BASE_KV"])["PMAX"]
+    result = pd.concat([grouper.sum().round(1),grouper.count()],axis=1)
+    result.columns = ["PMAX","COUNT"]
+    index_names = result.index.names
+    result.reset_index(inplace=True)
+    result["BUS_I"] = result.BUS_I.astype(int)
+    return result.set_index(index_names)
 
 if __name__ == "__main__":
 
@@ -78,7 +89,7 @@ if __name__ == "__main__":
     for summary in [
             "gis_2011","gis_2020",
             "node_gencount",
-            "bus_catalog","bus_nogen",
-            "network_bus_graph", # TODO: "network_node_graph","network_zone_graph","network_area_graph",
+            "bus_catalog","bus_nogen","bus_generator_histogram",
+            "network_bus_graph", "network_node_graph","network_zone_graph","network_area_graph",
             ]:
         globals()[summary](options=model_options).to_csv(f"summaries/{summary}.csv")

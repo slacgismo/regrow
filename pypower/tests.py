@@ -16,6 +16,8 @@ from pypower.rundcopf import rundcopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 
+save_plots = True
+
 os.makedirs("tests",exist_ok=True)
 
 errors = 0
@@ -129,7 +131,6 @@ def plot(basecase:dict,
 
     plt.close()
 
-save_plots = False
 test_results = pd.DataFrame(data={
     "Model":["Original","Scheduling"],
     "Pre-OPF Powerflow":[float('nan')]*2,

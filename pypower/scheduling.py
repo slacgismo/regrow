@@ -39,6 +39,7 @@ class Schedule:
         case:dict,
         q_factor:float=0.2,
         init_status:bool=True,
+        reset_bustype=False,
         ) -> dict:
         """Update case data from schedule
 
@@ -49,6 +50,8 @@ class Schedule:
         q_factor: reactive power to use relative to real power
 
         init_status: flag to override schedule initial status
+
+        reset_bustype: reset all busses to PQ before add new generators
 
         Return:
 
@@ -123,7 +126,8 @@ class Schedule:
         bus = tmp.get_data("bus")
         gen = tmp.get_data("gen")
         ref = bus[bus.BUS_TYPE==idx_bus.REF].index.values # save the reference bus(ses)
-        bus.BUS_TYPE = idx_bus.PQ # change all busses back to PQ
+        if reset_bustype:
+            bus.BUS_TYPE = idx_bus.PQ # change all busses back to PQ
         bus.set_index("BUS_I",inplace=True)
         bus.loc[gen.GEN_BUS,"BUS_TYPE"] = idx_bus.PV # set the gen busses to PV
         bus.reset_index(inplace=True)

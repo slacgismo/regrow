@@ -83,13 +83,27 @@ def bus_generator_histogram(options):
     result["BUS_I"] = result.BUS_I.astype(int)
     return result.set_index(index_names)
 
+def bus_voltage_class(options):
+    voltage_ranges = {"LV":[0,50.0],"MV":[50,250],"HV":[250,1000]}
+    model = PPModel(case=wecc240(options=options))
+    data = model.get_data("bus").copy()
+    data["BUS_I"] = data.BUS_I.astype(int)
+    data["VCLASS"] = "NONE" # default class is NONE
+    def get_class(v):
+        for vc,vr in voltage_ranges.items():
+            if vr[0] < v <= vr[1]:
+                return vc
+        return NONE
+    data["VCLASS"] = [get_class(x) for x in data.BASE_KV]
+    return data.set_index("BUS_I")[["VCLASS"]]
+
 if __name__ == "__main__":
 
     model_options = ["SCHEDULING"]
     for summary in [
             "gis_2011","gis_2020",
             "node_gencount",
-            "bus_catalog","bus_nogen","bus_generator_histogram",
+            "bus_catalog","bus_nogen","bus_generator_histogram","bus_voltage_class",
             "network_bus_graph", "network_node_graph","network_zone_graph","network_area_graph",
             ]:
         globals()[summary](options=model_options).to_csv(f"summaries/{summary}.csv")

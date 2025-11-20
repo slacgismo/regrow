@@ -32,13 +32,13 @@ jobs:
     - name: Run tests
       run: |
         cd pypower
-        python3 tests.py || ( tar cfz ../pypower-tests.tarz tests ; false )
+        make pylint || ( tar cfz ../pypower-tests.tarz tests ; false )
         tar cfz ../pypower-tests.tarz tests
 
     - name: Update summaries
       run: |
         cd pypower
-        python3 summaries.py
+        make summaries
         tar cfz ../pypower-summaries.tarz summaries
 
     - name: Save test results

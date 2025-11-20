@@ -26,6 +26,7 @@ from psse import PSSE
 from psse2pp import PSSE2PP
 from scheduling import Schedule
 from hifld import HIFLD, WECC
+from pypower import idx_bus
 
 def wecc240(
     options:list[str]=None,

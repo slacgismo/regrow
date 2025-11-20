@@ -4,9 +4,9 @@ This module defined the PyPower model accessor. Use the bus, branch, gen,
 gencost, dcline, and dclinecost methods to set the data arrays in the case.
 Use the 'case' member to access the pypower case data.
 
-The `save_case()` method is used to export a PyPower case file. 
+The `save_case()` method is used to export a PyPower case file.
 
-The `save_kml()` method is used to export a Google Earth KML file. 
+The `save_kml()` method is used to export a Google Earth KML file.
 
 The `print()` method is used to output the case data in human readable form
 using a Pandas data frame.
@@ -22,19 +22,21 @@ The following example constructs a new PyPower model and prints the case data.
 import sys
 import datetime as dt
 import io
-from typing import Self, TypeVar, Callable
+from typing import Self, Callable
 import warnings
 
 import numpy as np
 import pandas as pd
 
-from pypower import idx_bus
 from pypower import idx_brch as idx_branch
-from pypower import idx_gen
+# pylint: disable=unused-import
+from pypower import idx_gen, idx_bus # used indirectly in get_header()
+# pylint: enable=unused-import
 from pypower import idx_cost as idx_gencost
-from pypower import idx_cost as idx_dclinecost
 
 from kml import KML
+
+idx_dclinecost = idx_gencost
 
 class idx_dcline:
     """Provide missing column index values that should be in pypower.idx_dcline"""
@@ -570,22 +572,25 @@ def {self.name}():
                 links = branch.index.tolist() + dcline.index.tolist()
 
             case "GEOHASH":
-                
+
                 warnings.warn(f"{level=} not implemented yet")
-                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]}).set_index(["FROM","TO"]).index # TODO
-            
+                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]})\
+                    .set_index(["FROM","TO"]).index # TODO
+
             case "ZONE":
-            
+
                 warnings.warn(f"{level=} not implemented yet")
-                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]}).set_index(["FROM","TO"]).index # TODO
-            
+                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]})\
+                    .set_index(["FROM","TO"]).index # TODO
+
             case "AREA":
-            
+
                 warnings.warn(f"{level=} not implemented yet")
-                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]}).set_index(["FROM","TO"]).index # TODO
-            
+                links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]})\
+                    .set_index(["FROM","TO"]).index # TODO
+
             case "_":
-            
+
                 raise ValueError(f"{level=} is invalid")
 
         linklist = [[int(y) for y in x] for x in links]
@@ -599,7 +604,5 @@ if __name__ == "__main__":
 
     from wecc240 import wecc240
     model = PPModel(case=wecc240)
-    linklist = model.get_graph()
     for graph in ["BUS","GEOHASH","ZONE","AREA"]:
         print(f"{graph}:",model.get_graph(graph))
-

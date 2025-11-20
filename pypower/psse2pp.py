@@ -16,7 +16,8 @@ from typing import TypeVar
 import pandas as pd
 import numpy as np
 
-from ppmodel import PPModel, idx_bus
+from pypower import idx_bus
+from ppmodel import PPModel
 
 # read default costs data (used when no cost data is provided, e.g., from HIFLD)
 costs = pd.read_csv("costs.csv",index_col=0)
@@ -332,5 +333,5 @@ if __name__ == "__main__":
     pd.options.display.max_rows = None
 
     from psse import PSSE
-    raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
-    print(raw.bus)
+    psse_raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
+    print(psse_raw.bus)

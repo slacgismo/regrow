@@ -81,7 +81,7 @@ def bus_generator_histogram(options):
     index_names = result.index.names
     result.reset_index(inplace=True)
     result["BUS_I"] = result.BUS_I.astype(int)
-    return result.set_index(index_names)
+    return result.set_index(index_names).groupby("BASE_KV").sum()
 
 def bus_voltage_class(options):
     voltage_ranges = {"LV":[0,50.0],"MV":[50,250],"HV":[250,1000]}

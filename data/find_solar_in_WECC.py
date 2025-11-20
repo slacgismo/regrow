@@ -27,7 +27,7 @@ def _():
     import matplotlib.pyplot as plt
     import folium
     from supervenn import supervenn
-    return folium, mo, np, pd, plt, supervenn, utils
+    return folium, io, mo, np, pd, plt, supervenn, utils
 
 
 @app.cell
@@ -148,6 +148,21 @@ def _(capacities, counts, plt, years):
 @app.cell
 def _(wecc_pv_systems):
     wecc_pv_systems.to_csv('wecc_pv_systems.csv')
+    return
+
+
+@app.cell
+def _(io, pd):
+    csv_str = """GEOHASH,BUS_I,NAME,BUS_TYPE,VOLTAGE,LOAD,GENERATION,GENOK
+    9qhsdk,2603,VICTORVL,PQ,500.0,0.0,,0
+    9qhsdk,2607,VICTORVL,PQ,287.0,0.0,,0
+    9qq5wv,2901,ELDORADO,PQ,500.0,0.0,,0
+    9q5zqv,2902,MOHAVE,PQ,500.0,0.0,,0
+    9rg8bx,4003,BURNS,PQ,500.0,0.0,,0
+    c21g7u,4007,CELILOCA,PQ,500.0,0.0,,0
+    c21g7u,4010,CELILO,PQ,230.0,0.0,,0
+    9r0vxp,8001,OLINDA,PQ,500.0,0.0,,0"""
+    pd.read_csv(io.StringIO(csv_str), header=0)
     return
 
 

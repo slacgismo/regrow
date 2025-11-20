@@ -26,18 +26,10 @@ def gis_2020(options) -> pd.DataFrame:
     model = PPModel(case=wecc240(options=["SCHEDULING"]))
     return model.get_data("gis").set_index("GEOHASH")
 
-# #
-# # Get gis GEN and LOAD counts by GEOHASH
-# #
 def node_gencount(options) -> pd.DataFrame:
+    """Get gis GEN and LOAD counts by GEOHASH"""
     model = PPModel(case=wecc240(options=options))
     return model.get_data("gis").set_index("GEOHASH").sort_index()["GEN"].dropna().rename({"GEN":"GENCOUNT"}).groupby("GEOHASH").sum().astype(int)
-
-# 
-# Network graphs
-#
-# model = PPModel(case=wecc240(options=["SCHEDULING"]))
-# print(model.get_graph())
 
 def bus_catalog(options) -> pd.DataFrame:
     """Generate the full bus catalog"""
@@ -59,6 +51,26 @@ def bus_nogen(options) -> pd.DataFrame:
     n_genbus = pd.DataFrame(data[["GENOK","LOAD"]].groupby("GEOHASH").sum()) # count of how many PV busses are there
     return data.reset_index().set_index("GEOHASH").loc[(n_genbus.GENOK==0)&(n_genbus.LOAD==0)]
 
+def network_bus_graph(options):
+    """Get network bus graph"""
+    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    return pd.DataFrame(model.get_graph("BUS")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
+
+def network_node_graph(options):
+    """Get network bus graph"""
+    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    return pd.DataFrame(model.get_graph("GEOHASH")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
+
+def network_zone_graph(options):
+    """Get network bus graph"""
+    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    return pd.DataFrame(model.get_graph("ZONE")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
+
+def network_area_graph(options):
+    """Get network bus graph"""
+    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    return pd.DataFrame(model.get_graph("AREA")).rename({0:"FROM",1:"TO"},axis=1).set_index("FROM")
+
 
 if __name__ == "__main__":
 
@@ -67,5 +79,6 @@ if __name__ == "__main__":
             "gis_2011","gis_2020",
             "node_gencount",
             "bus_catalog","bus_nogen",
+            "network_bus_graph", # TODO: "network_node_graph","network_zone_graph","network_area_graph",
             ]:
         globals()[summary](options=model_options).to_csv(f"summaries/{summary}.csv")

@@ -19,3 +19,6 @@ pylint.txt: $(FILES)
 
 summaries: $(FILES) $(DATA) $(SCRIPT)
 	python3 summaries.py
+
+tests: $(FILES) $(DATA) tests.py
+	python3 tests.py

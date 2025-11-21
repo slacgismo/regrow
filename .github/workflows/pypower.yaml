@@ -27,12 +27,12 @@ jobs:
     - name: Analyse code
       run: |
         cd pypower
-        pylint --fail-under=9 *.py
+        make pylint
 
     - name: Run tests
       run: |
         cd pypower
-        make pylint || ( tar cfz ../pypower-tests.tarz tests ; false )
+        make tests || ( tar cfz ../pypower-tests.tarz tests ; false )
         tar cfz ../pypower-tests.tarz tests
 
     - name: Update summaries

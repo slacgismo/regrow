@@ -137,7 +137,8 @@ test_results = pd.DataFrame(data={
     "Pre-OPF Powerflow":[float('nan')]*2,
     "DC OPF Solution":[float('nan')]*2,
     "AC OPF Solution":[float('nan')]*2,
-    "Post-OPF Powerflow":[float('nan')]*2,
+    "Post-DC OPF Powerflow":[float('nan')]*2,
+    "Post-AC OPF Powerflow":[float('nan')]*2,
     }).set_index("Model")
 
 #
@@ -239,7 +240,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
         plot(basecase=original,testcase=original_solution,prefix="tests/original_")
         print("done")
 
-    # solve the original model DCOPF
+    # solve the original model DC OPF
     print(f"Running rundcopf of {fh.name}...")
     dcopf,xtime = time_call(rundcopf,original,options)
     if not dcopf["success"]:
@@ -249,7 +250,17 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
         # print(f"Original WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
         test_results.loc["Original","DC OPF Solution"] = xtime
 
-# solve the DCOPF powerflow
+    # solve the original model AC OPF
+    # print(f"Running rundcopf of {fh.name}...")
+    # acopf,xtime = time_call(runacopf,original,options)
+    # if not acopf["success"]:
+    #     print(f"ERROR [wecc240]: original case acopf failed after {xtime*1000:.1f} ms (see {fh.name})")
+    #     errors += 1
+    # else:
+    #     # print(f"Original WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
+    #     test_results.loc["Original","DC OPF Solution"] = xtime
+
+# solve the original DC OPF powerflow
 with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=dcopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
@@ -259,22 +270,31 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
         errors += 1
     else:
         # print(f"WECC240 DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
-        test_results.loc["Original","Post-OPF Powerflow"] = xtime
-
-    # print(f"Running runacopf of {fh.name}...")
-    # scheduling_acopf,xtime = time_call(runacopf,original_solution,options)
-    # if not scheduling_acopf["success"]:
-    #     print(f"ERROR [wecc240]: original case acopf failed after {xtime*1000:.1f} ms (see {fh.name})")
-    #     errors += 1
-    # else:
-    #     # print(f"WECC240 AC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
-    #     test_results.loc["Original","AC OPF Solution"] = xtime
+        test_results.loc["Original","Post-DC OPF Powerflow"] = xtime
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)
         plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
         plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
         print("done")
+
+# # solve the original AC OPF powerflow
+# with open("tests/wecc240_original_acopf.py","w",encoding="utf-8") as fh:
+#     PPModel("wecc240",case=acopf).save_case(fh)
+#     print(f"Running runpf of {fh.name}...")
+#     acopf_solution,status,xtime = time_call(runpf,acopf,options)
+#     if status == 0:
+#         print(f"ERROR [wecc240]: original case acopf powerflow failed after {xtime*1000:.1f} ms (see {fh.name})")
+#         errors += 1
+#     else:
+#         # print(f"WECC240 DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+#         test_results.loc["Original","Post-AC OPF Powerflow"] = xtime
+
+#     if save_plots:
+#         print("Saving comparison plots to tests folder",end="...",flush=True)
+#         plot(basecase=original,testcase=acopf_solution,prefix="tests/original_acopf_")
+#         plot(basecase=original,testcase=acopf_solution,prefix="tests/original_acopf_")
+#         print("done")
 
 
 #
@@ -313,7 +333,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         # print(f"Scheduling WECC240 AC OPF solved in {xtime:.3f} seconds.",flush=True)
         test_results.loc["Scheduling","AC OPF Solution"] = xtime
 
-# solve the AC OPF powerflow
+# solve the DC OPF powerflow
 with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=scheduling_dcopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
@@ -323,7 +343,7 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
         errors += 1
     else:
         # print(f"WECC240 scheduling DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
-        test_results.loc["Scheduling","Post-OPF Powerflow"] = xtime
+        test_results.loc["Scheduling","Post-DC OPF Powerflow"] = xtime
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)
@@ -340,8 +360,8 @@ with open("tests/wecc240_scheduling_acopf.py","w",encoding="utf-8") as fh:
         print(f"ERROR [wecc240]: scheduling case acopf powerflow failed after {xtime*1000:.1f} ms after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
-        # print(f"WECC240 scheduling DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
-        test_results.loc["Scheduling","Post-OPF Powerflow"] = xtime
+        # print(f"WECC240 scheduling AC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Scheduling","Post-AC OPF Powerflow"] = xtime
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)

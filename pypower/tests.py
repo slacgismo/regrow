@@ -13,11 +13,11 @@ from wecc240 import wecc240
 from ppmodel import PPModel
 from pypower.runpf import runpf
 from pypower.rundcopf import rundcopf
-# from pypower.runopf import runopf as runacopf
+from pypower.runopf import runopf as runacopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 
-save_plots = True
+save_plots = False # TODO: enable this
 
 os.makedirs("tests",exist_ok=True)
 
@@ -294,12 +294,13 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         # print(f"Scheduling WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
         test_results.loc["Scheduling","DC OPF Solution"] = xtime
 
-    # scheduling_acopf,xtime = time_call(runacopf,scheduling,options)
-    # if not scheduling_acopf["success"]:
-    #     print(f"ERROR [wecc240]: scheduling case acopf failed (see {fh.name})")
-    #     errors += 1
-    # else:
-    #     print(f"Schedule WECC240 AC OPF solved in {xtime:.3f} seconds.",flush=True)
+    print(f"Running runacopf of {fh.name}...")
+    scheduling_acopf,xtime = time_call(runacopf,scheduling,ppoption(OUT_ALL=1))
+    if not scheduling_acopf["success"]:
+        print(f"ERROR [wecc240]: scheduling case acopf failed (see {fh.name})")
+        errors += 1
+    else:
+        print(f"Schedule WECC240 AC OPF solved in {xtime:.3f} seconds.",flush=True)
 
 # solve the DCOPF powerflow
 with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:

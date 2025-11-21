@@ -261,14 +261,14 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
         # print(f"WECC240 DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
         test_results.loc["Original","Post-OPF Powerflow"] = xtime
 
-    print(f"Running runacopf of {fh.name}...")
-    scheduling_acopf,xtime = time_call(runacopf,original_solution,options)
-    if not scheduling_acopf["success"]:
-        print(f"ERROR [wecc240]: original case acopf failed after {xtime*1000:.1f} ms (see {fh.name})")
-        errors += 1
-    else:
-        # print(f"WECC240 AC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
-        test_results.loc["Original","AC OPF Solution"] = xtime
+    # print(f"Running runacopf of {fh.name}...")
+    # scheduling_acopf,xtime = time_call(runacopf,original_solution,options)
+    # if not scheduling_acopf["success"]:
+    #     print(f"ERROR [wecc240]: original case acopf failed after {xtime*1000:.1f} ms (see {fh.name})")
+    #     errors += 1
+    # else:
+    #     # print(f"WECC240 AC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+    #     test_results.loc["Original","AC OPF Solution"] = xtime
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)

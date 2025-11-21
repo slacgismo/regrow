@@ -17,7 +17,7 @@ from pypower.runopf import runopf as runacopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 
-save_plots = False # TODO: enable this
+save_plots = True # TODO: enable this
 
 os.makedirs("tests",exist_ok=True)
 
@@ -313,7 +313,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         # print(f"Scheduling WECC240 AC OPF solved in {xtime:.3f} seconds.",flush=True)
         test_results.loc["Scheduling","AC OPF Solution"] = xtime
 
-# solve the DCOPF powerflow
+# solve the AC OPF powerflow
 with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=scheduling_dcopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
@@ -329,6 +329,24 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
         print("Saving comparison plots to tests folder",end="...",flush=True)
         plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
         plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
+        print("done")
+
+# solve the AC OPF powerflow
+with open("tests/wecc240_scheduling_acopf.py","w",encoding="utf-8") as fh:
+    PPModel("wecc240",case=scheduling_acopf).save_case(fh)
+    print(f"Running runpf of {fh.name}...")
+    scheduling_acopf_solution,status,xtime = time_call(runpf,scheduling_acopf,options)
+    if status == 0:
+        print(f"ERROR [wecc240]: scheduling case acopf powerflow failed after {xtime*1000:.1f} ms after {xtime*1000:.1f} ms (see {fh.name})")
+        errors += 1
+    else:
+        # print(f"WECC240 scheduling DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Scheduling","Post-OPF Powerflow"] = xtime
+
+    if save_plots:
+        print("Saving comparison plots to tests folder",end="...",flush=True)
+        plot(basecase=original,testcase=scheduling_acopf_solution,prefix="tests/scheduling_acopf_")
+        plot(basecase=original,testcase=scheduling_acopf_solution,prefix="tests/scheduling_acopf_")
         print("done")
 
 #

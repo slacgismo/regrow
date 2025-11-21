@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from psse import PSSE
 from psse2pp import PSSE2PP
 from wecc240 import wecc240
 from ppmodel import PPModel
@@ -139,6 +140,77 @@ test_results = pd.DataFrame(data={
     }).set_index("Model")
 
 #
+# Test PSSE raw loader
+#
+raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
+assert raw.config["version"] == 34, "incorrect raw file version"
+assert raw.config["mvabase"] == 100.0, "incorrect raw mvabase value"
+length_checks = {
+    "area": 4,
+    "bus": 243,
+    "branch": 329,
+    "gen": 146,
+    "load": 135,
+    "shunt": 7,
+    "xform": 122,
+    "zone": 14,
+    "dcline": 2,
+    "gis": 243,
+    "scheduling": 3,
+}
+for item,length in length_checks.items():
+    assert len(getattr(raw,item)) == length, f"incorrect length for raw.{item}, expected {length}, found {len(getattr(raw,item))}"
+
+#
+# Test PSSE to PyPOWER converter
+#
+pp = PSSE2PP(raw)
+assert hasattr(pp,"model"), "model not found in PSSE2PP converter"
+assert hasattr(pp.model,"case"), "case not found in PSSE2PP converter model"
+length_checks = {
+    "bus": 243,
+    "branch": 451,
+    "gen": 146,
+    "gencost": 146,
+    "dcline": 2,
+    "dclinecost": 2,
+    "gis": 243,
+    "scheduling": 1, # TODO: should be 3 when scheduling of line and storage is done
+}
+for item,length in length_checks.items():
+    assert len(pp.model.case[item]) == length, f"incorrect length for model {item}, expected {length}, found {len(pp.model.case[item])}"
+
+#
+# Test PPMOdel accessors
+#
+length_checks = {
+    "Bus count": 243,
+    "Branch count": 451,
+    "Generator count": 146,
+    "DC line count": 2,
+    "Node count": 126,
+    "LV busses": 56,
+    "MV busses": 92,
+    "HV busses": 95,
+    "Generation substations": 55,
+    "Load substations": 115,
+}
+info = pp.model.get_info()
+for item,length in length_checks.items():
+    assert info[item] == length, f"incorrect length for model.get_info('{item}'), expected {length}, found {info[item]}"
+length_checks = {
+    "bus": 243,
+    "branch": 451,
+    "gen": 146,
+    "gencost": 146,
+    "dcline": 2,
+    "dclinecost": 2,
+    "gis": 243,
+}
+for item,length in length_checks.items():
+    assert len(pp.model.get_data(item)) == length, f"incorrect length for PPModel.get_bus('{item}'), expected {length}, found {len(pp.model.case[item])}"
+
+#
 # Verify the original WECC 240 model
 #
 
@@ -247,9 +319,8 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
         plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
         print("done")
 
-
 #
-# Save kml files
+# Test save kml files
 #
 if save_plots:
     print("Saving KML files to tests folder",end="...")

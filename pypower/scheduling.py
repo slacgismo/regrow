@@ -37,7 +37,7 @@ class Schedule:
 
     def update_case(self,
         case:dict,
-        q_factor:float=0.2,
+        q_factor:float=10.0,
         init_status:bool=True,
         reset_bustype=False,
         ) -> dict:

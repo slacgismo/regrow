@@ -136,6 +136,7 @@ test_results = pd.DataFrame(data={
     "Model":["Original","Scheduling"],
     "Pre-OPF Powerflow":[float('nan')]*2,
     "DC OPF Solution":[float('nan')]*2,
+    "AC OPF Solution":[float('nan')]*2,
     "Post-OPF Powerflow":[float('nan')]*2,
     }).set_index("Model")
 
@@ -211,7 +212,7 @@ for item,length in length_checks.items():
     assert len(pp.model.get_data(item)) == length, f"incorrect length for PPModel.get_bus('{item}'), expected {length}, found {len(pp.model.case[item])}"
 
 #
-# Verify the original WECC 240 model
+# Test the original 2011 WECC 240 model
 #
 
 # load the model
@@ -226,7 +227,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
     print(f"Running runpf of {fh.name}...")
     original_solution,status,xtime = time_call(runpf,original,options)
     if status == 0:
-        print(f"ERROR [wecc240]: original case powerflow failed (see {fh.name})")
+        print(f"ERROR [wecc240]: original case powerflow failed after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
         # print(f"Original WECC240 powerflow solved in {xtime:.3f} seconds.",flush=True)
@@ -242,7 +243,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
     print(f"Running rundcopf of {fh.name}...")
     dcopf,xtime = time_call(rundcopf,original,options)
     if not dcopf["success"]:
-        print(f"ERROR [wecc240]: original case dcopf failed (see {fh.name})")
+        print(f"ERROR [wecc240]: original case dcopf failed after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
         # print(f"Original WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
@@ -254,11 +255,20 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
     print(f"Running runpf of {fh.name}...")
     dcopf_solution,status,xtime = time_call(runpf,dcopf,options)
     if status == 0:
-        print(f"ERROR [wecc240]: original case dcopf powerflow failed (see {fh.name})")
+        print(f"ERROR [wecc240]: original case dcopf powerflow failed after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
         # print(f"WECC240 DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
         test_results.loc["Original","Post-OPF Powerflow"] = xtime
+
+    print(f"Running runacopf of {fh.name}...")
+    scheduling_acopf,xtime = time_call(runacopf,original_solution,options)
+    if not scheduling_acopf["success"]:
+        print(f"ERROR [wecc240]: original case acopf failed after {xtime*1000:.1f} ms (see {fh.name})")
+        errors += 1
+    else:
+        # print(f"WECC240 AC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Original","AC OPF Solution"] = xtime
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)
@@ -268,7 +278,7 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
 
 
 #
-# Verify the scheduling WECC 240 model
+# Test the scheduling data for the 2020 WECC 240 model
 #
 scheduling = wecc240(options=["SCHEDULING"])
 with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
@@ -278,7 +288,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
     print(f"Running runpf of {fh.name}...")
     scheduling_solution,status,xtime = time_call(runpf,scheduling,options)
     if status == 0:
-        print(f"ERROR [wecc240]: scheduling case powerflow failed (see {fh.name})")
+        print(f"ERROR [wecc240]: scheduling case powerflow failed after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
         # print(f"Scheduling WECC240 powerflow solved in {xtime:.3f} seconds",flush=True)
@@ -288,19 +298,20 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
     print(f"Running rundcopf of {fh.name}...")
     scheduling_dcopf,xtime = time_call(rundcopf,scheduling,options)
     if not scheduling_dcopf["success"]:
-        print(f"ERROR [wecc240]: scheduling case dcopf failed (see {fh.name})")
+        print(f"ERROR [wecc240]: scheduling case dcopf failed after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
         # print(f"Scheduling WECC240 DC OPF solved in {xtime:.3f} seconds.",flush=True)
         test_results.loc["Scheduling","DC OPF Solution"] = xtime
 
     print(f"Running runacopf of {fh.name}...")
-    scheduling_acopf,xtime = time_call(runacopf,scheduling,ppoption(OUT_ALL=1))
+    scheduling_acopf,xtime = time_call(runacopf,scheduling,options)
     if not scheduling_acopf["success"]:
-        print(f"ERROR [wecc240]: scheduling case acopf failed (see {fh.name})")
+        print(f"ERROR [wecc240]: scheduling case acopf failed after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
-        print(f"Schedule WECC240 AC OPF solved in {xtime:.3f} seconds.",flush=True)
+        # print(f"Scheduling WECC240 AC OPF solved in {xtime:.3f} seconds.",flush=True)
+        test_results.loc["Scheduling","AC OPF Solution"] = xtime
 
 # solve the DCOPF powerflow
 with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
@@ -308,7 +319,7 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
     print(f"Running runpf of {fh.name}...")
     scheduling_dcopf_solution,status,xtime = time_call(runpf,scheduling_dcopf,options)
     if status == 0:
-        print(f"ERROR [wecc240]: scheduling case dcopf powerflow failed (see {fh.name})")
+        print(f"ERROR [wecc240]: scheduling case dcopf powerflow failed after {xtime*1000:.1f} ms after {xtime*1000:.1f} ms (see {fh.name})")
         errors += 1
     else:
         # print(f"WECC240 scheduling DC OPF powerflow solved in {xtime:.3f} seconds.",flush=True)
@@ -321,7 +332,7 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
         print("done")
 
 #
-# Test save kml files
+# Save results kml files
 #
 if save_plots:
     print("Saving KML files to tests folder",end="...")
@@ -329,11 +340,15 @@ if save_plots:
     PPModel("wecc240",case=scheduling).save_kml("tests/wecc240_scheduling.kml")
     print("done")
 
+pd.options.display.width = None
+pd.options.display.max_columns = None
+pd.options.display.max_rows = None
+
+print("Test solution time (ms)")
+print("-----------------------")
+print((test_results*1000).round(1))
+
 if errors > 0:
     print(f"WECC240 failed {errors} test.")
-else:
-    print("Test solution time (ms)")
-    print("-----------------------")
-    print((test_results.round(3)*1000).astype(int))
 
 sys.exit(errors)

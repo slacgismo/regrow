@@ -27,7 +27,7 @@ jobs:
     - name: Analyse code
       run: |
         cd pypower
-        make pylint
+        make pylint.txt
 
     - name: Run tests
       run: |

@@ -21,6 +21,7 @@ The following example constructs a new PyPower model and prints the case data.
 
 import sys
 import datetime as dt
+from time import time
 import pytz
 import io
 from typing import Self, Callable
@@ -161,6 +162,8 @@ class PPModel:
         self.inputs = {}
         self.outputs = {}
         self.options = ppoption(VERBOSE=0,OUT_ALL=0)
+        self.errors = []
+        self.profile = None
 
     def set_case(self,
         case:dict,
@@ -644,32 +647,70 @@ def {self.name}():
 
         list[str]: Error messages (when stop_on_fail is False)
         """
+
+        self.errors = [] # collect errors, if any
+        tic0 = time()
+
+        # process time specified range
         trange = pd.date_range(*args,**kwargs)
-        error_list = []
+        niters = 0
+        topf = 0.0
+        tpf = 0.0
         for t in (x.tz_convert("UTC") for x in trange):
+
+            # setup time and progress/stop callback
             ts = t.strftime("%Y-%m-%d %H:%M:%S %Z")
-            if callable(progress) and progress(f"{ts} ({len(error_list)} errors)"):
+            if callable(progress) and progress(f"{ts} ({len(self.errors) if self.errors else 'no'} errors)"):
                 return None
+
+            # update inputs
+
+            # solve OPF
+            tic1 = time()
             opf = self.solve_opf(use_acopf)
+            toc1 = time()
             if opf["success"] != 1:
                 failed = f"OPF failed at {ts}"
-                error_list.append(failed)
+                self.errors.append(failed)
                 if call_on_fail:
                     call_on_fail(failed)
                 if stop_on_fail:
                     break
+            topf += toc1 - tic1
+
+            # solver powerflow
+            tic1 = time()
             pf,status = self.solve_pf()
+            toc1 = time()
             if status != 1:
                 failed = f"PF failed at {ts}"
-                error_list.append(failed)
+                self.errors.append(failed)
                 if call_on_fail:
                     call_on_fail(failed)
                 if stop_on_fail:
                     break
+            tpf += toc1 - tic1
+
+            # process outputs
+
+            # check stop condition
+            niters += 1
             if stop_test and stop_test(t):
-                error_list.append(f"Stopped at {t=}")
+                self.errors.append(f"Stopped at {t=}")
                 break
-        return error_list if error_list else None
+
+        ttot = time() - tic0
+        self.profile = {
+            "Expected iterations": len(trange),
+            "Completed iterations": niters,
+            "Total OPF time (s)": round(topf,4),
+            "Fraction OPF time (s/s)": round(topf/ttot,2) if ttot > 0 else 0,
+            "Total PF time (s)": round(tpf,4),
+            "Fraction PF time (s/s)": round(tpf/ttot,2) if ttot > 0 else 0,
+            "Total run time (s)": round(ttot,4),
+            "Iteration time (s/iter)": round(ttot/niters,4) if niters > 0 else "N/A",
+        }
+        return self.errors if self.errors else None
 
     def set_datetime(self,datetime):
         """Set the model date/time"""
@@ -703,3 +744,4 @@ if __name__ == "__main__":
         )
     assert sim_result == ["Stopped at t=Timestamp('2020-08-01 01:00:00+0000', tz='UTC')"], f"ERROR: {sim_result}"
     print("Simulation test ok")
+    print(model.profile)

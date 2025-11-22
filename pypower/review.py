@@ -7,7 +7,7 @@ app = marimo.App(width="medium")
 @app.cell(hide_code=True)
 def _(mo):
     mo.md(r"""
-    This notebook is used to review the 2011 WECC 240 model and data extensions.
+    This notebook is used to review the 2011 WECC 240 model with optional 2020 and REGROW data extensions.
     """)
     return
 
@@ -29,70 +29,57 @@ def _(mo):
 
 
 @app.cell(hide_code=True)
-def _(hifld_ui, scheduling_ui):
+def _(hifld_ui, pp, scheduling_ui, wecc240):
     _options = {
         scheduling_ui.value: "SCHEDULING",
         hifld_ui.value: "HIFLD",
     }
     options = [y for x,y in _options.items() if x]
-    return (options,)
-
-
-@app.cell(hide_code=True)
-def _(options, pp, wecc240):
     model = pp.PPModel("wecc240",case=wecc240(options))
     return (model,)
 
 
 @app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    # Model Data
-    """)
-    return
-
-
-@app.cell(hide_code=True)
 def _(mo, model, pd):
-    mo.ui.table(pd.DataFrame(model.get_info().items(),columns=["Attribute","Value"]).set_index("Attribute"),
+    _info = mo.ui.table(
+                pd.DataFrame(
+                    model.get_info().items(), columns=["Attribute", "Value"]
+                ).set_index("Attribute"),
                 page_size=99,
                 selection=None,
                 show_column_summaries=False,
                 show_data_types=False,
-               )
-    return
-
-
-@app.cell
-def _(mo, model):
-    mo.ui.tabs(
-        {
-            n: mo.ui.table(
-                data=x, 
-                show_data_types=False,
-                selection=None, 
-                text_justify_columns={y:"right" for y in x.columns},
-                _internal_preload=False,
+                text_justify_columns={"Value": "right"},
             )
-            for n,x in {z:model.get_data(z) for z in [
-                "bus",
-                "branch",
-                "gen",
-                "gencost",
-                "dcline",
-                "dclinecost",
-                "gis",
-            ]}.items()
+    _data = mo.ui.tabs(
+                {
+                    n: mo.ui.table(
+                        data=x,
+                        show_data_types=False,
+                        selection=None,
+                        text_justify_columns={y: "right" for y in x.columns},
+                        _internal_preload=False,
+                    )
+                    for n, x in {
+                        z: model.get_data(z)
+                        for z in [
+                            "bus",
+                            "branch",
+                            "gen",
+                            "gencost",
+                            "dcline",
+                            "dclinecost",
+                            "gis",
+                        ]
+                    }.items()
+                }
+            )
+    mo.accordion(
+        {
+            "Model information": _info.left(),
+            "Model data": _data,
         }
     )
-    return
-
-
-@app.cell(hide_code=True)
-def _(mo):
-    mo.md(r"""
-    # Simulation
-    """)
     return
 
 
@@ -112,15 +99,17 @@ def _(mo):
 
 
 @app.cell
-def _(mo, run_simulation):
+def _(mo, model, run_simulation):
     run_ui = mo.ui.button(label="Run",on_click=run_simulation)
+    mo.md(f"<font color=blue>HINT: Click {run_ui} to start simulation</font>") if not model.profile else None
     return (run_ui,)
 
 
 @app.cell
 def _(mo):
     get_result,set_result = mo.state(None)
-    return get_result, set_result
+    get_profile,set_profile = mo.state(None)
+    return get_profile, get_result, set_profile, set_result
 
 
 @app.cell
@@ -133,18 +122,15 @@ def _(
     opf_ui,
     pd,
     pytz,
+    set_profile,
     set_result,
     start_ui,
 ):
-    def stop_simulation(*args):
-        status = True
-
     def run_simulation(*args):
         _start = dt.datetime.combine(start_ui.value,dt.time(0,0,0,tzinfo=pytz.UTC))
         _end = dt.datetime.combine(end_ui.value,dt.time(0,0,0,tzinfo=pytz.UTC))
         _freq = "1h"
         _total = len(pd.date_range(_start,_end,freq=_freq))
-        status = False
         with mo.status.progress_bar(total=_total, title="Running WECC240 model",remove_on_exit=True) as _bar:
             result = model.run_timeseries(
                 _start,
@@ -161,14 +147,42 @@ def _(
             else:
                 _bar.subtitle = result
                 set_result(result)
+            set_profile(model.profile)
     return (run_simulation,)
 
 
 @app.cell
-def _(get_result, mo):
-    mo.accordion({
-        f"<font color={'red' if get_result() else 'blue'}>**{(len(get_result()))} error{'' if len(get_result()) == 1 else 's'} found**</font>":mo.md("\n\n".join([f"{n+1}. {m}" for n,m in enumerate(get_result())])),
-    })
+def _(get_profile, get_result, mo):
+    if get_profile():
+        _result = mo.accordion(
+            {
+                f"<font color={'red' if get_result() else 'blue'}>**{(len(get_result()))} error{'' if len(get_result()) == 1 else 's'} occurred**</font>": mo.md(
+                    "\n\n".join(
+                        [f"{n+1}. {m}" for n, m in enumerate(get_result())]
+                    )
+                ),
+            }
+        )
+    else:
+        _result = None
+    _result
+    return
+
+
+@app.cell
+def _(get_profile, mo, pd):
+    if get_profile():
+        _profile = pd.DataFrame(get_profile().items(), columns=["Metric", "Value"]).set_index("Metric")
+        _result = mo.accordion({"**Performance profile**":
+            mo.ui.table(
+                _profile,
+                selection=None,
+                page_size=99,
+                text_justify_columns={"Value": "right"},
+            ).left()})
+    else:
+        _result = None
+    _result
     return
 
 

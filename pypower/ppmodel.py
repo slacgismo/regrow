@@ -21,6 +21,7 @@ The following example constructs a new PyPower model and prints the case data.
 
 import sys
 import datetime as dt
+import pytz
 import io
 from typing import Self, Callable
 import warnings
@@ -33,6 +34,10 @@ from pypower import idx_brch as idx_branch
 from pypower import idx_gen, idx_bus # used indirectly in get_header()
 # pylint: enable=unused-import
 from pypower import idx_cost as idx_gencost
+from pypower.runpf import runpf
+from pypower.rundcopf import rundcopf
+from pypower.runopf import runopf as runacopf
+from pypower.ppoption import ppoption
 
 from kml import KML
 
@@ -152,6 +157,10 @@ class PPModel:
         assert "bus" in self.case, "bus missing in case"
         assert "branch" in self.case, "branch missing in case"
         assert "gen" in self.case, "gen missing in case"
+
+        self.inputs = {}
+        self.outputs = {}
+        self.options = ppoption(VERBOSE=0,OUT_ALL=0)
 
     def set_case(self,
         case:dict,
@@ -596,6 +605,83 @@ def {self.name}():
         linklist = [[int(y) for y in x] for x in links]
         return linklist
 
+    def add_timeseries_input(self,name,column,file):
+        """Set a timeseries input data feed"""
+        self.inputs[name] = {column:file}
+
+    def add_timeseries_output(self,name,column,file):
+        """Set a timeseries output data feed"""
+        self.outputs[name] = {column,file}
+
+    def run_timeseries(self,*args,
+        progress:Callable=None,
+        call_on_fail:Callable=None,
+        stop_on_fail:bool=True,
+        stop_test:Callable=None,
+        use_acopf:bool=False,
+        **kwargs):
+        """Run a timeseries simulation
+
+        Arguments:
+
+        *args, **kwargs: See pandas.date_range()
+
+        progress: set a progress callback function
+
+        call_on_fail: set a call-on-fail function
+
+        stop_on_fail: enable stop-on-fail condition
+
+        stop_test: set a stop test call back function
+
+        use_acopf: enable use of AC OPF instead of DC OPF
+
+        Returns:
+
+        None: No errors to report
+
+        str: Error message (when stop_on_fail is True)
+
+        list[str]: Error messages (when stop_on_fail is False)
+        """
+        trange = pd.date_range(*args,**kwargs)
+        error_list = []
+        for t in (x.tz_convert("UTC") for x in trange):
+            ts = t.strftime("%Y-%m-%d %H:%M:%S %Z")
+            if callable(progress) and progress(f"{ts} ({len(error_list)} errors)"):
+                return None
+            opf = self.solve_opf(use_acopf)
+            if opf["success"] != 1:
+                failed = f"OPF failed at {ts}"
+                error_list.append(failed)
+                if call_on_fail:
+                    call_on_fail(failed)
+                if stop_on_fail:
+                    break
+            pf,status = self.solve_pf()
+            if status != 1:
+                failed = f"PF failed at {ts}"
+                error_list.append(failed)
+                if call_on_fail:
+                    call_on_fail(failed)
+                if stop_on_fail:
+                    break
+            if stop_test and stop_test(t):
+                error_list.append(f"Stopped at {t=}")
+                break
+        return error_list if error_list else None
+
+    def set_datetime(self,datetime):
+        """Set the model date/time"""
+
+    def solve_pf(self):
+        """Solve the powerflow problem"""
+        return runpf(self.case,self.options)
+
+    def solve_opf(self,use_acopf:bool=False):
+        """Solve the optimal powerflow problem"""
+        return (runacopf if use_acopf else rundcopf)(self.case,self.options)
+
 if __name__ == "__main__":
 
     pd.options.display.width = None
@@ -606,3 +692,14 @@ if __name__ == "__main__":
     model = PPModel(case=wecc240)
     for graph in ["BUS","GEOHASH","ZONE","AREA"]:
         print(f"{graph}:",model.get_graph(graph))
+
+    sim_result =  model.run_timeseries(
+        "2020-08-01 00:00:00+07:00",
+        "2020-09-01 00:00:00+07:00",
+        freq="1h",
+        progress=lambda x: print(x,flush=True),
+        stop_test=lambda x: x > dt.datetime(2020,8,1,0,0,0,tzinfo=pytz.UTC),
+        use_acopf=False,
+        )
+    assert sim_result == ["Stopped at t=Timestamp('2020-08-01 01:00:00+0000', tz='UTC')"], f"ERROR: {sim_result}"
+    print("Simulation test ok")

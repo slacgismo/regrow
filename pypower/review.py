@@ -38,18 +38,21 @@ def _(hifld_ui, scheduling_ui):
     return (options,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(options, pp, wecc240):
-    model = pp.PPModel("wecc240").set_case(wecc240(options))
+    model = pp.PPModel("wecc240",case=wecc240(options))
     return (model,)
 
 
-@app.cell
-def _():
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # Model Data
+    """)
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo, model, pd):
     mo.ui.table(pd.DataFrame(model.get_info().items(),columns=["Attribute","Value"]).set_index("Attribute"),
                 page_size=99,
@@ -66,19 +69,108 @@ def _(mo, model):
     return
 
 
+@app.cell(hide_code=True)
+def _(mo):
+    mo.md(r"""
+    # Simulation
+    """)
+    return
+
+
+@app.cell
+def _(continue_ui, end_ui, mo, opf_ui, run_ui, start_ui):
+    mo.hstack([start_ui,end_ui,run_ui,opf_ui,continue_ui],justify='start')
+    return
+
+
+@app.cell
+def _(mo):
+    start_ui = mo.ui.date(start="2018-01-01",stop="2023-01-01",value="2020-08-01",label="Start date:")
+    end_ui = mo.ui.date(start="2018-01-01",stop="2023-01-01",value="2020-08-02",label="End date:")
+    opf_ui = mo.ui.checkbox(label="Use AC OPF")
+    continue_ui = mo.ui.checkbox(label="Ignore failures")
+    return continue_ui, end_ui, opf_ui, start_ui
+
+
+@app.cell
+def _(mo, run_simulation):
+    run_ui = mo.ui.button(label="Run",on_click=run_simulation)
+    return (run_ui,)
+
+
+@app.cell
+def _(mo):
+    get_result,set_result = mo.state(None)
+    return get_result, set_result
+
+
+@app.cell
+def _(
+    continue_ui,
+    dt,
+    end_ui,
+    mo,
+    model,
+    opf_ui,
+    pd,
+    pytz,
+    set_result,
+    start_ui,
+):
+    def stop_simulation(*args):
+        status = True
+
+    def run_simulation(*args):
+        _start = dt.datetime.combine(start_ui.value,dt.time(0,0,0,tzinfo=pytz.UTC))
+        _end = dt.datetime.combine(end_ui.value,dt.time(0,0,0,tzinfo=pytz.UTC))
+        _freq = "1h"
+        _total = len(pd.date_range(_start,_end,freq=_freq))
+        status = False
+        with mo.status.progress_bar(total=_total, title="Running WECC240 model",remove_on_exit=True) as _bar:
+            result = model.run_timeseries(
+                _start,
+                _end,
+                freq=_freq,
+                progress=lambda x: _bar.update(subtitle=x, increment=1),
+                call_on_fail=False,
+                use_acopf=opf_ui.value,
+                stop_on_fail=not continue_ui.value,
+            )
+            if result is None:
+                _bar.subtitle = "Done"
+                set_result([])
+            else:
+                _bar.subtitle = result
+                set_result(result)
+    return (run_simulation,)
+
+
+@app.cell
+def _(get_result, mo):
+    mo.accordion({
+        f"<font color={'red' if get_result() else 'blue'}>**{(len(get_result()))} error{'' if len(get_result()) == 1 else 's'} found**</font>":mo.md("\n\n".join([f"{n+1}. {m}" for n,m in enumerate(get_result())])),
+    })
+    return
+
+
+@app.cell
+def _(mo):
+    mo.md(f"""
+    Marimo version {mo.__version__}
+    """)
+    return
+
+
 @app.cell
 def _():
     import sys
+    import datetime as dt
+    import pytz
     import marimo as mo
     import pandas as pd
-    import numpy as np
     import ppmodel as pp
-    from psse import PSSE
-    from psse2pp import PSSE2PP
     from wecc240 import wecc240
-    sys.path.append("../data")
-    import utils
-    return mo, pd, pp, wecc240
+    return dt, mo, pd, pp, pytz, wecc240
 
 
 if __name__ == "__main__":

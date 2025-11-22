@@ -65,7 +65,26 @@ def _(mo, model, pd):
 
 @app.cell
 def _(mo, model):
-    mo.ui.tabs({x:model.get_data(x) for x in ["bus","branch","gen","gencost","dcline","dclinecost","gis"]})
+    mo.ui.tabs(
+        {
+            n: mo.ui.table(
+                data=x, 
+                show_data_types=False,
+                selection=None, 
+                text_justify_columns={y:"right" for y in x.columns},
+                _internal_preload=False,
+            )
+            for n,x in {z:model.get_data(z) for z in [
+                "bus",
+                "branch",
+                "gen",
+                "gencost",
+                "dcline",
+                "dclinecost",
+                "gis",
+            ]}.items()
+        }
+    )
     return
 
 

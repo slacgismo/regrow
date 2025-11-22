@@ -19,14 +19,14 @@ The following example constructs a new PyPower model and prints the case data.
     print(model.case)
 """
 
+import io
 import sys
 import datetime as dt
 from time import time
-import pytz
-import io
 from typing import Self, Callable
 import warnings
 
+import pytz
 import numpy as np
 import pandas as pd
 
@@ -120,6 +120,8 @@ def get_header(name:str,*,ignore:list[str]=None) -> list[str]:
 
 class PPModel:
     """PyPower Model Access"""
+
+    # pylint: disable=too-many-public-methods
 
     def __init__(self,
         name:str="unnamed",
@@ -587,19 +589,19 @@ def {self.name}():
 
                 warnings.warn(f"{level=} not implemented yet")
                 links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]})\
-                    .set_index(["FROM","TO"]).index # TODO
+                    .set_index(["FROM","TO"]).index # TODO: write graph at geohash level
 
             case "ZONE":
 
                 warnings.warn(f"{level=} not implemented yet")
                 links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]})\
-                    .set_index(["FROM","TO"]).index # TODO
+                    .set_index(["FROM","TO"]).index # TODO: write graph at zone level
 
             case "AREA":
 
                 warnings.warn(f"{level=} not implemented yet")
                 links = pd.DataFrame({"FROM":["-1"],"TO":["-1"]})\
-                    .set_index(["FROM","TO"]).index # TODO
+                    .set_index(["FROM","TO"]).index # TODO: write graph at area level
 
             case "_":
 
@@ -617,6 +619,7 @@ def {self.name}():
         self.outputs[name] = {column,file}
 
     def run_timeseries(self,*args,
+        # pylint: disable=too-many-arguments,too-many-locals
         progress:Callable=None,
         call_on_fail:Callable=None,
         stop_on_fail:bool=True,
@@ -660,10 +663,12 @@ def {self.name}():
 
             # setup time and progress/stop callback
             ts = t.strftime("%Y-%m-%d %H:%M:%S %Z")
-            if callable(progress) and progress(f"{ts} ({len(self.errors) if self.errors else 'no'} errors)"):
+            if callable(progress) and progress(f"""{ts} ({len(self.errors)
+                    if self.errors else 'no'} errors)"""):
                 return None
 
             # update inputs
+            # TODO: read data from input streams
 
             # solve OPF
             tic1 = time()
@@ -680,7 +685,7 @@ def {self.name}():
 
             # solver powerflow
             tic1 = time()
-            pf,status = self.solve_pf()
+            _,status = self.solve_pf()
             toc1 = time()
             if status != 1:
                 failed = f"PF failed at {ts}"
@@ -692,6 +697,7 @@ def {self.name}():
             tpf += toc1 - tic1
 
             # process outputs
+            # TODO: write data to output streams
 
             # check stop condition
             niters += 1
@@ -710,6 +716,7 @@ def {self.name}():
             "Total run time (s)": round(ttot,4),
             "Iteration time (s/iter)": round(ttot/niters,4) if niters > 0 else "N/A",
         }
+
         return self.errors if self.errors else None
 
     def set_datetime(self,datetime):
@@ -734,7 +741,7 @@ if __name__ == "__main__":
     for graph in ["BUS","GEOHASH","ZONE","AREA"]:
         print(f"{graph}:",model.get_graph(graph))
 
-    sim_result =  model.run_timeseries(
+    SIM_RESULT =  model.run_timeseries(
         "2020-08-01 00:00:00+07:00",
         "2020-09-01 00:00:00+07:00",
         freq="1h",
@@ -742,6 +749,8 @@ if __name__ == "__main__":
         stop_test=lambda x: x > dt.datetime(2020,8,1,0,0,0,tzinfo=pytz.UTC),
         use_acopf=False,
         )
-    assert sim_result == ["Stopped at t=Timestamp('2020-08-01 01:00:00+0000', tz='UTC')"], f"ERROR: {sim_result}"
+    assert SIM_RESULT == [
+        "Stopped at t=Timestamp('2020-08-01 01:00:00+0000', tz='UTC')",
+        ], f"ERROR: {SIM_RESULT}"
     print("Simulation test ok")
     print(model.profile)

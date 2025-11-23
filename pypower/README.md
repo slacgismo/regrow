@@ -8,10 +8,15 @@ To create and run the `pypower` powerflow solution of a case, do the following:
     . .venv/bin/activate
     pip install --upgrade pip -r requirements.txt
     python3
+    from ppmodel import PPModel
     from wecc240 import wecc240
-    case = wecc240()
-    from pypower.runpf import runpf
-    runpf(case)
+    model = PPModel(case=wecc240)
+    result =  model.run_timeseries(
+        "2020-08-01 00:00:00+07:00",
+        "2020-08-02 00:00:00+07:00",
+        freq="1h",
+        )
+
 
 There are four options available to the case builder `wecc240()` to modify the original PSS/E model loaded by default:
 

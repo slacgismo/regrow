@@ -17,6 +17,26 @@ The following example constructs a new PyPower model and prints the case data.
 
     model = PPModel()
     print(model.case)
+
+Data Structures:
+
+- `case`: Provides all the PyPOWER case data needed to solve powerflow and
+  optimal powerflows. See PyPOWER `idx_*` for details.
+
+- `inputs`: Provides all the information required to read data from input
+  files and update `case` data.
+
+- `outputs`: Provides all the information required to read `case` data and
+  update the output files.
+
+- `options`: Provides all the options used by the PyPOWER solvers. See PyPOWER
+  `ppoption` for details.
+
+- `errors`: Records all the error message emitted during a solver call.
+
+- `profile`: Collects all the solver performance data obtained during a solver
+  call.
+
 """
 
 import os

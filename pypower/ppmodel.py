@@ -108,7 +108,7 @@ class idx_gis:
     GEN = 5 # generator count (nan: no gen allowed)
     LOAD = 6 # load count (nan: no load allowed)
 
-ignore_idx = {
+standard_idx = {
     "bus": ["PQ","PV","REF","NONE"],
     "branch": [],
     "gen": [],
@@ -134,7 +134,7 @@ def get_header(name:str,*,ignore:list[str]=None) -> list[str]:
     """
     idx = globals()[f"idx_{name}"]
     if ignore is None:
-        ignore = ignore_idx[name]
+        ignore = standard_idx[name]
     mapping = {getattr(idx,x):x for x in dir(idx) if not x.startswith("_") and x not in ignore}
     indexes = sorted(mapping)
     assert max(indexes) - min(indexes) + 1 == len(indexes), "indexes are not strictly sequential"
@@ -242,7 +242,7 @@ def {self.name}():
         ):
         """Print case data"""
         if items is None:
-            items = ["bus","branch","gen","gencost","dcline","dclinecost"]
+            items = standard_idx
 
         if "bus" in items:
             bus_cols = get_header("bus")
@@ -536,7 +536,7 @@ def {self.name}():
 
     def get_data(self,name) -> pd.DataFrame:
         """Get data table"""
-        assert name in ignore_idx, f"'{name}' is not a valid data item name"
+        assert name in standard_idx, f"'{name}' is not a valid data item name"
         width = self.case[name].shape[1]
         header = get_header(name)
         n = 1
@@ -553,8 +553,9 @@ def {self.name}():
         return self.get_data("gis").reset_index().sort_index()
         # return pd.DataFrame(self.case["gis"].T,get_header("gis")).T
 
-    def get_loads():
+    def get_loads(self):
         """Get complete load data"""
+        return {} # TODO: return full load data
 
     def get_nodes(self) -> dict:
         """Get a dictionary of node and their busses"""
@@ -691,11 +692,12 @@ def {self.name}():
                 case "error":
                     raise KeyError(f"none of {noload.index} map to load busses")
                 case "nearest":
-                    raise NotImplementedError(f"none of {noload.index} map to load busses; {not_found=} is not supported in this case")
+                    raise NotImplementedError(f"none of {noload.index} map to load busses;"
+                        " {not_found=} is not supported in this case")
                 case "_":
                     raise ValueError(f"{not_found=} is invalid")
 
-        self.input[(name,column)]["mapping"] = mapping.to_dict()
+        self.inputs[(name,column)]["mapping"] = mapping.to_dict()
 
     def set_input(self,
         name:str,
@@ -724,7 +726,7 @@ def {self.name}():
 
         mapping: maps column names to data rows with weights
         """
-        assert name in ["bus","branch","gen","gencost","dcline","dclinecost"], f"{name=} is not valid"
+        assert name in standard_idx,f"{name=} is not valid"
         assert column in get_header(name), f"{column=} is not found in {name} data"
         assert (name,column) not in self.inputs, f"input({name=},{column=}) already defined"
         if file is None:
@@ -745,7 +747,7 @@ def {self.name}():
             self.inputs[(name,column)] = {
                 "data": data,
                 "mapping": mapping,
-            }            
+            }
 
     def set_output(self,
         name:str,
@@ -756,7 +758,7 @@ def {self.name}():
         mapping:dict=None,
         format:str="g"):
         """Set a timeseries output data feed"""
-        assert name in ["bus","branch","gen","gencost","dcline","dclinecost"], f"{name=} is not valid"
+        assert name in standard_idx, f"{name=} is not valid"
         assert column in get_header(name), f"{column=} is not found in {name} data"
         assert file not in self.outputs, f"{file=} already exists in the outputs"
         if mapping is None:
@@ -871,8 +873,9 @@ def {self.name}():
                 scale = mapping["scale"]
                 offset = mapping["offset"]
                 formt = spec["format"]
-                data = [f"{{0:{formt}}}".format(x) 
-                    for x in self.get_data(spec["name"]).loc[mapping["rows"],spec["column"]]*scale + offset]
+                data = [f"{{0:{formt}}}".format(x)
+                    for x in self.get_data(
+                        spec["name"]).loc[mapping["rows"],spec["column"]]*scale + offset]
                 print(ts,*data,sep=",",file=spec["fh"],flush=True)
 
             # check stop condition

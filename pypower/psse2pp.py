@@ -53,6 +53,8 @@ class PSSE2PP:
         self.model.case["dclinecost"] = self.dclinecost(psse.dcline)
         self.model.case["gis"] = self.gis(psse.gis,psse.bus,psse.gen,psse.load)
         self.model.case["scheduling"] = self.scheduling(psse.scheduling)
+        self.model.case["area"] = self.area(psse.area)
+        self.model.case["zone"] = self.zone(psse.zone)
 
     def bus(self,
         bus:pd.DataFrame,
@@ -331,7 +333,21 @@ class PSSE2PP:
         ) -> list:
         """Convert PSSE scheduling data to PyPower scheduling data"""
 
-        return {"future work"}
+        return {} # TODO: convert scheduling data
+
+    def area(self,
+        area:dict,
+        ) -> list:
+        """Convert PSSE area data to PyPower area data"""
+
+        return {} # TODO: convert area data
+
+    def zone(self,
+        zone:dict,
+        ) -> list:
+        """Convert PSSE zone data to PyPower zone data"""
+
+        return {} # TODO: convert zone data
 
 if __name__ == "__main__":
 
@@ -341,8 +357,8 @@ if __name__ == "__main__":
 
     from psse import PSSE
     psse_raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
-    print(psse_raw.bus)
 
-    # from wecc240 import wecc240
-    # model = PPModel(case=wecc240(options=["SCHEDULING"]))
-    # model.set_input("bus","PD","../data/geodata/solar.csv",pro_rata="LOAD")
+    from wecc240 import wecc240
+    model = PPModel(case=wecc240(options=["SCHEDULING"]))
+
+    print(model.case)

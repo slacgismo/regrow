@@ -312,10 +312,17 @@ class PSSE2PP:
         counts = gen.groupby("I").I.count().astype(int)
         gisdata.loc[counts.index,"GEN"] = counts # all gen busses have 1 generator
 
-        # add load count (NaN -> load not allowed)
+        # add load fraction at node (NaN -> load not allowed)
         gisdata["LOAD"] = float('nan') # default no load is allowed
         gisdata.loc[bus[bus.BUSTYPE==idx_bus.PQ].ID,"LOAD"] = 0 # all PQ busses can have loads
-        gisdata.loc[load[(load.PL+load.IP+load.YP)>0].I,"LOAD"] = 1 # all load busses have 1 load
+        loads = load[(load.PL+load.IP+load.YP)>0][["I","PL","IP","YP"]]
+        loads["LOAD"] = loads.PL + loads.IP + loads.YP
+        loads["GEOHASH"] = gisdata.loc[loads.I,"GEOHASH"].values
+        totals = loads.groupby("GEOHASH").sum()["LOAD"].to_frame()
+        loads.set_index("GEOHASH",inplace=True)
+        loads.loc[totals.index,"LOAD"] /= totals.LOAD
+        loads.set_index("I",inplace=True)
+        gisdata.loc[loads.index,"LOAD"] = loads.LOAD # all load busses have 1 load
 
         return gisdata.reset_index().values
 
@@ -335,3 +342,7 @@ if __name__ == "__main__":
     from psse import PSSE
     psse_raw = PSSE(prefix="wecc240/",raw="wecc240_psse.raw")
     print(psse_raw.bus)
+
+    # from wecc240 import wecc240
+    # model = PPModel(case=wecc240(options=["SCHEDULING"]))
+    # model.set_input("bus","PD","../data/geodata/solar.csv",pro_rata="LOAD")

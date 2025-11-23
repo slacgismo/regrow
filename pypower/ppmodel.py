@@ -19,8 +19,9 @@ The following example constructs a new PyPower model and prints the case data.
     print(model.case)
 """
 
-import io
+import os
 import sys
+import io
 import datetime as dt
 from time import time
 from typing import Self, Callable
@@ -29,6 +30,7 @@ import warnings
 import pytz
 import numpy as np
 import pandas as pd
+from geohash import nearest
 
 from pypower import idx_brch as idx_branch
 # pylint: disable=unused-import
@@ -527,8 +529,12 @@ def {self.name}():
         return pd.DataFrame(self.case[name].T,header[:width]).T
 
     def get_gis(self) -> pd.DataFrame:
-        """Get complete GIS data"""
-        return pd.DataFrame(self.case["gis"].T,get_header("gis")).T
+        """Get indexed GIS data"""
+        return self.get_data("gis").reset_index().sort_index()
+        # return pd.DataFrame(self.case["gis"].T,get_header("gis")).T
+
+    def get_loads():
+        """Get complete load data"""
 
     def get_nodes(self) -> dict:
         """Get a dictionary of node and their busses"""
@@ -610,13 +616,146 @@ def {self.name}():
         linklist = [[int(y) for y in x] for x in links]
         return linklist
 
-    def add_timeseries_input(self,name,column,file):
-        """Set a timeseries input data feed"""
-        self.inputs[name] = {column:file}
+    def map_columns(self,
+        name:str,
+        column:str,
+        lookup:str="gis",
+        not_found:str="nearest",
+        on_multiple:str="assign",
+        basis:str|None=None,
+        ):
+        """Create a custom mapping for input columns to data rows
 
-    def add_timeseries_output(self,name,column,file):
+        name: name of input target
+
+        column: column of input target
+
+        lookup: source of mapping lookup table
+
+        not_found: handling of columns not found in lookup source
+
+        on_multiple: handling of columns that map to more than one row
+
+        basis: basis GIS column for handling of multiple columns
+        """
+
+        # check for and fix missing columns--all should be in gis geohash list)
+        gis = self.get_data("gis").copy()
+        missing = set(data.columns) - set(gis.GEOHASH)
+        match not_found:
+            case "nearest":
+                geohash_list = gis.GEOHASH.to_list()
+                for item in missing:
+                    found = nearest(item,geohash_list)
+                    data.columns = [found if x==item else x for x in data.columns]
+            case "warning":
+                for item in missing:
+                    warnings.warn(f"{file}: {item} is not in model gis data")
+            case "error":
+                assert missing == set(), f"{missing} not in GIS data"
+            case "_":
+                raise ValueError(f"{not_found=} is invalid")
+
+        # map input columns to target rows
+        gis.BUS_I = gis.index
+        mapping = gis.set_index("GEOHASH").loc[data.columns]
+        mapping.index.name="GEOHASH"
+
+        # print(mapping[mapping[basis]>0].reset_index().set_index("BUS_I"))
+        result = mapping.loc[data.columns,["BUS_I",basis]]
+        noload = result[result["LOAD"].isna()]
+        if not noload.empty:
+            match not_found:
+                case "warning":
+                    warnings.warn(f"none of {noload.index} map to load busses")
+                case "error":
+                    raise KeyError(f"none of {noload.index} map to load busses")
+                case "nearest":
+                    raise NotImplementedError(f"none of {noload.index} map to load busses; {not_found=} is not supported in this case")
+                case "_":
+                    raise ValueError(f"{not_found=} is invalid")
+
+        self.input[(name,column)]["mapping"] = mapping.to_dict()
+
+    def set_input(self,
+        name:str,
+        column:str,
+        file:str,
+        scale:float=1.0,
+        offset:float=0.0,
+        mapping:dict=None,
+        # not_found:str="nearest",
+        # on_multiple:str="assign",
+        # basis:str|None=None,
+        ):
+        """Set a timeseries input data feed
+
+        Arguments:
+
+        name: data set name (e.g., bus, branch)
+
+        column: data column name (e.g., "PD")
+
+        file: file name from data is input
+
+        scale: scaling factor to apply to the raw data
+
+        offset: offset to apply to the scaled data
+
+        mapping: maps column names to data rows with weights
+        """
+        assert name in ["bus","branch","gen","gencost","dcline","dclinecost"], f"{name=} is not valid"
+        assert column in get_header(name), f"{column=} is not found in {name} data"
+        assert (name,column) not in self.inputs, f"input({name=},{column=}) already defined"
+        if file is None:
+            del self.inputs[name]
+        else:
+            assert os.path.exists(file), f"{file=} not found"
+            data = pd.read_csv(file,index_col=[0],parse_dates=[0]) * scale + offset
+            data.index.name = "datetime"
+
+            # default to direct mapping of column names to row numbers
+            if mapping is None:
+                mapping = {
+                    "index": data.columns.astype(int),
+                    "scale": np.ones(len(data.columns)),
+                    }
+
+            # set up input
+            self.inputs[(name,column)] = {
+                "data": data,
+                "mapping": mapping,
+            }            
+
+    def set_output(self,
+        name:str,
+        column:str,
+        file:str,
+        scale:float=1.0,
+        offset:float=0.0,
+        mapping:dict=None,
+        format:str="g"):
         """Set a timeseries output data feed"""
-        self.outputs[name] = {column,file}
+        assert name in ["bus","branch","gen","gencost","dcline","dclinecost"], f"{name=} is not valid"
+        assert column in get_header(name), f"{column=} is not found in {name} data"
+        assert file not in self.outputs, f"{file=} already exists in the outputs"
+        if mapping is None:
+            nrows = len(self.case[name])
+            mapping = {
+                "rows": np.arange(nrows,dtype=int),
+                "columns": [f"{x}" for x in range(nrows)],
+                "scale": np.full(nrows,scale),
+                "offset": np.full(nrows,offset),
+            }
+        fh = open(file,"w",encoding="utf-8")
+        self.outputs[file] = {
+            "name": name,
+            "column": column,
+            "fh":fh,
+            "mapping": mapping,
+            "format": format,
+            }
+        print("datetime",*mapping["columns"],sep=",",file=fh)
 
     def run_timeseries(self,*args,
         # pylint: disable=too-many-arguments,too-many-locals
@@ -668,9 +807,19 @@ def {self.name}():
                 return None
 
             # update inputs
-            # TODO: read data from input streams
+            for name,spec in self.inputs.items():
+                data = spec["data"]
+                name,column = name
+                column_number = get_header(name).index(column)
+                mapping = spec["mapping"]["index"]
+                scales = spec["mapping"]["scale"]
+                try:
+                    target = self.case[name]
+                    target[mapping,column_number] = data.loc[t] * scales
+                except KeyError as exception:
+                    warnings.warn(f"input({name=},{column=}) {exception=}")
 
-            # solve OPF
+            # solve OPF and check result
             tic1 = time()
             opf = self.solve_opf(use_acopf)
             toc1 = time()
@@ -683,7 +832,7 @@ def {self.name}():
                     break
             topf += toc1 - tic1
 
-            # solver powerflow
+            # solver powerflow and check result
             tic1 = time()
             _,status = self.solve_pf()
             toc1 = time()
@@ -697,7 +846,14 @@ def {self.name}():
             tpf += toc1 - tic1
 
             # process outputs
-            # TODO: write data to output streams
+            for file,spec in self.outputs.items():
+                mapping = spec["mapping"]
+                scale = mapping["scale"]
+                offset = mapping["offset"]
+                formt = spec["format"]
+                data = [f"{{0:{formt}}}".format(x) 
+                    for x in self.get_data(spec["name"]).loc[mapping["rows"],spec["column"]]*scale + offset]
+                print(ts,*data,sep=",",file=spec["fh"],flush=True)
 
             # check stop condition
             niters += 1
@@ -737,9 +893,23 @@ if __name__ == "__main__":
     pd.options.display.max_rows = None
 
     from wecc240 import wecc240
-    model = PPModel(case=wecc240)
+    options = ["SCHEDULING"]
+    model = PPModel(case=wecc240(options=options))
+
+    # print(model.get_gis())
+    # quit()
+    # print(model.get_data("gis"))
+
     for graph in ["BUS","GEOHASH","ZONE","AREA"]:
         print(f"{graph}:",model.get_graph(graph))
+
+    model.set_input("bus","PD","tests/load.csv",scale=10)
+    model.set_input("bus","QD","tests/load.csv",scale=1)
+
+    model.set_output("bus","VM","results/bus_vm.csv",format=".3f")
+    model.set_output("bus","VA","results/bus_va.csv",format=".4f")
+    model.set_output("bus","PD","results/bus_pd.csv",format=".4f")
+    model.set_output("bus","QD","results/bus_qd.csv",format=".4f")
 
     SIM_RESULT =  model.run_timeseries(
         "2020-08-01 00:00:00+07:00",

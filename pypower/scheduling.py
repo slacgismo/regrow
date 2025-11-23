@@ -146,9 +146,9 @@ class Schedule:
             .count() # 1 for each gen listed
 
         # # add load count (NaN -> load not allowed)
-        gisdata["LOAD"] = float('nan') # default no load is allowed
-        gisdata.loc[bus[bus.BUS_TYPE==idx_bus.PQ].BUS_I,"LOAD"] = 0 # all PQ busses can have loads
-        gisdata.loc[bus[bus.PD>0].BUS_I,"LOAD"] = 1 # all load busses have 1 load
+        # gisdata["LOAD"] = float('nan') # default no load is allowed
+        # gisdata.loc[bus[bus.BUS_TYPE==idx_bus.PQ].BUS_I,"LOAD"] = 0 # all PQ busses can have loads
+        # gisdata.loc[bus[bus.PD>0].BUS_I,"LOAD"] = 1 # all load busses have 1 load
 
         case["gis"] = gisdata.reset_index().values
 

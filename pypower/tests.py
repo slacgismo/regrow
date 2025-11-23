@@ -19,7 +19,7 @@ from pypower import idx_bus as bus
 
 save_plots = True # TODO: enable this
 
-os.makedirs("tests",exist_ok=True)
+os.makedirs("results",exist_ok=True)
 
 errors = 0
 options = ppoption(VERBOSE=0,OUT_ALL=0)
@@ -221,7 +221,7 @@ PSSE2PP.LOADSCALE = 1.0 # global scaling of loads
 original = wecc240()
 
 # save the case data
-with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
+with open("results/wecc240_original.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=original).save_case(fh)
 
     # solve the original powerflow from PSSE
@@ -236,8 +236,8 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)
-        plot(basecase=original,testcase=original_solution,prefix="tests/original_")
-        plot(basecase=original,testcase=original_solution,prefix="tests/original_")
+        plot(basecase=original,testcase=original_solution,prefix="results/original_")
+        plot(basecase=original,testcase=original_solution,prefix="results/original_")
         print("done")
 
     # solve the original model DC OPF
@@ -261,7 +261,7 @@ with open("tests/wecc240_original.py","w",encoding="utf-8") as fh:
     #     test_results.loc["Original","DC OPF Solution"] = xtime
 
 # solve the original DC OPF powerflow
-with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
+with open("results/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=dcopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
     dcopf_solution,status,xtime = time_call(runpf,dcopf,options)
@@ -274,12 +274,12 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)
-        plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
-        plot(basecase=original,testcase=dcopf_solution,prefix="tests/original_dcopf_")
+        plot(basecase=original,testcase=dcopf_solution,prefix="results/original_dcopf_")
+        plot(basecase=original,testcase=dcopf_solution,prefix="results/original_dcopf_")
         print("done")
 
 # # solve the original AC OPF powerflow
-# with open("tests/wecc240_original_acopf.py","w",encoding="utf-8") as fh:
+# with open("results/wecc240_original_acopf.py","w",encoding="utf-8") as fh:
 #     PPModel("wecc240",case=acopf).save_case(fh)
 #     print(f"Running runpf of {fh.name}...")
 #     acopf_solution,status,xtime = time_call(runpf,acopf,options)
@@ -292,8 +292,8 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
 
 #     if save_plots:
 #         print("Saving comparison plots to tests folder",end="...",flush=True)
-#         plot(basecase=original,testcase=acopf_solution,prefix="tests/original_acopf_")
-#         plot(basecase=original,testcase=acopf_solution,prefix="tests/original_acopf_")
+#         plot(basecase=original,testcase=acopf_solution,prefix="results/original_acopf_")
+#         plot(basecase=original,testcase=acopf_solution,prefix="results/original_acopf_")
 #         print("done")
 
 
@@ -301,7 +301,7 @@ with open("tests/wecc240_original_dcopf.py","w",encoding="utf-8") as fh:
 # Test the scheduling data for the 2020 WECC 240 model
 #
 scheduling = wecc240(options=["SCHEDULING"])
-with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
+with open("results/wecc240_scheduling.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=scheduling).save_case(fh)
 
     # solve the scheduling powerflow from PSSE
@@ -334,7 +334,7 @@ with open("tests/wecc240_scheduling.py","w",encoding="utf-8") as fh:
         test_results.loc["Scheduling","AC OPF Solution"] = xtime
 
 # solve the DC OPF powerflow
-with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
+with open("results/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=scheduling_dcopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
     scheduling_dcopf_solution,status,xtime = time_call(runpf,scheduling_dcopf,options)
@@ -347,12 +347,12 @@ with open("tests/wecc240_scheduling_dcopf.py","w",encoding="utf-8") as fh:
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)
-        plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
-        plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="tests/scheduling_dcopf_")
+        plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="results/scheduling_dcopf_")
+        plot(basecase=original,testcase=scheduling_dcopf_solution,prefix="results/scheduling_dcopf_")
         print("done")
 
 # solve the AC OPF powerflow
-with open("tests/wecc240_scheduling_acopf.py","w",encoding="utf-8") as fh:
+with open("results/wecc240_scheduling_acopf.py","w",encoding="utf-8") as fh:
     PPModel("wecc240",case=scheduling_acopf).save_case(fh)
     print(f"Running runpf of {fh.name}...")
     scheduling_acopf_solution,status,xtime = time_call(runpf,scheduling_acopf,options)
@@ -365,8 +365,8 @@ with open("tests/wecc240_scheduling_acopf.py","w",encoding="utf-8") as fh:
 
     if save_plots:
         print("Saving comparison plots to tests folder",end="...",flush=True)
-        plot(basecase=original,testcase=scheduling_acopf_solution,prefix="tests/scheduling_acopf_")
-        plot(basecase=original,testcase=scheduling_acopf_solution,prefix="tests/scheduling_acopf_")
+        plot(basecase=original,testcase=scheduling_acopf_solution,prefix="results/scheduling_acopf_")
+        plot(basecase=original,testcase=scheduling_acopf_solution,prefix="results/scheduling_acopf_")
         print("done")
 
 #
@@ -374,8 +374,8 @@ with open("tests/wecc240_scheduling_acopf.py","w",encoding="utf-8") as fh:
 #
 if save_plots:
     print("Saving KML files to tests folder",end="...")
-    PPModel("wecc240",case=original).save_kml("tests/wecc240_original.kml")
-    PPModel("wecc240",case=scheduling).save_kml("tests/wecc240_scheduling.kml")
+    PPModel("wecc240",case=original).save_kml("results/wecc240_original.kml")
+    PPModel("wecc240",case=scheduling).save_kml("results/wecc240_scheduling.kml")
     print("done")
 
 pd.options.display.width = None

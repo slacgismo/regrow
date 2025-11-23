@@ -32,8 +32,8 @@ jobs:
     - name: Run tests
       run: |
         cd pypower
-        make tests || ( tar cfz ../pypower-tests.tarz tests ; false )
-        tar cfz ../pypower-tests.tarz tests
+        make tests || ( tar cfz ../pypower-test-results.tarz results ; false )
+        tar cfz ../pypower-test-results.tarz results
 
     - name: Update summaries
       run: |
@@ -45,8 +45,8 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v5
       with:
-        name: pypower-tests
-        path: pypower-tests.tarz
+        name: pypower-test-results
+        path: pypower-test-results.tarz
 
     - name: Save summary output
       if: always()

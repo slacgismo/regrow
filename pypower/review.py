@@ -20,7 +20,7 @@ def _(mo):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     scheduling_ui = mo.ui.checkbox(label='2020 model data')
     hifld_ui = mo.ui.checkbox(label="HIFLD generator data")
@@ -28,59 +28,66 @@ def _(mo):
     return hifld_ui, scheduling_ui
 
 
-@app.cell(hide_code=True)
-def _(hifld_ui, pp, scheduling_ui, wecc240):
+@app.cell
+def _(hifld_ui, mo, pp, scheduling_ui, wecc240):
     _options = {
         scheduling_ui.value: "SCHEDULING",
         hifld_ui.value: "HIFLD",
     }
     options = [y for x,y in _options.items() if x]
-    model = pp.PPModel("wecc240",case=wecc240(options))
-    return (model,)
+    get_model,set_model = mo.state(pp.PPModel("wecc240",case=wecc240(options)))
+    return get_model, set_model
 
 
-@app.cell(hide_code=True)
-def _(mo, model, pd):
+@app.cell
+def _(get_model, mo, pd, pg):
+    model = get_model()
     _info = mo.ui.table(
-                pd.DataFrame(
-                    model.get_info().items(), columns=["Attribute", "Value"]
-                ).set_index("Attribute"),
-                page_size=99,
-                selection=None,
-                show_column_summaries=False,
-                show_data_types=False,
-                text_justify_columns={"Value": "right"},
-            )
+        pd.DataFrame(
+            model.get_info().items(), columns=["Attribute", "Value"]
+        ).set_index("Attribute"),
+        page_size=99,
+        selection=None,
+        show_column_summaries=False,
+        show_data_types=False,
+        text_justify_columns={"Value": "right"},
+    )
     _data = mo.ui.tabs(
-                {
-                    n: mo.ui.table(
-                        data=x,
-                        show_data_types=False,
-                        selection=None,
-                        text_justify_columns={y: "right" for y in x.columns},
-                        _internal_preload=False,
-                    )
-                    for n, x in {
-                        z: model.get_data(z)
-                        for z in [
-                            "bus",
-                            "branch",
-                            "gen",
-                            "gencost",
-                            "dcline",
-                            "dclinecost",
-                            "gis",
-                        ]
-                    }.items()
-                }
-            )
-    mo.accordion(
         {
-            "Model information": _info.left(),
-            "Model data": _data,
+            n: mo.ui.table(
+                data=x,
+                show_data_types=False,
+                selection=None,
+                text_justify_columns={y: "right" for y in x.columns},
+                _internal_preload=False,
+            )
+            for n, x in {
+                z: model.get_data(z)
+                for z in [
+                    "bus",
+                    "branch",
+                    "gen",
+                    "gencost",
+                    "dcline",
+                    "dclinecost",
+                    "gis",
+                ]
+            }.items()
         }
     )
-    return
+    _graph = mo.ui.tabs({
+        "Voltage": pg.PPPlots(model).voltage().gca(),
+        "Generation": pg.PPPlots(model).generation().gca(),
+        "Load": pg.PPPlots(model).load().gca(),
+    })
+    mo.accordion(
+        {
+            "**Overview**": _info.left(),
+            "**Data**": _data,
+            "**Plots**": _graph,
+        }
+    )
+    return (model,)
 
 
 @app.cell
@@ -122,6 +129,7 @@ def _(
     opf_ui,
     pd,
     pytz,
+    set_model,
     set_profile,
     set_result,
     start_ui,
@@ -148,6 +156,7 @@ def _(
                 _bar.subtitle = result
                 set_result(result)
             set_profile(model.profile)
+            set_model(model)
     return (run_simulation,)
 
 
@@ -202,8 +211,9 @@ def _():
     import marimo as mo
     import pandas as pd
     import ppmodel as pp
+    import ppplots as pg
     from wecc240 import wecc240
-    return dt, mo, pd, pp, pytz, wecc240
+    return dt, mo, pd, pg, pp, pytz, wecc240
 
 
 if __name__ == "__main__":

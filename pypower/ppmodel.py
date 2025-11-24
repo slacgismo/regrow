@@ -37,6 +37,7 @@ Data Structures:
 - `profile`: Collects all the solver performance data obtained during a solver
   call.
 
+- `cost`: OPF cost result (if any)
 """
 
 import os
@@ -185,6 +186,7 @@ class PPModel:
 
         self.inputs = {}
         self.outputs = {}
+        self.recorders = {}
         self.options = ppoption(VERBOSE=0,OUT_ALL=0)
         self.errors = []
         self.profile = None
@@ -706,9 +708,6 @@ def {self.name}():
         scale:float=1.0,
         offset:float=0.0,
         mapping:dict=None,
-        # not_found:str="nearest",
-        # on_multiple:str="assign",
-        # basis:str|None=None,
         ):
         """Set a timeseries input data feed
 
@@ -718,9 +717,9 @@ def {self.name}():
 
         column: data column name (e.g., "PD")
 
-        file: file name from data is input
+        file: file name from which data is input
 
-        scale: scaling factor to apply to the raw data
+        scale: scaling factor to apply to input data
 
         offset: offset to apply to the scaled data
 
@@ -757,7 +756,24 @@ def {self.name}():
         offset:float=0.0,
         mapping:dict=None,
         format:str="g"):
-        """Set a timeseries output data feed"""
+        """Set a timeseries output data feed
+
+        Arguments:
+
+        name: data set name (e.g., bus, branch)
+
+        column: data column name (e.g., "PD)
+
+        file: file name to which data is output
+
+        scale: scaling factor to apply to output data
+
+        offset: offset to apply to scaled data
+
+        mapping: maps column names to data rows with weights
+
+        format: formatting of output
+        """
         assert name in standard_idx, f"{name=} is not valid"
         assert column in get_header(name), f"{column=} is not found in {name} data"
         assert file not in self.outputs, f"{file=} already exists in the outputs"
@@ -778,6 +794,105 @@ def {self.name}():
             "format": format,
             }
         print("datetime",*mapping["columns"],sep=",",file=fh)
+
+    def set_recorder(self,
+        file:str,
+        name:str,
+        target:list[str],
+        scale:float=1.0,
+        offset:float=0.0,
+        format="g"):
+        """Set a recorder
+
+        file: file name to which data is output
+
+        name: output column name
+
+        target: case keys to value to record (e.g., ["cost"])
+
+        scale: scaling factor to apply to output data
+
+        offset: offset to apply to scaled data
+
+        format: formatting of output
+        """
+        assert isinstance(target,list), "target must be a list"
+        assert all([isinstance(x,str) for x in target]), "target must be a list of strings"
+        if not file in self.recorders:
+            fh = open(file,"w",encoding="utf-8")
+            self.recorders[file] = {
+                "fh": fh,
+                "targets": {}
+                }
+
+        recorder = self.recorders[file]
+        assert name not in recorder["targets"], f"target {name=} is already specified in {file=}"
+        recorder["targets"][name] = {
+            "source":target,
+            "format":format,
+            "transform": lambda x: x*scale+offset,
+            }
+
+    def set_datetime(self,datetime):
+        """Set the model date/time"""
+        raise NotImplementedError("set_datetime() is not implemented")
+
+    def solve_pf(self,
+        update:str='success',
+        **kwargs,
+        ) -> bool:
+        """Solve the powerflow problem
+
+        Arguments:
+
+        update: when to update of model case data ('always','success','failure')
+
+        **kwargs: solver options (see pypower.ppoption)
+
+        Returns:
+
+        bool: True on success, False on failure
+        """
+        assert update in ["always","success","failure"], f"{update=} is invalid"
+        result,status = runpf(self.case,ppoption(self.options))
+        success = status == 1
+        if ( success and update in ["always","success"] ) \
+                or ( not success and update in ["always","failure"] ):
+            for name,values in result.items():
+                if name in self.case:
+                    self.case["name"] = values
+        return status==1
+
+    def solve_opf(self,
+        use_acopf:bool=False,
+        update:str='success',
+        **kwargs):
+        """Solve the optimal powerflow problem
+
+        Arguments:
+
+        use_acopf: enable AC OPF solution
+
+        update: when update of model case data ('always','success','failure')
+        
+        **kwargs: solver options (see pypower.ppoption)
+
+        Returns:
+
+        bool: True on success, False on failure
+        """
+        assert use_acopf in [True,False], f"{use_acopf=} is invalid"
+        assert update in ["always","success","failure"], f"{update=} is invalid"
+        opf = (runacopf if use_acopf else rundcopf)
+        result = opf(self.case,ppoption(self.options))
+        success = result["success"] == True
+        if ( success and update in ["always","success"] ) \
+                or ( not success and update in ["always","failure"] ):
+            for name,values in result.items():
+                if name in self.case:
+                    self.case["name"] = values
+            self.case["cost"] = result["f"]
+        return success
 
     def run_timeseries(self,*args,
         # pylint: disable=too-many-arguments,too-many-locals
@@ -820,6 +935,12 @@ def {self.name}():
         niters = 0
         topf = 0.0
         tpf = 0.0
+
+        # start recorders
+        for file,recorder in self.recorders.items():
+            columns = ["timestamp"] + list(recorder["targets"].keys())
+            print(*columns,sep=",",file=recorder["fh"],flush=True)
+
         for t in (x.tz_convert("UTC") for x in trange):
 
             # setup time and progress/stop callback
@@ -843,9 +964,9 @@ def {self.name}():
 
             # solve OPF and check result
             tic1 = time()
-            opf = self.solve_opf(use_acopf)
+            status = self.solve_opf(use_acopf)
             toc1 = time()
-            if opf["success"] != 1:
+            if status != True:
                 failed = f"OPF failed at {ts}"
                 self.errors.append(failed)
                 if call_on_fail:
@@ -856,9 +977,9 @@ def {self.name}():
 
             # solver powerflow and check result
             tic1 = time()
-            _,status = self.solve_pf()
+            status = self.solve_pf()
             toc1 = time()
-            if status != 1:
+            if status != True:
                 failed = f"PF failed at {ts}"
                 self.errors.append(failed)
                 if call_on_fail:
@@ -872,11 +993,27 @@ def {self.name}():
                 mapping = spec["mapping"]
                 scale = mapping["scale"]
                 offset = mapping["offset"]
-                formt = spec["format"]
-                data = [f"{{0:{formt}}}".format(x)
+                data = [f"{{0:{spec['format']}}}".format(x)
                     for x in self.get_data(
                         spec["name"]).loc[mapping["rows"],spec["column"]]*scale + offset]
                 print(ts,*data,sep=",",file=spec["fh"],flush=True)
+
+            # process recorders
+            for file,recorder in self.recorders.items():
+                values = [ts]
+                for name,spec in recorder["targets"].items():
+                    value = self.case
+                    for level in spec["source"]:
+                        if not level in value:
+                            warnings.warn(f"recorder '{file}' -- '{level}' not found")
+                            break
+                        value = value[level]
+                    if not isinstance(value,(int,float,bool,str,type(None))):
+                        value = float('nan')
+                    elif isinstance(value,(int,float)):
+                        value = spec["transform"](value)
+                    values.append(f"{{0:{spec['format']}}}".format(value))
+                print(*values,sep=",",file=recorder["fh"],flush=True)
 
             # check stop condition
             niters += 1
@@ -898,17 +1035,6 @@ def {self.name}():
 
         return self.errors if self.errors else None
 
-    def set_datetime(self,datetime):
-        """Set the model date/time"""
-
-    def solve_pf(self):
-        """Solve the powerflow problem"""
-        return runpf(self.case,self.options)
-
-    def solve_opf(self,use_acopf:bool=False):
-        """Solve the optimal powerflow problem"""
-        return (runacopf if use_acopf else rundcopf)(self.case,self.options)
-
 if __name__ == "__main__":
 
     pd.options.display.width = None
@@ -918,10 +1044,6 @@ if __name__ == "__main__":
     from wecc240 import wecc240
     options = ["SCHEDULING"]
     model = PPModel(case=wecc240(options=options))
-
-    # print(model.get_gis())
-    # quit()
-    # print(model.get_data("gis"))
 
     for graph in ["BUS","GEOHASH","ZONE","AREA"]:
         print(f"{graph}:",model.get_graph(graph))
@@ -933,6 +1055,9 @@ if __name__ == "__main__":
     model.set_output("bus","VA","results/bus_va.csv",format=".4f")
     model.set_output("bus","PD","results/bus_pd.csv",format=".4f")
     model.set_output("bus","QD","results/bus_qd.csv",format=".4f")
+
+    model.set_recorder("results/cost.csv","cost",["cost"],scale=model.case['baseMVA'],format=".2f")
+    model.set_recorder("results/cost.csv","cost_pumva",["cost"],format=".2f")
 
     SIM_RESULT =  model.run_timeseries(
         "2020-08-01 00:00:00+07:00",

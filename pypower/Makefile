@@ -1,12 +1,15 @@
 FILES=
 FILES+=hifld.py
 FILES+=kml.py
+FILES+=ppdata.py
 FILES+=ppmodel.py
 FILES+=psse.py
 FILES+=psse2pp.py
 FILES+=scheduling.py
 
-DATA=wecc240_psse.raw powerplants.csv.zip wecc240_gis.csv
+DATA=wecc240_psse.raw
+DATA+=wecc240_gis.csv
+DATA+=powerplants.csv.zip
 DATA+=$(wildcard wecc240/*.csv)
 DATA+=$(wildcard wecc240/scheduling/*.csv)
 

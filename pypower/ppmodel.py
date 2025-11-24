@@ -40,28 +40,24 @@ Data Structures:
 - `cost`: OPF cost result (if any)
 """
 
-import os
 import sys
 import io
 import datetime as dt
-from time import time
 from typing import Self, Callable
 import warnings
 
 import pytz
 import numpy as np
 import pandas as pd
-from geohash import nearest
 
 from pypower import idx_brch as idx_branch
 # pylint: disable=unused-import
 from pypower import idx_gen, idx_bus # used indirectly in get_header()
 # pylint: enable=unused-import
 from pypower import idx_cost as idx_gencost
-from pypower.runpf import runpf
-from pypower.rundcopf import rundcopf
-from pypower.runopf import runopf as runacopf
-from pypower.ppoption import ppoption
+
+from ppdata import PPData
+from ppsolver import PPSolver
 
 from kml import KML
 
@@ -109,40 +105,18 @@ class idx_gis:
     GEN = 5 # generator count (nan: no gen allowed)
     LOAD = 6 # load count (nan: no load allowed)
 
-standard_idx = {
-    "bus": ["PQ","PV","REF","NONE"],
-    "branch": [],
-    "gen": [],
-    "gencost": ["PW_LINEAR","POLYNOMIAL"],
-    "dcline": [],
-    "dclinecost": ["PW_LINEAR","POLYNOMIAL"],
-    "gis": [],
-}
-
-
-def get_header(name:str,*,ignore:list[str]=None) -> list[str]:
-    """Convert idx data to a header list
-
-    Arguments:
-
-    idx: module containing index values
-
-    ignore: list of index values to ignore
-
-    Returns:
-
-    list[str]: ordered list of data array column header names
-    """
-    idx = globals()[f"idx_{name}"]
-    if ignore is None:
-        ignore = standard_idx[name]
-    mapping = {getattr(idx,x):x for x in dir(idx) if not x.startswith("_") and x not in ignore}
-    indexes = sorted(mapping)
-    assert max(indexes) - min(indexes) + 1 == len(indexes), "indexes are not strictly sequential"
-    return [mapping[n] for n in indexes]
-
 class PPModel:
     """PyPower Model Access"""
+
+    standard_idx = {
+        "bus": ["PQ","PV","REF","NONE"],
+        "branch": [],
+        "gen": [],
+        "gencost": ["PW_LINEAR","POLYNOMIAL"],
+        "dcline": [],
+        "dclinecost": ["PW_LINEAR","POLYNOMIAL"],
+        "gis": [],
+    }
 
     # pylint: disable=too-many-public-methods
 
@@ -165,6 +139,7 @@ class PPModel:
         case: case data
         """
 
+        # pylint: disable=too-many-instance-attributes
         self.name = name
         self.case = {
             "version": version,
@@ -187,9 +162,32 @@ class PPModel:
         self.inputs = {}
         self.outputs = {}
         self.recorders = {}
-        self.options = ppoption(VERBOSE=0,OUT_ALL=0)
+        self.options = {"VERBOSE":0, "OUT_ALL":0}
         self.errors = []
         self.profile = None
+
+    @staticmethod
+    def get_header(name:str,*,ignore:list[str]=None) -> list[str]:
+        """Convert idx data to a header list
+
+        Arguments:
+
+        idx: module containing index values
+
+        ignore: list of index values to ignore
+
+        Returns:
+
+        list[str]: ordered list of data array column header names
+        """
+        idx = globals()[f"idx_{name}"]
+        if ignore is None:
+            ignore = PPModel.standard_idx[name]
+        mapping = {getattr(idx,x):x for x in dir(idx) if not x.startswith("_") and x not in ignore}
+        indexes = sorted(mapping)
+        assert max(indexes) - min(indexes) + 1 == len(indexes), \
+            "indexes are not strictly sequential"
+        return [mapping[n] for n in indexes]
 
     def set_case(self,
         case:dict,
@@ -228,7 +226,7 @@ def {self.name}():
             if isinstance(value,np.ndarray):
                 print(f"""      '{key}': array([""",file=file)
                 header = ",".join([f"{{0:>{precision+3}s}}".format(x)
-                    for x in get_header(key)])
+                    for x in PPModel.get_header(key)])
                 print(f"         #{header}",file=file)
                 for row in value.tolist():
                     print(f"         [{','.join([f'{{0:{precision+3}g}}'\
@@ -244,38 +242,38 @@ def {self.name}():
         ):
         """Print case data"""
         if items is None:
-            items = standard_idx
+            items = self.standard_idx
 
         if "bus" in items:
-            bus_cols = get_header("bus")
+            bus_cols = PPModel.get_header("bus")
             bus = pd.DataFrame(data=self.case["bus"],
                 columns=bus_cols[:self.case["bus"].shape[1]])
             bus.index.name="BUS"
             print(bus,file=file)
 
         if "branch" in items:
-            branch_cols = get_header("branch")
+            branch_cols = PPModel.get_header("branch")
             branch = pd.DataFrame(data=self.case["branch"],
                 columns=branch_cols[:self.case["branch"].shape[1]])
             branch.index.name="BRANCH"
             print(branch,file=file)
 
         if "gen" in items:
-            gen_cols = get_header("gen")
+            gen_cols = PPModel.get_header("gen")
             gen = pd.DataFrame(data=self.case["gen"],
                 columns=gen_cols[:self.case["gen"].shape[1]])
             gen.index.name="GEN"
             print(gen,file=file)
 
         if "dcline" in items and "dcline" in self.case and len(self.case["dcline"]) > 0:
-            dcline_cols = get_header("dcline")
+            dcline_cols = PPModel.get_header("dcline")
             dcline = pd.DataFrame(data=self.case["dcline"],
                 columns=dcline_cols[:self.case["dcline"].shape[1]])
             dcline.index.name="DCLINE"
             print(dcline,file=file)
 
         if "gencost" in items:
-            cost_cols = get_header("gencost")
+            cost_cols = PPModel.get_header("gencost")
             ncost = self.case["gencost"].shape[1] - len(cost_cols)
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             gencost = pd.DataFrame(data=self.case["gencost"],columns=cost_cols)
@@ -283,7 +281,7 @@ def {self.name}():
             print(gencost,file=file)
 
         if "dclinecost" in items and "dclinecost" in self.case and len(self.case["dclinecost"]) > 0:
-            cost_cols = get_header("dclinecost")
+            cost_cols = PPModel.get_header("dclinecost")
             ncost = self.case["dclinecost"].shape[1] - len(cost_cols)
             cost_cols.extend([f"COST{n}" for n in range(int(ncost))])
             dclinecost = pd.DataFrame(data=self.case["dclinecost"],columns=cost_cols)
@@ -370,7 +368,7 @@ def {self.name}():
         np.array: bus data
         """
 
-        header = get_header("bus")
+        header = PPModel.get_header("bus")
         for key,value in kwargs.items():
             if key not in header:
                 raise KeyError(f"{key}={value} is not a valid bus item")
@@ -398,7 +396,7 @@ def {self.name}():
 
         np.array: bus data
         """
-        header = get_header("branch")
+        header = PPModel.get_header("branch")
         for key,value in kwargs.items():
             if key not in header:
                 raise KeyError(f"{key}={value} is not a valid branch item")
@@ -427,7 +425,7 @@ def {self.name}():
         """
 
         result = []
-        for item in get_header("gen"):
+        for item in PPModel.get_header("gen"):
             if item in kwargs:
                 result.append(kwargs[item])
             elif item not in cls.gen_optional:
@@ -449,7 +447,7 @@ def {self.name}():
         """
 
         result = []
-        for item in get_header("gencost"):
+        for item in PPModel.get_header("gencost"):
             if item in kwargs:
                 if kwargs[item].ndim == 1:
                     result.append(kwargs[item])
@@ -475,7 +473,7 @@ def {self.name}():
         np.array: dcline data
         """
         result = []
-        for item in get_header("dcline"):
+        for item in PPModel.get_header("dcline"):
             if item in kwargs:
                 result.append(kwargs[item])
             elif item not in cls.dcline_optional:
@@ -497,7 +495,7 @@ def {self.name}():
         """
 
         result = []
-        for item in get_header("dclinecost"):
+        for item in PPModel.get_header("dclinecost"):
             if item in kwargs:
                 if kwargs[item].ndim == 1:
                     result.append(kwargs[item])
@@ -538,9 +536,9 @@ def {self.name}():
 
     def get_data(self,name) -> pd.DataFrame:
         """Get data table"""
-        assert name in standard_idx, f"'{name}' is not a valid data item name"
+        assert name in self.standard_idx, f"'{name}' is not a valid data item name"
         width = self.case[name].shape[1]
-        header = get_header(name)
+        header = PPModel.get_header(name)
         n = 1
         last = header[-1]
         if len(header) < width:
@@ -553,7 +551,7 @@ def {self.name}():
     def get_gis(self) -> pd.DataFrame:
         """Get indexed GIS data"""
         return self.get_data("gis").reset_index().sort_index()
-        # return pd.DataFrame(self.case["gis"].T,get_header("gis")).T
+        # return pd.DataFrame(self.case["gis"].T,PPModel.get_header("gis")).T
 
     def get_loads(self):
         """Get complete load data"""
@@ -639,402 +637,6 @@ def {self.name}():
         linklist = [[int(y) for y in x] for x in links]
         return linklist
 
-    def map_columns(self,
-        name:str,
-        column:str,
-        lookup:str="gis",
-        not_found:str="nearest",
-        on_multiple:str="assign",
-        basis:str|None=None,
-        ):
-        """Create a custom mapping for input columns to data rows
-
-        name: name of input target
-
-        column: column of input target
-
-        lookup: source of mapping lookup table
-
-        not_found: handling of columns not found in lookup source
-
-        on_multiple: handling of columns that map to more than one row
-
-        basis: basis GIS column for handling of multiple columns
-        """
-
-        # check for and fix missing columns--all should be in gis geohash list)
-        gis = self.get_data("gis").copy()
-        missing = set(data.columns) - set(gis.GEOHASH)
-        match not_found:
-            case "nearest":
-                geohash_list = gis.GEOHASH.to_list()
-                for item in missing:
-                    found = nearest(item,geohash_list)
-                    data.columns = [found if x==item else x for x in data.columns]
-            case "warning":
-                for item in missing:
-                    warnings.warn(f"{file}: {item} is not in model gis data")
-            case "error":
-                assert missing == set(), f"{missing} not in GIS data"
-            case "_":
-                raise ValueError(f"{not_found=} is invalid")
-
-        # map input columns to target rows
-        gis.BUS_I = gis.index
-        mapping = gis.set_index("GEOHASH").loc[data.columns]
-        mapping.index.name="GEOHASH"
-
-        # print(mapping[mapping[basis]>0].reset_index().set_index("BUS_I"))
-        result = mapping.loc[data.columns,["BUS_I",basis]]
-        noload = result[result["LOAD"].isna()]
-        if not noload.empty:
-            match not_found:
-                case "warning":
-                    warnings.warn(f"none of {noload.index} map to load busses")
-                case "error":
-                    raise KeyError(f"none of {noload.index} map to load busses")
-                case "nearest":
-                    raise NotImplementedError(f"none of {noload.index} map to load busses;"
-                        " {not_found=} is not supported in this case")
-                case "_":
-                    raise ValueError(f"{not_found=} is invalid")
-
-        self.inputs[(name,column)]["mapping"] = mapping.to_dict()
-
-    def set_input(self,
-        name:str,
-        column:str,
-        file:str,
-        scale:float=1.0,
-        offset:float=0.0,
-        mapping:dict=None,
-        ):
-        """Set a timeseries input data feed
-
-        Arguments:
-
-        name: data set name (e.g., bus, branch)
-
-        column: data column name (e.g., "PD")
-
-        file: file name from which data is input
-
-        scale: scaling factor to apply to input data
-
-        offset: offset to apply to the scaled data
-
-        mapping: maps column names to data rows with weights
-        """
-        assert name in standard_idx,f"{name=} is not valid"
-        assert column in get_header(name), f"{column=} is not found in {name} data"
-        assert (name,column) not in self.inputs, f"input({name=},{column=}) already defined"
-        if file is None:
-            del self.inputs[name]
-        else:
-            assert os.path.exists(file), f"{file=} not found"
-            data = pd.read_csv(file,index_col=[0],parse_dates=[0]) * scale + offset
-            data.index.name = "datetime"
-
-            # default to direct mapping of column names to row numbers
-            if mapping is None:
-                mapping = {
-                    "index": data.columns.astype(int),
-                    "scale": np.ones(len(data.columns)),
-                    }
-
-            # set up input
-            self.inputs[(name,column)] = {
-                "data": data,
-                "mapping": mapping,
-            }
-
-    def set_output(self,
-        name:str,
-        column:str,
-        file:str,
-        scale:float=1.0,
-        offset:float=0.0,
-        mapping:dict=None,
-        format:str="g"):
-        """Set a timeseries output data feed
-
-        Arguments:
-
-        name: data set name (e.g., bus, branch)
-
-        column: data column name (e.g., "PD)
-
-        file: file name to which data is output
-
-        scale: scaling factor to apply to output data
-
-        offset: offset to apply to scaled data
-
-        mapping: maps column names to data rows with weights
-
-        format: formatting of output
-        """
-        assert name in standard_idx, f"{name=} is not valid"
-        assert column in get_header(name), f"{column=} is not found in {name} data"
-        assert file not in self.outputs, f"{file=} already exists in the outputs"
-        if mapping is None:
-            nrows = len(self.case[name])
-            mapping = {
-                "rows": np.arange(nrows,dtype=int),
-                "columns": [f"{x}" for x in range(nrows)],
-                "scale": np.full(nrows,scale),
-                "offset": np.full(nrows,offset),
-            }
-        fh = open(file,"w",encoding="utf-8")
-        self.outputs[file] = {
-            "name": name,
-            "column": column,
-            "fh":fh,
-            "mapping": mapping,
-            "format": format,
-            }
-        print("datetime",*mapping["columns"],sep=",",file=fh)
-
-    def set_recorder(self,
-        file:str,
-        name:str,
-        target:list[str],
-        scale:float=1.0,
-        offset:float=0.0,
-        format="g"):
-        """Set a recorder
-
-        file: file name to which data is output
-
-        name: output column name
-
-        target: case keys to value to record (e.g., ["cost"])
-
-        scale: scaling factor to apply to output data
-
-        offset: offset to apply to scaled data
-
-        format: formatting of output
-        """
-        assert isinstance(target,list), "target must be a list"
-        assert all([isinstance(x,str) for x in target]), "target must be a list of strings"
-        if not file in self.recorders:
-            fh = open(file,"w",encoding="utf-8")
-            self.recorders[file] = {
-                "fh": fh,
-                "targets": {}
-                }
-
-        recorder = self.recorders[file]
-        assert name not in recorder["targets"], f"target {name=} is already specified in {file=}"
-        recorder["targets"][name] = {
-            "source":target,
-            "format":format,
-            "transform": lambda x: x*scale+offset,
-            }
-
-    def set_datetime(self,datetime):
-        """Set the model date/time"""
-        raise NotImplementedError("set_datetime() is not implemented")
-
-    def solve_pf(self,
-        update:str='success',
-        **kwargs,
-        ) -> bool:
-        """Solve the powerflow problem
-
-        Arguments:
-
-        update: when to update of model case data ('always','success','failure')
-
-        **kwargs: solver options (see pypower.ppoption)
-
-        Returns:
-
-        bool: True on success, False on failure
-        """
-        assert update in ["always","success","failure"], f"{update=} is invalid"
-        result,status = runpf(self.case,ppoption(self.options))
-        success = status == 1
-        if ( success and update in ["always","success"] ) \
-                or ( not success and update in ["always","failure"] ):
-            for name,values in result.items():
-                if name in self.case:
-                    self.case["name"] = values
-        return status==1
-
-    def solve_opf(self,
-        use_acopf:bool=False,
-        update:str='success',
-        **kwargs):
-        """Solve the optimal powerflow problem
-
-        Arguments:
-
-        use_acopf: enable AC OPF solution
-
-        update: when update of model case data ('always','success','failure')
-        
-        **kwargs: solver options (see pypower.ppoption)
-
-        Returns:
-
-        bool: True on success, False on failure
-        """
-        assert use_acopf in [True,False], f"{use_acopf=} is invalid"
-        assert update in ["always","success","failure"], f"{update=} is invalid"
-        opf = (runacopf if use_acopf else rundcopf)
-        result = opf(self.case,ppoption(self.options))
-        success = result["success"] == True
-        if ( success and update in ["always","success"] ) \
-                or ( not success and update in ["always","failure"] ):
-            for name,values in result.items():
-                if name in self.case:
-                    self.case["name"] = values
-            self.case["cost"] = result["f"]
-        return success
-
-    def run_timeseries(self,*args,
-        # pylint: disable=too-many-arguments,too-many-locals
-        progress:Callable=None,
-        call_on_fail:Callable=None,
-        stop_on_fail:bool=True,
-        stop_test:Callable=None,
-        use_acopf:bool=False,
-        **kwargs):
-        """Run a timeseries simulation
-
-        Arguments:
-
-        *args, **kwargs: See pandas.date_range()
-
-        progress: set a progress callback function
-
-        call_on_fail: set a call-on-fail function
-
-        stop_on_fail: enable stop-on-fail condition
-
-        stop_test: set a stop test call back function
-
-        use_acopf: enable use of AC OPF instead of DC OPF
-
-        Returns:
-
-        None: No errors to report
-
-        str: Error message (when stop_on_fail is True)
-
-        list[str]: Error messages (when stop_on_fail is False)
-        """
-
-        self.errors = [] # collect errors, if any
-        tic0 = time()
-
-        # process time specified range
-        trange = pd.date_range(*args,**kwargs)
-        niters = 0
-        topf = 0.0
-        tpf = 0.0
-
-        # start recorders
-        for file,recorder in self.recorders.items():
-            columns = ["timestamp"] + list(recorder["targets"].keys())
-            print(*columns,sep=",",file=recorder["fh"],flush=True)
-
-        for t in (x.tz_convert("UTC") for x in trange):
-
-            # setup time and progress/stop callback
-            ts = t.strftime("%Y-%m-%d %H:%M:%S %Z")
-            if callable(progress) and progress(f"""{ts} ({len(self.errors)
-                    if self.errors else 'no'} errors)"""):
-                return None
-
-            # update inputs
-            for name,spec in self.inputs.items():
-                data = spec["data"]
-                name,column = name
-                column_number = get_header(name).index(column)
-                mapping = spec["mapping"]["index"]
-                scales = spec["mapping"]["scale"]
-                try:
-                    target = self.case[name]
-                    target[mapping,column_number] = data.loc[t] * scales
-                except KeyError as exception:
-                    warnings.warn(f"input({name=},{column=}) {exception=}")
-
-            # solve OPF and check result
-            tic1 = time()
-            status = self.solve_opf(use_acopf)
-            toc1 = time()
-            if status != True:
-                failed = f"OPF failed at {ts}"
-                self.errors.append(failed)
-                if call_on_fail:
-                    call_on_fail(failed)
-                if stop_on_fail:
-                    break
-            topf += toc1 - tic1
-
-            # solver powerflow and check result
-            tic1 = time()
-            status = self.solve_pf()
-            toc1 = time()
-            if status != True:
-                failed = f"PF failed at {ts}"
-                self.errors.append(failed)
-                if call_on_fail:
-                    call_on_fail(failed)
-                if stop_on_fail:
-                    break
-            tpf += toc1 - tic1
-
-            # process outputs
-            for file,spec in self.outputs.items():
-                mapping = spec["mapping"]
-                scale = mapping["scale"]
-                offset = mapping["offset"]
-                data = [f"{{0:{spec['format']}}}".format(x)
-                    for x in self.get_data(
-                        spec["name"]).loc[mapping["rows"],spec["column"]]*scale + offset]
-                print(ts,*data,sep=",",file=spec["fh"],flush=True)
-
-            # process recorders
-            for file,recorder in self.recorders.items():
-                values = [ts]
-                for name,spec in recorder["targets"].items():
-                    value = self.case
-                    for level in spec["source"]:
-                        if not level in value:
-                            warnings.warn(f"recorder '{file}' -- '{level}' not found")
-                            break
-                        value = value[level]
-                    if not isinstance(value,(int,float,bool,str,type(None))):
-                        value = float('nan')
-                    elif isinstance(value,(int,float)):
-                        value = spec["transform"](value)
-                    values.append(f"{{0:{spec['format']}}}".format(value))
-                print(*values,sep=",",file=recorder["fh"],flush=True)
-
-            # check stop condition
-            niters += 1
-            if stop_test and stop_test(t):
-                self.errors.append(f"Stopped at {t=}")
-                break
-
-        ttot = time() - tic0
-        self.profile = {
-            "Expected iterations": len(trange),
-            "Completed iterations": niters,
-            "Total OPF time (s)": round(topf,4),
-            "Fraction OPF time (s/s)": round(topf/ttot,2) if ttot > 0 else 0,
-            "Total PF time (s)": round(tpf,4),
-            "Fraction PF time (s/s)": round(tpf/ttot,2) if ttot > 0 else 0,
-            "Total run time (s)": round(ttot,4),
-            "Iteration time (s/iter)": round(ttot/niters,4) if niters > 0 else "N/A",
-        }
-
-        return self.errors if self.errors else None
-
 if __name__ == "__main__":
 
     pd.options.display.width = None
@@ -1048,18 +650,22 @@ if __name__ == "__main__":
     for graph in ["BUS","GEOHASH","ZONE","AREA"]:
         print(f"{graph}:",model.get_graph(graph))
 
-    model.set_input("bus","PD","tests/load.csv",scale=10)
-    model.set_input("bus","QD","tests/load.csv",scale=1)
+    datamgr = PPData(model)
+    datamgr.set_input("bus","PD","tests/load.csv",scale=10)
+    datamgr.set_input("bus","QD","tests/load.csv",scale=1)
 
-    model.set_output("bus","VM","results/bus_vm.csv",format=".3f")
-    model.set_output("bus","VA","results/bus_va.csv",format=".4f")
-    model.set_output("bus","PD","results/bus_pd.csv",format=".4f")
-    model.set_output("bus","QD","results/bus_qd.csv",format=".4f")
+    datamgr.set_output("bus","VM","results/bus_vm.csv",formatting=".3f")
+    datamgr.set_output("bus","VA","results/bus_va.csv",formatting=".4f")
+    datamgr.set_output("bus","PD","results/bus_pd.csv",formatting=".4f")
+    datamgr.set_output("bus","QD","results/bus_qd.csv",formatting=".4f")
 
-    model.set_recorder("results/cost.csv","cost",["cost"],scale=model.case['baseMVA'],format=".2f")
-    model.set_recorder("results/cost.csv","cost_pumva",["cost"],format=".2f")
+    datamgr.set_recorder("results/cost.csv","cost",["cost"],
+        scale=model.case['baseMVA'],formatting=".2f")
+    datamgr.set_recorder("results/cost.csv","cost_pumva",["cost"],
+        formatting=".2f")
 
-    SIM_RESULT =  model.run_timeseries(
+    solver = PPSolver(model)
+    simresult =  solver.run_timeseries(
         "2020-08-01 00:00:00+07:00",
         "2020-09-01 00:00:00+07:00",
         freq="1h",
@@ -1067,8 +673,8 @@ if __name__ == "__main__":
         stop_test=lambda x: x > dt.datetime(2020,8,1,0,0,0,tzinfo=pytz.UTC),
         use_acopf=False,
         )
-    assert SIM_RESULT == [
+    assert simresult == [
         "Stopped at t=Timestamp('2020-08-01 01:00:00+0000', tz='UTC')",
-        ], f"ERROR: {SIM_RESULT}"
+        ], f"ERROR: {simresult}"
     print("Simulation test ok")
     print(model.profile)

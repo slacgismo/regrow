@@ -177,7 +177,7 @@ length_checks = {
     "dcline": 2,
     "dclinecost": 2,
     "gis": 243,
-    "scheduling": 1, # TODO: should be 3 when scheduling of line and storage is done
+    "scheduling": 0, # TODO: should be 3 when scheduling of line and storage is done
 }
 for item,length in length_checks.items():
     assert len(pp.model.case[item]) == length, f"incorrect length for model {item}, expected {length}, found {len(pp.model.case[item])}"

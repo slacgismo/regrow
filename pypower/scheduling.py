@@ -18,7 +18,7 @@ data when storage is charging. Otherwise storage is added to generation.
 
 import pandas as pd
 import numpy as np
-from ppmodel import PPModel, idx_gis
+from ppmodel import PPModel
 from pypower import idx_cost, idx_bus
 
 class Schedule:

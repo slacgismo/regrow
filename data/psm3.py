@@ -10,9 +10,9 @@ from json import JSONDecodeError
 import warnings
 
 NSRDB_API_BASE = "https://developer.nrel.gov"
-PSM_URL = NSRDB_API_BASE + "/api/nsrdb/v2/solar/psm3-2-2-download.csv"
-TMY_URL = NSRDB_API_BASE + "/api/nsrdb/v2/solar/psm3-tmy-download.csv"
-PSM5MIN_URL = NSRDB_API_BASE + "/api/nsrdb/v2/solar/psm3-5min-download.csv"
+PSM_URL = NSRDB_API_BASE + "/api/nsrdb/v2/solar/nsrdb-GOES-aggregated-v4-0-0-download"
+TMY_URL = NSRDB_API_BASE + "/api/nsrdb/v2/solar/nsrdb-GOES-tmy-v4-0-0-download"
+PSM5MIN_URL = NSRDB_API_BASE + "/api/nsrdb/v2/solar/nsrdb-GOES-conus-v4-0-0-download"
 
 ATTRIBUTES = (
     'air_temperature', 'dew_point', 'dhi', 'dni', 'ghi', 'surface_albedo',

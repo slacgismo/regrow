@@ -240,7 +240,7 @@ def nsrdb_weather(location,year,
     leap = (year%4 == 0)
     email, api_key = nsrdb_credentials()
     # Pull from API and save locally
-    psm3, _ = pvlib_psm3.get_psm3(lat, lon,
+    psm3, _ = pvlib.get_psm3(lat, lon,
                                   api_key,
                                   email, year,
                                   attributes=attributes.values(),

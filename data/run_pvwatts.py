@@ -9,7 +9,7 @@ import os
 import pvlib
 from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
 from matplotlib import pyplot as plt
-from utils import geohash, nsrdb_weather
+from utils import geohash, nsrdb_credentials
 import glob
 
 def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
@@ -77,9 +77,9 @@ if __name__ == "__main__":
         # Get the geohash associated with the site
         system_identifier = (bus + "_" + name + "_" +
                              str(lat) + "_" + str(long)).replace(" ", "_").replace("/", "_")
-        if system_identifier + ".csv" in already_run:
-            print("already run!!")
-            continue
+        # if system_identifier + ".csv" in already_run:
+        #     print("already run!!")
+        #     continue
         geohash_val = geohash(lat, long, precision=6)
         # convert to KW
         power = row['capacity[MW]'] * 1000
@@ -96,9 +96,9 @@ if __name__ == "__main__":
                 tilt = 0
             else: 
                 tilt = 20
-        # Skip the system if it went online after 2022 
-        if int(row['year']) > 2022:
-            continue
+        # # Skip the system if it went online after 2022 
+        # if int(row['year']) > 2022:
+        #     continue
         # Otherwise, start at 2018 or, if later, when the system came online
         if int(row['year']) > 2018:    
             min_measured_date = pd.to_datetime(str(int(row['year'])) + "-01-01 00:00:00")
@@ -108,17 +108,26 @@ if __name__ == "__main__":
         print(min_measured_date, max_measured_date)
         # Pull the site's associated NSRDB data 
         master_weather_df = pd.DataFrame()
+        nsrdb_creds = nsrdb_credentials()
         for year in range(min_measured_date.year, max_measured_date.year):
             for try_time in range(0,3):
                 try:
-                    df = nsrdb_weather(geohash_val,
-                                           year,
-                                           interval=30,
-                                           attributes={'Temperature': 'temp_air',
-                                                       'DHI': 'dhi',
-                                                       'DNI': 'dni',
-                                                       'GHI': 'ghi',
-                                                       'Wind Speed': 'wind_speed'})
+                    attributes={'temp_air': "Temperature",
+                                'dhi': "DHI",
+                                'dni': "DNI",
+                                'ghi': "GHI",
+                                'wind_speed': 'Wind Speed'}
+                    fields = list(attributes.keys())
+                    df, headers = pvlib.iotools.get_nsrdb_psm4_aggregated(latitude=lat,
+                                                         longitude=long,
+                                                         parameters=fields,
+                                                         api_key=nsrdb_creds[1],
+                                                         email=nsrdb_creds[0],
+                                                         year = year,
+                                                         leap_day=True,
+                                                         full_name="Kirsten Perry",
+                                                         affiliation="NREL")
+                    df = df.rename(columns =attributes)
                     master_weather_df = pd.concat([master_weather_df, df])
                     break
                 except:

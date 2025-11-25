@@ -92,7 +92,7 @@ def _(mo, model, options, result):
                         "gis",
                     ]
                 }.items()
-            })
+            },lazy=True)
     return (data_model_ui,)
 
 
@@ -110,9 +110,7 @@ def _(mo, model, options, result):
         ).left()
         for x, y in model.inputs.items()
     }
-    data_inputs_ui = mo.ui.tabs(
-        _data,
-    )
+    data_inputs_ui = mo.ui.tabs(_data, lazy=True)
     return (data_inputs_ui,)
 
 
@@ -137,7 +135,7 @@ def _(mo, model, options, pd, result):
                 _internal_preload=False,
             )
         )
-    data_outputs_ui = mo.ui.tabs(_tabs)
+    data_outputs_ui = mo.ui.tabs(_tabs,lazy=True)
     return (data_outputs_ui,)
 
 
@@ -162,7 +160,7 @@ def _(mo, model, options, pd, result):
                 _internal_preload=False,
             ).left()
         )
-    data_recorders_ui = mo.ui.tabs(_tabs)
+    data_recorders_ui = mo.ui.tabs(_tabs,lazy=True)
     return (data_recorders_ui,)
 
 
@@ -182,14 +180,17 @@ def _(data_inputs_ui, data_model_ui, data_outputs_ui, data_recorders_ui, mo):
 @app.cell
 def _(mo, model, pg, result):
     result
-    graph_ui = mo.ui.tabs({
-        "Voltage": pg.PPPlots(model).voltage().gca(),
-        "Generation": pg.PPPlots(model).generation().gca(),
-        "Load": pg.PPPlots(model).load().gca(),
-        "Inputs": None,
-        "Outputs": None,
-        "Recorders": None,
-    })
+    graph_ui = mo.ui.tabs(
+        {
+            "Voltage": pg.PPPlots(model).voltage().gca(),
+            "Generation": pg.PPPlots(model).generation().gca(),
+            "Load": pg.PPPlots(model).load().gca(),
+            "Inputs": None,
+            "Outputs": None,
+            "Recorders": None,
+        },
+        lazy=True,
+    )
     return (graph_ui,)
 
 
@@ -200,7 +201,8 @@ def _(data_ui, graph_ui, info_ui, mo):
             "**Overview**": info_ui,
             "**Data**": data_ui,
             "**Plots**": graph_ui,
-        }
+        },
+        lazy=True,
     )
     return
 
@@ -222,8 +224,8 @@ def _(mo):
 
 
 @app.cell
-def _(mo, model, set_ready):
-    run_ui = mo.ui.button(label="Run" if model.profile else "**Run**",on_click=lambda x:set_ready(True))
+def _(mo, set_ready):
+    run_ui = mo.ui.button(label="Run",on_click=lambda x:set_ready(True))
     return (run_ui,)
 
 

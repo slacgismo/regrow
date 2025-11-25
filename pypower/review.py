@@ -29,19 +29,26 @@ def _(mo):
 
 
 @app.cell
-def _(hifld_ui, mo, pp, scheduling_ui, wecc240):
+def _(PPData, hifld_ui, mo, pp, scheduling_ui, wecc240):
     _options = {
         scheduling_ui.value: "SCHEDULING",
         hifld_ui.value: "HIFLD",
     }
     options = [y for x,y in _options.items() if x]
-    get_model,set_model = mo.state(pp.PPModel("wecc240",case=wecc240(options)))
-    return (get_model,)
+    model = pp.PPModel("wecc240",case=wecc240(options))
+    _data = PPData(model)
+    _data.set_input("bus","PD","tests/load.csv",scale=10)
+    _data.set_input("bus","QD","tests/load.csv",scale=1)
+    _data.set_output("bus","VM","results/bus_vm.csv",formatting=".3f")
+    _data.set_output("bus","VA","results/bus_va.csv",formatting=".4f")
+    _data.set_output("bus","PD","results/bus_pd.csv",formatting=".4f")
+    _data.set_output("bus","QD","results/bus_qd.csv",formatting=".4f")
 
-
-@app.cell
-def _(get_model):
-    model = get_model()
+    _data.set_recorder("results/cost.csv","cost",["cost"],
+        scale=model.case['baseMVA'],formatting=".2f")
+    _data.set_recorder("results/cost.csv","cost_pumva",["cost"],
+        formatting=".2f")
+    get_model,set_model = mo.state(model)
     return (model,)
 
 
@@ -61,28 +68,98 @@ def _(mo, model, pd):
 
 
 @app.cell
-def _(mo, model):
-    data_ui = mo.ui.tabs(
-        {
-            n: mo.ui.table(
-                data=x,
+def _(mo, model, result):
+    result
+    data_model_ui = mo.ui.tabs(
+            {
+                n: mo.ui.table(
+                    data=x,
+                    show_data_types=False,
+                    selection=None,
+                    text_justify_columns={y: "right" for y in x.columns},
+                    _internal_preload=False,
+                )
+                for n, x in {
+                    z: model.get_data(z)
+                    for z in [
+                        "bus",
+                        "branch",
+                        "gen",
+                        "gencost",
+                        "dcline",
+                        "dclinecost",
+                        "gis",
+                    ]
+                }.items()
+            })
+    return (data_model_ui,)
+
+
+@app.cell
+def _(mo, model, result):
+    result
+    data_inputs_ui = mo.ui.tabs(
+        {"/".join(x): y["data"] for x, y in model.inputs.items()},
+    )
+    return (data_inputs_ui,)
+
+
+@app.cell
+def _(mo, model, pd, result):
+    result
+    _tabs = {}
+    for _x, _y in model.outputs.items():
+        try:
+            _data = pd.read_csv(_x, low_memory=False)
+        except Exception as _err:
+            _data = f"ERROR: {_err}"
+        _tabs[f"{_y['name']}/{_y['column']}"] = (
+            _data
+            if isinstance(_data, str)
+            else mo.ui.table(
+                _data,
                 show_data_types=False,
                 selection=None,
-                text_justify_columns={y: "right" for y in x.columns},
+                text_justify_columns={y: "right" for y in _data.columns},
                 _internal_preload=False,
             )
-            for n, x in {
-                z: model.get_data(z)
-                for z in [
-                    "bus",
-                    "branch",
-                    "gen",
-                    "gencost",
-                    "dcline",
-                    "dclinecost",
-                    "gis",
-                ]
-            }.items()
+        )
+    data_outputs_ui = mo.ui.tabs(_tabs)
+    return (data_outputs_ui,)
+
+
+@app.cell
+def _(mo, model, pd, result):
+    result
+    _tabs = {}
+    for _x in model.recorders.keys():
+        try:
+            _data = pd.read_csv(_x, low_memory=False)
+        except Exception as _err:
+            _data = f"ERROR: {_err}"
+        _tabs[_x] = (
+            _data
+            if isinstance(_data, str)
+            else mo.ui.table(
+                _data,
+                show_data_types=False,
+                selection=None,
+                text_justify_columns={y: "right" for y in _data.columns},
+                _internal_preload=False,
+            )
+        )
+    data_recorders_ui = mo.ui.tabs(_tabs)
+    return (data_recorders_ui,)
+
+
+@app.cell
+def _(data_inputs_ui, data_model_ui, data_outputs_ui, data_recorders_ui, mo):
+    data_ui = mo.ui.tabs(
+        {
+            "Model": data_model_ui,
+            "Inputs": data_inputs_ui,
+            "Outputs": data_outputs_ui,
+            "Recorders": data_recorders_ui,
         }
     )
     return (data_ui,)
@@ -94,6 +171,9 @@ def _(mo, model, pg):
         "Voltage": pg.PPPlots(model).voltage().gca(),
         "Generation": pg.PPPlots(model).generation().gca(),
         "Load": pg.PPPlots(model).load().gca(),
+        "Inputs": None,
+        "Outputs": None,
+        "Recorders": None,
     })
     return (graph_ui,)
 
@@ -241,21 +321,23 @@ def _(mo):
 
 @app.cell
 def _():
+    import marimo as mo
+    import os
     import sys
     import datetime as dt
     import pytz
-    import marimo as mo
     import pandas as pd
     import ppmodel as pp
     import ppplots as pg
     import ppsolver as ps
-    return dt, mo, pd, pg, pp, ps, pytz
+    from ppdata import PPData
+    from wecc240 import wecc240
+    return PPData, dt, mo, pd, pg, pp, ps, pytz, wecc240
 
 
 @app.cell
 def _():
-    from wecc240 import wecc240
-    return (wecc240,)
+    return
 
 
 if __name__ == "__main__":

@@ -22,9 +22,20 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    scheduling_ui = mo.ui.checkbox(label='2020 model data')
-    hifld_ui = mo.ui.checkbox(label="HIFLD generator data")
-    mo.hstack([mo.md("**WECC240 Data Options**:"),scheduling_ui,hifld_ui],justify='start')
+    scheduling_ui = mo.ui.checkbox(label="2020 model")
+    hifld_ui = mo.ui.checkbox(label="HIFLD", disabled=True)
+    loads_ui = mo.ui.checkbox(label="Loads", disabled=True)
+    renewables_ui = mo.ui.checkbox(label="Renewables", disabled=True)
+    mo.hstack(
+        [
+            mo.md("**WECC240 Data Options**:"),
+            scheduling_ui,
+            hifld_ui,
+            loads_ui,
+            renewables_ui,
+        ],
+        justify="start",
+    )
     return hifld_ui, scheduling_ui
 
 

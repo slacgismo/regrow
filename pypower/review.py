@@ -49,7 +49,7 @@ def _(PPData, hifld_ui, mo, pp, scheduling_ui, wecc240):
     _data.set_recorder("results/cost.csv","cost_pumva",["cost"],
         formatting=".2f")
     get_model,set_model = mo.state(model)
-    return (model,)
+    return model, options
 
 
 @app.cell
@@ -68,7 +68,8 @@ def _(mo, model, pd):
 
 
 @app.cell
-def _(mo, model, result):
+def _(mo, model, options, result):
+    options
     result
     data_model_ui = mo.ui.tabs(
             {
@@ -96,16 +97,28 @@ def _(mo, model, result):
 
 
 @app.cell
-def _(mo, model, result):
+def _(mo, model, options, result):
+    options
     result
+    _data = {
+        "/".join(x): mo.ui.table(
+            y["data"],
+            show_data_types=False,
+            selection=None,
+            text_justify_columns={y: "right" for y in y["data"].columns},
+            _internal_preload=False,
+        ).left()
+        for x, y in model.inputs.items()
+    }
     data_inputs_ui = mo.ui.tabs(
-        {"/".join(x): y["data"] for x, y in model.inputs.items()},
+        _data,
     )
     return (data_inputs_ui,)
 
 
 @app.cell
-def _(mo, model, pd, result):
+def _(mo, model, options, pd, result):
+    options
     result
     _tabs = {}
     for _x, _y in model.outputs.items():
@@ -129,7 +142,8 @@ def _(mo, model, pd, result):
 
 
 @app.cell
-def _(mo, model, pd, result):
+def _(mo, model, options, pd, result):
+    options
     result
     _tabs = {}
     for _x in model.recorders.keys():
@@ -146,7 +160,7 @@ def _(mo, model, pd, result):
                 selection=None,
                 text_justify_columns={y: "right" for y in _data.columns},
                 _internal_preload=False,
-            )
+            ).left()
         )
     data_recorders_ui = mo.ui.tabs(_tabs)
     return (data_recorders_ui,)
@@ -166,7 +180,8 @@ def _(data_inputs_ui, data_model_ui, data_outputs_ui, data_recorders_ui, mo):
 
 
 @app.cell
-def _(mo, model, pg):
+def _(mo, model, pg, result):
+    result
     graph_ui = mo.ui.tabs({
         "Voltage": pg.PPPlots(model).voltage().gca(),
         "Generation": pg.PPPlots(model).generation().gca(),
@@ -207,14 +222,14 @@ def _(mo):
 
 
 @app.cell
-def _(mo, set_ready):
-    run_ui = mo.ui.button(label="Run",on_click=lambda x:set_ready(True))
+def _(mo, model, set_ready):
+    run_ui = mo.ui.button(label="Run" if model.profile else "**Run**",on_click=lambda x:set_ready(True))
     return (run_ui,)
 
 
 @app.cell
-def _(mo, model, run_ui):
-    mo.md(f"<font color=blue>HINT: Click {run_ui} to start simulation</font>") if model.profile is None else None
+def _():
+    # mo.md(f"<font color=blue>HINT: Click {run_ui} to start simulation</font>") if model.profile is None else None
     return
 
 
@@ -264,7 +279,7 @@ def _(
                         _end,
                         freq=_freq,
                         progress=lambda x: _bar.update(subtitle=x,increment=1),
-                        call_on_fail=False,
+                        call_on_fail=None,
                         use_acopf=opf_ui.value,
                         stop_on_fail=not continue_ui.value,
                     )

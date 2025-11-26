@@ -80,7 +80,7 @@ class PPSolver:
                 or ( not success and update in ["always","failure"] ):
             for name,values in result.items():
                 if name in self.model.case:
-                    self.model.case["name"] = values
+                    self.model.case[name] = values
             self.model.case["cost"] = result["f"]
         return success
 

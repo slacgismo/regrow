@@ -22,6 +22,12 @@ def _(mo):
 
 @app.cell
 def _(mo):
+    reload_ui = mo.ui.button(label="Load")
+    return (reload_ui,)
+
+
+@app.cell
+def _(mo, reload_ui):
     scheduling_ui = mo.ui.checkbox(label="2020 model")
     hifld_ui = mo.ui.checkbox(label="HIFLD", disabled=True)
     loads_ui = mo.ui.checkbox(label="Loads", disabled=True)
@@ -33,17 +39,31 @@ def _(mo):
             hifld_ui,
             loads_ui,
             renewables_ui,
+            reload_ui,
         ],
         justify="start",
     )
-    return hifld_ui, scheduling_ui
+    return hifld_ui, loads_ui, renewables_ui, scheduling_ui
 
 
 @app.cell
-def _(PPData, hifld_ui, mo, pp, scheduling_ui, wecc240):
+def _(
+    PPData,
+    hifld_ui,
+    loads_ui,
+    mo,
+    pp,
+    reload_ui,
+    renewables_ui,
+    scheduling_ui,
+    wecc240,
+):
+    reload_ui
     _options = {
         scheduling_ui.value: "SCHEDULING",
         hifld_ui.value: "HIFLD",
+        loads_ui.value: "LOADS",
+        renewables_ui.value: "RENEWABLES",
     }
     options = [y for x,y in _options.items() if x]
     model = pp.PPModel("wecc240",case=wecc240(options))

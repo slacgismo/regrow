@@ -108,7 +108,7 @@ class idx_gis:
 class PPModel:
     """PyPower Model Access"""
 
-    standard_idx = {
+    standard_idx = { # list of idx values that are standard but not column names
         "bus": ["PQ","PV","REF","NONE"],
         "branch": [],
         "gen": [],
@@ -116,6 +116,42 @@ class PPModel:
         "dcline": [],
         "dclinecost": ["PW_LINEAR","POLYNOMIAL"],
         "gis": [],
+    }
+
+    types_idx = { # table of non-float column data types
+        "bus": {
+            "BUS_I": int,
+            "BUS_TYPE": int,
+            "BUS_AREA": int,
+            "ZONE": int,
+        },
+        "branch": {
+            "F_BUS": int,
+            "T_BUS": int,
+            "BR_STATUS": int,
+        },
+        "gen": {
+            "GEN_BUS": int,
+            "GEN_STATUS": int,
+        },
+        "gencost": {
+            "MODEL": int,
+            "NCOST": int,
+        },
+        "dcline": {
+            "F_BUS": int,
+            "T_BUS": int,
+            "BR_STATUS": int,
+        },
+        "dclinecost": {
+            "MODEL": int,
+            "NCOST": int,
+        },
+        "gis":{
+            "BUS_I": int,
+            "GEOHASH": str,
+            "NAME": str,
+        }
     }
 
     # pylint: disable=too-many-public-methods
@@ -355,7 +391,7 @@ def {self.name}():
 
     bus_optional = ["LAM_P","LAM_Q","MU_VMIN","MU_VMAX"]
     @classmethod
-    def bus(cls,**kwargs):
+    def bus(cls,**kwargs) -> np.array:
         """Create bus data
 
         Arguments:
@@ -384,7 +420,7 @@ def {self.name}():
 
     branch_optional = ["PF","PT","QF","QT","MU_SF","MU_ST","MU_ANGMIN","MU_ANGMAX"]
     @classmethod
-    def branch(cls,**kwargs):
+    def branch(cls,**kwargs) -> np.array:
         """Create branch data
 
         Arguments:
@@ -412,7 +448,7 @@ def {self.name}():
 
     gen_optional = ["MU_PMAX","MU_PMIN","MU_QMAX","MU_QMIN"]
     @classmethod
-    def gen(cls,**kwargs):
+    def gen(cls,**kwargs) -> np.array:
         """Create gen data
 
         Arguments:
@@ -434,7 +470,7 @@ def {self.name}():
         return np.array(result)
 
     @classmethod
-    def gencost(cls,**kwargs):
+    def gencost(cls,**kwargs) -> np.array:
         """Create gencost data
 
         Arguments:
@@ -461,7 +497,7 @@ def {self.name}():
 
     dcline_optional = ["MU_PMIN","MU_PMAX","MU_QMINF","MU_QMAXF","MU_QMINT","MU_QMAXT"]
     @classmethod
-    def dcline(cls,**kwargs):
+    def dcline(cls,**kwargs) -> np.array:
         """Create dcline data
 
         Arguments:
@@ -482,7 +518,7 @@ def {self.name}():
         return np.array(result)
 
     @classmethod
-    def dclinecost(cls,**kwargs):
+    def dclinecost(cls,**kwargs) -> np.array:
         """Create dclinecost data
 
         Arguments:
@@ -507,8 +543,13 @@ def {self.name}():
 
         return np.array(result)
 
-    def get_info(self):
-        """Get model information"""
+    def get_info(self) -> dict:
+        """Get model information
+
+        Returns:
+
+        dict: table of model information
+        """
         bus = self.get_data("bus")
         gengis = pd.merge(
                 self.get_gis(),
@@ -535,7 +576,16 @@ def {self.name}():
             }
 
     def get_data(self,name) -> pd.DataFrame:
-        """Get data table"""
+        """Get data table with data types
+
+        Arguments:
+
+        name: name of case data to return (e.g., "bus","branch","gis", etc.)
+
+        Returns:
+
+        pandas.DataFrame: case data requested with data types (see types_idx)
+        """
         assert name in self.standard_idx, f"'{name}' is not a valid data item name"
         width = self.case[name].shape[1]
         header = PPModel.get_header(name)
@@ -546,25 +596,65 @@ def {self.name}():
         while len(header) < width:
             header.append(f"{last}{n}")
             n += 1
-        return pd.DataFrame(self.case[name].T,header[:width]).T
+        result = pd.DataFrame(self.case[name].T,header[:width]).T
+        for column,type in self.types_idx[name].items():
+            result[column] = result[column].astype(type)
+        return result
 
     def get_gis(self) -> pd.DataFrame:
-        """Get indexed GIS data"""
+        """Get indexed GIS data
+
+        Returns:
+
+        pandas.DataFrame: case GIS data (no index, sorted by row number)
+        """
         return self.get_data("gis").reset_index().sort_index()
-        # return pd.DataFrame(self.case["gis"].T,PPModel.get_header("gis")).T
 
-    def get_loads(self):
-        """Get complete load data"""
-        return {} # TODO: return full load data
+    def get_bus(self,
+        bustype:int|None=None,
+        index:str|None=None,
+        ) -> pd.DataFrame:
+        """Get data for all load busses
 
-    def get_nodes(self) -> dict:
-        """Get a dictionary of node and their busses"""
+        Arguments:
+
+        bustype: bus type of get (i.e., idx_bus.PQ, idx_bus.PV, idx_bus.REF)
+
+        index: index to use (merge with GIS data if index in GIS columns)
+
+        Returns:
+
+        pandas.DataFrame: bus data
+        """
+        bus = self.get_data("bus")
+        if index in self.get_header("bus"):
+            bus.set_index(index,inplace=True)
+        elif index in self.get_header("gis"):
+            gis = self.get_data("gis")
+            bus = pd.merge(bus,gis,left_on="BUS_I",right_on="BUS_I").set_index(index)
+        elif not index is None:
+            raise ValueError(f"{index=} is invalid")
+        return bus if bustype is None else bus[bus.BUS_TYPE==bustype]
+
+    def get_nodes(self,data:pd.DataFrame|None=None) -> dict:
+        """Get a dictionary of nodes and their busses
+
+        Arguments:
+
+        data: dataframe from use ("gis" if None)
+
+        Returns:
+
+        dict: table of nodes and bus ids
+        """
         nodes = {}
-        for i,j in dict(self.case["gis"][:,[0,3]]).items():
-            if j in nodes:
-                nodes[j].append(i)
+        for n,data in (self.get_gis() if data is None else data)[
+                ["BUS_I","GEOHASH"]].iterrows():
+            bus_i,geohash = data.values
+            if geohash in nodes:
+                nodes[geohash].append(bus_i)
             else:
-                nodes[j] = [i]
+                nodes[geohash] = [bus_i]
         return nodes
 
     def get_graph(self,
@@ -658,6 +748,8 @@ if __name__ == "__main__":
     datamgr.set_output("bus","VA","results/bus_va.csv",formatting=".4f")
     datamgr.set_output("bus","PD","results/bus_pd.csv",formatting=".4f")
     datamgr.set_output("bus","QD","results/bus_qd.csv",formatting=".4f")
+    datamgr.set_output("gen","PG","results/gen_pg.csv",formatting=".4f")
+    datamgr.set_output("gen","QG","results/gen_qg.csv",formatting=".4f")
 
     datamgr.set_recorder("results/cost.csv","cost",["cost"],
         scale=model.case['baseMVA'],formatting=".2f")
@@ -671,10 +763,13 @@ if __name__ == "__main__":
         freq="1h",
         progress=lambda x: print(x,flush=True),
         stop_test=lambda x: x > dt.datetime(2020,8,1,0,0,0,tzinfo=pytz.UTC),
-        use_acopf=False,
+        use_acopf=True,
         )
     assert simresult == [
         "Stopped at t=Timestamp('2020-08-01 01:00:00+0000', tz='UTC')",
         ], f"ERROR: {simresult}"
     print("Simulation test ok")
     print(model.profile)
+
+    from ppplots import PPPlots
+    PPPlots(model).generation().savefig("results/scheduling_acopf_generation.png")

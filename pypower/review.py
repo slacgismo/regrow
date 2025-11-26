@@ -22,7 +22,7 @@ def _(mo):
 
 @app.cell
 def _(mo):
-    reload_ui = mo.ui.button(label="Load")
+    reload_ui = mo.ui.button(label="Reload")
     return (reload_ui,)
 
 

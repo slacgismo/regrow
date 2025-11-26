@@ -52,7 +52,7 @@ class PPSolver:
                 or ( not success and update in ["always","failure"] ):
             for name,values in result.items():
                 if name in self.model.case:
-                    self.model.case["name"] = values
+                    self.model.case[name] = values
         return status==1
 
     def solve_opf(self,
@@ -128,8 +128,15 @@ class PPSolver:
 
         # start recorders
         for file,recorder in self.model.recorders.items():
+            recorder["fh"] = open(file,"w",encoding="utf-8")
             columns = ["timestamp"] + list(recorder["targets"].keys())
             print(*columns,sep=",",file=recorder["fh"],flush=True)
+
+        # start outputs
+        for file,output in self.model.outputs.items():
+            output["fh"] = open(file,"w",encoding="utf-8")
+            columns = ["timestamp"] + output["mapping"]["columns"]
+            print(*columns,sep=",",file=output["fh"],flush=True)
 
         for t in (x.tz_convert("UTC") for x in trange):
 

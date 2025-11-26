@@ -108,34 +108,78 @@ def _(mo, model, options, result):
 
 
 @app.cell
-def _(mo, model, options, result):
+def _(model, options, result):
     options
     result
-    _data = {
-        "/".join(x): mo.ui.table(
-            y["data"],
+    inputs = {"/".join(x):y["data"] for x,y in model.inputs.items()}
+    return (inputs,)
+
+
+@app.cell
+def _(model, options, pd, result):
+    options
+    result
+    outputs = {}
+    for _x in model.outputs.keys():
+        try:
+            _data = pd.read_csv(
+                _x,
+                index_col=[0],
+                parse_dates=[0],
+                dtype=float,
+                low_memory=False,
+            )
+        except Exception as error:
+            _data = f"ERROR: {error}"
+        outputs[_x] = _data
+    return (outputs,)
+
+
+@app.cell
+def _(model, options, pd, result):
+    options
+    result
+    recorders = {}
+    for _x in model.recorders.keys():
+        try:
+            _data = pd.read_csv(
+                _x,
+                index_col=[0],
+                parse_dates=[0],
+                dtype=float,
+                low_memory=False,
+            )
+        except Exception as error:
+            _data = f"ERROR: {error}"
+        recorders[_x] = _data
+    return (recorders,)
+
+
+@app.cell
+def _(inputs, mo):
+    _tabs = {
+        x: mo.ui.table(
+            y,
             show_data_types=False,
             selection=None,
-            text_justify_columns={y: "right" for y in y["data"].columns},
+            text_justify_columns={y: "right" for y in y.columns},
             _internal_preload=False,
         ).left()
-        for x, y in model.inputs.items()
+        for x, y in inputs.items()
     }
-    data_inputs_ui = mo.ui.tabs(_data, lazy=True)
+    data_inputs_ui = mo.ui.tabs(_tabs, lazy=True)
     return (data_inputs_ui,)
 
 
 @app.cell
-def _(mo, model, options, pd, result):
-    options
-    result
+def _(mo, outputs, pd):
     _tabs = {}
-    for _x, _y in model.outputs.items():
+    for _x, _y in outputs.items():
         try:
             _data = pd.read_csv(_x, low_memory=False)
         except Exception as _err:
             _data = f"ERROR: {_err}"
-        _tabs[f"{_y['name']}/{_y['column']}"] = (
+        _tabs[_x] = _y if isinstance(_y,str) else (
             _data
             if isinstance(_data, str)
             else mo.ui.table(
@@ -151,23 +195,17 @@ def _(mo, model, options, pd, result):
 
 
 @app.cell
-def _(mo, model, options, pd, result):
-    options
-    result
+def _(mo, recorders):
     _tabs = {}
-    for _x in model.recorders.keys():
-        try:
-            _data = pd.read_csv(_x, low_memory=False)
-        except Exception as _err:
-            _data = f"ERROR: {_err}"
+    for _x,_y in recorders.items():
         _tabs[_x] = (
-            _data
-            if isinstance(_data, str)
+            None
+            if _y is None
             else mo.ui.table(
-                _data,
+                _y,
                 show_data_types=False,
                 selection=None,
-                text_justify_columns={y: "right" for y in _data.columns},
+                text_justify_columns={y: "right" for y in _y.columns},
                 _internal_preload=False,
             ).left()
         )
@@ -189,16 +227,16 @@ def _(data_inputs_ui, data_model_ui, data_outputs_ui, data_recorders_ui, mo):
 
 
 @app.cell
-def _(mo, model, pg, result):
+def _(inputs, mo, model, outputs, pg, recorders, result):
     result
     graph_ui = mo.ui.tabs(
         {
             "Voltage": pg.PPPlots(model).voltage().gca(),
             "Generation": pg.PPPlots(model).generation().gca(),
             "Load": pg.PPPlots(model).load().gca(),
-            "Inputs": None,
-            "Outputs": None,
-            "Recorders": None,
+            "Inputs": mo.ui.tabs({x:y if isinstance(y,str) else y.plot(figsize=(15,8),grid=True) for x,y in inputs.items()},lazy=True),
+            "Outputs": mo.ui.tabs({x:y if isinstance(y,str) else y.plot(figsize=(15,8),grid=True) for x,y in outputs.items()},lazy=True),
+            "Recorders": mo.ui.tabs({x:y if isinstance(y,str) else y.plot(figsize=(15,8),grid=True) for x,y in recorders.items()},lazy=True),
         },
         lazy=True,
     )

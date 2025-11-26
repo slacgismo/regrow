@@ -124,15 +124,14 @@ class PPData:
                 "offset": np.full(nrows,offset),
             }
         # pylint: disable=consider-using-with
-        fh = open(file,"w",encoding="utf-8")
         self.model.outputs[file] = {
             "name": name,
             "column": column,
-            "fh":fh,
+            "fh":None,
             "mapping": mapping,
             "format": formatting,
             }
-        print("datetime",*mapping["columns"],sep=",",file=fh)
+        # print("timestamp",*mapping["columns"],sep=",",file=fh)
 
     def set_recorder(self,
         # pylint: disable=too-many-arguments,too-many-positional-arguments
@@ -160,9 +159,8 @@ class PPData:
         assert all(isinstance(x,str) for x in target), "target must be a list of strings"
         if not file in self.model.recorders:
             # pylint: disable=consider-using-with
-            fh = open(file,"w",encoding="utf-8")
             self.model.recorders[file] = {
-                "fh": fh,
+                "fh": None,
                 "targets": {}
                 }
 

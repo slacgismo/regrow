@@ -17,7 +17,7 @@ from pypower.runopf import runopf as runacopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 
-save_plots = True # TODO: enable this
+save_plots = True # enable this to generation PNG plots of results
 
 os.makedirs("results",exist_ok=True)
 

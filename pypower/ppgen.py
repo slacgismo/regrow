@@ -30,8 +30,16 @@ class Generators:
 
     def __init__(self,
         source:str=None,
-        cache:str=None):
-        """Abstract class constructor for generators"""
+        cache:str=None,
+        ):
+        """Abstract class constructor for generators
+
+        Arguments:
+
+        source: source of data
+
+        cache: path name to cache
+        """
 
         # verify source and cache specs
         assert isinstance(source,str), "source is not a valid string"
@@ -65,8 +73,10 @@ class Generators:
 
     def to_gen(self,
         case:dict,
-        q_factor=1.0,
+        q_factor=0.3,
         ignore_bustype:bool=False,
+        groupby:list[str]|None=["fuel","gen"],
+        mappings:dict[dict[str:str]]=None,
         ) -> pd.DataFrame:
         """Convert generation fleet data to PyPOWER gen data
 
@@ -75,6 +85,10 @@ class Generators:
         case: pypower case data table
 
         ignore_bustype: flag to disable limiting nearest bus search based on bustype
+
+        groupby: data groupings in addition to bus id
+
+        mappings: value mappings to apply to data columns before groups
         """
         assert "version" in case and case["version"] == 2, f"{case.version=} is not supported"
         assert "bus" in case, "case must contain bus data"
@@ -103,8 +117,18 @@ class Generators:
         gen_locations = self.data[["latitude","longitude"]].values.tolist()
         gen_bus = [nearest2(xy,bus_latlon)[0] for xy in gen_locations]
         bus_i = bus_locations[gen_bus,idx_gis.BUS_I]
-        
-        pmax = self.data.operating_capacity
+
+        # aggregate by location, fuel, and generator type
+        data = self.data.copy()
+        data["bus"] = bus_i
+        for name,mapping in mappings.items() if mappings else {}: # apply data mappings
+            data[name] = [mapping[x] for x in data[name]]
+        if groupby is None:
+            pmax = data.operating_capacity
+        else:
+            pmax = data.groupby(["bus"]+groupby)["operating_capacity"].sum()
+            bus_i = pmax.index.get_level_values(0)
+
         result = pd.DataFrame({
             "GEN_BUS": bus_i,
             "PG": np.zeros(len(bus_i)),

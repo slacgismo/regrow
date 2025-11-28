@@ -25,6 +25,52 @@ MAPPING = {
     "Latitude": "latitude",
     "Longitude": "longitude",
     }
+FUELS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
+    "BIT": "COAL",
+    "LIG": "COAL",
+    "PC": "COAL",
+    "RC": "COAL",
+    "SUB": "COAL",
+    "WC": "COAL",
+    "DFO": "OIL",
+    "JF": "OIL",
+    "LFG": "GAS",
+    "NG": "GAS",
+    "OBG": "GAS",
+    "OG": "GAS",
+    "PG": "GAS",
+    "SUN": "SOLAR",
+    "WND": "WIND",
+    "WAT": "HYDRO",
+    "NUC": "NUCLEAR",
+    "AB": "WASTE",
+    "BLQ": "WASTE",
+    "WDL": "WASTE",
+    "WDS": "WASTE",
+    "MSW": "WASTE",
+    "MWH": "OTHER",
+    "OTH": "OTHER",
+    "PUR": "OTHER",
+    "WH": "OTHER",
+    "GEO": "OTHER",
+}
+GENS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
+    "BA": "ES", # batteries
+    "BT": "CC", # multi-cycle turbine (binary)
+    "CA": "CC", # multi-cycle turbine (steam part)
+    "CP": "ES", # concentrated solar storage
+    "CS": "CC", # multi-cycle turbine (single shaft)
+    "CT": "CC", # multi-cycle turbine (combustion part)
+    "FC": "UNKNOWN", # fuel cell
+    "GT": "CT", # single-cycle turbine (combustion cycle)
+    "HY": "HT", # hydro-electric turbine
+    "IC": "IC", # internal combustion (diesel, etc.)
+    "OT": "UNKNOWN", # other (unknown)
+    "PS": "ES", # pumped hydro storage
+    "PV": "PV", # photo-voltaic
+    "ST": "ST", # steam turbine
+    "WT": "WT", # wind turbine
+}
 
 os.makedirs("wecc240/powerplants",exist_ok=True)
 
@@ -33,8 +79,19 @@ class EIA860(Generators):
     def __init__(self,
         year:int=2020,
         month:int=8,
-        reload:bool=False
+        reload:bool=False,
         ):
+
+        """Load generations from EIA Form 860 data
+
+        Arguments:
+
+        year: year of Form 860 data to load
+
+        month: month of Form 860 data to load
+
+        reload: flag to force reload from source rather than cache
+        """
 
         # convert date to EIA URL filename format
         self.date = dt.date(year,month,1)
@@ -68,7 +125,6 @@ if __name__ == "__main__":
     fleet = EIA860(reload=False)
     pd.options.display.max_columns = None
     pd.options.display.width = None
-    print(fleet.data)
     from wecc240 import wecc240
-    print(fleet.to_gen(case=wecc240()))
+    print(fleet.to_gen(case=wecc240(),mappings={"fuel":FUELS,"gen":GENS}))
 

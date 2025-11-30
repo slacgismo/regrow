@@ -1,5 +1,45 @@
-"""Abstract class for pypower generator data sources"""
+"""Abstract class for pypower generator data sources
 
+The following data must be provided by the `data` dataframe:
+
+- state
+- county
+- operating_capacity
+- fuel
+- gen
+- latitude
+- longitude
+
+Valid fuels and the corresponding generator types:
+
+- BIO: biomass (ST)
+- COAL: coal (ST)
+- ELEC: electric (ES, HT)
+- GAS: gas (CT, CC)
+- GEO: geothermal (ST)
+- NUCLEAR: nuclear fuel (ST)
+- OIL: oil (NA)
+- OTHER: other (NA)
+- SUN: solar (CS, PV)
+- WASTE: waste products (ST)
+- WATER: water reservoirs/rivers (HT)
+- WIND: wind (WT)
+
+Valid generator types and the corresponding fuels are the following
+
+- ST: steam turbine (BIO, COAL, WASTE, NUCLEAR, GEO)
+- ES: energy storage (ELEC)
+- HT: hydroelectric turbine (ELEC, WATER)
+- CC: multi-cycle turbine (GAS)
+- CT: combustion turbine only (GAS)
+- CS: solar thermal (SUN)
+- PV: solar photovoltaic (SUN)
+- WT: wind turbine (WIND)
+
+If a fuel and generator type is not matched as above, then the costs are assumed zero.
+"""
+
+import warnings
 import pandas as pd
 import numpy as np
 from geohash import nearest2
@@ -33,7 +73,7 @@ class Generators:
 
     # allows values for mapping fuel and gen values
     valid_mappings = {
-        "fuel": {'WASTE', 'OTHER', 'OIL', 'GAS', 'HYDRO', 'NUCLEAR', 'WIND', 'COAL', 'SOLAR'},
+        "fuel": {'WASTE', 'OTHER', 'OIL', 'GAS', 'GEO', 'WATER', 'NUCLEAR', 'WIND', 'COAL', 'SUN'},
         "gen": {'PV', 'CT', 'NA', 'CC', 'ES', 'WT', 'ST', 'IC', 'HT'},
         }
 
@@ -212,14 +252,30 @@ class Generators:
         # load generation cost data if needed
         if costs is None:
             costs = pd.read_csv("generation_costs.csv",
-                index_col=["fuel","gen"],
                 usecols=["fuel","gen","variable_cost","fixed_cost"],
                 )
+        else:
+            costs.reset_index()
 
-        # map generation cost data to gendata
+        # read generation data from to_gen()
         gendata = pd.DataFrame(case["gendata"],columns=GENDATA)
         gendata.drop(["variable_cost","fixed_cost"],inplace=True,axis=1)
-        gendata = pd.merge(left=gendata,right=costs,how="left",
+
+        # check costs data
+        assert "fuel" in costs.columns, "costs must include fuel data"
+        assert "gen" in costs.columns, "costs must include gen data"
+        assert "fixed_cost" in costs.columns, "costs must include fixed_cost data"
+        assert "variable_cost" in costs.columns, "costs must include variable_cost data"
+        for check in ["fuel","gen"]:
+            invalid = set(gendata[check]) - set(costs[check])
+            if invalid != set():
+                warnings.warn(f"{invalid} not found in costs {check} data (default costs are zero)")
+
+
+        # map generation cost data to gendata
+        gendata = pd.merge(left=gendata,
+            right=costs.reset_index().set_index(["fuel","gen"]),
+            how="left",
             left_on=["fuel","gen"],right_on=["fuel","gen"],
             )
 

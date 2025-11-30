@@ -41,9 +41,9 @@ FUELS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
     "OBG": "GAS",
     "OG": "GAS",
     "PG": "GAS",
-    "SUN": "SOLAR",
+    "SUN": "SUN",
     "WND": "WIND",
-    "WAT": "HYDRO",
+    "WAT": "WATER",
     "NUC": "NUCLEAR",
     "AB": "WASTE",
     "BLQ": "WASTE",
@@ -54,7 +54,7 @@ FUELS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
     "OTH": "OTHER",
     "PUR": "OTHER",
     "WH": "OTHER",
-    "GEO": "OTHER",
+    "GEO": "GEO",
 }
 GENS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
     "BA": "ES", # batteries

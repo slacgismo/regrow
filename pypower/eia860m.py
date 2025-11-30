@@ -1,3 +1,5 @@
+"""EIA860m data"""
+
 import os
 import datetime as dt
 import calendar as cal
@@ -14,7 +16,7 @@ MAPPING = {
     "Plant ID": "plant_id",
     "Generator ID": "generator_id",
     "Unit Code": "unit_code",
-    "Entity ID": "owner_id",
+    "Entity ID": None,
     "Plant Name": "plant_name",
     "Nameplate Capacity (MW)": "operating_capacity",
     "Net Summer Capacity (MW)": "summer_capacity",
@@ -61,11 +63,11 @@ GENS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
     "CP": "ES", # concentrated solar storage
     "CS": "CC", # multi-cycle turbine (single shaft)
     "CT": "CC", # multi-cycle turbine (combustion part)
-    "FC": "UNKNOWN", # fuel cell
+    "FC": "NA", # fuel cell
     "GT": "CT", # single-cycle turbine (combustion cycle)
     "HY": "HT", # hydro-electric turbine
     "IC": "IC", # internal combustion (diesel, etc.)
-    "OT": "UNKNOWN", # other (unknown)
+    "OT": "NA", # other (unknown)
     "PS": "ES", # pumped hydro storage
     "PV": "PV", # photo-voltaic
     "ST": "ST", # steam turbine
@@ -106,15 +108,25 @@ class EIA860(Generators):
                 skiprows=[0,22987],
                 usecols=[0,2,3,5,6,7,8,9,10,11,12,13,25,26,27,],
                 )
+
+            # drop unwanted columns
+            data.drop([x for x,y in MAPPING.items() if y is None ],axis=1,inplace=True)
+
+            # convert to standard column names
             data.rename(MAPPING,axis=1,inplace=True)
+
+            # add geohash values
             data["geohash"] = [geohash(x,y) for x,y in zip(data.latitude,data.longitude)]
+
+            # index
             data = data[data["state"].isin(WECC)]\
                 .set_index(["state","county","plant_id","generator_id","unit_code"])\
                 .sort_index()
 
+            # save to cache
             data.to_csv(file,index=True,header=True,compression="gzip")
 
-        # load data
+        # load data from cache
         self.data = pd.read_csv(file,dtype=str)
 
         # initialize parent class 
@@ -122,9 +134,36 @@ class EIA860(Generators):
 
 if __name__ == "__main__":
 
-    fleet = EIA860(reload=False)
-    pd.options.display.max_columns = None
-    pd.options.display.width = None
     from wecc240 import wecc240
-    print(fleet.to_gen(case=wecc240(),mappings={"fuel":FUELS,"gen":GENS}))
+    eia860 = EIA860(reload=False)
+    casedata = wecc240()
 
+    # test loading gen data into WECC 240 case
+    gen = eia860.to_gen(
+        case=casedata,
+        converters={"fuel":FUELS,"gen":GENS},
+        index_csv="eia860m_gen.csv"
+        )
+
+    for level in set(gen.index.names):
+        result = gen.PMAX.groupby(level).sum().sort_values(ascending=False).to_frame()
+        # print(result)
+        print(f"Index level '{level}': {len(result):>4d} found")
+    print(f"Total generators: {len(gen)}")
+
+    print(f"Total capacity: {gen.PMAX.sum()/1000:.1f} GW")
+
+
+    # test load gencost data into WECC240 case
+    gencost = eia860.to_gencost(
+        case=casedata,
+        )
+
+    casedata["gen"] = gen.values
+    casedata["gencost"] = gencost.values
+
+    from pypower.runpf import runpf
+    from pypower.runopf import runopf
+
+    runpf(casedata)
+    opf = runopf(casedata)

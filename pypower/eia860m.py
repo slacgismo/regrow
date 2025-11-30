@@ -164,6 +164,9 @@ if __name__ == "__main__":
 
     from pypower.runpf import runpf
     from pypower.runopf import runopf
+    from pypower.ppoption import ppoption
 
-    runpf(casedata)
-    opf = runopf(casedata)
+    pf,status = runpf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
+    print(f"PF {'ok' if status else 'failed'}",flush=True)
+    opf = runopf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
+    print(f"OPF {'ok' if opf['success'] else 'failed'}")

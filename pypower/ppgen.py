@@ -269,7 +269,12 @@ class Generators:
         for check in ["fuel","gen"]:
             invalid = set(gendata[check]) - set(costs[check])
             if invalid != set():
-                warnings.warn(f"{invalid} not found in costs {check} data (default costs are zero)")
+                warnings.warn(f"{invalid} not found in costs {check} data (zero cost assumed)")
+        valid = set(f"{x}/{y}" for x,y in costs[["fuel","gen"]].values)
+        invalid = set(f"{x}/{y}" for x,y in gendata[["fuel","gen"]].values
+            if x in set(costs["fuel"]) and y in set(costs["gen"])) - valid
+        if invalid != set():
+            warnings.warn(f"{invalid} fuel/gen combinations not found in costs data (zero cost assumed)")
 
 
         # map generation cost data to gendata

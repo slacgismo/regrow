@@ -1,13 +1,13 @@
 EIA860m Summary,Result
-Powerflow time,21.5 ms
-AC OPF stime,2065.4 ms
-AC OPF powerflow time,8.3 ms
-Optimal cost ($M),1793.0
-Busses,53
-Fuel types,10
-Nodes,53
+Powerflow time,6.5 ms
+AC OPF stime,592.1 ms
+AC OPF powerflow time,2.1 ms
 States,10
-Generator types,9
+Nodes,53
 Counties,270
+Fuel types,10
+Generator types,9
+Busses,53
 Total generators,980
 Total capacity (GW),221.8
+Operating cost ($M),1793.0

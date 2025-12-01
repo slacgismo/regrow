@@ -8,6 +8,7 @@ is changed. This can be done by running `make summaries`.
 import os
 from ppmodel import PPModel
 from wecc240 import wecc240
+import eia860m
 import pandas as pd
 
 pd.options.display.width = None
@@ -97,6 +98,51 @@ def bus_voltage_class(options):
     data["VCLASS"] = [get_class(x) for x in data.BASE_KV]
     return data.set_index("BUS_I")[["VCLASS"]]
 
+def eia860m_node_assignment(options):
+    """Generation EIA Form 860 assignment summary and KML"""
+    eia860 = eia860m.EIA860(reload=False)
+    casedata = wecc240()
+
+    pd.options.display.max_columns = None
+    pd.options.display.width = None
+
+    # test loading gen data into WECC 240 case
+    gen = eia860.to_gen(
+        case=casedata,
+        converters={"fuel":eia860m.FUELS,"gen":eia860m.GENS},
+        index_csv="summaries/eia860m_nodes.csv",
+        )
+
+    # test load gencost data into WECC240 case
+    gencost = eia860.to_gencost(
+        case=casedata,
+        )
+
+    casedata["gen"] = gen.values
+    casedata["gencost"] = gencost.values
+
+    from pypower.runpf import runpf
+    from pypower.runopf import runopf
+    from pypower.ppoption import ppoption
+
+    result = {}
+
+    pf,status = runpf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
+    result["Powerflow status"] = 'OK' if status else 'FAILED'
+
+    opf = runopf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
+    result["AC OPF status"] = 'OK' if opf['success'] else 'FAILED'
+
+    eia860.to_kml("summaries/eia860m_nodes.kml")
+
+    for level in set(gen.index.names):
+        data = gen.PMAX.groupby(level).sum().sort_values(ascending=False).to_frame()
+        result[f"Index level '{level}'"] = len(data)
+    result["Total generators"] = len(gen)
+    result["Total capacity (GW)"] = round(float(gen.PMAX.sum()/1000),1)
+
+    return pd.DataFrame(result.values(),result.keys(),columns=["Result"])
+
 if __name__ == "__main__":
 
     model_options = ["SCHEDULING"]
@@ -105,5 +151,7 @@ if __name__ == "__main__":
             "node_gencount",
             "bus_catalog","bus_nogen","bus_generator_histogram","bus_voltage_class",
             "network_bus_graph", "network_node_graph","network_zone_graph","network_area_graph",
+            "eia860m_node_assignment"
             ]:
         globals()[summary](options=model_options).to_csv(f"summaries/{summary}.csv")
+

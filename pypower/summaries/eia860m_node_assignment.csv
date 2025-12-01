@@ -1,0 +1,11 @@
+,Result
+Powerflow status,OK
+AC OPF status,OK
+Index level 'county',270
+Index level 'bus',53
+Index level 'gen',9
+Index level 'state',10
+Index level 'node',53
+Index level 'fuel',10
+Total generators,980
+Total capacity (GW),221.8

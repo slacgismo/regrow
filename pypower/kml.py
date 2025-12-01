@@ -34,6 +34,10 @@ class KML:
         self.markerstyle = {}
         # self.folders = {}
 
+    def __del__(self):
+        if self.kmlfile:
+            self.close()
+
     def add_linestyle(self,name:str,**kwargs):
         """Add a line style
 
@@ -144,7 +148,8 @@ class KML:
                 # output markers
                 for name,data in self.marker.items():
                     print("  <Placemark>",file=fh)
-                    print(f"    <name>{name}</name>""",file=fh)
+                    if name:
+                        print(f"    <name>{name}</name>""",file=fh)
                     if "style" in data:
                         print(f"    <styleUrl>#{data['style']}</styleUrl>",file=fh)
                     print(f"    <Point><coordinates>{','.join(f'{x}'
@@ -154,7 +159,8 @@ class KML:
                 # output lines
                 for name,data in self.line.items():
                     print("  <Placemark>",file=fh)
-                    print(f"    <name>{name}</name>",file=fh)
+                    if name:
+                        print(f"    <name>{name}</name>",file=fh)
                     if "style" in data:
                         print(f"    <styleUrl>#{data['style']}</styleUrl>",file=fh)
                     print("    <LineString>",file=fh)

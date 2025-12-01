@@ -1,12 +1,12 @@
 EIA860m Summary,Result
-Powerflow time,22.1 ms
-AC OPF stime,2105.4 ms
-AC OPF powerflow time,7.7 ms
-Count of generator types,9
-Count of nodes,53
-Count of counties,270
-Count of fuel types,10
-Count of busses,53
-Count of states,10
+Powerflow time,26.6 ms
+AC OPF stime,2138.4 ms
+AC OPF powerflow time,6.5 ms
+Nodes,53
+States,10
+Busses,53
+Generator types,9
+Fuel types,10
+Counties,270
 Total generators,980
 Total capacity (GW),221.8

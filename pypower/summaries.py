@@ -146,12 +146,12 @@ def eia860m_node_assignment(options):
     eia860.to_kml("summaries/eia860m_nodes.kml")
 
     gen.index.names = [
-        "Count of states",
-        "Count of counties",
-        "Count of nodes",
-        "Count of busses",
-        "Count of fuel types",
-        "Count of generator types",
+        "States",
+        "Counties",
+        "Nodes",
+        "Busses",
+        "Fuel types",
+        "Generator types",
         ]
     for level in set(gen.index.names):
         data = gen.PMAX.groupby(level).sum().sort_values(ascending=False).to_frame()

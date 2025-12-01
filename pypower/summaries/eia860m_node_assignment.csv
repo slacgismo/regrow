@@ -3,10 +3,10 @@ Powerflow time,6.5 ms
 AC OPF stime,592.1 ms
 AC OPF powerflow time,2.1 ms
 States,10
-Nodes,53
 Counties,270
 Fuel types,10
 Generator types,9
+Nodes,53
 Busses,53
 Total generators,980
 Total capacity (GW),221.8

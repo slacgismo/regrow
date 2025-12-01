@@ -142,6 +142,8 @@ def eia860m_node_assignment(options):
     if status == 0:
         warnings.warn("EIA860m AC OPF powerflow solution failed")
     result["AC OPF powerflow time"] = f"{opfpf['et']*1000:.1f} ms" if status else 'FAILED'
+    result["Optimal cost ($M)"] = f"{opf["f"]*casedata["baseMVA"]/1000:.1f}"
+
 
     eia860.to_kml("summaries/eia860m_nodes.kml")
 

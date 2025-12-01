@@ -1,11 +1,12 @@
-,Result
-Powerflow status,OK
-AC OPF status,OK
-Index level 'county',270
-Index level 'bus',53
-Index level 'gen',9
-Index level 'state',10
-Index level 'node',53
-Index level 'fuel',10
+EIA860m Summary,Result
+Powerflow time,22.1 ms
+AC OPF stime,2105.4 ms
+AC OPF powerflow time,7.7 ms
+Count of generator types,9
+Count of nodes,53
+Count of counties,270
+Count of fuel types,10
+Count of busses,53
+Count of states,10
 Total generators,980
 Total capacity (GW),221.8

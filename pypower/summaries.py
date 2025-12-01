@@ -6,6 +6,7 @@ is changed. This can be done by running `make summaries`.
 """
 
 import os
+import warnings
 from ppmodel import PPModel
 from wecc240 import wecc240
 import eia860m
@@ -85,6 +86,7 @@ def bus_generator_histogram(options):
     return result.set_index(index_names).groupby("BASE_KV").sum()
 
 def bus_voltage_class(options):
+    """Report bus voltage classes, i.e., HV, MV, or LV"""
     voltage_ranges = {"LV":[0,50.0],"MV":[50,250],"HV":[250,1000]}
     model = PPModel(case=wecc240(options=options))
     data = model.get_data("bus").copy()
@@ -128,20 +130,39 @@ def eia860m_node_assignment(options):
     result = {}
 
     pf,status = runpf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
-    result["Powerflow status"] = 'OK' if status else 'FAILED'
+    result["Powerflow time"] = f"{pf['et']*1000:.1f} ms" if status else 'FAILED'
+    if status == 0:
+        warnings.warn("EIA860m powerflow solution failed")
 
     opf = runopf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
-    result["AC OPF status"] = 'OK' if opf['success'] else 'FAILED'
+    result["AC OPF stime"] = f"{opf['et']*1000:.1f} ms" if opf['success'] else 'FAILED'
+    if opf['success'] == 0:
+        warnings.warn("EIA860m AC OPF solution failed")
+    opfpf,status = runpf(opf,ppoption(VERBOSE=0,OUT_ALL=0))
+    if status == 0:
+        warnings.warn("EIA860m AC OPF powerflow solution failed")
+    result["AC OPF powerflow time"] = f"{opfpf['et']*1000:.1f} ms" if status else 'FAILED'
 
     eia860.to_kml("summaries/eia860m_nodes.kml")
 
+    gen.index.names = [
+        "Count of states",
+        "Count of counties",
+        "Count of nodes",
+        "Count of busses",
+        "Count of fuel types",
+        "Count of generator types",
+        ]
     for level in set(gen.index.names):
         data = gen.PMAX.groupby(level).sum().sort_values(ascending=False).to_frame()
-        result[f"Index level '{level}'"] = len(data)
+        result[level] = len(data)
     result["Total generators"] = len(gen)
     result["Total capacity (GW)"] = round(float(gen.PMAX.sum()/1000),1)
 
-    return pd.DataFrame(result.values(),result.keys(),columns=["Result"])
+    result = pd.DataFrame(result.values(),result.keys(),columns=["Result"])
+    result.index.name = "EIA860m Summary"
+
+    return result
 
 if __name__ == "__main__":
 

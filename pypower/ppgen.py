@@ -127,7 +127,8 @@ class Generators:
 
     def to_gen(self,
         case:dict,
-        q_factor=0.3,
+        q_factor=0.2,
+        ignore_bustype:bool=False,
         groupby:list[str]|None=["fuel","gen"],
         converters:dict[dict[str:str]]=None,
         index_csv:str|None=None,
@@ -137,6 +138,8 @@ class Generators:
         Arguments:
 
         case: pypower case data tables
+
+        ignore_bustype: flag to disable limiting nearest bus search based on bustype
 
         groupby: data groupings in addition to bus id
 
@@ -154,6 +157,7 @@ class Generators:
 
         # check arguments
         assert isinstance(q_factor,float) and q_factor >= 0.0, f"{q_factor=} is not valid"
+        assert isinstance(ignore_bustype,bool), f"{ignore_bustype=} is not valid"
 
         # generation types
         gen_types = self.data.set_index(["fuel","gen","plant_id"])
@@ -164,8 +168,11 @@ class Generators:
         gen_data = pd.merge(capacities,counts,left_on=capacities.index.names,right_on=counts.index.names)
 
         # get list of acceptable busses we can map gens to
-        bus_list = case["bus"][:,idx_bus.BUS_TYPE].astype(int)
-        bus_list = [n for n,x in enumerate(bus_list) if x != idx_bus.PQ]
+        if ignore_bustype == True:
+            bus_list = range(len(case["bus"])) # index all
+        else:
+            bus_list = case["bus"][:,idx_bus.BUS_TYPE].astype(int)
+            bus_list = [n for n,x in enumerate(bus_list) if x != idx_bus.PQ]
         bus_locations = case["gis"][bus_list]
         bus_latlon = [(x[1],x[2]) for x in bus_locations]
         
@@ -173,6 +180,8 @@ class Generators:
         gen_locations = self.data[["latitude","longitude"]].values.tolist()
         gen_bus = [nearest2(xy,bus_latlon)[0] for xy in gen_locations]
         bus_i = bus_locations[gen_bus,idx_gis.BUS_I]
+        if ignore_bustype:
+            case["bus"][bus_i,idx_bus.BUS_TYPE] = idx_bus.PV
 
         # map column values
         data = self.data.copy().reset_index()

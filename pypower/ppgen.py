@@ -97,13 +97,12 @@ class Generators:
         self.source=source
         self.cache=cache
 
-        # check data type
-        if not hasattr(self,"data"):
-            self.data = None
-
         # verify data is a valid dataframe
         assert hasattr(self,"data"), "concrete class missing data attribute"
-        assert isinstance(self.data,pd.DataFrame), "data is not a Pandas dataframe"
+        assert hasattr(self,"data") and isinstance(getattr(self,"data"),pd.DataFrame), \
+            "data missing or is not a Pandas dataframe"
+        if not hasattr(self,"data"):
+            self.data = pd.DataFrame() # help lint understand what data is
 
         # verify columns match valid columns
         data_columns = set(self.data.columns)
@@ -114,23 +113,25 @@ class Generators:
         assert not missing, f"columns {missing} are missing"
 
         # correct column data with data types and defaults from valid_columns
-        for name,spec in self.valid_columns.items():
-            def convert(x,dtype,default):
-                try:
-                    return dtype(x)
-                except:
-                    return default
-            self.data[name] = [convert(x,*spec) for x in self.data[name]]
+        if isinstance(self.data,pd.DataFrame):
+            for name,spec in self.valid_columns.items():
+                def convert(x,dtype,default):
+                    try:
+                        return dtype(x)
+                    except ValueError:
+                        return default
+                self.data[name] = [convert(x,*spec) for x in self.data[name]]
 
         self.gendata = None
         self.case = None
 
     def to_gen(self,
+        # pylint: disable=too-many-arguments,too-many-positional-arguments
         case:dict,
         q_factor=0.2,
         ignore_bustype:bool=False,
-        exclude:dict[str:str|int|None]=None,
-        groupby:list[str]|None=["fuel","gen"],
+        exclude:dict[str:list[str|int]]=None,
+        groupby:list[str]|None=None,
         converters:dict[dict[str:str]]=None,
         index_csv:str|None=None,
         ) -> pd.DataFrame:
@@ -152,9 +153,13 @@ class Generators:
         rows, index refers back to data rows
         """
 
+        # pylint: disable=too-many-locals,too-many-branches,too-many-statements
+
         # default arguments
+        if groupby is None:
+            groupby = ["fuel","gen"]
         if exclude is None:
-            exclude = dict()
+            exclude = {}
 
         # check case
         assert "version" in case and case["version"] == 2, f"{case.version=} is not supported"
@@ -167,23 +172,24 @@ class Generators:
         assert isinstance(ignore_bustype,bool), f"{ignore_bustype=} is not valid"
         assert isinstance(exclude,dict), f"{exclude=} is not valid"
 
-        # generation types
-        gen_types = self.data.set_index(["fuel","gen","plant_id"])
-        capacities = gen_types.groupby("plant_id")[
-            ["operating_capacity","summer_capacity","winter_capacity"]
-            ].sum()
-        counts = gen_types.groupby("plant_id")["plant_name"].count()
-        gen_data = pd.merge(capacities,counts,left_on=capacities.index.names,right_on=counts.index.names)
+        # # generation types
+        # gen_types = self.data.set_index(["fuel","gen","plant_id"])
+        # capacities = gen_types.groupby("plant_id")[
+        #     ["operating_capacity","summer_capacity","winter_capacity"]
+        #     ].sum()
+        # counts = gen_types.groupby("plant_id")["plant_name"].count()
+        # gen_data = pd.merge(capacities,counts,
+        #       left_on=capacities.index.names,right_on=counts.index.names)
 
         # get list of acceptable busses we can map gens to
-        if ignore_bustype == True:
+        if ignore_bustype is True:
             bus_list = range(len(case["bus"])) # index all
         else:
             bus_list = case["bus"][:,idx_bus.BUS_TYPE].astype(int)
             bus_list = [n for n,x in enumerate(bus_list) if x != idx_bus.PQ]
         bus_locations = case["gis"][bus_list]
         bus_latlon = [(x[1],x[2]) for x in bus_locations]
-        
+
         # find nearest bus to each generator
         gen_locations = self.data[["latitude","longitude"]].values.tolist()
         gen_bus = [nearest2(xy,bus_latlon)[0] for xy in gen_locations]
@@ -194,12 +200,15 @@ class Generators:
         # map column values
         data = self.data.copy().reset_index()
         data["bus"] = bus_i
-        for name,mapping in converters.items() if converters else {}: # apply data converters
+
+        # apply data converters
+        for name,mapping in converters.items() if converters else {}:
 
             # check if mapping is valid
             if name in self.valid_mappings:
                 for value in set(mapping.values()):
-                    assert value in self.valid_mappings[name], f"'{value}' is not a valid '{name}' value mapping"
+                    assert value in self.valid_mappings[name], \
+                        f"'{value}' is not a valid '{name}' value mapping"
                 assert mapping
 
             # map values
@@ -271,10 +280,12 @@ class Generators:
         case: pypower case data tables
 
         """
-        assert "version" in case and case["version"] == 2, f"{case.version=} is not supported"
+        assert "version" in case and case["version"] == 2, \
+            f"{case.version=} is not supported"
         assert "bus" in case, "case must contain bus data"
         assert "gis" in case, "case must contain gis data"
-        assert isinstance(self.gendata,pd.DataFrame), "gendata must be a dataframe (did you call to_gen() yet?)"
+        assert isinstance(self.gendata,pd.DataFrame), \
+            "gendata must be a dataframe (did you call to_gen() yet?)"
 
         # load generation cost data if needed
         if costs is None:
@@ -300,7 +311,8 @@ class Generators:
         invalid = set(f"{x}/{y}" for x,y in self.gendata[["fuel","gen"]].values
             if x in set(costs["fuel"]) and y in set(costs["gen"])) - valid
         if invalid != set():
-            warnings.warn(f"{invalid} fuel/gen combinations not found in costs data (zero cost assumed)")
+            warnings.warn(f"{invalid} fuel/gen combinations not found "
+                "in costs data (zero cost assumed)")
 
 
         # map generation cost data to gendata
@@ -320,7 +332,7 @@ class Generators:
             })
         result.fillna(0.0,inplace=True)
 
-        return result 
+        return result
 
     def to_kml(self,filename:str):
         """Write KML file"""
@@ -355,4 +367,3 @@ class Generators:
                 kml.add_line(name=f"{n}-{to}",style="gen-bus",from_position=floc,to_position=tloc)
 
         kml.close()
-

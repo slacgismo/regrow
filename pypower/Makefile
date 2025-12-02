@@ -1,7 +1,9 @@
 FILES=
+FILES+=eia860m.py
 FILES+=hifld.py
 FILES+=kml.py
 FILES+=ppdata.py
+FILES+=ppgen.py
 FILES+=ppmodel.py
 FILES+=psse.py
 FILES+=psse2pp.py

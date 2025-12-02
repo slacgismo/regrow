@@ -1,6 +1,7 @@
 """EIA860m data"""
 
 import os
+import warnings
 import datetime as dt
 import calendar as cal
 import pandas as pd
@@ -77,7 +78,7 @@ GENS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
 os.makedirs("wecc240/powerplants",exist_ok=True)
 
 class EIA860(Generators):
-
+    """EIA Form 860m generator data handler"""
     def __init__(self,
         year:int=2020,
         month:int=8,
@@ -97,7 +98,7 @@ class EIA860(Generators):
 
         # convert date to EIA URL filename format
         self.date = dt.date(year,month,1)
-        file = FILE.format(date=self.date) 
+        file = FILE.format(date=self.date)
         month = cal.month_name[month].lower()
         url = URL.format(year=year,month=month)
 
@@ -129,7 +130,7 @@ class EIA860(Generators):
         # load data from cache
         self.data = pd.read_csv(file,dtype=str)
 
-        # initialize parent class 
+        # initialize parent class
         super().__init__(source=url,cache=file)
 
 if __name__ == "__main__":
@@ -145,7 +146,7 @@ if __name__ == "__main__":
     gen = eia860.to_gen(
         case=casedata,
         converters={"fuel":FUELS,"gen":GENS},
-        exclude={"fuel":["WIND","SUN"]},
+        exclude={"fuel":["WIND","SUN","OTHER"]},
         # exclude={"fuel":["WIND","SUN","OTHER","OIL"],"gen":["IC","NA"]},
         )
 
@@ -186,8 +187,8 @@ if __name__ == "__main__":
         "Generator types",
         ]
     for level in set(gen.index.names):
-        data = gen.PMAX.groupby(level).sum().sort_values(ascending=False).to_frame()
-        result[level] = len(data)
+        gendata = gen.PMAX.groupby(level).sum().sort_values(ascending=False).to_frame()
+        result[level] = len(gendata)
     result["Total generators"] = len(gen)
     result["Total capacity (GW)"] = round(float(gen.PMAX.sum()/1000),1)
     result["Operating cost ($M)"] = f"{opf["f"]*casedata["baseMVA"]/1000:.1f}"

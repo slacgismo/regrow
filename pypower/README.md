@@ -330,9 +330,9 @@ flowchart LR
         pypower.case --> runopf
     end
 
-    eia860m_node_assignment --> eia860m_node_assignment.csv
-    runpf --> eia860m_node_assignment.csv
-    runopf --> eia860m_node_assignment.csv
+    eia860m_node_assignment --> summaries/eia860m_node_assignment.csv
+    runpf --> summaries/eia860m_node_assignment.csv
+    runopf --> summaries/eia860m_node_assignment.csv
 ```
 
 The cache file is stored in `wecc240/powerplants/eia860m_{date}.csv.gz`, where `date` is formatted as `YYYY-MM-DD`. Consequently, EIA Form 860m generation fleet data can change from one month to the next and is valid only for the year and month specified.

@@ -144,8 +144,6 @@ def eia860m_node_assignment(options):
     result["AC OPF powerflow time"] = f"{opfpf['et']*1000:.1f} ms" if status else 'FAILED'
 
 
-    eia860.to_kml("summaries/eia860m_nodes.kml")
-
     gen.index.names = [
         "States",
         "Counties",
@@ -164,7 +162,10 @@ def eia860m_node_assignment(options):
     result = pd.DataFrame(result.values(),result.keys(),columns=["Result"])
     result.index.name = "EIA860m Summary"
 
+    eia860.to_kml("summaries/eia860m_nodes.kml")
+
     return result
+
 
 if __name__ == "__main__":
 

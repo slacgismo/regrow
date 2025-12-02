@@ -129,6 +129,7 @@ class Generators:
         case:dict,
         q_factor=0.2,
         ignore_bustype:bool=False,
+        exclude:dict[str:str|int|None]=None,
         groupby:list[str]|None=["fuel","gen"],
         converters:dict[dict[str:str]]=None,
         index_csv:str|None=None,
@@ -141,6 +142,8 @@ class Generators:
 
         ignore_bustype: flag to disable limiting nearest bus search based on bustype
 
+        exclude: table of exclusions
+
         groupby: data groupings in addition to bus id
 
         converters: value converters to apply to data columns before groups
@@ -148,6 +151,10 @@ class Generators:
         index_csv: CSV file to which gen info is written, same order as gen
         rows, index refers back to data rows
         """
+
+        # default arguments
+        if exclude is None:
+            exclude = dict()
 
         # check case
         assert "version" in case and case["version"] == 2, f"{case.version=} is not supported"
@@ -158,6 +165,7 @@ class Generators:
         # check arguments
         assert isinstance(q_factor,float) and q_factor >= 0.0, f"{q_factor=} is not valid"
         assert isinstance(ignore_bustype,bool), f"{ignore_bustype=} is not valid"
+        assert isinstance(exclude,dict), f"{exclude=} is not valid"
 
         # generation types
         gen_types = self.data.set_index(["fuel","gen","plant_id"])
@@ -197,9 +205,18 @@ class Generators:
             # map values
             data[name] = [mapping[x] for x in data[name]]
         data["node"] = [bus_locations[x][idx_gis.GEOHASH] for x in gen_bus]
-        data.set_index(["state","county","node","bus","fuel","gen"],inplace=True)
+
+        # exclude generator
+        data.reset_index(inplace=True)
+        for key,value in exclude.items():
+            if key in data.columns:
+                print(key,value)
+                data.drop(data[data[key].isin(value)].index,inplace=True)
+            else:
+                raise ValueError(f"{exclude=} is not valid")
 
         # aggregation (if any)
+        data.set_index(["state","county","node","bus","fuel","gen"],inplace=True)
         if groupby is None:
             pmax = data["operating_capacity"]
             name = data["index"]

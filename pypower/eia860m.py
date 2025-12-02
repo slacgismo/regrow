@@ -131,3 +131,68 @@ class EIA860(Generators):
 
         # initialize parent class 
         super().__init__(source=url,cache=file)
+
+if __name__ == "__main__":
+
+    from wecc240 import wecc240
+    eia860 = EIA860(reload=False)
+    casedata = wecc240()
+
+    pd.options.display.max_columns = None
+    pd.options.display.width = None
+
+    # test loading gen data into WECC 240 case
+    gen = eia860.to_gen(
+        case=casedata,
+        converters={"fuel":FUELS,"gen":GENS},
+        exclude={"fuel":["WIND","SUN"]},
+        # exclude={"fuel":["WIND","SUN","OTHER","OIL"],"gen":["IC","NA"]},
+        )
+
+    # test load gencost data into WECC240 case
+    gencost = eia860.to_gencost(
+        case=casedata,
+        )
+
+    casedata["gen"] = gen.values
+    casedata["gencost"] = gencost.values
+
+    from pypower.runpf import runpf
+    from pypower.runopf import runopf
+    from pypower.ppoption import ppoption
+
+    result = {}
+
+    pf,status = runpf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
+    result["Powerflow time"] = f"{pf['et']*1000:.1f} ms" if status else 'FAILED'
+    if status == 0:
+        warnings.warn("EIA860m powerflow solution failed")
+
+    opf = runopf(casedata,ppoption(VERBOSE=0,OUT_ALL=0))
+    result["AC OPF stime"] = f"{opf['et']*1000:.1f} ms" if opf['success'] else 'FAILED'
+    if opf['success'] == 0:
+        warnings.warn("EIA860m AC OPF solution failed")
+    opfpf,status = runpf(opf,ppoption(VERBOSE=0,OUT_ALL=0))
+    if status == 0:
+        warnings.warn("EIA860m AC OPF powerflow solution failed")
+    result["AC OPF powerflow time"] = f"{opfpf['et']*1000:.1f} ms" if status else 'FAILED'
+
+    gen.index.names = [
+        "States",
+        "Counties",
+        "Nodes",
+        "Busses",
+        "Fuel types",
+        "Generator types",
+        ]
+    for level in set(gen.index.names):
+        data = gen.PMAX.groupby(level).sum().sort_values(ascending=False).to_frame()
+        result[level] = len(data)
+    result["Total generators"] = len(gen)
+    result["Total capacity (GW)"] = round(float(gen.PMAX.sum()/1000),1)
+    result["Operating cost ($M)"] = f"{opf["f"]*casedata["baseMVA"]/1000:.1f}"
+
+    result = pd.DataFrame(result.values(),result.keys(),columns=["Result"])
+    result.index.name = "EIA860m Summary"
+
+    print(result)

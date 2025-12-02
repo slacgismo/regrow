@@ -312,6 +312,8 @@ flowchart LR
         ppgen --> ppgen.to_kml
     end
 
+    generation_costs.csv --> ppgen.gencost
+
     ppgen.gen --> summaries/eia860m_nodes.csv
     ppgen.gen --> pypower.case
     ppgen.gencost --> pypower.case

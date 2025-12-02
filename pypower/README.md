@@ -312,12 +312,27 @@ flowchart LR
         ppgen --> ppgen.to_kml
     end
 
+    WECC240 --> ppgen
+
     generation_costs.csv --> ppgen.gencost
 
-    ppgen.gen --> summaries/eia860m_nodes.csv
-    ppgen.gen --> pypower.case
-    ppgen.gencost --> pypower.case
-    ppgen.to_kml --> summaries/eia860m_nodes.kml
+    subgraph summaries.py
+        ppgen --> eia860m_node_assignment
+        ppgen.gen --> summaries/eia860m_nodes.csv
+        ppgen.to_kml --> summaries/eia860m_nodes.kml
+        eia860m_node_assignment
+    end
+    
+    subgraph pypower
+        ppgen.gen --> pypower.case
+        ppgen.gencost --> pypower.case
+        pypower.case --> runpf
+        pypower.case --> runopf
+    end
+
+    eia860m_node_assignment --> eia860m_node_assignment.csv
+    runpf --> eia860m_node_assignment.csv
+    runopf --> eia860m_node_assignment.csv
 ```
 
 The cache file is stored in `wecc240/powerplants/eia860m_{date}.csv.gz`, where `date` is formatted as `YYYY-MM-DD`. Consequently, EIA Form 860m generation fleet data can change from one month to the next and is valid only for the year and month specified.

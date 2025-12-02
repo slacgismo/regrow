@@ -288,6 +288,37 @@ Testing of the HIFLD powerplant import process yields the following results:
 | Winter Margin | 33.7% | 19.1% |
 | Summer Margin | 32.5% | 17.2% |
 
+#### `EIA Form 860`
+
+Includes the EIA Form 860m option to replace the generation fleet with generators listed in the monthly EIA Form 860 data online using the following data flow:
+
+```mermaid
+flowchart LR
+
+    EIA --> EIA860
+
+    subgraph eia860m.py
+        EIA860
+    end
+
+    EIA860 --> cache
+    cache --> EIA860
+
+    EIA860 --> ppgen
+
+    subgraph ppgen.py
+        ppgen --> ppgen.gen
+        ppgen.gen --> ppgen.gencost
+        ppgen --> ppgen.to_kml
+    end
+
+    ppgen.gen --> summaries/eia860m_nodes.csv
+    ppgen.gen --> pypower.case
+    ppgen.gencost --> pypower.case
+    ppgen.to_kml --> summaries/eia860m_nodes.kml
+```
+
+The cache file is stored in `wecc240/powerplants/eia860m_{date}.csv.gz`, where `date` is formatted as `YYYY-MM-DD`. Consequently, EIA Form 860m generation fleet data can change from one month to the next and is valid only for the year and month specified.
 
 #### `LOADS` (future work)
 

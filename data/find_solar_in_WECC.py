@@ -7,12 +7,18 @@ app = marimo.App(width="medium")
 @app.cell
 def _(mo):
     mo.md(r"""
-    This notebook contained the process for finding which solar PV generators in the [USGS USPVDB](https://energy.usgs.gov/uspvdb/) are in the WECC service area. The general process is:
+    This notebook contained the process for finding which solar PV generators in the [USGS USPVDB](https://energy.usgs.gov/uspvdb/) are in the WECC service area, and identifying WECC 240 model nodes that are closest to the generators. The general process is:
 
     1. Load WECC node GIS data
     2. Load USPVDB system data
     3. Load WECC county information
     4. Find PV systems in WECC counties, by joining on county
+    5. Identify the set(s) of nodes from the WECC 240 model that are closest to installed generators for a given year
+
+    ### Notebook output
+
+    - `wecc_pv_systems.csv`: contains a table of USPVDB systems that are in the WECC service area
+    - `pv_node_geohashes.txt`: contains a list WECC node geohashes that should be assigned PV generation in our new model
     """)
     return
 
@@ -27,7 +33,7 @@ def _():
     import matplotlib.pyplot as plt
     import folium
     from supervenn import supervenn
-    return folium, io, mo, np, pd, plt, supervenn, utils
+    return folium, mo, np, pd, plt, supervenn, utils
 
 
 @app.cell
@@ -41,11 +47,7 @@ def _(mo):
 @app.cell
 def _(utils):
     nodes = utils.load_reduced_network()
-    latlon_list = [
-        (nodes.iloc[_ix]['Lat'], nodes.iloc[_ix]['Long']) 
-        for _ix in range(len(nodes))
-    ]
-    return latlon_list, nodes
+    return (nodes,)
 
 
 @app.cell
@@ -152,48 +154,35 @@ def _(wecc_pv_systems):
 
 
 @app.cell
-def _(io, pd):
-    csv_str = """GEOHASH,BUS_I,NAME,BUS_TYPE,VOLTAGE,LOAD,GENERATION,GENOK
-    9qhsdk,2603,VICTORVL,PQ,500.0,0.0,,0
-    9qhsdk,2607,VICTORVL,PQ,287.0,0.0,,0
-    9qq5wv,2901,ELDORADO,PQ,500.0,0.0,,0
-    9q5zqv,2902,MOHAVE,PQ,500.0,0.0,,0
-    9rg8bx,4003,BURNS,PQ,500.0,0.0,,0
-    c21g7u,4007,CELILOCA,PQ,500.0,0.0,,0
-    c21g7u,4010,CELILO,PQ,230.0,0.0,,0
-    9r0vxp,8001,OLINDA,PQ,500.0,0.0,,0"""
-    pd.read_csv(io.StringIO(csv_str), header=0)
-    return
-
-
-@app.cell
 def _(mo):
     mo.md(r"""
     ## Assign to nodes
+
+    Find closest WECC node to each generator, excluding nodes that are high-voltage and therefore transmission only.
     """)
     return
 
 
 @app.cell
-def _(latlon_list, nodes, select_year, utils, wecc_pv_systems):
-    assigned_node_hashes = []
-    for _ix,_row in wecc_pv_systems[wecc_pv_systems['year'] <= select_year.value].iterrows():
-        _best_ix, _latlon, _dist = utils.nearest2((_row['latitude_gen'], _row['longitude_gen']), latlon_list)
-        assigned_node_hashes.append(nodes.iloc[_best_ix].name)
-    return (assigned_node_hashes,)
-
-
-@app.cell
-def _(assigned_node_hashes):
-    len(set(assigned_node_hashes))
-    return
-
-
-@app.cell
-def _(assigned_node_hashes, select_year, wecc_pv_systems):
-    wecc_pv_assigned = wecc_pv_systems[wecc_pv_systems['year'] <= select_year.value].copy()
-    wecc_pv_assigned['node geohash'] = assigned_node_hashes
-    return (wecc_pv_assigned,)
+def _(nodes, np, pv_nodes_2011, pv_nodes_2018, utils, wecc_pv_systems):
+    remove_nodes = utils.load_high_voltage_nodes()
+    # _ns = nodes
+    _ns = nodes.drop(remove_nodes['GEOHASH'])
+    latlon_list = [
+        (_ns.iloc[_ix]['Lat'], _ns.iloc[_ix]['Long']) 
+        for _ix in range(len(_ns))
+    ]
+    node_sets = {}
+    # add in previous models for reference
+    node_sets['2011m'] = set(pv_nodes_2011.index)
+    node_sets['2018m'] = set(pv_nodes_2018.index)
+    for _yr in np.arange(5) + 2018:
+        _assigned_node_hashes = []
+        for _ix,_row in wecc_pv_systems[wecc_pv_systems['year'] <= _yr].iterrows():
+            _best_ix, _latlon, _dist = utils.nearest2((_row['latitude_gen'], _row['longitude_gen']), latlon_list)
+            _assigned_node_hashes.append(_ns.iloc[_best_ix].name)
+        node_sets[str(_yr)+'d'] = set(_assigned_node_hashes)
+    return node_sets, remove_nodes
 
 
 @app.cell
@@ -203,7 +192,7 @@ def _(utils):
 
 
 @app.cell
-def _(folium, reduced_network, wecc_pv_assigned):
+def _(folium, node_sets, reduced_network, select_year):
     m = folium.Map(location=[37.166, -119.449], zoom_start=5, tiles="OpenStreetMap")
     folium.TileLayer("Esri.WorldImagery").add_to(m)
     for _id in reduced_network.index:
@@ -213,7 +202,7 @@ def _(folium, reduced_network, wecc_pv_assigned):
             location=[_lat, _lon], popup=f"<b>{_id}, “node: {_bn}”</b>", radius=4, fill_color="gray", 
             fill_opacity=0.9, color="black", weight=1
         ).add_to(m)
-    for _id in set(wecc_pv_assigned['node geohash']):
+    for _id in node_sets[str(select_year.value)+'d']:
         _lat, _lon = reduced_network.loc[_id][["Lat", "Long"]].values
         _bn = reduced_network.loc[_id]["Bus  Name"][0]
         folium.CircleMarker(
@@ -237,8 +226,8 @@ def _(select_year):
 
 
 @app.cell
-def _(assigned_node_hashes):
-    len(set(assigned_node_hashes))
+def _(node_sets, select_year):
+    len(node_sets[str(select_year.value)+'d'])
     return
 
 
@@ -271,31 +260,28 @@ def _(pv_nodes_2011):
 
 
 @app.cell
-def _(
-    latlon_list,
-    nodes,
-    np,
-    pv_nodes_2011,
-    pv_nodes_2018,
-    utils,
-    wecc_pv_systems,
-):
-    node_sets = {}
-    node_sets['2011m'] = set(pv_nodes_2011.index)
-    node_sets['2018m'] = set(pv_nodes_2018.index)
-    for _yr in np.arange(5) + 2018:
-        _assigned_node_hashes = []
-        for _ix,_row in wecc_pv_systems[wecc_pv_systems['year'] <= _yr].iterrows():
-            _best_ix, _latlon, _dist = utils.nearest2((_row['latitude_gen'], _row['longitude_gen']), latlon_list)
-            _assigned_node_hashes.append(nodes.iloc[_best_ix].name)
-        node_sets[str(_yr)+'d'] = set(_assigned_node_hashes)
-    return (node_sets,)
-
-
-@app.cell
 def _(node_sets, plt, supervenn):
     supervenn(list(node_sets.values()), list(node_sets.keys()))
     plt.gcf()
+    return
+
+
+@app.cell
+def _(node_sets, np):
+    pv_node_geohashes = np.asarray(list(node_sets['2020d']))
+    np.savetxt('pv_node_geohashes.txt', pv_node_geohashes, fmt='%s')
+    return (pv_node_geohashes,)
+
+
+@app.cell
+def _(pv_node_geohashes, reduced_network):
+    reduced_network.loc[pv_node_geohashes]
+    return
+
+
+@app.cell
+def _(node_sets, remove_nodes):
+    node_sets['2022d'].intersection(set(remove_nodes['GEOHASH']))
     return
 
 

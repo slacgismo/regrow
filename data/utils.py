@@ -356,6 +356,13 @@ def load_reduced_network():
     reduced_network['node count'] = grouped.count()['Bus  Number'].values
     reduced_network['Bus  Number'] = grouped['Bus  Number'].apply(list)
     reduced_network['Bus  Name'] = grouped['Bus  Name'].apply(list)
+    # classify renewable generation at nodes
+    pv_node_geohashes = np.loadtxt('pv_node_geohashes.txt', dtype=str)
+    wt_node_geohashes = np.loadtxt('wt_node_geohashes.txt', dtype=str)
+    reduced_network['pv_gen'] = False
+    reduced_network['wt_gen'] = False
+    reduced_network.loc[pv_node_geohashes, 'pv_gen'] = True
+    reduced_network.loc[wt_node_geohashes, 'wt_gen'] = True
     return reduced_network
 
 def load_full_network():
@@ -554,4 +561,6 @@ def load_high_voltage_nodes():
     c21g7u,4007,CELILOCA,PQ,500.0,0.0,,0
     c21g7u,4010,CELILO,PQ,230.0,0.0,,0
     9r0vxp,8001,OLINDA,PQ,500.0,0.0,,0"""
-    return pd.read_csv(io.StringIO(csv_str), header=0)
+    df = pd.read_csv(io.StringIO(csv_str), header=0)
+    df['GEOHASH'] = df['GEOHASH'].apply(lambda x: x.strip())
+    return df

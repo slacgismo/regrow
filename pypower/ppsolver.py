@@ -107,6 +107,7 @@ class PPSolver:
         t: the current date/time
         """
         # update inputs
+        errors = 0
         for name,spec in self.model.inputs.items():
             data = spec["data"]
             name,column = name
@@ -118,6 +119,8 @@ class PPSolver:
                 target[mapping,column_number] = data.loc[t] * scales
             except KeyError as exception:
                 warnings.warn(f"input({name=},{column=}) {exception=}")
+                errors += 1
+        return errors
 
     def update_outputs(self,
         t:dt.datetime,
@@ -144,6 +147,7 @@ class PPSolver:
             print(ts,*data,sep=",",file=spec["fh"],flush=True)
 
         # recorders
+        errors = 0
         for file,recorder in self.model.recorders.items():
             values = [ts]
             for _,spec in recorder["targets"].items():
@@ -151,6 +155,7 @@ class PPSolver:
                 for level in spec["source"]:
                     if not level in value:
                         warnings.warn(f"recorder '{file}' -- '{level}' not found")
+                        errors += 1
                         break
                     value = value[level]
                 if not isinstance(value,(int,float,bool,str,type(None))):
@@ -159,6 +164,7 @@ class PPSolver:
                     value = spec["transform"](value)
                 values.append(f"{{0:{spec['format']}}}".format(value))
             print(*values,sep=",",file=recorder["fh"],flush=True)
+        return errors
 
     def run_timeseries(self,*args,
         # pylint: disable=too-many-arguments,too-many-locals
@@ -234,7 +240,11 @@ class PPSolver:
                 return None
 
             # update inputs
-            self.update_inputs(t)
+            if self.update_inputs(t) > 0:
+                if call_on_fail:
+                    call_on_fail("Input error")
+                if stop_on_fail:
+                    break
 
             # solve OPF and check result
             status,result = self.solve_opf(use_acopf,with_result=True)
@@ -259,7 +269,11 @@ class PPSolver:
             tpf += result["et"]
 
             # process outputs
-            self.update_outputs(t)
+            if self.update_outputs(t) > 0:
+                if call_on_fail:
+                    call_on_fail("Output error")
+                if stop_on_fail:
+                    break
 
             # check stop condition
             niters += 1
@@ -306,16 +320,17 @@ if __name__ == "__main__":
         formatting=".2f")
 
     start = dt.datetime(2020,7,31,17,0,0,0,pytz.UTC)
-    end = dt.datetime(2020,8,1,16,0,0,0,pytz.UTC)
+    end = dt.datetime(2020,8,31,16,0,0,0,pytz.UTC)
 
     test_solver = PPSolver(test_model)
 
-    print("Running",end="")
+    print(f"Running timeseries solution from {start} to {end}",end="")
     test_solver.run_timeseries(
         start=start,
         end=end,
         freq="1h",
         progress=lambda x:print(flush=True,end="."),
+        stop_on_fail=False,
         )
 
     print("done")

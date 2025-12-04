@@ -6,7 +6,7 @@ import datetime as dt
 import calendar as cal
 import pandas as pd
 from geohash import geohash
-from ppgen import Generators
+from ppgen import PPGen
 
 WECC = ["AZ","CA","CO","ID","MT","NM","OR","UT","WA","WY"]
 FILE = "wecc240/powerplants/eia860m_{date}.csv.gz"
@@ -77,7 +77,7 @@ GENS = { # See https://www.eia.gov/survey/form/eia_860/instructions.pdf
 
 os.makedirs("wecc240/powerplants",exist_ok=True)
 
-class EIA860(Generators):
+class EIA860(PPGen):
     """EIA Form 860m generator data handler"""
     def __init__(self,
         year:int=2020,

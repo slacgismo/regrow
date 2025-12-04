@@ -49,7 +49,7 @@ from kml import KML
 GENDATA = ['state', 'county', 'node', 'bus', 'fuel', 'gen', 'operating_capacity',
        'index', 'variable_cost', 'fixed_cost']
 
-class Generators:
+class PPGen:
     """Abstract class for generator data"""
 
     # set of valid columns, data type, and defaults in dataframe

@@ -65,113 +65,22 @@ def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
 if __name__ == "__main__":
     # Point towards the particular local folder that contains the data
     data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_powerplants"
-    metadata = pd.read_csv("uspvdb.csv") 
+    metadata = pd.read_csv("pv_generators_assigned.csv") 
     already_run = glob.glob(data_path +"/*.csv")
     already_run = [os.path.basename(x) for x in already_run]
+    already_run_name = [" ".join(x.split("_")[1:-2]) for x in already_run]
+    new_systems = list()
     # Loop through the metadata and generate the associated estimates
     for idx, row in metadata.iterrows():
-        lat = row['latitude']
-        long = row['longitude']
-<<<<<<< HEAD
-        power = row['power']
-        tilt = row['tilt']
-        azimuth = row['azimuth']
-        min_measured_date = pd.to_datetime(row['min_measured_date'])
-        max_measured_date = pd.to_datetime(row['max_measured_date'])
-        tracking = row['tracking']
-        backtracking = row['backtracking']
-        mount_type = row['mount_type']
-        module_type = row['module_type']
-        # Set nan values as False
-        if math.isnan(backtracking):
-            backtracking = False
-        if math.isnan(tracking):
-            tracking = False
-        # Get the array type
-        if tracking and backtracking:
-            array_type = 3
-        elif tracking:
-            array_type = 2
-        elif 'roof' in mount_type.lower():
-            array_type = 1
-        else: 
-            array_type = 0
-        if module_type == 'CdTe':
-            module_type = 2
-        else:
-            module_type = 0
-        # Build out the payload to pass to the API
-        payload = {'api_key': '4z5fRAXbGB3qldVVd3c6WH5CuhtY5mhgC2DyD952',
-                   'system_capacity': power,
-                   'module_type': module_type,
-                   'losses': losses,
-                   'array_type': array_type,
-                   'tilt': tilt,
-                   'azimuth': azimuth,
-                   'lat': lat,
-                   'lon': long,
-                   'timeframe': 'hourly'}
-        r = requests.get('https://developer.nrel.gov/api/pvwatts/v8.json?',
-                         params = payload)
-        model_outputs = json.loads(r.content.decode('utf-8'))
-        hourly_outputs = model_outputs['outputs']['ac']
-        # Write the model results to a JSON
-        with open(str(row['system_id']) + ".json", "w") as outfile:
-            outfile.write(str(model_outputs))
-||||||| 008b9dc
-        power = row['power']
-        tilt = row['tilt']
-        azimuth = row['azimuth']
-        min_measured_date = pd.to_datetime(row['min_measured_date'])
-        max_measured_date = pd.to_datetime(row['max_measured_date'])
-        tracking = row['tracking']
-        backtracking = row['backtracking']
-        mount_type = row['mount_type']
-        module_type = row['module_type']
-        # Set nan values as False
-        if math.isnan(backtracking):
-            backtracking = False
-        if math.isnan(tracking):
-            tracking = False
-        # Get the array type
-        if tracking and backtracking:
-            array_type = 3
-        elif tracking:
-            array_type = 2
-        elif 'roof' in mount_type.lower():
-            array_type = 1
-        else: 
-            array_type = 0
-        if module_type == 'CdTe':
-            module_type = 2
-        else:
-            module_type = 0
-        # Build out the payload to pass to the API
-        payload = {'api_key': '4z5fRAXbGB3qldVVd3c6WH5CuhtY5mhgC2DyD952',
-                   'system_capacity': power,
-                   'module_type': module_type,
-                   'losses': losses,
-                   'array_type': array_type,
-                   'tilt': tilt,
-                   'azimuth': azimuth,
-                   'lat': lat,
-                   'lon': long,
-                   'timeframe': 'hourly'}
-        r = requests.get('https://developer.nrel.gov/api/pvwatts/v8.json?',
-                         params = payload)
-        model_outputs = json.loads(r.content.decode('utf-8'))
-        hourly_outputs = model_outputs['outputs']['ac']
-        # Write the model results to a JSON
-        geohash_val = geohash(lat, long, precision=6)
-        with open(str(geohash_val) + ".json", "w") as outfile:
-            outfile.write(str(model_outputs))
-=======
+        lat = row['latitude_gen']
+        long = row['longitude_gen']
         name = row['name']
-        bus = row['bus']
+        bus = row['geohash']
         # Get the geohash associated with the site
         system_identifier = (bus + "_" + name + "_" +
                              str(lat) + "_" + str(long)).replace(" ", "_").replace("/", "_")
-        if system_identifier + ".csv" in already_run:
+        
+        if name in already_run_name:
             print("already run!!")
             continue
         geohash_val = geohash(lat, long, precision=6)
@@ -251,4 +160,3 @@ if __name__ == "__main__":
         
         
         
->>>>>>> 2a1cba932ae1a0be1df6e5a6f02cfa37f4cf947e

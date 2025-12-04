@@ -10,14 +10,14 @@ import matplotlib.pyplot as plt
 from psse import PSSE
 from psse2pp import PSSE2PP
 from wecc240 import wecc240
-from ppmodel import PPModel
+from pypower_sim.ppmodel import PPModel
 from pypower.runpf import runpf
 from pypower.rundcopf import rundcopf
 from pypower.runopf import runopf as runacopf
 from pypower.ppoption import ppoption
 from pypower import idx_bus as bus
 
-save_plots = True # enable this to generation PNG plots of results
+save_plots = True # enable this module to generate PNG plots of results
 
 os.makedirs("results",exist_ok=True)
 

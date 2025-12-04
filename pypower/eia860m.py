@@ -6,7 +6,7 @@ import datetime as dt
 import calendar as cal
 import pandas as pd
 from geohash import geohash
-from ppgen import PPGen
+from pypower_sim.ppgen import PPGen
 
 WECC = ["AZ","CA","CO","ID","MT","NM","OR","UT","WA","WY"]
 FILE = "wecc240/powerplants/eia860m_{date}.csv.gz"

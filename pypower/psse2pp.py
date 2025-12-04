@@ -17,7 +17,7 @@ import pandas as pd
 import numpy as np
 
 from pypower import idx_bus
-from ppmodel import PPModel
+from pypower_sim.ppmodel import PPModel
 
 # read default costs data (used when no cost data is provided, e.g., from HIFLD)
 costs = pd.read_csv("costs.csv",index_col=0)

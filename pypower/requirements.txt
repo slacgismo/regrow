@@ -1,6 +1,7 @@
 pandas
 openpyxl
 matplotlib
-git+https://github.com/eudoxys/pypower
 scipy
 git+https://github.com/eudoxys/geohash
+git+https://github.com/eudoxys/pypower
+git+https://github.com/eudoxys/pypower_sim

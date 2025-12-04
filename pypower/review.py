@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.17.7"
+__generated_with = "0.18.2"
 app = marimo.App(width="medium")
 
 
@@ -413,10 +413,10 @@ def _():
     import datetime as dt
     import pytz
     import pandas as pd
-    import ppmodel as pp
-    import ppplots as pg
-    import ppsolver as ps
-    from ppdata import PPData
+    import pypower_sim.ppmodel as pp
+    import pypower_sim.ppplots as pg
+    import pypower_sim.ppsolver as ps
+    from pypower_sim.ppdata import PPData
     from wecc240 import wecc240
     return PPData, dt, mo, pd, pg, pp, ps, pytz, wecc240
 

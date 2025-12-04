@@ -7,7 +7,7 @@ is changed. This can be done by running `make summaries`.
 
 import os
 import warnings
-from ppmodel import PPModel
+from pypower_sim.ppmodel import PPModel
 from wecc240 import wecc240
 import eia860m
 import pandas as pd

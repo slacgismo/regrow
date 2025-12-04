@@ -4,6 +4,8 @@ To update the GLM file, run the Makefile.
 
 # Description
 
+The original WECC 240 model files are in the `wecc240` subdirectory, and the main file is `wecc240/240busWECC_2018_PSS.raw`. The bus information is extracted in `wecc240_gis.csv`. The file `nodes.csv` contains all the reduced set of nodes with unique locations, as many of the nodes in the original model are co-located at the same physical location (see `nodes.py` for node reduction methodology). 
+
 # Validation
 
 To review the load model, run the following marimo app:
@@ -13,9 +15,6 @@ To review the load model, run the following marimo app:
 Bob is the subject matter expert who can tell whether your solution is any good
 just by looking at it.
 
-# Notes
-
-The `nodes.csv` contains a list of all the WECC 240 bus model locations with duplicate locations removed (see `nodes.py` for node reduction methodology).
 
 # Data Sources
 1. `powerplants.csv`: https://hifld-geoplatform.hub.arcgis.com/datasets/9dd630378fcf439999094a56c352670d_0/explore

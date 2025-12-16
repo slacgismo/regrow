@@ -10,6 +10,7 @@ import math
 import psm3 as pvlib_psm3
 import datetime as dt
 import psm3 as pvlib_psm3
+import pvlib
 import io, requests, zipfile, pdfplumber
 import marimo as mo
 
@@ -253,6 +254,27 @@ def is_workday(date,date_format="%Y-%m-%d %H:%M:%S"):
         warning(f"is_workday(date='{date}',date_format='{date_format}') date is not in range of known holidays")
     return date.weekday()<5 and date not in holidays.index
 
+
+
+def get_elevation_from_lat_lon(latitude, longitude, google_api_key):
+    """
+    This function returns the estimated elevation for each site in a dataframe, based
+    on its latitude and longitude coordinates.
+    """
+    #Query Google's Elevation API service 
+    #NOTE: USE SPARINGLY! I PAY FOR THIS WITH MY OWN ACCOUNT! MAX 2500 QUERIES/DAY THEN I AM CHARGED
+    try:
+        query = ('https://maps.googleapis.com/maps/api/elevation/json?locations=' 
+                 + str(latitude) +', ' +
+                 str(longitude) + '&key=' + google_api_key)
+        returned_info = requests.get(query).json()  # json object, various ways you can extract value
+        results = str(returned_info['results'][0])
+        elevation = results[results.find("'elevation':") 
+                            + len("'elevation':"):results.rfind(", 'location")]
+        return float(elevation)
+    except:
+        return np.nan
+
 #
 # Weather data
 #
@@ -266,15 +288,15 @@ def nsrdb_credentials(path="C:/Users/kperry/.nsrdb/credentials.json"): #os.path.
         
 def nsrdb_weather(location,year,
                   interval=30,
-                  attributes={"solar[W/m^2]" : "ghi",
-                              "temperature[degC]" : "air_temperature",
-                              "wind[m/s]" : "wind_speed",
-                              'dhi[W/m^2]': 'dhi',
-                              'dni[W/m^2]': 'dni',
-                              'winddirection[deg]': 'wind_direction',
-                              'dewpoint[degC]': 'dew_point',
-                              'relhumidity[pct]': 'relative_humidity',
-                              'water[mm]': 'total_precipitable_water'
+                  attributes={"ghi" : "ghi",
+                              "temp_air" : "air_temperature",
+                              "wind_speed" : "wind_speed",
+                              'dhi': 'dhi',
+                              'dni': 'dni',
+                              'wind_direction': 'wind_direction',
+                              'dew_point': 'dew_point',
+                              'relative_humidity': 'relative_humidity',
+                              'total_precipitable_water': 'total_precipitable_water'
                               }):
     """
     Pull NSRDB data for a particular year and location. 
@@ -302,22 +324,28 @@ def nsrdb_weather(location,year,
     leap = (year%4 == 0)
     email, api_key = nsrdb_credentials()
     # Pull from API and save locally
-    psm3, _ = pvlib_psm3.get_psm3(lat, lon,
-                                  api_key,
-                                  email, year,
-                                  attributes=attributes.values(),
-                                  map_variables=True,
-                                  interval=interval,
-                                  leap_day=leap,
-                                  timeout=60)
+    psm4, _= pvlib.iotools.get_nsrdb_psm4_aggregated(
+        lat,
+        lon,
+        api_key,
+        email,
+        year=year,
+        time_step=interval, 
+        parameters=["ghi", "dni", "dhi", "temp_air", 
+                    "wind_speed", 'wind_direction',
+                    'dew_point', 'relative_humidity', 
+                    'total_precipitable_water'], # Example parameters
+        utc=False, # Set to True for UTC timestamps
+        map_variables=True # Renames columns to pvlib standard names
+    )
     cols_to_remove = ['Year', 'Month', 'Day', 'Hour', 'Minute']
-    psm3 = psm3.drop(columns=cols_to_remove)
-    psm3.index = pd.to_datetime(psm3.index)
-    psm3.rename(columns={"key_0": "datetime",
+    psm4 = psm4.drop(columns=cols_to_remove)
+    psm4.index = pd.to_datetime(psm4.index)
+    psm4.rename(columns={"key_0": "datetime",
                          **{v: k for k, v in attributes.items()}},
                 inplace=True)
-    psm3 = psm3.round(3)  
-    return psm3.sort_index()
+    psm4 = psm4.round(3)  
+    return psm4.sort_index()
 
 NONASCII = {
     "\xe1" : "a",

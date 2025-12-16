@@ -12,17 +12,17 @@ base_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave"
 power_plant_path = "pvwatts_powerplants"
 aggregated_pp_wecc_node_path = "pvwatts_bus_agg"
 geopanel_file_path = "pvwatts_geopanel.csv"
-metadata_path = "uspvdb.csv"
+metadata_path = "pv_generators_assigned.csv"
 powerplant_files = glob.glob(os.path.join(base_path,
                                           power_plant_path, "*.csv"))
 
 col_name = "output_kW"
 metadata = pd.read_csv(metadata_path)
 
-unique_wecc_geocodes = list(metadata['bus'].drop_duplicates())
+unique_wecc_geocodes = list(metadata['geohash'].drop_duplicates())
 
 for bus in unique_wecc_geocodes:
-    metadata_wecc_node = metadata[metadata['bus'] == bus]
+    metadata_wecc_node = metadata[metadata['geohash'] == bus]
     # Get a list of plants associated with the WECC node, open all of their
     # files and aggregate the associated PV production data
     associated_pp_files = [x for x in powerplant_files if

@@ -65,19 +65,22 @@ def run_pvwatts_model(tilt, azimuth, dc_capacity, dc_inverter_limit,
 if __name__ == "__main__":
     # Point towards the particular local folder that contains the data
     data_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave/pvwatts_powerplants"
-    metadata = pd.read_csv("uspvdb.csv") 
+    metadata = pd.read_csv("pv_generators_assigned.csv") 
     already_run = glob.glob(data_path +"/*.csv")
     already_run = [os.path.basename(x) for x in already_run]
+    already_run_name = [" ".join(x.split("_")[1:-2]) for x in already_run]
+    new_systems = list()
     # Loop through the metadata and generate the associated estimates
     for idx, row in metadata.iterrows():
-        lat = row['latitude']
-        long = row['longitude']
+        lat = row['latitude_gen']
+        long = row['longitude_gen']
         name = row['name']
-        bus = row['bus']
+        bus = row['geohash']
         # Get the geohash associated with the site
         system_identifier = (bus + "_" + name + "_" +
                              str(lat) + "_" + str(long)).replace(" ", "_").replace("/", "_")
-        if system_identifier + ".csv" in already_run:
+        
+        if name in already_run_name:
             print("already run!!")
             continue
         geohash_val = geohash(lat, long, precision=6)

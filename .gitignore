@@ -28,6 +28,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+data/pysam_wecc_nodes/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

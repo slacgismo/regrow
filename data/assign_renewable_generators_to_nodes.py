@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.17.8"
-app = marimo.App()
+app = marimo.App(width="full")
 
 
 @app.cell
@@ -76,6 +76,18 @@ def _(pv_generators_assigned, wt_generators_assigned):
 @app.cell
 def _(pv_generators_assigned):
     len(set(pv_generators_assigned['geohash']))
+    return
+
+
+@app.cell
+def _(pv_generators_assigned):
+    pv_generators_assigned
+    return
+
+
+@app.cell
+def _(wt_generators_assigned):
+    wt_generators_assigned
     return
 
 

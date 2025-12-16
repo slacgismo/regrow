@@ -1,25 +1,38 @@
 import marimo
 
-__generated_with = "0.14.17"
+__generated_with = "0.15.0"
 app = marimo.App(width="medium")
 
 
 @app.cell
 def _(cp, np):
-    def make_problem(incidence_mat, generator_dict, load_dict, flow_dict):
+    def make_problem(incidence_mat, generator_dict, load_dict, flow_dict, augmented=None, rho=1):
         def indices_not_in_list(array_length, given_indices):
             all_indices = set(range(array_length))
             given_indices_set = set(given_indices)
             not_in_list_indices = all_indices - given_indices_set
             return list(not_in_list_indices)
         _B = incidence_mat
+        _A = np.abs(_B) @ np.abs(_B.T) - np.diag(np.diag(np.abs(_B) @ np.abs(_B.T)))
+        _yij = 1/(np.array([_v['r'] for _k, _v in flow_dict.items()]) + 1j * np.array([_v['x'] for _k, _v in flow_dict.items()]))
         num_buses = _B.shape[0]
         num_edges = _B.shape[1]
+        _Y = np.zeros((num_buses, num_buses), dtype=complex)
+        for _idx, _edge in enumerate(_B.T):
+            _i, _j = np.where(_edge==-1)[0], np.where(_edge==1)[0]
+            _Y[_i, _j] = -_yij[_idx]
+            _Y[_j, _i] = -_yij[_idx]
+        np.fill_diagonal(_Y, np.sum(-_Y, axis=1))
+        _YH = _Y.conjugate().T
         gen_ixs = np.array(list(generator_dict.keys())) - 1
         nogen_ixs = indices_not_in_list(num_buses, gen_ixs)
-        p_flows = cp.Variable((num_edges), name='line flows')
+        # p_flows = cp.Variable((num_edges), name='line flows')
         p_gen = cp.Variable((num_buses), nonneg=True, name='p_gen')
         p_load = cp.Variable((num_buses), nonneg=True, name='p_load')
+        q_bus = cp.Variable((num_buses), name='q_bus')
+        V = cp.Variable((num_buses, num_buses), complex=True, name='V')
+        P = cp.Variable((num_buses, num_buses), name='P')
+        Q = cp.Variable((num_buses, num_buses), name='P')
         l_min = cp.Parameter(
             shape=num_buses,
             value=[_v['l_min'] for _k, _v in load_dict.items()],
@@ -64,7 +77,7 @@ def _(cp, np):
         c2 = np.array([_v['c2'] for _k, _v in generator_dict.items()])
         r = cp.Parameter(
             shape=num_edges,
-            value=np.array([_v['f_resistance'] for _k, _v in flow_dict.items()]),
+            value=np.array([_v['r'] for _k, _v in flow_dict.items()]),
             name='line resistance'
         )
         f_max = cp.Parameter(
@@ -82,14 +95,26 @@ def _(cp, np):
             )
         )
         # line penalties
-        cost += cp.sum_squares(cp.multiply(r, p_flows))
+        cost += cp.sum_squares(cp.multiply(r, P))
+        # admm
+        if augmented is not None:
+            cost += rho * 0.5 * cp.sum_squares(V - augmented)
         constraints = [
-            _B @ p_flows + p_gen - p_load == 0,
+            (p_gen - p_load) + 1j * q_bus == cp.diag(V @ _YH),
+            cp.sum(P, axis=1) == p_gen - p_load,
+            cp.sum(Q, axis=1) == q_bus,
+            cp.multiply(P, 1 - _A) == 0,
+            cp.multiply(Q, 1 - _A) == 0,
             p_load >= l_min,
-            cp.abs(p_flows) <= f_max,
+            cp.abs(P) <= f_max,
             p_gen[nogen_ixs] == 0,
             p_gen[gen_ixs] <= g_max,
-            p_gen[gen_ixs] >= g_min
+            p_gen[gen_ixs] >= g_min,
+            cp.real(cp.diag(V)) >= 0.9,
+            cp.real(cp.diag(V)) <= 1.1,
+            cp.imag(cp.diag(V)) == 0,
+            cp.real(V) == cp.real(V.T),
+            cp.imag(V) == -cp.imag(V.T)
         ]
         problem = cp.Problem(cp.Minimize(cost), constraints)
         return problem
@@ -97,30 +122,155 @@ def _(cp, np):
 
 
 @app.cell
-def _(mo):
-    mo.md(
-        """
-    # DC Optimal Power Flow
+def _(np):
+    def proj_rank1(mat):
+        _evals, _evecs = np.linalg.eigh(mat)
+        _k = 1
+        _M = _evecs[:, -_k:]
+        _D = np.diag(_evals[-_k:])
+        return _M @ _D @ _M.conjugate().T
+    return (proj_rank1,)
 
-    This notebook demonstrates the optimal flow problem, over 6 test networks provided by [pypower](https://github.com/rwl/PYPOWER). 
 
-    - network with $n$ nodes, $m$ edges, given by $n \\times m$ incidence
-    matrix $A$
-    - edge power vector $p \\in \\mathbf{R}^m$, 
-    with capacity limits $|p_j| \\leq C_j$
-    - node generator power $g_i$, load $l_i$,
-    each with lower and upper limits
-    - flow conservation $Af + g = l$
-    - generator cost function is 
-    $\\phi_i(g_i) = a_i g_i + b_i g_i^2$, total $G= \\sum_i \\phi_i (g_i)$
-    - load shortfall cost is $\\psi_i(l_i) = c_i(l^\\text{tar}_i-l_i)_+$,
-    total is $S = \\sum_i \\psi_i(l_i)$
-    - total line loss is $L = \\sum_j r_j p_j^2$
-    - objective is $G + \\lambda L + \\mu S$
+@app.cell
+def _(
+    B,
+    flow_dict,
+    generator_dict,
+    load_dict,
+    make_problem,
+    np,
+    num_buses,
+    proj_rank1,
+):
+    def admm_step(zlast=None, ulast=None, rho=1):
+        if zlast is None:
+            zlast = np.zeros((num_buses, num_buses))
+        if ulast is None:
+            ulast = np.zeros((num_buses, num_buses))
+        problem = make_problem(B, generator_dict, load_dict, flow_dict, augmented=zlast - ulast, rho=rho)
+        problem.solve(solver='CLARABEL')
+        xnew = problem.var_dict['V'].value
+        znew = proj_rank1(xnew + ulast)
+        unew = ulast + xnew - znew
+        return xnew, znew, unew, np.linalg.norm(xnew - znew)
+    return (admm_step,)
 
-    The model automatically populates parameters for the generators, loads, and lines, with the sliders set to the default values for the test case. Users may try adjusting these values with the sliders to see how it changes the optimal flow.
-    """
-    )
+
+@app.cell
+def _(admm_step, mo, plt):
+    _zl, _ul = None, None
+    _rho = 1
+    rs = []
+    for _i in range(500):
+        if (_i + 1) % 10 == 0:
+            _rho *= 2
+        xnext, znext, unext, r = admm_step(zlast=_zl, ulast=_ul, rho=_rho)
+        _zl, _ul = znext, unext
+        rs.append(r)
+        fig = plt.plot(rs)
+        mo.output.replace(fig)
+        plt.close()
+    return xnext, znext
+
+
+@app.cell
+def _(am_solving, np, plt, sns, xnext):
+    am_solving
+    sns.heatmap(np.real(xnext), cmap='seismic', center=0)
+    plt.title('real part')
+    plt.gcf()
+    return
+
+
+@app.cell
+def _(am_solving, np, plt, xnext):
+    am_solving
+    plt.stem(np.diag(xnext))
+    plt.gcf()
+    return
+
+
+@app.cell
+def _(np, znext):
+    _eval, _evec = np.linalg.eigh(znext)
+    _eval
+    return
+
+
+@app.cell
+def _():
+    return
+
+
+@app.cell
+def _(am_solving, np, plt, problem, sns):
+    am_solving
+    sns.heatmap(np.real(problem.var_dict['V'].value), cmap='seismic', center=0)
+    plt.title('real part')
+    plt.gcf()
+    return
+
+
+@app.cell
+def _(am_solving, np, plt, problem2, sns):
+    am_solving
+    sns.heatmap(np.imag(problem2.var_dict['V'].value), cmap='seismic', center=0)
+    plt.title('imag part')
+    plt.gcf()
+    return
+
+
+@app.cell
+def _(am_solving, np, plt, problem):
+    am_solving
+    plt.stem(np.diag(problem.var_dict['V'].value))
+    plt.gcf()
+    return
+
+
+@app.cell
+def _(problem, proj_rank1):
+    V_proj = proj_rank1(problem.var_dict["V"].value)
+    error = problem.var_dict["V"].value - V_proj
+    return V_proj, error
+
+
+@app.cell
+def _(
+    B,
+    V_proj,
+    error,
+    flow_dict,
+    flow_limits,
+    gen_limits,
+    generator_dict,
+    load_dict,
+    load_limits,
+    make_problem,
+):
+    problem2 = make_problem(B, generator_dict, load_dict, flow_dict, augmented=V_proj - error)
+    # solve with updated parameters
+    # am_solving = True
+    problem2.param_dict['g_min'].value = [_v[0] for _v in gen_limits.value]
+    problem2.param_dict['g_max'].value = [_v[1] for _v in gen_limits.value]
+    problem2.param_dict['l_min'].value = [_v[0] for _v in load_limits.value]
+    problem2.param_dict['l_upper'].value = [_v[1] for _v in load_limits.value]
+    problem2.param_dict['line capacities'].value = flow_limits.value
+    obj_val2 = problem2.solve(verbose=True, solver='CLARABEL')
+    return (problem2,)
+
+
+@app.cell
+def _(am_solving, np, problem2):
+    am_solving
+    evals, evecs = np.linalg.eigh(problem2.var_dict['V'].value)
+    return (evals,)
+
+
+@app.cell
+def _(evals):
+    evals
     return
 
 
@@ -140,7 +290,7 @@ def _(mo, os, re):
 
 @app.cell(hide_code=True)
 def _(model_ui, os):
-    # load model
+    # import model from file
     from importlib.machinery import SourceFileLoader
     _n = model_ui.value.split('.')[0]
     model_loader = SourceFileLoader(_n, os.path.join(".",model_ui.value)).load_module()
@@ -191,6 +341,45 @@ def _(lines, np, num_buses, sns):
         B[_l[1]-1, _ix] = 1
     fig_heatmap = sns.heatmap(B, cmap='bwr', center=0)
     return B, fig_heatmap
+
+
+@app.cell
+def _(model_data, model_ui, np):
+    # construct dictionaries for problem formulation
+    def merge_nested_dicts(dict1, dict2):
+        result = {}
+
+        for key in dict1.keys() | dict2.keys():
+            inner_dict1 = dict1.get(key, {})
+            inner_dict2 = dict2.get(key, {})
+
+            # Merge the inner dictionaries
+            merged_inner_dict = {**inner_dict1, **inner_dict2}
+
+            result[key] = merged_inner_dict
+
+        return result
+    # minimum generation value occaisonally negative
+    generator_dict1 = {int(_g[0]): {'p_min': np.clip(_g[9], 0, np.inf), 'p_max': _g[8]*2} for _g in model_data['gen']}
+    generator_dict2 = {int(model_data['gen'][_ix, 0]): {'c0': _g[-1], 'c1': _g[-2], 'c2': _g[-3]} for _ix, _g in enumerate(model_data['gencost'])}
+    generator_dict = merge_nested_dicts(generator_dict1, generator_dict2)
+    # power demand is occaisonally negative
+    # load_dict = {int(_l[0]): {'l_min': 0, 'l_upper': np.abs(_l[2]), 'cost': 250} for _l in model_data['bus']}
+    load_dict = {int(_l[0]): {'l_min': np.abs(_l[2]*0.5), 'l_upper': np.abs(_l[2]), 'cost': 1e4} for _l in model_data['bus']}
+    _fmax = 20 * np.max([np.max(_b[5:7]) for _b in model_data['branch']])
+
+    flow_dict = {}
+    for _ix, _b in enumerate(model_data['branch']):
+        _fx = np.max(_b[5:7])
+        flow_dict[_ix] = {'r': _b[2], 'x': _b[3], 'b': _b[4], 'g': _b[2] / (_b[2]**2 + _b[3]**2)}
+        if model_ui.value == 'case14.py':
+            flow_dict[_ix]['f_max'] = 175
+        elif _fx > 0:
+            flow_dict[_ix]['f_max'] = _fx
+        else:
+            flow_dict[_ix]['f_max'] = _fmax
+    line_resistance = model_data['branch'][:, 2]
+    return flow_dict, generator_dict, load_dict
 
 
 @app.cell(hide_code=True)
@@ -244,7 +433,7 @@ def _(flow_limits, gen_limits, load_limits, mo, np, problem):
     problem.param_dict['l_min'].value = [_v[0] for _v in load_limits.value]
     problem.param_dict['l_upper'].value = [_v[1] for _v in load_limits.value]
     problem.param_dict['line capacities'].value = flow_limits.value
-    obj_val = problem.solve(verbose=False, solver='CLARABEL')
+    obj_val = problem.solve(verbose=True, solver='CLARABEL')
     constrained_lines = np.where(~np.isclose(problem.constraints[2].dual_value, 0, atol=1e-2))[0]
     mo.md(f'objective value: {obj_val:.2f}')
     return am_solving, constrained_lines
@@ -339,44 +528,6 @@ def _(
     plt.tight_layout()
     bus_power_fig = _fig
     return (bus_power_fig,)
-
-
-@app.cell(hide_code=True)
-def _(model_data, model_ui, np):
-    # construct dictionaries for problem formulation
-    def merge_nested_dicts(dict1, dict2):
-        result = {}
-
-        for key in dict1.keys() | dict2.keys():
-            inner_dict1 = dict1.get(key, {})
-            inner_dict2 = dict2.get(key, {})
-
-            # Merge the inner dictionaries
-            merged_inner_dict = {**inner_dict1, **inner_dict2}
-
-            result[key] = merged_inner_dict
-
-        return result
-    # minimum generation value occaisonally negative
-    generator_dict1 = {int(_g[0]): {'p_min': np.clip(_g[9], 0, np.inf), 'p_max': _g[8]*2} for _g in model_data['gen']}
-    generator_dict2 = {int(model_data['gen'][_ix, 0]): {'c0': _g[-1], 'c1': _g[-2], 'c2': _g[-3]} for _ix, _g in enumerate(model_data['gencost'])}
-    generator_dict = merge_nested_dicts(generator_dict1, generator_dict2)
-    # power demand is occaisonally negative
-    # load_dict = {int(_l[0]): {'l_min': 0, 'l_upper': np.abs(_l[2]), 'cost': 250} for _l in model_data['bus']}
-    load_dict = {int(_l[0]): {'l_min': np.abs(_l[2]*0.5), 'l_upper': np.abs(_l[2]), 'cost': 1e4} for _l in model_data['bus']}
-    _fmax = 10 * np.max([np.max(_b[5:7]) for _b in model_data['branch']])
-    if model_ui.value != 'case14.py':
-        flow_dict = {}
-        for _ix, _b in enumerate(model_data['branch']):
-            _fx = np.max(_b[5:7])
-            if _fx > 0:
-                flow_dict[_ix] = {'f_max': _fx, 'f_resistance': _b[2]}
-            else:
-                flow_dict[_ix] = {'f_max': _fmax, 'f_resistance': _b[2]}
-    else:
-        flow_dict = {int(_ix): {'f_max': 175, 'f_resistance': _b[2]} for _ix, _b in enumerate(model_data['branch'])}
-    line_resistance = model_data['branch'][:, 2]
-    return flow_dict, generator_dict, load_dict
 
 
 @app.cell(hide_code=True)

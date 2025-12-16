@@ -1,0 +1,549 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.14.12"
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "f1a1e4332af25d02f60cca8fac568065",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h1 id=\"chapter-3-optimal-power-flow\">Chapter 3 - Optimal Power Flow</h1>\n<span class=\"paragraph\">We use the test cases from PyPOWER (see <a href=\"https://github.com/rwl/pypower\" rel=\"noopener\" target=\"_blank\">https://github.com/rwl/pypower</a>) to provision the test model.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "0c77b5d952575ec2dcf02505ac2a764a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "efed94f53e51bb883c1745832cf66cb6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"coding-nomenclature\">Coding Nomenclature</h2>\n<span class=\"paragraph\">The text uses the notation <marimo-tex class=\"arithmatex\">||(x_{ij}||)</marimo-tex> to denote the value at the index <marimo-tex class=\"arithmatex\">||(i,j||)</marimo-tex> in the matrix <marimo-tex class=\"arithmatex\">||(x \\in \\mathbb{R}^{N \\times N}||)</marimo-tex> and the notation <marimo-tex class=\"arithmatex\">||(x_i||)</marimo-tex> to denote the value at the index <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> in the vector <marimo-tex class=\"arithmatex\">||(x \n\\in \\mathbb{R}^N||)</marimo-tex>.  While this notation is more mathematically clear and rigorous, in code we must disambiguate cases where the variable <marimo-tex class=\"arithmatex\">||(x||)</marimo-tex> denotes two different things depending on the dimensions of the variable. For example the text often use <marimo-tex class=\"arithmatex\">||(x_j||)</marimo-tex> to denote <marimo-tex class=\"arithmatex\">||(\\sum_j x_{i,j}||)</marimo-tex>.</span>\n<span class=\"paragraph\">Therefore the code in this notebook will always use capitalized variables for 2-dimensional arrays and lowercase variable names to 1-dimensional arrays.  Thus <marimo-tex class=\"arithmatex\">||(x_i||)</marimo-tex> will always be coded as <code>x[i]</code>, while <marimo-tex class=\"arithmatex\">||(x_{i,j}||)</marimo-tex> will be coded as <code>X[i,j]</code>. Scalars will be coded as <code>x_&lt;tag&gt;</code> to indicate that they are not arrays. In cases where variables are denoted <marimo-tex class=\"arithmatex\">||(x^Y_{i}||)</marimo-tex> or <marimo-tex class=\"arithmatex\">||(x^Y_{i,j}||)</marimo-tex>, these will be coded as <code>xY[i]</code> and <code>XY[i,j]</code>, respectively. </span>\n<span class=\"paragraph\">Additional variable encodings include the following:</span>\n<ul>\n<li><marimo-tex class=\"arithmatex\">||(\\underline x, \\bar x, \\hat x, \\v x, \\tilde x, \\dot x, \\ddot x \\cdots \\to||)</marimo-tex> <code>xmin</code>, <code>xmax</code>, <code>xhat</code>, <code>xvee</code>, <code>xtilde</code>, <code>xdot</code>,<code>xddot</code>, ...</li>\n<li><marimo-tex class=\"arithmatex\">||(\\alpha,\\beta,\\gamma,\\cdots \\to||)</marimo-tex> <code>alpha</code>, <code>beta</code>, <code>gamma</code>, ...</li>\n</ul></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "65bd64a5c8b0b8681fbcce3a65ca62ba",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"31-basic-formulation\">3.1 - Basic Formulation</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "909f94036dd71747d8d6508a35ffa4cf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The voltage <marimo-tex class=\"arithmatex\">||(v_i||)</marimo-tex> at the node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> must satisfy the limits <marimo-tex class=\"arithmatex\">||(\\underline{v}_i \\le |v_i| \\le \\bar{v}_i||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "8e3ff82d777b60a0f38ed14d68893e7a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Bus voltages are ok (click to view).&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='PKri-2' random-id='5f68e255-122d-e489-d8fb-7986da239790'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-ui-element object-id='PKri-0' random-id='34ad5f6c-d58b-657e-3da3-cfbf79d24f66'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='PKri-1' random-id='87e4a6fe-6391-a872-1349-ae174a853053'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "1f1a3ca38dde14925300bee25def6511",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The real power flow <marimo-tex class=\"arithmatex\">||(p_{ij}||)</marimo-tex> and reactive power flow <marimo-tex class=\"arithmatex\">||(q_{ij}||)</marimo-tex> on the power lines from the nodes <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> to the nodes <marimo-tex class=\"arithmatex\">||(j||)</marimo-tex> must remain below the lines' capacities such that <marimo-tex class=\"arithmatex\">||(p_{ij}^2+q_{ij}^2 \n\\le \\bar s_{ij}^2||)</marimo-tex>. Note that in the <code>pypower</code> cases, the line limit is nominally <code>rateA</code>, with <code>rateB</code> and <code>rateC</code> reserved for emergency line ratings only.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "e81e3995a9999460b87384dda4c8ec63",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Line flows are ok (click to view).&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='SFPL-2' random-id='a2a6aaea-9132-2b24-017c-7d1c8226b7c0'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-ui-element object-id='SFPL-0' random-id='8a0b529a-008e-7920-2c0e-77982f98ea69'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='SFPL-1' random-id='f6d49068-21dd-db69-8bf1-64f837630384'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "c036582bf59ab90aa52f05fc1af28445",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The real and reactive powers into or out of the node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> are the sum of the flows through the transmission lines connected to the node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex>. The real and reactive power at each node <marimo-tex class=\"arithmatex\">||(i||)</marimo-tex> is the difference of the real generation and demand <marimo-tex class=\"arithmatex\">||(p_i=pg_i-pd_i||)</marimo-tex> and the reactive generation and demand <marimo-tex class=\"arithmatex\">||(q_i=qg_i-qd_i||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "84fac27fddab3887f89d6bd59886c1cd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Node power injections are as follows (click to view).&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='RGSE-2' random-id='b358a2ed-5fe8-2d1a-f30b-fe9866f44599'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-ui-element object-id='RGSE-0' random-id='8b9d4770-0302-d38e-841a-8a20c2228ba5'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='RGSE-1' random-id='980843e4-d258-0578-da5d-3391ef103c48'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "b4a6ce902848f88f61b32bbe4cd16283",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The nodal power injections are subject to the box constraints <marimo-tex class=\"arithmatex\">||(\\underline p_i \\le p_i \\le \\bar p_i||)</marimo-tex> and <marimo-tex class=\"arithmatex\">||(\\underline q_i \\le q_i \\le \\bar q_i||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "db687c3b4e6b38eae2503281a7bf000f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Node power injections are ok (click to view).&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='emfo-2' random-id='30ce1cb1-ba84-9ec7-8c03-903d64076d2d'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-ui-element object-id='emfo-0' random-id='7d3f9bb1-533c-7eca-aa7a-8e08aac50a40'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='emfo-1' random-id='d1dc8732-a7ad-7103-07fb-6c215b87648c'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "b674acb2efb5f53fbb466243daf510e0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The complex line impedances are <marimo-tex class=\"arithmatex\">||(z_{ij} = p_{ij}+q_{ij}j = v_i(v_i^*-v_j^*)y_{ij}^*||)</marimo-tex> and the complex line admittance is its inverse <marimo-tex class=\"arithmatex\">||(y_{ij} = 1/z_{ij}||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "fc988f66a15155ee47230946d9c7ce3a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Line impedances and admittances (click to view)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='nWHF-3' random-id='63ea1fb0-e45d-4312-f859-7897449a35c2'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph (z)&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph (y)&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-ui-element object-id='nWHF-0' random-id='cf940337-e22e-262a-c20c-5c1e12e38374'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='nWHF-1' random-id='c7738f50-be41-a222-6f35-f882f78a4dc5'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='nWHF-2' random-id='43791473-9bdd-9b24-4010-fa5c4aedec5e'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "a7a08af4197671b4acd7b6ab89b1da15",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The cost of real power generation is <marimo-tex class=\"arithmatex\">||(\\sum_i f_i(p_i)||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": "1eef78ed9023fb5033a4aa6fce93cadf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Cost of real power generation (click to view)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='ZHCJ-1' random-id='bbd9581f-f4b7-06b5-d873-29c3af5b4cdc'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-mermaid data-diagram='&quot;flowchart LR&#92;n  1((&#92;&quot;0.0&#92;&quot;)) == 1 ==&gt; 4((&#92;&quot;2.972&#92;&quot;))&#92;n  4((&#92;&quot;2.972&#92;&quot;)) == 2 ==&gt; 5((&#92;&quot;0.0&#92;&quot;))&#92;n  5((&#92;&quot;0.0&#92;&quot;)) == 3 ==&gt; 6((&#92;&quot;0.0&#92;&quot;))&#92;n  3((&#92;&quot;10.825&#92;&quot;)) == 4 ==&gt; 6((&#92;&quot;0.0&#92;&quot;))&#92;n  6((&#92;&quot;0.0&#92;&quot;)) == 5 ==&gt; 7((&#92;&quot;0.0&#92;&quot;))&#92;n  7((&#92;&quot;0.0&#92;&quot;)) == 6 ==&gt; 8((&#92;&quot;0.0&#92;&quot;))&#92;n  8((&#92;&quot;0.0&#92;&quot;)) == 7 ==&gt; 2((&#92;&quot;1.21&#92;&quot;))&#92;n  8((&#92;&quot;0.0&#92;&quot;)) == 8 ==&gt; 9((&#92;&quot;0.0&#92;&quot;))&#92;n  9((&#92;&quot;0.0&#92;&quot;)) == 9 ==&gt; 4((&#92;&quot;2.972&#92;&quot;))&quot;'></marimo-mermaid></div><div data-kind='tab'><marimo-ui-element object-id='ZHCJ-0' random-id='0c38d77d-0805-13c4-2b24-fcd9fcffc521'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;node&#92;&quot;:1,&#92;&quot;cost[&#36;M]&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:2,&#92;&quot;cost[&#36;M]&#92;&quot;:1.21},{&#92;&quot;node&#92;&quot;:3,&#92;&quot;cost[&#36;M]&#92;&quot;:10.825},{&#92;&quot;node&#92;&quot;:4,&#92;&quot;cost[&#36;M]&#92;&quot;:2.972},{&#92;&quot;node&#92;&quot;:5,&#92;&quot;cost[&#36;M]&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:6,&#92;&quot;cost[&#36;M]&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:7,&#92;&quot;cost[&#36;M]&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:8,&#92;&quot;cost[&#36;M]&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:9,&#92;&quot;cost[&#36;M]&#92;&quot;:0.0}]&quot;' data-total-rows='9' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;node&quot;, [&quot;integer&quot;, &quot;int64&quot;]], [&quot;cost[&#36;M]&quot;, [&quot;number&quot;, &quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ROlb",
+      "code_hash": "40532afc17b297b5e3f92a16de55a66c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The total real power generation is <marimo-tex class=\"arithmatex\">||(\\sum_{i \\in \\mathcal{G}} p_i||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qnkX",
+      "code_hash": "055b459478f4d99d7c471a686064da21",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Total real power generation (click to view)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='qnkX-1' random-id='5e14f46a-7504-36ba-ebd3-91641a4278eb'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-mermaid data-diagram='&quot;flowchart LR&#92;n  1((&#92;&quot;0.0&#92;&quot;)) == 1 ==&gt; 4((&#92;&quot;94.2&#92;&quot;))&#92;n  4((&#92;&quot;94.2&#92;&quot;)) == 2 ==&gt; 5((&#92;&quot;0.0&#92;&quot;))&#92;n  5((&#92;&quot;0.0&#92;&quot;)) == 3 ==&gt; 6((&#92;&quot;0.0&#92;&quot;))&#92;n  3((&#92;&quot;134.3&#92;&quot;)) == 4 ==&gt; 6((&#92;&quot;0.0&#92;&quot;))&#92;n  6((&#92;&quot;0.0&#92;&quot;)) == 5 ==&gt; 7((&#92;&quot;0.0&#92;&quot;))&#92;n  7((&#92;&quot;0.0&#92;&quot;)) == 6 ==&gt; 8((&#92;&quot;0.0&#92;&quot;))&#92;n  8((&#92;&quot;0.0&#92;&quot;)) == 7 ==&gt; 2((&#92;&quot;89.8&#92;&quot;))&#92;n  8((&#92;&quot;0.0&#92;&quot;)) == 8 ==&gt; 9((&#92;&quot;0.0&#92;&quot;))&#92;n  9((&#92;&quot;0.0&#92;&quot;)) == 9 ==&gt; 4((&#92;&quot;94.2&#92;&quot;))&quot;'></marimo-mermaid></div><div data-kind='tab'><marimo-ui-element object-id='qnkX-0' random-id='e4fe45db-9582-77ae-c3aa-f709400de83f'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;node&#92;&quot;:1,&#92;&quot;pg&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:2,&#92;&quot;pg&#92;&quot;:89.8},{&#92;&quot;node&#92;&quot;:3,&#92;&quot;pg&#92;&quot;:134.3},{&#92;&quot;node&#92;&quot;:4,&#92;&quot;pg&#92;&quot;:94.2},{&#92;&quot;node&#92;&quot;:5,&#92;&quot;pg&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:6,&#92;&quot;pg&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:7,&#92;&quot;pg&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:8,&#92;&quot;pg&#92;&quot;:0.0},{&#92;&quot;node&#92;&quot;:9,&#92;&quot;pg&#92;&quot;:0.0}]&quot;' data-total-rows='9' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;node&quot;, [&quot;integer&quot;, &quot;int64&quot;]], [&quot;pg&quot;, [&quot;number&quot;, &quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TqIu",
+      "code_hash": "840faa84c3d0339d7090005e15788401",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The resistive power line losses are <marimo-tex class=\"arithmatex\">||(\\sum_{ij}r_{ij}I_{ij}^2 = \\sum_{ij} p_{ij}+p_{ji} = \\sum_i p_i||)</marimo-tex>.</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Vxnm",
+      "code_hash": "ba226fcb6ee521fdfe8b228edc5e6c5b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: Resistive power losses (click to view)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><marimo-ui-element object-id='Vxnm-1' random-id='222e4205-aa92-82a0-adb1-8571d2568e47'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Table&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-mermaid data-diagram='&quot;flowchart LR&#92;n  1((1)) == &#92;&quot;0.0&#92;&quot; ==&gt; 4((4))&#92;n  4((4)) == &#92;&quot;0.181&#92;&quot; ==&gt; 5((5))&#92;n  5((5)) == &#92;&quot;1.01&#92;&quot; ==&gt; 6((6))&#92;n  3((3)) == &#92;&quot;0.0&#92;&quot; ==&gt; 6((6))&#92;n  6((6)) == &#92;&quot;0.149&#92;&quot; ==&gt; 7((7))&#92;n  7((7)) == &#92;&quot;0.279&#92;&quot; ==&gt; 8((8))&#92;n  8((8)) == &#92;&quot;0.0&#92;&quot; ==&gt; 2((2))&#92;n  8((8)) == &#92;&quot;1.394&#92;&quot; ==&gt; 9((9))&#92;n  9((9)) == &#92;&quot;0.295&#92;&quot; ==&gt; 4((4))&quot;'></marimo-mermaid></div><div data-kind='tab'><marimo-ui-element object-id='Vxnm-0' random-id='5e37aa9f-3bcb-f1ba-9067-8774a20f82e8'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;line&#92;&quot;:1,&#92;&quot;ploss&#92;&quot;:0.0},{&#92;&quot;line&#92;&quot;:2,&#92;&quot;ploss&#92;&quot;:0.181},{&#92;&quot;line&#92;&quot;:3,&#92;&quot;ploss&#92;&quot;:1.01},{&#92;&quot;line&#92;&quot;:4,&#92;&quot;ploss&#92;&quot;:0.0},{&#92;&quot;line&#92;&quot;:5,&#92;&quot;ploss&#92;&quot;:0.149},{&#92;&quot;line&#92;&quot;:6,&#92;&quot;ploss&#92;&quot;:0.279},{&#92;&quot;line&#92;&quot;:7,&#92;&quot;ploss&#92;&quot;:0.0},{&#92;&quot;line&#92;&quot;:8,&#92;&quot;ploss&#92;&quot;:1.394},{&#92;&quot;line&#92;&quot;:9,&#92;&quot;ploss&#92;&quot;:0.295}]&quot;' data-total-rows='9' data-total-columns='2' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;line&quot;, [&quot;integer&quot;, &quot;int64&quot;]], [&quot;ploss&quot;, [&quot;number&quot;, &quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "DnEU",
+      "code_hash": "5312c7d5739f131564c610cb85e5442b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">The optimal power flow is written</span>\n<span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\begin{array}{rl}\n    \\underset{v,p,q}{\\min} &amp; f(v,p,q)\n\\\\  \n    \\mathrm{subject~to} &amp; p_{ij}+q_{ij}=v(v_i^*+v_j^*)y_{ij}^*\n\\end{array}||)</marimo-tex></span>\n<span class=\"paragraph\">and Feasible Set 3.1</span>\n<span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\begin{array}{rl}\n\\\\ \\sum_j p_{ij} = p_i\n\\\\ \\sum_j q_{ij} = q_i\n\\\\ \\underline p_i \\le p_i \\le \\bar p_i\n\\\\ \\underline q_i \\le q_i \\le \\bar q_i\n\\\\ p_{ij}^2 + q_{ij}^2 \\le \\bar s_{ij}^2\n\\\\ \\underline v_i \\le v_i \\le \\bar v_i\n\\end{array}||)</marimo-tex></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ulZA",
+      "code_hash": "e284d85b1aa0e4906a87af03108ce584",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;&lt;marimo-ui-element object-id=&#x27;MJUe-0&#x27; random-id=&#x27;170dd6e1-269c-7022-272f-095b49268999&#x27;&gt;&lt;marimo-dropdown data-initial-value=&#x27;[&amp;quot;case9&amp;quot;]&#x27; data-label=&#x27;null&#x27; data-options=&#x27;[&amp;quot;case9&amp;quot;, &amp;quot;case14&amp;quot;, &amp;quot;case30&amp;quot;, &amp;quot;case39&amp;quot;, &amp;quot;case57&amp;quot;, &amp;quot;case118&amp;quot;]&#x27; data-allow-select-none=&#x27;false&#x27; data-searchable=&#x27;false&#x27; data-full-width=&#x27;false&#x27;&gt;&lt;/marimo-dropdown&gt;&lt;/marimo-ui-element&gt;: PyPOWER OPF has succeeded. The output of the solver is &#92;&quot;&lt;code&gt;Converged&lt;/code&gt;&#92;&quot;. (Click here to view results.)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><div style='display: flex;flex: 1;flex-direction: row;justify-content: flex-end;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-ui-element object-id='MJUe-1' random-id='6f0811a7-d734-36c8-64b0-10d111f3ddcc'><marimo-checkbox data-initial-value='false' data-label='&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Verbose output (code view only)&lt;/span&gt;&lt;/span&gt;&quot;' data-disabled='false'></marimo-checkbox></marimo-ui-element></div><marimo-ui-element object-id='ulZA-11' random-id='5171fb4f-3508-d0a5-ac58-361ef73b3871'><marimo-tabs data-initial-value='&quot;&quot;' data-label='null' data-tabs='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Overview&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Graph&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Busses&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Branches&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Generation&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Generation Costs&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;DC Lines&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;DC Line Costs&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Raw data&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Output&lt;/span&gt;&lt;/span&gt;&quot;, &quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;Errors&lt;/span&gt;&lt;/span&gt;&quot;]'><div data-kind='tab'><marimo-ui-element object-id='ulZA-0' random-id='a212d584-9e7d-2074-5541-238c033ff0aa'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-1' random-id='de72cac7-f0fe-09b7-d9f4-702a0957c4f2'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-2' random-id='27008ccf-b769-d684-5476-1e52dd26d4c3'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-3' random-id='cf1955bb-b80f-2d3d-985e-7b358137e896'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-4' random-id='bc3399a3-b5e1-501c-ad32-e0fd26f70258'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-5' random-id='452e30c5-37c1-8ffe-80bb-da0fa49e9a2f'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-6' random-id='a0eb3dec-d36a-7765-481c-27822186d222'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-7' random-id='db1294b7-6e7c-9bf5-1cda-b1aac5bbbd1b'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-8' random-id='44c1bbd1-5886-8492-a16b-462c7b605b5b'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-9' random-id='9a47f94c-5bdb-6725-2a8f-b6b777e96ccd'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div><div data-kind='tab'><marimo-ui-element object-id='ulZA-10' random-id='1c7bf516-7fc2-d8cc-22fa-f7f980111745'><marimo-lazy data-initial-value='false' data-label='null' data-show-loading-indicator='false'></marimo-lazy></marimo-ui-element></div></marimo-tabs></marimo-ui-element></div></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "PYPOWER Version 5.1.18, 10-Apr-2025 -- AC Optimal Power Flow\n"
+        }
+      ]
+    },
+    {
+      "id": "ecfG",
+      "code_hash": "e0cb79345ec73823baf630423edbe33f",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"32-linear-approximations\">3.2 - Linear Approximations</h2>\n<span class=\"paragraph\">In polar coordinates Feasible Set 3.2 is given for the non-convex voltage-polar coordinate powerflow by</span>\n<span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\begin{array}{l}\n    \\textrm{Feasible Set 3.1}\n\\\\\n    p_{ij} = g_{ij} |v_i|^2 -|v_i||v_j| ( g_{ij} \\cos(\\theta_i-\\theta_j) - b_{ij} \\sin(\\theta_i-\\theta_j) )\n\\\\\n    q_{ij} = b_{ij} |v_i|^2 -|v_i||v_j| ( g_{ij} \\sin(\\theta_i-\\theta_j) + b_{ij} \\cos(\\theta_i-\\theta_j) )\n\\end{array}||)</marimo-tex></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Pvdt",
+      "code_hash": "a7a00491169486fc0e26457ce40d9c93",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;TODO. (Click here to view results.)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">TODO</span></span></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "ZBYS",
+      "code_hash": "a993c2b118a6a2d265f2cd7c5d98de9e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"321-linearized-powerflow\">3.2.1 - Linearized powerflow</h3>\n<span class=\"paragraph\">The linearized power flow Feasible Set 3.3 is</span>\n<span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\begin{array}{l}\n    p_{ij} = b_{ij} ( \\theta_i - \\theta_j )\n\\\\\n    \\sum_j p_{ij} = p_i\n\\\\\n    \\underline p_i \\le p_i \\le \\bar p_i\n\\\\\n    |p_{ij}| \\le \\bar s_{ij}\n\\end{array}||)</marimo-tex></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aLJB",
+      "code_hash": "a7a00491169486fc0e26457ce40d9c93",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;TODO. (Click here to view results.)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">TODO</span></span></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nHfw",
+      "code_hash": "d961921188cf3dc99194c580b023813c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"322-decoupled-power-flow\">3.2.2 - Decoupled power flow</h3>\n<span class=\"paragraph\">The decoupled power flow Feasible Set 3.4 is</span>\n<span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\begin{array}{l}\n    \\textrm{Feasible Set 3.3}\n\\\\\n    q_{ij} = b_{ij} \\left( |v_i| - |v_j| \\right)\n\\\\\n    \\sum_j q_{ij} = q_i\n\\\\\n    \\underline q_i \\le q_i \\le \\bar q_i\n\\\\\n    \\underline v_i \\le |v_i| \\le \\bar v_i\n\\end{array}||)</marimo-tex></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "xXTn",
+      "code_hash": "a7a00491169486fc0e26457ce40d9c93",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;TODO. (Click here to view results.)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">TODO</span></span></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "AjVT",
+      "code_hash": "8b52ed9beb1aa92eb47f750a020980b2",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h3 id=\"323-network-flow\">3.2.3 - Network Flow</h3>\n<span class=\"paragraph\">The simplest approximation is the network flow (or transportation model) which is given by the Feasible Set 3.5</span>\n<span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\begin{array}{l}\n    \\textrm{Feasible Set 3.1}\n\\\\\n    p_{ij}+p_{ji} = 0\n\\\\\n    q_{ij}+q_{ji} = 0\n\\end{array}||)</marimo-tex></span>\n<span class=\"paragraph\">and additional polyhedral flow capacity constraints such as</span>\n<span class=\"paragraph\"><marimo-tex class=\"arithmatex\">||(\\begin{array}{l}\n    |p_{ij}| + |q_{ij}| \\le \\sqrt2 \\bar s_{ij}\n\\\\\n    |p_{ij}| \\le \\bar s_{ij}\n\\\\\n    |q_{ij}| \\le \\bar s_{ij}\n\\end{array}||)</marimo-tex></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "pHFh",
+      "code_hash": "a7a00491169486fc0e26457ce40d9c93",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;TODO. (Click here to view results.)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">TODO</span></span></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "NCOB",
+      "code_hash": "3a4bee4391adec67f96211c6bc56c6c6",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<span class=\"markdown prose dark:prose-invert\"><h2 id=\"relaxations\">Relaxations</h2></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "aqbW",
+      "code_hash": "a7a00491169486fc0e26457ce40d9c93",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-accordion data-labels='[&quot;&lt;span class=&#92;&quot;markdown prose dark:prose-invert&#92;&quot;&gt;&lt;span class=&#92;&quot;paragraph&#92;&quot;&gt;TODO. (Click here to view results.)&lt;/span&gt;&lt;/span&gt;&quot;]' data-multiple='false'><div><span class=\"markdown prose dark:prose-invert\"><span class=\"paragraph\">TODO</span></span></div></marimo-accordion>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "TRpd",
+      "code_hash": "c3389f905dc7b9b6d1b9e872f414b29d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Error trying to reload module marimo._output.formatters.formatters: cannot import name 'IbisFormatter' from 'marimo._output.formatters.df_formatters' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/df_formatters.py) \n"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_runtime/reload/autoreload.py&quot;</span>, line <span class=\"m\">442</span>, in <span class=\"n\">superreload</span>\n<span class=\"w\">    </span><span class=\"n\">module</span> <span class=\"o\">=</span> <span class=\"n\">reload</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">)</span>\n<span class=\"w\">             </span><span class=\"pm\">^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/importlib/__init__.py&quot;</span>, line <span class=\"m\">131</span>, in <span class=\"n\">reload</span>\n<span class=\"w\">    </span><span class=\"n\">_bootstrap</span><span class=\"o\">.</span><span class=\"n\">_exec</span><span class=\"p\">(</span><span class=\"n\">spec</span><span class=\"p\">,</span> <span class=\"n\">module</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">866</span>, in <span class=\"n\">_exec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">999</span>, in <span class=\"n\">exec_module</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">488</span>, in <span class=\"n\">_call_with_frames_removed</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/formatters.py&quot;</span>, line <span class=\"m\">19</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">marimo._output.formatters.df_formatters</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"p\">(</span>\n<span class=\"gr\">ImportError</span>: <span class=\"n\">cannot import name &#39;IbisFormatter&#39; from &#39;marimo._output.formatters.df_formatters&#39; (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/df_formatters.py)</span>\n</pre></div>\n</span>"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Error trying to reload module marimo._plugins.ui._impl.table: cannot import name 'ValueCount' from 'marimo._data.models' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_data/models.py) \n"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_runtime/reload/autoreload.py&quot;</span>, line <span class=\"m\">442</span>, in <span class=\"n\">superreload</span>\n<span class=\"w\">    </span><span class=\"n\">module</span> <span class=\"o\">=</span> <span class=\"n\">reload</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">)</span>\n<span class=\"w\">             </span><span class=\"pm\">^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/importlib/__init__.py&quot;</span>, line <span class=\"m\">131</span>, in <span class=\"n\">reload</span>\n<span class=\"w\">    </span><span class=\"n\">_bootstrap</span><span class=\"o\">.</span><span class=\"n\">_exec</span><span class=\"p\">(</span><span class=\"n\">spec</span><span class=\"p\">,</span> <span class=\"n\">module</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">866</span>, in <span class=\"n\">_exec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">999</span>, in <span class=\"n\">exec_module</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">488</span>, in <span class=\"n\">_call_with_frames_removed</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_plugins/ui/_impl/table.py&quot;</span>, line <span class=\"m\">21</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">marimo._data.models</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">BinValue</span><span class=\"p\">,</span> <span class=\"n\">ColumnStats</span><span class=\"p\">,</span> <span class=\"n\">ValueCount</span>\n<span class=\"gr\">ImportError</span>: <span class=\"n\">cannot import name &#39;ValueCount&#39; from &#39;marimo._data.models&#39; (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_data/models.py)</span>\n</pre></div>\n</span>"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Error trying to reload module marimo._server.sessions: cannot import name 'register_formatters' from 'marimo._output.formatters.formatters' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/formatters.py) \n"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_runtime/reload/autoreload.py&quot;</span>, line <span class=\"m\">442</span>, in <span class=\"n\">superreload</span>\n<span class=\"w\">    </span><span class=\"n\">module</span> <span class=\"o\">=</span> <span class=\"n\">reload</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">)</span>\n<span class=\"w\">             </span><span class=\"pm\">^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/importlib/__init__.py&quot;</span>, line <span class=\"m\">131</span>, in <span class=\"n\">reload</span>\n<span class=\"w\">    </span><span class=\"n\">_bootstrap</span><span class=\"o\">.</span><span class=\"n\">_exec</span><span class=\"p\">(</span><span class=\"n\">spec</span><span class=\"p\">,</span> <span class=\"n\">module</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">866</span>, in <span class=\"n\">_exec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">999</span>, in <span class=\"n\">exec_module</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">488</span>, in <span class=\"n\">_call_with_frames_removed</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_server/sessions.py&quot;</span>, line <span class=\"m\">48</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">marimo._output.formatters.formatters</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">register_formatters</span>\n<span class=\"gr\">ImportError</span>: <span class=\"n\">cannot import name &#39;register_formatters&#39; from &#39;marimo._output.formatters.formatters&#39; (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/formatters.py)</span>\n</pre></div>\n</span>"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Error trying to reload module marimo._output.formatters.df_formatters: cannot import name 'get_default_table_page_size' from 'marimo._plugins.ui._impl.table' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_plugins/ui/_impl/table.py) \n"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_runtime/reload/autoreload.py&quot;</span>, line <span class=\"m\">442</span>, in <span class=\"n\">superreload</span>\n<span class=\"w\">    </span><span class=\"n\">module</span> <span class=\"o\">=</span> <span class=\"n\">reload</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">)</span>\n<span class=\"w\">             </span><span class=\"pm\">^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/importlib/__init__.py&quot;</span>, line <span class=\"m\">131</span>, in <span class=\"n\">reload</span>\n<span class=\"w\">    </span><span class=\"n\">_bootstrap</span><span class=\"o\">.</span><span class=\"n\">_exec</span><span class=\"p\">(</span><span class=\"n\">spec</span><span class=\"p\">,</span> <span class=\"n\">module</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">866</span>, in <span class=\"n\">_exec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">999</span>, in <span class=\"n\">exec_module</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">488</span>, in <span class=\"n\">_call_with_frames_removed</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/df_formatters.py&quot;</span>, line <span class=\"m\">21</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">marimo._plugins.ui._impl.table</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">get_default_table_page_size</span><span class=\"p\">,</span> <span class=\"n\">table</span>\n<span class=\"gr\">ImportError</span>: <span class=\"n\">cannot import name &#39;get_default_table_page_size&#39; from &#39;marimo._plugins.ui._impl.table&#39; (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_plugins/ui/_impl/table.py)</span>\n</pre></div>\n</span>"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Error trying to reload module marimo._cli.cli: cannot import name 'get_notebook_status' from 'marimo._ast.load' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_ast/load.py) \n"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "<span class=\"codehilite\"><div class=\"highlight\"><pre><span></span><span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_runtime/reload/autoreload.py&quot;</span>, line <span class=\"m\">442</span>, in <span class=\"n\">superreload</span>\n<span class=\"w\">    </span><span class=\"n\">module</span> <span class=\"o\">=</span> <span class=\"n\">reload</span><span class=\"p\">(</span><span class=\"n\">module</span><span class=\"p\">)</span>\n<span class=\"w\">             </span><span class=\"pm\">^^^^^^^^^^^^^^</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/importlib/__init__.py&quot;</span>, line <span class=\"m\">131</span>, in <span class=\"n\">reload</span>\n<span class=\"w\">    </span><span class=\"n\">_bootstrap</span><span class=\"o\">.</span><span class=\"n\">_exec</span><span class=\"p\">(</span><span class=\"n\">spec</span><span class=\"p\">,</span> <span class=\"n\">module</span><span class=\"p\">)</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">866</span>, in <span class=\"n\">_exec</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap_external&gt;&quot;</span>, line <span class=\"m\">999</span>, in <span class=\"n\">exec_module</span>\n  File <span class=\"nb\">&quot;&lt;frozen importlib._bootstrap&gt;&quot;</span>, line <span class=\"m\">488</span>, in <span class=\"n\">_call_with_frames_removed</span>\n  File <span class=\"nb\">&quot;/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_cli/cli.py&quot;</span>, line <span class=\"m\">17</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"w\">    </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">marimo._ast.load</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">get_notebook_status</span>\n<span class=\"gr\">ImportError</span>: <span class=\"n\">cannot import name &#39;get_notebook_status&#39; from &#39;marimo._ast.load&#39; (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_ast/load.py)</span>\n</pre></div>\n</span>"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Error trying to reload module marimo._output.formatters.pandas_formatters: cannot import name 'include_opinionated' from 'marimo._output.formatters.df_formatters' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/df_formatters.py) \nTraceback (most recent call last):\n  File \"/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_runtime/reload/autoreload.py\", line 442, in superreload\n    module = reload(module)\n             ^^^^^^^^^^^^^^\n  File \"/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/importlib/__init__.py\", line 131, in reload\n    _bootstrap._exec(spec, module)\n  File \"<frozen importlib._bootstrap>\", line 866, in _exec\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/pandas_formatters.py\", line 8, in <module>\n    from marimo._output.formatters.df_formatters import include_opinionated\nImportError: cannot import name 'include_opinionated' from 'marimo._output.formatters.df_formatters' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_output/formatters/df_formatters.py)\n"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "Error trying to reload module marimo._server.api.lifespans: cannot import name 'SessionManager' from 'marimo._server.sessions' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_server/sessions.py) \nTraceback (most recent call last):\n  File \"/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_runtime/reload/autoreload.py\", line 442, in superreload\n    module = reload(module)\n             ^^^^^^^^^^^^^^\n  File \"/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/importlib/__init__.py\", line 131, in reload\n    _bootstrap._exec(spec, module)\n  File \"<frozen importlib._bootstrap>\", line 866, in _exec\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_server/api/lifespans.py\", line 21, in <module>\n    from marimo._server.sessions import SessionManager\nImportError: cannot import name 'SessionManager' from 'marimo._server.sessions' (/Users/bmeyers/miniconda3/envs/sdt/lib/python3.12/site-packages/marimo/_server/sessions.py)\n"
+        }
+      ]
+    },
+    {
+      "id": "aYJH",
+      "code_hash": "2037403942f1412caed182f75b81f44c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-mermaid data-diagram='&quot;flowchart LR&#92;n  1((1)) == 1 ==&gt; 4((4))&#92;n  4((4)) == 2 ==&gt; 5((5))&#92;n  5((5)) == 3 ==&gt; 6((6))&#92;n  3((3)) == 4 ==&gt; 6((6))&#92;n  6((6)) == 5 ==&gt; 7((7))&#92;n  7((7)) == 6 ==&gt; 8((8))&#92;n  8((8)) == 7 ==&gt; 2((2))&#92;n  8((8)) == 8 ==&gt; 9((9))&#92;n  9((9)) == 9 ==&gt; 4((4))&quot;'></marimo-mermaid>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "igMP",
+      "code_hash": "8af4f97dde52508bea04574fe73ba554",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-mermaid data-diagram='&quot;flowchart LR&#92;n  1((1)) == 1 === 4((4))&#92;n  4((4)) == 2 === 5((5))&#92;n  5((5)) == 3 === 6((6))&#92;n  3((3)) == 4 === 6((6))&#92;n  6((6)) == 5 === 7((7))&#92;n  7((7)) == 6 === 8((8))&#92;n  8((8)) == 7 === 2((2))&#92;n  8((8)) == 8 === 9((9))&#92;n  9((9)) == 9 === 4((4))&quot;'></marimo-mermaid>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SCqg",
+      "code_hash": "1aca8c374c3133c45e8e93b30cce839b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "{\"bus\": [\"text/plain:[1 2 3 4 5 6 7 8 9]\", \"text/plain:[3 2 2 1 1 1 1 1 1]\", \"text/plain:[  0.   0.   0.   0.  90.   0. 100.   0. 125.]\", \"text/plain:[ 0.  0.  0.  0. 30.  0. 35.  0. 50.]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\", \"text/plain:[1 1 1 1 1 1 1 1 1]\", \"text/plain:[1.1    1.0974 1.0866 1.0942 1.0844 1.1    1.0895 1.1    1.0717]\", \"text/plain:[ 0.      4.8931  3.249  -2.4631 -3.9824  0.6024 -1.1968  0.9051 -4.6156]\", \"text/plain:[345. 345. 345. 345. 345. 345. 345. 345. 345.]\", \"text/plain:[1 1 1 1 1 1 1 1 1]\", \"text/plain:[1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1 1.1]\", \"text/plain:[0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9 0.9]\", \"text/plain:[24.7557 24.0345 24.0759 24.7559 24.9985 24.0759 24.2539 24.0345 24.9985]\", \"text/plain:[ 2.1650e-08 -1.1406e-09 -3.5485e-08  4.4094e-03  2.6578e-02  2.3182e-06  3.5522e-02  1.1734e-05  1.1158e-01]\", \"text/plain:[ 8.3844  0.      0.      0.      0.     75.3287  0.     77.4572  0.    ]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\"], \"gen\": [\"text/plain:[1 2 3]\", \"text/plain:[ 89.7986 134.3207  94.1874]\", \"text/plain:[ 12.9387   0.0477 -22.6197]\", \"text/plain:[300. 300. 300.]\", \"text/plain:[-300. -300. -300.]\", \"text/plain:[1.1    1.0974 1.0866]\", \"text/plain:[100. 100. 100.]\", \"text/plain:[1 1 1]\", \"text/plain:[250. 300. 270.]\", \"text/plain:[10. 10. 10.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[0. 0. 0.]\"], \"branch\": [\"text/plain:[1 4 5 3 6 7 8 8 9]\", \"text/plain:[4 5 6 6 7 8 2 9 4]\", \"text/plain:[0.     0.017  0.039  0.     0.0119 0.0085 0.     0.032  0.01  ]\", \"text/plain:[0.0576 0.092  0.17   0.0586 0.1008 0.072  0.0625 0.161  0.085 ]\", \"text/plain:[0.    0.158 0.358 0.    0.209 0.149 0.    0.306 0.176]\", \"text/plain:[250. 250. 150. 300. 150. 250. 250. 250. 250.]\", \"text/plain:[250. 250. 150. 300. 150. 250. 250. 250. 250.]\", \"text/plain:[250. 250. 150. 300. 150. 250. 250. 250. 250.]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\", \"text/plain:[1 1 1 1 1 1 1 1 1]\", \"text/plain:[-360. -360. -360. -360. -360. -360. -360. -360. -360.]\", \"text/plain:[360. 360. 360. 360. 360. 360. 360. 360. 360.]\", \"text/plain:[  89.7986   35.221   -54.9595   94.1874   38.2182  -61.9311 -134.3207   72.1109  -54.2828]\", \"text/plain:[ 12.9388  -3.9029 -16.1315 -22.6197  -5.1004 -16.3161   9.3163 -10.1353 -31.0611]\", \"text/plain:[-89.7986 -35.0405  55.9693 -94.1874 -38.0689  62.2097 134.3207 -70.7171  54.5776]\", \"text/plain:[ -9.0201 -13.8685 -22.176   27.2764 -18.6839   0.819    0.0477 -18.9389  12.9231]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\", \"text/plain:[0. 0. 0. 0. 0. 0. 0. 0. 0.]\"], \"gencost\": [\"text/plain:[2 2 2]\", \"text/plain:[1500. 2000. 3000.]\", \"text/plain:[0. 0. 0.]\", \"text/plain:[3 3 3]\", \"text/plain:[0.11   0.085  0.1225]\", \"text/plain:[5.  1.2 1. ]\", \"text/plain:[150. 600. 335.]\"], \"dcline\": [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []], \"dclinecost\": [[], [], [], []]}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "qXPp",
+      "code_hash": null,
+      "outputs": [],
+      "console": []
+    }
+  ]
+}

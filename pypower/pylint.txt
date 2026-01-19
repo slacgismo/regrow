@@ -1,0 +1,22 @@
+************* Module ppmodel
+ppmodel.py:719:53: W0511: TODO: write graph at geohash level (fixme)
+ppmodel.py:725:53: W0511: TODO: write graph at zone level (fixme)
+ppmodel.py:731:53: W0511: TODO: write graph at area level (fixme)
+ppmodel.py:118:0: R0902: Too many instance attributes (8/7) (too-many-instance-attributes)
+ppmodel.py:610:19: W0622: Redefining built-in 'type' (redefined-builtin)
+ppmodel.py:661:14: R1704: Redefining argument with the local name 'data' (redefined-argument-from-local)
+ppmodel.py:661:12: W0612: Unused variable 'n' (unused-variable)
+************* Module psse2pp
+psse2pp.py:336:19: W0511: TODO: convert scheduling data (fixme)
+psse2pp.py:343:19: W0511: TODO: convert area data (fixme)
+psse2pp.py:350:19: W0511: TODO: convert zone data (fixme)
+psse2pp.py:332:8: W0613: Unused argument 'schedule' (unused-argument)
+psse2pp.py:339:8: W0613: Unused argument 'area' (unused-argument)
+psse2pp.py:346:8: W0613: Unused argument 'zone' (unused-argument)
+************* Module scheduling
+scheduling.py:119:9: W0511: TODO: update line data (fixme)
+scheduling.py:122:9: W0511: TODO: not sure how to do that yet (fixme)
+
+------------------------------------------------------------------
+Your code has been rated at 9.83/10 (previous run: 9.79/10, +0.04)
+

@@ -208,7 +208,6 @@ if __name__ == "__main__":
     # Get a list of sites already ran
     ran_files_list = [file.replace(".png", "").split("\\")[-1]
                       for file in glob.glob("./pysam_wecc_nodes/plots/*.png")]
-    #master_df = master_df[14000:]
     for idx, row in master_df.iterrows():
         # PySAM uses kW. Make MW to kW
         turbine_capacity = float(row["capacity[MW]"]) * 1000
@@ -360,5 +359,8 @@ if __name__ == "__main__":
                                       "single_turbine_weather_data/" +
                                       filename + ".csv"),
                                     index=False)
+
+
+
 
 

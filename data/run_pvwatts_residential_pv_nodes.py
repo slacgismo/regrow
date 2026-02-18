@@ -144,6 +144,7 @@ if __name__ == "__main__":
                                         tracking=tracking)
                 pdc_aggregated_df = pd.concat([pdc_aggregated_df, pdc.dropna()])
         # Write the results to the associated S3 bucket.
+        pdc_aggregated_df.columns = ['output_kW']
         pdc_aggregated_df.plot()
         plt.show()
         plt.close()

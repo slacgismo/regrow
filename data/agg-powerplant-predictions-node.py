@@ -8,15 +8,15 @@ import glob
 from utils import geohash
 import os
 
-base_path = "C:/Users/kperry/Documents/extreme-weather-ca-heatwave"
-power_plant_path = "pvwatts_powerplants"
-aggregated_pp_wecc_node_path = "pvwatts_bus_agg"
-geopanel_file_path = "pvwatts_geopanel.csv"
-metadata_path = "pv_generators_assigned.csv"
+base_path = "C:/Users/kperry/Documents/source/repos/regrow/data/pysam_wecc_nodes"
+power_plant_path = "single_turbine_power_timeseries"
+aggregated_pp_wecc_node_path = "pysam_bus_agg"
+geopanel_file_path = "pysame_geopanel.csv"
+metadata_path = "wt_generators_assigned.csv"
 powerplant_files = glob.glob(os.path.join(base_path,
                                           power_plant_path, "*.csv"))
 
-col_name = "output_kW"
+col_name = "power[kW]"
 metadata = pd.read_csv(metadata_path)
 
 unique_wecc_geocodes = list(metadata['geohash'].drop_duplicates())
@@ -25,12 +25,17 @@ for bus in unique_wecc_geocodes:
     metadata_wecc_node = metadata[metadata['geohash'] == bus]
     # Get a list of plants associated with the WECC node, open all of their
     # files and aggregate the associated PV production data
-    associated_pp_files = [x for x in powerplant_files if
-                           os.path.basename(x).startswith(bus)]
+    all_associated_pp_files = list()
+    for idx, row in metadata_wecc_node.iterrows():
+        latitude, longitude = str(row['latitude_gen']), str(row['longitude_gen'])
+        associated_pp_files = [x for x in powerplant_files if
+                               os.path.basename(x).startswith(latitude 
+                                                              + "_" + longitude)]
+        all_associated_pp_files = all_associated_pp_files + associated_pp_files
     # Get the associated plant files based on the bus number at the
     # Create a master dataframe to append onto
     plant_agg_df = pd.DataFrame()
-    for power_plant_path in associated_pp_files:
+    for power_plant_path in all_associated_pp_files:
         path_basename = os.path.basename(power_plant_path)
         lat, lon = (path_basename.split("_")[-2], 
                     path_basename.split("_")[-1].replace(".csv", ""))

@@ -1,9 +1,10 @@
 import pandas as pd
 import glob
-from utils import geohash
 import os
 import s3fs
+os.environ["HOME"] = "C:/users/kperry"
 
+from utils import geohash
 aws_profile = "aws-service-creds-pvdrdb"
 base_path = r"C:\Users\kperry\Documents\source\repos\regrow\data\pysam_wecc_nodes"
 power_plant_path = "pvdrdb-transfer/REGROW/pysam_wind_powerplants/single_turbine_power_timeseries/"

@@ -87,7 +87,7 @@ def _(cp):
         if set_y:
             constraints.append(y == param_y)
         # objective = 1/T*cp.sum(param_lambda * s + param_mu * c + param_alpha * g + param_beta * cp.power(g, 2))
-        objective = 1/T*cp.sum(param_lambda * s + param_alpha * g + param_beta * cp.power(g, 2))
+        objective = 1/T*cp.sum(param_lambda * s + param_alpha * g + param_beta * cp.power(g, 2) + 1e-10 * cp.sum(cp.abs(b)))
         problem = cp.Problem(cp.Minimize(objective), constraints)
         return problem
 

@@ -95,102 +95,99 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
         return 
      
 @delayed
-def pull_herbie_gefs_data(data, time_horizon, aws_profile):
+def pull_herbie_gefs_data(date, time_horizon, aws_profile):
     """
     Similar function for Herbie GEFS data.
     """
-    H = Herbie(date,
-               model="gefs",
-               fxx=time_horizon,
-               product="atmos.5b",
-               member="p01",
-            )
-    file = H.download()
-    tags = ["UGRD:80 m",
-            "VGRD:80 m",
-            "TCDC",
-            #"RH",
-            #"PRES",
-            "TMP:surface",
-            "DPT:2 m"]
-    specific_tag_names = [":TCDC:475 mb:",
-                            ":UGRD:80 m above ground:",
-                            ":VGRD:80 m above ground:",
-                            #":RH:2 m above ground:",
-                            #":PRES:surface::",
-                            "TMP:surface:",
-                            "DPT:2 m above ground:"]
-    master_pred_list = list()
-    for tag in tags:
-        tag_df=H.inventory(tag)
-        tag_df = tag_df.reset_index(drop=True)
-        print(len(tag_df))
-        tag_match = [x for x in specific_tag_names if 
-                     tag_df['variable'].iloc[0] in x][0]
-        index_val = tag_df[tag_df['search_this'].str.contains(tag_match)].iloc[0].name
-        ds = H.xarray(tag, remove_grib=True)
-        predictions = list()
-        for point in points:
-            if "d2m" in ds:
-                pred = ds['d2m'].sel(longitude=point[0],
-                                     latitude=point[1],
-                                     method='nearest').values.reshape(1)
-            elif "tcc" in ds:
-                pred = ds['tcc'].sel(longitude=point[0],
-                                     latitude=point[1],
-                                     method='nearest').values.reshape(1)
-            elif "u" in ds:
-                pred = ds['u'].sel(longitude=point[0],
-                                   latitude=point[1],
-                                   method='nearest').values.reshape(1)
-            elif "v" in ds:
-                pred = ds['v'].sel(longitude=point[0],
-                                   latitude=point[1],
-                                   method='nearest').values.reshape(1)
-            elif "r2" in ds:
-                pred = ds['r2'].sel(longitude=point[0],
-                                    latitude=point[1],
-                                    method='nearest').values.reshape(1)
-            elif "sp" in ds:
-                pred = ds['sp'].sel(longitude=point[0],
-                                    latitude=point[1],
-                                    method='nearest').values.reshape(1)
-            elif "t" in ds:
-                pred = ds['t'].sel(longitude=point[0],
-                                   latitude=point[1],
-                                   method='nearest').values.reshape(1)
-            else:
-                break
-            predictions.append(pred)
-        predictions = list(np.concatenate(predictions))
-        pred_df = pd.DataFrame()
-        pred_df['longitude'] = [point[0] for point in points]
-        pred_df['latitude'] = [point[1] for point in points]
-        pred_df['forecast_time'] = date
-        pred_df['time_horizon_hrs'] = time_horizon
-        pred_df['tag'] = tag
-        pred_df['value'] = predictions
-    pred_df.to_csv('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw/' +
-                   date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv", 
-                   index=False,
-                   storage_options=aws_profile)
-    # Delete the file in question (to save storage space)
-    os.remove(file)
-    return pred_df
+    for i in range(3):
+        try:
+            logger.info(f"Processing values: {date} {time_horizon} hr time horizon...")
+            H = Herbie(date,
+                       model="gefs",
+                       fxx=time_horizon,
+                       product="atmos.5b",
+                       member="p01",
+                    )
+            file = H.download()
+            tags = ["UGRD:80 m",
+                    "VGRD:80 m",
+                    "TCDC",
+                    "TMP:surface",
+                    "DPT:2 m"]
+            specific_tag_names = [":TCDC:475 mb:",
+                                    ":UGRD:80 m above ground:",
+                                    ":VGRD:80 m above ground:",
+                                    "TMP:surface:",
+                                    "DPT:2 m above ground:"]
+            master_pred_df= pd.DataFrame()
+            for tag in tags:
+                tag_df=H.inventory(tag)
+                tag_df = tag_df.reset_index(drop=True)
+                tag_match = [x for x in specific_tag_names if 
+                             tag_df['variable'].iloc[0] in x][0]
+                index_val = tag_df[tag_df['search_this'].str.contains(tag_match)].iloc[0].name
+                ds = H.xarray(tag, remove_grib=True)
+                if isinstance(ds, list):
+                    ds = ds[int(index_val)]
+                predictions = list()
+                for point in points:
+                    if "d2m" in ds:
+                        pred = ds['d2m'].sel(longitude=point[0],
+                                             latitude=point[1],
+                                             method='nearest').values.reshape(1)
+                    elif "tcc" in ds:
+                        pred = ds['tcc'].sel(longitude=point[0],
+                                             latitude=point[1],
+                                             method='nearest').values.reshape(1)
+                    elif "u" in ds:
+                        pred = ds['u'].sel(longitude=point[0],
+                                           latitude=point[1],
+                                           method='nearest').values.reshape(1)
+                    elif "v" in ds:
+                        pred = ds['v'].sel(longitude=point[0],
+                                           latitude=point[1],
+                                           method='nearest').values.reshape(1)
+                    elif "r2" in ds:
+                        pred = ds['r2'].sel(longitude=point[0],
+                                            latitude=point[1],
+                                            method='nearest').values.reshape(1)
+                    elif "sp" in ds:
+                        pred = ds['sp'].sel(longitude=point[0],
+                                            latitude=point[1],
+                                            method='nearest').values.reshape(1)
+                    elif "t" in ds:
+                        pred = ds['t'].sel(longitude=point[0],
+                                           latitude=point[1],
+                                           method='nearest').values.reshape(1)
+                    else:
+                        break
+                    predictions.append(pred)
+                predictions = list(np.concatenate(predictions))
+                pred_df = pd.DataFrame()
+                pred_df['longitude'] = [point[0] for point in points]
+                pred_df['latitude'] = [point[1] for point in points]
+                pred_df['forecast_time'] = date
+                pred_df['time_horizon_hrs'] = time_horizon
+                pred_df['tag'] = tag
+                pred_df['value'] = predictions
+                master_pred_df = pd.concat([master_pred_df, pred_df])
+            master_pred_df.to_csv('s3://pvdrdb-transfer/REGROW/herbie_forecasts/raw/' +
+                                  date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv", 
+                                  index=False,
+                                  storage_options=aws_profile)
+            # Delete the file in question (to save storage space)
+            os.remove(file)
+        except Exception as e:
+            print(e)
+            logger.info(e)
+            time.sleep(5) # backoff
+        logger.info("Download failed for {date} {time_horizon} hr time horizon...")
+        return
 
 
 
 forecast_dir = "C:/Users/kperry/data/"
 if __name__ == "__main__":
-    # Declare SLURM Cluster
-    cluster = SLURMCluster(
-       cores=18,
-       memory='24GB',
-       account='pvfleets24',
-       walltime='00:30:00',
-       processes=17,
-       queue='shared'
-    )
     # Connect to the db and get the associated AWS creds
     pvr = pvdrdb_tools.PVDRDBQuery()
     pvr.connectToDB()
@@ -212,8 +209,6 @@ if __name__ == "__main__":
     df = pd.read_csv("nodes.csv")
     points = [(y,x) for x,y in zip(df['Lat'], df['Long'])]
     names = list(df['county'])
-    # Associated date range for the forecasts
-    dates = pd.date_range("2018-01-01", "2022-12-31", freq="6H")
     master_prediction_df = pd.DataFrame()
     # Create a logger
     logger = logging.getLogger(__name__)
@@ -226,13 +221,31 @@ if __name__ == "__main__":
     ch.setFormatter(formatter)    
     # Add the handler to the logger
     logger.addHandler(ch)
-    client = Client(cluster)
-    result = []
-    cluster.scale(jobs=4)
-    for date in dates:
-        for time_horizon in range(1, 19, 1):
-            if ( date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
-                result.append(client.submit(pull_herbie_hrr_data(date, time_horizon, pvr.aws)).result())
-                delayed_results.append(hrrr_pred_df)
-    print(Counter(result))
-    print(cluster.job_script())
+    # Do HRR up to 18 hours first (2 hour forecasts)
+    # Break into monthly chunks so the task graph stays manageable
+    date_chunks = pd.date_range("2018-01-01", "2022-12-31", freq="MS")  # monthly start dates
+    
+    for chunk_start in date_chunks:
+        chunk_end = chunk_start + pd.offsets.MonthEnd(1)
+        dates = pd.date_range(chunk_start, chunk_end, freq="1h")
+        
+        # HRRR
+        delayed_results = []
+        for date in dates:
+            for time_horizon in range(1, 19, 1):
+                if (date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
+                    hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon, pvr.aws)
+                    delayed_results.append(hrrr_pred_df)
+        if delayed_results:
+            logger.info(f"Computing {len(delayed_results)} HRRR tasks for {chunk_start.strftime('%Y-%m')}")
+            dask.compute(*delayed_results, num_workers=20)
+    
+        # GEFS
+        delayed_results = []
+        for date in dates:
+            for time_horizon in range(24, 78, 6):
+                if (date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
+                    delayed_results.append(delayed(pull_herbie_gefs_data)(date, time_horizon, pvr.aws))
+        if delayed_results:
+            logger.info(f"Computing {len(delayed_results)} GEFS tasks for {chunk_start.strftime('%Y-%m')}")
+            dask.compute(*delayed_results, num_workers=20)

@@ -35,13 +35,13 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
                        fxx=time_horizon
                         )
             file = H.download()
-            # ":TCDC:entire atmosphere:anl": overall cloud cover
+            #:TCDC:entire atmosphere:anl: overall cloud cover
             #:UGRD:80 m above ground:anl: u-component wind speed (80 m above ground)
             #:VGRD:80 m above ground:anl: v-component wind speed (80 m above ground)
-            #":RH:2 m above ground:anl": relative humidity at surface
-            #TMP:surface:anl: surface temperature
+            #:RH:2 m above ground:anl: relative humidity at surface
+            #:TMP:surface:anl: surface temperature
             #:PRES:surface:anl: surface pressure
-            #DPT:2 m above ground:anl: dew point 
+            #:DPT:2 m above ground:anl: dew point 
             # Full list of options: https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_sfc_table_f00-f01.html
             tags = [":TCDC:entire atmosphere:" + str(time_horizon) + " hour fcst",
                     ":UGRD:80 m above ground:" + str(time_horizon) + " hour fcst",
@@ -58,7 +58,7 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
                                                 names=names)
                 # Build out a dataframe for the predictions
                 pred_df = pd.DataFrame()
-                pred_df['county'] = list(dsi.point.values)
+                pred_df['wind_site_name'] = list(dsi.point.values)
                 pred_df['point_latitude'] = list(dsi.point_latitude.values)
                 pred_df['point_longitude'] = list(dsi.point_longitude.values)
                 pred_df['tag'] = tag
@@ -206,9 +206,12 @@ if __name__ == "__main__":
                     file_keys.append(obj['Key'])
     existing_files = [os.path.basename(x) for x in file_keys]
     # Read in the nodes we want to forecast on
-    df = pd.read_csv("nodes.csv")
+    df = pd.read_csv("uswtdb.csv")
+    df['Lat'] = df.groupby("name")['latitude'].transform('mean')
+    df['Long'] = df.groupby("name")['longitude'].transform('mean')
+    df = df[['name', 'Lat', "Long"]].drop_duplicates()
     points = [(y,x) for x,y in zip(df['Lat'], df['Long'])]
-    names = list(df['county'])
+    names = list(df['name'])
     master_prediction_df = pd.DataFrame()
     # Create a logger
     logger = logging.getLogger(__name__)

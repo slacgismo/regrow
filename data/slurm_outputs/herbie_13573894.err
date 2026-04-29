@@ -41322,3 +41322,1341 @@
   dsi = ds.herbie.nearest_points(points=points,
 /kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
   ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:03,271 - __main__ - INFO - Finished processing 2018-01-14 13:00:00 18 hr time horizon...
+2026-04-29 09:19:03,290 - __main__ - INFO - Processing values: 2018-01-14 23:00:00 4 hr time horizon...
+2026-04-29 09:19:03,620 - __main__ - INFO - Finished processing 2018-01-07 23:00:00 10 hr time horizon...
+2026-04-29 09:19:03,640 - __main__ - INFO - Processing values: 2018-01-18 09:00:00 17 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:11,717 - __main__ - INFO - Finished processing 2018-01-30 16:00:00 7 hr time horizon...
+2026-04-29 09:19:11,735 - __main__ - INFO - Processing values: 2018-01-01 21:00:00 18 hr time horizon...
+2026-04-29 09:19:11,806 - __main__ - INFO - Finished processing 2018-01-16 17:00:00 15 hr time horizon...
+2026-04-29 09:19:11,824 - __main__ - INFO - Processing values: 2018-01-27 04:00:00 3 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:12,425 - __main__ - INFO - Finished processing 2018-01-23 20:00:00 14 hr time horizon...
+2026-04-29 09:19:12,442 - __main__ - INFO - Processing values: 2018-01-06 15:00:00 16 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:15,246 - __main__ - INFO - Finished processing 2018-01-08 23:00:00 9 hr time horizon...
+2026-04-29 09:19:15,266 - __main__ - INFO - Processing values: 2018-01-24 01:00:00 10 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:15,412 - __main__ - INFO - Finished processing 2018-01-19 04:00:00 18 hr time horizon...
+2026-04-29 09:19:15,430 - __main__ - INFO - Processing values: 2018-01-20 12:00:00 4 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:15,715 - __main__ - INFO - Finished processing 2018-01-14 23:00:00 4 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:15,736 - __main__ - INFO - Processing values: 2018-01-16 16:00:00 7 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:16,228 - __main__ - INFO - Finished processing 2018-01-17 18:00:00 12 hr time horizon...
+2026-04-29 09:19:16,246 - __main__ - INFO - Processing values: 2018-01-30 21:00:00 16 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:16,731 - __main__ - INFO - Finished processing 2018-01-11 23:00:00 14 hr time horizon...
+2026-04-29 09:19:16,751 - __main__ - INFO - Processing values: 2018-01-19 02:00:00 1 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:18,112 - __main__ - INFO - Finished processing 2018-01-17 02:00:00 14 hr time horizon...
+2026-04-29 09:19:18,130 - __main__ - INFO - Processing values: 2018-01-10 05:00:00 14 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:18,438 - __main__ - INFO - Finished processing 2018-01-18 09:00:00 17 hr time horizon...
+2026-04-29 09:19:18,457 - __main__ - INFO - Processing values: 2018-01-27 20:00:00 18 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:18,656 - __main__ - INFO - Finished processing 2018-01-11 01:00:00 11 hr time horizon...
+2026-04-29 09:19:18,679 - __main__ - INFO - Processing values: 2018-01-03 07:00:00 8 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:19,876 - __main__ - INFO - Finished processing 2018-01-08 13:00:00 15 hr time horizon...
+2026-04-29 09:19:19,898 - __main__ - INFO - Processing values: 2018-01-06 04:00:00 13 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:24,235 - __main__ - INFO - Finished processing 2018-01-27 04:00:00 3 hr time horizon...
+2026-04-29 09:19:24,255 - __main__ - INFO - Processing values: 2018-01-13 05:00:00 4 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:25,343 - __main__ - INFO - Finished processing 2018-01-01 21:00:00 18 hr time horizon...
+2026-04-29 09:19:25,367 - __main__ - INFO - Processing values: 2018-01-05 17:00:00 4 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:25,921 - __main__ - INFO - Finished processing 2018-01-06 15:00:00 16 hr time horizon...
+2026-04-29 09:19:25,941 - __main__ - INFO - Processing values: 2018-01-16 16:00:00 6 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:28,231 - __main__ - INFO - Finished processing 2018-01-24 01:00:00 10 hr time horizon...
+2026-04-29 09:19:28,250 - __main__ - INFO - Processing values: 2018-01-23 16:00:00 4 hr time horizon...
+2026-04-29 09:19:28,260 - __main__ - INFO - Finished processing 2018-01-20 12:00:00 4 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:28,281 - __main__ - INFO - Processing values: 2018-01-02 11:00:00 12 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:29,619 - __main__ - INFO - Finished processing 2018-01-02 15:00:00 15 hr time horizon...
+2026-04-29 09:19:29,639 - __main__ - INFO - Processing values: 2018-01-07 19:00:00 5 hr time horizon...
+2026-04-29 09:19:29,663 - __main__ - INFO - Finished processing 2018-01-19 02:00:00 1 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:29,684 - __main__ - INFO - Processing values: 2018-01-27 03:00:00 16 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:30,070 - __main__ - INFO - Finished processing 2018-01-30 21:00:00 16 hr time horizon...
+2026-04-29 09:19:30,090 - __main__ - INFO - Processing values: 2018-01-14 21:00:00 9 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:30,334 - __main__ - INFO - Finished processing 2018-01-16 16:00:00 7 hr time horizon...
+2026-04-29 09:19:30,351 - __main__ - INFO - Processing values: 2018-01-24 11:00:00 3 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:31,833 - __main__ - INFO - Finished processing 2018-01-10 05:00:00 14 hr time horizon...
+2026-04-29 09:19:31,858 - __main__ - INFO - Processing values: 2018-01-18 20:00:00 14 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:32,291 - __main__ - INFO - Finished processing 2018-01-27 20:00:00 18 hr time horizon...
+2026-04-29 09:19:32,316 - __main__ - INFO - Processing values: 2018-01-04 19:00:00 11 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:32,426 - __main__ - INFO - Finished processing 2018-01-10 15:00:00 11 hr time horizon...
+2026-04-29 09:19:32,446 - __main__ - INFO - Processing values: 2018-01-30 15:00:00 10 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:33,256 - __main__ - INFO - Finished processing 2018-01-03 07:00:00 8 hr time horizon...
+2026-04-29 09:19:33,278 - __main__ - INFO - Processing values: 2018-01-16 22:00:00 7 hr time horizon...
+2026-04-29 09:19:33,798 - __main__ - INFO - Finished processing 2018-01-06 04:00:00 13 hr time horizon...
+2026-04-29 09:19:33,823 - __main__ - INFO - Processing values: 2018-01-08 06:00:00 1 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:37,746 - __main__ - INFO - Finished processing 2018-01-13 05:00:00 4 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:37,767 - __main__ - INFO - Processing values: 2018-01-11 01:00:00 17 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:38,994 - __main__ - INFO - Finished processing 2018-01-05 17:00:00 4 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:39,015 - __main__ - INFO - Processing values: 2018-01-19 18:00:00 12 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:40,326 - __main__ - INFO - Finished processing 2018-01-16 16:00:00 6 hr time horizon...
+2026-04-29 09:19:40,346 - __main__ - INFO - Processing values: 2018-01-15 02:00:00 8 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:41,569 - __main__ - INFO - Finished processing 2018-01-02 11:00:00 12 hr time horizon...
+2026-04-29 09:19:41,591 - __main__ - INFO - Processing values: 2018-01-10 06:00:00 5 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:42,250 - __main__ - INFO - Finished processing 2018-01-08 15:00:00 11 hr time horizon...
+2026-04-29 09:19:42,280 - __main__ - INFO - Processing values: 2018-01-21 06:00:00 9 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:42,508 - __main__ - INFO - Finished processing 2018-01-23 16:00:00 4 hr time horizon...
+2026-04-29 09:19:42,533 - __main__ - INFO - Processing values: 2018-01-15 19:00:00 18 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:43,316 - __main__ - INFO - Finished processing 2018-01-24 11:00:00 3 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:43,338 - __main__ - INFO - Processing values: 2018-01-11 12:00:00 4 hr time horizon...
+2026-04-29 09:19:43,547 - __main__ - INFO - Finished processing 2018-01-07 19:00:00 5 hr time horizon...
+2026-04-29 09:19:43,578 - __main__ - INFO - Processing values: 2018-01-01 03:00:00 13 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:43,643 - __main__ - INFO - Finished processing 2018-01-27 03:00:00 16 hr time horizon...
+2026-04-29 09:19:43,668 - __main__ - INFO - Processing values: 2018-01-01 05:00:00 14 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:43,793 - __main__ - INFO - Finished processing 2018-01-14 21:00:00 9 hr time horizon...
+2026-04-29 09:19:43,815 - __main__ - INFO - Processing values: 2018-01-04 12:00:00 4 hr time horizon...
+2026-04-29 09:19:43,868 - __main__ - INFO - Finished processing 2018-01-14 10:00:00 4 hr time horizon...
+2026-04-29 09:19:43,887 - __main__ - INFO - Processing values: 2018-01-03 03:00:00 3 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:45,712 - __main__ - INFO - Finished processing 2018-01-10 20:00:00 10 hr time horizon...
+2026-04-29 09:19:45,733 - __main__ - INFO - Processing values: 2018-01-22 22:00:00 16 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:45,984 - __main__ - INFO - Finished processing 2018-01-18 20:00:00 14 hr time horizon...
+2026-04-29 09:19:46,007 - __main__ - INFO - Processing values: 2018-01-25 08:00:00 14 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "r2".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "sp".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "t".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "d2m".
+  ds = ds.metpy.assign_y_x()
+2026-04-29 09:19:47,268 - __main__ - INFO - Finished processing 2018-01-16 22:00:00 7 hr time horizon...
+2026-04-29 09:19:47,294 - __main__ - INFO - Processing values: 2018-01-20 06:00:00 14 hr time horizon...
+2026-04-29 09:19:47,329 - __main__ - INFO - Finished processing 2018-01-04 19:00:00 11 hr time horizon...
+2026-04-29 09:19:47,349 - __main__ - INFO - Processing values: 2018-01-18 05:00:00 2 hr time horizon...
+2026-04-29 09:19:47,842 - __main__ - INFO - Finished processing 2018-01-08 06:00:00 1 hr time horizon...
+2026-04-29 09:19:47,864 - __main__ - INFO - Processing values: 2018-01-19 13:00:00 10 hr time horizon...
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "tcc".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "u".
+  ds = ds.metpy.assign_y_x()
+/kfs2/projects/pvfleets24/repos/regrow/data/generate_herbie_forecasts.py:57: DeprecationWarning: The accessor `ds.herbie.nearest_points` is deprecated in favor of the `ds.herbie.pick_points` which uses the BallTree algorithm instead.
+  dsi = ds.herbie.nearest_points(points=points,
+/kfs2/projects/pvfleets24/envs/regrow/lib/python3.12/site-packages/herbie/accessors.py:681: UserWarning: More than one time coordinate present for variable  "v".
+  ds = ds.metpy.assign_y_x()

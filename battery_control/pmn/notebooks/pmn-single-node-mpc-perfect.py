@@ -210,7 +210,53 @@ def _(G, R, form, form_mpc, l, run_mpc_perfect):
     return (mpc_solution,)
 
 
+@app.cell(hide_code=True)
+def _(np):
+    def compute_metrics(sol, lamb, alpha, beta, mu, delta = 1):
+        s = sol['s']
+        g = sol['g']
+        b = sol['b']
+        c = sol['c']
+        T = len(s)
+
+        total_dispatchable_gen_cost = np.sum(alpha * g + beta * g ** 2)
+        total_load_shedding = np.sum(s)
+        total_abs_battery_power = np.sum(np.abs(b))
+        total_curtailed_non_dispatchable_gen = np.sum(c)
+
+
+
+        objective = 1 / T * (lamb * total_load_shedding + total_dispatchable_gen_cost + mu * total_abs_battery_power)
+
+        metrics = {
+            "objective value" : objective,
+            "total dispatched gen cost": total_dispatchable_gen_cost,
+            "total load shedding": total_load_shedding,
+            "total abs battery power": total_abs_battery_power,
+            "total curtailment": total_curtailed_non_dispatchable_gen
+        }
+        return metrics
+
+    def compare_metrics(os_sol, mpc_sol, lamb, alpha, beta, mu, delta = 1):
+        os_metrics = compute_metrics(sol = os_sol, lamb = lamb,alpha = alpha, beta = beta, mu = mu, delta=delta)
+        mpc_metrics = compute_metrics(sol = mpc_sol, lamb = lamb,alpha = alpha, beta = beta, mu = mu, delta=delta)
+
+        for k in os_metrics:
+            p = os_metrics[k]
+            m = mpc_metrics[k]
+            rel = (m - p) / p if p != 0 else float('nan')
+            print(f"{k}: one shot={p:.3f}, mpc perfect={m:.3f}, change={m-p:.3f}, relative_change={rel:.2%}")
+
+    return (compare_metrics,)
+
+
 @app.cell
+def _(compare_metrics, form, mpc_solution, one_shot_solution):
+    compare_metrics(os_sol = one_shot_solution, mpc_sol= mpc_solution, lamb=form.value['lambd'], alpha=form.value['alpha'], beta=form.value['beta'], mu=10**form.value['mu_exp'])
+    return
+
+
+@app.cell(hide_code=True)
 def _(add_abnormal_event, event_end_input, event_start_input, l, mo, pd, tidx):
     if add_abnormal_event.value:
         _event_start = int(tidx.searchsorted(pd.Timestamp(event_start_input.value)))
@@ -227,7 +273,7 @@ def _(add_abnormal_event, event_end_input, event_start_input, l, mo, pd, tidx):
     return plot_length, plot_start
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(
     form,
     np,
@@ -254,7 +300,7 @@ def _(
     return (s,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(form, form_mpc, mpc_solution, plot_solution, plt, s, tidx):
     _H = form_mpc.value['H']
     fig_mpc = plot_solution(
@@ -269,19 +315,35 @@ def _(form, form_mpc, mpc_solution, plot_solution, plt, s, tidx):
         supertitle=f'MPC solution, H={_H}'
     )
     plt.show()
+    return
 
+
+@app.cell(hide_code=True)
+def _(plot_heatmap, plt, tidx):
+    def variable_comparison_plot(os_sol, mpc_sol, var, cmap, center = None): 
+        plot_heatmap(tidx, os_sol[var], title = f' one shot solution: {var}' , cmap = cmap, center = center)
+        plt.show()
+        plot_heatmap(tidx, mpc_sol[var], title = f'mpc solution: {var}' , cmap = cmap, center = center)
+        plt.show()
+
+    return (variable_comparison_plot,)
+
+
+@app.cell
+def _(mpc_solution, one_shot_solution, variable_comparison_plot):
+    variable_comparison_plot(one_shot_solution, mpc_solution, 's', cmap = 'inferno')
     return
 
 
 @app.cell
-def _(mpc_solution, plot_heatmap, tidx):
-    plot_heatmap(tidx, mpc_solution['s'], cmap = 'inferno')
+def _(mpc_solution, one_shot_solution, variable_comparison_plot):
+    variable_comparison_plot(one_shot_solution, mpc_solution, 'c', cmap = 'plasma')
     return
 
 
 @app.cell
-def _(one_shot_solution, plot_heatmap, tidx):
-    plot_heatmap(tidx, one_shot_solution['s'], cmap = 'inferno')
+def _(mpc_solution, one_shot_solution, variable_comparison_plot):
+    variable_comparison_plot(one_shot_solution, mpc_solution, 'b', cmap = 'coolwarm', center = 0)
     return
 
 

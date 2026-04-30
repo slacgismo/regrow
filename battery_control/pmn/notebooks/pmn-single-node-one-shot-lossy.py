@@ -15,7 +15,7 @@ def _():
     import numpy as np
     import pandas as pd
     sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
-    from controllers.one_shot import make_one_shot, load_one_shot_problem_data
+    from controllers.one_shot import make_one_shot, load_one_shot_problem_data, validate_one_shot_solution
     from controllers.data_utils import process_single_node_data
 
     data_path = str(pathlib.Path(__file__).parent.parent.parent / 'single_node_data.csv')
@@ -29,6 +29,7 @@ def _():
         pd,
         plt,
         process_single_node_data,
+        validate_one_shot_solution,
     )
 
 
@@ -97,7 +98,7 @@ def _(mo):
     alpha_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label='alpha', value=1.25, full_width=True)
     beta_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label='beta', value=0.5, full_width=True)
     lambda_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label='lambda', value=20.0, full_width=True)
-    gamma_exp_sldr = mo.ui.slider(start=-15, stop=2, step=0.5, label='gamma (log base 10)', value=-10, full_width=True)
+    gamma_exp_sldr = mo.ui.slider(start=-15, stop=2, step=0.5, label='gamma (log base 10)', value=-5, full_width=True)
     Q_sldr = mo.ui.number(start=0, stop=300, step=1, label='battery capacity [GWh]', value=4, full_width=True)
     bat_hours_sldr = mo.ui.number(start=0, stop=300, step=1, label='battery number of hours for full discharge', value=3, full_width=True)
     power_efficiency_sldr = mo.ui.number(start=0, stop=1,label='power efficiency', value=0.98, full_width=True)
@@ -117,15 +118,18 @@ def _(mo):
 
 
 @app.cell
-def _(G, R, form, l, load_one_shot_problem_data, one_shot_problem):
-    load_one_shot_problem_data(one_shot_problem, l, R, G, form.value['Q'], 1/form.value['bat_hours'] * form.value['Q'], form.value['alpha'], form.value['beta'], form.value['lambd'], 10 ** form.value['gamma_exp'], form.value['power_efficiency'], form.value['soc_loss'])
+def _(
+    G,
+    R,
+    form,
+    l,
+    load_one_shot_problem_data,
+    one_shot_problem,
+    validate_one_shot_solution,
+):
+    load_one_shot_problem_data(one_shot_problem, l, R, G, form.value['Q']/2, form.value['Q'], 1/form.value['bat_hours'] * form.value['Q'], form.value['alpha'], form.value['beta'], form.value['lambd'], 10 ** form.value['gamma_exp'], form.value['power_efficiency'], form.value['soc_loss'])
     one_shot_problem.solve(solver= 'clarabel')
-    return
-
-
-@app.cell
-def _(val):
-    val
+    print(f"solution satisfies dynamics: {validate_one_shot_solution(one_shot_problem)}")
     return
 
 

@@ -1,5 +1,9 @@
 import cvxpy as cp
-from controllers.constraints import battery_dynamics_contraints, conservation_of_power_constraints, validate_battery_dynamics
+from controllers.constraints import (
+    battery_dynamics_contraints,
+    conservation_of_power_constraints,
+    validate_battery_dynamics,
+)
 
 
 def make_one_shot(T, delta=1):
@@ -14,73 +18,89 @@ def make_one_shot(T, delta=1):
         problem: the cvxpy problem object
     """
     # battery and controller params
-    param_Q = cp.Parameter(nonneg=True, name='Q') # battery size
-    param_B = cp.Parameter(nonneg=True, name='B') # max power
-    param_alpha = cp.Parameter(nonneg=True, name='alpha') # dispatchabale gen linear cost
-    param_beta = cp.Parameter(nonneg=True, name='beta') # dispatachable gen quadratic cost
-    param_lambda = cp.Parameter(nonneg=True, name='lambda') # load shedding penalty paramater
-    param_gamma = cp.Parameter(nonneg=True, name='gamma') # battery degradation penalty term
-    param_charge_efficiency = cp.Parameter(nonneg=True, name='charge_efficiency')
-    param_discharge_efficiency_inv = cp.Parameter(nonneg=True, name='discharge_efficiency_inv') #use inverse to comply with DPP
-    param_soc_loss = cp.Parameter(nonneg=True, name='soc_loss_per_hour') # battery SOC loss rate per hour
-    param_q0 = cp.Parameter(nonneg=True, name='q0') #battery  starting SOC
+    param_Q = cp.Parameter(nonneg=True, name="Q")  # battery size
+    param_B = cp.Parameter(nonneg=True, name="B")  # max power
+    param_alpha = cp.Parameter(nonneg=True, name="alpha")  # dispatchabale gen linear cost
+    param_beta = cp.Parameter(nonneg=True, name="beta")  # dispatachable gen quadratic cost
+    param_lambda = cp.Parameter(nonneg=True, name="lambda")  # load shedding penalty paramater
+    param_mu = cp.Parameter(nonneg=True, name="mu")  # battery degradation penalty term
+    param_charge_efficiency = cp.Parameter(nonneg=True, name="charge_efficiency")
+    param_discharge_efficiency_inv = cp.Parameter(
+        nonneg=True, name="discharge_efficiency_inv"
+    )  # use inverse to comply with DPP
+    param_soc_loss = cp.Parameter(nonneg=True, name="soc_loss_per_hour")  # battery SOC loss rate per hour
+    param_q0 = cp.Parameter(nonneg=True, name="q0")  # battery  starting SOC
 
     # data parameters
-    l = cp.Parameter(T, name='l')
-    R = cp.Parameter(T, name='R')
-    G = cp.Parameter(nonneg = True, name = 'G')
+    l = cp.Parameter(T, name="l")
+    R = cp.Parameter(T, name="R")
+    G = cp.Parameter(nonneg=True, name="G")
 
     # variables
-    g = cp.Variable(T, nonneg=True, name='g') # dispatchable gen
-    r = cp.Variable(T, nonneg=True, name='r') # non-dispatachable gen
-    c = cp.Variable(T, nonneg=True, name='c') # curtailed non-dispatachable gen
-    b = cp.Variable(T, name='b') # battery power
-    b_out = cp.Variable(T, nonneg=True, name='b_out') # battery discharge
-    b_in = cp.Variable(T, nonneg=True, name='b_in') # battery charge
-    y = cp.Variable(T, nonneg=True, name='y') # battery dynamics helper
-    s = cp.Variable(T, nonneg=True, name='s') # load shedding
-    q = cp.Variable(T+1, nonneg=True, name='q') #battery SOC
+    g = cp.Variable(T, nonneg=True, name="g")  # dispatchable gen
+    r = cp.Variable(T, nonneg=True, name="r")  # non-dispatachable gen
+    c = cp.Variable(T, nonneg=True, name="c")  # curtailed non-dispatachable gen
+    b = cp.Variable(T, name="b")  # battery power
+    b_out = cp.Variable(T, nonneg=True, name="b_out")  # battery discharge
+    b_in = cp.Variable(T, nonneg=True, name="b_in")  # battery charge
+    y = cp.Variable(T, nonneg=True, name="y")  # battery dynamics helper
+    s = cp.Variable(T, nonneg=True, name="s")  # load shedding
+    q = cp.Variable(T + 1, nonneg=True, name="q")  # battery SOC
 
     # form problem
-    battery_dynamics_constraints = battery_dynamics_contraints(q=q, q0=param_q0, Q=param_Q, b=b, b_out=b_out, b_in=b_in, y=y , B=param_B, charge_efficiency=param_charge_efficiency, dishcarge_efficiency_inv=param_discharge_efficiency_inv, soc_loss=param_soc_loss, delta=delta)
+    battery_dynamics_constraints = battery_dynamics_contraints(
+        q=q,
+        q0=param_q0,
+        Q=param_Q,
+        b=b,
+        b_out=b_out,
+        b_in=b_in,
+        y=y,
+        B=param_B,
+        charge_efficiency=param_charge_efficiency,
+        dishcarge_efficiency_inv=param_discharge_efficiency_inv,
+        soc_loss=param_soc_loss,
+        delta=delta,
+    )
     power_constraints = conservation_of_power_constraints(g=g, G=G, r=r, R=R, b=b, l=l, s=s, c=c)
     constraints = battery_dynamics_constraints + power_constraints
-    objective = 1/T*cp.sum(param_lambda * s + param_alpha * g + param_beta * cp.power(g, 2) + param_gamma * cp.abs(b))
+    objective = 1 / T * cp.sum(param_lambda * s + param_alpha * g + param_beta * cp.power(g, 2) + param_mu * cp.abs(b))
     problem = cp.Problem(cp.Minimize(objective), constraints)
     return problem
 
-def load_one_shot_problem_data(problem, l, R, G, q0, Q, B, alpha, beta, lamb, gamma, efficiency, soc_loss):
+
+def load_one_shot_problem_data(problem, l, R, G, q0, Q, B, alpha, beta, lamb, mu, efficiency, soc_loss):
     pd = problem.param_dict
-    pd['l'].value = l
-    pd['R'].value = R
-    pd['G'].value = G
-    pd['q0'].value = q0
-    pd['Q'].value = Q
-    pd['B'].value = B
-    pd['alpha'].value = alpha
-    pd['beta'].value = beta
-    pd['lambda'].value = lamb
-    pd['gamma'].value = gamma
-    pd['charge_efficiency'].value = efficiency
-    pd['discharge_efficiency_inv'].value = 1 / efficiency #assume discharge efficiency same as charge efficiency
-    pd['soc_loss_per_hour'].value = soc_loss
+    pd["l"].value = l
+    pd["R"].value = R
+    pd["G"].value = G
+    pd["q0"].value = q0
+    pd["Q"].value = Q
+    pd["B"].value = B
+    pd["alpha"].value = alpha
+    pd["beta"].value = beta
+    pd["lambda"].value = lamb
+    pd["mu"].value = mu
+    pd["charge_efficiency"].value = efficiency
+    pd["discharge_efficiency_inv"].value = 1 / efficiency  # assume discharge efficiency same as charge efficiency
+    pd["soc_loss_per_hour"].value = soc_loss
 
 
 def validate_one_shot_solution(problem, delta=1):
     vd = problem.var_dict
     pd = problem.param_dict
     valid = validate_battery_dynamics(
-        q=vd['q'].value,
-        b=vd['b'].value,
-        b_out=vd['b_out'].value,
-        b_in=vd['b_in'].value,
-        y=vd['y'].value,
-        Q=pd['Q'].value,
-        B=pd['B'].value,
-        q0=pd['q0'].value,
-        charge_efficiency=pd['charge_efficiency'].value,
-        discharge_efficiency_inv=pd['discharge_efficiency_inv'].value,
-        soc_loss=pd['soc_loss_per_hour'].value,
+        q=vd["q"].value,
+        b=vd["b"].value,
+        b_out=vd["b_out"].value,
+        b_in=vd["b_in"].value,
+        y=vd["y"].value,
+        Q=pd["Q"].value,
+        B=pd["B"].value,
+        q0=pd["q0"].value,
+        charge_efficiency=pd["charge_efficiency"].value,
+        discharge_efficiency_inv=pd["discharge_efficiency_inv"].value,
+        soc_loss=pd["soc_loss_per_hour"].value,
         delta=delta,
     )
     return valid

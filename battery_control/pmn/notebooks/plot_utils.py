@@ -1,9 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 
-def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency):
+def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None):
     fig, ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
+    if supertitle is not None:
+        fig.suptitle(supertitle)
 
     q = solution["q"][s]
     charged = np.isclose(q, Q, atol=1e-3)
@@ -49,5 +52,49 @@ def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency):
     ax[4].plot(tidx[s][discharged], sv[discharged], ls="none", marker=".", color="orange")
     ax[4].set_title(f"curtailed load, total = {np.sum(sv):.2f} GWh")
 
+    plt.tight_layout()
+    return fig
+
+
+def plot_heatmap(tidx, values, title=None, cmap=None, center=None):
+    _tidx = pd.DatetimeIndex(tidx)
+    pivot = pd.DataFrame(
+        {
+            "value": values,
+            "time": _tidx.time,
+            "date": _tidx.date,
+        }
+    ).pivot(index="time", columns="date", values="value")
+
+    n_slots = len(pivot.index)
+    fig, ax = plt.subplots(figsize=(14, 5))
+    vmin = vmax = None
+    if center is not None:
+        half = max(abs(pivot.values.max() - center), abs(pivot.values.min() - center))
+        vmin, vmax = center - half, center + half
+    n_days = len(pivot.columns)
+    mesh = ax.pcolormesh(
+        np.arange(n_days + 1),
+        np.arange(n_slots + 1),
+        pivot.values,
+        shading="flat",
+        cmap=cmap,
+        vmin=vmin,
+        vmax=vmax,
+    )
+    ax.invert_yaxis()
+    fig.colorbar(mesh, ax=ax)
+    from datetime import datetime as _dt
+    slot_minutes = (_dt.combine(_dt.min, pivot.index[1]) - _dt.combine(_dt.min, pivot.index[0])).seconds // 60
+    tick_every_y = max(1, 180 // slot_minutes)
+    ytick_idx = np.arange(0, n_slots, tick_every_y)
+    ax.set_yticks(ytick_idx + 0.5, labels=[str(pivot.index[i]) for i in ytick_idx])
+    tick_every = max(1, n_days // 20)
+    tick_idx = np.arange(0, n_days, tick_every)
+    ax.set_xticks(tick_idx + 0.5, labels=[str(pivot.columns[i]) for i in tick_idx], rotation=90)
+    ax.set_ylabel("time of day")
+    ax.set_xlabel("date")
+    if title is not None:
+        ax.set_title(title)
     plt.tight_layout()
     return fig

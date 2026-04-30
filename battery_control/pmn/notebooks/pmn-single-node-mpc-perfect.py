@@ -20,7 +20,7 @@ def _():
     from controllers.mpc_perfect import run_mpc_perfect
     from controllers.constraints import validate_solution_dynamics
     from controllers.data_utils import process_single_node_data
-    from plot_utils import plot_solution
+    from plot_utils import plot_solution, plot_heatmap
 
     data_path = str(pathlib.Path(__file__).parent.parent.parent / "single_node_data.csv")
     return (
@@ -30,6 +30,7 @@ def _():
         mo,
         np,
         pd,
+        plot_heatmap,
         plot_solution,
         plt,
         process_single_node_data,
@@ -247,13 +248,15 @@ def _(
         alpha=form.value["alpha"],
         beta=form.value["beta"],
         efficiency=form.value["power_efficiency"],
+        supertitle = "One Shot solution"
     )
     plt.show()
     return (s,)
 
 
 @app.cell
-def _(form, mpc_solution, plot_solution, plt, s, tidx):
+def _(form, form_mpc, mpc_solution, plot_solution, plt, s, tidx):
+    _H = form_mpc.value['H']
     fig_mpc = plot_solution(
         mpc_solution,
         tidx=tidx,
@@ -263,9 +266,22 @@ def _(form, mpc_solution, plot_solution, plt, s, tidx):
         alpha=form.value["alpha"],
         beta=form.value["beta"],
         efficiency=form.value["power_efficiency"],
+        supertitle=f'MPC solution, H={_H}'
     )
     plt.show()
 
+    return
+
+
+@app.cell
+def _(mpc_solution, plot_heatmap, tidx):
+    plot_heatmap(tidx, mpc_solution['s'], cmap = 'inferno')
+    return
+
+
+@app.cell
+def _(one_shot_solution, plot_heatmap, tidx):
+    plot_heatmap(tidx, one_shot_solution['s'], cmap = 'inferno')
     return
 
 

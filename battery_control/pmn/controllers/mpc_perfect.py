@@ -1,5 +1,6 @@
 import cvxpy as cp
 import numpy as np
+from tqdm import tqdm
 
 from .constraints import (
     battery_dynamics_contraints,
@@ -116,7 +117,7 @@ def run_mpc_perfect(
         q_target=q_target,
         delta=delta,
     )
-    for t in range(T):
+    for t in tqdm(range(T)):
         h = min(H, T - t)
 
         # make a new subproblem to accomodate shorter horizon

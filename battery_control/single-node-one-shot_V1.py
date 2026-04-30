@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.14.10"
+__generated_with = "0.23.1"
 app = marimo.App(width="medium")
 
 
@@ -11,6 +11,7 @@ def _():
     import pandas as pd
     import numpy as np
     import matplotlib.pyplot as plt
+
     return cp, mo, np, pd, plt
 
 
@@ -44,6 +45,7 @@ def _(np, pd):
             print(f"average shortfall = {np.mean(shortfall):.2f} GW")
             print(f"maximum fossil generation = {np.max(G):.2f} GW")
         return l, R, shortfall, df.index, daily_df
+
     return (process_single_node_data,)
 
 
@@ -79,6 +81,7 @@ def _(cp):
         objective = 1/T*(param_gamma*cp.sum(c)+param_lambda*cp.sum(s)+param_alpha*cp.sum(u)+param_beta*cp.sum_squares(u))
         problem = cp.Problem(cp.Minimize(objective), constraints)
         return problem
+
     return (make_one_shot,)
 
 
@@ -123,6 +126,7 @@ def _(np):
             's': s
         }
         return return_dict
+
     return (naive_control_utility_priority,)
 
 
@@ -167,6 +171,7 @@ def _(np):
             's': s
         }
         return return_dict
+
     return (naive_control_battery_priority,)
 
 
@@ -266,31 +271,20 @@ def _(l, mo):
     show_utility_priority = mo.ui.switch(label='show utility priority controller')
     mo.output.append(mo.hstack([plot_start,plot_length]))
     mo.output.append(mo.hstack([show_batt_power_bounds, show_cap_contrained, show_battery_priority, show_utility_priority]))
-    return (
-        plot_length,
-        plot_start,
-        show_batt_power_bounds,
-        show_battery_priority,
-        show_cap_contrained,
-        show_utility_priority,
-    )
+    return plot_length, plot_start, show_batt_power_bounds, show_cap_contrained
 
 
 @app.cell
 def _(
     am_solving,
     form,
-    naive_bp,
-    naive_up,
     np,
     plot_length,
     plot_start,
     plt,
     problem,
     show_batt_power_bounds,
-    show_battery_priority,
     show_cap_contrained,
-    show_utility_priority,
     tidx,
 ):
     am_solving
@@ -323,29 +317,13 @@ def _(
         _ax[3].plot(tidx[_s][_charged], problem.var_dict['c'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[3].plot(tidx[_s][_discharged], problem.var_dict['c'].value[_s][_discharged], ls='none', marker='.', color='orange')
     # _ax[3].set_ylim(-0.1 * np.max(problem.var_dict['c'].value), 1.1*np.max(problem.var_dict['c'].value))
-    ax3_title = f'curtailed renewable power, total = {np.sum(problem.var_dict['c'].value[_s]):.2f}'
+    ax3_title = f'curtailed renewable power'
     _ax[4].plot(tidx[_s], problem.var_dict['s'].value[_s])
     if show_cap_contrained.value:
         _ax[4].plot(tidx[_s][_charged], problem.var_dict['s'].value[_s][_charged], ls='none', marker='.', color='blue')
         _ax[4].plot(tidx[_s][_discharged], problem.var_dict['s'].value[_s][_discharged], ls='none', marker='.', color='orange')
     # _ax[4].set_ylim(-0.1 * np.max(problem.var_dict['s'].value), 1.1*np.max(problem.var_dict['s'].value))
-    ax4_title = f'curtailed load, total = {np.sum(problem.var_dict['s'].value[_s]):.2f}'
-    if show_battery_priority.value:
-        _ax[0].plot(tidx[_s], naive_bp['q'][_s], linewidth=0.75)
-        _ax[1].plot(tidx[_s], naive_bp['b'][_s], linewidth=0.75)
-        _ax[2].plot(tidx[_s], naive_bp['u'][_s], linewidth=0.75)
-        _ax[3].plot(tidx[_s], naive_bp['c'][_s], linewidth=0.75)
-        _ax[4].plot(tidx[_s], naive_bp['s'][_s], linewidth=0.75)
-        ax3_title += f', {np.sum(naive_bp['c'][_s]):.2f}'
-        ax4_title += f', {np.sum(naive_bp['s'][_s]):.2f}'
-    if show_utility_priority.value:
-        _ax[0].plot(tidx[_s], naive_up['q'][_s], linewidth=0.75)
-        _ax[1].plot(tidx[_s], naive_up['b'][_s], linewidth=0.75)
-        _ax[2].plot(tidx[_s], naive_up['u'][_s], linewidth=0.75)
-        _ax[3].plot(tidx[_s], naive_up['c'][_s], linewidth=0.75)
-        _ax[4].plot(tidx[_s], naive_up['s'][_s], linewidth=0.75)
-        ax3_title += f', {np.sum(naive_up['c'][_s]):.2f}'
-        ax4_title += f', {np.sum(naive_up['s'][_s]):.2f}'
+    ax4_title = f'curtailed load'
     _ax[3].set_title(ax3_title + ' GWh')
     _ax[4].set_title(ax4_title + ' GWh')
     plt.tight_layout()
@@ -398,7 +376,7 @@ def _(
     problem.solve(verbose=False, solver='CLARABEL')
     naive_up = naive_control_utility_priority(l, R, G, form.value['Q'])
     naive_bp = naive_control_battery_priority(l, R, G, form.value['Q'])
-    return am_solving, naive_bp, naive_up
+    return (am_solving,)
 
 
 @app.cell

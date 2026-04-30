@@ -104,18 +104,11 @@ def _(
 
 
 @app.cell
-def _(l, make_one_shot):
-    T = len(l)
-    one_shot_problem = make_one_shot(T, delta=1)
-    return (one_shot_problem,)
-
-
-@app.cell
 def _(mo):
     alpha_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label="alpha", value=1.25, full_width=True)
     beta_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label="beta", value=0.5, full_width=True)
     lambda_sldr = mo.ui.slider(start=0, stop=50, step=0.25, label="lambda", value=20.0, full_width=True)
-    mu_exp_sldr = mo.ui.slider(start=-15, stop=2, step=0.5, label="mu (log base 10)", value=-5, full_width=True)
+    mu_exp_sldr = mo.ui.slider(start=-15, stop=2, step=0.5, label="mu (log base 10)", value=-3, full_width=True)
     Q_sldr = mo.ui.number(start=0, stop=300, step=1, label="battery capacity [GWh]", value=4, full_width=True)
     bat_hours_sldr = mo.ui.number(
         start=0, stop=300, step=1, label="battery number of hours for full discharge", value=3, full_width=True
@@ -143,9 +136,11 @@ def _(
     form,
     l,
     load_one_shot_problem_data,
-    one_shot_problem,
+    make_one_shot,
     validate_solution_dynamics,
 ):
+    T = len(l)
+    one_shot_problem = make_one_shot(T, delta=1)
     load_one_shot_problem_data(
         one_shot_problem,
         l,
@@ -163,15 +158,24 @@ def _(
     )
     one_shot_problem.solve(solver="clarabel")
     print(
-        f"solution satisfies dynamics: {validate_solution_dynamics(problem = one_shot_problem, B = 1/form.value['bat_hours'] * form.value['Q'], Q = form.value['Q'], efficiency =form.value['power_efficiency'], soc_loss = form.value['soc_loss'])}"
+        f"solution satisfies dynamics: {validate_solution_dynamics(problem=one_shot_problem, B=1/form.value['bat_hours'] * form.value['Q'], Q=form.value['Q'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'])}"
     )
-    return
+    return (one_shot_problem,)
 
 
 @app.cell
-def _(l, mo):
-    plot_start = mo.ui.slider(start=0, stop=len(l), label="plot start", full_width=True, value=0)
-    plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label="plot length", value=len(l), full_width=True)
+def _(add_abnormal_event, event_end_input, event_start_input, l, mo, pd, tidx):
+    if add_abnormal_event.value:
+        _event_start = int(tidx.searchsorted(pd.Timestamp(event_start_input.value)))
+        _event_end = int(tidx.searchsorted(pd.Timestamp(event_end_input.value)))
+        _event_duration = _event_end - _event_start
+        _default_length = 2 * _event_duration
+        _default_start = max(0, _event_start - _event_duration // 2)
+    else:
+        _default_start = 0
+        _default_length = 24 * 7
+    plot_start = mo.ui.slider(start=0, stop=len(l), label="plot start", full_width=True, value=_default_start)
+    plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label="plot length", value=_default_length, full_width=True)
     show_batt_power_bounds = mo.ui.switch(label="show battery power bounds")
     show_cap_contrained = mo.ui.switch(label="show active capacity limits", value=True)
     mo.output.append(mo.hstack([plot_start, plot_length]))
@@ -199,7 +203,12 @@ def _(R, l, np, plot_length, plot_start, plt, shortfall, tidx):
 def _(cp, form, np, one_shot_problem, plot_length, plot_start, plt, tidx):
     _s = np.s_[int(plot_start.value) : int(plot_start.value + plot_length.value)]
     _fig, _ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
-    _ax[0].plot(tidx[_s], one_shot_problem.var_dict["q"].value[_s])
+    _q = one_shot_problem.var_dict["q"].value[_s]
+    _charged = np.isclose(_q, form.value["Q"], atol=1e-2)
+    _discharged = np.isclose(_q, 0, atol=1e-2)
+    _ax[0].plot(tidx[_s], _q)
+    _ax[0].plot(tidx[_s][_charged], _q[_charged], ls="none", marker=".", color="blue")
+    _ax[0].plot(tidx[_s][_discharged], _q[_discharged], ls="none", marker=".", color="orange")
     _ax[0].axhline(0, color="red", ls="--", linewidth=0.5)
     _ax[0].axhline(form.value["Q"], color="red", ls="--", linewidth=0.5)
     _ax[0].axhline(0.5 * form.value["Q"], color="orange", ls=":", linewidth=0.5)
@@ -207,23 +216,34 @@ def _(cp, form, np, one_shot_problem, plot_length, plot_start, plt, tidx):
     _ax[1].plot(tidx[_s], one_shot_problem.var_dict["b"].value[_s])
     _ax[1].plot(tidx[_s], one_shot_problem.var_dict["b_out"].value[_s], linewidth=0.5)
     _ax[1].plot(tidx[_s], -one_shot_problem.var_dict["b_in"].value[_s], linewidth=0.5)
+    _ax[1].axhline(1 / form.value["bat_hours"] * form.value["Q"], color="red", ls="--", linewidth=0.5)
+    _ax[1].axhline(-1 / form.value["bat_hours"] * form.value["Q"], color="red", ls="--", linewidth=0.5)
     _ax[1].axhline(0, color="orange", ls=":", linewidth=0.5)
     dumped_power = np.max(
         [np.abs(one_shot_problem.var_dict["b_out"].value[_s]), np.abs(one_shot_problem.var_dict["b_in"].value[_s])],
         axis=0,
     ) - np.abs(one_shot_problem.var_dict["b"].value[_s])
     _ax[1].set_title(f"battery power, dumped = {(1-0.98**2) * np.sum(dumped_power):.2f} GWh")
-    _ax[2].plot(tidx[_s], one_shot_problem.var_dict["g"].value[_s])
+    _g = one_shot_problem.var_dict["g"].value[_s]
+    _ax[2].plot(tidx[_s], _g)
+    _ax[2].plot(tidx[_s][_charged], _g[_charged], ls="none", marker=".", color="blue")
+    _ax[2].plot(tidx[_s][_discharged], _g[_discharged], ls="none", marker=".", color="orange")
     _ax[2].set_ylim(-0.1, 1.1)
     utility_cost = cp.sum(
         one_shot_problem.param_dict["alpha"] * one_shot_problem.var_dict["g"][_s]
         + one_shot_problem.param_dict["beta"] * cp.power(one_shot_problem.var_dict["g"][_s], 2)
     ).value
     _ax[2].set_title(f"utility power, cost = {utility_cost:.2f}")
-    _ax[3].plot(tidx[_s], one_shot_problem.var_dict["c"].value[_s])
-    ax3_title = f"curtailed renewable power, total = {np.sum(one_shot_problem.var_dict['c'].value[_s]):.2f}"
-    _ax[4].plot(tidx[_s], one_shot_problem.var_dict["s"].value[_s])
-    ax4_title = f"curtailed load, total = {np.sum(one_shot_problem.var_dict['s'].value[_s]):.2f}"
+    _c = one_shot_problem.var_dict["c"].value[_s]
+    _ax[3].plot(tidx[_s], _c)
+    _ax[3].plot(tidx[_s][_charged], _c[_charged], ls="none", marker=".", color="blue")
+    _ax[3].plot(tidx[_s][_discharged], _c[_discharged], ls="none", marker=".", color="orange")
+    ax3_title = f"curtailed renewable power, total = {np.sum(_c):.2f}"
+    _sv = one_shot_problem.var_dict["s"].value[_s]
+    _ax[4].plot(tidx[_s], _sv)
+    _ax[4].plot(tidx[_s][_charged], _sv[_charged], ls="none", marker=".", color="blue")
+    _ax[4].plot(tidx[_s][_discharged], _sv[_discharged], ls="none", marker=".", color="orange")
+    ax4_title = f"curtailed load, total = {np.sum(_sv):.2f}"
     _ax[3].set_title(ax3_title + " GWh")
     _ax[4].set_title(ax4_title + " GWh")
     plt.tight_layout()

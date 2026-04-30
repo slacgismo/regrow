@@ -2,7 +2,6 @@ import cvxpy as cp
 from controllers.constraints import (
     battery_dynamics_contraints,
     conservation_of_power_constraints,
-    validate_battery_dynamics,
 )
 
 
@@ -84,23 +83,3 @@ def load_one_shot_problem_data(problem, l, R, G, q0, Q, B, alpha, beta, lamb, mu
     pd["charge_efficiency"].value = efficiency
     pd["discharge_efficiency_inv"].value = 1 / efficiency  # assume discharge efficiency same as charge efficiency
     pd["soc_loss_per_hour"].value = soc_loss
-
-
-def validate_one_shot_solution(problem, delta=1):
-    vd = problem.var_dict
-    pd = problem.param_dict
-    valid = validate_battery_dynamics(
-        q=vd["q"].value,
-        b=vd["b"].value,
-        b_out=vd["b_out"].value,
-        b_in=vd["b_in"].value,
-        y=vd["y"].value,
-        Q=pd["Q"].value,
-        B=pd["B"].value,
-        q0=pd["q0"].value,
-        charge_efficiency=pd["charge_efficiency"].value,
-        discharge_efficiency_inv=pd["discharge_efficiency_inv"].value,
-        soc_loss=pd["soc_loss_per_hour"].value,
-        delta=delta,
-    )
-    return valid

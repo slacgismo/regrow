@@ -1,6 +1,11 @@
 import cvxpy as cp
 import numpy as np
-from constraints import battery_dynamics_contraints, conservation_of_power_constraints
+from constraints import (
+    battery_dynamics_contraints,
+    conservation_of_power_constraints,
+    validate_battery_dynamics,
+    validate_solution_dynamics,
+)
 
 
 def _make_mpc_subproblem(H, delta):
@@ -62,7 +67,7 @@ def _make_mpc_subproblem(H, delta):
     return problem
 
 
-def _set_fixed_mpc_subproblem_params(problem, q_target, Q, B, mu, alpha, beta, lamb, gamma, efficiency, soc_loss):
+def _set_fixed_mpc_subproblem_params(problem, q_target, Q, B, G, mu, alpha, beta, lamb, gamma, efficiency, soc_loss):
     pd = problem.param_dict
     pd["Q"].value = Q
     pd["B"].value = B
@@ -74,7 +79,8 @@ def _set_fixed_mpc_subproblem_params(problem, q_target, Q, B, mu, alpha, beta, l
     pd["charge_efficiency"].value = efficiency
     pd["discharge_efficiency_inv"].value = 1 / efficiency  # assume discharge efficiency same as charge efficiency
     pd["soc_loss_per_hour"].value = soc_loss
-    pd["q_target"] = q_target
+    pd["q_target"].value = q_target
+    pd["G"].value = G
 
 
 def _set_mpc_subproblem_data_params(problem, t, h, l, R, q0):
@@ -99,12 +105,14 @@ def run_mpc_perfect(
         alpha: dispatchable gen linear cost
         beta: dispatchable gen quadratic cost
         lamb: load shedding penalty
-        gamma: battery degradation penalty
-        power_efficiency: charge/discharge efficiency
+        mu: battery degradation penalty
+        q_target: target_soc at end of horizon
+        gamma: penalty strength for deviating from end of horizon soc target
+        efficiency: charge/discharge efficiency
         soc_loss: battery SOC loss rate per hour
         H: number of timesteps in horizon
-        delta: timestep duration in hours
-        solver: solver to use
+        delta: hours per timestep
+        solver: solver to call
 
     returns:
         dict of implemented variable trajectories
@@ -128,6 +136,7 @@ def run_mpc_perfect(
         q_target=q_target,
         Q=Q,
         B=B,
+        G=G,
         mu=mu,
         alpha=alpha,
         beta=beta,
@@ -142,12 +151,13 @@ def run_mpc_perfect(
 
         # make a new subproblem to accomodate shorter horizon
         if h < H:
-            mpc_subproblem = _make_mpc_subproblem(h, G, delta)
+            mpc_subproblem = _make_mpc_subproblem(h, delta)
             _set_fixed_mpc_subproblem_params(
                 problem=mpc_subproblem,
                 q_target=q_target,
                 Q=Q,
                 B=B,
+                G=G,
                 mu=mu,
                 alpha=alpha,
                 beta=beta,
@@ -161,6 +171,9 @@ def run_mpc_perfect(
         q0 = q_traj[t]
         _set_mpc_subproblem_data_params(problem=mpc_subproblem, t=t, h=h, l=l, R=R, q0=q0)
         mpc_subproblem.solve(solver=solver, warm_start=True)
+        solution_valid = validate_solution_dynamics(mpc_subproblem, delta=delta)
+        if not solution_valid:
+            raise ValueError(f"MPC subproblem solution at timestep t={t} has invalid dynamics")
 
         # implement the actions prescribed for the immediate time step
         subproblem_solution = mpc_subproblem.var_dict
@@ -174,7 +187,7 @@ def run_mpc_perfect(
         y_traj[t] = subproblem_solution["y"].value[0]
         q_traj[t + 1] = subproblem_solution["q"].value[1]
 
-    return {
+    solution = {
         "g": g_traj,
         "r": r_traj,
         "c": c_traj,
@@ -185,3 +198,20 @@ def run_mpc_perfect(
         "y": y_traj,
         "q": q_traj,
     }
+    mpc_trajectory_valid = validate_battery_dynamics(
+        q=q_traj,
+        b=b_traj,
+        b_out=b_out_traj,
+        b_in=b_in_traj,
+        y=y_traj,
+        Q=Q,
+        B=B,
+        q0=q_init,
+        charge_efficiency=efficiency,
+        discharge_efficiency_inv=1 / efficiency,
+        soc_loss=soc_loss,
+        delta=delta,
+    )
+    if not mpc_trajectory_valid:
+        raise ValueError("Implemented MPC trajectory has invalid dynamics")
+    return solution

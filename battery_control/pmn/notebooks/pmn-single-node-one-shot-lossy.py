@@ -21,18 +21,7 @@ def _():
     from controllers.data_utils import process_single_node_data
 
     data_path = str(pathlib.Path(__file__).parent.parent.parent / "single_node_data.csv")
-    return (
-        cp,
-        data_path,
-        load_one_shot_problem_data,
-        make_one_shot,
-        mo,
-        np,
-        pd,
-        plt,
-        process_single_node_data,
-        validate_solution_dynamics,
-    )
+    return cp, data_path, mo, np, pd, plt, process_single_node_data
 
 
 @app.cell
@@ -100,7 +89,7 @@ def _(
         verbose=True,
     )
     daily_df.plot(y=["load[MW]", "pv[MW]", "wind[MW]"])
-    return G, R, l, shortfall, tidx
+    return R, l, shortfall, tidx
 
 
 @app.cell
@@ -130,37 +119,9 @@ def _(mo):
 
 
 @app.cell
-def _(
-    G,
-    R,
-    form,
-    l,
-    load_one_shot_problem_data,
-    make_one_shot,
-    validate_solution_dynamics,
-):
-    T = len(l)
-    one_shot_problem = make_one_shot(T, delta=1)
-    load_one_shot_problem_data(
-        one_shot_problem,
-        l,
-        R,
-        G,
-        form.value["Q"] / 2,
-        form.value["Q"],
-        1 / form.value["bat_hours"] * form.value["Q"],
-        form.value["alpha"],
-        form.value["beta"],
-        form.value["lambd"],
-        10 ** form.value["mu_exp"],
-        form.value["power_efficiency"],
-        form.value["soc_loss"],
-    )
-    one_shot_problem.solve(solver="clarabel")
-    print(
-        f"solution satisfies dynamics: {validate_solution_dynamics(problem=one_shot_problem, B=1/form.value['bat_hours'] * form.value['Q'], Q=form.value['Q'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'])}"
-    )
-    return (one_shot_problem,)
+def _(c):
+    c
+    return
 
 
 @app.cell
@@ -176,8 +137,6 @@ def _(add_abnormal_event, event_end_input, event_start_input, l, mo, pd, tidx):
         _default_length = 24 * 7
     plot_start = mo.ui.slider(start=0, stop=len(l), label="plot start", full_width=True, value=_default_start)
     plot_length = mo.ui.slider(start=0, stop=len(l), step=1, label="plot length", value=_default_length, full_width=True)
-    show_batt_power_bounds = mo.ui.switch(label="show battery power bounds")
-    show_cap_contrained = mo.ui.switch(label="show active capacity limits", value=True)
     mo.output.append(mo.hstack([plot_start, plot_length]))
     return plot_length, plot_start
 
@@ -204,8 +163,8 @@ def _(cp, form, np, one_shot_problem, plot_length, plot_start, plt, tidx):
     _s = np.s_[int(plot_start.value) : int(plot_start.value + plot_length.value)]
     _fig, _ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
     _q = one_shot_problem.var_dict["q"].value[_s]
-    _charged = np.isclose(_q, form.value["Q"], atol=1e-2)
-    _discharged = np.isclose(_q, 0, atol=1e-2)
+    _charged = np.isclose(_q, form.value["Q"], atol=1e-3)
+    _discharged = np.isclose(_q, 0, atol=1e-3)
     _ax[0].plot(tidx[_s], _q)
     _ax[0].plot(tidx[_s][_charged], _q[_charged], ls="none", marker=".", color="blue")
     _ax[0].plot(tidx[_s][_discharged], _q[_discharged], ls="none", marker=".", color="orange")

@@ -111,7 +111,7 @@ def run_mpc_perfect(
         efficiency: charge/discharge efficiency
         soc_loss: battery SOC loss rate per hour
         H: number of timesteps in horizon
-        delta: hours per timestep
+        delta: timesteps in an hour
         solver: solver to call
 
     returns:

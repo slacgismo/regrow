@@ -1,5 +1,6 @@
 import cvxpy as cp
-from controllers.constraints import (
+
+from .constraints import (
     battery_dynamics_contraints,
     conservation_of_power_constraints,
 )

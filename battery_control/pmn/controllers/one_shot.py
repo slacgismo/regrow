@@ -27,7 +27,7 @@ def make_one_shot(T, delta=1):
     param_charge_efficiency = cp.Parameter(nonneg=True, name="charge_efficiency")
     param_discharge_efficiency_inv = cp.Parameter(
         nonneg=True, name="discharge_efficiency_inv"
-    )  # use inverse to comply with DPP
+    )  # inverse to comply with DPP
     param_soc_loss = cp.Parameter(nonneg=True, name="soc_loss_per_hour")  # battery SOC loss rate per hour
     param_q0 = cp.Parameter(nonneg=True, name="q0")  # battery  starting SOC
 
@@ -58,7 +58,7 @@ def make_one_shot(T, delta=1):
         y=y,
         B=param_B,
         charge_efficiency=param_charge_efficiency,
-        dishcarge_efficiency_inv=param_discharge_efficiency_inv,
+        discharge_efficiency_inv=param_discharge_efficiency_inv,
         soc_loss=param_soc_loss,
         delta=delta,
     )

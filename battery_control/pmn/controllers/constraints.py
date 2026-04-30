@@ -3,7 +3,7 @@ import numpy as np
 
 
 def battery_dynamics_contraints(
-    q, q0, Q, b, b_out, b_in, y, B, charge_efficiency, dishcarge_efficiency_inv, soc_loss, delta
+    q, q0, Q, b, b_out, b_in, y, B, charge_efficiency, discharge_efficiency_inv, soc_loss, delta
 ):
     constraints = [
         b == b_out - b_in,
@@ -14,7 +14,7 @@ def battery_dynamics_contraints(
         q[0] == q0,
         q <= Q,
         q[1:]
-        == q[:-1] * (1 - soc_loss * delta) + delta * (charge_efficiency * b_in - dishcarge_efficiency_inv * b_out),
+        == q[:-1] * (1 - soc_loss * delta) + delta * (charge_efficiency * b_in - discharge_efficiency_inv * b_out),
     ]
     return constraints
 
@@ -24,21 +24,20 @@ def conservation_of_power_constraints(g, G, r, R, b, l, s, c):
     return constraints
 
 
-def validate_solution_dynamics(problem, delta=1):
+def validate_solution_dynamics(problem, Q, B, efficiency, soc_loss, delta=1):
     vd = problem.var_dict
-    pd = problem.param_dict
     valid = validate_battery_dynamics(
         q=vd["q"].value,
         b=vd["b"].value,
         b_out=vd["b_out"].value,
         b_in=vd["b_in"].value,
         y=vd["y"].value,
-        Q=pd["Q"].value,
-        B=pd["B"].value,
-        q0=pd["q0"].value,
-        charge_efficiency=pd["charge_efficiency"].value,
-        discharge_efficiency_inv=pd["discharge_efficiency_inv"].value,
-        soc_loss=pd["soc_loss_per_hour"].value,
+        Q=Q,
+        B=B,
+        q0=problem.param_dict["q0"].value,
+        charge_efficiency=efficiency,
+        discharge_efficiency_inv=1 / efficiency,
+        soc_loss=soc_loss,
         delta=delta,
     )
     return valid

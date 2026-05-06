@@ -8,6 +8,7 @@ from .constraints import (
     validate_battery_dynamics,
     validate_solution_dynamics,
 )
+from .metrics import core_objective
 
 
 def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, soc_loss, q_target, delta):
@@ -48,9 +49,8 @@ def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, s
     )
     power_constraints = conservation_of_power_constraints(g=g, G=G, r=r, R=R, b=b, l=l, s=s, c=c)
     constraints = battery_dynamics_constraints + power_constraints
-    objective = 1 / H * cp.sum(lamb * s + alpha * g + beta * cp.power(g, 2) + mu * cp.abs(b)) + gamma * cp.square(
-        q[-1] - q_target
-    )
+    core_obj = core_objective(s=s, g=g, b=b, lamb=lamb, alpha=alpha, beta=beta, mu=mu)
+    objective = core_obj + gamma * cp.square(q[-1] - q_target)
     problem = cp.Problem(cp.Minimize(objective), constraints)
     return problem
 

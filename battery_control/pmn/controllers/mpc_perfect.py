@@ -77,9 +77,9 @@ def run_mpc_perfect(
         alpha: dispatchable gen linear cost
         beta: dispatchable gen quadratic cost
         lamb: load shedding penalty
+        gamma: penalty strength for deviating from end of horizon soc target
         mu: battery degradation penalty
         q_target: target_soc at end of horizon
-        gamma: penalty strength for deviating from end of horizon soc target
         efficiency: charge/discharge efficiency
         soc_loss: battery SOC loss rate per hour
         H: number of timesteps in horizon

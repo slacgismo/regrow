@@ -178,7 +178,7 @@ def _(
 def _(l, mo):
     H_sldr = mo.ui.number(start=1, stop=len(l), step=1, label="MPC horizon H (in time steps)", value=24, full_width=True)
     q_target_frac_sldr = mo.ui.slider(start=0.0, stop=1.0, step=0.05, label="q_target (fraction of Q)", value=1.0, full_width=True)
-    gamma_sldr = mo.ui.slider(start=0.0, stop=10.0, step=0.1, label="gamma", value=0.0, full_width=True)
+    gamma_sldr = mo.ui.slider(start=-5, stop=5, step=0.1, label="gamma_exp", value=0.0, full_width=True)
     form_mpc = mo.md("""{H}\n{q_target_frac}\n{gamma}""").batch(
         H=H_sldr,
         q_target_frac=q_target_frac_sldr,
@@ -199,7 +199,7 @@ def _(G, R, form, form_mpc, l, run_mpc_perfect):
         alpha=form.value["alpha"],
         beta=form.value["beta"],
         lamb=form.value["lambd"],
-        gamma=form_mpc.value["gamma"],
+        gamma=10**form_mpc.value["gamma_exp"],
         mu=10 ** form.value["mu_exp"],
         q_init=form.value["Q"] / 2,
         q_target=form_mpc.value["q_target_frac"] * form.value["Q"],

@@ -19,9 +19,11 @@ def process_single_node_data(
     df = df[~df.index.duplicated(keep='first')]
     df['load[MW]'] = df['load[MW]'].mask(df['load[MW]'] < 100).interpolate(limit_direction='both').ffill().bfill()
     df = df.loc[data_start:data_end]
+    event_mask = None
     if add_event:
         df.loc[event_start:event_end, 'load[MW]'] *= event_load_factor
         df.loc[event_start:event_end, 'pv[MW]'] *= event_pv_factor
+        event_mask = df.index.isin(df.loc[event_start:event_end].index)
     daily_df = df.groupby(df.index.date).aggregate('sum') / 1000
     daily_df.index = pd.to_datetime(daily_df.index)
 
@@ -39,4 +41,4 @@ def process_single_node_data(
         print(f"average renewable generation = {np.mean(R):.2f} GW")
         print(f"average shortfall = {np.mean(shortfall):.2f} GW")
         print(f"maximum fossil generation = {np.max(G):.2f} GW")
-    return l, R, shortfall, df.index, daily_df
+    return l, R, shortfall, df.index, daily_df, event_mask

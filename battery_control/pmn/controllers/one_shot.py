@@ -4,6 +4,7 @@ from .constraints import (
     battery_dynamics_contraints,
     conservation_of_power_constraints,
 )
+from .metrics import core_objective
 
 
 def make_one_shot(T, delta=1):
@@ -64,7 +65,15 @@ def make_one_shot(T, delta=1):
     )
     power_constraints = conservation_of_power_constraints(g=g, G=G, r=r, R=R, b=b, l=l, s=s, c=c)
     constraints = battery_dynamics_constraints + power_constraints
-    objective = 1 / T * cp.sum(param_lambda * s + param_alpha * g + param_beta * cp.power(g, 2) + param_mu * cp.abs(b))
+    objective = core_objective(
+        s=s,
+        g=g,
+        b=b,
+        lamb=param_lambda,
+        alpha=param_alpha,
+        beta=param_beta,
+        mu=param_mu,
+    )
     problem = cp.Problem(cp.Minimize(objective), constraints)
     return problem
 

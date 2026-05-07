@@ -10,7 +10,7 @@ from controllers.mpc_perfect import run_mpc_perfect
 from tqdm import tqdm
 
 
-def _run_pair(fixed_kwargs, pair):
+def _run_pair(fixed_kwargs, stress_mask, pair):
     gamma, q_target = pair
     mpc_solution = run_mpc_perfect(gamma=gamma, q_target=q_target, **fixed_kwargs)
     mpc_metrics = get_metrics_of_interest(
@@ -23,6 +23,7 @@ def _run_pair(fixed_kwargs, pair):
         beta=fixed_kwargs["beta"],
         mu=fixed_kwargs["mu"],
         delta=fixed_kwargs["delta"],
+        stress_mask=stress_mask,
     )
     return {"gamma": gamma, "q_target": q_target, **mpc_metrics}
 
@@ -45,6 +46,7 @@ def tune_mpc_params(
     soc_loss=0,
     delta=1,
     solver="CLARABEL",
+    stress_mask=None,
     plot_list=None,
     max_workers=4,
 ):
@@ -71,7 +73,7 @@ def tune_mpc_params(
     )
 
     pairs = list(product(gamma_list, q_target_list))
-    run = partial(_run_pair, fixed_kwargs)
+    run = partial(_run_pair, fixed_kwargs, stress_mask)
 
     with ProcessPoolExecutor(max_workers=max_workers) as pool:
         rows = list(tqdm(pool.map(run, pairs), total=len(pairs)))
@@ -86,5 +88,7 @@ def tune_mpc_params(
             plt.title(metric)
             plt.show()
     best_idx = df["objective"].idxmin()
-    best_row = df.loc[best_idx]
+    best_row = df.loc[best_idx].to_dict()
+    best_row["Q"] = Q
+    best_row["H"] = H
     return best_row

@@ -50,7 +50,7 @@ def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, s
     power_constraints = conservation_of_power_constraints(g=g, G=G, r=r, R=R, b=b, l=l, s=s, c=c)
     constraints = battery_dynamics_constraints + power_constraints
     core_obj = core_objective(s=s, g=g, b=b, lamb=lamb, alpha=alpha, beta=beta, mu=mu)
-    objective = core_obj + gamma * cp.square(q[-1] - q_target)
+    objective = core_obj + gamma * cp.square(q[-1] - q_target * Q)
     problem = cp.Problem(cp.Minimize(objective), constraints)
     return problem
 
@@ -63,7 +63,24 @@ def _set_mpc_subproblem_data_params(problem, t, h, l, R, q0):
 
 
 def run_mpc_perfect(
-    l, R, G, Q, B, alpha, beta, lamb, gamma, mu, q_init, q_target, efficiency, soc_loss, H, delta=1, solver="CLARABEL"
+    l,
+    R,
+    G,
+    Q,
+    B,
+    alpha,
+    beta,
+    lamb,
+    gamma,
+    mu,
+    q_init,
+    q_target,
+    H,
+    efficiency=0.98,
+    soc_loss=0,
+    delta=1,
+    solver="CLARABEL",
+    disable_progress_bar=False,
 ):
     """
     MPC with perfect information of the next H time steps
@@ -117,7 +134,7 @@ def run_mpc_perfect(
         q_target=q_target,
         delta=delta,
     )
-    for t in tqdm(range(T)):
+    for t in tqdm(range(T), disable=disable_progress_bar):
         h = min(H, T - t)
 
         # make a new subproblem to accomodate shorter horizon

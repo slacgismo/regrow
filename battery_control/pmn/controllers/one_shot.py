@@ -7,7 +7,7 @@ from .constraints import (
 from .metrics import core_objective
 
 
-def make_one_shot(T, delta=1):
+def make_one_shot(l, R, G, alpha, beta, lamb, mu, q0, T, delta=1):
     """
     make the perfect knowledge one shot battery optimal control problem
 
@@ -19,23 +19,11 @@ def make_one_shot(T, delta=1):
         problem: the cvxpy problem object
     """
     # battery and controller params
-    param_Q = cp.Parameter(nonneg=True, name="Q")  # battery size
+    param_Q = cp.Parameter(nonneg=True, name="Q")  # battery capacity
     param_B = cp.Parameter(nonneg=True, name="B")  # max power
-    param_alpha = cp.Parameter(nonneg=True, name="alpha")  # dispatchabale gen linear cost
-    param_beta = cp.Parameter(nonneg=True, name="beta")  # dispatachable gen quadratic cost
-    param_lambda = cp.Parameter(nonneg=True, name="lambda")  # load shedding penalty paramater
-    param_mu = cp.Parameter(nonneg=True, name="mu")  # battery degradation penalty term
     param_charge_efficiency = cp.Parameter(nonneg=True, name="charge_efficiency")
-    param_discharge_efficiency_inv = cp.Parameter(
-        nonneg=True, name="discharge_efficiency_inv"
-    )  # inverse to comply with DPP
+    param_discharge_efficiency_inv = cp.Parameter(nonneg=True, name="discharge_efficiency_inv")
     param_soc_loss = cp.Parameter(nonneg=True, name="soc_loss_per_hour")  # battery SOC loss rate per hour
-    param_q0 = cp.Parameter(nonneg=True, name="q0")  # battery  starting SOC
-
-    # data parameters
-    l = cp.Parameter(T, name="l")
-    R = cp.Parameter(T, name="R")
-    G = cp.Parameter(nonneg=True, name="G")
 
     # variables
     g = cp.Variable(T, nonneg=True, name="g")  # dispatchable gen
@@ -44,14 +32,14 @@ def make_one_shot(T, delta=1):
     b = cp.Variable(T, name="b")  # battery power
     b_out = cp.Variable(T, nonneg=True, name="b_out")  # battery discharge
     b_in = cp.Variable(T, nonneg=True, name="b_in")  # battery charge
-    y = cp.Variable(T, nonneg=True, name="y")  # battery dynamics helper
+    y = cp.Variable(T, nonneg=True, name="y")  # battery dynamics helper variable
     s = cp.Variable(T, nonneg=True, name="s")  # load shedding
     q = cp.Variable(T + 1, nonneg=True, name="q")  # battery SOC
 
     # form problem
     battery_dynamics_constraints = battery_dynamics_contraints(
         q=q,
-        q0=param_q0,
+        q0=q0,
         Q=param_Q,
         b=b,
         b_out=b_out,
@@ -69,27 +57,22 @@ def make_one_shot(T, delta=1):
         s=s,
         g=g,
         b=b,
-        lamb=param_lambda,
-        alpha=param_alpha,
-        beta=param_beta,
-        mu=param_mu,
+        lamb=lamb,
+        alpha=alpha,
+        beta=beta,
+        mu=mu,
     )
     problem = cp.Problem(cp.Minimize(objective), constraints)
     return problem
 
 
-def load_one_shot_problem_data(problem, l, R, G, q0, Q, B, alpha, beta, lamb, mu, efficiency, soc_loss):
+def load_one_shot_problem_data(problem, l, R, G, Q, B, efficiency, soc_loss):
     pd = problem.param_dict
     pd["l"].value = l
     pd["R"].value = R
     pd["G"].value = G
-    pd["q0"].value = q0
     pd["Q"].value = Q
     pd["B"].value = B
-    pd["alpha"].value = alpha
-    pd["beta"].value = beta
-    pd["lambda"].value = lamb
-    pd["mu"].value = mu
     pd["charge_efficiency"].value = efficiency
     pd["discharge_efficiency_inv"].value = 1 / efficiency  # assume discharge efficiency same as charge efficiency
     pd["soc_loss_per_hour"].value = soc_loss

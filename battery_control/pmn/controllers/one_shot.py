@@ -7,7 +7,7 @@ from .constraints import (
 from .metrics import core_objective
 
 
-def make_one_shot(l, R, G, alpha, beta, lamb, mu, q0, T, delta=1):
+def make_one_shot(alpha, beta, lamb, mu, q0, T, delta=1):
     """
     make the perfect knowledge one shot battery optimal control problem
 
@@ -24,6 +24,11 @@ def make_one_shot(l, R, G, alpha, beta, lamb, mu, q0, T, delta=1):
     param_charge_efficiency = cp.Parameter(nonneg=True, name="charge_efficiency")
     param_discharge_efficiency_inv = cp.Parameter(nonneg=True, name="discharge_efficiency_inv")
     param_soc_loss = cp.Parameter(nonneg=True, name="soc_loss_per_hour")  # battery SOC loss rate per hour
+
+    # data params
+    param_l = cp.Parameter(T, name="l")
+    param_R = cp.Parameter(T, name="R")
+    param_G = cp.Parameter(1, name="G")
 
     # variables
     g = cp.Variable(T, nonneg=True, name="g")  # dispatchable gen
@@ -51,7 +56,7 @@ def make_one_shot(l, R, G, alpha, beta, lamb, mu, q0, T, delta=1):
         soc_loss=param_soc_loss,
         delta=delta,
     )
-    power_constraints = conservation_of_power_constraints(g=g, G=G, r=r, R=R, b=b, l=l, s=s, c=c)
+    power_constraints = conservation_of_power_constraints(g=g, G=param_G, r=r, R=param_R, b=b, l=param_l, s=s, c=c)
     constraints = battery_dynamics_constraints + power_constraints
     objective = core_objective(
         s=s,

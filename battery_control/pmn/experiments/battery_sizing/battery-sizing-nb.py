@@ -28,23 +28,29 @@ def _(mo):
 
 @app.cell
 def _(exp_dir_input, pathlib, pd):
-    _base = pathlib.Path(__file__).parent / exp_dir_input.value
-    mpc_df = pd.read_csv(_base / "results.csv")
-    one_shot_df = pd.read_csv(_base / "one_shot_results.csv")
+    base = pathlib.Path(__file__).parent / exp_dir_input.value
+    mpc_df = pd.read_csv(base / "results.csv")
+    one_shot_df = pd.read_csv(base / "one_shot_results.csv")
     mpc_df
-    return mpc_df, one_shot_df
+    return base, mpc_df, one_shot_df
 
 
 @app.cell
-def _(mpc_df, one_shot_df, plt):
+def _(one_shot_df):
+    one_shot_df
+    return
+
+
+@app.cell
+def _(base, mpc_df, one_shot_df, plt):
     _metric_cols = [
         c for c in one_shot_df.columns if c not in ("Q",)
     ]
     _H_values = sorted(mpc_df["H"].unique())
-    _n_cols = 3
+    _n_cols = 5
     _n_rows = (len(_metric_cols) + _n_cols - 1) // _n_cols
 
-    _fig, _axes = plt.subplots(_n_rows, _n_cols, figsize=(15, 4 * _n_rows))
+    _fig, _axes = plt.subplots(_n_rows, _n_cols, figsize=(25, 4 * _n_rows))
     _axes = _axes.flatten()
 
     for _i, _metric in enumerate(_metric_cols):
@@ -63,7 +69,13 @@ def _(mpc_df, one_shot_df, plt):
         _axes[_j].set_visible(False)
 
     plt.tight_layout()
+    plt.savefig(base/"battery-sizing-plot.png", bbox_inches = 'tight', dpi = 600)
     _fig
+    return
+
+
+@app.cell
+def _():
     return
 
 

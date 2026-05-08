@@ -7,7 +7,7 @@ from .constraints import (
 from .metrics import core_objective
 
 
-def make_one_shot(alpha, beta, lamb, mu, q0, T, delta=1):
+def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
     """
     make the perfect knowledge one shot battery optimal control problem
 
@@ -20,6 +20,7 @@ def make_one_shot(alpha, beta, lamb, mu, q0, T, delta=1):
     """
     # battery and controller params
     param_Q = cp.Parameter(nonneg=True, name="Q")  # battery capacity
+    param_q0 = cp.Parameter(nonneg=True, name="q0")
     param_B = cp.Parameter(nonneg=True, name="B")  # max power
     param_charge_efficiency = cp.Parameter(nonneg=True, name="charge_efficiency")
     param_discharge_efficiency_inv = cp.Parameter(nonneg=True, name="discharge_efficiency_inv")
@@ -44,7 +45,7 @@ def make_one_shot(alpha, beta, lamb, mu, q0, T, delta=1):
     # form problem
     battery_dynamics_constraints = battery_dynamics_contraints(
         q=q,
-        q0=q0,
+        q0=param_q0,
         Q=param_Q,
         b=b,
         b_out=b_out,

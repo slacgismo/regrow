@@ -1,0 +1,46 @@
+{
+  "data": {
+    "data_start": "2018",
+    "data_end": "2020",
+    "add_event": true,
+    "event_start": "2019-08-15",
+    "event_end": "2019-08-20",
+    "event_load_factor": 1.5,
+    "event_pv_factor": 0.25
+  },
+  "fixed_params": {
+    "G": 1,
+    "bat_hours": 4,
+    "alpha": 1.25,
+    "beta": 0.5,
+    "lamb": 20.0,
+    "mu": 0.01
+  },
+  "sweep": {
+    "Q_list": [
+      1,
+      2,
+      4,
+      8,
+      16,
+      32
+    ],
+    "H_list": [
+      24,
+      48,
+      72
+    ],
+    "gamma_list": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "q_target_list": [
+      0.25,
+      0.5,
+      0.75,
+      1.0
+    ]
+  }
+}

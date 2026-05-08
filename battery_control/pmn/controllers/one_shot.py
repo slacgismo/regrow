@@ -29,7 +29,7 @@ def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
     # data params
     param_l = cp.Parameter(T, name="l")
     param_R = cp.Parameter(T, name="R")
-    param_G = cp.Parameter(1, name="G")
+    param_G = cp.Parameter(nonneg=True, name="G")
 
     # variables
     g = cp.Variable(T, nonneg=True, name="g")  # dispatchable gen
@@ -72,13 +72,14 @@ def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
     return problem
 
 
-def load_one_shot_problem_data(problem, l, R, G, Q, B, efficiency, soc_loss):
+def load_one_shot_problem_data(problem, l, R, G, Q, B, q0, efficiency, soc_loss):
     pd = problem.param_dict
     pd["l"].value = l
     pd["R"].value = R
     pd["G"].value = G
     pd["Q"].value = Q
     pd["B"].value = B
+    pd["q0"].value = q0
     pd["charge_efficiency"].value = efficiency
     pd["discharge_efficiency_inv"].value = 1 / efficiency  # assume discharge efficiency same as charge efficiency
     pd["soc_loss_per_hour"].value = soc_loss

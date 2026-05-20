@@ -5,6 +5,9 @@ model/__marimo__
 __pycache__/
 *.py[cod]
 *$py.class
+data/pysam_wecc_nodes/plots/*
+data/pysam_wecc_nodes/pysam_wind_bus_agg/*
+data/pysam_wecc_nodes/srw_files/*
 
 # C extensions
 *.so

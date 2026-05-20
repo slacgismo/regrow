@@ -11,8 +11,9 @@ data/pysam_wecc_nodes/srw_files/*
 
 # C extensions
 *.so
-
-# Distribution / packaging
+*.err
+*.out
+r Distribution / packaging
 .Python
 build/
 develop-eggs/

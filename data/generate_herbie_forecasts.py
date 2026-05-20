@@ -35,13 +35,13 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
                        fxx=time_horizon
                         )
             file = H.download()
-            # ":TCDC:entire atmosphere:anl": overall cloud cover
+            #:TCDC:entire atmosphere:anl: overall cloud cover
             #:UGRD:80 m above ground:anl: u-component wind speed (80 m above ground)
             #:VGRD:80 m above ground:anl: v-component wind speed (80 m above ground)
-            #":RH:2 m above ground:anl": relative humidity at surface
-            #TMP:surface:anl: surface temperature
+            #:RH:2 m above ground:anl: relative humidity at surface
+            #:TMP:surface:anl: surface temperature
             #:PRES:surface:anl: surface pressure
-            #DPT:2 m above ground:anl: dew point 
+            #:DPT:2 m above ground:anl: dew point 
             # Full list of options: https://home.chpc.utah.edu/~u0553130/Brian_Blaylock/HRRR_archive/hrrr_sfc_table_f00-f01.html
             tags = [":TCDC:entire atmosphere:" + str(time_horizon) + " hour fcst",
                     ":UGRD:80 m above ground:" + str(time_horizon) + " hour fcst",
@@ -58,7 +58,7 @@ def pull_herbie_hrr_data(date, time_horizon, aws_profile):
                                                 names=names)
                 # Build out a dataframe for the predictions
                 pred_df = pd.DataFrame()
-                pred_df['county'] = list(dsi.point.values)
+                pred_df['wind_site_name'] = list(dsi.point.values)
                 pred_df['point_latitude'] = list(dsi.point_latitude.values)
                 pred_df['point_longitude'] = list(dsi.point_longitude.values)
                 pred_df['tag'] = tag
@@ -206,11 +206,12 @@ if __name__ == "__main__":
                     file_keys.append(obj['Key'])
     existing_files = [os.path.basename(x) for x in file_keys]
     # Read in the nodes we want to forecast on
-    df = pd.read_csv("nodes.csv")
+    df = pd.read_csv("uswtdb.csv")
+    df['Lat'] = df.groupby("name")['latitude'].transform('mean')
+    df['Long'] = df.groupby("name")['longitude'].transform('mean')
+    df = df[['name', 'Lat', "Long"]].drop_duplicates()
     points = [(y,x) for x,y in zip(df['Lat'], df['Long'])]
-    names = list(df['county'])
-    # Associated date range for the forecasts
-    dates = pd.date_range("2018-01-01", "2022-12-31", freq="6H")
+    names = list(df['name'])
     master_prediction_df = pd.DataFrame()
     # Create a logger
     logger = logging.getLogger(__name__)
@@ -223,21 +224,31 @@ if __name__ == "__main__":
     ch.setFormatter(formatter)    
     # Add the handler to the logger
     logger.addHandler(ch)
-    # Do HRR up to 18 hours first (2 hour forecasts)
-    # delayed_results = []
-    # for date in dates:
-    #     for time_horizon in range(1, 19, 1):
-    #         if ( date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
-    #             hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon, pvr.aws)
-    #             delayed_results.append(hrrr_pred_df)
-    # results = dask.compute(*delayed_results, num_workers=4)
-    # Do GEFS between 24-72 hours (once every 6 hours)
-    listing = list()
-    delayed_results = []
-    for date in dates:
-        for time_horizon in range(24, 78, 6):
-            if ( date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
-                listing.append([date, time_horizon])
-                hrrr_pred_df = delayed(pull_herbie_gefs_data)(date, time_horizon, pvr.aws)
-                delayed_results.append(hrrr_pred_df)
-    results = dask.compute(*delayed_results, num_workers=1)
+    # Break into monthly chunks so the task graph stays manageable
+    date_chunks = pd.date_range("2018-01-01", "2022-12-31", freq="MS")  # monthly start dates
+    
+    for chunk_start in date_chunks:
+        chunk_end = chunk_start + pd.offsets.MonthEnd(1)
+        dates = pd.date_range(chunk_start, chunk_end, freq="1h")
+        
+        # HRRR
+        delayed_results = []
+        for date in dates:
+            for time_horizon in range(1, 19, 1):
+                if (date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
+                    hrrr_pred_df = delayed(pull_herbie_hrr_data)(date, time_horizon, pvr.aws)
+                    delayed_results.append(hrrr_pred_df)
+        if delayed_results:
+            logger.info(f"Computing {len(delayed_results)} HRRR tasks for {chunk_start.strftime('%Y-%m')}")
+            dask.compute(*delayed_results, num_workers=20)
+        
+        dates = pd.date_range(chunk_start, chunk_end, freq="6h")
+        # GEFS
+        delayed_results = []
+        for date in dates:
+            for time_horizon in range(24, 78, 6):
+                if (date.strftime("%Y-%m-%d_%H_%M_%S") + "_" + str(time_horizon) + "hr.csv") not in existing_files:
+                    delayed_results.append(delayed(pull_herbie_gefs_data)(date, time_horizon, pvr.aws))
+        if delayed_results:
+            logger.info(f"Computing {len(delayed_results)} GEFS tasks for {chunk_start.strftime('%Y-%m')}")
+            dask.compute(*delayed_results, num_workers=20)

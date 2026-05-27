@@ -18,7 +18,7 @@ def _():
     from controllers.one_shot import make_one_shot, load_one_shot_problem_data
     from controllers.mpc_perfect import run_mpc_perfect
     from controllers.data_utils import process_single_node_data
-    from plot_utils import compute_partition, plot_heatmap, plot_solution
+    from plot_utils import compute_partition, plot_heatmap, plot_solution, solution_heatmaps
 
     data_path = str(pathlib.Path(__file__).parent.parent.parent / "single_node_data.csv")
     return (
@@ -34,6 +34,7 @@ def _():
         plt,
         process_single_node_data,
         run_mpc_perfect,
+        solution_heatmaps,
     )
 
 
@@ -215,7 +216,7 @@ def _(form, mpc_solution, np, one_shot_solution):
     for _key in _os_m:
         _os, _mpc = _os_m[_key], _mpc_m[_key]
         _rel = (_mpc - _os) / _os if _os != 0 else float("nan")
-        print(f"{_key}: one-shot={_os:.3f}  mpc={_mpc:.3f}  delta={_mpc - _os:+.3f}  ({_rel:+.1%})")
+        print(f"{_key}: one-shot={_os:.3f}  mpc perfect={_mpc:.3f}  delta={_mpc - _os:+.3f}  ({_rel:+.1%})")
     return
 
 
@@ -295,16 +296,28 @@ def _(form, form_mpc, mpc_solution, plot_solution, s, tidx):
         alpha=form.value["alpha"],
         beta=form.value["beta"],
         efficiency=form.value["power_efficiency"],
-        supertitle=f"MPC solution (H={form_mpc.value['H']})",
+        supertitle=f"MPC perfect solution (H={form_mpc.value['H']})",
     )
     return
 
 
 @app.cell
+def _(form, mo, mpc_solution, one_shot_solution, solution_heatmaps, tidx):
+    _Q = form.value["Q"]
+    _B = form.value["Q"] / form.value["bat_hours"]
+    _G = form.value["G"]
+    mo.output.append(solution_heatmaps(one_shot_solution, tidx, Q=_Q, B=_B, G=_G, label="one-shot"))
+    mo.output.append(solution_heatmaps(mpc_solution, tidx, Q=_Q, B=_B, G=_G, label="MPC perfect"))
+    return
+
+
+@app.cell
 def _(mo, mpc_solution, one_shot_solution, plot_heatmap, tidx):
-    for _var, _cmap, _center in [("b", "RdBu_r", 0), ("g", "Oranges", None), ("s", "Oranges", None), ("c", "Greens", None)]:
-        mo.output.append(plot_heatmap(tidx, one_shot_solution[_var], title=f"one-shot {_var} [GWh]", cmap=_cmap, center=_center))
-        mo.output.append(plot_heatmap(tidx, mpc_solution[_var], title=f"MPC {_var} [GWh]", cmap=_cmap, center=_center))
+    mo.output.append(plot_heatmap(tidx, mpc_solution["b"] - one_shot_solution["b"], title="diff b [GWh]", cmap="RdBu_r", center=0))
+    mo.output.append(plot_heatmap(tidx, mpc_solution["g"] - one_shot_solution["g"], title="diff g [GWh]", cmap="RdBu_r", center=0))
+    mo.output.append(plot_heatmap(tidx, mpc_solution["s"] - one_shot_solution["s"], title="diff s [GWh]", cmap="RdBu_r", center=0))
+    mo.output.append(plot_heatmap(tidx, mpc_solution["c"] - one_shot_solution["c"], title="diff c [GWh]", cmap="RdBu_r", center=0))
+    mo.output.append(plot_heatmap(tidx, mpc_solution["q"][1:] - one_shot_solution["q"][1:], title="diff SOC [GWh]", cmap="RdBu_r", center=0))
     return
 
 

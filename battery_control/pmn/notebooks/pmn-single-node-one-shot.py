@@ -16,8 +16,9 @@ def _():
 
     sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
     from controllers.one_shot import make_one_shot, load_one_shot_problem_data
+    from controllers.constraints import validate_solution_dynamics
     from controllers.data_utils import process_single_node_data
-    from plot_utils import compute_partition, plot_heatmap, plot_solution
+    from plot_utils import compute_partition, plot_solution, solution_heatmaps
 
     data_path = str(pathlib.Path(__file__).parent.parent.parent / "single_node_data.csv")
     return (
@@ -28,10 +29,11 @@ def _():
         mo,
         np,
         pd,
-        plot_heatmap,
         plot_solution,
         plt,
         process_single_node_data,
+        solution_heatmaps,
+        validate_solution_dynamics,
     )
 
 
@@ -146,7 +148,14 @@ def _(form, l, make_one_shot):
 
 
 @app.cell
-def _(R, form, l, load_one_shot_problem_data, one_shot_problem):
+def _(
+    R,
+    form,
+    l,
+    load_one_shot_problem_data,
+    one_shot_problem,
+    validate_solution_dynamics,
+):
     load_one_shot_problem_data(
         problem=one_shot_problem,
         l=l,
@@ -158,6 +167,7 @@ def _(R, form, l, load_one_shot_problem_data, one_shot_problem):
     )
     one_shot_problem.solve(solver="CLARABEL")
     print(f"status: {one_shot_problem.status}, objective: {one_shot_problem.value:.4f}")
+    print(f"dynamics valid: {validate_solution_dynamics(one_shot_problem, Q=form.value['Q'], B=form.value['Q'] / form.value['bat_hours'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'], delta=1)}")
     solution = {k: v.value for k, v in one_shot_problem.var_dict.items()}
     return (solution,)
 
@@ -233,11 +243,8 @@ def _(compute_partition, form, np, pd, plt, solution, tidx):
 
 
 @app.cell
-def _(mo, plot_heatmap, solution, tidx):
-    mo.output.append(plot_heatmap(tidx, solution["b"], title="battery power [GWh]", cmap="RdBu_r", center=0))
-    mo.output.append(plot_heatmap(tidx, solution["g"], title="utility power [GWh]", cmap="Oranges"))
-    mo.output.append(plot_heatmap(tidx, solution["s"], title="load shedding [GWh]", cmap="Oranges"))
-    mo.output.append(plot_heatmap(tidx, solution["c"], title="curtailed renewables [GWh]", cmap="Greens"))
+def _(form, mo, solution, solution_heatmaps, tidx):
+    mo.output.append(solution_heatmaps(solution, tidx, Q=form.value["Q"], B=form.value["Q"] / form.value["bat_hours"], G=form.value["G"]))
     return
 
 

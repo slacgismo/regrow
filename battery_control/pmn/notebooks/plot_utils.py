@@ -97,7 +97,7 @@ def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=N
     return fig
 
 
-def plot_heatmap(tidx, values, title=None, cmap=None, center=None):
+def plot_heatmap(tidx, values, title=None, cmap=None, center=None, vmin=None, vmax=None, ax=None):
     _tidx = pd.DatetimeIndex(tidx)
     pivot = pd.DataFrame(
         {
@@ -108,9 +108,12 @@ def plot_heatmap(tidx, values, title=None, cmap=None, center=None):
     ).pivot(index="time", columns="date", values="value")
 
     n_slots = len(pivot.index)
-    fig, ax = plt.subplots(figsize=(14, 5))
-    vmin = vmax = None
-    if center is not None:
+    standalone = ax is None
+    if standalone:
+        fig, ax = plt.subplots(figsize=(14, 5))
+    else:
+        fig = ax.get_figure()
+    if vmin is None and vmax is None and center is not None:
         half = max(abs(pivot.values.max() - center), abs(pivot.values.min() - center))
         vmin, vmax = center - half, center + half
     n_days = len(pivot.columns)
@@ -136,5 +139,23 @@ def plot_heatmap(tidx, values, title=None, cmap=None, center=None):
     ax.set_xlabel("date")
     if title is not None:
         ax.set_title(title)
+    if standalone:
+        plt.tight_layout()
+    return fig
+
+
+def solution_heatmaps(solution, tidx, Q, B, G, label=""):
+    prefix = f"{label} " if label else ""
+    vars_config = [
+        ("b", "b [GWh]",   "RdBu_r",  None, -B, B),
+        ("g", "g [GWh]",   "Oranges", None,  0, G),
+        ("s", "s [GWh]",   "Oranges", None,  0, None),
+        ("c", "c [GWh]",   "Greens",  None,  0, None),
+        ("q", "SOC [GWh]", "viridis", None,  0, Q),
+    ]
+    fig, axes = plt.subplots(len(vars_config), 1, figsize=(14, 3 * len(vars_config)))
+    for ax, (var, title, cmap, center, vmin, vmax) in zip(axes, vars_config):
+        values = solution[var][1:] if var == "q" else solution[var]
+        plot_heatmap(tidx, values, title=f"{prefix}{title}", cmap=cmap, center=center, vmin=vmin, vmax=vmax, ax=ax)
     plt.tight_layout()
     return fig

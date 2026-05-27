@@ -115,10 +115,12 @@ def run_sizing_experiment(experiment_name):
 
     # fixed battery and objective parameters
     BAT_HOURS = 4
+    EFFICIENCY = 0.98
+    SOC_LOSS = 1e-5
     ALPHA = 1.25
     BETA = 0.5
     LAMB = 20.0
-    MU = 0.01
+    MU = 1e-2
 
     # point sweeps
     Q_LIST = 2 ** np.arange(0, 6)
@@ -141,10 +143,13 @@ def run_sizing_experiment(experiment_name):
         "fixed_params": {
             "G": G,
             "bat_hours": BAT_HOURS,
+            "efficiency": EFFICIENCY,
+            "soc_loss": SOC_LOSS,
             "alpha": ALPHA,
             "beta": BETA,
             "lamb": LAMB,
             "mu": MU,
+            "delta": 1,
         },
         "sweep": {
             "Q_list": Q_LIST.tolist(),
@@ -172,15 +177,15 @@ def run_sizing_experiment(experiment_name):
     (out_dir / "config.json").write_text(json.dumps(config, indent=2))
     results_path = out_dir / "results.csv"
     one_shot_path = out_dir / "one_shot_results.csv"
-    one_shot_problem = make_one_shot(alpha=ALPHA, beta=BETA, lamb=LAMB, mu=MU, T=len(l))
+    one_shot_problem = make_one_shot(
+        alpha=ALPHA, beta=BETA, lamb=LAMB, mu=MU, T=len(l), efficiency=EFFICIENCY, soc_loss=SOC_LOSS
+    )
     total = len(Q_LIST) * len(H_LIST)
     rows = []
     one_shot_rows = []
     for Q in Q_LIST:
         print(f"[Q={Q}] running one-shot...", flush=True)
-        load_one_shot_problem_data(
-            one_shot_problem, l=l, R=R, G=G, Q=Q, B=Q / BAT_HOURS, q0=Q / 2, efficiency=0.98, soc_loss=0
-        )
+        load_one_shot_problem_data(one_shot_problem, l=l, R=R, G=G, Q=Q, B=Q / BAT_HOURS, q0=Q / 2)
         one_shot_problem.solve(solver="CLARABEL")
         sol = one_shot_problem.var_dict
         one_shot_rows.append(
@@ -215,12 +220,46 @@ def run_sizing_experiment(experiment_name):
                     lamb=LAMB,
                     mu=MU,
                     H=H,
+                    efficiency=EFFICIENCY,
+                    soc_loss=SOC_LOSS,
                     gamma_list=GAMMA_LIST,
                     q_target_list=Q_TARGET_LIST,
                     stress_mask=event_mask,
                 )
             )
             pd.DataFrame(rows).to_csv(results_path, index=False)
+
+    _make_plots(pd.read_csv(results_path), pd.read_csv(one_shot_path), out_dir)
+
+
+def _make_plots(mpc_df, one_shot_df, out_dir):
+    non_metric_cols = {"Q", "H", "gamma", "q_target"}
+    metric_cols = [c for c in mpc_df.columns if c not in non_metric_cols]
+    H_values = sorted(mpc_df["H"].unique())
+    n_cols = 5
+    n_rows = (len(metric_cols) + n_cols - 1) // n_cols
+
+    fig, axes = plt.subplots(n_rows, n_cols, figsize=(25, 4 * n_rows))
+    axes = axes.flatten()
+
+    for i, metric in enumerate(metric_cols):
+        ax = axes[i]
+        for H in H_values:
+            sub = mpc_df[mpc_df["H"] == H].sort_values("Q")
+            ax.plot(sub["Q"], sub[metric], marker="o", label=f"MPC H={H}")
+        os_ = one_shot_df.sort_values("Q")
+        ax.plot(os_["Q"], os_[metric], marker="s", linestyle="--", color="black", label="one-shot")
+        ax.set_xlabel("Q [GWh]")
+        ax.set_title(metric)
+        ax.set_xscale("log", base=2)
+        ax.legend(fontsize=7)
+
+    for j in range(i + 1, len(axes)):
+        axes[j].set_visible(False)
+
+    plt.tight_layout()
+    fig.savefig(out_dir / "battery-sizing-plot.png", bbox_inches="tight", dpi=600)
+    plt.close(fig)
 
 
 if __name__ == "__main__":

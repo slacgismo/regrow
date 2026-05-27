@@ -7,7 +7,7 @@ from .constraints import (
 from .metrics import core_objective
 
 
-def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
+def make_one_shot(alpha, beta, lamb, mu, T, efficiency, soc_loss, delta=1):
     """
     make the perfect knowledge one shot battery optimal control problem
 
@@ -22,13 +22,10 @@ def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
     param_Q = cp.Parameter(nonneg=True, name="Q")  # battery capacity
     param_q0 = cp.Parameter(nonneg=True, name="q0")
     param_B = cp.Parameter(nonneg=True, name="B")  # max power
-    param_charge_efficiency = cp.Parameter(nonneg=True, name="charge_efficiency")
-    param_discharge_efficiency_inv = cp.Parameter(nonneg=True, name="discharge_efficiency_inv")
-    param_soc_loss = cp.Parameter(nonneg=True, name="soc_loss_per_hour")  # battery SOC loss rate per hour
 
     # data params
-    param_l = cp.Parameter(T, name="l")
-    param_R = cp.Parameter(T, name="R")
+    param_l = cp.Parameter(T, nonneg=True, name="l")
+    param_R = cp.Parameter(T, nonneg=True, name="R")
     param_G = cp.Parameter(nonneg=True, name="G")
 
     # variables
@@ -38,7 +35,6 @@ def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
     b = cp.Variable(T, name="b")  # battery power
     b_out = cp.Variable(T, nonneg=True, name="b_out")  # battery discharge
     b_in = cp.Variable(T, nonneg=True, name="b_in")  # battery charge
-    y = cp.Variable(T, nonneg=True, name="y")  # battery dynamics helper variable
     s = cp.Variable(T, nonneg=True, name="s")  # load shedding
     q = cp.Variable(T + 1, nonneg=True, name="q")  # battery SOC
 
@@ -50,11 +46,10 @@ def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
         b=b,
         b_out=b_out,
         b_in=b_in,
-        y=y,
         B=param_B,
-        charge_efficiency=param_charge_efficiency,
-        discharge_efficiency_inv=param_discharge_efficiency_inv,
-        soc_loss=param_soc_loss,
+        charge_efficiency=efficiency,
+        discharge_efficiency=efficiency,
+        soc_loss=soc_loss,
         delta=delta,
     )
     power_constraints = conservation_of_power_constraints(g=g, G=param_G, r=r, R=param_R, b=b, l=param_l, s=s, c=c)
@@ -72,7 +67,7 @@ def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
     return problem
 
 
-def load_one_shot_problem_data(problem, l, R, G, Q, B, q0, efficiency, soc_loss):
+def load_one_shot_problem_data(problem, l, R, G, Q, B, q0):
     pd = problem.param_dict
     pd["l"].value = l
     pd["R"].value = R
@@ -80,6 +75,3 @@ def load_one_shot_problem_data(problem, l, R, G, Q, B, q0, efficiency, soc_loss)
     pd["Q"].value = Q
     pd["B"].value = B
     pd["q0"].value = q0
-    pd["charge_efficiency"].value = efficiency
-    pd["discharge_efficiency_inv"].value = 1 / efficiency  # assume discharge efficiency same as charge efficiency
-    pd["soc_loss_per_hour"].value = soc_loss

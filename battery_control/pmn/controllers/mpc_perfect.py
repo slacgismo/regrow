@@ -28,7 +28,6 @@ def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, s
     b = cp.Variable(H, name="b")  # battery power
     b_out = cp.Variable(H, nonneg=True, name="b_out")  # battery discharge
     b_in = cp.Variable(H, nonneg=True, name="b_in")  # battery charge
-    y = cp.Variable(H, nonneg=True, name="y")  # battery dynamics helper
     s = cp.Variable(H, nonneg=True, name="s")  # load shedding
     q = cp.Variable(H + 1, nonneg=True, name="q")  # battery SOC
 
@@ -40,10 +39,9 @@ def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, s
         b=b,
         b_out=b_out,
         b_in=b_in,
-        y=y,
         B=B,
         charge_efficiency=efficiency,
-        discharge_efficiency_inv=1 / efficiency,
+        discharge_efficiency=efficiency,
         soc_loss=soc_loss,
         delta=delta,
     )
@@ -76,8 +74,8 @@ def run_mpc_perfect(
     q_init,
     q_target,
     H,
-    efficiency=0.98,
-    soc_loss=0,
+    efficiency,
+    soc_loss,
     delta=1,
     solver="CLARABEL",
     disable_progress_bar=False,
@@ -115,7 +113,6 @@ def run_mpc_perfect(
     b_out_traj = np.zeros(T)
     b_in_traj = np.zeros(T)
     s_traj = np.zeros(T)
-    y_traj = np.zeros(T)
     q_traj = np.zeros(T + 1)
     q_traj[0] = q_init
 
@@ -174,7 +171,6 @@ def run_mpc_perfect(
         b_out_traj[t] = subproblem_solution["b_out"].value[0]
         b_in_traj[t] = subproblem_solution["b_in"].value[0]
         s_traj[t] = subproblem_solution["s"].value[0]
-        y_traj[t] = subproblem_solution["y"].value[0]
         q_traj[t + 1] = subproblem_solution["q"].value[1]
 
     solution = {
@@ -185,7 +181,6 @@ def run_mpc_perfect(
         "b_out": b_out_traj,
         "b_in": b_in_traj,
         "s": s_traj,
-        "y": y_traj,
         "q": q_traj,
     }
     mpc_trajectory_valid = validate_battery_dynamics(
@@ -193,12 +188,11 @@ def run_mpc_perfect(
         b=b_traj,
         b_out=b_out_traj,
         b_in=b_in_traj,
-        y=y_traj,
         Q=Q,
         B=B,
         q0=q_init,
         charge_efficiency=efficiency,
-        discharge_efficiency_inv=1 / efficiency,
+        discharge_efficiency=efficiency,
         soc_loss=soc_loss,
         delta=delta,
     )

@@ -147,15 +147,15 @@ def plot_heatmap(tidx, values, title=None, cmap=None, center=None, vmin=None, vm
 def solution_heatmaps(solution, tidx, Q, B, G, label=""):
     prefix = f"{label} " if label else ""
     vars_config = [
-        ("b", "b [GWh]",   "RdBu_r",  None, -B, B),
-        ("g", "g [GWh]",   "Oranges", None,  0, G),
-        ("s", "s [GWh]",   "Oranges", None,  0, None),
-        ("c", "c [GWh]",   "Greens",  None,  0, None),
-        ("q", "SOC [GWh]", "viridis", None,  0, Q),
+        ("b", "b [GWh]", "RdBu_r", None, -B, B),
+        ("g", "g [GWh]", "Oranges", None, 0, G),
+        ("s", "s [GWh]", "Oranges", None, 0, None),
+        ("c", "c [GWh]", "Greens", None, 0, None),
+        ("q", "SOC [%]", "viridis", None, 0, 100),
     ]
     fig, axes = plt.subplots(len(vars_config), 1, figsize=(14, 3 * len(vars_config)))
     for ax, (var, title, cmap, center, vmin, vmax) in zip(axes, vars_config):
-        values = solution[var][1:] if var == "q" else solution[var]
+        values = 100 * (solution[var][1:] / Q) if var == "q" else solution[var]
         plot_heatmap(tidx, values, title=f"{prefix}{title}", cmap=cmap, center=center, vmin=vmin, vmax=vmax, ax=ax)
     plt.tight_layout()
     return fig

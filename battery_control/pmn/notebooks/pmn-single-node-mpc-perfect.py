@@ -4,7 +4,7 @@ __generated_with = "0.23.1"
 app = marimo.App(width="medium")
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     import pathlib
     import sys
@@ -17,6 +17,8 @@ def _():
     sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
     from controllers.one_shot import make_one_shot, load_one_shot_problem_data
     from controllers.mpc_perfect import run_mpc_perfect
+    from controllers.constraints import validate_solution_dynamics
+    from controllers.metrics import get_metrics_of_interest
     from controllers.data_utils import process_single_node_data
     from plot_utils import compute_partition, plot_heatmap, plot_solution, solution_heatmaps
 
@@ -24,6 +26,7 @@ def _():
     return (
         compute_partition,
         data_path,
+        get_metrics_of_interest,
         load_one_shot_problem_data,
         make_one_shot,
         mo,
@@ -35,10 +38,11 @@ def _():
         process_single_node_data,
         run_mpc_perfect,
         solution_heatmaps,
+        validate_solution_dynamics,
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     data_start_input = mo.ui.text(value="2019", label="data start")
     data_end_input = mo.ui.text(value="2019", label="data end")
@@ -77,7 +81,7 @@ def _(mo):
     )
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     alpha_sldr = mo.ui.number(start=0, stop=50, step=0.25, label="alpha", value=1.25, full_width=True)
     beta_sldr = mo.ui.number(start=0, stop=50, step=0.25, label="beta", value=0.5, full_width=True)
@@ -105,7 +109,7 @@ def _(mo):
     return (form,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(
     add_abnormal_event,
     data_end_input,
@@ -149,7 +153,14 @@ def _(form, l, make_one_shot):
 
 
 @app.cell
-def _(R, form, l, load_one_shot_problem_data, one_shot_problem):
+def _(
+    R,
+    form,
+    l,
+    load_one_shot_problem_data,
+    one_shot_problem,
+    validate_solution_dynamics,
+):
     load_one_shot_problem_data(
         problem=one_shot_problem,
         l=l,
@@ -161,11 +172,12 @@ def _(R, form, l, load_one_shot_problem_data, one_shot_problem):
     )
     one_shot_problem.solve(solver="CLARABEL")
     print(f"one-shot status: {one_shot_problem.status}, objective: {one_shot_problem.value:.4f}")
+    print(f"dynamics valid: {validate_solution_dynamics(one_shot_problem, Q=form.value['Q'], B=form.value['Q'] / form.value['bat_hours'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'], delta=1)}")
     one_shot_solution = {k: v.value for k, v in one_shot_problem.var_dict.items()}
     return (one_shot_solution,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo):
     H_sldr = mo.ui.number(start=1, step=1, label="MPC horizon H (time steps)", value=24, full_width=True)
     q_target_sldr = mo.ui.number(start=0.0, stop=1.0, step=0.05, label="q_target (fraction of Q)", value=1.0, full_width=True)
@@ -202,17 +214,10 @@ def _(R, form, form_mpc, l, run_mpc_perfect):
 
 
 @app.cell
-def _(form, mpc_solution, np, one_shot_solution):
-    def _metrics(sol):
-        g, s, b, c = sol["g"], sol["s"], sol["b"], sol["c"]
-        return {
-            "load shedding": np.sum(s),
-            "dispatch cost": np.sum(form.value["alpha"] * g + form.value["beta"] * g**2),
-            "curtailment": np.sum(c),
-            "abs battery power": np.sum(np.abs(b)),
-        }
-
-    _os_m, _mpc_m = _metrics(one_shot_solution), _metrics(mpc_solution)
+def _(form, get_metrics_of_interest, mpc_solution, one_shot_solution):
+    _kwargs = dict(lamb=form.value["lambd"], alpha=form.value["alpha"], beta=form.value["beta"], mu=10 ** form.value["mu_exp"])
+    _os_m = get_metrics_of_interest(s=one_shot_solution["s"], g=one_shot_solution["g"], b=one_shot_solution["b"], c=one_shot_solution["c"], **_kwargs)
+    _mpc_m = get_metrics_of_interest(s=mpc_solution["s"], g=mpc_solution["g"], b=mpc_solution["b"], c=mpc_solution["c"], **_kwargs)
     for _key in _os_m:
         _os, _mpc = _os_m[_key], _mpc_m[_key]
         _rel = (_mpc - _os) / _os if _os != 0 else float("nan")
@@ -277,9 +282,9 @@ def _(compute_partition, form, np, one_shot_solution, pd, plt, tidx):
 
     _fig, (_ax1, _ax2) = plt.subplots(2, 1, figsize=(8, 5), sharex=True)
     _ax1.hist(_loadshed_days, bins=20, color="orange", edgecolor="white", linewidth=0.5, alpha=0.8)
-    _ax1.set(ylabel="count", title="load shed zone (F->E)")
+    _ax1.set(ylabel="count", title="load shed zone duration (F->E)")
     _ax2.hist(_curtail_days, bins=20, color="steelblue", edgecolor="white", linewidth=0.5, alpha=0.8)
-    _ax2.set(ylabel="count", title="non-dispatch curtail zone (E->F)", xlabel="segment length [days]")
+    _ax2.set(ylabel="count", title="non-dispatch curtail zone duration (E->F)", xlabel="segment length [days]")
     plt.tight_layout()
     _fig
     return

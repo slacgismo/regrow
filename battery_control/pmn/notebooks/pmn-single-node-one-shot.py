@@ -16,7 +16,6 @@ def _():
 
     sys.path.insert(0, str(pathlib.Path(__file__).parent.parent))
     from controllers.one_shot import make_one_shot, load_one_shot_problem_data
-    from controllers.mpc_perfect import run_mpc_perfect
     from controllers.data_utils import process_single_node_data
     from plot_utils import compute_partition, plot_heatmap, plot_solution
 
@@ -33,7 +32,6 @@ def _():
         plot_solution,
         plt,
         process_single_node_data,
-        run_mpc_perfect,
     )
 
 
@@ -159,64 +157,9 @@ def _(R, form, l, load_one_shot_problem_data, one_shot_problem):
         q0=form.value["Q"] / 2,
     )
     one_shot_problem.solve(solver="CLARABEL")
-    print(f"one-shot status: {one_shot_problem.status}, objective: {one_shot_problem.value:.4f}")
-    one_shot_solution = {k: v.value for k, v in one_shot_problem.var_dict.items()}
-    return (one_shot_solution,)
-
-
-@app.cell
-def _(mo):
-    H_sldr = mo.ui.number(start=1, step=1, label="MPC horizon H (time steps)", value=24, full_width=True)
-    q_target_sldr = mo.ui.number(start=0.0, stop=1.0, step=0.05, label="q_target (fraction of Q)", value=1.0, full_width=True)
-    gamma_exp_sldr = mo.ui.number(start=-5, stop=0, step=1, label="gamma (log base 10)", value=-3, full_width=True)
-    form_mpc = mo.md("""{H}\n{q_target}\n{gamma_exp}""").batch(
-        H=H_sldr,
-        q_target=q_target_sldr,
-        gamma_exp=gamma_exp_sldr,
-    )
-    form_mpc
-    return (form_mpc,)
-
-
-@app.cell
-def _(R, form, form_mpc, l, run_mpc_perfect):
-    mpc_solution = run_mpc_perfect(
-        l=l,
-        R=R,
-        G=form.value["G"],
-        Q=form.value["Q"],
-        B=form.value["Q"] / form.value["bat_hours"],
-        alpha=form.value["alpha"],
-        beta=form.value["beta"],
-        lamb=form.value["lambd"],
-        gamma=10 ** form_mpc.value["gamma_exp"],
-        mu=10 ** form.value["mu_exp"],
-        efficiency=form.value["power_efficiency"],
-        soc_loss=form.value["soc_loss"],
-        q_init=form.value["Q"] / 2,
-        q_target=form_mpc.value["q_target"],
-        H=form_mpc.value["H"],
-    )
-    return (mpc_solution,)
-
-
-@app.cell
-def _(form, mpc_solution, np, one_shot_solution):
-    def _metrics(sol):
-        g, s, b, c = sol["g"], sol["s"], sol["b"], sol["c"]
-        return {
-            "load shedding": np.sum(s),
-            "dispatch cost": np.sum(form.value["alpha"] * g + form.value["beta"] * g**2),
-            "curtailment": np.sum(c),
-            "abs battery power": np.sum(np.abs(b)),
-        }
-
-    _os_m, _mpc_m = _metrics(one_shot_solution), _metrics(mpc_solution)
-    for _key in _os_m:
-        _os, _mpc = _os_m[_key], _mpc_m[_key]
-        _rel = (_mpc - _os) / _os if _os != 0 else float("nan")
-        print(f"{_key}: one-shot={_os:.3f}  mpc={_mpc:.3f}  delta={_mpc - _os:+.3f}  ({_rel:+.1%})")
-    return
+    print(f"status: {one_shot_problem.status}, objective: {one_shot_problem.value:.4f}")
+    solution = {k: v.value for k, v in one_shot_problem.var_dict.items()}
+    return (solution,)
 
 
 @app.cell
@@ -239,72 +182,62 @@ def _(add_abnormal_event, event_end_input, event_start_input, mo, pd, tidx):
 
 
 @app.cell
-def _(np, pd, plot_length_days, plot_start_date, tidx):
+def _(
+    form,
+    np,
+    pd,
+    plot_length_days,
+    plot_solution,
+    plot_start_date,
+    solution,
+    tidx,
+):
     _steps_per_day = int(pd.Timedelta("1D") / (tidx[1] - tidx[0]))
     _start_idx = int(tidx.searchsorted(pd.Timestamp(str(plot_start_date.value))))
-    s = np.s_[_start_idx : _start_idx + int(plot_length_days.value) * _steps_per_day]
-    return (s,)
+    _s = np.s_[_start_idx : _start_idx + int(plot_length_days.value) * _steps_per_day]
+    _fig = plot_solution(
 
-
-@app.cell
-def _(form, one_shot_solution, plot_solution, s, tidx):
-    plot_solution(
-        solution=one_shot_solution,
+        solution=solution,
         tidx=tidx,
-        s=s,
+        s=_s,
         Q=form.value["Q"],
         B=form.value["Q"] / form.value["bat_hours"],
         alpha=form.value["alpha"],
         beta=form.value["beta"],
         efficiency=form.value["power_efficiency"],
-        supertitle="one-shot solution",
     )
+    _fig
     return
 
 
 @app.cell
-def _(compute_partition, form, np, one_shot_solution, pd, plt, tidx):
-    _decouple_points, _is_loadshed = compute_partition(one_shot_solution["q"][1:], tidx, form.value["Q"])
+def _(compute_partition, form, np, pd, plt, solution, tidx):
+    _decouple_points, _is_loadshed = compute_partition(solution["q"][1:], tidx, form.value["Q"])
     _all_points = np.concatenate([[tidx[0]], _decouple_points, [tidx[-1]]])
     _durations_days = np.diff([pd.Timestamp(t) for t in _all_points]) / pd.Timedelta("1D")
     _loadshed_days = _durations_days[_is_loadshed]
     _curtail_days = _durations_days[~_is_loadshed]
 
-    for _label, _days in [("load shed zone (F->E)", _loadshed_days), ("non-dispatch curtail zone (E->F)", _curtail_days)]:
+    for _label, _days in [("load shed zone (F to E)", _loadshed_days), ("non-dispatch curtail zone (E toF)", _curtail_days)]:
         print(f"\n{_label}  (n={len(_days)})")
         print(f"  mean={np.mean(_days):.2f}d  median={np.median(_days):.2f}d  std={np.std(_days):.2f}d  min={np.min(_days):.2f}d  max={np.max(_days):.2f}d")
 
     _fig, (_ax1, _ax2) = plt.subplots(2, 1, figsize=(8, 5), sharex=True)
     _ax1.hist(_loadshed_days, bins=20, color="orange", edgecolor="white", linewidth=0.5, alpha=0.8)
-    _ax1.set(ylabel="count", title="load shed zone (F->E)")
+    _ax1.set(ylabel="count", title="load shed zone (F to E)")
     _ax2.hist(_curtail_days, bins=20, color="steelblue", edgecolor="white", linewidth=0.5, alpha=0.8)
-    _ax2.set(ylabel="count", title="non-dispatch curtail zone (E->F)", xlabel="segment length [days]")
+    _ax2.set(ylabel="count", title="non-dispatch curtail zone (E to F)", xlabel="segment length [days]")
     plt.tight_layout()
     _fig
     return
 
 
 @app.cell
-def _(form, form_mpc, mpc_solution, plot_solution, s, tidx):
-    plot_solution(
-        solution=mpc_solution,
-        tidx=tidx,
-        s=s,
-        Q=form.value["Q"],
-        B=form.value["Q"] / form.value["bat_hours"],
-        alpha=form.value["alpha"],
-        beta=form.value["beta"],
-        efficiency=form.value["power_efficiency"],
-        supertitle=f"MPC solution (H={form_mpc.value['H']})",
-    )
-    return
-
-
-@app.cell
-def _(mo, mpc_solution, one_shot_solution, plot_heatmap, tidx):
-    for _var, _cmap, _center in [("b", "RdBu_r", 0), ("g", "Oranges", None), ("s", "Oranges", None), ("c", "Greens", None)]:
-        mo.output.append(plot_heatmap(tidx, one_shot_solution[_var], title=f"one-shot {_var} [GWh]", cmap=_cmap, center=_center))
-        mo.output.append(plot_heatmap(tidx, mpc_solution[_var], title=f"MPC {_var} [GWh]", cmap=_cmap, center=_center))
+def _(mo, plot_heatmap, solution, tidx):
+    mo.output.append(plot_heatmap(tidx, solution["b"], title="battery power [GWh]", cmap="RdBu_r", center=0))
+    mo.output.append(plot_heatmap(tidx, solution["g"], title="utility power [GWh]", cmap="Oranges"))
+    mo.output.append(plot_heatmap(tidx, solution["s"], title="load shedding [GWh]", cmap="Oranges"))
+    mo.output.append(plot_heatmap(tidx, solution["c"], title="curtailed renewables [GWh]", cmap="Greens"))
     return
 
 

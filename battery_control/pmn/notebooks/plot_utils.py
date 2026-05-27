@@ -1,6 +1,28 @@
+from datetime import datetime as _dt
+
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 import numpy as np
 import pandas as pd
+
+
+def compute_partition(q, tidx, Q, atol=1e-3):
+    """Return (decouple_points, is_loadshed) for the SOC trajectory.
+
+    decouple_points: interior partition timestamps (alternating last_full/last_empty transitions)
+    is_loadshed: bool array of length len(decouple_points)+1 -- True = F->E, False = E->F
+    """
+    charged = np.isclose(q, Q, atol=atol)
+    decouple_mask = charged | np.isclose(q, 0, atol=atol)
+    decouple_is_full = charged[decouple_mask]
+    decouple_tidx = np.asarray(tidx)[decouple_mask]
+    transitions = np.where(np.diff(decouple_is_full.astype(int)) != 0)[0]
+    if len(transitions) == 0:
+        return np.array([]), np.array([], dtype=bool)
+    decouple_points = decouple_tidx[transitions]
+    going_to_empty = decouple_is_full[transitions]
+    is_loadshed = np.concatenate([[not decouple_is_full[0]], going_to_empty[:-1], [going_to_empty[-1]]])
+    return decouple_points, is_loadshed
 
 
 def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None):
@@ -11,6 +33,25 @@ def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=N
     q = solution["q"][s]
     charged = np.isclose(q, Q, atol=1e-3)
     discharged = np.isclose(q, 0, atol=1e-3)
+
+    decouple_points, is_loadshed = compute_partition(q, tidx[s], Q)
+    partition_axes = [ax[3], ax[4]]
+    if len(decouple_points) > 0:
+        all_times = [tidx[s][0]] + list(decouple_points) + [tidx[s][-1]]
+        for t0, t1, orange in zip(all_times[:-1], all_times[1:], is_loadshed):
+            for _ax in partition_axes:
+                _ax.axvspan(t0, t1, alpha=0.12, color="orange" if orange else "blue", zorder=0)
+        for _ax in partition_axes:
+            for t in decouple_points:
+                _ax.axvline(t, color="gray", alpha=0.5, linewidth=0.8, zorder=0)
+        ax[3].legend(
+            handles=[
+                Patch(color="orange", alpha=0.4, label="load shed zone"),
+                Patch(color="blue", alpha=0.4, label="non-dispatch curtail zone"),
+            ],
+            fontsize=7,
+            loc="upper right",
+        )
 
     ax[0].plot(tidx[s], q)
     ax[0].plot(tidx[s][charged], q[charged], ls="none", marker=".", color="blue")
@@ -84,7 +125,6 @@ def plot_heatmap(tidx, values, title=None, cmap=None, center=None):
     )
     ax.invert_yaxis()
     fig.colorbar(mesh, ax=ax)
-    from datetime import datetime as _dt
     slot_minutes = (_dt.combine(_dt.min, pivot.index[1]) - _dt.combine(_dt.min, pivot.index[0])).seconds // 60
     tick_every_y = max(1, 180 // slot_minutes)
     ytick_idx = np.arange(0, n_slots, tick_every_y)

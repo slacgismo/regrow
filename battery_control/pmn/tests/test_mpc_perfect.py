@@ -24,7 +24,7 @@ PARAMS = {
     "soc_loss": 1e-6,
 }
 
-l, R, _, _, _ = process_single_node_data(
+l, R, _, _, _, _ = process_single_node_data(
     PARAMS["G"], data_path=DATA_PATH, data_start="2019-01-01", data_end="2019-01-14"
 )
 

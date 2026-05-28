@@ -20,7 +20,9 @@ SOC_LOSS = 1e-5
 ALPHA = 1.25
 BETA = 0.5
 LAMB = 20.0
-Q = 10
+Q = 10  # base
+
+Q_LIST = [4, 8, 16, 32]  # Q sweep
 
 MU_LIST = np.logspace(-6, 0, num=7)
 
@@ -50,54 +52,48 @@ CONFIGS = [
 ]
 
 
-def _sweep_mu(l, R, n_days):
-    B = Q / BAT_HOURS
+def _sweep_mu(l, R, n_days, q=Q):
+    B = q / BAT_HOURS
     rows = []
     for mu in MU_LIST:
         problem = make_one_shot(
-            alpha=ALPHA,
-            beta=BETA,
-            lamb=LAMB,
-            mu=mu,
-            T=len(l),
-            efficiency=EFFICIENCY,
-            soc_loss=SOC_LOSS,
+            alpha=ALPHA, beta=BETA, lamb=LAMB, mu=mu, T=len(l),
+            efficiency=EFFICIENCY, soc_loss=SOC_LOSS,
         )
-        load_one_shot_problem_data(problem, l=l, R=R, G=G, Q=Q, B=B, q0=Q / 2)
+        load_one_shot_problem_data(problem, l=l, R=R, G=G, Q=q, B=B, q0=q / 2)
         problem.solve(solver="CLARABEL")
         if problem.status not in ("optimal", "optimal_inaccurate"):
             print(f"  skipping mu={mu:.2e}: status={problem.status}")
             continue
         if not validate_solution_dynamics(
-            problem, Q=Q, B=Q / BAT_HOURS, efficiency=EFFICIENCY, soc_loss=SOC_LOSS, delta=1
+            problem, Q=q, B=q / BAT_HOURS, efficiency=EFFICIENCY, soc_loss=SOC_LOSS, delta=1
         ):
             print(f"  skipping mu={mu:.2e}: dynamics validation failed")
             continue
         sol = {k: v.value for k, v in problem.var_dict.items()}
-        rows.append(
-            {
-                "mu": mu,
-                "throughput_per_day": float(np.sum(np.abs(sol["b"])) / n_days),
-                "non_battery_cost_per_day": float(
-                    np.sum(LAMB * sol["s"] + ALPHA * sol["g"] + BETA * sol["g"] ** 2) / n_days
-                ),
-            }
-        )
+        rows.append({
+            "mu": mu,
+            "Q": q,
+            "throughput_per_day": float(np.sum(np.abs(sol["b"])) / n_days),
+            "non_battery_cost_per_day": float(
+                np.sum(LAMB * sol["s"] + ALPHA * sol["g"] + BETA * sol["g"] ** 2) / n_days
+            ),
+        })
     return rows
 
 
-def _plot_group(ax, df, names, labels=None):
+def _plot_group(ax, df, names, labels=None, col="config"):
     for name, label in zip(names, labels or names):
-        sub = df[df["config"] == name].sort_values("mu")
+        sub = df[df[col] == name].sort_values("mu")
         ax.plot(sub["throughput_per_day"], sub["non_battery_cost_per_day"], marker="o", label=label)
     ax.set_xlabel("battery throughput [GWh/day]")
     ax.set_ylabel("operational cost (load shed + generation) [/day]")
     ax.legend()
 
 
-def _plot_group_vs_mu(ax, df, names, labels=None):
+def _plot_group_vs_mu(ax, df, names, labels=None, col="config"):
     for name, label in zip(names, labels or names):
-        sub = df[df["config"] == name].sort_values("mu")
+        sub = df[df[col] == name].sort_values("mu")
         ax.plot(sub["mu"], sub["non_battery_cost_per_day"], marker="o", label=label)
     ax.set_xscale("log")
     ax.set_xlabel("mu")
@@ -136,6 +132,20 @@ def _make_plots(df, out_dir):
     ax.legend(title="event duration")
     _save(fig, out_dir / "mu_cost_events.png")
 
+    q_df = df[df["config"] == "3yr_Qsweep"]
+    q_vals = sorted(q_df["Q"].unique())
+    fig, ax = plt.subplots(figsize=(7, 5))
+    _plot_group(ax, q_df, q_vals, labels=[f"Q={q}" for q in q_vals], col="Q")
+    ax.set_title("mu pareto: battery size sweep (3yr)")
+    ax.legend(title="Q [GWh]")
+    _save(fig, out_dir / "pareto_Q.png")
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    _plot_group_vs_mu(ax, q_df, q_vals, labels=[f"Q={q}" for q in q_vals], col="Q")
+    ax.set_title("mu vs cost: battery size sweep (3yr)")
+    ax.legend(title="Q [GWh]")
+    _save(fig, out_dir / "mu_cost_Q.png")
+
 
 def run(experiment_name):
     data_path = str(pathlib.Path(__file__).parent.parent.parent.parent / "single_node_data.csv")
@@ -154,6 +164,7 @@ def run(experiment_name):
             "LAMB": LAMB,
         },
         "mu_list": MU_LIST.tolist(),
+        "Q_list": Q_LIST,
         "configs": CONFIGS,
     }
     (out_dir / "config.json").write_text(json.dumps(config, indent=2))
@@ -175,6 +186,17 @@ def run(experiment_name):
         n_days = len(tidx) * (tidx[1] - tidx[0]) / pd.Timedelta("1D")
         for row in _sweep_mu(l, R, n_days):
             all_rows.append({"config": cfg["name"], **row})
+
+    l_3yr, R_3yr, _, tidx_3yr, *_ = process_single_node_data(
+        G, data_path=data_path, data_start="2018", data_end="2020", add_event=False,
+        event_start=str(_EVENT_START), event_end=str(_EVENT_START + timedelta(days=5)),
+        event_load_factor=_EVENT_LOAD_FACTOR, event_pv_factor=_EVENT_PV_FACTOR,
+    )
+    n_days_3yr = len(tidx_3yr) * (tidx_3yr[1] - tidx_3yr[0]) / pd.Timedelta("1D")
+    for j, q_val in enumerate(Q_LIST):
+        print(f"[Q sweep {j+1}/{len(Q_LIST)}] Q={q_val}", flush=True)
+        for row in _sweep_mu(l_3yr, R_3yr, n_days_3yr, q=q_val):
+            all_rows.append({"config": "3yr_Qsweep", **row})
 
     df = pd.DataFrame(all_rows)
     df.to_csv(out_dir / "results.csv", index=False)

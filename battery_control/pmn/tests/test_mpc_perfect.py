@@ -28,21 +28,24 @@ l, R, _, _, _, _ = process_single_node_data(
     PARAMS["G"], data_path=DATA_PATH, data_start="2019-01-01", data_end="2019-01-14"
 )
 
-one_shot = make_one_shot(len(l), delta=1)
+one_shot = make_one_shot(
+    alpha=PARAMS["alpha"],
+    beta=PARAMS["beta"],
+    lamb=PARAMS["lamb"],
+    mu=PARAMS["mu"],
+    T=len(l),
+    efficiency=PARAMS["efficiency"],
+    soc_loss=PARAMS["soc_loss"],
+    delta=1,
+)
 load_one_shot_problem_data(
     one_shot,
     l,
     R,
     G=PARAMS["G"],
-    q0=PARAMS["q_init"],
     Q=PARAMS["Q"],
     B=PARAMS["B"],
-    alpha=PARAMS["alpha"],
-    beta=PARAMS["beta"],
-    lamb=PARAMS["lamb"],
-    mu=PARAMS["mu"],
-    efficiency=PARAMS["efficiency"],
-    soc_loss=PARAMS["soc_loss"],
+    q0=PARAMS["q_init"],
 )
 one_shot.solve(solver="CLARABEL")
 one_shot_sol = {k: v.value for k, v in one_shot.var_dict.items()}

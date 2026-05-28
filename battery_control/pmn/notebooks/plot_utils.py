@@ -25,14 +25,16 @@ def compute_partition(q, tidx, Q, atol=1e-3):
     return decouple_points, is_loadshed
 
 
-def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None):
+def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None, decimals=6):
+    atol = 1 / 10 ** (decimals)
     fig, ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
     if supertitle is not None:
         fig.suptitle(supertitle)
+    solution = {k: np.round(v, decimals) for k, v in solution.items()}
 
     q = solution["q"][s]
-    charged = np.isclose(q, Q, atol=1e-3)
-    discharged = np.isclose(q, 0, atol=1e-3)
+    charged = np.isclose(q, Q, atol=atol)
+    discharged = np.isclose(q, 0, atol=atol)
 
     decouple_points, is_loadshed = compute_partition(q, tidx[s], Q)
     partition_axes = [ax[3], ax[4]]
@@ -93,6 +95,8 @@ def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=N
     ax[4].plot(tidx[s][discharged], sv[discharged], ls="none", marker=".", color="orange")
     ax[4].set_title(f"curtailed load, total = {np.sum(sv):.2f} GWh")
 
+    for _ax in ax:
+        _ax.tick_params(axis="x", rotation=45)
     plt.tight_layout()
     return fig
 
@@ -155,7 +159,7 @@ def solution_heatmaps(solution, tidx, Q, B, G, label=""):
     ]
     fig, axes = plt.subplots(len(vars_config), 1, figsize=(14, 3 * len(vars_config)))
     for ax, (var, title, cmap, center, vmin, vmax) in zip(axes, vars_config):
-        values = 100 * (solution[var][1:] / Q) if var == "q" else solution[var]
+        values = np.round(100 * (solution[var][1:] / Q) if var == "q" else solution[var], 6)
         plot_heatmap(tidx, values, title=f"{prefix}{title}", cmap=cmap, center=center, vmin=vmin, vmax=vmax, ax=ax)
     plt.tight_layout()
     return fig

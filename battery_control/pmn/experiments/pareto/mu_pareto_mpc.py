@@ -191,10 +191,6 @@ def run(experiment_name):
         data_start="2018",
         data_end="2020",
         add_event=False,
-        event_start="2019-08-15",
-        event_end="2019-08-20",
-        event_load_factor=1.5,
-        event_pv_factor=0.25,
     )
     n_days = len(tidx) * (tidx[1] - tidx[0]) / pd.Timedelta("1D")
 

@@ -178,10 +178,7 @@ def run(experiment_name):
             data_start=cfg["data_start"],
             data_end=cfg["data_end"],
             add_event=cfg.get("add_event", False),
-            event_start=cfg.get("event_start", str(_EVENT_START)),
-            event_end=cfg.get("event_end", str(_EVENT_START + timedelta(days=5))),
-            event_load_factor=cfg.get("event_load_factor", _EVENT_LOAD_FACTOR),
-            event_pv_factor=cfg.get("event_pv_factor", _EVENT_PV_FACTOR),
+            **{k: cfg[k] for k in ("event_start", "event_end", "event_load_factor", "event_pv_factor") if k in cfg},
         )
         n_days = len(tidx) * (tidx[1] - tidx[0]) / pd.Timedelta("1D")
         for row in _sweep_mu(l, R, n_days):
@@ -189,8 +186,6 @@ def run(experiment_name):
 
     l_3yr, R_3yr, _, tidx_3yr, *_ = process_single_node_data(
         G, data_path=data_path, data_start="2018", data_end="2020", add_event=False,
-        event_start=str(_EVENT_START), event_end=str(_EVENT_START + timedelta(days=5)),
-        event_load_factor=_EVENT_LOAD_FACTOR, event_pv_factor=_EVENT_PV_FACTOR,
     )
     n_days_3yr = len(tidx_3yr) * (tidx_3yr[1] - tidx_3yr[0]) / pd.Timedelta("1D")
     for j, q_val in enumerate(Q_LIST):

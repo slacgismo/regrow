@@ -87,13 +87,13 @@ def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=N
     ax[3].plot(tidx[s], c)
     ax[3].plot(tidx[s][charged], c[charged], ls="none", marker=".", color="blue")
     ax[3].plot(tidx[s][discharged], c[discharged], ls="none", marker=".", color="orange")
-    ax[3].set_title(f"curtailed renewable power, total = {np.sum(c):.2f} GWh")
+    ax[3].set_title(f"curtailed non-dispatched generation, total = {np.sum(c):.2f} GWh")
 
     sv = solution["s"][s]
     ax[4].plot(tidx[s], sv)
     ax[4].plot(tidx[s][charged], sv[charged], ls="none", marker=".", color="blue")
     ax[4].plot(tidx[s][discharged], sv[discharged], ls="none", marker=".", color="orange")
-    ax[4].set_title(f"curtailed load, total = {np.sum(sv):.2f} GWh")
+    ax[4].set_title(f"load shedding, total = {np.sum(sv):.2f} GWh")
 
     for _ax in ax:
         _ax.tick_params(axis="x", rotation=45)

@@ -172,7 +172,9 @@ def _(
     )
     one_shot_problem.solve(solver="CLARABEL")
     print(f"one-shot status: {one_shot_problem.status}, objective: {one_shot_problem.value:.4f}")
-    print(f"dynamics valid: {validate_solution_dynamics(one_shot_problem, Q=form.value['Q'], B=form.value['Q'] / form.value['bat_hours'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'], delta=1)}")
+    print(
+        f"dynamics valid: {validate_solution_dynamics(one_shot_problem, Q=form.value['Q'], B=form.value['Q'] / form.value['bat_hours'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'], delta=1)}"
+    )
     one_shot_solution = {k: v.value for k, v in one_shot_problem.var_dict.items()}
     return (one_shot_solution,)
 
@@ -180,7 +182,9 @@ def _(
 @app.cell(hide_code=True)
 def _(mo):
     H_sldr = mo.ui.number(start=1, step=1, label="MPC horizon H (time steps)", value=24, full_width=True)
-    q_target_sldr = mo.ui.number(start=0.0, stop=1.0, step=0.05, label="q_target (fraction of Q)", value=1.0, full_width=True)
+    q_target_sldr = mo.ui.number(
+        start=0.0, stop=1.0, step=0.05, label="q_target (fraction of Q)", value=1.0, full_width=True
+    )
     gamma_exp_sldr = mo.ui.number(start=-5, stop=0, step=1, label="gamma (log base 10)", value=-3, full_width=True)
     form_mpc = mo.md("""{H}\n{q_target}\n{gamma_exp}""").batch(
         H=H_sldr,
@@ -215,9 +219,19 @@ def _(R, form, form_mpc, l, run_mpc_perfect):
 
 @app.cell
 def _(form, get_metrics_of_interest, mpc_solution, one_shot_solution):
-    _kwargs = dict(lamb=form.value["lambd"], alpha=form.value["alpha"], beta=form.value["beta"], mu=10 ** form.value["mu_exp"])
-    _os_m = get_metrics_of_interest(s=one_shot_solution["s"], g=one_shot_solution["g"], b=one_shot_solution["b"], c=one_shot_solution["c"], **_kwargs)
-    _mpc_m = get_metrics_of_interest(s=mpc_solution["s"], g=mpc_solution["g"], b=mpc_solution["b"], c=mpc_solution["c"], **_kwargs)
+    _kwargs = dict(
+        lamb=form.value["lambd"], alpha=form.value["alpha"], beta=form.value["beta"], mu=10 ** form.value["mu_exp"]
+    )
+    _os_m = get_metrics_of_interest(
+        s=one_shot_solution["s"],
+        g=one_shot_solution["g"],
+        b=one_shot_solution["b"],
+        c=one_shot_solution["c"],
+        **_kwargs,
+    )
+    _mpc_m = get_metrics_of_interest(
+        s=mpc_solution["s"], g=mpc_solution["g"], b=mpc_solution["b"], c=mpc_solution["c"], **_kwargs
+    )
     for _key in _os_m:
         _os, _mpc = _os_m[_key], _mpc_m[_key]
         _rel = (_mpc - _os) / _os if _os != 0 else float("nan")
@@ -268,7 +282,7 @@ def _(form, one_shot_solution, plot_solution, s, tidx):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(compute_partition, form, np, one_shot_solution, pd, plt, tidx):
     _decouple_points, _is_loadshed = compute_partition(one_shot_solution["q"][1:], tidx, form.value["Q"])
     _all_points = np.concatenate([[tidx[0]], _decouple_points, [tidx[-1]]])
@@ -276,9 +290,14 @@ def _(compute_partition, form, np, one_shot_solution, pd, plt, tidx):
     _loadshed_days = _durations_days[_is_loadshed]
     _curtail_days = _durations_days[~_is_loadshed]
 
-    for _label, _days in [("load shed zone (F->E)", _loadshed_days), ("non-dispatch curtail zone (E->F)", _curtail_days)]:
+    for _label, _days in [
+        ("load shed zone (F->E)", _loadshed_days),
+        ("non-dispatch curtail zone (E->F)", _curtail_days),
+    ]:
         print(f"\n{_label}  (n={len(_days)})")
-        print(f"  mean={np.mean(_days):.2f}d  median={np.median(_days):.2f}d  std={np.std(_days):.2f}d  min={np.min(_days):.2f}d  max={np.max(_days):.2f}d")
+        print(
+            f"  mean={np.mean(_days):.2f}d  median={np.median(_days):.2f}d  std={np.std(_days):.2f}d  min={np.min(_days):.2f}d  max={np.max(_days):.2f}d"
+        )
 
     _fig, (_ax1, _ax2) = plt.subplots(2, 1, figsize=(8, 5), sharex=True)
     _ax1.hist(_loadshed_days, bins=20, color="orange", edgecolor="white", linewidth=0.5, alpha=0.8)
@@ -318,11 +337,23 @@ def _(form, mo, mpc_solution, one_shot_solution, solution_heatmaps, tidx):
 
 @app.cell
 def _(mo, mpc_solution, one_shot_solution, plot_heatmap, tidx):
-    mo.output.append(plot_heatmap(tidx, mpc_solution["b"] - one_shot_solution["b"], title="diff b [GWh]", cmap="RdBu_r", center=0))
-    mo.output.append(plot_heatmap(tidx, mpc_solution["g"] - one_shot_solution["g"], title="diff g [GWh]", cmap="RdBu_r", center=0))
-    mo.output.append(plot_heatmap(tidx, mpc_solution["s"] - one_shot_solution["s"], title="diff s [GWh]", cmap="RdBu_r", center=0))
-    mo.output.append(plot_heatmap(tidx, mpc_solution["c"] - one_shot_solution["c"], title="diff c [GWh]", cmap="RdBu_r", center=0))
-    mo.output.append(plot_heatmap(tidx, mpc_solution["q"][1:] - one_shot_solution["q"][1:], title="diff SOC [GWh]", cmap="RdBu_r", center=0))
+    mo.output.append(
+        plot_heatmap(tidx, mpc_solution["b"] - one_shot_solution["b"], title="diff b [GWh]", cmap="RdBu_r", center=0)
+    )
+    mo.output.append(
+        plot_heatmap(tidx, mpc_solution["g"] - one_shot_solution["g"], title="diff g [GWh]", cmap="RdBu_r", center=0)
+    )
+    mo.output.append(
+        plot_heatmap(tidx, mpc_solution["s"] - one_shot_solution["s"], title="diff s [GWh]", cmap="RdBu_r", center=0)
+    )
+    mo.output.append(
+        plot_heatmap(tidx, mpc_solution["c"] - one_shot_solution["c"], title="diff c [GWh]", cmap="RdBu_r", center=0)
+    )
+    mo.output.append(
+        plot_heatmap(
+            tidx, mpc_solution["q"][1:] - one_shot_solution["q"][1:], title="diff SOC [GWh]", cmap="RdBu_r", center=0
+        )
+    )
     return
 
 

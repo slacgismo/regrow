@@ -90,7 +90,7 @@ def _(mo):
     G_sldr = mo.ui.number(start=0, step=1, label="G [GW]", value=1, full_width=True)
     Q_sldr = mo.ui.number(start=0, stop=300, step=1, label="battery capacity [GWh]", value=4, full_width=True)
     bat_hours_sldr = mo.ui.number(
-        start=0, stop=300, step=1, label="battery number of hours for full discharge", value=3, full_width=True
+        start=0, stop=300, step=1, label="battery number of hours for full discharge", value=4, full_width=True
     )
     power_efficiency_sldr = mo.ui.number(start=0, stop=1, label="power efficiency", value=0.98, full_width=True)
     soc_loss_sldr = mo.ui.number(start=0, stop=1, label="soc loss", value=1e-5, full_width=True)

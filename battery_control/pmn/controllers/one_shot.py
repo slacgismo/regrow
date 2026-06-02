@@ -7,21 +7,18 @@ from .constraints import (
 from .metrics import core_objective
 
 
-def make_one_shot(alpha, beta, lamb, mu, T, efficiency, soc_loss, delta=1):
+def make_one_shot(alpha, beta, lamb, mu, T, delta=1):
     """
     make the perfect knowledge one shot battery optimal control problem
-
-    args:
-        T: number of time steps
-        delta: number of hours per time step
-
-    return:
-        problem: the cvxpy problem object
     """
+
     # battery and controller params
     param_Q = cp.Parameter(nonneg=True, name="Q")  # battery capacity
     param_q0 = cp.Parameter(nonneg=True, name="q0")
     param_B = cp.Parameter(nonneg=True, name="B")  # max power
+    param_charge_efficiency = cp.Parameter(nonneg=True, name="charge_efficiency")
+    param_discharge_efficiency_inv = cp.Parameter(nonneg=True, name="discharge_efficiency_inv")
+    param_eta_storage = cp.Parameter(nonneg=True, name="eta_storage")
 
     # data params
     param_l = cp.Parameter(T, nonneg=True, name="l")
@@ -47,9 +44,9 @@ def make_one_shot(alpha, beta, lamb, mu, T, efficiency, soc_loss, delta=1):
         b_out=b_out,
         b_in=b_in,
         B=param_B,
-        charge_efficiency=efficiency,
-        discharge_efficiency=efficiency,
-        soc_loss=soc_loss,
+        charge_efficiency=param_charge_efficiency,
+        discharge_efficiency_inv=param_discharge_efficiency_inv,
+        eta_storage=param_eta_storage,
         delta=delta,
     )
     power_constraints = conservation_of_power_constraints(g=g, G=param_G, r=r, R=param_R, b=b, l=param_l, s=s, c=c)
@@ -67,7 +64,7 @@ def make_one_shot(alpha, beta, lamb, mu, T, efficiency, soc_loss, delta=1):
     return problem
 
 
-def load_one_shot_problem_data(problem, l, R, G, Q, B, q0):
+def load_one_shot_problem_data(problem, l, R, G, Q, B, q0, round_trip_efficiency, monthly_soc_loss):
     pd = problem.param_dict
     pd["l"].value = l
     pd["R"].value = R
@@ -75,3 +72,7 @@ def load_one_shot_problem_data(problem, l, R, G, Q, B, q0):
     pd["Q"].value = Q
     pd["B"].value = B
     pd["q0"].value = q0
+    one_way_efficiency = round_trip_efficiency**0.5
+    pd["charge_efficiency"].value = one_way_efficiency
+    pd["discharge_efficiency_inv"].value = 1 / one_way_efficiency
+    pd["eta_storage"].value = (1 - monthly_soc_loss / 100) ** (1 / (30 * 24))  # hourly storage efficiency

@@ -51,9 +51,9 @@ def tune_mpc_params(
     H,
     gamma_list,
     q_target_list,
+    round_trip_efficiency,
+    monthly_soc_loss,
     q_init=None,
-    efficiency=0.98,
-    soc_loss=0,
     delta=1,
     solver="CLARABEL",
     stress_mask=None,
@@ -75,8 +75,8 @@ def tune_mpc_params(
         mu=mu,
         q_init=q_init,
         H=H,
-        efficiency=efficiency,
-        soc_loss=soc_loss,
+        round_trip_efficiency=round_trip_efficiency,
+        monthly_soc_loss=monthly_soc_loss,
         delta=delta,
         solver=solver,
         disable_progress_bar=True,
@@ -115,8 +115,8 @@ def run_sizing_experiment(experiment_name):
 
     # fixed battery and objective parameters
     BAT_HOURS = 4
-    EFFICIENCY = 0.98
-    SOC_LOSS = 1e-5
+    ROUND_TRIP_EFFICIENCY = 0.95
+    MONTHLY_SOC_LOSS = 1
     ALPHA = 1.25
     BETA = 0.5
     LAMB = 20.0
@@ -143,8 +143,8 @@ def run_sizing_experiment(experiment_name):
         "fixed_params": {
             "G": G,
             "bat_hours": BAT_HOURS,
-            "efficiency": EFFICIENCY,
-            "soc_loss": SOC_LOSS,
+            "efficiency": ROUND_TRIP_EFFICIENCY,
+            "soc_loss": MONTHLY_SOC_LOSS,
             "alpha": ALPHA,
             "beta": BETA,
             "lamb": LAMB,
@@ -178,14 +178,14 @@ def run_sizing_experiment(experiment_name):
     results_path = out_dir / "results.csv"
     one_shot_path = out_dir / "one_shot_results.csv"
     one_shot_problem = make_one_shot(
-        alpha=ALPHA, beta=BETA, lamb=LAMB, mu=MU, T=len(l), efficiency=EFFICIENCY, soc_loss=SOC_LOSS
+        alpha=ALPHA, beta=BETA, lamb=LAMB, mu=MU, T=len(l)
     )
     total = len(Q_LIST) * len(H_LIST)
     rows = []
     one_shot_rows = []
     for Q in Q_LIST:
         print(f"[Q={Q}] running one-shot...", flush=True)
-        load_one_shot_problem_data(one_shot_problem, l=l, R=R, G=G, Q=Q, B=Q / BAT_HOURS, q0=Q / 2)
+        load_one_shot_problem_data(one_shot_problem, l=l, R=R, G=G, Q=Q, B=Q / BAT_HOURS, q0=Q / 2, round_trip_efficiency=ROUND_TRIP_EFFICIENCY, monthly_soc_loss=MONTHLY_SOC_LOSS)
         one_shot_problem.solve(solver="CLARABEL")
         sol = one_shot_problem.var_dict
         one_shot_rows.append(
@@ -220,8 +220,8 @@ def run_sizing_experiment(experiment_name):
                     lamb=LAMB,
                     mu=MU,
                     H=H,
-                    efficiency=EFFICIENCY,
-                    soc_loss=SOC_LOSS,
+                    round_trip_efficiency=ROUND_TRIP_EFFICIENCY,
+                    monthly_soc_loss=MONTHLY_SOC_LOSS,
                     gamma_list=GAMMA_LIST,
                     q_target_list=Q_TARGET_LIST,
                     stress_mask=event_mask,

@@ -11,7 +11,7 @@ from .constraints import (
 from .metrics import core_objective
 
 
-def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, soc_loss, q_target, delta):
+def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, round_trip_efficiency, eta_storage, q_target, delta):
     """make an MPC subproblem with horizon H"""
 
     # battery param
@@ -31,6 +31,7 @@ def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, s
     s = cp.Variable(H, nonneg=True, name="s")  # load shedding
     q = cp.Variable(H + 1, nonneg=True, name="q")  # battery SOC
 
+    one_way_efficiency = round_trip_efficiency**0.5
     # form problem
     battery_dynamics_constraints = battery_dynamics_contraints(
         q=q,
@@ -40,9 +41,9 @@ def _make_mpc_subproblem(H, Q, B, G, alpha, beta, lamb, mu, gamma, efficiency, s
         b_out=b_out,
         b_in=b_in,
         B=B,
-        charge_efficiency=efficiency,
-        discharge_efficiency=efficiency,
-        soc_loss=soc_loss,
+        charge_efficiency=one_way_efficiency,
+        discharge_efficiency_inv=1 / one_way_efficiency,
+        eta_storage=eta_storage,
         delta=delta,
     )
     power_constraints = conservation_of_power_constraints(g=g, G=G, r=r, R=R, b=b, l=l, s=s, c=c)
@@ -74,8 +75,8 @@ def run_mpc_perfect(
     q_init,
     q_target,
     H,
-    efficiency,
-    soc_loss,
+    round_trip_efficiency,
+    monthly_soc_loss,
     delta=1,
     solver="CLARABEL",
     disable_progress_bar=False,
@@ -95,10 +96,10 @@ def run_mpc_perfect(
         gamma: penalty strength for deviating from end of horizon soc target
         mu: battery degradation penalty
         q_target: target_soc at end of horizon
-        efficiency: charge/discharge efficiency
-        soc_loss: battery SOC loss rate per hour
+        round_trip_efficiency: round-trip charge/discharge efficiency
+        monthly_soc_loss: battery SOC loss in % per month
         H: number of timesteps in horizon
-        delta: timesteps in an hour
+        delta: hours per timestep
         solver: solver to call
 
     returns:
@@ -106,6 +107,7 @@ def run_mpc_perfect(
     """
     T = len(l)
     assert 1 <= H <= T, f"horizon H={H} must be between 1 and T={T} (inclusive)"
+    eta_storage = (1 - monthly_soc_loss / 100) ** (1 / (30 * 24))
     g_traj = np.zeros(T)
     r_traj = np.zeros(T)
     c_traj = np.zeros(T)
@@ -126,8 +128,8 @@ def run_mpc_perfect(
         lamb=lamb,
         mu=mu,
         gamma=gamma,
-        efficiency=efficiency,
-        soc_loss=soc_loss,
+        round_trip_efficiency=round_trip_efficiency,
+        eta_storage=eta_storage,
         q_target=q_target,
         delta=delta,
     )
@@ -146,8 +148,8 @@ def run_mpc_perfect(
                 lamb=lamb,
                 mu=mu,
                 gamma=gamma,
-                efficiency=efficiency,
-                soc_loss=soc_loss,
+                round_trip_efficiency=round_trip_efficiency,
+                eta_storage=eta_storage,
                 q_target=q_target,
                 delta=delta,
             )
@@ -156,9 +158,7 @@ def run_mpc_perfect(
         q0 = q_traj[t]
         _set_mpc_subproblem_data_params(problem=mpc_subproblem, t=t, h=h, l=l, R=R, q0=q0)
         mpc_subproblem.solve(solver=solver, warm_start=True)
-        solution_valid = validate_solution_dynamics(
-            mpc_subproblem, Q=Q, B=B, efficiency=efficiency, soc_loss=soc_loss, delta=delta
-        )
+        solution_valid = validate_solution_dynamics(mpc_subproblem)
         if not solution_valid:
             raise ValueError(f"MPC subproblem solution at timestep t={t} has invalid dynamics")
 
@@ -184,17 +184,8 @@ def run_mpc_perfect(
         "q": q_traj,
     }
     mpc_trajectory_valid = validate_battery_dynamics(
-        q=q_traj,
-        b=b_traj,
         b_out=b_out_traj,
         b_in=b_in_traj,
-        Q=Q,
-        B=B,
-        q0=q_init,
-        charge_efficiency=efficiency,
-        discharge_efficiency=efficiency,
-        soc_loss=soc_loss,
-        delta=delta,
     )
     if not mpc_trajectory_valid:
         raise ValueError("Implemented MPC trajectory has invalid dynamics")

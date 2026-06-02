@@ -17,8 +17,8 @@ from controllers.mpc_perfect import run_mpc_perfect
 
 G = 1
 BAT_HOURS = 4
-EFFICIENCY = 0.98
-SOC_LOSS = 1e-5
+ROUND_TRIP_EFFICIENCY = 0.95
+MONTHLY_SOC_LOSS = 1
 ALPHA = 1.25
 BETA = 0.5
 LAMB = 20.0
@@ -41,19 +41,7 @@ def _run_one(args):
     except Exception as e:
         print(f"  ERROR mu={mu:.0e} H={H} gamma={gamma:.0e} q_target={q_target}: {e}", flush=True)
         return {**base, "valid": False, "core_objective": float("nan"), "throughput_per_day": float("nan"), "non_battery_cost_per_day": float("nan")}
-    valid = validate_battery_dynamics(
-        q=sol["q"],
-        b=sol["b"],
-        b_out=sol["b_out"],
-        b_in=sol["b_in"],
-        Q=Q,
-        B=Q / BAT_HOURS,
-        q0=Q_INIT,
-        charge_efficiency=EFFICIENCY,
-        discharge_efficiency=EFFICIENCY,
-        soc_loss=SOC_LOSS,
-        delta=1,
-    )
+    valid = validate_battery_dynamics(b_out=sol["b_out"], b_in=sol["b_in"])
     return {
         **base,
         "valid": valid,
@@ -74,8 +62,8 @@ def _sweep(l, R, n_days):
         beta=BETA,
         lamb=LAMB,
         q_init=Q_INIT,
-        efficiency=EFFICIENCY,
-        soc_loss=SOC_LOSS,
+        round_trip_efficiency=ROUND_TRIP_EFFICIENCY,
+        monthly_soc_loss=MONTHLY_SOC_LOSS,
         disable_progress_bar=True,
     )
     args = [
@@ -170,8 +158,8 @@ def run(experiment_name):
             "G": G,
             "Q": Q,
             "BAT_HOURS": BAT_HOURS,
-            "EFFICIENCY": EFFICIENCY,
-            "SOC_LOSS": SOC_LOSS,
+            "ROUND_TRIP_EFFICIENCY": ROUND_TRIP_EFFICIENCY,
+            "MONTHLY_SOC_LOSS": MONTHLY_SOC_LOSS,
             "ALPHA": ALPHA,
             "BETA": BETA,
             "LAMB": LAMB,

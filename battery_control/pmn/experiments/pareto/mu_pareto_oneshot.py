@@ -15,8 +15,8 @@ from controllers.one_shot import load_one_shot_problem_data, make_one_shot
 
 G = 1
 BAT_HOURS = 4
-EFFICIENCY = 0.98
-SOC_LOSS = 1e-5
+ROUND_TRIP_EFFICIENCY = 0.95
+MONTHLY_SOC_LOSS = 1
 ALPHA = 1.25
 BETA = 0.5
 LAMB = 20.0
@@ -56,18 +56,13 @@ def _sweep_mu(l, R, n_days, q=Q):
     B = q / BAT_HOURS
     rows = []
     for mu in MU_LIST:
-        problem = make_one_shot(
-            alpha=ALPHA, beta=BETA, lamb=LAMB, mu=mu, T=len(l),
-            efficiency=EFFICIENCY, soc_loss=SOC_LOSS,
-        )
-        load_one_shot_problem_data(problem, l=l, R=R, G=G, Q=q, B=B, q0=q / 2)
+        problem = make_one_shot(alpha=ALPHA, beta=BETA, lamb=LAMB, mu=mu, T=len(l))
+        load_one_shot_problem_data(problem, l=l, R=R, G=G, Q=q, B=B, q0=q / 2, round_trip_efficiency=ROUND_TRIP_EFFICIENCY, monthly_soc_loss=MONTHLY_SOC_LOSS)
         problem.solve(solver="CLARABEL")
         if problem.status not in ("optimal", "optimal_inaccurate"):
             print(f"  skipping mu={mu:.2e}: status={problem.status}")
             continue
-        if not validate_solution_dynamics(
-            problem, Q=q, B=q / BAT_HOURS, efficiency=EFFICIENCY, soc_loss=SOC_LOSS, delta=1
-        ):
+        if not validate_solution_dynamics(problem):
             print(f"  skipping mu={mu:.2e}: dynamics validation failed")
             continue
         sol = {k: v.value for k, v in problem.var_dict.items()}
@@ -157,8 +152,8 @@ def run(experiment_name):
             "G": G,
             "Q": Q,
             "BAT_HOURS": BAT_HOURS,
-            "EFFICIENCY": EFFICIENCY,
-            "SOC_LOSS": SOC_LOSS,
+            "ROUND_TRIP_EFFICIENCY": ROUND_TRIP_EFFICIENCY,
+            "MONTHLY_SOC_LOSS": MONTHLY_SOC_LOSS,
             "ALPHA": ALPHA,
             "BETA": BETA,
             "LAMB": LAMB,

@@ -86,15 +86,15 @@ def _(mo):
     alpha_sldr = mo.ui.number(start=0, stop=50, step=0.25, label="alpha", value=1.25, full_width=True)
     beta_sldr = mo.ui.number(start=0, stop=50, step=0.25, label="beta", value=0.5, full_width=True)
     lambda_sldr = mo.ui.number(start=0, stop=50, step=0.25, label="lambda", value=20.0, full_width=True)
-    mu_exp_sldr = mo.ui.number(start=-15, stop=2, step=0.5, label="mu (log base 10)", value=-3, full_width=True)
+    mu_exp_sldr = mo.ui.number(start=-15, stop=2, step=0.5, label="mu (log base 10)", value=-2, full_width=True)
     G_sldr = mo.ui.number(start=0, step=1, label="G [GW]", value=1, full_width=True)
-    Q_sldr = mo.ui.number(start=0, stop=300, step=1, label="battery capacity [GWh]", value=4, full_width=True)
+    Q_sldr = mo.ui.number(start=0, stop=300, step=1, label="battery capacity [GWh]", value=10, full_width=True)
     bat_hours_sldr = mo.ui.number(
         start=0, stop=300, step=1, label="battery number of hours for full discharge", value=4, full_width=True
     )
-    power_efficiency_sldr = mo.ui.number(start=0, stop=1, label="power efficiency", value=0.98, full_width=True)
-    soc_loss_sldr = mo.ui.number(start=0, stop=1, label="soc loss", value=1e-5, full_width=True)
-    form = mo.md("""{alpha}\n{beta}\n{lambd}\n{mu_exp}\n{G}\n{Q}\n{bat_hours}\n{power_efficiency}\n{soc_loss}""").batch(
+    round_trip_efficiency_sldr = mo.ui.number(start=0.75, stop=1, label="round trip efficiency", value=0.95, full_width=True)
+    monthly_soc_loss_sldr = mo.ui.number(start=0, stop=10, step=0.5, label="soc loss [% per month]", value=1, full_width=True)
+    form = mo.md("""{alpha}\n{beta}\n{lambd}\n{mu_exp}\n{G}\n{Q}\n{bat_hours}\n{round_trip_efficiency}\n{monthly_soc_loss}""").batch(
         alpha=alpha_sldr,
         beta=beta_sldr,
         lambd=lambda_sldr,
@@ -102,8 +102,8 @@ def _(mo):
         G=G_sldr,
         Q=Q_sldr,
         bat_hours=bat_hours_sldr,
-        power_efficiency=power_efficiency_sldr,
-        soc_loss=soc_loss_sldr,
+        round_trip_efficiency=round_trip_efficiency_sldr,
+        monthly_soc_loss=monthly_soc_loss_sldr,
     )
     form
     return (form,)
@@ -138,7 +138,7 @@ def _(
     return R, l, tidx
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(form, l, make_one_shot):
     one_shot_problem = make_one_shot(
         alpha=form.value["alpha"],
@@ -146,13 +146,11 @@ def _(form, l, make_one_shot):
         lamb=form.value["lambd"],
         mu=10 ** form.value["mu_exp"],
         T=len(l),
-        efficiency=form.value["power_efficiency"],
-        soc_loss=form.value["soc_loss"],
     )
     return (one_shot_problem,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(
     R,
     form,
@@ -169,12 +167,12 @@ def _(
         Q=form.value["Q"],
         B=form.value["Q"] / form.value["bat_hours"],
         q0=form.value["Q"] / 2,
+        round_trip_efficiency=form.value["round_trip_efficiency"],
+        monthly_soc_loss=form.value["monthly_soc_loss"],
     )
     one_shot_problem.solve(solver="CLARABEL")
     print(f"one-shot status: {one_shot_problem.status}, objective: {one_shot_problem.value:.4f}")
-    print(
-        f"dynamics valid: {validate_solution_dynamics(one_shot_problem, Q=form.value['Q'], B=form.value['Q'] / form.value['bat_hours'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'], delta=1)}"
-    )
+    print(f"dynamics valid: {validate_solution_dynamics(one_shot_problem)}")
     one_shot_solution = {k: v.value for k, v in one_shot_problem.var_dict.items()}
     return (one_shot_solution,)
 
@@ -195,7 +193,7 @@ def _(mo):
     return (form_mpc,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(R, form, form_mpc, l, run_mpc_perfect):
     mpc_solution = run_mpc_perfect(
         l=l,
@@ -208,8 +206,8 @@ def _(R, form, form_mpc, l, run_mpc_perfect):
         lamb=form.value["lambd"],
         gamma=10 ** form_mpc.value["gamma_exp"],
         mu=10 ** form.value["mu_exp"],
-        efficiency=form.value["power_efficiency"],
-        soc_loss=form.value["soc_loss"],
+        round_trip_efficiency=form.value["round_trip_efficiency"],
+        monthly_soc_loss=form.value["monthly_soc_loss"],
         q_init=form.value["Q"] / 2,
         q_target=form_mpc.value["q_target"],
         H=form_mpc.value["H"],
@@ -217,8 +215,8 @@ def _(R, form, form_mpc, l, run_mpc_perfect):
     return (mpc_solution,)
 
 
-@app.cell
-def _(form, get_metrics_of_interest, mpc_solution, one_shot_solution):
+@app.cell(hide_code=True)
+def _(form, get_metrics_of_interest, mpc_solution, np, one_shot_solution):
     _kwargs = dict(
         lamb=form.value["lambd"], alpha=form.value["alpha"], beta=form.value["beta"], mu=10 ** form.value["mu_exp"]
     )
@@ -234,12 +232,12 @@ def _(form, get_metrics_of_interest, mpc_solution, one_shot_solution):
     )
     for _key in _os_m:
         _os, _mpc = _os_m[_key], _mpc_m[_key]
-        _rel = (_mpc - _os) / _os if _os != 0 else float("nan")
+        _rel = (_mpc - _os) / _os if np.round(_os, decimals=3) != 0 else float("nan")
         print(f"{_key}: one-shot={_os:.3f}  mpc perfect={_mpc:.3f}  delta={_mpc - _os:+.3f}  ({_rel:+.1%})")
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(add_abnormal_event, event_end_input, event_start_input, mo, pd, tidx):
     _steps_per_day = int(pd.Timedelta("1D") / (tidx[1] - tidx[0]))
     if add_abnormal_event.value:
@@ -258,7 +256,7 @@ def _(add_abnormal_event, event_end_input, event_start_input, mo, pd, tidx):
     return plot_length_days, plot_start_date
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(np, pd, plot_length_days, plot_start_date, tidx):
     _steps_per_day = int(pd.Timedelta("1D") / (tidx[1] - tidx[0]))
     _start_idx = int(tidx.searchsorted(pd.Timestamp(str(plot_start_date.value))))
@@ -266,7 +264,7 @@ def _(np, pd, plot_length_days, plot_start_date, tidx):
     return (s,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(form, one_shot_solution, plot_solution, s, tidx):
     plot_solution(
         solution=one_shot_solution,
@@ -276,7 +274,7 @@ def _(form, one_shot_solution, plot_solution, s, tidx):
         B=form.value["Q"] / form.value["bat_hours"],
         alpha=form.value["alpha"],
         beta=form.value["beta"],
-        efficiency=form.value["power_efficiency"],
+        efficiency=form.value["round_trip_efficiency"],
         supertitle="one-shot solution",
     )
     return
@@ -309,7 +307,7 @@ def _(compute_partition, form, np, one_shot_solution, pd, plt, tidx):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(form, form_mpc, mpc_solution, plot_solution, s, tidx):
     plot_solution(
         solution=mpc_solution,
@@ -319,7 +317,7 @@ def _(form, form_mpc, mpc_solution, plot_solution, s, tidx):
         B=form.value["Q"] / form.value["bat_hours"],
         alpha=form.value["alpha"],
         beta=form.value["beta"],
-        efficiency=form.value["power_efficiency"],
+        efficiency=form.value["round_trip_efficiency"],
         supertitle=f"MPC perfect solution (H={form_mpc.value['H']})",
     )
     return
@@ -335,7 +333,7 @@ def _(form, mo, mpc_solution, one_shot_solution, solution_heatmaps, tidx):
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _(mo, mpc_solution, one_shot_solution, plot_heatmap, tidx):
     mo.output.append(
         plot_heatmap(tidx, mpc_solution["b"] - one_shot_solution["b"], title="diff b [GWh]", cmap="RdBu_r", center=0)

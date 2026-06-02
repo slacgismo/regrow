@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-def compute_partition(q, tidx, Q, atol=1e-3):
+def compute_partition(q, tidx, Q, atol=1e-6):
     """Return (decouple_points, is_loadshed) for the SOC trajectory.
 
     decouple_points: interior partition timestamps (alternating last_full/last_empty transitions)
@@ -25,12 +25,11 @@ def compute_partition(q, tidx, Q, atol=1e-3):
     return decouple_points, is_loadshed
 
 
-def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None, decimals=6):
-    atol = 1 / 10 ** (decimals)
+def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None, atol=1e-6):
     fig, ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
     if supertitle is not None:
         fig.suptitle(supertitle)
-    solution = {k: np.round(v, decimals) for k, v in solution.items()}
+    solution = {k: np.round(v, 6) for k, v in solution.items()}
 
     q = solution["q"][s]
     charged = np.isclose(q, Q, atol=atol)

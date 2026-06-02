@@ -87,9 +87,9 @@ def _(mo):
     bat_hours_sldr = mo.ui.number(
         start=0, stop=300, step=1, label="battery number of hours for full discharge", value=3, full_width=True
     )
-    power_efficiency_sldr = mo.ui.number(start=0, stop=1, label="power efficiency", value=0.98, full_width=True)
-    soc_loss_sldr = mo.ui.number(start=0, stop=1, label="soc loss", value=1e-5, full_width=True)
-    form = mo.md("""{alpha}\n{beta}\n{lambd}\n{mu_exp}\n{G}\n{Q}\n{bat_hours}\n{power_efficiency}\n{soc_loss}""").batch(
+    round_trip_efficiency_sldr = mo.ui.number(start=0.7, stop=1, label="round trip efficiency", value=0.95, full_width=True)
+    monthly_soc_loss_sldr = mo.ui.number(start=0, stop=10, step=0.5, label="soc loss [% per month]", value=1, full_width=True)
+    form = mo.md("""{alpha}\n{beta}\n{lambd}\n{mu_exp}\n{G}\n{Q}\n{bat_hours}\n{round_trip_efficiency}\n{monthly_soc_loss}""").batch(
         alpha=alpha_sldr,
         beta=beta_sldr,
         lambd=lambda_sldr,
@@ -97,8 +97,8 @@ def _(mo):
         G=G_sldr,
         Q=Q_sldr,
         bat_hours=bat_hours_sldr,
-        power_efficiency=power_efficiency_sldr,
-        soc_loss=soc_loss_sldr,
+        round_trip_efficiency=round_trip_efficiency_sldr,
+        monthly_soc_loss=monthly_soc_loss_sldr,
     )
     form
     return (form,)
@@ -141,8 +141,6 @@ def _(form, l, make_one_shot):
         lamb=form.value["lambd"],
         mu=10 ** form.value["mu_exp"],
         T=len(l),
-        efficiency=form.value["power_efficiency"],
-        soc_loss=form.value["soc_loss"],
     )
     return (one_shot_problem,)
 
@@ -164,10 +162,12 @@ def _(
         Q=form.value["Q"],
         B=form.value["Q"] / form.value["bat_hours"],
         q0=form.value["Q"] / 2,
+        round_trip_efficiency=form.value["round_trip_efficiency"],
+        monthly_soc_loss=form.value["monthly_soc_loss"],
     )
     one_shot_problem.solve(solver="CLARABEL")
     print(f"status: {one_shot_problem.status}, objective: {one_shot_problem.value:.4f}")
-    print(f"dynamics valid: {validate_solution_dynamics(one_shot_problem, Q=form.value['Q'], B=form.value['Q'] / form.value['bat_hours'], efficiency=form.value['power_efficiency'], soc_loss=form.value['soc_loss'], delta=1)}")
+    print(f"dynamics valid: {validate_solution_dynamics(one_shot_problem)}")
     solution = {k: v.value for k, v in one_shot_problem.var_dict.items()}
     return (solution,)
 
@@ -214,7 +214,7 @@ def _(
         B=form.value["Q"] / form.value["bat_hours"],
         alpha=form.value["alpha"],
         beta=form.value["beta"],
-        efficiency=form.value["power_efficiency"],
+        efficiency=form.value["round_trip_efficiency"],
     )
     _fig
     return

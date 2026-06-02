@@ -16,12 +16,12 @@ PARAMS = {
     "alpha": 1.25,
     "beta": 0.5,
     "lamb": 20.0,
-    "mu": 1e-4,
+    "mu": 1e-2,
     "gamma": 0.0,
     "q_init": Q / 2,
     "q_target": Q / 2,  # gamma is zero
-    "efficiency": 0.98,
-    "soc_loss": 1e-6,
+    "round_trip_efficiency": 0.95,
+    "monthly_soc_loss": 1,
 }
 
 l, R, _, _, _, _ = process_single_node_data(
@@ -34,8 +34,6 @@ one_shot = make_one_shot(
     lamb=PARAMS["lamb"],
     mu=PARAMS["mu"],
     T=len(l),
-    efficiency=PARAMS["efficiency"],
-    soc_loss=PARAMS["soc_loss"],
     delta=1,
 )
 load_one_shot_problem_data(
@@ -46,6 +44,8 @@ load_one_shot_problem_data(
     Q=PARAMS["Q"],
     B=PARAMS["B"],
     q0=PARAMS["q_init"],
+    round_trip_efficiency=PARAMS["round_trip_efficiency"],
+    monthly_soc_loss=PARAMS["monthly_soc_loss"],
 )
 one_shot.solve(solver="CLARABEL")
 one_shot_sol = {k: v.value for k, v in one_shot.var_dict.items()}

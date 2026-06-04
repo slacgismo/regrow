@@ -18,11 +18,24 @@ app = marimo.App(width="full")
 
 @app.cell
 def _():
+    from __future__ import annotations
+
     import marimo as mo
     import pandas as pd
     import numpy as np
 
-    return np, pd
+    import requests
+    import geopandas as gpd
+    from shapely.geometry import Point
+    import json
+    import time
+
+    return Point, gpd, np, pd
+
+
+@app.cell
+def _():
+    return
 
 
 @app.cell
@@ -45,13 +58,7 @@ def _():
 
 
 @app.cell
-def _():
-    import requests
-    import geopandas as gpd
-    from shapely.geometry import Point
-    import json
-    import time
-
+def _(Point, gpd):
     # Load US states shapefile. This is a sample URL; you can find others or download and point to your local file.
     STATES_URL = "https://raw.githubusercontent.com/PublicaMundi/MappingAPI/refs/heads/master/data/geojson/us-states.json"
 
@@ -71,29 +78,33 @@ def _():
 
     def get_country(lat, lon):
         # Using a free API for country lookup
-        response = requests.get(f'http://geocode.xyz/{lat},{lon}?json=1')
-        if response.status_code == 200:
-            data = response.content
-            response_json = json.loads(response.content.decode('utf-8'))
-            provence = response_json['prov']
-            if provence == 'Throttled! See geocode.xyz/pricing':
-                # oops, wait a second for free API to unlock...
-                time.sleep(1)
-                response = requests.get(f'http://geocode.xyz/{lat},{lon}?json=1')
-                response_json = json.loads(response.content.decode('utf-8'))
-                provence = response_json['prov']
-            if provence == 'MX':
-                country = 'Mexico'
-            elif provence == 'CA':
-                country = 'Canada'
-            elif provence == 'US':
-                # If in the US, return the state
-                country = response_json['statename']
-            else:
-                country = provence
-            return country
+        # response = requests.get(f'http://geocode.xyz/{lat},{lon}?json=1')
+        # if response.status_code == 200:
+        #     data = response.content
+        #     response_json = json.loads(response.content.decode('utf-8'))
+        #     provence = response_json['prov']
+        #     if provence == 'Throttled! See geocode.xyz/pricing':
+        #         # oops, wait a second for free API to unlock...
+        #         time.sleep(1)
+        #         response = requests.get(f'http://geocode.xyz/{lat},{lon}?json=1')
+        #         response_json = json.loads(response.content.decode('utf-8'))
+        #         provence = response_json['prov']
+        #     if provence == 'MX':
+        #         country = 'Mexico'
+        #     elif provence == 'CA':
+        #         country = 'Canada'
+        #     elif provence == 'US':
+        #         # If in the US, return the state
+        #         country = response_json['statename']
+        #     else:
+        #         country = provence
+        #     return country
+        # else:
+        #     return 'Unable to find country'
+        if lat < 40:
+            return "Mexico"
         else:
-            return 'Unable to find country'
+            return "Canada"
 
     return (get_location,)
 

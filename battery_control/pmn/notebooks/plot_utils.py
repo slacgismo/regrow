@@ -25,7 +25,35 @@ def compute_partition(q, tidx, Q, atol=1e-6):
     return decouple_points, is_loadshed
 
 
-def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None, atol=1e-6):
+def plot_timeseries(l, R, shortfall, tidx, s, G, event_dates=None):
+    fig, ax = plt.subplots(nrows=3, sharex=True, figsize=(10, 4))
+    ax[0].plot(tidx[s], l[s])
+    ax[0].axhline(G, color="steelblue", ls=":", linewidth=0.8, label=f"G = {G} GW")
+    ax[0].legend(fontsize=7, loc="upper right")
+    ax[0].set_title("load [GW]")
+    ax[1].plot(tidx[s], R[s])
+    ax[1].set_title("renewables [GW]")
+    ax[2].plot(tidx[s], shortfall[s])
+    ax[2].set_title("shortfall [GW]")
+    for _ax in ax:
+        _ax.tick_params(axis="x", rotation=45)
+    if event_dates is not None:
+        t_start = pd.Timestamp(event_dates[0])
+        t_end = pd.Timestamp(event_dates[-1]) + pd.Timedelta(days=1)
+        t_start = max(t_start, pd.Timestamp(tidx[s][0]))
+        t_end = min(t_end, pd.Timestamp(tidx[s][-1]))
+        if t_start < t_end:
+            ax[-1].plot(
+                [t_start, t_end], [-0.05, -0.05],
+                transform=ax[-1].get_xaxis_transform(),
+                color="red", linewidth=6, solid_capstyle="butt",
+                clip_on=False,
+            )
+    plt.tight_layout()
+    return fig
+
+
+def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None, event_dates=None, atol=1e-6):
     fig, ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
     if supertitle is not None:
         fig.suptitle(supertitle)
@@ -96,11 +124,23 @@ def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=N
 
     for _ax in ax:
         _ax.tick_params(axis="x", rotation=45)
+    if event_dates is not None:
+        t_start = pd.Timestamp(event_dates[0])
+        t_end = pd.Timestamp(event_dates[-1]) + pd.Timedelta(days=1)
+        t_start = max(t_start, pd.Timestamp(tidx[s][0]))
+        t_end = min(t_end, pd.Timestamp(tidx[s][-1]))
+        if t_start < t_end:
+            ax[-1].plot(
+                [t_start, t_end], [-0.05, -0.05],
+                transform=ax[-1].get_xaxis_transform(),
+                color="red", linewidth=6, solid_capstyle="butt",
+                clip_on=False,
+            )
     plt.tight_layout()
     return fig
 
 
-def plot_heatmap(tidx, values, title=None, cmap=None, center=None, vmin=None, vmax=None, ax=None):
+def plot_heatmap(tidx, values, title=None, cmap=None, center=None, vmin=None, vmax=None, ax=None, event_dates=None):
     _tidx = pd.DatetimeIndex(tidx)
     pivot = pd.DataFrame(
         {
@@ -132,7 +172,7 @@ def plot_heatmap(tidx, values, title=None, cmap=None, center=None, vmin=None, vm
     ax.invert_yaxis()
     fig.colorbar(mesh, ax=ax)
     slot_minutes = (_dt.combine(_dt.min, pivot.index[1]) - _dt.combine(_dt.min, pivot.index[0])).seconds // 60
-    tick_every_y = max(1, 180 // slot_minutes)
+    tick_every_y = max(1, 6 * 60 // slot_minutes)
     ytick_idx = np.arange(0, n_slots, tick_every_y)
     ax.set_yticks(ytick_idx + 0.5, labels=[str(pivot.index[i]) for i in ytick_idx])
     tick_every = max(1, n_days // 20)
@@ -140,6 +180,19 @@ def plot_heatmap(tidx, values, title=None, cmap=None, center=None, vmin=None, vm
     ax.set_xticks(tick_idx + 0.5, labels=[str(pivot.columns[i]) for i in tick_idx], rotation=90)
     ax.set_ylabel("time of day")
     ax.set_xlabel("date")
+    if event_dates:
+        col_index = pd.Index(pivot.columns)
+        start_dt = pd.Timestamp(event_dates[0]).date()
+        end_dt = pd.Timestamp(event_dates[-1]).date()
+        loc_start = col_index.searchsorted(start_dt)
+        loc_end = min(col_index.searchsorted(end_dt, side="right"), n_days)
+        if loc_start < loc_end:
+            ax.plot(
+                [loc_start, loc_end], [-0.05, -0.05],
+                transform=ax.get_xaxis_transform(),
+                color="red", linewidth=6, solid_capstyle="butt",
+                clip_on=False,
+            )
     if title is not None:
         ax.set_title(title)
     if standalone:
@@ -147,7 +200,39 @@ def plot_heatmap(tidx, values, title=None, cmap=None, center=None, vmin=None, vm
     return fig
 
 
-def solution_heatmaps(solution, tidx, Q, B, G, label=""):
+def solution_diff_heatmaps(solution_a, solution_b, tidx, Q, B, G, label_a="a", label_b="b", event_dates=None):
+    vars_config = [
+        ("b", "b [GWh]", B),
+        ("g", "g [GWh]", G),
+        ("s", "s [GWh]", G / 100),
+        ("c", "c [GWh]", G),
+        ("q", "SOC [%]", 100),
+    ]
+    fig, axes = plt.subplots(len(vars_config), 1, figsize=(14, 3 * len(vars_config)))
+    for ax, (var, unit, lim) in zip(axes, vars_config):
+        if var == "q":
+            a_vals = 100 * solution_a[var][1:] / Q
+            b_vals = 100 * solution_b[var][1:] / Q
+        else:
+            a_vals = solution_a[var]
+            b_vals = solution_b[var]
+        diff = np.round(a_vals - b_vals, 6)
+        plot_heatmap(
+            tidx,
+            diff,
+            title=f"diff {unit} ({label_a} - {label_b})",
+            cmap="RdBu_r",
+            center=0,
+            vmin=-lim,
+            vmax=lim,
+            ax=ax,
+            event_dates=event_dates,
+        )
+    plt.tight_layout()
+    return fig
+
+
+def solution_heatmaps(solution, tidx, Q, B, G, label="", event_dates=None):
     prefix = f"{label} " if label else ""
     vars_config = [
         ("b", "b [GWh]", "RdBu_r", None, -B, B),
@@ -159,6 +244,16 @@ def solution_heatmaps(solution, tidx, Q, B, G, label=""):
     fig, axes = plt.subplots(len(vars_config), 1, figsize=(14, 3 * len(vars_config)))
     for ax, (var, title, cmap, center, vmin, vmax) in zip(axes, vars_config):
         values = np.round(100 * (solution[var][1:] / Q) if var == "q" else solution[var], 6)
-        plot_heatmap(tidx, values, title=f"{prefix}{title}", cmap=cmap, center=center, vmin=vmin, vmax=vmax, ax=ax)
+        plot_heatmap(
+            tidx,
+            values,
+            title=f"{prefix}{title}",
+            cmap=cmap,
+            center=center,
+            vmin=vmin,
+            vmax=vmax,
+            ax=ax,
+            event_dates=event_dates,
+        )
     plt.tight_layout()
     return fig

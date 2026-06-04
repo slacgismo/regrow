@@ -7,14 +7,17 @@ def core_objective(s, g, b, lamb, alpha, beta, mu):
 
 
 def get_metrics_of_interest(s, g, b, c, lamb, alpha, beta, mu, delta=1, stress_mask=None):
-    metrics = {
-        "objective": core_objective(s, g, b, lamb, alpha, beta, mu).value,
-        "total load shedding": np.sum(s),
-        "total dispatched generation cost": np.sum(alpha * g + beta * g**2),
-        "total battery throughput": np.sum(np.abs(b) * delta),
-        "total curtailed non-dispatched generation": np.sum(c),
-    }
-    if stress_mask is not None:
+    metrics = {"objective": core_objective(s, g, b, lamb, alpha, beta, mu).value}
+    if stress_mask is None:
+        metrics.update(
+            {
+                "total load shedding": np.sum(s),
+                "total dispatched generation cost": np.sum(alpha * g + beta * g**2),
+                "total battery throughput": np.sum(np.abs(b) * delta),
+                "total curtailed non-dispatched generation": np.sum(c),
+            }
+        )
+    else:
         normal_mask = ~stress_mask
         for prefix, mask in [("stress", stress_mask), ("normal", normal_mask)]:
             metrics.update(

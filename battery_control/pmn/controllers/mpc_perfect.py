@@ -107,7 +107,7 @@ def run_mpc_perfect(
     """
     T = len(l)
     assert 1 <= H <= T, f"horizon H={H} must be between 1 and T={T} (inclusive)"
-    eta_storage = (1 - monthly_soc_loss / 100) ** (1 / (30 * 24))
+    eta_storage = (1 - monthly_soc_loss / 100) ** (1 / (30 * 24))  # hourly enegry storage efficiency
     g_traj = np.zeros(T)
     r_traj = np.zeros(T)
     c_traj = np.zeros(T)

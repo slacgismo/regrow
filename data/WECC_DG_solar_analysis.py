@@ -1,6 +1,18 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "geopandas==1.1.3",
+#     "marimo>=0.23.8",
+#     "numpy==2.4.6",
+#     "pandas==3.0.3",
+#     "requests==2.34.2",
+#     "shapely==2.1.2",
+# ]
+# ///
+
 import marimo
 
-__generated_with = "0.17.8"
+__generated_with = "0.23.8"
 app = marimo.App(width="full")
 
 
@@ -9,6 +21,7 @@ def _():
     import marimo as mo
     import pandas as pd
     import numpy as np
+
     return np, pd
 
 
@@ -81,6 +94,7 @@ def _():
             return country
         else:
             return 'Unable to find country'
+
     return (get_location,)
 
 
@@ -114,6 +128,12 @@ def _(pd):
 @app.cell
 def _(wecc_dg_data):
     wecc_dg_data
+    return
+
+
+@app.cell
+def _(get_location):
+    get_location(32.227887,-115.436076)
     return
 
 

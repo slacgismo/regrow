@@ -110,7 +110,7 @@ def run_sizing_experiment(experiment_name):
     DATA_START = "2019"
     DATA_END = "2019"
     ADD_EVENT = True
-    EVENT_START = "2019-08-15"
+    EVENT_START = "2019-11-03"
     EVENT_DURATION_DAYS = 2
     EVENT_LOAD_FACTOR = 1.5
     EVENT_PV_FACTOR = 0.25
@@ -245,27 +245,31 @@ def run_sizing_experiment(experiment_name):
             pd.DataFrame(rows).to_csv(results_path, index=False)
             pd.concat(tune_rows, ignore_index=True).to_csv(tune_results_path, index=False)
 
-    _make_plots(pd.read_csv(results_path), pd.read_csv(one_shot_path), out_dir)
+    steps_per_day = 24
+    n_days_stress = int(event_mask.sum()) / steps_per_day if event_mask is not None else 0
+    n_days_normal = len(l) / steps_per_day - n_days_stress
+    _make_plots(pd.read_csv(results_path), pd.read_csv(one_shot_path), out_dir, n_days_stress, n_days_normal)
 
 
-def _plot_metrics(metrics, mpc_df, one_shot_df, axes):
+def _plot_metrics(metrics, mpc_df, one_shot_df, axes, n_days):
     H_values = sorted(mpc_df["H"].unique())
     for ax, metric in zip(axes, metrics):
         for H in H_values:
             sub = mpc_df[mpc_df["H"] == H].sort_values("Q")
-            ax.plot(sub["Q"], sub[metric], marker="o", label=f"MPC H={H}")
+            ax.plot(sub["Q"], sub[metric] / n_days, marker="o", label=f"MPC H={H}")
         os_ = one_shot_df.sort_values("Q")
         if metric in one_shot_df.columns:
-            ax.plot(os_["Q"], os_[metric], marker="s", linestyle="--", color="black", label="one-shot")
+            ax.plot(os_["Q"], os_[metric] / n_days, marker="s", linestyle="--", color="black", label="one-shot")
         ax.set_xlabel("Q [GWh]")
+        ax.set_ylabel("per day")
         ax.set_title(metric)
         ax.set_xscale("log", base=2)
         ax.legend(fontsize=7)
-    for ax in axes[len(metrics):]:
+    for ax in axes[len(metrics) :]:
         ax.set_visible(False)
 
 
-def _make_plots(mpc_df, one_shot_df, out_dir):
+def _make_plots(mpc_df, one_shot_df, out_dir, n_days_stress, n_days_normal):
     H_values = sorted(mpc_df["H"].unique())
 
     fig_obj, ax_obj = plt.subplots(figsize=(6, 4))
@@ -286,8 +290,8 @@ def _make_plots(mpc_df, one_shot_df, out_dir):
     stress_metrics = [c for c in mpc_df.columns if c.startswith("stress ")]
     n_cols = 5
     fig_breakdown, axes = plt.subplots(2, n_cols, figsize=(25, 8))
-    _plot_metrics(normal_metrics, mpc_df, one_shot_df, axes[0])
-    _plot_metrics(stress_metrics, mpc_df, one_shot_df, axes[1])
+    _plot_metrics(normal_metrics, mpc_df, one_shot_df, axes[0], n_days=n_days_normal)
+    _plot_metrics(stress_metrics, mpc_df, one_shot_df, axes[1], n_days=n_days_stress)
     plt.tight_layout()
     fig_breakdown.savefig(out_dir / "battery-sizing-breakdown.png", bbox_inches="tight", dpi=600)
     plt.close(fig_breakdown)

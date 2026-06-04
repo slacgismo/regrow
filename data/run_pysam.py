@@ -4,6 +4,8 @@ import os
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib import dates as mdates
+
+os.environ["HOME"] = "C:/users/kperry"
 from utils import geohash, nsrdb_weather, nsrdb_credentials
 import glob as glob
 import time
@@ -118,7 +120,7 @@ def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
                                    shear_exponent, elevation,
                                    turbine_size, max_cp, max_tip_speed,
                                    max_tip_sp_ratio, drive_train, system_capacity,
-                                   num_turbines, plot_powercurve=False):
+                                   num_turbines, plot_powercurve=True):
     """
     Runs the PySAM model using wind data across the time period
     and the common wind metadata for a single turbine.
@@ -164,18 +166,21 @@ def run_single_turbine_pysam_model(rotor_diameter, hub_height, wind_speed,
         drive_train=drive_train)  
     wind_sp = wm.Turbine.wind_turbine_powercurve_windspeeds
     power_out = wm.Turbine.wind_turbine_powercurve_powerout
-    if plot_powercurve:
-        plt.plot(wind_sp, power_out)
-        plt.title("Power Curve")
-        plt.ylabel("Power Output [kW]")
-        plt.xlabel("Wind Speeds [m/s]")
-        plt.show()
 
     # Run model
     wm.execute()
 
     # Get power output (System power generated [kW])
     power_output_kW = wm.Outputs.gen
+    
+    # Sample wind speed on power curve
+    
+    if plot_powercurve:
+        plt.plot(wind_sp, power_out)
+        plt.title("Power Curve")
+        plt.ylabel("Power Output [kW]")
+        plt.xlabel("Wind Speeds [m/s]")
+        plt.show()
 
     return power_output_kW
 
@@ -258,8 +263,6 @@ if __name__ == "__main__":
                 weather_df = pull_CONUS_data(lat, lon, hub_height, year)
                 master_weather_df = pd.concat([master_weather_df, weather_df])
                 time.sleep(1)
-            # Get the associated timezone of the data
-            tz = 'Etc/GMT+' + str(int(master_weather_df.columns[3]) *-1)
             # Make the 1st row the main header row
             master_weather_df.columns = master_weather_df.iloc[0]
             master_weather_df = master_weather_df.drop(master_weather_df.index[0])
@@ -317,9 +320,10 @@ if __name__ == "__main__":
                         temp_df['Year'].astype(str) + " " +
                         temp_df['Hour'].astype(str) + ":" + 
                         temp_df['Minute'].astype(str) + ":00")
-                    temp_df['datetime'] = temp_df['datetime'].dt.tz_localize(tz)
+                    temp_df['datetime'] = temp_df['datetime'].dt.tz_localize("UTC")
                     power_output_df = pd.DataFrame({
                         "datetime": pd.to_datetime(temp_df["datetime"]),
+                        #"wind_speed": temp_df[temp_df.columns[7]],
                         "power[kW]": power_output})
     
                     all_power_output = pd.concat(
@@ -331,7 +335,7 @@ if __name__ == "__main__":
             
             # Plot power_output for all years
             plt.plot(all_power_output["datetime"],
-                      all_power_output["power[kW]"])
+                      all_power_output["power[kW]"].astype(float))
             plt.title("Wind Predicted Power Output")
             plt.ylabel("Power Output [kW]")
             # Set datetime ticks to be only year

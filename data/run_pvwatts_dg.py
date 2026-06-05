@@ -89,12 +89,15 @@ if __name__ == "__main__":
                                                                               api_key=api_key,
                                                                               email=email,
                                                                               year=year,
-                                                                              map_variables=True
+                                                                              map_variables=True,
+                                                                              time_step=30,
                                                                               )
                     master_weather_df = pd.concat([master_weather_df, df])
+                    break
                 except:
                     pass
-        
+        # print('weather df has duplicates:', master_weather_df.index.has_duplicates)
+        # print('duplicated indices:', master_weather_df.index[master_weather_df.index.duplicated()].unique()[:5])
         # Loop through each month and generate the associated estimates for the
         # geohash
         agg_df_list = list()
@@ -140,7 +143,8 @@ if __name__ == "__main__":
             pdc.name = geohash
             agg_df_list.append(pd.DataFrame(pdc))
         node_production = pd.concat(agg_df_list)
+        node_production = node_production[~node_production.index.duplicated(keep="first")].sort_index()
         geohash_production_list.append(node_production)
-    geohash_output = pd.concat(geohash_production_list)
-    # Write it to a master CSV file
-    geohash_output.to_csv("residential_solar_geopanel.csv")
+        geohash_output = pd.concat(geohash_production_list, axis=1)
+        # Write it to a master CSV file
+        geohash_output.to_csv("residential_solar_geopanel.csv")

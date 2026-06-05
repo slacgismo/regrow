@@ -26,7 +26,7 @@ import utils
 
 # Input/output files
 METADATA_CSV = "wecc_bus_dg_cap_and_gen_by_month.csv"
-OUTPUT_CSV = "residential_solar_geopanel5.csv"
+OUTPUT_CSV = "residential_solar_geopanel.csv"
 
 # NSRDB / caching
 CACHE_DIR = Path("nsrdb_cache")

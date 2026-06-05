@@ -1,0 +1,16 @@
+[project]
+name = "regrow"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "marimo>=0.23.8",
+    "numpy>=2.4.6",
+    "pdfplumber>=0.11.9",
+    "pvlib>=0.15.1",
+    "pyarrow>=24.0.0",
+    "requests>=2.34.2",
+    "seaborn>=0.13.2",
+    "solar-data-tools>=2.1.5",
+]

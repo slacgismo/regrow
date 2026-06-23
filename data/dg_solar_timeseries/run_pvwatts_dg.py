@@ -26,7 +26,7 @@ import utils
 
 # Input/output files
 METADATA_CSV = "wecc_bus_dg_cap_and_gen_by_month.csv"
-OUTPUT_CSV = "residential_solar_geopanel.csv"
+OUTPUT_CSV = "residential_solar_geopanel_TEST02.csv"
 
 # NSRDB / caching
 CACHE_DIR = Path("nsrdb_cache")
@@ -91,6 +91,8 @@ def run_pvwatts_model(
         albedo=ALBEDO,
         model=IRRADIANCE_MODEL
     )
+    poa["poa_diffuse"] = poa["poa_diffuse"].fillna(0)
+    poa["poa_global"] = poa["poa_global"].fillna(0)
 
     aoi = pvlib.irradiance.aoi(surface_tilt, surface_azimuth, solar_zenith, solar_azimuth)
 
@@ -113,6 +115,28 @@ def run_pvwatts_model(
         dc_capacity,
         temperature_coefficient
     )
+    diag = pd.DataFrame({
+        "dni": dni,
+        "dhi": dhi,
+        "ghi": ghi,
+        "dni_extra": dni_extra,
+        "poa_global": poa['poa_global'],
+        "temperature": temperature,
+        "wind_speed": wind_speed,
+        "relative_airmass": relative_airmass,
+        "solar_zenith": solar_zenith,
+        "solar_azimuth": solar_azimuth,
+        "aoi": aoi,
+        "iam": iam,
+        "poa_direct": poa["poa_direct"],
+        "poa_diffuse": poa["poa_diffuse"],
+        "poa_transmitted": poa_transmitted,
+        "temp_cell": temp_cell,
+        "pdc": pdc,
+    })
+    nan_summary = diag.isna().sum()
+    ### For diagnostics only
+    # print(nan_summary)
     return pdc
 
 
@@ -199,6 +223,7 @@ def main() -> None:
     geohash_frames: list[pd.DataFrame] = []
 
     for geohash in metadata[COL_GEOHASH].drop_duplicates():
+    # for geohash in ["9mumuf"]:
         print(f"Running monthly production for geohash {geohash}...")
 
         metadata_subset = metadata[metadata[COL_GEOHASH] == geohash]

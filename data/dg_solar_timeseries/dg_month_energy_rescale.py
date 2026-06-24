@@ -7,9 +7,10 @@ import pandas as pd
 # ----------------------------
 # GLOBAL PATHS (edit these)
 # ----------------------------
-OUTPUT_CSV = "residential_solar_geopanel_TEST02.csv"          # pvlib time series, timestamp stored as index
+# inputs:
+OUTPUT_CSV = "residential_solar_geopanel.csv"          # pvlib time series, timestamp stored as index
 METADATA_CSV = "wecc_bus_dg_cap_and_gen_by_month.csv"            # monthly actuals with Generation [MWh]
-
+# outputs: 
 SCALING_FACTORS_CSV = "scaling_factors.csv"
 CORRECTED_TIMESERIES_CSV = "residential_solar_geopanel_corrected.csv"  # wide, same shape as input
 
@@ -174,7 +175,7 @@ def main() -> None:
 
     # (2) corrected time series in SAME SHAPE as input (timestamp index + geohash columns)
     corrected_wide = _apply_monthly_factors_to_wide(sim_wide, factors)
-    corrected_wide.to_csv(CORRECTED_TIMESERIES_CSV, index=True)
+    corrected_wide.to_csv(CORRECTED_TIMESERIES_CSV, index=True, float_format='%.2f')
 
     print(f"Inferred timestep: {dt_hours:.6g} hours")
     print(f"Wrote: {SCALING_FACTORS_CSV}")

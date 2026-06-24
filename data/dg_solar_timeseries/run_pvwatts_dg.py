@@ -17,6 +17,10 @@ from pathlib import Path
 import pandas as pd
 import pvlib
 from pvlib.temperature import TEMPERATURE_MODEL_PARAMETERS
+
+import sys
+# Add parent directory to Python path
+sys.path.insert(0, str(Path(__file__).parent.parent))
 import utils
 
 
@@ -26,7 +30,7 @@ import utils
 
 # Input/output files
 METADATA_CSV = "wecc_bus_dg_cap_and_gen_by_month.csv"
-OUTPUT_CSV = "residential_solar_geopanel_TEST02.csv"
+OUTPUT_CSV = "residential_solar_geopanel.csv"
 
 # NSRDB / caching
 CACHE_DIR = Path("nsrdb_cache")
@@ -304,14 +308,14 @@ def main() -> None:
 
         # Optional: progressive write (keeps your current behavior of writing each loop)
         geohash_output = pd.concat(geohash_frames, axis=1).sort_index()
-        geohash_output.to_csv(OUTPUT_CSV)
+        geohash_output.to_csv(OUTPUT_CSV, float_format='%.2f')
 
     if not geohash_frames:
         raise RuntimeError("No geohash outputs produced.")
 
     # Final write (ensures complete file even if you disable progressive writes)
     geohash_output = pd.concat(geohash_frames, axis=1).sort_index()
-    geohash_output.to_csv(OUTPUT_CSV)
+    geohash_output.to_csv(OUTPUT_CSV, float_format='%.2f')
     print(f"Wrote {OUTPUT_CSV}")
 
 

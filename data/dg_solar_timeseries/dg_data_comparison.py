@@ -11,7 +11,7 @@
 
 import marimo
 
-__generated_with = "0.23.9"
+__generated_with = "0.23.10"
 app = marimo.App(width="full")
 
 
@@ -328,6 +328,25 @@ def _(common_cols, mo, summary):
 
 
 @app.cell
+def _(capacity_df, dd_ui, new, original, plt):
+    _o = original.groupby(original.index.to_period('M')).sum()
+    _n = new.groupby(original.index.to_period('M')).sum()
+    _xs = _o.index.to_timestamp()[:-1]
+    _ys = _o[dd_ui.value["col"]].values[:-1] / 2 / 1000
+    plt.plot(_xs, _ys, label='original')
+    _xs = _n.index.to_timestamp()[:-1]
+    _ys = _n[dd_ui.value["col"]].values[:-1] / 2 / 1000
+    plt.plot(_xs, _ys, label='rescaled')
+    _xs = _n.index.to_timestamp()[:-1]
+    _ys = capacity_df[capacity_df['geohash'] == dd_ui.value["col"]]['Generation [MWh]'].values[:60]
+    plt.plot(_xs, _ys, label='reported', ls='--')
+    plt.legend()
+    plt.title('month DG solar energy production true-up, ' + dd_ui.value["col"])
+    plt.gca()
+    return
+
+
+@app.cell
 def _(chart):
     chart
     return
@@ -435,9 +454,39 @@ def _(dd_ui, new, plt):
 
 
 @app.cell
+def _(original):
+    original.index.to_period('M')
+    return
+
+
+@app.cell
+def _(dd_ui, new, original):
+    new.groupby(original.index.to_period('M')).sum()[dd_ui.value["col"]] / 2 / 1000
+    return
+
+
+@app.cell
+def _(capacity_df, dd_ui):
+    capacity_df[capacity_df['geohash'] == dd_ui.value["col"]]
+    return
+
+
+@app.cell
+def _(dd_ui, original):
+    original[dd_ui.value["col"]]
+    return
+
+
+@app.cell
 def _(capacity_df, dd_ui, plt):
     capacity_df[capacity_df['geohash'] == dd_ui.value["col"]].plot(y=['Capacity [MW]', 'Generation [MWh]'], secondary_y='Generation [MWh]')
     plt.title(dd_ui.value["col"]+' monthly capacity and generation values from EIA')
+    return
+
+
+@app.cell
+def _(capacity_df, dd_ui):
+    capacity_df[capacity_df['geohash'] == dd_ui.value["col"]]
     return
 
 

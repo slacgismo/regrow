@@ -10,6 +10,7 @@ from functools import partial
 from itertools import product
 
 import matplotlib.pyplot as plt
+import matplotlib.ticker as mticker
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -110,8 +111,8 @@ def run_sizing_experiment(experiment_name):
     DATA_START = "2019"
     DATA_END = "2019"
     ADD_EVENT = True
-    EVENT_START = "2019-11-03"
-    EVENT_DURATION_DAYS = 2
+    EVENT_START = "2019-08-15"
+    EVENT_DURATION_DAYS = 6
     EVENT_LOAD_FACTOR = 1.5
     EVENT_PV_FACTOR = 0.25
 
@@ -126,7 +127,7 @@ def run_sizing_experiment(experiment_name):
 
     # point sweeps
     Q_LIST = 2 ** np.arange(0, 6)
-    H_LIST = 24 * np.array([1, 2, 3, 4])
+    H_LIST = 24 * np.array([1, 2, 3])
 
     # per point sweeps
     GAMMA_LIST = np.logspace(-4, -1, num=4)
@@ -245,42 +246,48 @@ def run_sizing_experiment(experiment_name):
             pd.DataFrame(rows).to_csv(results_path, index=False)
             pd.concat(tune_rows, ignore_index=True).to_csv(tune_results_path, index=False)
 
-    steps_per_day = 24
-    n_days_stress = int(event_mask.sum()) / steps_per_day if event_mask is not None else 0
-    n_days_normal = len(l) / steps_per_day - n_days_stress
-    _make_plots(pd.read_csv(results_path), pd.read_csv(one_shot_path), out_dir, n_days_stress, n_days_normal)
+    _make_plots(pd.read_csv(results_path), pd.read_csv(one_shot_path), out_dir)
 
 
-def _plot_metrics(metrics, mpc_df, one_shot_df, axes, n_days):
+def _plot_metrics(metrics, mpc_df, one_shot_df, axes):
     H_values = sorted(mpc_df["H"].unique())
     for ax, metric in zip(axes, metrics):
         for H in H_values:
             sub = mpc_df[mpc_df["H"] == H].sort_values("Q")
-            ax.plot(sub["Q"], sub[metric] / n_days, marker="o", label=f"MPC H={H}")
+            ax.plot(sub["Q"], sub[metric].round(6), marker="o", label=f"MPC H={H}")
         os_ = one_shot_df.sort_values("Q")
         if metric in one_shot_df.columns:
-            ax.plot(os_["Q"], os_[metric] / n_days, marker="s", linestyle="--", color="black", label="one-shot")
+            ax.plot(os_["Q"], os_[metric].round(6), marker="s", linestyle="--", color="black", label="one-shot")
         ax.set_xlabel("Q [GWh]")
-        ax.set_ylabel("per day")
+        if "objective" in metric:
+            ylabel = "objective value"
+        elif any(kw in metric for kw in ("load shedding", "throughput", "curtailed generation")):
+            ylabel = "GWh / day"
+        else:
+            ylabel = "/ day"
+        ax.set_ylabel(ylabel)
         ax.set_title(metric)
         ax.set_xscale("log", base=2)
+        ax.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.2g}"))
         ax.legend(fontsize=7)
     for ax in axes[len(metrics) :]:
         ax.set_visible(False)
 
 
-def _make_plots(mpc_df, one_shot_df, out_dir, n_days_stress, n_days_normal):
+def _make_plots(mpc_df, one_shot_df, out_dir):
     H_values = sorted(mpc_df["H"].unique())
 
     fig_obj, ax_obj = plt.subplots(figsize=(6, 4))
     for H in H_values:
         sub = mpc_df[mpc_df["H"] == H].sort_values("Q")
-        ax_obj.plot(sub["Q"], sub["objective"], marker="o", label=f"MPC H={H}")
+        ax_obj.plot(sub["Q"], sub["objective"].round(6), marker="o", label=f"MPC H={H}")
     os_ = one_shot_df.sort_values("Q")
-    ax_obj.plot(os_["Q"], os_["objective"], marker="s", linestyle="--", color="black", label="one-shot")
+    ax_obj.plot(os_["Q"], os_["objective"].round(6), marker="s", linestyle="--", color="black", label="one-shot")
     ax_obj.set_xlabel("Q [GWh]")
+    ax_obj.set_ylabel("objective value")
     ax_obj.set_title("objective")
     ax_obj.set_xscale("log", base=2)
+    ax_obj.yaxis.set_major_formatter(mticker.FuncFormatter(lambda x, _: f"{x:.2g}"))
     ax_obj.legend(fontsize=7)
     plt.tight_layout()
     fig_obj.savefig(out_dir / "battery-sizing-objective.png", bbox_inches="tight", dpi=600)
@@ -290,8 +297,8 @@ def _make_plots(mpc_df, one_shot_df, out_dir, n_days_stress, n_days_normal):
     stress_metrics = [c for c in mpc_df.columns if c.startswith("stress ")]
     n_cols = 5
     fig_breakdown, axes = plt.subplots(2, n_cols, figsize=(25, 8))
-    _plot_metrics(normal_metrics, mpc_df, one_shot_df, axes[0], n_days=n_days_normal)
-    _plot_metrics(stress_metrics, mpc_df, one_shot_df, axes[1], n_days=n_days_stress)
+    _plot_metrics(normal_metrics, mpc_df, one_shot_df, axes[0])
+    _plot_metrics(stress_metrics, mpc_df, one_shot_df, axes[1])
     plt.tight_layout()
     fig_breakdown.savefig(out_dir / "battery-sizing-breakdown.png", bbox_inches="tight", dpi=600)
     plt.close(fig_breakdown)

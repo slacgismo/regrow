@@ -36,6 +36,7 @@ MAX_WORKERS = 4
 def _run_one(args):
     mu, H, gamma, q_target, fixed_kwargs, n_days = args
     base = {"mu": mu, "H": H, "gamma": gamma, "q_target": q_target}
+    delta = fixed_kwargs["delta"]
     try:
         sol = run_mpc_perfect(mu=mu, H=H, gamma=gamma, q_target=q_target, **fixed_kwargs)
     except Exception as e:
@@ -46,12 +47,12 @@ def _run_one(args):
         **base,
         "valid": valid,
         "core_objective": float(core_objective(sol["s"], sol["g"], sol["b"], LAMB, ALPHA, BETA, mu).value),
-        "throughput_per_day": float(np.sum(np.abs(sol["b"])) / n_days),
-        "non_battery_cost_per_day": float(np.sum(LAMB * sol["s"] + ALPHA * sol["g"] + BETA * sol["g"] ** 2) / n_days),
+        "throughput_per_day": float(np.sum(np.abs(sol["b"])) * delta / n_days),
+        "non_battery_cost_per_day": float(np.sum(LAMB * sol["s"] + ALPHA * sol["g"] + BETA * sol["g"] ** 2) * delta / n_days),
     }
 
 
-def _sweep(l, R, n_days):
+def _sweep(l, R, n_days, delta):
     fixed_kwargs = dict(
         l=l,
         R=R,
@@ -64,6 +65,7 @@ def _sweep(l, R, n_days):
         q_init=Q_INIT,
         round_trip_efficiency=ROUND_TRIP_EFFICIENCY,
         monthly_soc_loss=MONTHLY_SOC_LOSS,
+        delta=delta,
         disable_progress_bar=True,
     )
     args = [
@@ -181,9 +183,10 @@ def run(experiment_name):
         add_event=False,
     )
     n_days = len(tidx) * (tidx[1] - tidx[0]) / pd.Timedelta("1D")
+    delta = (tidx[1] - tidx[0]).total_seconds() / 3600
 
     print(f"total solves: {len(MU_LIST) * len(H_LIST) * len(GAMMA_LIST) * len(Q_TARGET_LIST)}", flush=True)
-    df = pd.DataFrame(_sweep(l, R, n_days))
+    df = pd.DataFrame(_sweep(l, R, n_days, delta))
     df.to_csv(out_dir / "results.csv", index=False)
     _make_plots(df, out_dir)
     print(f"saved to {out_dir}")

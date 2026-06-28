@@ -1,2 +1,0 @@
-Q,H,gamma,q_target,objective,stress objective,stress total load shedding,stress total dispatched generation cost,stress total battery throughput,stress total curtailed non-dispatched generation,normal objective,normal total load shedding,normal total dispatched generation cost,normal total battery throughput,normal total curtailed non-dispatched generation
-1,24,0.1,1.0,1.109100227034617,9.409991947901903,55.16347886969684,251.73917332892174,3.0089775015523044,2.5248930902959386e-09,1.063407245084889,256.19999748659717,22672.743159680926,2199.042200782398,6666.510427165764

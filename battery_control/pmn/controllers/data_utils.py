@@ -31,12 +31,13 @@ def process_single_node_data(
     verbose=False,
 ):
     lsw_df = build_lsw_df(data_path=data_path, data_start=data_start, data_end=data_end)
+    delta = (lsw_df.index[1] - lsw_df.index[0]).total_seconds() / 3600
     event_end = str((pd.Timestamp(event_start) + pd.Timedelta(days=event_duration_days - 1)).date())
     event_mask = None
     baseline_shortfall_event = None
     if add_event:
         event_slice = lsw_df.loc[event_start:event_end]
-        baseline_shortfall_event = np.sum(np.maximum(event_slice["l"] - (event_slice["s"] + event_slice["w"] + G), 0))
+        baseline_shortfall_event = delta * np.sum(np.maximum(event_slice["l"] - (event_slice["s"] + event_slice["w"] + G), 0))
         lsw_df = lsw_df.copy()
         lsw_df.loc[event_start:event_end, "l"] *= event_load_factor
         lsw_df.loc[event_start:event_end, "s"] *= event_pv_factor
@@ -62,7 +63,7 @@ def process_single_node_data(
     event_shortfall_stats = None
     event_end = str((pd.Timestamp(event_start) + pd.Timedelta(days=event_duration_days - 1)).date())
     if add_event:
-        event_shortfall_after = np.sum(shortfall[event_mask])
+        event_shortfall_after = delta * np.sum(shortfall[event_mask])
         added = event_shortfall_after - baseline_shortfall_event
         pct_increase = added / baseline_shortfall_event * 100 if baseline_shortfall_event > 0 else float("nan")
         event_shortfall_stats = {
@@ -94,9 +95,9 @@ def stress_event_generator(lsw_df, event_start, event_duration, event_energy, sc
     assert event_start >= lsw_df.index[0], f"event_start {event_start} is before data start {lsw_df.index[0]}"
     assert event_end <= lsw_df.index[-1], f"event_end {event_end} is after data end {lsw_df.index[-1]}"
     ev = lsw_df.loc[event_start:event_end]
-    dt = (lsw_df.index[1] - lsw_df.index[0]).total_seconds() / 60**2
-    E_L_ev = dt * ev["l"].sum()
-    E_R_ev = dt * (ev["s"] + ev["w"]).sum()
+    delta = (lsw_df.index[1] - lsw_df.index[0]).total_seconds() / 60**2
+    E_L_ev = delta * ev["l"].sum()
+    E_R_ev = delta * (ev["s"] + ev["w"]).sum()
     E_phase1_max = scaling_ratio * E_L_ev + E_R_ev
 
     phase2 = event_energy_magnitude > E_phase1_max
@@ -113,9 +114,9 @@ def stress_event_generator(lsw_df, event_start, event_duration, event_energy, sc
     lsw_scaled_df.loc[event_start:event_end, "s"] *= renewable_scaling
     lsw_scaled_df.loc[event_start:event_end, "w"] *= renewable_scaling
     if verbose:
-        net_before = dt * (ev["l"] - ev["s"] - ev["w"]).sum()
+        net_before = delta * (ev["l"] - ev["s"] - ev["w"]).sum()
         ev_after = lsw_scaled_df.loc[event_start:event_end]
-        net_after = dt * (ev_after["l"] - ev_after["s"] - ev_after["w"]).sum()
+        net_after = delta * (ev_after["l"] - ev_after["s"] - ev_after["w"]).sum()
 
         print(f"load scaling:        {load_scaling:.4f}")
         print(f"renewable scaling:   {renewable_scaling:.4f}")

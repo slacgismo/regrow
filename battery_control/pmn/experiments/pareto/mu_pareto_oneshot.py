@@ -52,7 +52,7 @@ CONFIGS = [
 ]
 
 
-def _sweep_mu(l, R, n_days, q=Q):
+def _sweep_mu(l, R, n_days, delta, q=Q):
     B = q / BAT_HOURS
     rows = []
     for mu in MU_LIST:
@@ -69,9 +69,9 @@ def _sweep_mu(l, R, n_days, q=Q):
         rows.append({
             "mu": mu,
             "Q": q,
-            "throughput_per_day": float(np.sum(np.abs(sol["b"])) / n_days),
+            "throughput_per_day": float(np.sum(np.abs(sol["b"])) * delta / n_days),
             "non_battery_cost_per_day": float(
-                np.sum(LAMB * sol["s"] + ALPHA * sol["g"] + BETA * sol["g"] ** 2) / n_days
+                np.sum(LAMB * sol["s"] + ALPHA * sol["g"] + BETA * sol["g"] ** 2) * delta / n_days
             ),
         })
     return rows
@@ -176,16 +176,18 @@ def run(experiment_name):
             **{k: cfg[k] for k in ("event_start", "event_end", "event_load_factor", "event_pv_factor") if k in cfg},
         )
         n_days = len(tidx) * (tidx[1] - tidx[0]) / pd.Timedelta("1D")
-        for row in _sweep_mu(l, R, n_days):
+        delta = (tidx[1] - tidx[0]).total_seconds() / 3600
+        for row in _sweep_mu(l, R, n_days, delta):
             all_rows.append({"config": cfg["name"], **row})
 
     l_3yr, R_3yr, _, tidx_3yr, *_ = process_single_node_data(
         G, data_path=data_path, data_start="2018", data_end="2020", add_event=False,
     )
     n_days_3yr = len(tidx_3yr) * (tidx_3yr[1] - tidx_3yr[0]) / pd.Timedelta("1D")
+    delta_3yr = (tidx_3yr[1] - tidx_3yr[0]).total_seconds() / 3600
     for j, q_val in enumerate(Q_LIST):
         print(f"[Q sweep {j+1}/{len(Q_LIST)}] Q={q_val}", flush=True)
-        for row in _sweep_mu(l_3yr, R_3yr, n_days_3yr, q=q_val):
+        for row in _sweep_mu(l_3yr, R_3yr, n_days_3yr, delta_3yr, q=q_val):
             all_rows.append({"config": "3yr_Qsweep", **row})
 
     df = pd.DataFrame(all_rows)

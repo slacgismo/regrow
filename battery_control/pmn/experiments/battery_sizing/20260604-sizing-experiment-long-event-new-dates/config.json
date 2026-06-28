@@ -4,7 +4,7 @@
     "data_end": "2019",
     "add_event": true,
     "event_start": "2019-11-03",
-    "event_duration_days": 2,
+    "event_duration_days": 6,
     "event_load_factor": 1.5,
     "event_pv_factor": 0.25
   },
@@ -31,8 +31,7 @@
     "H_list": [
       24,
       48,
-      72,
-      96
+      72
     ],
     "gamma_list": [
       0.0001,

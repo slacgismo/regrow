@@ -4,7 +4,7 @@ __generated_with = "0.23.1"
 app = marimo.App(width="medium")
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     import pathlib
     import sys
@@ -43,13 +43,13 @@ def _():
     )
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     data_start_input = mo.ui.text(value="2019", label="data start")
     data_end_input = mo.ui.text(value="2019", label="data end")
     add_abnormal_event = mo.ui.switch(label="add abnormal weather event", value = True)
     event_start_input = mo.ui.text(value="2019-08-15", label="event start")
-    event_duration_input = mo.ui.number(start=1, stop=90, step=1, label="event duration [days]", value=2)
+    event_duration_input = mo.ui.number(start=1, stop=90, step=1, label="event duration [days]", value=6)
     event_load_factor_sldr = mo.ui.number(start=0.1, stop=5.0, step=0.05, label="event load factor", value=1.5)
     event_pv_factor_sldr = mo.ui.number(start=0.0, stop=1.0, step=0.05, label="event PV factor", value=0.25)
     mo.vstack(
@@ -78,7 +78,7 @@ def _(mo):
     )
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     alpha_sldr = mo.ui.number(start=0, stop=50, step=0.25, label="alpha", value=1.25, full_width=True)
     beta_sldr = mo.ui.number(start=0, stop=50, step=0.25, label="beta", value=0.5, full_width=True)
@@ -112,7 +112,7 @@ def _(mo):
     return (form,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     add_abnormal_event,
     data_end_input,
@@ -138,10 +138,10 @@ def _(
         verbose=True,
     )
     daily_df.plot(y=["load[MW]", "pv[MW]", "wind[MW]"])
-    return R, event_mask, event_shortfall_stats, l, shortfall, tidx
+    return R, event_mask, l, shortfall, tidx
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(form, l, make_one_shot):
     one_shot_problem = make_one_shot(
         alpha=form.value["alpha"],
@@ -180,7 +180,7 @@ def _(
     return (one_shot_solution,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(compute_partition, form, np, one_shot_solution, pd, plt, tidx):
     _decouple_points, _is_loadshed = compute_partition(one_shot_solution["q"][1:], tidx, form.value["Q"])
     _all_points = np.concatenate([[tidx[0]], _decouple_points, [tidx[-1]]])
@@ -207,7 +207,7 @@ def _(compute_partition, form, np, one_shot_solution, pd, plt, tidx):
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(mo):
     H_sldr = mo.ui.number(start=1, step=1, label="MPC horizon H (time steps)", value=72, full_width=True)
     q_target_sldr = mo.ui.number(
@@ -223,7 +223,7 @@ def _(mo):
     return (form_mpc,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(R, form, form_mpc, l, run_mpc_perfect):
     mpc_solution = run_mpc_perfect(
         l=l,
@@ -278,7 +278,7 @@ def _(
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     add_abnormal_event,
     event_duration_input,
@@ -303,7 +303,7 @@ def _(
     return plot_length_days, plot_start_date
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(np, pd, plot_length_days, plot_start_date, tidx):
     _steps_per_day = int(pd.Timedelta("1D") / (tidx[1] - tidx[0]))
     _start_idx = int(tidx.searchsorted(pd.Timestamp(str(plot_start_date.value))))
@@ -311,7 +311,7 @@ def _(np, pd, plot_length_days, plot_start_date, tidx):
     return (s,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     R,
     add_abnormal_event,
@@ -331,7 +331,7 @@ def _(
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     add_abnormal_event,
     event_duration_input,
@@ -360,7 +360,7 @@ def _(
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     add_abnormal_event,
     event_duration_input,
@@ -390,7 +390,7 @@ def _(
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     add_abnormal_event,
     event_duration_input,
@@ -418,7 +418,7 @@ def _(
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     add_abnormal_event,
     event_duration_input,
@@ -446,7 +446,7 @@ def _(
     return
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     add_abnormal_event,
     event_duration_input,

@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 
-def compute_partition(q, tidx, Q, atol=1e-6):
+def compute_partition(q, tidx, Q, atol=1e-3):
     """Return (decouple_points, is_loadshed) for the SOC trajectory.
 
     decouple_points: interior partition timestamps (alternating last_full/last_empty transitions)
@@ -53,7 +53,7 @@ def plot_timeseries(l, R, shortfall, tidx, s, G, event_dates=None):
     return fig
 
 
-def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None, event_dates=None, atol=1e-6):
+def plot_solution(solution, tidx, s, Q, B, alpha, beta, efficiency, supertitle=None, event_dates=None, atol=1e-3):
     fig, ax = plt.subplots(nrows=5, sharex=True, figsize=(10, 6))
     if supertitle is not None:
         fig.suptitle(supertitle)

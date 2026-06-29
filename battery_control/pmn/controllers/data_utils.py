@@ -37,7 +37,9 @@ def process_single_node_data(
     baseline_shortfall_event = None
     if add_event:
         event_slice = lsw_df.loc[event_start:event_end]
-        baseline_shortfall_event = delta * np.sum(np.maximum(event_slice["l"] - (event_slice["s"] + event_slice["w"] + G), 0))
+        baseline_shortfall_event = delta * np.sum(
+            np.maximum(event_slice["l"] - (event_slice["s"] + event_slice["w"] + G), 0)
+        )
         lsw_df = lsw_df.copy()
         lsw_df.loc[event_start:event_end, "l"] *= event_load_factor
         lsw_df.loc[event_start:event_end, "s"] *= event_pv_factor
@@ -81,56 +83,74 @@ def process_single_node_data(
     return l, R, shortfall, lsw_df.index, daily_df, event_mask, event_shortfall_stats
 
 
-def stress_event_generator(lsw_df, event_start, event_duration, event_energy, scaling_ratio, verbose=False):
+def stress_event_generator(lsw_df, event_start, event_duration, event_shortfall, G, scaling_ratio, verbose=False):
     """
-    add a stress event of specified energy magnitude and duration to the lsw (load, solar, wind) data
-
-    event_energy: target increase in net-load energy over the event period (GWh)
-    scaling_ratio: ratio of fractional load increase to fractional renewable decrease
-                   applied until renewables reach zero (beyond that only load is scaled further).
+    event_shortfall: target increase in shortfall energy over the event period (GWh)
+    scaling_ratio: ratio of fractional load increase to fractional renewable decrease,
+                   applied until renewables reach zero (beyond that only load is scaled further)
     """
     event_end = event_start + event_duration
-    assert event_energy > 0, f"event_energy must be positive, got {event_energy}"
-    event_energy_magnitude = event_energy
+    assert event_shortfall > 0, f"event_shortfall must be positive, got {event_shortfall}"
     assert event_start >= lsw_df.index[0], f"event_start {event_start} is before data start {lsw_df.index[0]}"
     assert event_end <= lsw_df.index[-1], f"event_end {event_end} is after data end {lsw_df.index[-1]}"
+
     ev = lsw_df.loc[event_start:event_end]
     delta = (lsw_df.index[1] - lsw_df.index[0]).total_seconds() / 60**2
-    E_L_ev = delta * ev["l"].sum()
-    E_R_ev = delta * (ev["s"] + ev["w"]).sum()
-    E_phase1_max = scaling_ratio * E_L_ev + E_R_ev
+    l_ev = ev["l"].to_numpy()
+    r_ev = (ev["s"] + ev["w"]).to_numpy()
+    sf_base = delta * np.sum(np.maximum(l_ev - r_ev - G, 0))
 
-    phase2 = event_energy_magnitude > E_phase1_max
-    if not phase2:
-        alpha = event_energy_magnitude / (E_L_ev + E_R_ev / scaling_ratio)
-        load_scaling = 1.0 + alpha
-        renewable_scaling = 1.0 - alpha / scaling_ratio
+    def _sf(alpha):
+        load_scaling = 1 + alpha
+        renewable_scaling = max(0.0, 1 - alpha / scaling_ratio)
+        return delta * np.sum(np.maximum(load_scaling * l_ev - renewable_scaling * r_ev - G, 0))
+
+    alpha_hi = 1.0
+    while _sf(alpha_hi) - sf_base < event_shortfall:
+        alpha_hi *= 2
+        if alpha_hi > 1e6:
+            raise ValueError(f"Cannot achieve event_shortfall={event_shortfall:.2f} GWh in this event period")
+
+    alpha_lo = 0
+    alpha = alpha_hi
+    tol = 1e-3
+    max_iter = 100
+    for i in range(max_iter):
+        alpha = (alpha_lo + alpha_hi) / 2
+        residual = _sf(alpha) - sf_base - event_shortfall
+        if abs(residual) < tol:
+            break
+        if residual < 0:
+            alpha_lo = alpha
+        else:
+            alpha_hi = alpha
     else:
-        load_scaling = 1.0 + (event_energy_magnitude - E_R_ev) / E_L_ev
-        renewable_scaling = 0.0
+        raise RuntimeError(f"Bisection did not converge after {max_iter} iterations (residual={residual:.4f} GWh)")
+    load_scaling = 1.0 + alpha
+    renewable_scaling = max(0.0, 1.0 - alpha / scaling_ratio)
 
     lsw_scaled_df = lsw_df.copy()
     lsw_scaled_df.loc[event_start:event_end, "l"] *= load_scaling
     lsw_scaled_df.loc[event_start:event_end, "s"] *= renewable_scaling
     lsw_scaled_df.loc[event_start:event_end, "w"] *= renewable_scaling
-    if verbose:
-        net_before = delta * (ev["l"] - ev["s"] - ev["w"]).sum()
-        ev_after = lsw_scaled_df.loc[event_start:event_end]
-        net_after = delta * (ev_after["l"] - ev_after["s"] - ev_after["w"]).sum()
 
+    if verbose:
+        sf_after = delta * np.sum(np.maximum(l_ev * load_scaling - r_ev * renewable_scaling - G, 0))
         print(f"load scaling:        {load_scaling:.4f}")
         print(f"renewable scaling:   {renewable_scaling:.4f}")
-        print(f"net load energy before: {net_before:.2f} GWh")
-        print(f"net load energy after:  {net_after:.2f} GWh")
-        print(f"phase 1 max addable energy:  {E_phase1_max:.2f} GWh")
-    return lsw_scaled_df, phase2
+        print(f"alpha:               {alpha}")
+        print(f"shortfall before:    {sf_base:.2f} GWh")
+        print(f"shortfall after:     {sf_after:.2f} GWh")
+
+    return lsw_scaled_df
 
 
 def sample_stress_event(
     lsw_df,
+    G,
     scaling_ratio,
-    duration_range_days=(1, 14),
-    energy_range_gwh=(5.0, 200.0),
+    duration_range_days,
+    shortfall_range_gwh,
     rng=None,
 ):
     if rng is None:
@@ -140,6 +160,6 @@ def sample_stress_event(
     all_dates = pd.DatetimeIndex(sorted(set(lsw_df.index.normalize())))
     valid_dates = all_dates[all_dates <= lsw_df.index[-1] - event_duration]
     event_start = valid_dates[rng.integers(len(valid_dates))]
-    event_energy = float(rng.uniform(energy_range_gwh[0], energy_range_gwh[1]))
-    lsw_stressed, phase2 = stress_event_generator(lsw_df, event_start, event_duration, event_energy, scaling_ratio)
-    return lsw_stressed, event_start, event_duration, event_energy, phase2
+    event_shortfall = float(rng.uniform(shortfall_range_gwh[0], shortfall_range_gwh[1]))
+    lsw_stressed = stress_event_generator(lsw_df, event_start, event_duration, event_shortfall, G, scaling_ratio)
+    return lsw_stressed, event_start, event_duration, event_shortfall

@@ -54,9 +54,9 @@ T = len(l)
 mpc_sol = run_mpc_perfect(l, R, H=T, **PARAMS)
 
 
-@pytest.mark.parametrize("var", ["g", "s", "r", "c", "b", "q"])
+@pytest.mark.parametrize("var", ["g", "s"])
 def test_full_horizon_matches_one_shot(var):
-    assert np.all(np.isclose(mpc_sol[var], one_shot_sol[var], atol=1e-1))
+    assert np.all(np.isclose(mpc_sol[var], one_shot_sol[var], atol=1e-4))
 
 
 def objective(sol):

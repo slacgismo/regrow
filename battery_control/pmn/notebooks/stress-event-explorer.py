@@ -81,9 +81,10 @@ def _(
         G=G,
         scaling_ratio=scaling_ratio_input.value,
     )
-    _ev_base = lsw_df.loc[event_start:event_start + event_duration]
-    _ev_after = lsw_stressed.loc[event_start:event_start + event_duration]
-    _delta = (lsw_df.index[1] - lsw_df.index[0]).total_seconds() / 3600
+    _period = lsw_df.index[1] - lsw_df.index[0]
+    _delta = _period.total_seconds() / 3600
+    _ev_base = lsw_df.loc[event_start:event_start + event_duration - _period]
+    _ev_after = lsw_stressed.loc[event_start:event_start + event_duration - _period]
     _sf_base = _delta * (_ev_base["l"] - _ev_base["s"] - _ev_base["w"] - G).clip(lower=0).sum()
     _sf_after = _delta * (_ev_after["l"] - _ev_after["s"] - _ev_after["w"] - G).clip(lower=0).sum()
     mo.md(f"**baseline shortfall:** {_sf_base:.2f} GWh | **added shortfall:** {_sf_after - _sf_base:.2f} GWh")
@@ -143,7 +144,7 @@ def _(mo):
     sample_button = mo.ui.button(label="Sample event")
     duration_min_input = mo.ui.number(start=1, stop=30, step=1, label="min duration [days]", value=1)
     duration_max_input = mo.ui.number(start=1, stop=30, step=1, label="max duration [days]", value=5)
-    shortfall_min_input = mo.ui.number(start=0.0,  label="min shortfall [GWh]", value=5.0)
+    shortfall_min_input = mo.ui.number(start=0.0, label="min shortfall [GWh]", value=10.0)
     shortfall_max_input = mo.ui.number(start=0.0, label="max shortfall [GWh]", value=20.0)
     mo.vstack([
         duration_min_input,
@@ -173,6 +174,7 @@ def _(
     duration_min_input,
     lsw_df,
     mo,
+    pd,
     sample_button,
     sample_stress_event,
     scaling_ratio_input,
@@ -186,9 +188,11 @@ def _(
         scaling_ratio=scaling_ratio_input.value,
         duration_range_days=(int(duration_min_input.value), int(duration_max_input.value)),
         shortfall_range_gwh=(shortfall_min_input.value, shortfall_max_input.value),
+        start_buffer=pd.Timedelta(days=1),
     )
-    _ev_base = lsw_df.loc[s_start:s_start + s_duration]
-    _delta = (lsw_df.index[1] - lsw_df.index[0]).total_seconds() / 3600
+    _period = lsw_df.index[1] - lsw_df.index[0]
+    _delta = _period.total_seconds() / 3600
+    _ev_base = lsw_df.loc[s_start:s_start + s_duration - _period]
     _sf_base = _delta * (_ev_base["l"] - _ev_base["s"] - _ev_base["w"] - G).clip(lower=0).sum()
     mo.md(f"**start:** {s_start.date()} | **duration:** {int(s_duration.days)} days | **baseline shortfall:** {_sf_base:.2f} GWh | **added shortfall:** {s_shortfall:.2f} GWh")
     return lsw_sampled, s_duration, s_start

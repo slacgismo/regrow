@@ -94,8 +94,9 @@ def stress_event_generator(lsw_df, event_start, event_duration, event_shortfall,
     assert event_start >= lsw_df.index[0], f"event_start {event_start} is before data start {lsw_df.index[0]}"
     assert event_end <= lsw_df.index[-1], f"event_end {event_end} is after data end {lsw_df.index[-1]}"
 
-    ev = lsw_df.loc[event_start:event_end]
-    delta = (lsw_df.index[1] - lsw_df.index[0]).total_seconds() / 60**2
+    period = lsw_df.index[1] - lsw_df.index[0]
+    delta = period.total_seconds() / 3600
+    ev = lsw_df.loc[event_start:event_end - period]
     l_ev = ev["l"].to_numpy()
     r_ev = (ev["s"] + ev["w"]).to_numpy()
     sf_base = delta * np.sum(np.maximum(l_ev - r_ev - G, 0))
@@ -130,9 +131,9 @@ def stress_event_generator(lsw_df, event_start, event_duration, event_shortfall,
     renewable_scaling = max(0.0, 1.0 - alpha / scaling_ratio)
 
     lsw_scaled_df = lsw_df.copy()
-    lsw_scaled_df.loc[event_start:event_end, "l"] *= load_scaling
-    lsw_scaled_df.loc[event_start:event_end, "s"] *= renewable_scaling
-    lsw_scaled_df.loc[event_start:event_end, "w"] *= renewable_scaling
+    lsw_scaled_df.loc[event_start:event_end - period, "l"] *= load_scaling
+    lsw_scaled_df.loc[event_start:event_end - period, "s"] *= renewable_scaling
+    lsw_scaled_df.loc[event_start:event_end - period, "w"] *= renewable_scaling
 
     if verbose:
         sf_after = delta * np.sum(np.maximum(l_ev * load_scaling - r_ev * renewable_scaling - G, 0))
@@ -151,15 +152,21 @@ def sample_stress_event(
     scaling_ratio,
     duration_range_days,
     shortfall_range_gwh,
+    start_buffer,
     rng=None,
 ):
     if rng is None:
         rng = np.random.default_rng()
+    period = lsw_df.index[1] - lsw_df.index[0]
+    max_duration = pd.Timedelta(days=duration_range_days[1])
+    all_dates = pd.DatetimeIndex(sorted(set(lsw_df.index.normalize())))
+    valid_dates = all_dates[
+        (all_dates >= all_dates[0] + start_buffer) &
+        (all_dates + max_duration - period <= lsw_df.index[-1])
+    ]
+    event_start = valid_dates[rng.integers(len(valid_dates))]
     duration_days = int(rng.integers(duration_range_days[0], duration_range_days[1] + 1))
     event_duration = pd.Timedelta(days=duration_days)
-    all_dates = pd.DatetimeIndex(sorted(set(lsw_df.index.normalize())))
-    valid_dates = all_dates[all_dates <= lsw_df.index[-1] - event_duration]
-    event_start = valid_dates[rng.integers(len(valid_dates))]
     event_shortfall = float(rng.uniform(shortfall_range_gwh[0], shortfall_range_gwh[1]))
     lsw_stressed = stress_event_generator(lsw_df, event_start, event_duration, event_shortfall, G, scaling_ratio)
     return lsw_stressed, event_start, event_duration, event_shortfall

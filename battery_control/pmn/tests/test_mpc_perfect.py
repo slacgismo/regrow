@@ -19,12 +19,12 @@ PARAMS = {
     "mu": 1e-2,
     "gamma": 0.0,
     "q_init": Q / 2,
-    "q_target": Q / 2,  # gamma is zero
+    "q_target": 0.5,  # gamma is zero so q_target has no effect
     "round_trip_efficiency": 0.95,
     "monthly_soc_loss": 1,
 }
 
-l, R, _, _, _, _ = process_single_node_data(
+l, R, _, _, _, _, _ = process_single_node_data(
     PARAMS["G"], data_path=DATA_PATH, data_start="2019-01-01", data_end="2019-01-14"
 )
 

@@ -133,7 +133,9 @@ def _(mo):
     mo.md("""
     ## Sampled event
     start date: uniform over feasible
+
     duration: uniform (whole days)
+
     added shortfall: uniform (GWh)
     """)
     return

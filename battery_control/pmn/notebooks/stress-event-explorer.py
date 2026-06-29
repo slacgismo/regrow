@@ -54,7 +54,7 @@ def _(mo):
 def _(mo):
     event_start_input = mo.ui.text(value="2019-08-15", label="event start")
     event_duration_input = mo.ui.number(start=1, step=1, label="event duration [days]", value=2)
-    shortfall_input = mo.ui.number(start=0.0, stop=200.0, step=1.0, label="event shortfall [GWh]", value=10.0)
+    shortfall_input = mo.ui.number(label="event shortfall [GWh]", value=10.0)
     mo.vstack([event_start_input, event_duration_input, shortfall_input])
     return event_duration_input, event_start_input, shortfall_input
 
@@ -193,8 +193,10 @@ def _(
     _period = lsw_df.index[1] - lsw_df.index[0]
     _delta = _period.total_seconds() / 3600
     _ev_base = lsw_df.loc[s_start:s_start + s_duration - _period]
+    _ev_after = lsw_sampled.loc[s_start:s_start + s_duration - _period]
     _sf_base = _delta * (_ev_base["l"] - _ev_base["s"] - _ev_base["w"] - G).clip(lower=0).sum()
-    mo.md(f"**start:** {s_start.date()} | **duration:** {int(s_duration.days)} days | **baseline shortfall:** {_sf_base:.2f} GWh | **added shortfall:** {s_shortfall:.2f} GWh")
+    _sf_after = _delta * (_ev_after["l"] - _ev_after["s"] - _ev_after["w"] - G).clip(lower=0).sum()
+    mo.md(f"**start:** {s_start.date()} | **duration:** {int(s_duration.days)} days | **baseline shortfall:** {_sf_base:.2f} GWh | **added shortfall:** {_sf_after - _sf_base:.2f} GWh")
     return lsw_sampled, s_duration, s_start
 
 

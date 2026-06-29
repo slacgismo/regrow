@@ -153,7 +153,7 @@ def _(form, l, make_one_shot):
     return (one_shot_problem,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     R,
     form,
@@ -245,7 +245,7 @@ def _(R, form, form_mpc, l, run_mpc_perfect):
     return (mpc_solution,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _(
     event_mask,
     form,

@@ -1,0 +1,50 @@
+{
+  "data": {
+    "data_start": "2019",
+    "data_end": "2019"
+  },
+  "fixed_params": {
+    "G": 1,
+    "Q": 16,
+    "bat_hours": 4,
+    "efficiency": 0.95,
+    "soc_loss": 2,
+    "alpha": 1.25,
+    "beta": 0.5,
+    "lamb": 20.0,
+    "mu": 0.01,
+    "delta": 1
+  },
+  "sweep": {
+    "H_list": [
+      24,
+      48,
+      72
+    ],
+    "gamma_list": [
+      0.0001,
+      0.001,
+      0.01,
+      0.1
+    ],
+    "q_target_list": [
+      0.5,
+      0.75,
+      1.0
+    ]
+  },
+  "stress_sampling": {
+    "n_samples": 20,
+    "scaling_ratio": 0.6666666666666666,
+    "duration_range_days": [
+      1,
+      5
+    ],
+    "shortfall_range_gwh": [
+      8.0,
+      24.0
+    ],
+    "start_buffer_days": 7,
+    "base_seed": 0
+  }
+}

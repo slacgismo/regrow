@@ -96,7 +96,7 @@ def stress_event_generator(lsw_df, event_start, event_duration, event_shortfall,
 
     period = lsw_df.index[1] - lsw_df.index[0]
     delta = period.total_seconds() / 3600
-    ev = lsw_df.loc[event_start:event_end - period]
+    ev = lsw_df.loc[event_start : event_end - period]
     l_ev = ev["l"].to_numpy()
     r_ev = (ev["s"] + ev["w"]).to_numpy()
     sf_base = delta * np.sum(np.maximum(l_ev - r_ev - G, 0))
@@ -114,7 +114,7 @@ def stress_event_generator(lsw_df, event_start, event_duration, event_shortfall,
 
     alpha_lo = 0
     alpha = alpha_hi
-    tol = 1e-3
+    tol = 1e-4
     max_iter = 100
     for i in range(max_iter):
         alpha = (alpha_lo + alpha_hi) / 2
@@ -131,9 +131,9 @@ def stress_event_generator(lsw_df, event_start, event_duration, event_shortfall,
     renewable_scaling = max(0.0, 1.0 - alpha / scaling_ratio)
 
     lsw_scaled_df = lsw_df.copy()
-    lsw_scaled_df.loc[event_start:event_end - period, "l"] *= load_scaling
-    lsw_scaled_df.loc[event_start:event_end - period, "s"] *= renewable_scaling
-    lsw_scaled_df.loc[event_start:event_end - period, "w"] *= renewable_scaling
+    lsw_scaled_df.loc[event_start : event_end - period, "l"] *= load_scaling
+    lsw_scaled_df.loc[event_start : event_end - period, "s"] *= renewable_scaling
+    lsw_scaled_df.loc[event_start : event_end - period, "w"] *= renewable_scaling
 
     if verbose:
         sf_after = delta * np.sum(np.maximum(l_ev * load_scaling - r_ev * renewable_scaling - G, 0))
@@ -161,8 +161,7 @@ def sample_stress_event(
     max_duration = pd.Timedelta(days=duration_range_days[1])
     all_dates = pd.DatetimeIndex(sorted(set(lsw_df.index.normalize())))
     valid_dates = all_dates[
-        (all_dates >= all_dates[0] + start_buffer) &
-        (all_dates + max_duration - period <= lsw_df.index[-1])
+        (all_dates >= all_dates[0] + start_buffer) & (all_dates + max_duration - period <= lsw_df.index[-1])
     ]
     event_start = valid_dates[rng.integers(len(valid_dates))]
     duration_days = int(rng.integers(duration_range_days[0], duration_range_days[1] + 1))

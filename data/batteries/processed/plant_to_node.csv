@@ -1,0 +1,150 @@
+Plant Code,Plant Name,State,Latitude,Longitude,geohash,match_dist_km
+141,Agua Fria,AZ,33.5561,-112.2153,9w01f3,60.77
+260,Dynegy Moss Landing Power Plant Hybrid,CA,36.804837,-121.782241,9q92vz,11.84
+389,El Centro,CA,32.802222,-115.54,9mvffm,11.49
+6704,Pebbly Beach,CA,33.333056,-118.310278,9mupsy,54.63
+50300,AltaGas Pomona Energy Inc.,CA,34.059444,-117.774167,9qh3ky,19.27
+54296,Biola University,CA,33.906953,-118.013105,9qh18k,17.17
+56472,Grapeland Peaker,CA,34.0903,-117.5343,9qh3ky,12.82
+56475,Center Peaker,CA,33.9296,-118.1046,9qh18k,12.25
+57584,University of California San Diego,CA,32.8747,-117.2392,9mudw2,12.92
+57693,DOE Golden NWTC Research Side Hybrid,CO,39.9139,-105.2153,9wve62,159.55
+58256,Los Alamos PV Site,NM,35.875556,-106.31,9we1bp,213.36
+58462,McCoy Solar Energy Project Hybrid,CA,33.694722,-114.739722,9qndpr,62.25
+58585,Sierra Nevada Brewing Co,CA,39.724167,-121.815278,9r13pb,25.54
+58625,Santa Rita Jail,CA,37.719167,-121.886944,9q9m24,26.03
+58899,Prosperity Energy Storage Facility,NM,35.001944,-106.637222,9we1bp,262.04
+59150,RE Mustang LLC,CA,36.221667,-119.903056,9q6tde,20.06
+59256,Vaca Dixon Battery Storage System,CA,38.393333,-121.927778,9qc63x,2.23
+59257,Yerba Buena,CA,37.305833,-121.755,9q97v8,13.37
+59661,Tehachapi Energy Storage Project,CA,35.123333,-118.38,9q5zqv,20.28
+59817,Tooele Army Depot(CSG),UT,40.50303,-112.37059,9x0mgn,35.03
+59939,RE Tranquillity,CA,36.581365,-120.40447,9qd2ds,14.27
+60016,MESA 1,WA,47.936194,-122.246917,c2967d,48.52
+60021,MESA 2,WA,47.972667,-122.198694,c2967d,40.73
+60092,"Blythe Solar II, LLC",CA,33.68,-114.73,9qndpr,63.15
+60093,"Blythe Solar 110, LLC",CA,33.68,-114.742,9qndpr,63.15
+60094,"Blythe Solar III, LLC Hybrid",CA,33.656,-114.742,9qndpr,65.89
+60231,Genentech-Oceanside,CA,33.211095,-117.299593,9mumuf,33.11
+60233,RE Garland,CA,34.825267,-118.524989,9q5sgb,31.47
+60249,Silicon Valley Clean Water,CA,37.542619,-122.231119,9q9jb9,9.88
+60441,Salem Smart Power Center,OR,44.922,-123.0183,9rb6wg,97.17
+60444,Glacier Battery Storage,WA,48.88804,-121.9462,c2c10y,66.79
+60491,Springbok 3 Solar Farm Hybrid,CA,35.171153,-118.001652,9q5zqv,22.59
+60565,Borrego Springs Energy Storage,CA,33.27011,-116.3496,9qj152,75.77
+60566,Pala Energy Storage Yard,CA,33.35651,-117.113599,9qh8k2,49.85
+60567,Ortega Highway Energy Storage,CA,33.562061,-117.543777,9mumuf,23.1
+60568,Canyon Crest Academy,CA,32.95907,-117.191622,9mudw2,21.11
+60569,El Cajon Energy Storage,CA,32.8115,-117.050546,9mudw2,2.23
+60570,Escondido Energy Storage,CA,33.124446,-117.114274,9mudw2,37.85
+60641,Henrietta D Energy Storage LLC,CA,36.228872,-119.904686,9q6tde,20.57
+60654,Townsite Solar Project Hybrid,NV,35.937336,-114.883999,9qqk6u,9.08
+60661,Mira Loma Energy Storage Facility,CA,34.006125,-117.560934,9qh3ky,0.0
+60698,Stanton Energy Reliability Center Hybrid,CA,33.806801,-117.985758,9mupsy,15.35
+60699,DESI-1 Battery Energy Storage Facility,CA,33.799248,-117.873371,9mupsy,11.13
+60760,Millikan BESS,CA,33.691,-117.833,9mupsy,9.33
+60974,Glendale Battery Energy Storage System,CA,34.162327,-118.283684,9q5fm0,1.11
+60996,Iron Horse Battery Storage,AZ,32.098492,-110.819119,9w01f3,265.25
+61098,Battle Mountain Solar Project,NV,40.718433,-117.06143,9rkf69,51.89
+61107,Vanadium Redox Flow Battery Plant,CA,32.682506,-116.988781,9muccv,0.0
+61197,Pima Energy Storage System,AZ,32.251647,-110.991333,9w01f3,240.97
+61204,"AES ES ALAMITOS, LLC",CA,33.770202,-118.099665,9q5bwz,15.34
+61366,Top Gun Energy Storage,CA,32.876198,-117.167791,9mudw2,12.92
+61431,Beacon BESS 1,CA,35.256526,-118.027519,9q5zqv,29.63
+61439,Panasonic Carport Solar,CO,39.808719,-104.781494,9wve62,141.64
+61661,Vista Energy Storage System ,CA,33.203977,-117.253852,9mumuf,33.73
+61678,Pinal Central Energy Center,AZ,32.875697,-111.551111,9w01f3,157.57
+61721,HEBT WLA 1,CA,33.669266,-117.646846,9qh0rw,25.69
+61722,HEBT Irvine 1,CA,33.713489,-117.852086,9mupsy,1.11
+61723,HEBT Irvine 2,CA,33.665246,-117.768222,9mupsy,10.28
+61795,Pacific Union College BESS,CA,38.570028,-122.444028,9qbcde,39.66
+61861,AES ES GILBERT,AZ,33.446804,-111.956261,9w01f3,78.32
+61913,Punkin Center Battery Storage,AZ,33.87581,-111.31356,9w01f3,103.96
+61925,Casa Mesa Wind Energy Center,NM,34.604989,-103.966089,9wve62,443.03
+61993,Gavilan District College Solar Project,CA,37.003832,-121.593567,9q97v8,26.05
+61995,UC Merced Solar,CA,37.365688,-120.432228,9q9fy1,64.02
+62175,Diablo Energy Storage,CA,38.028792,-121.900596,9qc26h,1.11
+62373,I25 Battery Storage,CO,40.140285,-104.978012,9xkgmv,147.01
+62441,Kearny Mesa Storage LLC,CA,32.815256,-117.126079,9mudw2,2.23
+62460,DESI-2 Battery Storage Facility,CA,33.7357,-117.915286,9mupsy,4.45
+62497,Orange County Energy Storage 2,CA,33.715536,-117.854314,9mupsy,1.11
+62499,Orange County Energy Storage 3,CA,33.714896,-117.85431,9mupsy,1.11
+62564,Elkhorn Battery Energy Storage System,CA,36.808039,-121.781788,9q92vz,11.84
+62745,Wheatridge Hybrid,OR,45.55975,-119.6338,c245ue,86.68
+62754,San Diego International Airport BESS,CA,32.7338,-117.1933,9mudw2,10.89
+62801,Vallecito,CA,34.407086,-119.511547,9q5sgb,76.08
+62874,Acorn I Energy Storage LLC,CA,34.196505,-118.931898,9q5evq,38.4
+62875,Wildcat I Energy Storage LLC,CA,33.807988,-116.489835,9qj152,16.24
+62889,Hecate Energy Johanna Facility,CA,33.714672,-117.853061,9mupsy,1.11
+63022,Fort Carson Battery Energy Storage System,CO,38.745474,-104.777675,9wve62,24.94
+63091,UC Santa Cruz Solar,CA,36.9911,-122.0532,9q9hq4,36.74
+63412,San Diego Zoo,CA,32.739676,-117.151635,9mudw2,10.89
+63420,Fresno Bullard High School Hybrid,CA,36.818646,-119.810408,9qd9xh,9.51
+63421,Fresno Hoover High School Hybrid,CA,36.817816,-119.770709,9qd9xh,9.51
+63422,Fresno Sunnyside High School Hybrid,CA,36.734014,-119.717809,9qdbm8,17.0
+63486,D'Arrigo Brothers - Phase 4,CA,36.616,-121.636,9q92vz,17.0
+63510,Walnut Unified School District Walnut HS Hybrid,CA,34.02188,-117.85051,9qh18k,18.58
+63609,Allergan,CA,33.67239,-117.85381,9mupsy,3.34
+63610,Baker,CA,33.656528,-117.68412,9qh0rw,22.07
+63611,CSU Long Beach,CA,33.78383,-118.10796,9q5bwz,13.63
+63612,DATS,CA,33.70731,-117.89108,9mupsy,1.11
+63613,Downey,CA,33.919368,-118.128919,9q5bwz,10.26
+63614,LAWRP,CA,33.63778,-117.71377,9mupsy,19.7
+63615,Long Beach Convention Center,CA,33.765236,-118.189377,9q5bwz,13.36
+63616,OCSD,CA,33.693129,-117.9409,9mupsy,1.11
+63617,SOCCD,CA,33.676445,-117.777312,9mupsy,9.53
+63685,Luna Storage,CA,34.68325,-118.3053,9qhh0n,27.99
+63722,Rawhide Prairie Solar Hybrid,CO,40.857978,-105.015561,9xkgmv,76.7
+63727,Slate Hybrid,CA,36.226955,-119.8948,9q6tde,20.06
+63728,Taos Mesa Energy Facility Hybrid,NM,36.44,-105.62,9wve62,246.91
+63735,Silverstrand Grid Energy Storage System,CA,34.20774,-119.079813,9q5evq,52.62
+63834,Gateway Energy Storage System,CA,32.570556,-116.910556,9muccv,15.42
+63843,"Johanna Energy Center, LLC",CA,33.715016,-117.853984,9mupsy,1.11
+63891,Saticoy,CA,34.256691000000004,-119.15726,9q5sgb,58.8
+63913,Dodge Flat,NV,40.713024,-119.467217,9r4bc7,133.82
+63930,Cal Flats BESS,CA,35.866665,-120.329439,9q6tde,35.04
+63943,Coso Battery Storage,CA,36.006945,-117.810636,9q5zqv,111.79
+64103,Desert Harvest II LLC,CA,33.8,-115.38,9mvgw4,92.39
+64105,"Maverick Solar 6, LLC",CA,33.7,-115.38,9mvgw4,81.26
+64148,Fish Springs,NV,40.074741,-119.974166,9r4bc7,63.57
+64198,"Horn Rapids Solar, Storage and Training",WA,46.3529,-119.3222,c26crp,42.39
+64426,Wilmot Energy Center LLC,AZ,32.043502,-110.892676,9w01f3,265.8
+64446,Arlington Microgrid,WA,48.15614,-122.1502,c2967d,30.43
+64481,Arlington Energy Center II,CA,33.69088,-114.774944,9qndpr,68.14
+64564,Arlington Energy Center III,CA,33.69088,-114.774944,9qndpr,68.14
+64601,County of San Diego COC Hybrid,CA,32.833645,-117.131123,9mudw2,5.57
+64611,SEPV Sierra,CA,34.733011,-118.138525,9qhh0n,26.72
+64612,Kearny North Energy Storage,CA,32.83347,-117.13443,9mudw2,5.57
+64614,Kearny South Energy Storage,CA,32.832886,-117.132292,9mudw2,5.57
+64624,Hudson - High Desert Hybrid,CA,34.6365,-117.3724,9qhkxd,10.02
+64630,"Rabbitbrush Solar, LLC",CA,34.83,-118.32,9q5zqv,26.14
+64701,LeConte Energy Storage,CA,32.677208,-115.670203,9mvffm,22.12
+64712,Sanborn BESS 1,CA,35.027264,-118.139236,9q5zqv,9.38
+64713,Sanborn BESS 2,CA,35.027264,-118.140078,9q5zqv,9.38
+64743,Tierra Buena Energy Storage,CA,39.17133,-121.66209,9qct8r,22.85
+64766,Redwood Coast Airport Microgrid,CA,40.967222,-124.104444,9pr8ne,20.71
+64877,Edwards Sanborn E3,CA,34.946324,-118.126489,9q5zqv,15.27
+64878,Edwards Sanborn E1A,CA,34.961922,-118.124208,9q5zqv,13.55
+64879,Edwards Sanborn E2,CA,34.941507,-118.129025,9q5zqv,15.27
+64881,NMSU Solar and Storage,NM,32.286048,-106.744529,9w1zzg,420.81
+64921,Santa Ana Storage 2,CA,33.715016,-117.853984,9mupsy,1.11
+64928,Edwards Sanborn S3,CA,35.01644,-118.1225,9q5zqv,9.71
+64929,Edwards Sanborn S1,CA,35.02769,-118.13284,9q5zqv,9.38
+64993,"BigBeau Solar, LLC",CA,34.907041,-118.344077,9q5zqv,18.06
+65053,Blythe Mesa Solar II,CA,33.640813,-114.680261,9qndpr,66.81
+65132,University of the Pacific,CA,37.980054,-121.312418,9q9wtp,27.07
+65140,Crimson,CA,33.57345,-114.814541,9qndpr,78.5
+65382,Lincoln WWTF Hybrid,CA,38.859,-121.346,9qcts0,19.48
+65408,Gilead Oceanside Solar Project,CA,33.213138,-117.304166,9mumuf,33.11
+65409,Gilead Foster City Solar Project,CA,37.568597,-122.27797,9q9jb9,1.11
+65469,Sealed Air Madera Solar Project,CA,36.945582,-120.056016,9qd9xh,20.43
+65472,Chukar Battery Energy Storage System,NV,39.55636,-119.43665,9r50xy,18.43
+65568,Google Moffett Park Solar Project,CA,37.405313,-122.017498,9q9m24,10.02
+65569,Gilead Sciences La Verne Rooftop Solar,CA,34.09623,-117.781867,9qh3ky,20.99
+65570,West Valley Mission CCD Solar Project,CA,37.264377,-122.006021,9q9hq4,11.09
+65614,Orange Coast College PH2 Solar Project,CA,33.672565,-117.91246,9mupsy,3.34
+65857,Sunlight Storage,CA,33.803,-115.402,9mvgw4,92.39
+66050,Lancaster Area Battery,CA,34.6864,-118.3045,9qhh0n,28.84
+66500,Valley Center 85,CA,33.227236,-117.017744,9mudw2,49.86
+66502,Valley Center 54,CA,33.227236,-117.017744,9mudw2,49.86
+66799,Bishop Ranch - BR 1-Y,CA,37.76217,-121.9579,9q9pk4,20.24

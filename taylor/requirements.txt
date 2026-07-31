@@ -1,0 +1,6 @@
+marimo
+pandas
+numpy
+cvxpy
+pypower
+pyarrow

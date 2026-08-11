@@ -14,8 +14,8 @@
 
 clock {
     timezone ${TIMEZONE};
-    starttime ${STARTTIME};
-    stoptime ${STOPTIME};
+    starttime "${STARTTIME}";
+    stoptime "${STOPTIME}";
 }
 
 module pypower
@@ -47,13 +47,14 @@ module pypower
 //
 // Load powerplant data
 //
+// The PSS/E converter already attaches one gencost to each gen (with zero
+// costs), so update those records instead of adding a second set, which
+// pypower rejects as conflicting gencost models.
+#for GENCOST in ${FIND class=gencost}
+modify ${GENCOST}.model POLYNOMIAL;
+modify ${GENCOST}.costs "${RANDOM triangle(0.001,0.01)},${RANDOM triangle(0,100)},0";
+#done
 #for GEN in ${FIND class=gen}
-object gencost
-{
-    parent ${GEN};
-    model POLYNOMIAL;
-    costs "${RANDOM triangle(0.001,0.01)},${RANDOM triangle(0,100)},0";
-}
 modify ${GEN}.Pmax 200;
 #done
 #for BRANCH in ${FIND class=branch}

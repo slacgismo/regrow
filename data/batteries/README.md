@@ -12,7 +12,6 @@ and notebooks for data processing steps and numerical experiments. Examples:
 * Battery capacity and specifications (by node, region, or technology class)
 * Charge/discharge time series
 * State-of-charge profiles
-* Cost and degradation parameters
 * Scripts that fetch, clean, or transform data
 * Notebooks that run experiments or produce results figures
 
@@ -26,53 +25,29 @@ data/batteries/
 └── notebooks/         ← marimo notebooks for the processing steps
 ```
 
-Add subdirectories as the work warrants (e.g. a `fixtures/` folder for small,
-stable test inputs). Feel free to add, rename, or reorganize — just keep this
-README up to date so the next person can orient quickly.
-
-## Adding data files to git
-
-Data files under the [GitHub 100 MB file size limit](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
-can be committed directly and pushed to GitHub — no special tooling needed. For
-files above that limit, coordinate with the team (options include Git LFS or
-storing outside the repo and documenting the source here).
-
-## Questions
-
-Reach out to `bennetm [at] nlr [dot] gov` with any questions about the project
-or this dataset area.
-
 ---
 
-# Current contents: EIA battery storage for the WEC-240 model (2018–2022)
+# Current contents: EIA battery storage for the WEC model (2018–2022)
 
 Scope throughout: **WECC only**, **2018–2022**, **EIA data only** (no CAISO in
 this pass).
 
 ## Headline results
 
-1. **The storage fleet grew roughly 18× in five years**, from ~286 MW at 22
-   nodes to ~5,240 MW at 48 nodes, with the step change in 2021.
+1. **The storage fleet grew roughly 18× in five years**, from 285.6 MW at 23
+   nodes to 5,239.8 MW at 51 nodes, with the step change in 2021.
 2. **The circular P–Q feasible region is not adequate on its own.** The
    capacity-weighted reactive-to-real power ratio is below unity in every year
-   of the sample (pooled 0.672). A disc sized on real power and left uncut
-   grants reactive headroom the fleet does not have.
-3. **The apparent support for the disc is a filing artifact.** 49.5% of
-   generator-years report a reactive rating *exactly* equal to their real power
-   rating, while **zero** records fall between 0.9 and 1.0 — the shoulder a
-   measured quantity would populate.
-4. **Low-ratio nodes carry the capacity.** The capacity-weighted node mean sits
+   of the sample (pooled 0.672).
+3. **Low-ratio nodes carry the capacity.** The capacity-weighted node mean sits
    below the unweighted mean in every year, and the ten largest nodes sit lower
    still. Averaging nodes without weighting overstates reactive headroom exactly
    where the storage is.
-5. **The correct region is per node, not fleet-wide.** 29 of 160 node-years bind
-   on real power rather than reactive. `node_reactive_bounds_by_year.csv`
-   supplies both bounds per node so the model can compose the right one.
-6. **A single round-trip efficiency is adequate.** The fleet is 99.91%
+4. **Lithium-ion so dominates the fleet.** The fleet is 99.91%
    lithium-ion by energy in 2022, and the blended value differs from a pure
    lithium-ion fleet by 0.007 efficiency points — 0.016 points even under a
    deliberately pessimistic assumption about every other chemistry.
-7. **The declared-application flags cannot carry evidentiary weight.** No field
+5. **The declared-application flags cannot carry evidentiary weight.** No field
    is answered by even half the fleet (response rates 5.9%–49.1%, median 25.9%),
    and respondents answer `Y` 61–100% of the time. Non-response, not `N`, is how
    a negative is expressed.
@@ -150,24 +125,24 @@ marimo edit tech_and_applications.py   # 5
 
 **`processed/`** — tables
 
-| File | Grain | Rows | Description |
-|---|---|---|---|
-| `node_capacity_by_year.csv` | node × year | 167 | **Deliverable 1.** MW, MWh, charge/discharge rates, plant count |
-| `node_generation_by_month.csv` | node × year × month | 1,908 | **Deliverable 2.** Charge, discharge, net gen (long format) |
-| `node_reactive_bounds_by_year.csv` | node × year | 160 | **Deliverable 3.** P and Q bounds per node — direct model input |
-| `battery_units_2018_2022.csv` | generator × year | 440 | Pass-2 base table, 36 columns |
-| `fleet_reactive_ratio_by_year.csv` | year | 5 | Five estimators of Q / max(P), screened |
-| `node_ratio_weighting_by_year.csv` | year | 5 | Weighted against unweighted node means, top-10 concentration |
-| `reactive_screen_sensitivity.csv` | threshold | 7 | Sensitivity of the headline figures to the screen threshold |
-| `technology_mix_by_year.csv` | year × technology | 20 | Mix under three denominators (units, MW, MWh) |
-| `technology_efficiency_blend.csv` | year | 5 | Blended round-trip efficiency implied by the mix |
-| `technology_node_mixing.csv` | node × year | 161 | Chemically mixed nodes and the capacity behind them |
-| `applications_summary.csv` | flag | 11 | Declared applications with response rates |
-| `applications_by_year.csv` | flag × year | 55 | The same, by year |
-| `plant_to_node.csv` | plant | 149 | Which node each WECC plant matched to, and the distance |
-| `plant_923_not_in_860.csv` | plant × year | 41 | Orphan log — see data-quality item 3 |
-| `battery_panel_2018_2022.csv` | plant × month | 12,733 | Intermediate: full-US panel, EIA-860 + EIA-923 joined |
-| `battery_panel_labeled.csv` | plant × month | 8,251 | Intermediate: WECC panel with geohash label attached |
+| File | Grain | Description |
+|---|---|---|
+| `node_capacity_by_year.csv` | node × year | **Deliverable 1.** MW, MWh, charge/discharge rates, plant count |
+| `node_generation_by_month.csv` | node × year × month | **Deliverable 2.** Charge, discharge, net gen (long format) |
+| `node_reactive_bounds_by_year.csv` | node × year | **Deliverable 3.** P and Q bounds per node — direct model input |
+| `battery_units_2018_2022.csv` | generator × year | Pass-2 base table, 36 columns |
+| `fleet_reactive_ratio_by_year.csv` | year | Five estimators of Q / max(P), screened |
+| `node_ratio_weighting_by_year.csv` | year | Weighted against unweighted node means, top-10 concentration |
+| `reactive_screen_sensitivity.csv` | threshold | Sensitivity of the headline figures to the screen threshold |
+| `technology_mix_by_year.csv` | year × technology | Mix under three denominators (units, MW, MWh) |
+| `technology_efficiency_blend.csv` | year | Blended round-trip efficiency implied by the mix |
+| `technology_node_mixing.csv` | node × year | Chemically mixed nodes and the capacity behind them |
+| `applications_summary.csv` | flag | Declared applications with response rates |
+| `applications_by_year.csv` | flag × year | The same, by year |
+| `plant_to_node.csv` | plant | Which node each WECC plant matched to, and the distance |
+| `plant_923_not_in_860.csv` | plant × year | Orphan log — see data-quality item 3 |
+| `battery_panel_2018_2022.csv` | plant × month | Intermediate: full-US panel, EIA-860 + EIA-923 joined |
+| `battery_panel_labeled.csv` | plant × month | Intermediate: WECC panel with geohash label attached |
 
 **`processed/`** — figures
 
@@ -641,7 +616,7 @@ expect these gaps:
 |---|---|---|---|
 | Grain | plant × month | generator × year | Pass 2 needs per-generator attributes |
 | Nodes | 52 (capacity), 50 (generation) | 50 (unit table), 49 (bounds) | Pass 2 additionally restricts `Status ∈ {OP, SB}` |
-| 2022 capacity | 5,239.8 MW nameplate | ~5,231 MW of `max_P_MW` | Status filter, plus `max(charge, discharge)` is not identical to nameplate MW |
+| 2022 capacity | 5,239.8 MW nameplate | 5,231.1 MW nameplate, of which 5,173.2 MW is `max_P_MW` | The status filter removes 8.7 MW of nameplate; `max(charge, discharge)` is a further 57.9 MW below nameplate |
 | Rows | 167 / 1,908 | 440 / 160 | Different grain |
 | Node-years | — | 161 (technology), 160 (bounds) | The reactive screen removes one node-year that the technology pass keeps |
 
@@ -746,9 +721,10 @@ inventory, pass 2 is the dispatchable subset with its operating envelope.
    configuration for an arbitrary month. Two options: forward-fill the annual
    value across the twelve months, or use each generator's operating month to
    place the step inside the year. The second is more faithful to the observed
-   build-out — the fleet roughly doubled within some of these years — but
-   requires the operating-date field. **Needs a decision before the table is
-   consumed.**
+   build-out — the fleet roughly doubled within some of these years — and is
+   feasible: `Operating Month` and `Operating Year` are populated on all 440
+   generator-years in `battery_units_2018_2022.csv`. **Needs a decision before
+   the table is consumed.**
 2. **Nodes with no storage.** The bounds table covers only nodes that host
    batteries. Downstream code needs an agreed convention for the rest: absent
    rows, or explicit zero-capacity rows.
@@ -761,6 +737,6 @@ inventory, pass 2 is the dispatchable subset with its operating envelope.
    the model. The one number that *does* need sourcing is the lithium-ion value
    itself, since the fleet is essentially all lithium-ion and the blend simply
    reproduces it.
-5. **Coverage beyond 2022.** The fleet grew from 22 nodes / ~286 MW in 2018 to
-   48 nodes / ~5,240 MW in 2022. The 2018 and 2019 figures rest on small samples,
-   and later vintages will dominate any pooled figure.
+5. **Coverage beyond 2022.** The dispatchable fleet grew from 22 nodes /
+   280.2 MW in 2018 to 48 nodes / 5,231.1 MW in 2022. The 2018 and 2019 figures
+   rest on small samples, and later vintages will dominate any pooled figure.

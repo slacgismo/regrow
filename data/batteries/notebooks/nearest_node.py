@@ -14,19 +14,10 @@ def _():
     #       distance, and attach that geohash label onto the monthly panel.
     #       The match distance is kept as a data-quality reference.
     #
-    # Repo layout (this notebook lives in data/batteries/notebooks/):
-    #   data/batteries/
-    #     raw/utils.py    - haversine_distance(), geohash(), nearest()
-    #     raw/nodes.csv   - 126 unique nodes, with geocode + Lat/Long
-    #     processed/      - panel in; labeled panel and node tables out
-    #     notebooks/      - this file
-    #
-    # Paths resolve relative to this file, so it runs from a fresh clone
-    # regardless of the working directory.
-    #
-    # Produces the two deliverables:
-    #   processed/node_capacity_by_year.csv     - per (geohash, year)
-    #   processed/node_generation_by_month.csv  - per (geohash, year, month)
+    # Inputs :
+    #   battery_panel_2018_2022.csv - monthly panel from the previous step
+    #   nodes.csv                   - 126 unique nodes, with geocode + Lat/Long
+    #   utils.py                    - nearest_nodes_search function
     #
     # marimo note: each variable is defined in exactly one cell.
     # ============================================================
@@ -38,6 +29,15 @@ def _():
     # ===== imports and paths =====
     import os, sys, types
     from pathlib import Path
+    import marimo as mo
+
+    _nb_dir = mo.notebook_dir()
+    if _nb_dir is None:
+        _nb_dir = Path(globals().get("__file__", ".")).resolve().parent
+    BASE = Path(_nb_dir).resolve().parent
+    RAW = BASE / "raw"
+    PROC = BASE / "processed"
+    PROC.mkdir(parents=True, exist_ok=True)
 
     # utils.py reads HOME at import time and imports psm3 at the top.
     # Windows has neither, so provide a HOME fallback and stub psm3 out.
@@ -45,26 +45,14 @@ def _():
     os.environ.setdefault("HOME", os.environ.get("USERPROFILE", os.path.expanduser("~")))
     sys.modules.setdefault("psm3", types.ModuleType("psm3"))
 
-    try:
-        HERE = Path(__file__).resolve().parent      # data/batteries/notebooks
-    except NameError:
-        HERE = Path.cwd()
-    BATT = HERE.parent                              # data/batteries
-    RAW = BATT / "raw"
-    PROC = BATT / "processed"
-    PROC.mkdir(exist_ok=True)
-
-    # utils.py lives in raw/ alongside the node files it works with.
+    # utils.py lives in raw/, not beside this notebook.
     sys.path.insert(0, str(RAW))
 
     import pandas as pd
-    import numpy as np
-    from utils import haversine_distance
-    from utils import geohash, nearest
+    from utils import nearest2
 
-    print("raw       :", RAW)
-    print("processed :", PROC)
-    return PROC, RAW, geohash, nearest, pd
+
+    return PROC, RAW, nearest2, pd
 
 
 @app.cell
@@ -99,22 +87,31 @@ def _(panel):
 
 
 @app.cell
-def _(geohash, nearest, nodes, plants):
-    # ===== nearest-node search using the repo's own functions from utils.py =====
-    # Encode each plant's lat/long as a geohash, then find the closest node
-    # geohash. Keeps the whole match on the repo's geohash convention rather
-    # than introducing a second distance implementation.
-    node_hashes = nodes["geocode"].tolist()
+def _(nearest2, nodes, plants):
+    # ===== nearest-node search using utils.nearest2 =====
+    # nearest2(test_latlon, latlonlist) -> (best_ix, latlonlist[best_ix], dist_m)
+    #
+    # It takes raw (lat, lon) pairs, not geohashes, and uses haversine throughout.
+    # The old nearest() ranked candidates by squared degree difference between
+    # decoded geohash centres and only then reported a haversine distance.
+    #
+    # The second return value is the matched coordinate pair, not a node label,
+    # so best_ix is the one we keep: it indexes straight back into `nodes` to
+    # recover that node's geocode. haversine_distance returns metres.
+    node_latlon = list(zip(nodes["Lat"], nodes["Long"]))
+    node_codes = nodes["geocode"].tolist()
 
     def match_plant(row):
-        plant_hash = geohash(row["Latitude"], row["Longitude"])
-        nearest_hash, dist_m = nearest(plant_hash, node_hashes, withdist=True)
-        return nearest_hash, round(dist_m / 1000.0, 2)   # (node geohash, distance in KM)
+        best_ix, _matched_latlon, dist_m = nearest2(
+            (row["Latitude"], row["Longitude"]), node_latlon
+        )
+        return node_codes[best_ix], round(dist_m / 1000.0, 2)   # (node geocode, km)
 
     matched = plants.copy()
     matched[["geohash", "match_dist_km"]] = matched.apply(
         match_plant, axis=1, result_type="expand"
     )
+    print("Matched plants:", len(matched), "| distinct nodes used:", matched["geohash"].nunique())
     return (matched,)
 
 
@@ -151,11 +148,21 @@ def _(matched, panel):
 
 @app.cell
 def _(PROC, labeled, matched):
-    # ===== save the labeled panel and the plant -> node map =====
+    # ===== save =====
     labeled.to_csv(PROC / "battery_panel_labeled.csv", index=False)
     matched.to_csv(PROC / "plant_to_node.csv", index=False)
-    print("Saved:", PROC / "battery_panel_labeled.csv", " (WECC monthly panel + geohash label)")
-    print("Saved:", PROC / "plant_to_node.csv", " (WECC plants: node + distance)")
+    print("Saved: battery_panel_labeled.csv  (WECC monthly panel + geohash label)")
+    print("Saved: plant_to_node.csv          (WECC plants: node + distance)")
+    return
+
+
+@app.cell
+def _():
+    # ============================================================
+    # Produces the two deliverables:
+    #   - CAPACITY  : per (geohash, year)          - MW / MWh / charge / discharge rates
+    #   - GENERATION: per (geohash, year, month)   - charge / discharge / net gen (long table)
+    # ============================================================
     return
 
 
@@ -212,8 +219,8 @@ def _(PROC, capacity, generation):
     # ===== save both deliverables =====
     capacity.to_csv(PROC / "node_capacity_by_year.csv", index=False)
     generation.to_csv(PROC / "node_generation_by_month.csv", index=False)
-    print("Saved:", PROC / "node_capacity_by_year.csv", "(", len(capacity), "rows )")
-    print("Saved:", PROC / "node_generation_by_month.csv", "(", len(generation), "rows )")
+    print("Saved: node_capacity_by_year.csv    (", len(capacity), "rows )")
+    print("Saved: node_generation_by_month.csv (", len(generation), "rows )")
     return
 
 

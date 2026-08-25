@@ -1,0 +1,12 @@
+application,Y,N,blank,other,total,answered,response_rate_%,Y_share_of_answered_%,Y_share_of_fleet_%
+Arbitrage,185,31,224,0,440,216,49.1,85.6,42.0
+System Peak Shaving,199,10,231,0,440,209,47.5,95.2,45.2
+Frequency Regulation,163,3,274,0,440,166,37.7,98.2,37.0
+Excess Wind and Solar Generation,140,21,279,0,440,161,36.6,87.0,31.8
+Load Management,130,11,299,0,440,141,32.0,92.2,29.5
+Ramping / Spinning Reserve,114,0,326,0,440,114,25.9,100.0,25.9
+Backup Power,58,19,363,0,440,77,17.5,75.3,13.2
+Voltage or Reactive Power Support,58,9,373,0,440,67,15.2,86.6,13.2
+Load Following,56,8,376,0,440,64,14.5,87.5,12.7
+Co-Located Renewable Firming,37,18,385,0,440,55,12.5,67.3,8.4
+Transmission and Distribution Deferral,16,10,414,0,440,26,5.9,61.5,3.6

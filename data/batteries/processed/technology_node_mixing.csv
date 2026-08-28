@@ -1,162 +1,162 @@
-Year,geohash,technologies,generators,nameplate_MW,mixed
-2018,9muccv,1,1,2.0,False
-2018,9mudw2,1,4,41.0,False
-2018,9mumuf,1,6,45.5,False
-2018,9mupsy,2,6,14.3,True
-2018,9mvffm,1,1,30.0,False
-2018,9q5bwz,1,2,10.3,False
-2018,9q5fm0,1,1,2.0,False
-2018,9q5zqv,1,2,28.0,False
-2018,9q97v8,1,1,4.0,False
-2018,9q9fy1,1,1,0.5,False
-2018,9qc63x,1,1,2.0,False
-2018,9qh3ky,1,4,50.0,False
-2018,9qj152,1,2,1.5,False
-2018,9r13pb,1,1,0.5,False
-2018,9rb6wg,1,1,5.0,False
-2018,9w01f3,1,4,32.0,False
-2018,9wdb95,1,1,0.8,False
-2018,9we1bp,2,2,1.8,True
-2018,9wve62,1,2,2.0,False
-2018,9xkgmv,1,1,4.0,False
-2018,c2967d,1,2,2.0,False
-2018,c2c10y,1,1,2.0,False
-2019,9muccv,1,1,2.0,False
-2019,9mudw2,1,5,42.0,False
-2019,9mumuf,1,6,45.5,False
-2019,9mupsy,2,11,24.0,True
-2019,9mvffm,1,1,30.0,False
-2019,9q5bwz,1,5,16.3,False
-2019,9q5fm0,1,1,2.0,False
-2019,9q5zqv,1,2,9.5,False
-2019,9q97v8,2,2,4.5,True
-2019,9q9fy1,1,1,0.5,False
-2019,9qc63x,1,1,2.0,False
-2019,9qh0rw,1,2,2.2,False
-2019,9qh3ky,1,4,50.0,False
-2019,9qj152,1,2,1.5,False
-2019,9r13pb,1,1,0.5,False
-2019,9rb6wg,1,1,5.0,False
-2019,9w01f3,1,5,42.0,False
-2019,9wdb95,1,1,0.8,False
-2019,9wve62,1,5,7.5,False
-2019,9xkgmv,1,1,4.0,False
-2019,c2967d,1,2,2.0,False
-2019,c2c10y,1,1,2.0,False
-2020,9muccv,2,2,252.0,True
-2020,9mudw2,1,7,43.4,False
-2020,9mumuf,1,6,45.5,False
-2020,9mupsy,2,13,44.0,True
-2020,9mvffm,1,1,30.0,False
-2020,9q5bwz,1,5,16.3,False
-2020,9q5fm0,1,1,2.0,False
-2020,9q5zqv,1,3,29.5,False
-2020,9q97v8,2,2,4.5,True
-2020,9q9fy1,1,1,0.5,False
-2020,9q9jb9,1,1,1.0,False
-2020,9qben2,1,1,1.0,False
-2020,9qc63x,1,1,2.0,False
-2020,9qd9xh,1,2,0.6000000000000001,False
-2020,9qdbm8,1,1,0.3,False
-2020,9qh0rw,1,3,2.7,False
-2020,9qh3ky,1,4,50.0,False
-2020,9qhh0n,1,1,6.0,False
-2020,9qj152,1,2,1.5,False
-2020,9r13pb,1,1,0.5,False
-2020,9rb6wg,1,1,5.0,False
-2020,9w01f3,1,5,42.0,False
-2020,9wdb95,1,1,0.8,False
-2020,9wve62,1,3,6.2,False
-2020,9xkgmv,1,1,4.0,False
-2020,c26crp,1,1,1.0,False
-2020,c2967d,1,2,2.0,False
-2020,c2c10y,1,1,2.0,False
-2021,9muccv,2,2,252.0,True
-2021,9mudw2,1,9,75.4,False
-2021,9mumuf,1,5,44.2,False
-2021,9mupsy,2,18,99.0,True
-2021,9mvffm,1,1,30.0,False
-2021,9mvgw4,1,1,35.0,False
-2021,9pr8ne,1,1,2.2,False
-2021,9q5bwz,1,6,116.3,False
-2021,9q5dy2,1,3,113.0,False
-2021,9q5fm0,1,1,2.0,False
-2021,9q5sgb,1,3,98.0,False
-2021,9q5zqv,1,5,235.2,False
-2021,9q6tde,1,3,145.0,False
-2021,9q92vz,1,2,400.0,False
-2021,9q97v8,1,1,0.5,False
-2021,9q9fy1,1,1,0.5,False
-2021,9q9hq4,1,1,0.6,False
-2021,9q9jb9,1,2,1.5,False
-2021,9qben2,1,1,1.0,False
-2021,9qd2ds,1,1,37.0,False
-2021,9qd9xh,1,2,0.6000000000000001,False
-2021,9qdbm8,1,1,0.3,False
-2021,9qh0rw,1,3,2.7,False
-2021,9qh3ky,1,5,51.1,False
-2021,9qhh0n,1,1,6.0,False
-2021,9qhsdk,1,1,50.0,False
-2021,9qj152,1,2,4.0,False
-2021,9qndpr,1,4,523.0,False
-2021,9qqk6u,1,1,90.0,False
-2021,9r13pb,1,1,0.5,False
-2021,9r50xy,1,1,10.0,False
-2021,9rb6wg,1,1,5.0,False
-2021,9rkf69,1,1,25.0,False
-2021,9w01f3,1,7,97.0,False
-2021,9wdb95,1,1,0.8,False
-2021,9wve62,1,3,6.2,False
-2021,9xkgmv,1,2,5.0,False
-2021,c26crp,1,1,1.0,False
-2021,c2967d,1,1,1.0,False
-2021,c2c10y,1,1,2.0,False
-2022,9muccv,2,2,252.0,True
-2022,9mudw2,1,12,233.4,False
-2022,9mumuf,1,4,43.7,False
-2022,9mupsy,2,21,122.5,True
-2022,9mvffm,1,2,155.0,False
-2022,9mvgw4,1,3,315.0,False
-2022,9pr8ne,1,1,2.2,False
-2022,9q5bwz,1,6,116.3,False
-2022,9q5dy2,1,3,113.0,False
-2022,9q5fm0,1,1,2.0,False
-2022,9q5sgb,1,3,98.0,False
-2022,9q5zqv,1,12,689.5,False
-2022,9q6tde,1,7,285.3,False
-2022,9q92vz,1,4,583.0,False
-2022,9q97v8,1,1,0.5,False
-2022,9q9fy1,1,1,0.5,False
-2022,9q9hq4,1,3,2.5,False
-2022,9q9jb9,1,2,1.5,False
-2022,9q9pk4,1,1,0.7,False
-2022,9qben2,1,1,1.0,False
-2022,9qc26h,1,1,200.0,False
-2022,9qcbq0,1,1,1.0,False
-2022,9qct8r,1,2,5.0,False
-2022,9qcts0,1,1,1.0,False
-2022,9qd2ds,1,2,72.0,False
-2022,9qd9xh,1,3,1.4000000000000001,False
-2022,9qdbm8,1,1,0.3,False
-2022,9qh0rw,1,4,5.1,False
-2022,9qh3ky,1,5,51.1,False
-2022,9qhh0n,1,3,235.3,False
-2022,9qhsdk,1,1,50.0,False
-2022,9qj152,1,3,4.5,False
-2022,9qndpr,1,9,1227.0,False
-2022,9qqk6u,1,1,90.0,False
-2022,9r13pb,1,1,0.5,False
-2022,9r4bc7,1,2,75.0,False
-2022,9r50xy,1,1,10.0,False
-2022,9rb6wg,1,1,5.0,False
-2022,9rkf69,1,1,25.0,False
-2022,9w01f3,1,7,97.0,False
-2022,9w1zzg,1,1,1.0,False
-2022,9wdb95,1,1,0.8,False
-2022,9we1bp,1,1,12.0,False
-2022,9wve62,1,3,6.2,False
-2022,9xkgmv,1,2,5.0,False
-2022,c245ue,1,1,30.0,False
-2022,c26crp,1,1,1.0,False
-2022,c2967d,1,1,1.0,False
-2022,c2c10y,1,1,2.0,False
+Year,geohash,technology_dominant,dominant_share_MW,mixed,technologies,generators,nameplate_MW,energy_MWh,dominant_MW
+2018,9muccv,Flow battery,1.0,False,1,1,2.0,8.0,2.0
+2018,9mudw2,Lithium-ion battery,1.0,False,1,4,41.0,155.5,41.0
+2018,9mumuf,Lithium-ion battery,1.0,False,1,6,45.5,51.5,45.5
+2018,9mupsy,Lithium-ion battery,0.9301,True,2,6,14.3,83.1,13.3
+2018,9mvffm,Lithium-ion battery,1.0,False,1,1,30.0,20.0,30.0
+2018,9q5bwz,Lithium-ion battery,1.0,False,1,2,10.3,10.5,10.3
+2018,9q5fm0,Lithium-ion battery,1.0,False,1,1,2.0,1.0,2.0
+2018,9q5zqv,Lithium-ion battery,1.0,False,1,2,28.0,42.0,28.0
+2018,9q97v8,Sodium based battery,1.0,False,1,1,4.0,28.0,4.0
+2018,9q9fy1,Lithium-ion battery,1.0,False,1,1,0.5,0.9,0.5
+2018,9qc63x,Sodium based battery,1.0,False,1,1,2.0,14.0,2.0
+2018,9qh3ky,Lithium-ion battery,1.0,False,1,4,50.0,110.0,50.0
+2018,9qj152,Lithium-ion battery,1.0,False,1,2,1.5,4.5,1.5
+2018,9r13pb,Lithium-ion battery,1.0,False,1,1,0.5,1.0,0.5
+2018,9rb6wg,Lithium-ion battery,1.0,False,1,1,5.0,1.3,5.0
+2018,9w01f3,Lithium-ion battery,1.0,False,1,4,32.0,53.0,32.0
+2018,9wdb95,Lead-acid battery,1.0,False,1,1,0.8,1.3,0.8
+2018,9we1bp,Sodium based battery,0.5556,True,2,2,1.8,8.3,1.0
+2018,9wve62,Lithium-ion battery,1.0,False,1,2,2.0,14.8,2.0
+2018,9xkgmv,Lithium-ion battery,1.0,False,1,1,4.0,4.0,4.0
+2018,c2967d,Lithium-ion battery,1.0,False,1,2,2.0,1.0,2.0
+2018,c2c10y,Lithium-ion battery,1.0,False,1,1,2.0,4.4,2.0
+2019,9muccv,Flow battery,1.0,False,1,1,2.0,8.0,2.0
+2019,9mudw2,Lithium-ion battery,1.0,False,1,5,42.0,159.5,42.0
+2019,9mumuf,Lithium-ion battery,1.0,False,1,6,45.5,51.5,45.5
+2019,9mupsy,Lithium-ion battery,0.9583,True,2,11,24.0,142.9,23.0
+2019,9mvffm,Lithium-ion battery,1.0,False,1,1,30.0,20.0,30.0
+2019,9q5bwz,Lithium-ion battery,1.0,False,1,5,16.3,47.1,16.3
+2019,9q5fm0,Lithium-ion battery,1.0,False,1,1,2.0,1.0,2.0
+2019,9q5zqv,Lithium-ion battery,1.0,False,1,2,9.5,33.5,9.5
+2019,9q97v8,Sodium based battery,0.8889,True,2,2,4.5,28.5,4.0
+2019,9q9fy1,Lithium-ion battery,1.0,False,1,1,0.5,0.9,0.5
+2019,9qc63x,Sodium based battery,1.0,False,1,1,2.0,14.0,2.0
+2019,9qh0rw,Lithium-ion battery,1.0,False,1,2,2.2,13.2,2.2
+2019,9qh3ky,Lithium-ion battery,1.0,False,1,4,50.0,110.0,50.0
+2019,9qj152,Lithium-ion battery,1.0,False,1,2,1.5,4.5,1.5
+2019,9r13pb,Lithium-ion battery,1.0,False,1,1,0.5,1.0,0.5
+2019,9rb6wg,Lithium-ion battery,1.0,False,1,1,5.0,1.3,5.0
+2019,9w01f3,Lithium-ion battery,1.0,False,1,5,42.0,93.0,42.0
+2019,9wdb95,Lead-acid battery,1.0,False,1,1,0.8,1.3,0.8
+2019,9wve62,Lithium-ion battery,1.0,False,1,5,7.5,13.0,7.5
+2019,9xkgmv,Lithium-ion battery,1.0,False,1,1,4.0,16.0,4.0
+2019,c2967d,Lithium-ion battery,1.0,False,1,2,2.0,1.0,2.0
+2019,c2c10y,Lithium-ion battery,1.0,False,1,1,2.0,4.4,2.0
+2020,9muccv,Lithium-ion battery,0.9921,True,2,2,252.0,258.0,250.0
+2020,9mudw2,Lithium-ion battery,1.0,False,1,7,43.4,161.5,43.4
+2020,9mumuf,Lithium-ion battery,1.0,False,1,6,45.5,51.5,45.5
+2020,9mupsy,Lithium-ion battery,0.9773,True,2,13,44.0,151.9,43.0
+2020,9mvffm,Lithium-ion battery,1.0,False,1,1,30.0,20.0,30.0
+2020,9q5bwz,Lithium-ion battery,1.0,False,1,5,16.3,47.1,16.3
+2020,9q5fm0,Lithium-ion battery,1.0,False,1,1,2.0,1.0,2.0
+2020,9q5zqv,Lithium-ion battery,1.0,False,1,3,29.5,43.5,29.5
+2020,9q97v8,Sodium based battery,0.8889,True,2,2,4.5,28.5,4.0
+2020,9q9fy1,Lithium-ion battery,1.0,False,1,1,0.5,0.9,0.5
+2020,9q9jb9,Lithium-ion battery,1.0,False,1,1,1.0,2.0,1.0
+2020,9qben2,Lithium-ion battery,1.0,False,1,1,1.0,2.0,1.0
+2020,9qc63x,Sodium based battery,1.0,False,1,1,2.0,14.0,2.0
+2020,9qd9xh,Lithium-ion battery,1.0,False,1,2,0.6,0.6,0.6
+2020,9qdbm8,Lithium-ion battery,1.0,False,1,1,0.3,0.3,0.3
+2020,9qh0rw,Lithium-ion battery,1.0,False,1,3,2.7,13.7,2.7
+2020,9qh3ky,Lithium-ion battery,1.0,False,1,4,50.0,110.0,50.0
+2020,9qhh0n,Lithium-ion battery,1.0,False,1,1,6.0,3.4,6.0
+2020,9qj152,Lithium-ion battery,1.0,False,1,2,1.5,4.5,1.5
+2020,9r13pb,Lithium-ion battery,1.0,False,1,1,0.5,1.0,0.5
+2020,9rb6wg,Lithium-ion battery,1.0,False,1,1,5.0,1.3,5.0
+2020,9w01f3,Lithium-ion battery,1.0,False,1,5,42.0,100.5,42.0
+2020,9wdb95,Lead-acid battery,1.0,False,1,1,0.8,1.3,0.8
+2020,9wve62,Lithium-ion battery,1.0,False,1,3,6.2,11.7,6.2
+2020,9xkgmv,Lithium-ion battery,1.0,False,1,1,4.0,16.0,4.0
+2020,c26crp,Lithium-ion battery,1.0,False,1,1,1.0,4.0,1.0
+2020,c2967d,Lithium-ion battery,1.0,False,1,2,2.0,1.0,2.0
+2020,c2c10y,Lithium-ion battery,1.0,False,1,1,2.0,4.4,2.0
+2021,9muccv,Lithium-ion battery,0.9921,True,2,2,252.0,258.0,250.0
+2021,9mudw2,Lithium-ion battery,1.0,False,1,9,75.4,285.5,75.4
+2021,9mumuf,Lithium-ion battery,1.0,False,1,5,44.2,49.5,44.2
+2021,9mupsy,Lithium-ion battery,0.9899,True,2,18,99.0,311.9,98.0
+2021,9mvffm,Lithium-ion battery,1.0,False,1,1,30.0,20.0,30.0
+2021,9mvgw4,Lithium-ion battery,1.0,False,1,1,35.0,140.0,35.0
+2021,9pr8ne,Lithium-ion battery,1.0,False,1,1,2.2,8.8,2.2
+2021,9q5bwz,Lithium-ion battery,1.0,False,1,6,116.3,447.1,116.3
+2021,9q5dy2,Lithium-ion battery,1.0,False,1,3,113.0,450.0,113.0
+2021,9q5fm0,Lithium-ion battery,1.0,False,1,1,2.0,1.0,2.0
+2021,9q5sgb,Lithium-ion battery,1.0,False,1,3,98.0,362.0,98.0
+2021,9q5zqv,Lithium-ion battery,1.0,False,1,5,235.2,643.0,235.2
+2021,9q6tde,Lithium-ion battery,1.0,False,1,3,145.0,357.0,145.0
+2021,9q92vz,Lithium-ion battery,1.0,False,1,2,400.0,400.0,400.0
+2021,9q97v8,Lithium-ion battery,1.0,False,1,1,0.5,0.5,0.5
+2021,9q9fy1,Lithium-ion battery,1.0,False,1,1,0.5,0.9,0.5
+2021,9q9hq4,Lithium-ion battery,1.0,False,1,1,0.6,1.1,0.6
+2021,9q9jb9,Lithium-ion battery,1.0,False,1,2,1.5,2.9,1.5
+2021,9qben2,Lithium-ion battery,1.0,False,1,1,1.0,2.0,1.0
+2021,9qd2ds,Lithium-ion battery,1.0,False,1,1,37.0,128.0,37.0
+2021,9qd9xh,Lithium-ion battery,1.0,False,1,2,0.6,0.6,0.6
+2021,9qdbm8,Lithium-ion battery,1.0,False,1,1,0.3,0.3,0.3
+2021,9qh0rw,Lithium-ion battery,1.0,False,1,3,2.7,13.7,2.7
+2021,9qh3ky,Lithium-ion battery,1.0,False,1,5,51.1,112.1,51.1
+2021,9qhh0n,Lithium-ion battery,1.0,False,1,1,6.0,3.4,6.0
+2021,9qhsdk,Lithium-ion battery,1.0,False,1,1,50.0,50.0,50.0
+2021,9qj152,Lithium-ion battery,1.0,False,1,2,4.0,15.0,4.0
+2021,9qndpr,Lithium-ion battery,1.0,False,1,4,523.0,2298.4,523.0
+2021,9qqk6u,Lithium-ion battery,1.0,False,1,1,90.0,360.0,90.0
+2021,9r13pb,Lithium-ion battery,1.0,False,1,1,0.5,1.0,0.5
+2021,9r50xy,Lithium-ion battery,1.0,False,1,1,10.0,40.0,10.0
+2021,9rb6wg,Lithium-ion battery,1.0,False,1,1,5.0,1.3,5.0
+2021,9rkf69,Lithium-ion battery,1.0,False,1,1,25.0,25.0,25.0
+2021,9w01f3,Lithium-ion battery,1.0,False,1,7,97.0,253.0,97.0
+2021,9wdb95,Lead-acid battery,1.0,False,1,1,0.8,1.3,0.8
+2021,9wve62,Lithium-ion battery,1.0,False,1,3,6.2,11.7,6.2
+2021,9xkgmv,Lithium-ion battery,1.0,False,1,2,5.0,18.0,5.0
+2021,c26crp,Lithium-ion battery,1.0,False,1,1,1.0,4.0,1.0
+2021,c2967d,Lithium-ion battery,1.0,False,1,1,1.0,1.4,1.0
+2021,c2c10y,Lithium-ion battery,1.0,False,1,1,2.0,4.4,2.0
+2022,9muccv,Lithium-ion battery,0.9921,True,2,2,252.0,258.0,250.0
+2022,9mudw2,Lithium-ion battery,1.0,False,1,12,233.4,792.0,233.4
+2022,9mumuf,Lithium-ion battery,1.0,False,1,4,43.7,48.0,43.7
+2022,9mupsy,Lithium-ion battery,0.9918,True,2,21,122.5,399.6,121.5
+2022,9mvffm,Lithium-ion battery,1.0,False,1,2,155.0,270.0,155.0
+2022,9mvgw4,Lithium-ion battery,1.0,False,1,3,315.0,1260.0,315.0
+2022,9pr8ne,Lithium-ion battery,1.0,False,1,1,2.2,8.8,2.2
+2022,9q5bwz,Lithium-ion battery,1.0,False,1,6,116.3,447.1,116.3
+2022,9q5dy2,Lithium-ion battery,1.0,False,1,3,113.0,450.0,113.0
+2022,9q5fm0,Lithium-ion battery,1.0,False,1,1,2.0,1.0,2.0
+2022,9q5sgb,Lithium-ion battery,1.0,False,1,3,98.0,362.0,98.0
+2022,9q5zqv,Lithium-ion battery,1.0,False,1,12,689.5,1768.5,689.5
+2022,9q6tde,Lithium-ion battery,1.0,False,1,7,285.3,918.0,285.3
+2022,9q92vz,Lithium-ion battery,1.0,False,1,4,583.0,2330.8,583.0
+2022,9q97v8,Lithium-ion battery,1.0,False,1,1,0.5,0.5,0.5
+2022,9q9fy1,Lithium-ion battery,1.0,False,1,1,0.5,0.9,0.5
+2022,9q9hq4,Lithium-ion battery,1.0,False,1,3,2.5,4.2,2.5
+2022,9q9jb9,Lithium-ion battery,1.0,False,1,2,1.5,2.9,1.5
+2022,9q9pk4,Lithium-ion battery,1.0,False,1,1,0.7,0.0,0.7
+2022,9qben2,Lithium-ion battery,1.0,False,1,1,1.0,2.0,1.0
+2022,9qc26h,Lithium-ion battery,1.0,False,1,1,200.0,800.0,200.0
+2022,9qcbq0,Lithium-ion battery,1.0,False,1,1,1.0,2.2,1.0
+2022,9qct8r,Lithium-ion battery,1.0,False,1,2,5.0,5.0,5.0
+2022,9qcts0,Lithium-ion battery,1.0,False,1,1,1.0,2.0,1.0
+2022,9qd2ds,Lithium-ion battery,1.0,False,1,2,72.0,288.0,72.0
+2022,9qd9xh,Lithium-ion battery,1.0,False,1,3,1.4,3.7,1.4
+2022,9qdbm8,Lithium-ion battery,1.0,False,1,1,0.3,0.3,0.3
+2022,9qh0rw,Lithium-ion battery,1.0,False,1,4,5.1,17.6,5.1
+2022,9qh3ky,Lithium-ion battery,1.0,False,1,5,51.1,112.1,51.1
+2022,9qhh0n,Lithium-ion battery,1.0,False,1,3,235.3,911.4,235.3
+2022,9qhsdk,Lithium-ion battery,1.0,False,1,1,50.0,50.0,50.0
+2022,9qj152,Lithium-ion battery,1.0,False,1,3,4.5,16.5,4.5
+2022,9qndpr,Lithium-ion battery,1.0,False,1,9,1227.0,5114.4,1227.0
+2022,9qqk6u,Lithium-ion battery,1.0,False,1,1,90.0,360.0,90.0
+2022,9r13pb,Lithium-ion battery,1.0,False,1,1,0.5,1.0,0.5
+2022,9r4bc7,Lithium-ion battery,1.0,False,1,2,75.0,300.0,75.0
+2022,9r50xy,Lithium-ion battery,1.0,False,1,1,10.0,40.0,10.0
+2022,9rb6wg,Lithium-ion battery,1.0,False,1,1,5.0,5.0,5.0
+2022,9rkf69,Lithium-ion battery,1.0,False,1,1,25.0,25.0,25.0
+2022,9w01f3,Lithium-ion battery,1.0,False,1,7,97.0,252.5,97.0
+2022,9w1zzg,Lithium-ion battery,1.0,False,1,1,1.0,4.0,1.0
+2022,9wdb95,Lead-acid battery,1.0,False,1,1,0.8,1.3,0.8
+2022,9we1bp,Lithium-ion battery,1.0,False,1,1,12.0,25.0,12.0
+2022,9wve62,Lithium-ion battery,1.0,False,1,3,6.2,11.7,6.2
+2022,9xkgmv,Lithium-ion battery,1.0,False,1,2,5.0,18.0,5.0
+2022,c245ue,Lithium-ion battery,1.0,False,1,1,30.0,120.0,30.0
+2022,c26crp,Lithium-ion battery,1.0,False,1,1,1.0,4.0,1.0
+2022,c2967d,Lithium-ion battery,1.0,False,1,1,1.0,1.4,1.0
+2022,c2c10y,Lithium-ion battery,1.0,False,1,1,2.0,4.4,2.0

@@ -1,3 +1,13 @@
+# /// script
+# requires-python = ">=3.13"
+# dependencies = [
+#     "cvxpy==1.9.2",
+#     "marimo>=0.23.15",
+#     "matplotlib==3.11.1",
+#     "numpy==2.5.1",
+#     "pandas==3.0.5",
+# ]
+# ///
 import marimo
 
 __generated_with = "0.14.10"

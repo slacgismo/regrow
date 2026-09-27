@@ -1,0 +1,50 @@
+
+[project]
+dependencies = [
+  "marimo[recommended,lsp]==0.14.16",
+  "jax==0.6.2",
+  "torch==2.7.1",
+  "matplotlib>=3.8",
+  "plotly>=5.21",
+  "numpy>=2.0",
+  "umap-learn>=0.5.8",
+  "pymde>=0.2.3",
+  "scikit-learn>=1.6.0",
+  "spacy>=3.7.5",
+  "nltk>=3.9.1",
+  "transformers>=4.48.0",
+  "sentence-transformers>=4.0.0",
+  "xarray>=2025.1.0",
+  "cvxpy>=1.5.0",
+  "pandas>=2.0",
+  "polars>=1.25",
+  "huggingface-hub>=0.32.0",
+  "geopandas>=1.0.0",
+  "pyspark>=3.4.0",
+  "tensorflow>=2.18.0",
+  "xgboost>=2.1.4",
+  "datasets>=2.14.4",
+  "openai>=1.75.0",
+  "wandb>=0.19",
+  "pillow>=10.3",
+  "lancedb>=0.20.0",
+  "chromadb>=1.0",
+]
+name = "marimo-kernel"
+# tensorflow not compatible with 3.13
+requires-python = ">=3.12"
+version = "0.1.0"
+
+[tool.marimo.package_management]
+manager = "uv"
+
+[tool.uv]
+index-url = "https://pypi.org/simple"
+
+[tool.marimo.runtime]
+auto_instantiate = false
+
+[tool.marimo.ai.open_ai]
+api_key = "unused"
+model = "molab"
+base_url = "https://ai.marimo.app/molab/v1"
